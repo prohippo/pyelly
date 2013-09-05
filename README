@@ -1,3 +1,8 @@
-PyElly is a natural language processing tool written entirely in Python. This is
-still incomplete, but should be fully available by the end of 2013. Additional
-modules will be posted as soon as they are tested and integrated.
+PyElly is a rule-based natural language processing tool written in
+object-oriented Python. It is currently in alpha testing, but should be
+available in a beta release with a basic commandline interface at the end
+of 2013. At present, there are 58 Python source modules comprising about
+13 thousand lines of code. Included also are various separate definition
+files to support English-language capabilities. Additional modules and
+resources along with example applications will be posted as they are tested
+and integrated.
