@@ -1,0 +1,23 @@
+#  Elly default prefix list : default.ptl.elly
+#
+#  each entry has the form:
+#      start condition keep add[.|,]
+#
+# start is char sequence to match at start of word
+#
+# condition
+#    0 = keep word as it is with no action
+#    1 = apply specified removal and restoration action to word
+#    2 = apply action only if start followed by consonant
+#
+# keep is number of chars in start to retain in action of removing it
+#      (ignored for condition 0)
+#
+# add  is any char sequence to prepend after removal of original start
+#
+#      an addition may be null, but must be terminated by '.' or ','
+#        ',' means to apply prefix removal logic recursively on result after action
+#        '.' means no recursion
+#
+
+# (nothing!)

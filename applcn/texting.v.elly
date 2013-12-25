@@ -1,0 +1,249 @@
+# readable text compression
+# texting.v.elly
+
+anyone : PRO 0 0 =any
+someone: PRO 0 0 =som
+see    : VERB 0 0 =c
+
+sunday   : NOUN 0 0 =sun
+monday   : NOUN 0 0 =mon
+tuesday  : NOUN 0 0 =tue
+wednesday: NOUN 0 0 =wed
+thursday : NOUN 0 0 =thu
+friday   : NOUN 0 0 =fri
+saturday : NOUN 0 0 =sat
+
+year   : NOUN 0 0 =yr
+month  : NOUN 0 0 =mo
+week   : NOUN 0 0 =wk
+day    : NOUN 0 0 =dy
+hour   : NOUN 0 0 =hr
+minute : NOUN 0 0 =min
+
+good : ADJ 0 0 =gd
+bad  : ADJ 0 0 =bd
+big  : ADJ 0 0 =bg
+little : ADJ 0 0 =lil
+large : ADJ 0 0 =lg
+extra large: ADJ 0 0 =xlg
+more  : ADV 0 0 =mo
+less  : ADV 0 0 =lss
+
+straightforward : ADJ 0 0 =simpl
+please : VERB 0 0 =pls
+pleased: VERB[!IN] 0 0 =plsd
+thanks : NOUN 0 0 =thx
+thank you : VERB 0 0 =thx
+backward: ADV  0 0 =bkw
+forward : ADV  0 0 =fwd
+example : NOUN 0 0 =ex
+level   : NOUN 0 0 =lvl
+perhaps : ADV 0 0 =mayb
+versus  : CONJ 0 0 =vs
+whereas : CONJ 0 0 =whs
+
+no more than : CMP 0 0 =<=
+at least     : CMP 0 0 =>=
+greater than : CMP 0 0 ==
+less than    : CMP 0 0 ==
+more than    : CMP 0 0 =>=
+in excess of : CMP 0 0 =>=
+
+various    : NULL
+one of the : NULL
+respective : NULL
+certain    : NULL
+a group of : NULL
+groups of  : NULL
+a number of: NULL
+in fact    : NULL
+of course  : NULL
+indeed : NULL
+by far : NULL
+per se : NULL
+
+like : PREP 0 0 =lk
+next : ADJ 0 0 =nxt
+link : NOUN 0 0 =lnk
+text : NOUN 0 0 =txt
+room : NOUN 0 0 =rm
+each : NULL 0 0 =ea
+each and every : NULL 0 0 =ea
+each and all : NULL 0 0 =ea
+character : NOUN 0 0 =chr
+
+up in  :  PREP 0 0 =in
+down in:  PREP 0 0 =in
+down by:  PREP 0 0 =by
+over toward:  PREP 0 0 =to
+
+together with:  PREP 0 0 =+
+necessary for:  PREP 0 0 =fr
+instead of: NO  0 0 =no
+had to    : AUX 0 0 =must
+has to    : AUX 0 0 =must
+have to   : AUX 0 0 =must
+unable to : AUX 0 0 =can't
+
+east     : ADV 0 0 =E
+eastern  : ADJ 0 0 =E
+north    : ADV 0 0 =No
+northern : ADJ 0 0 =No
+south    : ADV 0 0 =So
+southern : ADJ 0 0 =So
+west     : ADV 0 0 =W
+western  : ADJ 0 0 =W
+
+international : NOUN 0 0 =intl
+president : NOUN 0 0 =pres
+vice president : NOUN 0 0 =vp
+general manager : NOUN 0 0 =gm
+company : NOUN 0 0 =co
+association  : NOUN 0 0 =assn
+incorporated : NOUN 0 0 =inc
+government   : NOUN 0 0 =govt
+secretary: NOUN 0 0 =secy
+general  : NOUN 0 0 =gen
+junior : NOUN 0 0 =jr
+senior : NOUN 0 0 =sr
+
+online  : NOUN 0 0 =o/l
+anxiety : NOUN 0 0 =anx'y
+headquarter : NOUN 0 0 =hq
+system : NOUN 0 0 =sys
+volume : NOUN 0 0 =vol
+software : NOUN 0 0 =s/w
+internet : NOUN 0 0 =net
+specification : NOUN 0 0 =spec
+information   : NOUN 0 0 =info
+metropolitan  : NOUN 0 0 =metro
+television : NOUN 0 0 =tv
+gram : NOUN 0 0 =g
+average  : NOUN 0 0 =avg
+standard : NOUN 0 0 =std
+assembly : NOUN 0 0 =assy
+head  : NOUN 0 0 =hd
+square : NOUN 0 0 =sq
+amount : NOUN 0 0 =amt
+manufacturer : NOUN 0 0 =mfr
+manufacturing : NOUN 0 0 =mfg
+of manufacture : NOUN 0 0 =of mfg
+board : NOUN 0 0 =bd
+weight : NOUN 0 0 =wt
+laboratory : NOUN 0 0 =lab
+professional : NOUN 0 0 =pro
+trademark : NOUN 0 0 =TM
+executive : NOUN 0 0 =exec
+university : NOUN 0 0 =univ
+manager : NOUN 0 0 =mgr
+management : NOUN 0 0 =mgmt
+technology : NOUN 0 0 =tech
+
+message : NOUN 0 0 =msg
+account : NOUN 0 0 =acct
+problem : NOUN 0 0 =prblm
+balance : NOUN 0 0 =bal
+preliminary : NOUN 0 0 =prelim
+service : NOUN 0 0 =svc
+group : NOUN 0 0 =grp
+veteran : NOUN 0 0 =vet
+appointment : NOUN 0 0 =appmt
+correspond : NOUN 0 0 =corresp
+brother : NOUN 0 0 =bro
+property : NOUN 0 0 =prop
+temperature : NOUN 0 0 =temp
+page : NOUN 0 0 =pg
+center : NOUN 0 0 =ctr
+distance : NOUN 0 0 =dist
+christmas : NOUN 0 0 =Xms
+
+security : NOUN 0 0 =secur
+manage : VERB 0 0 =mnge
+breakthrough : NOUN 0 0 =brkthru
+auxiliary : NOUN 0 0 =aux
+sequence : NOUN 0 0 =seq
+
+new york : NOUN 0 0 =NY
+california : NOUN 0 0 =Cal
+telephone : NOUN 0 0 =fone
+united states  : NOUN 0 0 =US
+united nations : NOUN 0 0 =UN
+dollar  : NOUN 0 0 =$
+cent  : NOUN 0 0 =c
+
+register 0 0 =reg
+representative:  ADJ 0 0 =rep
+series:  NOUN 0 0 =ser
+street:  NOUN 0 0 =st
+substitution:  NOUN 0 0 =sub
+temporary:  ADJ  0 0 =temp
+variable:  ADJ 0 0 =var
+
+if any : EXPR 0 0 =ifny
+as well as  : ADV 0 0 =&
+in order to : EXPR 0 0 =soto
+as many as  : EXPR 0 0 =upto
+as few as   : EXPR 0 0 =dwnto
+only some   : EXPR 0 0 =notall
+accordingly  : ADV 0 0 =so
+as a result  : EXPR 0 0 =so
+in terms of  : EXPR 0 0 =by
+according to : EXPR 0 0 =by
+in addition: NULL
+in addition to: NULL
+for example : CONJ 0 0 =EG
+and/or  : CONJ 0 0 =or
+with respect to  : EXPR 0 0 =RE
+what is more: NULL
+the case  : EXPR 0 0 =so
+made sure  : VERB 0 0 =see
+make sure  : VERB 0 0 =see
+knowledge  : EXPR 0 0 =knw
+considered to be  : VERB 0 0 =seen
+regarding  : EXPR 0 0 =RE
+interest in  : VERB 0 0 =want
+interested in  :VERB 0 0 =want
+known as  : EXPR 0 0 ==
+plus  : CONJ 0 0 =+
+in accordance with  : PREP 0 0 =by
+readily: NULL
+easily : NULL
+simply : NULL
+merely : NULL
+really : NULL
+truly  : NULL
+fully  : NULL
+largely: NULL
+mainly : NULL
+definitely: NULL
+obviously: NULL
+clearly:  NULL
+
+continue  :  VERB[!IN] 0 0 =cntnu
+continued :  VERB[!IN] 0 0 =cont'd
+continuing:  VERB[!IN] 0 0 =cont'g
+subsequent : ADJ 0 0 =subsq
+found :  VERB 0 0 =fnd
+find  :  VERB 0 0 =fnd
+important : ADJ 0 0 =impo
+ahead : ADV 0 0 =ahd
+
+monetary : ADJ 0 0 =money
+voice    : NOUN 0 0 =vce
+knots    : NOUN 0 0 =kt
+
+who :  UNIT[:WH] 0 0 =wh
+what:  UNIT[:WH] 0 0 =wh
+when:  UNIT[:WH]
+where: UNIT[:WH]
+which: UNIT[:WH] 0 0 =wh
+why:   UNIT[:WH]
+
+stated:    VERB[!IN] 0 0 =sd
+reported:  VERB[!IN] 0 0 =sd
+announced: VERB[!IN] 0 0 =sd
+
+buy:    VERB
+bought: VERB 0 0 =buy
+sell:   VERB 0 0 =sll
+sold:   VERB 0 0 =sll

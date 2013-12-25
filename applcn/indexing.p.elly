@@ -1,0 +1,27 @@
+# indexing.p.elly - simple FSA
+#
+# each input record is a 4-tuple
+# STATE , PATTERN , SYNTAX , NEXT
+
+0 ###-##-####$ STOP -1
+0 #,   - 1
+0 ##,  - 1
+0 ###, - 1
+1 ###, - 1
+1 ###$ STOP -1
+0 &#   -     2
+2 .    -     3
+2 $    STOP -1
+3 &#$  STOP -1
+3 $    STOP -1
+
+0 -&@$ STOP -1
+
+0 &#@$ STOP -1
+0 @&#$ STOP -1
+0 -&@$ STOP -1
+
+0 *1st$ STOP -1
+0 *2nd$ STOP -1
+0 *3rd$ STOP -1
+0 &#th$ STOP -1

@@ -1,0 +1,15 @@
+# readable text compression
+# texting.stl.elly
+
+ion 1 0 .
+ation 1 0 .
+ction 1 1 . 1
+eation 1 3 .
+iation 1 0 . 1
+ication 1 0 .
+ition 1 0 . 2
+ize 1 0 .
+ization 1 2 e,
+ment 1 0 .
+sfaction 1 2 . 3
+ution 1 0 .

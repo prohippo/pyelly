@@ -1,0 +1,20 @@
+# simple vocabulary for Elly testing
+# test.v.elly
+py : noun
+ph : noun
+pe : noun
+pas : noun
+php : verb[:X]
+assy lang : noun 0 1 a=x b=y c=z
+ax lx : noun 0 1 a=x b=y c=z
+ax lx mx : noun
+ax lx mx ny oy py : noun 0 0 (doit)
+ny : noun 0 0 =xxxx
+nz : noun 0 0 =yyyy
+rate : verb
+mnfy : verb
+bat  : verb
+inch : noun
+mr. x: noun
+"the robe" : noun
+lr o'dl : noun

@@ -1,0 +1,1543 @@
+# Eliza Doctor simulation
+# doctor.g.elly
+
+####
+
+p:mumble     # what to say when off the script
+_
+  append PLEASE GO ON
+__
+
+####
+
+g:sent[^*right]->ss   # scripted sentence
+__
+g:sent[^*right]->...  # unscripted
+>>--
+_
+  (mumble)
+__
+g:sent->sent punc
+__
+
+####
+
+p:LbR
+_
+  left
+  blank
+  right
+__
+p:bL
+_
+  blank
+  left
+__
+p:bR
+_
+  blank
+  right
+__
+
+####
+
+g:.w.->unkn
+>>-
+__
+g:...->.w.
+__
+g:...->... .w.
+>>-
+_
+  (LbR)
+__
+g:...->key
+>>----
+_
+  var full=t
+  left
+__
+
+####
+
+d:you <- pro[=2]
+_
+  append ME
+__
+d:i <- pro[=1]
+_
+  append YOU
+__
+d:me <- pro[=1,obj]
+_
+  append YOU
+__
+g:.w.->pro
+__
+
+########## start script
+
+g:x[@*right]->... key
+>>++++
+_
+  right
+__
+d:sorry <- key[@0]
+>>+
+__
+g:ss[!*right]->x[@ 0,-1,-2,-3,-4,-5,-6] ...
+>>++
+_
+  append PLEASE DON'T APOLOGIZE
+__
+g:ss[!*right]->x[@ 0,-1,-2,-3,-4,-5,-6] ...
+>>++
+_
+  append APOLOGIES ARE UNNECESSARY
+__
+g:ss[!*right]->x[@ 0,-1,-2,-3,-4,-5,-6] ...
+>>++
+_
+  append HOW DO YOU FEEL WHEN YOU HAVE TO APOLOGIZE
+__
+g:ss[!*right]->x[@ 0,-1,-2,-3,-4,-5,-6] ...
+>>++
+_
+  append I'VE TOLD YOU APOLOGIES ARE NOT REQUIRED
+__
+d:your_memory <- key[@1]
+>>+
+__
+g:ss[!*right]->x[@-0, 1,-2,-3,-4,-5,-6] ...
+>>++
+_
+  append DO YOU OFTEN THINK OF
+  (bR)
+__
+g:ss[!*right]->x[@-0, 1,-2,-3,-4,-5,-6] ...
+>>++
+_
+  append DOES THINKING OF
+  blank
+  right
+  blank
+  append BRING ANYTHING ELSE TO MIND
+__
+g:ss[!*right]->x[@-0, 1,-2,-3,-4,-5,-6] ...
+>>++
+_
+  append WHAT ELSE DO YOU REMEMBER
+__
+g:ss[!*right]->x[@-0, 1,-2,-3,-4,-5,-6] ...
+>>++
+_
+  append WHY DO YOU REMEMBER
+  blank
+  right
+  blank
+  append JUST NOW
+__
+g:ss[!*right]->x[@-0, 1,-2,-3,-4,-5,-6] ...
+>>++
+_
+  append WHAT IN THE PRESENT SITUATION REMINDS YOU OF
+  (bR)
+__
+g:ss[!*right]->x[@-0, 1,-2,-3,-4,-5,-6] ...
+>>++
+_
+  append WHAT IS THE CONNECTION BETWEEN YOU AND
+  (bR)
+__
+d:my_memory <- key[@0,1]
+>>+
+__
+g:ss[!*right]->x[@ 0, 1,-2,-3,-4,-5,-6] ...
+>>++
+_
+  append DID YOU THINK I WOULD FORGET
+  (bR)
+__
+g:ss[!*right]->x[@ 0, 1,-2,-3,-4,-5,-6] ...
+>>++
+_
+  append WHY DO YOU THINK I SHOULD RECALL
+  blank
+  right
+  blank
+  append NOW
+__
+g:ss[!*right]->x[@ 0, 1,-2,-3,-4,-5,-6] ...
+>>++
+_
+  append WHAT ABOUT
+  (bR)
+__
+g:ss[!*right]->x[@ 0, 1,-2,-3,-4,-5,-6] ...
+>>++
+_
+  append YOU MENTIONED
+  (bR)
+__
+d:if <- key[@2]
+_
+  append IF
+__
+g:ss[!*right]->x[@-0,-1, 2,-3,-4,-5,-6] ...
+>>++
+_
+  append DO YOU THINK IT IS LIKELY THAT
+  (bR)
+__
+g:ss[!*right]->x[@-0,-1, 2,-3,-4,-5,-6] ...
+>>++
+_
+  append DO YOU WISH THAT
+  (bR)
+__
+g:ss[!*right]->x[@-0,-1, 2,-3,-4,-5,-6] ...
+>>++
+_
+  append WHAT DO YOU REALLY THINK ABOUT
+  (bR)
+__
+g:ss[!*right]->x[@-0,-1, 2,-3,-4,-5,-6] ...
+>>++
+_
+  append REALLY, IF
+  (bR)
+__
+g:key[@0,2]->pro[=1] dream
+  >>+
+_
+  left
+  blank
+  append dream
+__
+g:ss[!*right]->x[@ 0,-1, 2,-3,-4,-5,-6] ...
+>>++
+_
+  append YOU DREAMT
+  (bR)
+__
+g:ss[!*right]->x[@ 0,-1, 2,-3,-4,-5,-6] ...
+>>++
+_
+  append REALLY,
+  (bR)
+__
+g:ss[!*right]->x[@ 0,-1, 2,-3,-4,-5,-6] ...
+>>++
+_
+  append HAVE YOU EVER FANTASIZED
+  blank
+  right
+  blank
+  append WHEN YOU WERE AWAKE
+__
+g:ss[!*right]->x[@ 0,-1, 2,-3,-4,-5,-6] ...
+>>++
+_
+  append HAVE YOU EVER DREAMT
+  blank
+  right
+  blank
+  append BEFORE
+__
+d:dream <- key[@1,2]
+__
+g:ss[!*right]->x[@-0, 1, 2,-3,-4,-5,-6] ...
+>>++
+_
+  append WHAT DOES THAT DREAM SUGGEST TO YOU
+__
+g:ss[!*right]->x[@-0, 1, 2,-3,-4,-5,-6] ...
+>>++
+_
+  append DO YOU DREAM OFTEN
+__
+g:ss[!*right]->x[@-0, 1, 2,-3,-4,-5,-6] ...
+>>++
+_
+  append WHAT PERSONS APPEAR IN YOUR DREAMS
+__
+g:ss[!*right]->x[@-0, 1, 2,-3,-4,-5,-6] ...
+>>++
+_
+  append DOES THAT DREAM RELATE TO YOUR PROBLEM
+__
+g:ss[!*right]->x[@-0, 1, 2,-3,-4,-5,-6] ...
+>>++
+_
+  append I'M NOT SURE I UNDERSTAND YOU FULLY
+__
+g:ss[!*right]->x[@-0, 1, 2,-3,-4,-5,-6] ...
+>>++
+_
+  append PLEASE GO ON
+__
+g:ss[!*right]->x[@-0, 1, 2,-3,-4,-5,-6] ...
+>>++
+_
+  append WHAT DOES THAT SUGGEST TO YOU
+__
+g:ss[!*right]->x[@-0, 1, 2,-3,-4,-5,-6] ...
+>>++
+_
+  append DO YOU FEEL STRONGLY ABOUT DISCUSSING SUCH THINGS
+__
+d:maybe <- key[@0,1,2]
+>>+
+__
+d:perhap <- key[@0,1,2]
+>>+
+__
+g:ss[!*right]->x[@ 0, 1, 2,-3,-4,-5,-6] ...
+>>++
+_
+  append YOU DON'T SEEM QUITE CERTAIN
+__
+g:ss[!*right]->x[@ 0, 1, 2,-3,-4,-5,-6] ...
+>>++
+_
+  append WHY THE UNCERTAIN TONE
+__
+g:ss[!*right]->x[@ 0, 1, 2,-3,-4,-5,-6] ...
+>>++
+_
+  append CAN'T YOU BE MORE POSITIVE
+__
+g:ss[!*right]->x[@ 0, 1, 2,-3,-4,-5,-6] ...
+>>++
+_
+  append YOU AREN'T SURE
+__
+g:ss[!*right]->x[@ 0, 1, 2,-3,-4,-5,-6] ...
+>>++
+_
+  append DON'T YOU KNOW
+__
+d:name <- key[@3]
+_
+  obtain
+__
+g:ss[!*right]->x[@-0,-1,-2, 3,-4,-5,-6] ...
+>>++
+_
+  append I AM NOT INTERESTED IN NAMES
+__
+g:ss[!*right]->x[@-0,-1,-2, 3,-4,-5,-6] ...
+>>++
+_
+  append I'VE TOLD YOU BEFORE THAT I DON'T CARE ABOUT NAMES
+__
+g:ss[!*right]->x[@-0,-1,-2, 3,-4,-5,-6] ...
+>>++
+_
+  append PLEASE CONTINUE
+__
+d:hello <- key[@0,3]
+>>++
+__
+g:ss[!*right]->x[@ 0,-1,-2, 3,-4,-5,-6] ...
+>>++
+_
+  append HOW DO YOU DO. WHAT IS YOUR PROBLEM
+__
+d:computer <- key[@1,3]
+_
+  obtain
+__
+d:machine <- key[@1,3]
+_
+  obtain
+__
+g:ss[!*right]->x[@-0, 1,-2, 3,-4,-5,-6] ...
+>>++
+_
+  append DO COMPUTERS WORRY YOU
+__
+g:ss[!*right]->x[@-0, 1,-2, 3,-4,-5,-6] ...
+>>++
+_
+  append WHY DO YOU MENTION COMPUTERS
+__
+g:ss[!*right]->x[@-0, 1,-2, 3,-4,-5,-6] ...
+>>++
+_
+  append HOW DO MACHINES PERTAIN TO YOUR PROBLEM
+__
+g:ss[!*right]->x[@-0, 1,-2, 3,-4,-5,-6] ...
+>>++
+_
+  append DON'T YOU THINK COMPUTERS CAN HELP PEOPLE
+__
+g:ss[!*right]->x[@-0, 1,-2, 3,-4,-5,-6] ...
+>>++
+_
+  append WHAT ABOUT MACHINES WORRY YOU
+__
+g:ss[!*right]->x[@-0, 1,-2, 3,-4,-5,-6] ...
+>>++
+_
+  append WHAT DO YOU THINK ABOUT MACHINES
+__
+d:about_you <- key[@0,1,3]
+__
+g:ss[!*right]->x[@ 0, 1,-2, 3,-4,-5,-6] ...
+>>++
+_
+  append DO YOU BELIEVE YOU ARE
+  (bR)
+__
+g:ss[!*right]->x[@ 0, 1,-2, 3,-4,-5,-6] ...
+>>++
+_
+  append WOULD YOU WANT TO BE
+  (bR)
+__
+g:ss[!*right]->x[@ 0, 1,-2, 3,-4,-5,-6] ...
+>>++
+_
+  append SHOULD I TELL YOU THAT YOU ARE
+  (bR)
+__
+g:ss[!*right]->x[@ 0, 1,-2, 3,-4,-5,-6] ...
+>>++
+_
+  append WHAT WOULD IT MEAN IF YOU WERE
+  (bR)
+__
+d:about_me <- key[@2,3]
+__
+g:ss[!*right]->x[@-0,-1, 2, 3,-4,-5,-6] ...
+>>++
+_
+  append WHY ARE YOU INTERESTED IN WHETHER I AM
+  blank
+  right
+  blank
+  append OR NOT
+__
+g:ss[!*right]->x[@-0,-1, 2, 3,-4,-5,-6] ...
+>>++
+_
+  append WOULD YOU PREFER IF I WEREN'T
+  (bR)
+__
+g:ss[!*right]->x[@-0,-1, 2, 3,-4,-5,-6] ...
+>>++
+_
+  append PERHAPS I AM
+  blank
+  right
+  blank
+  append IN YOUR FANTASIES
+__
+g:ss[!*right]->x[@-0,-1, 2, 3,-4,-5,-6] ...
+>>++
+_
+  append DO YOU SOMETIMES THINK I AM
+  (bR)
+__
+d:are <- key[@0,2,3]
+_
+  obtain
+__
+g:ss[!*right]->x[@ 0,-1, 2, 3,-4,-5,-6] ...
+>>++
+_
+  append DO YOU THINK THEY MIGHT NOT BE
+  (bR)
+__
+g:ss[!*right]->x[@ 0,-1, 2, 3,-4,-5,-6] ...
+>>++
+_
+  append WOULD YOU LIKE IT IF THEY WERE NOT
+  (bR)
+__
+g:ss[!*right]->x[@ 0,-1, 2, 3,-4,-5,-6] ...
+>>++
+_
+  append WHAT IF THEY WERE NOT
+  (bR)
+__
+g:ss[!*right]->x[@ 0,-1, 2, 3,-4,-5,-6] ...
+>>++
+_
+  append POSSIBLY THEY ARE
+  (bR)
+__
+d:your <- key[@1,2,3]
+_
+  append MY
+__
+g:ss[!*right]->x[@-0, 1, 2, 3,-4,-5,-6] ...
+>>++
+_
+  append WHY ARE YOU CONCERNED OVER MY
+  (bR)
+__
+g:ss[!*right]->x[@-0, 1, 2, 3,-4,-5,-6] ...
+>>++
+_
+  append WHAT ABOUT YOUR OWN
+  (bR)
+__
+g:ss[!*right]->x[@-0, 1, 2, 3,-4,-5,-6] ...
+>>++
+_
+  append ARE YOU WORRYING ABOUT SOMEONE ELSE'S
+  (bR)
+__
+g:ss[!*right]->x[@-0, 1, 2, 3,-4,-5,-6] ...
+>>++
+_
+  append REALLY, MY
+  (bR)
+__
+d:were_you <- key[@0,1,2,3]
+__
+g:ss[!*right]->x[@ 0, 1, 2, 3,-4,-5,-6] ...
+>>++
+_
+  append WHAT IF YOU WERE
+  (bR)
+__
+g:ss[!*right]->x[@ 0, 1, 2, 3,-4,-5,-6] ...
+>>++
+_
+  append DID YOU THINK YOU WERE
+  (bR)
+__
+g:ss[!*right]->x[@ 0, 1, 2, 3,-4,-5,-6] ...
+>>++
+_
+  append WERE YOU
+  (bR)
+__
+g:ss[!*right]->x[@ 0, 1, 2, 3,-4,-5,-6] ...
+>>++
+_
+  append WHAT WOULD IT MEAN IF YOU WERE
+  (bR)
+__
+g:ss[!*right]->x[@ 0, 1, 2, 3,-4,-5,-6] ...
+>>++
+_
+  append WHAT DOES
+  blank
+  right
+  blank
+  append SUGGEST TO YOU
+__
+d:you_were <- key[@4]
+__
+g:ss[!*right]->x[@-0,-1,-2,-3, 4,-5,-6] ...
+>>++
+_
+  append WERE YOU REALLY
+__
+g:ss[!*right]->x[@-0,-1,-2,-3, 4,-5,-6] ...
+>>++
+_
+  append WHY DO YOU TELL ME YOU WERE
+  blank
+  right
+  blank
+  append NOW
+__
+g:ss[!*right]->x[@-0,-1,-2,-3, 4,-5,-6] ...
+>>++
+_
+  append PERHAPS I ALREADY KNEW YOU WERE
+  (bR)
+__
+d:was_i <- key[@0,4]
+__
+g:ss[!*right]->x[@ 0,-1,-2,-3, 4,-5,-6] ...
+>>++
+_
+  append WOULD YOU LIKE TO BELIEVE I WAS
+  (bR)
+__
+g:ss[!*right]->x[@ 0,-1,-2,-3, 4,-5,-6] ...
+>>++
+_
+  append WHAT SUGGESTS THAT I WAS
+  (bR)
+__
+g:ss[!*right]->x[@ 0,-1,-2,-3, 4,-5,-6] ...
+>>++
+_
+  append WHAT IF I HAD BEEN
+  (bR)
+__
+
+####
+
+d:mother <- fmly
+_
+  obtain
+__
+d:mom <- fmly
+_
+  obtain
+__
+d:father <- fmly
+_
+  obtain
+__
+d:dad <- fmly
+_
+  obtain
+__
+d:brother <- fmly
+_
+  obtain
+__
+d:sister <- fmly
+_
+  obtain
+__
+d:wife <- fmly
+_
+  obtain
+__
+d:child <- fmly
+_
+  obtain
+__
+d:son <- fmly
+_
+  obtain
+__
+d:daughter <- fmly
+_
+  obtain
+__
+g:key[@0,5]->fmly
+__
+g:.w.->fmly
+>>--
+__
+d:want <- want
+_
+  obtain
+__
+d:need <- want
+_
+  obtain
+__
+g:.w.->want
+>>--
+__
+g:key[@1,4]->pro[=1] want
+__
+g:ss[!*right]->x[@-0, 1,-2,-3, 4,-5,-6] ...
+>>++
+_
+  append WHAT WOULD IT MEAN TO YOU IF YOU GOT
+  (bR)
+__
+g:ss[!*right]->x[@-0, 1,-2,-3, 4,-5,-6] ...
+>>++
+_
+  append WHY DO YOU WANT
+  (bR)
+__
+g:ss[!*right]->x[@-0, 1,-2,-3, 4,-5,-6] ...
+>>++
+_
+  append SUPPOSE THAT YOU GOT
+  blank
+  right
+  blank
+  append SOON
+__
+g:ss[!*right]->x[@-0, 1,-2,-3, 4,-5,-6] ...
+>>++
+_
+  append WHAT IF YOU NEVER GOT
+  (bR)
+__
+g:ss[!*right]->x[@-0, 1,-2,-3, 4,-5,-6] ...
+>>++
+_
+  append WHAT WOULD GETTING
+  blank
+  right
+  blank
+  append MEAN TO YOU
+__
+g:ss[!*right]->x[@-0, 1,-2,-3, 4,-5,-6] ...
+>>++
+_
+  append WHAT DOES WANTING
+  blank
+  right
+  blank
+  append HAVE TO DO WITH THIS DISCUSSION
+__
+d:am <- be
+__
+g:.w.->be
+>>-
+__
+g:pro[=1]->pro[=1] be
+__
+d:sad <- value[=neg]
+_
+  obtain
+__
+d:unhappy <- value[=neg]
+_
+  obtain
+__
+d:depress <- value[=neg]
+_
+  obtain
+__
+d:sick <- value[=neg]
+_
+  obtain
+__
+g:.w.->value
+>>-
+__
+g:key[@0,1,4]->pro[=1] value[=neg]
+_
+  right
+__
+g:ss[!*right]->x[@ 0, 1,-2,-3, 4,-5,-6] ...
+>>++
+_
+  append I AM SORRY TO HEAR THAT YOU ARE
+  (bL)
+__
+g:ss[!*right]->x[@ 0, 1,-2,-3, 4,-5,-6] ...
+>>++
+_
+  append DO YOU THINK COMING HERE WILL HELP YOU TO BE LESS
+  (bL)
+__
+g:ss[!*right]->x[@ 0, 1,-2,-3, 4,-5,-6] ...
+>>++
+_
+  append I'M SURE IT'S NOT PLEASANT TO BE
+  (bL)
+__
+g:ss[!*right]->x[@ 0, 1,-2,-3, 4,-5,-6] ...
+>>++
+_
+  append CAN YOU EXPLAIN WHAT MADE YOU
+  (bL)
+__
+d:happy <- value[=pos]
+_
+  obtain
+__
+d:elate <- value[=pos]
+_
+  append ELATED
+__
+d:glad <- value[=pos]
+_
+  obtain
+__
+d:better <- value[=pos]
+_
+  obtain
+__
+g:key[@2,4]->pro[=1] value[=pos]
+_
+  (bR)
+__
+g:ss[!*right]->x[@-0,-1, 2,-3, 4,-5,-6] ...
+>>++
+_
+  append HOW HAVE I HELPED YOU TO BE
+  (bL)
+__
+g:ss[!*right]->x[@-0,-1, 2,-3, 4,-5,-6] ...
+>>++
+_
+  append HAS YOUR TREATMENT MADE YOU
+  (bL)
+__
+g:ss[!*right]->x[@-0,-1, 2,-3, 4,-5,-6] ...
+>>++
+_
+  append WHAT MAKES YOU
+  blank
+  left
+  blank
+  append JUST NOW
+__
+g:ss[!*right]->x[@-0,-1, 2,-3, 4,-5,-6] ...
+>>++
+_
+  append CAN YOU EXPLAIN WHY YOU ARE SUDDENLY
+  (bL)
+__
+d:feel <- feel
+__
+d:think <- feel
+__
+d:believe <- feel
+__
+d:wish <- feel
+__
+g:feel[@*r]->feel pro[=1]
+__
+g:.w.->feel
+>>--
+__
+g:key[@0,2,4]->pro[=1] feel[#*r]
+__
+g:ss[!*right]->x[@ 0,-1, 2,-3, 4,-5,-6] ...
+>>++
+_
+  append DO YOU REALLY THINK SO
+__
+g:ss[!*right]->x[@ 0,-1, 2,-3, 4,-5,-6] ...
+>>++
+_
+  append BUT YOU ARE NOT SURE YOU
+  (bR)
+__
+g:ss[!*right]->x[@ 0,-1, 2,-3, 4,-5,-6] ...
+>>++
+_
+  append DO YOU REALLY DOUBT YOU
+  (bR)
+__
+g:key[@1,2,4]->pro[=1] be
+__
+g:ss[!*right]->x[@-0, 1, 2,-3, 4,-5,-6] ...
+>>++
+_
+  append IS IT BECAUSE YOU ARE
+  blank
+  right
+  blank
+  append THAT YOU CAME TO ME
+__
+g:ss[!*right]->x[@-0, 1, 2,-3, 4,-5,-6] ...
+>>++
+_
+  append HOW LONG HAVE YOU BEEN
+  (bR)
+__
+g:ss[!*right]->x[@-0, 1, 2,-3, 4,-5,-6] ...
+>>++
+_
+  append DO YOU BELIEVE IT IS NORMAL TO BE
+  (bR)
+__
+g:ss[!*right]->x[@-0, 1, 2,-3, 4,-5,-6] ...
+>>++
+_
+  append DO YOU ENJOY BEING
+  (bR)
+__
+d:cannot <- neg[|can]
+__
+g:.w.->neg
+__
+g:key[@0,1,2,4]->pro[=1] neg[|can]
+__
+g:ss[!*right]->x[@ 0, 1, 2,-3, 4,-5,-6] ...
+>>++
+_
+  append HOW DO YOU KNOW YOU CAN'T
+  (bR)
+__
+g:ss[!*right]->x[@ 0, 1, 2,-3, 4,-5,-6] ...
+>>++
+_
+  append HAVE YOU TRIED
+__
+g:ss[!*right]->x[@ 0, 1, 2,-3, 4,-5,-6] ...
+>>++
+_
+  append PERHAPS YOU COULD
+  blank
+  right
+  blank
+  append NOW
+__
+g:ss[!*right]->x[@ 0, 1, 2,-3, 4,-5,-6] ...
+>>++
+_
+  append DO YOU REALLY WANT TO BE ABLE TO
+  (bR)
+__
+d:donot <- neg[|do]
+__
+d:will_not <- neg[|do]
+__
+d:never <- neg
+__
+g:key[@3,4]->pro[=1] neg[|do]
+__
+g:ss[!*right]->x[@-0,-1,-2, 3, 4,-5,-6] ...
+>>++
+_
+  append DON'T YOU REALLY
+  (bR)
+__
+g:ss[!*right]->x[@-0,-1,-2, 3, 4,-5,-6] ...
+  append WHY DON'T YOU
+  (bR)
+__
+g:ss[!*right]->x[@-0,-1,-2, 3, 4,-5,-6] ...
+>>++
+_
+  append DO YOU WISH TO BE ABLE TO
+  (bR)
+__
+g:ss[!*right]->x[@-0,-1,-2, 3, 4,-5,-6] ...
+>>++
+_
+  append DOES THAT TROUBLE YOU
+__
+g:key[@0,3,4]->pro[=1] feel[#-*r]
+>>-
+__
+g:ss[!*right]->x[@ 0,-1,-2, 3, 4,-5,-6] ...
+>>++
+_
+  append TELL ME MORE ABOUT SUCH FEELINGS
+__
+g:ss[!*right]->x[@ 0,-1,-2, 3, 4,-5,-6] ...
+>>++
+_
+  append DO YOU OFTEN FEEL
+  (bR)
+__
+g:ss[!*right]->x[@ 0,-1,-2, 3, 4,-5,-6] ...
+>>++
+_
+  append DO YOU ENJOY FEELING
+  (bR)
+__
+g:ss[!*right]->x[@ 0,-1,-2, 3, 4,-5,-6] ...
+>>++
+_
+  append WHAT DOES FEELING
+  blank
+  right
+  blank
+  append REMIND YOU OF
+__
+g:unkn[@*r]->unkn[#-*r] pro[=2]
+_
+  left
+  if full=t
+    blank
+    right
+    end
+__
+g:key[@1,3,4]->pro[=1] unkn[#*r]
+_
+  if full=t
+    left
+    blank
+    end
+  right
+__
+g:ss[!*right]->x[@-0, 1,-2, 3, 4,-5,-6] ...
+>>++
+_
+  append PERHAPS IN YOUR FANTASY WE
+  blank
+  left
+  blank
+  append EACH OTHER
+__
+g:ss[!*right]->x[@-0, 1,-2, 3, 4,-5,-6] ...
+>>++
+_
+  append DO YOU WISH TO
+  blank
+  left
+  blank
+  append ME
+__
+g:ss[!*right]->x[@-0, 1,-2, 3, 4,-5,-6] ...
+>>++
+_
+  append YOU SEEM TO NEED TO
+  blank
+  left
+  blank
+  append ME
+__
+g:ss[!*right]->x[@-0, 1,-2, 3, 4,-5,-6] ...
+>>++
+_
+  append DO YOU
+  blank
+  left
+  blank
+  append ANYONE ELSE
+__
+d:say <- say
+__
+d:say <- .w.
+__
+g:key[@0,1,3,4]->pro[=1] say
+__
+g:ss[!*right]->x[@ 0, 1,-2, 3, 4,-5,-6] ...
+>>++
+_
+  append CAN YOU ELABORATE ON THAT
+__
+g:ss[!*right]->x[@ 0, 1,-2, 3, 4,-5,-6] ...
+>>++
+_
+  append DO YOU SAY
+  blank
+  right
+  blank
+  append FOR SOME SPECIAL REASON
+__
+g:ss[!*right]->x[@ 0, 1,-2, 3, 4,-5,-6] ...
+>>++
+_
+  append THAT'S QUITE INTERESTING
+__
+d:you_are <- key[@2,3,4]
+__
+g:ss[!*right]->x[@-0,-1, 2, 3, 4,-5,-6] ...
+>>++
+_
+  append WHAT MAKES YOU THINK I AM
+  (bR)
+__
+g:ss[!*right]->x[@-0,-1, 2, 3, 4,-5,-6] ...
+>>++
+_
+  append DOES IT PLEASE YOU TO BELIEVE I AM
+  (bR)
+__
+g:ss[!*right]->x[@-0,-1, 2, 3, 4,-5,-6] ...
+>>++
+_
+  append DO YOU SOMETIMES WISH YOU WERE
+  (bR)
+__
+g:ss[!*right]->x[@-0,-1, 2, 3, 4,-5,-6] ...
+>>++
+_
+  append PERHAPS YOU WOULD LIKE TO BE
+  (bR)
+__
+d:your <- poss[=2]
+_
+  append MY
+__
+d:my <- poss[=1]
+_
+  append YOUR
+__
+g:.w.->poss
+__
+g:key[@0,2,3,4]->pro[=2] pro[=1,obj]
+>>+
+_
+  (bR)
+__
+g:pro[=1,obj]->unkn pro[=1,obj]
+_
+  (LbR)
+__
+g:ss[!*right]->x[@ 0,-1, 2, 3, 4,-5,-6] ...
+>>++
+_
+  append WHY DO YOU THINK I
+  (bL)
+__
+g:ss[!*right]->x[@ 0,-1, 2, 3, 4,-5,-6] ...
+>>++
+_
+  append YOU LIKE TO THINK I
+  blank
+  left
+  append , DON'T YOU
+__
+g:ss[!*right]->x[@ 0,-1, 2, 3, 4,-5,-6] ...
+>>++
+_
+  append WHAT MAKES YOU THINK I
+  (bL)
+__
+g:ss[!*right]->x[@ 0,-1, 2, 3, 4,-5,-6] ...
+>>++
+_
+  append REALLY, I
+  (bL)
+__
+g:ss[!*right]->x[@ 0,-1, 2, 3, 4,-5,-6] ...
+>>++
+_
+  append DO YOU WISH TO BELIEVE I
+  (bL)
+__
+g:ss[!*right]->x[@ 0,-1, 2, 3, 4,-5,-6] ...
+>>++
+_
+  append SUPPOSE I DID
+  blank
+  left
+  append . WHAT WOULD THAT MEAN
+__
+g:ss[!*right]->x[@ 0,-1, 2, 3, 4,-5,-6] ...
+>>++
+_
+  append DOES SOMEONE ELSE BELIEVE I
+  (bL)
+__
+
+#### part of the Doctor script added much later
+
+d:pro[=2] <- key[@1,2,3,4]
+__
+g:ss[!*right]->x[@-0, 1, 2, 3, 4,-5,-6] ...
+>>+
+_
+  append WE WERE DISCUSSING YOU, NOT ME
+__
+g:ss[!*right]->x[@-0, 1, 2, 3, 4,-5,-6]  ...
+>>+
+_
+  append OH, I
+  (bR)
+__
+g:ss[!*right]->x[@-0, 1, 2, 3, 4,-5,-6] ...
+>>+
+_
+  append YOU'RE NOT REALLY TALKING ABOUT ME, ARE YOU
+__
+g:ss[!*right]->x[@-0, 1, 2, 3, 4,-5,-6] ...
+>>+
+_
+  append WHAT ARE YOUR FEELINGS NOW
+__
+d:yes <- key[@0,1,2,3,4]
+__
+g:ss[!*right]->x[@ 0, 1, 2, 3, 4,-5,-6] ...
+>>
+_
+  append YOU SEEM QUITE POSITIVE
+__
+g:ss[!*right]->x[@ 0, 1, 2, 3, 4,-5,-6] ...
+>>
+_
+  append YOU ARE SURE
+__
+g:ss[!*right]->x[@ 0, 1, 2, 3, 4,-5,-6] ...
+>>
+_
+  append I SEE
+__
+g:ss[!*right]->x[@ 0, 1, 2, 3, 4,-5,-6] ...
+>>
+_
+  append I UNDERSTAND
+__
+d:no <- key[@5]
+__
+g:ss[!*right]->x[@-0,-1,-2,-3,-4, 5,-6] ...
+>>++
+_
+  append ARE YOU SAYING 'NO' JUST TO BE NEGATIVE
+__
+g:ss[!*right]->x[@-0,-1,-2,-3,-4, 5,-6] ...
+>>++
+_
+  append YOU ARE BEING A BIT NEGATIVE
+__
+g:ss[!*right]->x[@-0,-1,-2,-3,-4, 5,-6] ...
+>>++
+_
+  append WHY NOT
+__
+g:ss[!*right]->x[@-0,-1,-2,-3,-4, 5,-6] ...
+>>++
+_
+  append WHY 'NO'
+__
+g:fmly->poss fmly
+  >>++++++
+_
+  (LbR)
+__
+g:key[@0,5]->poss[=1] fmly
+_
+  (LbR)
+__
+g:poss[=1]->poss[=1] unkn
+_
+  (LbR)
+__
+g:ss[!*right]->x[@ 0,-1,-2,-3,-4, 5,-6] ...
+>>++
+_
+  append TELL ME MORE ABOUT YOUR FAMILY
+__
+g:ss[!*right]->x[@ 0,-1,-2,-3,-4, 5,-6] ...
+>>++
+_
+  append WHO ELSE IN YOUR FAMILY
+  (bR)
+__
+g:ss[!*right]->x[@ 0,-1,-2,-3,-4, 5,-6] ...
+>>++
+_
+  left
+__
+g:ss[!*right]->x[@ 0,-1,-2,-3,-4, 5,-6] ...
+>>++
+_
+  append WHAT ELSE COMES TO YOUR MIND WHEN YOU THINK OF
+  (bL)
+__
+
+####
+
+d:poss[=1] <- key[@1,5]
+__
+g:ss[!*right]->x[@-0, 1,-2,-3,-4, 5,-6] ...
+>>+
+_
+  append YOUR
+  (bR)
+__
+g:ss[!*right]->x[@-0, 1,-2,-3,-4, 5,-6] ...
+>>+
+_
+  append WHY DO YOU SAY YOUR
+  (bR)
+__
+g:ss[!*right]->x[@-0, 1,-2,-3,-4, 5,-6] ...
+>>+
+_
+  append DOES THAT SUGGEST ANYTHING ELSE THAT BELONGS TO YOU
+__
+g:ss[!*right]->x[@-0, 1,-2,-3,-4, 5,-6] ...
+>>+
+_
+  append IS YOUR
+  blank
+  right
+  blank
+  append IMPORTANT TO YOU
+__
+d:can_you <- key[@0,1,5]
+__
+g:ss[!*right]->x[@ 0, 1,-2,-3,-4, 5,-6] ...
+>>++
+_
+  append YOU BELIEVE I CAN
+  blank
+  right
+  blank
+  append DON'T YOU
+__
+g:ss[!*right]->x[@ 0, 1,-2,-3,-4, 5,-6] ...
+>>++
+_
+  append YOU WANT ME TO BE ABLE TO
+  (bR)
+__
+g:ss[!*right]->x[@ 0, 1,-2,-3,-4, 5,-6] ...
+>>++
+_
+  append PERHAPS YOU WOULD LIKE TO BE ABLE TO
+  blank
+  right
+  append YOURSELF
+__
+d:can_i <- key[@2,5]
+__
+g:ss[!*right]->x[@-0,-1, 2,-3,-4, 5,-6] ...
+>>++
+_
+  append WHETHER OR NOT YOU CAN
+  blank
+  right
+  blank
+  append DEPENDS MORE ON YOU THAN ON ME
+__
+g:ss[!*right]->x[@-0,-1, 2,-3,-4, 5,-6] ...
+>>++
+_
+  append DO YOU WANT TO BE ABLE TO
+  (bR)
+__
+g:ss[!*right]->x[@-0,-1, 2,-3,-4, 5,-6] ...
+>>++
+_
+  append PERHAPS YOU REALLY DON'T WANT TO
+  (bR)
+__
+d:can_you <- key[@0,2,5]
+__
+d:can_i <- key[@0,2,5]
+__
+d:what <- key[@0,2,5]
+__
+g:ss[!*right]->x[@ 0,-1, 2,-3,-4, 5,-6] ...
+>>++
+_
+  append WHY DO YOU ASK
+__
+g:ss[!*right]->x[@ 0,-1, 2,-3,-4, 5,-6] ...
+>>++
+_
+  append DOES THAT QUESTION INTEREST YOU
+__
+g:ss[!*right]->x[@ 0,-1, 2,-3,-4, 5,-6] ...
+>>++
+_
+  append WHAT IS IT THAT YOU REALLY WANT TO KNOW
+__
+g:ss[!*right]->x[@ 0,-1, 2,-3,-4, 5,-6] ...
+>>++
+_
+  append ARE SUCH QUESTIONS MUCH ON YOUR MIND
+__
+g:ss[!*right]->x[@ 0,-1, 2,-3,-4, 5,-6] ...
+>>++
+_
+  append WHAT ANSWER WOULD PLEASE YOU MOST
+__
+g:ss[!*right]->x[@ 0,-1, 2,-3,-4, 5,-6] ...
+>>++
+_
+  append WHAT DO YOU THINK
+__
+g:ss[!*right]->x[@ 0,-1, 2,-3,-4, 5,-6] ...
+>>++
+_
+  append WHAT COMES TO MIND WHEN YOU ASK THAT
+__
+g:ss[!*right]->x[@ 0,-1, 2,-3,-4, 5,-6] ...
+>>++
+_
+  append HAVE YOU ASKED SUCH A QUESTION BEFORE
+__
+g:ss[!*right]->x[@ 0,-1, 2,-3,-4, 5,-6] ...
+>>++
+_
+  append HAVE YOU ASKED ANYONE ELSE
+__
+d:because <- key[@1,2,5]
+__
+g:ss[!*right]->x[@-0, 1, 2,-3,-4, 5,-6] ...
+>>++
+_
+  append IS THAT THE REAL REASON
+__
+g:ss[!*right]->x[@-0, 1, 2,-3,-4, 5,-6] ...
+>>++
+_
+  append DON'T ANY OTHER REASONS COME TO MIND
+__
+g:ss[!*right]->x[@-0, 1, 2,-3,-4, 5,-6] ...
+>>++
+_
+  append DOES THAT REASON SEEM TO EXPLAIN ANYTHING ELSE
+__
+g:ss[!*right]->x[@-0, 1, 2,-3,-4, 5,-6] ...
+>>++
+_
+  append WHAT OTHER REASONS MIGHT THERE BE
+__
+d:why_don't_you <- key[@0,1,2,5]
+__
+d:why_don't_you <- key[@0,2,5]
+__
+g:ss[!*right]->x[@ 0, 1, 2,-3,-4, 5,-6] ...
+>>++
+_
+  append DO YOU BELIEVE I DON'T
+  (bR)
+__
+g:ss[!*right]->x[@ 0, 1, 2,-3,-4, 5,-6] ...
+>>++
+_
+  append PERHAPS I WILL
+  blank
+  right
+  blank
+  append IN GOOD TIME
+__
+g:ss[!*right]->x[@ 0, 1, 2,-3,-4, 5,-6] ...
+>>++
+_
+  append SHOULD YOU
+  blank
+  right
+  append YOURSELF
+__
+g:ss[!*right]->x[@ 0, 1, 2,-3,-4, 5,-6] ...
+>>++
+_
+  append YOU WANT ME TO
+  (bR)
+__
+d:why_can't_i <- key[@3,5]
+__
+d:why_can't_i <- key[@0,2,5]
+__
+g:ss[!*right]->x[@-0,-1,-2, 3,-4, 5,-6] ...
+>>++
+_
+  append DO YOU THINK YOU SHOULD BE ABLE TO
+  (bR)
+__
+g:ss[!*right]->x[@-0,-1,-2, 3,-4, 5,-6] ...
+>>++
+_
+  append DO YOU WANT TO BE ABLE TO
+  (bR)
+__
+g:ss[!*right]->x[@-0,-1,-2, 3,-4, 5,-6] ...
+>>++
+_
+  append DO YOU THINK THIS WILL HELP YOU TO
+  (bR)
+__
+g:ss[!*right]->x[@-0,-1,-2, 3,-4, 5,-6] ...
+>>++
+_
+  append HAVE YOU ANY IDEA WHY YOU CAN'T
+  (bR)
+__
+d:everyone <- key[@0,3,5]
+__
+d:everybody <- key[@0,3,5]
+__
+d:no_one <- key[@0,3,5]
+__
+d:nobody <- key[@0,3,5]
+__
+g:ss[!*right]->x[@ 0,-1,-2, 3,-4, 5,-6] ...
+>>++
+_
+  append REALLY,
+  (bR)
+__
+g:ss[!*right]->x[@ 0,-1,-2, 3,-4, 5,-6] ...
+>>++
+_
+  append SURELY NOT
+__
+g:ss[!*right]->x[@ 0,-1,-2, 3,-4, 5,-6] ...
+>>++
+_
+  append CAN YOU THINK OF ANYONE IN PARTICULAR
+__
+g:ss[!*right]->x[@ 0,-1,-2, 3,-4, 5,-6] ...
+>>++
+_
+  append WHO, FOR EXAMPLE
+__
+g:ss[!*right]->x[@ 0,-1,-2, 3,-4, 5,-6] ...
+>>++
+_
+  append YOU ARE THINKING OF A VERY SPECIAL PERSON
+__
+g:ss[!*right]->x[@ 0,-1,-2, 3,-4, 5,-6] ...
+>>++
+_
+  append WHO, MAY I ASK
+__
+g:ss[!*right]->x[@ 0,-1,-2, 3,-4, 5,-6] ...
+>>++
+_
+  append SOMEONE SPECIAL PERHAPS
+__
+g:ss[!*right]->x[@ 0,-1,-2, 3,-4, 5,-6] ...
+>>++
+_
+  append YOU HAVE A PARTICULAR PERSON IN MIND, DON'T YOU
+__
+g:ss[!*right]->x[@ 0,-1,-2, 3,-4, 5,-6] ...
+>>++
+_
+  append WHO DO YOU THINK YOU ARE TALKING ABOUT
+__
+d:alway <- key[@1,3,5]
+__
+g:ss[!*right]->x[@-0, 1,-2, 3,-4, 5,-6] ...
+>>++
+_
+  append CAN YOU THINK OF A SPECIFIC EXAMPLE
+__
+g:ss[!*right]->x[@-0, 1,-2, 3,-4, 5,-6] ...
+>>++
+_
+  append WHEN
+__
+g:ss[!*right]->x[@-0, 1,-2, 3,-4, 5,-6] ...
+>>++
+_
+  append WHAT INCIDENT ARE YOU THINKING OF
+__
+g:ss[!*right]->x[@-0, 1,-2, 3,-4, 5,-6] ...
+>>++
+_
+  append REALLY, ALWAYS
+__
+d:is <- be
+__
+d:are <- be
+__
+d:was <- be
+__
+d:were <- be
+__
+d:like <- like
+__
+g:key[@0,1,-2,3,-4,5,-6]->be like
+__
+g:ss[!*right]->x[@ 0, 1,-2, 3,-4, 5,-6] ...
+_
+  append IN WHAT WAY
+__
+g:ss[!*right]->x[@ 0, 1,-2, 3,-4, 5,-6] ...
+_
+  append WHAT RESEMBLANCE DO YOU SEE
+__
+g:ss[!*right]->x[@ 0, 1,-2, 3,-4, 5,-6] ...
+_
+  append WHAT DOES THAT SIMILARITY SUGGEST TO YOU
+__
+g:ss[!*right]->x[@ 0, 1,-2, 3,-4, 5,-6] ...
+_
+  append WHAT OTHER CONNECTIONS DO YOU SEE
+__
+g:ss[!*right]->x[@ 0, 1,-2, 3,-4, 5,-6] ...
+_
+  append WHAT DO YOU SUPPOSE THAT RESEMBLANCE MEANS
+__
+g:ss[!*right]->x[@ 0, 1,-2, 3,-4, 5,-6] ...
+_
+  append WHAT IS THE CONNECTION, DO THINK
+__
+g:ss[!*right]->x[@ 0, 1,-2, 3,-4, 5,-6] ...
+_
+  append WOULD THERE REALLY BE SOME CONNECTION
+__
+g:ss[!*right]->x[@ 0, 1,-2, 3,-4, 5,-6] ...
+_
+  append HOW
+__
+g:unkn->time
+__
+g:unkn->date
+__

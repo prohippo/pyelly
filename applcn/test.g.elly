@@ -1,0 +1,148 @@
+# simple Elly grammar to support various unit testing
+# test.g.elly
+
+p:2b  # special semantics for 2-branch rule
+_
+  trace
+  left
+  append +
+  right
+__
+p:2bs # standard semantics for 2-branch rule
+_
+  trace
+  left
+  space
+  right
+__
+p:doit # dummy external dictionary procedure
+_
+  append do what?
+__
+g:sent -> sent punc
+_
+  set lang=b
+  (deflr)
+__
+g:sent -> sbj
+_
+  trace
+  left
+__
+g:sent -> sbj prd
+_
+  (2bs)
+__
+g:sbj  -> np
+__
+g:np[:*r,det]  -> det np[:-det]
+_
+  trace
+  (defr)
+__
+g:prd  -> vp
+__
+g:prd  -> be adjective
+_
+  trace
+  (defr)
+__
+g:prd  -> be np
+_
+  (defr)
+__
+g:prd  -> vp obj
+_
+  (2bs)
+__
+g:obj  -> np
+__
+g:noun -> noun sufx
+_
+  (2bs)
+__
+d:nn   <- noun[:aa,bb]
+__
+d:nnx  <- noun[:aa,bb]
+__
+d:ve   <- verb[:cc,dd]
+__
+d:vex  <- verb
+__
+g:verb -> verb sufx
+_
+  (2bs)
+__
+d:av   <- adverb
+_
+  obtain
+__
+d:aj   <- adjective
+__
+d:b    <- be
+__
+d:d    <- det
+__
+g:sbj  -> sbj adverb
+>>-1
+_
+  (2bs)
+__
+g:prd  -> adverb prd
+>>+1
+_
+  (2bs)
+__
+g:noun -> unkn
+>>-1
+__
+g:verb -> unkn
+>>-2
+__
+g:adjective -> unkn
+>>-2
+__
+g:np[:*r,num] -> num np[:-num,-det]
+_
+  (2b)
+__
+g:np[:*r]     -> adjective np[:-num,-det]
+_
+  (2b)
+__
+g:np   -> noun
+_
+  trace
+  left
+__
+g:vp   -> verb
+__
+g:sent -> adverb sent
+_
+  (2bs)
+__
+g:sent -> sent adverb
+_
+  (2b)
+__
+g:sbj  -> ssn
+_
+  trace
+  left
+__
+d:on  <- prep
+__
+d:at  <- prep
+__
+g:pp  -> prep date
+_
+  (2bs)
+__
+g:pp  -> prep time
+_
+  (2bs)
+__
+g:adverb->pp
+__
+d:qq <- noun
+__

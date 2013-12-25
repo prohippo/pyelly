@@ -1,0 +1,36 @@
+# Elly default syntax recognition by pattern
+# default.p.elly
+#
+# to define parts of speech for classes of literal tokens by a
+# kind of finite-state automaton (FSA) so as to avoid having to
+# list them out explicitly.
+#
+# each entry below defines a single FSA transition as a 4-tuple
+#   CURRENT-STATE , PATTERN , SYNTAX , NEXT-STATE
+#
+# A STATE is a non-negative integer, where 0 is the start state.
+# A non-numeric NEXT-STATE means that a match at the current
+# state is final, and an FSA will exit on a successful match.
+#
+# entries are ORDER-DEPENDENT: only the first match is taken
+# on multiple transitions from the same state.
+#
+
+# recognize numbers in various formats
+
+0 #,   - 1
+0 ##,  - 1
+0 ###, - 1
+1 ###, - 1
+1 ###$ NUM -1
+0 &#   -    2
+2 .    -    3
+2 $    NUM -1
+3 &#$  NUM -1
+3 $    NUM -1
+
+# default rules recognize a suffix or a prefix or a word stripped of a prefix
+
+0 -&@$  SUFX -1
+0 &@+$  PRFX -1
+0 +&@$  UNKN -1

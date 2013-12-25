@@ -1,0 +1,29 @@
+# default Elly grammar
+# default.g.elly
+
+g:sent->ss
+__
+g:ss->unkn
+__
+g:ss->num
+__
+g:ss->noun
+__
+g:ss->verb
+__
+g:ss->adj
+__
+g:ss->adv
+__
+g:ss->time
+__
+g:ss->date
+__
+g:ss->ss unkn
+_
+  left
+  blank
+  right
+__
+g:ss->ss punc
+__

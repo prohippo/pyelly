@@ -1,0 +1,47 @@
+# Elly grammar rules for stopping and stemming of text
+# indexing.g.elly
+
+g:sent -> tokn
+__
+g:sent -> stop
+_
+  trace
+  append -
+__
+g:sent -> punc
+_
+  return
+__
+g:sent -> sent tokn
+_
+  left
+  blank
+  right
+__
+g:sent -> sent stop
+_
+  trace
+  left
+  blank
+  append -
+__
+g:sent -> sent punc
+_
+  left
+__
+g:stop -> num
+__
+g:stop -> date
+__
+g:stop -> time
+__
+g:tokn -> unkn
+__
+d:(   <- stop
+__
+d:)   <- stop
+__
+d:$   <- stop
+__
+d:-'s <- stop
+__

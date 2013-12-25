@@ -1,0 +1,35 @@
+# echo Elly input
+# echo.g.elly
+
+p:lbr
+_
+  left
+  blank
+  right
+__
+g:sent->ss
+__
+g:ss->ss punc
+__
+g:ss->unit
+__
+g:ss->ss unit
+_
+  (lbr)
+__
+g:unit->unkn
+__
+g:unit->unkn sufx
+_
+  (lbr)
+__
+g:unit->time
+__
+g:unit->date
+__
+d:-s   <- sufx
+__
+d:-ed  <- sufx
+__
+d:-ing <- sufx
+__

@@ -1,0 +1,2274 @@
+# Elly default suffix list
+# default.stl.elly
+#
+#  each entry has the form:
+#      ending condition keep add[.|,] [adjust]
+#
+# ending is char sequence to match at end of word
+#        a | at the front indicates the start of a word
+#        requiring 
+#
+# condition
+#    0 = keep word as it is with no action
+#    1 = apply specified removal and restoration action to word
+#    2 = apply action only if ending preceded by consonant
+#    3 = apply action only if ending preceded by consonant or U
+#
+# keep is number of chars in a matched ending to retain in a result
+#      (ignored for condition 0 above)
+#
+# add  is any char sequence to append after removal of original ending
+#      & instead of char sequence here is for root restoration of any final E
+#
+#      an addition may be null, but must always be terminated by '.' or ','
+#        ',' means to apply suffix removal logic recursively on result after action
+#        '.' means no recursion
+#
+# adjust specifies any transformation of a matched ending to get a proper suffix
+#
+#      this applies after dropping kept chars from a matched ending; it is optional.
+#
+able 1 0 &,
+abour 1 3 r.
+abular 2 2 le.
+abulous 1 2 le.
+acer 2 3 . 0e
+acial 2 2 e. 1
+acier 2 2 y, 1
+acious 2 2 y. 1
+acral 2 4 . 0a
+adation 2 2 &.
+adden 2 2 . 1
+adual 0 0 .
+aeli 2 3 .
+aelis 2 4 ,
+aemia 2 3 e.
+aemic 2 3 .
+aerial 0 0 .
+afest 2 3 . 0e
+ageal 2 2 us. 1
+agedy 2 2 ic. 2
+agement 1 3 .
+ager 2 3 . 0e
+aginous 2 2 &. 2
+agnant 2 4 te. 0a
+agonism 2 4 y.
+agonize 2 4 y.
+agulate 1 4 &.
+ailant 2 3 .
+ailer 2 3 .
+aimer 2 3 .
+ainage 2 3 .
+ainder 2 3 . 1
+ainee 2 3 .
+ainian 2 3 e.
+ainous 2 3 .
+ainy 2 3 .
+airian 2 3 e.
+aisal 2 3 &.
+aiver 2 4 . 0e
+akly 1 2 .
+alian 2 4 . 0a
+alicious 2 4 &. 1
+alism 2 2 ,
+ality 1 2 ,
+alize 1 2 ,
+alliance 1 3 y.
+alline 2 2 . 1
+ally 3 2 ,
+aloric 2 5 e.
+amanian 2 3 . 1
+amation 2 2 &.
+amatory 2 2 &.
+amidal 2 4 .
+aminar 2 4 &.
+amist 2 2 .
+amoan 2 4 . 0a
+amper 2 3 .
+amplify 0 0 .
+amply 1 4 &.
+anation 2 4 &,
+anatory 2 4 &,
+ancier 2 3 &.
+anese 2 2 .
+anest 1 2 .
+anger 2 4 . 0e
+angest 2 4 . 0e
+anian 2 2 .
+animal 0 0 .
+anism 2 2 ,
+anist 2 2 ,
+anity 2 2 &.
+anize 2 2 .
+anner 2 2 . 1
+aonic 2 2 h.
+aotic 2 2 . 1
+aply 1 2 .
+aporize 2 4 .
+aporous 1 4 .
+aposition 2 4 &.
+apour 2 3 r.
+applicant 1 4 y.
+applicate 1 4 y.
+apter 1 3 .
+arance 1 2 .
+arate 1 2 &.
+ardate 1 3 .
+ardial 2 5 . 0a
+ardian 0 0 .
+arian 2 2 y,
+ariant 2 2 y.
+aric 2 2 &.
+arily 2 2 y,
+arise 2 2 &.
+arism 2 4 t,
+arison 2 2 &.
+arity 2 2 .
+arize 1 2 ,
+armacy 0 0 .
+arnation 2 3 .
+arrier 0 0 .
+arter 2 3 .
+ascular 2 5 &.
+asculate 2 5 &.
+aseous 1 2 .
+asic 2 2 &.
+asiest 1 2 y, 1
+asion 3 1 de.
+asitism 2 4 e.
+asive 3 1 de.
+asmic 2 3 .
+aspy 1 3 .
+assion 0 0 .
+assy 2 3 .
+astage 2 3 &.
+astate 2 3 .
+astatic 2 5 .
+astation 2 3 .
+asticate 0 0 .
+asty 2 3 e.
+aten 1 2 .
+ateness 3 3 ,
+aterial 0 0 .
+athetic 2 3 .
+atial 2 1 ce.
+atiate 2 2 &.
+atiety 2 2 &.
+atinous 2 4 &.
+ation 2 2 &,
+atism 2 1 . 1
+ative 1 2 &,
+atomy 2 4 .
+ator 3 2 &,
+atorial 3 4 ,
+atose 2 1 . 1
+atred 2 2 &.
+atric 1 3 .
+atrice 2 4 x.
+atry 1 3 .
+atten 0 0 .
+audis 2 4 .
+aunder 2 4 r.
+aundry 2 5 .
+autic 2 3 .
+aution 0 0 .
+autism 1 4 st.
+aval 1 2 y.
+avalry 0 0 .
+aver 2 3 . 0e
+avic 2 2 .
+avier 1 2 y.
+avocation 1 4 &.
+avour 1 3 r.
+avoury 1 3 r.
+awal 2 2 .
+axy 2 1 ct. 1
+azy 1 2 &.
+ayal 2 2 .
+ayer 2 2 .
+azer 2 3 . 0e
+bable 0 0 .
+ban 1 2 . 0a
+bance 3 1 &.
+banger 1 4 .
+banian 2 5 .
+banon 1 3 .
+bastic 2 4 .
+batic 1 3 .
+battery 0 0 .
+bduct 0 0 .
+betan 1 3 .
+bete 1 3 . 1
+bibate 1 3 &.
+bidden 1 3 . 1
+bidder 1 3 . 1
+biliary 1 3 &. 1
+bilistic 1 1 le.
+bilitate 1 1 . 7
+bility 1 1 le,
+bilize 1 1 le.
+binant 1 3 &.
+bious 0 0 .
+bition 1 3 .
+bitive 1 3 .
+blance 2 2 &.
+blement 1 3 .
+bler 2 3 . 0e
+blicate 3 3 sh.
+blown 1 4 .
+bly 1 2 &,
+bola 1 3 .
+bole 2 3 . 1
+bolite 1 3 &.
+bomber 1 4 .
+boratory 1 1 . 6
+borious 1 3 . 1
+brance 2 2 .
+brate 1 2 .
+bratile 1 4 e,
+bratory 1 2 .
+bre 1 2 . 1
+bria 1 2 .
+briate 1 2 .
+briation 1 2 .
+bricate 3 4 ,
+bricative 3 6 e,
+brity 1 2 .
+brium 1 2 . 3
+brous 1 2 .
+bular 1 1 &.
+burete 2 5 .
+burger 0 0 .
+butant 1 3 .
+butcher 0 0 .
+byan 1 3 . 0a
+cacy 1 2 te, 1
+can 1 2 .
+cance 1 3 t.
+cancer 0 0 .
+cary 2 3 &.
+casion 0 0 .
+catory 1 3 &,
+cavity 2 3 &.
+ccessive 3 3 ed.
+ccinate 1 4 &.
+ccretive 1 5 &.
+cculate 1 4 &.
+ceipt 1 2 pt.
+ceive 1 2 pt.
+cellate 2 3 . 1
+cely 1 2 .
+ceman 1 2 .
+cemen 1 2 . 2ma
+cement 1 2 ,
+cence 1 3 t,
+cenity 2 3 e.
+cent 2 3 d.
+center 1 4 r.
+cerate 2 3 .
+cerity 2 3 e.
+cession 0 0 .
+changer 1 6 . 0e
+cher 1 2 .
+chieve 2 4 f. 2
+chism 0 0 .
+christ 0 0 .
+cible 3 1 &. 1a
+cical 2 1 &.
+ciest 1 1 y, 1
+cinous 3 3 .
+cion 1 1 &.
+cious 1 1 &. 1
+cipate 1 3 &.
+cision 1 3 &.
+citative 1 3 &.
+clamation 1 3 im. 1
+clamatory 1 3 im. 1
+clarify 1 2 ear.
+clarity 1 2 ear.
+clic 1 2 &.
+climber 1 5 .
+clination 2 4 e.
+clize 1 2 &.
+cnic 0 0 .
+comity 0 0 .
+coral 0 0 .
+corder 1 4 .
+cortice 1 4 ex.
+counter 0 0 .
+coverage 1 5 .
+cracy 1 3 t. 1
+cratic 1 4 .
+crite 1 4 . 1
+cstatic 1 4 sy.
+ctal 1 2 .
+ctance 1 2 .
+ctant 1 2 .
+cterial 1 6 . 0a
+ctile 1 2 .
+ctize 3 2 ,
+ctor 1 2 ,
+ctory 1 2 .
+ctric 1 3 .
+ctrical 1 5 ,
+cuer 2 3 . 0e
+culant 1 3 &.
+cular 1 1 le.
+cunity 1 3 &.
+cystic 1 4 .
+dacy 1 2 te. 1
+dance 2 1 &.
+dancy 2 3 t, 1
+danger 0 0 .
+dant 2 1 .
+dantry 1 4 .
+darity 0 0 .
+datory 1 3 &.
+ddest 1 1 . 1
+ddition 1 2 .
+decision 1 4 de.
+dee 2 1 .
+dely 1 2 .
+demonic 1 5 .
+dence 1 2 ,
+denial 1 3 y.
+dent 1 1 &.
+dentity 1 4 .
+deration 1 3 .
+designate 0 0 .
+dgment 1 2 &.
+diance 1 3 te.
+diant 1 3 te.
+dicious 3 3 &. 1
+dieter 1 4 .
+digal 1 3 y.
+digious 1 3 y. 1
+dilate 0 0 .
+diment 1 1 y.
+dinner 0 0 .
+diosity 2 4 &.
+disable 0 0 .
+ditious 1 3 &. 1
+ditorial 0 0 .
+dity 1 1 .
+dize 2 1 .
+dizzy 0 0 .
+dler 2 3 . 0e
+dly 1 1 .
+dology 1 1 .
+dom 2 0 &.
+domise 1 4 ze,
+domy 1 3 .
+donist 1 3 .
+dopter 1 4 .
+doran 1 3 .
+dorant 1 3 .
+doration 1 3 &.
+dorean 1 3 . 1
+dorize 1 3 .
+dormant 0 0 .
+dotal 2 3 &.
+dous 2 1 .
+dozen 0 0 .
+drance 2 2 .
+drawn 1 4 .
+dren 1 1 .
+drial 2 4 . 0a
+dric 2 2 .
+drous 2 2 .
+dse 3 1 .
+dster 0 0 .
+ducer 1 4 . 0e
+duct 1 3 &.
+duction 1 4 ,
+ductive 1 3 &.
+dulance 3 5 t,
+dulant 1 3 &,
+dular 1 3 &.
+dulent 3 1 . 2
+dvocation 1 4 &.
+eactive 2 4 .
+eader 2 3 .
+eafter 0 0 .
+ealant 2 3 .
+ealer 2 3 .
+eally 2 3 ,
+eamer 2 3 .
+eamy 2 3 .
+eancy 2 3 t. 1
+eaner 2 3 .
+eantry 2 4 .
+eapen 2 3 .
+eaper 2 3 .
+eapest 2 3 .
+earest 2 3 .
+earish 1 3 .
+earticulate 0 0 .
+easy 1 3 &.
+eater 1 3 .
+eatest 2 3 .
+eathe 1 4 . 1
+eation 2 3 &.
+eator 2 3 &.
+eavage 2 3 &.
+eaze 2 3 y.
+ebrae 2 4 .
+ebraic 2 4 .
+ebral 2 4 . 0a
+ebrant 2 3 .
+ecan 0 0 .
+ecession 2 3 de.
+ecessive 1 3 de.
+ecious 0 0 .
+eclination 0 0 .
+ectile 0 0 .
+ectorial 1 3 .
+ecture 1 3 .
+ecular 2 4 &.
+edatory 2 6 .
+edent 0 0 .
+ederate 2 5 l.
+ederation 2 5 l.
+edial 2 2 y. 1
+edier 1 2 y,
+edish 2 2 &.
+edition 1 4 .
+edly 1 0 &.
+edness 2 0 &.
+edron 2 3 . 2
+eduction 2 4 &. 1
+eeder 2 3 .
+eedom 2 2 .
+eeism 2 2 ,
+eeler 2 3 .
+eement 2 2 .
+eenery 2 3 .
+eepen 2 3 .
+eeper 2 3 .
+eeply 2 3 .
+eepy 2 3 .
+eeten 2 3 .
+effective 0 0 .
+eficial 2 3 t.
+egic 2 2 y.
+egular 0 0 .
+eial 2 3 . 0a
+eiture 1 3 .
+eity 2 1 .
+ekly 1 2 .
+eldom 0 0 .
+eler 2 2 .
+elic 2 2 .
+elize 2 2 .
+ellant 2 2 . 1
+ellent 1 2 . 1
+ellion 2 2 . 1
+elony 2 4 .
+ema 2 2 e.
+ematic 2 2 &.
+ematize 2 2 . 2
+ember 2 3 r.
+ement 2 1 .
+emer 2 3 . 0e
+emia 1 2 &.
+emic 2 2 &.
+emirate 1 4 .
+emoan 0 0 .
+emonic 2 4 y.
+emonize 2 4 .
+emotion 1 4 &.
+emy 2 2 &.
+enation 2 4 &,
+ency 1 2 t, 1
+endation 2 3 .
+endatory 1 3 .
+endice 2 4 x.
+endular 2 5 &.
+ener 2 2 ,
+enery 2 3 .
+eness 2 1 .
+enger 0 0 .
+enious 2 3 us.
+enize 2 2 e.
+enly 2 2 ,
+ennia 2 3 e.
+enomous 2 4 .
+enotation 2 4 &.
+enry 0 0 .
+ension 1 2 d.
+ensive 1 2 d.
+ensome 2 2 .
+entage 1 3 .
+ental 1 3 ,
+entary 2 3 .
+entry 1 4 .
+enuity 2 2 ius.
+eolar 2 4 . 0a
+eoric 2 3 .
+eorize 2 3 y.
+eous 2 1 .
+epest 1 2 .
+epetition 2 3 at.
+epetitive 2 3 at.
+ephonic 2 5 e.
+ephony 2 5 e.
+eposition 1 6 .
+epsy 2 2 t.
+eputate 2 4 &.
+erance 2 4 t.
+erary 2 3 t.
+erational 2 4 &.
+erbo 2 3 . 1
+ercise 2 2 t.
+erence 1 4 t,
+erent 2 2 .
+ergency 0 0 .
+erial 2 2 ,
+erify 2 2 .
+erious 0 0 .
+erise 1 3 ze,
+erision 2 3 de.
+erism 1 2 ,
+eritable 2 4 .
+erivatize 2 4 &.
+ermal 2 3 .
+erous 2 2 ,
+erral 2 2 . 1
+errent 2 2 . 1
+erter 2 3 .
+ertial 2 5 . 0a
+ertice 2 3 ex.
+ery 2 2 ,
+ese 2 0 .
+eservate 2 5 &.
+esis 2 1 t. 3
+esity 2 2 &.
+esome 2 1 .
+ession 2 3 ,
+essy 2 3 .
+estation 2 3 .
+estion 2 3 .
+estral 2 3 .
+estrial 2 4 .
+esurgent 2 6 . 0e
+etabular 2 6 &.
+etan 2 3 . 0a
+eteer 2 2 .
+etence 2 4 t.
+etentate 2 2 ain.
+etention 2 2 ain.
+eteric 2 4 .
+etery 0 0 .
+ethic 0 0 .
+etic 1 2 .
+etion 2 2 &.
+etive 2 2 .
+etize 2 2 .
+etry 1 2 .
+etual 2 3 &.
+etuate 2 3 &.
+eurial 2 3 .
+euter 0 0 .
+eutic 2 0 y,
+evance 2 4 t.
+evention 2 4 t.
+everity 2 4 e.
+evitable 2 4 .
+evotion 2 4 e.
+evous 1 2 &,
+ewer 2 2 .
+ewest 2 2 .
+ewilder 0 0 .
+ewish 2 2 .
+ewy 2 2 .
+exis 2 1 ct.
+eyor 2 2 .
+ezer 1 3 . 0e
+factor 0 0 .
+fallen 1 4 .
+fancier 1 4 y.
+fatten 1 3 . 1
+fatter 1 3 .
+fatty 1 3 .
+fely 1 2 .
+fense 1 3 d.
+ferance 1 3 .
+ference 1 3 .
+fety 1 2 .
+fiant 1 1 y.
+fiber 1 3 r.
+ficacy 0 0 .
+ficant 0 0 .
+ficate 1 1 y.
+fication 1 1 y, 2
+ficiary 1 2 t. 2
+filter 1 4 r.
+final 0 0 .
+finic 1 3 .
+fitable 1 3 .
+flown 1 2 y. 2
+focus 1 3 al.
+foundation 0 0 .
+freely 1 4 .
+fter 1 2 .
+ful 1 0 ,
+fully 1 3 ,
+fulness 1 3 ,
+furious 1 3 y. 1
+furry 1 3 .
+fusible 1 3 &. 1a
+galistic 1 3 .
+gance 1 3 t.
+ganism 0 0 .
+ganize 0 0 .
+gatory 1 3 &.
+gdom 2 1 .
+gely 1 2 .
+gence 1 3 t,
+genetic 1 4 .
+genic 2 3 e.
+genous 1 3 e.
+geny 1 3 e.
+geration 2 5 &.
+getic 1 1 y.
+gger 1 1 . 1
+ggest 1 1 . 1
+gher 1 2 .
+ghest 1 2 .
+ghtest 1 3 .
+giac 1 1 y. 1
+gial 1 1 &. 1
+giastic 1 1 y. 1
+gienist 1 4 e.
+gility 1 3 &.
+ginary 1 3 &.
+ginate 1 3 &.
+ginity 2 3 .
+gion 0 0 .
+gious 1 3 n. 0o
+gise 1 2 ze,
+gister 1 4 r.
+glement 1 3 .
+gligent 1 2 ect.
+glis 1 2 .
+gment 0 0 .
+gnancy 1 4 t, 1
+gnant 1 2 .
+gnation 1 4 &,
+gnatory 1 2 .
+gnature 1 2 . 2
+gnee 1 2 .
+gnite 0 0 .
+gnity 1 2 .
+gnose 1 4 t.
+gnosis 1 4 t. 3
+gnostic 1 5 .
+gnty 1 2 .
+goer 2 2 .
+gogic 1 3 .
+gogy 1 3 .
+golan 2 4 . 0a
+gonal 1 3 .
+gorize 1 3 y.
+gorous 1 3 .
+gral 1 2 .
+grance 1 4 t.
+grateful 0 0 .
+grieve 1 4 f.
+grown 1 4 .
+gster 1 1 .
+gual 2 3 . 0a
+guese 3 1 &.
+gulant 1 3 &.
+gular 1 1 le.
+gurate 1 3 &.
+halve 1 3 f.
+hanger 1 4 .
+hani 2 3 .
+hanism 2 3 .
+hanistan 2 3 .
+harden 1 4 .
+harder 1 4 .
+haritable 2 5 &.
+harity 2 5 &.
+hbour 1 3 r.
+heard 1 4 .
+hebraic 1 4 ew. 1
+hecy 2 2 t. 1
+hedral 1 4 .
+heery 2 4 .
+helve 2 3 f.
+hematize 2 3 e.
+hen 2 1 .
+henation 2 3 .
+heral 2 3 .
+herant 2 3 .
+herder 1 4 .
+herent 1 4 . 0e
+heric 2 2 re.
+hery 2 3 .
+hesion 1 2 re.
+hesise 2 2 t. 3iz
+hesive 2 2 re.
+hesize 2 2 t. 1
+hesy 1 2 t. 2ize
+hewn 1 3 .
+hic 2 1 .
+hidden 1 3 e. 1
+hiest 2 1 y, 1
+hilic 2 3 &.
+hina 0 0 .
+hinder 1 4 r.
+hion 0 0 .
+histry 2 4 ,
+hitish 2 3 &.
+hivalry 0 0 .
+hly 2 1 .
+hmic 2 2 .
+hnology 2 2 .
+hodic 2 3 .
+homan 1 4 .
+hood 2 0 ,
+hoove 1 3 f.
+horical 2 5 ,
+hority 2 5 .
+horize 2 4 t.
+hrenia 2 4 .
+hritic 2 4 .
+hrival 0 0 .
+hrony 2 4 .
+hrown 2 4 .
+hten 2 2 .
+htener 2 4 ,
+hteous 0 0 .
+hter 2 2 .
+hty 1 2 .
+humation 2 3 &.
+hunger 1 4 r.
+hy 2 1 .
+nghy 0 0 .
+iable 2 0 y.
+iac 2 2 . 0a
+iae 2 2 .
+ially 2 3 ,
+ian 2 2 ,
+iance 1 0 y.
+ianity 2 3 .
+iarise 2 3 .
+iation 2 3 &,
+iator 2 3 &.
+iatory 2 3 &,
+iatrix 2 3 &, 3ess
+ibal 2 2 &.
+ibial 2 4 . 0a
+ibrant 2 3 .
+icable 2 0 y.
+ical 1 2 ,
+icant 2 3 te.
+iccant 2 3 .
+iccate 2 3 .
+icest 2 3 . 0e
+ichest 2 3 .
+icial 1 2 &.
+ician 2 2 ,
+icient 2 2 &. 1
+icion 0 0 .
+icious 0 0 .
+icism 2 2 .
+icist 2 2 .
+icity 2 2 ,
+icize 2 2 .
+icly 2 2 .
+icry 2 2 .
+icter 2 3 .
+iculous 2 4 &.
+idal 2 2 &.
+idance 1 2 &.
+ider 2 3 . 0e
+iderate 2 4 .
+idial 2 4 .
+idic 3 2 .
+idify 2 2 .
+idise 2 3 ze,
+idize 2 2 y.
+idulate 1 4 &.
+iefly 2 3 .
+ienation 2 5 &.
+ience 1 3 t.
+ienic 2 3 e.
+iescent 0 0 .
+ieval 2 3 &.
+iever 2 4 . 0e
+iewer 2 3 .
+ifier 2 2 y,
+iful 2 0 y.
+igacy 2 2 &. 1
+igate 2 2 &.
+ligatory 2 3 &.
+iggest 2 2 . 1
+iginal 2 4 .
+iginate 2 4 .
+igner 1 3 .
+ignify 2 3 .
+ignition 1 5 &.
+igour 2 3 r.
+igrant 2 4 te.
+ihood 2 0 y,
+iian 1 2 .
+ilance 1 2 .
+ilant 2 2 .
+ilate 2 2 &.
+ilean 2 3 .
+iler 2 3 . 0e
+ilial 2 2 y. 1
+iliate 2 2 &.
+ilious 2 2 &. 1
+ilitate 2 4 y.
+ilitation 2 6 &,
+illusion 0 0 .
+illy 2 3 .
+ilty 1 2 .
+ilure 1 2 .
+ily 2 0 y.
+imactic 2 3 x.
+imal 2 2 e.
+imary 2 2 &.
+imatic 2 4 &.
+imer 2 3 . 0e
+iminal 2 2 &. 2
+imise 2 2 &.
+imize 2 2 e.
+immunity 1 5 &.
+imum 2 2 e.
+imy 2 2 &.
+ina 2 2 &.
+inacy 2 3 te, 1
+inae 1 2 &.
+inal 2 2 &.
+inate 2 2 &.
+ination 2 4 &,
+indice 1 3 ex.
+indred 2 3 .
+indy 2 3 .
+iner 1 2 &.
+inery 2 3 .
+iness 2 0 y,
+inest 2 3 . 0e
+inger 0 0 .
+ingier 2 3 y, 1
+ingiest 2 3 y, 1
+ingful 2 0 .
+ingly 2 0 &.
+ingy 0 0 .
+ingness 1 0 .
+inian 2 2 &.
+inic 0 0 .
+inism 2 2 .
+inist 2 2 .
+inition 2 2 &.
+inity 2 4 &.
+inly 1 2 .
+inner 2 2 . 1
+intensive 1 6 &.
+inter 2 3 r.
+intry 1 4 .
+inual 2 3 &.
+invention 1 6 .
+iny 2 2 &.
+iocy 2 2 t. 1
+iodic 2 3 .
+iomatic 2 3 .
+ion 1 0 &.
+ionary 2 3 ,
+ionate 2 3 ,
+ioner 2 3 ,
+ioral 2 0 &.
+iosis 2 2 t. 3
+ioter 2 3 .
+ious 2 0 y. 1
+ipant 2 2 &.
+ipen 2 3 .
+honer 2 3 &.
+iplication 2 3 y.
+iplicity 2 3 &.
+ippage 2 2 . 1
+ipse 2 2 t.
+ipt 2 1 be.
+ipter 1 3 .
+iption 2 1 be.
+iptive 2 1 be.
+iral 2 2 us.
+ircadian 2 5 &.
+iree 2 3 . 0e
+irest 1 2 .
+irety 2 3 .
+iric 2 2 &.
+ironic 1 4 y.
+irony 0 0 .
+irty 2 3 .
+iry 3 2 &.
+isation 2 2 &,
+iscent 2 4 . 0e
+isen 2 3 .
+isery 0 0 .
+ishly 2 3 ,
+ision 2 2 &.
+isive 2 1 de.
+ism 1 2 t,
+ismatic 2 3 .
+isor 2 2 &.
+ispen 2 3 .
+ispense 0 0 .
+ispy 1 3 .
+ist 2 0 &,
+istance 1 3 .
+istant 2 3 .
+istent 2 3 .
+istian 0 0 .
+istic 1 3 ,
+istry 2 4 .
+isture 1 3 .
+itable 3 0 &.
+ital 2 2 .
+itance 2 4 t,
+itant 2 2 &.
+itarian 2 2 y,
+itate 2 2 &.
+itative 1 2 y,
+iten 2 3 . 0e
+iter 1 2 &.
+iterate 2 6 . 1
+itia 2 2 &.
+itian 1 3 .
+itiate 2 2 .
+ition 0 0 .
+itious 2 4 n. 0o
+itish 2 2 ain.
+itize 2 2 .
+itor 2 2 &.
+itorial 2 4 y.
+itory 2 2 .
+itous 3 2 y,
+itric 1 3 .
+itrous 2 3 .
+itry 3 2 .
+itten 2 2 &. 1
+itter 3 2 . 1
+iture 2 0 .
+ival 1 2 &,
+ivary 2 3 .
+ivate 2 2 &,
+ivation 2 2 &.
+iven 2 3 .
+iver 1 3 . 0e
+iverance 2 4 .
+ivial 2 4 . 0a
+ivisible 2 3 de. 2a
+ivision 2 3 de. 2a
+ivity 2 2 &,
+ivize 2 2 &,
+ivocation 3 6 &,
+ivor 2 2 &.
+ization 2 2 &,
+izen 0 0 .
+izer 2 3 ,
+izure 1 2 &.
+joan 0 0 .
+jure 2 3 y.
+jurious 2 3 y, 1
+kage 1 1 .
+kative 2 1 .
+ken 1 1 &.
+kenize 1 3 .
+ker 1 1 &.
+kerage 1 3 .
+kest 1 1 .
+kester 1 2 .
+keter 2 3 .
+kier 1 1 y, 1
+kiest 1 1 y, 1
+kish 2 1 .
+klist 0 0 .
+kly 2 1 .
+knee 0 0 .
+known 1 4 .
+koan 0 0 .
+kster 2 1 .
+ky 1 1 &.
+laborate 2 5 .
+lactic 1 4 .
+lae 3 2 .
+laint 2 4 . 1ed
+lamic 2 3 .
+langer 2 4 .
+lantry 2 4 .
+lastic 1 4 .
+lasty 2 4 .
+latory 1 3 &,
+latten 2 3 . 1
+lature 3 3 &.
+lavia 2 3 .
+laxis 1 2 ct.
+lder 1 2 .
+ldest 1 2 .
+ldry 1 2 .
+lely 1 2 .
+lematic 2 3 .
+lement 0 0 .
+lemnity 1 4 .
+lence 1 3 t.
+leness 2 2 ,
+lenger 2 5 . 0e
+lerance 1 3 .
+lerant 1 3 .
+lerate 1 3 .
+lescent 1 5 . 0e
+lesion 0 0 .
+lesis 0 0 .
+lete 2 3 . 1
+lexy 2 2 ct. 1
+lgarian 3 6 .
+lgia 1 2 y.
+lgic 1 2 y.
+li 1 1 .
+lian 0 0 .
+liance 3 4 t.
+liant 1 1 y.
+liber 1 3 r.
+lical 2 1 &.
+lican 2 3 .
+lidate 1 3 .
+lier 1 1 y, 1
+liest 1 1 y, 1
+lieve 1 3 f.
+ligator 0 0 .
+like 2 0 ,
+linary 1 3 &.
+linate 2 3 .
+lingy 2 4 .
+lion 0 0 .
+lise 1 2 ze,
+livate 1 4 .
+liver 0 0 .
+llate 1 2 .
+llegate 1 4 &.
+llination 2 4 .
+llence 1 4 t,
+llent 1 1 . 1
+ller 1 2 .
+llery 1 2 .
+llest 1 2 .
+lliant 0 0 .
+llish 1 2 .
+llision 1 3 de.
+llistic 0 0 .
+llity 1 1 . 1
+llize 1 1 .
+llous 0 0 .
+lmer 1 2 .
+loan 0 0 .
+lodic 1 3 y.
+logical 1 3 y,
+logist 1 3 y,
+logue 1 3 . 2
+loist 1 2 .
+lomatic 2 5 .
+lorant 1 3 .
+lorate 2 3 &.
+loratory 1 3 &.
+lourant 1 2 r. 2
+lous 1 1 .
+lover 1 4 .
+lower 2 3 .
+loyer 2 3 .
+lpable 1 2 .
+lper 1 2 .
+lphur 3 1 fur. 4
+lphuric 3 1 furic. 6
+lphide 3 1 fide. 5
+lphonate 3 1 fonate. 6
+lry 1 1 .
+lsant 3 2 &.
+ltage 1 2 .
+lternation 1 7 e,
+ltination 0 0 .
+ltor 1 2 y.
+ltuous 3 2 . 1
+luate 1 2 &.
+luation 1 2 &.
+lular 2 1 . 2
+lusion 1 2 de.
+lusive 1 2 de.
+luster 0 0 .
+lutant 1 3 &.
+lvular 1 2 e. 2
+lyse 1 2 t.
+lyte 1 3 . 1
+lyze 1 2 t. 2
+macist 1 1 &,
+macy 1 1 &.
+malian 2 3 . 1
+maly 1 3 .
+mament 2 1 . 1
+mancy 2 3 t, 1
+manic 0 0 .
+manity 3 3 .
+manner 0 0 .
+mantic 1 4 .
+marize 2 3 &.
+master 0 0 .
+matic 1 2 . 1
+matize 1 2 . 1
+matory 2 1 .
+maturation 1 5 &.
+mbition 0 0 .
+mblage 1 3 &.
+mbolize 1 4 .
+meation 1 2 .
+meaty 1 4 .
+mely 1 2 .
+menon 1 1 . 4
+mension 0 0 .
+ment 2 0 ,
+mention 0 0 .
+mergent 1 5 . 0e
+metable 0 0 .
+meter 1 3 r.
+metric 1 4 .
+metry 1 4 .
+mier 1 1 y, 1
+premier 0 0 .
+miest 1 1 y, 1
+miliate 3 1 ble.
+mility 3 1 ble.
+mily 0 0 .
+minance 1 3 &.
+minant 1 3 &.
+minate 1 3 &.
+minent 1 4 . 0e
+minist 1 3 &.
+minous 3 3 e.
+mirate 1 3 &.
+missible 2 2 t. 3a
+mission 1 2 t.
+mistry 1 1 &.
+mitate 0 0 .
+mittal 1 3 . 1
+mity 1 1 &.
+mixture 1 3 . 1
+mly 1 1 .
+mmable 1 1 &. 1
+mmary 3 4 &. 1
+mmatic 1 1 . 1
+mmation 1 1 &. 1
+mmatory 1 1 &. 1
+mment 0 0 .
+mmer 1 1 . 1
+mmest 1 1 . 1
+mnastic 1 2 .
+mnation 1 2 .
+monize 2 3 y.
+monse 2 3 .
+moothe 2 5 . 1
+morable 1 3 y.
+moral 0 0 .
+morial 1 3 y.
+most 2 0 .
+moter 1 4 .
+mous 1 1 &.
+mover 1 4 .
+mown 1 3 .
+mpable 1 2 .
+mphant 3 3 .
+mphony 1 5 .
+mpliance 1 3 y.
+mposition 1 4 &.
+mpy 1 2 .
+mster 0 0 .
+mth 2 1 .
+mulant 1 4 . 0a
+mulate 1 4 . 0a
+mulsion 1 4 &.
+mulsive 1 4 &.
+mutant 2 3 &.
+mutate 2 3 &.
+mvention 3 5 .
+nadian 1 3 a.
+nalty 1 3 .
+nancy 2 3 t, 1
+napse 1 3 t.
+narticulate 0 0 .
+nasty 1 4 .
+nation 1 1 &.
+natory 1 3 &,
+naturate 1 5 &.
+ncee 1 3 .
+ncer 1 3 . 0e
+ncession 1 3 de. 2
+ncial 1 2 &.
+ndan 1 3 . 0a
+ndance 3 2 .
+ndary 1 2 .
+ndence 1 2 .
+nder 1 2 .
+ndescence 1 7 t,
+ndescent 1 6 . 0e
+ndest 1 2 .
+ndiment 0 0 .
+ndular 1 2 .
+neation 1 2 .
+nee 1 2 . 0e
+needy 2 4 .
+negative 0 0 .
+nely 1 2 .
+nemic 1 3 &.
+nence 1 3 t,
+nerous 0 0 .
+nescence 1 6 t,
+nesce 1 2 . 0e
+nescent 1 5 , 0e
+nese 1 1 a.
+ness 2 0 ,
+newal 1 3 .
+ngal 3 2 us.
+nger 1 3 .
+ngest 1 2 .
+ngi 3 2 us.
+ngrammatic 1 7 r.
+ngry 1 3 .
+ngulate 1 2 le.
+nible 2 1 . 1a
+nic 1 1 .
+nicable 0 0 .
+nicate 3 3 &.
+nier 1 1 y, 1
+niest 1 1 y, 1
+niment 1 1 y. 1
+nion 0 0 .
+nise 1 2 ze,
+nister 1 4 r.
+nitable 2 3 &.
+nitial 1 3 . 3
+nition 2 1 .
+nitive 1 1 &. 1a
+nitor 0 0 .
+nitorial 1 5 .
+niversity 0 0 .
+nize 1 1 .
+njury 1 4 e.
+nly 1 1 .
+nnial 1 2 e. 1
+nnium 1 2 e. 3
+nnotation 1 4 &.
+nnuity 0 0 .
+nodal 1 3 e.
+nomer 1 3 y.
+nomic 1 3 y.
+nomize 1 3 y.
+normal 1 4 .
+notate 2 3 e.
+notist 2 3 .
+nrally 0 0 .
+nry 1 1 .
+nsee 1 3 . 0e
+nsical 1 2 &.
+nsmissive 1 4 t. 2
+nsonant 0 0 .
+nsory 1 2 &,
+nsposition 1 5 &.
+nstable 0 0 .
+nster 1 3 r.
+ntactic 2 3 x.
+ntance 1 2 .
+ntator 1 2 .
+ntee 1 2 .
+nteer 1 2 .
+nter 1 2 .
+nteric 1 4 .
+ntest 1 2 .
+ntial 1 2 ,
+ntical 1 2 .
+nticate 1 4 .
+nticism 1 4 ,
+nticular 1 6 &,
+ntify 1 2 .
+ntize 1 2 .
+ntor 1 2 .
+ntric 1 3 .
+ntuate 1 2 . 1
+ntuition 1 5 .
+nual 0 0 .
+nuation 1 2 &.
+nular 2 3 &.
+nuli 2 3 &.
+nulus 2 3 &.
+nyan 1 3 . 0a
+oaden 2 3 .
+oader 2 3 .
+oadest 1 3 .
+oamy 2 3 .
+oan 2 2 .
+oarsen 1 5 .
+oater 2 3 .
+oatia 2 3 .
+obal 2 2 &.
+obia 1 2 &.
+obial 2 2 &.
+obic 1 2 &.
+obility 2 4 &.
+obilize 2 4 &.
+ocable 2 1 ke.
+ocative 2 1 ke.
+ocritic 2 5 .
+octor 0 0 .
+octorate 2 5 .
+ocular 0 0 .
+oculate 2 4 &.
+ocuss 2 4 .
+oder 2 3 . 0e
+odial 2 2 y. 1
+odic 2 2 &.
+ogenate 2 4 .
+oggier 1 3 y, 1
+oggiest 1 3 y, 1
+oggy 2 2 . 1
+ogian 2 2 y.
+ogize 2 2 y.
+ogous 2 2 y.
+ohesive 2 3 re.
+oholism 2 4 .
+oidal 2 3 .
+oidy 2 3 .
+oiesis 2 3 t. 3
+oilage 2 3 .
+oiler 2 3 .
+oisy 2 3 &.
+olarity 2 2 &.
+olee 2 3 .
+olest 1 2 .
+olian 2 4 . 0a
+olic 2 2 .
+olish 2 3 t. 2
+olistic 2 2 y.
+olition 2 4 .
+olity 2 2 .
+olize 2 2 &.
+ologer 1 4 y.
+ologic 1 4 y,
+oloration 2 4 .
+olour 2 3 r.
+olver 2 4 . 0e
+omacy 2 3 t. 1
+omance 2 4 t.
+omary 2 2 .
+omatic 1 4 &.
+omatize 1 2 . 2
+omedian 2 2 ic.
+omedy 2 2 ic.
+omena 2 2 . 2
+omenal 2 2 . 2
+omeric 1 4 .
+omic 2 2 .
+omier 1 2 y, 1
+omist 1 2 y,
+omize 2 2 .
+omotion 2 4 &.
+omotive 2 4 &.
+omous 2 2 y.
+onage 1 2 .
+onal 1 2 &,
+onance 2 4 t,
+onant 2 3 te.
+onary 2 2 .
+onation 2 4 &.
+onch 2 4 e.
+onduct 0 0 .
+onductive 2 6 .
+oness 1 2 .
+onetary 2 3 y. 1
+onetize 2 3 y. 1
+onger 2 3 .
+ongly 2 3 .
+onial 2 2 y.
+onism 1 2 .
+onist 2 2 y.
+onous 2 2 .
+onsible 0 0 .
+onsider 0 0 .
+onsistent 0 0 .
+onsive 2 2 d.
+onsular 2 5 .
+onsulate 2 5 .
+ontage 1 3 .
+ontal 2 3 .
+oody 2 3 .
+oolant 2 3 .
+oolen 2 3 .
+ooler 2 3 .
+oollen 2 3 . 1
+oomer 2 3 .
+oomy 2 3 .
+ooner 2 3 .
+oonest 2 3 .
+ootage 2 3 .
+ooter 2 3 .
+oother 2 4 .
+opable 2 2 .
+opacify 1 3 que. 1
+opacity 1 3 que. 1
+opant 2 2 &.
+ophy 0 0 .
+opic 2 2 &.
+opier 2 2 y.
+oposition 1 4 &.
+oppage 1 2 . 1
+oppy 2 2 . 1
+orage 2 2 &.
+oral 2 2 ,
+orance 2 4 t.
+orary 2 2 .
+oratory 1 4 &.
+orbent 1 3 .
+orber 2 3 .
+orbiter 1 5 .
+ordain 1 3 ine. 3
+ordinal 1 5 &.
+oree 2 2 .
+orest 1 2 .
+oretic 1 2 y.
+orian 2 2 y.
+oric 2 2 y.
+orical 2 2 y.
+orifer 2 2 .
+orily 2 2 y,
+orise 1 3 ze,
+orite 2 2 .
+ority 1 2 .
+ormy 2 3 .
+orner 0 0 .
+orosity 2 3 us, 1
+ortage 2 3 .
+orter 2 3 .
+ortic 1 3 a.
+ortment 2 3 .
+orture 0 0 .
+osage 2 2 &.
+osal 2 2 &.
+osen 1 3 .
+osic 3 2 &.
+osion 1 1 de.
+osis 2 1 t. 3
+osite 2 2 &.
+osity 1 1 us, 1
+osive 2 1 de.
+ossible 0 0 .
+ossy 2 3 .
+ostate 2 4 sy.
+osticate 2 3 .
+ostolic 2 3 le.
+osure 2 2 &.
+otactic 2 3 x.
+otant 2 2 &.
+otary 2 3 te.
+otation 2 4 &.
+otee 2 3 . 0e
+otence 2 4 t.
+otian 1 1 . 2
+otic 1 2 .
+otion 0 0 .
+otist 2 1 . 1
+otistic 2 5 ,
+otize 2 2 .
+otry 2 2 .
+otten 2 2 . 1
+otter 2 2 .
+ottish 2 2 . 1
+ouder 2 3 .
+oudy 2 3 .
+ounder 2 4 .
+ously 1 3 ,
+ousy 2 3 .
+oval 2 2 &.
+ovision 2 3 de.
+owest 2 2 .
+owner 1 3 .
+owth 2 2 .
+owy 2 2 .
+oyalty 2 4 .
+ozer 1 3 . 0e
+pable 0 0 .
+paginate 1 3 &.
+paid 1 2 y.
+pallor 1 4 id.
+pancy 1 3 t. 1
+parate 2 3 .
+passive 0 0 .
+pean 1 2 .
+pedition 2 5 &.
+pee 1 2 . 1
+peedy 2 4 .
+peller 1 3 . 1
+pense 2 3 d.
+peratic 1 4 . 1
+perial 0 0 .
+peter 2 3 .
+petitious 1 2 at. 4
+phasis 1 3 t. 3
+phasize 1 3 t.
+phate 2 0 fate. 5
+phatic 1 4 .
+phe 1 2 . 1
+pher 1 2 .
+phica 1 2 .
+phite 2 0 fite. 5
+phora 1 4 .
+phoria 1 4 .
+phoric 1 4 .
+phous 1 2 .
+phur 2 0 fur.
+phuric 2 0 furic.
+picion 2 1 ect.
+picious 2 1 ect.
+picy 2 3 e.
+pider 0 0 .
+pier 3 1 y.
+pion 0 0 .
+pionage 2 4 .
+piracy 1 4 te. 1
+piral 0 0 .
+pirant 2 3 &.
+piration 2 3 &.
+pital 0 0 .
+planate 2 2 ain.
+pler 1 3 . 0e
+pleship 1 3 ,
+plest 1 3 . 0e
+plete 0 0 .
+plify 2 2 &.
+polar 1 3 &.
+polish 0 0 .
+polize 1 2 y.
+ponse 2 3 d.
+porary 2 1 . 2
+portion 0 0 .
+ppable 1 1 . 1
+ppellate 1 3 al.
+pper 1 1 . 1
+ppier 2 2 y, 1
+ppiest 1 2 y, 1
+pplause 1 5 d.
+ppliance 0 0 .
+pplicate 0 0 .
+pposition 1 4 &.
+priation 1 5 &.
+private 0 0 .
+psis 1 1 t. 3
+psister 0 0 .
+pster 0 0 .
+psulate 1 4 &.
+ptacle 1 2 .
+ptance 1 2 .
+ptian 1 2 .
+ptic 1 2 .
+ptize 1 2 .
+ptomatic 2 4 .
+ptor 1 2 .
+pular 1 1 . 2
+putate 2 3 &.
+puty 1 3 &.
+qi 1 1 .
+qual 1 2 &.
+qualor 2 4 id.
+quate 1 2 &.
+quator 0 0 .
+question 0 0 .
+rabic 1 3 .
+rable 1 1 &.
+racier 1 3 y.
+ractile 2 4 .
+rader 2 4 . 0e
+radian 0 0 .
+raider 1 4 .
+raint 2 4 . 1ed
+ralist 1 3 ,
+ramme 2 3 . 2
+ranal 2 3 &.
+ranation 0 0 .
+rancy 1 3 t. 1
+rantry 2 4 .
+ranular 2 1 ain.
+ranulate 2 1 ain.
+ranule 2 1 ain.
+rasitic 1 5 e.
+rasper 2 4 .
+rasure 1 3 &.
+rational 0 0 .
+ratize 2 3 .
+ratory 1 1 &.
+rbable 1 2 .
+rbate 1 2 .
+rbia 1 2 .
+rbic 1 2 .
+rbiter 1 4 r.
+rbour 1 3 r.
+rbtion 1 2 . 1
+rcee 1 3 . 0e
+rcent 0 0 .
+rcession 1 3 de. 2
+rcial 1 2 &.
+rcive 1 2 &.
+rclement 1 4 .
+rdest 1 2 .
+rdier 1 2 y.
+rdinal 0 0 .
+rdish 3 2 .
+rdom 1 1 .
+rdry 1 2 .
+rdy 1 2 .
+rean 1 3 . 0a
+reatic 2 3 . 1
+recession 0 0 .
+reclusive 1 6 &.
+recy 2 2 t. 1
+reedy 2 4 .
+rely 1 2 ,
+reness 1 2 .
+renity 1 3 e.
+reposition 0 0 .
+rer 1 1 &.
+restry 1 4 .
+resy 1 2 t. 1
+retary 0 0 .
+reter 2 3 .
+retor 3 3 .
+retory 2 3 &.
+rewn 1 3 .
+rfer 1 2 .
+rference 1 5 . 0e
+rful 1 1 ,
+rgenic 1 4 .
+rger 1 3 . 0e
+rgery 0 0 .
+rgest 1 3 . 0e
+rgic 1 2 y.
+rginal 1 4 .
+rgist 1 2 y.
+rgize 1 2 y.
+rgument 1 3 &.
+rheal 2 4 . 0a
+riation 1 1 y.
+riber 2 4 . 0e
+rican 1 4 . 0a
+ricant 2 3 .
+ridden 1 3 e. 1
+ridize 2 3 .
+rier 1 1 y.
+riety 2 1 .
+rility 1 2 le.
+rilize 1 2 le.
+rillar 2 3 . 1
+rillate 2 3 . 1
+rinary 3 3 &.
+ringy 2 4 .
+rinter 2 4 .
+rion 0 0 .
+rism 0 0 .
+risper 2 4 .
+risy 2 2 t.
+ritable 2 3 &.
+rition 2 3 &.
+ritious 2 3 &. 1
+ritis 2 3 . 2
+ritive 2 3 &.
+ritory 0 0 .
+ritty 1 3 .
+rity 1 1 &.
+rize 1 1 &.
+rly 1 1 .
+rmance 1 2 .
+rmant 1 2 .
+rmany 1 4 .
+rmation 1 2 .
+rmative 1 2 .
+rmeate 1 3 .
+rmer 1 2 .
+rmese 3 2 a.
+rmonic 1 4 y.
+rmour 1 3 r.
+rnal 1 2 .
+rnance 1 2 .
+rnate 1 2 .
+rnee 3 2 .
+rner 1 2 .
+rnity 1 2 .
+rnor 1 2 .
+rnt 1 2 . 1ed
+roan 0 0 .
+robber 1 3 .
+rocable 2 3 &.
+rocal 2 3 &.
+rocate 2 3 &.
+rocity 1 3 &.
+roic 1 2 .
+romatic 1 4 .
+ronal 3 3 .
+ropy 2 3 &.
+rorism 2 3 .
+rorist 2 3 .
+rous 1 1 &,
+roven 2 4 . 0e
+rover 1 4 . 0e
+rower 2 3 .
+roze 2 1 eeze.
+rozen 2 1 eeze.
+rpation 3 2 .
+rper 1 2 .
+rply 1 2 ,
+rption 1 1 b.
+rptive 1 1 b.
+rrence 1 4 t,
+rrent 1 1 . 1
+rriage 1 2 y.
+rroneous 1 3 r.
+rsal 1 2 &.
+rsant 1 2 &.
+rsection 1 5 .
+rsuit 3 3 &. 2ing
+rtance 1 4 t.
+rtant 0 0 .
+rtee 1 2 .
+rterial 1 4 y.
+rtery 0 0 .
+rtest 1 2 .
+rtian 1 1 . 2
+rticular 0 0 .
+rtillery 0 0 .
+rtinent 1 2 ain.
+rtise 1 2 .
+rtistic 1 2 .
+rtment 0 0 .
+rture 1 2 .
+rual 2 2 &.
+ruate 2 2 &.
+ruation 2 2 &.
+rubic 1 3 .
+rudate 2 3 &.
+rusible 2 2 de. 2a
+rusion 1 2 de.
+rusive 2 2 de.
+rutal 2 3 &.
+ruvian 1 2 . 1
+rvance 1 2 &.
+rvation 1 2 &.
+rvatism 1 4 &.
+rver 1 3 . 0e
+rvical 1 2 ix. 2
+rvous 1 2 &.
+ryer 2 2 .
+ryman 1 2 ,
+ryngeal 1 3 x. 2
+sader 1 4 . 0e
+saler 1 4 . 0e
+salty 1 4 .
+santry 1 4 ,
+sarial 2 3 y.
+saster 1 4 r.
+sate 2 1 &.
+sation 1 1 &.
+sative 3 1 &.
+satory 3 1 &.
+scious 0 0 .
+scopy 1 4 &.
+section 0 0 .
+seditious 2 7 n. 0o
+seen 1 3 .
+self 1 0 .
+selor 2 3 .
+selve 2 0 .
+sely 1 2 .
+sence 1 3 t.
+seness 1 2 .
+seous 3 2 a.
+ser 1 2 , 0e
+serable 1 3 y.
+sese 0 0 .
+sest 1 2 . 0e
+sewn 1 3 .
+sfaction 1 2 y.
+sfactory 1 2 y.
+shaven 1 5 .
+sher 1 2 .
+shest 1 2 .
+shier 1 2 . 1
+shioner 1 2 . 3
+ship 2 0 ,
+shown 1 4 .
+sial 2 1 y.
+siasm 1 1 &.
+siast 3 1 &.
+siastic 1 1 &. 1
+sible 2 1 &. 1a
+sidual 1 4 &.
+sier 1 1 y, 1
+siest 3 1 y, 1
+sify 2 1 &.
+signate 1 4 .
+silize 2 3 .
+sinate 2 3 .
+sinous 1 3 .
+sist 0 0 .
+sition 0 0 .
+sitive 2 3 .
+sity 2 1 &.
+sma 1 2 .
+sness 1 1 ,
+sober 1 3 r.
+solation 2 3 &.
+solution 2 3 ve.
+somal 1 3 e.
+soner 1 3 .
+sonic 0 0 .
+soother 2 6 .
+sophy 1 4 .
+sovar 1 3 o.
+sown 1 3 .
+spent 1 4 d.
+sphate 0 0 .
+sphite 0 0 .
+sphoric 0 0 .
+spicable 1 3 se. 1
+spiracy 2 4 &.
+spirate 1 4 &.
+sposition 1 4 &.
+ssal 1 2 .
+ssant 1 2 .
+ssary 1 2 .
+ssection 1 5 .
+sser 1 2 .
+ssident 0 0 .
+ssify 0 0 .
+ssive 1 2 .
+ssly 1 2 .
+ssman 1 2 .
+ssmen 1 2 . 2ma
+ssonant 0 0 .
+ssor 1 2 ,
+stal 1 2 .
+stance 2 4 t.
+stani 1 4 .
+stant 0 0 .
+stasis 1 3 t. 3
+station 0 0 .
+stence 1 2 .
+stention 2 2 ain.
+ster 1 2 .
+steria 1 3 re.
+steric 2 3 re.
+sterious 2 4 y. 1
+stern 1 2 ,
+stery 1 4 .
+sticate 1 4 .
+stition 2 4 .
+stitious 2 4 . 1
+stolic 1 4 &.
+stor 1 2 .
+strian 1 3 .
+sty 1 2 .
+suance 1 2 &.
+suant 2 2 &.
+suction 1 3 k.
+suer 2 3 . 0e
+suitable 1 4 .
+summer 0 0 .
+surgeon 1 4 ery.
+surgic 1 4 ery.
+tabolic 1 5 &.
+tabulary 2 3 le.
+taffer 2 4 .
+tainty 2 4 .
+talian 1 3 y. 1
+tallic 1 3 . 1
+tancy 1 3 t,
+tant 2 1 .
+tariat 1 3 y.
+tarist 1 3 y,
+tarize 1 3 y,
+tarter 2 4 .
+tary 1 1 &.
+tasize 2 2 t.
+tastic 2 3 y.
+tation 1 1 &,
+tatious 2 1 . 3
+tative 1 1 &,
+tatory 1 1 &.
+tcy 2 1 . 1
+teely 2 4 .
+tegrant 2 4 .
+tegrate 2 4 .
+tely 1 2 ,
+tematic 2 3 .
+temic 2 3 .
+ten 2 1 .
+tenance 2 1 ain.
+teness 1 2 .
+tentative 0 0 .
+tention 1 3 d.
+terate 2 3 .
+terature 1 5 .
+tetic 1 1 .
+theater 1 5 r.
+thedral 0 0 .
+thern 1 2 ,
+thier 2 2 y, 1
+thiest 2 2 y, 1
+thieve 1 4 f.
+thize 1 2 .
+tiate 2 1 ,
+tible 1 1 . 1a
+tibular 2 5 &.
+tica 2 3 .
+ticulate 1 3 le.
+ticule 2 3 le.
+tier 2 1 y, 1
+tiest 2 1 y, 1
+tific 2 1 . 2
+tigant 1 3 &.
+tigious 1 3 &.
+tilate 2 1 .
+tilian 1 3 &. 1
+tility 1 3 &,
+tilize 1 3 e.
+timate 1 3 &.
+tineer 3 4 .
+tioneer 2 4 .
+tious 2 1 . 1
+tistic 0 0 .
+tistry 2 4 ,
+titian 1 1 . 2
+tition 1 1 &.
+titious 2 1 . 3
+titive 1 1 &. 1a
+titor 1 1 &.
+tive 2 1 .
+tlement 1 3 .
+tler 2 3 . 0e
+tly 1 1 ,
+todian 2 3 y.
+token 0 0 .
+tolen 2 4 .
+torate 2 3 ,
+toration 2 3 &.
+toriety 1 3 y.
+tous 1 1 .
+tracture 2 5 .
+tral 3 2 .
+trance 1 2 ,
+trant 1 2 .
+trar 2 2 .
+trate 1 2 .
+tre 1 2 . 1
+tricity 2 4 ,
+trify 2 2 ic.
+trigger 0 0 .
+troller 1 4 . 1
+tropic 0 0 .
+trous 2 2 .
+ttance 1 1 . 1
+ttest 1 1 . 1
+tticism 1 1 . 1
+ttier 1 2 y, 1
+tubal 1 3 e.
+tular 1 1 le.
+tunity 1 3 &.
+uacy 2 1 &.
+ual 2 0 &.
+uan 2 2 . 0a
+uancy 2 3 t. 1
+uantity 0 0 .
+ubic 2 2 &.
+uccess 2 4 ed.
+uccession 2 4 ed. 2
+ucive 2 2 &.
+uctory 2 2 &. 1
+udence 2 4 t.
+udent 0 0 .
+uder 2 3 . 0e
+udest 1 2 &.
+udible 2 2 &. 1a
+udinal 2 2 &. 2
+uditory 1 3 o.
+udity 2 2 &.
+udulant 1 2 . 2
+uely 2 2 .
+uence 1 3 t.
+uencer 2 3 t. 1
+ugal 2 2 &.
+ugant 2 2 &.
+ugary 2 4 .
+ugate 2 2 &.
+ugee 2 3 .
+ugly 2 2 .
+uidize 2 3 .
+uility 2 3 .
+uilty 1 4 .
+uinous 2 3 .
+uisition 1 2 re.
+uitive 2 3 .
+uittal 1 3 . 1
+uity 2 1 &.
+ulaic 2 3 .
+ularity 2 4 ,
+ulder 0 0 .
+uler 2 3 . 0e
+ulsion 2 0 el.
+ulsive 2 0 el.
+ulty 1 3 .
+ulum 2 2 e.
+umer 1 3 . 0e
+umize 3 2 .
+ummation 2 5 &.
+umour 2 3 r.
+umper 2 3 .
+umption 1 2 &.
+unal 2 2 &.
+unciate 2 0 ounce.
+uncy 1 3 &.
+under 0 0 .
+ungulate 0 0 .
+unitive 2 3 sh.
+unity 1 4 &.
+unization 2 4 e,
+unize 2 2 e.
+unner 2 2 . 1
+uosity 2 3 o.
+uous 1 1 &.
+upant 2 2 y.
+upation 2 2 y.
+upulous 2 2 le.
+uracy 2 3 te. 1
+ural 2 2 &,
+urance 2 2 &.
+urative 2 2 &.
+urban 1 3 .
+uretion 2 4 .
+urial 2 2 y.
+uriate 2 2 y.
+urier 0 0 .
+urify 2 2 &.
+urious 0 0 .
+urise 2 2 &.
+urism 1 2 &.
+urnal 0 0 .
+uror 2 2 y.
+ursive 2 3 &.
+urtive 0 0 .
+usable 1 2 e.
+usal 1 2 &.
+usiness 0 0 .
+usion 1 2 &.
+usive 2 2 &.
+ussion 2 3 .
+ussy 2 3 .
+ustate 2 3 .
+ustation 2 3 .
+ustrial 2 4 y.
+utation 2 4 &,
+utee 2 3 . 0e
+uter 1 3 . 0e
+uterize 2 4 ,
+utinous 2 4 &.
+ution 2 2 &.
+utious 1 4 n. 0o
+utish 2 2 &.
+utistic 1 5 .
+utor 2 2 &,
+utorial 2 4 .
+utory 2 2 &.
+uttal 2 2 . 1
+utual 0 0 .
+uyer 1 2 .
+vacy 1 2 te. 1
+vader 1 4 . 0e
+vancy 1 3 t. 1
+vanese 1 2 . 1
+vanity 1 1 ain.
+various 0 0 .
+vatize 1 3 &.
+vature 2 1 e. 2
+velation 1 2 al.
+veller 1 3 . 1
+veloper 1 5 .
+vely 1 2 ,
+vement 1 2 .
+veness 1 2 ,
+venger 1 5 . 0e
+vention 1 3 &.
+ventual 0 0 .
+verance 1 2 re.
+vergent 1 5 . 0e
+verish 1 3 .
+veritable 1 5 e.
+verity 1 5 e.
+version 1 3 t.
+versive 2 3 t.
+vertise 0 0 .
+vescent 1 5 .
+vier 1 1 y. 1
+viest 1 1 y. 1
+vior 1 1 &.
+viour 1 1 &.
+vious 0 0 .
+visory 2 3 &.
+visual 1 3 n.
+vital 0 0 .
+vity 1 3 &.
+vocal 1 3 &.
+vocate 1 3 &.
+vocation 1 2 ke.
+volution 1 3 ve.
+vorant 1 3 .
+vortice 1 4 ex.
+vory 1 3 .
+votal 1 3 .
+votary 0 0 .
+voter 1 4 .
+wance 1 1 .
+wide 2 0 .
+widen 1 4 .
+witness 0 0 .
+witty 1 3 .
+wler 1 2 .
+wly 1 1 .
+wollen 2 4 .
+wolve 1 3 f.
+wonder 1 4 r.
+wooden 1 4 .
+worsen 1 5 .
+worship 0 0 .
+xant 1 1 .
+xation 1 1 .
+xer 1 1 .
+xial 1 2 s.
+xible 1 1 . 1a
+xican 1 3 o.
+xidate 1 3 e.
+xidize 1 3 e.
+xiety 2 1 y.
+ximate 1 3 &.
+xity 1 1 .
+xive 1 1 .
+xly 1 1 .
+xplicate 0 0 .
+xudate 1 3 &.
+xy 1 1 .
+yance 1 1 .
+yee 1 1 .
+yerful 1 3 .
+ygenate 2 4 .
+ylic 2 2 .
+ylinder 1 5 r.
+ylish 2 2 e.
+ylist 0 0 .
+ymatic 2 2 e.
+ymeric 1 4 .
+ymic 2 2 .
+ymity 2 2 .
+ymous 2 2 .
+younger 1 5 .
+ypic 2 2 e.
+ypse 2 2 t.
+yrannic 2 4 t. 1
+yranny 2 4 t. 1
+ysian 1 1 . 1
+ysis 2 1 t. 3
+yst 2 1 t. 0i
+ystal 0 0 .
+ystery 0 0 .
+yterian 2 4 .
+ytic 2 2 .
+yzate 2 1 t. 1
+yzation 2 2 &, 2
+yzer 2 1 t.
+zen 1 2 .
+zenry 1 3 .
+zier 1 1 y, 1
+ziest 1 1 y, 1
+zilian 1 3 . 0a
+zlement 1 3 .
+zzer 1 2 .
+zzy 1 2 .
+|after 0 0 .
+|ager 1 4 .
+|anger 1 4 r.
+|anion 0 0 .
+|articulate 0 0 .
+|bitter 0 0 .
+|brian 0 0 .
+|carnation 0 0 .
+|carriage 0 0 .
+|cation 0 0 .
+|cement 0 0 .
+|cursive 0 0 .
+|dally 0 0 .
+|dentist 0 0 .
+|duct 0 0 .
+|early 0 0 .
+|elve 1 3 f.
+|enter 1 4 r.
+|ester 0 0 .
+|fester 0 0 .
+|fission 0 0 .
+|former 0 0 .
+|fully 1 5 .
+|grammatic 1 6 r.
+|hamper 0 0 .
+|icy 1 3 e.
+|idly 1 4 e.
+|imitation 1 7 &.
+|inter 0 0 .
+|lace 0 0 .
+|lacy 1 4 e.
+|laic 2 3 y.
+|laity 2 3 y.
+|laughter 1 6 .
+|loss 1 4 &.
+|lost 1 4 &.
+|mental 0 0 .
+|mentor 0 0 .
+|mission 0 0 .
+|moan 0 0 .
+|mutant 1 5 te. 0a
+|mutate 0 0 .
+|nation 0 0 .
+|oddest 1 4 .
+|oily 1 4 .
+|optic 0 0 .
+|outer 1 4 .
+|oval 0 0 .
+|pensive 0 0 .
+|quality 0 0 .
+|rally 0 0 .
+|ration 0 0 .
+|render 0 0 .
+|restation 0 0 .
+|rival 0 0 .
+|river 0 0 .
+|safer 1 5 . 0e
+|script 0 0 .
+|sedition 0 0 .
+|session 0 0 .
+|severance 1 6 .
+|singer 1 5 .
+|singly 1 6 &.
+|sister 0 0 .
+|tamper 0 0 .
+|tender 0 0 .
+|tension 1 5 &.
+|thesis 0 0 .
+|topic 0 0 .
+|usage 1 3 e.
+|version 0 0 .
+|very 0 0 .
+|vision 1 4 n.
+|warship 0 0 .
+|yuan 0 0 .

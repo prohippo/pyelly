@@ -1,0 +1,725 @@
+# readable text compression
+# texting.g.elly
+
+############ shared procedures
+
+p:ldvw    # for non-leaf phrase in parse tree
+_
+  split
+  left
+  back
+  (devw)
+  merge
+__
+p:odvw    # for leaf phrase
+_
+  split
+  obtain
+  back
+  (devw)
+  merge
+__
+p:devw    # remove all vowels from a word except in the first position
+_
+  trace
+  extract c <
+  if c=+
+    extract c <
+  end
+  insert < c
+  var x
+  extract x <
+  while ~x=
+    if x=u, U
+      peek c <
+      if c=s, S
+         insert < x
+      end
+    elif ~x=a, e, i, o, A, E, I, O
+      insert < x
+    end
+    extract x <
+  end
+__
+
+p:lblr    # run left and run right with optional space between results
+_
+  left
+  split
+  right
+  back
+  var x
+  var y
+  extract > y
+  insert  < y
+  if ~y=
+    if ~y=-
+      extract x <
+      if ~x=
+        # no space before an inflection, percent, apostrophe, colon
+        if ~x=%, ', (, ), [, ], &, :, <, >
+          # or after these chars
+          if ~y=-, @, (, ), [, ], #, $, /, ,, &, :, <, >
+            blank
+          end
+        end
+        insert < x
+      end
+    end
+  end
+  merge
+__
+
+# special procedure for pronouns
+#
+p:toem
+_
+  var x
+  extract > x
+  insert  < x
+  if x=
+    append em
+  else
+    append 'm
+  end
+__
+ 
+# special procedure for ignored text elements
+#
+p:nil
+_
+  return
+__
+
+############ syntax rules
+
+g:sent->sent punc
+__
+g:sent->unit
+__
+g:word->unkn[:-AFX]
+_
+  (ldvw)
+__
+g:unit->noun
+__
+g:unit->verb
+__
+g:unit->word
+__
+g:word->word sufx
+ >>++
+__
+g:word->prfx word
+ >>++
+__
+g:verb->word infl[%VB]
+ >>++
+__
+g:word->word infl[%-VB]
+ >>++
+__
+g:unit->word
+__
+g:unit->time
+_
+  trace
+  var xm=a
+  split
+  left
+  back
+  var x
+  var y
+  extract x <
+  extract y <
+  if x=2
+    set xm=p
+    pick y (0=8#1=9#2=10#3=11#)
+  elif x=1
+    set xm=p
+    if y=0, 1, 2
+      append 1
+      insert < y
+    else
+      pick y (3=1#4=2#5=3#6=4#7=5#8=6#9=7)
+    end
+  else
+    insert < y
+  end
+  delete 1
+  shift 2
+  delete all
+  insert < xm
+  merge
+__
+g:unit->date
+_
+  trace
+  split
+  left
+  back
+  var x
+  extract x <
+  if ~x=0
+    insert < x
+  end
+  shift 2
+  extract x <
+  if ~x=0
+     insert < x
+  end
+  shift 2
+  delete 2
+  shift 2
+  delete all
+  merge
+__
+g:unit->num unit
+_
+  (lblr)
+__
+g:unit->det[#-DM] unit
+__
+g:unit->det[#DM] unit
+_
+  (lblr)
+__
+g:unit->mod unit
+_
+  (lblr)
+__
+g:unit->pro
+__
+g:unit->abbr
+_
+  split
+  left
+  back
+  var t
+  while t=
+    extract x <   # get letter
+    breakif x=
+    insert  < x   # put into current buffer
+    extract x <   # get period and ignore
+  end
+__
+g:unit->unit[:WH] aux
+ >>++
+_
+  left
+__
+g:unit->det[#DM]
+__
+g:unit->adj unit
+_
+  (lblr)
+__
+g:unit->adj
+ >>-
+__
+g:adj->adv adj
+_
+  (lblr)
+__
+g:unit->expr
+__
+g:unit->unit prep
+ >>--
+_
+  left
+__
+g:unit->conj unit
+_
+  right
+__
+
+g:sent->null
+_
+  return
+__
+g:sent->sent null
+_
+  left
+__
+g:sent->sent unit
+_
+  (lblr)
+__
+g:unit->prep unit
+_
+  (lblr)
+__
+g:unit->negn unit
+_
+  append no
+  blank
+  right
+__
+g:time->prep time
+_
+  right
+__
+g:date->prep date
+_
+  right
+__
+g:negn->aux negn
+>>++++
+_
+  append no
+__
+g:verb->aux
+>>----
+_
+  (ldvw)
+__
+g:verb->aux verb
+ >>++
+_
+  right
+__
+g:pro->det[#dm,*r] pro
+ >>++
+_
+  right
+__
+
+g:num->cmp num
+__
+
+############ internal dictionary
+
+#### determiners
+
+d:the <- det
+_
+  append d'
+__
+d:a  <- null
+__
+d:an <- null
+__
+d:this <- det[#DM]
+_
+  append th
+__
+d:that <- det[#DM,*r]
+_
+  append th
+__
+d:these <- det[#DM]
+_
+  append th
+__
+d:those <- det[#DM]
+_
+  append th
+__
+
+# for special case like "Type A"
+d:a <- noun
+ >>----
+__
+
+#### prepositions
+
+d:about <- prep[:nr]
+_
+  append abt
+__
+d:above <- prep
+_
+  append abv
+__
+d:after <- prep
+_
+  append aftr
+__
+d:against <- prep[:qu]
+_
+  append agin
+__
+d:along <- prep
+_
+  append alng
+__
+d:among <- prep
+_
+  append amg
+__
+d:amongst <- prep
+_
+  append amg
+__
+d:around <- prep[:nr]
+_
+  append rnd
+__
+d:at <- prep
+_
+  append @
+__
+d:before <- prep
+_
+  append b4
+__
+d:behind <- prep
+_
+  append bhd
+__
+d:below <- prep
+_
+  append blw
+__
+d:beneath <- prep
+_
+  append blw
+__
+d:by <- prep
+__
+d:between <- prep
+_
+  append btwn
+__
+d:for <- prep[:qu]
+_
+  append fo
+__
+d:from <- prep
+_
+  append fm
+__
+d:in <- prep[:qu]
+__
+d:into <- prep
+_
+  append nto
+__
+d:near <- prep
+_
+  append nr
+__
+d:of <- prep[:of,qu]
+_
+  append o
+__
+d:on <- prep
+__
+d:over <- prep
+_
+  append ovr
+__
+d:per <- prep
+_
+  append /
+__
+d:to <- prep[:TO]
+__
+d:through <- prep
+_
+  append thr
+__
+d:throughout <- prep
+_
+  append throut
+__
+d:under <- prep
+_
+  append ndr
+__
+d:until <- prep
+_
+  append til
+__
+d:with <- prep[:qu]
+_
+  append wi
+__
+d:within <- prep
+_
+  append wthn
+__
+d:without <- prep
+_
+  append wo
+__
+ 
+#### alternative interpretation of some prepositions
+ 
+d:near <- mod
+ >>--
+__
+d:on   <- unkn
+__
+d:over <- unkn
+_
+  append ovr
+__
+
+#### auxiliaries
+ 
+d:is <- aux[!BE,IN]
+_
+  (nil)
+__
+d:am <- aux[!BE,IN]
+_
+  (nil)
+__
+d:are <- aux[!BE,IN]
+_
+  (nil)
+__
+d:was <- aux[!BE,IN]
+_
+  (odvw)
+__
+d:were <- aux[!BE,IN]
+_
+  (odvw)
+__
+d:be <- aux[!BE]
+_
+  (nil)
+__
+d:been <- aux[!BE,IN]
+_
+  (odvw)
+__
+d:have <- aux[!HV]
+_
+  (odvw)
+__
+d:had <- aux[!HV,IN]
+_
+  (odvw)
+__
+d:has <- aux[!HV,IN]
+_
+  (odvw)
+__
+d:shall <- aux[!MO]
+_
+  (odvw)
+__
+d:could <- aux[!MO]
+_
+  (nil)
+__
+d:would <- aux[!MO]
+_
+  (odvw)
+__
+d:should <- aux[!MO]
+_
+  (odvw)
+__
+d:do <- aux
+__
+d:did <- aux
+__
+d:must <- aux[!MO]
+_
+  (nil)
+__
+d:'d <- aux[!MO]
+_
+  (nil)
+__
+d:'ll <- aux[!mo]
+_
+  (nil)
+__
+d:'re <- aux
+_
+  (nil)
+__
+d:'ve <- aux
+_
+  (nil)
+__
+d:'m <- aux
+_
+  (nil)
+__
+ 
+#### auxiliaries or nouns
+
+d:can <- aux[!MO]
+_
+  (odvw)
+__
+d:may <- aux[!MO]
+__
+# this is NOT an error! (a macro drops the I)
+d:mght <- aux[!MO]
+_
+  (odvw)
+__
+d:will <- aux[!MO]
+_
+  (odvw)
+__
+d:can <- unkn
+ >>---
+__
+d:may <- noun
+ >>---
+__
+d:might <- noun
+ >>---
+_
+  (odvw)
+__
+d:will <- noun
+ >>---
+__
+ 
+#### auxiliaries and verbs
+
+d:go <- verb
+__
+d:do <- aux[!MO,SV]
+__
+ 
+#### pronouns
+
+d:he <- pro
+__
+d:she <- pro
+__
+d:it <- pro[:IT]
+__
+d:we <- pro
+ >>[?1P]
+__
+d:me <- pro
+ >>[?1P]
+__
+d:us <- pro
+ >>[?1P]
+__
+d:you <- pro
+ >>[?2P]
+_
+  append u
+__
+d:they <- pro
+_
+  (toem)
+__
+d:him <- pro
+_
+  (toem)
+__
+d:her <- pro
+_
+  append 'r
+__
+d:them <- pro
+_
+  (toem)
+__
+d:i <- pro
+ >>[?1P]
+__
+d:my <- mod[#ps]
+ >>[?1P]
+__
+d:your <- mod[#ps]
+ >>[?2P]
+__
+d:his <- mod[#ps]
+__
+d:her <- mod[#ps]
+__
+d:its <- mod[#ps]
+__
+d:our <- mod[#ps]
+ >>[?1P]
+__
+d:their <- mod[#ps]
+__
+
+#### negative
+
+d:no    <- negn
+__
+d:not   <- negn
+__
+d:never <- negn
+__
+
+d:-ing   <- INFL[%vb]
+_
+  append g
+__
+d:-ed    <- INFL[%vb]
+_
+  append d
+__
+d:-s     <- INFL
+_
+  return
+__
+d:-'s    <- INFL[%ps]
+_
+  return
+__
+d:-ment  <- SUFX
+_
+  append m
+__
+d:-ize   <- SUFX
+_
+  append z
+__
+d:-ion   <- SUFX
+_
+  append n
+__
+d:-ation <- SUFX
+_
+  append n
+__
+d:pseudo+ <- PRFX
+_
+  append ps
+__
+d:quasi+ <- PRFX
+_
+  append qs
+__
+d:tran+  <- PRFX
+_
+  append t
+__
+d:re+ <- PRFX
+_
+  append re
+__
+d:un+ <- PRFX
+_
+  append un
+__
+d:ex+ <- PRFX
+_
+  append x
+__
+d:en+ <- PRFX
+_
+  append n
+__
+d:in+ <- PRFX
+_
+  append n
+__
+
+d:and->CONJ
+_
+  append &
+__
+d:or->CONJ
+__
+d:but->CONJ
+__

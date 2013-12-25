@@ -1,0 +1,23 @@
+# Eliza doctor simulation
+# doctor.m.elly
+i remember->your_memory
+do you remember->my_memory
+am i->about_you
+are you->about_me
+was i->were_you
+i was->you_were
+were you->was_i
+you remind me of->you_are
+you are->you_are
+can't->cannot
+donot->do_not
+don't->do_not
+won't->will_not
+will not->will_not
+can you->can_you
+will you->can_you
+can i->can_i
+will i->can_i
+why don't you->why_don't_you
+why can't i->why_can't_i
+no one->no_one

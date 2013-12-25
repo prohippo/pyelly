@@ -1,0 +1,302 @@
+# simple Elly grammar for English to Chinese
+# chinese.g.elly
+#
+# this translates only sentences of the forms
+#      subj
+#      subj verb
+#      subj verb object
+# where subj is a personal pronoun or simple noun phrase, verb may include an
+# auxiliary and a negative, and object is a simple noun phrase
+#
+# a simple noun phrase is a noun preceded optionally by adjectives, a number,
+# or a demonstrative, determiner, or possessive
+#
+# THIS IS INCOMPLETE AND NOT ALL IDIOMATIC!
+
+g:sent->sent punc
+__
+g:sent->ss
+_
+  trace
+  get lang gp0
+  append [
+  if lang=
+    append sim
+  else
+    insert < lang
+    end
+  append ]
+  left
+__
+g:ss->subj
+_
+  var frag=t
+  left
+__
+g:ss->subj[:3s] pred[|3s]
+__
+g:ss->subj[:3s] pred[|ne]
+__
+g:ss->subj[:-3s] pred[|-3s]
+__
+g:subj[:*r]  -> pron
+__
+g:subj->nclu
+__
+
+####
+#
+# personal pronouns
+d:i <- pron[:1p,sg]
+_
+  append 我
+__
+d:you <- pron[:2p]
+_
+  append 您
+__
+d:he <- pron[:3p,sg]
+_
+  append 他
+__
+d:she <- pron[:3p,sg]
+_
+  append 她
+__
+d:we <- pron[:1p,pl]
+_
+  append 我們
+__
+d:they <- pron[:3p,pl]
+_
+  append 他們
+__
+g:pred[!*r] -> mode pred
+__
+g:mode -> mode s
+_
+  left
+__
+g:mode -> mode ed
+_
+  left
+__
+g:mode -> mode to
+_
+  left
+__
+g:pred[!*r] -> vp
+_
+  var neg=f
+  split
+  left
+  back
+  if neg=t
+    append 不
+    end
+  merge
+__
+g:vp -> verb
+__
+g:vp -> verb nclu
+__
+g:verb[|3s]->aux[|3s,-pf] verb[|-3s]
+__
+g:verb[|ne]->aux[|-3s,-pf] verb[|-3s]
+__
+g:verb[|3s]->aux[|3s,pf] verb[|-3s]
+__
+g:verb->aux[|-3s,pf] verb[|-3s]
+__
+g:verb[|no]->neg verb[|-no]
+_
+  set neg=t
+  right
+__
+g:verb[|3s]->verb s
+_
+  left
+__
+g:verb[|pf]->verb ed
+_
+  left
+  append 了
+__
+d:-s <- s
+  >>+
+__
+d:-ed <- ed
+  >>+
+__
+d:will <- aux
+_
+  return
+__
+d:can  <- aux
+_
+  return
+__
+d:has  <- aux[|3s,pf]
+_
+  return
+__
+d:have <- aux[|pf]
+_
+  return
+__
+d:do   <- aux
+_
+  return
+__
+d:did  <- aux[|pf]
+_
+  return
+__
+d:not  <- neg
+__
+g:aux->aux neg
+_
+  set neg=t
+__
+
+#####
+#
+# 之的
+d:-'s <- apos
+__
+g:poss->nclu apos
+  [^anim]>>+
+_
+  left
+  pick lang (tra=的#=勺#)
+__
+g:poss->nclu apos
+  [^-anim]>>+
+_
+  left
+  append 之
+__
+g:poss->of nclu
+_
+  right
+  pick lang (tra=的#=勺#)
+__
+
+####
+#
+# classifiers
+d:this  <- dem
+_
+  append 這
+__
+d:that  <- dem
+_
+  append 那
+__
+d:these <- dem
+_
+  append 這
+__
+d:those <- dem
+_
+  append 那些
+__
+p:clsfp
+_
+  if lang=tra
+    set class=個
+  else
+    set class=个
+    end
+__
+p:dp
+_
+  var cflg=
+  var class=
+  (clsfp)
+  left
+  split
+  right
+  back
+  if ~cflg=t
+    insert < class
+    end
+  merge
+__
+g:nclu->nxn
+_
+  var cflg=
+  var class=
+  (clsfp)
+  if frag=t
+    split
+    left
+    back
+    insert < class
+    merge
+  else
+    left
+    end
+__
+g:nclu->dem nxn
+_
+  (dp)
+__
+g:nclu->det nxn
+_
+  (dp)
+__
+g:nclu->poss nxn
+__
+g:nclu->nclu poss
+_
+  right
+  left
+__
+g:nxn->adj nxn
+__
+g:nxn->num nxn
+_
+  left
+  split
+  right
+  back
+  insert < class
+  merge
+  set cflg=t
+__
+g:nxn->noun
+_
+  split
+  left
+  back
+  extract x <
+  if x=^
+    extract class <
+  else
+    insert < x
+    end
+  merge
+__
+g:noun->noun s
+_
+  left
+__
+g:det->det ord
+__
+d:the <- det
+_
+  return
+__
+d:a   <- det
+_
+  return
+__
+d:an  <- det
+_
+  return
+__
+d:to  <- to
+__
+d:of  <- of
+__
