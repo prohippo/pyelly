@@ -53,7 +53,7 @@ _
 __
 d:you <- pron[:2p]
 _
-  append 您
+  append 你
 __
 d:he <- pron[:3p,sg]
 _
@@ -232,7 +232,9 @@ _
     split
     left
     back
-    insert < class
+    if cflg=
+       insert < class
+       end
     merge
   else
     left
