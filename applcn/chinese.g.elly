@@ -168,7 +168,7 @@ g:poss->nclu apos
   [^anim]>>+
 _
   left
-  pick lang (tra=的#=勺#)
+  (de)
 __
 g:poss->nclu apos
   [^-anim]>>+
@@ -179,7 +179,7 @@ __
 g:poss->of nclu
 _
   right
-  pick lang (tra=的#=勺#)
+  (de)
 __
 
 ####
@@ -193,13 +193,17 @@ d:that  <- dem
 _
   append 那
 __
+####
+#
 d:these <- dem
 _
+  set plural=t
   append 這
 __
 d:those <- dem
 _
-  append 那些
+  set plural=t
+  append 那
 __
 p:clsfp
 _
@@ -213,15 +217,24 @@ p:dp
 _
   var cflg=
   var class=
+  var plural=
   (clsfp)
   left
   split
   right
   back
   if ~cflg=t
-    insert < class
+    if plural=t
+      append 些
+    else
+      insert < class
+      end
     end
   merge
+__
+p:de
+_
+  pick lang (tra=的#=勺#)
 __
 g:nclu->nxn
 _
@@ -301,4 +314,9 @@ __
 d:to  <- to
 __
 d:of  <- of
+__
+g:adj->noun
+_
+  left
+  (de)
 __

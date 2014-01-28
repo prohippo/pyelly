@@ -75,7 +75,7 @@ philosophy : noun tra=哲學 =哲学
 page : noun =頁
 picture : noun tra=^張照片 =^张照片
 person : noun tra=^個人 =个人
-dog : noun tra=^條狗 =^条狗
+dog : noun tra=^隻狗 =^只狗
 cat : noun tra=^隻猫 =^只猫
 bird : noun tra=^隻鳥 =^只鸟
 dream : noun tra=^個夢想 =^个梦想
@@ -83,12 +83,13 @@ fear: noun =恐惧
 hope: noun =希望
 person: noun tra=^個人 =^个人
 
-red:    adj =紅色
-blue:   adj =藍色
-green:  adj =綠色
-yellow: adj =黃色
-black:  adj =黑色
-white:  adj =白色
+red:    noun =紅色
+blue:   noun =藍色
+green:  noun =綠色
+yellow: noun =黃色
+black:  noun =黑色
+white:  noun =白色
+
 big:    adj =大
 small:  adj =小
 little: adj =小
