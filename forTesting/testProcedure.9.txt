@@ -1,0 +1,10 @@
+append +
+(do)
+linefeed
+split
+(do)
+back
+capitalize
+append +
+merge
+return

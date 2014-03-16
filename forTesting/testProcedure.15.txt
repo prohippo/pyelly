@@ -1,0 +1,4 @@
+append 012345
+extract > x
+append :
+insert < x

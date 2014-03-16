@@ -1,0 +1,20 @@
+var x=1s
+put x globx
+get y globx
+insert < x
+append =
+insert < y
+append :
+pick y (1s=1111#2s=2222#3s=3333#=0000#)
+append -
+set y=3s
+pick y (1s=1111#2s=2222#3s=3333#=0000#)
+append -
+set y=2s
+pick y (1s=1111#2s=2222#3s=3333#=0000#)
+append -
+set y=4p
+pick y (1s=1111#2s=2222#3s=3333#=0000#)
+append -
+set y=
+pick y (1s=1111#2s=2222#3s=3333#=0000#)

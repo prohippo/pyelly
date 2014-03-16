@@ -1,0 +1,5 @@
+trace
+if ~lang=
+  pick lang (a=x#b=y#c=z#)
+end
+return

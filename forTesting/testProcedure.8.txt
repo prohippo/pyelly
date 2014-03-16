@@ -1,0 +1,5 @@
+append test:  # comment
+right         # comment
+append /      # comment
+left          # comment
+# deliberately omitted return

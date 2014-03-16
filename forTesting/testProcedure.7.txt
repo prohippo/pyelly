@@ -1,0 +1,17 @@
+var t=
+while t=
+    append x
+    if t=
+        append 1
+        break
+    elif t=PPPP
+        append 2
+        break
+    elif ~t=QQQQ
+        append 3
+    else
+        append 4
+        break
+        end
+    end
+append y

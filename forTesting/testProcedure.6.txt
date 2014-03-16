@@ -1,0 +1,11 @@
+split
+append 12345
+back
+var x=
+while ~x=3
+    extract x < 1
+    insert < x
+    end
+append :
+merge
+return

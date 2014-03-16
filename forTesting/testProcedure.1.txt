@@ -1,0 +1,7 @@
+var z=T
+if z=T
+    append +++
+else
+    append ---
+    end
+return

@@ -1,0 +1,4 @@
+if x=
+    append 9
+trace
+# this code should NOT compile

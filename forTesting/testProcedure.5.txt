@@ -1,0 +1,14 @@
+split
+append 123456
+back
+extract x <
+insert < x
+append :
+extract x < 1
+insert < x
+append :
+extract x < 2
+insert < x
+append :
+merge
+return

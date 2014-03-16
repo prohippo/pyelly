@@ -1,0 +1,6 @@
+split
+append aabbaabbxxaabbaabb
+back
+find xx
+merge /aa/zz/
+return

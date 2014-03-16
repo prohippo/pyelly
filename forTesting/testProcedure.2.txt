@@ -1,0 +1,11 @@
+var x=123
+var y=ZYX
+append +++
+split
+append ---
+back
+delete 1
+insert < y
+merge
+insert < x
+return

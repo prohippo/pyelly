@@ -1,0 +1,4 @@
+trace
+append stuff left in output buffer
+trace
+fail

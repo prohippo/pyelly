@@ -1,0 +1,12 @@
+split
+append 0123456789
+back
+shift 4
+shift 1 >
+extract x <
+extract y <
+delete all
+merge
+delete 1 >
+insert < y
+insert < x

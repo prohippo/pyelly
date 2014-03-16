@@ -1,0 +1,45 @@
+IF ~va=1
+    PASS
+    END
+IF va=1
+    NOOP
+ELIF va=2
+    NOOP
+ELIF va=3
+    NOOP
+ELSE
+    FAIL
+    END
+WHILE ~va=3
+    IF va=
+        BREAK
+        END
+    BREAKIF z=100
+    END
+APPEND wxyz
+SPLIT
+APPEND 012
+BACK
+EXTRACT < on
+EXTRACT on >
+INSERT < on
+INSERT on >
+PEEK > x
+PEEK y <
+PUT on glb1
+PUT on glb2
+GET on glb1
+DELETE 1
+DELETE 1 >
+DELETE 1 <
+STORE del
+INSERT < del
+APPEND +
+MERGE
+PICK ch (a=AAA#b=BBB#c=CCC#=XXX#)
+FIND love
+ASSIGN x=y
+LEFT
+RIGHT
+TRACE
+RETURN

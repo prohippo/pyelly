@@ -1,0 +1,19 @@
+split
+append 0123;456;789
+back
+append |
+delete to ;
+store x
+insert < x
+insert < x
+delete to :
+delete to ;
+delete 1
+delete 1 >
+append |
+delete all
+store x
+insert < x
+insert < x
+append |
+merge

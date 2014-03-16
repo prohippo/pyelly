@@ -1,0 +1,13 @@
+split
+append 01234
+back
+peek x <
+if x=2, 1, 0
+  append !!
+else
+  append ??
+end
+var v=abc
+insert v >
+delete 1
+merge

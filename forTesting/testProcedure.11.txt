@@ -1,0 +1,16 @@
+var x=1234
+var y=5678
+append (
+insert < x
+append )
+linefeed
+assign y=x
+insert < x
+append +
+insert < y
+set x=abc
+assign z=x
+append +
+insert < z
+append =
+obtain
