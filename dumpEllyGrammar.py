@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# dumpEllyGrammar.py : 19dec2013 CPM
+# dumpEllyGrammar.py : 03mar2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -296,4 +296,4 @@ def dumpDictionary ( stb, dctn , all ):
 
         no += k;
 
-    print len(dctn) , 'words in' , no , "entries"
+    print len(dctn) , 'unique words in' , no , "entries"

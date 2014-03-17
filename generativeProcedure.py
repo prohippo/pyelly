@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeProcedure.py : 19dec2013 CPM
+# generativeProcedure.py : 15mar2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -287,6 +287,10 @@ class GenerativeProcedure(object):
                 cntx.deleteCharsFromBuffer(code.next())
             elif op == semanticCommand.Gdelt:  # delete to subsequence
                 cntx.deleteCharsInBufferTo(code.next())
+            elif op == semanticCommand.Gstor:  # save deletion to variable
+                var = code.next()              # set a local variable from string
+                val = ctx.getDeletion()        # last deleted sequence
+                cntx.setLocalVariable(var,val) # set variable
             elif op == semanticCommand.Gfnd:   # find sequence in buffer
                 cntx.findCharsInBuffer(code.next())
             elif op == semanticCommand.Gpick:  # use local variable to select text
@@ -366,10 +370,16 @@ if __name__ == "__main__":
         if inp == None:
             print >> sys.stderr, "cannot read procedure definition" , src
             continue
+        for ln in inp.buffer:
+            print ln
+        print ''
 
         gp = GenerativeProcedure(stb,inp)
+        print '*CODE*'
         showCode(gp.logic)
-        if gp.logic == None: continue
+        if gp.logic == None:
+            print 'null logic'
+            continue
         res = gp.doRun(ctx,phr)
 
         print '----'

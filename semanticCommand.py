@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# semanticCommand.py : 19nov2013 CPM
+# semanticCommand.py : 12mar2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -78,16 +78,17 @@ Ginsr =22  # insert local variable into buffer      (must be EVEN code!)
 Gshft =23  # move n chars between buffers
 Gdele =24  # delete n chars in buffer
 Gdelt =25  # delete chars in buffer to substring
-Gfnd  =26  # find substring
-Gpick =27  # special table lookup and insertion
-Gappd =28  # append string to buffer
-Gget  =29  # set local  variable from global variable
-Gput  =30  # set global variable from local  variable
-Gassg =31  # assign value of local variable to another
-Gobtn =32  # obtain original text for token
-Gcapt =33  # capitalize first char in buffer
-Gtrce =34  # instrumented no op for debugging
-Gproc =35  # call procedure
+Gstor =26  # store deletion in local variable
+Gfnd  =27  # find substring
+Gpick =28  # special table lookup and insertion
+Gappd =29  # append string to buffer
+Gget  =30  # set local  variable from global variable
+Gput  =31  # set global variable from local  variable
+Gassg =32  # assign value of local variable to another
+Gobtn =33  # obtain original text for token
+Gcapt =34  # capitalize first char in buffer
+Gtrce =35  # instrumented no op for debugging
+Gproc =36  # call procedure
 
 Gerr  =99  # error return value
 
@@ -118,6 +119,7 @@ Glen = {   # command lengths used in dumping generative procedures
     Gshft : 2 ,
     Gdele : 2 ,
     Gdelt : 2 ,
+    Gstor : 2 ,
     Gfnd  : 2 ,
     Gpick : 3 ,
     Gappd : 2 ,
@@ -131,11 +133,11 @@ Glen = {   # command lengths used in dumping generative procedures
     Gproc : 2
 }
 
-Gopn = [   # operation names for dumping (must align with 36 numerical codes above)
+Gopn = [   # operation names for dumping (must align with 37 numerical codes above)
     'PASS' , 'RETN' , 'FAIL' , 'LEFT' , 'RGHT' , 'BLNK' ,
     'LNFD' , 'SPLT' , 'BACK' , 'MRGE' , 'CHNG' , 'CHCK' ,
     'NCHK' , 'CHKF' , 'NCHF' , 'SKIP' , 'DEFV' , 'SETV' ,
     'PEEK' , 'EXTL' , 'EXTR' , 'INSN' , 'INSR' , 'SHFT' ,
-    'DELE' , 'DLTO' , 'FIND' , 'PICK' , 'APPD' , 'GETG' ,
-    'PUTG' , 'ASSG' , 'OBTN' , 'CAPT' , 'TRCE' , 'CALL'
+    'DELE' , 'DLTO' , 'STOR' , 'FIND' , 'PICK' , 'APPD' ,
+    'GETG' , 'PUTG' , 'ASSG' , 'OBTN' , 'CAPT' , 'TRCE' , 'CALL'
 ]

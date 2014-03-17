@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeDefiner.py : 19nov2013 CPM
+# generativeDefiner.py : 14mar2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -269,11 +269,20 @@ def convertDefinition ( stb , inp ):
             store.extend([ sc , ar[0] , int(ar[1]) ])
         elif op == 'shift' or op == 'delete':
             if len(rs) == 0: return False
-            co = semanticCommand.Gshft if op == 'shift' else semanticCommand.Gdele
             ar = rs.split(' ')
-            nch = 11111 if ar[0] == 'all' else int(ar[0])
-            if len(ar) > 1 and ar[1] == '>': nch = -nch
-            store.extend([ co , nch ])
+            co = ( semanticCommand.Gshft if op == 'shift'
+              else semanticCommand.Gdelt if ar[0] == 'to'
+              else semanticCommand.Gdele )
+            if co == semanticCommand.Gdelt:
+                if len(ar) == 1: return False
+                store.extend([ co , ar[1] ])
+            else:
+                nc = 11111 if ar[0] == 'all' else int(ar[0])
+                if len(ar) > 1 and ar[1] == '>': nc = -nc
+                store.extend([ co , nc ])
+        elif op == 'store':
+            if len(rs) == 0: return False
+            store.extend([ semanticCommand.Gstor , rs ])
         elif op == 'find':
             if len(rs) == 0: return False
             ar = rs.split(' ')
@@ -358,6 +367,7 @@ def _getargs ( rs ):
     """
 
     ar = rs.split(' ')
+#   print '_getargs' , ar
     if len(ar) < 2: return None
     x = ar[0]
     if x in _dir:
