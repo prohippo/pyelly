@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# interpretiveContext.py : 16dec2013 CPM
+# interpretiveContext.py : 16mar2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -37,6 +37,8 @@ import sys
 import symbolTable
 import grammarTable
 import conceptualWeighting
+
+deletion = '_d_'  # where to save deletions
 
 class InterpretiveContext(object):
 
@@ -84,12 +86,12 @@ class InterpretiveContext(object):
             self  -
         """
 
-        self.lbstk = [ ]           #
+        self.lbstk = [ ]             # stack for procedures
 
-        self.clearLocalStack()     # for defining local variables later
-        self.clearBuffers()        #
+        self.clearLocalStack()       # for defining local variables later
+        self.clearBuffers()          # for output buffers
 
-        self.tokns = [ ]           # empty out tokens
+        self.tokns = [ ]             # empty out token list for parse
 
     def getProcedure ( self , name ):
 
@@ -197,6 +199,34 @@ class InterpretiveContext(object):
             self.defineLocalVariable(var) # if not, define locally for current procedure
         self.locls[var][-1] = val         # reset last binding to new value
 
+    def getDeletion ( self ):
+
+        """
+        get sequence last deleted
+
+        arguments:
+            self
+
+        returns:
+            list of chars
+        """
+
+        h = self.locls[deletion]
+        return h[-1]
+
+    def putDeletion ( self , ds ):
+
+        """
+        save last deleted sequence
+
+        arguments:
+            self  -
+            ds    - deletion sequence
+        """
+
+        h = self.locls[ deletion ]
+        h[-1] = ds
+
     def clearLocalStack ( self ):
 
         """
@@ -207,6 +237,7 @@ class InterpretiveContext(object):
         """
 
         self.locls = { }
+        self.locls[ deletion ] = [ [ ] ] # for saving deletions
 
     def splitBuffer ( self ):
 
@@ -322,7 +353,7 @@ class InterpretiveContext(object):
     def deleteCharsFromBuffer ( self , n=1 ):
 
         """
-        delete up to n chars from next or currentt buffer
+        delete up to n chars from next or current buffer
 
         arguments:
             self  -
@@ -333,36 +364,48 @@ class InterpretiveContext(object):
 
         if n == 0:
             return
-        elif n > 0:
-            k = self.buffn + 1
+        k = self.buffn
+        if n > 0:
+            k += 1
             if k >= len(self.buffs): return
-            b = self.buffs[k]
-            l = len(b)
-            self.buffs[k] = [ ] if l <= n else b[n:]
+        b = self.buffs[k]           # buffer to delete from
+        l = len(b)                  # its current char count
+        if l <= abs(n):             # enough chars to delete
+            self.buffs[k] = [ ]     # if not, empty out buffer
+            self.putDeletion(b)
+        elif n > 0:                 # delete from next buffer?
+            self.buffs[k] = b[n:]   # remove n chars from front
+            self.putDeletion(b[:n])
         else:
-            n = -n
-            b = self.buffs[self.buffn]
-            l = len(b)
-            self.buffs[self.buffn] = [ ] if l <= n else b[:l-n]
+            self.buffs[k] = b[:n]   # remove n chars from back of current buffer
+            self.putDeletion(b[n:])
             
     def deleteCharsInBufferTo ( self , s ):
 
         """
-        delete chars up a specified sequence
+        delete chars in next buffer up to a specified sequence
 
         arguments:
             self  -
             s     - specified sequence as string
         """
 
+#       print '  deleting to' , s
         k = self.buffn + 1
         if k >= len(self.buffs): return
-        ls = list(s)
-        l = len(ls)
-        b = self.buffs[k]
-        while l >= len(b):
-            if ls == b[:l]: break
+        ls = list(s)              # convert string to list for comparisons
+        l = len(ls)               # char count
+        bs = self.buffs[k]        # buffer to save
+        b = list(bs)              # buffer to scan
+        while l <= len(b):        # enough chars to match?
+            if ls == b[:l]: break # if so, check match
             b.pop(0)
+        else: return
+
+        nd = len(bs) - len(b) + l # must delete matched sequence also
+#       print '  delete' , nd , k
+        self.putDeletion(bs[:nd]) # save deletion
+        self.buffs[k] = bs[nd:]   # shorten next buffer
 
     def insertCharsIntoBuffer ( self , s , dir=0 ):
 
@@ -413,7 +456,6 @@ class InterpretiveContext(object):
             m     - mode
                   -   m == 0 means from next    buffer
                   -   m == 1            current buffer
-
         returns:
             string of chars if successful, '' otherwise
         """
@@ -596,7 +638,9 @@ class InterpretiveContext(object):
             self
         """
 
-        self.lbstk.append([ ])  # add bindings for procedure to stack
+#       print 'pushStack' , len(self.lbstk)
+        self.lbstk.append([ deletion ])     # to hold bindings for procedures
+        self.locls[ deletion ].append([ ])  # set deletion to empty char list
 
     def popStack ( self ):
 
@@ -607,6 +651,7 @@ class InterpretiveContext(object):
             self
         """
 
+#       print 'popStack' , len(self.lbstk)
         r = self.lbstk.pop()      # remove procedure bindings from binding stack
         for v in r:
             stk = self.locls[v]
