@@ -18,4 +18,4 @@
 0 pseudo* NOUN -1
 
 0 -&@$ sufx -1
-0 -'s  sufx -1
+0 -'s  sufx[^apos] -1

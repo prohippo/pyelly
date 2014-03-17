@@ -146,3 +146,7 @@ g:adverb->pp
 __
 d:qq <- noun
 __
+g:adjective->noun sufx[^apos]
+_
+  (2bs)
+__
