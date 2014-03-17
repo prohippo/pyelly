@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# macroTable.py : 24dec2013 CPM
+# macroTable.py : 16mar2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -225,7 +225,7 @@ if __name__ == '__main__':
     mtb = MacroTable(inp)              # create macro table from specified definition file
     print 'mtb=' , mtb , 'with' , mtb.count , 'patterns'
     if mtb.count == 0:                 # check for success
-        print 'compilation FAILed'
+        print >> sys.stderr , 'compilation FAILed'
         sys.exit(1)                    # quit on failure
     mtb.dump()
 
