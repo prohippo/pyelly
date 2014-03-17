@@ -36,3 +36,19 @@ uploaded to Github upon their completion.
 
 PyElly is being released under a BSD license. Be advised that this all is
 currently beta software.
+
+Release Notes:
+
+ 0.1  - 25dec2013  initial release
+ 0.2  - 16mar2014  increase number of syntactic categories to 64
+                   add storing and reinserting of deleted output buffer text
+                   fix bugs in DELETE TO generative semantic command
+                   add unit testing input to PyElly distribution
+                   save integration testing script doTest properly
+                   eliminate inconsistencies in integration testing keys
+                   improve output of unit test for generativeProcedure.py
+
+Versions will always reflect changes in PyElly code, which may necessitate
+deleting and regenerating *.elly.bin files for correct operation. Changes to
+PyElly example application files, unit testing input files, or documentation
+will leave version numbers unchanged.
