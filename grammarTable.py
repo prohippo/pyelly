@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# grammarTable.py : 24dec2013 CPM
+# grammarTable.py : 05mar2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -66,7 +66,7 @@ def compile ( syms, clss , code ):
         print >> sys.stderr , 'bad semantic procedure class'
         return None
 
-NMAX = 48  # maximum number of syntactic types
+NMAX = 64  # maximum number of syntactic types
 FMAX = 16  # maximum number of feature names per set
 
 def isNewRule ( s ):
