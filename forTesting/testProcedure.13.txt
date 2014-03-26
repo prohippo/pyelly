@@ -1,3 +1,6 @@
+append 99
+peek > x
+insert < x
 split
 append 01234
 back

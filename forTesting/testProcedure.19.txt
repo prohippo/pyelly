@@ -1,0 +1,8 @@
+var it=012345
+var ne=
+while ~it=
+  append +
+  iterate ne=it
+  insert < ne
+  end
+append !!!!

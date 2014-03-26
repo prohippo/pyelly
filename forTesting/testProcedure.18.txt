@@ -1,0 +1,13 @@
+var x=1,2,3
+var y=2,4,1
+assign z=y
+insert < z
+append |
+unite  x<<y
+insert < x
+complement x<<z
+append |
+insert < x
+intersect z<<x
+append |
+insert < x

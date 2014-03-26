@@ -6,5 +6,10 @@ split
 back
 capitalize
 append +
+shift 1
+capitalize
+peek x <
+insert < x
+uncapitalize
 merge
 return
