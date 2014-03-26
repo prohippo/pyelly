@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyMain.py : 12mar2014 CPM
+# ellyMain.py : 26mar2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -71,7 +71,7 @@ system  = a[0] if len(a) > 0 else ellyConfiguration.defaultSystem
 restore = a[1] if len(a) > 1 else None
 
 if interact:
-    print "PyElly version 0.2-beta Natural Language Filtering"
+    print "PyElly version 0.3-beta Natural Language Filtering"
     print "Copyright 2013 under BSD open-source license by C.P. Mah"
     print "All rights reserved"
     print ""
