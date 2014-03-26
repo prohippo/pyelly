@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 20dec2013 CPM
+# vocabularyTable.py : 21mar2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -651,7 +651,8 @@ if __name__ == '__main__':
         key = u''.join(lky)
 #       print 'type(key)=' , type(key)
         vs = vtb.lookUpWord(key)       # look up just key
-        print len(vs) , 'key match only'
+        nm = len(vs)
+        print nm , 'key match' + ('' if nm == 1 else 'es')
         print ''
 
     while True:                        # now look up terms from standard input

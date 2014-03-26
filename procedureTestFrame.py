@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# procedureTestFrame.py : 15oct2013 CPM
+# procedureTestFrame.py : 20mar2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -92,7 +92,7 @@ class ProcedureTestFrame(object):
         gL = [ "obtain" ]                       #
         gR = [ "obtain" ]                       #
 
-        gP = [ "append ppppppp" ]               # for standalone generative procedure
+        gP = [ "append did it!" ]               # for standalone generative subprocedure
 
         cX = [ ]                                # cognitive
         cL = [ ">> +1" ]                        #
@@ -163,7 +163,7 @@ class ProcedureTestFrame(object):
 
         K = 32 # line count limit
         bs = self.context.getBufferContents()
-        print ' ' , len(bs) , 'buffer(s)'
+        print ' ' , len(bs) , 'buffer' , '' if len(bs) == 1 else 's'
         for b in bs:
             print type(b) , len(b) , 'chars' ,
             k = 0
