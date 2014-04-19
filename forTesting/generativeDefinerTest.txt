@@ -1,21 +1,23 @@
 IF ~va=1
-    PASS
-    END
+  PASS
+  END
 IF va=1
-    NOOP
+  NOOP
 ELIF va=2
-    NOOP
+  NOOP
 ELIF va=3
-    NOOP
+  NOOP
 ELSE
-    FAIL
-    END
+  FAIL
+  END
 WHILE ~va=3
-    IF va=
-        BREAK
-        END
-    BREAKIF z=100
+  IF va=
+    BREAK
     END
+  BREAKIF z=100
+  END
+VAR x SP
+VAR y CR
 APPEND wxyz
 SPLIT
 APPEND 012
@@ -33,6 +35,9 @@ DELETE 1
 DELETE 1 >
 DELETE 1 <
 DELETE TO ;
+DELETE TO
+DELETE <
+DELETE >
 STORE del
 INSERT < del
 APPEND +
@@ -40,12 +45,14 @@ MERGE
 PICK ch (a=AAA#b=BBB#c=CCC#=XXX#)
 FIND love
 ASSIGN x=y
-ITERATE x=y
+UNQUEUE x=y
+QUEUE y=x
 UNITE x<<y
 INTERSECT x<<y
 COMPLEMENT x<<y
 LEFT
 RIGHT
 TRACE
+SHOW x nothing at all
 RETURN
 FAIL

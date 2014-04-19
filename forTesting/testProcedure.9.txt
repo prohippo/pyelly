@@ -12,4 +12,5 @@ peek x <
 insert < x
 uncapitalize
 merge
+()
 return

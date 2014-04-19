@@ -1,17 +1,22 @@
 split
-append 0123;456;789
+append 0123;;456;;789
 back
 append |
-delete to ;
-store x 1
+delete to ;;
+store x 2
 insert < x
 insert < x
-delete to ;
+store x -1
+insert < x
+delete to ;;
 delete 1
 delete 1 >
 append |
 delete to :
-store x 2
+store x 3
 insert < x
-append |
+append =|xyz
+delete from |
+store x -2
+insert < x
 merge

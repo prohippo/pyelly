@@ -1,4 +1,6 @@
 trace
 append stuff left in output buffer
 trace
+extract > x 3
+show x contents
 fail

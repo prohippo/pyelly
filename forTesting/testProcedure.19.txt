@@ -1,8 +1,18 @@
+var ax=A
 var it=012345
+queue it=ax
+queue it=ax
 var ne=
 while ~it=
   append +
-  iterate ne=it
+  unqueue ne=it
   insert < ne
   end
 append !!!!
+linefeed
+set ne=
+var ae=12345
+queue ne=ae
+unqueue xx=ne 3
+insert < ne
+append ????

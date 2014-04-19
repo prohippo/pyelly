@@ -5,7 +5,7 @@ shift 4
 shift 1 >
 extract x <
 extract y <
-delete all
+delete <
 merge
 delete 1 >
 insert < y
