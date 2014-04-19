@@ -1,0 +1,1202 @@
+# translate English questions to SQL
+# querying.g.elly
+
+#### global variable initializations for SQL query building
+
+i:iterate   = abcdefghijklm
+i:main      = Ai
+
+i:gfrms =
+i:gsels =
+i:gwhrs =
+
+####
+
+p:tell
+_
+  # what to do when no fields are specified for
+  # a relation in query
+  APPEND from information_schema.columns
+  LINEFEED
+  APPEND select column_name, data_type
+  LINEFEED
+  APPEND where table_name='
+  INSERT < rname
+  APPEND '
+  LINEFEED
+__
+
+p:parsing
+_
+  # for parsing comma separated list value to local variable elem 
+  # including elements of a vocabulary table definition
+  #
+  # the local variable next is set to the next char in parsing
+  DELETE TO ,
+  PEEK next <
+  IF next=
+    STORE elem
+  ELSE
+    STORE elem 1
+    END
+__
+
+p:relnid
+_
+  # associate identifier to relation to facilitate inner join
+  # and compose FROM list of relations
+  UNQUEUE id=it
+  QUEUE ids=id
+  INSERT < elem
+  SPACE
+  INSERT < id
+__
+
+p:simplify
+_
+  # remove selected fields already in where restrictions
+  # (this action is a matter of preference)
+  VAR in=
+  VAR out=
+  ASSIGN in=wheres
+  (reduce)
+  COMPLEMENT selects<<out
+__
+
+p:reduce
+_
+  # get the field names in set of WHERE clauses
+  INSERT in >
+  VAR f=
+  VAR l=
+  VAR x=
+  PEEK x <
+  WHILE ~x=
+    DELETE TO
+    PEEK x <
+#   IF x=
+#     FAIL
+#     END
+    STORE f 1
+    UNITE out<<f
+    DELETE TO ,
+    END
+__
+
+p:joining
+_
+  # compose inner join constraint to add to WHERE clause
+  VAR x=
+  VAR y=
+  VAR z=
+  VAR plus=+
+  VAR period=.
+  QUEUE x=prev
+  QUEUE x=plus
+  QUEUE x=elem
+  APPEND |
+  # this next statement is database dependent
+  # and must be adjusted for a particular target
+  PICK x (=NTNM+NTNM#)
+  #
+  DELETE FROM +
+  STORE y -1
+  QUEUE z=lid
+  QUEUE z=period
+  QUEUE z=y
+  QUEUE z=equate
+  DELETE FROM |
+  STORE y -1
+  QUEUE z=id
+  QUEUE z=period
+  QUEUE z=y
+  UNITE joint<<z
+__
+
+p:joiner
+_
+  # add WHERE fields for restricting inner join
+  VAR id=
+  VAR lid=
+  VAR prev=
+  VAR next=
+  VAR elem=
+  VAR joint=
+
+  # need previously obtained relation names
+  INSERT froms >
+  (parsing)
+  WHILE ~ids=
+    UNQUEUE id=ids
+    IF ~lid=
+      (joining)
+      END
+    ASSIGN lid=id
+    ASSIGN prev=elem
+    (parsing)
+    END
+
+  UNITE wheres<<joint
+__
+
+p:refer
+_
+  # resolve references in context of previous query
+  # when elements are missing from current query
+  VAR fs=
+  GET fs gfrms
+  IF wheres=
+    IF ~selects=
+      GET wheres gwhrs
+      UNITE froms<<fs
+    ELIF ~froms=
+      GET wheres gwhrs
+      GET selects gsels
+      UNITE froms<<fs
+    ELIF ~refr=
+      ASSIGN froms=fs
+      GET wheres gwhrs
+      GET selects gsels
+      END
+  ELIF refr=
+    IF selects=
+      SET selects=*
+      END
+  ELSE
+    IF selects=
+      get selects gsels
+      END
+    IF ~wheres=
+      (prunewhr)
+      END
+    UNITE froms<<fs
+    END
+  IF froms=
+    GET froms main
+    END
+__
+
+p:prunewhr
+_
+  # prune saved WHERE clauses
+  # and return results in local
+  # variable new
+
+  # get common WHERE fields between
+  # this and previous query
+  VAR out=
+  VAR first=
+  VAR secnd=
+  GET first gwhrs
+  ASSIGN secnd=wheres
+  (disjn)
+
+  VAR x=
+  VAR f=
+  VAR v=
+  VAR tally=
+
+  # scan WHERE clauses from
+  # previous query
+  INSERT first >
+  PEEK x <
+  WHILE ~x=
+    # extract field name
+    DELETE TO
+    STORE f 1
+    # do lookup set theoretically
+    ASSIGN tally=out
+    INTERSECT tally<<f
+    # get comparison and value
+    DELETE TO ,
+    # get unique WHERE clause
+    IF tally=
+      PEEK x <
+      IF x=
+        STORE v
+      ELSE
+        STORE v 1
+        END
+      VAR z=
+      QUEUE z=f
+      QUEUE z=equate
+      QUEUE z=v
+      UNITE new<<z
+      END
+    END
+__
+
+p:numwhere
+_
+  # find previous WHERE to put unassigned
+  # numerical values
+  DELETE >
+  VAR whs=
+  GET whs gwhrs
+  INSERT whs >
+  VAR f=
+  VAR o=
+  VAR v=
+  VAR com=,
+  VAR y=
+  VAR x=
+  PEEK x <
+  WHILE ~x=
+    DELETE TO
+    PEEK x <
+    IF x=
+      FAIL
+      END
+    STORE f
+    PEEK x <
+    IF x=
+      FAIL
+      END
+    DELETE TO
+    PEEK x <
+    IF x=
+      FAIL
+      END
+    STORE o
+    DELETE TO ,
+    PEEK x <
+    IF x=
+      STORE v
+    ELSE
+      STORE v 1
+      END
+    UNQUEUE y=v
+    IF y=1, 2, 3, 4, 5, 6, 7, 8, 9
+      QUEUE out=f
+      QUEUE out=o
+      QUEUE out=number
+      IF ~x=
+        QUEUE out=com
+        END
+      DELETE <
+      STORE x
+      QUEUE out=x
+      BREAK
+      END
+    END
+__
+
+p:disjn
+_
+  # get common fields in two sets of WHERE clauses
+  VAR in=
+  ASSIGN in=first
+  (reduce)
+  VAR fo=
+  ASSIGN fo=out
+  ASSIGN in=secnd
+  (reduce)
+  INTERSECT out<<fo
+__
+
+p:remember
+_
+  # note current query for resolving next query
+  PUT froms gfrms
+  PUT wheres gwhrs
+  PUT selects gsels
+__
+
+p:toSQL
+_
+  # format query components into SQL
+  VAR ids=
+  VAR id=
+  VAR next=
+  VAR elem=
+  VAR it=
+
+  # set up buffers for processing
+  SPLIT
+  BACK
+
+  # resolve unassociated number
+  IF ~number=
+    VAR out=
+    (numwhere)
+    UNITE wheres<<out
+    END
+
+  # handle contextual reference in general
+  (refer)
+
+  ####
+  IF selects=
+    IF wheres=
+      INSERT froms >
+      DELETE TO ,
+      IF next=
+        STORE rname
+      ELSE
+        STORE rname 1
+        DELETE <
+        END
+      (tell)
+      MERGE
+      RETURN
+      END
+    END
+
+  GET it iterate
+
+  ####
+  APPEND from
+  SPACE
+
+  INSERT froms >
+  (parsing)
+  IF next=
+    INSERT < froms
+    DELETE <
+  ELSE
+    WHILE ~next=
+      (relnid)
+      APPEND ,
+      (parsing)
+      END
+    (relnid)
+    END
+  LINEFEED
+
+  ####
+  (simplify)
+
+  APPEND select
+  SPACE
+
+  IF ~selects=
+    INSERT < selects
+  ELSE
+    APPEND *
+    END
+  LINEFEED
+
+  ####
+  (joiner)
+
+  IF ~wheres=
+    APPEND where
+    SPACE
+
+    INSERT < wheres
+    LINEFEED
+    END
+
+  MERGE
+
+  (remember)
+__
+
+p:define
+_
+  # with vocabulary definition in next buffer
+  # extract relation name, field name, and literal
+  # and add to component lists for current query
+  VAR elem=
+  VAR next=
+  (parsing)
+  UNITE froms<<elem
+  IF ~next=
+    (parsing)
+    IF next=
+      UNITE selects<<elem
+    ELSE
+      INSERT equate >
+      INSERT elem >
+      DELETE <
+      STORE elem
+      UNITE wheres<<elem
+      END
+    END
+__
+
+p:leftdef
+_
+  # handle vocabulary definition on left branch
+  SPLIT
+  LEFT
+  BACK
+  (define)
+  MERGE
+__
+
+g:lit->lit sufx[%s]
+_
+  LEFT
+__
+g:lit[:modf]->lit sufx[%ed]
+_
+  LEFT
+__
+g:fldn->fldn sufx[%s]
+_
+  LEFT
+__
+g:fldn->fldn sufx[%ing]
+_
+  LEFT
+__
+g:type->type sufx[%s]
+_
+  RETURN
+__
+g:unit->unit sufx[%s]
+_
+  RETURN
+__
+g:aux->aux sufx[%s]
+_
+  RETURN
+__
+g:fldv->fldv sufx[%s]
+_
+  LEFT
+__
+g:fldv->fldv sufx[%ed]
+_
+  LEFT
+__
+g:fldv[|ing]->fldv sufx[%ing]
+_
+  LEFT
+__
+g:verb->verb sufx[%s]
+_
+  LEFT
+__
+g:verb->verb sufx[%ed]
+_
+  LEFT
+__
+g:verb[|ing]->verb sufx[%ing]
+_
+  LEFT
+__
+g:unit[:modf]->many unit
+_
+  RIGHT
+__
+g:func->det[:def] func
+_
+  RIGHT
+__
+g:func->dem func
+_
+  RIGHT
+__
+g:verb->verb[|-fld] to
+_
+  LEFT
+__
+g:verb->be of
+_
+  RETURN
+__
+g:one->dem one
+_
+  RETURN
+__
+g:one->one dem
+_
+  RETURN
+__
+g:func->how many
+_
+  APPEND count
+__
+g:wh[=sel]->wh[=sel] one
+_
+  RETURN
+__
+g:wh[=qw]->how much
+_
+  RETURN
+__
+g:valn[:numerical]->num unit
+_
+  LEFT
+__
+g:valn[:numerical]->unit num
+_
+  RIGHT
+__
+g:valn[:*r]->at valn[:numerical]
+_
+  RIGHT
+__
+g:valn[:*r]->not valn
+__
+g:value->value type
+_
+  LEFT
+__
+g:field->of field
+_
+  RIGHT
+__
+g:npa[:fld,val]->value field
+_
+  VAR selects=
+  SPLIT
+  LEFT
+  BACK
+  VAR v=
+  DELETE <
+  STORE v
+  RIGHT
+  INSERT v >
+  (nparest)
+  MERGE
+__
+g:npa[:fld,val]->field value
+_
+  VAR selects=
+  LEFT
+  SPLIT
+  RIGHT
+  BACK
+  (nparest)
+  MERGE
+__
+p:nparest
+_
+  VAR f=
+  VAR x=
+  IF ~x SP
+    INSERT equate >
+    END
+  DELETE <
+  STORE x
+  ASSIGN f=selects
+  QUEUE f=x
+  UNITE wheres<<f
+__
+g:reln->reln type
+_
+  LEFT
+__
+g:reln->reln sufx
+_
+  LEFT
+__
+g:rlns->reln rlns
+__
+g:nps->nps[:*r] rlns
+__
+g:nps[:*r]->rlns nps
+__
+g:nps[:*r]->npa nps[:*r]
+__
+g:nps[:*r]->func nps[:*r]
+_
+  # this applies a function to
+  # a SELECTed field
+  VAR fne=
+  (funcn)
+  UNITE selects<<fne
+__
+p:funcn
+_
+  # composes SQL function expression
+  SPLIT
+  LEFT
+  BACK
+  DELETE <
+  MERGE
+  STORE fne
+  VAR x=(
+  QUEUE fne=x
+  VAR selects=
+  RIGHT
+  IF ~selects=
+    QUEUE fne=selects
+  ELSE
+    SET x=*
+    QUEUE fne=x
+    END
+  SET x=)
+  QUEUE fne=x
+__
+g:np[:*r]->valn[:numerical] np[:*r,-fld]
+__
+g:np[:*r]->det[:-def] np[:*r]
+_
+  RIGHT
+__
+g:np[:*r,def]->det[:def] np[:*r]
+_
+  RIGHT
+__
+g:np[:*r,def]->dem np[:*r]
+_
+  RIGHT
+__
+g:np[:def]->dem
+_
+  RETURN
+__
+g:np[:*r]->poss np[:*r,-def]
+__
+g:poss->np[:*r,def] sufx[%apos]
+_
+  LEFT
+__
+g:np->np[:*r] ofp
+__
+g:np->type ofp
+_
+  RIGHT
+__
+g:ofp[:*r]->of np
+_
+  RIGHT
+__
+g:ofp[:*r]->not ofp
+__
+g:be->be not
+_
+  RIGHT
+__
+g:aux->aux not
+_
+  RIGHT
+__
+g:adj[|fld,val]->valn adj[|fld]
+__
+g:adj[|fld]->of np[:*r,fld,-val]
+__
+g:pred->verb[|-ing]
+__
+g:pred->verb[|-ing] np
+__
+g:pred[|ing]->verb[|ing] np
+__
+g:pred[|*r,ing]->wh[=rel] pred[|-ing]
+__
+g:pred[|*r,ing]->wh[=rel] sv
+__
+g:pred->verb[|-ing] func
+__
+g:pred[|ing]->verb[|ing] func
+__
+g:pred->verb[|-ing] value[:numerical]
+_
+  (numeric)
+__
+g:pred[|ing]->verb[|ing] value[:numerical]
+  (numeric)
+__
+p:numeric
+_
+  SPLIT
+  RIGHT
+  BACK
+  DELETE <
+  STORE number
+  LEFT
+  MERGE
+__
+g:pred[|*r,aux]->aux sv
+_
+  RIGHT
+__
+g:pred[|aux]->be np
+_
+  RIGHT
+__
+g:pred->be adj[|aux,fld,val]
+_
+  LEFT
+__
+g:pred->verb adj[|fld,val]
+__
+g:pred[|aux,ing]->not pred[|-aux,ing]
+__
+g:pred[|aux,-ing]->not pred[|-aux,-ing]
+__
+g:sv->np verb[|reln,-ing]
+__
+g:np[:*r]->adj[|fld] np[:*r]
+__
+g:np[:*r]->adj[|null] np[:*r]
+_
+  RIGHT
+__
+g:np->np[:*r] pred[|ing]
+__
+g:ordr->verb[|-do] by
+_
+  LEFT
+__
+g:ordnp->ordr np[:*r,fld,-val]
+__
+g:ordnp->conj[.-sub] ordnp
+_
+  RIGHT
+__
+g:ordnp->ordnp ordnp
+__
+g:wh[=adj]->how adj[|-fld]
+_
+  RIGHT
+__
+g:wh[=adj,fld]->how adj[|fld,-val]
+__
+g:wh[=adj]->wh[=adj] np[:*r]
+__
+g:whb->wh[=qw] be
+__
+g:auxnp[:*r]->aux np
+__
+g:auxnp[:*r]->be np
+__
+g:qnp[:*r]->wh[=qw] np
+__
+g:qnp[:*r]->wh[=adj] ofp[:*r,fld,-val]
+__
+g:qnp[:*r]->wh[=adj,-fld] np[:*r,fld,-val]
+__
+g:qnp[:*r]->wh[=adj,fld] np[:*r,fld,-val]
+__
+g:qnp[:*r]->wh[=adj,-fld] np[:*r,-fld,-val]
+__
+g:qnp[:*r]->wh[=qw] ofp
+__
+g:ss->whb np
+__
+g:ss->func np
+__
+g:ss->func pred
+_
+  SET refr=T
+  LEFT
+  RIGHT
+__
+g:ss->auxnp pred[|-*r,-ing,-null]
+__
+g:ss->auxnp[:genr] np
+__
+g:ss->auxnp[:being] np
+__
+g:ss->np pred[|-ing]
+__
+g:ss->wh[=qw] pred[|*r,-ing]
+__
+g:ss->qnp pred[|-ing]
+__
+g:ss->wh[=adj] auxnp[:being]
+__
+g:ss->wh[=adj] pred[|*r,-ing]
+__
+g:ss->ss[_-sp] ss[_sp]
+__
+g:ss->ss[_sp] ss[_-sp]
+__
+g:ss[_sp]->conj[.-sub] ss[_-sp]
+__
+g:ss[_sp]->auxnp conj[.-sub]
+__
+g:ss[_sp]->qnp conj[.-sub]
+__
+g:ss->ordnp ss
+__
+g:ss->ss ordnp
+__
+g:ss->pred
+_
+  SET refr=T
+__
+g:ss->ofp
+_
+  SET refr=T
+__
+g:ss->qnp
+_
+  SET refr=T
+__
+g:ss->np
+__
+g:ss->auxnp[:being,fld,val]
+__
+g:sent->ss
+_
+  VAR number=
+  VAR selects=
+  VAR wheres=
+  VAR froms=
+  VAR refr=
+  VAR equate SP
+  VAR eq==
+  QUEUE eq=equate
+  QUEUE equate=eq
+  LEFT
+  (toSQL)
+  APPEND ;
+  LINEFEED
+__
+g:sent->func
+>>++
+_
+  VAR selects=
+  VAR fns=
+  LEFT
+  INSERT < fns
+  APPEND (
+  DELETE >
+  STORE selects
+
+  GET froms  gfrms
+  GET wheres gwhrs
+  GET tmp    gsels
+
+  SPLIT
+  INSERT < tmp
+  BACK
+
+  VAR x=
+  PEEK ch <
+  IF ch=
+    SET x=*
+  ELSE
+    DELETE TO ,
+    PEEK ch <
+    IF ~ch=
+      FAIL
+      END
+    STORE x
+    END
+  QUEUE selects=x
+  VAR y=)
+  QUEUE selects=y
+
+  MERGE
+
+  (toSQL)
+  APPEND ;
+  LINEFEED
+__
+g:sent[_punc]->sent[_-punc] punc
+_
+  LEFT
+__
+g:qnp->wh[=sel]
+__
+g:whb->verb[|do,null]
+__
+g:whb->verb[|do,-null]
+__
+g:ordr->by
+__
+g:pred[|null]->auxnp[:genr,aux]
+__
+g:verb[|*r,fld,reln]->fldv
+_
+  (leftdef)
+__
+g:adj[|fld]->flda
+_
+  (leftdef)
+__
+g:np[:*r]->nps
+__
+g:nps[:def]->dem
+__
+g:nps[:*r]->npa
+__
+g:nps[:*r]->rlns
+__
+g:rlns->reln
+_
+  (leftdef)
+__
+g:npa[:fld]->field
+__
+g:npa[:val]->value[:-numerical]
+__
+g:field->fldn
+_
+  (leftdef)
+__
+g:value[:*r]->valn
+__
+g:value[:*r]->cmpr value
+_
+  # need spaces around comparison operator to help query construction
+  space
+  left
+  space
+  right
+__
+g:valn->unkn
+__
+g:valn[:numerical]->num
+__
+g:valn[:*r]->lit
+_
+  (leftdef)
+__
+d:which<-wh[=qw,rel,sel]
+_
+  RETURN
+__
+d:where<-wh[=qw]
+_
+  RETURN
+__
+d:when<-wh[=qw]
+_
+  RETURN
+__
+d:what<-wh[=qw]
+_
+  RETURN
+__
+d:that<-wh[=rel]
+_
+  RETURN
+__
+d:much<-much
+_
+  RETURN
+__
+d:many<-many
+_
+  RETURN
+__
+d:how<-how
+_
+  RETURN
+__
+d:bethere<-auxnp[:genr]
+_
+  RETURN
+__
+d:group<-verb[|do]
+_
+  RETURN
+__
+d:sort<-verb[|do]
+_
+  RETURN
+__
+d:tell<-verb[|do,null]
+_
+  RETURN
+__
+d:give<-verb[|do]
+_
+  RETURN
+__
+d:exceed<-verb
+_
+  RETURN
+__
+d:total<-func
+_
+  APPEND sum
+__
+d:minimum<-func
+_
+  APPEND min
+__
+d:mean<-func
+_
+  APPEND avg
+__
+d:average<-func
+_ 
+  APPEND avg
+__
+d:maximum<-func
+_
+  APPEND max
+__
+d:all<-func
+_
+  RETURN
+__
+d:while<-conj[.sub]
+_
+  RETURN
+__
+d:when<-conj[.sub]
+_
+  RETURN
+__
+d:or<-conj
+_
+  RETURN
+__
+d:and<-conj
+_
+  RETURN
+__
+d:have<-verb
+_
+  RETURN
+__
+d:have<-aux
+_
+  RETURN
+__
+d:do<-aux
+_
+  RETURN
+__
+d:be<-be
+_
+  RETURN
+__
+d:go<-verb
+_
+  RETURN
+__
+d:belong<-verb
+_
+  RETURN
+__
+d:with<-verb[|ing]
+_
+  RETURN
+__
+d:under<-at
+_
+  RETURN
+__
+d:to<-to
+_
+  RETURN
+__
+d:over<-at
+_
+  RETURN
+__
+d:on<-at
+_
+  RETURN
+__
+d:on<-of
+_
+  RETURN
+__
+d:of<-of
+_
+  RETURN
+__
+d:of<-at
+_
+  RETURN
+__
+d:not<-not
+_
+  RETURN
+__
+d:no<-det
+_
+  RETURN
+__
+d:in<-of
+_
+  RETURN
+__
+d:in<-at
+_
+  RETURN
+__
+d:by<-by
+_
+  RETURN
+__
+d:at<-at
+_
+  RETURN
+__
+d:this<-dem
+_
+  SET refr=T
+__
+d:their<-dem
+_
+  SET refr=T
+__
+d:the<-det[:def]
+_
+  RETURN
+__
+d:them<-dem
+_
+  RETURN
+__
+d:that<-dem
+_
+  RETURN
+__
+d:one<-one
+_
+  RETURN
+__
+d:its<-dem
+_
+  SET refr=T
+__
+d:it<-dem
+_
+  SET refr=T
+__
+d:any<-one
+_
+  RETURN
+__
+d:any<-det
+_
+  RETURN
+__
+d:a<-det
+_
+  RETURN
+__
+d:-'s<-sufx[%apos]
+_
+  RETURN
+__
+d:-s<-sufx[%s]
+_
+  RETURN
+__
+d:-ing<-sufx[%ing]
+_
+  RETURN
+__
+d:-ed<-sufx[%ed]
+_
+  RETURN
+__
+
+d:<  <- cmpr
+__
+d:>  <- cmpr
+__
+d:<= <- cmpr
+__
+d:>= <- cmpr
+__
+d:<> <- cmpr
+__
+d:≥ <- cmpr
+_
+  APPEND >=
+__
+d:≤ <- cmpr
+_
+  APPEND <=
+__
+d:≠ <- cmpr
+_
+  APPEND <>
+__
+

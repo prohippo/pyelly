@@ -1,0 +1,219 @@
+# translate English questions to SQL
+# querying.v.elly
+#
+# vocabulary for an old Cold War database of Soviet aircraft
+#
+# this was originally had a hierarchical structure, but has
+# been converted into multiple relations to be accessed by SQL
+# Ai
+# AiCo
+# AiCoAr
+# AiCoCr
+# AiDi
+# AiEn
+# AiFu
+# AiFuDi
+# AiHi
+# AiPe
+# AiPeSp
+# AiWe
+# AiWi
+# AiWiDi
+#
+# the relation names are coded
+# Ai = aircraft
+# Ar = armament
+# Co = configuration
+# Di = dimension
+# En = engine
+# Fu = fuselage
+# Hi = history
+#  = identification
+# Pe = performance
+# Sp = speed
+# We = weight
+# Wi = wing
+
+degree : unit =º
+knot   : unit =kt
+foot   : unit =ft
+feet   : unit =ft
+meter  : unit =m
+mile   : unit =mi
+pound  : unit =lb
+
+carry : verb ()
+
+aircraft : reln =Ai
+airplane : reln =Ai
+plane    : reln =Ai
+help     : reln =Ai
+identification : reln =Ai
+wing     : reln =AiWi
+fuselage : reln =AiFu
+dimension   : reln[:modf] =AiDi
+performance : reln =AiPe
+speed    : reln =AiPeSp
+airspeed : reln =AiPeSp
+armament : reln =AiCoAr
+configuration : reln =AiCo
+weapon      : reln =AiCoAr
+engine      : reln =AiEn
+measurement : reln =AiDi
+size   : reln =AiDi
+fly    : verb[|reln] =AiPe
+go     : verb[|reln] =AiPe
+travel : verb[|reln] =AiPe
+
+big : adj =AiDi ()
+
+soviet   : adj[|null] ()
+russian  : adj[|null] ()
+type     : type ()
+system   : type ()
+facility : type ()
+kind     : type ()
+sort     : type ()
+
+crew    : fldn =AiCoCr,NMCRW
+crewman : fldn =AiCoCr,NMCRW
+crewmen : fldn =AiCoCr,NMCRW
+payload : fldn =AiPe,PYLD
+designation  : fldn =Ai,SVNM
+service name : fldn =Ai,SVNM
+nato name    : fldn =Ai,NTNM
+name         : fldn =Ai,NTNM
+manufacturer : fldn =Ai,MFR
+role    : fldn =Ai,ROLE
+mission : fldn =Ai,ROLE
+date in service : fldn =AiHi,SRVC
+first flight    : fldn =AiHi,FLEW
+length   : fldn =AiFuDi,LGTH
+height   : fldn =AiFuDi,HGHT
+width    : fldn =AiWiDi,SPAN
+span     : fldn =AiWiDi,SPAN
+wingspan : fldn =AiWiDi,SPAN
+accommodation   : fldn =AiCoCr,NMCRW
+weight          : fldn =AiWe,*
+normal weight   : fldn =AiWe,NRML
+gross weight    : fldn =AiWe,GROS
+extended weight : fldn =AiWe,EXTD
+operational weight : fldn =AiWe,OPNL
+empty weight : fldn =AiWe,EMPT
+afterburner  : lit =AiEn,AFTB,Y
+power    : fldn[:modf] =AiEn,POWR
+rate     : fldn =AiEn,POWR
+turn radius   : fldn =AiPe,TRAD
+combat radius : fldn =AiPe,CMBR
+range         : fldn =AiPe,CMBR
+altitude : fldn =AiPe,ALTD
+rockets per pod : fldn =AiCoAr,RPP
+
+first fly : fldv =AiHi,FLEW
+flew      : fldv =AiHi,FLEW
+enter service : fldv[|fld,reln] =AiHi,SRVC
+first seen    : fldv[|fld,reln] =AiHi,SEEN
+weigh : fldv =AiWe,*
+carry : fldv =AiPe,PYLD
+make  : fldv =Ai,MFR
+manufacture : fldv =Ai,MFR
+
+far   : flda =AiPe,CMBR
+long  : flda =AiFuDi,LGTH
+wide  : flda =AiWiDi,SPAN
+heavy : flda =AiWe,*
+fast  : flda =AiPeSp,*
+high  : flda =AiPe,ALT
+
+bomber      : lit =Ai,ROLE,%B%
+fighter     : lit =Ai,ROLE,%F%
+recon       : lit =Ai,ROLE,%R%
+reconnaissance : lit =Ai,ROLE,%R%
+trainer     : lit =Ai,ROLE,%T%
+prototype   : lit =Ai,ROLE,%P%
+interceptor : lit =Ai,ROLE,%I%
+attack      : lit =Ai,ROLE,%A%
+support     : lit =Ai,ROLE,%S%
+
+fresco    : lit =Ai,NTNM,FRESCO
+farmer    : lit =Ai,NTNM,FARMER%
+farmer-c  : lit =Ai,NTNM,FARMER-C
+farmer-d  : lit =Ai,NTNM,FARMER-D
+fishbed   : lit =Ai,NTNM,FISHBED%
+fishbed-c : lit =Ai,NTNM,FISHBED-C
+fishbed-d : lit =Ai,NTNM,FISHBED-D
+fishbed-f : lit =Ai,NTNM,FISHBED-F
+fishbed-j : lit =Ai,NTNM,FISHBED-J
+fishbed-k : lit =Ai,NTNM,FISHBED-K
+fishbed-l : lit =Ai,NTNM,FISHBED-L
+flogger   : lit =Ai,NTNM,FLOGGER%
+flogger-b : lit =Ai,NTNM,FLOGGER-B
+flogger-c : lit =Ai,NTNM,FLOGGER-C
+foxbat    : lit =Ai,NTNM,FOXBAT%
+foxbat-a  : lit =Ai,NTNM,FOXBAT-A
+foxbat-b  : lit =Ai,NTNM,FOXBAT-B
+fishpot   : lit =Ai,NTNM,FISHPOT%
+fishpot-c : lit =Ai,NTNM,FISHPOT-C
+flagon    : lit =Ai,NTNM,FLAGON%
+flagon-a  : lit =Ai,NTNM,FLAGON-A
+flagon-b  : lit =Ai,NTNM,FLAGON-B
+flagon-c  : lit =Ai,NTNM,FLAGON-C
+flagon-d  : lit =Ai,NTNM,FLAGON-D
+flagon-e  : lit =Ai,NTNM,FLAGON-E
+fiddler   : lit =Ai,NTNM,FIDDLER
+firebar   : lit =Ai,NTNM,FIREBAR
+
+mig      : lit =Ai,SVNM,MIG%
+mig-17   : lit =Ai,SVNM,MIG-17
+mig-19   : lit =Ai,SVNM,MIG-19%
+mig-19pf : lit =Ai,SVNM,MIG-19PF
+mig-19sf : lit =Ai,SVNM,MIG-19SF
+mig-21   : lit =Ai,SVNM,MIG-21%
+mig-21f  : lit =Ai,SVNM,MIG-21F
+mig-21mf : lit =Ai,SVNM,MIG-21MF
+mig-21pf   : lit =Ai,SVNM,MIG-21PF%
+mig-21pfm  : lit =Ai,SVNM,MIG-21PFM%
+mig-21pfma : lit =Ai,SVNM,MIG21PFMA
+mig-23  : lit =Ai,SVNM,MIG-23%
+mig-23b : lit =Ai,SVNM,MIG-23B
+mig-23u : lit =Ai,SVNM,MIG-23U
+mig-25  : lit =Ai,SVNM,MIG-25
+su-9    : lit =Ai,SVNM,SU-9
+su-11   : lit =Ai,SVNM,SU-11
+su-15   : lit =Ai,SVNM,SU-15
+tu-28p  : lit =Ai,SVNM,TU-28P
+yak-28p : lit =Ai,SVNM,YAK-28P
+
+klimov   : lit =AiEn,MFR,KLIMOV
+tumansky : lit =AiEn,MFR,TUMANSKY
+lyulka   : lit =AiEn,MFR,LYULKA
+
+turbojet : lit =AiEn,TYPE,TJ
+
+mikoyan  : lit =Ai,MFR,MIKOYAN
+sukhoi   : lit =Ai,MFR,SUKHOI
+tupelov  : lit =Ai,MFR,TUPELOV
+yakoulov : lit =Ai,MFR,YAKOULOV
+
+alkali : lit =AiCoAr,WNME,ALKALI
+atoll  : lit =AiCoAr,WNME,ATOLL
+apex   : lit =AiCoAr,WNME,APEX
+acrid  : lit =AiCoAr,WNME,ACRID
+aphid  : lit =AiCoAr,WNME,APHID
+anab   : lit =AiCoAr,WNME,ANAB
+ash    : lit =AiCoAr,WNME,ASH
+
+k-13  : lit =AiCoAr,WDSG,K-13%
+k-13a : lit =AiCoAr,WDSG,K-13A
+s-24  : lit =AiCoAr,WDSG,S-24
+aa-3  : lit =AiCoAr,WDSG,A-3
+aa-5  : lit =AiCoAr,WDSG,A-5
+aa-6  : lit =AiCoAr,WDSG,A-6
+aa-7  : lit =AiCoAr,WDSG,A-7
+aa-8  : lit =AiCoAr,WDSG,A-8
+
+missile : lit =AiCoAr,CLASS,MISSILE
+rocket  : lit =AiCoAr,CLASS,ROCKET
+bomb    : lit =AiCoAr,CLASS,BOMB
+cannon  : lit =AiCoAr,CLASS,CANNON
+class   : fldn =AiCoAr,CLASS
