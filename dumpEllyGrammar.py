@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# dumpEllyGrammar.py : 03mar2014 CPM
+# dumpEllyGrammar.py : 26mar2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -48,6 +48,7 @@ def dumpAll ( symbols , table , level ):
 
     print len(symbols.ntindx) , 'syntactic categories'
 
+    dumpInitializations(table.initzn)
     dumpMatrix(symbols,table.mat)
     dumpFeatures(symbols)
     dumpSubprocedures(table.pndx,level > 0)
@@ -56,6 +57,22 @@ def dumpAll ( symbols , table , level ):
     dumpDictionary(symbols,table.dctn,level > 1)
 
     print "DONE"
+
+def dumpInitializations ( inits ):
+
+    """
+    show global variable initializations
+
+    arguments:
+        inits  - DerivabilityMatrix object
+    """
+
+    print ""
+    print "Global Variable Initializations"
+    print "-------------------------------------------------"
+
+    for x in inits:
+        print '{:<12.12s} = '.format(x[0]) , x[1]
 
 def dumpMatrix ( stb , matrix ):
 

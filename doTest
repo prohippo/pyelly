@@ -6,4 +6,4 @@ if [ ${s} == 'doctor'   ]; then x='-noLang'; fi
 if [ ${s} == 'indexing' ]; then x='-d 8'   ; fi
 if [ ${s} == 'chinese'  ]; then x='-g tra' ; fi
 python ellyMain.py ${x} $2 $3 $4 ${s} < ${s}.main.txt &> ttmm
-grep -v = ttmm | egrep 'FAIL|^ [^ ]'
+egrep FAIL\|$'\r'\|'^ [^ 0-9]' ttmm

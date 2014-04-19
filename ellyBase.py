@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 24dec2013 CPM
+# ellyBase.py : 04apr2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -186,6 +186,9 @@ class EllyBase(object):
 #       print '1:' , len(d.stb.ntname) , 'categories'
 
         self.ctx = interpretiveContext.InterpretiveContext(d.stb,d.gtb.pndx,s.globals,d.hry)
+
+        for z in d.gtb.initzn:
+            self.ctx.glbls[z[0]] = z[1]
 
 #       print '2:' , len(d.stb.ntname) , 'categories'
 
@@ -574,7 +577,7 @@ if __name__ == '__main__':
         line = si.readline()
         l = line.decode('utf8')
         if len(l) == 0 or l[0] == '\n': break
-        print 'input:' , type(line) , '->' , type(l)
+#       print 'input:' , type(line) , '->' , type(l)
         txt = list(l.strip())
         lo = eb.translate(txt)
         if lo == None:

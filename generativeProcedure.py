@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeProcedure.py : 15mar2014 CPM
+# generativeProcedure.py : 18apr2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -91,7 +91,8 @@ class Code(object):
 
         self.index = self.list[self.index]
 
-BAD = -11111  # bias for phrase with failed generative semantics
+BAD  = -11111  # bias for phrase with failed generative semantics
+LSTJ = ','     # substring for joining substrings in list value
   
 class GenerativeProcedure(object):
 
@@ -115,7 +116,7 @@ class GenerativeProcedure(object):
             defs  - ellyDefinitionReader
         """
 
-        self.logic = generativeDefiner.convertDefinition(syms,defs)
+        self.logic = generativeDefiner.compileDefinition(syms,defs)
 
     def doRun ( self , cntx , phrs ):
 
@@ -140,7 +141,7 @@ class GenerativeProcedure(object):
             if phs.bias == BAD:      # if out of alternatives,
                 return False         #   fail
 
-        if phrs.alnk != None:        # if ambiguity here, adjust biases for phrase rules
+        if phrs.alnk != None:        # on ambiguity, adjust biases for phrase rules
             if phs.rule.bias == 0:   # if zero bias for selected rule,
                 phs.rule.bias = -1   #   mark it to be less favored next time
             else:
@@ -218,13 +219,16 @@ class GenerativeProcedure(object):
                 cntx.insertCharsIntoBuffer(u'\r\n')
             elif op == semanticCommand.Gsplt:  # split off new buffer for output
                 cntx.splitBuffer()
-#               print "split",cntx.printStatus()
+#               print "split",
+#               cntx.printStatus()
             elif op == semanticCommand.Gback:  # go back to previous buffer
                 cntx.backBuffer()
-#               print "back",cntx.printStatus()
+#               print "back",
+#               cntx.printStatus()
             elif op == semanticCommand.Gmrge:  # merge buffers into current one
                 cntx.mergeBuffers()
-#               print "merge",cntx.printStatus()
+#               print "merge",
+#               cntx.printStatus()
             elif op == semanticCommand.Gchng:  # merge with substitution
                 ts = code.next()
                 ss = code.next()
@@ -286,11 +290,26 @@ class GenerativeProcedure(object):
             elif op == semanticCommand.Gdele:  # delete text from buffers
                 cntx.deleteCharsFromBuffer(code.next())
             elif op == semanticCommand.Gdelt:  # delete to subsequence
-                cntx.deleteCharsInBufferTo(code.next())
+                s = code.next()
+                t = code.next()
+                if t > 0:
+                    cntx.deleteCharsInBufferTo(s)
+                else:
+                    cntx.deleteCharsInBufferFrom(s)
             elif op == semanticCommand.Gstor:  # save deletion to variable
                 var = code.next()              # set a local variable from string
-                val = ctx.getDeletion()        # last deleted sequence
-                cntx.setLocalVariable(var,val) # set variable
+                nde = code.next()              # deletion count
+#               print 'var=',var,'nde=',nde
+                val = cntx.getDeletion()       # last deleted sequence
+#               print 'val=',val
+                if abs(nde) >= len(val):
+                    val = [ ]                  # set to empty sequence
+                elif nde > 0:
+                    val = val[:-nde]           # drop final chars
+                elif nde < 0:
+                    val = val[-nde:]           # drop initial chars
+                sv = ''.join(val)              # convert to string
+                cntx.setLocalVariable(var,sv)  # set variable
             elif op == semanticCommand.Gfnd:   # find sequence in buffer
                 cntx.findCharsInBuffer(code.next())
             elif op == semanticCommand.Gpick:  # use local variable to select text
@@ -320,6 +339,52 @@ class GenerativeProcedure(object):
                 dst = code.next()              # note order difference here!
                 src = code.next()
                 cntx.setLocalVariable(dst,cntx.getLocalVariable(src))
+            elif op == semanticCommand.Gque:   # queue up or count down iteration
+                dst = code.next()              # note order difference here!
+                src = code.next()
+                cno = code.next()              # > 0 for QUEUE, < 0 for UNQUEUE
+                val = cntx.getLocalVariable(src)
+                if len(val) == 0:              # src is empty string?
+                    if cno == 0: continue      # if so, do nothing for QUEUE
+                    it = ''                    # otherwise set dst to ''
+                elif cno <= 0:
+#                   print 'dst=',dst
+                    it = cntx.getLocalVariable(dst) + val # QUEUE concatenates
+                else:
+                    if cno > len(val):         # UNQUEUE pops up to n chars for dst
+                        cno = len(val)
+                    it = val[:cno]
+                    cntx.setLocalVariable(src,val[cno:])
+                cntx.setLocalVariable(dst,it)  # new value for dst
+#               print 'op=',op,'dst=',it
+            elif op in [semanticCommand.Gunio,semanticCommand.Gintr,semanticCommand.Gcomp]:
+                dst = code.next()                  # note order difference here!
+                src = code.next()
+#               print 'dst=',dst,'src=',src
+                dv = cntx.getLocalVariable(dst)
+                sv = cntx.getLocalVariable(src)
+#               print 'op=',op,'dv=',dv,'sv=',sv
+                lstd = [ ] if len(dv) == 0 else dv.split(LSTJ)
+                lsts = [ ] if len(sv) == 0 else sv.split(LSTJ)
+                ls   = [ ]
+                if op == semanticCommand.Gunio:    # union of two list values
+                    for x in lsts:
+                        if not x in lstd:
+                            lstd.append(x)
+                    ls = lstd
+                elif op == semanticCommand.Gintr:  # intersection of two list values
+                    for x in lsts:
+                        if x in lstd:
+                            ls.append(x)
+                else:                              # complement of list value
+                    for x in lstd:
+                        if not x in lsts:
+                            ls.append(x)
+
+                js = LSTJ.join(ls)
+#               print 'ls=',ls,'js=',js
+                cntx.setLocalVariable(dst,js)
+
             elif op == semanticCommand.Gobtn:  # obtain string for current parse position
                 tok = cntx.getNthTokenInListing(phrs.posn)
 #               print 'obtain: ' , tok.toUnicode()
@@ -328,16 +393,32 @@ class GenerativeProcedure(object):
                 c = cntx.extractCharsFromBuffer()
                 if c != '':
                     cntx.insertCharsIntoBuffer(c.upper(),1)
-            elif op == semanticCommand.Gtrce:  # print phrase information to trace execution
+            elif op == semanticCommand.Gucpt:  # capitalize first char in buffer
+                c = cntx.extractCharsFromBuffer()
+                if c != '':
+                    cntx.insertCharsIntoBuffer(c.lower(),1)
+            elif op == semanticCommand.Gtrce:  # show phrase information to trace execution
                 cat = cntx.syms.getSyntaxTypeName(phrs.typx)
                 brn = "1" if type(phrs.rule) == grammarRule.ExtendingRule else "2"
             	print >> sys.stderr, "TRACE @" + str(phrs.posn) + " type=" + cat ,
                 print >> sys.stderr, "rule=" + str(phrs.rule.seqn) ,
             	print >> sys.stderr, " (" + brn + "-br)" ,
             	cntx.printStatus()
+            elif op == semanticCommand.Gshow:   # show local variable
+                vr = code.next()
+                ms = code.next()
+                st = cntx.getLocalVariable(vr)
+                print >> sys.stderr, 'SHOW @phr' , phrs.seqn, ': ' + ms
+                print >> sys.stderr, "VAR " + vr + '= [' + st + ']'
             elif op == semanticCommand.Gproc:  # semantic subprocedure
-                proc = cntx.getProcedure(code.next())
-                proc.run(cntx,phrs)
+                name = code.next()
+                if name == '': continue        # null procedure is no operation`
+                proc = cntx.getProcedure(name)
+                if proc == None:
+                    print >> sys.stderr , 'unknown subprocedure name' , name
+                    status = False
+                else:
+                    status = proc.run(cntx,phrs)
             else:
                 print >> sys.stderr , GenerativeProcedure._error , 'op=' , op
                 status = False
@@ -384,7 +465,8 @@ if __name__ == "__main__":
 
         print '----'
         print 'run status=' , res
-        print frame.showBuffers()
+        print '----'
+        frame.showBuffers()
 
     print "------------"
     print len(args),'test file(s)'

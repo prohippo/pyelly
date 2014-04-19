@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# semanticCommand.py : 12mar2014 CPM
+# semanticCommand.py : 18apr2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -85,10 +85,16 @@ Gappd =29  # append string to buffer
 Gget  =30  # set local  variable from global variable
 Gput  =31  # set global variable from local  variable
 Gassg =32  # assign value of local variable to another
-Gobtn =33  # obtain original text for token
-Gcapt =34  # capitalize first char in buffer
-Gtrce =35  # instrumented no op for debugging
-Gproc =36  # call procedure
+Gque  =33  # use local variable as a character queue
+Gunio =34  # set union
+Gintr =35  # set intersection
+Gcomp =36  # set complement
+Gobtn =37  # obtain original text for token
+Gcapt =38  # capitalize first char in buffer
+Gucpt =39  # uncapitalize first char in buffer
+Gtrce =40  # instrumented no op for debugging
+Gshow =41  # see local variable for debugging
+Gproc =42  # call procedure
 
 Gerr  =99  # error return value
 
@@ -118,26 +124,33 @@ Glen = {   # command lengths used in dumping generative procedures
     Ginsn : 2 ,
     Gshft : 2 ,
     Gdele : 2 ,
-    Gdelt : 2 ,
-    Gstor : 2 ,
+    Gdelt : 3 ,
+    Gstor : 3 ,
     Gfnd  : 2 ,
     Gpick : 3 ,
     Gappd : 2 ,
     Gget  : 3 ,
     Gput  : 3 ,
     Gassg : 3 ,
+    Gque  : 4 ,
+    Gunio : 3 ,
+    Gintr : 3 ,
+    Gcomp : 3 ,
     Gobtn : 1 ,
     Gcapt : 1 ,
+    Gucpt : 1 ,
     Gtrce : 1 ,
+    Gshow : 3 ,
     Gerr  : 1 ,
     Gproc : 2
 }
 
-Gopn = [   # operation names for dumping (must align with 37 numerical codes above)
+Gopn = [   # operation names for dumping (must align with 43 numerical codes above)
     'PASS' , 'RETN' , 'FAIL' , 'LEFT' , 'RGHT' , 'BLNK' ,
     'LNFD' , 'SPLT' , 'BACK' , 'MRGE' , 'CHNG' , 'CHCK' ,
     'NCHK' , 'CHKF' , 'NCHF' , 'SKIP' , 'DEFV' , 'SETV' ,
     'PEEK' , 'EXTL' , 'EXTR' , 'INSN' , 'INSR' , 'SHFT' ,
     'DELE' , 'DLTO' , 'STOR' , 'FIND' , 'PICK' , 'APPD' ,
-    'GETG' , 'PUTG' , 'ASSG' , 'OBTN' , 'CAPT' , 'TRCE' , 'CALL'
+    'GETG' , 'PUTG' , 'ASSG' , 'QUEU' , 'UNIO' , 'INTR' ,
+    'COMP' , 'OBTN' , 'CAPT' , 'UCPT' , 'TRCE' , 'SHOW' , 'CALL'
 ]

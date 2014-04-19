@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# procedureTestFrame.py : 20mar2014 CPM
+# procedureTestFrame.py : 01apr2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -161,7 +161,7 @@ class ProcedureTestFrame(object):
             self
         """
 
-        K = 32 # line count limit
+        K = 44 # line count limit
         bs = self.context.getBufferContents()
         print ' ' , len(bs) , 'buffer' , '' if len(bs) == 1 else 's'
         for b in bs:

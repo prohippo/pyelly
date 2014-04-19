@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBottomUp.py : 20dec2013 CPM
+# parseTreeBottomUp.py : 12qpr2014 CPM
 # -----------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -275,8 +275,8 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
         lw = len(ws)
 #*      print len(rules) , 'rule(s)'
         for r in rules:               # create new phrase for each rule found
-            self._addTerminal(r,split)
-            self.lastph.lens = lw
+            if self._addTerminal(r,split):
+                self.lastph.lens = lw
         return True
 
     def addLiteralPhrase ( self , cat , fbs ):

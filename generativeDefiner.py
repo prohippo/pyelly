@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeDefiner.py : 14mar2014 CPM
+# generativeDefiner.py : 18apr2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -39,28 +39,29 @@ import grammarTable
 import semanticCommand
 
 _simple = {  # commands with no arguments
-    "noop"       : semanticCommand.Gnoop ,
-    "pass"       : semanticCommand.Gnoop ,
-    "return"     : semanticCommand.Gretn ,
-    "fail"       : semanticCommand.Gfail ,
-    "left"       : semanticCommand.Gleft ,
-    "right"      : semanticCommand.Grght ,
-    "blank"      : semanticCommand.Gblnk ,
-    "space"      : semanticCommand.Gblnk ,
-    "linefeed"   : semanticCommand.Glnfd ,
-    "split"      : semanticCommand.Gsplt ,
-    "back"       : semanticCommand.Gback ,
-    "obtain"     : semanticCommand.Gobtn ,
-    "capitalize" : semanticCommand.Gcapt ,
-    "trace"      : semanticCommand.Gtrce 
+    "noop"         : semanticCommand.Gnoop ,
+    "pass"         : semanticCommand.Gnoop ,
+    "return"       : semanticCommand.Gretn ,
+    "fail"         : semanticCommand.Gfail ,
+    "left"         : semanticCommand.Gleft ,
+    "right"        : semanticCommand.Grght ,
+    "blank"        : semanticCommand.Gblnk ,
+    "space"        : semanticCommand.Gblnk ,
+    "linefeed"     : semanticCommand.Glnfd ,
+    "split"        : semanticCommand.Gsplt ,
+    "back"         : semanticCommand.Gback ,
+    "obtain"       : semanticCommand.Gobtn ,
+    "capitalize"   : semanticCommand.Gcapt ,
+    "uncapitalize" : semanticCommand.Gucpt ,
+    "trace"        : semanticCommand.Gtrce 
 }
 
 _dir = [ '<' , '>' ] # qualifier for semantic command
 
-def convertDefinition ( stb , inp ):
+def compileDefinition ( stb , inp ):
 
     """
-    convert definition from input stream into executable generative semantic logic
+    comple definition from input stream into executable generative semantic logic
 
     arguments:
         stb   - symbol table
@@ -116,7 +117,7 @@ def convertDefinition ( stb , inp ):
             test = ellyBits.join(fs[0],fs[1])
             store.extend([ semanticCommand.Gchkf+negn , test ])
         else:            # testing local variable
-            ar = rs.split('=')
+            ar = _eqsplit(rs)
 #           print 'ar=' , len(ar) , ar
             if len(ar) < 2: return Fail
             ls = ar[1].split(', ') # separator must be a comma followed by space!
@@ -229,7 +230,7 @@ def convertDefinition ( stb , inp ):
             if op == 'break':
                 store.append(semanticCommand.Gskip)  # put in branch command for BREAK
             else:
-                ar = rs.split('=')               # check can be on local variable only
+                ar = _eqsplit(rs)               # check can be on local variable only
                 if len(ar) < 2:
                     return False
                 v = ar[0]                        # variable name
@@ -246,7 +247,7 @@ def convertDefinition ( stb , inp ):
         elif op == 'var' or op == 'variable' or op == 'set':
             if len(rs) == 0: return False
             co = semanticCommand.Gset if op == 'set' else semanticCommand.Gvar
-            ar = rs.split('=')
+            ar = _eqsplit(rs)
             if len(ar) < 2: ar.append('')
             store.extend([ co , ar[0].lower() , ar[1] ])
         elif op == 'insert':
@@ -257,8 +258,8 @@ def convertDefinition ( stb , inp ):
             store.extend([ sc , ar[0] ])
         elif op == 'peek':
             ar = _getargs(rs)
-            wh = ar.pop(0)
             if ar == None: return False
+            wh = ar.pop(0)
             store.extend([ semanticCommand.Gpeek , ar[0] , (wh == '<') ])
         elif op == 'extract':
             ar = _getargs(rs)
@@ -270,19 +271,27 @@ def convertDefinition ( stb , inp ):
         elif op == 'shift' or op == 'delete':
             if len(rs) == 0: return False
             ar = rs.split(' ')
+            first = ar[0].lower()
             co = ( semanticCommand.Gshft if op == 'shift'
-              else semanticCommand.Gdelt if ar[0] == 'to'
+              else semanticCommand.Gdelt if (first == 'to' or first == 'from')
               else semanticCommand.Gdele )
             if co == semanticCommand.Gdelt:
-                if len(ar) == 1: return False
-                store.extend([ co , ar[1] ])
+                str = ' ' if len(ar) == 1 else ar[1]
+                flag = 1 if first == 'to' else -1
+                store.extend([ co , str , flag ])
             else:
-                nc = 11111 if ar[0] == 'all' else int(ar[0])
-                if len(ar) > 1 and ar[1] == '>': nc = -nc
+                nc = 11111   # bigger than possible buffer
+                if first != '<' and first != '>':
+                    nc = int(first)
+                    if len(ar) > 1 and ar[1] == '>': nc = -nc
+                elif first == '>': 
+                    nc = -nc
                 store.extend([ co , nc ])
         elif op == 'store':
             if len(rs) == 0: return False
-            store.extend([ semanticCommand.Gstor , rs ])
+            ar = rs.split(' ')
+            nd = 0 if len(ar) == 1 else int(ar[1])
+            store.extend([ semanticCommand.Gstor , ar[0] , nd ])
         elif op == 'find':
             if len(rs) == 0: return False
             ar = rs.split(' ')
@@ -319,12 +328,33 @@ def convertDefinition ( stb , inp ):
                 print >> sys.stderr, "**missing global variable!!"
                 return False
             store.extend([ co , av[0] , av[1] ])
-        elif op == 'assign':
-            av = rs.split('=')
-            if len(av) == 1 or len(av[1]) == 0:
-                print sys.stderr, "**incomplete assignment!!"
+        elif op == 'assign' or op == 'queue' or op == 'unqueue':
+            ax = rs.split(' ')                  # separate any extra arguments
+            av = ax[0].lower().split('=')       # get variable names
+            if len(av) <= 1 or len(av[1]) == 0:
+                print sys.stderr, '**', av
+                print sys.stderr, "**incomplete assignment!"
                 return False
-            store.extend([ semanticCommand.Gassg , av[0].lower() , av[1] ]);
+            opn  = semanticCommand.Gassg if op == 'assign' else semanticCommand.Gque
+            if opn == semanticCommand.Gassg:
+                store.extend([ opn , av[0] , av[1] ])
+            else:
+                cnt = 0 if op == 'queue' else 1 if len(ax) <= 1 else int(ax[1])
+                store.extend([ opn , av[0] , av[1] , cnt ])
+        elif op == 'unite' or op == 'intersect' or op == 'complement':
+            av = rs.lower().split('<<')
+            if len(av) == 1 or len(av[1]) == 0:
+                print sys.stderr, "**incomplete set operation!"
+                return False
+            opn = ( semanticCommand.Gunio if op == 'unite' else
+                    semanticCommand.Gintr if op == 'intersect' else
+                    semanticCommand.Gcomp )
+            store.extend([ opn , av[0] , av[1] ])
+        elif op == 'show':
+            k = rs.find(' ')
+            vr = rs if k < 0 else rs[:k]
+            ms = '' if k < 0 else rs[k+1:]
+            store.extend([ semanticCommand.Gshow , vr , ms ])
         else:
             print >> sys.stderr, "**bad operation: " + op
             return False
@@ -333,7 +363,7 @@ def convertDefinition ( stb , inp ):
         return True
 
 #
-#   main loop for conversion
+#   main loop for compilation
 #
 
     while True:
@@ -352,6 +382,32 @@ def convertDefinition ( stb , inp ):
                 return None
 
     return store if len(backl) == 0 else None
+
+_code = { 'SP' : '\x20' , 'HT' : '\x09' , 'LF' : '\x0a' , 'CR' : '\x0d' }
+
+def _eqsplit ( s ):
+
+    """
+    divide argument string at first occurrence of an '=' or ' '
+
+    arguments:
+        s   - input string
+
+    returns:
+        an array with one or two substrings depending on success of division
+    """
+
+    k = s.find('=')
+    if k < 0:
+        k = s.find(' ')
+        if k < 0:
+            return [ s ]
+        else:
+            st = s[k+1:].upper()
+            ss = _code[st] if st in _code else ''
+            return [ s[:k] , ss ] 
+    else:
+        return [ s[:k] , s[k+1:] ]
 
 def _getargs ( rs ):
 
@@ -407,11 +463,12 @@ def showCode ( cod ):
 
 if __name__ == "__main__":
 
-    import symbolTable
     import ellyDefinitionReader
+    import symbolTable
 
     stb = symbolTable.SymbolTable()
 
+    print 'generative semantic compilation test'
     try:
         src = sys.argv[1] if len(sys.argv) > 1 else 'generativeDefinerTest.txt'
         inp = ellyDefinitionReader.EllyDefinitionReader(src)
@@ -419,9 +476,11 @@ if __name__ == "__main__":
         print >> sys.stderr, "cannot read procedure definition"
         sys.exit(1)
 
-    cod = convertDefinition(stb,inp)
+    print 'input=' , src
+
+    cod = compileDefinition(stb,inp)
     if cod == None:
-        print >> sys.stderr, "conversion error"
+        print >> sys.stderr, "semantic compilation error"
         sys.exit(1)
 
     print len(cod) , 'code elements in procedure'

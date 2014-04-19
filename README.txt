@@ -28,14 +28,15 @@ example,
 * doctor   - emulation of Weizenbaum's Doctor program.
 * chinese  - demonstration of simple translation to simplified and
              traditional characters.
+* querying - translate English questions to SQL queries
 
-It is expected that beta development will include two more example
-applications for the integration test suite: a translator of natural language
-queries into SQL and a semantic disambiguation demonstration.  These will be
-uploaded to Github upon their completion.
+It is expected that beta development will include another example
+application for the integration test suite, one demonstrating
+semantic disambiguation.  This and other applications will be uploadeds
+ to Github upon their completion.
 
 PyElly is being released under a BSD license. Be advised that this all is
-currently beta software.
+currently beta software and will be changing.
 
 Release Notes:
 
@@ -47,8 +48,16 @@ Release Notes:
                    save integration testing script doTest properly
                    eliminate inconsistencies in integration testing keys
                    improve output of unit test for generativeProcedure.py
+ 0.3  - 20apr2014  extend generative semantics to support new applications
+                   add UNITE, INTERSECT, COMPLEMENT, UNCAPITALIZE
+                   add QUEUE, UNQUEUE, SHOW
+                   replace DELETE ALL
+                   make STORE more efficient and generalize, fix bugs
+                   allow for initializing of global variables in grammar
+                   strengthen unit testing
+                   add querying application for integration testing
 
-Versions will always reflect changes in PyElly code, which may necessitate
-deleting and regenerating *.elly.bin files for correct operation. Changes to
-PyElly example application files, unit testing input files, or documentation
-will leave version numbers unchanged.
+Versions will reflect changes in PyElly code, which may require deleting and
+regenerating *.elly.bin files for correct operation. Changes to PyElly example
+application files, unit testing input files, or documentation will leave
+version numbers unchanged.

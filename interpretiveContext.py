@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# interpretiveContext.py : 16mar2014 CPM
+# interpretiveContext.py : 18apr2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -211,8 +211,8 @@ class InterpretiveContext(object):
             list of chars
         """
 
-        h = self.locls[deletion]
-        return h[-1]
+        h = self.locls[deletion]   # find deletion saver
+        return h[-1]               # get last deletion
 
     def putDeletion ( self , ds ):
 
@@ -224,8 +224,8 @@ class InterpretiveContext(object):
             ds    - deletion sequence
         """
 
-        h = self.locls[ deletion ]
-        h[-1] = ds
+        h = self.locls[ deletion ] # find deletion saver
+        h[-1] = ''.join(ds)        # save last deletion as string
 
     def clearLocalStack ( self ):
 
@@ -383,7 +383,7 @@ class InterpretiveContext(object):
     def deleteCharsInBufferTo ( self , s ):
 
         """
-        delete chars in next buffer up to a specified sequence
+        delete chars in next buffer up to first occurrence of specified sequence
 
         arguments:
             self  -
@@ -395,17 +395,47 @@ class InterpretiveContext(object):
         if k >= len(self.buffs): return
         ls = list(s)              # convert string to list for comparisons
         l = len(ls)               # char count
-        bs = self.buffs[k]        # buffer to save
-        b = list(bs)              # buffer to scan
+        bs = self.buffs[k]        # saved buffer
+        b = list(bs)              # copy of buffer for scanning
         while l <= len(b):        # enough chars to match?
             if ls == b[:l]: break # if so, check match
             b.pop(0)
-        else: return
+        else:
+            b = [ ]               # no match, empty out scan
+            l = 0                 # take zero length match
 
         nd = len(bs) - len(b) + l # must delete matched sequence also
 #       print '  delete' , nd , k
         self.putDeletion(bs[:nd]) # save deletion
         self.buffs[k] = bs[nd:]   # shorten next buffer
+
+    def deleteCharsInBufferFrom ( self , s ):
+
+        """
+        delete chars in current buffer from last occurrence of specified sequence
+
+        arguments:
+            self  -
+            s     - specified sequence as string
+        """
+
+#       print '  deleting from' , s
+        k = self.buffn
+        ls = list(s)               # convert string to list for comparisons
+        l = len(ls)                # char count
+        bs = self.buffs[k]         # saved buffer
+        b = list(bs)               # copy of buffer for scanning
+        while l <= len(b):         # enough chars to match?
+            if ls == b[-l:]: break # if so, check match
+            b.pop()
+        else:
+            b = [ ]                # no match, empty out scan
+            l = 0                  # take zero length match
+
+        nd = len(bs) - len(b) + l  # must delete matched sequence also
+#       print '  delete' , nd , k
+        self.putDeletion(bs[-nd:]) # save deletion
+        self.buffs[k] = bs[:-nd]   # shorten current buffer
 
     def insertCharsIntoBuffer ( self , s , dir=0 ):
 
@@ -666,15 +696,11 @@ class InterpretiveContext(object):
 
         arguments:
             self
-
-        returns:
-            'Status'
         """
 
         print >> sys.stderr, 'stk=' + str(len(self.lbstk)) ,
-        print >> sys.stderr, 'buf=' + str(len(self.buffs[self.buffn])) ,
-        print >> sys.stderr, ' (' + str(len(self.buffs)) + ')'
-        return 'Status'
+        print >> sys.stderr, 'buf=' + str(len(self.buffs)) ,
+        print >> sys.stderr, ' (' +  str(len(self.buffs[self.buffn])) + ' chars)'
 
     def echoTokensToOutput ( self ):
 

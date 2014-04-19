@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# grammarTable.py : 05mar2014 CPM
+# grammarTable.py : 05apr2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -89,6 +89,7 @@ class GrammarTable(object):
     data structures for an Eliza grammar
 
     attributes:
+        initzn - initialized globals
         dctn   - builtin dictionary
         pndx   - standalone named procedures
         extens - 1-branch rules
@@ -117,6 +118,7 @@ class GrammarTable(object):
             defn  - EllyDefinitionReader grammar definition
         """
 
+        self.initzn = [ ] # preset global variables
         self.proc = { }   # named semantic procedures
         self.dctn = { }   # builtin words and semantics
         self.pndx = { }   # standalone procedures
@@ -201,7 +203,7 @@ class GrammarTable(object):
             genr = [ ]  # for generative semantics
             p = cogn    # start with cognitive
 
-            while True: # parse semantics
+            while c != 'i':          # parse semantics
                 l = defn.readline()
                 lno += 1
                 if len(l) == 0:
@@ -260,6 +262,14 @@ class GrammarTable(object):
                 k = line.find(' ')
                 if k > 0: line = line[:k]
                 self.pndx[line] = compile(syms,'g',genr)    # compile generative procedure
+            elif c == 'i':
+                k = line.find('=')
+                if k <= 0:
+                    print >> sys.stderr, 'FAIL: bad initialization:' , line
+                    break
+                vr = line[:k].strip().lower()
+                va = line[k+1:].lstrip()
+                self.initzn.append([ vr , va ])             # add initialization
             else:
                 print >> sys.stderr, 'FAIL unknown rule type=' , c + ':' , '[' + line + ']'
                 break
