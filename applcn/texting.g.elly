@@ -148,7 +148,7 @@ _
   end
   delete 1
   shift 2
-  delete all
+  delete <
   insert < xm
   merge
 __
@@ -171,7 +171,7 @@ _
   shift 2
   delete 2
   shift 2
-  delete all
+  delete <
   merge
 __
 g:unit->num unit
