@@ -94,6 +94,7 @@ _
   QUEUE x=prev
   QUEUE x=plus
   QUEUE x=elem
+  SHOW equate joining 0
   APPEND |
   # this next statement is database dependent
   # and must be adjusted for a particular target
@@ -105,6 +106,7 @@ _
   QUEUE z=period
   QUEUE z=y
   QUEUE z=equate
+  SHOW equate joining 1
   DELETE FROM |
   STORE y -1
   QUEUE z=id
@@ -135,7 +137,6 @@ _
     ASSIGN prev=elem
     (parsing)
     END
-
   UNITE wheres<<joint
 __
 
@@ -147,8 +148,13 @@ _
   GET fs gfrms
   IF wheres=
     IF ~selects=
-      GET wheres gwhrs
-      UNITE froms<<fs
+      IF froms=
+        GET wheres gwhrs
+        UNITE froms<<fs
+      ELIF wheres=
+        GET wheres gwhrs
+        UNITE froms<<fs
+        END
     ELIF ~froms=
       GET wheres gwhrs
       GET selects gsels
@@ -220,6 +226,7 @@ _
       VAR z=
       QUEUE z=f
       QUEUE z=equate
+      SHOW equate 
       QUEUE z=v
       UNITE new<<z
       END
@@ -380,11 +387,21 @@ _
   (joiner)
 
   IF ~wheres=
-    APPEND where
-    SPACE
-
-    INSERT < wheres
-    LINEFEED
+    VAR x=
+    VAR y=
+    VAR whs=
+    ASSIGN whs=wheres
+    UNQUEUE x=whs
+    IF x=-
+      UNQUEUE y=whs
+      ASSIGN wheres=whs
+      END
+    IF ~wheres=
+      APPEND where
+      SPACE
+      INSERT < wheres
+      LINEFEED
+      END
     END
 
   MERGE
@@ -423,6 +440,16 @@ _
   BACK
   (define)
   MERGE
+__
+
+p:equate
+_
+  VAR equ SP
+  VAR eq==
+  QUEUE eq=equ
+  QUEUE equ=eq
+  ASSIGN equate=equ
+  SHOW equate sent->ss
 __
 
 g:lit->lit sufx[%s]
@@ -487,6 +514,7 @@ _
 __
 g:func->dem func
 _
+  SET refr=T
   RIGHT
 __
 g:verb->verb[|-fld] to
@@ -499,11 +527,11 @@ _
 __
 g:one->dem one
 _
-  RETURN
+  SET refr=T
 __
 g:one->one dem
 _
-  RETURN
+  SET refr=T
 __
 g:func->how many
 _
@@ -567,6 +595,7 @@ p:nparest
 _
   VAR f=
   VAR x=
+  PEEK x <
   IF ~x SP
     INSERT equate >
     END
@@ -634,11 +663,12 @@ _
 __
 g:np[:*r,def]->dem np[:*r]
 _
+  SET refr=T
   RIGHT
 __
 g:np[:def]->dem
 _
-  RETURN
+  SET refr=T
 __
 g:np[:*r]->poss np[:*r,-def]
 __
@@ -770,6 +800,39 @@ __
 g:ss->whb np
 __
 g:ss->func np
+_
+  VAR fne=
+  (altfun)
+  QUEUE selects=fne
+__
+g:np->qntf np
+_
+  RIGHT
+  IF wheres=
+    VAR hy=-
+    QUEUE wheres=hy
+    END 
+__
+p:altfun
+_
+  SPLIT
+  LEFT
+  BACK
+  DELETE <
+  STORE fne
+  VAR x=(
+  QUEUE fne=x
+  VAR selects=
+  RIGHT
+  IF selects=
+    SET x=*
+    QUEUE fne=x
+  ELSE
+    QUEUE fne=selects
+    END
+  SET x=)
+  QUEUE fne=x
+  MERGE
 __
 g:ss->func pred
 _
@@ -798,6 +861,10 @@ __
 g:ss->ss[_sp] ss[_-sp]
 __
 g:ss[_sp]->conj[.-sub] ss[_-sp]
+_
+  VAR refr=
+  LEFT
+  RIGHT
 __
 g:ss[_sp]->auxnp conj[.-sub]
 __
@@ -810,14 +877,17 @@ __
 g:ss->pred
 _
   SET refr=T
+  LEFT
 __
 g:ss->ofp
 _
   SET refr=T
+  LEFT
 __
 g:ss->qnp
 _
   SET refr=T
+  LEFT
 __
 g:ss->np
 __
@@ -830,10 +900,8 @@ _
   VAR wheres=
   VAR froms=
   VAR refr=
-  VAR equate SP
-  VAR eq==
-  QUEUE eq=equate
-  QUEUE equate=eq
+  VAR equate=
+  (equate)
   LEFT
   (toSQL)
   APPEND ;
@@ -844,6 +912,8 @@ g:sent->func
 _
   VAR selects=
   VAR fns=
+  VAR equate=
+  (equate)
   LEFT
   INSERT < fns
   APPEND (
@@ -1016,9 +1086,9 @@ d:maximum<-func
 _
   APPEND max
 __
-d:all<-func
-_
-  RETURN
+d:all<-qntf
+__
+d:some<-qntf
 __
 d:while<-conj[.sub]
 _
@@ -1118,11 +1188,11 @@ _
 __
 d:this<-dem
 _
-  SET refr=T
+  RETURN
 __
 d:their<-dem
 _
-  SET refr=T
+  RETURN
 __
 d:the<-det[:def]
 _
@@ -1142,11 +1212,11 @@ _
 __
 d:its<-dem
 _
-  SET refr=T
+  RETURN
 __
 d:it<-dem
 _
-  SET refr=T
+  RETURN
 __
 d:any<-one
 _
