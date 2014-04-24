@@ -48,7 +48,7 @@ Release Notes:
                    save integration testing script doTest properly
                    eliminate inconsistencies in integration testing keys
                    improve output of unit test for generativeProcedure.py
- 0.3  - 20apr2014  extend generative semantics to support new applications
+ 0.3  - 24apr2014  extend generative semantics to support new applications
                    add UNITE, INTERSECT, COMPLEMENT, UNCAPITALIZE
                    add QUEUE, UNQUEUE, SHOW
                    replace DELETE ALL
