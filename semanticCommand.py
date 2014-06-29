@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# semanticCommand.py : 18apr2014 CPM
+# semanticCommand.py : 02jun2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -40,7 +40,7 @@ Crhr  =  2  #         right
 Csetf =  3  # set features
 Clftf =  4  # test left descendant features
 Crhtf =  5  #      right
-Csetc =  6  # set concepts
+Csetc =  6  # set concept
 Clftc =  7  # test left descendant concepts
 Crhtc =  8  #      right
 Cbthc =  9  #      both

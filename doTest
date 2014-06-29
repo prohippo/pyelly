@@ -1,5 +1,5 @@
 #!/bin/bash
-# doTest - run integration tests
+# doTest - run PyElly integration tests
 s=${1:-test}
 echo system= ${s}
 if [ ${s} == 'doctor'   ]; then x='-noLang'; fi
