@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# grammarTable.py : 05apr2014 CPM
+# grammarTable.py : 27jun2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -32,6 +32,7 @@
 define syntax and semantics of language to read and process
 """
 
+import symbolTable
 import syntaxSpecification
 import cognitiveProcedure
 import generativeProcedure
@@ -65,9 +66,6 @@ def compile ( syms, clss , code ):
     else:
         print >> sys.stderr , 'bad semantic procedure class'
         return None
-
-NMAX = 64  # maximum number of syntactic types
-FMAX = 16  # maximum number of feature names per set
 
 def isNewRule ( s ):
 
@@ -124,11 +122,11 @@ class GrammarTable(object):
         self.pndx = { }   # standalone procedures
         self.extens = [ ] # 1-branch rule
         self.splits = [ ] # 2-branch rule
-        for i in range(NMAX):
+        for i in range(symbolTable.NMAX):
             self.extens.append([ ]) # list of 1-branch rules for each syntax type
             self.splits.append([ ]) # list of 2-branch rules for each syntax type`
 
-        self.mat = derivabilityMatrix.DerivabilityMatrix(NMAX)
+        self.mat = derivabilityMatrix.DerivabilityMatrix(symbolTable.NMAX)
 
         # coding of predefined syntax types
 
@@ -139,7 +137,7 @@ class GrammarTable(object):
 
         # special rule for ... type going to null
 
-        fets = ellyBits.EllyBits(FMAX)
+        fets = ellyBits.EllyBits(symbolTable.FMAX)
         self.arbr = grammarRule.ExtendingRule(self.XXX,fets)
         self.arbr.cogs = None
         self.arbr.gens = compile(syms,'g',[ ])
@@ -301,7 +299,7 @@ class GrammarTable(object):
         st = syntaxSpecification.SyntaxSpecification(syms,t)
         nt = st.catg
         ft = st.synf
-        if ns >= NMAX or nt >= NMAX:
+        if ns >= symbolTable.NMAX or nt >= symbolTable.NMAX:
             print >> sys.stderr , s , '->' , t
             print >> sys.stderr , 'too many syntactic categories'
             print >> sys.stderr , ' ns id=' , ns , 'nt id=' , nt
@@ -344,7 +342,7 @@ class GrammarTable(object):
         su = syntaxSpecification.SyntaxSpecification(syms,u)
         nu = su.catg
         fu = su.synf
-        if ns >= NMAX or nt >= NMAX or nu >= NMAX:
+        if ns >= symbolTable.NMAX or nt >= symbolTable.NMAX or nu >= symbolTable.NMAX:
             print >> sys.stderr , s , '->' , t , u
             print >> sys.stderr , 'too many syntactic categories'
             print >> sys.stderr , ' ns id=' , ns , 'nt id=' , nt , 'nu id=' , nu

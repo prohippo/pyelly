@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBottomUp.py : 12qpr2014 CPM
+# parseTreeBottomUp.py : 05jun2014 CPM
 # -----------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -36,7 +36,7 @@ import ellyBits
 import ellyDefinitionReader
 import ellyConfiguration
 import grammarRule
-import grammarTable
+import symbolTable
 import cognitiveProcedure
 import generativeProcedure
 import parseTreeBase
@@ -91,7 +91,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
         super(ParseTreeBottomUp,self).__init__()
 #       print "back in ParseTreeBottomUp"
         self.nul  = (len(gtb.splits[gtb.XXX]) > 0)
-        self._zbs = ellyBits.EllyBits(grammarTable.FMAX)
+        self._zbs = ellyBits.EllyBits(symbolTable.FMAX)
 
     def addGoalPositions ( self , n=10 ):
 
@@ -547,8 +547,8 @@ if __name__ == '__main__':
     print tree
     print dir(tree)
 
-    fbs = ellyBits.EllyBits(grammarTable.FMAX)
-    gbs = ellyBits.EllyBits(grammarTable.NMAX)
+    fbs = ellyBits.EllyBits(symbolTable.FMAX)
+    gbs = ellyBits.EllyBits(symbolTable.NMAX)
     gbs.complement()    # all goal bits turned on
 
     tree.gbits[0] = gbs # set all goals in first position

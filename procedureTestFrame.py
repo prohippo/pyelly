@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# procedureTestFrame.py : 01apr2014 CPM
+# procedureTestFrame.py : 05jun2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -37,7 +37,6 @@ import ellyToken
 import ellyDefinitionReader
 import parseTreeBase
 import symbolTable
-import grammarTable
 import grammarRule
 import generativeProcedure
 import cognitiveProcedure
@@ -81,7 +80,7 @@ class ProcedureTestFrame(object):
         x = ctx.syms.getSyntaxTypeIndexNumber('x')      # for consistency, define two
         y = ctx.syms.getSyntaxTypeIndexNumber('y')      # syntactic categories for rules
 
-        fbs = ellyBits.EllyBits(grammarTable.FMAX)      # zero feature bits
+        fbs = ellyBits.EllyBits(symbolTable.FMAX)       # zero feature bits
 
         exL = grammarRule.ExtendingRule(x,fbs)  # dummy rules as a place for
         exR = grammarRule.ExtendingRule(x,fbs)  # attaching semantic procedures
