@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# grammarRule.py : 16dec2013 CPM
+# grammarRule.py : 02jun2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -45,6 +45,7 @@ class BasicRule(object):
         styp  - syntactic type produced by rule
         sfet  - syntactic features
         bias  - for rule ordering in ambiguity handling
+        nmrg  - to indicate degree of merging by rule
         seqn  - ID for rule
     """
 
@@ -103,6 +104,7 @@ class ExtendingRule(BasicRule):
 
         super(ExtendingRule,self).__init__(typ,fet)
         self.utfet = featureSpecification.FeatureSpecification(None)
+        self.nmrg = 1
 
     def __unicode__ ( self ):
 
@@ -144,6 +146,7 @@ class SplittingRule(BasicRule):
         self.ltfet = featureSpecification.FeatureSpecification(None)
         self.rtfet = featureSpecification.FeatureSpecification(None)
         self.rtyp  = -1
+        self.nmrg = 2
  
     def __unicode__ ( self ):
 

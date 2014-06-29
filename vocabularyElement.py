@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyElement.py : 16dec2013 CPM
+# vocabularyElement.py : 27jun2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -29,7 +29,7 @@
 # -----------------------------------------------------------------------------
 
 """
-vocabulary element from external table lookup
+vocabulary element from external BdB table lookup
 """
 
 import ellyBits
@@ -37,6 +37,7 @@ import ellyDefinitionReader
 import generativeProcedure
 import generativeDefiner
 import unicodedata
+import sys
 
 gens = [ '*' ]      # define generative procedure for translation
 geno = [ 'obtain' ] # default generative procedure
@@ -55,6 +56,7 @@ class VocabularyElement(object):
         syf   - syntactic flags
         smf   - semantic  flags
         bia   - initial plausibility score
+        con   - associated concept
         gen   - generative procedure
 
         _nt   - number of translations
@@ -64,7 +66,7 @@ class VocabularyElement(object):
     def __init__ ( self , tup ):
 
         """
-        initialization
+        initialization of vocabulary object from BdB record
 
         arguments:
             self  -
@@ -72,16 +74,16 @@ class VocabularyElement(object):
         """
 
         rec = tup[1].decode('utf8')      # what BdB found for search key
-#       print 'voc rec=' , rec
-        r = rec.split(':')               # find rest of term in BdB results
+#       print >> sys.stderr , 'voc rec=' , rec
+        r = rec.split(':')               # split off term in BdB results
         if len(r) <= 1: return           # the ':' is mandatory
         d = r[1].strip().split(' ')      # definition is right of ':'
-#       print 'VEntry: define as' , d
+#       print >> sys.stderr , 'VEntry: define as' , d
         if len(d) <  4: return           # it should have at least 4 parts
         ur = r[0].strip()                # term left of ':'
         self.chs = list(ur)              # save it
         self.cat = int(d.pop(0))         # syntactic category
-#       print '    full term=' , u''.join(self.chs)
+#       print >> sys.stderr , '    full term=' , u''.join(self.chs)
         sy = d.pop(0)
         nb = len(sy)*4
         self.syf = ellyBits.EllyBits(nb) # allocate bits
@@ -90,11 +92,15 @@ class VocabularyElement(object):
         nb = len(sm)*4
         self.smf = ellyBits.EllyBits(nb) # allocate bits
         self.smf.reinit(sm)              # set semantic  features
-        self.bia = int(d.pop(0))         # save plausibility
+        self.bia = int(d.pop(0))         # save initial plausibility
+        if len(d) > 0:                   # any concept?
+            self.con = d.pop(0)          # if so, save it
+        else:
+            self.con = '-'
 
-#       print '    translation=' , d
+#       print >> sys.stderr , '    translation=' , d
 
-        if len(d) == 0:        # no definition?
+        if len(d) == 0:        # no further definition?
             self.gen = obtnp   # if so, then use default procedure
             self._nt = 0       #   i.e. no translation
         elif d[0][0] == '=':   # simple translation?
@@ -102,11 +108,11 @@ class VocabularyElement(object):
             input = ellyDefinitionReader.EllyDefinitionReader(pls)
             self.gen = generativeProcedure.GenerativeProcedure(None,input)
             self._nt = 1
-        elif d[0][0] == '(':   # run predefined procedure
+        elif d[0][0] == '(':   # get predefined procedure
             input = ellyDefinitionReader.EllyDefinitionReader([ d[0] ])
             self.gen = generativeProcedure.GenerativeProcedure(None,input)
             self._nt = 0
-        else:                  # otherwise, translation to be selected
+        else:                  # otherwise, set for selection of translation
             cm = 'pick LANG (' # construct instruction to select
             for p in d:
                 cm += p + '#'  # build selection clauses
@@ -138,6 +144,7 @@ class VocabularyElement(object):
         df  = u'cat=' + unicode(self.cat) + u' '
         df += self.syf.hexadecimal() + u' ' + self.smf.hexadecimal() + u' '
         df += u'plaus=' + unicode(self.bia) + u' , '
+        df += u'concp=' + self.con
         df += unicode(self._nt) + u' TRANSLATION'
         if self._nt != 1: df += u's'
 
