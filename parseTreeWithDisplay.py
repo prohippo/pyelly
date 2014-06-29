@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeWithDisplay.py : 24dec2013 CPM
+# parseTreeWithDisplay.py : 05jun2013 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -283,9 +283,14 @@ if __name__ == '__main__':
     import grammarTable
     import dumpEllyGrammar
 
+    class Wtg(object):  # dummy conceptual weight
+        def relateConceptPair ( self , cna , cnb ):
+            return 0
+
     class Ctx(object):  # dummy interpretive context
         def __init__ ( self ):
             self.tokns = [ ]
+            self.wghtg = Wtg()
 
     name = sys.argv[1] if len(sys.argv) > 1 else 'test'
     deep = int(sys.argv[2]) if len(sys.argv) > 2 else 100
@@ -304,7 +309,7 @@ if __name__ == '__main__':
     print dir(tree)
 
     cat = stb.getSyntaxTypeIndexNumber('num')
-    fbs = ellyBits.EllyBits(grammarTable.FMAX)
+    fbs = ellyBits.EllyBits(symbolTable.FMAX)
     tree.addLiteralPhrase(cat,fbs)
     tree.digest()
     tks.append(ellyToken.EllyToken('66'))

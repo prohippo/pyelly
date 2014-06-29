@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBase.py : 20dec2013 CPM
+# parseTreeBase.py : 05jun2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -33,7 +33,7 @@ support for syntax analysis with preallocated, extensible arrays of data element
 """
 
 import ellyBits
-import grammarTable
+import symbolTable
 
 NOMINAL = 256 # default starting allocation for phrases and goals
 
@@ -58,16 +58,16 @@ class ParseTreeBase(object):
         attributes:
             rule  - generating rule
             posn  - starting token position in sentence
-            lftd  - descendant phrase index
-            rhtd  - descendant phrase index
+            lftd  - descendant phrase
+            rhtd  - descendant phrase
             typx  - syntax category
             usen  - usage flag for parser
             synf  - syntax features
             semf  - semantic features
+            cncp  - semantic concept
             llnk  - listing link
             alnk  - ambiguity link
             bias  - plausibility scoring for ambiguity ranking
-            cons  - identified concepts
             lens  - token length
             seqn  - sequence ID for debugging
             dump  - flag for tree dumping
@@ -80,8 +80,8 @@ class ParseTreeBase(object):
                 self
             """
 
-            self.synf = ellyBits.EllyBits(grammarTable.FMAX)
-            self.semf = ellyBits.EllyBits(grammarTable.FMAX)
+            self.synf = ellyBits.EllyBits(symbolTable.FMAX)
+            self.semf = ellyBits.EllyBits(symbolTable.FMAX)
             self.seqn = -1
             self._reset()
 
@@ -94,9 +94,11 @@ class ParseTreeBase(object):
                 summary string
             """
 
+            cn = '' if self.cncp == '-' else '/' + self.cncp
+
             return ( 'phrase ' + unicode(self.seqn) + ' @' + unicode(self.posn)
                      + ': type=' + unicode(self.typx) + ' [' + self.synf.hexadecimal() + '] :'
-                     + unicode(self.bias) + ' use=' + str(self.usen) )
+                     + unicode(self.bias) + cn + ' use=' + str(self.usen) )
 
         def __str__ ( self ):
             """
@@ -124,10 +126,10 @@ class ParseTreeBase(object):
             self.usen = 0
             self.synf.clear()
             self.semf.clear()
+            self.cncp = '-'
             self.llnk = None
             self.alnk = None
             self.bias = 0
-            self.cons = [ ]
             self.lens = 0
             self.dump = True
 
@@ -172,7 +174,7 @@ class ParseTreeBase(object):
             self.lftd, othr.lftd = othr.lftd, self.lftd
             self.rhtd, othr.rhtd = othr.rhtd, self.rhtd
             self.bias, othr.bias = othr.bias, self.bias
-            self.cons, othr.cons = othr.cons, self.cons
+            self.cncp, othr.cncp = othr.cncp, self.cncp
             self.seqn, othr.seqn = othr.seqn, self.seqn
             if self.lftd == self:
                 self.lftd = None
@@ -340,6 +342,7 @@ if __name__ == '__main__':
     tree = ParseTreeBase()
     print tree
     print dir(tree)
+    print ""
 
     phs = [ ]
 
@@ -357,6 +360,7 @@ if __name__ == '__main__':
     r = R(103,13)
 
     ph = tree.makePhrase(2,R(104,14))
+    ph.cncp = 'xccx'
     print ph
     print 'phlim =',tree.phlim
     print 'lastph=',tree.lastph

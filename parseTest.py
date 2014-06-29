@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTest.py : 09nov2013 CPM
+# parseTest.py : 05jun2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -34,13 +34,12 @@ support for unit testing only
 
 import ellyBits
 import ellyBuffer
-import grammarTable
 import symbolTable
 
 class Phrase(object):          # dummy Elly phrase node for testing
     def __init__ ( self ):
         self.catg = 0
-        self.synf = ellyBits.EllyBits(grammarTable.FMAX)
+        self.synf = ellyBits.EllyBits(symbolTable.FMAX)
         self.lens = 0
     def __str__ ( self ):
        return ( 'phrase catg=' + str(self.catg) +
@@ -68,4 +67,9 @@ class Context(object):         # dummy Elly interpretive context for testing
         syms.getSyntaxTypeIndexNumber('unkn') #
         syms.getSyntaxTypeIndexNumber('num')  #
         syms.getSyntaxTypeIndexNumber('ssn')  #
-        self.syms = syms
+        self.syms  = syms
+        self.wghtg = Weighting()
+
+class Weighting(object):       # dummy elly conceptual weighting
+    def relateConceptPair ( self , cna , cnb ):
+        return 0
