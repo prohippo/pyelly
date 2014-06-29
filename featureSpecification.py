@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# featureSpecification.py : 16dec2013 CPM
+# featureSpecification.py : 05jun2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -33,7 +33,9 @@ handling of specifications of both syntactic and semantic features
 """
 
 import ellyBits
-import grammarTable
+import symbolTable
+
+LAST = symbolTable.FMAX - 1  # for reserved bit
 
 def scan ( str ):
 
@@ -72,25 +74,30 @@ class FeatureSpecification(object):
             self     -
             syms     - symbol table
             fets     - string representation of feature set
-            semantic - flag semantic feature
+            semantic - flag for semantic features
         """
 
         segm = fets.lower() if fets != None else '[?]'
-#       print "features=",segm
+#       print "features=",segm,"semantic=",semantic
         if segm == None or len(segm) < 4 or segm[0] != '[' or segm[-1] != ']':
-            self.id = ''                                         # this is unknown
-            self.positive = ellyBits.EllyBits(grammarTable.FMAX) # set to zeros
-            self.negative = ellyBits.EllyBits(grammarTable.FMAX) #
+            self.id = ''                                        # this is unknown
+            self.positive = ellyBits.EllyBits(symbolTable.FMAX) # set to zeros
+            self.negative = ellyBits.EllyBits(symbolTable.FMAX) #
         else:
             self.id = segm[1]
 #           print "id=",self.id
-            if not self.id in syms.fsindx:
+            fsindx = syms.sxindx if not semantic else syms.smindx
+            if not self.id in fsindx:
+#               print 'new feature set'
                 d = { }                  # new dictionary of feature names
                 if not semantic:
                     d['*r'] = 0          # always define '*r' as syntactic feature
                     d['*right'] = 0      # equivalent to '*r'
-                syms.fsindx[self.id] = d #   and save
-            self.positive , self.negative = syms.getFeatureSet(segm[1:-1])
+                    d['*l'] = 1          # always define '*l'
+                    d['*left']  = 1      # equivalent to '*l'
+                    d['*unique'] = LAST  # always define
+                fsindx[self.id] = d      #   and save
+            self.positive , self.negative = syms.getFeatureSet(segm[1:-1] , semantic)
 
     def __str__ ( self ):
 
@@ -140,19 +147,26 @@ class FeatureSpecification(object):
 
 if __name__ == '__main__':
 
-    import symbolTable
-
     stb = symbolTable.SymbolTable()
     s = "[!a,-b,c,+d,-e]"
-    fs = FeatureSpecification(stb,s)            # syntactic features
+    fs = FeatureSpecification(stb,s)       # syntactic features
+    print 'fs=' , fs , 'for' , s
+    fs = FeatureSpecification(stb,s,True)  # semantic  features
     print 'fs=' , fs , 'for' , s
     t = "[:x,y]"
-    ft = FeatureSpecification(stb,t,'semantic') # semantic features
+    ft = FeatureSpecification(stb,t,True)  # semantic  features
     print 'ft=' , ft , 'for' , t
-    ids = stb.fsindx.keys()
-    print 'feature sets'
+    ft = FeatureSpecification(stb,t,False) # syntactic features
+    print 'ft=' , ft , 'for' , t
+    print '----'
+    ids = stb.sxindx.keys()
+    print len(ids) , 'syntactic feature sets'
     for id in ids:
-        print id , '=' , stb.fsindx[id]
+        print id , '=' , stb.sxindx[id]
+    ids = stb.smindx.keys()
+    print len(ids) , 'semantic  feature sets'
+    for id in ids:
+        print id , '=' , stb.smindx[id]
     print '----'
     st = '[^ab,cd,ef] ,'
     n = scan(st)

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# symbolTable.py : 04oct2013 CPM
+# symbolTable.py : 05jun2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -36,7 +36,10 @@ plus associated lookup methods
 """
 
 import ellyBits
-import grammarTable
+import sys
+
+NMAX = 64  # maximum number of syntactic type names
+FMAX = 16  # maximum number of feature names per set
 
 class SymbolTable(object):
 
@@ -46,7 +49,8 @@ class SymbolTable(object):
     attributes:
         ntindx - syntactic type lookup
         ntname - syntactic type names
-        fsindx - syntactic and semantic feature set names
+        sxindx - syntactic feature set names
+        smindx - semantic  feature set names
     """
 
     def __init__ ( self ):
@@ -60,9 +64,10 @@ class SymbolTable(object):
 
         self.ntindx = { } # start with everything empty
         self.ntname = [ ] #
-        self.fsindx = { } #
+        self.sxindx = { } #
+        self.smindx = { } #
 
-    def getFeatureSet ( self , fs ):
+    def getFeatureSet ( self , fs , ty=False ):
 
         """
         get feature index associated with given name in given set
@@ -70,18 +75,20 @@ class SymbolTable(object):
         arguments:
             self  -
             fs    - feature set without enclosing brackets
+            ty    - False=syntactic, True=semantic
 
         returns:
             list of EllyBits - [ positive , negative ]
         """
 
+        fsx = self.sxindx if not ty else self.smindx
         fid = fs[0]                # feature set ID
         fnm = fs[1:].split(',')    # feature names
-        if not fid in self.fsindx: # known ID?
-            self.fsindx[fid] = { } # if not, make it known
-        h = self.fsindx[fid]       # for hashing of feature names
-        bp = ellyBits.EllyBits(grammarTable.FMAX)
-        bn = ellyBits.EllyBits(grammarTable.FMAX)
+        if not fid in fsx:         # known ID?
+            fsx[fid] = { }         # if not, make it known
+        h = fsx[fid]               # for hashing of feature names
+        bp = ellyBits.EllyBits(FMAX)
+        bn = ellyBits.EllyBits(FMAX)
         for nm in fnm:
             nm = nm.strip()
             if nm[0] == '-':       # negative feature?
@@ -95,6 +102,12 @@ class SymbolTable(object):
 
             if not nm in h:        # new name in feature set?
                 k = len(h)         # if so, define it
+                l = FMAX           # limit for feature index
+                if not ty:         # adjustment for extra predefined 
+                    k -= 3         # syntactic feature names *L and *R
+                    l -= 1         # and for *UNIQUE
+                if k == l:         # overflow check
+                   print >> sys.stderr, 'too many features in' , '[' + fs + ']' 
                 h[nm] = k
 
             b.set(h[nm])           # set bit for feature
