@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# conceptualHierarchy.py : 17sep2013 CPM
+# conceptualHierarchy.py : 25jun2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -28,8 +28,11 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 # -----------------------------------------------------------------------------
 
+import sys
+
 """
-modeling 'IS A' relationships between semantic concepts used for disambiguation
+modeling hierarchical relationships between semantic concepts used for
+disambiguation, mostly IS_A links
 """
 
 TOP = '^'  # mandatory name of top concept in hierarchy
@@ -40,15 +43,35 @@ class Concept:
     individual concept node in hierarchy
 
     attributes:
-        name   - unique concept name
-        level  - 0 for top of hierarchy and increasing by 1 for each step down
-        parent - next higher node in hierarchy
+        name     - unique concept name
+        level    - 0 for top of hierarchy and increasing by 1 for each step down
+        parent   - next higher node in hierarchy
+        children - inverse for parent
     """
 
     def __init__ ( self , name ):
+        """
+        initialization
+
+        arguments:
+            self  -
+            name  - unique concept identifier
+        """
         self.name = name
-        self.level = -1    # initially undefined
-        self.parent = None #
+        self.level = -1     # initially undefined
+        self.parent = None  #
+        self.children = [ ] #
+
+    def __str__ ( self ):
+        """
+        string representation
+
+        arguments:
+            self  -
+        returns:
+            short string representation
+        """
+        return self.name + '<' + self.parent.name + ': with ' + str(len(self.children)) + ' children'
 
 class ConceptualHierarchy:
 
@@ -73,6 +96,7 @@ class ConceptualHierarchy:
             concept
         """
 
+        name = name.strip()
         if name in self.index: return self.index[name]
         c = Concept(name)
         self.index[name] = c
@@ -89,15 +113,12 @@ class ConceptualHierarchy:
         """
 
         top = Concept(TOP)           # define the top of hierarchy
-        top.level = 0                #
+        top.level = -1               #
         self.index = { TOP : top }   #
 
         self.inters = None           # no intersection yet
 
         if defn == None: return      # make empty tree on no definition
-
-        bkl = { }                    # for saving down links temporarily
-        bkl[top] = [ ]               # to allow automatic level assignments
 
         print "READING INPUT"
 
@@ -106,14 +127,14 @@ class ConceptualHierarchy:
             if len(l) == 0: break
             ls = l.split('>')        # get pair of concepts in link
             if len(ls) < 2: continue
-            cpa = self.getConcept(ls[0].strip()) # parent in link
-            cch = self.getConcept(ls[1].strip()) # child
-            cch.parent = cpa         # save upward link
-            if not cpa in bkl:       # set up to record down links
-                bkl[cpa] = [ ]
-            if not cch in bkl:       #
-                bkl[cch] = [ ]
-            bkl[cpa].append(cch)     # save downward link
+            cpa = self.getConcept(ls[0]) # parent in link
+            cch = self.getConcept(ls[1]) # child
+            if cch.parent != None:
+                print >> sys.stderr , 'child has two parents: ' + l
+                cch.parent = None
+            else:
+                cch.parent = cpa         # save upward link
+                cpa.children.append(cch) # save downward link
 
         print "CHECKING COMPLETENESS"
 
@@ -122,10 +143,15 @@ class ConceptualHierarchy:
             if cn != TOP:
                 c = self.index[cn]
                 if c.parent == None:
+                    print >> sys.stderr , 'missing parent:' , cn
                     self.index = { } # return with no tree if any node lacks an up link
                     return
 
-        print len(self.index),"in index,",len(bkl),"with backlinks"
+        print len(self.index),"in full index"
+
+        if len(top.children) == 0:
+            print >> sys.stderr , 'no connection to top of hierarchy'
+            return
 
         print "ASSIGNING LEVELS"
 
@@ -137,12 +163,16 @@ class ConceptualHierarchy:
             cs = stk[-1]             # list of nodes left to traverse at current level
             if len(cs) == 0:
                 stk.pop()            # if empty, go back up one level
+#               print >> sys.stderr , 'pop:' , len(stk)
             else:
+#               print >> sys.stderr , 'next node:' , len(cs) , c
                 c = cs.pop()         # get next concept node at current level
                 if c.level >= 0:     # visited already?
+                    print >> sys.stderr , 'bad tree:' , str(c) ,
+                    print >> sys.stderr , 'level=' , c.level , '/' , len(stk)
                     self.index = { } # if so, error because of loop in tree
-                c.level = len(stk)   # assign next concet a level number
-                stk.append(bkl[c])   # go down a level
+                c.level = len(stk)-1 # assign next concept a level number
+                stk.append(c.children)  # go down a level
 
         print "DONE"
 
@@ -247,14 +277,18 @@ if __name__ == "__main__":
         "A1X2S3>A1X2S3O4"
     ]
 
-    inp = ellyDefinitionReader.EllyDefinitionReader(data)
+    file = sys.argv[1] if len(sys.argv) > 1 else data
+    inp = ellyDefinitionReader.EllyDefinitionReader(file)
     if inp.error != None:
+        print >> sys.stderr , 'file' , file , 'not found'
         sys.exit(1)
-    print inp.linecount(),"lines"
+    elif file != data:
+        print >> sys.stderr , 'reading from file=' , file
+    print inp.linecount(),"lines read"
     tre = ConceptualHierarchy(inp)
     if tre.isEmpty():
         print "tree building failed"
-    else:
+    elif file == data:
         kyl = tre.index.keys()
         for ky in kyl:
             if ky == '^': continue
