@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# conceptualWeighting.py : 28mar2013 CPM
+# conceptualWeighting.py : 27jun2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -129,6 +129,7 @@ class ConceptualWeighting(object):
         returns integer relatedness score
         """
         
+        if cna == '-' or cnb == '-': return 0
         rel = hier.relatedness(cna,cnb)
         self.noteConcept(hier.intersection())
         return rel
