@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 21mar2014 CPM
+# vocabularyTable.py : 28jun2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -29,27 +29,27 @@
 # -----------------------------------------------------------------------------
 
 """
-Elly vocabulary database support using open-source BDB package
+Elly vocabulary database support using open-source BdB package
 """
 
 import os
 import sys
 
-try:  # get Berkeley DB support
+try:  # get Python support for Berkeley DB
     from bsddb3 import db
 except:
     print >> sys.stderr , 'bsddb3 unavailable'
     db = None
 
 ##
-## The Berkeley DataBase (BDB) package and the bsddb3 module are both required
+## The Berkeley DataBase (BdB) package and the bsddb3 module are both required
 ## here, but are not in the standard Python distribution. You must download and
 ## install both BDB and bsddb3 yourself before you can run any Elly vocabulary
 ## database modules. How to do this will vary according to your operating system
 ## and your particular release of Python.
 ##
 ## This code was developed with BSD 5.3.1 and bsddb3 6.0.0 with Python 2.7.5
-## under Mac OS X 10.8.5 (Mountain Lion).
+## under Mac OS X 10.8.5 (Mountain Lion) and 10.9.3 (Mavericks).
 ##
 
 import ellyChar
@@ -97,7 +97,7 @@ def err ( ):
     arguments:
     """
 
-    raise RuntimeError('bad format')
+    raise RuntimeError('bad vocabulary format')
 
 def compile ( name , stb , defn , stem=None ):
 
@@ -114,12 +114,13 @@ def compile ( name , stb , defn , stem=None ):
         True on success, False otherwise
     """
 
-#   print 'compiled stb=' , stb , 'stem=' , stem , 'db=' , db
+#   print >> sys.stderr , 'compiled stb=' , stb , 'stem=' , stem , 'db=' , db
 
     if stb == None or db == None: return False
 
     zfs = FSpec(stb,'[$]',True).positive.hexadecimal(False)
-#   print 'zfs=' , zfs
+
+#   print >> sys.stderr 'zfs=' , zfs                 # hexadecimal for all features off
 
     try:
         file = name + vocabulary                     # where to put vocabulary database
@@ -129,86 +130,111 @@ def compile ( name , stb , defn , stem=None ):
             print >> sys.stderr , 'no' , file
         dbs = db.DB()                                # create new database
         dbs.set_flags(db.DB_DUP)                     # keys may identify multiple records
-        dbs.open(file,None,db.DB_HASH,db.DB_CREATE)  # open new file
-#       print 'creating' , file
+        dbs.open(file,None,db.DB_HASH,db.DB_CREATE)  # open new database file
+#       print >> sys.stderr , 'creating' , file
 
-        while True:
+        while True:                                  # process vocabulary records
 
             try:
+#               print >> sys.stderr , '------------'
                 r = defn.readline()                       # next definition
                 if len(r) == 0: break                     # stop on EOF
                 if r[0] == '#': continue                  # skip comment line
-#               print 'def=' , type(r) , r
+#               print >> sys.stderr , 'def=' , r
 
                 k = r.find(':')                           # look for first ':'
-                if k < 0: err()                           # skip input on failure here
+                if k < 0: err()                           # quit on failure here
 
                 t = r[:k].strip()                         # term to go into dictionary
                 d = r[k+1:].strip()                       # its definition
 
-#               print 'tm=' , '<' + t + '>' , 'df=' , '<' + d + '>'
-                if len(t) == 0 or len(d) == 0: err()      # skip input on missing parts
+#               print >> sys.stderr , ' tm=' , '<' + t + '>' , 'df=' , '<' + d + '>'
+                if len(t) == 0 or len(d) == 0: err()      # quit on missing parts
 
                 n = toIndex(t)                            # get part of term to index
                 if n == 0: err()   
-                tm = t[:n]                                # first word of term to define  
+                w = t[:n]                                 # first word of term to define  
                 if stem != None:
-                    tm = stem.simplify(tm)                # reduce for lookup key
-#               print 'tm =' , tm
-                tmw = lcAN(tm)                            # convert to ASCII lower case
-#               print 'tmw=' , tmw
+                    w = stem.simplify(w)                  # reduce for lookup key
+#               print >> sys.stderr , '  w=' , w
+                lcw = lcAN(w)                             # convert to ASCII lower case
+#               print >> sys.stderr , 'lcw=' , lcw
 
-                ns = syntaxSpecification.scan(d)
-#               print 'ns=' , ns
+                ns = syntaxSpecification.scan(d)          # find extent of syntax info
+#               print >> sys.stderr , 'ns=' , ns
                 if ns <= 0: err()
-#               print 'd[]=' , d[:ns]
+#               print >> sys.stderr , 'PoS=' , d[:ns]
 
-                syn = d[:ns]                              # syntax information
-                d = d[ns:].strip()
+                syn = d[:ns]                              # syntax info as string
+                d = d[ns:].strip()                        # rest of definition
 
                 ss = SSpec(stb,syn)                       # decode syntax info to get
                 cat = str(ss.catg)                        #   syntax category
                 syf = ss.synf.positive.hexadecimal(False) #   syntactic flags
-#               print 'syf=' , syf
+#               print >> sys.stderr , 'syf=' , syf
 
-                if len(d) == 0:                           # check for cognitive semantics
-                    smf = zfs                             # if none, set all to zero
-                    pb = '0'
-                elif d[0] == '[':
-                    nf = featureSpecification.scan(d)
-#                   print 'nf=' , nf
-                    if nf < 0: err()   
-                    sem = d[:nf]                          # get semantic features
-                    d = d[nf:].strip()
-                    fs = FSpec(stb,sem,True)
-                    smf = fs.positive.hexadecimal(False)  # convert to hex
-#                   print 'smf=' , smf
+                smf = zfs                                 # initialize defaults for
+                pb = '0'                                  #   cognitive semantics
+                cn = '-'                                  #
 
-                    ld = len(d)
-#                   print 'ld=' , ld
-                    if ld == 0: err()                     # expecting plausibility
-                    np = 0
-                    if d[np] == '-': np += 1              # take any minus sign
-                    while np < ld:                        # and successive digits
-                        if ellyChar.isDigit(d[np]): np += 1
-                        else: break
-#                   print 'np=' , np
-                    if np == 0: err()   
-                    pb = d[:np]                           # plausibility bias
-#                   print 'pb=' , pb
-                    d = d[np:].strip()
-                else:
-                    smf = zfs                             # no cognitive semantics
-                    pb = '0'
+#               print >> sys.stderr , '0:d=\[' + d + '\]'
+                if len(d) > 1:                            # check for cognitive semantics
+                    x = d[0]
+                    if x == '[' or x == '0' or x == '-':  # semantic features?
+                        if x != '[':                      # a '0' or '-' means to take default
+                            if len(d) == 1 or d[1] != ' ': err()
+                            d = d[2:].strip()             # skip over
+                        else:
+                            ns = featureSpecification.scan(d) # look for ']' of features
+#                           print >> sys.stderr , 'ns=' , ns
+                            if ns < 0: err()
+                            sem = d[:ns]                  # get semantic features
+                            d = d[ns:].strip()            # skip over
+                            fs = FSpec(stb,sem,True)
+                            smf = fs.positive.hexadecimal(False) # convert to hex
+#                           print >> sys.stderr , 'smf=' , smf
 
-                vrc = [ t , ':' , cat , syf , smf , pb ]  # start BDB data record
+#                       print >> sys.stderr , '1:d=\[' + d + '\]'
+                        ld = len(d)
+#                       print >> sys.stderr , 'ld=' , ld
+                        if ld == 0: err()                 # expecting plausibility
+                        np = 0
+                        x = d[np]
+                        if x == '+' or x == '-':
+                            np += 1                       # take any plus or minus sign
+                        while np < ld:                    # and successive digits
+                            if ellyChar.isDigit(d[np]): np += 1
+                            else: break
+#                       print >> sys.stderr , 'np=' , np
+                        if np == 0: err()
+                        pb = d[:np]                       # plausibility bias
+#                       print >> sys.stderr , 'pb=' , pb
+                        d = d[np:]
+                        ld = len(d)
+                        if ld > 1:                        # check for explicit concept
+                            if d[0] != '/': err()         # must be in this format
+                            d = d[1:]                     # after / marker
+                            ld -= 1
+                            np = 0
+                            while np < ld:                # get extent of concept
+                                if ellyChar.isWhiteSpace(d[np]): break
+                                np += 1
+                            cn = d[:np]                   # extract concept
+                            d = d[np:]
+
+                d = d.strip()                             # rest of definition
+
+#               print >> sys.stderr , '2:d=\[' + d + '\]'
+
+                vrc = [ t , ':' , cat , syf , smf ,
+                        pb , cn ]                         # start BdB data record
                 vss = u' '.join(vrc)                      # convert to string
-                vss += u' ' + d                           # fill out record
-#               print 'type(vss)=' , type(vss)
+                vss += u' ' + d                           # fill out record with rest of input
+#               print >> sys.stderr , 'type(vss)=' , type(vss)
                 rss = vss.encode('utf8')                  # convert to UTF-8
 
-#               print 'rec=' , vrc , 'tra=' , d
-#               print '   =' , rss
+#               print >> sys.stderr , 'rec=' , vrc , 'tra=' , d
+#               print >> sys.stderr , '   =' , rss
 
             except Exception , e:
                 sys.stderr.write('exception: ')
@@ -216,8 +242,9 @@ def compile ( name , stb , defn , stem=None ):
                 sys.stderr.write('  [' + r + ']\n')
                 continue
 
-            dbs.put(tmw,rss)                          # save in database
+            dbs.put(lcw,rss)                          # save in database
 
+#       print >> sys.stderr , 'DONE'
         dbs.close()                                   # clean up and return
         return True
 
@@ -288,7 +315,7 @@ class VocabularyTable(object):
                 self.dbs.open(database,None,db.DB_HASH,db.DB_RDONLY)
                 self.cur = self.dbs.cursor()
                 self.stm = stem
-#               print 'stm=' , self.stm
+#               print >> sys.stderr , 'stm=' , self.stm
             except Exception , e:
                 print >> sys.stderr, 'cannot access database'
                 print >> sys.stderr, e
@@ -326,19 +353,21 @@ class VocabularyTable(object):
         try:
             rs = [ ]                      # for results
 
-#           print '_ stm=' , self.stm
+#           print >> sys.stderr , '_ stm=' , self.stm
             if self.stm != None:
-#               print '_ stm=' , self.stm
+#               print >> sys.stderr , '_ stm=' , self.stm
                 key = self.stm.simplify(key)
             akey = lcAN(key)              # convert to ASCII lower case for lookup
 
-#           print 'key=' , type(akey) ,akey
+#           print >> sys.stderr , 'key=' , type(akey) ,akey
             tup = self.cur.set(akey)      # note cursor get() called here!
 
+#           print >> sys.stderr , 'loop, tup=',tup
             while tup:                    # break when tup is None
                 ve = vocabularyElement.VocabularyElement(tup)
                 rs.append(ve)             # add entry to results
                 tup = self.cur.next_dup() # get next entry with same key, if any
+#               print >> sys.stderr , 'tup=',tup
 
             return rs
 
@@ -366,7 +395,7 @@ class VocabularyTable(object):
         if len(chrs) == 0:
             return res                # empty list at this point
 
-#       print 'chrs=' , type(chrs) , type(chrs[0])
+#       print >> sys.stderr , 'chrs=' , type(chrs) , type(chrs[0])
 
         if keyl < 1:
             return res                # still empty list
@@ -375,15 +404,15 @@ class VocabularyTable(object):
         if self.stm != None:
             strg = self.stm.simplify(strg)
 
-#       print type(strg)
-#       print 'vocab first word=' , list(strg)
+#       print >> sys.stderr , type(strg)
+#       print >> sys.stderr , 'vocab first word=' , list(strg)
 
         vs = self._getDB(strg)        # look up first word in vocabulary table
 
         if vs == None or len(vs) == 0:
             return res
 
-#       print len(vs) , 'raw entries found'
+#       print >> sys.stderr , len(vs) , 'raw entries found'
 
         lm = len(chrs)                # total length of text for matching
 
@@ -401,32 +430,32 @@ class VocabularyTable(object):
             rs = Result()             # new result object
 
             k = ln
-#           print v.chs , ':' , chrs[:k]
+#           print >> sys.stderr , v.chs , ':' , chrs[:k]
             if not _cmp(v.chs,chrs[:k]):   # do match on lists of chars
                 lk = k - 1
-#               print 'no match lk=' , lk
+#               print >> sys.stderr , 'no match lk=' , lk
                 tc = chrs[lk]
                 vc = v.chs[lk]
-#               print 'vc=' , vc , 'tc=' , tc
+#               print >> sys.stderr , 'vc=' , vc , 'tc=' , tc
                 if ( vc == 'y' and tc == 'i' or  # 
                      vc == 'e' and tc == 'i' ):  #
-#                   print v.chs[:lk] , ':' , chrs[:lk]
+#                   print >> sys.stderr , v.chs[:lk] , ':' , chrs[:lk]
                     if not _cmp(v.chs[:lk],chrs[:lk]):
                         continue
                     rs.restr = vc
                 else:
                     continue
 
-#           print 'preliminary match'
+#           print >> sys.stderr , 'preliminary match'
             r = chkT(chrs,k)          # confirm match in wider context
 
             if r == None: continue
 
             ln += r[0]                # adjust match length to include extra chars
 
-#           print 'rln=' , rln , 'ln=' , ln
+#           print >> sys.stderr , 'rln=' , rln , 'ln=' , ln
             if rln < ln:              # longer match than before?
-#               print 'new list'
+#               print >> sys.stderr , 'new list'
                 res = [ ]             # if so, start new result list for longer matches
                 rln = ln              # set new minimum match length
 
@@ -481,13 +510,13 @@ def _cmp ( ve , tx ):
         True on match, False otherwise
     """
 
-#   print 've=' , ve
-#   print 'tx=' , tx
+#   print >> sys.stderr , 've=' , ve
+#   print >> sys.stderr , 'tx=' , tx
     if ve == tx:                      # straight char comparison
         return True
     tx = map(lambda x: x.lower(),tx)  # if no match, convert text to lower case
-#   print '    ve=' , ve
-#   print 'new tx=' , tx
+#   print >> sys.stderr , '    ve=' , ve
+#   print >> sys.stderr , 'new tx=' , tx
     if ve == tx:                      # compare again
         return True
     else:
@@ -620,6 +649,7 @@ if __name__ == '__main__':
 
     name = sys.argv[1] if len(sys.argv) > 1 else 'test'
     dfns = name + source
+    limt = sys.argv[2] if len(sys.argv) > 2 else 24
 
     erul = ellyBase.load(name + ellyBase.rules)     # get pickled Elly rules
     if erul == None:
@@ -637,15 +667,18 @@ if __name__ == '__main__':
         sys.exit()                     # quit on failure
     vtb = VocabularyTable(name,stem)   # load vocabulary table just created
     dbs = vtb.dbs                      # get database for table
-    dst = dbs.stat()                   # get its status
+    dst = dbs.stat()                   # get its BdB status
     dks = dst.keys()                   # all status tags 
-    print '---- DB status'
+    print '---- BdB status'
     for dk in dks:
         print '{0:12s} {1}'.format(dk,dst[dk])
     print '----'
 
+    n = 0
     keys = dbs.keys()                  # all database keys
     for key in keys:
+        if n >= limt: break
+        n += 1
         lky = list(key)
         look(vtb,lky,len(key))         # dump all info for each key
         key = u''.join(lky)
@@ -655,19 +688,20 @@ if __name__ == '__main__':
         print nm , 'key match' + ('' if nm == 1 else 'es')
         print ''
 
+    print 'enter terms to look up'
     while True:                        # now look up terms from standard input
         sys.stdout.write('> ')
-        s = sys.stdin.readline()             # get test example to look up
+        s = sys.stdin.readline()       # get test example to look up
         if len(s) <= 1: break
         ss = s.strip().decode('utf8')
-        ts = list(ss)                        # get list of chars
-        k = toIndex(ss)                      # get part of term for indexing
-        if k == 0:                           # if none, cannot look up
+        ts = list(ss)                  # get list of chars
+        k = toIndex(ss)                # get part of term for indexing
+        if k == 0:                     # if none, cannot look up
             print 'index NOT FOUND:' , ss
             continue
         look(vtb,ts,k)
         ky = u''.join(ts[:k])
-        vs = vtb.lookUpWord(ky)              # look up just key
+        vs = vtb.lookUpWord(ky)        # look up just key
         print len(vs) , 'key match only'
 
 
