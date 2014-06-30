@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveProcedure.py : 05oct2013 CPM
+# cognitiveProcedure.py : 29jun2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -126,31 +126,25 @@ class CognitiveProcedure(object):
                     # unknown command
                     break
 
-            else:             # execute actions of if ALL predicates satisfied
+            else:             # execute actions of clause if ALL predicates satisfied
                 for a in c[1]:                        # get mext action
                     op = a[0]
                     if op == semanticCommand.Cadd:    # add to score?
                         sum += a[1]
                     elif op == semanticCommand.Clhr:  # inherit from left descendant?
                         phrs.semf.combine(phrs.lftd.semf)
-                        phrs.cons = phrs.lftd.cons
+                        phrs.cncp = phrs.lftd.cncp
                     elif op == semanticCommand.Crhr:  # inherit from right?
                         phrs.semf.combine(phrs.rhtd.semf)
-                        phrs.cons = phrs.rhtd.cons
+                        phrs.cncp = phrs.rhtd.cncp
                     elif op == semanticCommand.Csetf: # set semantic features?
                         phrs.semf.combine(a[1])
                     elif op == semanticCommand.Csetc: # set concepts?
-                        ct = None
-                        for c in a:
-                            if c == '*':
-                                ct = cntx.wghtg.hier.intersection()
-                            else:
-                            	cntx.wghtg.noteConcept(c)
-                            	phrs.cons.append(c)
-                        if ct != None and not ct in phrs.cons:
-                            cntx.wghtg.noteConcept(ct)
-                            phrs.cons.append(ct)
+                        phrs.cncp = a[1]
 
+        rul = phrs.rule
+        if rul.nmrg == 2:
+            sum += cntx.wghtg.relateConceptPair(phrs.lftd.cncp,phrs.rhtd.cncp)
         return sum
 
 #
@@ -172,10 +166,12 @@ if __name__ == '__main__':
     inp = ellyDefinitionReader.EllyDefinitionReader(src)
     if inp.error != None:
         sys.exit(1)
-    cod = CognitiveProcedure(stb,inp)
-    if cod == None:
+    cgs = CognitiveProcedure(stb,inp)
+    if cgs == None:
         print >> sys.stderr, "conversion error"
         sys.exit(1)
 
-    s = cod.score(ctx,phr)
+    cognitiveDefiner.showCode(cgs.logic)
+
+    s = cgs.score(ctx,phr)
     print 'plausibility=',s
