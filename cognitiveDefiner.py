@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveDefiner.py : 22oct2013 CPM
+# cognitiveDefiner.py : 27jun2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -128,48 +128,25 @@ def _rightside ( stb , txt ):
     """
 
 #   print "right side"
+
     actn = [ ]
+    val  = 0
+    cnc  = '-'                    # for easier dumping of rules
 
-    n = txt.rfind(' ')           # look at final action
-#   print n,txt
+    n = txt.rfind(' ')            # look for explicit concept
 
-    if n < 0:
-        inc = txt                # only single action specified
-        txt = ''
-    else:
-        inc = txt[n+1:]          # otherwise break off last action
-#       print "inc=[",inc,"]"
-        txt = txt[:n].strip()
+#   print 'n=',n
+#   print "0 txt=[",txt,"]"
 
-    if len(inc) < 1: return None # must be present
+    if n >= 0:
+        cnc = txt[n:].strip()
+        txt = txt[:n]             # otherwise break off last action
 
-    c = inc[0]                   # check for sign of plausibility change
-
-    if c != '+' and c != '-':
-        return None              # must begin with + or -
-
-    if len(inc) == 1:            
-        val = 1
-    elif ellyChar.isDigit(inc[1]):
-        try:
-            val = int(inc[1:])   # explicit numerical change
-        except:
-            print >> sys.stderr , 'bad cognitive plausibility' , txt + ' ' + inc
-            return None
-    elif c == inc[1]:            # alternate notation for plausibility change
-        val = 2
-        for xc in inc[2:]:
-            if xc != c: return None
-            val += 1             # count up value
-    else:
-        return None
-
-    if c == '-': val = -val      # get right sign
-
-    ret = [ semanticCommand.Cadd , val ]
+#   print "1 txt=[",txt,"]"
 
     if len(txt) > 1:
-        if txt[0] == '*':  # inherit from phrase component?
+
+        if txt[0] == '*':         # inherit from phrase component?
             c = txt[1]
             if c == 'l':
                 actn.append([ semanticCommand.Clhr ])
@@ -179,27 +156,49 @@ def _rightside ( stb , txt ):
                 return None
             txt = txt[2:].strip()
 
-    while len(txt) > 0:
+    if len(txt) > 1:
 
-        x = txt[0]
-        if x == '(':       # set concepts for phrase?
-            n = txt.find(')')
-            if n < 0: return None
-            cs = txt[1:n].split(',')
-            sq = [ semanticCommand.Csetc ]
-            for c in cs:
-                c = c.strip()
-                sq.append(c)
-        elif x == '[':     # set semantic features for phrase?
+        if txt[0] == '[':         # set semantic features for phrase?
             n = txt.find(']')
             if n < 0: return None
             f = featureSpecification.FeatureSpecification(stb,txt[:n+1],semantic=True)
             if f == None: return None
             sq = [ semanticCommand.Csetf , f ]
+            txt = txt[n+1:]
+
+    if len(txt) > 0:
+
+        c = txt[0]                # check for sign of plausibility change
+
+        if c != '+' and c != '-':
+            return None           # must begin with + or -
+
+#       print "2 txt=[",txt,"]"
+
+        if len(txt) == 1:
+            val = 1
+        elif ellyChar.isDigit(txt[1]):
+            try:
+                val = int(txt[1:])   # explicit numerical change
+            except:
+                print >> sys.stderr , 'bad cognitive plausibility' , txt + ' ' + inc
+                return None
+        elif c == txt[1]:            # alternate notation for plausibility change
+            val = 2
+            for xc in txt[2:]:
+                if xc != c: return None
+                val += 1             # count up value
         else:
             return None
 
-        txt = txt[n+1:].strip()
+        if c == '-': val = -val      # get right sign
+
+#   print 'val=' , val
+
+    ret = [ semanticCommand.Cadd , val ]
+
+    if len(cnc) > 0:
+        sq = [ semanticCommand.Csetc , cnc ]
         actn.append(sq)
 
     actn.append(ret)
