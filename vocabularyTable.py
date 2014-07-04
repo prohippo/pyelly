@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 28jun2014 CPM
+# vocabularyTable.py : 03jul2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -211,20 +211,24 @@ def compile ( name , stb , defn , stem=None ):
 #                       print >> sys.stderr , 'pb=' , pb
                         d = d[np:]
                         ld = len(d)
-                        if ld > 1:                        # check for explicit concept
-                            if d[0] != '/': err()         # must be in this format
-                            d = d[1:]                     # after / marker
+#                       print >> sys.stderr , '2:d=\[' + d + '\]'
+                        if ld > 1:                        # any more to process?
+                            c = d[0]                      # get next char after bias
+                            d = d[1:]                     # advance scan
                             ld -= 1
-                            np = 0
-                            while np < ld:                # get extent of concept
-                                if ellyChar.isWhiteSpace(d[np]): break
-                                np += 1
-                            cn = d[:np]                   # extract concept
-                            d = d[np:]
+                            if c == '/':                  # check for explicit concept
+                                np = 0
+                                while np < ld:            # get extent of concept
+                                    if ellyChar.isWhiteSpace(d[np]): break
+                                    np += 1
+                                cn = d[:np]               # extract concept
+                                d = d[np:]
+                            elif c != ' ':
+                                err()                     # signal bad format
 
                 d = d.strip()                             # rest of definition
 
-#               print >> sys.stderr , '2:d=\[' + d + '\]'
+#               print >> sys.stderr , '3:d=\[' + d + '\]'
 
                 vrc = [ t , ':' , cat , syf , smf ,
                         pb , cn ]                         # start BdB data record
