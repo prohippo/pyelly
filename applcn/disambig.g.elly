@@ -5,13 +5,28 @@
 
 g:sent->ss
 __
-g:ss->np
+g:sent->ss punc
+_
+  left
+__
+p:split
 _
   left
   space
   right
 __
-g:np[:*unique]->adj noun
+g:ss->noun noun
+_
+  (split)
 __
-g:np[:*unique]->noun noun
+g:ss->adj  noun
+_
+  (split)
+__
+g:ss->noun verb
+_
+  (split)
+__
+g:noun->unkn
+ >>*L-
 __
