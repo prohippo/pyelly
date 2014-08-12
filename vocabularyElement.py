@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyElement.py : 27jun2014 CPM
+# vocabularyElement.py : 03aug2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -94,7 +94,7 @@ class VocabularyElement(object):
         self.smf.reinit(sm)              # set semantic  features
         self.bia = int(d.pop(0))         # save initial plausibility
         if len(d) > 0:                   # any concept?
-            self.con = d.pop(0)          # if so, save it
+            self.con = d.pop(0).upper()  # if so, save it
         else:
             self.con = '-'
 
