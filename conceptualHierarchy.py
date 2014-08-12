@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# conceptualHierarchy.py : 25jun2014 CPM
+# conceptualHierarchy.py : 09aug2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -35,7 +35,10 @@ modeling hierarchical relationships between semantic concepts used for
 disambiguation, mostly IS_A links
 """
 
-TOP = '^'  # mandatory name of top concept in hierarchy
+NOname = '--' # name for None concept
+
+FRAC= 20      # fraction of descendant nodes for important concept
+TOP = '^'     # mandatory name of top concept in hierarchy
 
 class Concept:
 
@@ -47,6 +50,10 @@ class Concept:
         level    - 0 for top of hierarchy and increasing by 1 for each step down
         parent   - next higher node in hierarchy
         children - inverse for parent
+        split    - child count
+        total    - of all descendants
+        alias    - alternate names
+        unseen   - flag for algorithm to get total
     """
 
     def __init__ ( self , name ):
@@ -61,6 +68,10 @@ class Concept:
         self.level = -1     # initially undefined
         self.parent = None  #
         self.children = [ ] #
+        self.split = 0
+        self.total = 0
+        self.alias = [ ]
+        self.unseen = True
 
     def __str__ ( self ):
         """
@@ -71,7 +82,13 @@ class Concept:
         returns:
             short string representation
         """
-        return self.name + '<' + self.parent.name + ': with ' + str(len(self.children)) + ' children'
+        pname  = NOname if self.parent == None else self.parent.name
+        if self.split == 0:
+            chs = ''
+        else:
+            label  = ' child' if self.split == 1 else ' children'
+            chs = ': with ' + str(self.split) + label
+        return self.name + '(' + str(self.total) + ')<' + pname + chs
 
 class ConceptualHierarchy:
 
@@ -93,10 +110,11 @@ class ConceptualHierarchy:
             name  - of concept
 
         returns:
-            concept
+            concept for name other than NOname, otherwise None
         """
 
-        name = name.strip()
+        name = name.strip().upper()
+        if name == NOname: return None
         if name in self.index: return self.index[name]
         c = Concept(name)
         self.index[name] = c
@@ -118,42 +136,83 @@ class ConceptualHierarchy:
 
         self.inters = None           # no intersection yet
 
+        eqv = [ ]                    # for equivalences
+
         if defn == None: return      # make empty tree on no definition
 
-        print "READING INPUT"
+#       print "READING HIERARCHY INPUT"
 
         while True:
             l = defn.readline()      # read in hierarchy definition, link by link
             if len(l) == 0: break
+            if l[0] == '=':
+                l = l[1:].lstrip()
+                k = l.find(' ')
+                if k < 0: continue
+                s = l[:k]
+                l = l[k:].lstrip()
+                eqv.append([ s , l ])
+                continue
             ls = l.split('>')        # get pair of concepts in link
             if len(ls) < 2: continue
-            cpa = self.getConcept(ls[0]) # parent in link
-            cch = self.getConcept(ls[1]) # child
-            if cch.parent != None:
+            cPA = self.getConcept(ls[0]) # parent in link
+            cCH = self.getConcept(ls[1]) # child
+            if cCH.parent != None:
                 print >> sys.stderr , 'child has two parents: ' + l
-                cch.parent = None
+                cCH.parent = None
             else:
-                cch.parent = cpa         # save upward link
-                cpa.children.append(cch) # save downward link
+                cPA.split += 1
+                cCH.parent = cPA         # save upward link
+                cPA.children.append(cCH) # save downward link
+#               print >> sys.stderr , 'parent=' , str(cPA) ,
+#               print >> sys.stderr , ','.join(map( lambda x: x.name , cPA.children ))
 
-        print "CHECKING COMPLETENESS"
+#       print "DEFINING EQUIVALENCES
+
+        for p in eqv:
+            if not p[1] in self.index:
+                print >> sys.stderr , 'bad alias:' , p[0]
+                self.index = { }
+                return
+            c = self.index[p[1]]
+            self.index[p[0]] = c
+            c.alias.append(p[0])
+
+#       print "CHECKING HIERARCHY COMPLETENESS"
 
         cnls = self.index.keys()
-        for cn in cnls:              # check that every concept except top has an up link
+        for cn in cnls:              # check that every concept except top has parent
             if cn != TOP:
                 c = self.index[cn]
                 if c.parent == None:
                     print >> sys.stderr , 'missing parent:' , cn
-                    self.index = { } # return with no tree if any node lacks an up link
+                    self.index = { } # return with no tree if any node lacks parent
                     return
 
-        print len(self.index),"in full index"
+#       print "CHECKING POPULATION AND CONNECTION"
+
+        print len(cnls),"concepts in full index"
 
         if len(top.children) == 0:
             print >> sys.stderr , 'no connection to top of hierarchy'
             return
 
-        print "ASSIGNING LEVELS"
+#       print "GETTING TOTALS FOR CONCEPTS"
+
+        for c in cnls:
+            cn = self.index[c]
+            if cn.split == 0 and cn.unseen: # get leaf nodes not yet seen
+#               print 'at' , cn
+                cn.unseen = False
+                n = 0                       # accumulated count going up tree
+                while cn != top:
+                    cn.total += n           # increment concept descendant total
+                    cn = cn.parent
+                    n += 1
+#               print 'n=' , n
+                cn.total += n               # this should be for top concept
+
+#       print "ASSIGNING HIERARCHY LEVELS"
 
         stk = [ ]                    # for depth-first hierarchy tree traversal
 
@@ -174,7 +233,7 @@ class ConceptualHierarchy:
                 c.level = len(stk)-1 # assign next concept a level number
                 stk.append(c.children)  # go down a level
 
-        print "DONE"
+#       print "HIERARCHY DONE"
 
     def intersection ( self ):
 
@@ -185,7 +244,7 @@ class ConceptualHierarchy:
             self
 
         returns:
-            saved intersection
+            saved concept intersection (not string!)
         """
 
         return self.inters
@@ -202,7 +261,35 @@ class ConceptualHierarchy:
             True if empty, False otherwise
         """
 
-        return (len(self.index) == 0)
+        return (len(self.index) <= 1)
+
+    def generalize ( self , an ):
+
+        """
+        get nontrivial generalization of concept
+
+        arguments:
+            self  -
+            an    - concept name
+
+        returns:
+            concept name on success, -- otherwise
+        """
+
+        n = int(len(self.index)/FRAC) # set threshold for nontriviality
+#       print "generalization threshold=" , n , "an=" , an
+        if an == TOP:                 # if name is TOP, done
+            return TOP
+        elif not an in self.index:    # check if name in hierarcy
+            return NOname
+        else:                         # otherwise, try going up in inverted tree
+            a = ab = self.index[an]
+            while a != None and a.total <= n and a.level > 4:
+#               print 'concept=' , a
+                ab = a
+                a = a.parent
+#           print 'generalized concept=' , a
+            return ab.name
 
     def isA ( self , an , bn ):
 
@@ -218,6 +305,7 @@ class ConceptualHierarchy:
             level difference >= 0 on subsumation, -1 otherwise
         """
 
+        self.inters = None               # reset saved intersection
         if not an in self.index or not bn in self.index: return -1
         a = self.index[an]
         b = self.index[bn]
@@ -229,8 +317,7 @@ class ConceptualHierarchy:
              self.inters = c             # if so, b subsumes a
              return a.level - b.level    #
         else:
-             self.inters = None          # otherwise, a and b are independent
-             return -1                   #
+             return -1                   # otherwise, a and b are independent
 
     def relatedness ( self , an , bn ):
 
@@ -243,21 +330,23 @@ class ConceptualHierarchy:
             bn    - name of second
 
         returns:
-            length of hierarchical path between concepts
+            length of hierarchical path between known concepts, otherwise -1
         """
 
+#       print >> sys.stderr , "relating:" , an , bn
         if not an in self.index or not bn in self.index: return -1
-        c = a = self.index[an]
-        d = b = self.index[bn]
-        while c.level < d.level:  # get c and d at same level
-            d = d.parent          #
-        while c.level > d.level:  #
-            c = c.parent          #
-        while c != d:             # keep going up in tree until paths converge
-            c = c.parent          # (this has to happen at top concept)
-            d = d.parent          #
-        self.inters = c
-        return c.level
+        a = self.index[an]
+        b = self.index[bn]
+#       print >> sys.stderr , a , b
+        while a.level < b.level:  # get a and b at same level
+            b = b.parent          #
+        while a.level > b.level:  #
+            a = a.parent          #
+        while a != b:             # keep going up in tree until paths converge
+            a = a.parent          # (this has to happen at top concept)
+            b = b.parent          #
+        self.inters = a
+        return a.level
 
 #
 # unit testing
@@ -269,13 +358,35 @@ if __name__ == "__main__":
     import ellyDefinitionReader
 
     data = [
+        "=OA1 A1",
         "^>A1","^>B1","^>C1",
         "A1>A1X2","A1>A1Y2",
         "B1>B1X2","B1>B1Y2",
+        "=OB1 B1",
         "C1>C1X2","C1>C1Y2",
         "A1X2>A1X2R3","A1X2>A1X2S3",
-        "A1X2S3>A1X2S3O4"
+        "A1X2S3>A1X2S3T3","A1X2S3>A1X2S3T4",
+        "^>K0","K0>K1","K1>K2","K2>K3","K3>K4","K4>K5"
     ]
+
+    def tisA ( tre , a , b ):
+        k = tre.isA(a.upper(),b.upper())
+        x = tre.intersection().name if k >= 0 else NOname
+        print "isA(" + a + "," + b + ")=" ,
+        print k , "superconcept=" , x
+
+    def trelatedness ( tre , a , b ):
+        k = tre.relatedness(a.upper(),b.upper())
+        x = tre.intersection().name if k >= 0 else NOname
+        print "relatedness(" + a + "," + b + ")=" ,
+        print k , "intersection=" , x
+
+    def tdump ( tre ):
+        kyl = tre.index.keys()
+        for ky in kyl:
+            if ky == '^': continue
+            r = tre.index[ky]
+            print ky,'(',r.name,')','lvl=',r.level,'<',r.parent.name
 
     file = sys.argv[1] if len(sys.argv) > 1 else data
     inp = ellyDefinitionReader.EllyDefinitionReader(file)
@@ -289,26 +400,25 @@ if __name__ == "__main__":
     if tre.isEmpty():
         print "tree building failed"
     elif file == data:
-        kyl = tre.index.keys()
-        for ky in kyl:
-            if ky == '^': continue
-            r = tre.index[ky]
-            print r.name,r.level,r.parent.name
-        print tre.isA('C1X2','C1X2') ,
-        print "superconcept=",tre.intersection().name
-        print tre.isA('A1X2S3O4','A1X2S3O4') ,
-        print "superconcept=",tre.intersection().name
-        print tre.isA('A1X2S3O4','A1') ,
-        print "superconcept=",tre.intersection().name
-        print tre.isA('A1','A1X2S3O4') ,
-        print "superconcept=",tre.intersection().name
-        print tre.relatedness('C1Y2','C1Y2') ,
-        print "intersection=",tre.intersection().name
-        print tre.relatedness('A1','A1X2') ,
-        print "intersection=",tre.intersection().name
-        print tre.relatedness('A1X2','A1') ,
-        print "intersection=",tre.intersection().name
-        print tre.relatedness('B1X2','A1X2S3') ,
-        print "intersection=",tre.intersection().name
-        print tre.relatedness('A1X2S3','B1X2') ,
-        print "intersection=",tre.intersection().name
+        print "-------- concepts and aliases"
+        tdump(tre)
+        print "-------- connections"
+        tisA(tre,'C1X2','C1X2') ,
+        tisA(tre,'A1X2S3T4','A1X2S3T4') ,
+        tisA(tre,'A1X2S3T4','A1') ,
+        tisA(tre,'A1','A1X2S3T4') ,
+        trelatedness(tre,'C1Y2','C1Y2') ,
+        trelatedness(tre,'A1','A1X2') ,
+        trelatedness(tre,'A1X2','A1') ,
+        trelatedness(tre,'B1X2','A1X2S3') ,
+        trelatedness(tre,'A1X2S3','B1X2') ,
+        trelatedness(tre,'OA1','OB1') ,
+        trelatedness(tre,'X1','X1') ,
+        print "-------- lookup"
+        print tre.index['A1X2S3T4']
+        print tre.index['K3']
+        print "-------- generalization"
+        print tre.generalize('A1X2S3T4')
+    else:
+        print "-------- concepts and aliases"
+        tdump(tre)
