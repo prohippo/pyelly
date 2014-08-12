@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBuffer.py : 20dec2013 CPM
+# ellyBuffer.py : 28jul2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -543,7 +543,7 @@ class EllyBuffer(object):
             if k < 0:           # break a token at next separator
                 k = ln
             while k < ln:       # look at separator if it exists
-            	x = self.buffer[k]
+                x = self.buffer[k]
                 if x != MIN and x != COM:
                     break       # a hyphen or comma is not absolute break
                 if not ellyChar.isDigit(self.buffer[k+1]):
