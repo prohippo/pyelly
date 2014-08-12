@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBottomUp.py : 02jul2014 CPM
+# parseTreeBottomUp.py : 08aug2014 CPM
 # -----------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -66,7 +66,9 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
         litg   - generative semantic procedure for literal rule
         litc   - cognitive
         ntyp   - count of syntax types
+
         _zbs   - all-zero syntactic features
+        _pls   - saved plausibility score from last evaluation
     """
 
     def __init__ ( self , stb , gtb , ptb ):
@@ -93,6 +95,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
 #       print "back in ParseTreeBottomUp"
         self.nul  = (len(gtb.splits[gtb.XXX]) > 0)
         self._zbs = ellyBits.EllyBits(symbolTable.FMAX)
+        self._pls = 0
 
     def addGoalPositions ( self , n=10 ):
 
@@ -159,45 +162,45 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
         for i in range(self.wordno): # empty out all new phrase lists in prior positions
             self.newph[i] = None
 
-    def enqueue ( self , ph ):
+    def enqueue ( self , phr ):
 
         """
         check if phrase is ambiguity and enqueue it if not 
 
         arguments:
             self  -
-            ph    - phrase to insert
+            phr   - phrase to insert
         """
 
-#*      print 'enqueue:' , ph , len(self.newph) , 'phrase positions'
+#*      print 'enqueue:' , phr , len(self.newph) , 'phrase positions'
 #       self._showQ()
-        po = ph.posn
+        po = phr.posn
         pho = self.newph[po]
 #       print 'po=' , po , 'pho=' , pho
         while pho != None:
 
-#           print ph.typx , ':' , pho.typx
-#           print ph.synf.hexadecimal() , ':' , pho.synf.hexadecimal()
-            if (         ph.typx == pho.typx
-                 and     ph.synf.equal(pho.synf)
-#                and not ph.synf.test(featureSpecification.LAST)
+#           print phr.typx , ':' , pho.typx
+#           print phr.synf.hexadecimal() , ':' , pho.synf.hexadecimal()
+            if (         phr.typx == pho.typx
+                 and     phr.synf.equal(pho.synf)
+                 and not phr.synf.test(featureSpecification.LAST) # *UNIQUE check
                ):                          # ambiguity?
-#*              print 'ambiguity:' , ph.typx , ph.synf.hexadecimal() , 'for' , ph.seqn , pho.seqn
+#*              print 'ambiguity:' , phr.typx , phr.synf.hexadecimal() , 'for' , phr.seqn , pho.seqn
                 if pho.alnk == None:       # if so, is ambiguity new?
                     self.ambig.append(pho) # if so, start new ambiguity listing
 #*                  print 'new ambiguity'
                 phs = pho.alnk             # add new phrase after head of ambiguity list
-                pho.alnk = ph              #
-                ph.alnk = phs              #
-                if ph.bias > pho.bias:     # make sure most plausible is at front of list
-                    ph.swap(pho)
+                pho.alnk = phr             #
+                phr.alnk = phs             #
+                if phr.bias > pho.bias:    # make sure most plausible is at front of list
+                    phr.swap(pho)
                 return                     # and process no further
 
             pho = pho.llnk                 # if no match, go to next group of phrases
 
-        ph.llnk = self.newph[po]           # if out of groups, add to linked list at position
-        self.newph[po] = ph                #
-        self.queue.append(ph)              # enqueue phrase for further processing
+        phr.llnk = self.newph[po]          # if out of groups, add to linked list at position
+        self.newph[po] = phr               #
+        self.queue.append(phr)             # enqueue phrase for further processing
 
     def dequeue ( self ):
 
@@ -415,7 +418,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
         nt = len(ctx.tokns)
 #*      print 'evaluate:' , nt , 'tokens' , 'wordno=' , self.wordno
         gs = self.goal[nt]
-#*      print 'at' , nt , 'with' , len(gs) , 'goals' 
+        print 'at' , nt , 'with' , len(gs) , 'goals' 
         topg = None
         tops = -11111
         for g in gs:
@@ -430,9 +433,10 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
         if topg != None:                # any START?
             g = topg                    # if so, get sentence to return
             phr = g.lph
+            self._pls = phr.bias        # save plausibility
 #*          print 'from' , g
-#*          print 'sent=' , phr
-            phr.rule.gens.doRun(ctx,phr)
+#           print 'sent=' , phr
+            phr.rule.gens.doRun(ctx,phr)# run generative semantics
             if ellyConfiguration.longDisplay:
                 self.dumpAll()          # show complete parse tree
             else:
@@ -447,6 +451,20 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
         else:
             ctx.insertCharsIntoBuffer(_error) # write out simple error message as translation
         return False
+
+    def getLastPlausibility ( self ):
+
+        """
+        get saved plausibility score for last evaluation
+
+        arguments:
+            self  -
+
+        returns:
+            saved integer score
+        """
+
+        return self._pls
 
     #################################################################
     ################ private methods only after this ################
