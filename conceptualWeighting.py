@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# conceptualWeighting.py : 27jun2014 CPM
+# conceptualWeighting.py : 08aug2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -29,12 +29,14 @@
 # -----------------------------------------------------------------------------
 
 """
-maintain a statistical profile of most important concepts in current discourse
+compute closeness of concept pairs relative to a given conceptual hierarchy
+or a single concept relative to a statistical profile of the most important
+concepts seen in current discourse
 """
 
 import conceptualHierarchy
 
-NNC=12  # nominal number of concepts to list in context
+NNC=12  # nominal number of concepts to list in context profile
 
 class ConceptualWeighting(object):
 
@@ -106,13 +108,16 @@ class ConceptualWeighting(object):
             integer importance score
         """
 
+        if cn == conceptualHierarchy.NOname: return 0
+#       print 'importance ' + cn + ':'
         mink = 10000000
-        minc = None
+        minc = conceptualHierarchy.NOname
         for c in self.topcs:
-            k = hier.isA(cn,c)
+            k = self.hiery.isA(cn,c)
             if mink > k and k > 0:
                 mink = k
                 minc = c
+        if minc == conceptualHierarchy.NOname: return 0
         self.noteConcept(minc)
         return self.index[minc] - self.minmm
 
@@ -129,10 +134,31 @@ class ConceptualWeighting(object):
         returns integer relatedness score
         """
         
-        if cna == '-' or cnb == '-': return 0
-        rel = hier.relatedness(cna,cnb)
-        self.noteConcept(hier.intersection())
+        if cna == conceptualHierarchy.NOname or cnb == conceptualHierarchy.NOname: return 0
+#       print 'relatedness ' + cna + ':' + cnb
+        rel = self.hiery.relatedness(cna,cnb)
+#       print '=' , rel
+        inx = self.hiery.intersection()
+#       print 'intersect at' , inx
+        if inx != '^':
+            self.noteConcept(inx)
         return rel
+
+    def getIntersection ( self ):
+
+        """
+        get intersection for last relatedness
+
+        arguments:
+            self  -
+
+        returns:
+            concept name as string
+        """
+
+        inx = self.hiery.intersection()
+#       print 'get intersection' , inx
+        return conceptualHierarchy.NOname if inx == None else inx.name
 
     def noteConcept ( self , cn ):
 
@@ -149,3 +175,54 @@ class ConceptualWeighting(object):
         elif not cn in self.index:
             self.index[cn] = 0
         self.index[cn] += 1
+
+#
+# unit test
+#
+
+if __name__ == '__main__':
+
+    import sys
+    import ellyDefinitionReader
+
+    data = [
+      "^ > cXXXX" ,
+      "cXXXX > cYYYY0" ,
+      "cXXXX > cYYYY1" ,
+      "cXXXX > cYYYY2" ,
+      "cYYYY1> cZZZZ1" ,
+      "cYYYY2> cZZZZ2" ,
+      "cZZZZ1> cAAAA"  ,
+      "cZZZZ1> cBBBB"
+    ]
+
+    src = sys.argv[1] if len(sys.argv) > 1 else data
+
+    inp = ellyDefinitionReader.EllyDefinitionReader(src)
+
+    if inp.error != None:
+        print >> sys.stderr, inp.error
+        sys.exit(1)
+
+    hy = conceptualHierarchy.ConceptualHierarchy(inp)
+    wt = ConceptualWeighting(hy)
+
+    si = sys.stdin
+    so = sys.stdout
+
+    so.write('> ')
+
+    while True:
+
+        line = si.readline()
+        l = line.decode('utf8')
+        if len(l) == 0 or l[0] == '\n': break
+        k = 0
+        while l[k] == ' ': k += 1
+        while l[k] != ' ': k += 1
+        a = l[:k].strip().upper()
+        b = l[k:].strip().upper()
+        r = wt.relateConceptPair(a,b)
+        so.write(a + ":" + b + ", relatedness=" + str(r) +
+                 ' @' + str(wt.getIntersection()) + "\n")
+        so.write('> ')
