@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveProcedure.py : 29jun2014 CPM
+# cognitiveProcedure.py : 10aug2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -32,6 +32,7 @@
 procedure to determine plausibility of phrase in Elly parse
 """
 
+import sys
 import ellyBits
 import semanticCommand
 import featureSpecification
@@ -73,6 +74,7 @@ class CognitiveProcedure(object):
         """
 
         if self.logic == None: return 0
+#       print 'cognitive scoring'
 
         sum = 0               # to accumulate plausibility score
 
@@ -91,39 +93,21 @@ class CognitiveProcedure(object):
                 elif op == semanticCommand.Clftc or op == semanticCommand.Crhtc:
                     # check concepts of descendants
                     dph = phrs.lftd if op == semanticCommand.Clftc else phrs.rhtd
-                    cns = dph.cons
-                    cx = p[1]
+                    cnc = dph.cons
+                    cx = p[1]  # concepts to check against
                     mxw = -1
-                    if cx == '*':
-                        for c in cns:
-                            w = cntx.wghtg.interpretConcept(c)
-                            if mxw < w: mxw = w
-                        if mxw < 0: break
-                    else:
-                        for c in cns:
-                            w = cntx.wghtg.hier.isA(c,cx)
-                            if mxw < w: mxw = w
-                        if mxw < 0: break
-                    cntx.wghtg.noteConcept(c)
-                    value = mxw
-                elif op == semanticCommand.Cbthc:
-                    # check conceptual relatedness of descendants
-                    lcns = phrs.lftd.cons
-                    rcns = phrs.rhtd.cons
-                    mxw = 0
                     mxc = None
-                    for lc in lcns:
-                        for rc in rcns:
-                            w = cntx.wghtg.relateConceptPair(lc,rc)
-                            if mxw < w:
-                                mxw = w
-                                mxc = cntx.wghtg.hier.intersection()
-                    if mxw <= 0: break
+                    for c in cx:
+                        w = cntx.wghtg.hier.isA(cnc,c)
+                        if mxw < w:
+                            mxw = w
+                            mxc = c
+                    if mxw < 0: break
+                    cntx.wghtg.noteConcept(mxc)
                     value = mxw
-                    concept = mxc
-                    cntx.wghtg.note(mxc)
                 else:
                     # unknown command
+                    print >> sys.stderr , 'bad cog sem action=' , op
                     break
 
             else:             # execute actions of clause if ALL predicates satisfied
@@ -142,9 +126,28 @@ class CognitiveProcedure(object):
                     elif op == semanticCommand.Csetc: # set concepts?
                         phrs.cncp = a[1]
 
-        rul = phrs.rule
-        if rul.nmrg == 2:
-            sum += cntx.wghtg.relateConceptPair(phrs.lftd.cncp,phrs.rhtd.cncp)
+                break  # ignore subsequent clauses on taking action
+
+        inc = 0                  # compute conceptual contribution
+        rwy = phrs.rule.nmrg
+#       print >> sys.stderr , 'conceptual plausibility'
+        if rwy == 2:        # 2-branch splitting rule?
+#           print '2-branch!'
+            inc = cntx.wghtg.relateConceptPair(phrs.lftd.cncp,phrs.rhtd.cncp)
+#           print >> sys.stderr , phrs.lftd.cncp , ':' , phrs.rhtd.cncp , '=' , inc , '!'
+            if inc > 1:
+                phrs.ctxc = cntx.wghtg.getIntersection()
+#           print >> sys.stderr , '2-way bias incr=' , inc
+        elif phrs.lftd != None:  # 1-branch extending rule?
+#           print >> sys.stderr , '1-branch!'
+            dst = cntx.wghtg.interpretConcept(phrs.lftd.cncp)
+            if dst > 0:
+                phrs.ctxc = cntx.wghtg.getIntersection()
+                inc = 1
+#           print >> sys.stderr , '1-way bias incr=' , inc
+        if inc > 0: sum += inc   # only positive increments contribute
+#       print >> sys.stderr , 'phrase' , phrs.seqn, 'intersect=' , phrs.ctxc
+
         return sum
 
 #
@@ -153,7 +156,6 @@ class CognitiveProcedure(object):
 
 if __name__ == '__main__':
 
-    import sys
     import ellyDefinitionReader
     import procedureTestFrame
 
