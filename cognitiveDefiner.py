@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveDefiner.py : 27jun2014 CPM
+# cognitiveDefiner.py : 03aug2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -81,36 +81,45 @@ def _leftside ( stb , txt ):
     returns:
         predicate list on success, None otherwise
     """
+
 #   print "left side"
     pred = [ ]
-    if len(txt) == 0: return pred
-    ps = txt.split('&')
-#   print len(ps),"components",ps
-    for p in ps:
-        p = p.strip()
-        if len(p) == 0: continue
-        side = p[0]                       # left or right
-        if p[1] == '[' and p[-1] ==']':   # semantic feature check?
+    txt = txt.strip()
+
+    while len(txt) > 0:
+        side = txt[0]
+        txt = txt[1:].lstrip()
+        if len(txt) == 0: return None
+
+        k = 0
+
+        if txt[0] == '[':                   # semantic feature check?
+            k = txt.find(']')               # if so, look for closing bracket
+            if k < 0: return None
+            p = txt[:k+1]                   # get semantic features
 
 #           print "condition:",p
-            f = featureSpecification.FeatureSpecification(stb,p[1:],'semantic')
-            if f == None or side == 'b': return None
-            op = semanticCommand.Clftf if side == 'l' else semanticCommand.Crhtf
+            f = featureSpecification.FeatureSpecification(stb,p,'semantic')
+            if f == None: return None
+            op = semanticCommand.Crhtf if side == 'r' else semanticCommand.Clftf
 #           print 'test:' , f.positive.hexadecimal() , f.negative.hexadecimal()
             test = ellyBits.join(f.positive,f.negative)
             pred.append([ op , test ])
 
-        elif p[0] == '(' and p[-1] == ')': # semantic concept check?
+        elif txt[0] == '(':                 # semantic concept check?
+#           print "txt=\"" + txt +"\""
+            k = txt.find(')')               # if so, look for closing parenthesis
+            if k < 0: return None
+            s = txt[1:k].strip().upper()    # normalize concepts
+            p = s.split(',')                # allow for multiple disjunctive checks
+#           print "p=\"" + p + "\""
 
-            cs = p[1:-1].split(',')
-            if side == 'b':
-                if len(cs) != 2: return None
-                pred.append([ semanticCommand.Cbthc , cs[0].strip() , cs[1].strip() ])
-            else:
-                op = semanticCommand.Clftc if side == 'l' else semanticCommand.Crhtc
-                pred.append([ op , cs[0].strip() ])
+            op = semanticCommand.Crhtc if side == 'r' else semanticCommand.Clftc
+            pred.append([ op , p ])
 
-#       print "NEXT" 
+        txt = txt[k+1:].lstrip()            # advance to next predicate
+
+#       print "NEXT"
 
     return pred
 
@@ -131,7 +140,7 @@ def _rightside ( stb , txt ):
 
     actn = [ ]
     val  = 0
-    cnc  = '-'                    # for easier dumping of rules
+    cnc  = ''                     # default is no concept specified
 
     n = txt.rfind(' ')            # look for explicit concept
 
@@ -139,7 +148,7 @@ def _rightside ( stb , txt ):
 #   print "0 txt=[",txt,"]"
 
     if n >= 0:
-        cnc = txt[n:].strip()
+        cnc = txt[n:].strip().upper()
         txt = txt[:n]             # otherwise break off last action
 
 #   print "1 txt=[",txt,"]"
@@ -207,7 +216,7 @@ def _rightside ( stb , txt ):
 def showCode ( cod ):
 
     """
-    show cognitive semantic code
+    show compiled cognitive semantic code
 
     arguments:
         cod   - code to display
@@ -222,22 +231,24 @@ def showCode ( cod ):
         pred = c[0]
         prs = [ ]  # to collect conditional predicates of cognitive clause
         for p in pred:
-            op = p[0]
-            p = p[1:]
-            if len(p) == 1 and type(p[0]) != 'unicode':
-                s = ellyBits.show(p[0])
+            opn = p[0]
+            arg = p[1]
+            if opn == semanticCommand.Clftf or opn == semanticCommand.Crhtf:
+#               print 'bit arg =' , arg
+                s = ellyBits.show(arg)
             else:
-                s = str(p)
-            prs.append(semanticCommand.Copn[op] + ' ' + s)
-        print '>' ,
+#               print 'cnc args=' , arg
+                s = ",".join(arg)
+            prs.append(semanticCommand.Copn[opn] + ' ' + s)
+        print '|' ,
         if len(prs) > 0: print ' and '.join(prs) , 
         print '>>' ,
         actn = c[1]
         acs = [ ]  # to collect actions of cognitive clause
         for a in actn:
-            op = a[0]
-            a = a[1:]
-            acs.append(semanticCommand.Copn[op] + ' ' + str(a))
+            opn = a[0]
+            arg = a[1:]
+            acs.append(semanticCommand.Copn[opn] + ' ' + str(arg))
         print ', '.join(acs)
 
 #
@@ -257,6 +268,7 @@ if __name__ == "__main__":
     inp = ellyDefinitionReader.EllyDefinitionReader(src)
 
     if inp.error != None:
+        print >> sys.stderr, inp.error
         sys.exit(1)
 
     cod = convertDefinition(stb,inp)
