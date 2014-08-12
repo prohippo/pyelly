@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTree.py : 20dec2013 CPM
+# parseTree.py : 11aug2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -78,9 +78,11 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
         """
 
         cs = phr.rule.cogs                # get cognitive semantics
+#       print >> sys.stderr , 'rule bias=' , phr.rule.bias
         lb = rb = 0
         phb = cs.score(self.ctx,phr)      # set bias to plausibility score
         phr.bias = phb
+#       print >> sys.stderr , 'after scoring' , phr
         if phr.lftd != None:
             lb = phr.lftd.bias
             phr.bias += lb                # add in bias of left descendant
@@ -88,9 +90,10 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
             rb = phr.rhtd.bias
             phr.bias += rb                #         and of right
         phr.bias += phr.rule.bias         # add in delta bias of rule
-#       print 'score ph=' , phr
-#       print 'ld=' , phr.lftd , '   rd=' , phr.rhtd
-#       print 'bs=' , phr.bias , '=' , phb , lb , rb , phr.rule.bias
+#       print >> sys.stderr , 'ld=' , phr.lftd , '   rd=' , phr.rhtd
+#       print >> sys.stderr , "\n         : cg+ls+rs+ru"
+#       fm = "bias= {0:2d} : {1:2d}+{2:2d}+{3:2d}+{4:2d}"
+#       print >> sys.stderr , fm.format(phr.bias , phb , lb , rb , phr.rule.bias)
 
     def initializeBias ( self , phr ):
 
@@ -105,6 +108,7 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
         if phr.rule.cogs == None:
             print >> sys.stderr , 'bad phr=' , phr , 'rule=' , phr.rule.seqn
         phr.bias = phr.rule.cogs.score(self.ctx,phr)
+#       print >> sys.stderr , 'initialize bias' , phr 
 
     def digest ( self ):
 
@@ -181,6 +185,8 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
                     self._score(phn)                   # compute bias score
                     if phn.synf.test(0):               # inherit features from current phrase?
                         phn.synf.combine(phr.synf)
+                    if phn.synf.test(1):               # inherit features from previous phrase?
+                        phn.synf.combine(phx.synf)
 #                   print 'phr=' , phr , 'phn=' , phn
 #                   if phr.typx == phn.typx and phr.synf.match(phn.synf):
 #                       phn.usen = 1                   # special right-recursion rule applies
