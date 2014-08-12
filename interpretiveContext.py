@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# interpretiveContext.py : 18apr2014 CPM
+# interpretiveContext.py : 30jul2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -56,6 +56,7 @@ class InterpretiveContext(object):
         procs  - for storing standalone procedures under name
         wghtg  - weighting of semantic concepts by current importance
         syms   - symbol table for grammar
+        cncp   - saved concept
     """
 
     def __init__ ( self , syms , procs , glbls , hiery ):
@@ -92,6 +93,7 @@ class InterpretiveContext(object):
         self.clearBuffers()          # for output buffers
 
         self.tokns = [ ]             # empty out token list for parse
+        self.cncp = None             # no initial contextual concept
 
     def getProcedure ( self , name ):
 
@@ -437,15 +439,29 @@ class InterpretiveContext(object):
         self.putDeletion(bs[-nd:]) # save deletion
         self.buffs[k] = bs[:-nd]   # shorten current buffer
 
-    def insertCharsIntoBuffer ( self , s , dir=0 ):
+    def prependCharsInCurrentBuffer ( self , s ):
 
         """
-        insert specified chars in buffer
+        put specified chars at start of current buffer
 
         arguments:
             self  -
             s     - chars in string
-            dir   - direction
+        """
+
+        self.buffn -= 1                 # make current buffer into next
+        self.insertCharsIntoBuffer(s,1) # insert into next
+        self.buffn += 1                 # next becomes current again
+
+    def insertCharsIntoBuffer ( self , s , dir=0 ):
+
+        """
+        insert specified chars in current or next buffer
+
+        arguments:
+            self  -
+            s     - chars in string
+            dir   - direction (0= current, 1= next)
         """
 
         if dir == 0:
@@ -641,7 +657,7 @@ class InterpretiveContext(object):
             integer importance score
         """
 
-        return wghtg.getImportance(cn)
+        return self.wghtg.getImportance(cn)
 
     def relateConceptPair ( self , cna , cnb ):
 
@@ -657,7 +673,7 @@ class InterpretiveContext(object):
             integer relatedness score
         """
 
-        return wghtg.getRelatedness(cna,cnb)
+        return self.wghtg.getRelatedness(cna,cnb)
 
     def pushStack ( self ):
 
