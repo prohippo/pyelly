@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeProcedure.py : 18apr2014 CPM
+# generativeProcedure.py : 08aug2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -36,6 +36,7 @@ import sys
 import ellyChar
 import semanticCommand
 import generativeDefiner
+import conceptualHierarchy
 import grammarRule
 
 class Code(object):
@@ -141,18 +142,27 @@ class GenerativeProcedure(object):
             if phs.bias == BAD:      # if out of alternatives,
                 return False         #   fail
 
-        if phrs.alnk != None:        # on ambiguity, adjust biases for phrase rules
-            if phs.rule.bias == 0:   # if zero bias for selected rule,
-                phs.rule.bias = -1   #   mark it to be less favored next time
+#       print >> sys.stderr , 'running' , phs, 'ctxc=' , phs.ctxc
+
+        if phs.ctxc != conceptualHierarchy.NOname: cntx.cncp = phs.ctxc
+
+        if phs.alnk != None:         # on ambiguity, adjust biases for phrase rules
+#           print >> sys.stderr , 'adjust rule bias' , phrs
+            phi = phs
+            rls = [ ]                # for list of unique rules for ambiguities
+            while phi != None:
+                if not phi.rule in rls: rls.append(phi.rule)
+                phi = phi.alnk
+            ru = rls[0]              # first rule is the one chosen for phrase analysis
+            rls = rls[1:]            # remaining unique rules
+            if len(rls) == 0:
+                pass                 # if only a single rule involved, no bias adjustment
+            elif ru.bias == 0:       # if zero bias for chosen rule,
+                ru.bias = -1         #   mark it to be less favored next time
             else:
-                phr = phrs           # selected rule had negative bias
-                while True:
-                    phr = phr.alnk   # scan all ambiguous phrases
-                    if phr == None:
-                        break
-                    if phr.rule.bias < 0:     # look only at negative rule biases
-                        if phr != phs:        # leave selected rule with negative bias,
-                            phr.rule.bias = 0 #   but reset all others to zero bias
+                for ru in rls: 
+                    if ru.bias < 0:  # reset all negative rule biases
+                        ru.bias = 0  #   to zero
         return True
 
     def run ( self , cntx , phrs ):
@@ -400,10 +410,10 @@ class GenerativeProcedure(object):
             elif op == semanticCommand.Gtrce:  # show phrase information to trace execution
                 cat = cntx.syms.getSyntaxTypeName(phrs.typx)
                 brn = "1" if type(phrs.rule) == grammarRule.ExtendingRule else "2"
-            	print >> sys.stderr, "TRACE @" + str(phrs.posn) + " type=" + cat ,
+                print >> sys.stderr, "TRACE @" + str(phrs.posn) + " type=" + cat ,
                 print >> sys.stderr, "rule=" + str(phrs.rule.seqn) ,
-            	print >> sys.stderr, " (" + brn + "-br)" ,
-            	cntx.printStatus()
+                print >> sys.stderr, " (" + brn + "-br)" ,
+                cntx.printStatus()
             elif op == semanticCommand.Gshow:   # show local variable
                 vr = code.next()
                 ms = code.next()
@@ -443,30 +453,31 @@ if __name__ == "__main__":
 
     args = sys.argv[1:] if len(sys.argv) > 1 else [ 'testProcedure.0.txt' ]
 
-    for src in args:
-        ctx.clearLocalStack()
+    for src in args:                       # test all specified input files
+        ctx.clearLocalStack()              # reset context
         ctx.clearBuffers()
         print "------------" , src
         inp = ellyDefinitionReader.EllyDefinitionReader(src)
-        if inp == None:
+        if inp == None:                    # check if input readable
             print >> sys.stderr, "cannot read procedure definition" , src
             continue
-        for ln in inp.buffer:
+        for ln in inp.buffer:              # echo input file
             print ln
         print ''
 
-        gp = GenerativeProcedure(stb,inp)
+        gp = GenerativeProcedure(stb,inp)  # compile procedure
         print '*CODE*'
-        showCode(gp.logic)
-        if gp.logic == None:
+        if gp.logic != None:
+            showCode(gp.logic)             # dump procedure logic
+        else:
             print 'null logic'
             continue
-        res = gp.doRun(ctx,phr)
+        res = gp.doRun(ctx,phr)            # run the procedure
 
         print '----'
-        print 'run status=' , res
+        print 'run status=' , res          # show status
         print '----'
-        frame.showBuffers()
+        frame.showBuffers()                # show output buffers
 
     print "------------"
     print len(args),'test file(s)'
