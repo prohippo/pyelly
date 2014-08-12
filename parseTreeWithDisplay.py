@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeWithDisplay.py : 05jun2013 CPM
+# parseTreeWithDisplay.py : 10aug2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -37,6 +37,7 @@ import codecs
 import ellyBits
 import parseTree
 import symbolTable
+import conceptualHierarchy
 
 mark = 256       # distinct flag for tree node already dumped
 
@@ -101,7 +102,7 @@ class ParseTreeWithDisplay(parseTree.ParseTree):
     def dumpAll ( self ):
 
         """
-        dump all tree fragments (overrides parent method)
+        dump all tree fragments (overrides superclass method)
 
         arguments:
             self  -
@@ -146,7 +147,7 @@ class ParseTreeWithDisplay(parseTree.ParseTree):
             while ph != None:
                 phx.set(ph.seqn)                        # mark phrase as scanned
                 out.write("{:2d} ".format(ph.seqn))     # show its sequence number
-                bx = '-' if ph.rule.bias < 0 else '0'   # show biases in effect
+                bx = '-' if ph.rule.bias < 0 else '0'   # show rule bias in effect
                 out.write("({0:+2d}/{1}) ".format(ph.bias,bx))
                 ph = ph.alnk                            # next phrase in ambiguity list
             out.write('\n')
@@ -222,7 +223,10 @@ class ParseTreeWithDisplay(parseTree.ParseTree):
                     tok = ''.join(tks[ph.posn].root)   # leaf token string
                 else:
                     tok = ''                           # null string
-                out.write(' [' + tok + ']\n')          # write it out
+                out.write(' [' + tok + ']')            # write it out
+                if ph.cncp != conceptualHierarchy.NOname:
+                    out.write(' ' + ph.cncp)
+                out.write('\n')                        # end of output line
 
                 for sr in stk:                         # show semantic features in next line
                     if sr == None:                     # already shown?
@@ -283,9 +287,13 @@ if __name__ == '__main__':
     import grammarTable
     import dumpEllyGrammar
 
-    class Wtg(object):  # dummy conceptual weight
+    class Wtg(object):  # dummy conceptual weighting
         def relateConceptPair ( self , cna , cnb ):
             return 0
+        def interpretConcept ( self , cn ):
+            return 0
+        def getIntersection ( self ):
+            return '--'
 
     class Ctx(object):  # dummy interpretive context
         def __init__ ( self ):
