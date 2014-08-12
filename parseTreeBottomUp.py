@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBottomUp.py : 08aug2014 CPM
+# parseTreeBottomUp.py : 11aug2014 CPM
 # -----------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -418,7 +418,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
         nt = len(ctx.tokns)
 #*      print 'evaluate:' , nt , 'tokens' , 'wordno=' , self.wordno
         gs = self.goal[nt]
-        print 'at' , nt , 'with' , len(gs) , 'goals' 
+#*      print 'at' , nt , 'with' , len(gs) , 'goals' 
         topg = None
         tops = -11111
         for g in gs:
@@ -435,7 +435,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
             phr = g.lph
             self._pls = phr.bias        # save plausibility
 #*          print 'from' , g
-#           print 'sent=' , phr
+#*          print 'sent=' , phr
             phr.rule.gens.doRun(ctx,phr)# run generative semantics
             if ellyConfiguration.longDisplay:
                 self.dumpAll()          # show complete parse tree
