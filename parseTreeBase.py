@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBase.py : 05jun2014 CPM
+# parseTreeBase.py : 09aug2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -34,6 +34,7 @@ support for syntax analysis with preallocated, extensible arrays of data element
 
 import ellyBits
 import symbolTable
+import conceptualHierarchy
 
 NOMINAL = 256 # default starting allocation for phrases and goals
 
@@ -65,6 +66,7 @@ class ParseTreeBase(object):
             synf  - syntax features
             semf  - semantic features
             cncp  - semantic concept
+            ctxc  - conceptual context
             llnk  - listing link
             alnk  - ambiguity link
             bias  - plausibility scoring for ambiguity ranking
@@ -94,7 +96,7 @@ class ParseTreeBase(object):
                 summary string
             """
 
-            cn = '' if self.cncp == '-' else '/' + self.cncp
+            cn = '' if self.cncp == conceptualHierarchy.NOname else '/' + self.cncp
 
             return ( 'phrase ' + unicode(self.seqn) + ' @' + unicode(self.posn)
                      + ': type=' + unicode(self.typx) + ' [' + self.synf.hexadecimal() + '] :'
@@ -126,7 +128,8 @@ class ParseTreeBase(object):
             self.usen = 0
             self.synf.clear()
             self.semf.clear()
-            self.cncp = '-'
+            self.cncp = conceptualHierarchy.NOname
+            self.ctxc = conceptualHierarchy.NOname
             self.llnk = None
             self.alnk = None
             self.bias = 0
@@ -175,6 +178,7 @@ class ParseTreeBase(object):
             self.rhtd, othr.rhtd = othr.rhtd, self.rhtd
             self.bias, othr.bias = othr.bias, self.bias
             self.cncp, othr.cncp = othr.cncp, self.cncp
+            self.ctxc, othr.ctxc = othr.ctxc, self.ctxc
             self.seqn, othr.seqn = othr.seqn, self.seqn
             if self.lftd == self:
                 self.lftd = None
