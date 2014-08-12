@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 04apr2014 CPM
+# ellyBase.py : 09aug2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -47,6 +47,7 @@ import interpretiveContext
 import entityExtractor
 import simpleTransform
 import punctuationRecognizer
+import conceptualHierarchy
 import vocabularyTable
 
 import os   # needed to get file modification times
@@ -164,7 +165,7 @@ class EllyBase(object):
         s = self.ses  # session info
         d = self.rul  # language definition
 
-#       print '0:' , len(d.stb.ntname) , 'categories'
+#       print '0:' , len(d.stb.ntname) , 'syntactic categories'
 
         self.sbu = substitutionBuffer.SubstitutionBuffer(d.mtb)
 
@@ -183,18 +184,18 @@ class EllyBase(object):
         voc = ellyDefinition.Vocabulary(system,redefine,d.stb,inflx)
         self.vtb = voc.vtb
 
-#       print '1:' , len(d.stb.ntname) , 'categories'
+#       print '1:' , len(d.stb.ntname) , 'syntactic categories'
 
         self.ctx = interpretiveContext.InterpretiveContext(d.stb,d.gtb.pndx,s.globals,d.hry)
 
         for z in d.gtb.initzn:
             self.ctx.glbls[z[0]] = z[1]
 
-#       print '2:' , len(d.stb.ntname) , 'categories'
+#       print '2:' , len(d.stb.ntname) , 'syntactic categories'
 
         self.pnc = punctuationRecognizer.PunctuationRecognizer(d.stb)
 
-#       print '3:' , len(d.stb.ntname) , 'categories'
+#       print '3:' , len(d.stb.ntname) , 'syntactic categories'
 
         nto = len(d.stb.ntname) # for consistency check
         if ellyConfiguration.treeDisplay:
@@ -210,7 +211,7 @@ class EllyBase(object):
 
         self.trs = simpleTransform.SimpleTransform() if ellyConfiguration.rewriteNumbers else None
 
-#       print '4:' , len(d.stb.ntname) , 'categories'
+#       print '4:' , len(d.stb.ntname) , 'syntactic categories'
 
         ntn = len(d.stb.ntname) # for consistency check
         if (nto != ntn):
@@ -232,7 +233,7 @@ class EllyBase(object):
     
         self.ctx.glbls[var] = val
     
-    def translate ( self , text ):
+    def translate ( self , text , plsb=False ):
 
         """
         Elly processing of text input
@@ -240,6 +241,7 @@ class EllyBase(object):
         arguments:
             self  -
             text  - list of Unicode chars to translate
+            plsb  - flag to show plausibility score in output
 
         returns:
             rewritten input on success, None otherwise
@@ -276,7 +278,15 @@ class EllyBase(object):
         if not self.ptr.evaluate(self.ctx):
             return None                        # translation fails
         else:
+            if plsb:
+                s = '=' + str(self.ptr.getLastPlausibility())
+                if self.ctx.cncp != conceptualHierarchy.NOname:
+                    s += ' ' + self.ctx.wghtg.hiery.generalize(self.ctx.cncp)
+                s += ": "
+                self.ctx.prependCharsInCurrentBuffer(s)
             return self.ctx.getBufferContent() # translated string
+
+        print "\n"
 
     
     def _lookUpNext ( self ):
@@ -380,6 +390,7 @@ class EllyBase(object):
                            ve.cat,ve.syf,ve.smf,ve.bia,ve.gen):
                         tr.lastph.lens = m   # set char length of leaf phrase node
                                              # just added for later selection
+                        tr.lastph.cncp = ve.con
                 rs.mtchl = m           # update maximum for new matches
 #*      print 'vocabulary m=' , rs.mtchl
 
@@ -564,6 +575,7 @@ if __name__ == '__main__':
         print >> sys.stderr , 'no language definitions'
         sys.exit(1)
 
+    print ""
     dumpEllyGrammar.dumpCategories(eb.rul.stb)
     dumpEllyGrammar.dumpExtensions(eb.rul.stb,eb.rul.gtb.extens,False)
     dumpEllyGrammar.dumpSplits(eb.rul.stb,eb.rul.gtb.splits,False)
@@ -579,7 +591,7 @@ if __name__ == '__main__':
         if len(l) == 0 or l[0] == '\n': break
 #       print 'input:' , type(line) , '->' , type(l)
         txt = list(l.strip())
-        lo = eb.translate(txt)
+        lo = eb.translate(txt,True)
         if lo == None:
             sys.stderr.write('????\n')
         else:
