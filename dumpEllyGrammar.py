@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# dumpEllyGrammar.py : 05jun2014 CPM
+# dumpEllyGrammar.py : 28jul2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -109,6 +109,8 @@ def dumpCategories ( stb ):
         stb     - symbol table
     """
 
+    print "Syntactic Categories"
+    print "--------------------"
     ntno = len(stb.ntname)
     for i in range(ntno):
         print '{:2}'.format(i) , stb.ntname[i]
@@ -127,10 +129,10 @@ def dumpFeatures ( stb ):
     print "Feature Sets"
     print "------------"
 
-    lb = [ 'syntactic' , 'semantic' ]
+    lb = [ 'Syntactic' , 'Semantic' ]
     for fs in [ stb.sxindx , stb.smindx ]:
         lbl = lb.pop(0)
-        print '----' , lbl
+        print ' --' , lbl
         fids = fs.keys()
         nols = len(fids)
         for i in range(nols):
@@ -293,7 +295,7 @@ def dumpDictionary ( stb, dctn , all ):
     """
 
     print ''
-    print "Dictionary Entries"
+    print "Grammar Dictionary"
     print "------------------"
 
     no = 0
