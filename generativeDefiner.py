@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeDefiner.py : 18apr2014 CPM
+# generativeDefiner.py : 19aug2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -30,7 +30,7 @@
 
 """
 method to compile code for a generative semantic procedure and optionally
-to display it
+to display its logic
 """
 
 import sys
@@ -56,12 +56,12 @@ _simple = {  # commands with no arguments
     "trace"        : semanticCommand.Gtrce 
 }
 
-_dir = [ '<' , '>' ] # qualifier for semantic command
+_dir = [ '<' , '>' ] # direction qualifier for some semantic commands
 
 def compileDefinition ( stb , inp ):
 
     """
-    comple definition from input stream into executable generative semantic logic
+    compile definition from input stream into executable generative semantic logic
 
     arguments:
         stb   - symbol table
@@ -71,10 +71,25 @@ def compileDefinition ( stb , inp ):
         procedure body as a list of commands and data on success, None otherwise
     """
 
-    ######## special methods for handling conditional blocks
-
-    backl = [ ]  # back link stack
     store = [ ]  # to save procedure body
+    backl = [ ]  # back link stack for conditional branching
+
+    ######## special method for error reporting
+
+    def _err ( s='malformed command' ):
+
+        """
+        show an error message
+        arguments:
+            s  - message string
+        returns:
+            False
+        """
+
+        print >> sys.stderr , '** generative semantic error:' , s
+        return False
+
+    ######## special methods for handling conditional blocks
 
     def _elseBlock ( ):
 
@@ -85,10 +100,12 @@ def compileDefinition ( stb , inp ):
         """
 
 #       print "elseBlock" , len(backl)
-        if len(backl) == 0: return False
+        if len(backl) == 0:
+            return _err('no IF for ELSE')
         no = backl[-1]            # location of previous conditional branch
         br = store[no]            # save chaining link saved in location
-        if br < 0: return False   # < 0 indicates previous WHILE, which cannot have ELSE
+        if br < 0:                # < 0 indicates backward branch saved for WHILE
+            return _err('ELSE in WHILE block')
         store.append(semanticCommand.Gskip) # end execution of preceding block
         backl[-1] = len(store)    # update back link stack to next skip destination
         store.append(br)          # place holder for skip destination
@@ -100,26 +117,30 @@ def compileDefinition ( stb , inp ):
         """
         add conditional test at start of block according to type of arguments
         arguments:
-            negn - any negation
+            negn - any negation of test
             rs   - argument string
         returns:
             True on success, False otherwise
         """
 
 #       print "ifTest" , len(backl) , rs
-        if len(rs) == 0: return False
+        if len(rs) == 0:
+            return _err('incomplete IF or ELIF or WHILE')
         
-        if rs[0] == '[': # testing semantic feature
+        if rs[0] == '[': # testing semantic feature?
             k = rs.find(']')
-            if k < 0: return False
+            if k < 0 or negn > 0:
+                return _err()
             fs = stb.getFeatureSet(rs[1:k].lower())
-            if fs == None: return False
+            if fs == None:
+                return _err('malformed semantic features')
             test = ellyBits.join(fs[0],fs[1])
-            store.extend([ semanticCommand.Gchkf+negn , test ])
+            store.extend([ semanticCommand.Gchkf , test ])
         else:            # testing local variable
             ar = _eqsplit(rs)
 #           print 'ar=' , len(ar) , ar
-            if len(ar) < 2: return Fail
+            if len(ar) < 2:
+                return _err('missing conditional test comparison')
             ls = ar[1].split(', ') # separator must be a comma followed by space!
             store.extend([ semanticCommand.Gchck+negn , ar[0].lower() , ls ])
         return True
@@ -137,7 +158,8 @@ def compileDefinition ( stb , inp ):
         """
 
         k = line.find(')')     # look for end of procedure name
-        if k < 0: return False # error if not found
+        if k < 0:
+            return _err()
         store.extend( [ semanticCommand.Gproc , line[1:k].lower() ] )
         return True
 
@@ -160,13 +182,14 @@ def compileDefinition ( stb , inp ):
             op = line[:k].lower()   # otherwise, line has arguments
             rs = line[k+1:].strip() # rest of string
             if op != semanticCommand.Gappd and rs[0] == '~':
-                rs = rs[1:]         # special where '~' means negation in check
-                negn = 1            # remove '~' and set flag
+                rs = rs[1:]         # preceding '~' means negation in check
+                negn = 1            # remove '~' and set 0,1 numerical flag
 
 #       print 'op=' , op , 'rs=' , rs
 
         if op in _simple:           # nothing more to do if operation is simple
 #           print "simple operation"
+            if len(rs) > 0 or negn > 0: return _err()
             store.append(_simple[op])
             return True             #
 
@@ -178,11 +201,12 @@ def compileDefinition ( stb , inp ):
                 store.append(semanticCommand.Gchng)
                 ar = rs[1:].split(c)
                 if len(ar) < 2:
-                    return False  # incomplete substitution
+                    return _err('incomplete MERGE substitution')
                 else:
                     store.extend(ar[:2])
         elif op == 'end':
-            if len(backl) == 0: return False
+            if len(backl) == 0:
+                return _err('unattached END')
             no = backl.pop()
 #           print 'END @' , no , store[no]
             nn = no
@@ -201,15 +225,17 @@ def compileDefinition ( stb , inp ):
         elif op == 'else':
             if not _elseBlock(): return False
         elif op == 'elif':
-            if len(rs) == 0: return False
-            if not _elseBlock(): return False
-            if not _ifTest(negn,rs): return False
+            if len(rs) == 0:
+                return _err('no ELIF comparison')
+            if not _elseBlock() or not _ifTest(negn,rs):
+                return False
             on = backl[-1]
 #           print "extend back link"
             backl[-1] = len(store)
             store.append(on)
         elif op == 'while' or op == 'if':
-            if len(rs) == 0: return False
+            if len(rs) == 0:
+                return _err('no IF comparison')
             wh = (op == 'while')                 # are we dealing with WHILE?
 #           print 'negation=',negn
             if not _ifTest(negn,rs): return False
@@ -226,50 +252,55 @@ def compileDefinition ( stb , inp ):
                 if no < 0: break                 # stored -1 marks marks WHILE test
                 k -= 1                           # stored  0 marks IF/ELIF, must continue
             else:
-                return False                     # no enclosing WHILE block found
+                return _err('no enclosing WHILE block')
             if op == 'break':
                 store.append(semanticCommand.Gskip)  # put in branch command for BREAK
             else:
                 ar = _eqsplit(rs)               # check can be on local variable only
                 if len(ar) < 2:
-                    return False
+                    return _err('no BREAKIF comparison')
                 v = ar[0]                        # variable name
                 if v[0] == '~':                  # get any sense of check
-                    op = semanticCommand.Gchck   # (note that sense of check reverses)
+                    op = semanticCommand.Gchck   # (note sense of check reverses here)
                     v = v[1:]
                 else:
                     op = semanticCommand.Gnchk   #
-                store.extend([ op , v , ar[1] ]) # put if conditional branch for BREAKIF
+                store.extend([ op , v , ar[1] ]) # put conditional branch for BREAKIF
             on = len(store)                      # for updating back link
             store.append(backl[k])               # save old back link
             backl[k] = on                        # update back back link for branch
                 
         elif op == 'var' or op == 'variable' or op == 'set':
-            if len(rs) == 0: return False
+            if len(rs) == 0:
+                return _err()
             co = semanticCommand.Gset if op == 'set' else semanticCommand.Gvar
             ar = _eqsplit(rs)
             if len(ar) < 2: ar.append('')
             store.extend([ co , ar[0].lower() , ar[1] ])
         elif op == 'insert':
             ar = _getargs(rs)
-            if ar == None: return False
+            if ar == None:
+                return _err()
             wh = ar.pop(0)
             sc = semanticCommand.Ginsr if wh == '<' else semanticCommand.Ginsn
             store.extend([ sc , ar[0] ])
         elif op == 'peek':
             ar = _getargs(rs)
-            if ar == None: return False
+            if ar == None:
+                return _err()
             wh = ar.pop(0)
             store.extend([ semanticCommand.Gpeek , ar[0] , (wh == '<') ])
         elif op == 'extract':
             ar = _getargs(rs)
-            if ar == None: return False
+            if ar == None:
+                return _err()
             wh = ar.pop(0)
             sc = semanticCommand.Gextr if wh == '<' else semanticCommand.Gextl
             if len(ar) == 1: ar.append('1')
             store.extend([ sc , ar[0] , int(ar[1]) ])
         elif op == 'shift' or op == 'delete':
-            if len(rs) == 0: return False
+            if len(rs) == 0:
+                return _err()
             ar = rs.split(' ')
             first = ar[0].lower()
             co = ( semanticCommand.Gshft if op == 'shift'
@@ -280,7 +311,7 @@ def compileDefinition ( stb , inp ):
                 flag = 1 if first == 'to' else -1
                 store.extend([ co , str , flag ])
             else:
-                nc = 11111   # bigger than possible buffer
+                nc = 11111   # bigger than any possible buffer
                 if first != '<' and first != '>':
                     nc = int(first)
                     if len(ar) > 1 and ar[1] == '>': nc = -nc
@@ -288,12 +319,14 @@ def compileDefinition ( stb , inp ):
                     nc = -nc
                 store.extend([ co , nc ])
         elif op == 'store':
-            if len(rs) == 0: return False
+            if len(rs) == 0:
+                return _err()
             ar = rs.split(' ')
             nd = 0 if len(ar) == 1 else int(ar[1])
             store.extend([ semanticCommand.Gstor , ar[0] , nd ])
         elif op == 'find':
-            if len(rs) == 0: return False
+            if len(rs) == 0:
+                return _err()
             ar = rs.split(' ')
             ss = ar.pop(0)
             while ss[-1] == '\\' and len(ar) > 0:
@@ -301,12 +334,15 @@ def compileDefinition ( stb , inp ):
             store.extend([ semanticCommand.Gfnd , ss ])
         elif op == 'pick':
 #           print 'rs=' , rs
-            if len(rs) == 0: return Fail
+            if len(rs) == 0:
+                return _err()
             ar = rs.split(' ')
-            if len(ar) < 2: return Fail
+            if len(ar) < 2:
+                return _err()
             chs = ar[1]
 #           print 'chs=' , chs
-            if chs[0] != '(' or chs[-1] != ')': return Fail
+            if chs[0] != '(' or chs[-1] != ')':
+                return _err('no PICK options')
             dic = { }
             ch = chs[1:-1].split('#')    # strip off ( )
 #           print 'ch=' , ch
@@ -325,16 +361,13 @@ def compileDefinition ( stb , inp ):
             co = semanticCommand.Gget if op == 'get' else semanticCommand.Gput
             av = rs.lower().split(' ')
             if len(av) < 2:
-                print >> sys.stderr, "**missing global variable!!"
-                return False
+                return _err('missing global variable')
             store.extend([ co , av[0] , av[1] ])
         elif op == 'assign' or op == 'queue' or op == 'unqueue':
             ax = rs.split(' ')                  # separate any extra arguments
             av = ax[0].lower().split('=')       # get variable names
             if len(av) <= 1 or len(av[1]) == 0:
-                print sys.stderr, '**', av
-                print sys.stderr, "**incomplete assignment!"
-                return False
+                return _err('incomplete ' + str(av).upper() + 'assignment')
             opn  = semanticCommand.Gassg if op == 'assign' else semanticCommand.Gque
             if opn == semanticCommand.Gassg:
                 store.extend([ opn , av[0] , av[1] ])
@@ -344,8 +377,7 @@ def compileDefinition ( stb , inp ):
         elif op == 'unite' or op == 'intersect' or op == 'complement':
             av = rs.lower().split('<<')
             if len(av) == 1 or len(av[1]) == 0:
-                print sys.stderr, "**incomplete set operation!"
-                return False
+                return _err('incomplete set operation')
             opn = ( semanticCommand.Gunio if op == 'unite' else
                     semanticCommand.Gintr if op == 'intersect' else
                     semanticCommand.Gcomp )
@@ -356,14 +388,13 @@ def compileDefinition ( stb , inp ):
             ms = '' if k < 0 else rs[k+1:]
             store.extend([ semanticCommand.Gshow , vr , ms ])
         else:
-            print >> sys.stderr, "**bad operation: " + op
-            return False
+            return _err("bad operation: " + op)
 
 #       print 'success!'
         return True
 
 #
-#   main loop for compilation
+#   main loop for procedure compilation
 #
 
     while True:
@@ -376,12 +407,15 @@ def compileDefinition ( stb , inp ):
         if line[0] == '(':
             if not _procParse(line): # interpret procedure call
                 return None
-        else:
-            if not _operParse(line): # interpret semantic command
-#               print 'failure!'
-                return None
+        elif not _operParse(line):   # interpret semantic command
+#           print 'returning None on failure!'
+            return None
 
-    return store if len(backl) == 0 else None
+    if len(backl) == 0:
+        return store
+    else:
+        _err('missing END')
+        return None
 
 _code = { 'SP' : '\x20' , 'HT' : '\x09' , 'LF' : '\x0a' , 'CR' : '\x0d' }
 
