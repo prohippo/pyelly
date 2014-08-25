@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# definitionLine.py : 07apr2013 CPM
+# definitionLine.py : 20aug2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -80,7 +80,7 @@ class DefinitionLine(object):
         tail  - part right of -> or <-
     """
 
-    def __init__ ( self , line ):
+    def __init__ ( self , line , twoway=True ):
 
         """
         initialize from input string
@@ -88,6 +88,7 @@ class DefinitionLine(object):
         arguments:
             self  -
             line  - input string
+            twoway - allow -> and <- arrows
         """
 
         self.left = None    # default
@@ -98,9 +99,9 @@ class DefinitionLine(object):
 
         k = line.find('->') # split on '->'
         if k < 0:
+            if not twoway: return
             k = line.find('<-') # split on '<-'
-            if k < 0:
-                return
+            if k < 0: return
 
 #       print "k=" , k , "in" , len(line)
         self.left = normalize(line[:k])   # store splitoff substrings
