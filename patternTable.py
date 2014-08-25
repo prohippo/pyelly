@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# patternTable.py : 24dec2013 CPM
+# patternTable.py : 24aug2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -36,6 +36,7 @@ import sys
 import ellyBits
 import ellyChar
 import ellyWildcard
+import ellyException
 import syntaxSpecification
 
 class Link(object):
@@ -59,11 +60,13 @@ class Link(object):
             self  -
             syms  - Elly symbol table
             dfls  - definition elements in list
+
+        exceptions:
+            FormatFailure
         """
 
         if len(dfls) != 3:                            # must have 3 elements
-            print >> sys.stderr , 'bad link definition=' , dfls
-            self.patn = None
+            raise ellyException.FormatFailure
         else:
             self.patn = ellyWildcard.convert(dfls[0]) # encode wildcards in pattern
             self.catg = None                          # defaults
@@ -86,7 +89,7 @@ class Link(object):
                 if ( pe != ellyWildcard.cALL and      # final pattern must end with * or $
                      pe != ellyWildcard.cEND ):
                     self.patn += ellyWildcard.cEND    # default is $
-                    print >> sys.stderr , 'default $ added to pattern' , dfls[0]
+                    print >> sys.stderr , '** default $ added to pattern' , dfls
 
             self.nxts = n                             # specify next state
 
@@ -116,7 +119,9 @@ class PatternTable(object):
     FSA with Elly patterns to determine syntax types
 
     attributes:
-        indx  - for FSA states and their links
+        indx      - for FSA states and their links
+
+        _errcount - running input error count
      """
 
     def __init__ ( self , syms=None , fsa=None ):
@@ -128,11 +133,31 @@ class PatternTable(object):
             self  -
             syms  - symbol table for syntax categories and features
             fsa   - EllyDefinitionReader for FSA patterns plus syntax specifications
+
+        exceptions:
+            TableFailure on error
         """
 
-        self.indx = [ ]  # start empty
+        self.indx = [ ]     # start empty
+        self._errcount = 0  # no errors yet
         if fsa != None and syms != None:
             self.load(syms,fsa)
+
+    def _err ( self , s='malformed FSA transition' , l='' ):
+
+        """
+        for error handling
+
+        arguments:
+            self  -
+            s     - error message
+            l     - problem line
+        """
+
+        self._errcount += 1
+        print >> sys.stderr , '** pattern error:' , s
+        if l != '':
+            print >> sys.stderr , '** at [' , l , ']'
 
     def load ( self , syms , fsa ):
 
@@ -143,8 +168,16 @@ class PatternTable(object):
             self  -
             syms  - symbol table for syntax categories and features
             fsa   - FSA link input from Elly definition reader
+
+        exceptions:
+            TableFailure on error
         """
 
+        ins = [ 0 ]     # states with incoming links
+        sss = [   ]     # starting states
+        lss = [ 0 ]     # all defined states
+
+        nm = 0                               # states producing matches
 #       print 'FSA definition line count=' , fsa.linecount()
         while True: # read all input from ellyDefinitionReader
             l = fsa.readline()
@@ -154,18 +187,47 @@ class PatternTable(object):
 #           print 'ls=' , ls
             sts = ls.pop(0)                  # starting state for FSA link
             if not ellyChar.isDigit(sts[0]): # starting state should be numerical
-                print >> sys.stderr , 'bad input:' , l
-                break
+                self._err('bad input',l)
+                continue
             stn = int(sts)                   # numerical starting state
             n = len(self.indx)
             
             if stn >= n:                     # make sure state index has enough slots allocated
                 for i in range(stn - n + 1): #
                     self.indx.append([ ])    #
-            lk = Link(syms,ls)               # allocate new link
+            try:
+                lk = Link(syms,ls)           # allocate new link
+            except:
+                self._err('bad link',l)
+                continue
 #           print 'load lk=' , lk
+
+            if lk.catg != None: nm += 1      # link has category for match
+            if not stn in lss: lss.append(stn)
+            if not stn in sss: sss.append(stn)
+            if lk.nxts >= 0:                 # -1 is stop, not state
+                if not lk.nxts in lss: lss.append(lk.nxts)
+                if not lk.nxts in ins: ins.append(lk.nxts)
+
             self.indx[stn].append(lk)        # add to its slot in FSA state index
 #           print '=' , self.indx[stn]
+
+        if len(self.indx) == 0 and self._errcount == 0:
+            return                           # in case of empty definition file
+
+        if nm == 0:                          # FSA must have at least one match state
+            self._err('no match states')
+#       print 'ins=' , ins
+#       print 'lss=' , lss
+
+        ns = len(lss)                        # total number of states
+        if len(ins) != ns:
+            self._err('some states unreachable')
+        if len(sss) != ns:
+            self._err('some non-stop states are dead ends')
+        if self._errcount > 0:
+            print >> sys.stderr , 'pattern table generation FAILed'
+            raise ellyException.TableFailure
 
     def bound ( self , segm ):
 
@@ -317,9 +379,11 @@ if __name__ == '__main__':
 
     print 'pattern test with' , '<' + file + '>'
 
-    pat = PatternTable(ctx.syms,inp) # try to define FSA
-    if pat == None:
-        print 'no pattern table'
+    pat = None
+    try:
+        pat = PatternTable(ctx.syms,inp) # try to define FSA
+    except ellyException.TableFailure:
+        print 'no pattern table generated'
         sys.exit(1)
 
     print len(pat.indx) , 'pattern groups'
