@@ -9,4 +9,4 @@ if [ ${s} == 'disambig' ]; then x='-noLang -p' ; fi
 if [ ${s} == 'combo'    ]; then x='-noLang -p' ; fi
 rm -f *.elly.bin
 python ellyMain.py ${x} $2 $3 $4 ${s} < ${s}.main.txt &> ttmm
-egrep FAIL\|$'\r'\|'^ [^ 1]'\|'^ 1[0-9][0-9][^ ][^=]' ttmm
+egrep FAIL\|$'\r'\|'^ [^ ]' ttmm

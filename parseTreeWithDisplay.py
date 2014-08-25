@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeWithDisplay.py : 10aug2014 CPM
+# parseTreeWithDisplay.py : 15aug2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -47,6 +47,9 @@ BRN  = u'\u252C' # '+' branch  Unicode box-drawing characters for drawing tree
 DWN  = u'\u2500' # '-' down
 CNN  = u'\u2502' # '|' connect
 ANG  = u'\u2514' # '\' angle
+NBSP = u'\u00A0' # non-breaking space
+
+SPCG = NBSP+NBSP+NBSP+NBSP+NBSP+NBSP+NBSP+NBSP+NBSP # for indentation
 
 out  = codecs.getwriter('utf8')(sys.stderr) # must do this for any redirection to work
 
@@ -67,7 +70,7 @@ def _idbias ( ph ):
     if ph == None:
         return "         "
     else:
-        return " " + "{:3d}".format(ph.seqn) + " ={:3d}".format(ph.bias)
+        return NBSP + "{:3d}".format(ph.seqn) + " ={:3d}".format(ph.bias)
 
 class ParseTreeWithDisplay(parseTree.ParseTree):
 
@@ -236,7 +239,7 @@ class ParseTreeWithDisplay(parseTree.ParseTree):
                         sr[0] = None                   # and indicate they have been shown
                     cc = CNN if sr != None and sr[1] != None else u' '
                     out.write(cc)
-                out.write(str(_idbias(ph)))            # add features for current phrase
+                out.write(_idbias(ph))                 # add features for current phrase
                 out.write('\n')
 
                 while True:                            # have to back up in tree
@@ -253,9 +256,9 @@ class ParseTreeWithDisplay(parseTree.ParseTree):
                         if ph == None:                 # if none, continue backing up
                             continue
                         for sr in stk:                 # fill out connections before phrase
-                            out.write('         ')
+                            out.write(SPCG)
                             out.write(CNN if sr != None and sr[1] != None else ' ')
-                        out.write('         ')         #
+                        out.write(SPCG)                #
                         out.write(ANG)                 # connector to next phrase node
                         stk.append(None)               # for alignment
                         break
