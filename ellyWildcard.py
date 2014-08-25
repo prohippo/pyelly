@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 29nov2013 CPM
+# ellyWildcard.py : 25aug2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -35,7 +35,24 @@ for defining wildcards in text pattern matching
 import ellyChar
 import ellyBuffer
 
-X = 0xE000       # start of private codes in Unicode, used for pattern syntax
+X  = 0xE000       # start of private codes in Unicode, used for pattern syntax
+Xc = unichr(X)    #   (Python 2.* only)
+
+def isWild ( c ):
+
+    """
+    check if char is wildchar
+
+    arguments:
+        c   - character to check
+
+    returns:
+        True if wild, False otherwise
+    """
+
+#   print ' c=' , c  , '(' + str(ord(c))  + ')'
+#   print 'Xc=' , Xc , '(' + str(ord(Xc)) + ')'
+    return (c >= Xc)
 
 cANY=unichr(X+1 ) # match any char
 cCAN=unichr(X+2 ) # match nonalphanumeric char
@@ -106,14 +123,16 @@ def convert ( strg ):
     if strg == None: return None
 
     lng = len(strg)
-    t = [ ]
+    nlb = 0                          # check balancing of brackets
+    t = [ ]                          # converted output
     i = 0
     while True:
         if i == lng: break
+        wild = True                  # flag for wildcard char, True by default
         x = strg[i]
 #       print "convert",i,x
 
-        if   x == wANY:             # check for wildcard
+        if   x == wANY:              # check for wildcard
             t.append(cANY)
         elif x == wALF:
             t.append(cALF)
@@ -132,13 +151,13 @@ def convert ( strg ):
         elif x == wALL:
             if len(t) == 0 or t[-1] != cALL:
                 t.append(cALL)
-        elif x == wSPN:             # check for repetition of wildcard
+        elif x == wSPN:              # check for repetition of wildcard
             if i + 1 == lng:
                 t.append(x)
             else:
                 i += 1
                 y = strg[i]
-                if   y == wANY:     # only these wildcards can be repeated
+                if   y == wANY:      # only these wildcards can be repeated
                     op = cSAN
                 elif y == wDIG:
                     op = cSDG
@@ -148,25 +167,37 @@ def convert ( strg ):
                     continue
                 t.append(op)
         elif x == ellyChar.LBR:
-            t.append(cSOS)          # start of optional match in pattern
+#           print 'at \[ nlb=' , nlb
+            if nlb != 0: return None
+            nlb += 1
+            t.append(cSOS)           # start of optional match in pattern
         elif x == ellyChar.RBR:
-            t.append(cEOS)          # end   of optional match
-        elif x == ellyChar.BSL:     # escape char
-            if i + 1 == lng:        # nothing to escape?
+#           print 'at \] nlb=' , nlb
+            if nlb !=  1: return None
+            nlb -= 1
+            t.append(cEOS)           # end   of optional match
+        elif x == ellyChar.BSL:      # escape char
+            if i + 1 == lng:         # nothing to escape?
                 t.append(x)
-            elif strg[i+1] == ' ':  # escaped space?
+            elif strg[i+1] == ' ':   # escaped space?
                 t.append(ellyChar.NBS)
                 i += 1
-            else:                   # escaped non-space?
+            else:                    # escaped non-space?
                 z = strg[i+1]
 #               print 'escaped=',z
                 if ellyChar.isDigit(z):
-                    t.append(x)     # if digit, preserve backslash to indicate substitution
+                    t.append(x)      # if digit, preserve backslash to indicate substitution
                 else:
-                    t.append(z)     # otherwise, keep the next char literally
+                    t.append(z)      # otherwise, keep the next char literally
                     i += 1
         else:
             t.append(x)
+            wild = False
+
+        if wild and nlb > 0 and x != ellyChar.LBR:
+#           print 'at wildcard' , x , 'nlb=' , nlb
+            return None              # no wildcards allowed in optional segments
+        
         i += 1
 
 #   print "converted=", t
@@ -514,7 +545,7 @@ def match ( patn , text , offs=0 , limt=None ):
         else:
 #           print "no unwinding"
             break                   # quit if unwinding is exhausted
-    
+
     ##
     ## clean up on match mode or on no match possible
     ##
