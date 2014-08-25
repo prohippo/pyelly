@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeProcedure.py : 08aug2014 CPM
+# generativeProcedure.py : 18aug2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -244,29 +244,24 @@ class GenerativeProcedure(object):
                 ss = code.next()
                 cntx.mergeBuffersWithReplacement(ts,ss)
             elif ( op == semanticCommand.Gchck or
-                   op == semanticCommand.Gchkf or
-                   op == semanticCommand.Gnchk or
-                   op == semanticCommand.Gnchf ):
-                opn = op - semanticCommand.Gchck
-                kind, mode = divmod(opn,2)     # what kind of test?
-#               print opn,kind,mode
-                sens = (mode == 0)
-                if kind == 0:                  # compare output buffer with local variable
-                    ids = code.next()
-                    ref = code.next()
-                    val = cntx.getLocalVariable(ids)
-#                   print "chk",ids,"[",ref,"]","[",val,"]"
-#                   print (val in ref),sens
-                    if (val in ref) == sens:
-#                       print "match"
-                        code.next()
-                        continue
-#                   print "no match"
-                else:                          # compare phrase semantic feature set
-                    refr = code.next()
-                    if phrs.semf.match(refr) == sens:
-                        code.next()
-                        continue
+                   op == semanticCommand.Gnchk ):
+                sens = (op == semanticCommand.Gchck)
+                ids = code.next()
+                ref = code.next()
+                val = cntx.getLocalVariable(ids)
+#               print "chk",ids,"[",ref,"]","[",val,"]"
+#               print (val in ref),sens
+                if (val in ref) == sens:
+#                   print "match"
+                    code.next()
+                    continue
+#               print "no match"
+                code.skip()                    # match fails
+            elif op == semanticCommand.Gchkf:
+                refr = code.next()
+                if phrs.semf.match(refr) == sens:
+                    code.next()
+                    continue
                 code.skip()                    # match fails
             elif op == semanticCommand.Gskip:  # unconditional branch
                 code.skip()
@@ -283,18 +278,24 @@ class GenerativeProcedure(object):
             elif ( op == semanticCommand.Gset  or
                    op == semanticCommand.Gextl or
                    op == semanticCommand.Gextr ):
-                var = code.next()              # set a local variable from string
+                var = code.next()              # set a local variable
                 if op == semanticCommand.Gset:
-                    val = code.next()          #                      from buffer chars
+                    val = code.next()                                # from string
+                elif op == semanticCommand.Gextl:
+                    val = cntx.extractCharsFromBuffer(code.next(),1) # from buffer chars
                 else:
-                    val = cntx.extractCharsFromBuffer(code.next(),op%2)
+                    val = cntx.extractCharsFromBuffer(code.next(),0) # from buffer chars
+#               print 'val=' , val
                 cntx.setLocalVariable(var,val)
             elif ( op == semanticCommand.Ginsr or
                    op == semanticCommand.Ginsn ):
                 var = code.next()              # insert value local variable into buffer
                 s = cntx.getLocalVariable(var)
                 if s != '':
-                    cntx.insertCharsIntoBuffer(s,op%2)
+                    if op == semanticCommand.Ginsn:
+                        cntx.insertCharsIntoBuffer(s,1)
+                    else:
+                        cntx.insertCharsIntoBuffer(s,0)
             elif op == semanticCommand.Gshft:  # shift text between buffers
                 cntx.moveCharsBufferToBuffer(code.next())
             elif op == semanticCommand.Gdele:  # delete text from buffers

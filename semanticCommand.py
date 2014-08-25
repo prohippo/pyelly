@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# semanticCommand.py : 22jul2014 CPM
+# semanticCommand.py : 18aug2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -65,35 +65,34 @@ Gchng =10  # move new buffer to current with substitutions
 Gchck =11  # check local variable
 Gnchk =12  # negated check of local variable
 Gchkf =13  # check semantic features
-Gnchf =14  # negated check of semantic features
-Gskip =15  # for unconditional branch
-Gvar  =16  # define local variable
-Gset  =17  # set    local variable
-Gpeek =18  # get char from current or next buffer into local variable without changing buffer
-Gextl =19  # extract chars from buffer              (must be ODD  code!)
-Gextr =20  # extract chars from next buffer         (must be EVEN code!)
-Ginsn =21  # insert local variable into next buffer (must be ODD  code!)
-Ginsr =22  # insert local variable into buffer      (must be EVEN code!)
-Gshft =23  # move n chars between buffers
-Gdele =24  # delete n chars in buffer
-Gdelt =25  # delete chars in buffer to substring
-Gstor =26  # store deletion in local variable
-Gfnd  =27  # find substring
-Gpick =28  # special table lookup and insertion
-Gappd =29  # append string to buffer
-Gget  =30  # set local  variable from global variable
-Gput  =31  # set global variable from local  variable
-Gassg =32  # assign value of local variable to another
-Gque  =33  # use local variable as a character queue
-Gunio =34  # set union
-Gintr =35  # set intersection
-Gcomp =36  # set complement
-Gobtn =37  # obtain original text for token
-Gcapt =38  # capitalize first char in buffer
-Gucpt =39  # uncapitalize first char in buffer
-Gtrce =40  # instrumented no op for debugging
-Gshow =41  # see local variable for debugging
-Gproc =42  # call procedure
+Gskip =14  # for unconditional branch
+Gvar  =15  # define local variable
+Gset  =16  # set    local variable
+Gpeek =17  # get char from current or next buffer into local variable without changing buffer
+Gextl =18  # extract chars from buffer
+Gextr =19  # extract chars from next buffer
+Ginsn =20  # insert local variable into next buffer
+Ginsr =21  # insert local variable into buffer
+Gshft =22  # move n chars between buffers
+Gdele =23  # delete n chars in buffer
+Gdelt =24  # delete chars in buffer to substring
+Gstor =25  # store deletion in local variable
+Gfnd  =26  # find substring
+Gpick =27  # special table lookup and insertion
+Gappd =28  # append string to buffer
+Gget  =29  # set local  variable from global variable
+Gput  =30  # set global variable from local  variable
+Gassg =31  # assign value of local variable to another
+Gque  =32  # use local variable as a character queue
+Gunio =33  # set union
+Gintr =34  # set intersection
+Gcomp =35  # set complement
+Gobtn =36  # obtain original text for token
+Gcapt =37  # capitalize first char in buffer
+Gucpt =38  # uncapitalize first char in buffer
+Gtrce =39  # instrumented no op for debugging
+Gshow =40  # see local variable for debugging
+Gproc =41  # call procedure
 
 Gerr  =99  # error return value
 
@@ -112,7 +111,6 @@ Glen = {   # command lengths used in dumping generative procedures
     Gchck : 4 ,
     Gnchk : 4 ,
     Gchkf : 3 ,
-    Gnchf : 3 ,
     Gskip : 2 ,
     Gvar  : 3 ,
     Gset  : 3 ,
@@ -147,9 +145,9 @@ Glen = {   # command lengths used in dumping generative procedures
 Gopn = [   # operation names for dumping (must align with 43 numerical codes above)
     'PASS' , 'RETN' , 'FAIL' , 'LEFT' , 'RGHT' , 'BLNK' ,
     'LNFD' , 'SPLT' , 'BACK' , 'MRGE' , 'CHNG' , 'CHCK' ,
-    'NCHK' , 'CHKF' , 'NCHF' , 'SKIP' , 'DEFV' , 'SETV' ,
-    'PEEK' , 'EXTL' , 'EXTR' , 'INSN' , 'INSR' , 'SHFT' ,
-    'DELE' , 'DLTO' , 'STOR' , 'FIND' , 'PICK' , 'APPD' ,
-    'GETG' , 'PUTG' , 'ASSG' , 'QUEU' , 'UNIO' , 'INTR' ,
-    'COMP' , 'OBTN' , 'CAPT' , 'UCPT' , 'TRCE' , 'SHOW' , 'CALL'
+    'NCHK' , 'CHKF' , 'SKIP' , 'DEFV' , 'SETV' , 'PEEK' ,
+    'EXTL' , 'EXTR' , 'INSN' , 'INSR' , 'SHFT' , 'DELE' ,
+    'DLTO' , 'STOR' , 'FIND' , 'PICK' , 'APPD' , 'GETG' ,
+    'PUTG' , 'ASSG' , 'QUEU' , 'UNIO' , 'INTR' , 'COMP' ,
+    'OBTN' , 'CAPT' , 'UCPT' , 'TRCE' , 'SHOW' , 'CALL'
 ]
