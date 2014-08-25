@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# grammarTable.py : 27jun2014 CPM
+# grammarTable.py : 22aug2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -41,6 +41,7 @@ import grammarRule
 import ellyChar
 import ellyBits
 import ellyDefinitionReader
+import ellyException
 import definitionLine
 import sys
 
@@ -60,9 +61,11 @@ def compile ( syms, clss , code ):
 
     inps = ellyDefinitionReader.EllyDefinitionReader(code)
     if   clss == 'c':
-        return cognitiveProcedure.CognitiveProcedure(syms,inps)
+        cp = cognitiveProcedure.CognitiveProcedure(syms,inps)
+        return cp if cp.logic != None else None
     elif clss == 'g':
-        return generativeProcedure.GenerativeProcedure(syms,inps)
+        gp = generativeProcedure.GenerativeProcedure(syms,inps)
+        return gp if gp.logic != None else None
     else:
         print >> sys.stderr , 'bad semantic procedure class'
         return None
@@ -114,6 +117,9 @@ class GrammarTable(object):
             self  -
             syms  - symbol table for grammar
             defn  - EllyDefinitionReader grammar definition
+
+        exceptions:
+            TableFailure on error
         """
 
         self.initzn = [ ] # preset global variables
@@ -157,10 +163,13 @@ class GrammarTable(object):
         self.pndx['defr']  = compile(syms,'g',['right'])
         self.pndx['deflr'] = compile(syms,'g',['left','right'])
 
-        self.d1bp = self.pndx['defl']
-        self.d2bp = self.pndx['deflr']
+        self.d1bp = self.pndx['defl']  # default 1-branch generative semantics
+        self.d2bp = self.pndx['deflr'] # default 2-branch
 
-        if defn != None: self.define(syms,defn)
+        if defn != None:
+            if not self.define(syms,defn):
+                print >> sys.stderr , 'grammar table definition FAILed'
+                raise ellyException.TableFailure
 
     def define ( self , syms , defn ):
 
@@ -184,28 +193,30 @@ class GrammarTable(object):
 
         lno = 0  # line number in definition input
 
+        eno = 0  # error count
+
         while True:
 
             line = defn.readline().lower()
             if len(line) == 0: break
             lno += 1
 
-#           print 'line >' , lno , '[' + line + ']'
+#           print 'after line' , lno , '[' + line + ']'
 
             if not isNewRule(line): continue
 
-            c = line[0]
+            c = line[0] # single char indicating type of rule to define
             line = line[2:].strip()
 
             cogn = [ ]  # for cognitive  semantics
             genr = [ ]  # for generative semantics
             p = cogn    # start with cognitive
 
-            while c != 'i':          # parse semantics
-                l = defn.readline()
+            while c != 'i':          # not global variable initialization? 
+                l = defn.readline()  # if so, parse semantics
                 lno += 1
                 if len(l) == 0:
-                    print >> sys.stderr , 'unexpected EOF at' , lno
+                    print >> sys.stderr , '** unexpected EOF at' , lno
                     return False
                 elif l[:2] == '__':  # end of semantic procedure?
                     break
@@ -214,35 +225,43 @@ class GrammarTable(object):
                 elif isNewRule(l):
                     defn.unreadline(l)
                     lno -= 1
-                    print >> sys.stderr , 'no termination of semantic procedures'
-                    print >> sys.stderr , 'line >' , lno , '[' + l + ']'
+                    print >> sys.stderr , '** no termination of semantic procedures'
+                    print >> sys.stderr , '** after line' , lno , '[' + l + ']'
+                    eno += 1
+                    c = '?'
                     break
                 else:
                     p.append(l)       # add line to accumulating procedure
 
-            if c == 'g':
+            if c == '?':
+                continue
+            elif c == 'g':            # grammar rule?
                 nor += 1
                 dl = definitionLine.DefinitionLine(line)
                 first = dl.nextInTail()
                 if dl.isEmptyTail():
                     ru = self._doExtend(syms,dl.left,first) # make 1-branch rule
+                    if ru == None: continue
                     ru.gens = self.d1bp                     # default 1-branch procedure
                 else:
                     ru = self._doSplit (syms,dl.left,first,dl.nextInTail()) # 2-branch rule
+                    if ru == None: continue
                     ru.gens = self.d2bp                     # default 2-branch procedure
                 ru.cogs = compile(syms,'c',cogn)            # compile semantics
                 if len(genr) > 0:                           # generative procedure defined?
                     ru.gens = compile(syms,'g',genr)        # if so, replace default
                 if ru.cogs == None or ru.gens == None:
-                    print >> sys.stderr , 'FAIL g:' , ru.cogs , ru.gens , '[' + line + ']'
-                    break
-            elif c == 'd':
+                    print >> sys.stderr , '** FAIL g: [' , line , ']'
+                    eno += 1
+                    continue
+            elif c == 'd':            # internal dictionary entry?
                 now += 1
                 dl = definitionLine.DefinitionLine(line);
                 ss = syntaxSpecification.SyntaxSpecification(syms,dl.tail)
                 if ss == None or ss.synf == None:
-                    print >> sys.stderr , 'FAIL d:' , ss , 'tail=' , dl.tail , '[' + line + ']'
-                    break
+                    print >> sys.stderr , '** FAIL d: [' , line , ']'
+                    eno += 1
+                    continue
                 ru = grammarRule.ExtendingRule(ss.catg,ss.synf.positive)
                 ru.cogs = compile(syms,'c',cogn)
                 if len(genr) > 0:                           # generative procedure defined?
@@ -253,29 +272,38 @@ class GrammarTable(object):
                     self.dctn[dl.left] = [ ]                #
                 self.dctn[dl.left].append(ru)               # add rule to dictionary
                 if ru.cogs == None or ru.gens == None:
-                    print >> sys.stderr , 'FAIL d:' , ru.cogs , ru.gens , '[' + line + ']'
-                    break
-            elif c == 'p':
+                    print >> sys.stderr , '** FAIL d: [' , line , ']'
+                    eno += 1
+                    continue
+            elif c == 'p':            # semantic subprocedure?
+                if len(genr) == 0:
+                    print >> sys.stderr , '** FAIL p: [' , line , ']'
+                    eno += 1
+                    continue
                 nop += 1
                 k = line.find(' ')
-                if k > 0: line = line[:k]
+                if k > 0: line = line[:k]                   # get procedure name
                 self.pndx[line] = compile(syms,'g',genr)    # compile generative procedure
-            elif c == 'i':
+            elif c == 'i':            # global variable initialization?
                 k = line.find('=')
                 if k <= 0:
-                    print >> sys.stderr, 'FAIL: bad initialization:' , line
-                    break
+                    print >> sys.stderr, '** FAIL: bad initialization:' , '[' + line + ']'
+                    eno += 1
+                    continue
                 vr = line[:k].strip().lower()
                 va = line[k+1:].lstrip()
                 self.initzn.append([ vr , va ])             # add initialization
             else:
-                print >> sys.stderr, 'FAIL unknown rule type=' , c + ':' , '[' + line + ']'
-                break
+                print >> sys.stderr, '** FAIL unknown rule type=' , c + ':' , '[' + line + ']'
+                eno += 1
+                continue
 
+        if eno > 0: return False
         print "added"
         print '{0:4} rules'.format(nor)
         print '{0:4} words'.format(now)
         print '{0:4} procedures'.format(nop)
+        return True
 
     def _doExtend ( self , syms , s , t ):
 
@@ -314,7 +342,11 @@ class GrammarTable(object):
         if s != '...' or t != '...':
             self.extens[nt].append(ru) # add rule to grammar table
             self.mat.join(ns,nt)
-        return ru
+            return ru
+        else:
+            print >> sys.stderr , '... -> ...'
+            print >> sys.stderr , 'bad type 0 rule'
+            return None
 
     def _doSplit ( self , syms , s, t, u ):
 
@@ -356,14 +388,16 @@ class GrammarTable(object):
         ru.ltfet = ft.makeTest()       # precombine positive and negative features for testing
         ru.rtfet = fu.makeTest()       # precombine positive and negative features for testing
         ru.rtyp  = nu
-        if nt == self.XXX:
-            if nu == self.XXX:
+        if t == '...':
+            if u == '...': 
+                print >> sys.stderr , 's' , '-> ... ...'
+                print >> sys.stderr , 'bad type 0 rule'
                 return None            # cannot have a rule of the form X->... ...
             else:
-                self.mat.join(ns,nu)   # for rule of form X->... Y, we can have X->Y
-        if t != '...' or u != '...':
-            self.splits[nt].append(ru) # add rule to grammar table
-            self.mat.join(ns,nt)
+                self.mat.join(ns,nu)   # for rule of form X->... Y, we see X->Y
+        else:
+            self.mat.join(ns,nt)       # otherwise, treat as normal 2-branch
+        self.splits[nt].append(ru)     # add rule to grammar table
         return ru
 
 #
@@ -381,7 +415,9 @@ if __name__ == '__main__':
     base = ellyConfiguration.baseSource + '/'
     inp = ellyDefinitionReader.EllyDefinitionReader(base + file + '.g.elly')
     print 'loading' , '[' + file + ']' , len(inp.buffer) , 'lines'
-    gtb = GrammarTable(sym,inp)
-#   print gtb
-
-    dumpEllyGrammar.dumpAll(sym,gtb,5)
+    try:
+        gtb = GrammarTable(sym,inp)
+#       print gtb
+        dumpEllyGrammar.dumpAll(sym,gtb,5)
+    except ellyException.TableFailure:
+        print >> sys.stderr , 'exit'

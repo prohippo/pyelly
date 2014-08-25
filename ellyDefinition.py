@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyDefinition.py : 20dec2013 CPM
+# ellyDefinition.py : 24aug2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -44,6 +44,7 @@ import inflectionStemmerEN
 import conceptualHierarchy
 import ellyDefinitionReader
 import ellyConfiguration
+import ellyException
 
 class EllyDefinition(object):
 
@@ -51,7 +52,8 @@ class EllyDefinition(object):
     superclass for managing Elly definitions
 
     attributes:
-        errors - accumulated errors needed by inpT() method
+        version - PyElly ID for compatibility check
+        errors  - accumulated errors needed by inpT() method
     """
 
     def __init__ ( self ):
@@ -63,7 +65,8 @@ class EllyDefinition(object):
             self
         """
 
-        self.errors = [ ]
+        self.version = '????' # initialize as unknown
+        self.errors = [ ]     # initialize as empty list
 
     def inpT ( self , system , part ):
 
@@ -100,15 +103,16 @@ class Rules(EllyDefinition):
     Elly language rule definitions
 
     attributes:
-        stb    - symbols
-        mtb    - macro substitution rules
-        gtb    - grammar rules
-        ptb    - pattern for syntactic types
-        hry    - conceptual hierarchy
-        man    - morphology analyzer
+        stb   - symbols
+        mtb   - macro substitution rules
+        gtb   - grammar rules
+        ptb   - pattern for syntactic types
+        hry   - conceptual hierarchy
+        man   - morphology analyzer
+        rls   - saved PyElly software ID
     """
 
-    def __init__ ( self , system ):
+    def __init__ ( self , system , id ):
 
         """
         load all definitions from text files
@@ -116,17 +120,42 @@ class Rules(EllyDefinition):
         arguments:
             self     -
             system   - which set of table definitions
+            id       - PyElly release ID
+
+        exceptions:
+            TableFailure on error
         """
 
         super(Rules,self).__init__()
 
+        self.rls = id
+
         self.stb = symbolTable.SymbolTable()  # new empty table to fill in
 
-        self.mtb = macroTable.MacroTable(self.inpT(system,'m'))
-        self.gtb = grammarTable.GrammarTable(self.stb,self.inpT(system,'g'))
-        self.ptb = patternTable.PatternTable(self.stb,self.inpT(system,'p'))
+        el = [ ]
 
-        self.hry = conceptualHierarchy.ConceptualHierarchy(self.inpT(system,'h'))
+        try:
+            self.mtb = macroTable.MacroTable(self.inpT(system,'m'))
+        except ellyException.TableFailure:
+            el.append('macro')
+        try:
+            self.gtb = grammarTable.GrammarTable(self.stb,self.inpT(system,'g'))
+            self.stb.setBaseSymbols()
+        except ellyException.TableFailure:
+            el.append('grammar')
+        try:
+            self.ptb = patternTable.PatternTable(self.stb,self.inpT(system,'p'))
+        except ellyException.TableFailure:
+            el.append('pattern')
+
+        try:
+            self.hry = conceptualHierarchy.ConceptualHierarchy(self.inpT(system,'h'))
+        except ellyException.TableFailure:
+            el.append('concept')
+
+        if len(el) > 0:
+            print >> sys.stderr , 'FAILures on' , el
+            raise ellyException.TableFailure
 
         sa = self.inpT(system,'stl')
         pa = self.inpT(system,'ptl')
@@ -151,6 +180,10 @@ class Vocabulary(EllyDefinition):
             system  - which database
             create  - whether to create
             syms    - Elly symbols defined for vocabulary
+            stem    - what stemming to use on vocabulary words
+
+        exceptions:
+            TableFailure on error
         """
 
 #       print 'set vocabulary'
@@ -162,6 +195,7 @@ class Vocabulary(EllyDefinition):
             stem = None
         if create:
 #           print 'compiling' , system , 'vocabulary'
+            self.version = id
             dT = self.inpT(system,'v')
 #           dT.dump()
             if not vocabularyTable.compile(system,syms,dT,stem):
@@ -182,9 +216,10 @@ if __name__ == '__main__':
 
     sym = symbolTable.SymbolTable()
     nam = sys.argv[1] if len(sys.argv) > 1 else 'test'
-    print 'system=' , nam
+    id  = 'v????'
+    print 'PyElly' , id , ', system=' , nam
     print "------------ rules"
-    rul = Rules(nam)
+    rul = Rules(nam,id)
 #   print dir(rul)
     print rul.stb
     print rul.mtb

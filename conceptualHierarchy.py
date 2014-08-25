@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# conceptualHierarchy.py : 09aug2014 CPM
+# conceptualHierarchy.py : 21aug2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -29,6 +29,7 @@
 # -----------------------------------------------------------------------------
 
 import sys
+import ellyException
 
 """
 modeling hierarchical relationships between semantic concepts used for
@@ -96,8 +97,10 @@ class ConceptualHierarchy:
     hierarchy of concepts after the approach of WordNet 
 
     attributes:
-        index  - dictionary of concepts
-        inters - any computed conceptual intersection
+        index     - dictionary of concepts
+        inters    - any computed conceptual intersection
+
+        _errcount - how many errors found in input
     """
 
     def getConcept ( self , name ):
@@ -128,7 +131,12 @@ class ConceptualHierarchy:
         arguments:
             self  -
             defn  - ellyDefinitionReader for defining a hierarchy
+
+        exceptions:
+            TableFailure on error
         """
+
+        self._errcount = 0
 
         top = Concept(TOP)           # define the top of hierarchy
         top.level = -1               #
@@ -158,8 +166,8 @@ class ConceptualHierarchy:
             cPA = self.getConcept(ls[0]) # parent in link
             cCH = self.getConcept(ls[1]) # child
             if cCH.parent != None:
-                print >> sys.stderr , 'child has two parents: ' + l
-                cCH.parent = None
+                self._err('child has two parents' , l)
+                continue
             else:
                 cPA.split += 1
                 cCH.parent = cPA         # save upward link
@@ -171,9 +179,8 @@ class ConceptualHierarchy:
 
         for p in eqv:
             if not p[1] in self.index:
-                print >> sys.stderr , 'bad alias:' , p[0]
-                self.index = { }
-                return
+                self._err('bad alias:' , p[0])
+                continue
             c = self.index[p[1]]
             self.index[p[0]] = c
             c.alias.append(p[0])
@@ -185,17 +192,18 @@ class ConceptualHierarchy:
             if cn != TOP:
                 c = self.index[cn]
                 if c.parent == None:
-                    print >> sys.stderr , 'missing parent:' , cn
-                    self.index = { } # return with no tree if any node lacks parent
-                    return
+                    self._err('missing parent' , cn)
 
 #       print "CHECKING POPULATION AND CONNECTION"
 
         print len(cnls),"concepts in full index"
 
-        if len(top.children) == 0:
-            print >> sys.stderr , 'no connection to top of hierarchy'
-            return
+        if len(top.children) == 0 and len(cnls) > 1:
+            self._err('no connection to top of hierarchy')
+
+        if self._errcount > 0:
+            print >> sys.stderr , 'conceptual hierarchy generation FAILed'
+            raise ellyException.TableFailure
 
 #       print "GETTING TOTALS FOR CONCEPTS"
 
@@ -227,13 +235,16 @@ class ConceptualHierarchy:
 #               print >> sys.stderr , 'next node:' , len(cs) , c
                 c = cs.pop()         # get next concept node at current level
                 if c.level >= 0:     # visited already?
-                    print >> sys.stderr , 'bad tree:' , str(c) ,
-                    print >> sys.stderr , 'level=' , c.level , '/' , len(stk)
-                    self.index = { } # if so, error because of loop in tree
+                    self._err('bad tree' , str(c) , c.level , len(stk) )
+                    break            # error because of loop in tree
                 c.level = len(stk)-1 # assign next concept a level number
                 stk.append(c.children)  # go down a level
 
 #       print "HIERARCHY DONE"
+
+        if self._errcount > 0:
+            print >> sys.stderr , 'conceptual hierarchy generation FAILed'
+            raise ellyException.TableFailure
 
     def intersection ( self ):
 
@@ -248,6 +259,26 @@ class ConceptualHierarchy:
         """
 
         return self.inters
+
+    def _err ( self , s , l='' , lvl=None , dep=None ):
+
+        """
+        for error handling
+
+        arguments:
+            self  -
+            s     - error message
+            l     - problem line
+        """
+
+        self._errcount += 1
+        print >> sys.stderr , '** concept error:' , s
+        if l != '':
+            print >> sys.stderr , '** with [' , l , ']' ,
+            if lvl == None:
+                print >> sys.stderr , ''
+            else:
+                print >> sys.stderr , str(lvl) + '/' + str(stk)
 
     def isEmpty ( self ):
 
@@ -396,7 +427,11 @@ if __name__ == "__main__":
     elif file != data:
         print >> sys.stderr , 'reading from file=' , file
     print inp.linecount(),"lines read"
-    tre = ConceptualHierarchy(inp)
+    try:
+        tre = ConceptualHierarchy(inp)
+    except ellyException.TableFailure:
+        print >> sys.stderr , 'could not load hierarchy'
+        sys.exit(1)
     if tre.isEmpty():
         print "tree building failed"
     elif file == data:

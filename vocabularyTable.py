@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 03jul2014 CPM
+# vocabularyTable.py : 24aug2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -53,6 +53,7 @@ except:
 ##
 
 import ellyChar
+import ellyException
 import vocabularyElement
 import unicodedata
 
@@ -89,15 +90,22 @@ def toIndex ( t ):
         n -= 1
     return n + 1
 
-def err ( ):
+def _err ( s='malformed vocabulary input' ):
 
     """
     for error handling
 
     arguments:
+        s  - error message
+
+    exceptions:
+        FormatFailure on malformed vocabulary entry
     """
 
-    raise RuntimeError('bad vocabulary format')
+    global nerr
+    nerr += 1
+    print >> sys.stderr , '** vocabulary error:' , s
+    raise ellyException.FormatFailure('in vocabulary entry')
 
 def compile ( name , stb , defn , stem=None ):
 
@@ -112,7 +120,13 @@ def compile ( name , stb , defn , stem=None ):
 
     returns:
         True on success, False otherwise
+
+    exceptions:
+        TableFailure on error
     """
+
+    global nerr
+    nerr = 0
 
 #   print >> sys.stderr , 'compiled stb=' , stb , 'stem=' , stem , 'db=' , db
 
@@ -121,6 +135,9 @@ def compile ( name , stb , defn , stem=None ):
     zfs = FSpec(stb,'[$]',True).positive.hexadecimal(False)
 
 #   print >> sys.stderr 'zfs=' , zfs                 # hexadecimal for all features off
+
+    tsave = ''                                       # original term
+    dsave = ''                                       #          definition
 
     try:
         file = name + vocabulary                     # where to put vocabulary database
@@ -143,16 +160,21 @@ def compile ( name , stb , defn , stem=None ):
 #               print >> sys.stderr , 'def=' , r
 
                 k = r.find(':')                           # look for first ':'
-                if k < 0: err()                           # quit on failure here
+                if k < 0:
+                    tsave = r
+                    dsave = '-'
+                    _err()                                # quit on failure here
 
                 t = r[:k].strip()                         # term to go into dictionary
-                d = r[k+1:].strip()                       # its definition
+		d = r[k+1:].strip()                       # its definition
+                tsave = t                                 # save for any error reporting
+                dsave = d                                 #
 
 #               print >> sys.stderr , ' tm=' , '<' + t + '>' , 'df=' , '<' + d + '>'
-                if len(t) == 0 or len(d) == 0: err()      # quit on missing parts
+                if len(t) == 0 or len(d) == 0: _err()     # quit on missing parts
 
                 n = toIndex(t)                            # get part of term to index
-                if n == 0: err()   
+                if n == 0: _err()   
                 w = t[:n]                                 # first word of term to define  
                 if stem != None:
                     w = stem.simplify(w)                  # reduce for lookup key
@@ -162,7 +184,7 @@ def compile ( name , stb , defn , stem=None ):
 
                 ns = syntaxSpecification.scan(d)          # find extent of syntax info
 #               print >> sys.stderr , 'ns=' , ns
-                if ns <= 0: err()
+                if ns <= 0: err('bad syntax specification')
 #               print >> sys.stderr , 'PoS=' , d[:ns]
 
                 syn = d[:ns]                              # syntax info as string
@@ -182,12 +204,12 @@ def compile ( name , stb , defn , stem=None ):
                     x = d[0]
                     if x == '[' or x == '0' or x == '-':  # semantic features?
                         if x != '[':                      # a '0' or '-' means to take default
-                            if len(d) == 1 or d[1] != ' ': err()
+                            if len(d) == 1 or d[1] != ' ': _err('missing semantic features')
                             d = d[2:].strip()             # skip over
                         else:
                             ns = featureSpecification.scan(d) # look for ']' of features
 #                           print >> sys.stderr , 'ns=' , ns
-                            if ns < 0: err()
+                            if ns < 0: _err()
                             sem = d[:ns]                  # get semantic features
                             d = d[ns:].strip()            # skip over
                             fs = FSpec(stb,sem,True)
@@ -197,7 +219,7 @@ def compile ( name , stb , defn , stem=None ):
 #                       print >> sys.stderr , '1:d=\[' + d + '\]'
                         ld = len(d)
 #                       print >> sys.stderr , 'ld=' , ld
-                        if ld == 0: err()                 # expecting plausibility
+                        if ld == 0: _err('missing plausibility')
                         np = 0
                         x = d[np]
                         if x == '+' or x == '-':
@@ -206,7 +228,7 @@ def compile ( name , stb , defn , stem=None ):
                             if ellyChar.isDigit(d[np]): np += 1
                             else: break
 #                       print >> sys.stderr , 'np=' , np
-                        if np == 0: err()
+                        if np == 0: _err('missing plausibility')
                         pb = d[:np]                       # plausibility bias
 #                       print >> sys.stderr , 'pb=' , pb
                         d = d[np:]
@@ -224,7 +246,7 @@ def compile ( name , stb , defn , stem=None ):
                                 cn = d[:np]               # extract concept
                                 d = d[np:]
                             elif c != ' ':
-                                err()                     # signal bad format
+                                _err()                    # signal bad format
 
                 d = d.strip()                             # rest of definition
 
@@ -240,22 +262,23 @@ def compile ( name , stb , defn , stem=None ):
 #               print >> sys.stderr , 'rec=' , vrc , 'tra=' , d
 #               print >> sys.stderr , '   =' , rss
 
-            except Exception , e:
-                sys.stderr.write('exception: ')
-                sys.stderr.write(str(e) + '\n')
-                sys.stderr.write('  [' + r + ']\n')
+            except ellyException.FormatFailure:
+                print >> sys.stderr , '** at [' , tsave , ':' , dsave , ']'
                 continue
 
             dbs.put(lcw,rss)                          # save in database
 
 #       print >> sys.stderr , 'DONE'
-        dbs.close()                                   # clean up and return
-        return True
+        dbs.close()                                   # clean up
 
     except Exception , e:
-        sys.stderr.write('database exception: ')
-        sys.stderr.write(str(e) + '\n')
-        return False                                  # note failure
+        print >> sys.stderr , e
+        nerr += 1
+
+    if nerr > 0:
+        raise ellyException.TableFailure
+    else:
+        return True
 
 class Result(object):
 
@@ -376,7 +399,7 @@ class VocabularyTable(object):
             return rs
 
         except Exception , e:
-            print >> sys.stderr , 'error:' , e
+            print >> sys.stderr , 'general error:' , e
             return None
 
     def lookUp ( self , chrs , keyl ):
@@ -667,7 +690,7 @@ if __name__ == '__main__':
     f = compile(name,stb,inp,stem)     # create database from vocabulary table
     print 'compile=' , f
     if not f:                          # check for success
-        print 'compilation FAILed'
+        print 'vocabulary table compilation FAILed'
         sys.exit()                     # quit on failure
     vtb = VocabularyTable(name,stem)   # load vocabulary table just created
     dbs = vtb.dbs                      # get database for table
