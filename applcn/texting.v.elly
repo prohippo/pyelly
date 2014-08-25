@@ -171,8 +171,8 @@ united nations : NOUN 0 0 =UN
 dollar  : NOUN 0 0 =$
 cent  : NOUN 0 0 =c
 
-register 0 0 =reg
-representative:  ADJ 0 0 =rep
+register: NOUN 0 0 =reg
+representative:  NOUN 0 0 =rep
 series:  NOUN 0 0 =ser
 street:  NOUN 0 0 =st
 substitution:  NOUN 0 0 =sub

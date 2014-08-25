@@ -165,13 +165,13 @@ __
 d:-'s <- apos
 __
 g:poss->nclu apos
-  [^anim]>>+
+  L[^anim]>>+
 _
   left
   (de)
 __
 g:poss->nclu apos
-  [^-anim]>>+
+  L[^-anim]>>+
 _
   left
   append 之

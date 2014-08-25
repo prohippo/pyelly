@@ -888,6 +888,8 @@ _
   (bR)
 __
 g:ss[!*right]->x[@-0,-1,-2, 3, 4,-5,-6] ...
+>>++
+_
   append WHY DON'T YOU
   (bR)
 __
@@ -1128,22 +1130,22 @@ __
 d:yes <- key[@0,1,2,3,4]
 __
 g:ss[!*right]->x[@ 0, 1, 2, 3, 4,-5,-6] ...
->>
+>>+
 _
   append YOU SEEM QUITE POSITIVE
 __
 g:ss[!*right]->x[@ 0, 1, 2, 3, 4,-5,-6] ...
->>
+>>+
 _
   append YOU ARE SURE
 __
 g:ss[!*right]->x[@ 0, 1, 2, 3, 4,-5,-6] ...
->>
+>>+
 _
   append I SEE
 __
 g:ss[!*right]->x[@ 0, 1, 2, 3, 4,-5,-6] ...
->>
+>>+
 _
   append I UNDERSTAND
 __

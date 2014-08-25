@@ -175,7 +175,7 @@
    *ight$ -> \\1ght
    @ure$ -> \\1ur
    pre - * -> pre- -\\1
-   under - @@* -> undr\\1
+   under -@@* -> undr\\1
    -cat$ -> -c
 #
 #################### for inflections
