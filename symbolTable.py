@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# symbolTable.py : 05jun2014 CPM
+# symbolTable.py : 15aug2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -51,6 +51,8 @@ class SymbolTable(object):
         ntname - syntactic type names
         sxindx - syntactic feature set names
         smindx - semantic  feature set names
+        bsymbs - base symbol set for anomaly check
+        excpns - symbols to ignore for anomaly check
     """
 
     def __init__ ( self ):
@@ -66,6 +68,8 @@ class SymbolTable(object):
         self.ntname = [ ] #
         self.sxindx = { } #
         self.smindx = { } #
+        self.bsymbs = [ ] #
+        self.excpns = [ ] #
 
     def getFeatureSet ( self , fs , ty=False ):
 
@@ -165,3 +169,83 @@ class SymbolTable(object):
         """
 
         return len(self.ntindx)
+
+    def setBaseSymbols ( self ):
+
+        """
+        support check for undefined symbols in rules
+
+        arguments:
+            self
+        """
+
+#       print 'define base symbol set'
+        self.bsymbs = self.getAllSymbols()
+
+    def getAllSymbols ( self ):
+
+        """
+        list out all currently defined grammar symbols
+
+        arguments:
+            self
+
+        returns:
+            sorted list of unique symbols
+        """
+
+        ls = [ ]                      # for collecting symbols
+
+        for s in self.ntname:         # syntactic types
+            ls.append(s)
+
+        for id in self.sxindx.keys(): # syntactic features
+            tb = self.sxindx[id]
+            for t in tb.keys():
+                if t[0] != '*':       # ignore predefined features
+                    ls.append(id + t) # tagged by ID
+
+        for id in self.smindx.keys(): # semantic features
+            tb = self.smindx[id]
+            for t in tb.keys():
+                ls.append(id + t)     # tagged by ID
+
+#       print len(ls) , ' symbols defined'
+#       print 'unsorted' , ls
+        ls.sort()
+#       print 'sorted  ' , ls
+        return ls                     # sort list in place
+
+    def findUnknown ( self ):
+
+        """
+        find unknown symbols in language definition files
+
+        arguments:
+            self  -
+
+        retuns:
+            list of symbols not found reference list
+        """
+
+#       print 'base symbol=' , self.bsymbs
+        symbs = self.getAllSymbols() # listing of all currently seen symbols
+        known = self.bsymbs          # listing of saved base symbols
+        unkns = [ ]
+
+        while len(known) > 0 and len(symbs) > 0:
+            r = known[0]             # next reference symbol
+            s = symbs[0]             # next new symbol
+            if r == s:
+                known = known[1:]    # new symbol in reference list
+                symbs = symbs[1:]    # continue scanning
+            elif r < s:
+                known = known[1:]    # no match with reference symbol
+            else:
+                symbs = symbs[1:]    # symbol not in reference list
+                if s not in self.excpns:
+                    unkns.append(s)
+
+        unkns += symbs       # take any unlooked up symbols as unknown
+        self.excpns += unkns # update exceptions with latest unknowns
+        return unkns
