@@ -10,6 +10,9 @@ ELIF va=3
 ELSE
   FAIL
   END
+IF [@a,-b]
+  TRACE
+  END
 WHILE ~va=3
   IF va=
     BREAK

@@ -4,12 +4,16 @@ insert < x
 split
 append 01234
 back
-peek x <
+extract x <
 if x=2, 1, 0
   append !!
 else
   append ??
 end
+peek y <
+if y SP
+  append ....
+  end
 var v=abc
 insert v >
 delete 1

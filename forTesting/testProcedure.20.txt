@@ -1,0 +1,7 @@
+# example of bad code
+
+var x=0
+var y=1
+if ~x=y
+  append 12345
+  append 67890
