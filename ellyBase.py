@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 09aug2014 CPM
+# ellyBase.py : 25aug2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -40,6 +40,7 @@ import ellyConfiguration
 import ellyDefinition
 import ellyToken
 import ellyChar
+import ellyException
 import substitutionBuffer
 import parseTree
 import parseTreeWithDisplay
@@ -49,6 +50,7 @@ import simpleTransform
 import punctuationRecognizer
 import conceptualHierarchy
 import vocabularyTable
+import symbolTable
 
 import os   # needed to get file modification times
 
@@ -112,6 +114,8 @@ def _isSaved ( system , component , sources ):
             return False
     return True
 
+release = 'v0.5beta'           # version of PyElly software
+
 drs = vocabularyTable.Result() # preallocated result record
 
 class EllyBase(object):
@@ -130,6 +134,10 @@ class EllyBase(object):
         iex  - entity extractor
         trs  - simple transformation
         pnc  - punctuation recognizer
+
+        pundef - undefined symbols in *.p.elly
+        vundef - undefined symbols in *.v.elly
+        eundef - undefined symbols in information extractors
     """
 
     def __init__ ( self , system , restore=None ):
@@ -142,20 +150,31 @@ class EllyBase(object):
             restore  - name of session to continue
         """
 
+        nfail = 0
+        self.rul = None
+
+        self.pundef = [ ]  # initialize
+        self.vundef = [ ]  #
+        self.eundef = [ ]  #
+
 #       print 'EllyBase.__init__()'
         sysf = system + rules
         redefine = not _isSaved(system,rules,_rules)
         if redefine:
             print "recompiling language rules"
-            self.rul = ellyDefinition.Rules(system)
-            save(self.rul,sysf)
+            try:
+                self.rul = ellyDefinition.Rules(system,release)
+            except ellyException.TableFailure:
+                nfail += 1
+            if nfail == 0:
+                self.pundef = self.rul.stb.findUnknown()
+                save(self.rul,sysf)
         else:
             print "loading saved language rules from" , sysf
             self.rul = load(sysf)
-
-        if self.rul == None:
-            print >> sys.stderr , 'no rules!'
-            sys.exit(1)
+            if self.rul.rls != release:
+                print >> sys.stderr , 'inconsistent PyElly version for saved rules'
+                sys.exit(1)
 
         if restore != None:
             self.ses = load(restore + '.' + system + _session)
@@ -167,7 +186,8 @@ class EllyBase(object):
 
 #       print '0:' , len(d.stb.ntname) , 'syntactic categories'
 
-        self.sbu = substitutionBuffer.SubstitutionBuffer(d.mtb)
+        mtb = d.mtb if d != None else None
+        self.sbu = substitutionBuffer.SubstitutionBuffer(mtb)
 
         try:
             inflx = self.sbu.stemmer
@@ -175,14 +195,25 @@ class EllyBase(object):
         except AttributeError:
             inflx = None
 #       print 'inflx=' , inflx
-        d.man.suff.infl = inflx # define root restoration logic
+        if d != None:
+            d.man.suff.infl = inflx   # define root restoration logic
  
         if not redefine:
             redefine = not _isSaved(system,vocabulary,_vocabulary)
         if redefine: print 'recompiling vocabulary'
-#       print d.stb
-        voc = ellyDefinition.Vocabulary(system,redefine,d.stb,inflx)
+
+        stb = d.stb if d != None else symbolTable.SymbolTable()
+        try:
+            voc = ellyDefinition.Vocabulary(system,redefine,stb,inflx)
+        except ellyException.TableFailure:
+            nfail += 1
+
+        if nfail > 0:
+            print >> sys.stderr , 'exiting: table generation FAILed'
+            sys.exit(1)
+
         self.vtb = voc.vtb
+        self.vundef = d.stb.findUnknown()
 
 #       print '1:' , len(d.stb.ntname) , 'syntactic categories'
 
@@ -216,7 +247,9 @@ class EllyBase(object):
         ntn = len(d.stb.ntname) # for consistency check
         if (nto != ntn):
             print >> sys.stderr , 'WARNING: grammar rules should predefine all syntactic'
-            print >> sys.stderr , '         categories identified in entity extraction'
+            print >> sys.stderr , '         categories identified in language definitions'
+
+        self.eundef = d.stb.findUnknown()
 
 #       print 'EllyBase.__init__() DONE'
 
@@ -288,7 +321,6 @@ class EllyBase(object):
 
         print "\n"
 
-    
     def _lookUpNext ( self ):
 
         """
@@ -505,6 +537,43 @@ class EllyBase(object):
 
             return w
 
+    def _show ( self , typm , syms ):
+
+        """
+        show unused symbols of particular type
+
+        arguments:
+            self  -
+            type  - source of symbols
+            syms  - list of symbols
+        """
+
+        if len(syms) == 0: return
+        print >> sys.stderr , '  in' , typm + ':'
+        m = 8
+        n = 0
+        for s in syms:
+            print >> sys.stderr , '  {0:7s}'.format(s) ,
+            n += 1
+            if n%m == 0: print >> sys.stderr , ''
+        print >> sys.stderr , ''
+
+    def symbolCheck ( self ):
+
+        """
+        show language definition symbols unused in grammar
+
+        arguments:
+            self
+        """
+
+        print ''
+        print 'Unused Symbols'
+        print '--------------'
+        self._show("part of speech patterns"     ,self.pundef)
+        self._show("external vocabulary"         ,self.vundef)
+        self._show("information extraction types",self.eundef)
+
 ################################
 # serialization of definitions #
 ################################
@@ -559,7 +628,6 @@ def load ( nm ):
 if __name__ == '__main__':
 
     import sys
-    import codecs
     import dumpEllyGrammar
 
     so = sys.stdout
@@ -580,6 +648,8 @@ if __name__ == '__main__':
     dumpEllyGrammar.dumpExtensions(eb.rul.stb,eb.rul.gtb.extens,False)
     dumpEllyGrammar.dumpSplits(eb.rul.stb,eb.rul.gtb.splits,False)
     dumpEllyGrammar.dumpDictionary(eb.rul.stb,eb.rul.gtb.dctn,False)
+
+    eb.symbolCheck()
 
     so.write('\n')
     so.write('> ')
