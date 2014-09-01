@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# grammarTable.py : 22aug2014 CPM
+# grammarTable.py : 27aug2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -187,6 +187,8 @@ class GrammarTable(object):
 
 #       print "defining" , defn , len(defn.buffer) , "lines"
 
+        skp = 0  # skipped lines
+
         nor = 0  # number of rules
         now = 0  # number dictionary entries
         nop = 0  # number of procedures
@@ -203,7 +205,10 @@ class GrammarTable(object):
 
 #           print 'after line' , lno , '[' + line + ']'
 
-            if not isNewRule(line): continue
+            if not isNewRule(line):
+#                print 'SKIP'
+                 skp += 1
+                 continue
 
             c = line[0] # single char indicating type of rule to define
             line = line[2:].strip()
@@ -212,26 +217,29 @@ class GrammarTable(object):
             genr = [ ]  # for generative semantics
             p = cogn    # start with cognitive
 
-            while c != 'i':          # not global variable initialization? 
-                l = defn.readline()  # if so, parse semantics
-                lno += 1
-                if len(l) == 0:
-                    print >> sys.stderr , '** unexpected EOF at' , lno
-                    return False
-                elif l[:2] == '__':  # end of semantic procedure?
-                    break
-                elif l[:1] == '_':   # end of cognitive procedure?
-                    p = genr
-                elif isNewRule(l):
-                    defn.unreadline(l)
-                    lno -= 1
-                    print >> sys.stderr , '** no termination of semantic procedures'
-                    print >> sys.stderr , '** after line' , lno , '[' + l + ']'
-                    eno += 1
-                    c = '?'
-                    break
-                else:
-                    p.append(l)       # add line to accumulating procedure
+            if c != 'i':                 # not global variable initialization? 
+                dl = line
+                dlno = lno
+                while True:
+                    l = defn.readline()  # if so, parse semantics
+                    lno += 1
+                    if len(l) == 0:
+                        print >> sys.stderr , '** unexpected EOF at' , lno
+                        return False
+                    elif l[:2] == '__':  # end of semantic procedure?
+                        break
+                    elif l[:1] == '_':   # end of cognitive procedure?
+                        p = genr
+                    elif isNewRule(l):
+                        defn.unreadline(l)
+                        lno -= 1
+                        print >> sys.stderr , '** no termination of semantic procedures'
+                        print >> sys.stderr , '*  after line' , dlno , '[' + dl + ']'
+                        eno += 1
+                        c = '?'
+                        break
+                    else:
+                        p.append(l)       # add line to accumulating procedure
 
             if c == '?':
                 continue
@@ -241,11 +249,15 @@ class GrammarTable(object):
                 first = dl.nextInTail()
                 if dl.isEmptyTail():
                     ru = self._doExtend(syms,dl.left,first) # make 1-branch rule
-                    if ru == None: continue
+                    if ru == None:
+                        print >> sys.stderr , '*  after line' , lno , '[' , line , ']'
+                        continue
                     ru.gens = self.d1bp                     # default 1-branch procedure
                 else:
                     ru = self._doSplit (syms,dl.left,first,dl.nextInTail()) # 2-branch rule
-                    if ru == None: continue
+                    if ru == None:
+                        print >> sys.stderr , '*  after line' , lno , '[' , line , ']'
+                        continue
                     ru.gens = self.d2bp                     # default 2-branch procedure
                 ru.cogs = compile(syms,'c',cogn)            # compile semantics
                 if len(genr) > 0:                           # generative procedure defined?
@@ -276,27 +288,32 @@ class GrammarTable(object):
                     eno += 1
                     continue
             elif c == 'p':            # semantic subprocedure?
-                if len(genr) == 0:
-                    print >> sys.stderr , '** FAIL p: [' , line , ']'
+                k = line.find(' ')    # name should have no spaces
+                if k > 0 or len(genr) == 0:
+                    print >> sys.stderr , '** FAIL p: bad format [' , line , ']'
                     eno += 1
                     continue
                 nop += 1
-                k = line.find(' ')
-                if k > 0: line = line[:k]                   # get procedure name
                 self.pndx[line] = compile(syms,'g',genr)    # compile generative procedure
             elif c == 'i':            # global variable initialization?
                 k = line.find('=')
                 if k <= 0:
-                    print >> sys.stderr, '** FAIL: bad initialization:' , '[' + line + ']'
+                    print >> sys.stderr, '** bad initialization:' , '[' + line + ']'
                     eno += 1
                     continue
                 vr = line[:k].strip().lower()
                 va = line[k+1:].lstrip()
                 self.initzn.append([ vr , va ])             # add initialization
             else:
-                print >> sys.stderr, '** FAIL unknown rule type=' , c + ':' , '[' + line + ']'
+                print >> sys.stderr, '** unknown rule type=' , c + ':'
+                print >> sys.stderr, '*  after line' , lno , '[' + line + ']'
                 eno += 1
                 continue
+
+#       print 'SKIP' , skp
+        if skp > 0:
+             print >> sys.stderr , '**' , skp , 'uninterpretable input lines skipped'
+             eno += 1
 
         if eno > 0: return False
         print "added"
@@ -317,7 +334,7 @@ class GrammarTable(object):
             t     - right part of rule
 
         returns:
-            1-branch extending rule
+            1-branch extending rule on success, otherwise None
         """
 
 #       print "extend=",s,'->',t
@@ -328,14 +345,11 @@ class GrammarTable(object):
         nt = st.catg
         ft = st.synf
         if ns >= symbolTable.NMAX or nt >= symbolTable.NMAX:
-            print >> sys.stderr , s , '->' , t
             print >> sys.stderr , 'too many syntactic categories'
-            print >> sys.stderr , ' ns id=' , ns , 'nt id=' , nt
-            sys.exit(1)
+            return None
         if ns < 0 or nt < 0:
-            print >> sys.stderr , s , '->' , t
-            print >> sys.stderr , 'bad syntax specification'
-            sys.exit(1)
+            print >> sys.stderr , '** bad syntax specification'
+            return None
         ru = grammarRule.ExtendingRule(ns,fs.positive)
         ru.gens = self.d1bp
         ru.utfet = ft.makeTest()       # precombined positive and negative features for testing
@@ -344,8 +358,7 @@ class GrammarTable(object):
             self.mat.join(ns,nt)
             return ru
         else:
-            print >> sys.stderr , '... -> ...'
-            print >> sys.stderr , 'bad type 0 rule'
+            print >> sys.stderr , '** bad type 0 rule'
             return None
 
     def _doSplit ( self , syms , s, t, u ):
@@ -375,14 +388,11 @@ class GrammarTable(object):
         nu = su.catg
         fu = su.synf
         if ns >= symbolTable.NMAX or nt >= symbolTable.NMAX or nu >= symbolTable.NMAX:
-            print >> sys.stderr , s , '->' , t , u
             print >> sys.stderr , 'too many syntactic categories'
-            print >> sys.stderr , ' ns id=' , ns , 'nt id=' , nt , 'nu id=' , nu
-            sys.exit(1)
+            return None
         if ns < 0 or nt < 0 or nu < 0:
-            print >> sys.stderr , s , '->' , t , u
-            print >> sys.stderr , 'bad syntax specification'
-            sys.exit(1)
+            print >> sys.stderr , '** bad syntax specification'
+            return None
         ru = grammarRule.SplittingRule(ns,fs.positive)
         ru.gens = self.d2bp
         ru.ltfet = ft.makeTest()       # precombine positive and negative features for testing
@@ -390,8 +400,7 @@ class GrammarTable(object):
         ru.rtyp  = nu
         if t == '...':
             if u == '...': 
-                print >> sys.stderr , 's' , '-> ... ...'
-                print >> sys.stderr , 'bad type 0 rule'
+                print >> sys.stderr , '** bad type 0 rule'
                 return None            # cannot have a rule of the form X->... ...
             else:
                 self.mat.join(ns,nu)   # for rule of form X->... Y, we see X->Y
@@ -414,10 +423,13 @@ if __name__ == '__main__':
 #   print sym
     base = ellyConfiguration.baseSource + '/'
     inp = ellyDefinitionReader.EllyDefinitionReader(base + file + '.g.elly')
+    if inp.error != None:
+        print inp.error
+        sys.exit(1)
     print 'loading' , '[' + file + ']' , len(inp.buffer) , 'lines'
     try:
         gtb = GrammarTable(sym,inp)
 #       print gtb
         dumpEllyGrammar.dumpAll(sym,gtb,5)
     except ellyException.TableFailure:
-        print >> sys.stderr , 'exit'
+        print >> sys.stderr , 'exiting'

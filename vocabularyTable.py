@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 24aug2014 CPM
+# vocabularyTable.py : 27aug2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -118,9 +118,6 @@ def compile ( name , stb , defn , stem=None ):
         defn  - Elly definition reader for vocabulary
         stem  - optional stemmer for indexing
 
-    returns:
-        True on success, False otherwise
-
     exceptions:
         TableFailure on error
     """
@@ -130,7 +127,8 @@ def compile ( name , stb , defn , stem=None ):
 
 #   print >> sys.stderr , 'compiled stb=' , stb , 'stem=' , stem , 'db=' , db
 
-    if stb == None or db == None: return False
+    if stb == None : _err('no symbol table')
+    if db  == None : _err('no db package')
 
     zfs = FSpec(stb,'[$]',True).positive.hexadecimal(False)
 
@@ -162,7 +160,7 @@ def compile ( name , stb , defn , stem=None ):
                 k = r.find(':')                           # look for first ':'
                 if k < 0:
                     tsave = r
-                    dsave = '-'
+                    dsave = ''
                     _err()                                # quit on failure here
 
                 t = r[:k].strip()                         # term to go into dictionary
@@ -192,6 +190,8 @@ def compile ( name , stb , defn , stem=None ):
 
                 ss = SSpec(stb,syn)                       # decode syntax info to get
                 cat = str(ss.catg)                        #   syntax category
+                if ss.catg < 0 or ss.synf == None:
+                    _err('malformed syntax specification')
                 syf = ss.synf.positive.hexadecimal(False) #   syntactic flags
 #               print >> sys.stderr , 'syf=' , syf
 
@@ -199,7 +199,7 @@ def compile ( name , stb , defn , stem=None ):
                 pb = '0'                                  #   cognitive semantics
                 cn = '-'                                  #
 
-#               print >> sys.stderr , '0:d=\[' + d + '\]'
+#               print >> sys.stderr , '0:d=[' + d + ']'
                 if len(d) > 1:                            # check for cognitive semantics
                     x = d[0]
                     if x == '[' or x == '0' or x == '-':  # semantic features?
@@ -216,7 +216,7 @@ def compile ( name , stb , defn , stem=None ):
                             smf = fs.positive.hexadecimal(False) # convert to hex
 #                           print >> sys.stderr , 'smf=' , smf
 
-#                       print >> sys.stderr , '1:d=\[' + d + '\]'
+#                       print >> sys.stderr , '1:d=[' + d + ']'
                         ld = len(d)
 #                       print >> sys.stderr , 'ld=' , ld
                         if ld == 0: _err('missing plausibility')
@@ -233,24 +233,30 @@ def compile ( name , stb , defn , stem=None ):
 #                       print >> sys.stderr , 'pb=' , pb
                         d = d[np:]
                         ld = len(d)
-#                       print >> sys.stderr , '2:d=\[' + d + '\]'
+#                       print >> sys.stderr , '2:d=[' + d + ']'
                         if ld > 1:                        # any more to process?
                             c = d[0]                      # get next char after bias
                             d = d[1:]                     # advance scan
                             ld -= 1
                             if c == '/':                  # check for explicit concept
+#                               print >> sys.stderr , 'getting concept'
                                 np = 0
                                 while np < ld:            # get extent of concept
                                     if ellyChar.isWhiteSpace(d[np]): break
                                     np += 1
+                                if np == 0:
+                                    _err('missing concept for plausibility')
+                                    continue
                                 cn = d[:np]               # extract concept
                                 d = d[np:]
                             elif c != ' ':
                                 _err()                    # signal bad format
+                        elif ld > 0:
+                            _err()                        # unidentifiable trailing text
 
                 d = d.strip()                             # rest of definition
 
-#               print >> sys.stderr , '3:d=\[' + d + '\]'
+#               print >> sys.stderr , '3:d=[' + d + ']'
 
                 vrc = [ t , ':' , cat , syf , smf ,
                         pb , cn ]                         # start BdB data record
@@ -263,7 +269,7 @@ def compile ( name , stb , defn , stem=None ):
 #               print >> sys.stderr , '   =' , rss
 
             except ellyException.FormatFailure:
-                print >> sys.stderr , '** at [' , tsave , ':' , dsave , ']'
+                print >> sys.stderr , '*  at [' , tsave , ':' , dsave , ']'
                 continue
 
             dbs.put(lcw,rss)                          # save in database
@@ -277,8 +283,6 @@ def compile ( name , stb , defn , stem=None ):
 
     if nerr > 0:
         raise ellyException.TableFailure
-    else:
-        return True
 
 class Result(object):
 
@@ -687,12 +691,18 @@ if __name__ == '__main__':
     print 'source=' , dfns
     inp = ellyDefinitionReader.EllyDefinitionReader(dfns)
 
-    f = compile(name,stb,inp,stem)     # create database from vocabulary table
-    print 'compile=' , f
-    if not f:                          # check for success
+    try:
+        f = compile(name,stb,inp,stem)     # create database from vocabulary table
+    except ellyException.TableFailure:
         print 'vocabulary table compilation FAILed'
-        sys.exit()                     # quit on failure
-    vtb = VocabularyTable(name,stem)   # load vocabulary table just created
+        sys.exit(1)                        # quit on failure
+
+    try:
+        vtb = VocabularyTable(name,stem)   # load vocabulary table just created
+    except Exception:
+        print 'vocabulary table loading FAILed'
+        sys.exit(1)
+
     dbs = vtb.dbs                      # get database for table
     dst = dbs.stat()                   # get its BdB status
     dks = dst.keys()                   # all status tags 

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# macroTable.py : 24aug2014 CPM
+# macroTable.py : 26aug2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -100,7 +100,7 @@ class MacroTable(object):
         m = 'error' if d == 1 else 'warning'
         print >> sys.stderr , '** macro ' + m + ':' , s
         if l != '':
-            print >> sys.stderr , '** at [' , l , ']'
+            print >> sys.stderr , '*  at [' , l , ']'
 
     def getRules ( self , a ):
 
@@ -388,6 +388,10 @@ if __name__ == '__main__':
 
     print 'source=' , dfns
     inp = ellyDefinitionReader.EllyDefinitionReader(dfns)
+
+    if inp.error != None:
+        print inp.error
+        sys.exit(1)
 
     try:
         mtb = MacroTable(inp)          # create macro table from specified definition file

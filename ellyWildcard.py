@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 25aug2014 CPM
+# ellyWildcard.py : 26aug2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -227,6 +227,47 @@ def deconvert ( patn ):
             s.append(Coding[xo - X - 1])
     return u''.join(s)
 
+def minMatch ( patn ):
+
+    """
+    compute minimum number of chars matched by pattern
+
+    arguments:
+        patn  - pattern with possible Elly wildcards
+
+    returns:
+        minimum count of chars matched
+    """
+
+    inOption = False
+
+    k = 0
+    m = 0
+    ml = len(patn)
+
+    while m < ml:
+
+        tmc = patn[m]
+
+        if tmc == ellyChar.SPC:        # space in pattern will stop scan
+            if not inOption: break
+        elif ellyChar.isText(tmc):     # ordinary text char is counted
+            if not inOption: k += 1
+        elif tmc == cSOS:              # optional start code
+            inOption = True
+        elif tmc == cEOS:              # optional end   code
+            inOption = False
+        elif tmc == cALL:              # ALL (*) wildcard?
+            pass
+        elif tmc == cEND:              # END code
+            pass
+        else:                          # any other wildcard
+            k += 1
+
+        m += 1
+
+    return k
+
 def match ( patn , text , offs=0 , limt=None ):
 
     """
@@ -339,34 +380,7 @@ def match ( patn , text , offs=0 , limt=None ):
         returns:
             non-negative count
         """
-        m = mp  # start at current pattern position
-        k = 0   # minimum required char count
-        inOption = False
-
-        # calculate minimum char count to match rest of pattern
-
-#       print "pattern at=",m
-
-        while m < ml:
-
-            tmc = patn[m]
-
-            if tmc == ellyChar.SPC:        # space in pattern will stop scan
-                if not inOption: break
-            elif ellyChar.isText(tmc):     # ordinary text char is counted
-                if not inOption: k += 1
-            elif tmc == cSOS:              # optional start code
-                inOption = True
-            elif tmc == cEOS:              # optional end   code
-                inOption = False
-            elif tmc == cALL:              # ALL (*) wildcard?
-                pass
-            elif tmc == cEND:              # END code
-                pass
-            else:                          # any other wildcard
-                k += 1
-
-            m += 1
+        k = minMatch(patn[mp:])  # calculate minimum char count to match rest of pattern
 
 #       print "exclude=",k,"@",offs
 

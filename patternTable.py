@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# patternTable.py : 24aug2014 CPM
+# patternTable.py : 27aug2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -62,13 +62,17 @@ class Link(object):
             dfls  - definition elements in list
 
         exceptions:
-            FormatFailure
+            FormatFailure on error
         """
 
         if len(dfls) != 3:                            # must have 3 elements
             raise ellyException.FormatFailure
         else:
             self.patn = ellyWildcard.convert(dfls[0]) # encode wildcards in pattern
+            if dfls[0] != '$':
+                if self.patn == None or ellyWildcard.minMatch(self.patn) == 0:
+                    print >> sys.stderr , '** bad link pattern:' , dfls[0]
+                    raise ellyException.FormatFailure
             self.catg = None                          # defaults
             self.synf = None                          #
             sss = dfls[1].lower()                     # cannot be Unicode!
@@ -82,7 +86,7 @@ class Link(object):
             try:
                 n = int(dfls[2])                      # next state for link
             except:
-                n = -1                                # unrecognizable string taken as -1
+                raise ellyException.FormatFailure     # unrecognizable number
 
             if n < 0:                                 # final transition?
                 pe = self.patn[-1]                    # if so, look at last pattern element
@@ -157,7 +161,7 @@ class PatternTable(object):
         self._errcount += 1
         print >> sys.stderr , '** pattern error:' , s
         if l != '':
-            print >> sys.stderr , '** at [' , l , ']'
+            print >> sys.stderr , '*  at [' , l , ']'
 
     def load ( self , syms , fsa ):
 
@@ -181,15 +185,16 @@ class PatternTable(object):
 #       print 'FSA definition line count=' , fsa.linecount()
         while True: # read all input from ellyDefinitionReader
             l = fsa.readline()
-#           print 'line=' , l
+#           print 'input line=' , l
             if len(l) == 0: break            # EOF check
             ls = l.strip().split(' ')        # get link definition as list
 #           print 'ls=' , ls
             sts = ls.pop(0)                  # starting state for FSA link
-            if not ellyChar.isDigit(sts[0]): # starting state should be numerical
-                self._err('bad input',l)
+            try:
+                stn = int(sts)               # numerical starting state
+            except:
+                self._err('bad start state',l)
                 continue
-            stn = int(sts)                   # numerical starting state
             n = len(self.indx)
             
             if stn >= n:                     # make sure state index has enough slots allocated
@@ -226,7 +231,7 @@ class PatternTable(object):
         if len(sss) != ns:
             self._err('some non-stop states are dead ends')
         if self._errcount > 0:
-            print >> sys.stderr , 'pattern table generation FAILed'
+            print >> sys.stderr , 'pattern table definition FAILed'
             raise ellyException.TableFailure
 
     def bound ( self , segm ):
@@ -378,6 +383,10 @@ if __name__ == '__main__':
     inp = ellyDefinitionReader.EllyDefinitionReader(base + file + '.p.elly')
 
     print 'pattern test with' , '<' + file + '>'
+
+    if inp.error != None:
+        print inp.error
+        sys.exit(1)
 
     pat = None
     try:

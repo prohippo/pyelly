@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# definitionLine.py : 20aug2014 CPM
+# definitionLine.py : 25aug2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -119,7 +119,7 @@ class DefinitionLine(object):
             substring up to space
         """
 
-        if len(self.tail) == 0:
+        if self.tail == None or len(self.tail) == 0:
             return None
         k = self.tail.find(spc)         # find end of next tail element
         if k < 0:

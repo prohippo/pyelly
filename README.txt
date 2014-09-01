@@ -11,20 +11,20 @@ support for large external dictionaries, and a general procedural
 framework for translation from UTF-8 to UTF-8.
 
 The latest version has been completely rewritten in mostly object-oriented
-Python. It has now passed alpha testing and may be downloaded in a beta
-release from Github. Go to https://github.com/prohippo/pyelly.git . The
-latest package is v0.4.1beta.
+Python. It has now passed multiple stages of beta testing and may be
+downloaded from Github at https://github.com/prohippo/pyelly.git . The
+latest release is v0.5beta.
 
 To learn how to use PyElly, see the PyEllyManual.pdf file in the same
-directory as this README.txt file. This has 92 pages of information,
+directory as this README.txt file. This has 96 pages of information,
 including an overview of some basic linguistics. Documentation of
 individual Python source files can be generated as needed with the Python
 pydoc utility.
 
-At present, PyElly consists of 57 Python modules comprising about 16
+At present, PyElly consists of 58 Python modules comprising about 16
 thousand lines of source code. Included also are various definition
-files to support basic English-language capabilities and various rule
-files for some simple applications, including
+files to support basic English-language capabilities and various sample
+applications, including
 
 * indexing - remove stopwords and get stems for content words from raw
              text input.
@@ -37,9 +37,9 @@ files for some simple applications, including
 * disambig - disambiguation of phrases with WordNet information.
 
 These illustrate what you can do with PyElly and also serve as a basis for
-comprehensive integration testing.  Other applications will also be developed
-as part of current beta testing and will be added when ready to the PyElly
-package on Github. You may use them as models for building your own systems.
+comprehensive integration testing.  Other applications will be added to the
+PyElly package on Github in the future. You may use them as models for
+building your own systems.
 
 PyElly is being released under a BSD license. Be advised that the current 
 beta software and documentation is still evolving. The first stable release
@@ -47,7 +47,7 @@ will be v1.0, which should be ready in late 2014.
 
 Release Notes:
 
- 0.1    -  25dec2013  initial release
+ 0.1    -  25dec2013  initial beta release
  0.2    -  16mar2014  increase number of syntactic categories to 64
                       add storing and reinserting of deleted output buffer text
                       fix bugs in DELETE TO generative semantic command
@@ -73,6 +73,14 @@ Release Notes:
                       fix bugs in conceptual hierarchies
                       miscellaneous cleanup of Python source files
                       improve unit testing of modules, parse tree dump
+ 0.5    -  01sep2014  simplify doTest and make parse tree dumps easier to filter
+                      add audit on usage of grammar symbols for error checking
+                      add version check when loading saved binary language files
+                      define ellyException to handle errors in table loading
+                      add error messages when generating language tables
+                      simplify semantic feature check by generative semantics
+                      extend generative semantic unit tests
+                      add bad application to test error reporting
 
 New versions will reflect major changes in PyElly code. This typically will require
 regeneration of any previously saved *.elly.bin files to ensure correct operation.

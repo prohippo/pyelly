@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# conceptualHierarchy.py : 21aug2014 CPM
+# conceptualHierarchy.py : 27aug2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -29,6 +29,7 @@
 # -----------------------------------------------------------------------------
 
 import sys
+import ellyChar
 import ellyException
 
 """
@@ -118,7 +119,9 @@ class ConceptualHierarchy:
 
         name = name.strip().upper()
         if name == NOname: return None
-        if name in self.index: return self.index[name]
+        elif name == TOP: return self.index[TOP]
+        elif len(name) == 0 or not ellyChar.isLetterOrDigit(name[0]): return None
+        elif name in self.index: return self.index[name]
         c = Concept(name)
         self.index[name] = c
         return c
@@ -154,17 +157,29 @@ class ConceptualHierarchy:
             l = defn.readline()      # read in hierarchy definition, link by link
             if len(l) == 0: break
             if l[0] == '=':
+                sl = l               # save for error reporting
                 l = l[1:].lstrip()
                 k = l.find(' ')
-                if k < 0: continue
+                if k < 0:
+                    self._err('incomplete equivalence',sl)
+                    continue
                 s = l[:k]
                 l = l[k:].lstrip()
                 eqv.append([ s , l ])
                 continue
             ls = l.split('>')        # get pair of concepts in link
-            if len(ls) < 2: continue
+#           print 'ls=' , ls
+            if len(ls) > 2:
+                self._err('malformed link',l)
+                continue
+            elif len(ls) < 2 or len(ls[0]) == 0 or len(ls[1]) == 0:
+                self._err('incomplete link',l)
+                continue
             cPA = self.getConcept(ls[0]) # parent in link
             cCH = self.getConcept(ls[1]) # child
+            if cPA == None or cCH == None:
+                self._err('bad concept name',l)
+                continue
             if cCH.parent != None:
                 self._err('child has two parents' , l)
                 continue
@@ -192,17 +207,16 @@ class ConceptualHierarchy:
             if cn != TOP:
                 c = self.index[cn]
                 if c.parent == None:
-                    self._err('missing parent' , cn)
+                    print >> sys.stderr , '** missing parent for' , cn
+                    self._errcount += 1
 
 #       print "CHECKING POPULATION AND CONNECTION"
-
-        print len(cnls),"concepts in full index"
 
         if len(top.children) == 0 and len(cnls) > 1:
             self._err('no connection to top of hierarchy')
 
         if self._errcount > 0:
-            print >> sys.stderr , 'conceptual hierarchy generation FAILed'
+            print >> sys.stderr , 'conceptual hierarchy compilation FAILed'
             raise ellyException.TableFailure
 
 #       print "GETTING TOTALS FOR CONCEPTS"
@@ -246,6 +260,8 @@ class ConceptualHierarchy:
             print >> sys.stderr , 'conceptual hierarchy generation FAILed'
             raise ellyException.TableFailure
 
+        print len(cnls),"concepts in full index"
+
     def intersection ( self ):
 
         """
@@ -274,7 +290,7 @@ class ConceptualHierarchy:
         self._errcount += 1
         print >> sys.stderr , '** concept error:' , s
         if l != '':
-            print >> sys.stderr , '** with [' , l , ']' ,
+            print >> sys.stderr , '*  with [' , l , ']' ,
             if lvl == None:
                 print >> sys.stderr , ''
             else:
@@ -419,10 +435,10 @@ if __name__ == "__main__":
             r = tre.index[ky]
             print ky,'(',r.name,')','lvl=',r.level,'<',r.parent.name
 
-    file = sys.argv[1] if len(sys.argv) > 1 else data
+    file = sys.argv[1] + '.h.elly' if len(sys.argv) > 1 else data
     inp = ellyDefinitionReader.EllyDefinitionReader(file)
     if inp.error != None:
-        print >> sys.stderr , 'file' , file , 'not found'
+        print >> sys.stderr , inp.error
         sys.exit(1)
     elif file != data:
         print >> sys.stderr , 'reading from file=' , file

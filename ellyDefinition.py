@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyDefinition.py : 24aug2014 CPM
+# ellyDefinition.py : 26aug2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -198,10 +198,7 @@ class Vocabulary(EllyDefinition):
             self.version = id
             dT = self.inpT(system,'v')
 #           dT.dump()
-            if not vocabularyTable.compile(system,syms,dT,stem):
-                print >> sys.stderr , 'vocabulary compilation failed'
-                self.vtb = None
-                return
+            vocabularyTable.compile(system,syms,dT,stem)
 
         self.vtb = vocabularyTable.VocabularyTable(system,stem)
 
