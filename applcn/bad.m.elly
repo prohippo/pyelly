@@ -12,3 +12,6 @@ abcd -> xxxxxxxxxx
 ef -> xx\\1
 gh -> xx \\1
 ij* -> xx \\2
+???? ???? .... ////
+a**b -> z
+[a][b]-> z

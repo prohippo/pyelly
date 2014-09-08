@@ -10,3 +10,8 @@ YY : [ ]
 WWWW WWWW !!!! : X[:A] [ ]
 WWWW WWWW : X[:A] [^B] =3
 WWWW WWWW : X[:A] [^B] 3/
+
+XYZ: typ =
+XYZ:: typ
+UUU    VVV WWW : typ
+?????? !!!!!! : typ
