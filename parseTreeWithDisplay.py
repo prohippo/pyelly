@@ -308,6 +308,9 @@ if __name__ == '__main__':
 
     base = ellyConfiguration.baseSource + '/'
     rdr = ellyDefinitionReader.EllyDefinitionReader(base + name + '.g.elly')
+    if rdr.error != None:
+        print >> sys.stderr , rdr.error
+        sys.exit(1)
     print 'loading' , '[' + base + name + '.g.elly]' , len(rdr.buffer) , 'lines'
 
     stb = symbolTable.SymbolTable()

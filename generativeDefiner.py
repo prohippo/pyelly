@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeDefiner.py : 19aug2014 CPM
+# generativeDefiner.py : 05sep2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -503,11 +503,11 @@ if __name__ == "__main__":
     stb = symbolTable.SymbolTable()
 
     print 'generative semantic compilation test'
-    try:
-        src = sys.argv[1] if len(sys.argv) > 1 else 'generativeDefinerTest.txt'
-        inp = ellyDefinitionReader.EllyDefinitionReader(src)
-    except IOError:
+    src = sys.argv[1] if len(sys.argv) > 1 else 'generativeDefinerTest.txt'
+    inp = ellyDefinitionReader.EllyDefinitionReader(src)
+    if inp.error != None:
         print >> sys.stderr, "cannot read procedure definition"
+        print >> sys.stderr, inp.error
         sys.exit(1)
 
     print 'input=' , src

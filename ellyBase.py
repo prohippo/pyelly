@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 25aug2014 CPM
+# ellyBase.py : 10sep2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -68,6 +68,10 @@ _session = '.session.elly.bin'          # for saving session information
 _rules      = [ '.m.elly' , '.g.elly' , '.p.elly' , '.h.elly' , '.stl.elly' , '.ptl.elly' ]
 _vocabulary = [ vocabularyTable.source ]
 
+# version ID
+
+release = 'v0.5.1beta'         # most current version of PyElly software
+
 L = 16  # how much context to show
 
 def _timeModified ( base , file ):
@@ -114,9 +118,11 @@ def _isSaved ( system , component , sources ):
             return False
     return True
 
-release = 'v0.5beta'           # version of PyElly software
-
 drs = vocabularyTable.Result() # preallocated result record
+
+#
+# main class
+#
 
 class EllyBase(object):
 
@@ -150,7 +156,7 @@ class EllyBase(object):
             restore  - name of session to continue
         """
 
-        nfail = 0
+        nfail = 0          # error count for reporting
         self.rul = None
 
         self.pundef = [ ]  # initialize
@@ -182,7 +188,7 @@ class EllyBase(object):
             self.ses = ellySession.EllySession()
 
         s = self.ses  # session info
-        d = self.rul  # language definition
+        d = self.rul  # language rules
 
 #       print '0:' , len(d.stb.ntname) , 'syntactic categories'
 
@@ -209,7 +215,7 @@ class EllyBase(object):
             nfail += 1
 
         if nfail > 0:
-            print >> sys.stderr , 'exiting: table generation FAILed'
+            print >> sys.stderr , 'exiting: table generation FAILures'
             sys.exit(1)
 
         self.vtb = voc.vtb
@@ -219,7 +225,7 @@ class EllyBase(object):
 
         self.ctx = interpretiveContext.InterpretiveContext(d.stb,d.gtb.pndx,s.globals,d.hry)
 
-        for z in d.gtb.initzn:
+        for z in d.gtb.initzn:        # initialize global symbols for parsing
             self.ctx.glbls[z[0]] = z[1]
 
 #       print '2:' , len(d.stb.ntname) , 'syntactic categories'
@@ -228,23 +234,25 @@ class EllyBase(object):
 
 #       print '3:' , len(d.stb.ntname) , 'syntactic categories'
 
-        nto = len(d.stb.ntname) # for consistency check
+        nto = len(d.stb.ntname)       # for consistency check
+
         if ellyConfiguration.treeDisplay:
-            ptrmsg = "tree display on"
+            print "tree display on"
             self.ptr = parseTreeWithDisplay.ParseTreeWithDisplay(d.stb,d.gtb,d.ptb,self.ctx)
         else:
-            ptrmsg = "tree display off"
+            print "tree display off"
             self.ptr = parseTree.ParseTree(d.stb,d.gtb,d.ptb,self.ctx)
 
-        print ptrmsg
+        self.iex = entityExtractor.EntityExtractor(self.ptr,self.ctx) # set up extractors
 
-        self.iex = entityExtractor.EntityExtractor(self.ptr,self.ctx)
-
-        self.trs = simpleTransform.SimpleTransform() if ellyConfiguration.rewriteNumbers else None
+        if ellyConfiguration.rewriteNumbers:
+            self.trs = simpleTransform.SimpleTransform()
+        else:
+            self.trs = None           # no automatic conversion of written out numbers
 
 #       print '4:' , len(d.stb.ntname) , 'syntactic categories'
 
-        ntn = len(d.stb.ntname) # for consistency check
+        ntn = len(d.stb.ntname)       # do consistency check on syntactic category count
         if (nto != ntn):
             print >> sys.stderr , 'WARNING: grammar rules should predefine all syntactic'
             print >> sys.stderr , '         categories identified in language definitions'
@@ -256,7 +264,7 @@ class EllyBase(object):
     def setGlobalVariable ( self , var , val ):
 
         """
-        set global variable at startup
+        set global variable for grammar at startup
 
         arguments:
             self  -
@@ -289,13 +297,13 @@ class EllyBase(object):
         if len(text) == 0:          # if no text, done
             return ''
 #*      print 'list' , list(text)
-        self.sbu.refill(text)       # put text into input buffer
+        self.sbu.refill(text)       # put text to translate into input buffer
 
         while True:
 #*          print 'current text chars=' , self.sbu.buffer
             if len(self.sbu.buffer) == 0:
                 break               # stop when sentence buffer is empty
-            self.ptr.startUpX()     # for any initial ... production
+            self.ptr.startUpX()     # for any initial ... grammar rule
             stat = self._lookUpNext()
             if not stat:
 #*              print 'lookup FAIL'
@@ -306,20 +314,19 @@ class EllyBase(object):
             self.ptr.restartQueue() # for any leading zero production
 #           print len(self.ctx.tokns) , 'tokens after digestion'
 
-        self.ptr.finishUpX()        # for any trailing zero production
+        self.ptr.finishUpX()        # for any trailing ... grammar rule
 
         if not self.ptr.evaluate(self.ctx):
-            return None                        # translation fails
-        else:
-            if plsb:
-                s = '=' + str(self.ptr.getLastPlausibility())
-                if self.ctx.cncp != conceptualHierarchy.NOname:
-                    s += ' ' + self.ctx.wghtg.hiery.generalize(self.ctx.cncp)
-                s += ": "
-                self.ctx.prependCharsInCurrentBuffer(s)
-            return self.ctx.getBufferContent() # translated string
+            return None             # translation fails
 
-        print "\n"
+        if plsb:                # show plausibility in output if requested
+            s = '=' + str(self.ptr.getLastPlausibility())
+            if self.ctx.cncp != conceptualHierarchy.NOname:
+                s += ' ' + self.ctx.wghtg.hiery.generalize(self.ctx.cncp)
+            s += ": "
+            self.ctx.prependCharsInCurrentBuffer(s)
+
+        return self.ctx.getBufferContent() # translated string
 
     def _lookUpNext ( self ):
 
@@ -627,19 +634,19 @@ def load ( nm ):
 
 if __name__ == '__main__':
 
-    import sys
     import dumpEllyGrammar
 
     so = sys.stdout
     si = sys.stdin
 
-    print 'stdin=' , si.encoding , 'stdout=' , so.encoding
+#    print 'stdin=' , si.encoding , 'stdout=' , so.encoding
 
     system = sys.argv[1] if len(sys.argv) > 1 else 'test'
     print 'system=' , system
-    eb = EllyBase(system)
-#   print 'eb=' , eb
-    if eb == None:
+    try:
+        eb = EllyBase(system)
+#       print 'eb=' , eb
+    except ellyException.TableFailure:
         print >> sys.stderr , 'no language definitions'
         sys.exit(1)
 
@@ -654,7 +661,7 @@ if __name__ == '__main__':
     so.write('\n')
     so.write('> ')
 
-    while True:
+    while True:  # translate successive lines of text as sentences for testing
 
         line = si.readline()
         l = line.decode('utf8')
@@ -663,7 +670,7 @@ if __name__ == '__main__':
         txt = list(l.strip())
         lo = eb.translate(txt,True)
         if lo == None:
-            sys.stderr.write('????\n')
+            print >> sys.stderr , '????'
         else:
             so.write('=[' + u''.join(lo) + ']\n')
             eb.ptr.dumpAll()

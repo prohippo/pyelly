@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# conceptualHierarchy.py : 27aug2014 CPM
+# conceptualHierarchy.py : 07sep2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -122,6 +122,8 @@ class ConceptualHierarchy:
         elif name == TOP: return self.index[TOP]
         elif len(name) == 0 or not ellyChar.isLetterOrDigit(name[0]): return None
         elif name in self.index: return self.index[name]
+        for x in name:
+            if not ellyChar.isLetterOrDigit(x): return None
         c = Concept(name)
         self.index[name] = c
         return c
@@ -216,6 +218,7 @@ class ConceptualHierarchy:
             self._err('no connection to top of hierarchy')
 
         if self._errcount > 0:
+            print >> sys.stderr , '**' , self._errcount , 'concept errors in all'
             print >> sys.stderr , 'conceptual hierarchy compilation FAILed'
             raise ellyException.TableFailure
 
@@ -396,7 +399,7 @@ class ConceptualHierarchy:
         return a.level
 
 #
-# unit testing
+# unit test
 #
 
 if __name__ == "__main__":

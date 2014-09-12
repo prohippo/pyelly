@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# morphologyAnalyzer.py : 24dec2013 CPM
+# morphologyAnalyzer.py : 08sep2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -35,6 +35,7 @@ morphological analysis
 import suffixTreeLogic
 import prefixTreeLogic
 import ellyConfiguration
+import ellyException
 
 class MorphologyAnalyzer(object):
 
@@ -55,6 +56,9 @@ class MorphologyAnalyzer(object):
             self   -
             sufdfn - suffix logic definition as EllyDefinitionReader
             predfn - prefix logic definition
+
+        exceptions:
+            TableFailure on error
         """
 
         self.pref = None
@@ -126,14 +130,14 @@ if __name__ == '__main__':
     sdfn = ellyDefinitionReader.EllyDefinitionReader(base + sfil + '.stl.elly')
     pdfn = ellyDefinitionReader.EllyDefinitionReader(base + pfil + '.ptl.elly')
 
-    if sdfn == None or pdfn == None:
-        print >> sys.stderr, 'bad input' , 'suf=' , sdfn , 'pre=' , pdfn
+    if sdfn.error != None or pdfn.error != None:
+        print >> sys.stderr, 'suf error=' , sdfn.error
+        print >> sys.stderr, 'pre error=' , pdfn.error
 
-    inf = inflectionStemmerEN.InflectionStemmerEN()
-
-    mor = MorphologyAnalyzer(sdfn,pdfn)
-
-    if mor == None:
+    try:
+        inf = inflectionStemmerEN.InflectionStemmerEN()
+        mor = MorphologyAnalyzer(sdfn,pdfn)
+    except ellyException.TableFailure:
         print >> sys.stderr, 'initialization failed'
         sys.exit(1)
 

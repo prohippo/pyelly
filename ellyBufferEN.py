@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBufferEN.py : 20dec2013 CPM
+# ellyBufferEN.py : 08sep2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -35,6 +35,7 @@ framework for integrating English inflectional stemming into basic tokenization
 import ellyBuffer
 import ellyChar
 import ellyStemmer
+import ellyException
 import ellyConfiguration
 import inflectionStemmerEN
 
@@ -61,10 +62,13 @@ class EllyBufferEN(ellyBuffer.EllyBuffer):
         """
 
         super(EllyBufferEN,self).__init__()
-        if ellyConfiguration.inflectionalStemming:
-            self.stemmer = inflectionStemmerEN.InflectionStemmerEN() # English inflectional stemmer
+        if ellyConfiguration.inflectionalStemming:  # English inflectional stemmer?
+            try:                                    # of so, try to load
+                self.stemmer = inflectionStemmerEN.InflectionStemmerEN()
+            except ellyException.TableFailure:
+                self.stemmer = ellyStemmer()        # null stemmer
         else:
-            self.stemmer = ellyStemmer()                             # null stemmer
+            self.stemmer = ellyStemmer()            # null stemmer
 
     def getNext ( self ):
 

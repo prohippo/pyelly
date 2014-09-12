@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 27aug2014 CPM
+# vocabularyTable.py : 10sep2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -127,12 +127,20 @@ def compile ( name , stb , defn , stem=None ):
 
 #   print >> sys.stderr , 'compiled stb=' , stb , 'stem=' , stem , 'db=' , db
 
-    if stb == None : _err('no symbol table')
-    if db  == None : _err('no db package')
+    if stb == None :
+        print >> sys.stderr, 'no symbol table'
+        raise ellyException.TableFailure
+    if db  == None :
+        print >> sys.stderr, 'no Python db package'
+        raise ellyException.TableFailure
 
-    zfs = FSpec(stb,'[$]',True).positive.hexadecimal(False)
+    try:
+        zfs = FSpec(stb,'[$]',True).positive.hexadecimal(False)
+    except ellyException.FormatFailure:              # should never need this
+        print >> sys.stderr , 'unexpected failure with zero features'
+        raise ellyException.TableFailure
 
-#   print >> sys.stderr 'zfs=' , zfs                 # hexadecimal for all features off
+#   print >> sys.stderr , 'zfs=' , zfs               # hexadecimal for all features off
 
     tsave = ''                                       # original term
     dsave = ''                                       #          definition
@@ -160,19 +168,28 @@ def compile ( name , stb , defn , stem=None ):
                 k = r.find(':')                           # look for first ':'
                 if k < 0:
                     tsave = r
-                    dsave = ''
-                    _err()                                # quit on failure here
+                    dsave = None
+                    _err()                                # report error and quit entry
+                    continue
 
                 t = r[:k].strip()                         # term to go into dictionary
-		d = r[k+1:].strip()                       # its definition
+                d = r[k+1:].strip()                       # its definition
                 tsave = t                                 # save for any error reporting
                 dsave = d                                 #
 
 #               print >> sys.stderr , ' tm=' , '<' + t + '>' , 'df=' , '<' + d + '>'
-                if len(t) == 0 or len(d) == 0: _err()     # quit on missing parts
+                if len(t) == 0 or len(d) == 0:
+                    _err()                                # quit on missing parts
+                    continue
+                c = t[0]
+                if not ellyChar.isLetterOrDigit(c) and c != '.' and c != '"':
+                    _err('bad term')
+                    continue
 
                 n = toIndex(t)                            # get part of term to index
-                if n == 0: _err()   
+                if n == 0:
+                    _err()                                # quit on bad term
+                    continue
                 w = t[:n]                                 # first word of term to define  
                 if stem != None:
                     w = stem.simplify(w)                  # reduce for lookup key
@@ -182,16 +199,20 @@ def compile ( name , stb , defn , stem=None ):
 
                 ns = syntaxSpecification.scan(d)          # find extent of syntax info
 #               print >> sys.stderr , 'ns=' , ns
-                if ns <= 0: err('bad syntax specification')
+                if ns <= 0: _err('bad syntax specification')
 #               print >> sys.stderr , 'PoS=' , d[:ns]
 
                 syn = d[:ns]                              # syntax info as string
                 d = d[ns:].strip()                        # rest of definition
 
-                ss = SSpec(stb,syn)                       # decode syntax info to get
-                cat = str(ss.catg)                        #   syntax category
-                if ss.catg < 0 or ss.synf == None:
+                try:
+#                   print >> sys.stderr , 'VT syn=' , syn
+                    ss = SSpec(stb,syn)                   # decode syntax info to get
+#                   print >> sys.stderr , 'VT ss =' , ss
+                except ellyException.FormatFailure:
                     _err('malformed syntax specification')
+                    continue
+                cat = str(ss.catg)                        #   syntax category
                 syf = ss.synf.positive.hexadecimal(False) #   syntactic flags
 #               print >> sys.stderr , 'syf=' , syf
 
@@ -204,22 +225,32 @@ def compile ( name , stb , defn , stem=None ):
                     x = d[0]
                     if x == '[' or x == '0' or x == '-':  # semantic features?
                         if x != '[':                      # a '0' or '-' means to take default
-                            if len(d) == 1 or d[1] != ' ': _err('missing semantic features')
+                            if len(d) == 1 or d[1] != ' ':
+                                _err('missing semantic features')
+                                continue
                             d = d[2:].strip()             # skip over
                         else:
                             ns = featureSpecification.scan(d) # look for ']' of features
 #                           print >> sys.stderr , 'ns=' , ns
-                            if ns < 0: _err()
+                            if ns < 0:
+                                _err()
+                                continue
                             sem = d[:ns]                  # get semantic features
                             d = d[ns:].strip()            # skip over
-                            fs = FSpec(stb,sem,True)
+                            try:
+#                               print >> sys.stderr , 'smf=' , smf
+                                fs = FSpec(stb,sem,True)
+                            except ellyException.FormatFailure:
+                                _err('bad semantic features')
+                                continue
                             smf = fs.positive.hexadecimal(False) # convert to hex
-#                           print >> sys.stderr , 'smf=' , smf
 
 #                       print >> sys.stderr , '1:d=[' + d + ']'
                         ld = len(d)
 #                       print >> sys.stderr , 'ld=' , ld
-                        if ld == 0: _err('missing plausibility')
+                        if ld == 0:
+                            _err('missing plausibility')
+                            continue
                         np = 0
                         x = d[np]
                         if x == '+' or x == '-':
@@ -228,7 +259,9 @@ def compile ( name , stb , defn , stem=None ):
                             if ellyChar.isDigit(d[np]): np += 1
                             else: break
 #                       print >> sys.stderr , 'np=' , np
-                        if np == 0: _err('missing plausibility')
+                        if np == 0:
+                            _err('missing plausibility')
+                            continue
                         pb = d[:np]                       # plausibility bias
 #                       print >> sys.stderr , 'pb=' , pb
                         d = d[np:]
@@ -251,10 +284,16 @@ def compile ( name , stb , defn , stem=None ):
                                 d = d[np:]
                             elif c != ' ':
                                 _err()                    # signal bad format
+                                continue
                         elif ld > 0:
                             _err()                        # unidentifiable trailing text
+                            continue
 
                 d = d.strip()                             # rest of definition
+                if len(d) > 0 and d[0] == '=':
+                    if len(d) == 1:
+                        _err('incomplete definition')
+                        continue
 
 #               print >> sys.stderr , '3:d=[' + d + ']'
 
@@ -269,7 +308,10 @@ def compile ( name , stb , defn , stem=None ):
 #               print >> sys.stderr , '   =' , rss
 
             except ellyException.FormatFailure:
-                print >> sys.stderr , '*  at [' , tsave , ':' , dsave , ']'
+                print >> sys.stderr , '*  at [' , tsave ,
+                if dsave != None:
+                    print >> sys.stderr , ':' , dsave ,
+                print >> sys.stderr , ']'
                 continue
 
             dbs.put(lcw,rss)                          # save in database
@@ -282,6 +324,8 @@ def compile ( name , stb , defn , stem=None ):
         nerr += 1
 
     if nerr > 0:
+        print >> sys.stderr , '**' , nerr , 'vocabulary errors in all'
+        print >> sys.stderr ,'vocabulary table compilation FAILed'
         raise ellyException.TableFailure
 
 class Result(object):
@@ -673,10 +717,14 @@ if __name__ == '__main__':
                 showCode(rec.gen.logic)
             print '--'
 
-    if ellyConfiguration.language == 'EN':
-        stem = inflectionStemmerEN.InflectionStemmerEN()
-    else:
-        stem = None
+    try:
+        if ellyConfiguration.language == 'EN':
+            stem = inflectionStemmerEN.InflectionStemmerEN()
+        else:
+            stem = None
+    except ellyException.TableFailure:
+        print >> sys.stderr , 'inflectional stemming failure'
+        sys.exit(1)
 
     name = sys.argv[1] if len(sys.argv) > 1 else 'test'
     dfns = name + source
@@ -690,11 +738,14 @@ if __name__ == '__main__':
 
     print 'source=' , dfns
     inp = ellyDefinitionReader.EllyDefinitionReader(dfns)
+    if inp.error != None:
+        print >> sys.stderr , inp.error
+        sys.exit(1)
 
     try:
         f = compile(name,stb,inp,stem)     # create database from vocabulary table
     except ellyException.TableFailure:
-        print 'vocabulary table compilation FAILed'
+        print >> sys.stderr ,'vocabulary table compilation FAILed'
         sys.exit(1)                        # quit on failure
 
     try:

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveDefiner.py : 19aug2014 CPM
+# cognitiveDefiner.py : 04sep2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -36,6 +36,7 @@ characteristics of phrases
 
 import ellyBits
 import ellyChar
+import ellyException
 import semanticCommand
 import featureSpecification
 import sys
@@ -119,8 +120,9 @@ def _leftside ( stb , txt ):
             p = txt[:k+1]                   # get semantic features
 
 #           print "condition:",p
-            f = featureSpecification.FeatureSpecification(stb,p,'semantic')
-            if f == None:
+            try:
+                f = featureSpecification.FeatureSpecification(stb,p,'semantic')
+            except ellyException.FormatFailure:
                 return _err('bad semantic features')
             op = semanticCommand.Crhtf if side == 'r' else semanticCommand.Clftf
 #           print 'test:' , f.positive.hexadecimal() , f.negative.hexadecimal()
@@ -193,8 +195,9 @@ def _rightside ( stb , txt ):
             n = txt.find(']')
             if n < 0:
                 return _err('incomplete semantic features to set')
-            f = featureSpecification.FeatureSpecification(stb,txt[:n+1],semantic=True)
-            if f == None:
+            try:
+                f = featureSpecification.FeatureSpecification(stb,txt[:n+1],semantic=True)
+            except ellyException.FormatFailure:
                 return _err('bad semantic features')
             sq = [ semanticCommand.Csetf , f ]
             txt = txt[n+1:]

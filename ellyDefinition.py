@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyDefinition.py : 26aug2014 CPM
+# ellyDefinition.py : 10sep2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -153,13 +153,16 @@ class Rules(EllyDefinition):
         except ellyException.TableFailure:
             el.append('concept')
 
-        if len(el) > 0:
-            print >> sys.stderr , 'FAILures on' , el
-            raise ellyException.TableFailure
-
         sa = self.inpT(system,'stl')
         pa = self.inpT(system,'ptl')
-        self.man = morphologyAnalyzer.MorphologyAnalyzer(sa,pa)
+        try:
+            self.man = morphologyAnalyzer.MorphologyAnalyzer(sa,pa)
+        except ellyException.TableFailure:
+            el.append('morphology')
+
+        if len(el) > 0:
+            print >> sys.stderr , 'rule FAILures on' , el
+            raise ellyException.TableFailure
 
 class Vocabulary(EllyDefinition):
 
@@ -189,10 +192,6 @@ class Vocabulary(EllyDefinition):
 #       print 'set vocabulary'
         super(Vocabulary,self).__init__()
 
-        if ellyConfiguration.language == 'EN':
-            stem = inflectionStemmerEN.InflectionStemmerEN()
-        else:
-            stem = None
         if create:
 #           print 'compiling' , system , 'vocabulary'
             self.version = id
@@ -216,7 +215,11 @@ if __name__ == '__main__':
     id  = 'v????'
     print 'PyElly' , id , ', system=' , nam
     print "------------ rules"
-    rul = Rules(nam,id)
+    try:
+        rul = Rules(nam,id)
+    except ellyException.TableFailure:
+        print 'grammar rules failed to load'
+        sys.exit(1)
 #   print dir(rul)
     print rul.stb
     print rul.mtb
@@ -229,8 +232,10 @@ if __name__ == '__main__':
     print "------------ internal dictionary"
     print rul.gtb.dctn.keys()
     print "------------ external vocabulary"
-    voc = Vocabulary(nam,True,sym)
-    if voc.vtb == None:
+    try:
+        voc = Vocabulary(nam,True,sym)
+    except ellyException.TableFailure:
+        print 'vocabulary failed to load'
         sys.exit(1)
     print voc.vtb.dbs.keys()
     for e in voc.errors:

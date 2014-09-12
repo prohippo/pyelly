@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# substitutionBuffer.py : 24dec2013 CPM
+# substitutionBuffer.py : 08sep2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -41,7 +41,8 @@ import ellyConfiguration
 import macroTable
 
 class SubstitutionBuffer(
-  ellyBufferEN.EllyBufferEN if ellyConfiguration.language == 'EN' else ellyBuffer.EllyBuffer
+       ellyBufferEN.EllyBufferEN if ellyConfiguration.language == 'EN' else
+       ellyBuffer.EllyBuffer
 ):
 
     """
@@ -229,6 +230,9 @@ if __name__ == "__main__":
 
     print "loading rules for" , file
 
+    if mrdr.error != None:
+        print >> sys.stderr , mrdr.error
+        sys.exit(1)
     mtbl = macroTable.MacroTable(mrdr)
     sbuf = SubstitutionBuffer(mtbl)
 

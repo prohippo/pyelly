@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# symbolTable.py : 15aug2014 CPM
+# symbolTable.py : 08sep2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -36,6 +36,7 @@ plus associated lookup methods
 """
 
 import ellyBits
+import ellyChar
 import sys
 
 NMAX = 64  # maximum number of syntactic type names
@@ -82,19 +83,26 @@ class SymbolTable(object):
             ty    - False=syntactic, True=semantic
 
         returns:
-            list of EllyBits - [ positive , negative ]
+            list of EllyBits [ positive , negative ] on success, None on failure
         """
 
+        if len(fs) < 1: return None
+
+        bp = ellyBits.EllyBits(FMAX) # all feature bits zeroed
+        bn = ellyBits.EllyBits(FMAX) #
+
         fsx = self.sxindx if not ty else self.smindx
+#       print '--------  fs=' , fs
         fid = fs[0]                # feature set ID
         fnm = fs[1:].split(',')    # feature names
         if not fid in fsx:         # known ID?
             fsx[fid] = { }         # if not, make it known
         h = fsx[fid]               # for hashing of feature names
-        bp = ellyBits.EllyBits(FMAX)
-        bn = ellyBits.EllyBits(FMAX)
+        if len(fnm) == 0:          # check for empty features
+            return [ bp , bn ]
         for nm in fnm:
             nm = nm.strip()
+            if len(nm) == 0: continue
             if nm[0] == '-':       # negative feature?
                 b = bn             # if so, look at negative bits
                 nm = nm[1:]
@@ -104,6 +112,10 @@ class SymbolTable(object):
             else:
                 b = bp             # positive bits by default
 
+#           print '--------  nm=' , nm
+            for c in nm:           # check feature name
+                if not ellyChar.isLetterOrDigit(c) and c != '*':
+                    return None
             if not nm in h:        # new name in feature set?
                 k = len(h)         # if so, define it
                 l = FMAX           # limit for feature index
@@ -111,7 +123,8 @@ class SymbolTable(object):
                     k -= 3         # syntactic feature names *L and *R
                     l -= 1         # and for *UNIQUE
                 if k == l:         # overflow check
-                   print >> sys.stderr, 'too many features in' , '[' + fs + ']' 
+                   print >> sys.stderr, '+* too many feature names'
+                   return None
                 h[nm] = k
 
             b.set(h[nm])           # set bit for feature

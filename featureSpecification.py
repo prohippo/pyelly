@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# featureSpecification.py : 05jun2014 CPM
+# featureSpecification.py : 06sep2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -33,6 +33,8 @@ handling of specifications of both syntactic and semantic features
 """
 
 import ellyBits
+import ellyChar
+import ellyException
 import symbolTable
 
 LAST = symbolTable.FMAX - 1  # for reserved bit
@@ -75,14 +77,22 @@ class FeatureSpecification(object):
             syms     - symbol table
             fets     - string representation of feature set
             semantic - flag for semantic features
+
+        exceptions:
+            FormatFailure on error
         """
+
+        if syms == None:                 # special case generating zero feature set
+            self.positive = ellyBits.EllyBits(symbolTable.FMAX)
+            self.negative = ellyBits.EllyBits(symbolTable.FMAX)
+            return
 
         segm = fets.lower() if fets != None else '[?]'
 #       print "features=",segm,"semantic=",semantic
-        if segm == None or len(segm) < 4 or segm[0] != '[' or segm[-1] != ']':
-            self.id = ''                                        # this is unknown
-            self.positive = ellyBits.EllyBits(symbolTable.FMAX) # set to zeros
-            self.negative = ellyBits.EllyBits(symbolTable.FMAX) #
+        if segm == None or len(segm) < 3 or segm[0] != '[' or segm[-1] != ']':
+            raise ellyException.FormatFailure
+        elif segm[1] == ' ' or ellyChar.isLetterOrDigit(segm[1]):
+            raise ellyException.FormatFailure
         else:
             self.id = segm[1]
 #           print "id=",self.id
@@ -97,7 +107,10 @@ class FeatureSpecification(object):
                     d['*left']  = 1      # equivalent to '*l'
                     d['*unique'] = LAST  # always define
                 fsindx[self.id] = d      #   and save
-            self.positive , self.negative = syms.getFeatureSet(segm[1:-1] , semantic)
+            fs = syms.getFeatureSet(segm[1:-1] , semantic)
+            if fs == None:
+                raise ellyException.FormatFailure
+            self.positive , self.negative = fs
 
     def __str__ ( self ):
 
@@ -147,17 +160,28 @@ class FeatureSpecification(object):
 
 if __name__ == '__main__':
 
+    import sys
+
     stb = symbolTable.SymbolTable()
-    s = "[!a,-b,c,+d,-e]"
-    fs = FeatureSpecification(stb,s)       # syntactic features
-    print 'fs=' , fs , 'for' , s
-    fs = FeatureSpecification(stb,s,True)  # semantic  features
-    print 'fs=' , fs , 'for' , s
-    t = "[:x,y]"
-    ft = FeatureSpecification(stb,t,True)  # semantic  features
-    print 'ft=' , ft , 'for' , t
-    ft = FeatureSpecification(stb,t,False) # syntactic features
-    print 'ft=' , ft , 'for' , t
+    try:
+        s = "[!a,-b,c,+d,-e]"
+        fs = FeatureSpecification(stb,s)       # syntactic features
+        print 'fs=' , fs , 'for' , s
+        fs = FeatureSpecification(stb,s,True)  # semantic  features
+        print 'fs=' , fs , 'for' , s
+        t = "[:x,y]"
+        ft = FeatureSpecification(stb,t,True)  # semantic  features
+        print 'ft=' , ft , 'for' , t
+        ft = FeatureSpecification(stb,t,False) # syntactic features
+        print 'ft=' , ft , 'for' , t
+        u = ''
+        fu = FeatureSpecification(None)
+        print 'fu=' , fu , 'for' , "''"
+        v = "[:x"
+        fv = FeatureSpecification(stb,v)       # syntactic features
+        print "should never get here!"
+    except ellyException.FormatFailure:
+        print 'exception: bad format'
     print '----'
     ids = stb.sxindx.keys()
     print len(ids) , 'syntactic feature sets'

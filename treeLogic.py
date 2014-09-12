@@ -34,6 +34,7 @@ basic finite automata for morphological analysis
 
 import ellyChar
 import ellyConfiguration
+import ellyException
 import unicodedata
 
 Fail    = u'?!'  # predefined restoration options
@@ -284,6 +285,8 @@ class TreeLogic(object):
         arguments:
             self  -
             inp   - definition reader
+        exceptions:
+            TableFailure on error
         """
 
         self.indx = { }
@@ -427,10 +430,15 @@ class TreeLogic(object):
         arguments:
             self  -
             inp   - definition text for logic
+
+        exceptions:
+            TableFailure on error
         """
 
         if inp == None:
             return
+
+        nerr = 0                   # error count
 
         # read in affixes and associated actions
 
@@ -444,7 +452,11 @@ class TreeLogic(object):
             elem = line.strip().lower().split(' ')
 #           print 'elem=' , elem
             le = len(elem)
-            if le < 4: continue           # skip incomplete line
+            if le < 4:
+                nerr += 1
+                print >> sys.stderr , "** affix error: incomplete input"
+                print >> sys.stderr , "*  at: [" , line , "]"
+                continue                  # skip incomplete line
             if le > 4:                    # affix mod specified?
                 modf = elem.pop()         # if so, get it
 #               print elem[0] , modf
@@ -456,15 +468,17 @@ class TreeLogic(object):
 
             # check for proper form
 
-            aff = self.sequence(aff)      # backward or forward  matching
+            aff = self.sequence(aff)      # backward or forward  matching?
 #           print 'aff=' , aff
 
             c = aff[0]                    # get first char to compare with
             aff = aff[1:]
 
             if not ellyChar.isLetter(c):  # affix starts with letter?
-                print >> sys.stderr , 'bad input:' , line # if not, ignore line
-                continue
+                nerr += 1
+                print >> sys.stderr , "** affix error: must start with letter"
+                print >> sys.stderr , "*  at: [" , line , "]"
+                continue                  # ignore line
 
             if not c in self.indx:        # node not already in tree index?
                 self.indx[c] = Node()     # add new node
@@ -511,6 +525,10 @@ class TreeLogic(object):
             node.tag()
 
 #           if modf != '': print node , node.actns
+
+        if nerr > 0:
+            print >> sys.stderr , "**" , nerr , "affix errors in all"
+            raise ellyException.TableFailure
 
 #
 # unit test

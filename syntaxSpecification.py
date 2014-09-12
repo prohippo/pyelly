@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# syntaxSpecification.py : 13dec2013 CPM
+# syntaxSpecification.py : 06sep2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -32,8 +32,10 @@
 interpreting full syntax specification of phrase or grammar rule
 """
 
+import sys
 import ellyBits
 import ellyChar
+import ellyException
 import grammarTable
 import featureSpecification
 
@@ -81,12 +83,18 @@ class SyntaxSpecification(object):
             self  -
             syms  - current symbol table
             spec  - input string
+
+        exceptions:
+            FormatFailure on error
         """
 
         self.catg = -1    # values to set on an error
         self.synf = None  #
 
-        if spec == None: return
+#       print >> sys.stderr , 'specification=' , spec
+        if spec == None:
+            print >> sys.stderr , '** null syntax specification'
+            raise ellyException.FormatFailure
 
         s = spec.lower()  # must be lower case for all lookups
 
@@ -97,9 +105,12 @@ class SyntaxSpecification(object):
             if not ellyChar.isLetterOrDigit(c) and c != '.': break
             n += 1
 
-        if n == 0: return # no acceptable category name found
+        if n == 0:
+            print >> sys.stderr , '** no syntactic category'
+            raise ellyException.FormatFailure
 
         typs = s[:n]      # save category name
+#       print >> sys.stderr , 'catg=' , self.catg
         catg = syms.getSyntaxTypeIndexNumber(typs)
 
         s = s[n:].strip() # feature part of syntax
@@ -107,12 +118,12 @@ class SyntaxSpecification(object):
         if len(s) == 0 or typs == '...': # ... category may have no features!
             synf = featureSpecification.FeatureSpecification(syms,None)
         else:                            # decode features
+#           print >> sys.stderr , 'syms=' , syms , 's=' , s
             synf = featureSpecification.FeatureSpecification(syms,s)
 
-        if synf == None:
-            print >> sys.stderr , 'no features for [' + s + ']'
-            return
+        # FormatFailure exception may be raised above, but will not be caught here
 
+#       print >> sys.stderr , 'success'
         self.catg = catg
         self.synf = synf
 
@@ -130,6 +141,10 @@ class SyntaxSpecification(object):
 
         fs = '+....-....' if self.synf == None else str(self.synf)
         return 'type=' + str(self.catg) + ' ' + fs
+
+#
+# unit test
+#
 
 if __name__ == '__main__':
 
@@ -149,5 +164,9 @@ if __name__ == '__main__':
         n = scan(spc)
         sx = spc[:n]
         print n , 'chars in possible specification'
-        ss = SyntaxSpecification(stb,sx)
+        try:
+            ss = SyntaxSpecification(stb,sx)
+        except ellyException.FormatFailure:
+            print >> sys.stderr , '** fail on [' , sx , ']'
+            continue
         print 'syntax specification' , sx , '=' , ss

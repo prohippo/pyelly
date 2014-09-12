@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# macroTable.py : 26aug2014 CPM
+# macroTable.py : 07sep2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -191,7 +191,12 @@ class MacroTable(object):
             elif ellyChar.isText(c):
                 self.index[0].append(r)       # add to index under punctuation
             elif not c in ellyWildcard.Matching:
-                self._err('bad wildcard code=' + c + ' ' + ord(c),l)
+                if c == ellyWildcard.cEND:
+                    print >> sys.stderr , '** macro warning: pattern can have empty match'
+                    print >> sys.stderr , '*  at [' , l , ']'
+                else:
+                    dc = '=' + str(ord(c) - ellyWildcard.X)
+                    self._err('bad wildcard code' , dc)
                 continue
             elif c == ellyWildcard.cANY or c == ellyWildcard.cALL:
                 self.anyWx.append(r)          # under general wildcards
@@ -211,6 +216,7 @@ class MacroTable(object):
             self.count += 1                   # count up macro substitution
 
         if self._errcount > 0:
+            print >> sys.stderr , '**' , self._errcount , 'macro errors in all'
             print >> sys.stderr , 'macro table definition FAILed'
             raise ellyException.TableFailure
 

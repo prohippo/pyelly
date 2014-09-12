@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# patternTable.py : 27aug2014 CPM
+# patternTable.py : 03sep2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -231,6 +231,7 @@ class PatternTable(object):
         if len(sss) != ns:
             self._err('some non-stop states are dead ends')
         if self._errcount > 0:
+            print >> sys.stderr , '**' , self._errcount , 'pattern errors in all'
             print >> sys.stderr , 'pattern table definition FAILed'
             raise ellyException.TableFailure
 

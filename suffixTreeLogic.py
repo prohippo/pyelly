@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# suffixTreeLogic.py : 24dec2013 CPM
+# suffixTreeLogic.py : 09sep2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -33,6 +33,7 @@ morphological analyzer for suffixes
 """
 
 import treeLogic
+import ellyException
 
 class SuffixTreeLogic(treeLogic.TreeLogic):
 
@@ -50,6 +51,9 @@ class SuffixTreeLogic(treeLogic.TreeLogic):
         arguments:
             self  -
             inp   - Elly definition reader
+
+        exceptions:
+            TableFailure on error
         """
 
         super(SuffixTreeLogic,self).__init__(inp)
@@ -103,10 +107,17 @@ if __name__ == '__main__':
 
     base = ellyConfiguration.baseSource + '/'
     dfn = ellyDefinitionReader.EllyDefinitionReader(base + file + '.stl.elly')
+    if dfn.error != None:
+        print >> sys.stderr , dfn.error
+        sys.exit(1)
     print dfn.linecount() , 'definition lines for' , file
 
-    inf = inflectionStemmerEN.InflectionStemmerEN()
-    suf = SuffixTreeLogic(dfn)
+    try:
+        inf = inflectionStemmerEN.InflectionStemmerEN()
+        suf = SuffixTreeLogic(dfn)
+    except ellyException.TableFailure:
+        print >> sys.stderr , 'cannot load stemming tables'
+        sys.exit(1)
     suf.infl = inf
 #   print 'suf=' , suf
     print 'index=' , map(lambda x: ellyChar.toChar(ellyChar.toIndex(x)) , suf.indx.keys())

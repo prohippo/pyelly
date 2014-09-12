@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# grammarTable.py : 27aug2014 CPM
+# grammarTable.py : 10sep2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -251,27 +251,30 @@ class GrammarTable(object):
                     ru = self._doExtend(syms,dl.left,first) # make 1-branch rule
                     if ru == None:
                         print >> sys.stderr , '*  after line' , lno , '[' , line , ']'
+                        eno += 1
                         continue
                     ru.gens = self.d1bp                     # default 1-branch procedure
                 else:
                     ru = self._doSplit (syms,dl.left,first,dl.nextInTail()) # 2-branch rule
                     if ru == None:
                         print >> sys.stderr , '*  after line' , lno , '[' , line , ']'
+                        eno += 1
                         continue
                     ru.gens = self.d2bp                     # default 2-branch procedure
                 ru.cogs = compile(syms,'c',cogn)            # compile semantics
                 if len(genr) > 0:                           # generative procedure defined?
                     ru.gens = compile(syms,'g',genr)        # if so, replace default
                 if ru.cogs == None or ru.gens == None:
-                    print >> sys.stderr , '** FAIL g: [' , line , ']'
+                    print >> sys.stderr , '** ERROR g: [' , line , ']'
                     eno += 1
                     continue
             elif c == 'd':            # internal dictionary entry?
                 now += 1
                 dl = definitionLine.DefinitionLine(line);
-                ss = syntaxSpecification.SyntaxSpecification(syms,dl.tail)
-                if ss == None or ss.synf == None:
-                    print >> sys.stderr , '** FAIL d: [' , line , ']'
+                try:
+                    ss = syntaxSpecification.SyntaxSpecification(syms,dl.tail)
+                except ellyException.FormatFailure:
+                    print >> sys.stderr , '** ERROR d: [' , line , ']'
                     eno += 1
                     continue
                 ru = grammarRule.ExtendingRule(ss.catg,ss.synf.positive)
@@ -284,13 +287,13 @@ class GrammarTable(object):
                     self.dctn[dl.left] = [ ]                #
                 self.dctn[dl.left].append(ru)               # add rule to dictionary
                 if ru.cogs == None or ru.gens == None:
-                    print >> sys.stderr , '** FAIL d: [' , line , ']'
+                    print >> sys.stderr , '** ERROR d: [' , line , ']'
                     eno += 1
                     continue
             elif c == 'p':            # semantic subprocedure?
                 k = line.find(' ')    # name should have no spaces
                 if k > 0 or len(genr) == 0:
-                    print >> sys.stderr , '** FAIL p: bad format [' , line , ']'
+                    print >> sys.stderr , '** ERROR p: bad format [' , line , ']'
                     eno += 1
                     continue
                 nop += 1
@@ -312,10 +315,13 @@ class GrammarTable(object):
 
 #       print 'SKIP' , skp
         if skp > 0:
-             print >> sys.stderr , '**' , skp , 'uninterpretable input lines skipped'
-             eno += 1
+            print >> sys.stderr , '**' , skp , 'uninterpretable input lines skipped'
+            eno += skp
 
-        if eno > 0: return False
+        if eno > 0:
+            print >> sys.stderr , '**' , eno , 'grammar errors in all'
+            return False
+
         print "added"
         print '{0:4} rules'.format(nor)
         print '{0:4} words'.format(now)
@@ -338,12 +344,19 @@ class GrammarTable(object):
         """
 
 #       print "extend=",s,'->',t
-        ss = syntaxSpecification.SyntaxSpecification(syms,s)
-        ns = ss.catg
-        fs = ss.synf
-        st = syntaxSpecification.SyntaxSpecification(syms,t)
-        nt = st.catg
-        ft = st.synf
+        if t == None or len(t) == 0:
+            print >> sys.stderr , '** incomplete grammar rule'
+            return None
+        try:
+            ss = syntaxSpecification.SyntaxSpecification(syms,s)
+            ns = ss.catg
+            fs = ss.synf
+            st = syntaxSpecification.SyntaxSpecification(syms,t)
+            nt = st.catg
+            ft = st.synf
+        except ellyException.FormatFailure:
+            print >> sys.stderr , '** bad syntactic category or features'
+            return None
         if ns >= symbolTable.NMAX or nt >= symbolTable.NMAX:
             print >> sys.stderr , 'too many syntactic categories'
             return None
@@ -378,15 +391,21 @@ class GrammarTable(object):
         """
 
 #       print "split=",s,'->',t,u
-        ss = syntaxSpecification.SyntaxSpecification(syms,s)
-        ns = ss.catg
-        fs = ss.synf
-        st = syntaxSpecification.SyntaxSpecification(syms,t)
-        nt = st.catg
-        ft = st.synf
-        su = syntaxSpecification.SyntaxSpecification(syms,u)
-        nu = su.catg
-        fu = su.synf
+        if t == None or len(t) == 0 or u == None or len(u) == 0:
+            print >> sys.stderr , '** incomplete grammar rule'
+            return None
+        try:
+            ss = syntaxSpecification.SyntaxSpecification(syms,s)
+            ns = ss.catg
+            fs = ss.synf
+            st = syntaxSpecification.SyntaxSpecification(syms,t)
+            nt = st.catg
+            ft = st.synf
+            su = syntaxSpecification.SyntaxSpecification(syms,u)
+            nu = su.catg
+            fu = su.synf
+        except ellyException.FormatFailure:
+            return None
         if ns >= symbolTable.NMAX or nt >= symbolTable.NMAX or nu >= symbolTable.NMAX:
             print >> sys.stderr , 'too many syntactic categories'
             return None

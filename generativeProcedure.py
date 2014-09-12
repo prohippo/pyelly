@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeProcedure.py : 18aug2014 CPM
+# generativeProcedure.py : 05sep2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -459,8 +459,9 @@ if __name__ == "__main__":
         ctx.clearBuffers()
         print "------------" , src
         inp = ellyDefinitionReader.EllyDefinitionReader(src)
-        if inp == None:                    # check if input readable
+        if inp.error != None:              # check if input readable
             print >> sys.stderr, "cannot read procedure definition" , src
+            print >> sys.stderr, inp.error
             continue
         for ln in inp.buffer:              # echo input file
             print ln

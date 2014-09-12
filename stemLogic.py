@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# stemLogic.py : 04jun2013 CPM
+# stemLogic.py : 10sep2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -32,7 +32,9 @@
 for implementing stemming logic rules as a table object
 """
 
+import sys
 import ellyChar
+import ellyException
 import ellyDefinitionReader
 
 directory = './' # directory for stemming logic files
@@ -142,14 +144,18 @@ class StemLogic(object):
 
         arguments:
             self   -
-            source - logic definition
+            source - logic definition from file or array
         """
 
         self.table = [ ]   # for stemming logic, initially empty
 
-        if (not source is None):
+        if source != None:
             status = self.define(source)
-            if status > 0: return None
+            if status != 0:
+                print >> sys.stderr , '** unable to load' , source
+                if status > 0:
+                    print >> sys.stderr , '*  at line' , status
+                raise ellyException.FormatFailure
  
     def define ( self , source ):
 
@@ -161,7 +167,7 @@ class StemLogic(object):
             source - logic definition
 
         returns:
-            success flag: 0 for success, line number on error
+            success flag: 0 for success, line number or -1 on error
         """
 
         self.table = [ ]         # make sure table is empty
@@ -169,7 +175,10 @@ class StemLogic(object):
         stk = [ ] # stack to save place for skip count in logic block
         lno = 0   # input line number for error code
 
-        ins = Reader(source)     # formatted input
+        ins = Reader(source)     # reformatted input
+        if ins.error != None:
+            print >> sys.stderr , ins.error
+            return -1            # cannot read any logic
 
 #       print ":", source
 
@@ -310,7 +319,7 @@ class StemLogic(object):
 
         return 0 # code for success
 
-    def apply ( self , token ):
+    def apply ( self , token , extra=None ):
 
         """
         apply inflectional stemming logic against token
@@ -318,6 +327,7 @@ class StemLogic(object):
         arguments:
             self  -
             token - input token
+            extra - extra token char for any restoration
         returns:
             status code
         """
@@ -353,24 +363,29 @@ class StemLogic(object):
         
         # interpret table logic
 
-        while True:                 # advance through logic until success or failure
+        while True:                      # advance through logic until success or failure
 
-            opcode = self.table[it] # next operation code to interpret
-            it += 1                 #
+            opcode = self.table[it]      # next operation code to interpret
+            it += 1                      #
 #           print "opcode= ", opcode
 
-            if opcode < 0:          # YE with possible modifications
+            if opcode < 0:               # YE(S) on match with possible modifications
+
+                last = extra
 
                 # word satisfies conditions for ending removal
 
 #               print 'm=', m, ', ew= ', ew
                 for i in range(n):
-                    last = word.pop()        # remove matched ending from word
+                    last = word.pop()    # remove matched ending from word
 #               print '=', word
 #               print 'drop extra chars'
                 nm = YE - opcode         # get removal count from opcode
 #               print "nm= ", nm
                 if (nm < 0):
+                    if last == None:
+                        print >> sys.stderr , 'FATAL stemming logic error'
+                        sys.exit(1)
                     word.append(last)    # negative count restores last removed letter
                 else:
                     while nm > 0:        # otherwise drop additional letters
@@ -379,11 +394,9 @@ class StemLogic(object):
                 word.extend(self.table[it])
                 it += 1
                         
-                return isMTCH                # success flag
+                return isMTCH            # success flag
 
-            elif opcode == NO:
-
-                # no match
+            elif opcode == NO:           # no match
 
 #               print "fail!"
                 return isNOTM
@@ -483,9 +496,9 @@ class StemLogic(object):
 
         return isFAIL
 
-"""
-interactive unit test interface
-"""
+#
+# unit test
+#
 
 if __name__ == "__main__":
 
@@ -510,7 +523,7 @@ if __name__ == "__main__":
     siz = len(tab)
     print "sta= ", sta, " siz= ", siz
     if siz == 0:
-        print "NULL table"
+        print >> sys.stderr , "NULL table"
         sys.exit(1)
     M = 16
     for i in range(siz):

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveProcedure.py : 10aug2014 CPM
+# cognitiveProcedure.py : 06sep2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -168,8 +168,9 @@ if __name__ == '__main__':
     inp = ellyDefinitionReader.EllyDefinitionReader(src)
     if inp.error != None:
         sys.exit(1)
-    cgs = CognitiveProcedure(stb,inp)
-    if cgs == None:
+    try:
+        cgs = CognitiveProcedure(stb,inp)
+    except ellyException.FormatFailure:
         print >> sys.stderr, "conversion error"
         sys.exit(1)
 

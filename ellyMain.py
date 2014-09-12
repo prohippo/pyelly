@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyMain.py : 15aug2014 CPM
+# ellyMain.py : 05sep2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -101,6 +101,11 @@ sent = base + system + '.sx.elly'      # get stop punctuation exceptions
 if not os.path.isfile(sent): sent = base + ellyConfiguration.defaultSystem + '.sx.elly'
 
 ind = ellyDefinitionReader.EllyDefinitionReader(sent)
+if ind.error != None:
+    print >> sys.stderr, 'cannot read stop exceptions'
+    print >> sys.stderr, ind.error
+    sys.exit(1)
+
 exs = stopExceptions.StopExceptions(ind)
 
 rdr = ellySentenceReader.EllySentenceReader(sys.stdin,exs) # set up sentence reader

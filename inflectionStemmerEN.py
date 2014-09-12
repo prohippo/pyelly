@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# inflectionStemmerEN.py : 05nov2013 CPM
+# inflectionStemmerEN.py : 10sep2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2012, Clinton Prentiss Mah
 # All rights reserved.
@@ -30,6 +30,7 @@
 
 import stemLogic
 import ellyToken
+import ellyException
 from ellyStemmer import *
 
 """
@@ -70,29 +71,28 @@ class InflectionStemmerEN(EllyStemmer):
             rLog  - root restoration logic
             pLog  - special case check logic
             uLog  - undoubling final consonant logic
+
+        exceptions:
+            TableFailure on error
         """
 
-        if sLog != None:
-            self.sLog = sLog
-        else:
-            self.sLog = stemLogic.StemLogic(InflectionStemmerEN.sTb)
+        try:
+            if sLog != None: self.sLog = sLog
+            else: self.sLog = stemLogic.StemLogic(InflectionStemmerEN.sTb)
+            if dLog != None: self.dLog = dLog
+            else: self.dLog = stemLogic.StemLogic(InflectionStemmerEN.dTb)
+            if gLog != None: self.gLog = gLog
+            else: self.gLog = stemLogic.StemLogic(InflectionStemmerEN.gTb)
 
-        if dLog != None:
-            self.dLog = dLog
-        else:
-            self.dLog = stemLogic.StemLogic(InflectionStemmerEN.dTb)
-
-        if gLog != None:
-            self.gLog = gLog
-        else:
-            self.gLog = stemLogic.StemLogic(InflectionStemmerEN.gTb)
-
-        if rLog != None: self.rLog = rLog
-        else: self.rLog = stemLogic.StemLogic(InflectionStemmerEN.rTb)
-        if pLog != None: self.pLog = pLog
-        else: self.pLog = stemLogic.StemLogic(InflectionStemmerEN.pTb)
-        if uLog != None: self.uLog = uLog
-        else: self.uLog = stemLogic.StemLogic(InflectionStemmerEN.uTb)
+            if rLog != None: self.rLog = rLog
+            else: self.rLog = stemLogic.StemLogic(InflectionStemmerEN.rTb)
+            if pLog != None: self.pLog = pLog
+            else: self.pLog = stemLogic.StemLogic(InflectionStemmerEN.pTb)
+            if uLog != None: self.uLog = uLog
+            else: self.uLog = stemLogic.StemLogic(InflectionStemmerEN.uTb)
+        except ellyException.FormatFailure:
+            print >> sys.stderr , 'bad inflectional stemming'
+            raise ellyException.TableFailure
 
     def applyLogic ( self , logic , token ):
 
@@ -131,12 +131,13 @@ class InflectionStemmerEN(EllyStemmer):
             True just for consistency
         """
 
+#       print 'applyRest to' , token
         if self.rLog.apply(token) == stemLogic.doMORE:
             w = token.getRoot()
-            l = len(w) - 1
-            if w[l] == w[l-1]:
+            if w[-1] == w[-2]:
+#               print 'double consonant' , w[-1]
                 w.pop()
-                self.uLog.apply(token) 
+                self.uLog.apply(token,w[-1]) 
             else:
                 self.pLog.apply(token)
         return True
@@ -188,7 +189,11 @@ if __name__ == "__main__": # for unit testing
 
     import stemTest
 
-    stemmer = InflectionStemmerEN()
+    try:
+        stemmer = InflectionStemmerEN()
+    except ellyException.TableFailure:
+        print >> sys.stderr , 'cannot initialize stemmer'
+        sys.exit(1)
 
 #   print stemmer.sLog
 #   print stemmer.dLog

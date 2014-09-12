@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellySentenceReader.py : 25dec2013 CPM
+# ellySentenceReader.py : 05sep2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -298,6 +298,11 @@ if __name__ == '__main__':
     base = ellyConfiguration.baseSource + '/'
     dfs = base + sys.argv[2] if len(sys.argv) > 2 else base + 'default.sx.elly'
     inp = ellyDefinitionReader.EllyDefinitionReader(dfs)
+    if inp.error != None:
+        print >> sys.stderr, 'cannot read stop exceptions'
+        print >> sys.stderr, inp.error
+        sys.exit(1)
+
     stpx = stopExceptions.StopExceptions(inp)
 
     tst = sys.argv[1] if len(sys.argv) > 1 else 'sentenceTestData.txt'

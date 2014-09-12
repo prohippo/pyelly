@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# prefixTreeLogic.py : 24dec2013 CPM
+# prefixTreeLogic.py : 05sep2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -33,6 +33,7 @@ morphological analyzer for prefixes
 """
 
 import treeLogic
+import ellyException
 
 class PrefixTreeLogic(treeLogic.TreeLogic):
 
@@ -52,6 +53,9 @@ class PrefixTreeLogic(treeLogic.TreeLogic):
         arguments:
             self  -
             inp   - definition reader
+
+        exceptions:
+            TableFailure on error
         """
 
         super(PrefixTreeLogic,self).__init__(inp)
@@ -104,11 +108,19 @@ if __name__ == '__main__':
 
     base = ellyConfiguration.baseSource + '/'
     dfn = ellyDefinitionReader.EllyDefinitionReader(base + system + '.ptl.elly')
+    if dfn.error != None:
+        print >> sys.stderr , dfn.error
+        sys.exit(1)
     n = dfn.linecount()
     print n , 'definition lines'
     if n == 0: sys.exit(0)
 
-    pre = PrefixTreeLogic(dfn)
+    try:
+        pre = PrefixTreeLogic(dfn)
+    except ellyException.TableFailure:
+        print >> sys.stderr , 'cannot load prefix table'
+        sys.exit(1)
+
     print 'pre=' , pre
 
     treeLogic.dumpLT(pre.indx)

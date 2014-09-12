@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# stopExceptions.py : 24dec2013 CPM
+# stopExceptions.py : 05sep2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -249,6 +249,9 @@ if __name__ == '__main__':
     print 'reading from' , dfs
 
     inp = ellyDefinitionReader.EllyDefinitionReader(dfs)
+    if inp.error != None:
+        print >> sys.stderr , inp.error
+        sys.exit(1)
     stpx = StopExceptions(inp)
 
     np = len(stpx.lstg)
