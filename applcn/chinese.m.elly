@@ -1,11 +1,4 @@
 # simple Elly grammar for English to Chinese
 # chinese.m.elly
-bought -> buy -ed
-sold -> sell -ed
-understood -> understand -ed
-came -> come -ed
-went -> go -ed
 don't -> do not
 won't -> will not
-ate   -> eat -ed
-eaten -> eat -ed

@@ -11,7 +11,7 @@
 # a simple noun phrase is a noun preceded optionally by adjectives, a number,
 # or a demonstrative, determiner, or possessive
 #
-# THIS IS INCOMPLETE AND NOT ALL IDIOMATIC!
+# THIS IS INCOMPLETE AND NOT YET ENTIRELY IDIOMATIC!
 
 g:sent->sent punc
 __
@@ -126,6 +126,12 @@ d:-s <- s
   >>+
 __
 d:-ed <- ed
+  >>+
+__
+d:-t <- ed
+  >>+
+__
+d:-n <- ed
   >>+
 __
 d:will <- aux
@@ -276,6 +282,7 @@ _
   split
   right
   back
+# show class
   insert < class
   merge
   set cflg=t
@@ -286,6 +293,8 @@ _
   left
   back
   extract x <
+# show lang
+# show x
   if x=^
     extract class <
   else
@@ -319,4 +328,20 @@ g:adj->noun
 _
   left
   (de)
+__
+
+#
+# case constructions
+#
+
+g:case->of nclu
+ R[^material]>>+
+_
+  append 用
+  right
+__
+g:pred->pred case
+_
+  right
+  left
 __

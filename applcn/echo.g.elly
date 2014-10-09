@@ -33,3 +33,7 @@ d:-ed  <- sufx
 __
 d:-ing <- sufx
 __
+d:-n <- sufx
+__
+d:-t <- sufx
+__

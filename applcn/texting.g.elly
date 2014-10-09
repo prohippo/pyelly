@@ -542,6 +542,10 @@ d:'m <- aux
 _
   (nil)
 __
+g:aux[|*L]->aux infl
+_
+  left
+__ 
  
 #### auxiliaries or nouns
 

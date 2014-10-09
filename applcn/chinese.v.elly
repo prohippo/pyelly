@@ -23,82 +23,102 @@
 9th  : ord =第九
 10th : ord =第十
 
-car : noun tra=^輛汽車 =^辆汽车
-bus : noun tra=^輛公共汽車 =^辆公共汽车
-airplane : noun tra=^架飛機 =^架飞机
-boat: noun tra=^條小船 =^条小船
-ball: noun tra=^個球 =^个球
-book: noun tra=^本書 =^本书
-bowl: noun tra=^個碗 =^个碗
-snake: noun tra=^條蛇 =^条蛇
-rope: noun tra=^條繩索 =^条绳索
-belt: noun tra=^條傳送帶 =^条传送带
-newspaper: noun tra=^張報紙 =^张报纸
-magazine: noun tra=^本雜誌 =^本杂志
-cow: noun tra=^頭母牛 =^头母牛
-pig: noun tra=^頭豬 =^头猪
-horse: noun tra=^匹馬 =^匹马
-chicken: noun tra=^隻雞 =^只雄
-duck: noun tra=^隻鴨 =^只鸭
-house: noun tra=^個房子 =^个房子
-building: noun tra=^個大廈 =^个大厦
+#
+# the ^ in front of a noun translation indicates that the first
+# zì is the favored classifier for the cì that follows, and any
+# Elly grammar must know how to handle all of this
+#
+# authorities often disagree on the choice of classifier; these
+# are from Rosetta Stone Mandarin
+
+car : noun tra=^輛汽車, =^辆汽车
+bus : noun tra=^輛公共汽車, =^辆公共汽车
+airplane : noun tra=^架飛機, =^架飞机
+boat: noun tra=^條小船, =^条小船
+ball: noun tra=^個球, =^个球
+book: noun tra=^本書, =^本书
+bowl: noun tra=^個碗, =^个碗
+snake: noun tra=^條蛇, =^条蛇
+rope: noun tra=^條繩索, =^条绳索
+belt: noun tra=^條傳送帶, =^条传送带
+newspaper: noun tra=^張報紙, =^张报纸
+magazine: noun tra=^本雜誌, =^本杂志
+cow: noun tra=^頭母牛, =^头母牛
+pig: noun tra=^頭豬, =^头猪
+little pig: noun tra=^隻小猪仔, =^只小猪仔
+horse: noun tra=^匹馬, =^匹马
+chicken: noun tra=^隻雞, =^只雄
+duck: noun tra=^隻鴨, =^只鸭
+house: noun tra=^座房子, =^座房子
+building: noun tra=^座大廈, =^座大厦
 rose: noun =^朵玫瑰
 chrysanthemum: noun =^朵菊花
-computer: noun tra=^臺計算機 =^台计算机
-peach: noun tra=^個桃子 =^个桃子
-banana: noun tra=^個香蕉 =^个香蕉
+computer: noun tra=^臺計算機, =^台计算机
+peach: noun tra=^個桃子, =^个桃子
+banana: noun tra=^個香蕉, =^个香蕉
 company: noun =^家公司
-ticket: noun tra=^張票 =^张票
-stone : noun tra=^塊石頭 =^块石头
-brick : noun tra=^塊磚 =^块砖
-pistol : noun tra=^把手槍 =^把手枪
-rifle : noun tra=^杆步槍 =^杆步枪
-sword : noun tra=^把劍 =^把剑
+ticket: noun tra=^張票, =^张票
+stone : noun tra=^塊石頭, =^块石头
+brick : noun [^material] 0 tra=^塊磚, =^块砖
+stick : noun [^material] 0 tra=^條堅持, =^条坚持
+straw : noun [^material] 0 =^稻草
+pistol : noun tra=^把手槍, =^把手枪
+rifle : noun tra=^杆步槍, =^杆步枪
+sword : noun tra=^把劍, =^把剑
 knife : noun =^把刀子
-river : noun tra=^條河 =^条河
+river : noun tra=^條河, =^条河
 mountain : noun =^座山
-lake : noun tra=^個湖 =^个湖
-city : noun tra=^個城市 =^个城市
-village : noun tra=^個村莊 =^个村庄
-street : noun tra=^條街道 =^条街道
-map : noun =映射
-shirt : noun tra=^件襯衣 =^件衬衣
-blouse : noun tra=^件女襯衫 =^件女衬衫
-hat : noun tra=^個帽子 =^个帽子
-word : noun tra=^個詞 =^个词
-napkin : noun tra=塊餐巾 =^块餐巾    
-tablecloth : noun tra=^張桌布 =^张桌布
-god : noun tra=^個神 =^个神
+lake : noun tra=^個湖, =^个湖
+city : noun tra=^個城市, =^个城市
+village : noun tra=^個村莊, =^个村庄
+street : noun tra=^條街道, =^条街道
+map : noun tra=^張地圖, =^张地图
+shirt : noun tra=^件襯衣, =^件衬衣
+blouse : noun tra=^件女襯衫, =^件女衬衫
+hat : noun tra=^頂帽子, =^顶帽子
+word : noun tra=^個詞, =^个词
+napkin : noun tra=塊餐巾, =^块餐巾    
+tablecloth : noun tra=^張桌布, =^张桌布
+god : noun tra=^個神, =^个神
 religion : noun =宗教信仰
-science : noun tra=科學 =科学
-philosophy : noun tra=哲學 =哲学
+science : noun tra=科學, =科学
+philosophy : noun tra=哲學, =哲学
 page : noun =頁
-picture : noun tra=^張照片 =^张照片
-person : noun tra=^個人 =个人
-dog : noun tra=^隻狗 =^只狗
-cat : noun tra=^隻猫 =^只猫
-bird : noun tra=^隻鳥 =^只鸟
-dream : noun tra=^個夢想 =^个梦想
+photograph : noun tra=^張照片, =^张照片
+person : noun tra=^個人, =个人
+dog : noun tra=^隻狗, =^只狗
+cat : noun tra=^隻猫, =^只猫
+bird : noun tra=^隻鳥, =^只鸟
+dream : noun tra=^個夢想, =^个梦想
 fear: noun =恐惧
 hope: noun =希望
-person: noun tra=^個人 =^个人
+person: noun tra=^個人, =^个人
 
 red:    noun =紅色
 blue:   noun =藍色
 green:  noun =綠色
 yellow: noun =黃色
+orange: noun =座色
+purple: noun =紫色
+brown:  noun =棕色
 black:  noun =黑色
 white:  noun =白色
+gray:   noun =色灰
 
 big:    adj =大
 small:  adj =小
 little: adj =小
 
-buy : verb tra=買 =买
-sell: verb tra=賣 =卖
-come: verb =來
-go  : verb =去
+buy :  verb tra=買, =买
+sell:  verb tra=賣, =卖
+come:  verb tra=來, =来
+go  :  verb =去
 understand : verb =明白
-eat : verb =吃
+eat :  verb =吃
+build: verb =蓋
+have:  verb - -1 =有
 
 want: mode =想要
+need: mode =需要
+have: mode - -1 =必須
+should: mode tra=應該, =应该

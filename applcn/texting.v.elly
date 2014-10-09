@@ -80,8 +80,8 @@ over toward:  PREP 0 0 =to
 together with:  PREP 0 0 =+
 necessary for:  PREP 0 0 =fr
 instead of: NO  0 0 =no
-had to    : AUX 0 0 =must
-has to    : AUX 0 0 =must
+have -ed to : AUX 0 0 =must
+have -s  to : AUX 0 0 =must
 have to   : AUX 0 0 =must
 unable to : AUX 0 0 =can't
 
