@@ -1,6 +1,6 @@
-! undb-tbl.sl
-! stemming logic for final consonant undoubling in English
-! see stemLogic.py
+# undb-tbl.sl
+# stemming logic for final consonant undoubling in English
+# see stemLogic.py
 BLOCK
   LEN = 2
     IS p {SU}
@@ -15,5 +15,5 @@ BLOCK
       END {SU -1}
     IF tub {SU -1}
     END
-  IF tocy {SU -1}
+  IF tocyo {SU -1}
 DEFAULT {SU}

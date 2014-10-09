@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - tool for testing stemmers
 #
-# stemTest.py : 08oct2013 CPM
+# stemTest.py : 20sep2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -53,14 +53,12 @@ def stemTest( stemmer , suffix=None ):
             break
 
         w = line.rstrip()
-        if len(w) == 0: break          # stop upon empty line for EOF
-        print '"%s"' % w               #
-        tok = ellyToken.EllyToken(w)   # make new token
-        sta = stemmer.apply(tok)       # apply stemmer
-        print "success code= ", sta
-        sufs = tok.getSuffixes()       # list of suffixes removed
-        print ">>", ''.join(tok.root), # stemming result
+        if len(w) == 0: break            # stop upon empty line for EOF
+        print '"%s"' % w ,               #
+        tok = ellyToken.EllyToken(w)     # make new token
+        sta = stemmer.apply(tok)         # apply stemmer
+        sufs = tok.getSuffixes()         # list of suffixes removed
+        print "-->>", ''.join(tok.root), # stemming result
         if suffix == None:
-            print tok.getSuffixes()
-        else:
-            print ""
+            print tok.getSuffixes() ,
+        print " success code= ", sta

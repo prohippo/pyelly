@@ -1,12 +1,12 @@
-! EDtbl.sl
-! stemming logic for -ED in English
-! see stemLogic.py
+# EDtbl.sl
+# stemming logic for -ED in English
+# see stemLogic.py
 BLOCK ed
   IF i
     LEN = 4 {SU -1}
     IS xk {SU}
     IF t
-      IS p {SU 1 y}
+      IS mpr {SU 1 y}
       END {SU -1}
     END {SU 1 y}
   IF e
@@ -29,6 +29,7 @@ BLOCK ed
     END {SU -1}
   IF h
     IF s
+      LEN = 4 {FA}
       IS rdk {FA}
       IF lo {FA}
       END
@@ -46,6 +47,7 @@ BLOCK ed
     IS x {SU}
     IF rb {SU -1 ed}
     IF ps {SU -1 ed}
+    IF lp {SU -1 ad}
     IS h {FA}
     IF l
       IS s {FA}
@@ -56,19 +58,28 @@ BLOCK ed
     IS f {SU -1 ed}
     IS l {SU -1 ad}
     END {FA}
-  IF lsi {SU -1 ad}
+  IF l
+    IF si {SU -1 ad}
+    IF ived {SU}
+    END {DO MORE}
   IF fre {SU -1 ed}
   IF mh {FA}
   IF f
-    IS afio {DO MORE}
+    IF f
+      IF ioc {SU 1}
+      END {SU}
+    IS aio {DO MORE}
     END {SU -1 ed}
+  IF vve {SU 1}
   IF r
     IS fthd {FA}
     IF ar {FA}
     IF c
       IF ass {SU -1}
       END {FA}
-    IF bn {SU -1 ed}
+    IF b
+      IS norts {SU 0 eed}
+      END {SU}
     IF yt {SU}
     END
 DEFAULT {DO MORE}

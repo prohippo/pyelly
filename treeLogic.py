@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# treeLogic.py : 05dec2013 CPM
+# treeLogic.py : 24sep2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -32,14 +32,16 @@
 basic finite automata for morphological analysis
 """
 
+import sys
 import ellyChar
 import ellyConfiguration
 import ellyException
 import unicodedata
 
-Fail    = u'?!'  # predefined restoration options
-RestorE = u'e?'  #
-Add     = u'+'   #
+                 # predefined restoration options
+Fail    = u'?!'  # fail
+RestorE = u'e?'  # conditionally restore with inflectional stemming method
+Add     = u'+'   # unconditionally restore with specified string
 
 Bound   = u'|'   # match word boundary
 
@@ -123,15 +125,15 @@ class Node(object):
 class Action(object):
 
     """
-    action to take on making a match
+    action to take on making a match in tree logic
 
     attributes:
         tree  - TreeLogic reference
         nsave - number of matched chars to keep
-        resto - what to add to root after removal of chars
+        resto - what to append to root after adding back any matched chars
         recur - flag to look for yet another match
         ndrop - what to remove for an affix
-        amod  - what to add to affix after removal of chars
+        amod  - what to prepend to affix after removal of extra matched chars
     """
 
     def __init__ ( self , tree , nsave , resto , recur=False , post='' ):
@@ -140,9 +142,9 @@ class Action(object):
         arguments:
             self  -
             tree  - logic tree containing node with action
-            nsave - how many  match chars to keep
-            resto - how to restore
-            recur - recursive matching?
+            nsave - how many matched chars to keep in root
+            resto - how to restore root after keeping
+            recur - recursive matching to look for more affixes?
             post  - how to define a removed affix
         """
 
@@ -153,8 +155,8 @@ class Action(object):
         self.ndrop = 0      # default
         if post != '':      # no specification
             if ellyChar.isDigit(post[0]):
-                self.ndrop = int(post[0])
-                post = post[1:]
+                self.ndrop = int(post[0]) # expect only single digit here, if any
+                post = post[1:]           # rest of action string
         self.amod = post
 
     def __unicode__ ( self ):
@@ -166,9 +168,11 @@ class Action(object):
             Unicode string
         """
 
-        recur = u' ,' if self.recur else u' .'
-        mod = u' ' + unicode(self.ndrop) + self.amod
-        return u'Act: (' + unicode(self.nsave) + ') ' + ''.join(self.resto) + recur + mod
+        hdr   = u'Action: len+ '
+        rst   = u'root' + self.resto[0] + u'[' + ''.join(self.resto[1:]) + u']'
+        mod   = u', len- ' + unicode(self.ndrop) + u' [' + self.amod + u']+affix'
+        recur = u' recur' if self.recur else u' stop'
+        return hdr + unicode(self.nsave) + ' ' + rst + mod + recur
 
     def __str__ ( self ):
         """
@@ -196,35 +200,43 @@ class Action(object):
         """
 
 #       print "applyRVS" , token
+#       print self
         o = self.resto[0]      # type of action
         if o == Fail: return False
 
+#       print 'oprn=' , o
         r = self.resto[1:]     # chars to append to root
+#       print 'rstr=' , r
         n = count - self.nsave # computed suffix length
-#       print 'count=' , count , 'nsave=' , self.nsave , 'n=' , n
+#       print 'count=' , count , 'nsave=' , self.nsave , 'ndrop=' , self.ndrop , 'n=' , n
         lst = token.root
 
         k = n - self.ndrop     # adjusted suffix length
+#       print 'k=' , k
         x = u''.join(lst[-k:]) if k > 0 else u''
         sfx = u'-' + self.amod + x
         if len(sfx) > 1:
-#           print sfx
+#           print 'sfx=' , sfx
             token.addSuffix(sfx)
 #           print 'sufs=' , token.getSuffixes()
 
-        token.root = lst[:-n]
+#       print 'org' , token
+        if n > 0: token.root = lst[:-n]
+#       print 'adj' , token
         lst = token.root
 
 #       print 'lst=' , lst
 
         if o == Add:
 #           print 'Add' , r
-            lst.extend(r)
+            if len(r) > 0:
+                lst.extend(r)
             return True
         elif o == RestorE and tree.infl != None:
-#           print 'token=' , token.root
+#           print 'prerest token=' , token.root
             return tree.infl.applyRest(token)
         else:
+#           print 'fail'
             return False
 
     def applyFWD ( self , token , count ):
@@ -275,6 +287,7 @@ class TreeLogic(object):
         indx - first-level nodes of tree by matching char
         infl - inflection stemmer for any root restoration
         addn - special addition for root modification
+        rest - restoration to apply
     """
 
     addn = None  # nothing unless overridden
@@ -332,10 +345,14 @@ class TreeLogic(object):
             True on match, False otherwise
         """
 
+#       print token
+
         rec = True      # recursion flag
         suc = False     # success   flag
 
         while rec:      # continue comparisons recursively while flag is True
+
+            if len(token.root) < 3: break               # stop if token root is too short
 
             seq = self.sequence(token.root) + [ Bound ] # token sequence plus sentinel
 
@@ -388,7 +405,7 @@ class TreeLogic(object):
 #               print 'condition'
                 if con == 0:                   # accept match with no action?
 #                   print '0 condition'
-                    return False               # if so, done
+                    return suc                 # if so, done
 
                 elif con == 1:                 # unconditionally accept?
                     break                      # if so, act on this match
@@ -413,10 +430,11 @@ class TreeLogic(object):
             # take action for longest accepted match
             #
 
+#           print '1 token=' , token
             self.rewrite(token,nom,nod)        # take action for node
             rec = nod.actns.recur              # update recursion flag
 
-#           print 'root=' , token.root
+#           print '2 token=' , token
 #           print 'rec=' , rec
 
 #       print 'suc=' , suc
@@ -497,7 +515,13 @@ class TreeLogic(object):
 
             node.condn = int(elem.pop(0)) # condition for match
 
-            nsave = 0 if len(elem) == 0 else int(elem.pop())
+            try:
+                nsave = 0 if len(elem) == 0 else int(elem.pop())
+            except Exception , e:
+                print >> sys.stderr , e
+                print >> sys.stderr , "*  at: [" , line , "]"
+                continue                  # ignore line
+             
             resto = [ Add ]               # set to defaults
             recur = False                 #
 

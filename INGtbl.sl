@@ -1,6 +1,6 @@
-! INGtbl.sl
-! stemming logic for -ING in English
-! see stemLogic.py
+# INGtbl.sl
+# stemming logic for -ING in English
+# see stemLogic.py
 BLOCK ing
   LEN = 4 {FA}
   IS eo {SU}
@@ -11,8 +11,13 @@ BLOCK ing
       IS aou {SU}
       END {SU 1 ie}
     IF l
+      IF eb {SU 1 ie}
       IS lfep {SU}
       END {SU 1 ie}
+    IF v
+      LEN = 5 {SU 1 ie}
+      END
+    IF my {SU 1 ie}
     END {SU}
   LEN = 5
     IF ke {SU 0 e}
@@ -32,14 +37,18 @@ BLOCK ing
       IS dr {FA}
       END
     END {DO MORE}
-  IF gni
-    IS hp {SU 0 e}
-    IF rf {SU 0 e}
-    IF rc {SU 0 e}
-    IF wt {SU 0 e}
-    LEN = 7
-      IS t {SU 0 e}
-      END
+  IF gn
+    IF i
+      IS hp {SU 0 e}
+      IF rf {SU 0 e}
+      IF rc {SU 0 e}
+      IF wt {SU 0 e}
+      LEN = 7
+        IS t {SU 0 e}
+        END
+      END {SU}
+    IF ah {SU 0 e}
+    IF u {SU 0 e}
     END {SU}
   IF kep {FA}
   IF r
@@ -80,4 +89,5 @@ BLOCK ing
     IF fl {FA}
     END
   IF sd {SU}
+  IF vve {SU 1}
 DEFAULT {DO MORE}

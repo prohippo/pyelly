@@ -1,15 +1,18 @@
-! rest-tbl.sl
-! stemming logic for root restoration in English
-! this is separate logic because it has to run after both -ED and -ING removal
-! see stemLogic.py
+# rest-tbl.sl
+# stemming logic for root restoration in English
+# this is separate logic because it has to run after both -ED and -ING removal
+# see stemLogic.py
 BLOCK
   IF s
-    IS s {SU}
+    IF s
+      IF ag {SU 1}
+      end {SU}
     IF ub
       LEN = 3 {SU}
       END
     IF uco {SU}
     IF ai {SU}
+    IF du {SU}
     END {SU 0 e}
   IF g
     IS aedlriu {SU 0 e}
@@ -26,16 +29,24 @@ BLOCK
       END {SU 0 e}
     END {SU}
   IF terp {SU}
-  IF kci
-    IF nc {SU 1}
-    IF ff {SU 1}
-    IF ti {SU 1}
-    IF mi {SU 1}
+  IF kc
+    IF alle {SU 1}
+    IF auov {SU 1}
+    IF i
+      IF n
+        IS ac {SU 1}
+        END {FA}
+      IF lo {SU 1} 
+      IF ff {SU 1}
+      IF ti {SU 1}
+      IF mi {SU 1}
+      END
     END {SU}
   IS tnrdbmpkz {DO MORE}
   IS cvu {SU 0 e}
   IF l
     IF l
+      IF otx {SU 1}
       IF ort
         IF s {SU}
         LEN = 5 {SU}
@@ -58,13 +69,13 @@ BLOCK
         END
       END {SU}
     IS tsdgbpcfkz {SU 0 e}
-    IS e {SU}
+    IF e {SU}
     IF i
       LEN < 5 {DO VOWEL}
       IF re {SU}
       IF ug {SU 0 e}
       IF v
-        IS ia {SU}
+        IF ia {SU}
         END {SU 0 e}
       END {DO VOWEL}
     IF a

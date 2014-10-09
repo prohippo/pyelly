@@ -1,4 +1,4 @@
-# Elly default suffix list
+# Elly default suffix list for analytic morphological stemming
 # default.stl.elly
 #
 #  each entry has the form:
@@ -39,7 +39,9 @@ acious 2 2 y. 1
 acral 2 4 . 0a
 adation 2 2 &.
 adden 2 2 . 1
+adii 2 3 us. 1s
 adual 0 0 .
+ae 2 1 . 1s
 aeli 2 3 .
 aelis 2 4 ,
 aemia 2 3 e.
@@ -89,7 +91,7 @@ amplify 0 0 .
 amply 1 4 &.
 anation 2 4 &,
 anatory 2 4 &,
-ancier 2 3 &.
+ancier 2 3 &. 1
 anese 2 2 .
 anest 1 2 .
 anger 2 4 . 0e
@@ -237,13 +239,13 @@ brity 1 2 .
 brium 1 2 . 3
 brous 1 2 .
 bular 1 1 &.
+bummer 0 0 .
 burete 2 5 .
 burger 0 0 .
 butant 1 3 .
 butcher 0 0 .
 byan 1 3 . 0a
 cacy 1 2 te, 1
-can 1 2 .
 cance 1 3 t.
 cancer 0 0 .
 cary 2 3 &.
@@ -300,6 +302,7 @@ coverage 1 5 .
 cracy 1 3 t. 1
 cratic 1 4 .
 crite 1 4 . 1
+crubber 2 4 . 1
 cstatic 1 4 sy.
 ctal 1 2 .
 ctance 1 2 .
@@ -423,9 +426,11 @@ ecious 0 0 .
 eclination 0 0 .
 ectile 0 0 .
 ectorial 1 3 .
+ectra 2 4 um. 1s
 ecture 1 3 .
 ecular 2 4 &.
 edatory 2 6 .
+eddest 2 2 . 1
 edent 0 0 .
 ederate 2 5 l.
 ederation 2 5 l.
@@ -464,7 +469,8 @@ ellant 2 2 . 1
 ellent 1 2 . 1
 ellion 2 2 . 1
 elony 2 4 .
-ema 2 2 e.
+ema 2 2 e. 1
+emata 2 3 , 2s
 ematic 2 2 &.
 ematize 2 2 . 2
 ember 2 3 r.
@@ -565,6 +571,7 @@ etion 2 2 &.
 etive 2 2 .
 etize 2 2 .
 etry 1 2 .
+etter 2 2 . 1
 etual 2 3 &.
 etuate 2 3 &.
 eurial 2 3 .
@@ -639,6 +646,7 @@ ghtest 1 3 .
 giac 1 1 y. 1
 gial 1 1 &. 1
 giastic 1 1 y. 1
+gibber 0 0 .
 gienist 1 4 e.
 gility 1 3 &.
 ginary 1 3 &.
@@ -648,6 +656,7 @@ gion 0 0 .
 gious 1 3 n. 0o
 gise 1 2 ze,
 gister 1 4 r.
+gladder 1 4 . 1
 glement 1 3 .
 gligent 1 2 ect.
 glis 1 2 .
@@ -674,7 +683,7 @@ gorous 1 3 .
 gral 1 2 .
 grance 1 4 t.
 grateful 0 0 .
-grieve 1 4 f.
+grieve 1 4 f. 2
 grown 1 4 .
 gster 1 1 .
 gual 2 3 . 0a
@@ -683,6 +692,7 @@ gulant 1 3 &.
 gular 1 1 le.
 gurate 1 3 &.
 halve 1 3 f.
+hammer 0 0 .
 hanger 1 4 .
 hani 2 3 .
 hanism 2 3 .
@@ -697,8 +707,8 @@ hebraic 1 4 ew. 1
 hecy 2 2 t. 1
 hedral 1 4 .
 heery 2 4 .
-helve 2 3 f.
-hematize 2 3 e.
+helve 2 3 f. 2
+hematize 2 3 e. 2
 hen 2 1 .
 henation 2 3 .
 heral 2 3 .
@@ -717,6 +727,7 @@ hic 2 1 .
 hidden 1 3 e. 1
 hiest 2 1 y, 1
 hilic 2 3 &.
+himmer 0 0 .
 hina 0 0 .
 hinder 1 4 r.
 hion 0 0 .
@@ -760,10 +771,13 @@ iator 2 3 &.
 iatory 2 3 &,
 iatrix 2 3 &, 3ess
 ibal 2 2 &.
+ibber 2 2 . 1
+ibbest 2 2 . 1
 ibial 2 4 . 0a
 ibrant 2 3 .
 icable 2 0 y.
 ical 1 2 ,
+ican 1 3 .
 icant 2 3 te.
 iccant 2 3 .
 iccate 2 3 .
@@ -798,13 +812,12 @@ ience 1 3 t.
 ienic 2 3 e.
 iescent 0 0 .
 ieval 2 3 &.
-iever 2 4 . 0e
+iever 2 4 , 0e
 iewer 2 3 .
 ifier 2 2 y,
 iful 2 0 y.
 igacy 2 2 &. 1
 igate 2 2 &.
-ligatory 2 3 &.
 iggest 2 2 . 1
 iginal 2 4 .
 iginate 2 4 .
@@ -869,6 +882,7 @@ inition 2 2 &.
 inity 2 4 &.
 inly 1 2 .
 inner 2 2 . 1
+innest 2 2 . 1
 intensive 1 6 &.
 inter 2 3 r.
 intry 1 4 .
@@ -977,6 +991,7 @@ joan 0 0 .
 jure 2 3 y.
 jurious 2 3 y, 1
 kage 1 1 .
+kali 0 0 .
 kative 2 1 .
 ken 1 1 &.
 kenize 1 3 .
@@ -997,7 +1012,6 @@ kster 2 1 .
 ky 1 1 &.
 laborate 2 5 .
 lactic 1 4 .
-lae 3 2 .
 laint 2 4 . 1ed
 lamic 2 3 .
 langer 2 4 .
@@ -1026,6 +1040,7 @@ lescent 1 5 . 0e
 lesion 0 0 .
 lesis 0 0 .
 lete 2 3 . 1
+letter 0 0 .
 lexy 2 2 ct. 1
 lgarian 3 6 .
 lgia 1 2 y.
@@ -1040,14 +1055,17 @@ lican 2 3 .
 lidate 1 3 .
 lier 1 1 y, 1
 liest 1 1 y, 1
-lieve 1 3 f.
+lieve 1 3 f. 2
 ligator 0 0 .
+ligatory 2 3 &.
 like 2 0 ,
+limmer 0 0 .
 linary 1 3 &.
 linate 2 3 .
 lingy 2 4 .
 lion 0 0 .
 lise 1 2 ze,
+listen 0 0 .
 livate 1 4 .
 liver 0 0 .
 llate 1 2 .
@@ -1096,12 +1114,15 @@ ltor 1 2 y.
 ltuous 3 2 . 1
 luate 1 2 &.
 luation 1 2 &.
+luer 2 3 . 0e
+luest 2 3 . 0e
 lular 2 1 . 2
 lusion 1 2 de.
 lusive 1 2 de.
 luster 0 0 .
 lutant 1 3 &.
 lvular 1 2 e. 2
+lyer 2 2 .
 lyse 1 2 t.
 lyte 1 3 . 1
 lyze 1 2 t. 2
@@ -1117,6 +1138,7 @@ manner 0 0 .
 mantic 1 4 .
 marize 2 3 &.
 master 0 0 .
+mata 1 3 on. 1s
 matic 1 2 . 1
 matize 1 2 . 1
 matory 2 1 .
@@ -1132,6 +1154,7 @@ mension 0 0 .
 ment 2 0 ,
 mention 0 0 .
 mergent 1 5 . 0e
+mesis 0 0 .
 metable 0 0 .
 meter 1 3 r.
 metric 1 4 .
@@ -1188,6 +1211,7 @@ mster 0 0 .
 mth 2 1 .
 mulant 1 4 . 0a
 mulate 1 4 . 0a
+muli 1 3 us. 0s
 mulsion 1 4 &.
 mulsive 1 4 &.
 mutant 2 3 &.
@@ -1235,6 +1259,8 @@ nger 1 3 .
 ngest 1 2 .
 ngi 3 2 us.
 ngrammatic 1 7 r.
+ngrier  1 3 y, 1
+ngriest 1 3 y, 1
 ngry 1 3 .
 ngulate 1 2 le.
 nible 2 1 . 1a
@@ -1268,6 +1294,7 @@ nomize 1 3 y.
 normal 1 4 .
 notate 2 3 e.
 notist 2 3 .
+novae 2 4 . 1s
 nrally 0 0 .
 nry 1 1 .
 nsee 1 3 . 0e
@@ -1325,6 +1352,7 @@ octorate 2 5 .
 ocular 0 0 .
 oculate 2 4 &.
 ocuss 2 4 .
+odden 2 2 , 1
 oder 2 3 . 0e
 odial 2 2 y. 1
 odic 2 2 &.
@@ -1551,6 +1579,7 @@ polize 1 2 y.
 ponse 2 3 d.
 porary 2 1 . 2
 portion 0 0 .
+posia 2 4 um. 1s
 ppable 1 1 . 1
 ppellate 1 3 al.
 pper 1 1 . 1
@@ -1582,6 +1611,8 @@ qualor 2 4 id.
 quate 1 2 &.
 quator 0 0 .
 question 0 0 .
+rabber 2 3 . 1
+rabbest 2 3 . 1
 rabic 1 3 .
 rable 1 1 &.
 racier 1 3 y.
@@ -1630,7 +1661,10 @@ reatic 2 3 . 1
 recession 0 0 .
 reclusive 1 6 &.
 recy 2 2 t. 1
+redder 1 3 . 1
 reedy 2 4 .
+reer 2 3 . 0e
+reest 2 3 . 0e
 rely 1 2 ,
 reness 1 2 .
 renity 1 3 e.
@@ -1662,7 +1696,7 @@ rican 1 4 . 0a
 ricant 2 3 .
 ridden 1 3 e. 1
 ridize 2 3 .
-rier 1 1 y.
+rier 1 1 y. 1
 riety 2 1 .
 rility 1 2 le.
 rilize 1 2 le.
@@ -1674,6 +1708,7 @@ rinter 2 4 .
 rion 0 0 .
 rism 0 0 .
 risper 2 4 .
+risten 0 0 .
 risy 2 2 t.
 ritable 2 3 &.
 rition 2 3 &.
@@ -1702,7 +1737,6 @@ rnee 3 2 .
 rner 1 2 .
 rnity 1 2 .
 rnor 1 2 .
-rnt 1 2 . 1ed
 roan 0 0 .
 robber 1 3 .
 rocable 2 3 &.
@@ -1726,6 +1760,7 @@ rper 1 2 .
 rply 1 2 ,
 rption 1 1 b.
 rptive 1 1 b.
+rrata 1 2 or. 3s
 rrence 1 4 t,
 rrent 1 1 . 1
 rriage 1 2 y.
@@ -1753,6 +1788,7 @@ ruate 2 2 &.
 ruation 2 2 &.
 rubic 1 3 .
 rudate 2 3 &.
+ruest 2 3 . 0e
 rusible 2 2 de. 2a
 rusion 1 2 de.
 rusive 2 2 de.
@@ -1767,6 +1803,7 @@ rvous 1 2 &.
 ryer 2 2 .
 ryman 1 2 ,
 ryngeal 1 3 x. 2
+sadder 1 3 . 1
 sader 1 4 . 0e
 saler 1 4 . 0e
 salty 1 4 .
@@ -1779,6 +1816,7 @@ sative 3 1 &.
 satory 3 1 &.
 scious 0 0 .
 scopy 1 4 &.
+seamy 0 0 .
 section 0 0 .
 seditious 2 7 n. 0o
 seen 1 3 .
@@ -1820,6 +1858,8 @@ sist 0 0 .
 sition 0 0 .
 sitive 2 3 .
 sity 2 1 &.
+slaid 1 3 y. 2ed
+slimmer 1 4 .
 sma 1 2 .
 sness 1 1 ,
 sober 1 3 r.
@@ -1832,7 +1872,6 @@ soother 2 6 .
 sophy 1 4 .
 sovar 1 3 o.
 sown 1 3 .
-spent 1 4 d.
 sphate 0 0 .
 sphite 0 0 .
 sphoric 0 0 .
@@ -1856,6 +1895,7 @@ ssor 1 2 ,
 stal 1 2 .
 stance 2 4 t.
 stani 1 4 .
+stank 1 2 ink. 3ed
 stant 0 0 .
 stasis 1 3 t. 3
 station 0 0 .
@@ -1871,8 +1911,15 @@ sticate 1 4 .
 stition 2 4 .
 stitious 2 4 . 1
 stolic 1 4 &.
+stood 2 2 and. 3ed
 stor 1 2 .
 strian 1 3 .
+strode 1 3 ide. 3ed
+struck 1 3 ike. 3ed
+strung 1 3 ing. 3ed
+stuck 1 2 ick. 3ed
+stung 1 2 ing. 3n
+stunk 1 2 ink. 3n
 sty 1 2 .
 suance 1 2 &.
 suant 2 2 &.
@@ -1880,15 +1927,22 @@ suction 1 3 k.
 suer 2 3 . 0e
 suitable 1 4 .
 summer 0 0 .
+sung 1 1 ing. 3n
+sunk 1 1 ink. 3n
 surgeon 1 4 ery.
 surgic 1 4 ery.
+swam 1 2 im. 2ed`
+swore 1 2 ear. 3ed
+swung 1 2 ing. 3ed
 tabolic 1 5 &.
 tabulary 2 3 le.
 taffer 2 4 .
 tainty 2 4 .
 talian 1 3 y. 1
 tallic 1 3 . 1
+tammer 0 0 .
 tancy 1 3 t,
+tannest 1 3 . 1
 tant 2 1 .
 tariat 1 3 y.
 tarist 1 3 y,
@@ -1921,8 +1975,9 @@ thedral 0 0 .
 thern 1 2 ,
 thier 2 2 y, 1
 thiest 2 2 y, 1
-thieve 1 4 f.
+thieve 1 4 f. 2
 thize 1 2 .
+threw 1 3 ow. 2ed
 tiate 2 1 ,
 tible 1 1 . 1a
 tibular 2 5 &.
@@ -1956,6 +2011,7 @@ tly 1 1 ,
 todian 2 3 y.
 token 0 0 .
 tolen 2 4 .
+took 1 1 ake. 3ed
 torate 2 3 ,
 toration 2 3 &.
 toriety 1 3 y.
@@ -1965,11 +2021,13 @@ tral 3 2 .
 trance 1 2 ,
 trant 1 2 .
 trar 2 2 .
+trata 2 4 um.
 trate 1 2 .
 tre 1 2 . 1
 tricity 2 4 ,
 trify 2 2 ic.
 trigger 0 0 .
+trod 1 2 ead. 2n
 troller 1 4 . 1
 tropic 0 0 .
 trous 2 2 .
@@ -1985,10 +2043,13 @@ ual 2 0 &.
 uan 2 2 . 0a
 uancy 2 3 t. 1
 uantity 0 0 .
+uatter 2 3 . 1
 ubic 2 2 &.
 uccess 2 4 ed.
 uccession 2 4 ed. 2
 ucive 2 2 &.
+uclear 2 4 us.
+uclei 2 4 us. 1s
 uctory 2 2 &. 1
 udence 2 4 t.
 udent 0 0 .
@@ -2027,6 +2088,8 @@ ulum 2 2 e.
 umer 1 3 . 0e
 umize 3 2 .
 ummation 2 5 &.
+umnae 2 4 . 1s
+umni 2 3 us. 1s
 umour 2 3 r.
 umper 2 3 .
 umption 1 2 &.
@@ -2133,18 +2196,23 @@ votal 1 3 .
 votary 0 0 .
 voter 1 4 .
 wance 1 1 .
+wannest 1 3 . 1
 wide 2 0 .
 widen 1 4 .
 witness 0 0 .
 witty 1 3 .
 wler 1 2 .
 wly 1 1 .
+woke 1 1 ake. 3ed
 wollen 2 4 .
 wolve 1 3 f.
 wonder 1 4 r.
 wooden 1 4 .
 worsen 1 5 .
 worship 0 0 .
+wove 1 1 eave. 3ed
+wrote 1 2 ite. 3n
+wrung 1 2 ing. 3n
 xant 1 1 .
 xation 1 1 .
 xer 1 1 .
@@ -2161,9 +2229,12 @@ xly 1 1 .
 xplicate 0 0 .
 xudate 1 3 &.
 xy 1 1 .
+ylaid 1 3 y. 2ed
+yammer 0 0 .
 yance 1 1 .
 yee 1 1 .
 yerful 1 3 .
+yest 2 1 .
 ygenate 2 4 .
 ylic 2 2 .
 ylinder 1 5 r.
@@ -2199,28 +2270,45 @@ zzer 1 2 .
 zzy 1 2 .
 |after 0 0 .
 |ager 1 4 .
-|anger 1 4 r.
+|anger 1 4 r. 2
 |anion 0 0 .
+|archer 0 0 .
+|arise 0 0 .
 |articulate 0 0 .
+|aver 0 0 .
+|awoke 1 3 ake. 3ed
+|better 0 0 .
 |bitter 0 0 .
 |brian 0 0 .
+|cacti 1 5 us. 1
+|caddy 1 5 ie. 1
+|canter 0 0 .
 |carnation 0 0 .
 |carriage 0 0 .
+|caster 0 0 .
 |cation 0 0 .
 |cement 0 0 .
+|cloven 1 3 eave. 2
 |cursive 0 0 .
 |dally 0 0 .
 |dentist 0 0 .
+|dimer 0 0 .
 |duct 0 0 .
 |early 0 0 .
-|elve 1 3 f.
-|enter 1 4 r.
+|easter 0 0 .
+|elve 1 3 f. 2
+|enter 1 4 r. 1
+|erratum 1 4 or. 4s
 |ester 0 0 .
 |fester 0 0 .
+|fetter 0 0 .
 |fission 0 0 .
+|foci 1 4 us. 1s
+|forest 0 0 .
 |former 0 0 .
+|frolic 0 0 .
 |fully 1 5 .
-|grammatic 1 6 r.
+|grammatic 1 6 r. 1
 |hamper 0 0 .
 |icy 1 3 e.
 |idly 1 4 e.
@@ -2232,12 +2320,15 @@ zzy 1 2 .
 |laic 2 3 y.
 |laity 2 3 y.
 |laughter 1 6 .
+|liter 0 0 .
 |loss 1 4 &.
 |lost 1 4 &.
 |mental 0 0 .
 |mentor 0 0 .
+|miser 0 0 .
 |mission 0 0 .
 |moan 0 0 .
+|muster 0 0 .
 |mutant 1 5 te. 0a
 |mutate 0 0 .
 |nation 0 0 .
@@ -2246,10 +2337,13 @@ zzy 1 2 .
 |optic 0 0 .
 |outer 1 4 .
 |oval 0 0 .
+|panic 0 0 .
 |pensive 0 0 .
+|peter 0 0 .
 |quality 0 0 .
 |rally 0 0 .
 |ration 0 0 .
+|rely 0 0 .
 |render 0 0 .
 |restation 0 0 .
 |rival 0 0 .
@@ -2260,16 +2354,23 @@ zzy 1 2 .
 |session 0 0 .
 |severance 1 6 .
 |singer 1 5 .
-|singly 1 6 &.
+|singly 1 6 e.
 |sister 0 0 .
+|solder 0 0 .
+|swagger 0 0 .
+|swum 1 3 im. 2n
+|tally 0 0 .
 |tamper 0 0 .
 |tender 0 0 .
 |tension 1 5 &.
 |thesis 0 0 .
 |topic 0 0 .
+|unship 0 0 .
 |usage 1 3 e.
 |version 0 0 .
 |very 0 0 .
 |vision 1 4 n.
 |warship 0 0 .
+|worship 0 0 .
+|waster 1 6 . 0e
 |yuan 0 0 .

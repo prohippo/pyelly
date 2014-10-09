@@ -1,6 +1,6 @@
-! spec-tbl.sl
-! stemming logic for checking some special cases in English
-! see stemLogic.py
+# spec-tbl.sl
+# stemming logic for checking some special cases in English
+# see stemLogic.py
 BLOCK
   IF n
     IF e

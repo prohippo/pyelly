@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# inflectionStemmerEN.py : 10sep2014 CPM
+# inflectionStemmerEN.py : 08oct2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2012, Clinton Prentiss Mah
 # All rights reserved.
@@ -28,6 +28,7 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 # -----------------------------------------------------------------------------
 
+import sys
 import stemLogic
 import ellyToken
 import ellyException
@@ -45,6 +46,8 @@ class InflectionStemmerEN(EllyStemmer):
     attributes:
         sLog  - -S   logic
         dLog  - -ED  logic
+        tLog  - -T   logic
+        nLog  - -N   logic
         gLog  - -ING logic
         rLog  - root restoration logic
         pLog  - special case check logic
@@ -53,20 +56,25 @@ class InflectionStemmerEN(EllyStemmer):
 
     sTb = "Stbl.sl"     # table files to load if logic not defined for constructor
     dTb = "EDtbl.sl"    #
+    tTb = "Ttbl.sl"     #
+    nTb = "Ntbl.sl"     #
     gTb = "INGtbl.sl"   #
-    rTb = "rest-tbl.sl" #
+    rTb = "rest-tbl.sl" # followup checks after endings are recognized
     pTb = "spec-tbl.sl" #
     uTb = "undb-tbl.sl" #
 
-    def __init__ ( self , sLog=None , dLog=None , gLog=None , rLog=None , pLog=None , uLog=None ):
+    def __init__ ( self , sLog=None , dLog=None , tLog=None , nLog=None ,
+                   gLog=None , rLog=None , pLog=None , uLog=None ):
 
         """
         set up stemming logic blocks for English inflections
 
         arguments:
             self  -
-            sLog  - -S   logic
+            sLog  - -S   logic object
             dLog  - -ED  logic
+            tLog  - -T   logic
+            nLog  - -N   logic
             gLog  - -ING logic
             rLog  - root restoration logic
             pLog  - special case check logic
@@ -81,6 +89,10 @@ class InflectionStemmerEN(EllyStemmer):
             else: self.sLog = stemLogic.StemLogic(InflectionStemmerEN.sTb)
             if dLog != None: self.dLog = dLog
             else: self.dLog = stemLogic.StemLogic(InflectionStemmerEN.dTb)
+            if tLog != None: self.tLog = tLog
+            else: self.tLog = stemLogic.StemLogic(InflectionStemmerEN.tTb)
+            if nLog != None: self.nLog = nLog
+            else: self.nLog = stemLogic.StemLogic(InflectionStemmerEN.nTb)
             if gLog != None: self.gLog = gLog
             else: self.gLog = stemLogic.StemLogic(InflectionStemmerEN.gTb)
 
@@ -107,16 +119,19 @@ class InflectionStemmerEN(EllyStemmer):
             boolean success flag
         """
 
-#       print "try", logic.table[0]
+#       print "try", '[-' + logic.table[0] + ']'
 
         stax = logic.apply(token)
+#       print 'stax=' , stax
         if stax == stemLogic.doMORE:
+#           print "do REST"
             self.applyRest(token)
         elif stax != stemLogic.isMTCH:
             return False
 
         if logic.table[0] != "":
-            token.addSuffix(logic.table[0][::-1]) # store unreversed suffix
+            ending = logic.table[0][::-1]
+            token.addSuffix(ending) # store unreversed suffix
         return True
 
     def applyRest ( self , token ):
@@ -132,16 +147,20 @@ class InflectionStemmerEN(EllyStemmer):
         """
 
 #       print 'applyRest to' , token
-        if self.rLog.apply(token) == stemLogic.doMORE:
+        sta = self.rLog.apply(token)
+        if sta == stemLogic.doMORE:
             w = token.getRoot()
-            if w[-1] == w[-2]:
+            if len(w) < 3:
+#               print 'length check=' , len(w)
+                self.pLog.apply(token)
+            elif w[-1] == w[-2]:
 #               print 'double consonant' , w[-1]
                 w.pop()
+#               print 'w=' , w
                 self.uLog.apply(token,w[-1]) 
             else:
                 self.pLog.apply(token)
         return True
-
 
     def apply ( self , token ):
 
@@ -156,12 +175,17 @@ class InflectionStemmerEN(EllyStemmer):
             boolean success flag
         """
 
-        sts = self.applyLogic(self.sLog,token)       # first try to remove -S
-        stg = self.applyLogic(self.gLog,token)       # then try to remove -ING
+#       print 'sLog'
+        sts = self.applyLogic(self.sLog,token)         # first try to remove -S
+#       print 'gLog'
+        stg = self.applyLogic(self.gLog,token)         # then try to remove -ING
         std = False
-        if not sts and not stg:
-            std = self.applyLogic(self.dLog,token)   # try to remove -ED only if no -S or -ING
-                                                     # already removed
+        if not sts and not stg:                        # if no -S or -ING already removed
+#           print 'dLog or tLog'
+            std = ( self.applyLogic(self.dLog,token)   # try to remove -ED
+                 or self.applyLogic(self.tLog,token)   # or -T
+                 or self.applyLogic(self.nLog,token) ) # or -N
+#       print (sts or std or stg)
         return sts or std or stg
 
     def simplify ( self , strg ):

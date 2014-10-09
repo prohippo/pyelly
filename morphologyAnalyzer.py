@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# morphologyAnalyzer.py : 08sep2014 CPM
+# morphologyAnalyzer.py : 18sep2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -90,8 +90,6 @@ class MorphologyAnalyzer(object):
         re = token.root[-1]
         if rs == '+' or rs == '-' or re == '+':
             return False
-        if token.isSplit():
-            return False
 #       print 'analysis:' , token
         suc = False
         if self.suff != None:
@@ -120,11 +118,11 @@ if __name__ == '__main__':
         print 'Elly not configured for morphological analysis'
         sys.exit(1)
 
-    mode = os.fstat(0).st_mode
-    intr = not stat.S_ISREG(mode)
+    mode = os.fstat(0).st_mode     # sys.stdin file status
+    intr = not stat.S_ISREG(mode)  # flag for reading from keyboard
 
     sfil = sys.argv[1] if len(sys.argv) > 1 else 'default'
-    pfil = sys.argv[2] if len(sys.argv) > 2 else 'none'
+    pfil = sys.argv[2] if len(sys.argv) > 2 else 'default'
 
     base = ellyConfiguration.baseSource + '/'
     sdfn = ellyDefinitionReader.EllyDefinitionReader(base + sfil + '.stl.elly')
@@ -149,27 +147,33 @@ if __name__ == '__main__':
     while True:
         if intr: sys.stdout.write('> ')
         lin = sys.stdin.readline()
-        if len(lin) == 0:
+        if len(lin) == 0:            # EOF check
             break
         lin = lin.strip()
         if len(lin) == 0:
-            if intr: break
-            else: continue
+            if intr: break           # empty line quits look on interactive input
+            else: continue           # but otherwise continues
         lin = lin.split(' ')
         if len(lin) < 2:
             lin.append('-')          # should be [ word , root ] tuple
-        print 'input = ' , ' : '.join(lin)
         w = lin[0]                   # unpack
         r = lin[1]
         if r != '-':
-            ntry += 1
+            ntry += 1                # input pair to be added to testing
         t = ellyToken.EllyToken(w)
-        if not mor.analyze(t):
-            print 'NO rules applied'
-        nr = ''.join(t.root)
+#       print '0o t=' , t
+        inf.apply(t)                 # apply inflectional  stemming
+#       print '1i t=' , t
+        if not mor.analyze(t):       # apply morphological stemming
+            msg = 'no morphological change'
+        else:
+            msg = ''
+#       print '2m t=' , t
+        nr = ''.join(t.root)         # resulting root
         if nr != r and r != '-':
             nfail += 1
-            print 'analysis FAILed: expected' , w , '->' , r
-        print 'output= ' , t.getPrefixes() , nr , t.getSuffixes()
+            print 'FAILed: expected' , w , '->' , r , 'not' , nr
+        else:
+            print w , '-->>' , t.getPrefixes() , nr , t.getSuffixes() , msg
 
     print nfail , 'FAILures out of' , ntry , 'tests'

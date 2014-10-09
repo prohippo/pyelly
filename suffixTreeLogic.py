@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# suffixTreeLogic.py : 09sep2014 CPM
+# suffixTreeLogic.py : 16sep2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -110,7 +110,7 @@ if __name__ == '__main__':
     if dfn.error != None:
         print >> sys.stderr , dfn.error
         sys.exit(1)
-    print dfn.linecount() , 'definition lines for' , file
+    print dfn.linecount() , 'definition lines for' , file + '.stl.elly'
 
     try:
         inf = inflectionStemmerEN.InflectionStemmerEN()
@@ -120,7 +120,7 @@ if __name__ == '__main__':
         sys.exit(1)
     suf.infl = inf
 #   print 'suf=' , suf
-    print 'index=' , map(lambda x: ellyChar.toChar(ellyChar.toIndex(x)) , suf.indx.keys())
+#   print 'index=' , map(lambda x: ellyChar.toChar(ellyChar.toIndex(x)) , suf.indx.keys())
     print ''
 
     while True:
@@ -130,5 +130,5 @@ if __name__ == '__main__':
         t = ellyToken.EllyToken(wrd)
         b = suf.match(t)
         a = ''.join(t.root)
-        print t.getPrefixes() , a , t.getSuffixes()
+        print t.getPrefixes() , a , t.getSuffixes() , ': status=' , b
     sys.stdout.write('\n')
