@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# stemLogic.py : 10oct2014 CPM
+# stemLogic.py : 11oct2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -279,7 +279,7 @@ class StemLogic(object):
                 self.table.append(-1)           # mark branch skip as unset
                 try:
                     k = int(lp.pop(0))          # comparison length
-                except ArithmeticError:
+                except ValueError:
                     self._err('bad LEN comparison')
                     continue
                 self.table.append(k)            # insert comparison length
@@ -321,7 +321,7 @@ class StemLogic(object):
                 else:
                     try:
                         drop = int(lp.pop(0)) # how more chars to drop
-                    except ArithmeticError:
+                    except ValueError:
                         self._err('bad SU drop count')
                         continue
 #                   print "drop ", drop
