@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# stemLogic.py : 08oct2014 CPM
+# stemLogic.py : 10oct2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -59,7 +59,7 @@ class Reader(ellyDefinitionReader.EllyDefinitionReader):
         """
 
         self.up = super(Reader,self)
-        self.up.__init__(directory + source)
+        super(Reader,self).__init__(directory + source)
 
     def readline ( self ):
 
@@ -100,27 +100,27 @@ class Reader(ellyDefinitionReader.EllyDefinitionReader):
 
 # status codes returned by apply() method of StemLogic class
 
-isFAIL= -1  # error indication
-isNOTM=  0  # no match
-isMTCH=  1  # match
-doMORE=  2  # match and do more
+isFAIL = -1  # error indication
+isNOTM =  0  # no match
+isMTCH =  1  # match
+doMORE =  2  # match and do more
 
 # operation code ranges
 
-Nlen=20     # checks of original length should be less than this
+Nlen = 20     # checks of original length should be less than this
 
 # specific operation codes for stemming logic
 
-YE=-2 # success  # have to allow for {SU -1 xx}
-NO= 0 # failure
-IF= 1 # check for letter sequence
-IS= 8 # is in specified set
-LT=16 #        < for original token length
-GT=17 #        >
-EQ=18 # length =
-NE=19 #       !=
-VO=40 # basic code for vowel check to restore -E
-MO=50 # continuation to another logic table
+YE = -2 # success  # have to allow for {SU -1 xx}
+NO =  0 # failure
+IF =  1 # check for letter sequence
+IS =  8 # is in specified set
+LT = 16 #        < for original token length
+GT = 17 #        >
+EQ = 18 # length =
+NE = 19 #       !=
+VO = 40 # basic code for vowel check to restore -E
+MO = 50 # continuation to another logic table
 
 class StemLogic(object):
 
@@ -150,7 +150,6 @@ class StemLogic(object):
         self.table = [ ]   # for stemming logic, initially empty
         self.input = ''
         self.error = 0
-        self.source = source
 
         if source != None and not self.define(source):
             print >> sys.stderr , '** unable to load' , source
@@ -185,7 +184,8 @@ class StemLogic(object):
             True for success, False otherwise
         """
 
-        self.table = [ ]         # empty table at start
+        self.source = source
+        self.table  = [ ]        # empty table at start
 
         stk = [ ] # stack to save place for skip count in logic block
 
@@ -215,7 +215,7 @@ class StemLogic(object):
 
             if op == 'block':
                 if len(self.table) > 0:
-                    _err('unexpected restart of logic')
+                    self._err('unexpected restart of logic')
                     continue
                 if ln == 0:
                     self.table.append("")       # no necessary condition for logic match
@@ -229,7 +229,7 @@ class StemLogic(object):
             elif op == 'if':
 #               print "ln=", ln
                 if ln == 0:
-                    _err('no IF char sequence to check')
+                    self._err('no IF char sequence to check')
                     continue
                 seq = lp.pop(0)                 # get match condition
 #               print "seq=", seq
@@ -243,7 +243,7 @@ class StemLogic(object):
             elif op == 'end':
                 if ln == 0:                     # any action code code?
                     if len(stk) == 0:
-                        _err('END with no logic for it')
+                        self._err('END with no logic for it')
                         continue
                     k = stk.pop()               # where to fill in skip branch
                     self.table[k] = len(self.table) - k
@@ -251,7 +251,7 @@ class StemLogic(object):
 
             elif op == 'is':
                 if ln < 1:
-                    _err('no arguments for IS')
+                    self._err('no arguments for IS')
                     continue
                 self.table.append(IS)           # insert opcode to check for letter in set
                 stk.append(len(self.table))     # where to put branch skip
@@ -261,7 +261,7 @@ class StemLogic(object):
 
             elif op == 'len':
                 if ln < 2:
-                    _err('incomplete LEN')
+                    self._err('incomplete LEN')
                     continue
                 cm = lp.pop(0)                  # which comparison?
                 if cm == '=':                   # equality
@@ -273,39 +273,39 @@ class StemLogic(object):
                 elif cm == '!=':                # inequality
                     self.table.append(NE)
                 else:                           # anything else is an error
-                    _err('unrecognized LEN comparison')
+                    self._err('unrecognized LEN comparison')
                     continue
                 stk.append(len(self.table))     # where to put branch skip
                 self.table.append(-1)           # mark branch skip as unset
                 try:
                     k = int(lp.pop(0))          # comparison length
-                except:
-                    _err('bad LEN comparison')
+                except ArithmeticError:
+                    self._err('bad LEN comparison')
                     continue
                 self.table.append(k)            # insert comparison length
                 if ln == 2: continue
 
             elif op == 'default':               # default action for entire logic block
                 if len(stk) > 0:
-                    _err('missing END(s) at end of logic')
+                    self._err('missing END(s) at end of logic')
                     break                       # stop further error checking
                 if defaulting:
-                    _err('multiple DEFAULT')
+                    self._err('multiple DEFAULT')
                     break
                 defaulting = True
 
             else:                               # any other opcode is an error
-                _err('unknown logic operation')
+                self._err('unknown logic operation')
                 continue
 
-            """
-            process any action code
-            """
+#
+#           process any action code
+#
 
 #           print 'lp=' , lp
 
             if len(lp) < 3 or lp[0] != '{' or lp[-1] != '}':
-                _err('bad action code')
+                self._err('bad action code')
                 continue
 
             lp.pop(0)                         # drop {
@@ -321,13 +321,13 @@ class StemLogic(object):
                 else:
                     try:
                         drop = int(lp.pop(0)) # how more chars to drop
-                    except:
-                        _err('bad SU drop count')
+                    except ArithmeticError:
+                        self._err('bad SU drop count')
                         continue
 #                   print "drop ", drop
                     dy = YE - drop
                     if dy > 0:
-                        _err('bad SU restoration')
+                        self._err('bad SU restoration')
                         continue
                     self.table.append(dy)     # insert success modified opcode
                                               # opcodes here may be -1, -2, -3, ...
@@ -347,7 +347,7 @@ class StemLogic(object):
             elif act == 'do':                 # special action
 #               print "do ",lp
                 if len(lp) == 0:
-                    _err('must specify what to DO')
+                    self._err('must specify what to DO')
                     continue
                 cs = lp.pop(0)
 
@@ -358,11 +358,11 @@ class StemLogic(object):
                     self.table.append(MO)
 
                 else:                         # bad DO action
-                    _err('nothing recognizable to DO')
+                    self._err('nothing recognizable to DO')
                     continue
 
             else:                             # error on action
-                _err('unknown action')
+                self._err('unknown action')
                 continue
 
 #           print "stk@", len(stk)
@@ -371,7 +371,7 @@ class StemLogic(object):
                 self.table[k] = len(self.table) - k
 
         if not blocking or not defaulting:
-            _err('logic must start with BLOCK and end with DEFAULT')
+            self._err('logic must start with BLOCK and end with DEFAULT')
 
         return (self.error == 0)
 
@@ -409,10 +409,10 @@ class StemLogic(object):
 
 #       print "suffix length= ", n, ", word length= ", m
         if n > 0:
-            for i in range(n):
+            for ix in range(n):
                 ew -= 1
-#               print word[ew], " cmp ", seq[i]
-                if word[ew] != seq[i]:
+#               print word[ew], " cmp ", seq[ix]
+                if word[ew] != seq[ix]:
                     return isNOTM
             ew -= 1
 #           print "first char before suffix=" ,
@@ -480,15 +480,15 @@ class StemLogic(object):
                 if sln > len(word):           # enough chars to match?
                     it += self.table[it]      # if not, skip over block of logic
                 else:
-                    i = 0
-                    j = -1
+                    k = 0
+#                   j = -1
 #                   print 'at' , j , word[]
-                    while i < sln and word[-i-1] == seq[i]:
-#                       print 'word[' + str(i) + ']=' , word[j]
-                        i += 1
-                        j -= 1
-#                   print 'i=' , i
-                    if i < sln:               # any characters unmatched?
+                    while k < sln and word[-k-1] == seq[k]:
+#                       print 'word[' + str(k) + ']=' , word[j]
+                        k += 1
+#                       j -= 1
+#                   print 'k=' , k
+                    if k < sln:               # any characters unmatched?
 #                       print 'IF no match'
                         it  += self.table[it] # if so, skip over block of logic
                     else:
@@ -503,10 +503,11 @@ class StemLogic(object):
                 if len(word) <= 0:            # any letters left in word?
                     it += self.table[it]      # if not, skip over block
                     continue
-                set = self.table[it+1]        # get character set
+                chs = self.table[it+1]        # get character set
                 c = word[-1]
-#               print c, ':', set
-                if set.find(c) < 0:           # word character in set?
+#               print c, ':', chs
+                if chs.find(c) < 0:           # word character in set?
+
                     it += self.table[it]      # if not, skip block
                 else:
                     it += 2                   # if so, enter block
@@ -578,8 +579,6 @@ class StemLogic(object):
 
 if __name__ == "__main__":
 
-    import sys
-    import ellyToken
     import stemTest
 
     if len(sys.argv) < 2:
