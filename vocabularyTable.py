@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 10sep2014 CPM
+# vocabularyTable.py : 10oct2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -156,7 +156,9 @@ def compile ( name , stb , defn , stem=None ):
         dbs.open(file,None,db.DB_HASH,db.DB_CREATE)  # open new database file
 #       print >> sys.stderr , 'creating' , file
 
-        while True:                                  # process vocabulary records
+        r = None                                          # for error reporting
+
+        while True:                                       # process vocabulary records
 
             try:
 #               print >> sys.stderr , '------------'
@@ -290,10 +292,39 @@ def compile ( name , stb , defn , stem=None ):
                             continue
 
                 d = d.strip()                             # rest of definition
-                if len(d) > 0 and d[0] == '=':
-                    if len(d) == 1:
+#               print 'rest of d=' , d
+                if len(d) > 0 and d[-1] == '=':
+                    if len(d) == 1 or d[0] != '=':
                         _err('incomplete definition')
                         continue
+
+                ld = [ ]                            # for normalizing definition
+
+                k = 0                               # count spaces removed
+                sd = ''                             # previous char seen
+                for cd in d:                        # scan all chars in translation
+                    if cd == ' ':
+                        if sd == '=' or sd == ',' or sd == ' ':
+                            k += 1
+                            sd = cd
+                            continue
+                    elif cd == '=' or cd == ',':    # no spaces before '=' or ','
+                        if sd == ' ':
+                            k += 1
+                            ld.pop()
+                    if cd == ',':
+                        if sd == '=':
+                            _err('missing translation')
+                        cd = '#'                    # format for PICK operation
+                    elif cd == '=' and sd == '=':
+                        print >> sys.stderr , '** WARNING \'=\' followed by \'=\''
+                        print >> sys.stderr , '*  at [' , tsave , ']'
+
+                    sd = cd
+                    ld.append(cd)                   # add char to reformatted definition
+
+                if k > 0:
+                    d = ''.join(ld)                 # definition with spaces removed
 
 #               print >> sys.stderr , '3:d=[' + d + ']'
 
@@ -319,8 +350,9 @@ def compile ( name , stb , defn , stem=None ):
 #       print >> sys.stderr , 'DONE'
         dbs.close()                                   # clean up
 
-    except Exception , e:
-        print >> sys.stderr , e
+    except Exception , e:                             # catch all other exceptions
+        print >> sys.stderr , '**' , e
+        print >> sys.stderr , '*  at' , r
         nerr += 1
 
     if nerr > 0:
@@ -479,8 +511,7 @@ class VocabularyTable(object):
         if self.stm != None:
             strg = self.stm.simplify(strg)
 
-#       print >> sys.stderr , type(strg)
-#       print >> sys.stderr , 'vocab first word=' , list(strg)
+#       print >> sys.stderr , 'vocab first word=' , list(strg) , type(strg)
 
         vs = self._getDB(strg)        # look up first word in vocabulary table
 
@@ -489,17 +520,21 @@ class VocabularyTable(object):
 
 #       print >> sys.stderr , len(vs) , 'raw entries found'
 
-        lm = len(chrs)                # total length of text for matching
+        lm = len(chrs)                # total length of text to be matched
 
         for v in vs:                  # look at possible vocabulary matches
+
+#           print >> sys.stderr , 'entry=' , v
 
             nx = 0                    # extra chars for any match
             ln = v.length()           # total possible match length for vocabulary entry
 
+#           print >> sys.stderr , 'rln=' , rln , 'ln=' , ln , 'lm=' , lm
+
             if rln > ln:
                 continue              # reject if longer match already found
 
-            if ln > lm:               # must be enough text to match
+            if ln  > lm:              # must be enough text in entry to match
                 continue
 
             rs = Result()             # new result object
@@ -701,7 +736,7 @@ if __name__ == '__main__':
 
     from generativeDefiner import showCode
 
-    def look ( vtb , ts , kl ):
+    def check ( vtb , ts , kl ):
         vs = vtb.lookUp(ts,kl)               # check for possible vocabulary matches
         if len(vs) == 0:                     # any vocabulary entries found?
             print ts[:kl] , 'NOT FOUND'
@@ -745,7 +780,7 @@ if __name__ == '__main__':
     try:
         f = compile(name,stb,inp,stem)     # create database from vocabulary table
     except ellyException.TableFailure:
-        print >> sys.stderr ,'vocabulary table compilation FAILed'
+        print >> sys.stderr , 'exiting'
         sys.exit(1)                        # quit on failure
 
     try:
@@ -764,19 +799,22 @@ if __name__ == '__main__':
 
     n = 0
     keys = dbs.keys()                  # all database keys
+    print len(keys) , 'DB keys\n'
+    print 'looking up each key as one-word vocabulary entry\n'
     for key in keys:
         if n >= limt: break
         n += 1
         lky = list(key)
-        look(vtb,lky,len(key))         # dump all info for each key
+        print 'lky=' , lky
+        check(vtb,lky,len(key))        # dump all info for each key
         key = u''.join(lky)
-#       print 'type(key)=' , type(key)
-        vs = vtb.lookUpWord(key)       # look up just key
+        print 'key= [' , key , '] type=' , type(key)
+        vs = vtb.lookUpWord(key)       # look up key by itself
         nm = len(vs)
         print nm , 'key match' + ('' if nm == 1 else 'es')
         print ''
 
-    print 'enter terms to look up'
+    print 'enter single- and multi-word terms to look up'
     while True:                        # now look up terms from standard input
         sys.stdout.write('> ')
         s = sys.stdin.readline()       # get test example to look up
@@ -787,7 +825,7 @@ if __name__ == '__main__':
         if k == 0:                     # if none, cannot look up
             print 'index NOT FOUND:' , ss
             continue
-        look(vtb,ts,k)
+        check(vtb,ts,k)
         ky = u''.join(ts[:k])
         vs = vtb.lookUpWord(ky)        # look up just key
         print len(vs) , 'key match only'

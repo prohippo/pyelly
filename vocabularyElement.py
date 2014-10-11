@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyElement.py : 03aug2014 CPM
+# vocabularyElement.py : 27sep2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -71,6 +71,9 @@ class VocabularyElement(object):
         arguments:
             self  -
             tup   - what BdB cursor get() returns
+
+        throws:
+            FormatFailure on error
         """
 
         rec = tup[1].decode('utf8')      # what BdB found for search key
@@ -118,9 +121,14 @@ class VocabularyElement(object):
                 cm += p + '#'  # build selection clauses
             cm += ')'
             gens[0] = cm       # replace action
+#           print 'cm=' , cm
 #           print 'gens=' , gens
             input = ellyDefinitionReader.EllyDefinitionReader(gens)
             self.gen = generativeProcedure.GenerativeProcedure(None,input)
+            if self.gen == None:
+                print >> sys.stderr , 'vocabulary generative semantic failure'
+                print >> sys.stderr , 'gens=' , gens
+                raise ellyException.FormatFailure
 #           print 'vocabulary gen.logic'
 #           generativeDefiner.showCode(self.gen.logic)
             self._nt = len(d)
@@ -144,7 +152,7 @@ class VocabularyElement(object):
         df  = u'cat=' + unicode(self.cat) + u' '
         df += self.syf.hexadecimal() + u' ' + self.smf.hexadecimal() + u' '
         df += u'plaus=' + unicode(self.bia) + u' , '
-        df += u'concp=' + self.con
+        df += u'concp=' + self.con + ', '
         df += unicode(self._nt) + u' TRANSLATION'
         if self._nt != 1: df += u's'
 
