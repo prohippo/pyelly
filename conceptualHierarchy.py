@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# conceptualHierarchy.py : 07sep2014 CPM
+# conceptualHierarchy.py : 13sep2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -160,7 +160,7 @@ class ConceptualHierarchy:
             if len(l) == 0: break
             if l[0] == '=':
                 sl = l               # save for error reporting
-                l = l[1:].lstrip()
+                l = l[1:].lstrip().upper()
                 k = l.find(' ')
                 if k < 0:
                     self._err('incomplete equivalence',sl)
@@ -195,12 +195,14 @@ class ConceptualHierarchy:
 #       print "DEFINING EQUIVALENCES
 
         for p in eqv:
-            if not p[1] in self.index:
-                self._err('bad alias:' , p[0])
+#           print 'p=' , p
+            if not p[0] in self.index:
+                self._err('bad alias:' , p[1])
                 continue
-            c = self.index[p[1]]
-            self.index[p[0]] = c
-            c.alias.append(p[0])
+            c = self.index[p[0]]     # known concept
+            self.index[p[1]] = c     # define alias for that concept
+            p1l = p[1].lower()       #
+            c.alias.append(p1l)      # add to list of aliases
 
 #       print "CHECKING HIERARCHY COMPLETENESS"
 
@@ -408,11 +410,11 @@ if __name__ == "__main__":
     import ellyDefinitionReader
 
     data = [
-        "=OA1 A1",
+        "=A1 otherA1",
         "^>A1","^>B1","^>C1",
         "A1>A1X2","A1>A1Y2",
         "B1>B1X2","B1>B1Y2",
-        "=OB1 B1",
+        "=B1 otherB1",
         "C1>C1X2","C1>C1Y2",
         "A1X2>A1X2R3","A1X2>A1X2S3",
         "A1X2S3>A1X2S3T3","A1X2S3>A1X2S3T4",
