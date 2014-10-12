@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 10sep2014 CPM
+# ellyBase.py : 27sep2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -54,7 +54,8 @@ import symbolTable
 
 import os   # needed to get file modification times
 
-# sys.stdout = codecs.getwriter('utf8')(sys.stdout)
+sys.stdout = codecs.getwriter('utf8')(sys.stdout)
+sys.stderr = codecs.getwriter('utf8')(sys.stderr)
 
 # binary files
 
@@ -70,7 +71,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v0.5.1beta'         # most current version of PyElly software
+release = 'v0.6beta'                    # most current version of PyElly software
 
 L = 16  # how much context to show
 
@@ -319,10 +320,14 @@ class EllyBase(object):
         if not self.ptr.evaluate(self.ctx):
             return None             # translation fails
 
-        if plsb:                # show plausibility in output if requested
+        if plsb:                    # show plausibility in output if requested
             s = '=' + str(self.ptr.getLastPlausibility())
             if self.ctx.cncp != conceptualHierarchy.NOname:
-                s += ' ' + self.ctx.wghtg.hiery.generalize(self.ctx.cncp)
+                cnm = self.ctx.wghtg.hiery.generalize(self.ctx.cncp)
+                s += ' ' + cnm
+                c = self.ctx.wghtg.hiery.getConcept(cnm)
+                if c != None and len(c.alias) > 0:
+                    s += '=' + c.alias[0]
             s += ": "
             self.ctx.prependCharsInCurrentBuffer(s)
 
@@ -425,6 +430,8 @@ class EllyBase(object):
                 for v in vs:
                     ve  = v[0]         # get vocabulary entry
                     vrs = v[1]         # result record for match
+#                   print 've=' , ve
+#                   if ve.gen != None: print ve.gen
                     if tr.addLiteralPhraseWithSemantics(
                            ve.cat,ve.syf,ve.smf,ve.bia,ve.gen):
                         tr.lastph.lens = m   # set char length of leaf phrase node
@@ -502,10 +509,10 @@ class EllyBase(object):
 
             ws = u''.join(w.root)               # convert root segment to string
 
-#*          print 'look up [' + ws.encode('utf8') + '] internally and externally'
+#           print 'look up [' + ws + '] internally and externally'
 
             vs = self.vtb.lookUpWord(ws)        # look up token as word externally
-#*          print len(vs) , 'candidates'
+#           print len(vs) , 'candidates'
             for v in vs:                        # try to make phrases
                 if tree.addLiteralPhraseWithSemantics(
                         v.cat,v.syf,v.smf,v.bia,v.gen
@@ -516,14 +523,14 @@ class EllyBase(object):
                 if tree.createPhrasesFromDictionary(ws,w.isSplit()):
                     found = True
 
-#*          print 'found=' , found
+#           print 'found=' , found
 
             if not found:
 #               print 'logic: ' , d.man.pref , d.man.suff
                 if d.man.analyze(w):            # any analysis possible?
                     root = u''.join(w.root)     # if so, get parts of analysis
                     tan = w.pres + [ root ] + w.sufs
-#                   print 'tan=' , tan
+#                   print 'token analysis=' , tan
                     while len(tan) > 0:         # and put back into input
                         x = tan.pop()
                         input.prepend(x)
@@ -542,6 +549,7 @@ class EllyBase(object):
                     tree.createUnknownPhrase(w) # unknown type as last resort
                     tree.lastph.lens = len(ws)
 
+#           print 'w=' , w
             return w
 
     def _show ( self , typm , syms ):
@@ -647,7 +655,7 @@ if __name__ == '__main__':
         eb = EllyBase(system)
 #       print 'eb=' , eb
     except ellyException.TableFailure:
-        print >> sys.stderr , 'no language definitions'
+        print >> sys.stderr , 'cannot initialize rules and vocabulary'
         sys.exit(1)
 
     print ""

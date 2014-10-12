@@ -13,17 +13,17 @@ framework for translation from UTF-8 to UTF-8.
 The latest version has been completely rewritten in mostly object-oriented
 Python. It has now passed multiple stages of beta testing and may be
 downloaded from Github at https://github.com/prohippo/pyelly.git . The
-latest release is v0.5.1beta.
+latest release is v0.6beta.
 
 To learn how to use PyElly, see the PyEllyManual.pdf file in the same
-directory as this README.txt file. This has 96 pages of information,
+directory as this README.txt file. This has 97 pages of information,
 including an overview of some basic linguistics. Documentation of
 individual Python source files can be generated as needed with the Python
 pydoc utility.
 
 At present, PyElly consists of 58 Python modules comprising about 16
-thousand lines of source code. Included also are various definition
-files to support basic English-language capabilities and various sample
+thousand lines of source code. There are also various definition files
+to support basic English-language capabilities and various sample
 applications, including
 
 * indexing - remove stopwords and get stems for content words from raw
@@ -80,12 +80,17 @@ Release Notes:
                       add error messages when generating language tables
                       simplify semantic feature check by generative semantics
                       extend generative semantic unit tests
-                      add bad application to test error reporting
- 0.5.1  -  12sep2014  fix problems with error reporting and recovery
+                      add bad application to testi PyElly error reporting
+ 0.5.1  -  12sep2014  fix residual problems with error reporting and recovery
                       extend bad application for integration testing
+ 0.6    -  12oct2014  more input checking in vocabulary table compilation
+                      more information in disambig application translations
+                      better English inflectional and morphological stemming
+                      add English irregulars to stemming, update echo application
+                      extend chinese application, better classifier assignments
 
-New versions will reflect major changes in PyElly code. This typically will require
-regeneration of any previously saved *.elly.bin files to ensure correct operation.
-Changes only to PyElly example application files, unit testing input files, or
-documentation will be made from time to time, but these will leave version numbers
-unchanged.
+New versions will reflect major changes in PyElly code. This typically will
+require regeneration of any previously saved *.elly.bin files to ensure correct
+operation.  Changes only to PyElly example application files, unit testing input
+files, or documentation will be made from time to time, but these will leave
+version numbers unchanged.
