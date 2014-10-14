@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeProcedure.py : 05sep2014 CPM
+# generativeProcedure.py : 10oct2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -118,6 +118,17 @@ class GenerativeProcedure(object):
         """
 
         self.logic = generativeDefiner.compileDefinition(syms,defs)
+
+    def __unicode__ ( self ):
+
+        """
+        show procedure logic
+
+        arguments:
+            self
+        """
+
+        generativeDefiner.showCode(self.logic)
 
     def doRun ( self , cntx , phrs ):
 
@@ -326,9 +337,9 @@ class GenerativeProcedure(object):
             elif op == semanticCommand.Gpick:  # use local variable to select text
                 var = code.next()              #   to insert into buffer
                 s = cntx.getLocalVariable(var)
-#               print "pick with",s
+#               print 'pick with',s
                 dct = code.next()
-#               print "in",dct
+#               print 'in',dct
                 if not s in dct:
                     if '' in dct:
                         s = ''
@@ -419,8 +430,8 @@ class GenerativeProcedure(object):
                 vr = code.next()
                 ms = code.next()
                 st = cntx.getLocalVariable(vr)
-                print >> sys.stderr, 'SHOW @phr' , phrs.seqn, ': ' + ms
-                print >> sys.stderr, "VAR " + vr + '= [' + st + ']'
+                print >> sys.stderr, u'SHOW @phr' , phrs.seqn, u': ' + ms
+                print >> sys.stderr, u'VAR ' + vr + u'= [' + st + u']'
             elif op == semanticCommand.Gproc:  # semantic subprocedure
                 name = code.next()
                 if name == '': continue        # null procedure is no operation`
