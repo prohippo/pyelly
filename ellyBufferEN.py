@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBufferEN.py : 08sep2014 CPM
+# ellyBufferEN.py : 14oct2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -81,6 +81,9 @@ class EllyBufferEN(ellyBuffer.EllyBuffer):
 
         returns:
             a token or None if buffer is empty
+
+        exceptions:
+            RealtimeError on stemming error
         """
 
         w = super(EllyBufferEN,self).getNext() # use getNext() without inflectional stemmer
@@ -97,6 +100,9 @@ class EllyBufferEN(ellyBuffer.EllyBuffer):
         arguments:
             self  -
             word  - ellyToken
+
+        except RealtimeError:
+            RealtimeError on stemming error
         """
 
 #       print "divide",word.root
@@ -124,7 +130,7 @@ class EllyBufferEN(ellyBuffer.EllyBuffer):
             return
 
         if ellyChar.isLetter(word.charAt(0)):
-            self.stemmer.apply(word)    # apply any stemmer
+            self.stemmer.apply(word)  # apply any stemmer
             if word.isSplit():
                 sufs = word.getSuffixes()
                 while len(sufs) > 0:

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# stemLogic.py : 11oct2014 CPM
+# stemLogic.py : 14oct2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -100,7 +100,6 @@ class Reader(ellyDefinitionReader.EllyDefinitionReader):
 
 # status codes returned by apply() method of StemLogic class
 
-isFAIL = -1  # error indication
 isNOTM =  0  # no match
 isMTCH =  1  # match
 doMORE =  2  # match and do more
@@ -386,6 +385,8 @@ class StemLogic(object):
             extra - extra token char for any restoration
         returns:
             status code
+        exceptions:
+            RealtimeError on stemming error
         """
 
         last = None             # save last popped letter
@@ -571,7 +572,7 @@ class StemLogic(object):
 
                 return isNOTM
 
-        return isFAIL
+        raise RealtimeError('stemming failed')
 
 #
 # unit test

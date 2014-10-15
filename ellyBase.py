@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 27sep2014 CPM
+# ellyBase.py : 14oct2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -499,7 +499,12 @@ class EllyBase(object):
                 tree.createPhrasesFromDictionary(ws,False)     # if so, try to get them
             return w                            # in any case, return token
 
-        w = input.getNext()                     # extract next token
+        try:
+            w = input.getNext()                 # extract next token
+        except RealtimeError:
+            print >> sys.stderr , 'FATAL error'
+            sys.exit(1)
+
         found = False                           # initialize lookup flag
 
         while True:                             # do extractions with side effects

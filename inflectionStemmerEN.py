@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# inflectionStemmerEN.py : 08oct2014 CPM
+# inflectionStemmerEN.py : 14oct2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2012, Clinton Prentiss Mah
 # All rights reserved.
@@ -115,8 +115,12 @@ class InflectionStemmerEN(EllyStemmer):
             self  -
             logic - suffix logic to apply
             token - what to apply it on
+
         returns:
             boolean success flag
+
+        exceptions:
+            RuntimeError on stemming error
         """
 
 #       print "try", '[-' + logic.table[0] + ']'
@@ -142,8 +146,12 @@ class InflectionStemmerEN(EllyStemmer):
         arguments:
             self  -
             token - what to apply logic on
+
         returns:
             True just for consistency
+
+        exceptions:
+            RuntimeError on stemming error
         """
 
 #       print 'applyRest to' , token
@@ -162,7 +170,7 @@ class InflectionStemmerEN(EllyStemmer):
                 self.pLog.apply(token)
         return True
 
-    def apply ( self , token ):
+    def apply ( self , token , x=None ):
 
         """
         remove English inflectional endings
@@ -170,23 +178,28 @@ class InflectionStemmerEN(EllyStemmer):
         arguments:
             self  -
             token - input token to process
+            x     - unused, listed for compatibility only
 
         returns:
-            boolean success flag
+            stem logic status
+
+        exceptions:
+            RealtimeError on stemming error
         """
 
 #       print 'sLog'
         sts = self.applyLogic(self.sLog,token)         # first try to remove -S
 #       print 'gLog'
         stg = self.applyLogic(self.gLog,token)         # then try to remove -ING
-        std = False
-        if not sts and not stg:                        # if no -S or -ING already removed
+        std = stemLogic.isNOTM
+        if ( sts == stemLogic.isNOTM and
+             stg == stemLogic.isNOTM ):                # -S or -ING already removed?
 #           print 'dLog or tLog'
             std = ( self.applyLogic(self.dLog,token)   # try to remove -ED
                  or self.applyLogic(self.tLog,token)   # or -T
                  or self.applyLogic(self.nLog,token) ) # or -N
-#       print (sts or std or stg)
-        return sts or std or stg
+#       print sts , std , stg
+        return stemLogic.isMTCH if ( sts or std or stg ) else stemLogic.isNOTM
 
     def simplify ( self , strg ):
 

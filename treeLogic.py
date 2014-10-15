@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# treeLogic.py : 24sep2014 CPM
+# treeLogic.py : 14oct2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -234,7 +234,11 @@ class Action(object):
             return True
         elif o == RestorE and tree.infl != None:
 #           print 'prerest token=' , token.root
-            return tree.infl.applyRest(token)
+            try:
+                sta = tree.infl.applyRest(token)
+                return ( sta != 0 )
+            except RealtimeError:
+                return False
         else:
 #           print 'fail'
             return False

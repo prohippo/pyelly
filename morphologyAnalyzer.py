@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# morphologyAnalyzer.py : 18sep2014 CPM
+# morphologyAnalyzer.py : 14oct2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -81,6 +81,9 @@ class MorphologyAnalyzer(object):
 
         returns:
             True if affixes removed, False otherwise
+
+        exceptions:
+            RealtimeError on stemming error
         """
 
 #       print 'token: ' , token.root
@@ -162,7 +165,11 @@ if __name__ == '__main__':
             ntry += 1                # input pair to be added to testing
         t = ellyToken.EllyToken(w)
 #       print '0o t=' , t
-        inf.apply(t)                 # apply inflectional  stemming
+        try:
+            inf.apply(t)             # apply inflectional  stemming
+        except RealtimeError:
+            print 'stemming error'
+            sys.exit(1)
 #       print '1i t=' , t
         if not mor.analyze(t):       # apply morphological stemming
             msg = 'no morphological change'
