@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# inflectionStemmerEN.py : 14oct2014 CPM
+# inflectionStemmerEN.py : 15oct2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2012, Clinton Prentiss Mah
 # All rights reserved.
@@ -184,7 +184,7 @@ class InflectionStemmerEN(EllyStemmer):
             stem logic status
 
         exceptions:
-            RealtimeError on stemming error
+            StemmingError
         """
 
 #       print 'sLog'

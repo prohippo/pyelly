@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 14oct2014 CPM
+# ellyBase.py : 15oct2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -501,8 +501,8 @@ class EllyBase(object):
 
         try:
             w = input.getNext()                 # extract next token
-        except RealtimeError:
-            print >> sys.stderr , 'FATAL error'
+        except ellyException.StemmingError as e:
+            print >> sys.stderr , 'FATAL error' , e
             sys.exit(1)
 
         found = False                           # initialize lookup flag

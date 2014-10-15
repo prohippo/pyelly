@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# morphologyAnalyzer.py : 14oct2014 CPM
+# morphologyAnalyzer.py : 15oct2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -83,7 +83,7 @@ class MorphologyAnalyzer(object):
             True if affixes removed, False otherwise
 
         exceptions:
-            RealtimeError on stemming error
+            StemmingError
         """
 
 #       print 'token: ' , token.root
@@ -167,7 +167,7 @@ if __name__ == '__main__':
 #       print '0o t=' , t
         try:
             inf.apply(t)             # apply inflectional  stemming
-        except RealtimeError:
+        except ellyException.StemmingError:
             print 'stemming error'
             sys.exit(1)
 #       print '1i t=' , t

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# substitutionBuffer.py : 14oct2014 CPM
+# substitutionBuffer.py : 15oct2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -82,7 +82,7 @@ class SubstitutionBuffer(
             EllyToken on success, None on failure
 
         exceptions:
-            RealtimeError on stemming error
+            StemmingError
         """
 
         limit = 2*len(self.buffer)       # maximum expansion allowed
@@ -256,7 +256,11 @@ if __name__ == "__main__":
 
         while True:
             print "buf len=" , len(sbuf.buffer)
-            t = sbuf.getNext()
+            try:
+                t = sbuf.getNext()
+            except ellyException.StemmingError:
+                print >> sys.stderr , 'stemming error'
+                break
             if t == None: break
             print ">>>>" , t
         print "------------"

@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 14oct2014 CPM
+# vocabularyTable.py : 15oct2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -196,8 +196,8 @@ def compile ( name , stb , defn , stem=None ):
                 if stem != None:
                     try:
                         w = stem.simplify(w)              # reduce for lookup key
-                    except RealtimeError:
-                        _err('stemming error')
+                    except ellyException.StemmingError:
+                        _err('bad stemming logic')
                         continue
 #               print >> sys.stderr , '  w=' , w
                 lcw = lcAN(w)                             # convert to ASCII lower case

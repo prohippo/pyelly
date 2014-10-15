@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyException.py : 19aug2014 CPM
+# ellyException.py : 15oct2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -37,3 +37,6 @@ class TableFailure(Exception):
 
 class FormatFailure(Exception):
     "malformed language rule"
+
+class StemmingError(Exception):
+    "logic failure"

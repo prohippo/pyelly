@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# treeLogic.py : 14oct2014 CPM
+# treeLogic.py : 15oct2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -237,7 +237,8 @@ class Action(object):
             try:
                 sta = tree.infl.applyRest(token)
                 return ( sta != 0 )
-            except RealtimeError:
+            except ellyException.StemmingError as e:
+                print >> sys.stderr , '** WARNING:' , e
                 return False
         else:
 #           print 'fail'

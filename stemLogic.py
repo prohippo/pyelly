@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# stemLogic.py : 14oct2014 CPM
+# stemLogic.py : 15oct2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -386,7 +386,7 @@ class StemLogic(object):
         returns:
             status code
         exceptions:
-            RealtimeError on stemming error
+            StemmingError
         """
 
         last = None             # save last popped letter
@@ -572,7 +572,7 @@ class StemLogic(object):
 
                 return isNOTM
 
-        raise RealtimeError('stemming failed')
+        raise ellyException.StemmingError
 
 #
 # unit test
