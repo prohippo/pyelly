@@ -2,9 +2,10 @@
 # test.p.elly - basic FSA
 #
 # each input record is a 4-tuple
-# STATE , PATTERN , SYNTAX , NEXT
+# STATE  PATTERN  SYNTAX  NEXT
 
 0 ###-##-####$ SSN -1
+0 &#$  NUM -1
 0 #,   - 1
 0 ##,  - 1
 0 ###, - 1
@@ -18,4 +19,14 @@
 0 pseudo* NOUN -1
 
 0 -&@$ sufx -1
-0 -'s  sufx[^apos] -1
+0 -'s$ sufx[^apos] -1
+
+0 &@000 -    4
+0 aaa&# -    5
+0 &@&#  -    6
+4 x$    ZZ0 -1
+5 x$    ZZ1 -1
+6 x$    ZZ2 -1
+
+0 b0 - 7
+7 $ ZZ3 -1

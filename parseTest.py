@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTest.py : 05jun2014 CPM
+# parseTest.py : 24oct2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -43,18 +43,26 @@ class Phrase(object):          # dummy Elly phrase node for testing
         self.lens = 0
     def __str__ ( self ):
        return ( 'phrase catg=' + str(self.catg) +
-                      ' synf=' + self.synf.hexadecimal() +
+                      ' synf=' + self.synf.hexadecimal(False) +
                       ' lens=' + str(self.lens) )
 
 class Tree(object):            # dummy Elly parse tree for testing
     def __init__ ( self ):
         print 'tree with stub methods'
-        self.lastph = Phrase()
-    def addLiteralPhrase(self,typ,fts):
+        self.queue = [ ]
+        self.lastph = None
+    def addLiteralPhrase (self,typ,fts):
         print 'add phrase: typ=' , typ
-        self.lastph.catg = typ
-        self.lastph.synf = fts
+        ph = Phrase()
+        ph.catg = typ
+        ph.synf = fts
+        self.queue.append(ph)
+        self.lastph = ph
         return True
+    def showQueue (self):
+        print len(self.queue) , 'queued phrase' +  ('s' if len(self.queue) != 1 else '')
+        for ph in self.queue:
+            print ph
 
 class Context(object):         # dummy Elly interpretive context for testing
     def __init__ ( self ):

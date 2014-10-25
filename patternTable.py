@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# patternTable.py : 03sep2014 CPM
+# patternTable.py : 25oct2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -29,7 +29,7 @@
 # -----------------------------------------------------------------------------
 
 """
-finite-state automaton (FSA) for inferring syntactic type of tokens
+finite-state automaton (FSA) for inferring the syntactic type of tokens
 """
 
 import sys
@@ -58,7 +58,7 @@ class Link(object):
 
         arguments:
             self  -
-            syms  - Elly symbol table
+            syms  - Elly grammatical symbol table
             dfls  - definition elements in list
 
         exceptions:
@@ -89,7 +89,7 @@ class Link(object):
                 raise ellyException.FormatFailure     # unrecognizable number
 
             if n < 0:                                 # final transition?
-                pe = self.patn[-1]                    # if so, look at last pattern element
+                pe = self.patn[-1]                    # if so, get last pattern element
                 if ( pe != ellyWildcard.cALL and      # final pattern must end with * or $
                      pe != ellyWildcard.cEND ):
                     self.patn += ellyWildcard.cEND    # default is $
@@ -100,22 +100,22 @@ class Link(object):
     def __unicode__ ( self ):
 
         """
-        string representation
+        string representation of link
 
         arguments:
             self
 
         returns:
-            string for printing out link
+            string for printing out
         """
 
         if self.patn == None:
-            return 'None!'
+            return u'None'
         else:
+            pat = '{0:<16}'.format(ellyWildcard.deconvert(self.patn))
             cat = unicode(self.catg)
-            fet = u'None' if self.synf == None else self.synf.hexadecimal()
-            return ( ellyWildcard.deconvert(self.patn) + ' ' + cat + ' ' +
-                     fet + ' next=' + unicode(self.nxts) )
+            fet = u'None' if self.synf == None else self.synf.hexadecimal(False)
+            return pat + ' ' + cat + ' ' + fet + ' next=' + unicode(self.nxts)
 
 class PatternTable(object):
 
@@ -197,9 +197,10 @@ class PatternTable(object):
                 continue
             n = len(self.indx)
             
-            if stn >= n:                     # make sure state index has enough slots allocated
-                for i in range(stn - n + 1): #
-                    self.indx.append([ ])    #
+            while stn >= n:                  # make sure state index has enough slots
+                self.indx.append([ ])
+                n += 1
+
             try:
                 lk = Link(syms,ls)           # allocate new link
             except:
@@ -207,7 +208,17 @@ class PatternTable(object):
                 continue
 #           print 'load lk=' , lk
 
-            if lk.catg != None: nm += 1      # link has category for match
+            if lk.nxts < 0:                  # final state?
+                if lk.catg != None:
+                    nm += 1                  # count link category for match
+                else:
+                    self._err('missing category for final state',l)
+                    continue
+            elif lk.catg != None:
+                print >> sys.stderr , '** unexpected category for non-final state'
+                print >> sys.stderr , '*  at', l
+                lk.catg = None
+
             if not stn in lss: lss.append(stn)
             if not stn in sss: sss.append(stn)
             if lk.nxts >= 0:                 # -1 is stop, not state
@@ -230,6 +241,7 @@ class PatternTable(object):
             self._err('some states unreachable')
         if len(sss) != ns:
             self._err('some non-stop states are dead ends')
+
         if self._errcount > 0:
             print >> sys.stderr , '**' , self._errcount , 'pattern errors in all'
             print >> sys.stderr , 'pattern table definition FAILed'
@@ -238,7 +250,7 @@ class PatternTable(object):
     def bound ( self , segm ):
 
         """
-        get maximum limit for matching
+        get maximum limit on string for pattern matching
         (override this method if necessary)
 
         arguments:
@@ -270,78 +282,85 @@ class PatternTable(object):
         arguments:
             self  -
             segm  - segment to match against
-            tree  - parse tree in which to put results
+            tree  - parse tree in which to put leaf nodes for final matches
 
         returns:
-            maximum text length matched by FSA
+            text length matched by FSA
         """
 
-#       print 'compare' , segm
+#       print 'comparing' , segm
 
         if len(self.indx) == 0: return 0  # no matches if FSA is empty
 
-        ll = self.bound(segm)             # get limit for matching
+        lim = self.bound(segm)            # get limit for matching
 
-        mtchs = None   # initialize best  match
-        mtchl = 0      #            total match length
+        mtl  = 0        # accumulated match length
+        mtls = 0        # saved final match length
 
-        ml = 0         # partial match length
+        state = 0       # set to mandatory initial state for FSA
 
-        stk = [ ]      # for backup on failure
+        stk = [ ]       # for tracking multiple possible matches
 
-        state = 0      # initial state for FSA must always be this
         ls = self.indx[state]
         ix = 0
-        sg = segm[:ll] # text subsegment for matching
+        sg = segm[:lim] # text subsegment for matching
 
-        while True:             # run FSA for maximum match
+        while True:               # run FSA to find all possible matches
 #           print 'state=' , state
-#           print 'count=' , mtchl , 'matched'
+#           print 'count=' , mtl , 'matched so far'
 #           print 'links=' , len(ls)
-            lns = len(ls)       # how many links from current automaton state
-            if lns == 0: break  # if none, then done
+            nls = len(ls)         # how many links from current state
 
-            while ix < lns:     # iterate on links
-                lk = ls[ix]     # get next one
-                ix += 1         # and increment link index
-#               print 'lk=' , lk, ', sg=' , sg
+            if ix == nls:         # if none, then must back up
+                if len(stk) == 0: break
+                r = stk.pop()     # restore match status
+                state = r[0]      # FSA state
+                ls  = r[1]        # remaining links to check
+                sg  = r[2]        # input string
+                mtl = r[3]        # total match length
+                ix = 0
+                continue
+
+            m = 0
+            while ix < nls:
+                lk = ls[ix]       # get next link at current state
+                ix += 1           # and increment link index
+#               print 'lk= [' , unicode(lk), '] , sg=' , sg
                 bds = ellyWildcard.match(lk.patn,sg)
 #               print 'bds=' , bds
                 if bds == None: continue
-                ml = bds[0]     # get match length, can ignore wildcard bindings
-                if lk.catg != None:
-#                   print 'match type=' , lk.catg
-                    mtchs = [ lk.catg , lk.synf ]
-                break           # accept first link path match
-                
-            else:               # failure to match on this path of links
-#               print 'stk=' , len(stk)
-                if len(stk) == 0 or mtchs != None: break
-#               print 'backup=' , len(stk)
-                r = stk.pop()   # back up to previous state
-                state = r[0]
-                ls = r[1]       # retry matching from there
-                ix = r[2]
-                sg = r[3]
-                mtchl = r[4]
+
+                m = bds[0]        # get match length, ignore wildcard bindings
+
+                if lk.nxts < 0:   # final state?
+                    mtls = mtl + m
+                    tree.addLiteralPhrase(lk.catg,lk.synf)  # make phrase for it
+                    tree.lastph.lens = mtls                 # save its length
+ 
+#               print 'ix=' , ix , 'nls=' , nls
+                if ix < nls:      # any links not yet checked?
+                    r = [ state , ls[ix:] , sg , mtl ]
+#                   print 'r=' , r
+                    stk.append(r) # if not, save info for later continuation
+
+                mtl += m          # update match length
+                break             # leave loop at this state, go to next state
+            else:
+#               print 'no matches'
                 continue
 
-            mtchl += ml                                  # increment match length
-            if lk.nxts < 0: break                        # check for successful FSA match
-            stk.append([ state , ls , ix , sg , mtchl ]) # if not, save info for possible backup
-            state = lk.nxts
-            ls = self.indx[state]                        # move to next state
             ix = 0
-            sg = sg[ml:]                                 # move up in text input
+            sg = sg[m:]           # move up in text input
+            state = lk.nxts       # next state
+            if state < 0:
+                ls = [ ]
+            else:
+                ls = self.indx[state]
 #           print 'sg=' , sg
+#           print 'state=' , state
+#           print 'len(ls)=' , len(ls)
 
-        if mtchs == None:                                # check for unsuccessful match
-            return 0                                     # if so, done
-        elif tree.addLiteralPhrase(mtchs[0],mtchs[1]):   # otherwise make phrase in parse tree
-            tree.lastph.lens = mtchl
-            return mtchl
-        else:
-            return 0
+        return mtls 
 
     def dump ( self ):
 
@@ -360,6 +379,7 @@ class PatternTable(object):
             for lk in lks:
                 print u'  ' + unicode(lk)
         print ''
+
 #
 # unit test
 #
@@ -378,6 +398,7 @@ if __name__ == '__main__':
 
     tre = parseTest.Tree()           # dummy parse tree for testing
     ctx = parseTest.Context()        # dummy interpretive context for testing
+    print ''
         
     base = ellyConfiguration.baseSource + '/'
     file = sys.argv[1] if len(sys.argv) > 1 else 'test' # which FSA definition to use
@@ -396,20 +417,25 @@ if __name__ == '__main__':
         print 'no pattern table generated'
         sys.exit(1)
 
-    print len(pat.indx) , 'pattern groups'
+    print len(pat.indx) , 'distinct FSA states'
 
-    print 'grammar syntax categories'
+    print ''
     dumpEllyGrammar.dumpCategories(ctx.syms)
+    print ''
     pat.dump()
+
+    print 'enter tokens to recognize'
 
     while True: # try FSA with test examples
 
         if interact: sys.stdout.write('> ')
         t = sys.stdin.readline().strip()
         if len(t) == 0: break
-        print 't=' , '[' + t + ']'
+        print 'text=' , '[' , t , ']'
         t = t.strip()
         n = pat.match(list(t),tre)
         print '    from <'+ t + '>' , n , 'chars matched' , '| leaving <' + t[n:] + '>'
 
     if interact: sys.stdout.write('\n')
+
+    tre.showQueue()

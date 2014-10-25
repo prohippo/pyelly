@@ -6,18 +6,24 @@
 # list them out explicitly.
 #
 # each entry below defines a single FSA transition as a 4-tuple
-#   CURRENT-STATE , PATTERN , SYNTAX , NEXT-STATE
+#   CURRENT-STATE  PATTERN  SYNTAX  NEXT-STATE
 #
-# A STATE is a non-negative integer, where 0 is the start state.
-# A non-numeric NEXT-STATE means that a match at the current
-# state is final, and an FSA will exit on a successful match.
+# a STATE is a non-negative integer, where 0 will always be the
+# starting state for any FSA. An entry specifies that if input text
+# matches PATTERN while the FSA in CURRENT-STATE, then the FSA will
+# change # to NEXT-STATE if this is non-negative. If NEXT-STATE is
+# negative, this  means that a match at the current state is final,
+# and an FSA should assign SYNTAX to the matched portion of input
+# text. A - for SYNTAX means there is no value, which will be an
+# error for any final state.
 #
 # entries are ORDER-DEPENDENT: only the first match is taken
 # on multiple transitions from the same state.
 #
 
-# recognize numbers in various formats
+# recognize unsigned numbers in various formats
 
+0 &#$ NUM -1
 0 #,   - 1
 0 ##,  - 1
 0 ###, - 1

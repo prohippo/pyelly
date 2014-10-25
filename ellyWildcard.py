@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 26aug2014 CPM
+# ellyWildcard.py : 22oct2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -380,7 +380,7 @@ def match ( patn , text , offs=0 , limt=None ):
         returns:
             non-negative count
         """
-        k = minMatch(patn[mp:])  # calculate minimum char count to match rest of pattern
+        k = minMatch(patn[mp:])  # calculate min char count to match rest of pattern
 
 #       print "exclude=",k,"@",offs
 
@@ -468,10 +468,14 @@ def match ( patn , text , offs=0 , limt=None ):
 #           print "END $:",last
             if last == '':
                 continue
+            elif last in [ '.' , ',' , '-' ]:
+                if offs == limt or ellyChar.isWhiteSpace(text[offs]):
+                    offs -= 1
+                    continue
             elif ellyBuffer.separators.find(last) >= 0:
                 offs -= 1
                 continue
-            elif last in [ '.' , '?' , '.' ]:
+            elif last in [ '?' , '!' ]:
                 offs -= 1
                 continue
 
