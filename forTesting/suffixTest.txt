@@ -429,8 +429,9 @@ domesticate domestic
 dominance domine
 dominant domine
 dominatrix dominatrix
+done do
 dopant dope
-doped
+doped dope
 dormancy dormant
 dosage dose
 dozer doze
@@ -574,6 +575,7 @@ foretold foretell
 forfeiture forfeit
 forgave forgive
 forgiven forgive
+foregoing forego
 forgot forget
 formulate formula
 forsaken forsake
@@ -619,6 +621,7 @@ glibber glib
 glibbest glib
 glimmer glimmer
 glisten glisten
+gone go
 gotten get
 governance govern
 governor govern
@@ -945,7 +948,7 @@ panamanian panama
 pancreatic pancrea
 panicked panic
 panicking panic
-panning
+panning pan
 paralysis paralyt
 parentage parent
 parishioner parish
@@ -998,7 +1001,7 @@ plastic plast
 player play
 pled plead
 plotter plot
-plunging
+plunging plunge
 poetry poet
 poiesis poiet
 poisonous poison
@@ -1096,6 +1099,7 @@ recognition recogn
 recognize recogn
 reconciled reconcile
 recursive recurse
+redden red
 redder red
 reddest red
 reducible reduce
@@ -1266,6 +1270,7 @@ smarter smart
 smelt smelt
 smoothe smooth
 smoothly smooth
+smote smite
 sobriety sobr
 sodomy sodom
 softer soft
@@ -1307,6 +1312,7 @@ strangest strange
 strata stratum
 strengthen strength
 strewn strew
+stricken strike
 stricter strict
 stringier string
 strode stride
@@ -1397,7 +1403,7 @@ timetable timetable
 tolerant toler
 tolerate toler
 took take
-toppled
+toppled topple
 total total
 tourism tour
 trader trade
