@@ -1,0 +1,370 @@
+# echo Elly input
+# echo.stl.elly
+
+acer 2 3 . 0e
+acier 2 2 y, 1
+afest 2 3 . 0e
+ager 2 3 . 0e
+ailer 2 3 .
+aimer 2 3 .
+ainder 2 3 . 1
+aiver 2 4 . 0e
+amper 2 3 .
+ancier 2 3 &. 1
+anest 1 2 .
+anger 2 4 . 0e
+angest 2 4 . 0e
+anner 2 2 . 1
+apter 1 3 .
+arrier 0 0 .
+arter 2 3 .
+asiest 1 2 y, 1
+aunder 2 4 r.
+aver 2 3 . 0e
+avier 1 2 y.
+ayer 2 2 .
+azer 2 3 . 0e
+banger 1 4 .
+bidder 1 3 . 1
+bler 2 3 . 0e
+bomber 1 4 .
+bummer 0 0 .
+burger 0 0 .
+butcher 0 0 .
+cancer 0 0 .
+center 1 4 r.
+changer 1 6 . 0e
+cher 1 2 .
+ciest 1 1 y, 1
+climber 1 5 .
+corder 1 4 .
+counter 0 0 .
+crubber 2 4 . 1
+cuer 2 3 . 0e
+danger 0 0 .
+ddest 1 1 . 1
+dieter 1 4 .
+dinner 0 0 .
+dler 2 3 . 0e
+dopter 1 4 .
+dster 0 0 .
+ducer 1 4 . 0e
+eader 2 3 .
+eafter 0 0 .
+ealer 2 3 .
+eamer 2 3 .
+eaner 2 3 .
+eaper 2 3 .
+eapest 2 3 .
+earest 2 3 .
+eater 1 3 .
+eatest 2 3 .
+eddest 2 2 . 1
+edier 1 2 y,
+eeder 2 3 .
+eeler 2 3 .
+eeper 2 3 .
+eler 2 2 .
+ember 2 3 r.
+emer 2 3 . 0e
+ener 2 2 ,
+enger 0 0 .
+epest 1 2 .
+erter 2 3 .
+eteer 2 2 .
+etter 2 2 . 1
+euter 0 0 .
+ewer 2 2 .
+ewest 2 2 .
+ewilder 0 0 .
+ezer 1 3 . 0e
+fancier 1 4 y.
+fatter 1 3 .
+fiber 1 3 r.
+filter 1 4 r.
+fter 1 2 .
+gger 1 1 . 1
+ggest 1 1 . 1
+gher 1 2 .
+ghest 1 2 .
+ghtest 1 3 .
+gibber 0 0 .
+gister 1 4 r.
+gladder 1 4 . 1
+goer 2 2 .
+gster 1 1 .
+hammer 0 0 .
+hanger 1 4 .
+harder 1 4 .
+herder 1 4 .
+hiest 2 1 y, 1
+himmer 0 0 .
+hinder 1 4 r.
+honer 2 3 &.
+htener 2 4 ,
+hter 2 2 .
+hunger 1 4 r.
+ibber 2 2 . 1
+ibbest 2 2 . 1
+icest 2 3 . 0e
+ichest 2 3 .
+icter 2 3 .
+ider 2 3 . 0e
+iever 2 4 , 0e
+iewer 2 3 .
+ifier 2 2 y,
+iggest 2 2 . 1
+igner 1 3 .
+iler 2 3 . 0e
+imer 2 3 . 0e
+iner 1 2 &.
+inest 2 3 . 0e
+inger 0 0 .
+ingier 2 3 y, 1
+ingiest 2 3 y, 1
+inner 2 2 . 1
+innest 2 2 . 1
+inter 2 3 r.
+ioner 2 3 ,
+ioter 2 3 .
+ipter 1 3 .
+irest 1 2 .
+iter 1 2 &.
+itter 3 2 . 1
+iver 1 3 . 0e
+izer 2 3 ,
+ker 1 1 &.
+kest 1 1 .
+kester 1 2 .
+keter 2 3 .
+kier 1 1 y, 1
+kiest 1 1 y, 1
+kster 2 1 .
+langer 2 4 .
+lder 1 2 .
+ldest 1 2 .
+lenger 2 5 . 0e
+letter 0 0 .
+liber 1 3 r.
+lier 1 1 y, 1
+liest 1 1 y, 1
+limmer 0 0 .
+liver 0 0 .
+ller 1 2 .
+llest 1 2 .
+lmer 1 2 .
+lover 1 4 .
+lower 2 3 .
+loyer 2 3 .
+lper 1 2 .
+luer 2 3 . 0e
+luest 2 3 . 0e
+luster 0 0 .
+lyer 2 2 .
+madder 1 3 . 1
+manner 0 0 .
+master 0 0 .
+meter 1 3 r.
+mier 1 1 y, 1
+miest 1 1 y, 1
+mmer 1 1 . 1
+mmest 1 1 . 1
+moter 1 4 .
+mover 1 4 .
+mster 0 0 .
+ncer 1 3 . 0e
+nder 1 2 .
+ndest 1 2 .
+nger 1 3 .
+ngest 1 2 .
+ngriest 1 3 y, 1
+nier 1 1 y, 1
+niest 1 1 y, 1
+nister 1 4 r.
+nomer 1 3 y.
+nster 1 3 r.
+nteer 1 2 .
+nter 1 2 .
+ntest 1 2 .
+oader 2 3 .
+oadest 1 3 .
+oater 2 3 .
+oder 2 3 . 0e
+oggier 1 3 y, 1
+oggiest 1 3 y, 1
+oiler 2 3 .
+olest 1 2 .
+ologer 1 4 y.
+olver 2 4 . 0e
+omier 1 2 y, 1
+onger 2 3 .
+onsider 0 0 .
+ooler 2 3 .
+oomer 2 3 .
+ooner 2 3 .
+oonest 2 3 .
+ooter 2 3 .
+oother 2 4 .
+opier 2 2 y.
+orber 2 3 .
+orbiter 1 5 .
+orest 1 2 .
+orifer 2 2 .
+orner 0 0 .
+orter 2 3 .
+otter 2 2 .
+ouder 2 3 .
+ounder 2 4 .
+owest 2 2 .
+owner 1 3 .
+ozer 1 3 . 0e
+paster 1 5 . 0e
+peller 1 3 . 1
+peter 2 3 .
+pher 1 2 .
+pider 0 0 .
+pier 3 1 y.
+pler 1 3 . 0e
+plest 1 3 . 0e
+pper 1 1 . 1
+ppier 2 2 y, 1
+ppiest 1 2 y, 1
+premier 0 0 .
+psister 0 0 .
+pster 0 0 .
+rabber 2 3 . 1
+rabbest 2 3 . 1
+racier 1 3 y.
+rader 2 4 . 0e
+raider 1 4 .
+rasper 2 4 .
+rbiter 1 4 r.
+rdest 1 2 .
+rdier 1 2 y.
+redder 1 3 . 1
+reer 2 3 . 0e
+reest 2 3 . 0e
+rer 1 1 &.
+reter 2 3 .
+rfer 1 2 .
+rger 1 3 . 0e
+rgest 1 3 . 0e
+riber 2 4 . 0e
+rier 1 1 y. 1
+rinter 2 4 .
+risper 2 4 .
+rmer 1 2 .
+rner 1 2 .
+robber 1 3 .
+rover 1 4 . 0e
+rower 2 3 .
+rper 1 2 .
+rtest 1 2 .
+ruest 2 3 . 0e
+rver 1 3 . 0e
+ryer 2 2 .
+sadder 1 3 . 1
+sader 1 4 . 0e
+saler 1 4 . 0e
+saster 1 4 r.
+ser 1 2 , 0e
+sest 1 2 . 0e
+sher 1 2 .
+shest 1 2 .
+shier 1 2 . 1
+shioner 1 2 . 3
+sier 1 1 y, 1
+siest 3 1 y, 1
+slimmer 1 4 .
+sober 1 3 r.
+soner 1 3 .
+soother 2 6 .
+sser 1 2 .
+ster 1 2 .
+suer 2 3 . 0e
+summer 0 0 .
+taffer 2 4 .
+tammer 0 0 .
+tannest 1 3 . 1
+tarter 2 4 .
+theater 1 5 r.
+thier 2 2 y, 1
+thiest 2 2 y, 1
+tier 2 1 y, 1
+tiest 2 1 y, 1
+tineer 3 4 .
+tioneer 2 4 .
+tler 2 3 . 0e
+trigger 0 0 .
+troller 1 4 . 1
+ttest 1 1 . 1
+ttier 1 2 y, 1
+uatter 2 3 . 1
+uder 2 3 . 0e
+udest 1 2 &.
+uencer 2 3 t. 1
+ulder 0 0 .
+uler 2 3 . 0e
+umer 1 3 . 0e
+umper 2 3 .
+under 0 0 .
+unner 2 2 . 1
+urier 0 0 .
+uter 1 3 . 0e
+uyer 1 2 .
+vader 1 4 . 0e
+veller 1 3 . 1
+veloper 1 5 .
+venger 1 5 . 0e
+vier 1 1 y. 1
+viest 1 1 y. 1
+voter 1 4 .
+wannest 1 3 . 1
+wler 1 2 .
+wonder 1 4 r.
+xer 1 1 .
+yammer 0 0 .
+yest 2 1 .
+ylinder 1 5 r.
+younger 1 5 .
+yzer 2 1 t.
+zier 1 1 y, 1
+ziest 1 1 y, 1
+zzer 1 2 .
+|after 0 0 .
+|ager 1 4 .
+|anger 1 4 r. 2
+|archer 0 0 .
+|aver 0 0 .
+|better 0 0 .
+|bitter 0 0 .
+|canter 0 0 .
+|caster 0 0 .
+|dimer 0 0 .
+|easter 0 0 .
+|enter 1 4 r. 1
+|ester 0 0 .
+|fester 0 0 .
+|fetter 0 0 .
+|forest 0 0 .
+|former 0 0 .
+|hamper 0 0 .
+|inter 0 0 .
+|laughter 1 6 .
+|liter 0 0 .
+|miser 0 0 .
+|muster 0 0 .
+|oddest 1 4 .
+|outer 1 4 .
+|peter 0 0 .
+|render 0 0 .
+|river 0 0 .
+|safer 1 5 . 0e
+|serer 1 5 . 0e
+|singer 1 5 .
+|sister 0 0 .
+|solder 0 0 .
+|swagger 0 0 .
+|tamper 0 0 .
+|tender 0 0 .
+|waster 1 6 . 0e

@@ -85,7 +85,7 @@ science : noun tra=科學, =科学
 philosophy : noun tra=哲學, =哲学
 page : noun =頁
 photograph : noun tra=^張照片, =^张照片
-person : noun tra=^個人, =个人
+person : noun tra=^個人, =^个人
 dog : noun tra=^隻狗, =^只狗
 cat : noun tra=^隻猫, =^只猫
 bird : noun tra=^隻鳥, =^只鸟
@@ -116,7 +116,7 @@ go  :  verb =去
 understand : verb =明白
 eat :  verb =吃
 build: verb =蓋
-have:  verb - -1 =有
+have:  verbo - -1 =有
 
 want: mode =想要
 need: mode =需要

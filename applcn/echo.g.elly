@@ -19,7 +19,7 @@ _
 __
 g:unit->unkn
 __
-g:unit->unkn sufx
+g:unkn->unkn sufx
 _
   (lbr)
 __
@@ -33,7 +33,11 @@ d:-ed  <- sufx
 __
 d:-ing <- sufx
 __
-d:-n <- sufx
+d:-n   <- sufx
 __
-d:-t <- sufx
+d:-t   <- sufx
+__
+d:-er  <- sufx
+__
+d:-est <- sufx
 __

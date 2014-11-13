@@ -27,6 +27,8 @@ g:ss->noun verb
 _
   (split)
 __
+g:ss->noun
+__
 g:noun->unkn
  >>*L-
 __

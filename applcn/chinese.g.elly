@@ -17,7 +17,7 @@ g:sent->sent punc
 __
 g:sent->ss
 _
-  trace
+# trace
   get lang gp0
   append [
   if lang=
@@ -29,9 +29,6 @@ _
   left
 __
 g:ss->subj
-_
-  var frag=t
-  left
 __
 g:ss->subj[:3s] pred[|3s]
 __
@@ -44,9 +41,10 @@ __
 g:subj->nclu
 __
 
-####
 #
 # personal pronouns
+#
+
 d:i <- pron[:1p,sg]
 _
   append 我
@@ -71,6 +69,11 @@ d:they <- pron[:3p,pl]
 _
   append 他們
 __
+
+#
+# verbs and predicates
+#
+
 g:pred[!*r] -> mode pred
 __
 g:mode -> mode s
@@ -88,17 +91,23 @@ __
 g:pred[!*r] -> vp
 _
   var neg=f
+  var you=
   split
   left
   back
   if neg=t
-    append 不
+    pick you (t=没#=不#)
     end
   merge
 __
 g:vp -> verb
 __
 g:vp -> verb nclu
+__
+g:verb -> verbo
+_
+  left
+  set you=t
 __
 g:verb[|3s]->aux[|3s,-pf] verb[|-3s]
 __
@@ -122,6 +131,11 @@ _
   left
   append 了
 __
+
+#
+# inflectional endings for English input
+#
+
 d:-s <- s
   >>+
 __
@@ -134,6 +148,11 @@ __
 d:-n <- ed
   >>+
 __
+
+#
+# auxiliaries and modals
+#
+
 d:will <- aux
 _
   return
@@ -158,6 +177,11 @@ d:did  <- aux[|pf]
 _
   return
 __
+
+#
+# negation
+#
+
 d:not  <- neg
 __
 g:aux->aux neg
@@ -165,19 +189,20 @@ _
   set neg=t
 __
 
-#####
 #
-# 之的
+# possessives
+#
+
 d:-'s <- apos
 __
 g:poss->nclu apos
-  L[^anim]>>+
+  L[^-abstr]>>+
 _
   left
   (de)
 __
 g:poss->nclu apos
-  L[^-anim]>>+
+  L[^abstr]>>+
 _
   left
   append 之
@@ -188,30 +213,34 @@ _
   (de)
 __
 
-####
 #
-# classifiers
+# demonstratives
+#
+
 d:this  <- dem
 _
-  append 這
+  (zhe)
 __
 d:that  <- dem
 _
   append 那
 __
-####
-#
 d:these <- dem
 _
-  set plural=t
-  append 這
+  set plur=t
+  (zhe)
 __
 d:those <- dem
 _
-  set plural=t
+  set plur=t
   append 那
 __
-p:clsfp
+
+#
+# subprocedures to handle classifiers
+#
+
+p:clsfp  # set default classifier
 _
   if lang=tra
     set class=個
@@ -219,45 +248,79 @@ _
     set class=个
     end
 __
-p:dp
+p:def    # handle THE with classifiers
 _
-  var cflg=
+  if def=t
+    (zhe)
+    end
+__
+p:xie    # singular or plural in classifier
+_
+# trace
+# show clsfyd
+# show specl
+# show plur
+# show def
+  if ~clsfyd=t
+    if plur=t
+      (def)
+      pick specl (t=#=些#)
+    elif ~specl=t
+      (def)
+      if ~specl=t
+        insert < class
+        end
+      end
+  else
+    (def)
+    end
+__
+p:dp     # handle classifier assignment in 2-branch rule
+_
+# trace
+  var clsfyd=
   var class=
-  var plural=
+  var plur=
+  var def=
   (clsfp)
   left
   split
   right
   back
-  if ~cflg=t
-    if plural=t
-      append 些
-    else
-      insert < class
-      end
-    end
+  (xie)
   merge
 __
-p:de
+
+#
+# subprocedures to handle common language elements
+#
+
+p:de     # handle DE particle
 _
   pick lang (tra=的#=勺#)
 __
+p:zhe    # handle ZHÈ demonstrative
+_
+  pick lang (tra=這#=这#)
+__
+
+#
+# for noun phrases
+#
+
 g:nclu->nxn
 _
-  var cflg=
+  var clsfyd=
   var class=
+  var specl=t
+  var plur=
   (clsfp)
-  if frag=t
-    split
-    left
-    back
-    if cflg=
-       insert < class
-       end
-    merge
-  else
-    left
-    end
+  split
+  left
+  back
+  show plur what?
+  (xie)
+  merge
 __
 g:nclu->dem nxn
 _
@@ -265,6 +328,12 @@ _
 __
 g:nclu->det nxn
 _
+  (dp)
+__
+g:nclu->quan nxn
+_
+# trace
+  var specl=t
   (dp)
 __
 g:nclu->poss nxn
@@ -282,10 +351,9 @@ _
   split
   right
   back
-# show class
   insert < class
   merge
-  set cflg=t
+  set clsfyd=t
 __
 g:nxn->noun
 _
@@ -293,8 +361,6 @@ _
   left
   back
   extract x <
-# show lang
-# show x
   if x=^
     extract class <
   else
@@ -304,13 +370,19 @@ _
 __
 g:noun->noun s
 _
+  set plur=t
   left
 __
+
+#
+# determiners
+#
+
 g:det->det ord
 __
 d:the <- det
 _
-  return
+  set def=t
 __
 d:a   <- det
 _
@@ -320,10 +392,42 @@ d:an  <- det
 _
   return
 __
+
+#
+# quantifiers
+#
+
+d:no <- quan
+_
+  set neg=t
+__
+d:some <- quan
+_
+  append 一些
+__
+d:all <- quan
+_
+  append 所有
+  (de)
+__
+d:each <- quan
+_
+  append 各
+__
+
+#
+# prepositions
+#
+
 d:to  <- to
 __
 d:of  <- of
 __
+
+#
+# adjectives
+#
+
 g:adj->noun
 _
   left
