@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyElement.py : 27sep2014 CPM
+# vocabularyElement.py : 12nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -32,18 +32,18 @@
 vocabulary element from external BdB table lookup
 """
 
+import sys
 import ellyBits
+import ellyException
 import ellyDefinitionReader
 import generativeProcedure
-import generativeDefiner
 import unicodedata
-import sys
 
 gens = [ '*' ]      # define generative procedure for translation
 geno = [ 'obtain' ] # default generative procedure
 
-input = ellyDefinitionReader.EllyDefinitionReader(geno)
-obtnp = generativeProcedure.GenerativeProcedure(None,input)
+inptx = ellyDefinitionReader.EllyDefinitionReader(geno)
+obtnp = generativeProcedure.GenerativeProcedure(None,inptx)
 
 class VocabularyElement(object):
 
@@ -107,13 +107,15 @@ class VocabularyElement(object):
             self.gen = obtnp   # if so, then use default procedure
             self._nt = 0       #   i.e. no translation
         elif d[0][0] == '=':   # simple translation?
-            pls = [ 'append ' + d[0][1:].strip() ]
-            input = ellyDefinitionReader.EllyDefinitionReader(pls)
-            self.gen = generativeProcedure.GenerativeProcedure(None,input)
+            dfs = ' '.join(d)  # just in case translation had spaces
+#           print >> sys.stderr , 'def ext=' , dfs
+            pls = [ 'append ' + dfs[1:] ]
+            inpts = ellyDefinitionReader.EllyDefinitionReader(pls)
+            self.gen = generativeProcedure.GenerativeProcedure(None,inpts)
             self._nt = 1
         elif d[0][0] == '(':   # get predefined procedure
-            input = ellyDefinitionReader.EllyDefinitionReader([ d[0] ])
-            self.gen = generativeProcedure.GenerativeProcedure(None,input)
+            inpts = ellyDefinitionReader.EllyDefinitionReader([ d[0] ])
+            self.gen = generativeProcedure.GenerativeProcedure(None,inpts)
             self._nt = 0
         else:                  # otherwise, set for selection of translation
             cm = 'pick LANG (' # construct instruction to select
@@ -123,8 +125,8 @@ class VocabularyElement(object):
             gens[0] = cm       # replace action
 #           print 'cm=' , cm
 #           print 'gens=' , gens
-            input = ellyDefinitionReader.EllyDefinitionReader(gens)
-            self.gen = generativeProcedure.GenerativeProcedure(None,input)
+            inpts = ellyDefinitionReader.EllyDefinitionReader(gens)
+            self.gen = generativeProcedure.GenerativeProcedure(None,inpts)
             if self.gen == None:
                 print >> sys.stderr , 'vocabulary generative semantic failure'
                 print >> sys.stderr , 'gens=' , gens

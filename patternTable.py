@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# patternTable.py : 25oct2014 CPM
+# patternTable.py : 04nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -33,7 +33,6 @@ finite-state automaton (FSA) for inferring the syntactic type of tokens
 """
 
 import sys
-import ellyBits
 import ellyChar
 import ellyWildcard
 import ellyException
@@ -192,7 +191,7 @@ class PatternTable(object):
             sts = ls.pop(0)                  # starting state for FSA link
             try:
                 stn = int(sts)               # numerical starting state
-            except:
+            except ValueError:
                 self._err('bad start state',l)
                 continue
             n = len(self.indx)
@@ -203,7 +202,7 @@ class PatternTable(object):
 
             try:
                 lk = Link(syms,ls)           # allocate new link
-            except:
+            except ellyException.FormatFailure:
                 self._err('bad link',l)
                 continue
 #           print 'load lk=' , lk
@@ -386,12 +385,12 @@ class PatternTable(object):
 
 if __name__ == '__main__':
 
-    import symbolTable
     import ellyConfiguration
     import ellyDefinitionReader
     import dumpEllyGrammar
     import parseTest
-    import os,stat
+    import stat
+    import os
 
     mode = os.fstat(0).st_mode       # to check for redirection of stdin (=0)
     interact = not ( stat.S_ISFIFO(mode) or stat.S_ISREG(mode) )
@@ -400,29 +399,29 @@ if __name__ == '__main__':
     ctx = parseTest.Context()        # dummy interpretive context for testing
     print ''
         
-    base = ellyConfiguration.baseSource + '/'
-    file = sys.argv[1] if len(sys.argv) > 1 else 'test' # which FSA definition to use
-    inp = ellyDefinitionReader.EllyDefinitionReader(base + file + '.p.elly')
+    basn = ellyConfiguration.baseSource + '/'
+    filn = sys.argv[1] if len(sys.argv) > 1 else 'test' # which FSA definition to use
+    inp = ellyDefinitionReader.EllyDefinitionReader(basn + filn + '.p.elly')
 
-    print 'pattern test with' , '<' + file + '>'
+    print 'pattern test with' , '<' + filn + '>'
 
     if inp.error != None:
         print inp.error
         sys.exit(1)
 
-    pat = None
+    patn = None
     try:
-        pat = PatternTable(ctx.syms,inp) # try to define FSA
+        patn = PatternTable(ctx.syms,inp) # try to define FSA
     except ellyException.TableFailure:
         print 'no pattern table generated'
         sys.exit(1)
 
-    print len(pat.indx) , 'distinct FSA states'
+    print len(patn.indx) , 'distinct FSA states'
 
     print ''
     dumpEllyGrammar.dumpCategories(ctx.syms)
     print ''
-    pat.dump()
+    patn.dump()
 
     print 'enter tokens to recognize'
 
@@ -433,8 +432,8 @@ if __name__ == '__main__':
         if len(t) == 0: break
         print 'text=' , '[' , t , ']'
         t = t.strip()
-        n = pat.match(list(t),tre)
-        print '    from <'+ t + '>' , n , 'chars matched' , '| leaving <' + t[n:] + '>'
+        nma = patn.match(list(t),tre)
+        print '    from <'+ t + '>' , nma , 'chars matched' , '| leaving <' + t[nma:] + '>'
 
     if interact: sys.stdout.write('\n')
 

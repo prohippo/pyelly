@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# suffixTreeLogic.py : 16sep2014 CPM
+# suffixTreeLogic.py : 06nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -97,20 +97,19 @@ class SuffixTreeLogic(treeLogic.TreeLogic):
 if __name__ == '__main__':
 
     import sys
-    import ellyChar
     import ellyToken
     import ellyConfiguration
     import ellyDefinitionReader
     import inflectionStemmerEN
 
-    file = sys.argv[1] if len(sys.argv) > 1 else 'default'
+    filn = sys.argv[1] if len(sys.argv) > 1 else 'default'
 
-    base = ellyConfiguration.baseSource + '/'
-    dfn = ellyDefinitionReader.EllyDefinitionReader(base + file + '.stl.elly')
+    basn = ellyConfiguration.baseSource + '/'
+    dfn = ellyDefinitionReader.EllyDefinitionReader(basn + filn + '.stl.elly')
     if dfn.error != None:
         print >> sys.stderr , dfn.error
         sys.exit(1)
-    print dfn.linecount() , 'definition lines for' , file + '.stl.elly'
+    print dfn.linecount() , 'definition lines for' , filn + '.stl.elly'
 
     try:
         inf = inflectionStemmerEN.InflectionStemmerEN()

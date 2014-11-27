@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# grammarTable.py : 10sep2014 CPM
+# grammarTable.py : 04nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -128,7 +128,7 @@ class GrammarTable(object):
         self.pndx = { }   # standalone procedures
         self.extens = [ ] # 1-branch rule
         self.splits = [ ] # 2-branch rule
-        for i in range(symbolTable.NMAX):
+        for _ in range(symbolTable.NMAX):
             self.extens.append([ ]) # list of 1-branch rules for each syntax type
             self.splits.append([ ]) # list of 2-branch rules for each syntax type`
 
@@ -206,9 +206,9 @@ class GrammarTable(object):
 #           print 'after line' , lno , '[' + line + ']'
 
             if not isNewRule(line):
-#                print 'SKIP'
-                 skp += 1
-                 continue
+#               print 'SKIP'
+                skp += 1
+                continue
 
             c = line[0] # single char indicating type of rule to define
             line = line[2:].strip()
@@ -270,7 +270,7 @@ class GrammarTable(object):
                     continue
             elif c == 'd':            # internal dictionary entry?
                 now += 1
-                dl = definitionLine.DefinitionLine(line);
+                dl = definitionLine.DefinitionLine(line)
                 try:
                     ss = syntaxSpecification.SyntaxSpecification(syms,dl.tail)
                 except ellyException.FormatFailure:
@@ -414,8 +414,8 @@ class GrammarTable(object):
             return None
         ru = grammarRule.SplittingRule(ns,fs.positive)
         ru.gens = self.d2bp
-        ru.ltfet = ft.makeTest()       # precombine positive and negative features for testing
-        ru.rtfet = fu.makeTest()       # precombine positive and negative features for testing
+        ru.ltfet = ft.makeTest()       # combine positive and negative features for testing
+        ru.rtfet = fu.makeTest()       # combine positive and negative features for testing
         ru.rtyp  = nu
         if t == '...':
             if u == '...': 
@@ -433,19 +433,19 @@ class GrammarTable(object):
 #
 
 if __name__ == '__main__':
+
     import ellyConfiguration
     import dumpEllyGrammar
-    import symbolTable
 
-    file = sys.argv[1] if len(sys.argv) > 1 else 'test'
+    filn = sys.argv[1] if len(sys.argv) > 1 else 'test'
     sym = symbolTable.SymbolTable()
 #   print sym
     base = ellyConfiguration.baseSource + '/'
-    inp = ellyDefinitionReader.EllyDefinitionReader(base + file + '.g.elly')
+    inp = ellyDefinitionReader.EllyDefinitionReader(base + filn + '.g.elly')
     if inp.error != None:
         print inp.error
         sys.exit(1)
-    print 'loading' , '[' + file + ']' , len(inp.buffer) , 'lines'
+    print 'loading' , '[' + filn + ']' , len(inp.buffer) , 'lines'
     try:
         gtb = GrammarTable(sym,inp)
 #       print gtb

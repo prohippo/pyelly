@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBufferEN.py : 15oct2014 CPM
+# ellyBufferEN.py : 11nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -41,7 +41,6 @@ import inflectionStemmerEN
 
 APO = ellyChar.APO                # literal apostrophe
 ESS = u's'                        # literal S
-MIN = u'-'                        # hyphen
 
 class EllyBufferEN(ellyBuffer.EllyBuffer):
 
@@ -66,9 +65,9 @@ class EllyBufferEN(ellyBuffer.EllyBuffer):
             try:                                    # of so, try to load
                 self.stemmer = inflectionStemmerEN.InflectionStemmerEN()
             except ellyException.TableFailure:
-                self.stemmer = ellyStemmer()        # null stemmer
+                self.stemmer = ellyStemmer.EllyStemmer()  # null stemmer
         else:
-            self.stemmer = ellyStemmer()            # null stemmer
+            self.stemmer = ellyStemmer.EllyStemmer()      # null stemmer
 
     def getNext ( self ):
 
@@ -88,6 +87,7 @@ class EllyBufferEN(ellyBuffer.EllyBuffer):
 
         w = super(EllyBufferEN,self).getNext() # use getNext() without inflectional stemmer
         if w == None: return None
+#       print 'got:' , w
         if not w.isSplit():                    # check for stemming
             self.divide(w)                     # if not, do inflectional stemming
         return w
@@ -95,7 +95,7 @@ class EllyBufferEN(ellyBuffer.EllyBuffer):
     def divide ( self , word ):
 
         """
-        apply inflectional analysis, including for -'s and -'
+        apply inflectional analysis, including for -'s and -s'
 
         arguments:
             self  -
@@ -105,7 +105,7 @@ class EllyBufferEN(ellyBuffer.EllyBuffer):
             StemmingError
         """
 
-#       print "divide",word.root
+#       print "divide" , word
         wl = word.getLength()       # if so, is word long enought to be divided
         if wl < 3:
             return                  # if not, done
@@ -115,7 +115,7 @@ class EllyBufferEN(ellyBuffer.EllyBuffer):
 
         x = word.charAt(wl-1)       # get last two chars of word
         y = word.charAt(wl-2)
-#       print 'ending:' , y , x
+#       print 'word= ...' , y , x
 
         if x == u's' and y == APO:  # check for -S'
             word.addSuffix(APO+ESS)
@@ -130,12 +130,13 @@ class EllyBufferEN(ellyBuffer.EllyBuffer):
             return
 
         if ellyChar.isLetter(word.charAt(0)):
-            self.stemmer.apply(word)  # apply any stemmer
+            self.stemmer.apply(word)  # apply any inflectional stemmer
             if word.isSplit():
                 sufs = word.getSuffixes()
+#               print 'sufs=' , sufs
                 while len(sufs) > 0:
                     if self.atToken(): self.prepend(ellyChar.SPC)
-                    self.prepend(MIN + sufs.pop())
+                    self.prepend(sufs.pop())
 
 #
 # unit test

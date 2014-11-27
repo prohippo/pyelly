@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyConfiguration.py : 23dec2013 CPM
+# ellyConfiguration.py : 05nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -28,13 +28,13 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 # -----------------------------------------------------------------------------
 
-####
-# define how to set up PyElly tables and processing
-####
+"""
+define how to set up PyElly tables and processing
+"""
 
 language = 'EN'               # English input expected
 
-baseSource = 'applcn/'        # get EllyBase language definitions from here
+baseSource = './'             # get EllyBase language definitions from here
 stemSource = './'             # get Elly stem logic from here
 
 defaultSystem = 'default'     # where to get language definition, if unspecified

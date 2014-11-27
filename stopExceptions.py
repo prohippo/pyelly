@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# stopExceptions.py : 05sep2014 CPM
+# stopExceptions.py : 06nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -108,18 +108,18 @@ class StopExceptions(object):
                 break
 #           print 'ps=' , ps
 
-            id = ps[0][-1]                 # last char of left part of pattern
+            idc = ps[0][-1]                # last char of left part of pattern
             left  = ellyWildcard.convert(ps[0][:-1])
             right = ellyWildcard.convert(ps[1])
             if left == None:
                 print >> sys.stderr , 'error:' , '<' + df + '>' , '<' + right + '>'
                 break
             
-            if not id in self.lstg:        # make sure punctuation is already in dictionary
-                self.lstg[id] = [ ]
+            if not idc in self.lstg:       # make sure punctuation is already in dictionary
+                self.lstg[idc] = [ ]
 
             p = self.Pattern(left,right)
-            self.lstg[id].append(p)        # save pattern in dictionary
+            self.lstg[idc].append(p)       # save pattern in dictionary
 
             if left != None:               # update maximum length of left contexts
                 ll = len(left)
@@ -259,10 +259,10 @@ if __name__ == '__main__':
     if np == 0: sys.exit(0)
 
     for px in stpx.lstg:
-        ps = stpx.lstg[px]
+        pxs = stpx.lstg[px]
         print '<' + px + '>'
-        for p in ps:
-            print '    ' , unicode(p)
+        for pch in pxs:
+            print '    ' , unicode(pch)
 
     test = [
         [ 'u' , '.' , 's' , '.' , 's' , '.' , ' ' , 'w' , 'a' , 's' , 'p' ] ,
@@ -275,24 +275,23 @@ if __name__ == '__main__':
         [ 'x' , 'x' , 'x' , 'x' , '.' , ' ' , 'Y' ]
     ]
 
-    n = len(sys.argv) - 2
-    if n > 0:             # add to test cases?
+    nlu = len(sys.argv) - 2
+    if nlu > 0:                     # add to test cases?
         for a in sys.argv[2:]:
             test.append(list(a.decode('utf8')))
-        print 'added' , n , 'test case' + ('' if n == 1 else 's')
+        print 'added' , nlu , 'test case' + ('' if nlu == 1 else 's')
     else:
         print 'no added test cases'
 
-    for t in test:
-        k = 0
-        l = len(t)
-        while k < l:
-            c = t[k]
-            k += 1
-            if c in stpx.lstg:
-                if k == l or not ellyChar.isLetterOrDigit(t[k]):
+    for ts in test:
+        ku = 0
+        lu = len(ts)
+        for cu in ts:
+            ku += 1
+            if cu in stpx.lstg:
+                if ku == lu or not ellyChar.isLetterOrDigit(ts[ku]):
                     break
         else:
             continue
-        res = stpx.match( t[:k-1] , t[k-1] , t[k] )
-        print 'exception match:' , '[' + ''.join(t) + ']' , res
+        res = stpx.match( ts[:ku-1] , ts[ku-1] , ts[ku] )
+        print 'exception match:' , '[' + ''.join(ts) + ']' , res

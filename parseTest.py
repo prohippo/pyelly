@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTest.py : 24oct2014 CPM
+# parseTest.py : 03nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -33,25 +33,36 @@ support for unit testing only
 """
 
 import ellyBits
-import ellyBuffer
 import symbolTable
 
-class Phrase(object):          # dummy Elly phrase node for testing
+class Phrase(object):
+    """ dummy Elly phrase class for testing
+    """
     def __init__ ( self ):
+        """ initialization
+        """
         self.catg = 0
         self.synf = ellyBits.EllyBits(symbolTable.FMAX)
         self.lens = 0
     def __str__ ( self ):
-       return ( 'phrase catg=' + str(self.catg) +
-                      ' synf=' + self.synf.hexadecimal(False) +
-                      ' lens=' + str(self.lens) )
+        """ representation of phrase for printing
+        """
+        return ( 'phrase catg=' + str(self.catg) +
+                       ' synf=' + self.synf.hexadecimal(False) +
+                       ' lens=' + str(self.lens) )
 
-class Tree(object):            # dummy Elly parse tree for testing
+class Tree(object):
+    """ dummy Elly tree class for testing
+    """
     def __init__ ( self ):
+        """ initialization
+        """
         print 'tree with stub methods'
         self.queue = [ ]
         self.lastph = None
     def addLiteralPhrase (self,typ,fts):
+        """ dummy method
+        """
         print 'add phrase: typ=' , typ
         ph = Phrase()
         ph.catg = typ
@@ -60,12 +71,18 @@ class Tree(object):            # dummy Elly parse tree for testing
         self.lastph = ph
         return True
     def showQueue (self):
+        """ dummy method
+        """
         print len(self.queue) , 'queued phrase' +  ('s' if len(self.queue) != 1 else '')
         for ph in self.queue:
             print ph
 
-class Context(object):         # dummy Elly interpretive context for testing
+class Context(object):
+    """ dummy Elly interpretive context for testing
+    """
     def __init__ ( self ):
+        """ initialization
+        """
         print 'context with empty symbol table'
         syms = symbolTable.SymbolTable()
         syms.getSyntaxTypeIndexNumber('sent') # seed with syntactic types for test
@@ -78,6 +95,15 @@ class Context(object):         # dummy Elly interpretive context for testing
         self.syms  = syms
         self.wghtg = Weighting()
 
-class Weighting(object):       # dummy elly conceptual weighting
+class Weighting(object):
+    """ dummy elly conceptual weighting
+    """
+    def __init__ ( self ):
+        """ initialization
+        """
+        self.cxc = None
     def relateConceptPair ( self , cna , cnb ):
+        """ dummy method
+        """
+        self.cxc = cna + cnb
         return 0

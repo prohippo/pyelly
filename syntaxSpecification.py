@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# syntaxSpecification.py : 06sep2014 CPM
+# syntaxSpecification.py : 04nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -33,35 +33,32 @@ interpreting full syntax specification of phrase or grammar rule
 """
 
 import sys
-import ellyBits
 import ellyChar
 import ellyException
-import grammarTable
 import featureSpecification
 
-def scan ( str ):
+def scan ( strg ):
 
     """
     check for extent of syntax specification
 
     arguments:
-        str  - string of chars to scan
+        strg  - string of chars to scan
 
     returns:
         char count > 0 on finding possible syntax specification, 0 otherwise
     """
 
     n = 0
-    lm = len(str)
-    while n < lm:
-        c = str[n]
+    for c in strg:
         if c == '.' or ellyChar.isLetterOrDigit(c): n += 1
         else: break
-    if n == lm: return n
-    c = str[n]
+    else:
+        return n
+    c = strg[n]
     if c == ' ': return n
     if c != '[': return 0
-    k = featureSpecification.scan(str[n:])
+    k = featureSpecification.scan(strg[n:])
     return n + k if k > 0 else 0
 
 class SyntaxSpecification(object):
@@ -98,10 +95,8 @@ class SyntaxSpecification(object):
 
         s = spec.lower()  # must be lower case for all lookups
 
-        ln = len(s)
         n = 0
-        while n < ln:
-            c = s[n]
+        for c in s:
             if not ellyChar.isLetterOrDigit(c) and c != '.': break
             n += 1
 
@@ -109,15 +104,17 @@ class SyntaxSpecification(object):
             print >> sys.stderr , '** no syntactic category'
             raise ellyException.FormatFailure
 
-        typs = s[:n]      # save category name
+        typs = s[:n]        # save category name
 #       print >> sys.stderr , 'catg=' , self.catg
         catg = syms.getSyntaxTypeIndexNumber(typs)
 
-        s = s[n:].strip() # feature part of syntax
+        s = s[n:].strip()   # feature part of syntax
 
-        if len(s) == 0 or typs == '...': # ... category may have no features!
+        if len(s) == 0:     # check if there are any features
             synf = featureSpecification.FeatureSpecification(syms,None)
-        else:                            # decode features
+        elif typs == '...': # ... category may have no features!
+            raise ellyException.FormatFailure
+        else:               # decode features
 #           print >> sys.stderr , 'syms=' , syms , 's=' , s
             synf = featureSpecification.FeatureSpecification(syms,s)
 
@@ -148,7 +145,6 @@ class SyntaxSpecification(object):
 
 if __name__ == '__main__':
 
-    import sys
     import symbolTable
 
     stb = symbolTable.SymbolTable()
@@ -161,9 +157,9 @@ if __name__ == '__main__':
 
     spcl = sys.argv[1:] if len(sys.argv) > 1 else [ '...[.0,1]' ]
     for spc in spcl:
-        n = scan(spc)
-        sx = spc[:n]
-        print n , 'chars in possible specification'
+        ns = scan(spc)
+        sx = spc[:ns]
+        print ns , 'chars in possible specification'
         try:
             ss = SyntaxSpecification(stb,sx)
         except ellyException.FormatFailure:

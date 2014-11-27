@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 15oct2014 CPM
+# vocabularyTable.py : 13nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -37,7 +37,7 @@ import sys
 
 try:  # get Python support for Berkeley DB
     from bsddb3 import db
-except:
+except ImportError:
     print >> sys.stderr , 'bsddb3 unavailable'
     db = None
 
@@ -49,16 +49,15 @@ except:
 ## and your particular release of Python.
 ##
 ## This code was developed with BSD 5.3.1 and bsddb3 6.0.0 with Python 2.7.5
-## under Mac OS X 10.8.5 (Mountain Lion) and 10.9.3 (Mavericks).
+## under Mac OSX 10.8.5 (Mountain Lion), 10.9.3 (Mavericks), and 10.10 (Yosemite).
 ##
 
 import ellyChar
 import ellyException
 import vocabularyElement
-import unicodedata
-
 import syntaxSpecification
 import featureSpecification
+import unicodedata
 
 SSpec = syntaxSpecification.SyntaxSpecification
 FSpec = featureSpecification.FeatureSpecification
@@ -67,6 +66,8 @@ lcAN = lambda x: unicodedata.normalize('NFKD',x).encode('ascii','ignore').lower(
 
 vocabulary = '.vocabulary.elly.bin' # compiled vocabulary file suffix
 source     = '.v.elly'              # input vocabulary text file suffix
+
+nerr = 0                            # shared error count among methods
 
 def toIndex ( t ):
 
@@ -146,15 +147,15 @@ def compile ( name , stb , defn , stem=None ):
     dsave = ''                                       #          definition
 
     try:
-        file = name + vocabulary                     # where to put vocabulary database
+        filn = name + vocabulary                     # where to put vocabulary database
         try:
-            os.remove(file)                          # delete the file if it exists
-        except:
-            print >> sys.stderr , 'no' , file
+            os.remove(filn)                          # delete the file if it exists
+        except OSError:
+            print >> sys.stderr , 'no' , filn
         dbs = db.DB()                                # create new database
         dbs.set_flags(db.DB_DUP)                     # keys may identify multiple records
-        dbs.open(file,None,db.DB_HASH,db.DB_CREATE)  # open new database file
-#       print >> sys.stderr , 'creating' , file
+        dbs.open(filn,None,db.DB_HASH,db.DB_CREATE)  # open new database file
+#       print >> sys.stderr , 'creating' , filn
 
         r = None                                          # for error reporting
 
@@ -201,7 +202,7 @@ def compile ( name , stb , defn , stem=None ):
                         continue
 #               print >> sys.stderr , '  w=' , w
                 lcw = lcAN(w)                             # convert to ASCII lower case
-#               print >> sys.stderr , 'lcw=' , lcw
+#               print >> sys.stderr , 'lcw=' , '"' + lcw + '"'
 
                 ns = syntaxSpecification.scan(d)          # find extent of syntax info
 #               print >> sys.stderr , 'ns=' , ns
@@ -349,19 +350,21 @@ def compile ( name , stb , defn , stem=None ):
                 print >> sys.stderr , ']'
                 continue
 
+#           print >> sys.stderr , 'lcw=' , lcw
             dbs.put(lcw,rss)                          # save in database
+#           print >> sys.stderr , 'saved'
 
 #       print >> sys.stderr , 'DONE'
         dbs.close()                                   # clean up
 
-    except Exception , e:                             # catch all other exceptions
+    except StandardError , e:                         # catch any other errors
         print >> sys.stderr , '**' , e
         print >> sys.stderr , '*  at' , r
         nerr += 1
 
     if nerr > 0:
-        print >> sys.stderr , '**' , nerr , 'vocabulary errors in all'
-        print >> sys.stderr ,'vocabulary table compilation FAILed'
+        print >> sys.stderr , '**' , nerr , 'vocabulary table errors in all'
+        print >> sys.stderr , '*  compilation FAILed'
         raise ellyException.TableFailure
 
 class Result(object):
@@ -416,23 +419,20 @@ class VocabularyTable(object):
 
         database = name + vocabulary
 
-        if db == None:
-            self.dbs = None
-            self.cur = None
-            self.stm = None
-        else:
+        self.dbs = None
+        self.cur = None
+        self.stm = None
+        if db != None:
             self.dbs = db.DB()   # define database object
             try:
                 self.dbs.open(database,None,db.DB_HASH,db.DB_RDONLY)
                 self.cur = self.dbs.cursor()
                 self.stm = stem
 #               print >> sys.stderr , 'stm=' , self.stm
-            except Exception , e:
+            except StandardError , e:
                 print >> sys.stderr, 'cannot access database'
                 print >> sys.stderr, e
-                self.dbs = None
-                self.cur = None
-                self.stm = None
+                raise ellyException.TableFailure
 
     def __del__ ( self ):
 
@@ -482,7 +482,7 @@ class VocabularyTable(object):
 
             return rs
 
-        except Exception , e:
+        except StandardError , e:
             print >> sys.stderr , 'general error:' , e
             return None
 
@@ -530,7 +530,6 @@ class VocabularyTable(object):
 
 #           print >> sys.stderr , 'entry=' , v
 
-            nx = 0                    # extra chars for any match
             ln = v.length()           # total possible match length for vocabulary entry
 
 #           print >> sys.stderr , 'rln=' , rln , 'ln=' , ln , 'lm=' , lm
@@ -658,7 +657,7 @@ def chkT ( chrs , k ):
     n = len(chrs) - k              # remaining chars in input
 #   print n , 'more chars in input'
     if n == 0:
-         return [ ns , sx ]        # match on no more chars
+        return [ ns , sx ]         # match on no more chars
 
     lc = chrs[k-1]                 # last matched char
     c  = chrs[k]                   # next char in input
@@ -741,6 +740,8 @@ if __name__ == '__main__':
     from generativeDefiner import showCode
 
     def check ( vtb , ts , kl ):
+        """ lookup method for unit testing
+        """
         vs = vtb.lookUp(ts,kl)               # check for possible vocabulary matches
         if len(vs) == 0:                     # any vocabulary entries found?
             print ts[:kl] , 'NOT FOUND'
@@ -758,22 +759,22 @@ if __name__ == '__main__':
 
     try:
         if ellyConfiguration.language == 'EN':
-            stem = inflectionStemmerEN.InflectionStemmerEN()
+            ustem = inflectionStemmerEN.InflectionStemmerEN()
         else:
-            stem = None
+            ustem = None
     except ellyException.TableFailure:
         print >> sys.stderr , 'inflectional stemming failure'
         sys.exit(1)
 
-    name = sys.argv[1] if len(sys.argv) > 1 else 'test'
-    dfns = name + source
+    nams = sys.argv[1] if len(sys.argv) > 1 else 'test'
+    dfns = nams + source
     limt = sys.argv[2] if len(sys.argv) > 2 else 24
 
-    erul = ellyBase.load(name + ellyBase.rules)     # get pickled Elly rules
+    erul = ellyBase.load(nams + ellyBase.rules)     # get pickled Elly rules
     if erul == None:
-        stb = symbolTable.SymbolTable()             # if none, make new symbol table
+        ustb = symbolTable.SymbolTable()            # if none, make new symbol table
     else:
-        stb = erul.stb                              # otherwise, grab existing symbol table
+        ustb = erul.stb                             # else, get existing symbol table
 
     print 'source=' , dfns
     inp = ellyDefinitionReader.EllyDefinitionReader(dfns)
@@ -782,57 +783,56 @@ if __name__ == '__main__':
         sys.exit(1)
 
     try:
-        f = compile(name,stb,inp,stem)     # create database from vocabulary table
+        compile(nams,ustb,inp,ustem)       # create database from vocabulary table
     except ellyException.TableFailure:
         print >> sys.stderr , 'exiting'
         sys.exit(1)                        # quit on failure
 
     try:
-        vtb = VocabularyTable(name,stem)   # load vocabulary table just created
-    except Exception:
+        uvtb = VocabularyTable(nams,ustem) # load vocabulary table just created
+    except ellyException:
         print 'vocabulary table loading FAILed'
         sys.exit(1)
 
-    dbs = vtb.dbs                      # get database for table
-    dst = dbs.stat()                   # get its BdB status
-    dks = dst.keys()                   # all status tags 
+    udbs = uvtb.dbs                    # get database for table
+    udst = udbs.stat()                 # get its BdB status
+    udks = udst.keys()                 # all status tags 
     print '---- BdB status'
-    for dk in dks:
-        print '{0:12s} {1}'.format(dk,dst[dk])
+    for dk in udks:
+        print '{0:12s} {1}'.format(dk,udst[dk])
     print '----'
 
-    n = 0
-    keys = dbs.keys()                  # all database keys
+    nu = 0
+    keys = udbs.keys()                 # all database keys
     print len(keys) , 'DB keys\n'
-    print 'looking up each key as one-word vocabulary entry\n'
-    for key in keys:
-        if n >= limt: break
-        n += 1
-        lky = list(key)
+    print 'looking up each key as ONE-WORD vocabulary entry\n'
+    for ky in keys:
+        if nu >= limt: break
+        nu += 1
+        lky = list(ky)
         print 'lky=' , lky
-        check(vtb,lky,len(key))        # dump all info for each key
-        key = u''.join(lky)
-        print 'key= [' , key , '] type=' , type(key)
-        vs = vtb.lookUpWord(key)       # look up key by itself
-        nm = len(vs)
+        check(uvtb,lky,len(ky))        # dump all info for each key
+        ukey = u''.join(lky)
+        print 'key= [' , ukey , '] type=' , type(ukey)
+        uvs = uvtb.lookUpWord(ukey)    # look up key by itself
+        nm = len(uvs)
         print nm , 'key match' + ('' if nm == 1 else 'es')
         print ''
 
     print 'enter single- and multi-word terms to look up'
     while True:                        # now look up terms from standard input
         sys.stdout.write('> ')
-        s = sys.stdin.readline()       # get test example to look up
-        if len(s) <= 1: break
-        ss = s.strip().decode('utf8')
-        ts = list(ss)                  # get list of chars
-        k = toIndex(ss)                # get part of term for indexing
-        if k == 0:                     # if none, cannot look up
-            print 'index NOT FOUND:' , ss
+        ul = sys.stdin.readline()      # get test example to look up
+        if len(ul) <= 1: break
+        ssx = ul.strip().decode('utf8')
+        tsx = list(ssx)                # get list of chars
+        ku = toIndex(ssx)              # get part of term for indexing
+        if ku == 0:                    # if none, cannot look up
+            print 'index NOT FOUND:' , ssx
             continue
-        check(vtb,ts,k)
-        ky = u''.join(ts[:k])
-        vs = vtb.lookUpWord(ky)        # look up just key
-        print len(vs) , 'key match only'
-
+        check(uvtb,tsx,ku)             # report on matches found
+        ky = u''.join(tsx[:ku])
+        uvs = uvtb.lookUpWord(ky)      # look up just key
+        print len(uvs) , 'key match only'
 
     sys.stdout.write('\n')

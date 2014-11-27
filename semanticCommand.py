@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# semanticCommand.py : 18aug2014 CPM
+# semanticCommand.py : 04nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -34,69 +34,69 @@ define operation codes for Elly cognitive and generative semantic procedures
 
 #### cognitive
 
-Cadd  =  0  # add contribution to total score
-Clhr  =  1  # inherit left
-Crhr  =  2  #         right
-Csetf =  3  # set features
-Clftf =  4  # test left descendant features
-Crhtf =  5  #      right
-Csetc =  6  # set concept
-Clftc =  7  # test left descendant concepts
-Crhtc =  8  #      right
+Cadd  =  0   # add contribution to total score
+Clhr  =  1   # inherit left
+Crhr  =  2   #         right
+Csetf =  3   # set features
+Clftf =  4   # test left descendant features
+Crhtf =  5   #      right
+Csetc =  6   # set concept
+Clftc =  7   # test left descendant concepts
+Crhtc =  8   #      right
 
-Copn = [   # operation names for dumping (must align with numerical codes above)
+Copn = [     # operation names for dumping (must align with numerical codes above)
     'ADDN' , 'LHER' , 'RHER' , 'SETF' , 'LFTF' , 'RHTF' ,
     'SETC' , 'LFTC' , 'RHTC'
 ]
 
 #### generative
 
-Gnoop = 0  # do nothing
-Gretn = 1  # return successfully
-Gfail = 2  # return unsuccessfully
-Gleft = 3  # run left  subconstituent
-Grght = 4  #     right
-Gblnk = 5  # insert space
-Glnfd = 6  # insert \r\n
-Gsplt = 7  # split off new output buffer
-Gback = 8  # go back to preceding buffer
-Gmrge = 9  # merge current buffer with newer ones
-Gchng =10  # move new buffer to current with substitutions
-Gchck =11  # check local variable
-Gnchk =12  # negated check of local variable
-Gchkf =13  # check semantic features
-Gskip =14  # for unconditional branch
-Gvar  =15  # define local variable
-Gset  =16  # set    local variable
-Gpeek =17  # get char from current or next buffer into local variable without changing buffer
-Gextl =18  # extract chars from buffer
-Gextr =19  # extract chars from next buffer
-Ginsn =20  # insert local variable into next buffer
-Ginsr =21  # insert local variable into buffer
-Gshft =22  # move n chars between buffers
-Gdele =23  # delete n chars in buffer
-Gdelt =24  # delete chars in buffer to substring
-Gstor =25  # store deletion in local variable
-Gfnd  =26  # find substring
-Gpick =27  # special table lookup and insertion
-Gappd =28  # append string to buffer
-Gget  =29  # set local  variable from global variable
-Gput  =30  # set global variable from local  variable
-Gassg =31  # assign value of local variable to another
-Gque  =32  # use local variable as a character queue
-Gunio =33  # set union
-Gintr =34  # set intersection
-Gcomp =35  # set complement
-Gobtn =36  # obtain original text for token
-Gcapt =37  # capitalize first char in buffer
-Gucpt =38  # uncapitalize first char in buffer
-Gtrce =39  # instrumented no op for debugging
-Gshow =40  # see local variable for debugging
-Gproc =41  # call procedure
+Gnoop =  0  # do nothing
+Gretn =  1  # return successfully
+Gfail =  2  # return unsuccessfully
+Gleft =  3  # run left  subconstituent
+Grght =  4  #     right
+Gblnk =  5  # insert space
+Glnfd =  6  # insert \r\n
+Gsplt =  7  # split off new output buffer
+Gback =  8  # go back to preceding buffer
+Gmrge =  9  # merge current buffer with newer ones
+Gchng = 10  # move new buffer to current with substitutions
+Gchck = 11  # check local variable
+Gnchk = 12  # negated check of local variable
+Gchkf = 13  # check semantic features
+Gskip = 14  # for unconditional branch
+Gvar  = 15  # define local variable
+Gset  = 16  # set    local variable
+Gpeek = 17  # get char from current or next buffervariable without changing buffer
+Gextl = 18  # extract chars from buffer
+Gextr = 19  # extract chars from next buffer
+Ginsn = 20  # insert local variable into next buffer
+Ginsr = 21  # insert local variable into buffer
+Gshft = 22  # move n chars between buffers
+Gdele = 23  # delete n chars in buffer
+Gdelt = 24  # delete chars in buffer to substring
+Gstor = 25  # store deletion in local variable
+Gfnd  = 26  # find substring
+Gpick = 27  # special table lookup and insertion
+Gappd = 28  # append string to buffer
+Gget  = 29  # set local  variable from global variable
+Gput  = 30  # set global variable from local  variable
+Gassg = 31  # assign value of local variable to another
+Gque  = 32  # use local variable as a character queue
+Gunio = 33  # set union
+Gintr = 34  # set intersection
+Gcomp = 35  # set complement
+Gobtn = 36  # obtain original text for token
+Gcapt = 37  # capitalize first char in buffer
+Gucpt = 38  # uncapitalize first char in buffer
+Gtrce = 39  # instrumented no op for debugging
+Gshow = 40  # see local variable for debugging
+Gproc = 41  # call procedure
 
-Gerr  =99  # error return value
+Gerr  = 99  # error return value
 
-Glen = {   # command lengths used in dumping generative procedures
+Glen = {    # command lengths used in dumping generative procedures
     Gnoop : 1 ,
     Gretn : 1 ,
     Gfail : 1 ,
@@ -142,7 +142,7 @@ Glen = {   # command lengths used in dumping generative procedures
     Gproc : 2
 }
 
-Gopn = [   # operation names for dumping (must align with 43 numerical codes above)
+Gopn = [    # operation names for dumping (must align with 43 numerical codes above)
     'PASS' , 'RETN' , 'FAIL' , 'LEFT' , 'RGHT' , 'BLNK' ,
     'LNFD' , 'SPLT' , 'BACK' , 'MRGE' , 'CHNG' , 'CHCK' ,
     'NCHK' , 'CHKF' , 'SKIP' , 'DEFV' , 'SETV' , 'PEEK' ,

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# timeTransform.py : 09nov2013 CPM
+# timeTransform.py : 06nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -34,7 +34,6 @@ recognize English time references in text and normalize to 00:00:00zzz form
 
 import ellyChar
 import simpleTransform
-import datetime
 
 Zn = [ # time zones
     u'est' , u'edt' ,
@@ -112,11 +111,11 @@ class TimeTransform(simpleTransform.SimpleTransform):
 
         c = ts[0]          # first char
         if not ellyChar.isDigit(c):
-            k = self._matchAN(ts)
-#           print 'match alphanumeric=' , k
-        else:
-            k = self._matchN(ts)
-#           print 'match numeric=' , k
+            return False   # time can never start with a letter
+                           # because of number transforms
+
+        k = self._matchN(ts)
+#       print 'match numeric=' , k
 
         if k == 0: return False
 
@@ -156,7 +155,7 @@ class TimeTransform(simpleTransform.SimpleTransform):
 #       print 't=' , t
         if len(t) > 0 and ellyChar.isLetterOrDigit(t[0]): return False
 
-        for i in range(k):         # strip matched substring to be rewritten
+        for _ in range(k):         # strip matched substring to be rewritten
             ts.pop(0)
 
         r  = str(self._hr).zfill(2) + u':' + self._m + u':' + self._s + tz
@@ -179,21 +178,6 @@ class TimeTransform(simpleTransform.SimpleTransform):
         """
 
         return self._rwl
-
-    def _matchAN ( self , ts ):
-
-        """
-        apply logic for alphanumeric time recognition
-
-        arguments:
-            self  -
-            ts    - text stream as list of chars
-
-        returns:
-            total number of chars matched
-        """
-
-        return 0
 
     def _matchN ( self , ts ):
 
@@ -314,7 +298,7 @@ if __name__ == '__main__':
 
     import sys
 
-    xs = [                # test examples
+    tdat = [                # test examples
         u'4pm est' ,
         u'4:33 PM' ,
         u'4:33:01 P.M' ,
@@ -330,13 +314,13 @@ if __name__ == '__main__':
 
     if len(sys.argv) > 1: # look for additional test samples as commandline arguments
         sys.argv.pop(0)
-        for t in sys.argv:
-            xs.append(t.decode('utf8'))
+        for tme in sys.argv:
+            tdat.append(tme.decode('utf8'))
 
     te = TimeTransform()  # instantiate time transformation object
-    for x in xs:
-        ts = list(x)      # convert to list
-        stat = te.rewrite(ts)
-        print x , '>>' , u''.join(ts) , '=' , stat
+    for xt in tdat:
+        tst = list(xt)     # convert to list
+        stat = te.rewrite(tst)
+        print xt , '>>' , u''.join(tst) , '=' , stat
         print ''
 

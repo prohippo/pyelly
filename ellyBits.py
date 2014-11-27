@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBits.py : 22oct2013 CPM
+# ellyBits.py : 02nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -40,7 +40,7 @@ hxh = { '0':0 , '1':1 , '2':2 , '3':3 , '4':4 ,  # convert hex digit to integer
         'D':13 , 'E':14 , 'F':15                 #
       }
 
-hex = u'0123456789ABCDEF'  # for converting to hexadecimal
+hxd = u'0123456789ABCDEF'  # for converting to hexadecimal
 
 sel = [ 0200, 0100, 0040, 0020, 0010, 0004, 0002, 0001 ] # define bits in byte
 
@@ -113,7 +113,7 @@ def show ( bs ):
 
     try:
         return ' '.join(map(lambda b: '{:02x}'.format(b),bs))
-    except:
+    except ValueError:
         return '--'
 
 class EllyBits(object):
@@ -125,15 +125,15 @@ class EllyBits(object):
         data  - array for bits
     """
 
-    def __init__ ( self , nbs=nB*N ):
+    def __init__ ( self , nob=nB*N ):
         """
         initialize
         arguments:
             self  -
-            nbs   - number of bits in string
+            nob   - number of bits in string
         """
-#       print 'nbs=' , nbs
-        n = getByteCountFor(nbs)
+#       print 'nob=' , nob
+        n = getByteCountFor(nob)
         self.data = array.array('B',(0,)*n)  # want unsigned char as array element = 'B'
 
     def set ( self , k ):
@@ -257,8 +257,8 @@ class EllyBits(object):
         bs = [ ]
         for b in self.data:
             n,m = divmod(b,16)
-            bs.append(hex[n])
-            bs.append(hex[m])
+            bs.append(hxd[n])
+            bs.append(hxd[m])
             if divide:
                 bs.append(' ')
         return ''.join(bs).rstrip()
@@ -295,50 +295,50 @@ if __name__ == "__main__":
 
     K = 12  # nominal bit count to support in testing (should be > 8)
 
-    bs = EllyBits(K)
-    bs.set(0)
-    bs.set(6)
-    bs.set(11)
+    bbs = EllyBits(K)
+    bbs.set(0)
+    bbs.set(6)
+    bbs.set(11)
 
-    print "bs before:",bs.data,"hex=",bs.hexadecimal()
-    bt = EllyBits(K)
-    bt.set(9)
-    print "bt before:",bt.data,"hex=",bt.hexadecimal()
-    bs.combine(bt)
-    print "bs combined with bs:",bs.data,"hex=",bs.hexadecimal()
+    print "bbs before:" , bbs.data , "hex=" , bbs.hexadecimal()
+    bbt = EllyBits(K)
+    bbt.set(9)
+    print "bbt before:" , bbt.data , "hex=" , bbt.hexadecimal()
+    bbs.combine(bbt)
+    print "bbs combined with bbs:" , bbs.data , "hex=" , bbs.hexadecimal()
 
-    print "test bit  9 of bs",bs.test(9)
-    print "test bit 10 of bs",bs.test(10)
-    print "test bit 11 of bs",bs.test(11)
+    print "test bit  9 of bbs" , bbs.test(9)
+    print "test bit 10 of bbs" , bbs.test(10)
+    print "test bit 11 of bbs" , bbs.test(11)
 
-    cbs = bs.compound()
-    print "compound bs=",type(cbs),show(cbs)
-    ps = EllyBits(K)
-    ns = EllyBits(K)
-    ps.set(6)
-    ns.set(7)
-    print 'ps=', ps.hexadecimal()
-    print 'ns=', ns.hexadecimal()
-    tbs = join(ps,ns)
-    print "join ps, ns=",type(tbs),show(tbs)
+    cbs = bbs.compound()
+    print "compound bbs=" , type(cbs) , show(cbs)
+    pbs = EllyBits(K)
+    nbs = EllyBits(K)
+    pbs.set(6)
+    nbs.set(7)
+    print 'pbs=' , pbs.hexadecimal()
+    print 'nbs=' , nbs.hexadecimal()
+    tbs = join(pbs,nbs)
+    print "join pbs, nbs=" , type(tbs) , show(tbs)
 
     print 'check compound versus join=' , check(cbs,tbs)
 
-    print "current   bs",bs.data,"hex=",bs.hexadecimal()
-    bs.complement()
-    print "complemented",bs.data,"hex=",bs.hexadecimal()
-    bs.clear()
-    print "cleared   bs",bs.data,"hex=",bs.hexadecimal()
+    print "current   bbs" , bbs.data , "hex=" , bbs.hexadecimal()
+    bbs.complement()
+    print "complemented " , bbs.data , "hex=" , bbs.hexadecimal()
+    bbs.clear()
+    print "cleared   bbs" , bbs.data , "hex=" , bbs.hexadecimal()
 
-    ps.set(7)
-    print 'comparing x=' , ps.hexadecimal() , 'and y=' , ns.hexadecimal()
-    print 'x equal y:' , ps.equal(ns)
-    print 'x match y:' , ps.match(ns)
-    print 'y match x:' , ns.match(ps)
-    ns.set(6)
-    print 'z=' , ns.hexadecimal()
-    print 'x match z`:' , ps.equal(ns)
+    pbs.set(7)
+    print 'comparing x=' , pbs.hexadecimal() , 'and y=' , nbs.hexadecimal()
+    print 'x equal y:' , pbs.equal(nbs)
+    print 'x match y:' , pbs.match(nbs)
+    print 'y match x:' , nbs.match(pbs)
+    nbs.set(6)
+    print 'z=' , nbs.hexadecimal()
+    print 'x match z:' , pbs.equal(nbs)
 
-    bs.reinit('FFEE')
-    print 'set bs to FFEE'
-    print "bs:",bs.data,"hex=",bs.hexadecimal()
+    bbs.reinit('FFEE')
+    print 'set bbs to FFEE'
+    print "bbs:" , bbs.data , "hex=" , bbs.hexadecimal()

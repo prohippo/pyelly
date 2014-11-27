@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyDefinitionReader.py : 19dec2013 CPM
+# ellyDefinitionReader.py : 02nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -151,23 +151,23 @@ class EllyDefinitionReader(object):
 #           print "from file", source
 
             try:
-                input = codecs.open(source,"r","utf-8") # open UTF-8 file to get text
-#               print input
+                inpt = codecs.open(source,"r","utf-8") # open UTF-8 file to get text
+#               print inpt
             except IOError as e:
                 self.error = e
                 return
 
             try:
                 while True:
-                    l = input.readline()
-#                   print '++ ', l.strip(), '=' , len(l) , type(l)
-                    if len(l) == 0: break          # EOF check
-                    if len(l) == 1: continue       # skip lines with only "\n"
-                    self.save(l)                   # add line to input
+                    ls = inpt.readline()
+#                   print '++ ', ls.strip(), '=' , len(ls) , type(ls)
+                    if len(ls) == 0: break          # EOF check
+                    if len(ls) == 1: continue       # skip lines with only "\n"
+                    self.save(ls)                   # add line to input
             except IOError as e:
                 self.error = e
 
-            input.close()       # close file after filling buffer
+            inpt.close()      # close file after filling buffer
 
     def readline ( self ):
 
@@ -264,6 +264,6 @@ if __name__ == "__main__":
     inp.dump()
     print '----'
     while True:
-        l = inp.readline()
-        if len(l) == 0: break
-        print ">>[" + l + "]"
+        ll = inp.readline()
+        if len(ll) == 0: break
+        print ">>[" + ll + "]"

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# interpretiveContext.py : 30jul2014 CPM
+# interpretiveContext.py : 10nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -34,8 +34,6 @@ their output into a single stream
 """
 
 import sys
-import symbolTable
-import grammarTable
 import conceptualWeighting
 
 deletion = '_d_'  # where to save deletions
@@ -339,18 +337,18 @@ class InterpretiveContext(object):
         bs = self.buffs
         k = len(bs) - 1
         while k > n:
-            b = bs.pop()            # merge all newer buffers
-            bs[k-1].extend(b)       #
+            b = bs.pop()             # merge all newer buffers
+            bs[k-1].extend(b)        #
             k -= 1
-        bn = bs.pop()               # is now immediately next buffer
-        bc = bs[-1]                 # current one
-        while len(bn) >= ln:        # match is still possible?
-            if t == bn[:ln]:        # compare chars
-               bn = bn[ln:]         # on match, remove those chars
-               bc.extend(s)         # and put replacement in current buffer
+        bn = bs.pop()                # is now immediately next buffer
+        bc = bs[-1]                  # current one
+        while len(bn) >= ln:         # match is still possible?
+            if t == bn[:ln]:         # compare chars
+                bn = bn[ln:]         # on match, remove those chars
+                bc.extend(s)         # and put replacement in current buffer
             else:
-               bc.append(bn.pop(0)) # no match; move 1 char from next to current buffer
-        bc.extend(bn)               # move remaining chars from next to current one
+                bc.append(bn.pop(0)) # no match; move 1 char from next to current buffer
+        bc.extend(bn)                # move remaining chars from next to current one
 
     def deleteCharsFromBuffer ( self , n=1 ):
 
@@ -453,7 +451,7 @@ class InterpretiveContext(object):
         self.insertCharsIntoBuffer(s,1) # insert into next
         self.buffn += 1                 # next becomes current again
 
-    def insertCharsIntoBuffer ( self , s , dir=0 ):
+    def insertCharsIntoBuffer ( self , s , dirn=0 ):
 
         """
         insert specified chars in current or next buffer
@@ -461,10 +459,10 @@ class InterpretiveContext(object):
         arguments:
             self  -
             s     - chars in string
-            dir   - direction (0= current, 1= next)
+            dirn  - direction (0= current, 1= next)
         """
 
-        if dir == 0:
+        if dirn == 0:
             b = self.buffs[self.buffn]
             b.extend(list(s))
         else:
@@ -542,7 +540,7 @@ class InterpretiveContext(object):
         if n < 0:
             n = -n
             if k == len(self.buffs):
-                self.buffs.push([ ])
+                self.buffs.append([ ])
             bs = self.buffs[k-1]
             bd = self.buffs[k]
             l = len(bs)
@@ -559,21 +557,21 @@ class InterpretiveContext(object):
             self.buffs[k-1].extend(bs[:n]) 
             self.buffs[k] = bs[n:]
 
-    def peekIntoBuffer ( self , next=True ):
+    def peekIntoBuffer ( self , nxtb=True ):
 
         """
         look at last char in current or first char in next buffer without disturbing it
 
         arguments:
             self  -
-            next  - selects next buffer
+            nxtb  - selects next buffer
 
         returns:
             peeked char if it exists, otherwise ''
         """
 
         c = ''
-        if next:
+        if nxtb:
             k = self.buffn + 1
             if k < len(self.buffs):
                 b = self.buffs[k]
@@ -657,7 +655,7 @@ class InterpretiveContext(object):
             integer importance score
         """
 
-        return self.wghtg.getImportance(cn)
+        return self.wghtg.interpretConcept(cn)
 
     def relateConceptPair ( self , cna , cnb ):
 
@@ -673,7 +671,7 @@ class InterpretiveContext(object):
             integer relatedness score
         """
 
-        return self.wghtg.getRelatedness(cna,cnb)
+        return self.wghtg.relateConceptPair(cna,cnb)
 
     def pushStack ( self ):
 
@@ -705,18 +703,21 @@ class InterpretiveContext(object):
             if len(stk) == 0:
                 del self.locls[v] # if all values gone, remove empty list
 
-    def printStatus ( self ):
+    def printStatus ( self , pnam='' ):
 
         """
         show where current stack and buffer are
 
         arguments:
-            self
+            self  -
+            pnam  - procedure name to report
         """
 
-        print >> sys.stderr, 'stk=' + str(len(self.lbstk)) ,
-        print >> sys.stderr, 'buf=' + str(len(self.buffs)) ,
-        print >> sys.stderr, ' (' +  str(len(self.buffs[self.buffn])) + ' chars)'
+        print >> sys.stderr , 'stk=' + str(len(self.lbstk)) ,
+        if pnam != '':
+            print >> sys.stderr , 'in (' + pnam + ')' ,
+        print >> sys.stderr , 'buf=' + str(len(self.buffs)) ,
+        print >> sys.stderr , '(' +  str(len(self.buffs[self.buffn])) + ' chars)'
 
     def echoTokensToOutput ( self ):
 

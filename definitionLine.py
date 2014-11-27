@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# definitionLine.py : 25aug2014 CPM
+# definitionLine.py : 02nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -36,13 +36,13 @@ spc = u' '  # space char
 lbr = u'['  # left  bracket
 rbr = u']'  # right
 
-def normalize ( str ):
+def normalize ( strg ):
 
     """
     drop extra spaces in line
 
     arguments:
-        str   - string string
+        strg   - string string
 
     returns:
         input without extra spaces
@@ -52,11 +52,7 @@ def normalize ( str ):
 
     f = False                 # in-brackets flag
 
-    k = 0
-    ln = len(str)
-    while k < ln:             # check each input char in succession
-        c = str[k]            # 
-        k += 1
+    for c in strg:            # check each input char in succession
         if c == spc:
             if f or s[-1] == spc:
                 continue      # keep only single spaces and only outside of [ ]

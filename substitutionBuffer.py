@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# substitutionBuffer.py : 15oct2014 CPM
+# substitutionBuffer.py : 03nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -88,7 +88,7 @@ class SubstitutionBuffer(
         limit = 2*len(self.buffer)       # maximum expansion allowed
 
         while True:
-#           print 'buffer=' , self.buffer
+#           print 'substitution buffer=' , self.buffer
             to = self.sup.getNext()      # get the next token with parent method first
                                          #   (for side effects)
             if to == None: return None   # stop on end of input
@@ -99,7 +99,7 @@ class SubstitutionBuffer(
             if len(self.buffer) > limit: # to avoid infinite expansion
                 return None
 
-#       print 'buffer=' , self.buffer
+#       print 'substitution buffer=' , self.buffer , '[*]'
         return self.sup.getNext()        # then get next token
 
     def _expand ( self ):
@@ -193,7 +193,7 @@ class SubstitutionBuffer(
                     if k < mbl:
                         r = mbd[k]   # get bind record
                         ob.extend(self.buffer[r[0]:r[1]]) # add bound chars to output
-                except:
+                except ValueError:
                     ob.append(ellyChar.SPC)               # otherwise treat as spac
                 mr += 1              # skip over char after \
             else:
@@ -224,14 +224,15 @@ class SubstitutionBuffer(
 
 if __name__ == "__main__":
 
-    import ellyDefinitionReader
     import sys
+    import ellyDefinitionReader
+    import ellyException
 
-    base = ellyConfiguration.baseSource + '/'
-    file = sys.argv[1] if len(sys.argv) > 1 else 'test'
-    mrdr = ellyDefinitionReader.EllyDefinitionReader(base + file + '.m.elly')
+    basn = ellyConfiguration.baseSource + '/'
+    filn = sys.argv[1] if len(sys.argv) > 1 else 'test'
+    mrdr = ellyDefinitionReader.EllyDefinitionReader(basn + filn + '.m.elly')
 
-    print "loading rules for" , file
+    print "loading rules for" , filn
 
     if mrdr.error != None:
         print >> sys.stderr , mrdr.error

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# entityExtractor.py : 09nov2013 CPM
+# entityExtractor.py : 05nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -103,10 +103,10 @@ if __name__ == '__main__':
     import sys
 
     print 'test entity extraction'
-    tre = parseTest.Tree()
-    ctx = parseTest.Context()
+    utre = parseTest.Tree()
+    uctx = parseTest.Context()
 
-    ee = EntityExtractor(tre,ctx)
+    ee = EntityExtractor(utre,uctx)
     print 'procedures='
     for e in ee.exs:
         print e
@@ -117,9 +117,9 @@ if __name__ == '__main__':
         l = sys.stdin.readline()
         if len(l) <= 1: break
         b = list(l)
-        m = ee.run(b)
-        print 'm=' , m
-        if m > 0:
-            print tre.lastph
+        mn = ee.run(b)
+        print 'mn=' , mn
+        if mn > 0:
+            print utre.lastph
             print 'new buffer:' , b
     sys.stdout.write('\n')

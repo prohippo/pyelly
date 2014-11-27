@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyMain.py : 05sep2014 CPM
+# ellyMain.py : 06nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -91,10 +91,7 @@ for gv in globs:                       # initialize global variables
     ix += 1
 
 if dl >= 0:                            # check for specific depth limit
-    try:
-        eb.ptr.setDepth(dl)            # if so, try to set it
-    except:
-        print >> sys.stderr , 'cannot set parse tree display depth'
+    eb.ptr.setDepth(dl)                # if so, set it
 
 base = ellyConfiguration.baseSource + '/'
 sent = base + system + '.sx.elly'      # get stop punctuation exceptions

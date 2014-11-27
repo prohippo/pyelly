@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveDefiner.py : 04sep2014 CPM
+# cognitiveDefiner.py : 05nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -108,7 +108,7 @@ def _leftside ( stb , txt ):
         side = txt[0]
         txt = txt[1:].lstrip()
         if len(txt) == 0:
-            return _err('malformed clause condition')
+            _err('malformed clause condition')
             return None
 
         k = 0
@@ -216,8 +216,8 @@ def _rightside ( stb , txt ):
         elif ellyChar.isDigit(txt[1]):
             try:
                 val = int(txt[1:])   # explicit numerical change
-            except:
-                return _err('bad cognitive plausibility ' + txt + ' ' + str(inc))
+            except ValueError:
+                return _err('bad cognitive plausibility: ' + txt)
         elif c == txt[1]:            # alternate notation for plausibility change
             val = 2
             for xc in txt[2:]:
@@ -284,25 +284,24 @@ def showCode ( cod ):
 
 if __name__ == "__main__":
 
-    import sys
     import ellyDefinitionReader
     import symbolTable
 
-    stb = symbolTable.SymbolTable()
+    ustb = symbolTable.SymbolTable()
 
-    src = sys.argv[1] if len(sys.argv) > 1 else 'cognitiveDefinerTest.txt'
+    usrc = sys.argv[1] if len(sys.argv) > 1 else 'cognitiveDefinerTest.txt'
 
-    inp = ellyDefinitionReader.EllyDefinitionReader(src)
+    uinp = ellyDefinitionReader.EllyDefinitionReader(usrc)
 
-    if inp.error != None:
-        print >> sys.stderr, inp.error
+    if uinp.error != None:
+        print >> sys.stderr, uinp.error
         sys.exit(1)
 
-    cod = convertDefinition(stb,inp)
-    if cod == None:
+    ucod = convertDefinition(ustb,uinp)
+    if ucod == None:
         print >> sys.stderr, "conversion error"
         sys.exit(1)
 
-    print len(cod),"clauses from" , src
+    print len(ucod),"clauses from" , usrc
 
-    showCode(cod)
+    showCode(ucod)

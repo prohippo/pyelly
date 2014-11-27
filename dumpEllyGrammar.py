@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# dumpEllyGrammar.py : 28jul2014 CPM
+# dumpEllyGrammar.py : 06nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -136,21 +136,21 @@ def dumpFeatures ( stb ):
         fids = fs.keys()
         nols = len(fids)
         for i in range(nols):
-            id = fids[i]
-            fl = fs[id].keys()
+            idn = fids[i]
+            fl = fs[idn].keys()
             print '[{0:2}] {1} '.format(i,id) ,
             for f in fl:
                 print f + ' ' ,
             print ""
 
-def dumpSubprocedures ( index , all ):
+def dumpSubprocedures ( index , full ):
 
     """
     show standalone procedures
 
     arguments:
         index  - procedure index
-        all    - flag for full dump
+        full   - flag for full dump
     """
 
     print ""
@@ -161,8 +161,8 @@ def dumpSubprocedures ( index , all ):
     for p in lps:
         print ""
         print p
-        if all:
-            generativeDefiner.showCode(index[p].logic);
+        if full:
+            generativeDefiner.showCode(index[p].logic)
 
 def showMask ( msk ):
 
@@ -190,13 +190,12 @@ def showMask ( msk ):
 
     return ''.join(sb)
 
-def showProcedures ( stb , r ):
+def showProcedures ( r ):
 
     """
     show semantic procedures for rule
 
     arguments:
-        stb  - symbol table
         r    - rule
     """
 
@@ -205,10 +204,10 @@ def showProcedures ( stb , r ):
         cognitiveDefiner.showCode(r.cogs.logic)
     print '  ** generative'
     if r.gens != None:
-        generativeDefiner.showCode(r.gens.logic);
+        generativeDefiner.showCode(r.gens.logic)
     print ''
 
-def dumpSplits ( stb , splits , all ):
+def dumpSplits ( stb , splits , full ):
 
     """
     show 2-branch rules
@@ -216,7 +215,7 @@ def dumpSplits ( stb , splits , all ):
     arguments: 
         stb    - symbol table
         splits - listing of 2-branch rules
-        all    - flag for full dump
+        full   - flag for full dump
     """
 
     print ""
@@ -226,7 +225,7 @@ def dumpSplits ( stb , splits , all ):
     no = 0
     for i in range(len(splits)):
         rv = splits[i]
-        k = len(rv);
+        k = len(rv)
         if k == 0:
             continue
 
@@ -240,13 +239,13 @@ def dumpSplits ( stb , splits , all ):
             print ty + ' ' + showMask(r.ltfet) + ' ' ,
             print stb.ntname[r.rtyp] + ' ' + showMask(r.rtfet)
 
-            if all: showProcedures(stb,r)
+            if full: showProcedures(r)
 
         no += k
 
     print no , "2-branch rules"
 
-def dumpExtensions ( stb, extens , all ):
+def dumpExtensions ( stb, extens , full ):
 
     """
     show 1-branch rules
@@ -254,7 +253,7 @@ def dumpExtensions ( stb, extens , all ):
     arguments:
         stb    - symbol table
         extens - listing of 1-branch rules
-        all    - flag for full dump
+        full   - flag for full dump
     """
 
     print ''
@@ -277,13 +276,13 @@ def dumpExtensions ( stb, extens , all ):
             print '[{}]->'.format(r.sfet.hexadecimal(False)) ,
             print ty + ' ' + showMask(r.utfet) 
 
-            if all: showProcedures(stb,r)
+            if full: showProcedures(r)
 
         no += k
 
     print no , "1-branch rules"
 
-def dumpDictionary ( stb, dctn , all ):
+def dumpDictionary ( stb, dctn , full ):
 
     """
     dump grammar dictionary
@@ -291,7 +290,7 @@ def dumpDictionary ( stb, dctn , all ):
     arguments:
         stb   - symbol table
         dctn  - dictionary
-        all   - flag for full dump
+        full  - flag for full dump
     """
 
     print ''
@@ -315,8 +314,8 @@ def dumpDictionary ( stb, dctn , all ):
             print '[{}]->'.format(dr.sfet.hexadecimal(False)) ,
             print '"' + w + '"'
 
-            if all: showProcedures(stb,dr)
+            if full: showProcedures(dr)
 
-        no += k;
+        no += k
 
     print len(dctn) , 'unique words in' , no , "entries"

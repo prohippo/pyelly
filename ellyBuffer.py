@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBuffer.py : 28jul2014 CPM
+# ellyBuffer.py : 02nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -28,6 +28,10 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 # -----------------------------------------------------------------------------
 
+"""
+an input buffer class for Elly language analysis
+"""
+
 import ellyChar
 import ellyToken
 
@@ -43,10 +47,6 @@ DSH = u'--'                       # dash
 ELP = u'...'                      # ellipsis
 SPH = u' -'                       # space + hyphen
 APO = ellyChar.APO                # apostrophe literal
-
-"""
-an input buffer class for language analysis
-"""
 
 def normalize ( s ):
 
@@ -197,14 +197,14 @@ class EllyBuffer(object):
         self._reset()
         return s
 
-    def find ( self , set , skip=0 ):
+    def find ( self , chs , skip=0 ):
 
         """
         look for one of a set of chars in buffer
 
         arguments:
             self  -
-            set   - string of chars to look for
+            chs   - string of chars to look for
             skip  - how many chars to skip in buffer
 
         returns:
@@ -216,7 +216,7 @@ class EllyBuffer(object):
             return -1                         # if so, fail
 
         for i in range(skip,n):
-            if set.find(self.buffer[i]) >= 0: # is buffer char in set?
+            if chs.find(self.buffer[i]) >= 0: # is buffer char in set?
                 self.index = i                # if so, note buffer position
                 return i
 
@@ -634,7 +634,7 @@ if __name__ == '__main__':
     while eb.count() > 0: # extract consecutive text elements from buffer
 
         eb.skipSpaces()
-        n = eb.findBreak()
-        if n == 0: n = 1
-        t = eb.extract(n)
-        print 'extract' , n , 'chars leaving' , eb.count() , ':' , t
+        ncs = eb.findBreak()
+        if ncs == 0: ncs = 1
+        tk = eb.extract(ncs)
+        print 'extract' , ncs , 'chars leaving' , eb.count() , ':' , tk

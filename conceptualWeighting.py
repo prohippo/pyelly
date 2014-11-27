@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# conceptualWeighting.py : 08aug2014 CPM
+# conceptualWeighting.py : 04nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -36,7 +36,7 @@ concepts seen in current discourse
 
 import conceptualHierarchy
 
-NNC=12  # nominal number of concepts to list in context profile
+NNC = 12  # nominal number of concepts to list in context profile
 
 class ConceptualWeighting(object):
 
@@ -78,9 +78,9 @@ class ConceptualWeighting(object):
             self
         """
 
-        kys = index.keys()   # all concepts being tracked
+        kys = self.index.keys()         # all concepts being tracked
         if len(self.topcs) > NNC and self.minmm < self.maxmm:
-            self.minmm += 1  # be more selective
+            self.minmm += 1             # be more selective
         topcs = [ ]
         for ky in kys:
             n = self.index[ky]          # count for next concept
@@ -217,12 +217,12 @@ if __name__ == '__main__':
         line = si.readline()
         l = line.decode('utf8')
         if len(l) == 0 or l[0] == '\n': break
-        k = 0
-        while l[k] == ' ': k += 1
-        while l[k] != ' ': k += 1
-        a = l[:k].strip().upper()
-        b = l[k:].strip().upper()
-        r = wt.relateConceptPair(a,b)
-        so.write(a + ":" + b + ", relatedness=" + str(r) +
+        ki = 0
+        while l[ki] == ' ': ki += 1
+        while l[ki] != ' ': ki += 1
+        a = l[:ki].strip().upper()
+        b = l[ki:].strip().upper()
+        arb = wt.relateConceptPair(a,b)
+        so.write(a + ":" + b + ", relatedness=" + str(arb) +
                  ' @' + str(wt.getIntersection()) + "\n")
         so.write('> ')

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# exoticPunctuation.py : 05jun2013 CPM
+# exoticPunctuation.py : 06nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -38,17 +38,17 @@ space = u' '        # literal space
 
 def recognized ( char ):
 
-        """
-        check whether punctuation is covered by this class
+    """
+    check whether punctuation is covered by this class
 
-        arguments:
-            char  - candidate punctuation
+    arguments:
+        char  - candidate punctuation
 
-        returns:
-            True if recognized, False otherwise
-        """
+    returns:
+        True if recognized, False otherwise
+    """
     
-        return (base.find(char) >= 0)
+    return (base.find(char) >= 0)
 
 def normalize ( char , inp ):
 

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeProcedure.py : 10oct2014 CPM
+# generativeProcedure.py : 10nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -33,7 +33,6 @@ generative semantic procedure with run() method
 """
 
 import sys
-import ellyChar
 import semanticCommand
 import generativeDefiner
 import conceptualHierarchy
@@ -45,22 +44,22 @@ class Code(object):
     iteration on list of commands defining a semantic procedure with jumps
 
     attributes:
-        list  - the list
-        index - keeping track of where we are
+        lstg  - the list
+        indx  - keeping track of where we are
     """
 
-    def __init__ ( self , list ):
+    def __init__ ( self , lstg ):
 
         """
         initialize
 
         arguments:
             self  -
-            list  - to iterate on
+            lstg  - to iterate on
         """
 
-        self.list = list
-        self.index = 0
+        self.lstg = lstg
+        self.indx = 0
 
     def next ( self ):
 
@@ -71,14 +70,14 @@ class Code(object):
             self
 
         returns:
-            next element on success, semanticCommand.Gretn  otherwise
+            next element on success, semanticCommand.Gretn otherwise
         """
 
-        if self.index >= len(self.list):
+        if self.indx >= len(self.lstg):
             return semanticCommand.Gretn 
         else:
-            x = self.list[self.index]
-            self.index += 1
+            x = self.lstg[self.indx]
+            self.indx += 1
             return x
 
     def skip ( self ):
@@ -90,10 +89,11 @@ class Code(object):
             self  -
         """
 
-        self.index = self.list[self.index]
+        self.indx = self.lstg[self.indx]
 
 BAD  = -11111  # bias for phrase with failed generative semantics
 LSTJ = ','     # substring for joining substrings in list value
+PNAM = '_pnam' # variable for last procedure call in local stack
   
 class GenerativeProcedure(object):
 
@@ -176,7 +176,7 @@ class GenerativeProcedure(object):
                         ru.bias = 0  #   to zero
         return True
 
-    def run ( self , cntx , phrs ):
+    def run ( self , cntx , phrs , pnam=None ):
 
         """
         execute a generative procedure in context
@@ -185,6 +185,7 @@ class GenerativeProcedure(object):
             self  -
             cntx  - interpretive context
             phrs  - phrase to which procedure is attached
+            pnam  - procedure name to associate with call
 
         returns:
             True on success, False otherwise
@@ -199,6 +200,9 @@ class GenerativeProcedure(object):
 #       print 'run semantics for phr' , phrs.seqn , 'rule=' , phrs.rule.seqn
 
         cntx.pushStack()        # ready for any local variables
+#       print 'pnam=' , pnam
+        if pnam != None:        # save any procedure name for TRACE
+            cntx.defineLocalVariable(PNAM,pnam)
         code = Code(self.logic) # get code of procedure to run
 
 #       generativeDefiner.showCode(self.logic)
@@ -284,7 +288,7 @@ class GenerativeProcedure(object):
             elif op == semanticCommand.Gpeek:
                 var = code.next()
                 sns = code.next()
-                val = cntx.peekIntoBuffer(next=sns)
+                val = cntx.peekIntoBuffer(nxtb=sns)
                 cntx.setLocalVariable(var,val)
             elif ( op == semanticCommand.Gset  or
                    op == semanticCommand.Gextl or
@@ -419,28 +423,30 @@ class GenerativeProcedure(object):
                 c = cntx.extractCharsFromBuffer()
                 if c != '':
                     cntx.insertCharsIntoBuffer(c.lower(),1)
-            elif op == semanticCommand.Gtrce:  # show phrase information to trace execution
+            elif op == semanticCommand.Gtrce:  # show phrase info to trace execution
                 cat = cntx.syms.getSyntaxTypeName(phrs.typx)
                 brn = "1" if type(phrs.rule) == grammarRule.ExtendingRule else "2"
+                pnam = cntx.getLocalVariable(PNAM)
                 print >> sys.stderr, "TRACE @" + str(phrs.posn) + " type=" + cat ,
                 print >> sys.stderr, "rule=" + str(phrs.rule.seqn) ,
-                print >> sys.stderr, " (" + brn + "-br)" ,
-                cntx.printStatus()
+                print >> sys.stderr, "(" + brn + "-br)" ,
+                cntx.printStatus(pnam)
             elif op == semanticCommand.Gshow:   # show local variable
                 vr = code.next()
                 ms = code.next()
                 st = cntx.getLocalVariable(vr)
-                print >> sys.stderr, u'SHOW @phr' , phrs.seqn, u': ' + ms
+                print >> sys.stderr, u'SHOW @phr' , phrs.seqn, u': [' + ms + ' ]' ,
                 print >> sys.stderr, u'VAR ' + vr + u'= [' + st + u']'
             elif op == semanticCommand.Gproc:  # semantic subprocedure
                 name = code.next()
+#               print >> sys.stderr , 'run procedure (' + name + ')'
                 if name == '': continue        # null procedure is no operation`
                 proc = cntx.getProcedure(name)
                 if proc == None:
                     print >> sys.stderr , 'unknown subprocedure name' , name
                     status = False
                 else:
-                    status = proc.run(cntx,phrs)
+                    status = proc.run(cntx,phrs,name)
             else:
                 print >> sys.stderr , GenerativeProcedure._error , 'op=' , op
                 status = False
@@ -448,9 +454,9 @@ class GenerativeProcedure(object):
         cntx.popStack()  # undefine local variables for procedure
         return status
 
-"""
-unit testing from file input
-""" 
+#
+# unit testing from file input
+#
     
 if __name__ == "__main__":
 
@@ -465,13 +471,13 @@ if __name__ == "__main__":
 
     args = sys.argv[1:] if len(sys.argv) > 1 else [ 'testProcedure.0.txt' ]
 
-    for src in args:                       # test all specified input files
+    for srcn in args:                      # test all specified input files
         ctx.clearLocalStack()              # reset context
         ctx.clearBuffers()
-        print "------------" , src
-        inp = ellyDefinitionReader.EllyDefinitionReader(src)
+        print "------------" , srcn
+        inp = ellyDefinitionReader.EllyDefinitionReader(srcn)
         if inp.error != None:              # check if input readable
-            print >> sys.stderr, "cannot read procedure definition" , src
+            print >> sys.stderr, "cannot read procedure definition" , srcn
             print >> sys.stderr, inp.error
             continue
         for ln in inp.buffer:              # echo input file

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 22oct2014 CPM
+# ellyWildcard.py : 02nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -54,35 +54,35 @@ def isWild ( c ):
 #   print 'Xc=' , Xc , '(' + str(ord(Xc)) + ')'
     return (c >= Xc)
 
-cANY=unichr(X+1 ) # match any char
-cCAN=unichr(X+2 ) # match nonalphanumeric char
-cDIG=unichr(X+3 ) # match any digit
-cALF=unichr(X+4 ) # match any letter
-cUPR=unichr(X+5 ) # match any uppercase letter
-cVWL=unichr(X+6 ) # match any vowel
-cCNS=unichr(X+7 ) # match any consonant
-cALL=unichr(X+8 ) # match any character sequence, including empty
-cSAN=unichr(X+9 ) # match any sequence of 1 or more alphanumeric
-cSDG=unichr(X+10) # match any sequence of 1 or more digits
-cSAL=unichr(X+11) # match any sequence of 1 or more letters
-cSOS=unichr(X+12) # start of optional sequence
-cEOS=unichr(X+13) # end of optional sequence
-cSPC=unichr(X+14) # match any space
-cEND=unichr(X+15) # match end of token
+cANY = unichr(X+1 ) # match any char
+cCAN = unichr(X+2 ) # match nonalphanumeric char
+cDIG = unichr(X+3 ) # match any digit
+cALF = unichr(X+4 ) # match any letter
+cUPR = unichr(X+5 ) # match any uppercase letter
+cVWL = unichr(X+6 ) # match any vowel
+cCNS = unichr(X+7 ) # match any consonant
+cALL = unichr(X+8 ) # match any character sequence, including empty
+cSAN = unichr(X+9 ) # match any sequence of 1 or more alphanumeric
+cSDG = unichr(X+10) # match any sequence of 1 or more digits
+cSAL = unichr(X+11) # match any sequence of 1 or more letters
+cSOS = unichr(X+12) # start of optional sequence
+cEOS = unichr(X+13) # end of optional sequence
+cSPC = unichr(X+14) # match any space
+cEND = unichr(X+15) # match end of token
 
 ## special pattern input characters to be interpreted as wildcards for matching
 
-wANY=u'?'    # to match any alphanumeric character
-wDIG=u'#'    # to match digit
-wALF=u'@'    # to match alphabetic
-wUPR=u'!'    # to match upper case alphabetic
-wVWL=u'^'    # to match vowel
-wCNS=u'%'    # to match consonant
-wSPC=u'_'    # to match space char
-wCAN=u'~'    # to match nonalphanumeric
-wALL=u'*'    # to match any substring
-wSPN=u'&'    # to match one or more characters of next wildcard type
-wEND=u'$'    # to match end of token
+wANY = u'?'    # to match any alphanumeric character
+wDIG = u'#'    # to match digit
+wALF = u'@'    # to match alphabetic
+wUPR = u'!'    # to match upper case alphabetic
+wVWL = u'^'    # to match vowel
+wCNS = u'%'    # to match consonant
+wSPC = u'_'    # to match space char
+wCAN = u'~'    # to match nonalphanumeric
+wALL = u'*'    # to match any substring
+wSPN = u'&'    # to match one or more characters of next wildcard type
+wEND = u'$'    # to match end of token
 
 ## encoding of wildcards
 
@@ -372,11 +372,11 @@ def match ( patn , text , offs=0 , limt=None ):
         uf.bnds  = mbi
         return uf
 
-    def _span ( type ):
+    def _span ( typw ):
         """
         count chars available for wildcard match
         arguments:
-            type - wildcard
+            typw - wildcard
         returns:
             non-negative count
         """
@@ -389,7 +389,7 @@ def match ( patn , text , offs=0 , limt=None ):
         mx = ellyChar.findBreak(text,offs) - k # max span reduced by exclusion
         if mx < 0: return -1                   # cannot match if max span < 0
 
-        tfn = Matching[type]                   # char type matching a wildcard
+        tfn = Matching[typw]                   # char type matching a wildcard
 
 #       print "text at",offs,"maximum wildcard match=",mx
 
@@ -612,13 +612,12 @@ def match ( patn , text , offs=0 , limt=None ):
 if __name__ == "__main__":
 
     import sys
-    import ellyToken
 
     if len(sys.argv) < 2:
         print "usage: X pattern"
         sys.exit(0)
 
-    print "pat=",sys.argv[1]
+    print "pat=" , sys.argv[1]
 
     pattern = convert(sys.argv[1])
 
@@ -632,14 +631,14 @@ if __name__ == "__main__":
         except KeyboardInterrupt:
             break
 
-        text = list(unicode(line.rstrip()))
-        if len(text) == 0: break
-        print "text=",text
-        b = match(pattern,text,0)
+        txt = list(unicode(line.rstrip()))
+        if len(txt) == 0: break
+        print "text=" , txt
+        b = match(pattern,txt,0)
 
         if b != None:
             n = b.pop(0)
-            print n,"chars matched"
+            print n , "chars matched"
             while len(b) > 0:
                 r = b.pop(0)
                 print r

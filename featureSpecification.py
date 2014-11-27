@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# featureSpecification.py : 06sep2014 CPM
+# featureSpecification.py : 04nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -39,21 +39,21 @@ import symbolTable
 
 LAST = symbolTable.FMAX - 1  # for reserved bit
 
-def scan ( str ):
+def scan ( strg ):
 
     """
     check for extent of feature specification
 
     arguments:
-        str  - string of chars to scan
+        strg  - string of chars to scan
 
     returns:
         char count > 0 on finding possible feature specification, 0 otherwise
     """
 
-    if str[0] != '[':
+    if strg[0] != '[':
         return 0
-    n = str.find(']')
+    n = strg.find(']')
     return n + 1 if n > 0 else 0
 
 class FeatureSpecification(object):
@@ -160,38 +160,36 @@ class FeatureSpecification(object):
 
 if __name__ == '__main__':
 
-    import sys
-
     stb = symbolTable.SymbolTable()
     try:
         s = "[!a,-b,c,+d,-e]"
-        fs = FeatureSpecification(stb,s)       # syntactic features
-        print 'fs=' , fs , 'for' , s
-        fs = FeatureSpecification(stb,s,True)  # semantic  features
-        print 'fs=' , fs , 'for' , s
+        fes = FeatureSpecification(stb,s)       # syntactic features
+        print 'fes=' , fes , 'for' , s
+        fes = FeatureSpecification(stb,s,True)  # semantic  features
+        print 'fes=' , fes , 'for' , s
         t = "[:x,y]"
-        ft = FeatureSpecification(stb,t,True)  # semantic  features
-        print 'ft=' , ft , 'for' , t
-        ft = FeatureSpecification(stb,t,False) # syntactic features
-        print 'ft=' , ft , 'for' , t
+        fet = FeatureSpecification(stb,t,True)  # semantic  features
+        print 'fet=' , fet , 'for' , t
+        fet = FeatureSpecification(stb,t,False) # syntactic features
+        print 'fet=' , fet , 'for' , t
         u = ''
-        fu = FeatureSpecification(None)
-        print 'fu=' , fu , 'for' , "''"
+        feu = FeatureSpecification(None)
+        print 'feu=' , feu , 'for' , "''"
         v = "[:x"
-        fv = FeatureSpecification(stb,v)       # syntactic features
+        fev = FeatureSpecification(stb,v)       # syntactic features
         print "should never get here!"
     except ellyException.FormatFailure:
-        print 'exception: bad format'
+        print 'exception: bad format= [' , v , ']'
     print '----'
-    ids = stb.sxindx.keys()
-    print len(ids) , 'syntactic feature sets'
-    for id in ids:
-        print id , '=' , stb.sxindx[id]
-    ids = stb.smindx.keys()
-    print len(ids) , 'semantic  feature sets'
-    for id in ids:
-        print id , '=' , stb.smindx[id]
+    idns = stb.sxindx.keys()
+    print len(idns) , 'syntactic feature sets'
+    for idn in idns:
+        print idn , '=' , stb.sxindx[idn]
+    idns = stb.smindx.keys()
+    print len(idns) , 'semantic  feature sets'
+    for idn in idns:
+        print idn , '=' , stb.smindx[idn]
     print '----'
     st = '[^ab,cd,ef] ,'
-    n = scan(st)
-    print n , '<' + st[:n] + '>'
+    num = scan(st)
+    print num , '<' + st[:num] + '>'

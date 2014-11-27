@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyCharInputStream.py : 08oct2013 CPM
+# ellyCharInputStream.py : 06nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -315,12 +315,12 @@ if __name__ == '__main__':
             arguments:
                 self
             """
-            if len(data) > 0:
-                return data.pop(0)
+            if len(self.data) > 0:
+                return self.data.pop(0)
             else:
                 return [ ]
 
-    data = [
+    datd = [  # test examples
       'abcd\n',
       'éèêë\n',
       'ef gh    ijk   \n',
@@ -335,42 +335,45 @@ if __name__ == '__main__':
       '  wxyz'
     ]
 
-    def hex ( c ):
+    def hexd ( c ):
+        """ simple hexadecimal conversion
+        """
         return '{:02x}'.format(ord(c))
 
     if len(sys.argv) == 1:
-        inp = EllyRawInput(data)         # test input from list of 'sentences'
+        inpu = EllyRawInput(datd)        # test input from list of 'sentences'
     elif sys.argv[1] == '-':
-        inp = sys.stdin                  #            from standard input
+        inpu = sys.stdin                 #            from standard input
         print 'reading from sys.stdin'
     else:
-        inp = open(sys.argv[1],'r')      #            from text file
-    chs = EllyCharInputStream(inp) 
+        inpu = open(sys.argv[1],'r')     #            from text file
+    chs = EllyCharInputStream(inpu) 
     cs = chs.peek()                      # check peek()
     if cs == END:
         sys.exit(1)
     bf = [ ]
     while True:                          # collect all chars from stream
 #       print 'main loop'
-        c = chs.read()
-        if c == END:
+        chu = chs.read()
+        if chu == END:
             break
-        elif c == '\n':
+        elif chu == '\n':
             bf.append('\\n0a')           # represent \n as string
         else:
-            bf.append(c + u' ' + hex(c))
-    K = 16                               # how many chars to show per line
-    k = 0                                # output char count
+            bf.append(chu + u' ' + hexd(chu))
+    Kn = 16                              # how many chars to show per line
+    kn = 0                               # output char count
     sys.stdout.write('full output=\n')
     for bc in bf:
         sys.stdout.write('<' + bc + '>') # dump all collected stream chars
-        k += 1
-        if k%K == 0: print ''
+        kn += 1
+        if kn%Kn == 0: print ''
     print ''
     print '---------'                    # check unread()
-    print 'input start:' , '<' + cs + ' ' + hex(cs) + '>'
+    print 'input start:' , '<' + cs + ' ' + hexd(cs) + '>'
     chs.unread('?')
     chs.unread('!')
-    c = chs.read()
-    d = chs.read()
-    print 'checking putback:' , '<' + c + ' ' + hex(c) + '><' + d + ' ' + hex(d) + '>'
+    cu = chs.read()
+    du = chs.read()
+    print 'checking putback:' , '<' + cu + ' ' + hexd(cu) + '>' ,
+    print                       '<' + du + ' ' + hexd(du) + '>'

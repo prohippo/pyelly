@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# derivabilityMatrix.py : 24nov2013 CPM
+# derivabilityMatrix.py : 04nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -116,6 +116,8 @@ class DerivabilityMatrix(object):
 if __name__ == '__main__':
 
     def dump ( m ):
+        """ to show bits in matrix for testing
+        """
         print 0 , m.dm[0].hexadecimal()
         print 1 , m.dm[1].hexadecimal()
         print 2 , m.dm[2].hexadecimal()

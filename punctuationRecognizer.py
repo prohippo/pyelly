@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# punctuationRecognizer.py : 29oct2013 CPM
+# punctuationRecognizer.py : 06nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -42,17 +42,16 @@ import featureSpecification
 
 category = 'punc' # this must be used in Elly grammars for punctuation!
 
-listing  = [ '.' , '?' , '!' , ',' , ':' , ';' , '\'' , '\"' ]
-
 class PunctuationRecognizer(object):
 
     """
     recognizer to support parsing
 
     attributes:
-        catg   - syntactic info for all recognized punctuation
-        synf   -
-        period - for stop syntactic flag
+        catg    - syntactic info for all recognized punctuation
+        synf    -
+        period  - for stop syntactic flag
+        listing - predefined punctuation that can be overridden
     """
 
     def __init__ ( self , syms ):
@@ -71,6 +70,8 @@ class PunctuationRecognizer(object):
         p = featureSpecification.FeatureSpecification(syms,'[:period]')
         self.period = p.positive
 
+        self.listing = [ '.' , '?' , '!' , ',' , ':' , ';' , '\'' , '\"' ]
+
     def match ( self , s ):
 
         """
@@ -87,7 +88,7 @@ class PunctuationRecognizer(object):
         if len(s) != 1:     # only single-char punctuation expected here!
             return False
 
-        if s[0] in listing: # simple lookup
+        if s[0] in self.listing: # simple lookup
             return True
         else:
             return False
@@ -100,12 +101,10 @@ if __name__ == '__main__':
 
     import symbolTable
 
-    ps = '.?!ab,;:+cd$%&\'\"ef'
+    ups = '.?!ab,;:+cd$%&\'\"ef'
 
-    syms = symbolTable.SymbolTable()
-    punc = PunctuationRecognizer(syms)
+    symb = symbolTable.SymbolTable()
+    punc = PunctuationRecognizer(symb)
 
-    for p in ps:
-
-        f = punc.match(p)
-        print p , f
+    for chu in ups:
+        print chu , punc.match(chu)

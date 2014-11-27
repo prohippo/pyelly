@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveProcedure.py : 06sep2014 CPM
+# cognitiveProcedure.py : 05nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -35,8 +35,8 @@ procedure to determine plausibility of phrase in Elly parse
 import sys
 import ellyBits
 import semanticCommand
-import featureSpecification
 import cognitiveDefiner
+import ellyException
 
 class CognitiveProcedure(object):
 
@@ -76,14 +76,11 @@ class CognitiveProcedure(object):
         if self.logic == None: return 0
 #       print 'cognitive scoring'
 
-        sum = 0               # to accumulate plausibility score
+        psum = 0               # to accumulate plausibility score
 
-        for c in self.logic:  # go through all clauses
+        for cls in self.logic: # go through all clauses
 
-            concept = None    # for communicating from predicate side to action side
-            value   = None    # of clauses
-
-            for p in c[0]:    # go through all predicates of clause
+            for p in cls[0]:   # go through all predicates of clause
                 op = p[0]
                 if op == semanticCommand.Clftf or op == semanticCommand.Crhtf:
                     # test features of descendants
@@ -104,17 +101,16 @@ class CognitiveProcedure(object):
                             mxc = c
                     if mxw < 0: break
                     cntx.wghtg.noteConcept(mxc)
-                    value = mxw
                 else:
                     # unknown command
                     print >> sys.stderr , 'bad cog sem action=' , op
                     break
 
             else:             # execute actions of clause if ALL predicates satisfied
-                for a in c[1]:                        # get mext action
+                for a in cls[1]:                      # get mext action
                     op = a[0]
                     if op == semanticCommand.Cadd:    # add to score?
-                        sum += a[1]
+                        psum += a[1]
                     elif op == semanticCommand.Clhr:  # inherit from left descendant?
                         phrs.semf.combine(phrs.lftd.semf)
                         phrs.cncp = phrs.lftd.cncp
@@ -145,10 +141,10 @@ class CognitiveProcedure(object):
                 phrs.ctxc = cntx.wghtg.getIntersection()
                 inc = 1
 #           print >> sys.stderr , '1-way bias incr=' , inc
-        if inc > 0: sum += inc   # only positive increments contribute
+        if inc > 0: psum += inc  # only positive increments contribute
 #       print >> sys.stderr , 'phrase' , phrs.seqn, 'intersect=' , phrs.ctxc
 
-        return sum
+        return psum
 
 #
 # unit test
@@ -171,10 +167,10 @@ if __name__ == '__main__':
     try:
         cgs = CognitiveProcedure(stb,inp)
     except ellyException.FormatFailure:
-        print >> sys.stderr, "conversion error"
+        print >> sys.stderr , "conversion error"
         sys.exit(1)
 
     cognitiveDefiner.showCode(cgs.logic)
 
     s = cgs.score(ctx,phr)
-    print 'plausibility=',s
+    print 'plausibility=' , s

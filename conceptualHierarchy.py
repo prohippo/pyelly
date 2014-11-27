@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# conceptualHierarchy.py : 13sep2014 CPM
+# conceptualHierarchy.py : 04nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -28,19 +28,19 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 # -----------------------------------------------------------------------------
 
-import sys
-import ellyChar
-import ellyException
-
 """
 modeling hierarchical relationships between semantic concepts used for
 disambiguation, mostly IS_A links
 """
 
+import sys
+import ellyChar
+import ellyException
+
 NOname = '--' # name for None concept
 
-FRAC= 20      # fraction of descendant nodes for important concept
-TOP = '^'     # mandatory name of top concept in hierarchy
+FRAC = 20     # fraction of descendant nodes for important concept
+TOP  = '^'    # mandatory name of top concept in hierarchy
 
 class Concept:
 
@@ -290,6 +290,8 @@ class ConceptualHierarchy:
             self  -
             s     - error message
             l     - problem line
+            lvl   - level in tree
+            dep   - depth in traversal stack
         """
 
         self._errcount += 1
@@ -299,7 +301,7 @@ class ConceptualHierarchy:
             if lvl == None:
                 print >> sys.stderr , ''
             else:
-                print >> sys.stderr , str(lvl) + '/' + str(stk)
+                print >> sys.stderr , str(lvl) + '/' + str(dep)
 
     def isEmpty ( self ):
 
@@ -364,12 +366,12 @@ class ConceptualHierarchy:
         if a.level < b.level: return -1  # b cannot subsume a?
         c = a
         while c.level > b.level:         # get c at same level of b, c subsuming a
-             c = c.parent
+            c = c.parent
         if b == c:                       # is c the same as b?
-             self.inters = c             # if so, b subsumes a
-             return a.level - b.level    #
+            self.inters = c              # if so, b subsumes a
+            return a.level - b.level     #
         else:
-             return -1                   # otherwise, a and b are independent
+            return -1                    # otherwise, a and b are independent
 
     def relatedness ( self , an , bn ):
 
@@ -406,7 +408,6 @@ class ConceptualHierarchy:
 
 if __name__ == "__main__":
 
-    import sys
     import ellyDefinitionReader
 
     data = [
@@ -422,59 +423,67 @@ if __name__ == "__main__":
     ]
 
     def tisA ( tre , a , b ):
+        """ test isA
+        """
         k = tre.isA(a.upper(),b.upper())
         x = tre.intersection().name if k >= 0 else NOname
         print "isA(" + a + "," + b + ")=" ,
         print k , "superconcept=" , x
 
     def trelatedness ( tre , a , b ):
+        """ test relateness
+        """
         k = tre.relatedness(a.upper(),b.upper())
         x = tre.intersection().name if k >= 0 else NOname
         print "relatedness(" + a + "," + b + ")=" ,
         print k , "intersection=" , x
 
     def tdump ( tre ):
+        """ show hierarchy tree
+        """
         kyl = tre.index.keys()
         for ky in kyl:
             if ky == '^': continue
             r = tre.index[ky]
-            print ky,'(',r.name,')','lvl=',r.level,'<',r.parent.name
+            print ky , '(' , r.name , ')' , 'lvl=' , r.level , '<' , r.parent.name
 
-    file = sys.argv[1] + '.h.elly' if len(sys.argv) > 1 else data
-    inp = ellyDefinitionReader.EllyDefinitionReader(file)
+    filn = sys.argv[1] + '.h.elly' if len(sys.argv) > 1 else data
+    inp = ellyDefinitionReader.EllyDefinitionReader(filn)
     if inp.error != None:
         print >> sys.stderr , inp.error
         sys.exit(1)
-    elif file != data:
-        print >> sys.stderr , 'reading from file=' , file
+    elif filn != data:
+        print >> sys.stderr , 'reading from file=' , filn
     print inp.linecount(),"lines read"
+
     try:
-        tre = ConceptualHierarchy(inp)
+        ctre = ConceptualHierarchy(inp)
     except ellyException.TableFailure:
         print >> sys.stderr , 'could not load hierarchy'
         sys.exit(1)
-    if tre.isEmpty():
+
+    if ctre.isEmpty():
         print "tree building failed"
-    elif file == data:
+    elif filn == data:
         print "-------- concepts and aliases"
-        tdump(tre)
+        tdump(ctre)
         print "-------- connections"
-        tisA(tre,'C1X2','C1X2') ,
-        tisA(tre,'A1X2S3T4','A1X2S3T4') ,
-        tisA(tre,'A1X2S3T4','A1') ,
-        tisA(tre,'A1','A1X2S3T4') ,
-        trelatedness(tre,'C1Y2','C1Y2') ,
-        trelatedness(tre,'A1','A1X2') ,
-        trelatedness(tre,'A1X2','A1') ,
-        trelatedness(tre,'B1X2','A1X2S3') ,
-        trelatedness(tre,'A1X2S3','B1X2') ,
-        trelatedness(tre,'OA1','OB1') ,
-        trelatedness(tre,'X1','X1') ,
+        tisA(ctre,'C1X2','C1X2')
+        tisA(ctre,'A1X2S3T4','A1X2S3T4')
+        tisA(ctre,'A1X2S3T4','A1')
+        tisA(ctre,'A1','A1X2S3T4')
+        trelatedness(ctre,'C1Y2','C1Y2')
+        trelatedness(ctre,'A1','A1X2')
+        trelatedness(ctre,'A1X2','A1')
+        trelatedness(ctre,'B1X2','A1X2S3')
+        trelatedness(ctre,'A1X2S3','B1X2')
+        trelatedness(ctre,'OA1','OB1')
+        trelatedness(ctre,'X1','X1')
         print "-------- lookup"
-        print tre.index['A1X2S3T4']
-        print tre.index['K3']
+        print ctre.index['A1X2S3T4']
+        print ctre.index['K3']
         print "-------- generalization"
-        print tre.generalize('A1X2S3T4')
+        print ctre.generalize('A1X2S3T4')
     else:
         print "-------- concepts and aliases"
-        tdump(tre)
+        tdump(ctre)

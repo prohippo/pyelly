@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# treeLogic.py : 15oct2014 CPM
+# treeLogic.py : 06nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -34,7 +34,6 @@ basic finite automata for morphological analysis
 
 import sys
 import ellyChar
-import ellyConfiguration
 import ellyException
 import unicodedata
 
@@ -168,9 +167,9 @@ class Action(object):
             Unicode string
         """
 
-        hdr   = u'Action: len+ '
+        hdr   = u'Action: len+'
         rst   = u'root' + self.resto[0] + u'[' + ''.join(self.resto[1:]) + u']'
-        mod   = u', len- ' + unicode(self.ndrop) + u' [' + self.amod + u']+affix'
+        mod   = u', len-' + unicode(self.ndrop) + u' [' + self.amod + u']+affix'
         recur = u' recur' if self.recur else u' stop'
         return hdr + unicode(self.nsave) + ' ' + rst + mod + recur
 
@@ -322,7 +321,8 @@ class TreeLogic(object):
             sequenced char list on success, None otherwise
         """
 
-        return [ ]  # dummy code
+        print >> sys.stderr , "sequence DUMMY"
+        return [ ]  # dummy code to be overridden in subclass
 
     def rewrite ( self , token , leng , node ):
         """
@@ -336,8 +336,8 @@ class TreeLogic(object):
             True on success, False otherwise
         """
 
-#       print "rewrite DUMMY"
-        return True  # dummy code
+        print >> sys.stderr , "rewrite DUMMY"
+        return True  # dummy code to be overridden in subclass
 
     def match ( self , token ):
         """
@@ -522,7 +522,7 @@ class TreeLogic(object):
 
             try:
                 nsave = 0 if len(elem) == 0 else int(elem.pop())
-            except Exception , e:
+            except ValueError , e:
                 print >> sys.stderr , e
                 print >> sys.stderr , "*  at: [" , line , "]"
                 continue                  # ignore line
@@ -565,7 +565,9 @@ class TreeLogic(object):
 
 s = [ ]                     # traversal stack
 
-def dumpLT ( dic ):         # recursive tree dump
+def dumpLT ( dic ):
+    """ recursive tree logic dump
+    """
 
     for d in dic:           # look at all subtrees
         s.append(d)         # add to node chain for current path
@@ -590,7 +592,7 @@ if __name__ == '__main__':
 
     print 'testing tree logic generation only'
 
-    input = [                   # nonsense logic for testing
+    indta = [                   # nonsense logic for testing
         'xyz 3 2 ab. 1' ,
         'wxyz 2 1 abc.' ,
         'rst 2 0 &.'    ,
@@ -602,13 +604,19 @@ if __name__ == '__main__':
     ]
 
     class TL(TreeLogic):        # have to override dummy methods
+        """ subclass to override sequence()
+        """
         def __init__ ( self , inp):
+            """ initialize
+            """
             super(TL,self).__init__(inp)
         def sequence ( self , x ):
+            """ reverse a sequence
+            """
             return x[::-1]
 
-    inp = ellyDefinitionReader.EllyDefinitionReader(input)
-    tre = TL(inp)               # create tree with nonsense logic
+    rdr = ellyDefinitionReader.EllyDefinitionReader(indta)
+    tre = TL(rdr)               # create tree with nonsense logic
 
     n1 = Node()                 # put something in tree to test the unit test itself
     n1.id = 10001
@@ -628,8 +636,8 @@ if __name__ == '__main__':
     topdic = tre.indx
 
     print 'index dump'
-    for c in topdic:
-        print c + ' : ' + str(topdic[c])
+    for cx in topdic:
+        print cx + ' : ' + str(topdic[cx])
 
     print "tree dump"
     dumpLT(topdic)

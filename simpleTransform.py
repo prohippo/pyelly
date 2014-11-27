@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# simpleTransform.py : 03dec2013 CPM
+# simpleTransform.py : 06nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -117,7 +117,6 @@ class SimpleTransform(object):
             count of chars scanned for substring
         """
 
-        lng = 0
         sl = [ ]                          # char sublist to be matched
 #       print 'ts=' , ts
         lts = len(ts)
@@ -192,7 +191,6 @@ class SimpleTransform(object):
 
 #           print 'tl=' , tl
 
-            v = 0
             w = tl[0]                   # start of possible number
 #           print 'w=' , w.encode('utf8')
             if w == '': break           # if current component starts with '-'
@@ -225,9 +223,9 @@ class SimpleTransform(object):
                         break           # ordinal stops collection
                 elif vA == 0:
 #                   print 'rewriteNumber w=' , w.encode('utf8')
-                    if self._intgr(w):  # now try to interpret w as integer
-                        vA = int(w)     # if so, set value to it
-                    else:
+                    try:
+                        vA = int(w)     # expect integer value here
+                    except ValueError:
                         break           # otherwise, stop on failure to interpret
                 else:
 #                   print 'w=' , w , 'lA=' , lA
@@ -300,32 +298,13 @@ class SimpleTransform(object):
             ts.insert(0,c)
         return True
 
-    def _intgr ( self , w ):
-
-        """
-        try to recognize w as an integer
-
-        arguments:
-            self  -
-            w     - string to check
-
-        returns:
-            True on success, False otherwise
-        """
-
-#       print 'int chk: w=' , w
-        for c in w:
-            if not ellyChar.isDigit(c): # scan entire string input
-               return False             # fail on on-digit
-        return True                     # success
-
 #
 # unit test
 #
 
 if __name__ == '__main__':
 
-    xs = [    # test cases
+    tdat = [    # test cases
         u'12 thousand' ,
         u'12345' ,
         u'12,345' ,
@@ -349,8 +328,8 @@ if __name__ == '__main__':
         u'four years'
     ]
 
-    se = SimpleTransform()       # set up transformation object
-    for x in xs:
-        ts = list(x)             # list of Unicode chars
-        f = se.rewriteNumber(ts) # rewrite
-        print x , '>>' , '+'.join(ts) , '=' , f
+    se = SimpleTransform()        # set up transformation object
+    for xs in tdat:
+        tst = list(xs)            # list of Unicode chars
+        f = se.rewriteNumber(tst) # rewrite
+        print xs , '>>' , '+'.join(tst) , '=' , f

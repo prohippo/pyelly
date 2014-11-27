@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# symbolTable.py : 08sep2014 CPM
+# symbolTable.py : 04nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -123,8 +123,8 @@ class SymbolTable(object):
                     k -= 3         # syntactic feature names *L and *R
                     l -= 1         # and for *UNIQUE
                 if k == l:         # overflow check
-                   print >> sys.stderr, '+* too many feature names'
-                   return None
+                    print >> sys.stderr, '+* too many feature names'
+                    return None
                 h[nm] = k
 
             b.set(h[nm])           # set bit for feature
@@ -207,27 +207,27 @@ class SymbolTable(object):
             sorted list of unique symbols
         """
 
-        ls = [ ]                      # for collecting symbols
+        ls = [ ]                       # for collecting symbols
 
-        for s in self.ntname:         # syntactic types
+        for s in self.ntname:          # syntactic types
             ls.append(s)
 
-        for id in self.sxindx.keys(): # syntactic features
-            tb = self.sxindx[id]
+        for sid in self.sxindx.keys(): # syntactic features
+            tb = self.sxindx[sid]
             for t in tb.keys():
-                if t[0] != '*':       # ignore predefined features
-                    ls.append(id + t) # tagged by ID
+                if t[0] != '*':        # ignore predefined features
+                    ls.append(sid + t) # tagged by ID
 
-        for id in self.smindx.keys(): # semantic features
-            tb = self.smindx[id]
+        for did in self.smindx.keys(): # semantic features
+            tb = self.smindx[did]
             for t in tb.keys():
-                ls.append(id + t)     # tagged by ID
+                ls.append(sid + t)     # tagged by ID
 
 #       print len(ls) , ' symbols defined'
 #       print 'unsorted' , ls
         ls.sort()
 #       print 'sorted  ' , ls
-        return ls                     # sort list in place
+        return ls                      # sort list in place
 
     def findUnknown ( self ):
 

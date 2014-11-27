@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyStemmer.py : 01apr2013 CPM
+# ellyStemmer.py : 03nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -29,23 +29,47 @@
 # -----------------------------------------------------------------------------
 
 """
-to support inflectional stemming and also provide a NULL stemmer
+to be a template for inflectional stemming classes
+and also provide a NULL stemmer when needed
 """
 
 class EllyStemmer(object):
 
     """
     base class for stemmers
+
+    attributes:
+        stmid  - which stemmer is it
     """
 
-    def apply ( self , token ):
+    def __init__ ( self ):
+        """
+        initialize
 
+        arguments:
+            self
+        """
+        self.stmid = 'dummy'
+
+    def apply ( self , token , xxx=None ):
         """
         apply stemmer to token 
 
         arguments:
             self  -
             token - input token
+            xxx   - dummy argument for compatibility
         """
+        pass  # do nothing unless overridden
 
-        pass  # this is a dummy procedure that should normally be overridden
+    def respond ( self ):
+        """
+        get id of stemmer
+
+        arguments:
+            self
+
+        returns:
+            stemmer id string
+        """
+        return self.stmid

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 15oct2014 CPM
+# ellyBase.py : 05nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -71,11 +71,11 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v0.6beta'                    # most current version of PyElly software
+release = 'v1.0'                        # current version of PyElly software
 
 L = 16  # how much context to show
 
-def _timeModified ( base , file ):
+def _timeModified ( basn , filn ):
 
     """
     get file modification time
@@ -85,35 +85,38 @@ def _timeModified ( base , file ):
 
     returns:
         integer number of seconds since base time
+
+    exceptions:
+        OSError
     """
 
-    return int(os.path.getmtime(base + file))
+    return int(os.path.getmtime(basn + filn))
 
-def _isSaved ( system , component , sources ):
+def _isSaved ( systm , compn , srcs ):
 
     """
     check whether a definition for an Elly system has been saved
 
     arguments:
-        system    - root name of Elly system
-        component - what to check
-        sources   - what sources to check against
+        systm - root name of Elly system
+        compn - what to check
+        srcs  - what sources to check against
 
     returns:
         True if it has been saved, False otherwise
     """
 
     try:
-        date = _timeModified('./',system + component)
-    except:
+        date = _timeModified('./',systm + compn)
+    except OSError:
         return False
 
-    base = ellyConfiguration.baseSource + '/'
+    basn = ellyConfiguration.baseSource + '/'
 
-    for f in sources:
+    for f in srcs:
         try:
-            d = _timeModified(base,system + f)
-        except:
+            d = _timeModified(basn,systm + f)
+        except OSError:
             d = 0
         if d > date:
             return False
@@ -364,15 +367,13 @@ class EllyBase(object):
 #       print 'len(s)=' , kl , 'k=' , k , s
 
         mr = self._scanText(k)         # text matching 
-        mx = mr.mtchl
-
         s = self.sbu.buffer
-#*      print 'mx=' , mx , 'len(s)=' , len(s) , s
+#       print '_scanText mx=' , mr.mtchl , 'len(s)=' , len(s) , 's=' , s
 
         to = self._extractToken(k,mr)  # single-word matching with analysis
 
         s = self.sbu.buffer            # have to update for changed buffer
-#*      print 'to=' , to , 'len(s)=' , len(s) , s
+#       print 'to=' , to , 'len(s)=' , len(s) , s
 
         if to == None: return False
 
@@ -382,7 +383,7 @@ class EllyBase(object):
 #*      print 'at', len(self.ctx.tokns) , 'in token list'
         self.ctx.tokns.append(to)
 
-        posn = len(self.ctx.tokns) - 1 # put token into sentence sequence
+#       posn = len(self.ctx.tokns) - 1 # put token into sentence sequence
 #       print 'posn=' , posn
 #       print 'token=' ,  self.ctx.tokns[posn].root
         return True
@@ -399,13 +400,13 @@ class EllyBase(object):
             k     - length of first component in buffer
 
         returns:
-            
+            vocabulary table record
         """
 
         sb = self.sbu.buffer           # input buffer
         tr = self.ptr                  # parse tree for results
 
-        rs = drs                       # initialize
+        rs = drs                       # initialize to empty vocabulary table record
         rs.mtchl = 0                   # maximum match count
         lm = len(sb)                   # scan limit
 #*      print 'next component=' , sb[:k] , ', context=' , sb[k:lm]
@@ -480,27 +481,28 @@ class EllyBase(object):
 
         d = self.rul                            # grammar rule definitions
 
-        tree  = self.ptr     # parse tree
-        input = self.sbu     # input source
+        tree = self.ptr                         # parse tree
+        buff = self.sbu                         # input source
 
         mx = mr.mtchl
 
         if mx > 0:                              # already have matches?
             mx -= mr.dropn                      #
-            tw = input.extract(mx)              # get token segment from input
+            tw = buff.extract(mx)               # get token segment from input
             ws = u''.join(tw)                   # convert to string for lookup
             w = ellyToken.EllyToken(ws)         # create token
             if mr.restr != None:                # any adjustment specified
                 w.root[-1] = mr.restr           # if so, adjust token
-            input.skip(mr.dropn)                #
+            buff.skip(mr.dropn)                 #
             if mr.suffx != '':                  # any suffix
-                input.prepend('-' + mr.suffx)   # if so, put it into buffer
+                buff.prepend(mr.suffx)          # if so, put it into buffer
+                buff.prepend('-')               # to mark suffix
             if k == mx:                         # can we get any more matches here?
                 tree.createPhrasesFromDictionary(ws,False)     # if so, try to get them
             return w                            # in any case, return token
 
         try:
-            w = input.getNext()                 # extract next token
+            w = buff.getNext()                  # extract next token
         except ellyException.StemmingError as e:
             print >> sys.stderr , 'FATAL error' , e
             sys.exit(1)
@@ -522,6 +524,7 @@ class EllyBase(object):
                 if tree.addLiteralPhraseWithSemantics(
                         v.cat,v.syf,v.smf,v.bia,v.gen
                 ):
+#                   print 'vtb sbuf=' , self.sbu.buffer
                     found = True
 
             if ws in self.rul.gtb.dctn and ws != '':
@@ -538,9 +541,9 @@ class EllyBase(object):
 #                   print 'token analysis=' , tan
                     while len(tan) > 0:         # and put back into input
                         x = tan.pop()
-                        input.prepend(x)
-                        input.prepend(' ')
-                    w = input.getNext()         # get token again
+                        buff.prepend(x)
+                        buff.prepend(' ')
+                    w = buff.getNext()         # get token again
                     continue                    # redo lookup after analysis
 
             if not found:                       # if no matches at all
@@ -557,27 +560,6 @@ class EllyBase(object):
 #           print 'w=' , w
             return w
 
-    def _show ( self , typm , syms ):
-
-        """
-        show unused symbols of particular type
-
-        arguments:
-            self  -
-            type  - source of symbols
-            syms  - list of symbols
-        """
-
-        if len(syms) == 0: return
-        print >> sys.stderr , '  in' , typm + ':'
-        m = 8
-        n = 0
-        for s in syms:
-            print >> sys.stderr , '  {0:7s}'.format(s) ,
-            n += 1
-            if n%m == 0: print >> sys.stderr , ''
-        print >> sys.stderr , ''
-
     def symbolCheck ( self ):
 
         """
@@ -590,9 +572,29 @@ class EllyBase(object):
         print ''
         print 'Unused Symbols'
         print '--------------'
-        self._show("part of speech patterns"     ,self.pundef)
-        self._show("external vocabulary"         ,self.vundef)
-        self._show("information extraction types",self.eundef)
+        _show("part of speech patterns"     ,self.pundef)
+        _show("external vocabulary"         ,self.vundef)
+        _show("information extraction types",self.eundef)
+
+def _show ( typm , syms ):
+
+    """
+    show unused symbols of particular type
+
+    arguments:
+        typm  - source of symbols
+        syms  - list of symbols
+    """
+
+    if len(syms) == 0: return
+    print >> sys.stderr , '  in' , typm + ':'
+    m = 8
+    n = 0
+    for s in syms:
+        print >> sys.stderr , '  {0:7s}'.format(s) ,
+        n += 1
+        if n%m == 0: print >> sys.stderr , ''
+    print >> sys.stderr , ''
 
 ################################
 # serialization of definitions #
@@ -652,12 +654,12 @@ if __name__ == '__main__':
     so = sys.stdout
     si = sys.stdin
 
-#    print 'stdin=' , si.encoding , 'stdout=' , so.encoding
+#   print 'stdin=' , si.encoding , 'stdout=' , so.encoding
 
-    system = sys.argv[1] if len(sys.argv) > 1 else 'test'
-    print 'system=' , system
+    syst = sys.argv[1] if len(sys.argv) > 1 else 'test'
+    print 'system=' , syst
     try:
-        eb = EllyBase(system)
+        eb = EllyBase(syst)
 #       print 'eb=' , eb
     except ellyException.TableFailure:
         print >> sys.stderr , 'cannot initialize rules and vocabulary'

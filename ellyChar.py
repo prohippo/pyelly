@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 24oct2013 CPM
+# ellyChar.py : 01nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -34,16 +34,16 @@
 for handing ASCII plus Latin-1 chars as Unicode
 """
     
-APO= unichr(39) # Unicode apostrophe
-USC= u'_'       # Unicode underscore
-LBR= u'['       # Unicode left bracket
-RBR= u']'       # Unicode right bracket
-SLA= u'/'       # Unicode slash
-BSL= u'\\'      # Unicode backslash
-SPC= u' '       # Unicode space
-NBS= u'\u00A0'  # Unicode no-break space
+APO = unichr(39)   # Unicode apostrophe
+USC = u'_'         # Unicode underscore
+LBR = u'['         # Unicode left bracket
+RBR = u']'         # Unicode right bracket
+SLA = u'/'         # Unicode slash
+BSL = u'\\'        # Unicode backslash
+SPC = u' '         # Unicode space
+NBS = u'\u00A0'    # Unicode no-break space
 
-Lim= u'\u0100'  # limit of Unicode chars recognized
+Lim = u'\u0100'    # limit of Unicode chars recognized
 
 ## Latin-1 definitions for Unicode processing
     
@@ -80,9 +80,9 @@ def isStrongConsonant ( x ):
     test whether char is consonant, not including Y
 
     arguments:
-    x - the char
+        x - the char
     returns:
-    True if non-Y consonant, False otherwise
+        True if non-Y consonant, False otherwise
     """
     if not isLetter(x) or isStrictVowel(x):
         return False
@@ -95,15 +95,16 @@ def isConsonant ( x ):
     test whether char is consonant, including Y
 
     arguments:
-    x - the char
+        x - the char
     returns:
-    True if consonant, False otherwise
+        True if consonant, False otherwise
     """
     return (isStrongConsonant(x) or x == u'y') # accept only Y without diacritic
         
 ## ASCII plus Latin-1 vowels
 
-T=True; F=False
+T = True
+F = False
         
 Vowel = [
     F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
@@ -122,9 +123,9 @@ def isStrictVowel ( x ):
     test whether char is vowel, not including U
     
     arguments:
-    x - the char
+        x - the char
     returns:
-    True if non-U vowel, False otherwise
+        True if non-U vowel, False otherwise
     """        
     return (x < Lim and Vowel[ord(x)])
     
@@ -133,9 +134,9 @@ def isVowel ( x ):
     test whether char is lowercase vowel, including U
         
     arguments:
-    x - the char
+        x - the char
     returns:
-    True if vowel
+        True if vowel, False otherwise
     """
     if isStrictVowel(x):
         return True
@@ -152,20 +153,21 @@ def isCombining ( x ):
     test whether char can be in any token
     
     arguments:
-    x - the char
+        x - the char
     returns:
-    True if a most general token char, False otherwise
+        True if a most general token char, False otherwise
     """
-    return (isLetterOrDigit(x) or x == USC or x == APO or x == SLA or x == BSL or x == NBS)
+    return (isLetterOrDigit(x) or x == USC or x == APO or x == SLA or
+            x == BSL or x == NBS)
     
 def isEmbeddedCombining ( x ):
     """
     test whether punctuation char can be embedded in token
         
     arguments:
-    x - the char
+        x - the char
     returns:
-    True if char can be in the middle of a token, False otherwise
+        True if char can be in the middle of a token, False otherwise
     """
     return (x == u"." or x == u"," or x == u":" or x == "'")
     
@@ -174,9 +176,9 @@ def isPureCombining ( x ):
     test whether char is token char, not punctuation nor apostrophe
         
     arguments:
-    x - the char
+        x - the char
     returns:
-    True if strictest kind of token char, False otherwise
+        True if strictest kind of token char, False otherwise
     """
     return (isLetterOrDigit(x) or x == USC or x == NBS)
         
@@ -211,9 +213,9 @@ def isLetterOrDigit ( x ):
     check for ASCII or Latin-1 letter or digit
         
     arguments:
-    x - the char
+        x - the char
     returns:
-    True if letter or digit, False otherwise
+        True if letter or digit, False otherwise
     """
     return (x < Lim and LetterOrDigit[ord(x)])
 
@@ -222,23 +224,23 @@ def isNotLetterOrDigit ( x ):
     check for nonalphanumeric
 
     arguments:
-    x - the char
-    returns
-    True if not letter or digit, False otherwise
+        x - the char
+    returns:
+        True if not letter or digit, False otherwise
     """
     if x >= Lim:
         return True
     else:
-        return not LetterOrDigit(ord[x])
+        return not isLetterOrDigit(ord[x])
     
 def isLetter ( x ):
     """
     check for ASCII or Latin-1 letter
         
     arguments:
-    x - the char
+        x - the char
     returns:
-    True if letter, False otherwise
+        True if letter, False otherwise
     """
     return (x < Lim and Letter[ord(x)])
     
@@ -247,9 +249,9 @@ def isDigit ( x ):
     check for ASCII or Latin-1 digit
     
     arguments:
-    x - the char
+        x - the char
     returns:
-    True if digit, False otherwise
+        True if digit, False otherwise
     """
     return (x <= '9' and x >= '0')
 
@@ -270,9 +272,9 @@ def isWhiteSpace ( x ):
     check for white space (but NOT no-break space)
 
     arguments:
-    x - the char
+        x - the char
     returns:
-    True if ordingary space, False otherwise
+        True if ordingary space, False otherwise
     """
     return (x < Lim and Space[ord(x)])
 
@@ -314,9 +316,9 @@ def toIndex ( x ):
     map alphanumic Unicode Latin-1 to equivalent ASCII for indexing
 
     arguments:
-    x - the char
+        x - the char
     returns:
-    index value for char
+        index value for char
     """
     if u'0' <= x <= u'9':
         return ord(x) - ord('0') + DigB
@@ -330,9 +332,9 @@ def toChar ( k ):
     unmap index value to base ASCII letter or digit
 
     arguments:
-    k - numerical index
+        k - numerical index
     returns:
-    letter represented by index
+        letter represented by index
     """
 
     if k > Max + 10 or k <= 0:
@@ -347,11 +349,10 @@ def toLowerCaseASCII ( x ):
     convert char to lowercase ASCII alphanumeric
 
     arguments:
-    x - the char
+        x - the char
     returns:
-    equivalent lower case ASCII char on success, space char otherwise
+        equivalent lower case ASCII char on success, space char otherwise
     """
-
     n = Mapping[ord(x)]
     return Unmapping[n]
 
@@ -360,11 +361,10 @@ def isText ( x ):
     check for ASCII or Latin-1
 
     arguments:
-    x - the char
+        x - the char
     returns:
-    True if ASCII or Latin-1, False otherwise
+        True if ASCII or Latin-1, False otherwise
     """
-
     return (x != '' and x < Lim)
 
 def findBreak ( text , offset=0 ):
@@ -375,7 +375,6 @@ def findBreak ( text , offset=0 ):
     arguments:
         text   - what to scan
         offset - starting offset
-
     returns:
         remaining char count in text if no break is found
         otherwise, count of chars to next break if nonzero, but 1 if zero,

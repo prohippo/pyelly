@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - tool for testing stemmers
 #
-# stemTest.py : 15oct2014 CPM
+# stemTest.py : 01nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -28,8 +28,13 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 # -----------------------------------------------------------------------------
 
+"""
+shared unit test code for Elly stemming modules
+"""
+
 import sys
 import ellyToken
+import ellyException
 
 def stemTest( stemmer , suffix=None ):
 
@@ -38,11 +43,15 @@ def stemTest( stemmer , suffix=None ):
 
     arguments:
         stemmer - must be of class with apply(x) method
+        suffix  - suffix to report in output
     """
+
+    out = ''
 
     print "testing ", stemmer
     if suffix != None:
-        print 'suffix -' + suffix
+        out = '[-' + suffix + ']'
+        print 'suffix' , out
     print "enter words to stem:"
 
     while True:
@@ -61,8 +70,9 @@ def stemTest( stemmer , suffix=None ):
         except ellyException.StemmingError:
             print >> sys.stderr , 'stemming error!'
             sys.exit(1)
-        sufs = tok.getSuffixes()         # list of suffixes removed
         print "-->>", ''.join(tok.root), # stemming result
         if suffix == None:
-            print tok.getSuffixes() ,
+            print tok.getSuffixes() ,    # list of suffixes removed
+        else:
+            print out ,
         print " success code= ", sta

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# dateTransform.py : 29oct2013 CPM
+# dateTransform.py : 06nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -333,7 +333,7 @@ class DateTransform(simpleTransform.SimpleTransform):
         lts = len(ts)
         if lts < 2: return 0    # year must be at least 2 digits
 
-        k = n = 0
+        k = 0
         while k < lts:          # scan for digits in input list
             if not ellyChar.isDigit(ts[k]):
                 break
@@ -354,8 +354,8 @@ class DateTransform(simpleTransform.SimpleTransform):
 
         ns = 0
         if len(t) > 0 and t[0] == ' ':
-           t = t[1:]
-           ns = 1
+            t = t[1:]
+            ns = 1
 
         lss = self.get(t)
 #       print 'lss=' , lss
@@ -454,7 +454,7 @@ class DateTransform(simpleTransform.SimpleTransform):
 
 if __name__ == '__main__':
 
-    xs = [
+    tdat = [
         u'9/11' ,
         u'4th of July, 1776' ,
         u'September 22, 1963, was' ,
@@ -476,8 +476,8 @@ if __name__ == '__main__':
     ]
 
     de = DateTransform()
-    for x in xs:
-        ts = list(x) 
-        stat = de.rewrite(ts)
-        print x , '>>' , ''.join(ts) , '=' , stat
+    for xd in tdat:
+        tst = list(xd) 
+        stat = de.rewrite(tst)
+        print xd , '>>' , ''.join(tst) , '=' , stat
         print ''

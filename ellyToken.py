@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyToken.py : 24oct2013 CPM
+# ellyToken.py : 01nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -28,11 +28,11 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 # -----------------------------------------------------------------------------
 
-import unicodedata
-
 """
 encapsulation of a token string and results of its analysis
 """
+
+import unicodedata
 
 class EllyToken:
 
@@ -312,7 +312,7 @@ class EllyToken:
     def toString ( self ):
 
         """
-        get ASCII string representation of token
+        get ASCII string representation of token root
 
         arguments:
             self
@@ -326,7 +326,7 @@ class EllyToken:
     def toUnicode ( self ):
 
         """
-        get Unicode string representation of token
+        get Unicode string representation of token root
 
         arguments:
             self
@@ -342,15 +342,15 @@ if __name__ == "__main__":
     import sys
 
     if len(sys.argv) < 2:
-        x = u'Taxed'
+        ux = u'Taxed'
     else:
-        x = sys.argv[1]
-        print len(x) , type(x) , x
-        if type(x) != 'unicode':
-            x = x.decode('utf8')
-        print type(x)
+        ux = sys.argv[1]
+        print len(ux) , type(ux) , ux
+        if type(ux) != 'unicode':
+            ux = ux.decode('utf8')
+        print type(ux)
 
-    t = EllyToken(x)
+    t = EllyToken(ux)
 
     t.addSuffix(u'xxx')
     t.addSuffix(u'yy')

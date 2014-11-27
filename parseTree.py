@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTree.py : 11aug2014 CPM
+# parseTree.py : 03nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -177,7 +177,7 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
                 r = g.rul
                 if ellyBits.check(fbs,r.rtfet):
                     phx = g.lph                        # phrase that generated pertinent goal
-                    phn = self.makePhrase(phx.posn,r); # new phrase to satisfy goal
+                    phn = self.makePhrase(phx.posn,r)  # new phrase to satisfy goal
                     if phn == None:
                         break
                     phn.lftd = phx                     # goal phrase is left part of new one
@@ -302,7 +302,7 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
 #           print '... goal not found'
             return                          # done with parsing
 
-        self.newph[self.wordno] = None;                 # initialize just in case
+        self.newph[self.wordno] = None                  # initialize just in case
         ph = self.makePhrase(self.wordno,self.gtb.arbr) # empty phrase to satisfy ... goals
 #       print 'finishUpX:' , ph
         if ph == None: return                           # error check
@@ -312,7 +312,7 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
 
         self.enqueue(ph)                    # save phrase for ramifying
         self.wordno -= 1                    # so that any new goals go into right position
-        self.digest();                      # one final round of digestion
+        self.digest()                       # one final round of digestion
 #       print 'finishUpX @' , self.wordno
 
 #
@@ -320,14 +320,17 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
 #
 
 import sys
-import ellyBits
 
 if __name__ == '__main__':
 
     # test just initialization
 
     class G(object):
+        """ dummy grammar class
+        """
         def __init__ (self):
+            """ initialization
+            """
             self.START = 0
             self.END   = 1
             self.UNKN  = 2
@@ -335,8 +338,16 @@ if __name__ == '__main__':
             self.splits = [ [ ] , [ ] , [ ] , [ ] ]
 
     class S(object):
-        def getSyntaxTypeCount (self):
-            return 4
+        """ dummy symbol table class
+        """
+        def __init__ ( self , num=4 ):
+            """ initialization
+            """
+            self.count = num
+        def getSyntaxTypeCount ( self ):
+            """ dummy method
+            """
+            return self.count
 
     tree = ParseTree(S(),G(),None,None)
     print tree

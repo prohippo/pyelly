@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBase.py : 09aug2014 CPM
+# parseTreeBase.py : 03nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -85,7 +85,7 @@ class ParseTreeBase(object):
             self.synf = ellyBits.EllyBits(symbolTable.FMAX)
             self.semf = ellyBits.EllyBits(symbolTable.FMAX)
             self.seqn = -1
-            self._reset()
+            self.reset()
 
         def __unicode__ ( self ):
             """
@@ -113,7 +113,7 @@ class ParseTreeBase(object):
 
             return unicode(self).encode('utf8')
 
-        def _reset ( self ):
+        def reset ( self ):
             """
             reintialize
             arguments:
@@ -293,7 +293,7 @@ class ParseTreeBase(object):
             phrase.seqn = self.phlim
             self.phrases.append(phrase)
         self.lastph = self.phrases[self.phlim] # get next available phrase
-        self.lastph._reset()                   # 
+        self.lastph.reset()                    # 
         self.lastph.posn = po                  # parse position
         self.lastph.rule = ru                  # grammar rule defining phrase
         self.lastph.typx = ru.styp             #
@@ -332,47 +332,116 @@ class ParseTreeBase(object):
 #
 
 import sys
-import ellyBits
+import ellyToken
 
 if __name__ == '__main__':
 
-    class R(object):  # fake grammar rule class
-        def __init__ (self,m,n=0):
-            self.styp = m
-            self.sfet = ellyBits.EllyBits()
-            self.rtyp = n
-            self.seqn = 10000
+    class M(object):  # dummy derivability matrix
+        """ dummy class for testing
+        """
+        def __init__ ( self ):
+            """ initialization
+            """
+            self.xxx = 0
+        def derivable (self,n,gbs):
+            """ dummy method
+            """
+            self.xxx += 1
+            return gbs.test(n)
 
-    tree = ParseTreeBase()
+    class R(object):  # dummy grammar rule class
+        """ dummy class for testing
+        """
+        def __init__ (self,n):
+            """ initialization
+            """
+            self.styp = n
+            self.sfet = ellyBits.EllyBits()
+
+    class G(object):  # dummy grammar table class
+        """ dummy class for testing
+        """
+        def __init__ (self):
+            """ initialization
+            """
+            self.START = 0
+            self.END   = 1
+            self.UNKN  = 2
+            self.XXX   = 3
+            self.NUM   = 4
+            self.PUNC  = 5
+            self.splits = [ [ ] , [ ] , [ ] , [ ] , [ ] , [ ] ] # must define this!
+            self.dctn = { 'abc' : [ R(self.START) ] , 'xyz' : [ R(self.UNKN) ] }
+            self.mat  = M()
+
+    class S(object):  # dummy symbol table class
+        """ dummy class for testing
+        """
+        def __init__ ( self ):
+            """ initialization
+            """
+            self.xxx = 6
+        def getSyntaxTypeCount(self):
+            """ dummy method
+            """
+            return self.xxx  # for START, END, UNKN, XXX, NUM, PUNC
+
+    print "allocating"
+    sym = S()
+    grm = G()
+    tree = ParseTreeBottomUp(sym,grm,None)
+    print "allocated"
+
     print tree
     print dir(tree)
-    print ""
 
-    phs = [ ]
+    fbbs = ellyBits.EllyBits(symbolTable.FMAX)
+    gbbs = ellyBits.EllyBits(symbolTable.NMAX)
+    gbbs.complement()    # all goal bits turned on
 
-    phs.append(tree.makePhrase(0,R(100,10)))
-    phs.append(tree.makePhrase(1,R(101,11)))
-    phs.append(tree.makePhrase(2,R(102,12)))
+    tree.gbits[0] = gbbs # set all goals in first position
 
-    print phs[2]
-    print 'phlim =',tree.phlim
-    print 'lastph=',tree.lastph
+    print '----'
+    sgm = 'abc'          # test example in dictionary
+    sta = tree.createPhrasesFromDictionary(sgm,False)
+    print sgm , ':' , sta , ', phlim=' , tree.phlim , 'lastph=' , tree.lastph 
 
-    tree.reset()
-    print tree.phlim
+    print '----'
+    sgm = 'abcd'         # test example not in dictionary
+    sta = tree.createPhrasesFromDictionary(sgm,False)
+    print sgm , ':' , sta,', phlim=' , tree.phlim , 'lastph=' , tree.lastph 
 
-    r = R(103,13)
+    print '----'
+    sgm = 'xyz'          # test example in dictionary
+    sta = tree.createPhrasesFromDictionary(sgm,False)
+    print sgm , ':' , sta , ', phlim=' , tree.phlim , 'lastph=' , tree.lastph 
 
-    ph = tree.makePhrase(2,R(104,14))
-    ph.cncp = 'xccx'
-    print ph
-    print 'phlim =',tree.phlim
-    print 'lastph=',tree.lastph
+    print '----'
+    sgm = 'pqr'          # test example not in dictionary
+    sta = tree.createUnknownPhrase(ellyToken.EllyToken(sgm))
+    print sgm , ':' , sta , ', phlim=' , tree.phlim , 'lastph=' , tree.lastph 
 
-    print tree.glim
-    g = tree.makeGoal(r,ph)
-    print g
-    print tree.glim
+    print '----'
+    sgm = '.'            # test example not in dictionary
+    tree.gbits[0].clear()
+    sta = tree.addLiteralPhrase(tree.gtb.PUNC,fbbs)
+    print sgm , ':' , sta , ', phlim=' , tree.phlim , 'lastph=' , tree.lastph 
+    tree.gbits[0].set(tree.gtb.PUNC)
+    sta = tree.addLiteralPhrase(tree.gtb.PUNC,fbbs)
+    print sgm , ':' , sta , ', phlim=' , tree.phlim , 'lastph=' , tree.lastph 
 
-    tree.reset()
-    print tree.glim
+    print ''
+    print 'ambiguities:'
+    for a in tree.ambig:
+        while a != None:
+            print '' , a
+            a = a.alnk
+        print ''
+
+    print '----'
+    for rno in range(10,15):
+        phrs = tree.makePhrase(0,R(rno))
+        tree.enqueue(phrs)
+    print '----'
+    print 'dequeue phrase=' , tree.dequeue()
+    print 'dequeue phrase=' , tree.dequeue()

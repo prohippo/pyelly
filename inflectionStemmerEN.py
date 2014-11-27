@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# inflectionStemmerEN.py : 15oct2014 CPM
+# inflectionStemmerEN.py : 01nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2012, Clinton Prentiss Mah
 # All rights reserved.
@@ -28,17 +28,17 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 # -----------------------------------------------------------------------------
 
-import sys
-import stemLogic
-import ellyToken
-import ellyException
-from ellyStemmer import *
-
 """
 English inflectional stemmer
 """
 
-class InflectionStemmerEN(EllyStemmer):
+import sys
+import stemLogic
+import ellyToken
+import ellyException
+import ellyStemmer
+
+class InflectionStemmerEN(ellyStemmer.EllyStemmer):
 
     """
     general English inflectional stemmer
@@ -134,7 +134,7 @@ class InflectionStemmerEN(EllyStemmer):
             return False
 
         if logic.table[0] != "":
-            ending = logic.table[0][::-1]
+            ending = '-'  + logic.table[0][::-1]
             token.addSuffix(ending) # store unreversed suffix
         return True
 

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBottomUp.py : 11aug2014 CPM
+# parseTreeBottomUp.py : 03nov2014 CPM
 # -----------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -93,7 +93,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
         self.ptb = ptb
         super(ParseTreeBottomUp,self).__init__()
 #       print "back in ParseTreeBottomUp"
-        self.nul  = (len(gtb.splits[gtb.XXX]) > 0)
+        self.nul  = ( len(gtb.splits[gtb.XXX]) > 0 )
         self._zbs = ellyBits.EllyBits(symbolTable.FMAX)
         self._pls = 0
 
@@ -108,7 +108,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
         """
 
 #       print 'add goals, ntyp=' , self.ntyp
-        for i in range(n):
+        for _ in range(n):
             self.goal.append([ ])
             self.gbits.append(ellyBits.EllyBits(self.ntyp))
 
@@ -239,14 +239,14 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
 #       self._showQ()
         mx = 0
         for ph in self.queue:
-             if mx < ph.lens: mx = ph.lens
+            if mx < ph.lens: mx = ph.lens
         n = 0
         q = [ ]
         for ph in self.queue:
-             if ph.lens == mx or ph.lens == 0:
-                 q.append(ph)
-             else:
-                 n += 1
+            if ph.lens == mx or ph.lens == 0:
+                q.append(ph)
+            else:
+                n += 1
         self.queue = q
 #       print 'requeue'
         return n
@@ -530,22 +530,38 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
 #
 
 import sys
-import ellyBits
 import ellyToken
 
 if __name__ == '__main__':
 
     class M(object):  # dummy derivability matrix
+        """ dummy class for testing
+        """
+        def __init__ ( self ):
+            """ initialization
+            """
+            self.xxx = 0
         def derivable (self,n,gbs):
+            """ dummy method
+            """
+            self.xxx += 1
             return gbs.test(n)
 
     class R(object):  # dummy grammar rule class
+        """ dummy class for testing
+        """
         def __init__ (self,n):
+            """ initialization
+            """
             self.styp = n
             self.sfet = ellyBits.EllyBits()
 
     class G(object):  # dummy grammar table class
+        """ dummy class for testing
+        """
         def __init__ (self):
+            """ initialization
+            """
             self.START = 0
             self.END   = 1
             self.UNKN  = 2
@@ -557,8 +573,16 @@ if __name__ == '__main__':
             self.mat  = M()
 
     class S(object):  # dummy symbol table class
+        """ dummy class for testing
+        """
+        def __init__ ( self ):
+            """ initialization
+            """
+            self.xxx = 6
         def getSyntaxTypeCount(self):
-            return 6  # for START, END, UNKN, XXX, NUM, PUNC
+            """ dummy method
+            """
+            return self.xxx  # for START, END, UNKN, XXX, NUM, PUNC
 
     print "allocating"
     sym = S()
@@ -569,40 +593,40 @@ if __name__ == '__main__':
     print tree
     print dir(tree)
 
-    fbs = ellyBits.EllyBits(symbolTable.FMAX)
-    gbs = ellyBits.EllyBits(symbolTable.NMAX)
-    gbs.complement()    # all goal bits turned on
+    fbbs = ellyBits.EllyBits(symbolTable.FMAX)
+    gbbs = ellyBits.EllyBits(symbolTable.NMAX)
+    gbbs.complement()    # all goal bits turned on
 
-    tree.gbits[0] = gbs # set all goals in first position
+    tree.gbits[0] = gbbs # set all goals in first position
 
     print '----'
-    sgm = 'abc'         # test example in dictionary
+    sgm = 'abc'          # test example in dictionary
     sta = tree.createPhrasesFromDictionary(sgm,False)
-    print sgm,':',sta,'phlim=',tree.phlim,'lastph=',tree.lastph 
+    print sgm , ':' , sta , ', phlim=' , tree.phlim , 'lastph=' , tree.lastph 
 
     print '----'
-    sgm = 'abcd'        # test example not in dictionary
+    sgm = 'abcd'         # test example not in dictionary
     sta = tree.createPhrasesFromDictionary(sgm,False)
-    print sgm,':',sta,'phlim=',tree.phlim,'lastph=',tree.lastph 
+    print sgm , ':' , sta,', phlim=' , tree.phlim , 'lastph=' , tree.lastph 
 
     print '----'
-    sgm = 'xyz'         # test example in dictionary
+    sgm = 'xyz'          # test example in dictionary
     sta = tree.createPhrasesFromDictionary(sgm,False)
-    print sgm,':',sta,'phlim=',tree.phlim,'lastph=',tree.lastph 
+    print sgm , ':' , sta , ', phlim=' , tree.phlim , 'lastph=' , tree.lastph 
 
     print '----'
-    sgm = 'pqr'         # test example not in dictionary
+    sgm = 'pqr'          # test example not in dictionary
     sta = tree.createUnknownPhrase(ellyToken.EllyToken(sgm))
-    print sgm,':',sta,'phlim=',tree.phlim,'lastph=',tree.lastph 
+    print sgm , ':' , sta , ', phlim=' , tree.phlim , 'lastph=' , tree.lastph 
 
     print '----'
-    sgm = '.'           # test example not in dictionary
+    sgm = '.'            # test example not in dictionary
     tree.gbits[0].clear()
-    sta = tree.addLiteralPhrase(tree.gtb.PUNC,fbs)
-    print sgm,':',sta,'phlim=',tree.phlim,'lastph=',tree.lastph 
+    sta = tree.addLiteralPhrase(tree.gtb.PUNC,fbbs)
+    print sgm , ':' , sta , ', phlim=' , tree.phlim , 'lastph=' , tree.lastph 
     tree.gbits[0].set(tree.gtb.PUNC)
-    sta = tree.addLiteralPhrase(tree.gtb.PUNC,fbs)
-    print sgm,':',sta,'phlim=',tree.phlim,'lastph=',tree.lastph 
+    sta = tree.addLiteralPhrase(tree.gtb.PUNC,fbbs)
+    print sgm , ':' , sta , ', phlim=' , tree.phlim , 'lastph=' , tree.lastph 
 
     print ''
     print 'ambiguities:'
@@ -613,11 +637,9 @@ if __name__ == '__main__':
         print ''
 
     print '----'
-    for n in range(10,15):
-        phr = tree.makePhrase(0,R(n))
-        tree.enqueue(phr)
+    for rno in range(10,15):
+        phrs = tree.makePhrase(0,R(rno))
+        tree.enqueue(phrs)
     print '----'
-    ph = tree.dequeue()
-    print ph
-    ph = tree.dequeue()
-    print ph
+    print 'dequeue phrase=' , tree.dequeue()
+    print 'dequeue phrase=' , tree.dequeue()

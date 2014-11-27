@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyDefinition.py : 10sep2014 CPM
+# ellyDefinition.py : 05nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -40,7 +40,6 @@ import grammarTable
 import patternTable
 import vocabularyTable
 import morphologyAnalyzer
-import inflectionStemmerEN
 import conceptualHierarchy
 import ellyDefinitionReader
 import ellyConfiguration
@@ -82,13 +81,13 @@ class EllyDefinition(object):
             EllyDefinitionReader on success, None otherwise
         """
 
-        base = ellyConfiguration.baseSource
+        basn = ellyConfiguration.baseSource
         suf  = '.' + part + '.elly'
-        file = base + system + suf
-        if not os.path.exists(file):
-            file = base + ellyConfiguration.defaultSystem + suf
-        print >> sys.stderr , 'reading' , file ,
-        rdr = ellyDefinitionReader.EllyDefinitionReader(file)
+        filn = basn + system + suf
+        if not os.path.exists(filn):
+            filn = basn + ellyConfiguration.defaultSystem + suf
+        print >> sys.stderr , 'reading' , filn ,
+        rdr = ellyDefinitionReader.EllyDefinitionReader(filn)
         if rdr.error != None:
             self.errors.append(rdr.error)
             print >> sys.stderr , ': failed'
@@ -112,7 +111,7 @@ class Rules(EllyDefinition):
         rls   - saved PyElly software ID
     """
 
-    def __init__ ( self , system , id ):
+    def __init__ ( self , system , rid ):
 
         """
         load all definitions from text files
@@ -120,7 +119,7 @@ class Rules(EllyDefinition):
         arguments:
             self     -
             system   - which set of table definitions
-            id       - PyElly release ID
+            rid      - PyElly release ID
 
         exceptions:
             TableFailure on error
@@ -128,7 +127,7 @@ class Rules(EllyDefinition):
 
         super(Rules,self).__init__()
 
-        self.rls = id
+        self.rls = rid
 
         self.stb = symbolTable.SymbolTable()  # new empty table to fill in
 
@@ -207,16 +206,13 @@ class Vocabulary(EllyDefinition):
 
 if __name__ == '__main__':
 
-    import sys
-    import symbolTable
-
     sym = symbolTable.SymbolTable()
     nam = sys.argv[1] if len(sys.argv) > 1 else 'test'
-    id  = 'v????'
-    print 'PyElly' , id , ', system=' , nam
+    idn  = 'v????'
+    print 'PyElly' , idn , ', system=' , nam
     print "------------ rules"
     try:
-        rul = Rules(nam,id)
+        rul = Rules(nam,idn)
     except ellyException.TableFailure:
         print 'grammar rules failed to load'
         sys.exit(1)

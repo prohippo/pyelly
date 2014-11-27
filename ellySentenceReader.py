@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellySentenceReader.py : 05sep2014 CPM
+# ellySentenceReader.py : 06nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -65,19 +65,19 @@ class EllySentenceReader(object):
         last - last char encountered in buffering input lines
     """
 
-    def __init__ ( self , input , stpx , drop=False ):
+    def __init__ ( self , inpts , stpx , drop=False ):
 
         """
         initialize sentence buffering of input text
 
         arguments:
             self  -
-            input - utf-8 text stream (e.g. sys.stdin)
+            inpts - utf-8 text stream (e.g. sys.stdin)
             stpx  - stop punctuation exceptions
             drop  - what to do with stop punctuation exception
         """
 
-        self.inp = ellyCharInputStream.EllyCharInputStream(input)
+        self.inp = ellyCharInputStream.EllyCharInputStream(inpts)
         self.stpx = stpx
         self.drop = drop
         self.last = END
@@ -303,16 +303,16 @@ if __name__ == '__main__':
         print >> sys.stderr, inp.error
         sys.exit(1)
 
-    stpx = stopExceptions.StopExceptions(inp)
+    stpxs = stopExceptions.StopExceptions(inp)
 
     tst = sys.argv[1] if len(sys.argv) > 1 else 'sentenceTestData.txt'
     ins = open(tst,'r')
-    rdr = EllySentenceReader(ins,stpx)
+    rdr = EllySentenceReader(ins,stpxs)
 
     while True:
-        sent = rdr.getNext()
-        if sent == None or len(sent) == 0: break
-        s = u''.join(sent)
+        sents = rdr.getNext()
+        if sents == None or len(sents) == 0: break
+        s = u''.join(sents)
         print '\n>>>>' , type(s) , '[' + s + ']'
 
     ins.close()

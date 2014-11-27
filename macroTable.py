@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# macroTable.py : 07sep2014 CPM
+# macroTable.py : 02nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -28,18 +28,133 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 # -----------------------------------------------------------------------------
 
-import sys
-import ellyChar
-import ellyWildcard
-import ellyException
-import definitionLine
-
 """
 for defining the rewriting of input before parsing
 
 this uses an extension of the macro substitutions described in
 Kernighan and Plauger's "Software Tools" 
 """
+
+import sys
+import ellyChar
+import ellyWildcard
+import ellyException
+import definitionLine
+
+def _checkBindings ( left , right ):
+
+    """
+    check if all bindings have associated wildcards
+
+    arguments:
+        left  - pattern
+        right - substitution
+
+    returns:
+        True if bindings are valid, False otherwise
+    """
+
+#       print 'BIND: left=' , left , ' right=' , right
+    mxb = '0'       # maximum binding
+    k = 0
+    l = len(right)
+    while k < l:    # iterate on pattern string
+        c = right[k]
+        k += 1
+        if c == '\\':
+            if k == l:
+                break
+            b = right[k]
+            k += 1
+            if 1 <= b and b <= '9':
+                if mxb < b: mxb = b
+
+#       print 'mxb=' , mxb
+
+    if mxb == '0': return True
+
+    m = int(mxb) - int('0')
+
+    n = 0           # count of wildcard sequences
+    k = 0
+    l = len(left)   # iterate on substitution string
+    while True:
+        while k < l:
+            c = left[k]
+            k += 1
+            if ellyWildcard.isWild(c):
+                if c != ellyWildcard.cEND: n += 1
+                break
+        if k == l:
+            break
+        while k < l:
+            c = left[k]
+            k += 1
+            if not ellyWildcard.isWild(c):
+                break
+
+#       print 'BIND: m=' , m , 'n=' , n
+    return (m <= n) # must be as many wildcard sequences as maximum binding
+
+def _checkExpansion ( left , right ):
+
+    """
+    check that substitution does not produce more non-space chars
+    ignoring pattern wildcards and substitutions dependent on bindings
+
+    arguments:
+        left  - pattern
+        right - substitution
+
+    returns:
+        True if substitution is not longer than original string, False otherwise
+    """
+
+#       print 'EXPN: left=' , left , 'right=' , right
+    nh = 0          # hypen count in pattern
+    n = 0           # non-space char count in pattern
+    k = 0
+    l = len(left)
+    while k < l:    # iterate on pattern string
+        c = left[k]
+        k += 1
+        if c == '-':
+            n += 1
+            nh += 1
+        elif c != ' ' and c != '_':    # look at non-space chars
+            if not ellyWildcard.isWild(c):
+                n += 1
+
+    mh = 0          # hyphen count in substitution
+    m = 0           # non-space char count in substitution
+    k = 0
+    l = len(right)
+    while k < l:    # iterate on substitution string
+        c = right[k]
+        k += 1
+        if c == '-':
+            m += 1
+            mh += 1
+        elif c != ' ' and c != '_':    # look at non-space chars
+            if k == l:
+                m += 1
+            elif c == '\\':            # look for binding with \
+                d = right[k]
+                if '1' > d or d > '9': # if not binding, treat as non-space
+                    m += 1
+                else:
+                    k += 1
+            else:
+                m += 1
+
+#       print 'EXPN: m=' , m , 'n=' , n
+
+    if m <= n: return True
+
+    n -= nh         # another way to avoid warning
+    m -= mh         #
+
+    return (m <= n)
 
 class MacroTable(object):
 
@@ -70,9 +185,9 @@ class MacroTable(object):
             TableFailure on error
         """
 
-        self.index = [ [ ] ]         # slot for patterns starting with punctuation
-        for i in range(ellyChar.Max + 10):
-            self.index.append([ ])   # slot for patterns starting with letter or digit
+        lim = ellyChar.Max + 11      # number of alphanumeric + 1
+        self.index = [ [ ]
+            for i in range(lim) ]    # slots for patterns starting with letter or digit
         self.letWx = [ ]             #                            with letter  wildcard
         self.digWx = [ ]             #                                 digit   wildcard
         self.anyWx = [ ]             #                                 general wildcard
@@ -155,10 +270,10 @@ class MacroTable(object):
             pe = mp[-1]
             if pe != ellyWildcard.cALL and pe != ellyWildcard.cEND:
                 mp += ellyWildcard.cEND       # pattern must end in $ if it does not end in *
-            if not self.checkBindings(mp,tail):
+            if not _checkBindings(mp,tail):
                 self._err('bad bindings in substitution',l)
                 continue
-            if not nowarn and not self.checkExpansion(mp,tail):
+            if not nowarn and not _checkExpansion(mp,tail):
                 self._err('substitution longer than original string',l,0)
             r = [ mp , tail ]
 #           print "rule =" , [ left , tail ]
@@ -220,123 +335,6 @@ class MacroTable(object):
             print >> sys.stderr , 'macro table definition FAILed'
             raise ellyException.TableFailure
 
-    def checkBindings ( self , left , right ):
-
-        """
-        check if all bindings have associated wildcards
-
-        arguments:
-            self  -
-            left  - pattern
-            right - substitution
-
-        returns:
-            True if bindings are valid, False otherwise
-        """
-
-#       print 'BIND: left=' , left , ' right=' , right
-        mxb = '0'       # maximum binding
-        k = 0
-        l = len(right)
-        while k < l:    # iterate on pattern string
-            c = right[k]
-            k += 1
-            if c == '\\':
-                if k == l:
-                    break
-                b = right[k]
-                k += 1
-                if 1 <= b and b <= '9':
-                    if mxb < b: mxb = b
-
-#       print 'mxb=' , mxb
-
-        if mxb == '0': return True
-
-        m = int(mxb) - int('0')
-
-        n = 0           # count of wildcard sequences
-        k = 0
-        l = len(left)   # iterate on substitution string
-        while True:
-            while k < l:
-                c = left[k]
-                k += 1
-                if ellyWildcard.isWild(c):
-                    if c != ellyWildcard.cEND: n += 1
-                    break
-            if k == l:
-                break
-            while k < l:
-                c = left[k]
-                k += 1
-                if not ellyWildcard.isWild(c):
-                    break
-
-#       print 'BIND: m=' , m , 'n=' , n
-        return (m <= n) # must be as many wildcard sequences as maximum binding
-
-    def checkExpansion ( self , left , right ):
-
-        """
-        check that substitution does not produce more non-space chars
-        ignoring pattern wildcards and substitutions dependent on bindings
-
-        arguments:
-            self  -
-            left  - pattern
-            right - substitution
-
-        returns:
-            True if substitution is not longer than original string, False otherwise
-        """
-
-#       print 'EXPN: left=' , left , 'right=' , right
-        nh = 0          # hypen count in pattern
-        n = 0           # non-space char count in pattern
-        k = 0
-        l = len(left)
-        while k < l:    # iterate on pattern string
-            c = left[k]
-            k += 1
-            if c == '-':
-                n += 1
-                nh += 1
-            elif c != ' ' and c != '_':    # look at non-space chars
-                if not ellyWildcard.isWild(c):
-                    n += 1
-
-        mh = 0          # hyphen count in substitution
-        m = 0           # non-space char count in substitution
-        k = 0
-        l = len(right)
-        while k < l:    # iterate on substitution string
-            c = right[k]
-            k += 1
-            if c == '-':
-                m += 1
-                mh += 1
-            elif c != ' ' and c != '_':    # look at non-space chars
-                if k == l:
-                    m += 1
-                elif c == '\\':            # look for binding with \
-                    d = right[k]
-                    if '1' > d or d > '9': # if not binding, treat as non-space
-                        m += 1
-                    else:
-                        k += 1
-                else:
-                    m += 1
-
-#       print 'EXPN: m=' , m , 'n=' , n
-
-        if m <= n: return True
-
-        n -= nh         # another way to avoid warning
-        m -= mh         #
-
-        return (m <= n)
-
     def dump ( self ):
 
         """
@@ -349,12 +347,12 @@ class MacroTable(object):
         if len(self.index[0]) > 0:
             print '[.]:'
             _dmpall(self.index[0])
-        lm = len(self.index)
-        for i in range(1,lm):
-            slot = self.index[i]
+        i = 0
+        for slot in self.index:
             if len(slot) > 0:
                 print '[' + ellyChar.toChar(i) + ']:'
                 _dmpall(slot)
+            i += 1
         if len(self.letWx) > 0:
             print '[LETTER]:'
             _dmpall(self.letWx)
@@ -386,7 +384,6 @@ if __name__ == '__main__':
     import substitutionBuffer
     import ellyDefinitionReader
     import ellyConfiguration
-    import ellyBase
 
     base = ellyConfiguration.baseSource + '/'
     name = sys.argv[1] if len(sys.argv) > 1 else 'test'
@@ -412,9 +409,9 @@ if __name__ == '__main__':
     sb = substitutionBuffer.SubstitutionBuffer(mtb)
     while True:
         sys.stdout.write('> ')
-        s = sys.stdin.readline()       # get test input
-        if len(s) <= 1: break
-        ss = s.strip().decode('utf8')  # convert to Unicode
+        st = sys.stdin.readline()      # get test input
+        if len(st) <= 1: break
+        ss = st.strip().decode('utf8') # convert to Unicode
         sb.clear()
         sb.append(ss)
 

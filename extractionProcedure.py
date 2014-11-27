@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# extractionProcedure.py : 03dec2013 CPM
+# extractionProcedure.py : 05nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -42,43 +42,43 @@ import timeTransform
 dT = dateTransform.DateTransform()
 tT = timeTransform.TimeTransform()
 
-def date ( buffer ):
+def date ( buffr ):
 
     """
     recognize date expressions in text
 
     arguments:
-        buffer - current contents as list of chars
+        buffr - current contents as list of chars
 
     returns:
         char count matched on success, 0 otherwise
     """
 
-    if dT.rewrite(buffer):
+    if dT.rewrite(buffr):
         return dT.length()
     else:
         return 0  # just a stub
 
-def time ( buffer ):
+def time ( buffr ):
 
     """
     recognize time expressions in text
 
     arguments:
-        buffer - current contents as list of chars
+        buffr - current contents as list of chars
 
     returns:
         char count matched on success, 0 otherwise
     """
 
-    if tT.rewrite(buffer):
+    if tT.rewrite(buffr):
         return tT.length()
     else:
         return 0  # just a stub
 
 # state abbreviations and starting digits for zipcodes
 
-zip = {
+ziprs = {
     'AK':'99', 'AL': '3', 'AR':  '7', 'AZ': '8', 'CA': '9',
     'CO': '8', 'CT':'06', 'DC':'200', 'DE':'19', 'FL': '3',
     'GA': '3', 'HI':'96', 'IA':  '5', 'ID':'83', 'IL': '6',
@@ -91,23 +91,23 @@ zip = {
     'VA': '2', 'VT':'05', 'WA':  '9', 'WI': '5', 'WV': '2', 'WY': '8'
 }
 
-def stateZip ( buffer ):
+def stateZip ( buffr ):
 
     """
     recognize U.S. state abbreviation and zip code
 
     arguments:
-        buffer - current contents as list of chars
+        buffr - current contents as list of chars
 
     returns:
         char count matched on success, 0 otherwise
     """
 
-    if len(buffer) < 8 or buffer[2] != ' ': return 0
-    st = ''.join(buffer[:2]).upper()   # expected 2-char state abbreviation
-    if not st in zip: return 0         # if not known, quit
-    zc = zip[st]                       # get zip-code start
-    b = buffer[3:]                     # expected start of zipcode
+    if len(buffr) < 8 or buffr[2] != ' ': return 0
+    st = ''.join(buffr[:2]).upper()    # expected 2-char state abbreviation
+    if not st in ziprs: return 0       # if not known, quit
+    zc = ziprs[st]                     # get zip-code start
+    b = buffr[3:]                      # expected start of zipcode
     i = 0
     for c in zc:                       # check starting digits of zipcode
         if c != b[i]: return 0

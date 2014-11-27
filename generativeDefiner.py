@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeDefiner.py : 05sep2014 CPM
+# generativeDefiner.py : 04nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -35,7 +35,6 @@ to display its logic
 
 import sys
 import ellyBits
-import grammarTable
 import semanticCommand
 
 _simple = {  # commands with no arguments
@@ -307,9 +306,9 @@ def compileDefinition ( stb , inp ):
               else semanticCommand.Gdelt if (first == 'to' or first == 'from')
               else semanticCommand.Gdele )
             if co == semanticCommand.Gdelt:
-                str = ' ' if len(ar) == 1 else ar[1]
+                strg = ' ' if len(ar) == 1 else ar[1]
                 flag = 1 if first == 'to' else -1
-                store.extend([ co , str , flag ])
+                store.extend([ co , strg , flag ])
             else:
                 nc = 11111   # bigger than any possible buffer
                 if first != '<' and first != '>':
@@ -484,8 +483,8 @@ def showCode ( cod ):
     """
 
     if cod == None:
-       print 'No Code'
-       return
+        print 'No Code'
+        return
     loc = 0
     while len(cod) > 0:
         l = semanticCommand.Glen[cod[0]]
@@ -500,22 +499,22 @@ if __name__ == "__main__":
     import ellyDefinitionReader
     import symbolTable
 
-    stb = symbolTable.SymbolTable()
+    stbd = symbolTable.SymbolTable()
 
     print 'generative semantic compilation test'
-    src = sys.argv[1] if len(sys.argv) > 1 else 'generativeDefinerTest.txt'
-    inp = ellyDefinitionReader.EllyDefinitionReader(src)
-    if inp.error != None:
+    srcd = sys.argv[1] if len(sys.argv) > 1 else 'generativeDefinerTest.txt'
+    inpd = ellyDefinitionReader.EllyDefinitionReader(srcd)
+    if inpd.error != None:
         print >> sys.stderr, "cannot read procedure definition"
-        print >> sys.stderr, inp.error
+        print >> sys.stderr, inpd.error
         sys.exit(1)
 
-    print 'input=' , src
+    print 'input=' , srcd
 
-    cod = compileDefinition(stb,inp)
-    if cod == None:
+    codg = compileDefinition(stbd,inpd)
+    if codg == None:
         print >> sys.stderr, "semantic compilation error"
         sys.exit(1)
 
-    print len(cod) , 'code elements in procedure'
-    showCode(cod)
+    print len(codg) , 'code elements in procedure'
+    showCode(codg)

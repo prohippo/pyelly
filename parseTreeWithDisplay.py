@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeWithDisplay.py : 15aug2014 CPM
+# parseTreeWithDisplay.py : 03nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -286,20 +286,37 @@ if __name__ == '__main__':
     import ellyToken
     import ellyDefinitionReader
     import ellyConfiguration
-    import symbolTable
     import grammarTable
-    import dumpEllyGrammar
 
     class Wtg(object):  # dummy conceptual weighting
+        """ dummy weighting class
+        """
+        def __init__ ( self ):
+            """ dummy method
+            """
+            self.cxc = None
         def relateConceptPair ( self , cna , cnb ):
+            """ dummy method
+            """
+            self.cxc = cna + cnb
             return 0
         def interpretConcept ( self , cn ):
+            """ dummy method
+            """
+            self.cxc = cn
             return 0
         def getIntersection ( self ):
+            """ dummy method
+            """
+            self.cxc = None
             return '--'
 
     class Ctx(object):  # dummy interpretive context
+        """ dummy interpretive context class
+        """
         def __init__ ( self ):
+            """ dummy method
+            """
             self.tokns = [ ]
             self.wghtg = Wtg()
 
@@ -313,23 +330,23 @@ if __name__ == '__main__':
         sys.exit(1)
     print 'loading' , '[' + base + name + '.g.elly]' , len(rdr.buffer) , 'lines'
 
-    stb = symbolTable.SymbolTable()
-    gtb = grammarTable.GrammarTable(stb,rdr)
-    ctx = Ctx()
-    tks = ctx.tokns
+    stbu = symbolTable.SymbolTable()
+    gtbu = grammarTable.GrammarTable(stbu,rdr)
+    ctxu = Ctx()
+    tksu = ctxu.tokns
 
-    tree = ParseTreeWithDisplay(stb,gtb,None,ctx)
+    tree = ParseTreeWithDisplay(stbu,gtbu,None,ctxu)
     print tree
     print dir(tree)
 
-    cat = stb.getSyntaxTypeIndexNumber('num')
+    cat = stbu.getSyntaxTypeIndexNumber('num')
     fbs = ellyBits.EllyBits(symbolTable.FMAX)
     tree.addLiteralPhrase(cat,fbs)
     tree.digest()
-    tks.append(ellyToken.EllyToken('66'))
+    tksu.append(ellyToken.EllyToken('66'))
     tree.restartQueue()
 
-    ws = [ u'nn' , u'b' , u'aj' ]  # additional input for testing with rules from test.g.elly
+    ws = [ u'nn' , u'b' , u'aj' ]  # more input to test rules from test.g.elly
 
     for w in ws:
 
@@ -337,10 +354,10 @@ if __name__ == '__main__':
         print '****' , tree.phlim , tree.lastph
         tree.digest()
         print '****' , tree.phlim , tree.lastph
-        tks.append(ellyToken.EllyToken(w))
+        tksu.append(ellyToken.EllyToken(w))
         tree.restartQueue()
 
-    print tks
+    print tksu
 
     print 'limits=' , tree.phlim , tree.glim
 
