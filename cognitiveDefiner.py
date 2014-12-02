@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveDefiner.py : 05nov2014 CPM
+# cognitiveDefiner.py : 01dec2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -127,6 +127,7 @@ def _leftside ( stb , txt ):
             op = semanticCommand.Crhtf if side == 'r' else semanticCommand.Clftf
 #           print 'test:' , f.positive.hexadecimal() , f.negative.hexadecimal()
             test = ellyBits.join(f.positive,f.negative)
+#           print test
             pred.append([ op , test ])
 
         elif txt[0] == '(':                 # semantic concept check?
@@ -164,22 +165,23 @@ def _rightside ( stb , txt ):
 
     actn = [ ]
     val  = 0
-    cnc  = ''                     # default is no concept specified
+    cnc  = ''                        # default is no concept specified
 
-    n = txt.rfind(' ')            # look for explicit concept
+    m = txt.rfind(']')
+    n = txt.rfind(' ')               # look for space marking explicit concept
 
 #   print 'n=',n
-#   print "0 txt=[",txt,"]"
+#   print "0 txt=[" , txt , "]"
 
-    if n >= 0:
+    if n > m:                        # space must not be in semantic feature specification
         cnc = txt[n:].strip().upper()
-        txt = txt[:n]             # otherwise break off last action
+        txt = txt[:n]                # break off concept
 
-#   print "1 txt=[",txt,"]"
+#   print "1 txt=[" , txt , "]"
 
     if len(txt) > 1:
 
-        if txt[0] == '*':         # inherit from phrase component?
+        if txt[0] == '*':            # inherit from phrase component?
             c = txt[1]
             if c == 'l':
                 actn.append([ semanticCommand.Clhr ])
@@ -189,22 +191,27 @@ def _rightside ( stb , txt ):
                 return _err('bad inheritance')
             txt = txt[2:].strip()
 
-    if len(txt) > 1:
+#   print "2 txt=[" , txt , "]"
 
-        if txt[0] == '[':         # set semantic features for phrase?
-            n = txt.find(']')
-            if n < 0:
-                return _err('incomplete semantic features to set')
-            try:
-                f = featureSpecification.FeatureSpecification(stb,txt[:n+1],semantic=True)
-            except ellyException.FormatFailure:
-                return _err('bad semantic features')
-            sq = [ semanticCommand.Csetf , f ]
-            txt = txt[n+1:]
+    if len(txt) > 3 and txt[0] == '[':
+
+        n = txt.find(']')        # set semantic features for phrase?
+#       print 'n=' , n
+        if n < 3:
+            return _err('incomplete semantic features to set')
+        try:
+            f = featureSpecification.FeatureSpecification(stb,txt[:n+1],semantic=True)
+        except ellyException.FormatFailure:
+            return _err('bad semantic features')
+        actn.append([ semanticCommand.Csetf , f.positive ])
+#       print 'set:' , actn[-1]
+        txt = txt[n+1:]
+
+#   print "3 txt=[" , txt , "]"
 
     if len(txt) > 0:
 
-        c = txt[0]                # check for sign of plausibility change
+        c = txt[0]                   # check for sign of plausibility change
 
         if c != '+' and c != '-':
             return _err('plausibility must begin with + or -')
@@ -234,8 +241,7 @@ def _rightside ( stb , txt ):
     ret = [ semanticCommand.Cadd , val ]
 
     if len(cnc) > 0:
-        sq = [ semanticCommand.Csetc , cnc ]
-        actn.append(sq)
+        actn.append([ semanticCommand.Csetc , cnc ])
 
     actn.append(ret)
     return actn
@@ -274,8 +280,13 @@ def showCode ( cod ):
         acs = [ ]  # to collect actions of cognitive clause
         for a in actn:
             opn = a[0]
-            arg = a[1:]
-            acs.append(semanticCommand.Copn[opn] + ' ' + str(arg))
+            arg = a[1] if len(a) > 1 else ''
+            if opn == semanticCommand.Csetf:
+#               print 'bit arg =' , arg
+                s = ellyBits.show(arg)
+            else:
+                s = str(arg)
+            acs.append(semanticCommand.Copn[opn] + ' ' + s)
         print ', '.join(acs)
 
 #

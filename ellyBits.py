@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBits.py : 02nov2014 CPM
+# ellyBits.py : 02dec2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -29,7 +29,7 @@
 # -----------------------------------------------------------------------------
 
 """
-define bit operations required by Elly parsing
+define bit operations on byte arrays required by Elly parsing
 """
 
 import array
@@ -62,7 +62,7 @@ def getByteCountFor ( nbc ):
         number of bytes
     """
 
-    n,m = divmod(nbc,N)
+    n , m = divmod(nbc,N)
     if m > 0: n += 1
     return n
 
@@ -76,7 +76,7 @@ def join ( a , b ):
         b   - EllyBits object
 
     returns:
-        merged lists of bytes for comparison
+        merged array of bytes for comparison
     """
 
     return a.data + b.data
@@ -136,6 +136,16 @@ class EllyBits(object):
         n = getByteCountFor(nob)
         self.data = array.array('B',(0,)*n)  # want unsigned char as array element = 'B'
 
+    def __str__ ( self ):
+        """
+        represent bit data
+        arguments:
+            self
+        returns:
+            hexadecimal string for bits
+        """
+        return 'EllyBits: ' + show(self.data)
+
     def set ( self , k ):
         """
         set kth bit by OR'ing
@@ -143,7 +153,7 @@ class EllyBits(object):
             self  -
             k     - which bit
         """
-        n,m = divmod(k,N)
+        n , m = divmod(k,N)
         if n >= len(self.data): return
         self.data[n] |= sel[m]
 
@@ -156,7 +166,7 @@ class EllyBits(object):
         returns:
             True if kth bit == 1, False otherwise
         """
-        n,m = divmod(k,N)
+        n , m = divmod(k,N)
         if n >= len(self.data): return False
         return (self.data[n] & sel[m]) != 0
 
@@ -181,7 +191,7 @@ class EllyBits(object):
         check that bits are the same as reference
         arguments:
             self  -
-            r     - bit string to compare with
+            r     - bit string in byte array to compare with
         returns:
             True if all bits the same, False otherwise
         """
@@ -194,7 +204,7 @@ class EllyBits(object):
         intersect bits with reference
         arguments:
             self  -
-            r     - bit string to compare with
+            r     - bit string in byte array to compare with
         returns:
             True if bits intersect, False otherwise
         """
@@ -226,7 +236,7 @@ class EllyBits(object):
         form disjunction with other bit string
         arguments:
             self  -
-            r     - bit string to OR with
+            r     - bit string in byte array to OR with
         """
         m = len(self.data)
         n = len(r.data)
@@ -256,7 +266,7 @@ class EllyBits(object):
         """
         bs = [ ]
         for b in self.data:
-            n,m = divmod(b,16)
+            n , m = divmod(b,16)
             bs.append(hxd[n])
             bs.append(hxd[m])
             if divide:
@@ -299,6 +309,8 @@ if __name__ == "__main__":
     bbs.set(0)
     bbs.set(6)
     bbs.set(11)
+
+    print 'bbs=' , bbs
 
     print "bbs before:" , bbs.data , "hex=" , bbs.hexadecimal()
     bbt = EllyBits(K)

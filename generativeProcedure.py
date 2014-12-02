@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeProcedure.py : 10nov2014 CPM
+# generativeProcedure.py : 29nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -241,7 +241,7 @@ class GenerativeProcedure(object):
             elif op == semanticCommand.Gblnk:  # insert space into output buffer
                 cntx.insertCharsIntoBuffer(u' ')
             elif op == semanticCommand.Glnfd:  # insert linefeed into output buffer
-                cntx.insertCharsIntoBuffer(u'\r\n')
+                cntx.insertCharsIntoBuffer(u'\n ')
             elif op == semanticCommand.Gsplt:  # split off new buffer for output
                 cntx.splitBuffer()
 #               print "split",

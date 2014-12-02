@@ -605,8 +605,8 @@ ezer 1 3 . 0e
 factor 0 0 .
 fancier 1 4 y.
 fatten 1 3 . 1
-fatter 1 3 .
-fatty 1 3 .
+fatter 1 3 . 1
+fatty 1 3 . 1
 fell 1 1 all. 3ed
 fely 1 2 .
 fense 1 3 d.
@@ -2371,7 +2371,6 @@ zzy 1 2 .
 |laughter 1 6 .
 |liter 0 0 .
 |loss 1 4 e. 1
-|lost 1 4 e. 1
 |media 1 5 um. 1s
 |men 1 2 an. 2s
 |mental 0 0 .

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTree.py : 03nov2014 CPM
+# parseTree.py : 26nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -41,6 +41,9 @@ Pratt's bottomup algorithm in his LINGOL system
 
 import ellyBits
 import parseTreeBottomUp
+
+SF1 = 11  # special syntactic flags for ...
+SF2 = 12  #
 
 class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
 
@@ -277,7 +280,7 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
             ph = self.makePhrase(self.wordno,self.gtb.arbr) 
             if ph == None:   # error check
                 return
-            ph.synf.set(1)   # must do this to avoid ambiguity problem with ...
+            ph.synf.set(SF1) # must do this to avoid ambiguity problem with ...
             ph.bias = -2     # disfavor
             self.enqueue(ph)
             self.wordno -= 1 # so that goals will be at CURRENT position
@@ -308,7 +311,7 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
         if ph == None: return                           # error check
 
         ph.usen = -4                        # want only to realize goals for empty phrase
-        ph.synf.set(2)                      # must be different from ... for startUpX
+        ph.synf.set(SF2)                    # must be different from ... for startUpX
 
         self.enqueue(ph)                    # save phrase for ramifying
         self.wordno -= 1                    # so that any new goals go into right position

@@ -424,6 +424,8 @@ class StemLogic(object):
         last = seq[-1] if n > 0 else extra
         word = word[:msh]                # copy of word up to removed suffix
 #       print 'word=' , word
+        if not ellyChar.isLetter(word[-1]):
+            return isNOTM
 
         while True:                      # advance through logic until success or failure
 

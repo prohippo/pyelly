@@ -1,10 +1,12 @@
-l[:x,-yy,zz] >> -1
-l[:x] r[:yy] >> +3 XXXX
+>>[^a]
+l[^x,-yy,zz] >> -1
+l[^x] r[^yy] >> +3 XXXX
 >>+4 CNCP0
 >>+++++ CNCP1
 >>---
 l(CCCC)>>*L
-l[:x] r(CCCC)>>+2
-l[:x] r(CCCC,DDDD)>>+2
+l(CCCC)>>*L[^ww]
+l[^x] r(CCCC)>>+2
+l[^x] r(CCCC,DDDD)>>+2
 l(DDDD)>>*L EEEE
 >>+0 FFFF

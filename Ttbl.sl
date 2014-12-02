@@ -22,6 +22,7 @@ BLOCK t
       IS bs {SU 0 d}
       IF w  {SU 3 go}
       END
+    IF sol {SU 0 e}
     IF ohs {SU 0 ot}
     IF fer {SU 1 ave}
     END {FA}

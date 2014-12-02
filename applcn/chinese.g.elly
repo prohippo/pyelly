@@ -1,4 +1,4 @@
-# simple Elly grammar for English to Chinese
+# simple Elly grammar for English to Chinese (simple or traditional characters)
 # chinese.g.elly
 #
 # this translates only sentences of the forms
@@ -39,6 +39,9 @@ __
 g:subj[:*r]  -> pron
 __
 g:subj->nclu
+_
+  var sups=t
+  left
 __
 
 #
@@ -90,6 +93,7 @@ _
 __
 g:pred[!*r] -> vp
 _
+  var sups=t
   var neg=f
   var you=
   split
@@ -196,7 +200,7 @@ __
 d:-'s <- apos
 __
 g:poss->nclu apos
-  L[^-abstr]>>+
+  L[^-abstr,animate]>>+
 _
   left
   (de)
@@ -208,6 +212,7 @@ _
   append 之
 __
 g:poss->of nclu
+ >>*r
 _
   right
   (de)
@@ -251,7 +256,9 @@ __
 p:def    # handle THE with classifiers
 _
   if def=t
-    (zhe)
+    if sups=t
+      (zhe)
+      end
     end
 __
 p:xie    # singular or plural in classifier
@@ -268,8 +275,12 @@ _
     elif ~specl=t
       (def)
       if ~specl=t
-        insert < class
+        if sups=t
+          insert < class
+          end
         end
+    elif ordn=t
+      insert < class
       end
   else
     (def)
@@ -309,10 +320,11 @@ __
 #
 
 g:nclu->nxn
+ >>*l
 _
   var clsfyd=
   var class=
-  var specl=t
+  set specl=t
   var plur=
   (clsfp)
   split
@@ -323,29 +335,40 @@ _
   merge
 __
 g:nclu->dem nxn
+ >>*r
 _
   (dp)
 __
 g:nclu->det nxn
+ >>*r
 _
+  var ordn=
+  set specl=
   (dp)
 __
 g:nclu->quan nxn
+ >>*r
 _
 # trace
-  var specl=t
+  set specl=t
   (dp)
 __
 g:nclu->poss nxn
+ >>*r
 __
 g:nclu->nclu poss
+ r[^animate]>>+
 _
   right
+  set sups=
   left
 __
 g:nxn->adj nxn
+ >>*r
+_
 __
 g:nxn->num nxn
+ >>*r
 _
   left
   split
@@ -356,6 +379,7 @@ _
   set clsfyd=t
 __
 g:nxn->noun
+ >>*l
 _
   split
   left
@@ -369,6 +393,7 @@ _
   merge
 __
 g:noun->noun s
+ >>*l
 _
   set plur=t
   left
@@ -379,6 +404,11 @@ __
 #
 
 g:det->det ord
+_
+  left
+  right
+  set ordn=t
+  set specl=t
 __
 d:the <- det
 _
@@ -438,13 +468,14 @@ __
 # case constructions
 #
 
-g:case->of nclu
- R[^material]>>+
+g:usge->of nclu
+ >>*r
 _
   append 用
   right
 __
-g:pred->pred case
+g:pred->pred usge
+ r[^material]>>+
 _
   right
   left

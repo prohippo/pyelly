@@ -38,17 +38,17 @@ boat: noun tra=^條小船, =^条小船
 ball: noun tra=^個球, =^个球
 book: noun tra=^本書, =^本书
 bowl: noun tra=^個碗, =^个碗
-snake: noun tra=^條蛇, =^条蛇
+snake: noun [^animate] 0 tra=^條蛇, =^条蛇
 rope: noun tra=^條繩索, =^条绳索
 belt: noun tra=^條傳送帶, =^条传送带
 newspaper: noun tra=^張報紙, =^张报纸
 magazine: noun tra=^本雜誌, =^本杂志
-cow: noun tra=^頭母牛, =^头母牛
-pig: noun tra=^頭豬, =^头猪
-little pig: noun tra=^隻小猪仔, =^只小猪仔
-horse: noun tra=^匹馬, =^匹马
-chicken: noun tra=^隻雞, =^只雄
-duck: noun tra=^隻鴨, =^只鸭
+cow: noun [^animate] 0 tra=^頭母牛, =^头母牛
+pig: noun [^animate] 0 tra=^頭豬, =^头猪
+little pig: noun [^animate] 0 tra=^隻小猪仔, =^只小猪仔
+horse: noun [^animate] 0 tra=^匹馬, =^匹马
+chicken: noun [^animate] 0 tra=^隻雞, =^只雄
+duck: noun [^animate] 0 tra=^隻鴨, =^只鸭
 house: noun tra=^座房子, =^座房子
 building: noun tra=^座大廈, =^座大厦
 rose: noun =^朵玫瑰
@@ -86,13 +86,13 @@ philosophy : noun tra=哲學, =哲学
 page : noun =頁
 photograph : noun tra=^張照片, =^张照片
 person : noun tra=^個人, =^个人
-dog : noun tra=^隻狗, =^只狗
-cat : noun tra=^隻猫, =^只猫
-bird : noun tra=^隻鳥, =^只鸟
+dog : noun [^animate] 0 tra=^隻狗, =^只狗
+cat : noun [^animate] 0 tra=^隻猫, =^只猫
+bird : noun [^animate] 0 tra=^隻鳥, =^只鸟
 dream : noun tra=^個夢想, =^个梦想
 fear: noun =恐惧
 hope: noun =希望
-person: noun tra=^個人, =^个人
+person: noun [^animate] 0 tra=^個人, =^个人
 
 red:    noun =紅色
 blue:   noun =藍色

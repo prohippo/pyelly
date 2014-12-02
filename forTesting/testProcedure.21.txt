@@ -1,0 +1,8 @@
+# assigning from undefined variable
+
+var x=0
+assign x=y
+show x
+show y
+set y=syzygy
+show y

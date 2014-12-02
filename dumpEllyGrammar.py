@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# dumpEllyGrammar.py : 06nov2014 CPM
+# dumpEllyGrammar.py : 30nov2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -138,7 +138,7 @@ def dumpFeatures ( stb ):
         for i in range(nols):
             idn = fids[i]
             fl = fs[idn].keys()
-            print '[{0:2}] {1} '.format(i,id) ,
+            print '[{0:2}] {1} '.format(i,idn) ,
             for f in fl:
                 print f + ' ' ,
             print ""
@@ -319,3 +319,25 @@ def dumpDictionary ( stb, dctn , full ):
         no += k
 
     print len(dctn) , 'unique words in' , no , "entries"
+
+#
+# unit test
+#
+
+if __name__ == '__main__':
+
+    import sys
+    import ellyException
+    import ellyDefinition
+
+    nam = sys.argv[1] if len(sys.argv) > 1 else 'test'
+    ver = sys.argv[2] if len(sys.argv) > 2 else 'v1.0'
+    lvl = sys.argv[3] if len(sys.argv) > 3 else '3'
+
+    try:
+        rul = ellyDefinition.Rules(nam,ver)
+    except ellyException.TableFailure:
+        print 'grammar rules failed to load'
+        sys.exit(1)
+
+    dumpAll(rul.stb,rul.gtb,int(lvl))
