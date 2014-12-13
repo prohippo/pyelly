@@ -162,6 +162,12 @@ flagon-d  : lit =Ai,NTNM,FLAGON-D
 flagon-e  : lit =Ai,NTNM,FLAGON-E
 fiddler   : lit =Ai,NTNM,FIDDLER
 firebar   : lit =Ai,NTNM,FIREBAR
+Fencer    : lit =Ai,NTNM,FENCER
+Frogfoot  : lit =Ai,NTNM,FROGFOOT
+Flanker   : lit =Ai,NTNM,FLANKER
+Flogger-D : lit =Ai,NTNM,FLOGGER-D
+Fulcrum   : lit =Ai,NTNM,FULCRUM
+Foxhound  : lit =Ai,NTNM,FOXHOUND
 
 mig      : lit =Ai,SVNM,MIG%
 mig-17   : lit =Ai,SVNM,MIG-17
@@ -183,6 +189,13 @@ su-11   : lit =Ai,SVNM,SU-11
 su-15   : lit =Ai,SVNM,SU-15
 tu-28p  : lit =Ai,SVNM,TU-28P
 yak-28p : lit =Ai,SVNM,YAK-28P
+su-24   : lit =Ai,SVNM,SU-24
+su-25   : lit =Ai,SVNM,SU-25
+su-27   : lit =Ai,SVNM,SU-27
+mig-27  : lit =Ai,SVNM,MIG-27
+mig-29  : lit =Ai,SVNM,MIG-29
+mig-31  : lit =Ai,SVNM,MIG-31
+
 
 klimov   : lit =AiEn,MFR,KLIMOV
 tumansky : lit =AiEn,MFR,TUMANSKY

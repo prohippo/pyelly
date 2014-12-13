@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTree.py : 26nov2014 CPM
+# parseTree.py : 05dec2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -186,7 +186,7 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
                     phn.lftd = phx                     # goal phrase is left part of new one
                     phn.rhtd = phr                     # current phrase is right part
                     self._score(phn)                   # compute bias score
-                    if phn.synf.test(0):               # inherit features from current phrase?
+                    if phn.synf.test(0):               # inherit features from ramified phrase?
                         phn.synf.combine(phr.synf)
                     if phn.synf.test(1):               # inherit features from previous phrase?
                         phn.synf.combine(phx.synf)

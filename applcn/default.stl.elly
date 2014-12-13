@@ -576,6 +576,7 @@ etentate 2 2 ain.
 etention 2 2 ain.
 eteric 2 4 .
 etery 0 0 .
+etheless 0 0 .
 ethic 0 0 .
 etic 1 2 .
 etion 2 2 &.
@@ -851,6 +852,7 @@ ilant 2 2 .
 ilate 2 2 &.
 ilean 2 3 .
 iler 2 3 . 0e
+iless 2 0 y, 1
 ilial 2 2 y. 1
 iliate 2 2 &.
 ilious 2 2 &. 1
@@ -883,7 +885,7 @@ indred 2 3 .
 indy 2 3 .
 iner 1 2 &.
 inery 2 3 .
-iness 2 0 y,
+iness 2 0 y, 1
 inest 2 3 . 0e
 inger 0 0 .
 ingier 2 3 y, 1
@@ -1061,6 +1063,7 @@ leromata 2 6 . 2s
 lescent 1 5 . 0e
 lesion 0 0 .
 lesis 0 0 .
+less 1 0 .
 lete 2 3 . 1
 letter 0 0 .
 lexy 2 2 ct. 1
@@ -1809,6 +1812,7 @@ rtee 1 2 .
 rterial 1 4 y.
 rtery 0 0 .
 rtest 1 2 .
+rtheless 0 0 .
 rtian 1 1 . 2
 rticular 0 0 .
 rtillery 0 0 .
@@ -2326,6 +2330,7 @@ zzy 1 2 .
 |begun 1 4 in. 2n
 |better 0 0 .
 |bitter 0 0 .
+|bless 0 0 .
 |brethren 1 3 other. 6s
 |brian 0 0 .
 |cacti 1 5 us. 1
@@ -2348,6 +2353,7 @@ zzy 1 2 .
 |enter 1 4 r. 1
 |erratum 1 4 or. 4s
 |ester 0 0 .
+|feckless 0 0 .
 |feet 1 2 oot. 3s
 |fester 0 0 .
 |fetter 0 0 .
@@ -2393,8 +2399,10 @@ zzy 1 2 .
 |quality 0 0 .
 |rally 0 0 .
 |rang 1 2 ing. 3ed
+|reckless 0 0 .
 |rode 1 2 ide. 3ed
 |rung 1 2 ing. 3n
+|ruthless 0 0 .
 |ration 0 0 .
 |redden 1 4 . 1
 |redone 1 5 . 2n
@@ -2424,6 +2432,7 @@ zzy 1 2 .
 |tension 1 5 &.
 |thesis 0 0 .
 |topic 0 0 .
+|unbless 0 0 .
 |unship 0 0 .
 |usage 1 3 e.
 |version 0 0 .
