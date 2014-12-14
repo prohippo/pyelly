@@ -1,25 +1,25 @@
-PyElly is a rule-based natural language processing tool that has been
-around for forty years in various incarnations. It supports quick
-development of many kinds of applications by taking care of low-level
-details not central to a given problem. It is now freely available on
-the web to anyone needing to process or pre-process text data.
+PyElly is a rule-based natural language processing tool that has existed
+for over forty years in various incarnations. It speeds development of
+many kinds of NLP applications by taking care of low-level language
+details not central to a given solution. It is now freely available on
+the web to people needing to process or pre-process text data.
 
 PyElly provides flexible tokenization, syntax-driven parsing, English
 inflectional and morphological stemming, macro substitutions, basic
 and extended entity extraction, ambiguity handling, sentence recognition,
 support for large external dictionaries, and a general procedural
-framework for translation from UTF-8 to UTF-8.
+framework for text translation from UTF-8 to UTF-8.
 
 The latest version has been completely rewritten in mostly object-oriented
-Python. It has now passed multiple stages of beta testing and may be
-downloaded from Github at https://github.com/prohippo/pyelly.git . The
-latest release is v0.6beta.
+Python. It has now passed multiple stages of beta testing in 2014 and may
+be downloaded from GitHub at https://github.com/prohippo/pyelly.git . The
+current release is v1.0.
 
 To learn how to use PyElly, see the PyEllyManual.pdf file in the same
-directory as this README.txt file. This has 97 pages of information,
-including an overview of some basic linguistics. Documentation of
-individual Python source files can be generated as needed with the Python
-pydoc utility.
+directory as this README.txt file. The manual has over a hundred pages of
+information, including an overview of some basic linguistics. Documentation
+of individual Python source files can be generated as needed with the
+Python pydoc utility.
 
 At present, PyElly consists of 58 Python modules comprising about 16
 thousand lines of source code. There are also various definition files
@@ -30,20 +30,21 @@ applications, including
              text input.
 * texting  - readable text compression.
 * doctor   - emulation of Weizenbaum's Doctor program.
-* chinese  - basic translation of English to simplified or
-             traditional Chinese characters.
+* chinese  - basic translation of English to Chinese in simplified
+             or traditional characters.
 * querying - rewrite English questions as SQL queries for a Soviet
-             aircraft database.
+             military aircraft database.
 * disambig - disambiguation of phrases with WordNet information.
 
 These illustrate what you can do with PyElly and also serve as a basis for
-comprehensive integration testing.  Other applications will be added to the
-PyElly package on Github in the future. You may use them as models for
+comprehensive integration testing. Other applications will be added to the
+PyElly package on GitHub in the future. You may use them as models for
 building your own systems.
 
-PyElly is being released under a BSD license. Be advised that the current 
-beta software and documentation is still evolving. The first stable release
-will be v1.0, which should be ready in late 2014.
+PyElly is intended mostly for educational use and is being released under
+a BSD license. Be advised that the current software and documentation is still 
+evolving, although the v1.0 release should be much more stable than previous
+beta releases.
 
 Release Notes:
 
@@ -65,7 +66,7 @@ Release Notes:
  0.4    -  04jul2014  support conceptual hierarchies in cognitive semantics
                       separate lookup tables for syntactic and semantic features
                       fix bugs in loading vocabulary tables from text input
-                      fix bugs in load conceptual hierarchies from text input
+                      fix bugs in loading conceptual hierarchies from text input
                       improve unit testing
                       add core of disambig application for integration testing
  0.4.1  -  13aug2014  clean up and flesh out disambig application
@@ -80,7 +81,7 @@ Release Notes:
                       add error messages when generating language tables
                       simplify semantic feature check by generative semantics
                       extend generative semantic unit tests
-                      add bad application to testi PyElly error reporting
+                      add bad application to test PyElly error reporting
  0.5.1  -  12sep2014  fix residual problems with error reporting and recovery
                       extend bad application for integration testing
  0.6    -  12oct2014  more input checking in vocabulary table compilation
@@ -88,9 +89,20 @@ Release Notes:
                       better English inflectional and morphological stemming
                       add English irregulars to stemming, update echo application
                       extend chinese application, better classifier assignments
+ 1.0    -  24dec2014  add comprehensive error reporting in inflectional stemming
+                      add WordNet exceptions to cases handled by stemmers
+                      upgrade pattern table matching and clean up code
+                      fix bug in ellyWildcard with $ wildcard
+                      update querying application
+                      clean up various problems in chinese applications
+                      clean up all modules with PyLint
 
 New versions will reflect major changes in PyElly code. This typically will
 require regeneration of any previously saved *.elly.bin files to ensure correct
-operation.  Changes only to PyElly example application files, unit testing input
+operation. Changes only to PyElly sample application files, unit testing input
 files, or documentation will be made from time to time, but these will leave
-version numbers unchanged.
+version numbers the same.
+
+The PyElly website is at
+
+    https://sites.google.com/site/pyellynaturallanguage/
