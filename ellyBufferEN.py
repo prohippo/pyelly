@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBufferEN.py : 11nov2014 CPM
+# ellyBufferEN.py : 01jan2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -32,6 +32,7 @@
 framework for integrating English inflectional stemming into basic tokenization
 """
 
+import sys
 import ellyBuffer
 import ellyChar
 import ellyStemmer
@@ -41,6 +42,7 @@ import inflectionStemmerEN
 
 APO = ellyChar.APO                # literal apostrophe
 ESS = u's'                        # literal S
+SFX = '-' + APO + ESS             # -'S suffix
 
 class EllyBufferEN(ellyBuffer.EllyBuffer):
 
@@ -66,6 +68,7 @@ class EllyBufferEN(ellyBuffer.EllyBuffer):
                 self.stemmer = inflectionStemmerEN.InflectionStemmerEN()
             except ellyException.TableFailure:
                 self.stemmer = ellyStemmer.EllyStemmer()  # null stemmer
+                print >> sys.stderr , 'stemmer failure'
         else:
             self.stemmer = ellyStemmer.EllyStemmer()      # null stemmer
 
@@ -92,6 +95,19 @@ class EllyBufferEN(ellyBuffer.EllyBuffer):
             self.divide(w)                     # if not, do inflectional stemming
         return w
 
+    def putSuffixBack ( self , suffix ):
+
+        """
+        return suffix to input buffer
+
+        arguments:
+            self   -
+            suffix - as a string
+        """
+
+        if self.atToken(): self.prepend(ellyChar.SPC)
+        self.prepend(suffix)
+
     def divide ( self , word ):
 
         """
@@ -117,16 +133,16 @@ class EllyBufferEN(ellyBuffer.EllyBuffer):
         y = word.charAt(wl-2)
 #       print 'word= ...' , y , x
 
-        if x == u's' and y == APO:  # check for -S'
-            word.addSuffix(APO+ESS)
+        if x == u's' and y == APO:  # check for -'S
             word.shortenBy(2)
-#           print 'word=' , word
+            self.putSuffixBack(SFX)
+#           print 'word=' , word , 'without -\'S'
             return
 
         elif x == APO and y == ESS: # check for implied -'S
-            word.addSuffix(APO+ESS)
             word.shortenBy(1)
-#           print 'word=' , word
+            self.putSuffixBack(SFX)
+#           print 'word=' , word , 'without -\''
             return
 
         if ellyChar.isLetter(word.charAt(0)):
@@ -135,8 +151,7 @@ class EllyBufferEN(ellyBuffer.EllyBuffer):
                 sufs = word.getSuffixes()
 #               print 'sufs=' , sufs
                 while len(sufs) > 0:
-                    if self.atToken(): self.prepend(ellyChar.SPC)
-                    self.prepend(sufs.pop())
+                    self.putSuffixBack(sufs.pop())
 
 #
 # unit test
@@ -144,7 +159,6 @@ class EllyBufferEN(ellyBuffer.EllyBuffer):
 
 if __name__ == "__main__":
 
-    import sys
 
     buf = EllyBufferEN()
     print 'enter text lines to get tokens from'
@@ -164,9 +178,9 @@ if __name__ == "__main__":
                 print "len=" , len(buf.buffer)
                 t = buf.getNext()
                 if t == None: break
-                print ">>>> 0=" , t
+                print ">>>> " , t
         except ellyException.StemmingError:
             print >> sys.stderr , 'stemming error'
-            sys.exit(1)
+            continue
         print "------------"
     sys.stdout.write("\n")

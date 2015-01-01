@@ -96,6 +96,7 @@ Release Notes:
                       update querying application
                       clean up various problems in chinese applications
                       clean up all modules with PyLint
+ 1.0.1  -  01jan2015  bug fixes and cleanup
 
 New versions will reflect major changes in PyElly code. This typically will
 require regeneration of any previously saved *.elly.bin files to ensure correct

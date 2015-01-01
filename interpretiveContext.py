@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# interpretiveContext.py : 29nov2014 CPM
+# interpretiveContext.py : 29dec2014 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -596,7 +596,7 @@ class InterpretiveContext(object):
         """
 
         self.mergeBuffers()   # combine all current buffers into first one
-        print 'merged=' , self.buffs[0]
+#       print 'merged=' , self.buffs[0]
         return self.buffs[0]  # list of combined chars
 
     def getBufferContents ( self ):

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBase.py : 03nov2014 CPM
+# parseTreeBase.py : 01jan2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -154,6 +154,9 @@ class ParseTreeBase(object):
                     bias = phn.bias # update best bias
                     best  = phn     # and associated phrase
                 phn = phn.alnk
+
+            if best == None:
+                return              # no need to order
 
 #           print 'best bias=' , bias
 
@@ -332,116 +335,53 @@ class ParseTreeBase(object):
 #
 
 import sys
-import ellyToken
+import ellyBits
 
 if __name__ == '__main__':
 
-    class M(object):  # dummy derivability matrix
-        """ dummy class for testing
-        """
-        def __init__ ( self ):
-            """ initialization
-            """
-            self.xxx = 0
-        def derivable (self,n,gbs):
-            """ dummy method
-            """
-            self.xxx += 1
-            return gbs.test(n)
-
-    class R(object):  # dummy grammar rule class
-        """ dummy class for testing
-        """
-        def __init__ (self,n):
-            """ initialization
-            """
-            self.styp = n
+    class R(object):  # fake grammar rule class
+        def __init__ (self,m,n=0):
+            self.styp = m
             self.sfet = ellyBits.EllyBits()
+            self.rtyp = n
+            self.seqn = 10000
 
-    class G(object):  # dummy grammar table class
-        """ dummy class for testing
-        """
-        def __init__ (self):
-            """ initialization
-            """
-            self.START = 0
-            self.END   = 1
-            self.UNKN  = 2
-            self.XXX   = 3
-            self.NUM   = 4
-            self.PUNC  = 5
-            self.splits = [ [ ] , [ ] , [ ] , [ ] , [ ] , [ ] ] # must define this!
-            self.dctn = { 'abc' : [ R(self.START) ] , 'xyz' : [ R(self.UNKN) ] }
-            self.mat  = M()
-
-    class S(object):  # dummy symbol table class
-        """ dummy class for testing
-        """
-        def __init__ ( self ):
-            """ initialization
-            """
-            self.xxx = 6
-        def getSyntaxTypeCount(self):
-            """ dummy method
-            """
-            return self.xxx  # for START, END, UNKN, XXX, NUM, PUNC
-
-    print "allocating"
-    sym = S()
-    grm = G()
-    tree = ParseTreeBottomUp(sym,grm,None)
-    print "allocated"
-
+    tree = ParseTreeBase()
     print tree
     print dir(tree)
+    print ""
 
-    fbbs = ellyBits.EllyBits(symbolTable.FMAX)
-    gbbs = ellyBits.EllyBits(symbolTable.NMAX)
-    gbbs.complement()    # all goal bits turned on
+    print '** CHECK PHRASE AND GOAL ALLOCATION'
+    phs = [ ]
 
-    tree.gbits[0] = gbbs # set all goals in first position
+    phs.append(tree.makePhrase(0,R(100,10)))
+    phs.append(tree.makePhrase(1,R(101,11)))
+    phs.append(tree.makePhrase(2,R(102,12)))
 
-    print '----'
-    sgm = 'abc'          # test example in dictionary
-    sta = tree.createPhrasesFromDictionary(sgm,False)
-    print sgm , ':' , sta , ', phlim=' , tree.phlim , 'lastph=' , tree.lastph 
+    for phr in phs:
+        print ' =' , phr
+    print 'phlim =' , tree.phlim
+    print 'lastph=' , tree.lastph
 
-    print '----'
-    sgm = 'abcd'         # test example not in dictionary
-    sta = tree.createPhrasesFromDictionary(sgm,False)
-    print sgm , ':' , sta,', phlim=' , tree.phlim , 'lastph=' , tree.lastph 
+    tree.reset()
+    print '** RESET'
+    print 'phlim=' , tree.phlim
 
-    print '----'
-    sgm = 'xyz'          # test example in dictionary
-    sta = tree.createPhrasesFromDictionary(sgm,False)
-    print sgm , ':' , sta , ', phlim=' , tree.phlim , 'lastph=' , tree.lastph 
+    r = R(103,13)
 
-    print '----'
-    sgm = 'pqr'          # test example not in dictionary
-    sta = tree.createUnknownPhrase(ellyToken.EllyToken(sgm))
-    print sgm , ':' , sta , ', phlim=' , tree.phlim , 'lastph=' , tree.lastph 
+    print '** MAKE NEW PHRASE'
+    ph = tree.makePhrase(2,R(104,14))
+    ph.cncp = 'xccx'
+    print 'new phrase=' , ph
+    print 'phlim=' , tree.phlim
+    print 'glim =' , tree.glim
+    print 'lastph=' , tree.lastph
 
-    print '----'
-    sgm = '.'            # test example not in dictionary
-    tree.gbits[0].clear()
-    sta = tree.addLiteralPhrase(tree.gtb.PUNC,fbbs)
-    print sgm , ':' , sta , ', phlim=' , tree.phlim , 'lastph=' , tree.lastph 
-    tree.gbits[0].set(tree.gtb.PUNC)
-    sta = tree.addLiteralPhrase(tree.gtb.PUNC,fbbs)
-    print sgm , ':' , sta , ', phlim=' , tree.phlim , 'lastph=' , tree.lastph 
+    print '** MAKE NEW GOAL'
+    g = tree.makeGoal(r,ph)
+    print 'new goal=' , g
+    print 'glim =' , tree.glim
 
-    print ''
-    print 'ambiguities:'
-    for a in tree.ambig:
-        while a != None:
-            print '' , a
-            a = a.alnk
-        print ''
-
-    print '----'
-    for rno in range(10,15):
-        phrs = tree.makePhrase(0,R(rno))
-        tree.enqueue(phrs)
-    print '----'
-    print 'dequeue phrase=' , tree.dequeue()
-    print 'dequeue phrase=' , tree.dequeue()
+    print '** RESET'
+    tree.reset()
+    print 'glim =' , tree.glim

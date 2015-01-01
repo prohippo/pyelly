@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBuffer.py : 02nov2014 CPM
+# ellyBuffer.py : 01jan2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -527,25 +527,25 @@ class EllyBuffer(object):
         if self.match(MIN):     # check for hyphen
             if self.match(DSH): # it is a dash when doubled
                 k = 2
-            else:
+            else:               # otherwise, could be word fragment
                 k = self.find(separators,1)
-        elif self.match(PLS):   # check for elly prefix
+        elif self.match(PLS):   # check for Elly prefix
             k = self.find(separators,1)
         elif self.match(DOT):   # check for period
             if self.match(ELP): # it is ellipsis when tripled
                 k = 3
-            else:
+            else:               # otherwise, single punctuation char
                 k = 1
         elif not ellyChar.isCombining(self.buffer[0]):
-            k = 1               # if next char cannot start a token, take it as a token
+            k = 1               # if next char cannot start multi-char token, take as 1-char token
         else:
             k = self.find(separators)
-            if k < 0:           # break a token at next separator
-                k = ln
-            while k < ln:       # look at separator if it exists
+            if k < 0:           # break multi-char token at next separator
+                k = ln          # if no separator, go up to end of buffer
+            while k < ln:       # look at any separator and following contex
                 x = self.buffer[k]
                 if x != MIN and x != COM:
-                    break       # a hyphen or comma is not absolute break
+                    break       # no further check if separator not hyphen or comma
                 if not ellyChar.isDigit(self.buffer[k+1]):
                     break       # accept hyphen or comma if NOT followed by digit
                 else:           # otherwise, look for another separator
@@ -562,7 +562,7 @@ class EllyBuffer(object):
             
         buf = self.extract(k) # get k characters
 
-        ## special check for - next in buffer after extraction
+        ## special check for hyphen next in buffer after extraction
 
         if self.match(MIN):                    # hyphen immediately following?
             self.skip()                        # if so, take it
@@ -609,22 +609,31 @@ if __name__ == '__main__':
 
     dat0 = u'The aa vv. We xx "yy" zz ee? A U.S. resp wil do!'
     dat1 = u'more stuff.'
+    dat2 = u'ff, gg, hh'
     uncd = u'\u00c0\u00c1\u00c2 \u265e'
     qqqq = u'QQQQ'
+    poss = u'zz\'s yy'
+    hyph = u'aa-bb-cc'
 
     eb = EllyBuffer()     # create an empty buffer
 #   print eb
 
 #   fill buffer with test data
 
-    print eb.count() , 'chars +' , "'" + dat0 + "'"
+    print eb.count() , 'chars + >' , "'" + dat0 + "'"
     eb.append(dat0)
-    print eb.count() , 'chars +' , "'" + dat1 + "'"
+    print eb.count() , 'chars + >' , "'" + dat1 + "'"
     eb.append(dat1)
-    print eb.count() , 'chars +' , "'" + uncd + "'"
+    print eb.count() , 'chars + >' , "'" + dat2 + "'"
+    eb.append(dat2)
+    print eb.count() , 'chars + <' , "'" + uncd + "'"
     eb.prepend(uncd)
-    print eb.count() , 'chars +' , "'" + qqqq + "'"
+    print eb.count() , 'chars + <' , "'" + qqqq + "'"
     eb.prepend(qqqq)
+    print eb.count() , 'chars + <' , "'" + poss + "'"
+    eb.prepend(poss)
+    print eb.count() , 'chars + >' , "'" + hyph + "'"
+    eb.append(hyph)
 
     print ''
     print eb
@@ -637,4 +646,5 @@ if __name__ == '__main__':
         ncs = eb.findBreak()
         if ncs == 0: ncs = 1
         tk = eb.extract(ncs)
-        print 'extract' , ncs , 'chars leaving' , eb.count() , ':' , tk
+        print 'extract' , ncs , 'chars leaving' , eb.count()
+        print 'token=' , tk , '<' + u''.join(tk) + '>'
