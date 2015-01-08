@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBottomUp.py : 03nov2014 CPM
+# parseTreeBottomUp.py : 04jan2015 CPM
 # -----------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -430,20 +430,24 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
                         tops = phr.bias #
                         topg = g
 
-        if topg != None:                # any START?
-            g = topg                    # if so, get sentence to return
+        if topg != None:                      # any START?
+            g = topg                          # if so, get sentence translation to return
             phr = g.lph
-            self._pls = phr.bias        # save plausibility
+            self._pls = phr.bias              # save plausibility
 #*          print 'from' , g
 #*          print 'sent=' , phr
-            phr.rule.gens.doRun(ctx,phr)# run generative semantics
-            if ellyConfiguration.longDisplay:
-                self.dumpAll()          # show complete parse tree
-            else:
-                self.dumpTree(phr)      # show parse tree only for SENT phrase
-            return True
+            if phr.rule.gens.doRun(ctx,phr):  # run generative semantics
+                if ellyConfiguration.longDisplay:
+                    self.dumpAll()            # show complete parse tree
+                else:
+                    self.dumpTree(phr)        # show parse tree only for SENT phrase
+                return True
 
-        print >> sys.stderr , 'parse FAILed!'
+        if topg == None:
+            print >> sys.stderr , 'parse FAILed!'
+        else:
+            print >> sys.stderr , 'rewriting FAILed!'
+
         self.dumpAll()                        # parse failed; show complete dump, if enabled
 
         if ellyConfiguration.inputEcho:
@@ -484,22 +488,22 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
             True if successful, False otherwise
         """
 
-#*      print '_addTerminal:' , unicode(r)
+#       print '_addTerminal:' , unicode(r)
         typ = r.styp
         gbs = self.gbits[self.wordno]
 #       print 'goal bits=' , gbs.hexadecimal() , 'at' , self.wordno
 
         if (typ == self.gtb.UNKN or
           self.gtb.mat.derivable(typ,gbs)):                 # acceptable syntax type?
-#           print "adding leaf node"
             ph = self.makePhrase(self.wordno,r)             # make phrase with rule
-#           print 'add' , ph
+#           print 'adding leaf' , ph
             if ph != None:
                 self.initializeBias(ph)                     # for ranking of ambiguities
                 if split and len(self.gtb.splits[typ]) > 0: # segment analyzed?
                     ph.usen = 1
+#               print 'ph.lens=' , ph.lens
                 self.enqueue(ph)                            # save phrase to ramify
-#               print ph
+#               print 'queue of' , len(self.queue)
                 return True
 #       print 'fail'
         return False
