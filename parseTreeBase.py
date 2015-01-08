@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBase.py : 01jan2015 CPM
+# parseTreeBase.py : 07jan2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -334,13 +334,13 @@ class ParseTreeBase(object):
 # unit test
 #
 
-import sys
-import ellyBits
-
 if __name__ == '__main__':
 
-    class R(object):  # fake grammar rule class
-        def __init__ (self,m,n=0):
+    class R(object):
+        """
+        fake grammar rule class
+        """
+        def __init__ (self , m , n=0):
             self.styp = m
             self.sfet = ellyBits.EllyBits()
             self.rtyp = n
@@ -370,16 +370,16 @@ if __name__ == '__main__':
     r = R(103,13)
 
     print '** MAKE NEW PHRASE'
-    ph = tree.makePhrase(2,R(104,14))
-    ph.cncp = 'xccx'
-    print 'new phrase=' , ph
+    uph = tree.makePhrase(2,R(104,14))
+    uph.cncp = 'xccx'
+    print 'new phrase=' , uph
     print 'phlim=' , tree.phlim
     print 'glim =' , tree.glim
     print 'lastph=' , tree.lastph
 
     print '** MAKE NEW GOAL'
-    g = tree.makeGoal(r,ph)
-    print 'new goal=' , g
+    ug = tree.makeGoal(r,uph)
+    print 'new goal=' , ug
     print 'glim =' , tree.glim
 
     print '** RESET'
