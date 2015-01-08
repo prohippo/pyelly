@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyDefinitionReader.py : 02nov2014 CPM
+# ellyDefinitionReader.py : 03jan2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -36,7 +36,8 @@ to remove blank lines and comments
 import sys
 import codecs
 
-Slash = u'\\'  # for escaping
+Slash = u'\\'    # for escaping
+Nul   = u'\x00'  # ASCII nul
 
 class EllyDefinitionReader(object):
 
@@ -122,6 +123,8 @@ class EllyDefinitionReader(object):
             elif le[0] == Slash:
                 line += Slash          # double \ becomes single \
                 le = le[1:]
+            elif le[0] == '0':
+                line += Slash          # keep \0
 
         if len(line) > 0:
             self.buffer.append(line)   # add line to input
@@ -246,7 +249,8 @@ if __name__ == "__main__":
         u'#3bcdefgh'  ,
         u'4bcdefgh #xxx'  ,
         u'5bcdefgh\\#xxx' , # encodes \
-        u'' ,
+        u'a\x00a' ,
+        u''    ,
         u'    ',
         u'#   ',            # comment
         u'    ##' ,         # not comment
@@ -266,4 +270,4 @@ if __name__ == "__main__":
     while True:
         ll = inp.readline()
         if len(ll) == 0: break
-        print ">>[" + ll + "]"
+        print ">>[" + ll + "]" , len(ll)

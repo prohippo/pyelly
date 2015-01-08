@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# patternTable.py : 04nov2014 CPM
+# patternTable.py : 08jan2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -64,10 +64,14 @@ class Link(object):
             FormatFailure on error
         """
 
+#       print 'dfls=' , dfls
         if len(dfls) != 3:                            # must have 3 elements
             raise ellyException.FormatFailure
         else:
-            self.patn = ellyWildcard.convert(dfls[0]) # encode wildcards in pattern
+            if dfls[0] == '\\0':
+                self.patn = u'\x00'                       # special nul pattern
+            else:
+                self.patn = ellyWildcard.convert(dfls[0]) # encode Elly pattern
             if dfls[0] != '$':
                 if self.patn == None or ellyWildcard.minMatch(self.patn) == 0:
                     print >> sys.stderr , '** bad link pattern:' , dfls[0]
@@ -88,6 +92,8 @@ class Link(object):
                 raise ellyException.FormatFailure     # unrecognizable number
 
             if n < 0:                                 # final transition?
+                if self.patn == u'\x00':
+                    raise ellyException.FormatFailure # final state not allowed here
                 pe = self.patn[-1]                    # if so, get last pattern element
                 if ( pe != ellyWildcard.cALL and      # final pattern must end with * or $
                      pe != ellyWildcard.cEND ):
@@ -111,7 +117,10 @@ class Link(object):
         if self.patn == None:
             return u'None'
         else:
-            pat = '{0:<16}'.format(ellyWildcard.deconvert(self.patn))
+            if self.patn == u'\x00':
+                pat = '\\0              '
+            else:
+                pat = '{0:<16}'.format(ellyWildcard.deconvert(self.patn))
             cat = unicode(self.catg)
             fet = u'None' if self.synf == None else self.synf.hexadecimal(False)
             return pat + ' ' + cat + ' ' + fet + ' next=' + unicode(self.nxts)
@@ -183,16 +192,16 @@ class PatternTable(object):
         nm = 0                               # states producing matches
 #       print 'FSA definition line count=' , fsa.linecount()
         while True: # read all input from ellyDefinitionReader
-            l = fsa.readline()
-#           print 'input line=' , l
-            if len(l) == 0: break            # EOF check
-            ls = l.strip().split(' ')        # get link definition as list
+            line = fsa.readline()
+#           print 'input line=' , line
+            if len(line) == 0: break         # EOF check
+            ls = line.strip().split(' ')     # get link definition as list
 #           print 'ls=' , ls
             sts = ls.pop(0)                  # starting state for FSA link
             try:
                 stn = int(sts)               # numerical starting state
             except ValueError:
-                self._err('bad start state',l)
+                self._err('bad start state',line)
                 continue
             n = len(self.indx)
             
@@ -203,7 +212,7 @@ class PatternTable(object):
             try:
                 lk = Link(syms,ls)           # allocate new link
             except ellyException.FormatFailure:
-                self._err('bad link',l)
+                self._err('bad FSA option',line)
                 continue
 #           print 'load lk=' , lk
 
@@ -211,11 +220,11 @@ class PatternTable(object):
                 if lk.catg != None:
                     nm += 1                  # count link category for match
                 else:
-                    self._err('missing category for final state',l)
+                    self._err('missing category for final state',line)
                     continue
             elif lk.catg != None:
                 print >> sys.stderr , '** unexpected category for non-final state'
-                print >> sys.stderr , '*  at', l
+                print >> sys.stderr , '*  at', line
                 lk.catg = None
 
             if not stn in lss: lss.append(stn)
@@ -304,53 +313,56 @@ class PatternTable(object):
         ix = 0
         sg = segm[:lim] # text subsegment for matching
 
-        while True:               # run FSA to find all possible matches
+        while True:                 # run FSA to find all possible matches
 #           print 'state=' , state
 #           print 'count=' , mtl , 'matched so far'
 #           print 'links=' , len(ls)
-            nls = len(ls)         # how many links from current state
+            nls = len(ls)           # how many links from current state
 
-            if ix == nls:         # if none, then must back up
+            if ix == nls:           # if none, then must back up
                 if len(stk) == 0: break
-                r = stk.pop()     # restore match status
-                state = r[0]      # FSA state
-                ls  = r[1]        # remaining links to check
-                sg  = r[2]        # input string
-                mtl = r[3]        # total match length
+                r = stk.pop()       # restore match status
+                state = r[0]        # FSA state
+                ls  = r[1]          # remaining links to check
+                sg  = r[2]          # input string
+                mtl = r[3]          # total match length
                 ix = 0
                 continue
 
             m = 0
             while ix < nls:
-                lk = ls[ix]       # get next link at current state
-                ix += 1           # and increment link index
+                lk = ls[ix]         # get next link at current state
+                ix += 1             # and increment link index
 #               print 'lk= [' , unicode(lk), '] , sg=' , sg
-                bds = ellyWildcard.match(lk.patn,sg)
-#               print 'bds=' , bds
-                if bds == None: continue
+                if lk.patn == u'\x00': # do state change without matching?
+                    m = 0           # no match length
+                else:
+                    bds = ellyWildcard.match(lk.patn,sg)
+#                   print 'bds=' , bds
+                    if bds == None: continue
 
-                m = bds[0]        # get match length, ignore wildcard bindings
+                    m = bds[0]      # get match length, ignore wildcard bindings
 
-                if lk.nxts < 0:   # final state?
-                    mtls = mtl + m
-                    tree.addLiteralPhrase(lk.catg,lk.synf)  # make phrase for it
-                    tree.lastph.lens = mtls                 # save its length
- 
+                    if lk.nxts < 0: # final state?
+                        mtls = mtl + m
+                        tree.addLiteralPhrase(lk.catg,lk.synf)  # make phrase for it
+                        tree.lastph.lens = mtls                 # save its length
+
 #               print 'ix=' , ix , 'nls=' , nls
-                if ix < nls:      # any links not yet checked?
+                if ix < nls:        # any links not yet checked?
                     r = [ state , ls[ix:] , sg , mtl ]
 #                   print 'r=' , r
-                    stk.append(r) # if not, save info for later continuation
+                    stk.append(r)   # if not, save info for later continuation
 
-                mtl += m          # update match length
-                break             # leave loop at this state, go to next state
+                mtl += m            # update match length
+                break               # leave loop at this state, go to next state
             else:
 #               print 'no matches'
-                continue
+                continue            # all patterns exhausted for state
 
             ix = 0
-            sg = sg[m:]           # move up in text input
-            state = lk.nxts       # next state
+            sg = sg[m:]             # move up in text input
+            state = lk.nxts         # next state
             if state < 0:
                 ls = [ ]
             else:
@@ -370,6 +382,7 @@ class PatternTable(object):
             self
         """
 
+        nn = 0   # nul pattern count
         for k in range(len(self.indx)):
             lks = self.indx[k]
             if lks == None or lks == [ ]:
@@ -377,6 +390,8 @@ class PatternTable(object):
             print '[state ' + str(k) + ']'
             for lk in lks:
                 print u'  ' + unicode(lk)
+                if lk.patn == u'\x00': nn += 1
+        print nn , 'nul pattern(s)'
         print ''
 
 #

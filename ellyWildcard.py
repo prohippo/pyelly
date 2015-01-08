@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 02nov2014 CPM
+# ellyWildcard.py : 02jan2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -202,7 +202,7 @@ def convert ( strg ):
 
 #   print "converted=", t
 
-    return ''.join(t).lower() # converted string
+    return u''.join(t).lower() # converted string
 
 def deconvert ( patn ):
 
