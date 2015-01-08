@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyToken.py : 01nov2014 CPM
+# ellyToken.py : 07jan2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -92,20 +92,22 @@ class EllyToken:
 
         return unicodedata.normalize('NFKD',unicode(self)).encode('ascii','ignore')
 
-    def set ( self , x=None ):
+    def set ( self , x='' ):
 
         """
         set token to specified string
 
         arguments:
             self  -
-            x     - Unicode input string
+            x     - Unicode input string or list
         """
 
-        if x == None: x = u''
-        self.capn = False
+        if not isinstance(x,basestring):
+            x = u''.join(x)
         if len(x) > 0:
             self.capn = x[0].isupper()
+        else:
+            self.capn = False
         self.orig = x
         self.pres = [ ]
         self.sufs = [ ]
