@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeWithDisplay.py : 03nov2014 CPM
+# parseTreeWithDisplay.py : 10jan2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -158,7 +158,10 @@ class ParseTreeWithDisplay(parseTree.ParseTree):
         out.write('\n')
         out.write('raw tokens=')
         for tk in tks:
-            out.write(' [[' + tk.orig + ']]')           # original tokens spanned by parse tree
+            if tk == None:
+                out.write(' [[NONE]]')
+            else:
+                out.write(' [[' + tk.orig + ']]')       # original tokens for parse tree
         out.write('\n')
         ng = self.glim
         out.write(str(nph) + ' phrases, ' + str(ng) + ' goals\n')
@@ -223,7 +226,10 @@ class ParseTreeWithDisplay(parseTree.ParseTree):
                 if ph.posn < 0 or ph.posn >= len(tks):
                     tok = '--'
                 elif ph.rule != self.gtb.arbr:
-                    tok = ''.join(tks[ph.posn].root)   # leaf token string
+                    if tks[ph.posn] == None:
+                        tok = 'NONE'                       # anomalous situation
+                    else:
+                        tok = ''.join(tks[ph.posn].root)   # leaf token string
                 else:
                     tok = ''                           # null string
                 out.write(' [' + tok + ']')            # write it out

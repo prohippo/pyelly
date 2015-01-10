@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# interpretiveContext.py : 29dec2014 CPM
+# interpretiveContext.py : 10jan2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -729,5 +729,5 @@ class InterpretiveContext(object):
             self
         """
 
-        toks = map((lambda x: x.orig),self.tokns)
+        toks = map((lambda x: 'NONE' if x == None else x.orig),self.tokns)
         self.insertCharsIntoBuffer(u''.join(toks))
