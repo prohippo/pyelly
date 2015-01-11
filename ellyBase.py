@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 05nov2014 CPM
+# ellyBase.py : 10jan2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -71,7 +71,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.0'                        # current version of PyElly software
+release = 'v1.0.2'                      # current version of PyElly software
 
 L = 16  # how much context to show
 
@@ -121,8 +121,6 @@ def _isSaved ( systm , compn , srcs ):
         if d > date:
             return False
     return True
-
-drs = vocabularyTable.Result() # preallocated result record
 
 #
 # main class
@@ -361,26 +359,36 @@ class EllyBase(object):
         if k == 0: return False        # quit if buffer exhausted
 
         kl = len(s)
-        if k + 1 < kl and s[k] == '+' and s[k+1] == ' ':
+        if  k + 1 < kl and s[k] == '+' and s[k+1] == ' ':
             k += 1                     # recognize possible prefix
 
-#       print 'len(s)=' , kl , 'k=' , k , s
+#       print 'len(s)=' , kl , 'k=' , k , 's=', s
 
         mr = self._scanText(k)         # text matching 
+        mx = mr[0]
         s = self.sbu.buffer
-#       print '_scanText mx=' , mr.mtchl , 'len(s)=' , len(s) , 's=' , s
+#       print 'mx=' , mx , 'len(s)=' , len(s) , 's=' , s
 
-        to = self._extractToken(k,mr)  # single-word matching with analysis
+        if k < mx:                    # next word cannot produce token as long as already seen?
+            chs = mr[1]               # any vocabulary element matched
+            suf = mr[2]               # any suffix removed in matching
+            if len(chs) > 0:
+                self.sbu.skip(mx)
+                if suf != '':
+                    self.sbu.prepend(suf)
+            else:
+                chs = self.sbu.extract(mx)
+            to = ellyToken.EllyToken(u''.join(chs))
+#           print 'long token=' , to
+            self.ctx.tokns.append(to)
+            return True
 
-        s = self.sbu.buffer            # have to update for changed buffer
+        to = self._extractToken((mx > 0)) # single-word matching with analysis
+
+        if to == None: return False if mx == 0 else True
+
 #       print 'to=' , to , 'len(s)=' , len(s) , s
-
-        if to == None: return False
-
-        nd = self.ptr.requeue()        # keep only longest of queue phrases
-#       print nd , 'phrases dropped by requeue()'
-
-#*      print 'at', len(self.ctx.tokns) , 'in token list'
+#       print 'at', len(self.ctx.tokns) , 'in token list'
         self.ctx.tokns.append(to)
 
 #       posn = len(self.ctx.tokns) - 1 # put token into sentence sequence
@@ -400,20 +408,22 @@ class EllyBase(object):
             k     - length of first component in buffer
 
         returns:
-            vocabulary table record
+            match parameters [ text span of match , suffix removed ]
         """
 
         sb = self.sbu.buffer           # input buffer
         tr = self.ptr                  # parse tree for results
 
-        rs = drs                       # initialize to empty vocabulary table record
-        rs.mtchl = 0                   # maximum match count
-        lm = len(sb)                   # scan limit
-#*      print 'next component=' , sb[:k] , ', context=' , sb[k:lm]
+                                       # match status
+        nspan = 0                      #   total span of match
+        vmchs = [ ]                    #   chars of vocabulary entry matched
+        suffx = ''                     #   any suffix removed in match
 
-        vrs = drs                      # initially, set no maximum match
+        lm = len(sb)                   # scan limit
+#       print 'next component=' , sb[:k] , ', context=' , sb[k:lm]
+
         if self.vtb != None:           # look in external dictionary first, if it exists
-            if k > 1:                  # is first component a single char?
+            if  k > 1:                 # is first component a single char?
                 ks = k                 # if not, use this for indexing
             else:
                 ks = 1                 # otherwise, add on any following alphanumeric
@@ -423,91 +433,72 @@ class EllyBase(object):
                     ks += 1
             ss = u''.join(sb[:ks])     # where to start for indexing
             n = vocabularyTable.toIndex(ss)  # get actual indexing
-            vs = self.vtb.lookUp(sb,n) # get list of the longest matches
-            if len(vs) > 0:            #
-                r = vs[0][1]           # if any matches, look at first
-                m = r.mtchl            # all other nominal lengths must be the same!
-#*              print len(vs) , 'matching vocabulary entries'
-                for v in vs:
-                    ve  = v[0]         # get vocabulary entry
-                    vrs = v[1]         # result record for match
+            rl = self.vtb.lookUp(sb,n) # get list of the longest matches
+            if len(rl) > 0:            #
+                r0 = rl[0]             # look at first record
+                nspan = r0.nspan       # should be same for all matches
+                vmchs = r0.vem.chs     #
+                suffx = r0.suffx       #
+
+#               print len(rl) , 'matching vocabulary entries'
+                for r in rl:
+                    ve = r.vem         # get vocabulary entry
 #                   print 've=' , ve
-#                   if ve.gen != None: print ve.gen
+#                   if ve.gen != None: print 've.gen=' , ve.gen
                     if tr.addLiteralPhraseWithSemantics(
-                           ve.cat,ve.syf,ve.smf,ve.bia,ve.gen):
-                        tr.lastph.lens = m   # set char length of leaf phrase node
-                                             # just added for later selection
+                            ve.cat,ve.syf,ve.smf,ve.bia,ve.gen):
+                        tr.lastph.lens = nspan  # set char length of leaf phrase node
+                                                # just added for later selection
                         tr.lastph.cncp = ve.con
-                rs.mtchl = m           # update maximum for new matches
-#*      print 'vocabulary m=' , rs.mtchl
+
+#       print 'vocabulary m=' , nspan
 
         d = self.rul                   # grammar rule definitions
 
         m = d.ptb.match(sb,tr)         # try entity by pattern match next
-#*      print 'pattern m=' , m
-        if rs.mtchl < m:
-            rs.mtchl = m               # on longer match, update maximum
+#       print 'pattern m=' , m
+        if  nspan < m:
+            nspan = m                  # on longer match, update maximum
 
         m = self.iex.run(sb)           # try entity extractors next
-#*      print 'extractor m=' , m
-        if rs.mtchl < m:
-            rs.mtchl = m               # on longer match, update maximum
+#       print 'extractor m=' , m
+        if  nspan < m:
+            nspan = m                  # on longer match, update maximum
 
-#*      print 'maximum match=' , rs.mtchl
-#       print 'input=' , self.sbu.buffer
+#       print 'maximum match=' , nspan
+#       print 'input=' , self.sbu.buffer[:nspan]
 
-        if rs.mtchl > 0:               # any matches at all?
+        if nspan > 0:                  # any matches at all?
             nd = tr.requeue()          # if so, keep only longest of them
 #           print nd , 'phrases dropped by requeue()'
 
-            if vrs.mtchl == rs.mtchl:  # this a vocabulary match?
-                rs = vrs               # if so, use vocabulary match results
+        return [ nspan , vmchs , suffx ]
 
-        return rs
-
-    def _extractToken ( self , k , mr ):
+    def _extractToken ( self , found ):
 
         """
         extract next token from input buffer and look up in grammar table
 
         arguments:
-            self  -
-            k     - char count for token
-            mr    - match record from _scanText()
+            self    -
+            unknown - true if token not yet identified by scanning
 
         returns:
             token on success, otherwise None
         """
 
+#       print 'extract found=' , found
         d = self.rul                            # grammar rule definitions
 
         tree = self.ptr                         # parse tree
         buff = self.sbu                         # input source
 
-        mx = mr.mtchl
-
-        if mx > 0:                              # already have matches?
-            mx -= mr.dropn                      #
-            tw = buff.extract(mx)               # get token segment from input
-            ws = u''.join(tw)                   # convert to string for lookup
-            w = ellyToken.EllyToken(ws)         # create token
-            if mr.restr != None:                # any adjustment specified
-                w.root[-1] = mr.restr           # if so, adjust token
-            buff.skip(mr.dropn)                 #
-            if mr.suffx != '':                  # any suffix
-                buff.prepend(mr.suffx)          # if so, put it into buffer
-                buff.prepend('-')               # to mark suffix
-            if k == mx:                         # can we get any more matches here?
-                tree.createPhrasesFromDictionary(ws,False)     # if so, try to get them
-            return w                            # in any case, return token
-
         try:
             w = buff.getNext()                  # extract next token
+#           print 'extract' , w
         except ellyException.StemmingError as e:
             print >> sys.stderr , 'FATAL error' , e
             sys.exit(1)
-
-        found = False                           # initialize lookup flag
 
         while True:                             # do extractions with side effects
 
@@ -518,7 +509,7 @@ class EllyBase(object):
 
 #           print 'look up [' + ws + '] internally and externally'
 
-            vs = self.vtb.lookUpWord(ws)        # look up token as word externally
+            vs = self.vtb.lookUpSingleWord(ws)  # look up token as word externally
 #           print len(vs) , 'candidates'
             for v in vs:                        # try to make phrases
                 if tree.addLiteralPhraseWithSemantics(
@@ -527,37 +518,36 @@ class EllyBase(object):
 #                   print 'vtb sbuf=' , self.sbu.buffer
                     found = True
 
-            if ws in self.rul.gtb.dctn and ws != '':
+            if ws != '' and ws in self.rul.gtb.dctn:
                 if tree.createPhrasesFromDictionary(ws,w.isSplit()):
                     found = True
 
-#           print 'found=' , found
+            if found:
+                return w
 
+#           print 'logic: ' , d.man.pref , d.man.suff
+            if d.man.analyze(w):                # any analysis possible?
+                root = u''.join(w.root)         # if so, get parts of analysis
+                tan = w.pres + [ root ] + w.sufs
+#               print 'token analysis=' , tan
+                while len(tan) > 0:             # and put back into input
+                    x = tan.pop()
+                    buff.prepend(x)
+                    buff.prepend(' ')
+                w = buff.getNext()              # get token again
+                continue                        # redo lookup after analysis
+
+            if self.pnc.match(w.root):          # check if next token is punctuation
+                if tree.addLiteralPhrase(self.pnc.catg,self.pnc.synf):
+                    tree.lastph.lens = w.getLength()
+                    if w.root == [ u'.' ]:
+                        tree.lastph.synf.combine(self.pnc.period)
+                found = True
             if not found:
-#               print 'logic: ' , d.man.pref , d.man.suff
-                if d.man.analyze(w):            # any analysis possible?
-                    root = u''.join(w.root)     # if so, get parts of analysis
-                    tan = w.pres + [ root ] + w.sufs
-#                   print 'token analysis=' , tan
-                    while len(tan) > 0:         # and put back into input
-                        x = tan.pop()
-                        buff.prepend(x)
-                        buff.prepend(' ')
-                    w = buff.getNext()         # get token again
-                    continue                    # redo lookup after analysis
+#               print 'must create UNKN leaf node'
+                tree.createUnknownPhrase(w)     # unknown type as last resort
+                tree.lastph.lens = len(ws)
 
-            if not found:                       # if no matches at all
-                if self.pnc.match(w.root):      # first check if it is punctuation
-                    if tree.addLiteralPhrase(self.pnc.catg,self.pnc.synf):
-                        tree.lastph.lens = w.getLength()
-                        if w.root == [ u'.' ]:
-                            tree.lastph.synf.combine(self.pnc.period)
-                else:
-#                   print 'no punc match'
-                    tree.createUnknownPhrase(w) # unknown type as last resort
-                    tree.lastph.lens = len(ws)
-
-#           print 'w=' , w
             return w
 
     def symbolCheck ( self ):
@@ -656,7 +646,9 @@ if __name__ == '__main__':
 
 #   print 'stdin=' , si.encoding , 'stdout=' , so.encoding
 
-    syst = sys.argv[1] if len(sys.argv) > 1 else 'test'
+    syst = sys.argv[1] if len(sys.argv) > 1 else 'test'  # which rule definitions to run
+    dpth = sys.argv[2] if len(sys.argv) > 2 else -1      # depth of parse tree reporting
+
     print 'system=' , syst
     try:
         eb = EllyBase(syst)
@@ -664,6 +656,8 @@ if __name__ == '__main__':
     except ellyException.TableFailure:
         print >> sys.stderr , 'cannot initialize rules and vocabulary'
         sys.exit(1)
+
+    if dpth >= 0: eb.ptr.setDepth(dpth)
 
     print ""
     dumpEllyGrammar.dumpCategories(eb.rul.stb)
@@ -674,10 +668,10 @@ if __name__ == '__main__':
     eb.symbolCheck()
 
     so.write('\n')
-    so.write('> ')
 
     while True:  # translate successive lines of text as sentences for testing
 
+        so.write('> ')
         line = si.readline()
         l = line.decode('utf8')
         if len(l) == 0 or l[0] == '\n': break
@@ -688,7 +682,6 @@ if __name__ == '__main__':
             print >> sys.stderr , '????'
         else:
             so.write('=[' + u''.join(lo) + ']\n')
-            eb.ptr.dumpAll()
-        so.write('> ')
+        eb.ptr.dumpAll()
 
     so.write('\n')

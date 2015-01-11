@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 13nov2014 CPM
+# vocabularyTable.py : 11jan2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -62,7 +62,7 @@ import unicodedata
 SSpec = syntaxSpecification.SyntaxSpecification
 FSpec = featureSpecification.FeatureSpecification
 
-lcAN = lambda x: unicodedata.normalize('NFKD',x).encode('ascii','ignore').lower()
+lcAN = lambda x: unicodedata.normalize('NFKD' , x).encode('ascii' , 'ignore').lower()
 
 vocabulary = '.vocabulary.elly.bin' # compiled vocabulary file suffix
 source     = '.v.elly'              # input vocabulary text file suffix
@@ -108,7 +108,7 @@ def _err ( s='malformed vocabulary input' ):
     print >> sys.stderr , '** vocabulary error:' , s
     raise ellyException.FormatFailure('in vocabulary entry')
 
-def compile ( name , stb , defn , stem=None ):
+def compile ( name , stb , defn ):
 
     """
     static method to create an Elly vocabulary database from text file input
@@ -117,7 +117,6 @@ def compile ( name , stb , defn , stem=None ):
         name  - for new BSDDB database
         stb   - Elly symbol table
         defn  - Elly definition reader for vocabulary
-        stem  - optional stemmer for indexing
 
     exceptions:
         TableFailure on error
@@ -126,7 +125,7 @@ def compile ( name , stb , defn , stem=None ):
     global nerr
     nerr = 0
 
-#   print >> sys.stderr , 'compiled stb=' , stb , 'stem=' , stem , 'db=' , db
+#   print >> sys.stderr , 'compiled stb=' , stb , 'db=' , db
 
     if stb == None :
         print >> sys.stderr, 'no symbol table'
@@ -193,16 +192,8 @@ def compile ( name , stb , defn , stem=None ):
                 if n == 0:
                     _err()                                # quit on bad term
                     continue
-                w = t[:n]                                 # first word of term to define  
-                if stem != None:
-                    try:
-                        w = stem.simplify(w)              # reduce for lookup key
-                    except ellyException.StemmingError:
-                        _err('bad stemming logic')
-                        continue
-#               print >> sys.stderr , '  w=' , w
-                lcw = lcAN(w)                             # convert to ASCII lower case
-#               print >> sys.stderr , 'lcw=' , '"' + lcw + '"'
+                wky = lcAN(t[:n])                         # first word of term to define  
+                print >> sys.stderr , '  BdB key=' , wky
 
                 ns = syntaxSpecification.scan(d)          # find extent of syntax info
 #               print >> sys.stderr , 'ns=' , ns
@@ -350,8 +341,7 @@ def compile ( name , stb , defn , stem=None ):
                 print >> sys.stderr , ']'
                 continue
 
-#           print >> sys.stderr , 'lcw=' , lcw
-            dbs.put(lcw,rss)                          # save in database
+            dbs.put(wky,rss)                          # save in database
 #           print >> sys.stderr , 'saved'
 
 #       print >> sys.stderr , 'DONE'
@@ -370,28 +360,29 @@ def compile ( name , stb , defn , stem=None ):
 class Result(object):
 
     """
-    structured data to return as result of search
+    structured data to return as result of vocabulary table search
 
     attributes:
-        mtchl  - match length for phrase selection
-        dropn  - count of chars to omit for token
+        vem    - vocabulary entry matched
+        nspan  - match length for phrase selection
         suffx  - suffix disregarded in matching
-        restr  - replacement for last char in any token
     """
 
-    def __init__ ( self ):
+    def __init__ ( self , vem , nspan , suffx ):
 
         """
         initialization
 
         arguments:
-            self
+            self  -
+            vem   - vocabulary entry record
+            nspan - character count spanned in match including suffix
+            suffx - suffix removed
         """
 
-        self.mtchl = 0
-        self.dropn = 0
-        self.suffx = u''
-        self.restr = None
+        self.vem   = vem
+        self.nspan = nspan
+        self.suffx = suffx
 
 class VocabularyTable(object):
 
@@ -404,6 +395,8 @@ class VocabularyTable(object):
         stm    - stemmer
 
         string - (inherited from SimpleTransform)
+
+        endg   - any ending removed for match
     """
 
     def __init__ ( self , name , stem=None ):
@@ -414,7 +407,7 @@ class VocabularyTable(object):
         arguments:
             self  -
             name  - system name
-            stem  - stemmer for simplification
+            stem  - stemmer for matching
         """
 
         database = name + vocabulary
@@ -433,6 +426,7 @@ class VocabularyTable(object):
                 print >> sys.stderr, 'cannot access database'
                 print >> sys.stderr, e
                 raise ellyException.TableFailure
+        self.endg = None
 
     def __del__ ( self ):
 
@@ -465,9 +459,6 @@ class VocabularyTable(object):
             rs = [ ]                      # for results
 
 #           print >> sys.stderr , '_ stm=' , self.stm
-            if self.stm != None:
-#               print >> sys.stderr , '_ stm=' , self.stm
-                key = self.stm.simplify(key)
             akey = lcAN(key)              # convert to ASCII lower case for lookup
 
 #           print >> sys.stderr , 'key=' , type(akey) ,akey
@@ -485,6 +476,64 @@ class VocabularyTable(object):
         except StandardError , e:
             print >> sys.stderr , 'general error:' , e
             return None
+
+    def doMatchUp ( self , vcs , txs ):
+
+        """
+        match current text with vocabulary entry, possibly removing final inflection
+        (this method assumes English; override for other languages)
+
+        arguments:
+            self  -
+            vcs   - vocabulary entry chars
+            txs   - text chars to be matched
+
+        returns:
+            count of txs chars matched, 0 on mismatch
+        """
+
+        self.endg = ''                       # default inflection
+        lvc = len(vcs)
+        ltx = len(txs)
+        tc = txs[-1]                         # last char in text segment
+        dnc = ltx - lvc
+        nr = icmpr(vcs,txs)                  # do match on lists of chars
+#       print 'nr=' , nr , 'dnc=' , dnc
+        if nr > 1:                           # only one missed char allowed
+            return 0
+        elif nr == 0 and dnc == 0:           # exact match?
+            return lvc
+        elif nr == 0 and dnc == 2 and txs[-2:] == ['\'' , 's']:
+            self.endg = '-\'s'               # apostrophe + S
+            return ltx
+        elif lvc < 2:                        # can have inflectional ending?
+            return 0
+        else:                                # if so, look for one
+#           print 'tc=' , tc
+            if tc != 's' and tc != 'd' and tc != 'g':
+                return 0                     # only -S, -ED, and -ING checked
+            m = dnc + nr + 1
+
+            for i in range(m,ltx):
+                if txs[-i] == ' ':
+                    m += i - 1
+                    break
+            else:
+                m += ltx - 2
+            tw = txs[-m:]                    # start of last word in text chars
+            sw = self.stm.simplify(tw)       # inflectional stemming
+#           print 'sw=' + sw , 'tw=' + tw
+            if len(tw) - len(sw) != dnc:     # stemmed result should now align
+                return 0                     #   with vocabulary entry
+            nr += 1
+#           print 'nr=' , nr
+            ns = icmpr(vcs[-nr:],sw[-nr:])
+            if ns == 0:                      # mismatch gone?
+                self.endg = ( '-s'   if tc == 's' else
+                              '-ed'  if tc == 'd' else
+                              '-ing' )
+                return ltx
+        return 0
 
     def lookUp ( self , chrs , keyl ):
 
@@ -512,8 +561,6 @@ class VocabularyTable(object):
             return res                # still empty list
 
         strg = u''.join(chrs[:keyl])
-        if self.stm != None:
-            strg = self.stm.simplify(strg)
 
 #       print >> sys.stderr , 'vocab first word=' , list(strg) , type(strg)
 
@@ -524,7 +571,7 @@ class VocabularyTable(object):
 
 #       print >> sys.stderr , len(vs) , 'raw entries found'
 
-        lm = len(chrs)                # total length of text to be matched
+        lm = len(chrs)                # total length of text for lookup
 
         for v in vs:                  # look at possible vocabulary matches
 
@@ -534,65 +581,45 @@ class VocabularyTable(object):
 
 #           print >> sys.stderr , 'rln=' , rln , 'ln=' , ln , 'lm=' , lm
 
-            if rln > ln:
-                continue              # reject if longer match already found
-
             if ln  > lm:              # must be enough text in entry to match
                 continue
 
-            rs = Result()             # new result object
-
             k = ln
+            while k < lm:
+                if not ellyChar.isLetter(chrs[k]): break
+                k += 1
+#           print >> sys.stderr , 'k=' , k
 #           print >> sys.stderr , v.chs , ':' , chrs[:k]
-            if not _cmp(v.chs,chrs[:k]):   # do match on lists of chars
-                lk = k - 1
-#               print >> sys.stderr , 'no match lk=' , lk
-                tc = chrs[lk]
-                vc = v.chs[lk]
-#               print >> sys.stderr , 'vc=' , vc , 'tc=' , tc
-                if ( vc == 'y' and tc == 'i' or  # 
-                     vc == 'e' and tc == 'i' ):  #
-#                   print >> sys.stderr , v.chs[:lk] , ':' , chrs[:lk]
-                    if not _cmp(v.chs[:lk],chrs[:lk]):
-                        continue
-                    rs.restr = vc
-                else:
-                    continue
-
-#           print >> sys.stderr , 'preliminary match'
-            r = chkT(chrs,k)          # confirm match in wider context
-
-            if r == None: continue
-
-            ln += r[0]                # adjust match length to include extra chars
+            nm = self.doMatchUp(v.chs,chrs[:k])
+            if nm == 0 or nm < rln: continue
 
 #           print >> sys.stderr , 'rln=' , rln , 'ln=' , ln
-            if rln < ln:              # longer match than before?
+            if rln < nm:              # longer match than before?
 #               print >> sys.stderr , 'new list'
                 res = [ ]             # if so, start new result list for longer matches
-                rln = ln              # set new minimum match length
+                rln = nm              # set new minimum match length
 
-            rs.mtchl = ln             # collect results
-            rs.dropn = r[0]
-            rs.suffx = r[1]
-            res.append([v,rs])        # add to current result list
+            rs = Result(v,nm,self.endg)   # new result object be returned
+            res.append(rs)            # add to current result list
 
         return res                    # return surviving matches
 
-    def lookUpWord ( self , word ):
+    def lookUpSingleWord ( self , word ):
 
         """
-        look word up in vocabulary table
+        look single word up in vocabulary table with no stemming
 
         arguments:
             self  -
-            word  - text char string
+            word  - text char string (preferred) or list
 
         returns:
             list of VocabularyElement objects
         """
 
         ves = [ ]                     # result list initially empty
+        if not isinstance(word,basestring):
+            word = u''.join(word)     # make sure argument is list
 
         lw = len(word)
         if lw == 0:
@@ -610,120 +637,26 @@ class VocabularyTable(object):
 
         return ves                    # return all exact matches
 
-def _cmp ( ve , tx ):
+def icmpr ( vc , tc ):
 
     """
-    compare vocabulary entry to text with partial case sensitivity
+    compare vocabulary entry to text with case insensitivity
 
     arguments:
-        ve    - vocabulary chars
-        tx    - text chars
+        vc    - vocabulary chars
+        tc    - text chars
 
     returns:
-        True on match, False otherwise
+        0 on match, n if mismatch at n chars before end, -1 if unmatched 
     """
 
-#   print >> sys.stderr , 've=' , ve
-#   print >> sys.stderr , 'tx=' , tx
-    if ve == tx:                      # straight char comparison
-        return True
-    tx = map(lambda x: x.lower(),tx)  # if no match, convert text to lower case
-#   print >> sys.stderr , '    ve=' , ve
-#   print >> sys.stderr , 'new tx=' , tx
-    if ve == tx:                      # compare again
-        return True
-    else:
-        return False
-
-def chkT ( chrs , k ):
-
-    """
-    check for full match of vocabulary term with adjustments for
-    simple inflectional endings (for English only! Override as needed))
-
-    arguments:
-        chrs  - input char list
-        k     - extent of match
-
-    returns:
-        tuple of extra actions: [ skip , back ] on success, None otherwise
-          skip = count of following chars to be added to match
-          back = suffix chars to restore to input
-    """
-
-    ns = 0                         # skip count
-    sx = ''                        # string to put back
-
-    n = len(chrs) - k              # remaining chars in input
-#   print n , 'more chars in input'
-    if n == 0:
-        return [ ns , sx ]         # match on no more chars
-
-    lc = chrs[k-1]                 # last matched char
-    c  = chrs[k]                   # next char in input
-    cs = chrs[k+1:]                # rest of input after that
-#   print 'match with lc=' , lc , 'c=' , c , 'n=' , n
-
-    if not ellyChar.isLetterOrDigit(c) and c != "'":
-        return [ ns , sx ]         # simple successful result
-
-    if c == lc:                    # doubled char?
-        if c == 's':
-            return None            # s -s mismatch not allowed
-        ns += 1                    # skip over doubled char otherwise
-        c  = cs[0]                 #
-        cs = cs[1:]                #
-        n -= 1                     #
-#   print 'match with lc=' , lc , 'c=' , c , 'n=' , n
-
-    if c == "'":                   # possible -'s ending?
-        if n == 1:
-            return [ ns , sx ]     # successful result
-        elif cs[0] == 's':
-            ns = 2
-            sx = u"'s"
-            tm = cs[1] if n > 2 else ' '
-    elif c == 's':                 # possible -s ending?
-        ns = 1
-        sx = u's'                  # for -s
-        tm = cs[0] if n > 1 else ' '
-    elif c == 'e':                 # possible -es or -ed ending?
-        if n == 1:
-            return None
-        cn = cs[0]                 # look at char past -e
-        ns += 2
-        tm = cs[1] if n > 2 else ' '
-        if cn == 's':
-            sx = u's'              # for -s
-        elif cn == 'd':
-            sx = u'ed'             # for -ed
-        else:
-            return None
-    elif c == 'd':                 # possible -d ending?
-        if lc != 'e':
-            return None
-        ns = 1
-        tm = cs[0] if n > 1 else ' '
-        sx = u'ed'                 # for -ed
-    elif c == 'i':                 # possible -ing ending?
-        if n < 3 or cs[0] != 'n' or cs[1] != 'g':
-            return None
-        ns += 3
-        tm = cs[2] if n > 3 else ' '
-        sx = u'ing'                # for -ing
-    elif c == 'n':                 # possible -ing ending?
-        if lc !='i' or n < 2 or cs[0] != 'g':
-            return None
-        ns += 2
-        tm = cs[1] if n > 3 else ' '
-        sx = u'ing'
-    else:
-        return None
-
-    if ellyChar.isLetterOrDigit(tm):
-        return None                # no match after disregarding inflections
-
-    return [ ns , sx ]             # successful result with later adjustment needed
+    k = len(vc)
+#   print >> sys.stderr , 'vc=' , vc
+#   print >> sys.stderr , 'tc=' , tc[:k]
+    for i in range(k):
+#       print i , vc[i] , tc[i]
+        if vc[i].lower() != tc[i].lower(): return k - i
+    return 0
 
 #
 # unit test and standalone database building
@@ -731,30 +664,35 @@ def chkT ( chrs , k ):
 
 if __name__ == '__main__':
 
-    import ellyBase
     import ellyDefinitionReader
     import ellyConfiguration
     import inflectionStemmerEN
     import symbolTable
 
+    from ellyBase import load
+    from ellyBase import rules
+
     from generativeDefiner import showCode
 
-    def check ( vtb , ts , kl ):
+    def check ( vtb , ts , kl=None ):
         """ lookup method for unit testing
         """
-        vs = vtb.lookUp(ts,kl)               # check for possible vocabulary matches
-        if len(vs) == 0:                     # any vocabulary entries found?
-            print ts[:kl] , 'NOT FOUND'
+        if kl == None: kl = len(ts)
+        rs = vtb.lookUp(ts,kl)               # check for possible vocabulary matches
+        print 'for' , '"' + u''.join(ts) + '"' ,
+        if len(rs) == 0:                     # any vocabulary entries found?
+            print 'FOUND NONE'
         else:
-            print ts[:kl] , 'FOUND' , len(vs)
-            for v in vs:                     # if found, note each entry
-                rec = v[0]
-                vrs = v[1]
-                print '=' , unicode(rec)     # show each match
-                print ' ' , vrs.mtchl , 'chars matched, with' , vrs.dropn , 'extra'
-                print '  suffix=' , '[-' +  vrs.suffx + ']' , 'restore=' , vrs.restr
-                print 'generative semantics'
-                showCode(rec.gen.logic)
+            print 'FOUND' , len(rs)
+            print ''
+            for r in rs:                     # if found, note each entry
+                print '=' , unicode(r.vem)   # show each match
+                print ' ' , r.nspan , 'chars matched, endings included'
+                if r.suffx != '':
+                    print '  ending=' , '[' +  r.suffx + ']'
+#               print 'generative semantics'
+                showCode(r.vem.gen.logic)
+                print ''
             print '--'
 
     try:
@@ -770,7 +708,7 @@ if __name__ == '__main__':
     dfns = nams + source
     limt = sys.argv[2] if len(sys.argv) > 2 else 24
 
-    erul = ellyBase.load(nams + ellyBase.rules)     # get pickled Elly rules
+    erul = load(nams + rules)                       # get pickled Elly rules
     if erul == None:
         ustb = symbolTable.SymbolTable()            # if none, make new symbol table
     else:
@@ -783,7 +721,7 @@ if __name__ == '__main__':
         sys.exit(1)
 
     try:
-        compile(nams,ustb,inp,ustem)       # create database from vocabulary table
+        compile(nams,ustb,inp)             # create database from vocabulary table
     except ellyException.TableFailure:
         print >> sys.stderr , 'exiting'
         sys.exit(1)                        # quit on failure
@@ -791,7 +729,7 @@ if __name__ == '__main__':
     try:
         uvtb = VocabularyTable(nams,ustem) # load vocabulary table just created
     except ellyException:
-        print 'vocabulary table loading FAILed'
+        print >> sys.stderr , 'vocabulary table loading FAILed'
         sys.exit(1)
 
     udbs = uvtb.dbs                    # get database for table
@@ -804,35 +742,31 @@ if __name__ == '__main__':
 
     nu = 0
     keys = udbs.keys()                 # all database keys
-    print len(keys) , 'DB keys\n'
-    print 'looking up each key as ONE-WORD vocabulary entry\n'
+    hk = { }
     for ky in keys:
+        hk[ky] = 0
+    unqk = hk.keys()
+    print len(unqk) , 'unique DB keys\n'
+    print 'looking up each DB key as SINGLE-word vocabulary entry'
+    for ky in unqk:
         if nu >= limt: break
         nu += 1
-        lky = list(ky)
-        print 'lky=' , lky
-        check(uvtb,lky,len(ky))        # dump all info for each key
-        ukey = u''.join(lky)
-        print 'key= [' , ukey , '] type=' , type(ukey)
-        uvs = uvtb.lookUpWord(ukey)    # look up key by itself
-        nm = len(uvs)
-        print nm , 'key match' + ('' if nm == 1 else 'es')
+        check(uvtb,list(ky))                # dump all info for each key
         print ''
 
-    print 'enter single- and multi-word terms to look up'
+    print 'enter SINGLE- and MULTI-word terms to look up in table'
     while True:                        # now look up terms from standard input
         sys.stdout.write('> ')
         ul = sys.stdin.readline()      # get test example to look up
         if len(ul) <= 1: break
         ssx = ul.strip().decode('utf8')
         tsx = list(ssx)                # get list of chars
-        ku = toIndex(ssx)              # get part of term for indexing
-        if ku == 0:                    # if none, cannot look up
+        kn = toIndex(ssx)              # get part of term for indexing
+        if kn == 0:                    # if none, cannot look up
             print 'index NOT FOUND:' , ssx
             continue
-        check(uvtb,tsx,ku)             # report on matches found
-        ky = u''.join(tsx[:ku])
-        uvs = uvtb.lookUpWord(ky)      # look up just key
-        print len(uvs) , 'key match only'
+        print 'DB key=' , tsx[:kn]
+        check(uvtb,tsx,kn)
+        print ''
 
     sys.stdout.write('\n')

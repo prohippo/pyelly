@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyDefinition.py : 05nov2014 CPM
+# ellyDefinition.py : 09jan2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -196,7 +196,7 @@ class Vocabulary(EllyDefinition):
             self.version = id
             dT = self.inpT(system,'v')
 #           dT.dump()
-            vocabularyTable.compile(system,syms,dT,stem)
+            vocabularyTable.compile(system,syms,dT)
 
         self.vtb = vocabularyTable.VocabularyTable(system,stem)
 
