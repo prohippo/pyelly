@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyToken.py : 07jan2015 CPM
+# ellyToken.py : 10jan2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -76,7 +76,7 @@ class EllyToken:
 
         p =  '[' + u' '.join(self.pres) + ']+' if len(self.pres) > 0 else ''
         s = '-[' + u' '.join(self.sufs) + ']'  if len(self.sufs) > 0 else ''
-        return u'EllyToken: ' + p + str(self.root) + s + u' (orig= ' + self.orig + u')'
+        return u'EllyToken: ' + p + str(self.root) + s + u' (orig= "' + self.orig + u'")'
 
     def __str__ ( self ):
 
@@ -358,19 +358,23 @@ if __name__ == "__main__":
     t.addSuffix(u'yy')
     t.addSuffix(u'z')
 
-    print 1 , t
+    print 'initial definition'
+    print t
     print "capn=", t.capn
     print "suffixes=" , map(lambda x: '-'+x , t.getSuffixes())
+    print ''
 
     t.shortenBy(1,both=True)
 
-    print 2 , t
+    print 'shorten by 1'
+    print t
+    print ''
 
     t.shortenBy(1)
 
-    print 3 , t
-
-    print type(t.orig) , type(t.root)
+    print 'shorten only root by 1'
+    print t
+    print ''
 
     print 'ascii=  ' , str(t)
     print 'unicode=' , unicode(t)
