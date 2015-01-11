@@ -107,11 +107,19 @@ g:unit->verb
 __
 g:unit->word
 __
+g:noun->noun infl[%-VB]
+_
+  left
+__
 g:word->word sufx
  >>++
 __
 g:word->prfx word
  >>++
+__
+g:verb->verb infl
+_
+  left
 __
 g:verb->word infl[%VB]
  >>++
@@ -663,6 +671,10 @@ _
   append d
 __
 d:-s     <- INFL
+_
+  return
+__
+d:-t     <- INFL
 _
   return
 __
