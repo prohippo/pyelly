@@ -13,7 +13,7 @@ framework for text translation from UTF-8 to UTF-8.
 The latest version has been completely rewritten in mostly object-oriented
 Python. It has now passed multiple stages of beta testing in 2014 and may
 be downloaded from GitHub at https://github.com/prohippo/pyelly.git . The
-current release is v1.0.
+current release is v1.0.2.
 
 To learn how to use PyElly, see the PyEllyManual.pdf file in the same
 directory as this README.txt file. The manual has over a hundred pages of
@@ -43,7 +43,7 @@ building your own systems.
 
 PyElly is intended mostly for educational use and is being released under
 a BSD license. Be advised that the current software and documentation is still 
-evolving, although the v1.0 release should be much more stable than previous
+evolving, although the v1.0.* releases should be much more stable than previous
 beta releases.
 
 Release Notes:
@@ -62,14 +62,14 @@ Release Notes:
                       replace DELETE ALL code
                       make STORE more efficient and generalize, fix bugs
                       allow for initializing of global variables in grammar
-                      strengthen unit testing, add querying integration test
+                      strengthen unit testing, add "querying" integration test
  0.4    -  04jul2014  support conceptual hierarchies in cognitive semantics
                       separate lookup tables for syntactic and semantic features
                       fix bugs in loading vocabulary tables from text input
                       fix bugs in loading conceptual hierarchies from text input
                       improve unit testing
-                      add core of disambig application for integration testing
- 0.4.1  -  13aug2014  clean up and flesh out disambig application
+                      add core of "disambig" application for integration testing
+ 0.4.1  -  13aug2014  clean up and flesh out "disambig" application
                       fix bugs in cognitive semantics
                       fix bugs in conceptual hierarchies
                       miscellaneous cleanup of Python source files
@@ -81,22 +81,24 @@ Release Notes:
                       add error messages when generating language tables
                       simplify semantic feature check by generative semantics
                       extend generative semantic unit tests
-                      add bad application to test PyElly error reporting
+                      add "bad" application to test PyElly error reporting
  0.5.1  -  12sep2014  fix residual problems with error reporting and recovery
-                      extend bad application for integration testing
+                      extend "bad" application for integration testing
  0.6    -  12oct2014  more input checking in vocabulary table compilation
-                      more information in disambig application translations
+                      more information in "disambig" application translations
                       better English inflectional and morphological stemming
-                      add English irregulars to stemming, update echo application
-                      extend chinese application, better classifier assignments
+                      add English irregulars to stemming, update "echo" application
+                      extend "chinese" application, better classifier assignments
  1.0    -  24dec2014  add comprehensive error reporting in inflectional stemming
                       add WordNet exceptions to cases handled by stemmers
                       upgrade pattern table matching and clean up code
                       fix bug in ellyWildcard with $ wildcard
-                      update querying application
-                      clean up various problems in chinese applications
+                      update "querying" application
+                      clean up various problems in "chinese" application
                       clean up all modules with PyLint
- 1.0.1  -  01jan2015  bug fixes and cleanup
+ 1.0.1  -  01jan2015  bug fixes and cleanup ahead of v1.1
+ 1.0.2  -  12jan2015  bug fixes and cleanup and upgrade ahead of v1.1
+                      clean up token extraction and lookup
 
 New versions will reflect major changes in PyElly code. This typically will
 require regeneration of any previously saved *.elly.bin files to ensure correct
