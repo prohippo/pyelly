@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 11jan2015 CPM
+# vocabularyTable.py : 12jan2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -193,7 +193,7 @@ def compile ( name , stb , defn ):
                     _err()                                # quit on bad term
                     continue
                 wky = lcAN(t[:n])                         # first word of term to define  
-                print >> sys.stderr , '  BdB key=' , wky
+#               print >> sys.stderr , '  BdB key=' , wky
 
                 ns = syntaxSpecification.scan(d)          # find extent of syntax info
 #               print >> sys.stderr , 'ns=' , ns
@@ -499,11 +499,13 @@ class VocabularyTable(object):
         dnc = ltx - lvc
         nr = icmpr(vcs,txs)                  # do match on lists of chars
 #       print 'nr=' , nr , 'dnc=' , dnc
+#       print 'txs=' , txs
         if nr > 1:                           # only one missed char allowed
             return 0
         elif nr == 0 and dnc == 0:           # exact match?
             return lvc
         elif nr == 0 and dnc == 2 and txs[-2:] == ['\'' , 's']:
+#           print 'apostrophe s'
             self.endg = '-\'s'               # apostrophe + S
             return ltx
         elif lvc < 2:                        # can have inflectional ending?
@@ -586,7 +588,8 @@ class VocabularyTable(object):
 
             k = ln
             while k < lm:
-                if not ellyChar.isLetter(chrs[k]): break
+                chrsk = chrs[k]
+                if not ellyChar.isLetter(chrsk) and chrsk != '\'': break
                 k += 1
 #           print >> sys.stderr , 'k=' , k
 #           print >> sys.stderr , v.chs , ':' , chrs[:k]
