@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 10jan2015 CPM
+# ellyBase.py : 21jan2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -71,7 +71,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.0.2'                      # current version of PyElly software
+release = 'v1.0.3'                      # current version of PyElly software
 
 L = 16  # how much context to show
 
@@ -383,7 +383,9 @@ class EllyBase(object):
             self.ctx.tokns.append(to)
             return True
 
-        to = self._extractToken((mx > 0)) # single-word matching with analysis
+        wsk = self.sbu.buffer[:k]
+
+        to = self._extractToken((mx > 0),wsk) # single-word matching with analysis
 
         if to == None: return False if mx == 0 else True
 
@@ -432,7 +434,9 @@ class EllyBase(object):
                         break
                     ks += 1
             ss = u''.join(sb[:ks])     # where to start for indexing
+#           print 'ss=' , ss
             n = vocabularyTable.toIndex(ss)  # get actual indexing
+#           print 'n=' , n
             rl = self.vtb.lookUp(sb,n) # get list of the longest matches
             if len(rl) > 0:            #
                 r0 = rl[0]             # look at first record
@@ -474,81 +478,115 @@ class EllyBase(object):
 
         return [ nspan , vmchs , suffx ]
 
-    def _extractToken ( self , found ):
+    def _tableLookUp ( self , ws , tree ):
+
+        """
+        simple external dictionary lookup
+
+        arguments:
+            self  -
+            ws    - single-word string
+            tree  - parse tree for putting matches
+
+        returns:
+            count of matches found
+        """
+
+#       print 'look up [' + ws + '] externally'
+
+        count = 0
+
+        vs = self.vtb.lookUpSingleWord(ws)  # look up token as word externally
+#       print len(vs) , 'candidates'
+        for v in vs:                        # try to make phrases from vocabulary elements
+            if tree.addLiteralPhraseWithSemantics(
+                 v.cat,v.syf,v.smf,v.bia,v.gen
+            ):
+#               print 'vtb sbuf=' , self.sbu.buffer
+                count += 1
+
+        return count
+
+    def _extractToken ( self , found , wso ):
 
         """
         extract next token from input buffer and look up in grammar table
 
         arguments:
-            self    -
-            unknown - true if token not yet identified by scanning
+            self  -
+            found - true if token not yet identified by scanning
+            wso   - what was looked up already
 
         returns:
             token on success, otherwise None
         """
 
-#       print 'extract found=' , found
-        d = self.rul                            # grammar rule definitions
+#       print 'extract: found=' , found , 'wso=' , wso
 
-        tree = self.ptr                         # parse tree
-        buff = self.sbu                         # input source
+        d = self.rul                        # grammar rule definitions
+
+        tree = self.ptr                     # parse tree
+        buff = self.sbu                     # input source
 
         try:
-            w = buff.getNext()                  # extract next token
-#           print 'extract' , w
+            if found:
+                w = buff.getNextSimple()    # next token must be taken without changes
+            else:
+                w = buff.getNext()          # extract next token
+            ws = u''.join(w.root)
+#           print 'extract' , ws
         except ellyException.StemmingError as e:
             print >> sys.stderr , 'FATAL error' , e
             sys.exit(1)
 
-        while True:                             # do extractions with side effects
-
-            if w == None:
-                return None                     # must fail if no token obtained
-
-            ws = u''.join(w.root)               # convert root segment to string
-
-#           print 'look up [' + ws + '] internally and externally'
-
-            vs = self.vtb.lookUpSingleWord(ws)  # look up token as word externally
-#           print len(vs) , 'candidates'
-            for v in vs:                        # try to make phrases
-                if tree.addLiteralPhraseWithSemantics(
-                        v.cat,v.syf,v.smf,v.bia,v.gen
-                ):
-#                   print 'vtb sbuf=' , self.sbu.buffer
+        if not found:                       # look up externally if no success yet
+            if ws != wso:
+                if self._tableLookUp(ws,tree) > 0:
                     found = True
 
-            if ws != '' and ws in self.rul.gtb.dctn:
+        if ws in self.rul.gtb.dctn:         # look up internally regardless
+#           print '"' + ws + '" in dictionary'
+            if tree.createPhrasesFromDictionary(ws,w.isSplit()):
+                found = True
+
+        if found:                           # if any success, we are done
+            return w
+
+#       print 'logic: ' , d.man.pref , d.man.suff
+        if d.man.analyze(w):                # any analysis possible?
+            root = u''.join(w.root)         # if so, get parts of analysis
+            tan = w.pres + [ root ] + w.sufs
+#           print 'token analysis=' , tan
+            while len(tan) > 0:             # and put back into input
+                x = tan.pop()
+                buff.prepend(x)
+                buff.prepend(' ')
+            w = buff.getNext()              # get token again with stemming and macros
+
+            ws = u''.join(w.root)
+            if self._tableLookUp(ws,tree):  # external lookup
+                found = True
+
+            if ws in self.rul.gtb.dctn:     # internal lookup
                 if tree.createPhrasesFromDictionary(ws,w.isSplit()):
                     found = True
 
-            if found:
-                return w
-
-#           print 'logic: ' , d.man.pref , d.man.suff
-            if d.man.analyze(w):                # any analysis possible?
-                root = u''.join(w.root)         # if so, get parts of analysis
-                tan = w.pres + [ root ] + w.sufs
-#               print 'token analysis=' , tan
-                while len(tan) > 0:             # and put back into input
-                    x = tan.pop()
-                    buff.prepend(x)
-                    buff.prepend(' ')
-                w = buff.getNext()              # get token again
-                continue                        # redo lookup after analysis
-
-            if self.pnc.match(w.root):          # check if next token is punctuation
-                if tree.addLiteralPhrase(self.pnc.catg,self.pnc.synf):
-                    tree.lastph.lens = w.getLength()
-                    if w.root == [ u'.' ]:
-                        tree.lastph.synf.combine(self.pnc.period)
-                found = True
-            if not found:
-#               print 'must create UNKN leaf node'
-                tree.createUnknownPhrase(w)     # unknown type as last resort
-                tree.lastph.lens = len(ws)
-
+        if found:                           # if any success, we are done
             return w
+
+        if self.pnc.match(w.root):          # check if next token is punctuation
+            if tree.addLiteralPhrase(self.pnc.catg,self.pnc.synf):
+                tree.lastph.lens = w.getLength()
+                if w.root == [ u'.' ]:
+                    tree.lastph.synf.combine(self.pnc.period)
+            found = True
+
+        if not found:
+#           print 'must create UNKN leaf node'
+            tree.createUnknownPhrase(w)     # unknown type as last resort
+            tree.lastph.lens = len(ws)
+
+        return w
 
     def symbolCheck ( self ):
 

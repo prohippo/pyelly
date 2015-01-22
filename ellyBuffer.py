@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBuffer.py : 01jan2015 CPM
+# ellyBuffer.py : 21jan2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -97,6 +97,8 @@ class EllyBuffer(object):
             self
         """
 
+        self.buffer = None
+        self.index  = None
         self.clear()
 
     def __str__ ( self ):
@@ -481,6 +483,20 @@ class EllyBuffer(object):
 #       print "putBack 3" , len(self.buffer)
 
     def getNext ( self ):
+
+        """
+        get next token from buffer (this method will be overridden)
+
+        arguments:
+            self
+
+        returns:
+            a token or None if buffer is empty
+        """
+
+        return self.getNextSimple()
+
+    def getNextSimple ( self ):
 
         """
         get next token from buffer
