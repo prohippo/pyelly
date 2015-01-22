@@ -99,6 +99,9 @@ Release Notes:
  1.0.1  -  01jan2015  bug fixes and cleanup ahead of v1.1
  1.0.2  -  12jan2015  bug fixes and cleanup and upgrade ahead of v1.1
                       clean up token extraction and lookup
+ 1.0.3  -  22jan2015  bug fixes and cleanup and upgrade ahead of v1.1
+                      clean up token extraction and lookup
+                      add first iteration of "marking" application
 
 New versions will reflect major changes in PyElly code. This typically will
 require regeneration of any previously saved *.elly.bin files to ensure correct
