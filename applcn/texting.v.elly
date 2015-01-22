@@ -79,7 +79,7 @@ over toward:  PREP 0 0 =to
 
 together with:  PREP 0 0 =+
 necessary for:  PREP 0 0 =fr
-instead of: NO  0 0 =no
+instead of: NEGN  0 0 =no
 have -ed to : AUX 0 0 =must
 have -s  to : AUX 0 0 =must
 have to   : AUX 0 0 =must
@@ -247,3 +247,7 @@ buy:    VERB
 bought: VERB 0 0 =buy
 sell:   VERB 0 0 =sll
 sold:   VERB 0 0 =sll
+
+reorganize: VERB 0 0 =reorg
+reorganization: NOUN 0 0 =reorg
+organization: NOUN 0 0 =org

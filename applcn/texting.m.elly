@@ -47,9 +47,6 @@
    receiv[e]* -> rcv\\1
    *creas[e]$ -> \\1cr
 
-   re+ +organ -ize[ -ation] -> reorg
-   organ -ize[ -ation] -> org
-
 # order-dependent!
    *quarter$ -> \\1q
    quarterly$ -> q'ly
