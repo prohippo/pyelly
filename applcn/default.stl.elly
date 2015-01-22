@@ -154,7 +154,7 @@ aten 1 2 .
 ateness 3 3 ,
 aterial 0 0 .
 athetic 2 3 .
-atial 2 1 ce.
+atial 2 1 ce. 1
 atiate 2 2 &.
 atiety 2 2 &.
 atinous 2 4 &.
@@ -1343,7 +1343,7 @@ nteer 1 2 .
 nter 1 2 .
 nteric 1 4 .
 ntest 1 2 .
-ntial 1 2 ,
+ntial 1 2 , 1
 ntical 1 2 .
 nticate 1 4 .
 nticism 1 4 ,
@@ -1686,7 +1686,7 @@ rbtion 1 2 . 1
 rcee 1 3 . 0e
 rcent 0 0 .
 rcession 1 3 de. 2
-rcial 1 2 &.
+rcial 1 2 &. 1
 rcive 1 2 &.
 rclement 1 4 .
 rdest 1 2 .
@@ -1813,6 +1813,7 @@ rterial 1 4 y.
 rtery 0 0 .
 rtest 1 2 .
 rtheless 0 0 .
+rtial 0 0 .
 rtian 1 1 . 2
 rticular 0 0 .
 rtillery 0 0 .

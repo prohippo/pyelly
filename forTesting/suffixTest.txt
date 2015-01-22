@@ -834,6 +834,7 @@ manager manage
 maniac mania
 marginal margin
 marketeer market
+martial martial
 martian mar
 martyrdom martyr
 massive mass
@@ -962,6 +963,7 @@ parentage parent
 parishioner parish
 parity par
 parolee parole
+partial partial
 participant participe
 partition part
 passer pass
