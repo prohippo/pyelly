@@ -1,0 +1,186 @@
+# convert English text into simple XML
+# marking.v.elly
+
+#
+# this is a stripped down vocabulary for integration testing;
+# a full-fledged markup appication would require a much larger
+# subset of default.v.elly (WordNet 3.1)
+#
+
+box : NOUN
+dog : NOUN
+cat : NOUN
+big : ADJ
+red : ADJ
+ate : VERB
+sit : VERB
+now : ADV
+then: ADV
+soon: ADV
+yet : ADV
+
+rocket : NOUN
+rocket : VERB
+rocket science : NOUN
+signal rocket : NOUN
+booster : NOUN
+
+Scotts : NOUN
+Scotts Miracle-Gro Company : NOUN
+
+again : ADV
+agriculture : NOUN
+alarm : NOUN
+alarm : VERB
+approval : NOUN
+approve : VERB
+associate : ADJ
+associate : NOUN
+associate : VERB
+attempt : NOUN
+attempt : VERB
+authorize : VERB
+biotech : NOUN
+canola : NOUN
+carry : VERB
+chance : ADJ
+chance : NOUN
+chance : VERB
+clear : ADJ
+clear : ADV
+clear : NOUN
+clear : VERB
+commerce : NOUN
+company : NOUN
+company : VERB
+consume : VERB
+corn : NOUN
+corn : VERB
+create : VERB
+credit : NOUN
+credit : VERB
+critic : NOUN
+crop : NOUN
+crop : VERB
+damage : NOUN
+damage : VERB
+dark : ADJ
+dark : NOUN
+deep : ADJ
+deep : ADV
+deep : NOUN
+department : NOUN
+develop : VERB
+disaster : NOUN
+disastrously : ADV
+doom : NOUN
+doom : VERB
+ecology : NOUN
+edit : VERB
+effect : NOUN
+effect : VERB
+end : NOUN
+end : VERB
+engineer : NOUN
+engineer : VERB - -1
+escape : NOUN
+escape : VERB
+examine : VERB
+example : NOUN
+federal : ADJ
+federal : NOUN
+field : NOUN
+field : VERB
+gene : NOUN
+genetically : ADV
+genome : NOUN
+glow : NOUN
+glow : VERB
+govern : VERB
+grass : NOUN
+grass : VERB
+green : ADJ
+green : NOUN
+green : VERB
+herbicide : NOUN
+impact : NOUN
+impact : VERB
+jurisdiction : NOUN
+less : ADJ
+less : ADV
+like : ADJ
+like : NOUN
+like : VERB
+livestock : NOUN
+look : NOUN
+look : VERB
+loophole : NOUN
+market : NOUN
+market : VERB
+method : NOUN
+michael : NOUN
+miracle : NOUN
+modify : VERB
+mow : NOUN
+mow : VERB
+need : NOUN
+need : VERB
+new : ADJ
+new : ADV
+new year's : NOUN
+once : ADV
+orbit : NOUN
+orbit : VERB
+ore : NOUN
+oregon : NOUN
+organism : NOUN
+ornament : NOUN
+ornament : VERB
+plant : NOUN
+plant : VERB
+plot : NOUN
+plot : VERB
+pollute : VERB
+popular : ADJ
+press : NOUN
+press : VERB
+process : NOUN
+process : VERB
+produce : NOUN
+produce : VERB
+product : NOUN
+regulate : VERB
+resist : VERB
+resistant : ADJ
+rick : NOUN
+rick : VERB
+roundup : NOUN
+satellite : NOUN
+satellite : ADJ
+science : NOUN
+senior : ADJ
+senior : NOUN
+sort : NOUN
+sort : VERB
+switch : NOUN
+switch : VERB
+tailor : NOUN
+tailor : VERB
+technique : NOUN
+test : NOUN
+test : VERB
+time : NOUN
+time : VERB
+trend : NOUN
+trend : VERB
+union : ADJ
+union : NOUN
+use : NOUN
+use : VERB
+waste : ADJ
+waste : NOUN
+waste : VERB
+weedkiller : NOUN
+wild : ADJ
+wild : ADV
+wild : NOUN

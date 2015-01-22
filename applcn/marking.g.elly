@@ -1,0 +1,469 @@
+# convert English text into simple XML
+# marking.g.elly
+
+#
+# subprocedures
+p:lxtd  # adding a left generated tagged element to a right generated list
+_
+  trace
+  split
+  right
+  back
+  delete to >
+  store    tmp
+  insert < tmp
+  (typg)
+  merge
+__
+p:typg  # left generation of element tagged as specified type
+_
+  trace
+  append <
+  insert < typg
+  append >
+  left
+  append </
+  insert < typg
+  append >
+__
+p:twob  # 2-branch rule with spaced output
+_
+  left
+  space
+  right
+__
+
+#
+# syntax rules
+g:SENT->SS[|full]
+_
+  append <sent>
+  left
+  append </sent>
+__
+g:SS[|full]->SS[|-full] PUNC[=stop]
+__
+g:SS[|full]->SS[|-full]
+ >>-
+__
+g:SS->ELEM
+__
+g:SS->SS ELEM
+__
+
+g:ELEM->NCLU
+ >>-
+_
+  var typg=nclu
+  (typg)
+__
+g:ELEM->PRO
+_
+  var typg=pro
+  (typg)
+__
+g:ELEM->VCLU
+_
+  var typg=vclu
+  (typg)
+__
+g:ELEM->VINF
+_
+  var typg=infn
+  (typg)
+__
+g:ELEM->PUNC[=-stop]
+_
+  var typg=punc
+  (typg)
+__
+g:ELEM->CONJ
+_
+  var typg=conj
+  (typg)
+__
+g:ELEM->DATE
+_
+  var typg=date
+  (typg)
+__
+g:ELEM->TIME
+_
+  var typg=time
+  (typg)
+__
+g:ELEM->DEM[%ind]
+ >>-
+_
+  var typg=refr
+  (typg)
+__
+g:ELEM->APOS
+_
+  var typg=poss
+  (typg)
+__
+g:ELEM->NUM
+ >>-
+_
+  var typg=num
+  (typg)
+__
+g:ELEM->ADV
+ >>-
+_
+  var typg=adv
+  (typg)
+__
+
+g:NCLU->NOUN
+_
+  var typg=noun
+  (typg)
+__
+g:NCLU[:*r,det]->DET NCLU[:-det,-prep]
+_
+  var typg=det
+  (lxtd)
+__
+g:NCLU[:*r,prep]->PREP NCLU[:-prep]
+_
+  var typg=prep
+  (lxtd)
+__
+g:NCLU[:*prep]->PREP YEAR
+__
+g:NCLU[:*r,det]->DEM NCLU[:-det,-prep]
+_
+  var typg=dem
+  (lxtd)
+__
+g:NCLU[:*r]->ADJ NCLU[:-det,-prep,-num]
+_
+  var typg=adj
+  (lxtd)
+__
+g:NCLU[:*r,num]-> NUM NCLU[:-det,-prep,-num]
+_
+  var typg=num
+  (lxtd)
+__
+g:NCLU[:*r,det]->QUAN NCLU[:-det,-prep,-num]
+_
+  var typg=quan
+  (lxtd)
+__
+
+g:VCLU->VERB
+_
+  var typg=verb
+  (typg)
+__
+g:VCLU->ADV VCLU
+_
+  var typg=adv
+  (lxtd)
+__
+g:VCLU[^hav,*r]->HAVE VCLU[^-hav]
+_
+  (twob)
+__
+g:VCLU[^aux,*r]->AUXL VCLU[^-aux]
+_
+  (twob)
+__
+g:VCLU[*r]->BE VERB[^ing,-hav]
+_
+  var typg=be
+  (lxtd)
+__
+g:VCLU[*r,pass]->BE VERB[^ed,-hav]
+_
+  var typg=be
+  (lxtd)
+__
+
+g:AUXL[^neg]->AUXL[^-neg] NEGN
+_
+  (twob)
+__
+
+g:VINF->TO VERB[^-aux]
+_
+  SPLIT
+  RIGHT
+  BACK
+  DELETE TO >
+  STORE    tmp
+  INSERT < tmp
+  LEFT
+  SPACE
+  MERGE
+__
+
+#
+# handle suffixes
+g:NOUN->NOUN XS
+ >>+
+_
+  (twob)
+__
+g:NOUN->UNKN XS
+_
+  (twob)
+__
+g:NOUN->VERB SUFX[#vTOn]
+_
+  (twob)
+__
+
+g:VERB->VERB XS
+_
+  (twob)
+__
+g:VERB[^ed]->VERB[^-ed] XED
+ >>+
+_
+  (twob)
+__
+g:VERB[^*l,ing]->VERB[^-ing] XING
+_
+  (twob)
+__
+g:VERB->NOUN SUFX[#nTOv]
+_
+  (twob)
+__
+g:VERB->ADJ  SUFX[#aTOv]
+_
+  (twob)
+__
+g:VERB->BE ADJ
+_
+  (twob)
+__
+g:VERB->BE
+ >>-
+__
+
+g:ADJ->ADJ XER
+_
+  (twob)
+__
+g:ADJ->ADJ XEST
+_
+  (twob)
+__
+g:ADJ->NOUN SUFX[#nTOa]
+_
+  (twob)
+__
+
+g:ADV->ADJ  SUFX[#aTOr]
+_
+  (twob)
+__
+
+g:NOUN[:hyph]->NOUN[:-hyph] HYPH
+__
+g:NOUN[:*r]->NOUN[:hyph] NOUN
+__
+g:VERB[:*r]->NOUN[:hyph] VERB
+__
+
+#
+# internal dictionary
+d:- <- HYPH
+__
+d:in   <- PREP
+__
+d:of   <- PREP
+__
+d:on   <- PREP
+__
+d:by   <- PREP
+__
+d:into <- PREP
+__
+d:to   <- PREP
+__
+d:for  <- PREP
+__
+d:with <- PREP
+__
+d:from <- PREP
+__
+
+d:to   <- TO
+__
+
+d:a    <- DET
+__
+d:an   <- DET
+__
+d:the  <- DET
+__
+
+d:this <- DEM[%ind]
+__
+d:that <- DEM[%ind]
+__
+d:these<- DEM[%ind]
+__
+d:those<- DEM[%ind]
+__
+d:my   <- DEM
+__
+d:your <- DEM
+__
+d:his  <- DEM[%ind]
+__
+d:her  <- DEM
+__
+d:its  <- DEM
+__
+d:our  <- DEM
+__
+d:their<- DEM
+__
+
+d:all  <- QUAN
+__
+d:some <- QUAN
+__
+d:many <- QUAN
+__
+d:each <- QUAN
+__
+d:every<- QUAN
+__
+d:no   <- QUAN
+__
+
+d:i    <- PRO
+__
+d:you  <- PRO
+__
+d:he   <- PRO
+__
+d:she  <- PRO
+__
+d:it   <- PRO
+__
+d:we   <- PRO
+__
+d:they <- PRO
+__
+d:mine <- PRO
+__
+d:yours<- PRO
+__
+d:hers <- PRO
+__
+d:ours <- PRO
+__
+d:theirs<-PRO
+__
+
+d:and  <- CONJ
+__
+d:or   <- CONJ
+__
+d:but  <- CONJ
+__
+d:if   <- CONJ
+__
+d:when <- CONJ
+__
+d:since<- CONJ
+__
+d:before<-CONJ
+__
+d:after<- CONJ
+__
+
+d:is   <- BE
+__
+d:am   <- BE
+__
+d:are  <- BE
+__
+d:was  <- BE
+__
+d:were <- BE
+__
+d:be   <- BE
+__
+d:been <- BE[^ED]
+__
+d:have <- HAVE
+__
+d:has  <- HAVE
+__
+d:had  <- HAVE
+__
+d:will <- AUXL
+__
+d:shall<- AUXL
+__
+d:would<- AUXL
+__
+d:should<-AUXL
+__
+d:can  <- AUXL
+__
+d:may  <- AUXL
+__
+d:might<- AUXL
+__
+d:must <- AUXL
+__
+d:could<- AUXL
+__
+
+d:not  <- NEGN
+__
+d:never<- NEGN
+__
+
+#
+# inflectional endings and morphological suffixes
+d:-s   <- XS
+__
+d:-ed  <- XED
+__
+d:-n   <- XED
+__
+d:-t   <- XED
+__
+d:-ing <- XING
+__
+d:-er  <- XER
+__
+d:-est <- XEST
+__
+d:-'s  <- APOS
+__
+
+d:-ion  <- SUFX[#vTOn]
+__
+d:-ize  <- SUFX[#aTOv]
+__
+d:-ic   <- SUFX[#nTOa]
+__
+d:-al   <- SUFX[#nTOa]
+__
+d:-ment <- SUFX[#vTOn]
+__
+d:-ation<- SUFX[#vTOn]
+__
+d:-ly   <- SUFX[#aTOr]
+__
+d:-ly   <- SUFX[#nTOa]
+__
+d:-ful  <- SUFX[#nTOa]
+__
+d:-ous  <- SUFX[#nTOa]
+__
+d:-er   <- SUFX[#vTOn]
+__

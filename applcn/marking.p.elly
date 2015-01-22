@@ -1,0 +1,36 @@
+# convert English text into simple XML
+# marking.p.elly
+
+0 &#$ NUM -1
+0 #,   - 1
+0 ##,  - 1
+0 ###, - 1
+1 ###, - 1
+1 ###$ NUM -1
+0 &#   -    2
+2 .    -    3
+2 $    NUM -1
+3 &#$  NUM -1
+3 $    NUM -1
+
+0 \0   - 4
+0 \#   - 4     # this is the start of a same line comment!
+0 \##  - 4
+0 \### - 4
+4 0th$ NUM -1
+4 1st$ NUM -1
+4 2nd$ NUM -1
+4 3rd$ NUM -1
+4 4th$ NUM -1
+4 5th$ NUM -1
+4 6th$ NUM -1
+4 7th$ NUM -1
+4 8th$ NUM -1
+4 9th$ NUM -1
+
+0 11th$ NUM -1
+0 12th$ NUM -1
+0 13th$ NUM -1
+
+0 19##$ YEAR -1
+0 20##$ YEAR -1
