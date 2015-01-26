@@ -1,19 +1,19 @@
 PyElly is a rule-based natural language processing tool that has existed
 for over forty years in various incarnations. It speeds development of
 many kinds of NLP applications by taking care of low-level language
-details not central to a given solution. It is now freely available on
-the web to people needing to process or pre-process text data.
+details not central to a given data problem or solution. It is now freely
+available on the web to those wanting to process or pre-process text data.
 
 PyElly provides flexible tokenization, syntax-driven parsing, English
 inflectional and morphological stemming, macro substitutions, basic
 and extended entity extraction, ambiguity handling, sentence recognition,
 support for large external dictionaries, and a general procedural
-framework for text translation from UTF-8 to UTF-8.
+framework for translating text from UTF-8 to UTF-8.
 
 The latest version has been completely rewritten in mostly object-oriented
 Python. It has now passed multiple stages of beta testing in 2014 and may
 be downloaded from GitHub at https://github.com/prohippo/pyelly.git . The
-current release is v1.0.2.
+current release is v1.0.4.
 
 To learn how to use PyElly, see the PyEllyManual.pdf file in the same
 directory as this README.txt file. The manual has over a hundred pages of
@@ -34,6 +34,7 @@ applications, including
              or traditional characters.
 * querying - rewrite English questions as SQL queries for a Soviet
              military aircraft database.
+* marking  - rewrite English text with XML markup
 * disambig - disambiguation of phrases with WordNet information.
 
 These illustrate what you can do with PyElly and also serve as a basis for
@@ -96,18 +97,20 @@ Release Notes:
                       update "querying" application
                       clean up various problems in "chinese" application
                       clean up all modules with PyLint
- 1.0.1  -  01jan2015  bug fixes and cleanup ahead of v1.1
- 1.0.2  -  12jan2015  bug fixes and cleanup and upgrade ahead of v1.1
+ 1.0.1  -  01jan2015  bug fixes, cleanup ahead of v1.1
+ 1.0.2  -  12jan2015  bug fixes, cleanup and upgrade ahead of v1.1
                       clean up token extraction and lookup
- 1.0.3  -  22jan2015  bug fixes and cleanup and upgrade ahead of v1.1
-                      clean up token extraction and lookup
+ 1.0.3  -  22jan2015  bug fixes, cleanup ahead of v1.1
+                      upgrade code for token extraction and lookup
                       add first iteration of "marking" application
+ 1.0.4  -  26jan2015  bug fixes and upgrades ahead of v1.1
+                      extend "marking" application
 
-New versions will reflect major changes in PyElly code. This typically will
-require regeneration of any previously saved *.elly.bin files to ensure correct
-operation. Changes only to PyElly sample application files, unit testing input
-files, or documentation will be made from time to time, but these will leave
-version numbers the same.
+New versions will reflect non-cosmetic changes in PyElly code. This typically
+will require regeneration of any previously saved *.elly.bin files to ensure
+correct operation. Changes only to PyElly sample application definition files,
+unit testing input or key files, and PyElly documentation will be made from time
+to time, but these will leave version numbers the same.
 
 The PyElly website is at
 
