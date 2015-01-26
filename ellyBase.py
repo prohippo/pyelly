@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 21jan2015 CPM
+# ellyBase.py : 24jan2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -71,7 +71,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.0.3'                      # current version of PyElly software
+release = 'v1.0.4'                      # current version of PyElly software
 
 L = 16  # how much context to show
 
@@ -354,7 +354,10 @@ class EllyBase(object):
         if self.trs != None:           # preanalysis of number expressions
             self.trs.rewriteNumber(s)
 
+        self.sbu.expand()              # apply macro substitutions
+
         s = self.sbu.buffer
+
         k = self.sbu.findBreak()       # try to find first component for lookup
         if k == 0: return False        # quit if buffer exhausted
 

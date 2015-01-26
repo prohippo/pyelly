@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# substitutionBuffer.py : 03nov2014 CPM
+# substitutionBuffer.py : 24jan2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -94,7 +94,7 @@ class SubstitutionBuffer(
             if to == None: return None   # stop on end of input
 #           print 'subs to=' , to
             self.putBack(to)             # put it back in buffer for pattern matching
-            if not self._expand(): break # apply macro substitutions on buffer
+            if not self.expand(): break  # apply macro substitutions on buffer
                                          # until no more will match
             if len(self.buffer) > limit: # to avoid infinite expansion
                 return None
@@ -102,7 +102,7 @@ class SubstitutionBuffer(
 #       print 'substitution buffer=' , self.buffer , '[*]'
         return self.sup.getNext()        # then get next token
 
-    def _expand ( self ):
+    def expand ( self ):
 
         """
         implement macro pattern match and substitution in buffer
