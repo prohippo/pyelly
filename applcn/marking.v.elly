@@ -8,16 +8,19 @@
 #
 
 box : NOUN
-dog : NOUN
 cat : NOUN
+dog : NOUN
 big : ADJ
 red : ADJ
-ate : VERB
+ate : VERB[^ed]
+say : VERB[^dit]
 sit : VERB
 now : ADV
 then: ADV
 soon: ADV
 yet : ADV
+
+U.S. : NOUN
 
 rocket : NOUN
 rocket : VERB
@@ -98,7 +101,7 @@ glow : NOUN
 glow : VERB
 govern : VERB
 grass : NOUN
-grass : VERB
+grass : VERB - -1
 green : ADJ
 green : NOUN
 green : VERB

@@ -5,7 +5,6 @@
 # subprocedures
 p:lxtd  # adding a left generated tagged element to a right generated list
 _
-  trace
   split
   right
   back
@@ -17,7 +16,6 @@ _
 __
 p:typg  # left generation of element tagged as specified type
 _
-  trace
   append <
   insert < typg
   append >
@@ -51,21 +49,27 @@ __
 g:SS->SS ELEM
 __
 
-g:ELEM->NCLU
+g:ELEM->NCLU[:-dit]
  >>-
+__
+g:ELEM->NCLU[:dit]
+ >>+
 _
-  var typg=nclu
-  (typg)
+  append <conj>that</conj>
+  left
 __
 g:ELEM->PRO
 _
   var typg=pro
   (typg)
 __
-g:ELEM->VCLU
+g:ELEM[^*l]->VCLU
+__
+g:ELEM->ELEM[^dit] THAT
+ >>++
 _
-  var typg=vclu
-  (typg)
+  left
+  append <conj>that</conj>
 __
 g:ELEM->VINF
 _
@@ -92,10 +96,10 @@ _
   var typg=time
   (typg)
 __
-g:ELEM->DEM[%ind]
- >>-
+g:ELEM->DEM[:ind]
+ >>--
 _
-  var typg=refr
+  var typg=dem
   (typg)
 __
 g:ELEM->APOS
@@ -118,10 +122,12 @@ __
 
 g:NCLU->NOUN
 _
+  append <nclu>
   var typg=noun
   (typg)
+  append </nclu>
 __
-g:NCLU[:*r,det]->DET NCLU[:-det,-prep]
+g:NCLU[:*l,*r,det]->DET NCLU[:-det,-prep]
 _
   var typg=det
   (lxtd)
@@ -132,8 +138,12 @@ _
   (lxtd)
 __
 g:NCLU[:*prep]->PREP YEAR
+_
+  append <time>
+  (twob)
+  append </time>
 __
-g:NCLU[:*r,det]->DEM NCLU[:-det,-prep]
+g:NCLU[:*l,*r,det]->DEM NCLU[:-det,-prep]
 _
   var typg=dem
   (lxtd)
@@ -153,24 +163,30 @@ _
   var typg=quan
   (lxtd)
 __
+g:NOUN->UNKN
+__
 
-g:VCLU->VERB
+g:VCLU[^*l]->VERB
 _
+  append <vclu>
   var typg=verb
   (typg)
+  append </vclu>
 __
-g:VCLU->ADV VCLU
+g:VCLU[^*r]->ADV VCLU
 _
   var typg=adv
   (lxtd)
 __
 g:VCLU[^hav,*r]->HAVE VCLU[^-hav]
 _
-  (twob)
+  var typg=asp
+  (lxtd)
 __
 g:VCLU[^aux,*r]->AUXL VCLU[^-aux]
 _
-  (twob)
+  var typg=aux
+  (lxtd)
 __
 g:VCLU[*r]->BE VERB[^ing,-hav]
 _
@@ -179,8 +195,15 @@ _
 __
 g:VCLU[*r,pass]->BE VERB[^ed,-hav]
 _
-  var typg=be
-  (lxtd)
+  append <vclu><be>
+  left
+  append </be>
+  append <verb>
+  right
+  append </verb></vclu>
+__
+g:VERB->UNKN
+ >>-
 __
 
 g:AUXL[^neg]->AUXL[^-neg] NEGN
@@ -190,15 +213,7 @@ __
 
 g:VINF->TO VERB[^-aux]
 _
-  SPLIT
-  RIGHT
-  BACK
-  DELETE TO >
-  STORE    tmp
-  INSERT < tmp
-  LEFT
-  SPACE
-  MERGE
+  (twob)
 __
 
 #
@@ -217,11 +232,11 @@ _
   (twob)
 __
 
-g:VERB->VERB XS
+g:VERB[^*l]->VERB[^-*l] XS
 _
   (twob)
 __
-g:VERB[^ed]->VERB[^-ed] XED
+g:VERB[^*l,ed]->VERB[^-ed] XED
  >>+
 _
   (twob)
@@ -259,9 +274,23 @@ _
   (twob)
 __
 
-g:ADV->ADJ  SUFX[#aTOr]
+g:ADV->ADJ SUFX[#aTOr]
 _
   (twob)
+__
+g:ADV->ADV ADV
+ >>+
+_
+  (twob)
+__
+
+g:DEM[:dit]->THAT DEM
+_
+  right
+__
+g:DET[:dit]->THAT DET
+_
+  right
 __
 
 g:NOUN[:hyph]->NOUN[:-hyph] HYPH
@@ -304,19 +333,21 @@ __
 d:the  <- DET
 __
 
-d:this <- DEM[%ind]
+d:this <- DEM[:ind]
 __
-d:that <- DEM[%ind]
+d:that <- DEM[:ind]
 __
-d:these<- DEM[%ind]
+d:that <- THAT
 __
-d:those<- DEM[%ind]
+d:these<- DEM[:ind]
+__
+d:those<- DEM[:ind]
 __
 d:my   <- DEM
 __
 d:your <- DEM
 __
-d:his  <- DEM[%ind]
+d:his  <- DEM[:ind]
 __
 d:her  <- DEM
 __
@@ -380,6 +411,8 @@ __
 d:before<-CONJ
 __
 d:after<- CONJ
+__
+d:either<-CONJ
 __
 
 d:is   <- BE
