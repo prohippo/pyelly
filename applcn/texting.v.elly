@@ -94,7 +94,7 @@ southern : ADJ 0 0 =So
 west     : ADV 0 0 =W
 western  : ADJ 0 0 =W
 
-international : NOUN 0 0 =intl
+internatl : NOUN 0 0 =intl
 president : NOUN 0 0 =pres
 vice president : NOUN 0 0 =vp
 general manager : NOUN 0 0 =gm
