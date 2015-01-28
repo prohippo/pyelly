@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 01nov2014 CPM
+# ellyChar.py : 26jan2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -42,6 +42,8 @@ SLA = u'/'         # Unicode slash
 BSL = u'\\'        # Unicode backslash
 SPC = u' '         # Unicode space
 NBS = u'\u00A0'    # Unicode no-break space
+
+Pnc = [ u'“' , u'”' , u'‘' , u'’' , u'–' , u'—' ] # special punctuation
 
 Lim = u'\u0100'    # limit of Unicode chars recognized
 
@@ -360,12 +362,12 @@ def isText ( x ):
     """
     check for ASCII or Latin-1
 
-    arguments:
+    rguments:
         x - the char
     returns:
-        True if ASCII or Latin-1, False otherwise
+        True if ASCII or Latin-1 or punctuation , False otherwise
     """
-    return (x != '' and x < Lim)
+    return (x != '') if x < Lim else (x in Pnc)
 
 def findBreak ( text , offset=0 ):
 

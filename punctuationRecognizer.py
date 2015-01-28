@@ -1,7 +1,9 @@
 #!/usr/bin/python
+# -*- coding: utf-8 -*-
+#
 # PyElly - scripting tool for analyzing natural language
 #
-# punctuationRecognizer.py : 06nov2014 CPM
+# punctuationRecognizer.py : 26jan2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -38,6 +40,7 @@ multiple-char punctuation MUST be in an internal or external dictionary!
 """
 
 import ellyBits
+import ellyChar
 import featureSpecification
 
 category = 'punc' # this must be used in Elly grammars for punctuation!
@@ -70,7 +73,8 @@ class PunctuationRecognizer(object):
         p = featureSpecification.FeatureSpecification(syms,'[:period]')
         self.period = p.positive
 
-        self.listing = [ '.' , '?' , '!' , ',' , ':' , ';' , '\'' , '\"' ]
+        self.listing = [ u'.' , u'?' , u'!' , u',' , u':' , u';' , u'\'' , u'\"' ,
+                       ] + ellyChar.Pnc
 
     def match ( self , s ):
 
@@ -79,13 +83,13 @@ class PunctuationRecognizer(object):
 
         arguments:
             self  -
-            s     - list of chars to check (usually an elly token root)
+            s     - list of chars to check (usually an Elly token root)
 
         returns:
-            True if punctuation, False otherwise
+            True if listed punctuation, False otherwise
         """
 
-        if len(s) != 1:     # only single-char punctuation expected here!
+        if len(s) != 1:          # only single-char punctuation expected here!
             return False
 
         if s[0] in self.listing: # simple lookup
@@ -101,7 +105,7 @@ if __name__ == '__main__':
 
     import symbolTable
 
-    ups = '.?!ab,;:+cd$%&\'\"ef'
+    ups = u'.?!ab,;:+cd$%&\'\"ef-—“”'
 
     symb = symbolTable.SymbolTable()
     punc = PunctuationRecognizer(symb)
