@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# grammarRule.py : 02jun2014 CPM
+# grammarRule.py : 31jan2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -43,13 +43,13 @@ class BasicRule(object):
         cogs  - cognitive  semantics
         gens  - generative semantics
         styp  - syntactic type produced by rule
-        sfet  - syntactic features
+        sfet  - syntactic features to set
         bias  - for rule ordering in ambiguity handling
-        nmrg  - to indicate degree of merging by rule
-        seqn  - ID for rule
+        nmrg  - to indicate degree of merging by rule (1 or 2)
+        seqn  - unique ID for rule
     """
 
-    _index = 0  # for assigning unique index number to rule 
+    _index = 0  # for assigning unique ID number to rule 
  
     def __init__ ( self , typ , fet ):
 
@@ -59,7 +59,7 @@ class BasicRule(object):
         arguments:
             self  -
             typ   - syntactic type
-            fet   - syntactic features
+            fet   - syntactic features set
         """
 
         self.cogs = None
@@ -118,7 +118,9 @@ class ExtendingRule(BasicRule):
             partial representation as string
         """
 
-        return unicode(self.seqn) + ': ' + unicode(self.styp) + '->' + '--'
+        syn = unicode(self.styp) + '[' + self.sfet.hexadecimal() + ']'
+        msk = unicode(self.utfet)
+        return unicode(self.seqn) + ': ' + syn + '->' + '-- ' + msk
 
 class SplittingRule(BasicRule):
 
@@ -160,7 +162,11 @@ class SplittingRule(BasicRule):
             partial representation as string
         """
 
-        return unicode(self.seqn) + ': ' + unicode(self.styp) + '->' + '-- ' + unicode(self.rtyp)
+        lms = str(self.ltfet)
+        rms = str(self.rtfet)
+        ryn = unicode(self.rtyp) + ' ' + rms
+        syn = unicode(self.styp) + '[' + self.sfet.hexadecimal() + ']'
+        return unicode(self.seqn) + ': ' + syn + '->' + '-- ' + lms + '  ' + ryn
 
 #########################################################################
 # Note that the Y type of a rule is not saved as an attribute of a rule.
@@ -179,7 +185,7 @@ if __name__ == '__main__':
 
     sym = symbolTable.SymbolTable()
 
-    fs = featureSpecification.FeatureSpecification(sym,'[:f0,f1]')
+    fs = featureSpecification.FeatureSpecification(sym,'[:f0,f1]').positive
 
     r = [ ]
 

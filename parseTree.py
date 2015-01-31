@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTree.py : 23jan2015 CPM
+# parseTree.py : 31jan2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -211,11 +211,13 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
         po = phr.posn
         gb = self.gbits[po]
         rls = self.gtb.extens[phr.typx]
-#*      print '> PHASE 2 at' , po , '=' , len(rls) , 'rules, gb=' , gb.hexadecimal()
+#       print '> PHASE 2 at' , po , '=' , len(rls) , 'rules, gb=' , gb.hexadecimal()
         for r in rls:
             nt = r.styp
 #           print 'type=' , nt , 'dm=' , self.gtb.mat.dm[nt].hexadecimal()
             if self.gtb.mat.derivable(nt,gb):          # rule applicable at current position?
+#               print 'fbs=' , fbs
+#               print 'fet=' , r.utfet
                 if ellyBits.check(fbs,r.utfet):        # phrase has required features for rule?
                     phn = self.makePhrase(po,r)        # make new phrase if checks succeed
                     if phn == None:
