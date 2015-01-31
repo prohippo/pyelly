@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 26jan2015 CPM
+# ellyChar.py : 30jan2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -45,7 +45,7 @@ NBS = u'\u00A0'    # Unicode no-break space
 
 Pnc = [ u'“' , u'”' , u'‘' , u'’' , u'–' , u'—' ] # special punctuation
 
-Lim = u'\u0100'    # limit of Unicode chars recognized
+Lim = u'\u0100'    # limit of Unicode chars recognized except for Pnc
 
 ## Latin-1 definitions for Unicode processing
     
@@ -152,7 +152,7 @@ def isVowel ( x ):
 
 def isCombining ( x ):
     """
-    test whether char can be in any token
+    test whether char can be in multi-char token
     
     arguments:
         x - the char
@@ -230,10 +230,7 @@ def isNotLetterOrDigit ( x ):
     returns:
         True if not letter or digit, False otherwise
     """
-    if x >= Lim:
-        return True
-    else:
-        return not isLetterOrDigit(ord[x])
+    return not isLetterOrDigit(x)
     
 def isLetter ( x ):
     """
@@ -386,7 +383,9 @@ def findBreak ( text , offset=0 ):
     n = len(text)
     while k < n:
         x = text[k]
-        if not isPureCombining(x):
+        if x in Pnc:
+            return 0
+        elif not isPureCombining(x):
             if x == '-' or isEmbeddedCombining(x):
                 if k + 1 < n:
                     c = text[k+1]

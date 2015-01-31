@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellySentenceReader.py : 06nov2014 CPM
+# ellySentenceReader.py : 30jan2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -48,10 +48,12 @@ RBs = [ u')' , u']' , u'}' ]   # right
 SLs = [ u'\\', u'/' , u'|' ]   # slashes
 BRs = LBs + SLs
 
-Stops    = [ u'.' , u'!' , u'?' , u':' , u';' ] # should end sentence
+Stops = [ u'.' , u'!' , u'?' , u':' , u';' ] # should end sentence
 
-DQUO = unichr(34) # double quote
-SQUO = unichr(39) # single quote
+QUOs = [ unichr(34) , unichr(39) , # ASCII double and single quote
+         u'\u201d'  ,              # right double quote
+         u'\u2019'                 # right single quote
+       ]
 
 class EllySentenceReader(object):
 
@@ -162,6 +164,9 @@ class EllySentenceReader(object):
             # look for stop punctuation exception
 
             z = self.inp.peek()  # for context of match call
+#           print 'peek z=' , z
+
+#           print '0  <<' , self.inp.buf
 
 #           print 'sent=' , sent[:-1]
 #           print 'punc=' , '<' + c + '>'
@@ -171,6 +176,8 @@ class EllySentenceReader(object):
                 if self.drop:
                     sent.pop()   # remove punctuation char from sentence
                 continue
+
+#           print '1  <<' , self.inp.buf
 
 #           print 'no exception MATCH'
 
@@ -186,6 +193,8 @@ class EllySentenceReader(object):
                 parenstop = True
             elif parenstop and not self.stpx.inBracketing():
                 break            # treat as stop
+
+#           print '3  <<' , self.inp.buf
 
             # check for dash
 
@@ -207,8 +216,9 @@ class EllySentenceReader(object):
 
             else:
 
+#               print 'stopping!'
                 d = self.inp.read()
-#               print '3  <<' , self.inp.buf
+#               print '4  <<' , self.inp.buf
 
                 if d == None: d = u'!!'
 #               print 'stop=' , '<' + c + '> <' + d + '>'
@@ -251,7 +261,7 @@ class EllySentenceReader(object):
                 # special check for single or double quotes, which should
                 # be included with current sentence after stop punctuation
 
-                elif d == DQUO or d == SQUO:
+                elif d in QUOs:
                     x = self.inp.peek()
                     if x == END or ellyChar.isWhiteSpace(x):
                         sent.append(d)
@@ -273,7 +283,7 @@ class EllySentenceReader(object):
 
                 # final check: is sentence long enough?
 
-#               print '4  <<' , self.inp.buf
+#               print '5  <<' , self.inp.buf
                 cx = self.inp.peek()
                 if cx == None: cx = u'!!'
 #               print 'sentence break: next=' , '<' + cx + '>' , len(cx) , sent

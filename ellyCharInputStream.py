@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyCharInputStream.py : 06nov2014 CPM
+# ellyCharInputStream.py : 30jan2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -93,7 +93,7 @@ class EllyCharInputStream(object):
             single Unicode char on success, null string otherwise
         """
 
-#       print 'reading'
+#       print 'reading: buf=' , self.buf
 
         while True:
 
@@ -104,14 +104,9 @@ class EllyCharInputStream(object):
 
             c = self.buf.pop(0)          # next raw char in buffer
 
-            if not ellyChar.isText(c):   # not ASCII or Latin-1?
-#               print 'unknown c=' , ord(c)
-                if   c == u'\u2018' or c == u'\u2019': # left or right double quote?
-                    c = "'"                            # if so, tramslate
-                elif c == u'\u201c' or c == u'\u201d': # left or right single quote?
-                    c = '"'                            # if so, translate
-                else:
-                    c = NBSP             # if so, replace with no-break space
+            if not ellyChar.isText(c):   # recognizable Elly char?
+#               print 'c=' , ord(c)
+                c = NBSP                 # if so, replace with no-break space
 
             lc = self._lc                # copy saved last char
 #           print 'lc=' , ord(lc)
@@ -168,7 +163,7 @@ class EllyCharInputStream(object):
             lc    - how to reset last char
         """
 
-        if ch == END or ch >= UN:
+        if ch == END:
             return
         self.buf.insert(0,ch)
         self._lc = lc
@@ -328,6 +323,7 @@ if __name__ == '__main__':
       '\n',
       '\n',
       '    \n',
+      '“gene”',
       "qrst",
       "uv's\n",
       'xx\r\n',

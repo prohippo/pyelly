@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBuffer.py : 21jan2015 CPM
+# ellyBuffer.py : 30jan2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -51,11 +51,11 @@ APO = ellyChar.APO                # apostrophe literal
 def normalize ( s ):
 
     """
-    convert all non-ASCII nonalphanumeric in sequence to _ and 
-    consecutive white spaces to a single space char
+    convert all unrecognizable chars in input to _ and 
+    consecutive multiple white spaces to a single space 
 
     arguments:
-        s   - input sequence to operate on
+        s   - Unicode input sequence to operate on
     """
 
     spaced = False
@@ -69,7 +69,7 @@ def normalize ( s ):
             if spaced: continue
             x = ' '
             spaced = True
-        elif ord(x) > 127:
+        elif not ellyChar.isText(x):
             x = '_'
             spaced = False
         else:
@@ -534,12 +534,12 @@ class EllyBuffer(object):
         if ln == 0:
             return None
 #       print "proceed"
-            
+
         ## get length of next token and if it has
         ## initial - or +, check for word fragment
 
         k = 0                   # number of chars for next token
-        
+
         if self.match(MIN):     # check for hyphen
             if self.match(DSH): # it is a dash when doubled
                 k = 2
@@ -568,14 +568,14 @@ class EllyBuffer(object):
                     k = self.find(separators,k+2)
                     if k < 0:
                         k = ln
-        
+
         ## if token not delimited, take rest of buffer as
         ## will fit into token working area
-        
+
         if k < 0: k = ln
 
 #       print "take",k,"chars from",len(self.buffer),self.buffer
-            
+
         buf = self.extract(k) # get k characters
 
         ## special check for hyphen next in buffer after extraction
@@ -594,14 +594,17 @@ class EllyBuffer(object):
                     self.prepend(MIN)          # put back second hyphen
                 self.prepend(MIN)              # put back first
                 self.prepend(ellyChar.SPC)     # put extra space before hyphen or dash
-        
+
         ## fill preallocated token for current position from working area
-        
-#       print "raw text for token:" , '[' + u''.join(buf).encode('utf8') + ']'
+
+#       print "raw text buf=" , buf
+
         to = ellyToken.EllyToken(u''.join(buf))
-        
+
+#       print "token=" , unicode(to)
+
         ## strip off trailing non-token chars from token and put back in buffer
-        
+
         km = k - 1
         while km > 0:
             x = buf[km]
@@ -614,7 +617,7 @@ class EllyBuffer(object):
         km += 1
         if km < k:
             to.shortenBy(k - km,both=True)
-        
+
         return to
 
 #
