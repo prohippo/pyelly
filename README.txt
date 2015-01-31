@@ -88,8 +88,8 @@ Release Notes:
  0.6    -  12oct2014  more input checking in vocabulary table compilation
                       more information in "disambig" application translations
                       better English inflectional and morphological stemming
-                      add English irregulars to stemming, update "echo" application
-                      extend "chinese" application, better classifier assignments
+                      English irregular stemming, update "echo" application
+                      extend "chinese" application, better classifiers
  1.0    -  24dec2014  add comprehensive error reporting in inflectional stemming
                       add WordNet exceptions to cases handled by stemmers
                       upgrade pattern table matching and clean up code
@@ -104,7 +104,10 @@ Release Notes:
                       upgrade code for token extraction and lookup
                       add first iteration of "marking" application
  1.0.4  -  26jan2015  bug fixes and upgrades ahead of v1.1
-                      extend "marking" application
+                      extend "marking" rules and integration test
+ 1.0.5  -  31jan2015  bug fixes and cleanup ahead of v1.1
+                      better handling of punctuation in parsing
+                      extend "marking" rules and integration test
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will require regeneration of any previously saved *.elly.bin files to ensure
