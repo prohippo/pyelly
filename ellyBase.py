@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 24jan2015 CPM
+# ellyBase.py : 31jan2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -71,9 +71,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.0.4'                      # current version of PyElly software
-
-L = 16  # how much context to show
+release = 'v1.0.5'                      # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -298,17 +296,17 @@ class EllyBase(object):
 
         if len(text) == 0:          # if no text, done
             return ''
-#*      print 'list' , list(text)
+#       print 'list' , list(text)
         self.sbu.refill(text)       # put text to translate into input buffer
 
         while True:
-#*          print 'current text chars=' , self.sbu.buffer
+#           print 'current text chars=' , self.sbu.buffer
             if len(self.sbu.buffer) == 0:
                 break               # stop when sentence buffer is empty
             self.ptr.startUpX()     # for any initial ... grammar rule
             stat = self._lookUpNext()
             if not stat:
-#*              print 'lookup FAIL'
+#               print 'lookup FAIL'
                 return None         # if next token cannot be handled, quit
             if len(self.ptr.queue) == 0:
                 break
@@ -358,8 +356,13 @@ class EllyBase(object):
 
         s = self.sbu.buffer
 
+#       print 'expanded len=' , len(s)
+
+        if len(s) == 0: return True    # macros can empty out buffer
+
         k = self.sbu.findBreak()       # try to find first component for lookup
-        if k == 0: return False        # quit if buffer exhausted
+        if k == 0:
+            k = 1                      # must have at least one char in token
 
         kl = len(s)
         if  k + 1 < kl and s[k] == '+' and s[k+1] == ' ':
@@ -416,6 +419,7 @@ class EllyBase(object):
             match parameters [ text span of match , suffix removed ]
         """
 
+#       print '_scanText k=' , k
         sb = self.sbu.buffer           # input buffer
         tr = self.ptr                  # parse tree for results
 
@@ -580,8 +584,6 @@ class EllyBase(object):
         if self.pnc.match(w.root):          # check if next token is punctuation
             if tree.addLiteralPhrase(self.pnc.catg,self.pnc.synf):
                 tree.lastph.lens = w.getLength()
-                if w.root == [ u'.' ]:
-                    tree.lastph.synf.combine(self.pnc.period)
             found = True
 
         if not found:
@@ -716,7 +718,7 @@ if __name__ == '__main__':
         line = si.readline()
         l = line.decode('utf8')
         if len(l) == 0 or l[0] == '\n': break
-#       print 'input:' , type(line) , '->' , type(l)
+#       print 'input:' , type(line) , '->' , type(l) , l
         txt = list(l.strip())
         lo = eb.translate(txt,True)
         if lo == None:
