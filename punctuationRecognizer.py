@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# punctuationRecognizer.py : 26jan2015 CPM
+# punctuationRecognizer.py : 27jan2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -31,7 +31,7 @@
 # -----------------------------------------------------------------------------
 
 """
-builtin single-char punctuation recognition
+builtin single-char punctuation recognition for
 
 provided as a convenience so that marks do not have to be listed in an internal
 or external dictionary for every Elly grammar definition
@@ -43,6 +43,8 @@ import ellyBits
 import ellyChar
 import featureSpecification
 
+from ellySentenceReader import Stops
+
 category = 'punc' # this must be used in Elly grammars for punctuation!
 
 class PunctuationRecognizer(object):
@@ -51,10 +53,12 @@ class PunctuationRecognizer(object):
     recognizer to support parsing
 
     attributes:
-        catg    - syntactic info for all recognized punctuation
-        synf    -
-        period  - for stop syntactic flag
-        listing - predefined punctuation that can be overridden
+        catg     - syntactic info for recognized punctuation
+        synf     -
+        zero     - for no   syntactic flag
+        stop     - for stop syntactic flag
+
+        listing  - predefined punctuation except for hyphen and parentheses
     """
 
     def __init__ ( self , syms ):
@@ -68,13 +72,11 @@ class PunctuationRecognizer(object):
         """
 
         self.catg = syms.getSyntaxTypeIndexNumber(category)
-        self.synf = ellyBits.EllyBits()  # zero bits for all features turned off
+        self.synf = None
+        self.zero = ellyBits.EllyBits()  # zero bits for all features turned off
+        self.stop = featureSpecification.FeatureSpecification(syms,'[~stop]').positive
 
-        p = featureSpecification.FeatureSpecification(syms,'[:period]')
-        self.period = p.positive
-
-        self.listing = [ u'.' , u'?' , u'!' , u',' , u':' , u';' , u'\'' , u'\"' ,
-                       ] + ellyChar.Pnc
+        self.listing  = Stops + [ u',' , u'\'' , u'\"' ] + ellyChar.Pnc
 
     def match ( self , s ):
 
@@ -92,7 +94,9 @@ class PunctuationRecognizer(object):
         if len(s) != 1:          # only single-char punctuation expected here!
             return False
 
-        if s[0] in self.listing: # simple lookup
+        schr = s[0]
+        if schr in self.listing: # simple lookup
+            self.synf = self.stop if schr in Stops else self.zero
             return True
         else:
             return False
