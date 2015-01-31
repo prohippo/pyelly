@@ -1,11 +1,14 @@
 # convert English text into simple XML
 # marking.v.elly
-
 #
 # this is a stripped down vocabulary for integration testing;
-# a full-fledged markup appication would require a much larger
+# a full-fledged markup application would require a much larger
 # subset of default.v.elly (WordNet 3.1)
 #
+
+has : HAVE
+had : HAVE[^ed]
+having : HAVE[^ing]
 
 box : NOUN
 cat : NOUN
@@ -31,6 +34,10 @@ booster : NOUN
 Scotts : NOUN
 Scotts Miracle-Gro Company : NOUN
 
+for example : PEXP
+
+even : MOD
+
 again : ADV
 agriculture : NOUN
 alarm : NOUN
@@ -42,6 +49,7 @@ associate : NOUN
 associate : VERB
 attempt : NOUN
 attempt : VERB
+authority : NOUN
 authorize : VERB
 biotech : NOUN
 canola : NOUN
@@ -86,6 +94,7 @@ end : NOUN
 end : VERB
 engineer : NOUN
 engineer : VERB - -1
+envision : VERB
 escape : NOUN
 escape : VERB
 examine : VERB
@@ -109,7 +118,7 @@ herbicide : NOUN
 impact : NOUN
 impact : VERB
 jurisdiction : NOUN
-less : ADJ
+less : ADJ - +1
 less : ADV
 like : ADJ
 like : NOUN
@@ -152,6 +161,7 @@ process : VERB
 produce : NOUN
 produce : VERB
 product : NOUN
+production : NOUN
 regulate : VERB
 resist : VERB
 resistant : ADJ
@@ -167,6 +177,7 @@ sort : NOUN
 sort : VERB
 switch : NOUN
 switch : VERB
+switch grass : NOUN
 tailor : NOUN
 tailor : VERB
 technique : NOUN

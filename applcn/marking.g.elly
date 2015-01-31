@@ -36,10 +36,17 @@ __
 g:SENT->SS[|full]
 _
   append <sent>
+  linefeed
   left
   append </sent>
 __
-g:SS[|full]->SS[|-full] PUNC[=stop]
+g:SS[|full]->SS[|-full] PUNC[~stop]
+_
+  left
+  linefeed
+  append <punc>
+  right
+  append </punc>
 __
 g:SS[|full]->SS[|-full]
  >>-
@@ -47,6 +54,10 @@ __
 g:SS->ELEM
 __
 g:SS->SS ELEM
+_
+  left
+  linefeed
+  right
 __
 
 g:ELEM->NCLU[:-dit]
@@ -56,14 +67,48 @@ g:ELEM->NCLU[:dit]
  >>+
 _
   append <conj>that</conj>
+  linefeed
   left
+__
+g:ELEM->MOD NCLU
+_
+  split
+  right
+  back
+  delete to >
+  store tmp
+  insert < tmp
+  append <mod>
+  left
+  append </mod>
+  merge
 __
 g:ELEM->PRO
 _
   var typg=pro
   (typg)
 __
-g:ELEM[^*l]->VCLU
+g:ELEM[^*l]->VCLU[^ *r,-to]
+__
+g:ELEM[^*l]->VCLU[^-*r,-to]
+ >>--
+__
+g:ELEM->VCLU[^to] NCLU
+ >>+
+_
+  var typg=vclu
+  (typg)
+  append <nclu>
+  linefeed
+  append <prep>to</prep>
+  right
+  append </nclu>
+__
+g:ELEM->THAT VCLU[^s]
+  >>++
+_
+  append <dem>that</dem>
+  right
 __
 g:ELEM->ELEM[^dit] THAT
  >>++
@@ -71,12 +116,7 @@ _
   left
   append <conj>that</conj>
 __
-g:ELEM->VINF
-_
-  var typg=infn
-  (typg)
-__
-g:ELEM->PUNC[=-stop]
+g:ELEM->PUNC[~-stop]
 _
   var typg=punc
   (typg)
@@ -119,8 +159,22 @@ _
   var typg=adv
   (typg)
 __
+g:ELEM[^dit]->PEXP
+_
+  var typg=pexp
+  (typg)
+__
 
-g:NCLU->NOUN
+g:PEXP[|*r]->PUNC PEXP[|-*r]
+ >>+
+_
+  (twob)
+__
+g:PEXP[|*l]->PEXP[|-*l] PUNC
+ >>+
+__
+
+g:NCLU[:*r]->NOUN
 _
   append <nclu>
   var typg=noun
@@ -137,13 +191,18 @@ _
   var typg=prep
   (lxtd)
 __
-g:NCLU[:*prep]->PREP YEAR
+g:NCLU[:prep]->PREP YEAR
 _
   append <time>
   (twob)
   append </time>
 __
-g:NCLU[:*l,*r,det]->DEM NCLU[:-det,-prep]
+g:NCLU[:*l,*r,det]->DEM[:-sgl] NCLU[:-det,-prep]
+_
+  var typg=dem
+  (lxtd)
+__
+g:NCLU[:*l,*r,det]->DEM[:sgl]  NCLU[:-det,-prep,-plur]
 _
   var typg=dem
   (lxtd)
@@ -188,20 +247,17 @@ _
   var typg=aux
   (lxtd)
 __
-g:VCLU[*r]->BE VERB[^ing,-hav]
+g:VCLU[^*r]->BE VCLU[^ing,-hav]
 _
   var typg=be
   (lxtd)
 __
-g:VCLU[*r,pass]->BE VERB[^ed,-hav]
+g:VCLU[^*r,pass]->BE VCLU[^ed,-hav]
 _
-  append <vclu><be>
-  left
-  append </be>
-  append <verb>
-  right
-  append </verb></vclu>
+  var typg=be
+  (lxtd)
 __
+
 g:VERB->UNKN
  >>-
 __
@@ -210,20 +266,24 @@ g:AUXL[^neg]->AUXL[^-neg] NEGN
 _
   (twob)
 __
+g:BE[^neg]->BE[^-neg] NEGN
+_
+  (twob)
+__
 
-g:VINF->TO VERB[^-aux]
+g:VERB[^*r]->TO VERB[^-aux]
 _
   (twob)
 __
 
 #
 # handle suffixes
-g:NOUN->NOUN XS
+g:NOUN[:plur]->NOUN XS
  >>+
 _
   (twob)
 __
-g:NOUN->UNKN XS
+g:NOUN[:plur]->UNKN XS
 _
   (twob)
 __
@@ -231,8 +291,12 @@ g:NOUN->VERB SUFX[#vTOn]
 _
   (twob)
 __
+g:NOUN->VERB XING
+_
+  (twob)
+__
 
-g:VERB[^*l]->VERB[^-*l] XS
+g:VERB[^*l,s]->VERB[^-*l] XS
 _
   (twob)
 __
@@ -253,11 +317,26 @@ g:VERB->ADJ  SUFX[#aTOv]
 _
   (twob)
 __
-g:VERB->BE ADJ
+g:VERB[^beaj]->BE ADJ
+_
+  (twob)
+__
+g:VERB[^*l,to]->VERB[^beaj] TO
+_
+  left
+__
+g:VPAR[^*l]->VERB[^ing]
+__
+g:VPAR[^*l]->VERB[^ed]
+__
+g:VERB[^*r]->BE VPAR
 _
   (twob)
 __
 g:VERB->BE
+ >>-
+__
+g:VERB->HAVE
  >>-
 __
 
@@ -284,11 +363,11 @@ _
   (twob)
 __
 
-g:DEM[:dit]->THAT DEM
+g:DEM[:*r,dit]->THAT DEM
 _
   right
 __
-g:DET[:dit]->THAT DET
+g:DET[:*r,dit]->THAT DET
 _
   right
 __
@@ -296,6 +375,13 @@ __
 g:NOUN[:hyph]->NOUN[:-hyph] HYPH
 __
 g:NOUN[:*r]->NOUN[:hyph] NOUN
+__
+g:NOUN[:*r,cjn]->NOUN[:-hyph,-plur,-cjn] NOUN[:-cjn]
+ >>+
+_
+  (twob)
+__
+g:ADJ[:*r]->NOUN[:hyph] ADJ
 __
 g:VERB[:*r]->NOUN[:hyph] VERB
 __
@@ -322,6 +408,10 @@ d:with <- PREP
 __
 d:from <- PREP
 __
+d:over <- PREP
+__
+d:outside <- PREP
+__
 
 d:to   <- TO
 __
@@ -333,9 +423,9 @@ __
 d:the  <- DET
 __
 
-d:this <- DEM[:ind]
+d:this <- DEM[:ind,sgl]
 __
-d:that <- DEM[:ind]
+d:that <- DEM[:ind,sgl]
 __
 d:that <- THAT
 __
@@ -369,6 +459,8 @@ __
 d:every<- QUAN
 __
 d:no   <- QUAN
+__
+d:several<-QUAN
 __
 
 d:i    <- PRO
@@ -432,8 +524,10 @@ __
 d:have <- HAVE
 __
 d:has  <- HAVE
+ >>+
 __
 d:had  <- HAVE
+ >>+
 __
 d:will <- AUXL
 __
