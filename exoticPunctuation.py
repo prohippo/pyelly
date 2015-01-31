@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# exoticPunctuation.py : 06nov2014 CPM
+# exoticPunctuation.py : 30jan2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -33,8 +33,11 @@ ad hoc methods for nonstandard punctuation in
 just a few of the many imaginable permutations
 """
 
-base  = u'!?#*@$%'  # elements of nonstandard punctuation
-space = u' '        # literal space
+base  = [ '!' , '?' , 
+          '#' , '*' ,
+          '@' , '$' ,
+          '%' ]       # elements of nonstandard punctuation
+space = u' '          # literal space
 
 def recognized ( char ):
 
@@ -48,7 +51,7 @@ def recognized ( char ):
         True if recognized, False otherwise
     """
     
-    return (base.find(char) >= 0)
+    return (char in base)
 
 def normalize ( char , inp ):
 
@@ -71,6 +74,7 @@ def normalize ( char , inp ):
 
     while True:
         d = inp.read()      # get next char
+#       print 'exotic: d=' , d
         if d == '':         # quit on end of input
             break
         elif d == space:    # note space, but do nothing yet
@@ -79,6 +83,7 @@ def normalize ( char , inp ):
             status = True   # if so, ignore
             spaced = False
         else:
+#           print 'put back d=' , d
             inp.unread(d)   # otherwise, put char back
             break
 
