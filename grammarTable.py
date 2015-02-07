@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# grammarTable.py : 04nov2014 CPM
+# grammarTable.py : 05feb2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -364,6 +364,7 @@ class GrammarTable(object):
             print >> sys.stderr , '** bad syntax specification'
             return None
         ru = grammarRule.ExtendingRule(ns,fs.positive)
+#       print 'extd rule=' , unicode(ru)
         ru.gens = self.d1bp
         ru.utfet = ft.makeTest()       # precombined positive and negative features for testing
         if s != '...' or t != '...':
@@ -413,6 +414,7 @@ class GrammarTable(object):
             print >> sys.stderr , '** bad syntax specification'
             return None
         ru = grammarRule.SplittingRule(ns,fs.positive)
+#       print 'splt rule=' , unicode(ru)
         ru.gens = self.d2bp
         ru.ltfet = ft.makeTest()       # combine positive and negative features for testing
         ru.rtfet = fu.makeTest()       # combine positive and negative features for testing
