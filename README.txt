@@ -105,9 +105,12 @@ Release Notes:
                       add first iteration of "marking" application
  1.0.4  -  26jan2015  bug fixes and upgrades ahead of v1.1
                       extend "marking" rules and integration test
- 1.0.5  -  31jan2015  bug fixes and cleanup ahead of v1.1
+ 1.0.5  -  31jan2015  bug fixes, cleanup ahead of v1.1
                       better handling of punctuation in parsing
                       extend "marking" rules and integration test
+ 1.0.6  -  07feb2015  bug fixes, cleanup ahead of v1.1
+                      improve unit testing
+                      add "marking" rules and extend its integration test
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will require regeneration of any previously saved *.elly.bin files to ensure
