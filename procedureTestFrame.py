@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# procedureTestFrame.py : 05jun2014 CPM
+# procedureTestFrame.py : 05feb2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -117,7 +117,15 @@ class ProcedureTestFrame(object):
         phr.rhtd = ptb.makePhrase(1,exR)   # defined by left and right
                                            # extending rules from above
 
-        self.phrase = phr                  # make available
+        stb.getFeatureSet('!sem',True)     # define semantic feature
+#       print stb.smindx
+        smx = stb.smindx['!']              #
+        ix = smx['sem']                    #
+#       print 'ix=' , ix
+        phr.semf.set(ix)                   # turn on feature for phrase
+#       print 'semf=' , phr.semf
+
+        self.phrase = phr                  # make phrase available
 
     def _genp ( self , ls ):
 

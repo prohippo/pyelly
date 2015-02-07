@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# featureSpecification.py : 04nov2014 CPM
+# featureSpecification.py : 04feb2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -162,34 +162,37 @@ if __name__ == '__main__':
 
     stb = symbolTable.SymbolTable()
     try:
-        s = "[!a,-b,c,+d,-e]"
+        w = s = "[!a,-b,c,+d,-e]"
         fes = FeatureSpecification(stb,s)       # syntactic features
-        print 'fes=' , fes , 'for' , s
+        print 'fes=' , fes , 'for' , s , 'syntactic'
         fes = FeatureSpecification(stb,s,True)  # semantic  features
-        print 'fes=' , fes , 'for' , s
-        t = "[:x,y]"
+        print 'fes=' , fes , 'for' , s , 'semantic'
+        w = t = "[:x,y]"
         fet = FeatureSpecification(stb,t,True)  # semantic  features
-        print 'fet=' , fet , 'for' , t
+        print 'fet=' , fet , 'for' , t , 'semantic'
         fet = FeatureSpecification(stb,t,False) # syntactic features
-        print 'fet=' , fet , 'for' , t
-        u = ''
-        feu = FeatureSpecification(None)
+        print 'fet=' , fet , 'for' , t , 'syntactic'
+        w = u = ''
+        feu = FeatureSpecification(None)        # empty features
         print 'feu=' , feu , 'for' , "''"
-        v = "[:x"
-        fev = FeatureSpecification(stb,v)       # syntactic features
+        w = v = '[:*l,*r,*unique]'
+        fev = FeatureSpecification(stb,v)       # special syntactic features
+        print 'fev=' , fev , 'for' , v , 'syntactic'
+        w = "[:x"
+        few = FeatureSpecification(stb,w)       # bad syntactic features
         print "should never get here!"
     except ellyException.FormatFailure:
-        print 'exception: bad format= [' , v , ']'
+        print 'exception: bad format= <<' , w , '>>'
     print '----'
     idns = stb.sxindx.keys()
-    print len(idns) , 'syntactic feature sets'
+    print '--' , len(idns) , 'syntactic feature sets'
     for idn in idns:
         print idn , '=' , stb.sxindx[idn]
     idns = stb.smindx.keys()
-    print len(idns) , 'semantic  feature sets'
+    print '--' , len(idns) , 'semantic  feature sets'
     for idn in idns:
         print idn , '=' , stb.smindx[idn]
     print '----'
     st = '[^ab,cd,ef] ,'
     num = scan(st)
-    print num , '<' + st[:num] + '>'
+    print num , '<< ' + st[:num] + ' >>'

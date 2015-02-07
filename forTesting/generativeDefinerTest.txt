@@ -59,3 +59,6 @@ TRACE
 SHOW x nothing at all
 RETURN
 FAIL
+IF [!sem]
+  TRACE
+  END

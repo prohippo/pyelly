@@ -1,0 +1,13 @@
+trace
+linefeed
+if [!sem]
+  append sem SET!
+else
+  append sem NOT SET!
+  end
+linefeed
+if [!tem]
+  append tem SET!
+else
+  append tem NOT SET!
+  end

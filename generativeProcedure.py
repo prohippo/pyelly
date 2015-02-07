@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeProcedure.py : 29nov2014 CPM
+# generativeProcedure.py : 05feb2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -36,6 +36,7 @@ import sys
 import semanticCommand
 import generativeDefiner
 import conceptualHierarchy
+import ellyBits
 import grammarRule
 
 class Code(object):
@@ -274,7 +275,8 @@ class GenerativeProcedure(object):
                 code.skip()                    # match fails
             elif op == semanticCommand.Gchkf:
                 refr = code.next()
-                if phrs.semf.match(refr) == sens:
+                dblb = phrs.semf.compound()
+                if ellyBits.check(dblb,refr):
                     code.next()
                     continue
                 code.skip()                    # match fails

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeDefiner.py : 04nov2014 CPM
+# generativeDefiner.py : 05feb2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -130,10 +130,13 @@ def compileDefinition ( stb , inp ):
             k = rs.find(']')
             if k < 0 or negn > 0:
                 return _err()
-            fs = stb.getFeatureSet(rs[1:k].lower())
+#           print 'features=' , rs[0:k+1]
+            fs = stb.getFeatureSet(rs[1:k].lower(),True)
             if fs == None:
                 return _err('malformed semantic features')
+#           print 'bits=' , unicode(fs[0]) , unicode(fs[1])
             test = ellyBits.join(fs[0],fs[1])
+#           print 'test=' , test
             store.extend([ semanticCommand.Gchkf , test ])
         else:            # testing local variable
             ar = _eqsplit(rs)
