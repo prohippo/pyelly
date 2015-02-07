@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# grammarRule.py : 31jan2015 CPM
+# grammarRule.py : 04feb2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -118,7 +118,7 @@ class ExtendingRule(BasicRule):
             partial representation as string
         """
 
-        syn = unicode(self.styp) + '[' + self.sfet.hexadecimal() + ']'
+        syn = unicode(self.styp) + '[' + self.sfet.hexadecimal(False) + ']'
         msk = unicode(self.utfet)
         return unicode(self.seqn) + ': ' + syn + '->' + '-- ' + msk
 
@@ -165,7 +165,7 @@ class SplittingRule(BasicRule):
         lms = str(self.ltfet)
         rms = str(self.rtfet)
         ryn = unicode(self.rtyp) + ' ' + rms
-        syn = unicode(self.styp) + '[' + self.sfet.hexadecimal() + ']'
+        syn = unicode(self.styp) + '[' + self.sfet.hexadecimal(False) + ']'
         return unicode(self.seqn) + ': ' + syn + '->' + '-- ' + lms + '  ' + ryn
 
 #########################################################################
