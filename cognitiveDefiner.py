@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveDefiner.py : 01dec2014 CPM
+# cognitiveDefiner.py : 04feb2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -267,7 +267,7 @@ def showCode ( cod ):
             opn = p[0]
             arg = p[1]
             if opn == semanticCommand.Clftf or opn == semanticCommand.Crhtf:
-#               print 'bit arg =' , arg
+#               print 'double bit arg =' , arg
                 s = ellyBits.show(arg)
             else:
 #               print 'cnc args=' , arg
@@ -282,8 +282,8 @@ def showCode ( cod ):
             opn = a[0]
             arg = a[1] if len(a) > 1 else ''
             if opn == semanticCommand.Csetf:
-#               print 'bit arg =' , arg
-                s = ellyBits.show(arg)
+#               print 'single bit arg =' , arg
+                s = arg.hexadecimal(False)
             else:
                 s = str(arg)
             acs.append(semanticCommand.Copn[opn] + ' ' + s)
