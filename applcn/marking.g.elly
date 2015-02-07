@@ -1,4 +1,4 @@
-# convert English text into simple XML
+# add markup to convert English text into shallow XML
 # marking.g.elly
 
 #
@@ -49,11 +49,15 @@ _
   append </punc>
 __
 g:SS[|full]->SS[|-full]
- >>-
+ >>*l-
 __
 g:SS->ELEM
+ >>*l
 __
 g:SS->SS ELEM
+ l[!n] r[!n]>>*r--
+ l[!v] r[!v]>>*r--
+            >>*r
 _
   left
   linefeed
@@ -61,16 +65,17 @@ _
 __
 
 g:ELEM->NCLU[:-dit]
- >>-
+ >>[!n]-
 __
 g:ELEM->NCLU[:dit]
- >>+
+ >>[!n]+
 _
   append <conj>that</conj>
   linefeed
   left
 __
 g:ELEM->MOD NCLU
+ >>[!n]
 _
   split
   right
@@ -89,9 +94,10 @@ _
   (typg)
 __
 g:ELEM[^*l]->VCLU[^ *r,-to]
+ >>[!v]
 __
 g:ELEM[^*l]->VCLU[^-*r,-to]
- >>--
+ >>[!v]--
 __
 g:ELEM->VCLU[^to] NCLU
  >>+
@@ -114,6 +120,7 @@ g:ELEM->ELEM[^dit] THAT
  >>++
 _
   left
+  linefeed
   append <conj>that</conj>
 __
 g:ELEM->PUNC[~-stop]
@@ -174,7 +181,7 @@ g:PEXP[|*l]->PEXP[|-*l] PUNC
  >>+
 __
 
-g:NCLU[:*r]->NOUN
+g:NCLU[:*l]->NOUN
 _
   append <nclu>
   var typg=noun
@@ -224,6 +231,23 @@ _
 __
 g:NOUN->UNKN
 __
+g:NOUN->VERB SUFX[#vTOn]
+_
+  (twob)
+__
+g:NOUN->VERB XING
+_
+  (twob)
+__
+g:NOUN[:hyph]->NOUN[:-hyph] HYPH
+__
+g:NOUN[:*r]->NOUN[:hyph] NOUN
+__
+g:NOUN[:*r,cjn]->NOUN[:-hyph,-plur,-cjn] NOUN[:-cjn]
+ >>+
+_
+  (twob)
+__
 
 g:VCLU[^*l]->VERB
 _
@@ -261,51 +285,7 @@ __
 g:VERB->UNKN
  >>-
 __
-
-g:AUXL[^neg]->AUXL[^-neg] NEGN
-_
-  (twob)
-__
-g:BE[^neg]->BE[^-neg] NEGN
-_
-  (twob)
-__
-
 g:VERB[^*r]->TO VERB[^-aux]
-_
-  (twob)
-__
-
-#
-# handle suffixes
-g:NOUN[:plur]->NOUN XS
- >>+
-_
-  (twob)
-__
-g:NOUN[:plur]->UNKN XS
-_
-  (twob)
-__
-g:NOUN->VERB SUFX[#vTOn]
-_
-  (twob)
-__
-g:NOUN->VERB XING
-_
-  (twob)
-__
-
-g:VERB[^*l,s]->VERB[^-*l] XS
-_
-  (twob)
-__
-g:VERB[^*l,ed]->VERB[^-ed] XED
- >>+
-_
-  (twob)
-__
-g:VERB[^*l,ing]->VERB[^-ing] XING
 _
   (twob)
 __
@@ -317,6 +297,8 @@ g:VERB->ADJ  SUFX[#aTOv]
 _
   (twob)
 __
+g:VERB[:*r]->NOUN[:hyph] VERB
+__
 g:VERB[^beaj]->BE ADJ
 _
   (twob)
@@ -324,10 +306,6 @@ __
 g:VERB[^*l,to]->VERB[^beaj] TO
 _
   left
-__
-g:VPAR[^*l]->VERB[^ing]
-__
-g:VPAR[^*l]->VERB[^ed]
 __
 g:VERB[^*r]->BE VPAR
 _
@@ -339,16 +317,18 @@ __
 g:VERB->HAVE
  >>-
 __
+g:VPAR[^*l]->VERB[^ing]
+__
+g:VPAR[^*l]->VERB[^ed]
+__
 
-g:ADJ->ADJ XER
-_
-  (twob)
-__
-g:ADJ->ADJ XEST
-_
-  (twob)
-__
 g:ADJ->NOUN SUFX[#nTOa]
+_
+  (twob)
+__
+g:ADJ[:*r]->NOUN[:hyph] ADJ
+__
+g:ADJ[:*r]->ADV ADJ
 _
   (twob)
 __
@@ -363,6 +343,51 @@ _
   (twob)
 __
 
+#
+# simple inflections
+g:NOUN[:*l,plur]->NOUN[:-*l,-*r] XS
+_
+  (twob)
+__
+g:NOUN[:plur]->UNKN XS
+_
+  (twob)
+__
+g:VERB[^*l,s]->VERB[^-*l,-*r] XS
+_
+  (twob)
+__
+g:VERB[^*l,ed]->VERB[^-*l,-*r] XED
+ >>+
+_
+  (twob)
+__
+g:VERB[^*l,ing]->VERB[^-*l,-*r] XING
+_
+  (twob)
+__
+g:ADJ->ADJ[:-*l,-*r] XER
+_
+  (twob)
+__
+g:ADJ->ADJ[:-*l,-*r] XEST
+_
+  (twob)
+__
+
+#
+# predicate negation
+g:AUXL[^neg]->AUXL[^-neg] NEGN
+_
+  (twob)
+__
+g:BE[^neg]->BE[^-neg] NEGN
+_
+  (twob)
+__
+
+#
+# special contextual check
 g:DEM[:*r,dit]->THAT DEM
 _
   right
@@ -370,20 +395,6 @@ __
 g:DET[:*r,dit]->THAT DET
 _
   right
-__
-
-g:NOUN[:hyph]->NOUN[:-hyph] HYPH
-__
-g:NOUN[:*r]->NOUN[:hyph] NOUN
-__
-g:NOUN[:*r,cjn]->NOUN[:-hyph,-plur,-cjn] NOUN[:-cjn]
- >>+
-_
-  (twob)
-__
-g:ADJ[:*r]->NOUN[:hyph] ADJ
-__
-g:VERB[:*r]->NOUN[:hyph] VERB
 __
 
 #
@@ -446,6 +457,11 @@ __
 d:our  <- DEM
 __
 d:their<- DEM
+__
+
+d:who  <- CONJ
+__
+d:which<- CONJ
 __
 
 d:all  <- QUAN

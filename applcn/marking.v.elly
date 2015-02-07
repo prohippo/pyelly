@@ -137,8 +137,8 @@ mow : NOUN
 mow : VERB
 need : NOUN
 need : VERB
-new : ADJ
-new : ADV
+new : ADJ - +1
+new : ADV - -1
 new year's : NOUN
 once : ADV
 orbit : NOUN
@@ -162,6 +162,8 @@ produce : NOUN
 produce : VERB
 product : NOUN
 production : NOUN
+regardless : ADJ
+regardless : ADV
 regulate : VERB
 resist : VERB
 resistant : ADJ
@@ -187,6 +189,7 @@ time : NOUN
 time : VERB
 trend : NOUN
 trend : VERB
+unintended : ADJ
 union : ADJ
 union : NOUN
 use : NOUN
