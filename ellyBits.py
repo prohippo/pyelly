@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBits.py : 02dec2014 CPM
+# ellyBits.py : 05feb2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -69,7 +69,7 @@ def getByteCountFor ( nbc ):
 def join ( a , b ):
 
     """
-    combine two lists of EllyBits to compare against compound bits
+    combine pair of EllyBits to compare against compound bits
 
     arguments:
         a   - EllyBits object
@@ -84,7 +84,7 @@ def join ( a , b ):
 def check ( bs , ps ):
 
     """
-    check for match against compounded bits and positive and negative pattern
+    check for match of compounded bits with positive and negative bits
 
     arguments:
         bs  - compounded bits as btye array
