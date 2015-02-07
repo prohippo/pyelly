@@ -649,12 +649,12 @@ gave 1 1 ive. 3ed
 gdom 2 1 .
 gely 1 2 .
 gence 1 3 t,
-genetic 1 4 .
-genic 2 3 e.
-genous 1 3 e.
-geny 1 3 e.
+genetic 1 4 . 1
+genic 2 3 .
+genous 1 3 .
+geny 1 3 .
 geration 2 5 &.
-getic 1 1 y.
+getic 1 1 y. 2
 gger 1 1 . 1
 ggest 1 1 . 1
 gher 1 2 .
