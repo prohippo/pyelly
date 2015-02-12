@@ -111,6 +111,9 @@ Release Notes:
  1.0.6  -  07feb2015  bug fixes, cleanup ahead of v1.1
                       improve unit testing
                       add "marking" rules and extend its integration test
+ 1.0.6a -  12feb2015  clean up code
+                      make parsing with "marking" rules more efficient
+                      update "marking" integration test
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will require regeneration of any previously saved *.elly.bin files to ensure

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 31jan2015 CPM
+# ellyBase.py : 12feb2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -71,7 +71,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.0.5'                      # current version of PyElly software
+release = 'v1.0.6a'                     # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
