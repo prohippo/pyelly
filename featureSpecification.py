@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# featureSpecification.py : 04feb2015 CPM
+# featureSpecification.py : 15feb2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -82,12 +82,12 @@ class FeatureSpecification(object):
             FormatFailure on error
         """
 
-        if syms == None:                 # special case generating zero feature set
+        if syms == None or fets == None:  # special case generating zero feature set
             self.positive = ellyBits.EllyBits(symbolTable.FMAX)
             self.negative = ellyBits.EllyBits(symbolTable.FMAX)
             return
 
-        segm = fets.lower() if fets != None else '[?]'
+        segm = fets.lower()
 #       print "features=",segm,"semantic=",semantic
         if segm == None or len(segm) < 3 or segm[0] != '[' or segm[-1] != ']':
             raise ellyException.FormatFailure

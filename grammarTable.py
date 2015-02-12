@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# grammarTable.py : 05feb2015 CPM
+# grammarTable.py : 11feb2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -241,9 +241,7 @@ class GrammarTable(object):
                     else:
                         p.append(l)       # add line to accumulating procedure
 
-            if c == '?':
-                continue
-            elif c == 'g':            # grammar rule?
+            if c == 'g':                  # grammar rule?
                 nor += 1
                 dl = definitionLine.DefinitionLine(line)
                 first = dl.nextInTail()
