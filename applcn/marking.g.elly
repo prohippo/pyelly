@@ -24,7 +24,7 @@ _
   insert < typg
   append >
 __
-p:twob  # 2-branch rule with spaced output
+p:twob  # default spaced output for 2-branch rule
 _
   left
   space
@@ -33,14 +33,14 @@ __
 
 #
 # syntax rules
-g:SENT->SS[|full]
+g:SENT->SS
 _
   append <sent>
   linefeed
   left
   append </sent>
 __
-g:SS[|full]->SS[|-full] PUNC[~stop]
+g:SS->SS PUNC[~stop]
 _
   left
   linefeed
@@ -48,13 +48,40 @@ _
   right
   append </punc>
 __
-g:SS[|full]->SS[|-full]
- >>*l-
+g:SS[|segm]->SEGM
 __
-g:SS->ELEM
+g:SS[|segm]->SS[|-segm] SEGM
+_
+  left
+  linefeed
+  right
+__
+g:SS->SS PUNC[~-stop]
+_
+  left
+  linefeed
+  append <punc>
+  right
+  append </punc>
+__
+g:SS->SS CONJ
+_
+  left
+  linefeed
+  append <conj>
+  right
+  append </conj>
+__
+g:SS->CONJ
+_
+  var typg=conj
+  (typg)
+__
+
+g:SEGM[|*unique]->ELEM
  >>*l
 __
-g:SS->SS ELEM
+g:SEGM[|*unique]->SEGM ELEM
  l[!n] r[!n]>>*r--
  l[!v] r[!v]>>*r--
             >>*r
@@ -64,8 +91,10 @@ _
   right
 __
 
-g:ELEM->NCLU[:-dit]
- >>[!n]-
+g:ELEM->NCLU[:-dit, prep]
+__
+g:ELEM->NCLU[:-dit,-prep]
+ >>[!n]
 __
 g:ELEM->NCLU[:dit]
  >>[!n]+
@@ -75,43 +104,29 @@ _
   left
 __
 g:ELEM->MOD NCLU
- >>[!n]
 _
-  split
-  right
-  back
-  delete to >
-  store tmp
-  insert < tmp
-  append <mod>
-  left
-  append </mod>
-  merge
+  var typg=mod
+  (lxtd)
 __
 g:ELEM->PRO
 _
   var typg=pro
   (typg)
 __
-g:ELEM[^*l]->VCLU[^ *r,-to]
+g:ELEM[^*l]->VCLU[^-to,-infn]
  >>[!v]
 __
-g:ELEM[^*l]->VCLU[^-*r,-to]
- >>[!v]--
+g:ELEM[^*l]->VCLU[^-to, infn]
 __
 g:ELEM->VCLU[^to] NCLU
  >>+
 _
-  var typg=vclu
-  (typg)
-  append <nclu>
+  left
   linefeed
-  append <prep>to</prep>
   right
-  append </nclu>
 __
 g:ELEM->THAT VCLU[^s]
-  >>++
+ >>++
 _
   append <dem>that</dem>
   right
@@ -122,16 +137,6 @@ _
   left
   linefeed
   append <conj>that</conj>
-__
-g:ELEM->PUNC[~-stop]
-_
-  var typg=punc
-  (typg)
-__
-g:ELEM->CONJ
-_
-  var typg=conj
-  (typg)
 __
 g:ELEM->DATE
 _
@@ -161,7 +166,7 @@ _
   (typg)
 __
 g:ELEM->ADV
- >>-
+ >>----
 _
   var typg=adv
   (typg)
@@ -210,6 +215,7 @@ _
   (lxtd)
 __
 g:NCLU[:*l,*r,det]->DEM[:sgl]  NCLU[:-det,-prep,-plur]
+ >>++
 _
   var typg=dem
   (lxtd)
@@ -242,6 +248,10 @@ __
 g:NOUN[:hyph]->NOUN[:-hyph] HYPH
 __
 g:NOUN[:*r]->NOUN[:hyph] NOUN
+ >>++
+__
+g:ADJ[:*r]->NOUN[:hyph] ADJ
+ >>++
 __
 g:NOUN[:*r,cjn]->NOUN[:-hyph,-plur,-cjn] NOUN[:-cjn]
  >>+
@@ -272,6 +282,7 @@ _
   (lxtd)
 __
 g:VCLU[^*r]->BE VCLU[^ing,-hav]
+ >>++
 _
   var typg=be
   (lxtd)
@@ -285,7 +296,7 @@ __
 g:VERB->UNKN
  >>-
 __
-g:VERB[^*r]->TO VERB[^-aux]
+g:VERB[^*r,infn]->TO VERB[^-aux]
 _
   (twob)
 __
@@ -305,10 +316,6 @@ _
 __
 g:VERB[^*l,to]->VERB[^beaj] TO
 _
-  left
-__
-g:VERB[^*r]->BE VPAR
-_
   (twob)
 __
 g:VERB->BE
@@ -316,10 +323,6 @@ g:VERB->BE
 __
 g:VERB->HAVE
  >>-
-__
-g:VPAR[^*l]->VERB[^ing]
-__
-g:VPAR[^*l]->VERB[^ed]
 __
 
 g:ADJ->NOUN SUFX[#nTOa]
@@ -358,7 +361,7 @@ _
   (twob)
 __
 g:VERB[^*l,ed]->VERB[^-*l,-*r] XED
- >>+
+ >>++
 _
   (twob)
 __
