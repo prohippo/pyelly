@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# patternTable.py : 08jan2015 CPM
+# patternTable.py : 03mar2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -124,6 +124,32 @@ class Link(object):
             cat = unicode(self.catg)
             fet = u'None' if self.synf == None else self.synf.hexadecimal(False)
             return pat + ' ' + cat + ' ' + fet + ' next=' + unicode(self.nxts)
+
+def bound ( segm ):
+
+    """
+    get maximum limit on string for pattern matching
+    (override this method if necessary)
+
+    arguments:
+        segm  - text segment to match against
+
+    returns:
+        char count
+    """
+
+    lm = len(segm)   # limit can be up to total length of text for matching
+    ll = 0
+    while ll < lm:   # look for first space in text segment
+        if segm[ll] == ' ': break
+        ll += 1
+#   print 'll=' , ll , ', lm=' , lm
+    ll -= 1
+    while ll > 0:    # exclude trailing non-alphanumeric from matching except for '.'
+        c = segm[ll]
+        if c == '.' or ellyChar.isLetterOrDigit(c): break
+        ll -= 1
+    return ll + 1
 
 class PatternTable(object):
 
@@ -255,33 +281,6 @@ class PatternTable(object):
             print >> sys.stderr , 'pattern table definition FAILed'
             raise ellyException.TableFailure
 
-    def bound ( self , segm ):
-
-        """
-        get maximum limit on string for pattern matching
-        (override this method if necessary)
-
-        arguments:
-            self  -
-            segm  - text segment to match against
-
-        returns:
-            char count
-        """
-
-        lm = len(segm)   # limit can be up to total length of text for matching
-        ll = 0
-        while ll < lm:   # look for first space in text segment
-            if segm[ll] == ' ': break
-            ll += 1
-#       print 'll=' , ll , ', lm=' , lm
-        ll -= 1
-        while ll > 0:    # exclude trailing non-alphanumeric from matching except for '.'
-            c = segm[ll]
-            if c == '.' or ellyChar.isLetterOrDigit(c): break
-            ll -= 1
-        return ll + 1
-
     def match ( self , segm , tree ):
 
         """
@@ -300,7 +299,7 @@ class PatternTable(object):
 
         if len(self.indx) == 0: return 0  # no matches if FSA is empty
 
-        lim = self.bound(segm)            # get limit for matching
+        lim = bound(segm)                 # get limit for matching
 
         mtl  = 0        # accumulated match length
         mtls = 0        # saved final match length
@@ -446,7 +445,6 @@ if __name__ == '__main__':
         t = sys.stdin.readline().strip()
         if len(t) == 0: break
         print 'text=' , '[' , t , ']'
-        t = t.strip()
         nma = patn.match(list(t),tre)
         print '    from <'+ t + '>' , nma , 'chars matched' , '| leaving <' + t[nma:] + '>'
 
