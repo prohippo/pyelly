@@ -212,6 +212,7 @@ class SymbolTable(object):
         for s in self.ntname:          # syntactic types
             ls.append(s)
 
+        sid = ''
         for sid in self.sxindx.keys(): # syntactic features
             tb = self.sxindx[sid]
             for t in tb.keys():
@@ -256,9 +257,12 @@ class SymbolTable(object):
                 known = known[1:]    # no match with reference symbol
             else:
                 symbs = symbs[1:]    # symbol not in reference list
-                if s not in self.excpns:
-                    unkns.append(s)
+                unkns.append(s)
 
-        unkns += symbs       # take any unlooked up symbols as unknown
-        self.excpns += unkns # update exceptions with latest unknowns
-        return unkns
+        unkns += symbs               # take any unlooked up symbols as unknown
+        rslts = [ ]
+        for s in unkns:              # update exceptions with latest unknowns
+            if not s in self.excpns:
+                self.excpns.append(s)
+                rslts.append(s)      # return only unknowns not previously seen
+        return rslts
