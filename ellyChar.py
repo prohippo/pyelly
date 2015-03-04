@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 30jan2015 CPM
+# ellyChar.py : 27feb2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -355,11 +355,34 @@ def toLowerCaseASCII ( x ):
     n = Mapping[ord(x)]
     return Unmapping[n]
 
+Upper = [
+    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
+    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
+    F,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,T,T,T,T,F,F,F,F,F,
+    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
+
+    F,F,F,F,F,F,F,F,F,F,T,F,T,F,T,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,T,
+    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
+    T,T,T,T,T,T,T,F,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,F,T,T,T,T,T,T,T,F,
+    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F
+]
+
+def isUpperCaseLetter ( x ):
+    """
+    check for capitalization
+
+    arguments:
+        x - the char
+    returns:
+        True if lower case letter, False otherwise
+    """
+    return False if x == '' or x >= Lim else Upper[ord(x)]
+
 def isText ( x ):
     """
     check for ASCII or Latin-1
 
-    rguments:
+    arguments:
         x - the char
     returns:
         True if ASCII or Latin-1 or punctuation , False otherwise
