@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeWithDisplay.py : 10jan2015 CPM
+# parseTreeWithDisplay.py : 10mar2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -177,6 +177,7 @@ class ParseTreeWithDisplay(parseTree.ParseTree):
             ph    - given phrase
         """
 
+        sys.stdout.flush()
         if ph == None:
             out.write('no phrase given' + '\n')
             return
