@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyMain.py : 24jan2015 CPM
+# ellyMain.py : 11mar2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -38,6 +38,7 @@ this buffers and processes text with possibly more than one sentence
 import sys
 import codecs
 import os.path
+import ellyException
 import ellyConfiguration
 
 so = codecs.getwriter('utf8')(sys.stdout)
@@ -93,7 +94,7 @@ for gv in globs:                       # initialize global variables
 if dl >= 0:                            # check for specific depth limit
     eb.ptr.setDepth(dl)                # if so, set it
 
-base = ellyConfiguration.baseSource + '/'
+base = ellyConfiguration.baseSource
 sent = base + system + '.sx.elly'      # get stop punctuation exceptions
 if not os.path.isfile(sent): sent = base + ellyConfiguration.defaultSystem + '.sx.elly'
 
@@ -103,9 +104,16 @@ if ind.error != None:
     print >> sys.stderr, ind.error
     sys.exit(1)
 
-exs = stopExceptions.StopExceptions(ind)
+try:
 
-rdr = ellySentenceReader.EllySentenceReader(sys.stdin,exs) # set up sentence reader
+    exs = stopExceptions.StopExceptions(ind)
+
+    rdr = ellySentenceReader.EllySentenceReader(sys.stdin,exs) # set up sentence reader
+
+except ellyException.TableFailure as e:
+
+    print >> sys.stderr , '** input initialization failure'
+    sys.exit(1)
 
 if interact:
     print 'Enter text with one or more sentences per line.'

@@ -1,0 +1,7 @@
+# malformed stop exceptions to test error reporting
+# bad.sx.elly
+
+xxxxxx
+*|_
+0
+1

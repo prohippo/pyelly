@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# stopExceptions.py : 06nov2014 CPM
+# stopExceptions.py : 11mar2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -39,6 +39,7 @@ or none after it (right context)
 import sys
 import ellyChar
 import ellyWildcard
+import ellyException
 
 class StopExceptions(object):
 
@@ -61,9 +62,13 @@ class StopExceptions(object):
             right - right context
         """
         def __init__ ( self , left , right ):
+            """ initialization
+            """
             self.left  = left
             self.right = right
         def __unicode__ ( self ):
+            """ representation
+            """
             return ( ellyWildcard.deconvert(self.left) + ' | ' +
                      ellyWildcard.deconvert(self.right) )
 
@@ -75,11 +80,15 @@ class StopExceptions(object):
         arguments:
             self  -
             defs  - EllyDefinitionReader for pattern input
+
+        exceptions:
+            TableFailure on error
         """
 
         self.lstg = { }  # empty at start
         self.maxl = 0    # maximum is zero to start with
-        self.resetBracketing()
+        self._plvl = 0
+        self._blvl = 0
         if defs != None: self.load(defs)
 
     def load ( self , defs ):
@@ -90,30 +99,39 @@ class StopExceptions(object):
         arguments:
             self  -
             defs  - EllyDefinitionReader
+
+        exceptions:
+            TableFailure on error
         """
         
         lno = 0
+        nerr = 0
         while True:
 
             df = defs.readline().lower().strip()
+#           print 'df=' , df
             if len(df) == 0: break
             lno += 1
             if len(df) <= 1:
                 print >> sys.stderr , 'bad pattern=[' + df + '] (' + str(lno) + ')'
-                break
+                nerr += 1
+                continue
 
             ps = df.split('|')
             if len(ps) == 1:
                 print >> sys.stderr , 'missing | in pattern=[' + df + '] (' + str(lno) + ')'
-                break
+                nerr += 1
+                continue
 #           print 'ps=' , ps
 
             idc = ps[0][-1]                # last char of left part of pattern
             left  = ellyWildcard.convert(ps[0][:-1])
             right = ellyWildcard.convert(ps[1])
+#           print 'idc=' , idc , 'left=' , left , 'right=' , right
             if left == None:
                 print >> sys.stderr , 'error:' , '<' + df + '>' , '<' + right + '>'
-                break
+                nerr += 1
+                continue
             
             if not idc in self.lstg:       # make sure punctuation is already in dictionary
                 self.lstg[idc] = [ ]
@@ -121,9 +139,11 @@ class StopExceptions(object):
             p = self.Pattern(left,right)
             self.lstg[idc].append(p)       # save pattern in dictionary
 
-            if left != None:               # update maximum length of left contexts
-                ll = len(left)
-                if self.maxl < ll : self.maxl = ll
+            ll = len(left)
+            if self.maxl < ll : self.maxl = ll
+
+        if nerr > 0:
+            raise ellyException.TableFailure
 
     def noteBracketing ( self , c ):
 
@@ -182,47 +202,50 @@ class StopExceptions(object):
             True on match, False otherwise
         """
 
+#       print 'matching for txt=' , txt , 'pnc=' , pnc , 'nxt=' , nxt
         self.noteBracketing(pnc)  # just in case this is bracketing
 
+#       print 'lstg=' , self.lstg
         if not pnc in self.lstg:  # get stored patterns for punctuation
             return False
 
         lp = self.lstg[pnc]
 
+#       print len(lp) , 'patterns'
+
         txl = txt[-self.maxl:] if len(txt) > self.maxl else txt
         
         txs = map(lambda x: x.lower(),txl) # actual left context for matching
 
-#       print 'txs= ' + str(txs) + ' pnc= [' + pnc + '] nxt=[' + nxt + ']'
-
         lt = len(txs)             # its length
 
-#       print len(lp) , 'patterns'
+#       print 'txs= ' + unicode(txs) + ' pnc= [' + pnc + '] nxt=[' + nxt + ']'
 
         for p in lp:              # try matching each pattern
 
             if p.left != None:
                 
                 n = len(p.left)   # assume each pattern element must match one sequence char
-#               print n , 'pattern elements' , lt , 'chars'
+#               print 'n=' , n , 'p=' , unicode(p)
                 if n > lt:
                     continue      # fail immediately because of impossibility of match
-                if n < lt and ellyChar.isLetterOrDigit(txs[-n-1]):
-                    continue      # fail because of text to match is after alphanumeric
                 t = txs if n == lt else txs[-n:]
-#               print 'pat=' , '[' + ellyWildcard.deconvert(p.left) + ']'
+                print 'left pat=' , '[' + ellyWildcard.deconvert(p.left) + ']'
+                print 'versus t=' , t
                 if not ellyWildcard.match(p.left,t,0):
                     continue
+                if n < lt and ellyChar.isLetterOrDigit(t[0]):
+                    if ellyChar.isLetterOrDigit(txs[-n-1]):
+                        continue  # fail because of no break in text
 
 #           nc = '\\n' if nxt == '\n' else nxt
-#           print 'nxt=' , '[' + nc + ']'
-#           print 'pat=' , '[' + ellyWildcard.deconvert(p.right) + ']'
-#           if len(p.right) > 0: print '    ' ,  ord(p.right)
+#           print 'rght pat=' , '[' + ellyWildcard.deconvert(p.right) + ']'
+#           print 'versus c=' , nc
 
             if p.right == u'' or p.right == nxt: # check for specific char after possible stop
                 return True
             if p.right == ellyWildcard.cCAN:     # check for nonalphanumeric
-                if nxt == u'' or not  ellyChar.isLetterOrDigit(nxt):
+                if nxt == u'' or not ellyChar.isLetterOrDigit(nxt):
                     return True
             if p.right == ellyWildcard.cSPC:     # check for white space
 #               print 'looking for space'
@@ -243,7 +266,7 @@ if __name__ == '__main__':
     import ellyConfiguration
     import ellyDefinitionReader
 
-    base = ellyConfiguration.baseSource + '/'
+    base = ellyConfiguration.baseSource
     nam = sys.argv[1] if len(sys.argv) > 1 else 'default'
     dfs = base + nam + '.sx.elly'
     print 'reading from' , dfs
@@ -252,7 +275,11 @@ if __name__ == '__main__':
     if inp.error != None:
         print >> sys.stderr , inp.error
         sys.exit(1)
-    stpx = StopExceptions(inp)
+    try:
+        stpx = StopExceptions(inp)
+    except ellyException.TableFailure:
+        print >> sys.stderr , 'failed to load exceptions'
+        sys.exit(1)
 
     np = len(stpx.lstg)
     print np , 'sets of punctuation patterns'
@@ -270,6 +297,7 @@ if __name__ == '__main__':
         [ 'x' , 'm' , 'r' , '.' , ' ' ] ,
         [ 'p' , 'p' , '.' , ' ' ] ,
         [ 'n' , 'n' , '.' , ' ' ] ,
+        [ ' ' , 'A' , '.' , ' ' ] ,
         [ '-' , "'" , ' ' ] ,
         [ ':' , '-' , ')' ] ,       # emoticon
         [ 'x' , 'x' , 'x' , 'x' , '.' , ' ' , 'Y' ]
@@ -282,6 +310,7 @@ if __name__ == '__main__':
         print 'added' , nlu , 'test case' + ('' if nlu == 1 else 's')
     else:
         print 'no added test cases'
+    print '--------'
 
     for ts in test:
         ku = 0
@@ -294,4 +323,5 @@ if __name__ == '__main__':
         else:
             continue
         res = stpx.match( ts[:ku-1] , ts[ku-1] , ts[ku] )
-        print 'exception match:' , '[' + ''.join(ts) + ']' , res
+        print '[ ' + ''.join(ts) + ' ]' ,
+        print ('stop EXCEPTION' if res else 'stopped') 
