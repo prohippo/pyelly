@@ -1,0 +1,8 @@
+# malformed name definitions to test PyElly error reporting
+# bad.n.elly
+
+????
+AAAA : XXX
+AAAA : XXX : YYYY
+-BBB :::
+-CC- : SNM

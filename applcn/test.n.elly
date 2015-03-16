@@ -1,0 +1,23 @@
+John  : pnm
+Sara  : pnm
+Smith : snm
+Jones : snm
+James : xnm
+Kelly : xnm
+Mr.   : ttl
+Sir   : ttl
+III   : gen
+Jr.   : gen
+von   : rel
+van   : rel
+de    : rel
+de la : rel
+y     : cnj
+fitz- : snm
+mc-   : snm
++son  : snm
+St.   : hon
+
+=aLPL
+=LLM
+=PLT

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# entityExtractor.py : 05nov2014 CPM
+# entityExtractor.py : 28feb2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -42,6 +42,7 @@ class EntityExtractor(object):
 
     attributes:
         ptr   - parse tree for extracted information
+        ctx   - saved context
         exs   - extraction procedure list
     """
 
@@ -57,11 +58,25 @@ class EntityExtractor(object):
         """
 
         self.ptr = ptr
+        self.ctx = ctx
         self.exs = [ ]
         for x in ellyConfiguration.extractors:
             proc = x[0]
             synt = syntaxSpecification.SyntaxSpecification(ctx.syms,x[1])
             self.exs.append([ proc , synt.catg , synt.synf.positive ])
+
+    def dump ( self ):
+
+        """
+        show defined extractors
+
+        arguments:
+            self
+        """
+        for ex in self.exs:
+            print ex[0] ,
+            print  'syntax cat=' , self.ctx.syms.getSyntaxTypeName(ex[1]).upper() ,
+            print 'fet=' , ex[2].hexadecimal(False)
 
     def run ( self , segm ):
 
@@ -107,9 +122,8 @@ if __name__ == '__main__':
     uctx = parseTest.Context()
 
     ee = EntityExtractor(utre,uctx)
-    print 'procedures='
-    for e in ee.exs:
-        print e
+    print 'procedures:'
+    ee.dump()
     print ''
 
     while True:

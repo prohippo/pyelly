@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyConfiguration.py : 05nov2014 CPM
+# ellyConfiguration.py : 26feb2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -32,7 +32,10 @@
 define how to set up PyElly tables and processing
 """
 
+import digraphEN
+
 language = 'EN'               # English input expected
+digraph = digraphEN.digrs     # English digraphs (set this to [ ] for none)
 
 baseSource = './'             # get EllyBase language definitions from here
 stemSource = './'             # get Elly stem logic from here

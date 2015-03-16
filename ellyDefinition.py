@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyDefinition.py : 09jan2015 CPM
+# ellyDefinition.py : 03mar2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -35,6 +35,7 @@ language definition tables that can be pickled for quicker PyElly startup
 import sys
 import os.path
 import symbolTable
+import nameTable
 import macroTable
 import grammarTable
 import patternTable
@@ -82,6 +83,7 @@ class EllyDefinition(object):
         """
 
         basn = ellyConfiguration.baseSource
+        if not basn[-1] == '/': basn += '/'
         suf  = '.' + part + '.elly'
         filn = basn + system + suf
         if not os.path.exists(filn):
@@ -106,6 +108,7 @@ class Rules(EllyDefinition):
         mtb   - macro substitution rules
         gtb   - grammar rules
         ptb   - pattern for syntactic types
+        ntb   - personal names
         hry   - conceptual hierarchy
         man   - morphology analyzer
         rls   - saved PyElly software ID
@@ -151,6 +154,11 @@ class Rules(EllyDefinition):
             self.hry = conceptualHierarchy.ConceptualHierarchy(self.inpT(system,'h'))
         except ellyException.TableFailure:
             el.append('concept')
+
+        try:
+            self.ntb = nameTable.NameTable(self.inpT(system,'n'))
+        except ellyException.TableFailure:
+            el.append('name')
 
         sa = self.inpT(system,'stl')
         pa = self.inpT(system,'ptl')
