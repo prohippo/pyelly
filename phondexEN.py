@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# phondexEN.py : 14mar2015 CPM
+# phondexEN.py : 17mar2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2015, Clinton Prentiss Mah
 # All rights reserved.
@@ -37,22 +37,31 @@ of names according to American English spelling
 
 _xfs = [
  { } ,
- { "x":"ks" , "'":"h" } ,
- { "aw":"a"  , "ay":"a"  , "ch":"j" , "ce":"se" , "ci":"si" , "ck":"kk" ,
-   "cy":"sy" , "ew":"e"  , "ey":"a" , "ge":"je" , "gg":"k"  , "gh":"g"  ,
-   "gi":"ji" , "hn":"n"  , "hr":"r" , "kh":"k"  , "kn":"n"  , "ow":"o"  ,
-   "oy":"o"  , "ph":"f"  , "sh":"j" , "th":"t"  , "ua":"wa" , "uo":"wo" ,
-   "wh":"w"  , "xc":"ks" , "xe":"kze" , "xi":"kzi" } ,
- { "asa":"aza" , "ase":"aze" , "asi":"azi" , "asu":"aju" , "awa":"awa" ,
-   "chr":"kr"  , "cia":"ja"  , "cio":"jo"  , "ciu":"jo"  , "dge":"j"   ,
-   "dua":"jua" , "ese":"eze" , "esi":"ezi" , "esu":"ezu" , "ght":"t"   ,
-   "igh":"i"   , "igl":"il"  , "ign":"in"  , "ise":"ize" , "isi":"izi" ,
-   "iso":"izo" , "ose":"oze" , "osi":"ozi" , "owa":"owa" , "owe":"owe" ,
-   "que":"qwe" , "qui":"qwi" , "sch":"j"   , "tch":"j"   , "tia":"ja"  ,
-   "tio":"jo"  } ,
- { "iley":"ily"  , "ssia":"ja"   , "ssio":"jo"   , "stle":"sl"   ,
-   "sura":"jura" , "sure":"jure" , "tura":"jura" , "ture":"jure" } ,
- { "ssure":"jure" }
+ { "x":"ks" , "'":"h"
+ } ,
+ { "ch":"j"  , "ce":"se" , "ci":"si" , "ck":"kk" , "ct":"KT" ,
+   "cy":"sy" , "ge":"je" , "gg":"k"  , "gh":"g"  , "gi":"ji" ,
+   "ia":"Y"  , "io":"Y"  , "iu":"Y"  , "kn":"n"  , "ph":"f"  ,
+   "qu":"kW" , "sh":"j"  , "th":"t"  , "ua":"Wa" , "uo":"Wo" ,
+   "wh":"W"  , "wy":"Y"  , "xc":"ks" , "xe":"kz" , "xi":"kz" , "yw":"W"  ,
+   "ha":"H" , "he":"H" , "hi":"H" , "ho":"H" , "hu":"H" ,
+   "wa":"W" , "we":"W" , "wi":"W" , "wo":"W" , "wu":"W" ,
+   "ya":"Y" , "ye":"Y" , "yi":"Y" , "yo":"Y" , "yu":"Y"
+ } ,
+ { "asa":"aza" , "ase":"aze" , "asi":"azi" , "asu":"aju" , "chr":"kr"  ,
+   "cia":"ja"  , "cio":"jo"  , "ciu":"jo"  , "dge":"j"   , "dua":"jua" ,
+   "ese":"eze" , "esi":"ezi" , "esu":"ezu" , "ght":"t"   ,
+   "ien":"Yn"  , "iet":"Yt"  , "iex":"YKs" , "igh":"i"   ,
+   "igl":"il"  , "ign":"in"  , "ise":"ize" , "isi":"izi" , "iso":"izo" ,
+   "nio":"nY"  , "nyo":"nY"  , "ose":"oze" , "osi":"ozi" , "que":"k"   ,
+   "qui":"qwi" , "sch":"j"   , "tch":"j"   , "tia":"ja"  , "tio":"jo" 
+ } ,
+ { "euph":"Yf"  , "iect":"YKt" , "quee":"kW"  , "quel":"kWl"  ,
+   "quen":"kWn" , "ssia":"ja"  , "ssio":"jo"  , "stle":"sl"   ,
+   "sura":"jur" , "sure":"jur" , "tura":"jur" , "ture":"jur"
+ } ,
+ { "ssure":"jr"
+ }
 ]
 
 def _xf ( strg ):
@@ -74,7 +83,22 @@ def _xf ( strg ):
             strg = strg[2:]
             ol.append('mk')         # C is hard
             ln -= 2
+        if strg[:2] == 'wy':        # starting with WY
+            strg = strg[2:]
+            ol.append('WY')         # Y is semi-consonant
+            ln -= 2
+        if ln >= 3:
+            if strg[:2] == 'eu':    # starting with EUT or EUR or EUP
+                chx = strg[2]
+#               print 'chx=' , chx
+                if chx in [ 't' , 's' , 'r' , 'g' ]:
+                    if chx == 'g': chx = 'j'
+                    strg = strg[3:]
+                    ol.append('Y')  # EU is semi-consonant
+                    ol.append(chx)
+                    ln -= 3
 
+#   print 'encoding ln=' , ln
     while ln > 0:                   # process rest of string
         nch = 5 if ln > 5 else ln   # try longest transforms first
 #       print 'start nch=' , nch
@@ -88,8 +112,8 @@ def _xf ( strg ):
                 ln -= nch
                 break
             nch -= 1                # if no match, try shorter transforms
-#       print 'nch=' , nch
-        if nch == 0:                # if no matches
+#       print 'ln=' , ln , 'nch=' , nch , 'strg=' , strg
+        if nch == 0 and ln > 0:     # if no matches
             ol.append(strg[0])      #   move single char to output list
             strg = strg[1:]         #
             ln -= 1
@@ -101,7 +125,8 @@ def _xf ( strg ):
 phonCOD = {
     'b':'P' , 'c':'K' , 'd':'T' , 'f':'P' , 'g':'K' , 'j':'S' ,
     'k':'K' , 'l':'L' , 'm':'M' , 'n':'M' , 'p':'P' , 'q':'K' ,
-    'r':'R' , 's':'S' , 't':'T' , 'v':'P' , 'x':'S' , 'z':'S'
+    'r':'R' , 's':'S' , 't':'T' , 'v':'P' , 'x':'S' , 'z':'S' ,
+    'H':'H' , 'W':'W' , 'Y':'Y'  # note upper case keys!
 }
 
 def phondex ( token ):
@@ -123,11 +148,12 @@ def phondex ( token ):
     if ltoken == 0: return ''
 
     strg = _xf(''.join(token).lower())
-#   print 'strg=' , strg
+#   print 'transformed strg=' , strg
 
     rslt = [ ]
     lpho = ''
-    if not strg[0] in phonCOD:
+    chx = strg[0]
+    if chx in [ 'a' , 'e' , 'i' , 'o' , 'u' ]:
         rslt.append('a')
     for chx in strg:
 #       print 'chx=' , chx
@@ -156,4 +182,3 @@ if __name__ == '__main__':
         if len(tos) == 0: break
         phontos = phondex(list(tos))
         print tos , '->' , phontos
-

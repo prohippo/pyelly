@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 12feb2015 CPM
+# ellyBase.py : 10mar2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -47,6 +47,7 @@ import parseTreeWithDisplay
 import interpretiveContext
 import entityExtractor
 import simpleTransform
+import nameRecognition
 import punctuationRecognizer
 import conceptualHierarchy
 import vocabularyTable
@@ -66,12 +67,12 @@ _session = '.session.elly.bin'          # for saving session information
 
 # source text files
 
-_rules      = [ '.m.elly' , '.g.elly' , '.p.elly' , '.h.elly' , '.stl.elly' , '.ptl.elly' ]
+_rules      = [ '.g.elly' , '.m.elly' , '.p.elly' , '.n.elly' , '.h.elly' , '.stl.elly' , '.ptl.elly' ]
 _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.0.6a'                     # current version of PyElly software
+release = 'v1.1'                        # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -141,8 +142,9 @@ class EllyBase(object):
         trs  - simple transformation
         pnc  - punctuation recognizer
 
-        pundef - undefined symbols in *.p.elly
+        gundef - undefined symbols in *.p.elly
         vundef - undefined symbols in *.v.elly
+        pundef - undefined symbols for punctuation recognition
         eundef - undefined symbols in information extractors
     """
 
@@ -159,8 +161,9 @@ class EllyBase(object):
         nfail = 0          # error count for reporting
         self.rul = None
 
-        self.pundef = [ ]  # initialize
+        self.gundef = [ ]  # initialize
         self.vundef = [ ]  #
+        self.pundef = [ ]  #
         self.eundef = [ ]  #
 
 #       print 'EllyBase.__init__()'
@@ -173,7 +176,7 @@ class EllyBase(object):
             except ellyException.TableFailure:
                 nfail += 1
             if nfail == 0:
-                self.pundef = self.rul.stb.findUnknown()
+                self.gundef = self.rul.stb.findUnknown()
                 save(self.rul,sysf)
         else:
             print "loading saved language rules from" , sysf
@@ -231,6 +234,7 @@ class EllyBase(object):
 #       print '2:' , len(d.stb.ntname) , 'syntactic categories'
 
         self.pnc = punctuationRecognizer.PunctuationRecognizer(d.stb)
+        self.pundef = d.stb.findUnknown()
 
 #       print '3:' , len(d.stb.ntname) , 'syntactic categories'
 
@@ -243,7 +247,15 @@ class EllyBase(object):
             print "tree display off"
             self.ptr = parseTree.ParseTree(d.stb,d.gtb,d.ptb,self.ctx)
 
+        ntabl = d.ntb
+
+        if ntabl != None and ntabl.filled():
+            nameRecognition.setUp(ntabl)
+            ellyConfiguration.extractors.append( [ nameRecognition.scan , 'name' ] )
+
         self.iex = entityExtractor.EntityExtractor(self.ptr,self.ctx) # set up extractors
+
+        self.eundef = d.stb.findUnknown()
 
         if ellyConfiguration.rewriteNumbers:
             self.trs = simpleTransform.SimpleTransform()
@@ -254,10 +266,8 @@ class EllyBase(object):
 
         ntn = len(d.stb.ntname)       # do consistency check on syntactic category count
         if (nto != ntn):
-            print >> sys.stderr , 'WARNING: grammar rules should predefine all syntactic'
-            print >> sys.stderr , '         categories identified in language definitions'
-
-        self.eundef = d.stb.findUnknown()
+            print >> sys.stderr , 'WARNING: grammar rules should predefine all syntactic categories'
+            print >> sys.stderr , '         and features identified in other language definitions'
 
 #       print 'EllyBase.__init__() DONE'
 
@@ -605,8 +615,9 @@ class EllyBase(object):
         print ''
         print 'Unused Symbols'
         print '--------------'
-        _show("part of speech patterns"     ,self.pundef)
+        _show("grammar extras"              ,self.gundef)
         _show("external vocabulary"         ,self.vundef)
+        _show("punctuation"                 ,self.pundef)
         _show("information extraction types",self.eundef)
 
 def _show ( typm , syms ):
@@ -711,6 +722,14 @@ if __name__ == '__main__':
     eb.symbolCheck()
 
     so.write('\n')
+
+    print 'Extractors'
+    print '----------'
+    eb.iex.dump()
+
+    so.write('\n')
+    so.flush()
+    sys.stderr.flush()
 
     while True:  # translate successive lines of text as sentences for testing
 
