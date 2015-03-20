@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# phondexEN.py : 17mar2015 CPM
+# phondexEN.py : 19mar2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2015, Clinton Prentiss Mah
 # All rights reserved.
@@ -33,32 +33,33 @@ Python translation of Name Trace phondex.c and transf.c for phonetic analysis
 of names according to American English spelling
 """
 
-# phoetic transforms for English spelling
+# phonetic transforms for English spelling and pronunciation
 
 _xfs = [
  { } ,
  { "x":"ks" , "'":"h"
  } ,
- { "ch":"j"  , "ce":"se" , "ci":"si" , "ck":"kk" , "ct":"KT" ,
-   "cy":"sy" , "ge":"je" , "gg":"k"  , "gh":"g"  , "gi":"ji" ,
+ { "ch":"j"  , "ce":"s"  , "ci":"s"  , "ck":"k"  , "ct":"KT" ,
+   "cy":"s"  , "ge":"j"  , "gg":"k"  , "gh":"g"  , "gi":"j"  ,
    "ia":"Y"  , "io":"Y"  , "iu":"Y"  , "kn":"n"  , "ph":"f"  ,
-   "qu":"kW" , "sh":"j"  , "th":"t"  , "ua":"Wa" , "uo":"Wo" ,
+   "qu":"kW" , "sh":"j"  , "th":"t"  , "ua":"W"  , "uo":"W"  ,
    "wh":"W"  , "wy":"Y"  , "xc":"ks" , "xe":"kz" , "xi":"kz" , "yw":"W"  ,
-   "ha":"H" , "he":"H" , "hi":"H" , "ho":"H" , "hu":"H" ,
+   "ha":"H" , "he":"H" , "hi":"H" , "ho":"H" , "hu":"H" , "hy":"H" ,
    "wa":"W" , "we":"W" , "wi":"W" , "wo":"W" , "wu":"W" ,
    "ya":"Y" , "ye":"Y" , "yi":"Y" , "yo":"Y" , "yu":"Y"
  } ,
- { "asa":"aza" , "ase":"aze" , "asi":"azi" , "asu":"aju" , "chr":"kr"  ,
-   "cia":"ja"  , "cio":"jo"  , "ciu":"jo"  , "dge":"j"   , "dua":"jua" ,
-   "ese":"eze" , "esi":"ezi" , "esu":"ezu" , "ght":"t"   ,
-   "ien":"Yn"  , "iet":"Yt"  , "iex":"YKs" , "igh":"i"   ,
-   "igl":"il"  , "ign":"in"  , "ise":"ize" , "isi":"izi" , "iso":"izo" ,
-   "nio":"nY"  , "nyo":"nY"  , "ose":"oze" , "osi":"ozi" , "que":"k"   ,
-   "qui":"qwi" , "sch":"j"   , "tch":"j"   , "tia":"ja"  , "tio":"jo" 
+ { "asa":"z"  , "ase":"z"  , "asi":"z"   , "asu":"j"  , "chr":"kr" ,
+   "cia":"j"  , "cio":"j"  , "ciu":"j"   , "dge":"j"  , "dua":"jW" ,
+   "ese":"z"  , "esi":"z"  , "esu":"z"   , "ght":"t"  ,
+   "ien":"Yn" , "iet":"Yt" , "iex":"YKs" , "igh":"i"  ,
+   "igl":"l"  , "ign":"n"  , "ise":"z"   , "isi":"z"  , "iso":"z"  ,
+   "nio":"nY" , "nyo":"nY" , "ose":"z"   , "osi":"z"  , "que":"k"  ,
+   "qui":"qW" , "sch":"j"  , "tch":"j"   , "tia":"ja" , "tio":"j"  ,
+   "wyn":"Wn" 
  } ,
- { "euph":"Yf"  , "iect":"YKt" , "quee":"kW"  , "quel":"kWl"  ,
-   "quen":"kWn" , "ssia":"ja"  , "ssio":"jo"  , "stle":"sl"   ,
-   "sura":"jur" , "sure":"jur" , "tura":"jur" , "ture":"jur"
+ { "euph":"Yf"  , "iect":"YKt" , "quee":"kW" , "quel":"kWl" ,
+   "quen":"kWn" , "ssia":"j"   , "ssio":"j"  , "stle":"sl"  ,
+   "sura":"jr"  , "sure":"jr"  , "tura":"jr" , "ture":"jr"
  } ,
  { "ssure":"jr"
  }
@@ -83,12 +84,12 @@ def _xf ( strg ):
             strg = strg[2:]
             ol.append('mk')         # C is hard
             ln -= 2
-        if strg[:2] == 'wy':        # starting with WY
-            strg = strg[2:]
-            ol.append('WY')         # Y is semi-consonant
-            ln -= 2
         if ln >= 3:
-            if strg[:2] == 'eu':    # starting with EUT or EUR or EUP
+            if strg[:3] == 'wya':   # starting with WY
+                strg = strg[3:]
+                ol.append('WY')     # Y is semi-consonant here
+                ln -= 3
+            if strg[:2] == 'eu':    # starting with EUT or EUR or EUP or EUG
                 chx = strg[2]
 #               print 'chx=' , chx
                 if chx in [ 't' , 's' , 'r' , 'g' ]:
