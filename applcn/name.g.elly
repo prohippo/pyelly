@@ -1,0 +1,48 @@
+# name extraction
+# name.g.elly - grammar
+
+g:sent->ss
+__
+g:ss->name
+_
+  append "
+  left
+  append "
+  linefeed
+__
+g:ss->igno
+_
+  return
+__
+g:ss->name ss
+_
+  append "
+  left
+  append "
+  linefeed
+  right
+__
+g:ss->igno ss
+_
+  right
+__
+g:igno->unkn
+_
+  return
+__
+g:igno->date
+_
+  return
+__
+g:igno->time
+_
+  return
+__
+g:igno->punc
+_
+  return
+__
+g:igno->stop
+_
+  return
+__
