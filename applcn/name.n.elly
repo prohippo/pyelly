@@ -3232,8 +3232,6 @@ university : REJ
 =SMT
 =SMTM
 =SMTR
-=SP
-=SPM
 =SPR
 =SR
 =SRL
@@ -3243,6 +3241,7 @@ university : REJ
 =SRT
 =SS
 =SSM
+=SSP
 =ST
 =STM
 =STPM
@@ -3292,6 +3291,7 @@ university : REJ
 =aRL
 =aRLM
 =aRM
+=aS
 =aT
 =aTL
 =aTM
