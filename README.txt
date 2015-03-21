@@ -1,8 +1,8 @@
 PyElly is a rule-based natural language processing tool that has existed
-for over forty years in various incarnations. It speeds development of
+for over forty years in various incarnations. It can speed development of
 many kinds of NLP applications by taking care of low-level language
 details not central to a given data problem or solution. It is now freely
-available on the web to those wanting to process or pre-process text data.
+available on the web to anyone wanting to process or pre-process text data.
 
 PyElly provides flexible tokenization, syntax-driven parsing, English
 inflectional and morphological stemming, macro substitutions, basic
@@ -11,9 +11,9 @@ support for large external dictionaries, and a general procedural
 framework for translating text from UTF-8 to UTF-8.
 
 The latest version has been completely rewritten in mostly object-oriented
-Python. It has now passed multiple stages of beta testing in 2014 and may
-be downloaded from GitHub at https://github.com/prohippo/pyelly.git . The
-current release is v1.0.4.
+Python 2.7. It completed multiple stages of beta testing in 2014 and may
+now be downloaded from GitHub at https://github.com/prohippo/pyelly.git .
+The current release is v1.1.
 
 To learn how to use PyElly, see the PyEllyManual.pdf file in the same
 directory as this README.txt file. The manual has over a hundred pages of
@@ -21,9 +21,9 @@ information, including an overview of some basic linguistics. Documentation
 of individual Python source files can be generated as needed with the
 Python pydoc utility.
 
-At present, PyElly consists of 58 Python modules comprising about 16
+At present, PyElly consists of 62 Python modules comprising about fifteen
 thousand lines of source code. There are also various definition files
-to support basic English-language capabilities and various sample
+to support basic various language processing capabilities in  sample
 applications, including
 
 * indexing - remove stopwords and get stems for content words from raw
@@ -35,6 +35,7 @@ applications, including
 * querying - rewrite English questions as SQL queries for a Soviet
              military aircraft database.
 * marking  - rewrite English text with XML markup
+* name     - extract English personal names from text
 * disambig - disambiguation of phrases with WordNet information.
 
 These illustrate what you can do with PyElly and also serve as a basis for
@@ -43,9 +44,9 @@ PyElly package on GitHub in the future. You may use them as models for
 building your own systems.
 
 PyElly is intended mostly for educational use and is being released under
-a BSD license. Be advised that the current software and documentation is still 
-evolving, although the v1.0.* releases should be much more stable than previous
-beta releases.
+a BSD open-source license. Be advised that the current software and documentation
+is still evolving, although the v1.1 release should be much more stable than
+previous beta releases.
 
 Release Notes:
 
@@ -114,6 +115,11 @@ Release Notes:
  1.0.6a -  12feb2015  clean up code
                       make parsing with "marking" rules more efficient
                       update "marking" integration test
+ 1.1    -  21mar2015  add name recognition to entity extraction capability
+                      add word phonetic signatures
+                      add "name" integration test
+                      minor cleanup of table loading source
+                      fix bug in sentence recognition and clean
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will require regeneration of any previously saved *.elly.bin files to ensure
