@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 10mar2015 CPM
+# ellyBase.py : 31mar2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -67,12 +67,13 @@ _session = '.session.elly.bin'          # for saving session information
 
 # source text files
 
-_rules      = [ '.g.elly' , '.m.elly' , '.p.elly' , '.n.elly' , '.h.elly' , '.stl.elly' , '.ptl.elly' ]
+_rules      = [ '.g.elly' , '.m.elly' , '.p.elly' , '.n.elly' , '.h.elly' ,
+                '.stl.elly' , '.ptl.elly' ]
 _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.1'                        # current version of PyElly software
+release = 'v1.2'                        # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -120,6 +121,22 @@ def _isSaved ( systm , compn , srcs ):
         if d > date:
             return False
     return True
+
+def _notToDate ( system ):
+
+    """
+    check vocabulary versus grammar time stamps
+
+    arguments:
+        system - application ID
+
+    returns:
+        True if vocabulary older, False otherwise
+    """
+
+    aid = './' + system
+    return (_timeModified(aid,rules) >
+            _timeModified(aid,vocabulary))
 
 #
 # main class
@@ -206,12 +223,14 @@ class EllyBase(object):
 #       print 'inflx=' , inflx
         if d != None:
             d.man.suff.infl = inflx   # define root restoration logic
- 
+
         if not redefine:
-            redefine = not _isSaved(system,vocabulary,_vocabulary)
-        if redefine: print 'recompiling vocabulary'
+            if not _isSaved(system,vocabulary,_vocabulary) or _notToDate(system):
+                redefine = True
 
         stb = d.stb if d != None else symbolTable.SymbolTable()
+
+        if redefine: print 'recompiling vocabulary'
         try:
             voc = ellyDefinition.Vocabulary(system,redefine,stb,inflx)
         except ellyException.TableFailure:
@@ -265,7 +284,7 @@ class EllyBase(object):
 #       print '4:' , len(d.stb.ntname) , 'syntactic categories'
 
         ntn = len(d.stb.ntname)       # do consistency check on syntactic category count
-        if (nto != ntn):
+        if nto != ntn:
             print >> sys.stderr , 'WARNING: grammar rules should predefine all syntactic categories'
             print >> sys.stderr , '         and features identified in other language definitions'
 
@@ -281,9 +300,9 @@ class EllyBase(object):
             var   - variable name
             val   - assigned value
         """
-    
+
         self.ctx.glbls[var] = val
-    
+
     def translate ( self , text , plsb=False ):
 
         """
@@ -380,7 +399,7 @@ class EllyBase(object):
 
 #       print 'len(s)=' , kl , 'k=' , k , 's=', s
 
-        mr = self._scanText(k)         # text matching 
+        mr = self._scanText(k)         # text matching
         mx = mr[0]
         s = self.sbu.buffer
 #       print 'mx=' , mx , 'len(s)=' , len(s) , 's=' , s
@@ -490,8 +509,7 @@ class EllyBase(object):
 #       print 'input=' , self.sbu.buffer[:nspan]
 
         if nspan > 0:                  # any matches at all?
-            nd = tr.requeue()          # if so, keep only longest of them
-#           print nd , 'phrases dropped by requeue()'
+            tr.requeue()               # if so, keep only longest of them
 
         return [ nspan , vmchs , suffx ]
 
@@ -517,7 +535,7 @@ class EllyBase(object):
 #       print len(vs) , 'candidates'
         for v in vs:                        # try to make phrases from vocabulary elements
             if tree.addLiteralPhraseWithSemantics(
-                 v.cat,v.syf,v.smf,v.bia,v.gen
+                v.cat,v.syf,v.smf,v.bia,v.gen
             ):
 #               print 'vtb sbuf=' , self.sbu.buffer
                 count += 1

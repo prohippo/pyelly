@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyElement.py : 12nov2014 CPM
+# vocabularyElement.py : 31mar2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -29,7 +29,7 @@
 # -----------------------------------------------------------------------------
 
 """
-vocabulary element from external BdB table lookup
+vocabulary element from external table lookup
 """
 
 import sys
@@ -63,22 +63,22 @@ class VocabularyElement(object):
         _ln   - total char length of term
     """
 
-    def __init__ ( self , tup ):
+    def __init__ ( self , dta ):
 
         """
-        initialization of vocabulary object from BdB record
+        initialization of vocabulary object from retrieved record
 
         arguments:
             self  -
-            tup   - what BdB cursor get() returns
+            dta   - what DB support returns
 
         throws:
             FormatFailure on error
         """
 
-        rec = tup[1].decode('utf8')      # what BdB found for search key
+        rec = dta[1]                     # data record found for search key
 #       print >> sys.stderr , 'voc rec=' , rec
-        r = rec.split(':')               # split off term in BdB results
+        r = rec.split(':')               # split off term in data record
         if len(r) <= 1: return           # the ':' is mandatory
         d = r[1].strip().split(' ')      # definition is right of ':'
 #       print >> sys.stderr , 'VEntry: define as' , d

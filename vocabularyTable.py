@@ -1,21 +1,21 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 12jan2015 CPM
+# vocabularyTable.py : 31mar2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -29,40 +29,21 @@
 # -----------------------------------------------------------------------------
 
 """
-Elly vocabulary database support using open-source BdB package
+Elly vocabulary database support using SQLite
 """
 
 import os
 import sys
-
-try:  # get Python support for Berkeley DB
-    from bsddb3 import db
-except ImportError:
-    print >> sys.stderr , 'bsddb3 unavailable'
-    db = None
-
-##
-## The Berkeley DataBase (BdB) package and the bsddb3 module are both required
-## here, but are not in the standard Python distribution. You must download and
-## install both BDB and bsddb3 yourself before you can run any Elly vocabulary
-## database modules. How to do this will vary according to your operating system
-## and your particular release of Python.
-##
-## This code was developed with BSD 5.3.1 and bsddb3 6.0.0 with Python 2.7.5
-## under Mac OSX 10.8.5 (Mountain Lion), 10.9.3 (Mavericks), and 10.10 (Yosemite).
-##
 
 import ellyChar
 import ellyException
 import vocabularyElement
 import syntaxSpecification
 import featureSpecification
-import unicodedata
+import sqlite3 as dbs
 
 SSpec = syntaxSpecification.SyntaxSpecification
 FSpec = featureSpecification.FeatureSpecification
-
-lcAN = lambda x: unicodedata.normalize('NFKD' , x).encode('ascii' , 'ignore').lower()
 
 vocabulary = '.vocabulary.elly.bin' # compiled vocabulary file suffix
 source     = '.v.elly'              # input vocabulary text file suffix
@@ -124,14 +105,13 @@ def compile ( name , stb , defn ):
 
     global nerr
     nerr = 0
+    cdb = None  # SQLite db connection
+    cur = None  # SQLite db cursor
 
-#   print >> sys.stderr , 'compiled stb=' , stb , 'db=' , db
+#   print >> sys.stderr , 'compiled stb=' , stb
 
     if stb == None :
         print >> sys.stderr, 'no symbol table'
-        raise ellyException.TableFailure
-    if db  == None :
-        print >> sys.stderr, 'no Python db package'
         raise ellyException.TableFailure
 
     try:
@@ -151,10 +131,22 @@ def compile ( name , stb , defn ):
             os.remove(filn)                          # delete the file if it exists
         except OSError:
             print >> sys.stderr , 'no' , filn
-        dbs = db.DB()                                # create new database
-        dbs.set_flags(db.DB_DUP)                     # keys may identify multiple records
-        dbs.open(filn,None,db.DB_HASH,db.DB_CREATE)  # open new database file
+
+#### SQLite
+#
+        try:
+            cdb = dbs.connect(filn)                  # create new database
+            cur = cdb.cursor()
+            cur.execute("CREATE TABLE Vocab(Keyx TEXT, Defn TEXT)")
+            cdb.commit()
+
+        except dbs.Error , e:
+            print >> sys.stderr , e
+            raise ellyException.TableFailure         # give up on any failure
+
 #       print >> sys.stderr , 'creating' , filn
+#
+####
 
         r = None                                          # for error reporting
 
@@ -165,7 +157,7 @@ def compile ( name , stb , defn ):
                 r = defn.readline()                       # next definition
                 if len(r) == 0: break                     # stop on EOF
                 if r[0] == '#': continue                  # skip comment line
-#               print >> sys.stderr , 'def=' , r
+#               print >> sys.stderr , type(r) , r
 
                 k = r.find(':')                           # look for first ':'
                 if k < 0:
@@ -192,8 +184,8 @@ def compile ( name , stb , defn ):
                 if n == 0:
                     _err()                                # quit on bad term
                     continue
-                wky = lcAN(t[:n])                         # first word of term to define  
-#               print >> sys.stderr , '  BdB key=' , wky
+                wky = t[:n].lower()                       # first word of term to define
+#               print >> sys.stderr , '  SQLite key=' , wky
 
                 ns = syntaxSpecification.scan(d)          # find extent of syntax info
 #               print >> sys.stderr , 'ns=' , ns
@@ -325,14 +317,13 @@ def compile ( name , stb , defn ):
 #               print >> sys.stderr , '3:d=[' + d + ']'
 
                 vrc = [ t , ':' , cat , syf , smf ,
-                        pb , cn ]                         # start BdB data record
+                        pb , cn ]                         # start data record
                 vss = u' '.join(vrc)                      # convert to string
                 vss += u' ' + d                           # fill out record with rest of input
 #               print >> sys.stderr , 'type(vss)=' , type(vss)
-                rss = vss.encode('utf8')                  # convert to UTF-8
 
 #               print >> sys.stderr , 'rec=' , vrc , 'tra=' , d
-#               print >> sys.stderr , '   =' , rss
+#               print >> sys.stderr , '   =' , vss
 
             except ellyException.FormatFailure:
                 print >> sys.stderr , '*  at [' , tsave ,
@@ -341,11 +332,26 @@ def compile ( name , stb , defn ):
                 print >> sys.stderr , ']'
                 continue
 
-            dbs.put(wky,rss)                          # save in database
-#           print >> sys.stderr , 'saved'
+#### SQLite
+#
+            try:
+                sql = "INSERT INTO Vocab VALUES(?,?)"
+#               print >> sys.stderr , type(wky) , wky , type(vss) , vss
+                cur.execute(sql,(wky,vss))
+            except dbs.Error , e:
+                print >> sys.stderr , 'FATAL' , e
+                sys.exit(1)
+#
+####
 
+
+#### SQLite
+#
+        cdb.commit()
+        cdb.close()                                   # clean up
 #       print >> sys.stderr , 'DONE'
-        dbs.close()                                   # clean up
+#
+####
 
     except StandardError , e:                         # catch any other errors
         print >> sys.stderr , '**' , e
@@ -355,6 +361,7 @@ def compile ( name , stb , defn ):
     if nerr > 0:
         print >> sys.stderr , '**' , nerr , 'vocabulary table errors in all'
         print >> sys.stderr , '*  compilation FAILed'
+        cdb.close()                                   # discard any changes
         raise ellyException.TableFailure
 
 class Result(object):
@@ -390,8 +397,8 @@ class VocabularyTable(object):
     interface to external data base
 
     attributes:
-        dbs    - BdB database object via bsddb3
-        cur    - database cursor object
+        cdb    - SQLite db connection
+        cur    - SQLite db cursor
         stm    - stemmer
 
         string - (inherited from SimpleTransform)
@@ -411,21 +418,24 @@ class VocabularyTable(object):
         """
 
         database = name + vocabulary
-
-        self.dbs = None
+        self.cdb = None
         self.cur = None
         self.stm = None
-        if db != None:
-            self.dbs = db.DB()   # define database object
-            try:
-                self.dbs.open(database,None,db.DB_HASH,db.DB_RDONLY)
-                self.cur = self.dbs.cursor()
-                self.stm = stem
-#               print >> sys.stderr , 'stm=' , self.stm
-            except StandardError , e:
-                print >> sys.stderr, 'cannot access database'
-                print >> sys.stderr, e
-                raise ellyException.TableFailure
+        if not os.path.isfile(database):
+            return
+
+#### SQLite
+#
+        try:
+            self.cdb = dbs.connect(database)
+            self.cur = self.cdb.cursor()
+            self.stm = stem
+        except dbs.Error , e:
+            print >> sys.stderr , 'FATAL' , e
+            sys.exit(1)
+#
+####
+
         self.endg = None
 
     def __del__ ( self ):
@@ -437,8 +447,8 @@ class VocabularyTable(object):
             self
         """
 
-        if self.dbs != None:
-            self.dbs.close()  # close database file for completeness
+        if self.cdb != None:
+            self.cdb.close()  # close database file for completeness
 
     def _getDB ( self , key ):
 
@@ -453,23 +463,28 @@ class VocabularyTable(object):
             data records if successful, None otherwise
         """
 
-        if self.dbs == None: return None
+        if self.cdb == None: return None
 
         try:
             rs = [ ]                      # for results
 
 #           print >> sys.stderr , '_ stm=' , self.stm
-            akey = lcAN(key)              # convert to ASCII lower case for lookup
+            akey = key.lower()            # convert to ASCII lower case for lookup
 
 #           print >> sys.stderr , 'key=' , type(akey) ,akey
-            tup = self.cur.set(akey)      # note cursor get() called here!
+
+#### SQLite
+#
+            sql = "SELECT * FROM Vocab WHERE Keyx = ?"
+            self.cur.execute(sql,(akey,))
+            tup = self.cur.fetchall()
+#
+####
 
 #           print >> sys.stderr , 'loop, tup=',tup
-            while tup:                    # break when tup is None
-                ve = vocabularyElement.VocabularyElement(tup)
+            for v in tup:                 # retrieved vocabulary match
+                ve = vocabularyElement.VocabularyElement(v)
                 rs.append(ve)             # add entry to results
-                tup = self.cur.next_dup() # get next entry with same key, if any
-#               print >> sys.stderr , 'tup=',tup
 
             return rs
 
@@ -650,7 +665,7 @@ def icmpr ( vc , tc ):
         tc    - text chars
 
     returns:
-        0 on match, n if mismatch at n chars before end, -1 if unmatched 
+        0 on match, n if mismatch at n chars before end, -1 if unmatched
     """
 
     k = len(vc)
@@ -729,25 +744,31 @@ if __name__ == '__main__':
         print >> sys.stderr , 'exiting'
         sys.exit(1)                        # quit on failure
 
-    try:
-        uvtb = VocabularyTable(nams,ustem) # load vocabulary table just created
-    except ellyException:
-        print >> sys.stderr , 'vocabulary table loading FAILed'
+    uvtb = VocabularyTable(nams,ustem) # load vocabulary table just created
+
+    ucdb = uvtb.cdb                        # get database for table
+    if ucdb == None:
+        print >> sys.stderr , 'no vocabulary table found'
         sys.exit(1)
 
-    udbs = uvtb.dbs                    # get database for table
-    udst = udbs.stat()                 # get its BdB status
-    udks = udst.keys()                 # all status tags 
-    print '---- BdB status'
-    for dk in udks:
-        print '{0:12s} {1}'.format(dk,udst[dk])
-    print '----'
-
     nu = 0
-    keys = udbs.keys()                 # all database keys
+
+#### SQLite
+#
+    try:
+        ucur = ucdb.cursor()
+        usql = "SELECT * FROM Vocab"
+        ucur.execute(usql)
+        resl = ucur.fetchall()
+    except dbs.Error , e:
+        print >> sys.stderr , 'cannot access vocabulary table'
+        sys.exit(1)
+#
+####
+
     hk = { }
-    for ky in keys:
-        hk[ky] = 0
+    for ur in resl:
+        hk[ur[0]] = 0
     unqk = hk.keys()
     print len(unqk) , 'unique DB keys\n'
     print 'looking up each DB key as SINGLE-word vocabulary entry'

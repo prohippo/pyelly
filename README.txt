@@ -120,6 +120,8 @@ Release Notes:
                       add "name" integration test
                       minor cleanup of table loading source
                       fix bug in sentence recognition and clean
+ 1.2    -  03apr2015  replace Berkeley Database with SQLite
+                      clean up PyElly initialization logic
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will require regeneration of any previously saved *.elly.bin files to ensure
