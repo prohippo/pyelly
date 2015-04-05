@@ -13,7 +13,7 @@ framework for translating text from UTF-8 to UTF-8.
 The latest version has been completely rewritten in mostly object-oriented
 Python 2.7. It completed multiple stages of beta testing in 2014 and may
 now be downloaded from GitHub at https://github.com/prohippo/pyelly.git .
-The current release is v1.1.
+The current release is v1.2.
 
 To learn how to use PyElly, see the PyEllyManual.pdf file in the same
 directory as this README.txt file. The manual has over a hundred pages of
