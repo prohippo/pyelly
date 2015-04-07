@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# stopExceptions.py : 11mar2015 CPM
+# stopExceptions.py : 07apr2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -230,8 +230,8 @@ class StopExceptions(object):
                 if n > lt:
                     continue      # fail immediately because of impossibility of match
                 t = txs if n == lt else txs[-n:]
-                print 'left pat=' , '[' + ellyWildcard.deconvert(p.left) + ']'
-                print 'versus t=' , t
+#               print 'left pat=' , '[' + ellyWildcard.deconvert(p.left) + ']'
+#               print 'versus t=' , t
                 if not ellyWildcard.match(p.left,t,0):
                     continue
                 if n < lt and ellyChar.isLetterOrDigit(t[0]):
