@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# treeLogic.py : 06nov2014 CPM
+# treeLogic.py : 11apr2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -55,7 +55,7 @@ class Node(object):
         contn - where to go on successful match
         id    - node ID
     """
-    
+
     Ni = 1 # node labeling for debugging
 
     def __init__ ( self ):
@@ -97,19 +97,29 @@ class Node(object):
 
         return unicodedata.normalize('NFKD',unicode(self)).encode('ascii','ignore')
 
-    def delta ( self ):
+    def delta ( self , left ):
         """
         get expected change in token length after action
         arguments:
-            self
+            self  -
+            left  - chars left after matching
         returns:
-            integer length
+            integer change in length
         """
 
         if self.actns == None:
             return 0
         else:
-            return self.actns.nsave + len(self.actns.resto)
+            rest = self.actns.resto
+            if len(rest) == 0:
+                nrest = 0
+            elif rest[0] == 'e?':
+                nrest = 0 if left < 4 else 1
+            else:
+                nrest = len(rest)
+#           print 'nsave=' , self.actns.nsave
+#           print 'nrest=' , nrest , rest , list(rest)
+            return self.actns.nsave + nrest
 
     def tag ( self ):
         """
@@ -167,9 +177,9 @@ class Action(object):
             Unicode string
         """
 
-        hdr   = u'Action: len+'
+        hdr   = u'Action: len +'
         rst   = u'root' + self.resto[0] + u'[' + ''.join(self.resto[1:]) + u']'
-        mod   = u', len-' + unicode(self.ndrop) + u' [' + self.amod + u']+affix'
+        mod   = u', len -' + unicode(self.ndrop) + u' + [' + self.amod + u']'
         recur = u' recur' if self.recur else u' stop'
         return hdr + unicode(self.nsave) + ' ' + rst + mod + recur
 
@@ -372,7 +382,7 @@ class TreeLogic(object):
             lvl = 0         # level in tree
             mst = [ ]       # match stack
             lmt = len(seq)  # sequence length = maximum possible match
-#           print 'lmt=' , lmt
+#           print 'lmt=' , lmt , 'seq=' , seq
 
             while True:
 #               print 'nod=' , nod
@@ -399,13 +409,15 @@ class TreeLogic(object):
 
                 con = nod.condn                # node condition for accepting  match
 
-                nln = lmt - nom + nod.delta()  # how chars expected after action
+                nln = lmt - nom
+                nln += nod.delta(nln)          # how chars expected after action
+#               print 'lmt=' , lmt , 'nom=' , nom
 #               print 'check rule=' , nod.id
 #               print 'con=' , con , 'nln=' , nln
-#               print 'uch=' , uch 
+#               print 'uch=' , uch
 
-                if con != 0 and nln < 3:       # this must leave at least 3 letters
-                    continue                   # ( remember sentinel! )
+                if con != 0 and nln < 3:       # this must leave at least 2 letters
+                    continue                   #   plus sentinel!
 
 #               print 'condition'
                 if con == 0:                   # accept match with no action?
@@ -483,7 +495,7 @@ class TreeLogic(object):
             if le > 4:                    # affix mod specified?
                 modf = elem.pop()         # if so, get it
 #               print elem[0] , modf
-            do = elem.pop()               # note main action 
+            do = elem.pop()               # note main action
 
             # get affix within definition line
 
@@ -526,7 +538,7 @@ class TreeLogic(object):
                 print >> sys.stderr , e
                 print >> sys.stderr , "*  at: [" , line , "]"
                 continue                  # ignore line
-             
+
             resto = [ Add ]               # set to defaults
             recur = False                 #
 
@@ -535,7 +547,7 @@ class TreeLogic(object):
 #           print 'mode=' + '<' + mode + '>' , 'rest=' , rest
             if mode == u'?':
                 node.condn = 1
-                resto = [ Fail ]          # will generate fatal error 
+                resto = [ Fail ]          # will generate fatal error
             else:
                 if mode == ',':           # allow recursion?
                     recur = True          # if so, change default

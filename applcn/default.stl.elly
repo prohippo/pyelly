@@ -256,7 +256,7 @@ cary 2 3 &.
 casion 0 0 .
 catory 1 3 &,
 cavity 2 3 &.
-ccessive 3 3 ed.
+ccessive 3 3 ed. 2
 ccinate 1 4 &.
 ccretive 1 5 &.
 cculate 1 4 &.
@@ -398,6 +398,7 @@ dulant 1 3 &,
 dular 1 3 &.
 dulent 3 1 . 2
 dvocation 1 4 &.
+eable 1 1 &, 
 eactive 2 4 .
 eader 2 3 .
 eafter 0 0 .
@@ -509,8 +510,8 @@ ennia 2 3 e.
 enomous 2 4 .
 enotation 2 4 &.
 enry 0 0 .
-ension 1 2 d.
-ensive 1 2 d.
+ension 1 2 d. 1
+ensive 1 2 d. 1
 ensome 2 2 .
 entage 1 3 .
 ental 1 3 ,
@@ -2090,7 +2091,7 @@ uanta 2 4 um. 1s
 uantity 0 0 .
 uatter 2 3 . 1
 ubic 2 2 &.
-uccess 2 4 ed.
+uccess 2 4 ed. 2
 uccession 2 4 ed. 2
 ucive 2 2 &.
 uclear 2 4 us.
@@ -2344,10 +2345,12 @@ zzy 1 2 .
 |cement 0 0 .
 |cloven 1 3 eave. 2
 |clung 1 3 ing. 3ed
+|cuable 1 3 e.
 |cursive 0 0 .
 |dally 0 0 .
 |dentist 0 0 .
 |dimer 0 0 .
+|doable 1 3 .
 |duct 0 0 .
 |early 0 0 .
 |easter 0 0 .
@@ -2430,7 +2433,7 @@ zzy 1 2 .
 |tally 0 0 .
 |tamper 0 0 .
 |tender 0 0 .
-|tension 1 5 &.
+|tension 0 0 .
 |thesis 0 0 .
 |topic 0 0 .
 |unbless 0 0 .
