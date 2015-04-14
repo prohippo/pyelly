@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBuffer.py : 30jan2015 CPM
+# ellyBuffer.py : 14apr2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -47,12 +47,13 @@ DSH = u'--'                       # dash
 ELP = u'...'                      # ellipsis
 SPH = u' -'                       # space + hyphen
 APO = ellyChar.APO                # apostrophe literal
+APX = u'\u2019'                   # formatted apostrophe
 
 def normalize ( s ):
 
     """
-    convert all unrecognizable chars in input to _ and 
-    consecutive multiple white spaces to a single space 
+    convert all unrecognizable chars in input to _ and
+    consecutive multiple white spaces to a single space
 
     arguments:
         s   - Unicode input sequence to operate on
@@ -281,7 +282,7 @@ class EllyBuffer(object):
             return False                         # if not, fail immediately
         else:
             return self.buffer[:l] == list(text) # otherwise, return results of comparison
- 
+
     def skip ( self , n=1 ):
 
         """
@@ -512,7 +513,7 @@ class EllyBuffer(object):
         w = self._getRaw()
         if w == None:
             return None
-#       print 'got w=' , w
+#       print 'got w=' , unicode(w)
         return w
 
     def _getRaw ( self ):
@@ -601,7 +602,7 @@ class EllyBuffer(object):
 
         to = ellyToken.EllyToken(u''.join(buf))
 
-#       print "token=" , unicode(to)
+#       print "EllyBuffer token before=" , unicode(to)
 
         ## strip off trailing non-token chars from token and put back in buffer
 
@@ -610,14 +611,16 @@ class EllyBuffer(object):
             x = buf[km]
             if ellyChar.isLetterOrDigit(x) or x == MIN or x == PLS or x == UNS:
                 break
-            if x == APO and km > 0 and buf[km - 1] == 's':
-                break
+            if x == APO or x == APX:
+                if km > 0 and buf[km - 1] == 's':
+                    break
             self.prepend(x)
             km -= 1
         km += 1
         if km < k:
             to.shortenBy(k - km,both=True)
 
+#       print "EllyBuffer token after =" , unicode(to)
         return to
 
 #

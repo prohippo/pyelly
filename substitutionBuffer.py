@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# substitutionBuffer.py : 24jan2015 CPM
+# substitutionBuffer.py : 14apr2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -41,8 +41,8 @@ import ellyConfiguration
 import macroTable
 
 class SubstitutionBuffer(
-       ellyBufferEN.EllyBufferEN if ellyConfiguration.language == 'EN' else
-       ellyBuffer.EllyBuffer
+    ellyBufferEN.EllyBufferEN if ellyConfiguration.language == 'EN' else
+    ellyBuffer.EllyBuffer
 ):
 
     """
@@ -56,7 +56,7 @@ class SubstitutionBuffer(
     def __init__ ( self , macros ):
 
         """
-        initialization with macro table 
+        initialization with macro table
 
         arguments:
             self   -
@@ -119,22 +119,22 @@ class SubstitutionBuffer(
 #       print 'macro expansion'
 
         while True:
- 
+
             # use first char to select subset of macros to match against
-    
+
             x = self.peek()
             if x == None: break
             lr = self.mtb.getRules(x)
-    
+
             # try selected macros sequentially on start of input buffer
-    
+
             for r in lr:
                 if self._match(r):
                     done = True
                     break
             else:
                 break   # no macros matched
-    
+
         return done
 
     def _match ( self , rule ):
@@ -167,10 +167,13 @@ class SubstitutionBuffer(
 
         mbd = ellyWildcard.match(pattern,self.buffer,0,lim) # try to match
         if mbd == None: return False                        # if no match bindings, stop
+
         mbl = len(mbd)               # limit on wildcard bindings from match
-         
+
+#       print 'mbl=' ,mbl
+
         # compile substitution for matched macro
-            
+
         mr = 0                       # index variable for rewriting
         me = len(rewrite)            # limit
 

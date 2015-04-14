@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# macroTable.py : 02nov2014 CPM
+# macroTable.py : 14apr2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -29,10 +29,10 @@
 # -----------------------------------------------------------------------------
 
 """
-for defining the rewriting of input before parsing
+for defining the rewriting of input in tokenization
 
 this uses an extension of the macro substitutions described in
-Kernighan and Plauger's "Software Tools" 
+Kernighan and Plauger's "Software Tools"
 """
 
 import sys
@@ -40,6 +40,10 @@ import ellyChar
 import ellyWildcard
 import ellyException
 import definitionLine
+
+####
+#
+# the next two functions check for common problems in macro rules
 
 def _checkBindings ( left , right ):
 
@@ -54,7 +58,7 @@ def _checkBindings ( left , right ):
         True if bindings are valid, False otherwise
     """
 
-#       print 'BIND: left=' , left , ' right=' , right
+#   print 'BIND: left=' , left , ' right=' , right
     mxb = '0'       # maximum binding
     k = 0
     l = len(right)
@@ -110,7 +114,7 @@ def _checkExpansion ( left , right ):
         True if substitution is not longer than original string, False otherwise
     """
 
-#       print 'EXPN: left=' , left , 'right=' , right
+#   print 'EXPN: left=' , left , 'right=' , right
     nh = 0          # hypen count in pattern
     n = 0           # non-space char count in pattern
     k = 0
@@ -147,7 +151,7 @@ def _checkExpansion ( left , right ):
             else:
                 m += 1
 
-#       print 'EXPN: m=' , m , 'n=' , n
+#   print 'EXPN: m=' , m , 'n=' , n
 
     if m <= n: return True
 
@@ -155,6 +159,11 @@ def _checkExpansion ( left , right ):
     m -= mh         #
 
     return (m <= n)
+
+#
+####
+#
+# main code for macro tables
 
 class MacroTable(object):
 
@@ -174,7 +183,7 @@ class MacroTable(object):
     def __init__ ( self , defs=None , nowarn=False ):
 
         """
-        initialize table for macro rules
+        initialize table for macro rules from file
 
         arguments:
             self   -
@@ -185,12 +194,12 @@ class MacroTable(object):
             TableFailure on error
         """
 
-        lim = ellyChar.Max + 11      # number of alphanumeric + 1
+        lim = ellyChar.Max + 11      # number of simple alphabetic + 10 digits + 1
         self.index = [ [ ]
             for i in range(lim) ]    # slots for patterns starting with letter or digit
-        self.letWx = [ ]             #                            with letter  wildcard
-        self.digWx = [ ]             #                                 digit   wildcard
-        self.anyWx = [ ]             #                                 general wildcard
+        self.letWx = [ ]             #                                  letter  wildcard
+        self.digWx = [ ]             #                                  digit   wildcard
+        self.anyWx = [ ]             #                                  general wildcard
 
         self.count = 0               # start with empty table
 
@@ -202,7 +211,7 @@ class MacroTable(object):
     def _err ( self , s='malformed macro substitution' , l='' , d=1 ):
 
         """
-        for error handling
+        for error reporting
 
         arguments:
             self -
@@ -233,6 +242,7 @@ class MacroTable(object):
         if a == '': return [ ]
         if ellyChar.isLetterOrDigit(a):
             k = ellyChar.toIndex(a)
+#           print 'index a=' , a , 'k=' , k
             ws = self.letWx if ellyChar.isLetter(a) else self.digWx
             ls = self.index[k] + ws + self.anyWx
         else:
@@ -261,29 +271,28 @@ class MacroTable(object):
             left = dl.left                    # pattern to be matched
             tail = dl.tail                    # transformation to apply to match
             if left == None or tail == None:
-                self._err(l=l)
+                self._err(l=l)                # report missing part of rule
                 continue
-            mp = ellyWildcard.convert(left)
-            if mp == None:
+            pat = ellyWildcard.convert(left)  # get pattern with encoded wildcards
+            if pat == None:
                 self._err('bad wildcards',l)
                 continue
-            pe = mp[-1]
+            pe = pat[-1]
             if pe != ellyWildcard.cALL and pe != ellyWildcard.cEND:
-                mp += ellyWildcard.cEND       # pattern must end in $ if it does not end in *
-            if not _checkBindings(mp,tail):
+                pat += ellyWildcard.cEND      # pattern must end in $ if it does not end in *
+            if not _checkBindings(pat,tail):
                 self._err('bad bindings in substitution',l)
                 continue
-            if not nowarn and not _checkExpansion(mp,tail):
+            if not nowarn and not _checkExpansion(pat,tail):
                 self._err('substitution longer than original string',l,0)
-            r = [ mp , tail ]
 #           print "rule =" , [ left , tail ]
-            pat = r[0]                        # get coded pattern
             if pat == None:
                 self._err('no pattern',l)
                 continue
+            r = [ pat , tail ]
             c = pat[0]                        # first char of pattern
                                               # check type to see how to index rule
-#           print 'c=' , ord(c)
+#           print 'c=' , ellyWildcard.deconvert(c) , ', pat=' , ellyWildcard.deconvert(pat)
             p = pat
             while c == ellyWildcard.cSOS:     # optional sequence?
                 k = p.find(ellyWildcard.cEOS) # if so, find the end of sequence
@@ -344,6 +353,7 @@ class MacroTable(object):
             self
         """
 
+        print 'macro substitutions indexed by first char or wildcard'
         if len(self.index[0]) > 0:
             print '[.]:'
             _dmpall(self.index[0])
@@ -373,7 +383,7 @@ def _dmpall ( slot ):
     """
 
     for r in slot:
-        print ' {:16s}'.format(ellyWildcard.deconvert(r[0])) + ' -> ' + r[1]
+        print u' {:16s}'.format(ellyWildcard.deconvert(r[0])) + ' -> ' + r[1]
 
 #
 # unit test
@@ -400,6 +410,7 @@ if __name__ == '__main__':
         mtb = MacroTable(inp)          # create macro table from specified definition file
     except ellyException.TableFailure:
         sys.exit(1)                    # quit on failure
+    print ''
     print 'mtb=' , mtb , 'with' , mtb.count , 'patterns'
     if mtb.count == 0:                 # check for success
         print >> sys.stderr , 'empty table'
@@ -420,6 +431,6 @@ if __name__ == '__main__':
             to = sb.getNext()
             if to == None: break
             no += 1
-            print ' >>{:2d}'.format(no) , to
+            print ' >>{:2d}'.format(no) , unicode(to)
 
     sys.stdout.write('\n')

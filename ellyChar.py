@@ -3,21 +3,21 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 27feb2015 CPM
+# ellyChar.py : 14apr2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -33,7 +33,7 @@
 """
 for handing ASCII plus Latin-1 chars as Unicode
 """
-    
+
 APO = unichr(39)   # Unicode apostrophe
 USC = u'_'         # Unicode underscore
 LBR = u'['         # Unicode left bracket
@@ -48,7 +48,7 @@ Pnc = [ u'“' , u'”' , u'‘' , u'’' , u'–' , u'—' ] # special punctuat
 Lim = u'\u0100'    # limit of Unicode chars recognized except for Pnc
 
 ## Latin-1 definitions for Unicode processing
-    
+
 Lat1Us = u'\u00C2' # start of Latin-1 uppercase (main range)
 Lat1Ue = u'\u00DE' # end
 Lat1Ls = u'\u00E0' # start of Latin-1 lowercase (main range)
@@ -102,39 +102,39 @@ def isConsonant ( x ):
         True if consonant, False otherwise
     """
     return (isStrongConsonant(x) or x == u'y') # accept only Y without diacritic
-        
+
 ## ASCII plus Latin-1 vowels
 
 T = True
 F = False
-        
+
 Vowel = [
     F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
     F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
     F,T,F,F,F,T,F,F,F,T,F,F,F,F,F,T, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
     F,T,F,F,F,T,F,F,F,T,F,F,F,F,F,T, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
-            
+
     F,F,F,F,F,F,F,F,F,F,F,F,T,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,T,F,F,F,
     F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
     T,T,T,T,T,T,T,F,T,T,T,T,T,T,T,T, F,F,T,T,T,T,T,F,T,T,T,T,T,T,F,T,
     T,T,T,T,T,T,T,F,T,T,T,T,T,T,T,T, F,F,T,T,T,T,T,F,T,T,T,T,T,T,F,T
 ]
-    
+
 def isStrictVowel ( x ):
     """
     test whether char is vowel, not including U
-    
+
     arguments:
         x - the char
     returns:
         True if non-U vowel, False otherwise
-    """        
+    """
     return (x < Lim and Vowel[ord(x)])
-    
+
 def isVowel ( x ):
     """
     test whether char is lowercase vowel, including U
-        
+
     arguments:
         x - the char
     returns:
@@ -147,13 +147,13 @@ def isVowel ( x ):
         return (n == 21)  # i.e. U
     else:
         return False
-    
+
 ## chars allowed in tokens
 
 def isCombining ( x ):
     """
     test whether char can be in multi-char token
-    
+
     arguments:
         x - the char
     returns:
@@ -161,59 +161,59 @@ def isCombining ( x ):
     """
     return (isLetterOrDigit(x) or x == USC or x == APO or x == SLA or
             x == BSL or x == NBS)
-    
+
 def isEmbeddedCombining ( x ):
     """
     test whether punctuation char can be embedded in token
-        
+
     arguments:
         x - the char
     returns:
         True if char can be in the middle of a token, False otherwise
     """
-    return (x == u"." or x == u"," or x == u":" or x == "'")
-    
+    return (x == u"." or x == u"," or x == u":" or x == u"'" or x == u"’")
+
 def isPureCombining ( x ):
     """
     test whether char is token char, not punctuation nor apostrophe
-        
+
     arguments:
         x - the char
     returns:
         True if strictest kind of token char, False otherwise
     """
     return (isLetterOrDigit(x) or x == USC or x == NBS)
-        
+
 ## for replacing standard library char typing and case conversion
-        
+
 Letter = [
     F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
     F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
     F,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,T,T,T,T,F,F,F,F,F,
     F,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,T,T,T,T,F,F,F,F,F,
-            
+
     F,F,F,F,F,F,F,F,F,F,T,F,T,F,T,F, F,F,F,F,F,F,F,F,F,F,F,F,T,F,T,T,
     F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
     T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,F,T,T,T,T,T,T,T,T,
     T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,F,T,T,T,T,T,T,T,T
 ]
-        
+
 LetterOrDigit = [
     F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
     F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, T,T,T,T,T,T,T,T,T,T,F,F,F,F,F,F,
     F,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,T,T,T,T,F,F,F,F,F,
     F,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,T,T,T,T,F,F,F,F,F,
-            
+
     F,F,F,F,F,F,F,F,F,F,T,F,T,F,T,F, F,F,F,F,F,F,F,F,F,F,F,F,T,F,T,T,
     F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
     T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,F,T,T,T,T,T,T,T,T,
     T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,F,T,T,T,T,T,T,T,T
 ]
-    
+
 def isLetterOrDigit ( x ):
     """
     check for ASCII or Latin-1 letter or digit
-        
+
     arguments:
         x - the char
     returns:
@@ -231,22 +231,22 @@ def isNotLetterOrDigit ( x ):
         True if not letter or digit, False otherwise
     """
     return not isLetterOrDigit(x)
-    
+
 def isLetter ( x ):
     """
     check for ASCII or Latin-1 letter
-        
+
     arguments:
         x - the char
     returns:
         True if letter, False otherwise
     """
     return (x < Lim and Letter[ord(x)])
-    
+
 def isDigit ( x ):
     """
     check for ASCII or Latin-1 digit
-    
+
     arguments:
         x - the char
     returns:
@@ -404,11 +404,10 @@ def findBreak ( text , offset=0 ):
 
     k = offset
     n = len(text)
+#   print 'find break k=' , k , 'n=' ,n
     while k < n:
         x = text[k]
-        if x in Pnc:
-            return 0
-        elif not isPureCombining(x):
+        if not isPureCombining(x):
             if x == '-' or isEmbeddedCombining(x):
                 if k + 1 < n:
                     c = text[k+1]
@@ -417,6 +416,8 @@ def findBreak ( text , offset=0 ):
                         continue
             if k == offset:
                 k += 1  # if immediate break, take 1 char
+            break
+        elif x in Pnc:
             break
         k += 1
     return k - offset

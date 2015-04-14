@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 02jan2015 CPM
+# ellyWildcard.py : 14apr2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -197,7 +197,7 @@ def convert ( strg ):
         if wild and nlb > 0 and x != ellyChar.LBR:
 #           print 'at wildcard' , x , 'nlb=' , nlb
             return None              # no wildcards allowed in optional segments
-        
+
         i += 1
 
 #   print "converted=", t
@@ -216,7 +216,7 @@ def deconvert ( patn ):
         Unicode string representation
     """
 
-    if (patn == None):
+    if patn == None:
         return u''
     s = [ ]           # for output
     for x in patn:
@@ -318,7 +318,7 @@ def match ( patn , text , offs=0 , limt=None ):
                 self
             returns:
                 attributes as array
-            """                
+            """
             return ( '[kd=' + unicode(self.kind)  +
                      ',ct=' + unicode(self.count) +
                      ',pa=' + unicode(self.pats)  +
@@ -378,7 +378,7 @@ def match ( patn , text , offs=0 , limt=None ):
         arguments:
             typw - wildcard
         returns:
-            non-negative count
+            non-negative count if any match possible, otherwise -1
         """
         k = minMatch(patn[mp:])  # calculate min char count to match rest of pattern
 
@@ -396,7 +396,7 @@ def match ( patn , text , offs=0 , limt=None ):
         nm = 0
         for i in range(mx):
             c = text[offs+i]                   # next char in text from offset
-            if not tfn(c): break               # stop when it fails to match 
+            if not tfn(c): break               # stop when it fails to match
             nm += 1
 
 #       print "maximum wildcard span=",nm
@@ -430,11 +430,12 @@ def match ( patn , text , offs=0 , limt=None ):
             else:
                 last = text[offs].lower()
                 offs += 1
+#           print 'matching last=' , last , 'at' , offs
             if patn[mp] != last: break
             mp += 1
-            
+
         ## check whether mismatch is due to special pattern char
-        
+
 #       print 'pat',mp,"<",ml
 #       print "txt @",offs
 
@@ -442,8 +443,8 @@ def match ( patn , text , offs=0 , limt=None ):
             matched = True  # if so, match is made
             break
 
-        tc = patn[mp]       # otherwise, get unmatched pattern element 
-        mp += 1             # 
+        tc = patn[mp]       # otherwise, get unmatched pattern element
+        mp += 1             #
 #       print "tc=",ord(tc)
 
         if tc == cALL:   # a * wildcard?
@@ -463,7 +464,7 @@ def match ( patn , text , offs=0 , limt=None ):
             uf = _mark(1); unj += 1   # get new unwinding record
             uf.count = nm             # can back up this many times on mismatch
             continue
-            
+
         elif tc == cEND: # end specification
 #           print "END $:",last
             if last == '':
@@ -528,6 +529,7 @@ def match ( patn , text , offs=0 , limt=None ):
             if last != '':            # still more to match?
                 offs -= 1
                 nm = _span(tc)        # maximum match possible
+#               print 'spanning=' , nm
                 if nm >= 1:
                     bf = _bind(nm); mbi += 1
                     bf[0] = offs      # bind from current offset
@@ -571,7 +573,7 @@ def match ( patn , text , offs=0 , limt=None ):
 #   print "matched=",matched
 
     if not matched: return None     # no bindings
-     
+
 #   print text,offs
 
     ## consolidate contiguous bindings for subsequent substitutions

@@ -3,21 +3,21 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# punctuationRecognizer.py : 27jan2015 CPM
+# punctuationRecognizer.py : 14apr2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -47,6 +47,8 @@ from ellySentenceReader import Stops
 
 category = 'punc' # this must be used in Elly grammars for punctuation!
 
+Starting = [ u'"' , u"'" , u'“' , u'[' , u'(' ]
+
 class PunctuationRecognizer(object):
 
     """
@@ -55,8 +57,9 @@ class PunctuationRecognizer(object):
     attributes:
         catg     - syntactic info for recognized punctuation
         synf     -
-        zero     - for no   syntactic flag
-        stop     - for stop syntactic flag
+        zero     - for no    syntactic flag
+        stop     - for stop  syntactic flag
+        start    - for start syntacetic flag
 
         listing  - predefined punctuation except for hyphen and parentheses
     """
@@ -71,10 +74,11 @@ class PunctuationRecognizer(object):
             syms  - Elly symbol table
         """
 
-        self.catg = syms.getSyntaxTypeIndexNumber(category)
-        self.synf = None
-        self.zero = ellyBits.EllyBits()  # zero bits for all features turned off
-        self.stop = featureSpecification.FeatureSpecification(syms,'[~stop]').positive
+        self.catg  = syms.getSyntaxTypeIndexNumber(category)
+        self.synf  = None
+        self.zero  = ellyBits.EllyBits()  # zero bits for all features turned off
+        self.stop  = featureSpecification.FeatureSpecification(syms,'[~stop]').positive
+        self.start = featureSpecification.FeatureSpecification(syms,'[~start]').positive
 
         self.listing  = Stops + [ u',' , u'\'' , u'\"' ] + ellyChar.Pnc
 
@@ -96,7 +100,7 @@ class PunctuationRecognizer(object):
 
         schr = s[0]
         if schr in self.listing: # simple lookup
-            self.synf = self.stop if schr in Stops else self.zero
+            self.synf = self.stop if schr in Stops else self.start if schr in Starting else self.zero
             return True
         else:
             return False

@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBufferEN.py : 01jan2015 CPM
+# ellyBufferEN.py : 14apr2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -40,7 +40,8 @@ import ellyException
 import ellyConfiguration
 import inflectionStemmerEN
 
-APO = ellyChar.APO                # literal apostrophe
+APO = ellyChar.APO                # literal   apostrophe
+APX = u'\u2019'                   # formatted apostrophe
 ESS = u's'                        # literal S
 SFX = '-' + APO + ESS             # -'S suffix
 
@@ -48,7 +49,7 @@ class EllyBufferEN(ellyBuffer.EllyBuffer):
 
     """
     input text buffer with methods for getting successive tokens
- 
+
     attributes:
         stemmer - inflectional stemmer
     """
@@ -90,7 +91,7 @@ class EllyBufferEN(ellyBuffer.EllyBuffer):
 
         w = super(EllyBufferEN,self).getNext() # use getNext() without inflectional stemmer
         if w == None: return None
-#       print 'got:' , w
+#       print 'got:' , unicode(w)
         if not w.isSplit():                    # check for stemming
             self.divide(w)                     # if not, do inflectional stemming
         return w
@@ -133,7 +134,9 @@ class EllyBufferEN(ellyBuffer.EllyBuffer):
         y = word.charAt(wl-2)
 #       print 'word= ...' , y , x
 
-        if x == u's' and y == APO:  # check for -'S
+        if x == u's' and (
+           y == APO or y == APX     # check for -'S
+        ):
             word.shortenBy(2)
             self.putSuffixBack(SFX)
 #           print 'word=' , word , 'without -\'S'
@@ -165,7 +168,7 @@ if __name__ == "__main__":
     while True:
         try:
             sys.stdout.write("> ")
-            l = sys.stdin.readline()
+            l = sys.stdin.readline().decode('utf8')
         except KeyboardInterrupt:
             break
         l = l.strip()
