@@ -16,7 +16,10 @@ dog : NOUN
 big : ADJ
 red : ADJ
 ate : VERB[^ed]
+note : NOUN
+note : VERB[^dit]
 say : VERB[^dit]
+begin : VERB[^proc]
 sit : VERB
 now : ADV
 then: ADV
@@ -24,6 +27,7 @@ soon: ADV
 yet : ADV
 
 U.S. : NOUN
+New York : NOUN
 
 rocket : NOUN
 rocket : VERB
@@ -31,17 +35,19 @@ rocket science : NOUN
 signal rocket : NOUN
 booster : NOUN
 
+at least : ADV
+
 Scotts : NOUN
 Scotts Miracle-Gro Company : NOUN
 
 for example : PEXP
-
-even : MOD
+such as : DEM
 
 again : ADV
 agriculture : NOUN
 alarm : NOUN
 alarm : VERB
+announce : VERB
 approval : NOUN
 approve : VERB
 associate : ADJ
@@ -52,8 +58,10 @@ attempt : VERB
 authority : NOUN
 authorize : VERB
 biotech : NOUN
+cancer : NOUN
 canola : NOUN
 carry : VERB
+certain : ADJ
 chance : ADJ
 chance : NOUN
 chance : VERB
@@ -64,6 +72,7 @@ clear : VERB
 commerce : NOUN
 company : NOUN
 company : VERB
+comprehensive : ADJ
 consume : VERB
 corn : NOUN
 corn : VERB
@@ -86,6 +95,10 @@ disaster : NOUN
 disastrously : ADV
 doom : NOUN
 doom : VERB
+draft : NOUN
+draft : NOUN
+drive : NOUN
+drive : VERB[^ptcl]
 ecology : NOUN
 edit : VERB
 effect : NOUN
@@ -94,13 +107,21 @@ end : NOUN
 end : VERB
 engineer : NOUN
 engineer : VERB - -1
+enough : ADJ
 envision : VERB
 escape : NOUN
 escape : VERB
+even : NOUN - -1
+even : VERB
+even : ADJ
+even : ADV[~mod] - +1
 examine : VERB
 example : NOUN
+exist : VERB
 federal : ADJ
 federal : NOUN
+few : NOUN - -1
+few : ADJ
 field : NOUN
 field : VERB
 gene : NOUN
@@ -114,20 +135,31 @@ grass : VERB - -1
 green : ADJ
 green : NOUN
 green : VERB
+hear : VERB
 herbicide : NOUN
 impact : NOUN
 impact : VERB
 jurisdiction : NOUN
+kill : NOUN
+kill : VERB
+last : NOUN - -1
+last : VERB
+last : ADJ
+last : ADV
 less : ADJ - +1
 less : ADV
 like : ADJ
 like : NOUN
 like : VERB
 livestock : NOUN
+long : VERB
+long : ADJ
 look : NOUN
 look : VERB
 loophole : NOUN
 market : NOUN
+manufacture : NOUN
+manufacture : VERB
 market : VERB
 method : NOUN
 michael : NOUN
@@ -137,9 +169,13 @@ mow : NOUN
 mow : VERB
 need : NOUN
 need : VERB
+negotiate : VERB
 new : ADJ - +1
 new : ADV - -1
 new year's : NOUN
+next : ADJ
+next : ADV
+nuclear : ADJ
 once : ADV
 orbit : NOUN
 orbit : VERB
@@ -149,6 +185,10 @@ organism : NOUN
 ornament : NOUN
 ornament : VERB
 other : ADJ
+out : NOUN
+out : VERB
+out : ADJ
+out : ADV
 plant : NOUN
 plant : VERB
 plot : NOUN
@@ -163,11 +203,13 @@ produce : NOUN
 produce : VERB
 product : NOUN
 production : NOUN
+reduce : VERB
 regardless : ADJ
 regardless : ADV
 regulate : VERB
 resist : VERB
 resistant : ADJ
+revolution : NOUN
 rick : NOUN
 rick : VERB
 roundup : NOUN
@@ -176,8 +218,14 @@ satellite : ADJ
 science : NOUN
 senior : ADJ
 senior : NOUN
+significant : ADJ
 sort : NOUN
 sort : VERB
+specific : ADJ
+stockpile : NOUN
+stockpile : VERB
+success : NOUN
+surgeon : NOUN
 switch : NOUN
 switch : VERB
 switch grass : NOUN
@@ -188,6 +236,8 @@ test : NOUN
 test : VERB
 time : NOUN
 time : VERB
+treat : NOUN
+treat : VERB
 trend : NOUN
 trend : VERB
 unintended : ADJ
@@ -195,10 +245,17 @@ union : ADJ
 union : NOUN
 use : NOUN
 use : VERB
+violate : VERB
 waste : ADJ
 waste : NOUN
 waste : VERB
 weedkiller : NOUN
+well : NOUN
+well : VERB
+well : ADJ
+well : ADV
 wild : ADJ
 wild : ADV
 wild : NOUN
+world power : NOUN
+year : NOUN

@@ -3,7 +3,7 @@
 
 #
 # subprocedures
-p:lxtd  # adding a left generated tagged element to a right generated list
+p:lxtd  # adding a left-generated tagged element to a right generated list
 _
   split
   right
@@ -48,6 +48,13 @@ _
   right
   append </punc>
 __
+g:SS->PUNC[~start] SS
+_
+  append <punc>
+  left
+  append </punc>
+  right
+__
 g:SS[|segm]->SEGM
 __
 g:SS[|segm]->SS[|-segm] SEGM
@@ -82,6 +89,7 @@ g:SEGM[|*unique]->ELEM
  >>*l
 __
 g:SEGM[|*unique]->SEGM ELEM
+ l[!pro] r[!n]>>--
  l[!n] r[!n]>>*r--
  l[!v] r[!v]>>*r--
             >>*r
@@ -91,9 +99,16 @@ _
   right
 __
 
-g:ELEM->NCLU[:-dit, prep]
+g:ELEM->ADV[~mod] NCLU
+ >>+
+_
+  var typg=mod
+  (typg)
+  right
 __
-g:ELEM->NCLU[:-dit,-prep]
+g:ELEM->NCLU[:-dit, prep,-poss]
+__
+g:ELEM->NCLU[:-dit,-prep,-poss]
  >>[!n]
 __
 g:ELEM->NCLU[:dit]
@@ -103,12 +118,8 @@ _
   linefeed
   left
 __
-g:ELEM->MOD NCLU
-_
-  var typg=mod
-  (lxtd)
-__
 g:ELEM->PRO
+  >>[!n,pro]
 _
   var typg=pro
   (typg)
@@ -154,11 +165,6 @@ _
   var typg=dem
   (typg)
 __
-g:ELEM->APOS
-_
-  var typg=poss
-  (typg)
-__
 g:ELEM->NUM
  >>-
 _
@@ -193,7 +199,12 @@ _
   (typg)
   append </nclu>
 __
-g:NCLU[:*l,*r,det]->DET NCLU[:-det,-prep]
+g:NCLU[:*l,*r,det]->DET[:sgl] NCLU[:-det,-prep,-plur]
+_
+  var typg=det
+  (lxtd)
+__
+g:NCLU[:*l,*r,det]->DET[:-sgl] NCLU[:-det,-prep]
 _
   var typg=det
   (lxtd)
@@ -221,6 +232,7 @@ _
   (lxtd)
 __
 g:NCLU[:*r]->ADJ NCLU[:-det,-prep,-num]
+ >>++
 _
   var typg=adj
   (lxtd)
@@ -235,13 +247,20 @@ _
   var typg=quan
   (lxtd)
 __
+g:NCLU->NCLU[:poss] NCLU[:-poss]
+  >>+
+__
 g:NOUN->UNKN
+__
+g:NOUN[:*l,poss]->NOUN APOS
+_
+  (twob)
 __
 g:NOUN->VERB SUFX[#vTOn]
 _
   (twob)
 __
-g:NOUN->VERB XING
+g:NOUN[:ing]->VERB XING
 _
   (twob)
 __
@@ -253,10 +272,10 @@ __
 g:ADJ[:*r]->NOUN[:hyph] ADJ
  >>++
 __
-g:NOUN[:*r,cjn]->NOUN[:-hyph,-plur,-cjn] NOUN[:-cjn]
+g:NOUN[:*r,cjn]->NOUN[:-hyph,-plur,-cjn,-ing] NOUN[:-cjn]
  >>+
 _
-  (twob)
+ (twob)
 __
 
 g:VCLU[^*l]->VERB
@@ -288,6 +307,7 @@ _
   (lxtd)
 __
 g:VCLU[^*r,pass]->BE VCLU[^ed,-hav]
+ >>+
 _
   var typg=be
   (lxtd)
@@ -297,6 +317,17 @@ g:VERB->UNKN
  >>-
 __
 g:VERB[^*r,infn]->TO VERB[^-aux]
+ >>++
+_
+  (twob)
+__
+g:VERB[^*r]->VERB[^-beaj] VERB[^infn]
+ >>++
+_
+  (twob)
+__
+g:VERB[^*r]->VERB[^proc] VERB[^ing]
+ >>++
 _
   (twob)
 __
@@ -315,6 +346,7 @@ _
   (twob)
 __
 g:VERB[^*l,to]->VERB[^beaj] TO
+ >>+
 _
   (twob)
 __
@@ -324,6 +356,28 @@ __
 g:VERB->HAVE
  >>-
 __
+
+g:BE->BE XED
+ >>+
+_
+  (twob)
+__
+g:BE->BE XING
+ >>+
+_
+  (twob)
+__
+g:HAVE->HAVE XED
+ >>+
+_
+  (twob)
+__
+g:HAVE->HAVE XING
+ >>+
+_
+  (twob)
+__
+
 
 g:ADJ->NOUN SUFX[#nTOa]
 _
@@ -335,13 +389,28 @@ g:ADJ[:*r]->ADV ADJ
 _
   (twob)
 __
+g:ADJ->VERB[^ed]
+ >>-
+__
+g:ADJ->VERB[^ing]
+ >>-
+__
 
 g:ADV->ADJ SUFX[#aTOr]
 _
   (twob)
 __
+g:ADV->VERB SUFX[#vTOr]
+_
+  (twob)
+__
 g:ADV->ADV ADV
  >>+
+_
+  (twob)
+__
+
+g:NUM->ADV NUM
 _
   (twob)
 __
@@ -369,6 +438,11 @@ g:VERB[^*l,ing]->VERB[^-*l,-*r] XING
 _
   (twob)
 __
+g:VERB[^*l]->VERB[^ptcl] PTCL
+ >>+
+_
+  (twob)
+__
 g:ADJ->ADJ[:-*l,-*r] XER
 _
   (twob)
@@ -376,6 +450,36 @@ __
 g:ADJ->ADJ[:-*l,-*r] XEST
 _
   (twob)
+__
+
+g:DEM[:*r]->QUAN DEM[:ind]
+_
+  var typg=quan
+  (lxtd)
+__
+g:DEM[:*r]->PREP DEM[:ind]
+_
+  var typg=prep
+  (lxtd)
+__
+g:DATE[:*r]->PREP DATE
+_
+  var typg=prep
+  (lxtd)
+__
+g:TIME[:*r]->PREP TIME
+_
+  var typg=prep
+  (lxtd)
+__
+
+g:CONJ->ADV[~mod] CONJ
+ >>+
+_
+  append <mod>
+  left
+  append </mod>
+  right
 __
 
 #
@@ -424,17 +528,21 @@ d:from <- PREP
 __
 d:over <- PREP
 __
+d:through <- PREP
+__
 d:outside <- PREP
+__
+d:about   <- PREP
 __
 
 d:to   <- TO
 __
 
-d:a    <- DET
+d:a   <- DET[:sgl]
 __
-d:an   <- DET
+d:an  <- DET[:sgl]
 __
-d:the  <- DET
+d:the <- DET
 __
 
 d:this <- DEM[:ind,sgl]
@@ -461,10 +569,14 @@ d:our  <- DEM
 __
 d:their<- DEM
 __
+d:such <- DEM[:ind]
+__
 
 d:who  <- CONJ
 __
 d:which<- CONJ
+__
+d:how  <- CONJ
 __
 
 d:all  <- QUAN
@@ -506,6 +618,12 @@ d:ours <- PRO
 __
 d:theirs<-PRO
 __
+d:him  <- PRO
+__
+d:them <- PRO
+__
+d:her  <- PRO
+__
 
 d:and  <- CONJ
 __
@@ -514,6 +632,8 @@ __
 d:but  <- CONJ
 __
 d:if   <- CONJ
+__
+d:so   <- CONJ
 __
 d:when <- CONJ
 __
@@ -524,6 +644,8 @@ __
 d:after<- CONJ
 __
 d:either<-CONJ
+__
+d:as   <- CONJ
 __
 
 d:is   <- BE
@@ -567,6 +689,11 @@ __
 d:could<- AUXL
 __
 
+d:in  <- PTCL
+__
+d:out <- PTCL
+__
+
 d:not  <- NEGN
 __
 d:never<- NEGN
@@ -599,6 +726,8 @@ d:-ic   <- SUFX[#nTOa]
 __
 d:-al   <- SUFX[#nTOa]
 __
+d:-ar   <- SUFX[#nTOa]
+__
 d:-ment <- SUFX[#vTOn]
 __
 d:-ation<- SUFX[#vTOn]
@@ -612,4 +741,8 @@ __
 d:-ous  <- SUFX[#nTOa]
 __
 d:-er   <- SUFX[#vTOn]
+__
+d:-or   <- SUFX[#vTOn]
+__
+d:-ingly <- SUFX[#vTOr]
 __

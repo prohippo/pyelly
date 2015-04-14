@@ -1,3 +1,10 @@
 # convert English text into simple XML
 # marking.m.elly
+#
+# optionally convert Unicode quotation marks and apostrophes
+# &@’s -> \\1's
+# “ -> "
+# ” -> "
 
+&@'ll -> \\1 will
+&@’ll -> \\1 will
