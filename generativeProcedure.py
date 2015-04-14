@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeProcedure.py : 05feb2015 CPM
+# generativeProcedure.py : 14apr2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -75,7 +75,7 @@ class Code(object):
         """
 
         if self.indx >= len(self.lstg):
-            return semanticCommand.Gretn 
+            return semanticCommand.Gretn
         else:
             x = self.lstg[self.indx]
             self.indx += 1
@@ -95,7 +95,7 @@ class Code(object):
 BAD  = -11111  # bias for phrase with failed generative semantics
 LSTJ = ','     # substring for joining substrings in list value
 PNAM = '_pnam' # variable for last procedure call in local stack
-  
+
 class GenerativeProcedure(object):
 
     """
@@ -104,7 +104,7 @@ class GenerativeProcedure(object):
     attributes:
         logic  - compiled procedure
     """
- 
+
     _error = "??????" # default output on error
 
     def __init__ ( self , syms , defs ):
@@ -172,7 +172,7 @@ class GenerativeProcedure(object):
             elif ru.bias == 0:       # if zero bias for chosen rule,
                 ru.bias = -1         #   mark it to be less favored next time
             else:
-                for ru in rls: 
+                for ru in rls:
                     if ru.bias < 0:  # reset all negative rule biases
                         ru.bias = 0  #   to zero
         return True
@@ -339,7 +339,7 @@ class GenerativeProcedure(object):
                 sv = ''.join(val)              # convert to string
                 cntx.setLocalVariable(var,sv)  # set variable
             elif op == semanticCommand.Gfnd:   # find sequence in buffer
-                cntx.findCharsInBuffer(code.next())
+                cntx.findCharsInBuffer(code.next(),code.next())
             elif op == semanticCommand.Gpick:  # use local variable to select text
                 var = code.next()              #   to insert into buffer
                 s = cntx.getLocalVariable(var)
@@ -355,7 +355,7 @@ class GenerativeProcedure(object):
             elif op == semanticCommand.Gappd:  # append explicit text to buffer
                 s = code.next()
                 cntx.insertCharsIntoBuffer(s)
-            elif op == semanticCommand.Gget:   # assign global value to local variable 
+            elif op == semanticCommand.Gget:   # assign global value to local variable
                 var = code.next()
                 gvn = code.next()
                 cntx.setLocalVariable(var,cntx.getGlobalVariable(gvn))
@@ -459,13 +459,13 @@ class GenerativeProcedure(object):
 #
 # unit testing from file input
 #
-    
+
 if __name__ == "__main__":
 
     import ellyDefinitionReader
     import procedureTestFrame
     from generativeDefiner import showCode
-        
+
     frame = procedureTestFrame.ProcedureTestFrame()
     phr = frame.phrase
     ctx = frame.context

@@ -1,0 +1,7 @@
+split
+append <xxx>BBB</xxx>
+back
+find > >
+shift 1 <
+append !!!!
+merge

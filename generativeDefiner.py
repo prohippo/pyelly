@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeDefiner.py : 05feb2015 CPM
+# generativeDefiner.py : 14apr2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -52,7 +52,7 @@ _simple = {  # commands with no arguments
     "obtain"       : semanticCommand.Gobtn ,
     "capitalize"   : semanticCommand.Gcapt ,
     "uncapitalize" : semanticCommand.Gucpt ,
-    "trace"        : semanticCommand.Gtrce 
+    "trace"        : semanticCommand.Gtrce
 }
 
 _dir = [ '<' , '>' ] # direction qualifier for some semantic commands
@@ -125,7 +125,7 @@ def compileDefinition ( stb , inp ):
 #       print "ifTest" , len(backl) , rs
         if len(rs) == 0:
             return _err('incomplete IF or ELIF or WHILE')
-        
+
         if rs[0] == '[': # testing semantic feature?
             k = rs.find(']')
             if k < 0 or negn > 0:
@@ -173,7 +173,7 @@ def compileDefinition ( stb , inp ):
             line  - text to parse, should be already stripped
         returns:
             True on success, False otherwise
-        """ 
+        """
 
         negn = 0                    # negation indicator for Gchck and Gchkf operations
         k = line.find(' ')          # check for anything after operation code
@@ -271,7 +271,7 @@ def compileDefinition ( stb , inp ):
             on = len(store)                      # for updating back link
             store.append(backl[k])               # save old back link
             backl[k] = on                        # update back back link for branch
-                
+
         elif op == 'var' or op == 'variable' or op == 'set':
             if len(rs) == 0:
                 return _err()
@@ -317,7 +317,7 @@ def compileDefinition ( stb , inp ):
                 if first != '<' and first != '>':
                     nc = int(first)
                     if len(ar) > 1 and ar[1] == '>': nc = -nc
-                elif first == '>': 
+                elif first == '>':
                     nc = -nc
                 store.extend([ co , nc ])
         elif op == 'store':
@@ -333,7 +333,8 @@ def compileDefinition ( stb , inp ):
             ss = ar.pop(0)
             while ss[-1] == '\\' and len(ar) > 0:
                 ss = ss[:-1] + ' ' + ar.pop(0)
-            store.extend([ semanticCommand.Gfnd , ss ])
+            sens = True if len(ar) == 0 else False if ar[0] == '<' else True
+            store.extend([ semanticCommand.Gfnd , ss , sens ])
         elif op == 'pick':
 #           print 'rs=' , rs
             if len(rs) == 0:
@@ -441,7 +442,7 @@ def _eqsplit ( s ):
         else:
             st = s[k+1:].upper()
             ss = _code[st] if st in _code else ''
-            return [ s[:k] , ss ] 
+            return [ s[:k] , ss ]
     else:
         return [ s[:k] , s[k+1:] ]
 

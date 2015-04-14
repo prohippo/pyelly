@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# interpretiveContext.py : 10jan2015 CPM
+# interpretiveContext.py : 14apr2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -139,7 +139,7 @@ class InterpretiveContext(object):
     def setGlobalVariable ( self , name , s ):
 
         """
-        set string for specified global 
+        set string for specified global
 
         arguments:
             self  -
@@ -260,7 +260,7 @@ class InterpretiveContext(object):
         return to preceding buffer
 
         arguments:
-            self  
+            self
         """
 
         if self.buffn == 0:
@@ -295,7 +295,7 @@ class InterpretiveContext(object):
         self.buffn = 0
         self.buffs = [ [ ] ]
 
-    def findCharsInBuffer ( self , ts ):
+    def findCharsInBuffer ( self , ts , sns=True ):
 
         """
         find string ts in next buffer and transfer chars up to first occurrence
@@ -304,25 +304,39 @@ class InterpretiveContext(object):
         arguments:
             self  -
             ts    - string to look for
+            sns   - direction of search: True=forward, False=backward
         """
 
         n = self.buffn + 1
         if n >= len(self.buffs): return
-        t = list(ts)
-        ln = len(t)
+        t = list(ts)         # list of chars to look for
+        ln = len(t)          # length of list
         bn = self.buffs[n]   # next buffer
         bc = self.buffs[n-1] # current one
-        while len(bn) >= ln:
-            if t == bn[:ln]:
-                return
-            bc.append(bn.pop(0))
-        bc.extend(bn)
+        if sns:              # forward scanning
+            while len(bn) >= ln:
+                if t == bn[:ln]:
+                    return   # match
+                bc.append(bn.pop(0))
+            bc.extend(bn)
+            self.buffs[n] = [ ]
+        else:                # reverse scanning
+            tmp = [ ]        # buffer scanned chars for reverse scan
+            while len(bc) >= ln:
+                if t == bc[-ln:]:
+#                   print 'find < ln=' , ln , bc
+                    self.buffs[n] = t + tmp + bn
+                    self.buffs[n-1] = bc[:-ln]
+                    return   # match
+                tmp.insert(0,bc.pop())
+            self.buffs[n] = bc + tmp + bn
+            self.buffs[n-1] = [ ]
 
     def mergeBuffersWithReplacement ( self , ts , ss ):
 
         """
         merge current and next buffers, replacing occurrences of ts with ss
- 
+
         arguments:
             self  -
             ts    - string to look for
@@ -379,7 +393,7 @@ class InterpretiveContext(object):
         else:
             self.buffs[k] = b[:n]   # remove n chars from back of current buffer
             self.putDeletion(b[n:])
-            
+
     def deleteCharsInBufferTo ( self , s ):
 
         """
@@ -554,7 +568,7 @@ class InterpretiveContext(object):
             bd = self.buffs[k-1]
             l = len(bs)
             if n > l: n = l
-            self.buffs[k-1].extend(bs[:n]) 
+            self.buffs[k-1].extend(bs[:n])
             self.buffs[k] = bs[n:]
 
     def peekIntoBuffer ( self , nxtb=True ):
