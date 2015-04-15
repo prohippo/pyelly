@@ -13,7 +13,7 @@ framework for translating text from UTF-8 to UTF-8.
 The latest version has been completely rewritten in mostly object-oriented
 Python 2.7. It completed multiple stages of beta testing in 2014 and may
 now be downloaded from GitHub at https://github.com/prohippo/pyelly.git .
-The current release is v1.2.
+The current release is v1.2.1.
 
 To learn how to use PyElly, see the PyEllyManual.pdf file in the same
 directory as this README.txt file. The manual has over a hundred pages of
@@ -122,6 +122,14 @@ Release Notes:
                       fix bug in sentence recognition and clean
  1.2    -  03apr2015  replace Berkeley Database with SQLite
                       clean up PyElly initialization logic
+ 1.2.1  -  15apr2015  extend rules for "marking" application
+                      extend "marking" integration test
+                      more Unicode punctuation handling
+                      fix input buffering for Unicode
+                      fix morphological stemming problems
+                      fix tokenization with new Unicode punctuation
+                      fix macro table for new Unicode punctuation
+                      add missing code for FIND in generative semantics
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will require regeneration of any previously saved *.elly.bin files to ensure
