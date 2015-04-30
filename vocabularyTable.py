@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 31mar2015 CPM
+# vocabularyTable.py : 30apr2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -687,8 +687,8 @@ if __name__ == '__main__':
     import inflectionStemmerEN
     import symbolTable
 
-    from ellyBase import load
-    from ellyBase import rules
+    from ellyPickle import load
+    from ellyBase   import rules
 
     from generativeDefiner import showCode
 
@@ -731,6 +731,12 @@ if __name__ == '__main__':
         ustb = symbolTable.SymbolTable()            # if none, make new symbol table
     else:
         ustb = erul.stb                             # else, get existing symbol table
+
+    unkns = ustb.findUnknown()                      # check for new symbols added
+    print "new symbols"
+    for us in unkns:
+        print '[' + us + ']'                        # show every symbol
+    print ''
 
     print 'source=' , dfns
     inp = ellyDefinitionReader.EllyDefinitionReader(dfns)
