@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBase.py : 07jan2015 CPM
+# parseTreeBase.py : 30apr2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -35,6 +35,8 @@ support for syntax analysis with preallocated, extensible arrays of data element
 import ellyBits
 import symbolTable
 import conceptualHierarchy
+import ellyConfiguration
+import sys
 
 NOMINAL = 256 # default starting allocation for phrases and goals
 
@@ -250,7 +252,9 @@ class ParseTreeBase(object):
 #       print "at ParseTreeBase.__init__()"
         self.phrases = [ ]
         self.goals   = [ ]
-        for i in range(NOMINAL):        # preallocate phrases and goals
+        npre = ellyConfiguration.phraseLimit
+        if npre > NOMINAL: npre = NOMINAL
+        for i in range(npre):           # preallocate phrases and goals
             phrase = self.Phrase()      # get phrase
             phrase.seqn = i             # assign ID
             self.phrases.append(phrase)
@@ -278,6 +282,20 @@ class ParseTreeBase(object):
             ph.seqn = n
             n += 1
 
+    def _limitCheck ( self ):
+
+        """
+        exit if too many phrase nodes allocated
+
+        arguments:
+            self
+        """
+
+        if self.phlim == ellyConfiguration.phraseLimit:
+            print >> sys.stderr , '** nominal phrase limit of' , ellyConfiguration.phraseLimit , 'reached!'
+            print >> sys.stderr , '** either increase ellyConfiguration.phraseLimit or reduce ambiguous rules'
+            sys.exit(2)
+
     def makePhrase ( self , po , ru ):
 
         """
@@ -292,11 +310,12 @@ class ParseTreeBase(object):
         """
 
         if self.phlim >= len(self.phrases):    # do we have to allocate more phrases?
+            self._limitCheck()                 # stop runaway analysis?
             phrase = self.Phrase()             # if so, allocate more
             phrase.seqn = self.phlim
             self.phrases.append(phrase)
         self.lastph = self.phrases[self.phlim] # get next available phrase
-        self.lastph.reset()                    # 
+        self.lastph.reset()                    #
         self.lastph.posn = po                  # parse position
         self.lastph.rule = ru                  # grammar rule defining phrase
         self.lastph.typx = ru.styp             #
@@ -304,7 +323,7 @@ class ParseTreeBase(object):
         self.phlim += 1
 #*      print 'make' , self.lastph
         return self.lastph
-    
+
     def makeGoal ( self , ru , ph ):
 
         """
