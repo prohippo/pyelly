@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeProcedure.py : 14apr2015 CPM
+# generativeProcedure.py : 30apr2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -232,10 +232,14 @@ class GenerativeProcedure(object):
                 else:
 #                   print 'to left descendant'
                     status = phrs.lftd.rule.gens.doRun(cntx,phrs.lftd)
-            elif op == semanticCommand.Grght:  # go to procedure for right descendant
+            elif op == semanticCommand.Grght:  # go to procedure for right descendant, or left
+#               print 'descent from' , phrs
                 if phrs.rhtd == None:
-                    print >> sys.stderr , 'no right descendant for:' , phrs
-                    status = False
+                    if phrs.lftd == None:
+                        print >> sys.stderr , 'no descendants for:' , phrs
+                        status = False
+#                   print 'to left descendant instead'
+                    status = phrs.lftd.rule.gens.doRun(cntx,phrs.lftd)
                 else:
 #                   print 'to right descendant'
                     status = phrs.rhtd.rule.gens.doRun(cntx,phrs.rhtd)
@@ -427,7 +431,7 @@ class GenerativeProcedure(object):
                     cntx.insertCharsIntoBuffer(c.lower(),1)
             elif op == semanticCommand.Gtrce:  # show phrase info to trace execution
                 cat = cntx.syms.getSyntaxTypeName(phrs.typx)
-                brn = "1" if type(phrs.rule) == grammarRule.ExtendingRule else "2"
+                brn = "1" if isinstance(phrs.rule,grammarRule.ExtendingRule) else "2"
                 pnam = cntx.getLocalVariable(PNAM)
                 print >> sys.stderr, "TRACE @" + str(phrs.posn) + " type=" + cat ,
                 print >> sys.stderr, "rule=" + str(phrs.rule.seqn) ,

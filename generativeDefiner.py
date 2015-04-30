@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeDefiner.py : 14apr2015 CPM
+# generativeDefiner.py : 29apr2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -75,7 +75,7 @@ def compileDefinition ( stb , inp ):
 
     ######## special method for error reporting
 
-    def _err ( s='malformed command' ):
+    def _err ( s='malformed command' , l='' ):
 
         """
         show an error message
@@ -86,6 +86,7 @@ def compileDefinition ( stb , inp ):
         """
 
         print >> sys.stderr , '** generative semantic error:' , s
+        if l != '': print >> sys.stderr , '*  AT ' , l
         return False
 
     ######## special methods for handling conditional blocks
@@ -129,11 +130,11 @@ def compileDefinition ( stb , inp ):
         if rs[0] == '[': # testing semantic feature?
             k = rs.find(']')
             if k < 0 or negn > 0:
-                return _err()
+                return _err('malformed semantic features: ' + rs)
 #           print 'features=' , rs[0:k+1]
             fs = stb.getFeatureSet(rs[1:k].lower(),True)
             if fs == None:
-                return _err('malformed semantic features')
+                return _err('bad semantic features')
 #           print 'bits=' , unicode(fs[0]) , unicode(fs[1])
             test = ellyBits.join(fs[0],fs[1])
 #           print 'test=' , test
@@ -161,7 +162,7 @@ def compileDefinition ( stb , inp ):
 
         k = line.find(')')     # look for end of procedure name
         if k < 0:
-            return _err()
+            return _err('procedure definition',line)
         store.extend( [ semanticCommand.Gproc , line[1:k].lower() ] )
         return True
 
@@ -191,7 +192,7 @@ def compileDefinition ( stb , inp ):
 
         if op in _simple:           # nothing more to do if operation is simple
 #           print "simple operation"
-            if len(rs) > 0 or negn > 0: return _err()
+            if len(rs) > 0 or negn > 0: return _err(l=line)
             store.append(_simple[op])
             return True             #
 
@@ -274,7 +275,7 @@ def compileDefinition ( stb , inp ):
 
         elif op == 'var' or op == 'variable' or op == 'set':
             if len(rs) == 0:
-                return _err()
+                return _err(l=line)
             co = semanticCommand.Gset if op == 'set' else semanticCommand.Gvar
             ar = _eqsplit(rs)
             if len(ar) < 2: ar.append('')
@@ -282,27 +283,27 @@ def compileDefinition ( stb , inp ):
         elif op == 'insert':
             ar = _getargs(rs)
             if ar == None:
-                return _err()
+                return _err(l=line)
             wh = ar.pop(0)
             sc = semanticCommand.Ginsr if wh == '<' else semanticCommand.Ginsn
             store.extend([ sc , ar[0] ])
         elif op == 'peek':
             ar = _getargs(rs)
             if ar == None:
-                return _err()
+                return _err(l=line)
             wh = ar.pop(0)
             store.extend([ semanticCommand.Gpeek , ar[0] , (wh == '<') ])
         elif op == 'extract':
             ar = _getargs(rs)
             if ar == None:
-                return _err()
+                return _err(l=line)
             wh = ar.pop(0)
             sc = semanticCommand.Gextr if wh == '<' else semanticCommand.Gextl
             if len(ar) == 1: ar.append('1')
             store.extend([ sc , ar[0] , int(ar[1]) ])
         elif op == 'shift' or op == 'delete':
             if len(rs) == 0:
-                return _err()
+                return _err(l=line)
             ar = rs.split(' ')
             first = ar[0].lower()
             co = ( semanticCommand.Gshft if op == 'shift'
@@ -322,13 +323,13 @@ def compileDefinition ( stb , inp ):
                 store.extend([ co , nc ])
         elif op == 'store':
             if len(rs) == 0:
-                return _err()
+                return _err(l=line)
             ar = rs.split(' ')
             nd = 0 if len(ar) == 1 else int(ar[1])
             store.extend([ semanticCommand.Gstor , ar[0] , nd ])
         elif op == 'find':
             if len(rs) == 0:
-                return _err()
+                return _err(l=line)
             ar = rs.split(' ')
             ss = ar.pop(0)
             while ss[-1] == '\\' and len(ar) > 0:
@@ -338,10 +339,10 @@ def compileDefinition ( stb , inp ):
         elif op == 'pick':
 #           print 'rs=' , rs
             if len(rs) == 0:
-                return _err()
+                return _err(l=line)
             ar = rs.split(' ')
             if len(ar) < 2:
-                return _err()
+                return _err(l=line)
             chs = ar[1]
 #           print 'chs=' , chs
             if chs[0] != '(' or chs[-1] != ')':

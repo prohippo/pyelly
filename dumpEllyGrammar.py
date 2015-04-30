@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# dumpEllyGrammar.py : 30nov2014 CPM
+# dumpEllyGrammar.py : 30apr2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -161,7 +161,9 @@ def dumpSubprocedures ( index , full ):
     for p in lps:
         print ""
         print p
-        if full:
+        if index[p] == None:
+            print '** undefined!'
+        elif full:
             generativeDefiner.showCode(index[p].logic)
 
 def showMask ( msk ):
@@ -212,7 +214,7 @@ def dumpSplits ( stb , splits , full ):
     """
     show 2-branch rules
 
-    arguments: 
+    arguments:
         stb    - symbol table
         splits - listing of 2-branch rules
         full   - flag for full dump
@@ -274,7 +276,7 @@ def dumpExtensions ( stb, extens , full ):
             print '(' + str(r.seqn) + ')' ,
             print stb.ntname[r.styp] ,
             print '[{}]->'.format(r.sfet.hexadecimal(False)) ,
-            print ty + ' ' + showMask(r.utfet) 
+            print ty + ' ' + showMask(r.utfet)
 
             if full: showProcedures(r)
 
@@ -329,15 +331,22 @@ if __name__ == '__main__':
     import sys
     import ellyException
     import ellyDefinition
+    import ellyPickle
 
     nam = sys.argv[1] if len(sys.argv) > 1 else 'test'
-    ver = sys.argv[2] if len(sys.argv) > 2 else 'v1.0'
+    ver = sys.argv[2] if len(sys.argv) > 2 else ''
     lvl = sys.argv[3] if len(sys.argv) > 3 else '3'
 
-    try:
-        rul = ellyDefinition.Rules(nam,ver)
-    except ellyException.TableFailure:
-        print 'grammar rules failed to load'
-        sys.exit(1)
+    if ver == '':
+        try:
+            rul = ellyDefinition.Rules(nam,ver)
+        except ellyException.TableFailure:
+            print >> sys.stderr , 'grammar rules failed to compile'
+            sys.exit(1)
+    else:
+        rul = ellyPickle.load(nam + '.rules.elly.bin')
+        if rul == None:
+            print >> sys.stderr , 'grammar rules failed to load'
+            sys.exit(1)
 
     dumpAll(rul.stb,rul.gtb,int(lvl))
