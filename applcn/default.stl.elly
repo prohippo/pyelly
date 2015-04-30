@@ -949,7 +949,7 @@ isen 2 3 .
 isery 0 0 .
 ishly 2 3 ,
 ision 2 2 &.
-isive 2 1 de.
+isive 2 1 de. 1
 ism 1 2 t,
 ismatic 2 3 .
 isor 2 2 &.
@@ -998,7 +998,7 @@ iver 1 3 . 0e
 iverance 2 4 .
 ivial 2 4 . 0a
 ivisible 2 3 de. 2a
-ivision 2 3 de. 2a
+ivision 2 3 de. 1
 ivity 2 2 &,
 ivize 2 2 &,
 ivocation 3 6 &,
@@ -2432,6 +2432,7 @@ zzy 1 2 .
 |swum 1 3 im. 2n
 |tally 0 0 .
 |tamper 0 0 .
+|ten 0 0 .
 |tender 0 0 .
 |tension 0 0 .
 |thesis 0 0 .
