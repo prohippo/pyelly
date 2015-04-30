@@ -24,7 +24,7 @@ _
   insert < typg
   append >
 __
-p:twob  # default spaced output for 2-branch rule
+p:twob  # simple spaced output for 2-branch rule
 _
   left
   space
@@ -75,16 +75,40 @@ g:SS->SS CONJ
 _
   left
   linefeed
-  append <conj>
-  right
-  append </conj>
+  var typg=conj
+  (brack)
 __
 g:SS->CONJ
 _
   var typg=conj
-  (typg)
+  (brack)
 __
 
+p:brack   # handle bracketing
+_
+  var lbr=
+  var rbr=
+  split
+  right
+  back
+  if ~lbr=
+    insert < lbr
+    end
+  if typg=
+    merge
+  else
+    append <
+    insert < typg
+    append >
+    merge
+    append </
+    insert < typg
+    append >
+    end
+  if ~rbr=
+    insert < rbr
+    end
+__
 g:SEGM[|*unique]->ELEM
  >>*l
 __
@@ -196,7 +220,7 @@ g:NCLU[:*l]->NOUN
 _
   append <nclu>
   var typg=noun
-  (typg)
+  (brack)
   append </nclu>
 __
 g:NCLU[:*l,*r,det]->DET[:sgl] NCLU[:-det,-prep,-plur]
@@ -242,7 +266,7 @@ _
   var typg=num
   (lxtd)
 __
-g:NCLU[:*r,det]->QUAN NCLU[:-det,-prep,-num]
+g:NCLU[:*r,det]->QUAN NCLU[:-prep,-num]
 _
   var typg=quan
   (lxtd)
@@ -257,6 +281,14 @@ _
   (twob)
 __
 g:NOUN->VERB SUFX[#vTOn]
+_
+  (twob)
+__
+g:NOUN->ADJ SUFX[#aTOn]
+_
+  (twob)
+__
+g:NOUN->NOUN SUFX[#nTOn]
 _
   (twob)
 __
@@ -292,7 +324,7 @@ _
 __
 g:VCLU[^hav,*r]->HAVE VCLU[^-hav]
 _
-  var typg=asp
+  var typg=aux
   (lxtd)
 __
 g:VCLU[^aux,*r]->AUXL VCLU[^-aux]
@@ -303,13 +335,13 @@ __
 g:VCLU[^*r]->BE VCLU[^ing,-hav]
  >>++
 _
-  var typg=be
+  var typg=aux
   (lxtd)
 __
 g:VCLU[^*r,pass]->BE VCLU[^ed,-hav]
  >>+
 _
-  var typg=be
+  var typg=aux
   (lxtd)
 __
 
@@ -324,6 +356,13 @@ __
 g:VERB[^*r]->VERB[^-beaj] VERB[^infn]
  >>++
 _
+  (twob)
+__
+g:VERB[^beaj]->ADJ TO
+ >>----
+_
+  append [be]
+  space
   (twob)
 __
 g:VERB[^*r]->VERB[^proc] VERB[^ing]
@@ -341,7 +380,7 @@ _
 __
 g:VERB[:*r]->NOUN[:hyph] VERB
 __
-g:VERB[^beaj]->BE ADJ
+g:VERB[^beaj]->BE ADJ[:-ed,-ing]
 _
   (twob)
 __
@@ -378,7 +417,6 @@ _
   (twob)
 __
 
-
 g:ADJ->NOUN SUFX[#nTOa]
 _
   (twob)
@@ -389,11 +427,13 @@ g:ADJ[:*r]->ADV ADJ
 _
   (twob)
 __
-g:ADJ->VERB[^ed]
+g:ADJ[:ed]->VERB[^ed]
  >>-
 __
-g:ADJ->VERB[^ing]
+g:ADJ[:ing]->VERB[^ing]
  >>-
+__
+g:ADJ->VERB SUFX[#vTOa]
 __
 
 g:ADV->ADJ SUFX[#aTOr]
@@ -484,11 +524,15 @@ __
 
 #
 # predicate negation
-g:AUXL[^neg]->AUXL[^-neg] NEGN
+g:AUXL[^neg,*l]->AUXL[^-neg] NEGN
 _
   (twob)
 __
-g:BE[^neg]->BE[^-neg] NEGN
+g:BE[^neg,*l]->BE[^-neg] NEGN
+_
+  (twob)
+__
+g:HAVE[^neg,*l]->HAVE[^-neg] NEGN
 _
   (twob)
 __
@@ -593,6 +637,8 @@ d:no   <- QUAN
 __
 d:several<-QUAN
 __
+d:both <- QUAN
+__
 
 d:i    <- PRO
 __
@@ -646,6 +692,8 @@ __
 d:either<-CONJ
 __
 d:as   <- CONJ
+__
+d:despite <- CONJ
 __
 
 d:is   <- BE
@@ -722,11 +770,15 @@ d:-ion  <- SUFX[#vTOn]
 __
 d:-ize  <- SUFX[#aTOv]
 __
+d:-ize  <- SUFX[#nTOv]
+__
 d:-ic   <- SUFX[#nTOa]
 __
 d:-al   <- SUFX[#nTOa]
 __
 d:-ar   <- SUFX[#nTOa]
+__
+d:-ate  <- SUFX[#nTOa]
 __
 d:-ment <- SUFX[#vTOn]
 __
@@ -744,5 +796,73 @@ d:-er   <- SUFX[#vTOn]
 __
 d:-or   <- SUFX[#vTOn]
 __
-d:-ingly <- SUFX[#vTOr]
+d:-ingly<- SUFX[#vTOr]
+__
+d:-ist  <- SUFX[#aTOn]
+__
+d:-ist  <- SUFX[#nTOn]
+__
+d:-ive  <- SUFX[#vTOa]
+__
+
+d:[ <- PUNC
+__
+d:] <- PUNC
+__
+
+####
+
+p:opnpl
+_
+  left
+  delete 1 >
+  store lbr
+  right
+__
+p:clspr
+_
+  left
+  right
+  delete 1 >
+  store rbr
+__
+d:[ <- OPNP
+__
+d:] <- CLSP
+__
+g:NOUN[:*r]->OPNP NOUN
+_
+  (opnpl)
+__
+g:NOUN[:*l]->NOUN CLSP
+ >>+
+_
+  (clspr)
+__
+g:VERB[^*r]->OPNP VERB
+_
+  (opnpl)
+__
+g:VERB[^*l]->VERB CLSP
+ >>+
+_
+  (clspr)
+__
+g:DET[:*r]->OPNP DET
+_
+  (opnpl)
+__
+g:DET[:*l]->DET CLSP
+ >>+
+_
+  (clspr)
+__
+g:CONJ[:*r]->OPNP CONJ
+_
+  (opnpl)
+__
+g:CONJ[:*l]->CONJ CLSP
+ >>+
+_
+  (clspr)
 __

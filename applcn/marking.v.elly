@@ -39,10 +39,15 @@ at least : ADV
 
 Scotts : NOUN
 Scotts Miracle-Gro Company : NOUN
+Gov. Jerry Brown : NOUN
+George Will : NOUN
+Reaganite : NOUN
 
 for example : PEXP
 such as : DEM
 
+act : NOUN
+act : VERB
 again : ADV
 agriculture : NOUN
 alarm : NOUN
@@ -57,13 +62,16 @@ attempt : NOUN
 attempt : VERB
 authority : NOUN
 authorize : VERB
+before : ADV
 biotech : NOUN
+business: NOUN
 cancer : NOUN
 canola : NOUN
 carry : VERB
 certain : ADJ
 chance : ADJ
 chance : NOUN
+character : NOUN
 chance : VERB
 clear : ADJ
 clear : ADV
@@ -73,6 +81,7 @@ commerce : NOUN
 company : NOUN
 company : VERB
 comprehensive : ADJ
+constitution : NOUN
 consume : VERB
 corn : NOUN
 corn : VERB
@@ -80,6 +89,7 @@ create : VERB
 credit : NOUN
 credit : VERB
 critic : NOUN
+critical : ADJ
 crop : NOUN
 crop : VERB
 damage : NOUN
@@ -90,6 +100,7 @@ deep : ADJ
 deep : ADV
 deep : NOUN
 department : NOUN
+describe : VERB
 develop : VERB
 disaster : NOUN
 disastrously : ADV
@@ -99,10 +110,14 @@ draft : NOUN
 draft : NOUN
 drive : NOUN
 drive : VERB[^ptcl]
+early : ADJ
+early : ADV
 ecology : NOUN
 edit : VERB
 effect : NOUN
 effect : VERB
+elect : NOUN
+elect : VERB
 end : NOUN
 end : VERB
 engineer : NOUN
@@ -118,8 +133,11 @@ even : ADV[~mod] - +1
 examine : VERB
 example : NOUN
 exist : VERB
+face : NOUN
+face : VERB
 federal : ADJ
 federal : NOUN
+federation : NOUN
 few : NOUN - -1
 few : ADJ
 field : NOUN
@@ -132,13 +150,19 @@ glow : VERB
 govern : VERB
 grass : NOUN
 grass : VERB - -1
+grassroots : ADJ
+great : ADJ
 green : ADJ
 green : NOUN
 green : VERB
 hear : VERB
 herbicide : NOUN
+hope : NOUN
+verb : VERB
 impact : NOUN
 impact : VERB
+impose : VERB
+independent : ADJ
 jurisdiction : NOUN
 kill : NOUN
 kill : VERB
@@ -176,6 +200,7 @@ new year's : NOUN
 next : ADJ
 next : ADV
 nuclear : ADJ
+office : NOUN
 once : ADV
 orbit : NOUN
 orbit : VERB
@@ -189,6 +214,7 @@ out : NOUN
 out : VERB
 out : ADJ
 out : ADV
+passionate : ADJ
 plant : NOUN
 plant : VERB
 plot : NOUN
@@ -197,6 +223,8 @@ pollute : VERB
 popular : ADJ
 press : NOUN
 press : VERB
+primary : NOUN
+primary : ADJ
 process : NOUN
 process : VERB
 produce : NOUN
@@ -207,6 +235,8 @@ reduce : VERB
 regardless : ADJ
 regardless : ADV
 regulate : VERB
+republican : NOUN
+republican : ADJ
 resist : VERB
 resistant : ADJ
 revolution : NOUN
@@ -218,7 +248,9 @@ satellite : ADJ
 science : NOUN
 senior : ADJ
 senior : NOUN
+severe : ADJ
 significant : ADJ
+small-business : ADJ
 sort : NOUN
 sort : VERB
 specific : ADJ
@@ -240,12 +272,21 @@ treat : NOUN
 treat : VERB
 trend : NOUN
 trend : VERB
+true : noun
+true : verb
+true : adj
+true : adv
+uncertain : ADJ
 unintended : ADJ
 union : ADJ
 union : NOUN
 use : NOUN
 use : VERB
+very : adj
+very : adv
+victory : NOUN
 violate : VERB
+warn : VERB
 waste : ADJ
 waste : NOUN
 waste : VERB
