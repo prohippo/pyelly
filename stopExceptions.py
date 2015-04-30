@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# stopExceptions.py : 07apr2015 CPM
+# stopExceptions.py : 30apr2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -103,7 +103,7 @@ class StopExceptions(object):
         exceptions:
             TableFailure on error
         """
-        
+
         lno = 0
         nerr = 0
         while True:
@@ -132,7 +132,7 @@ class StopExceptions(object):
                 print >> sys.stderr , 'error:' , '<' + df + '>' , '<' + right + '>'
                 nerr += 1
                 continue
-            
+
             if not idc in self.lstg:       # make sure punctuation is already in dictionary
                 self.lstg[idc] = [ ]
 
@@ -154,7 +154,7 @@ class StopExceptions(object):
             self  -
             c     - bracketing char to take account of
         """
-    
+
         if   c == u'(':
             self._plvl += 1
         elif c == u'[':
@@ -163,19 +163,19 @@ class StopExceptions(object):
             self._plvl -= 1
         elif c == u']':
             self._blvl -= 1
-    
+
     def resetBracketing ( self ):
 
         """
         reset bracketing levels
-    
+
         arguments:
             self
         """
 
         self._plvl = 0
         self._blvl = 0
-    
+
     def inBracketing ( self ):
 
         """
@@ -184,9 +184,9 @@ class StopExceptions(object):
         arguments:
             self
         """
-    
+
         return (self._plvl > 0 or self._blvl > 0)
-    
+
     def match ( self , txt , pnc , nxt ):
 
         """
@@ -214,7 +214,7 @@ class StopExceptions(object):
 #       print len(lp) , 'patterns'
 
         txl = txt[-self.maxl:] if len(txt) > self.maxl else txt
-        
+
         txs = map(lambda x: x.lower(),txl) # actual left context for matching
 
         lt = len(txs)             # its length
@@ -224,7 +224,7 @@ class StopExceptions(object):
         for p in lp:              # try matching each pattern
 
             if p.left != None:
-                
+
                 n = len(p.left)   # assume each pattern element must match one sequence char
 #               print 'n=' , n , 'p=' , unicode(p)
                 if n > lt:
@@ -300,7 +300,8 @@ if __name__ == '__main__':
         [ ' ' , 'A' , '.' , ' ' ] ,
         [ '-' , "'" , ' ' ] ,
         [ ':' , '-' , ')' ] ,       # emoticon
-        [ 'x' , 'x' , 'x' , 'x' , '.' , ' ' , 'Y' ]
+        [ 'x' , 'x' , 'x' , 'x' , '.' , ' ' , 'Y' ] ,
+        [  ' ' , '.' , ' ' ]
     ]
 
     nlu = len(sys.argv) - 2
@@ -324,4 +325,4 @@ if __name__ == '__main__':
             continue
         res = stpx.match( ts[:ku-1] , ts[ku-1] , ts[ku] )
         print '[ ' + ''.join(ts) + ' ]' ,
-        print ('stop EXCEPTION' if res else 'stopped') 
+        print ('stop EXCEPTION' if res else 'stopped')

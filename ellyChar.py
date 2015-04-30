@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 14apr2015 CPM
+# ellyChar.py : 26apr2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -43,7 +43,7 @@ BSL = u'\\'        # Unicode backslash
 SPC = u' '         # Unicode space
 NBS = u'\u00A0'    # Unicode no-break space
 
-Pnc = [ u'“' , u'”' , u'‘' , u'’' , u'–' , u'—' ] # special punctuation
+Pnc = [ u'“' , u'”' , u'‘' , u'’' , u'–' , u'—' , u'…' ] # special punctuation
 
 Lim = u'\u0100'    # limit of Unicode chars recognized except for Pnc
 
