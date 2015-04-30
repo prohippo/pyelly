@@ -148,3 +148,17 @@ d:qq <- noun
 __
 g:adjective->noun sufx[^apos]
 __
+g:sent->be
+__
+d:been <- be[^ed]
+ >>++
+__
+g:be[^*r]->be sufx
+ >>+
+__
+d:-en  <- sufx[^ed]
+ >>+
+__
+d:-ing <- sufx[^ing]
+ >>+
+__

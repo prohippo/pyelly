@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 08apr2015 CPM
+# ellyBase.py : 29apr2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -38,6 +38,7 @@ import codecs
 import ellySession
 import ellyConfiguration
 import ellyDefinition
+import ellyPickle
 import ellyToken
 import ellyChar
 import ellyException
@@ -73,7 +74,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.2.1'                      # current version of PyElly software
+release = 'v1.2.2'                      # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -139,7 +140,7 @@ def _notToDate ( system ):
             _timeModified(aid,vocabulary))
 
 #
-# main class
+# main class for processing single sentences
 #
 
 class EllyBase(object):
@@ -159,7 +160,7 @@ class EllyBase(object):
         trs  - simple transformation
         pnc  - punctuation recognizer
 
-        gundef - undefined symbols in *.p.elly
+        gundef - undefined symbols in *.p.elly and *.n.elly
         vundef - undefined symbols in *.v.elly
         pundef - undefined symbols for punctuation recognition
         eundef - undefined symbols in information extractors
@@ -194,16 +195,16 @@ class EllyBase(object):
                 nfail += 1
             if nfail == 0:
                 self.gundef = self.rul.stb.findUnknown()
-                save(self.rul,sysf)
+                ellyPickle.save(self.rul,sysf)
         else:
             print "loading saved language rules from" , sysf
-            self.rul = load(sysf)
+            self.rul = ellyPickle.load(sysf)
             if self.rul.rls != release:
                 print >> sys.stderr , 'inconsistent PyElly version for saved rules'
                 sys.exit(1)
 
         if restore != None:
-            self.ses = load(restore + '.' + system + _session)
+            self.ses = ellyPickle.load(restore + '.' + system + _session)
         else:
             self.ses = ellySession.EllySession()
 
@@ -236,35 +237,40 @@ class EllyBase(object):
         except ellyException.TableFailure:
             nfail += 1
 
+#       print self.rul.stb
+#       print stb
+
         if nfail > 0:
             print >> sys.stderr , 'exiting: table generation FAILures'
             sys.exit(1)
 
+#       print 'vundef=' , self.vundef
         self.vtb = voc.vtb
-        self.vundef = d.stb.findUnknown()
+        self.vundef = stb.findUnknown()
+#       print 'vundef=' , self.vundef
 
-#       print '1:' , len(d.stb.ntname) , 'syntactic categories'
+#       print '1:' , len(stb.ntname) , 'syntactic categories'
 
-        self.ctx = interpretiveContext.InterpretiveContext(d.stb,d.gtb.pndx,s.globals,d.hry)
+        self.ctx = interpretiveContext.InterpretiveContext(stb,d.gtb.pndx,s.globals,d.hry)
 
         for z in d.gtb.initzn:        # initialize global symbols for parsing
             self.ctx.glbls[z[0]] = z[1]
 
-#       print '2:' , len(d.stb.ntname) , 'syntactic categories'
+#       print '2:' , len(stb.ntname) , 'syntactic categories'
 
-        self.pnc = punctuationRecognizer.PunctuationRecognizer(d.stb)
-        self.pundef = d.stb.findUnknown()
+        self.pnc = punctuationRecognizer.PunctuationRecognizer(stb)
+        self.pundef = stb.findUnknown()
 
-#       print '3:' , len(d.stb.ntname) , 'syntactic categories'
+#       print '3:' , len(stb.ntname) , 'syntactic categories'
 
-        nto = len(d.stb.ntname)       # for consistency check
+        nto = len(stb.ntname)         # for consistency check
 
         if ellyConfiguration.treeDisplay:
             print "tree display on"
-            self.ptr = parseTreeWithDisplay.ParseTreeWithDisplay(d.stb,d.gtb,d.ptb,self.ctx)
+            self.ptr = parseTreeWithDisplay.ParseTreeWithDisplay(stb,d.gtb,d.ptb,self.ctx)
         else:
             print "tree display off"
-            self.ptr = parseTree.ParseTree(d.stb,d.gtb,d.ptb,self.ctx)
+            self.ptr = parseTree.ParseTree(stb,d.gtb,d.ptb,self.ctx)
 
         ntabl = d.ntb
 
@@ -274,16 +280,16 @@ class EllyBase(object):
 
         self.iex = entityExtractor.EntityExtractor(self.ptr,self.ctx) # set up extractors
 
-        self.eundef = d.stb.findUnknown()
+        self.eundef = stb.findUnknown()
 
         if ellyConfiguration.rewriteNumbers:
             self.trs = simpleTransform.SimpleTransform()
         else:
             self.trs = None           # no automatic conversion of written out numbers
 
-#       print '4:' , len(d.stb.ntname) , 'syntactic categories'
+#       print '4:' , len(stb.ntname) , 'syntactic categories'
 
-        ntn = len(d.stb.ntname)       # do consistency check on syntactic category count
+        ntn = len(stb.ntname)         # do consistency check on syntactic category count
         if nto != ntn:
             print >> sys.stderr , 'WARNING: grammar rules should predefine all syntactic categories'
             print >> sys.stderr , '         and features identified in other language definitions'
@@ -419,8 +425,21 @@ class EllyBase(object):
             return True
 
         wsk = self.sbu.buffer[:k]
+#       print 'wsk=' , wsk
+#       print 'queue before=' , len(self.ptr.queue)
+        rws = u''.join(wsk)
+        found = self.ptr.createPhrasesFromDictionary(rws,False)
+        if found or mx > 0:
+#           print 'found'
+            self.sbu.skip(k)
+#           print 'next=' , self.sbu.buffer[self.sbu.index:]
+#           print 'queue after =' , len(self.ptr.queue)
+            to = ellyToken.EllyToken(rws)
+            self.ctx.tokns.append(to)
+            return True
+#       print 'not found'
 
-        to = self._extractToken((mx > 0),wsk) # single-word matching with analysis
+        to = self._extractToken()      # single-word matching with analysis
 
         if to == None: return False if mx == 0 else True
 
@@ -542,15 +561,13 @@ class EllyBase(object):
 
         return count
 
-    def _extractToken ( self , found , wso ):
+    def _extractToken ( self ):
 
         """
         extract next token from input buffer and look up in grammar table
 
         arguments:
             self  -
-            found - true if token not yet identified by scanning
-            wso   - what was looked up already
 
         returns:
             token on success, otherwise None
@@ -564,20 +581,14 @@ class EllyBase(object):
         buff = self.sbu                     # input source
 
         try:
-            if found:
-                w = buff.getNextSimple()    # next token must be taken without changes
-            else:
-                w = buff.getNext()          # extract next token
+            w = buff.getNext()              # extract next token
             ws = u''.join(w.root)
 #           print 'extract' , ws
         except ellyException.StemmingError as e:
             print >> sys.stderr , 'FATAL error' , e
             sys.exit(1)
 
-        if not found:                       # look up externally if no success yet
-            if ws != wso:
-                if self._tableLookUp(ws,tree) > 0:
-                    found = True
+        found = self._tableLookUp(ws,tree) > 0
 
         if ws in self.rul.gtb.dctn:         # look up internally regardless
 #           print '"' + ws + '" in dictionary'
@@ -657,53 +668,6 @@ def _show ( typm , syms ):
         n += 1
         if n%m == 0: print >> sys.stderr , ''
     print >> sys.stderr , ''
-
-################################
-# serialization of definitions #
-################################
-
-import pickle
-
-def save ( ob , nm ):
-
-    """
-    save an Elly object
-
-    arguments:
-        ob  - the object
-        nm  - destination file name
-
-    returns:
-        True on success, False otherwise
-    """
-
-    try:
-        outs = open(nm,'wb')
-        pickle.dump(ob,outs)
-        outs.close()
-        return True
-    except IOError:
-        return False
-
-def load ( nm ):
-
-    """
-    load an Elly object
-
-    arguments:
-        nm  - source file name
-
-    returns:
-        symbol table on success, None on failure
-    """
-
-    try:
-        ins = open(nm,'rb')
-        ob = pickle.load(ins)
-        ins.close()
-        return ob
-    except IOError:
-        return None
 
 #
 # unit test
