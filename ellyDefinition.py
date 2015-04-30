@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyDefinition.py : 03mar2015 CPM
+# ellyDefinition.py : 30apr2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -214,21 +214,30 @@ class Vocabulary(EllyDefinition):
 
 if __name__ == '__main__':
 
+    import ellyPickle
+
     sym = symbolTable.SymbolTable()
     nam = sys.argv[1] if len(sys.argv) > 1 else 'test'
-    idn  = 'v????'
+    idn = sys.argv[2] if len(sys.argv) > 2 else ''
     print 'PyElly' , idn , ', system=' , nam
     print "------------ rules"
-    try:
-        rul = Rules(nam,idn)
-    except ellyException.TableFailure:
-        print 'grammar rules failed to load'
-        sys.exit(1)
+    if idn != '':
+        try:
+            rul = Rules(nam,idn)
+        except ellyException.TableFailure:
+            print >> sys.stderr , 'grammar rules failed to compile'
+            sys.exit(1)
+    else:
+        rul = ellyPickle.load(nam + '.rules.elly.bin')
+        if rul == None:
+            print >> sys.stderr , 'grammar rules failed to load'
+            sys.exit(1)
 #   print dir(rul)
     print rul.stb
     print rul.mtb
     print rul.gtb
     print rul.ptb
+    print rul.ntb
     print rul.hry
     print rul.man
     for e in rul.errors:
@@ -241,6 +250,12 @@ if __name__ == '__main__':
     except ellyException.TableFailure:
         print 'vocabulary failed to load'
         sys.exit(1)
-    print voc.vtb.dbs.keys()
+    print voc.vtb
     for e in voc.errors:
         print "    " , e
+    syn = rul.stb.sxindx
+    sem = rul.stb.smindx
+    print 'synf=' , syn.keys()
+    print 'semf=' , sem.keys()
+    if idn != '':
+        ellyPickle.save(rul,nam + '.rules.elly.bin')
