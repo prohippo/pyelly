@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# symbolTable.py : 04nov2014 CPM
+# symbolTable.py : 29apr2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -119,7 +119,7 @@ class SymbolTable(object):
             if not nm in h:        # new name in feature set?
                 k = len(h)         # if so, define it
                 l = FMAX           # limit for feature index
-                if not ty:         # adjustment for extra predefined 
+                if not ty:         # adjustment for extra predefined
                     k -= 3         # syntactic feature names *L and *R
                     l -= 1         # and for *UNIQUE
                 if k == l:         # overflow check
@@ -207,28 +207,26 @@ class SymbolTable(object):
             sorted list of unique symbols
         """
 
-        ls = [ ]                       # for collecting symbols
+#       print 'in getAllSymbols()'
 
-        for s in self.ntname:          # syntactic types
-            ls.append(s)
+        ls = list(self.ntname)           # start collecting symbols
 
-        sid = ''
-        for sid in self.sxindx.keys(): # syntactic features
+        for sid in self.sxindx.keys():   # syntactic features
             tb = self.sxindx[sid]
             for t in tb.keys():
-                if t[0] != '*':        # ignore predefined features
-                    ls.append(sid + t) # tagged by ID
+                if t[0] != '*':          # ignore predefined ones
+                    ls.append(sid + t)   # tagged by feature ID
 
-        for did in self.smindx.keys(): # semantic features
+        for did in self.smindx.keys():   # semantic features
             tb = self.smindx[did]
             for t in tb.keys():
-                ls.append(sid + t)     # tagged by ID
+                ls.append(did + t)       # tagged by ID
 
 #       print len(ls) , ' symbols defined'
 #       print 'unsorted' , ls
         ls.sort()
 #       print 'sorted  ' , ls
-        return ls                      # sort list in place
+        return ls                        # sort list in place
 
     def findUnknown ( self ):
 
@@ -239,7 +237,7 @@ class SymbolTable(object):
             self  -
 
         retuns:
-            list of symbols not found reference list
+            list of symbols not found in reference list
         """
 
 #       print 'base symbol=' , self.bsymbs
@@ -259,10 +257,11 @@ class SymbolTable(object):
                 symbs = symbs[1:]    # symbol not in reference list
                 unkns.append(s)
 
-        unkns += symbs               # take any unlooked up symbols as unknown
+        unkns.extend(symbs)          # take any unlooked up symbols as unknown
         rslts = [ ]
         for s in unkns:              # update exceptions with latest unknowns
             if not s in self.excpns:
                 self.excpns.append(s)
                 rslts.append(s)      # return only unknowns not previously seen
+#               if s[0] == '^': print '<' + s
         return rslts
