@@ -13,7 +13,7 @@ framework for translating text from UTF-8 to UTF-8.
 The latest version has been completely rewritten in mostly object-oriented
 Python 2.7. It completed multiple stages of beta testing in 2014 and may
 now be downloaded from GitHub at https://github.com/prohippo/pyelly.git .
-The current release is v1.2.1.
+The current release is v1.2.2.
 
 To learn how to use PyElly, see the PyEllyManual.pdf file in the same
 directory as this README.txt file. The manual has over a hundred pages of
@@ -21,7 +21,7 @@ information, including an overview of some basic linguistics. Documentation
 of individual Python source files can be generated as needed with the
 Python pydoc utility.
 
-At present, PyElly consists of 62 Python modules comprising about fifteen
+At present, PyElly consists of 63 Python modules comprising about fifteen
 thousand lines of source code. There are also various definition files
 to support basic various language processing capabilities in  sample
 applications, including
@@ -130,6 +130,13 @@ Release Notes:
                       fix tokenization with new Unicode punctuation
                       fix macro table for new Unicode punctuation
                       add missing code for FIND in generative semantics
+ 1.2.2  -  01may2015  extend "test" amd "marking" integration tests
+                      extend handling of punctuation
+                      add phrase limit in check for runaway analysis
+                      fix bug in warning of unused grammar symbols
+                      fix bug in token lookup
+                      improve morphological stemming
+                      break out pickling as separate module
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will require regeneration of any previously saved *.elly.bin files to ensure
