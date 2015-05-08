@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 29apr2015 CPM
+# ellyBase.py : 07may2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -56,8 +56,8 @@ import symbolTable
 
 import os   # needed to get file modification times
 
-sys.stdout = codecs.getwriter('utf8')(sys.stdout)
-sys.stderr = codecs.getwriter('utf8')(sys.stderr)
+sys.stdout = codecs.getwriter('utf8')(sys.stdout) # redefine standard output and standard
+sys.stderr = codecs.getwriter('utf8')(sys.stderr) # error streams for UTF-8 encoding
 
 # binary files
 
@@ -74,7 +74,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.2.2'                      # current version of PyElly software
+release = 'v1.2.3'                      # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 

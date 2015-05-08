@@ -4,7 +4,12 @@ many kinds of NLP applications by taking care of low-level language
 details not central to a given data problem or solution. It is now freely
 available on the web to anyone wanting to process or pre-process text data.
 
-PyElly provides flexible tokenization, syntax-driven parsing, English
+The basic paradigm of PyElly is to rewrite natural language input into
+some other text output, which might be SQL, XML, or some other form. This
+falls short of full understanding, but can be quite helpful as a general
+kind of preprocessing for data mining or for more precise indexing.
+
+PyElly builds in flexible tokenization, syntax-driven parsing, English
 inflectional and morphological stemming, macro substitutions, basic
 and extended entity extraction, ambiguity handling, sentence recognition,
 support for large external dictionaries, and a general procedural
@@ -13,7 +18,7 @@ framework for translating text from UTF-8 to UTF-8.
 The latest version has been completely rewritten in mostly object-oriented
 Python 2.7. It completed multiple stages of beta testing in 2014 and may
 now be downloaded from GitHub at https://github.com/prohippo/pyelly.git .
-The current release is v1.2.2.
+The current release is v1.2.3.
 
 To learn how to use PyElly, see the PyEllyManual.pdf file in the same
 directory as this README.txt file. The manual has over a hundred pages of
@@ -23,7 +28,7 @@ Python pydoc utility.
 
 At present, PyElly consists of 63 Python modules comprising about fifteen
 thousand lines of source code. There are also various definition files
-to support basic various language processing capabilities in  sample
+to support basic various language processing capabilities in example
 applications, including
 
 * indexing - remove stopwords and get stems for content words from raw
@@ -36,7 +41,7 @@ applications, including
              military aircraft database.
 * marking  - rewrite English text with XML markup
 * name     - extract English personal names from text
-* disambig - disambiguation of phrases with WordNet information.
+* disambig - disambiguation of phrases with WordNet concept information.
 
 These illustrate what you can do with PyElly and also serve as a basis for
 comprehensive integration testing. Other applications will be added to the
@@ -132,11 +137,14 @@ Release Notes:
                       add missing code for FIND in generative semantics
  1.2.2  -  01may2015  extend "test" amd "marking" integration tests
                       extend handling of punctuation
-                      add phrase limit in check for runaway analysis
+                      add phrase limit for avoiding runaway analysis
                       fix bug in warning of unused grammar symbols
                       fix bug in token lookup
                       improve morphological stemming
                       break out pickling as separate module
+ 1.2.3  -  08may2015  extend "marking" integration test
+                      fix bug in numerical transformations with period
+                      clean up rule definition diagnostics
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will require regeneration of any previously saved *.elly.bin files to ensure
