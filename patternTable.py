@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# patternTable.py : 03mar2015 CPM
+# patternTable.py : 07may2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -29,7 +29,7 @@
 # -----------------------------------------------------------------------------
 
 """
-finite-state automaton (FSA) for inferring the syntactic type of tokens
+finite-state automaton (FSA) for inferring the syntactic type of single tokens
 """
 
 import sys
@@ -230,7 +230,7 @@ class PatternTable(object):
                 self._err('bad start state',line)
                 continue
             n = len(self.indx)
-            
+
             while stn >= n:                  # make sure state index has enough slots
                 self.indx.append([ ])
                 n += 1
@@ -249,9 +249,7 @@ class PatternTable(object):
                     self._err('missing category for final state',line)
                     continue
             elif lk.catg != None:
-                print >> sys.stderr , '** unexpected category for non-final state'
-                print >> sys.stderr , '*  at', line
-                lk.catg = None
+                self._err('unexpected category for non-final state' , line)
 
             if not stn in lss: lss.append(stn)
             if not stn in sss: sss.append(stn)
@@ -284,7 +282,7 @@ class PatternTable(object):
     def match ( self , segm , tree ):
 
         """
-        compare text segment against FSA patterns 
+        compare text segment against FSA patterns
 
         arguments:
             self  -
@@ -370,7 +368,7 @@ class PatternTable(object):
 #           print 'state=' , state
 #           print 'len(ls)=' , len(ls)
 
-        return mtls 
+        return mtls
 
     def dump ( self ):
 
@@ -412,7 +410,7 @@ if __name__ == '__main__':
     tre = parseTest.Tree()           # dummy parse tree for testing
     ctx = parseTest.Context()        # dummy interpretive context for testing
     print ''
-        
+
     basn = ellyConfiguration.baseSource + '/'
     filn = sys.argv[1] if len(sys.argv) > 1 else 'test' # which FSA definition to use
     inp = ellyDefinitionReader.EllyDefinitionReader(basn + filn + '.p.elly')
