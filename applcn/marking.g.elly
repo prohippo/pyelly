@@ -3,7 +3,7 @@
 
 #
 # subprocedures
-p:lxtd  # adding a left-generated tagged element to a right generated list
+p:lxtd  # adding a tagged element on the left to a list on the right
 _
   split
   right
@@ -12,6 +12,21 @@ _
   store    tmp
   insert < tmp
   (typg)
+  merge
+__
+p:rxtd  # adding a agged element on the right to a list on the left
+_
+  left
+  split
+  back
+  find < <
+  append <
+  insert < typg
+  append >
+  right
+  append </
+  insert < typg
+  append >
   merge
 __
 p:typg  # left generation of element tagged as specified type
@@ -126,7 +141,7 @@ __
 g:ELEM->ADV[~mod] NCLU
  >>+
 _
-  var typg=mod
+  var typg=adv
   (typg)
   right
 __
@@ -193,6 +208,12 @@ g:ELEM->NUM
  >>-
 _
   var typg=num
+  (typg)
+__
+g:ELEM->ADJ
+ >>----
+_
+  var typg=adj
   (typg)
 __
 g:ELEM->ADV
@@ -276,6 +297,11 @@ g:NCLU->NCLU[:poss] NCLU[:-poss]
 __
 g:NOUN->UNKN
 __
+g:NOUN->PRO[:mod]
+_
+  var typg=pro
+  (typg)
+__
 g:NOUN[:*l,poss]->NOUN APOS
 _
   (twob)
@@ -309,6 +335,12 @@ g:NOUN[:*r,cjn]->NOUN[:-hyph,-plur,-cjn,-ing] NOUN[:-cjn]
 _
  (twob)
 __
+g:PRO[:*r]->PREP PRO
+_
+  var typg=prep
+  (typg)
+  right
+__
 
 g:VCLU[^*l]->VERB
 _
@@ -321,6 +353,14 @@ g:VCLU[^*r]->ADV VCLU
 _
   var typg=adv
   (lxtd)
+__
+g:VCLU[^*l]->VCLU ADV[~-mod]
+  r[^deg]>>+0
+  r[^prd]>>++
+  >>----
+_
+  var typg=adv
+  (rxtd)
 __
 g:VCLU[^hav,*r]->HAVE VCLU[^-hav]
 _
@@ -374,7 +414,7 @@ g:VERB->NOUN SUFX[#nTOv]
 _
   (twob)
 __
-g:VERB->ADJ  SUFX[#aTOv]
+g:VERB->ADJ SUFX[#aTOv]
 _
   (twob)
 __
@@ -424,8 +464,11 @@ __
 g:ADJ[:*r]->NOUN[:hyph] ADJ
 __
 g:ADJ[:*r]->ADV ADJ
+ l[^deg]>>++
 _
-  (twob)
+  var typg=adv
+  (typg)
+  right
 __
 g:ADJ[:ed]->VERB[^ed]
  >>-
@@ -435,8 +478,14 @@ g:ADJ[:ing]->VERB[^ing]
 __
 g:ADJ->VERB SUFX[#vTOa]
 __
+g:ADJ->DET ADJ
+ >>----
+_
+ (twob)
+__
 
 g:ADV->ADJ SUFX[#aTOr]
+ >>[^prd]
 _
   (twob)
 __
@@ -449,7 +498,15 @@ g:ADV->ADV ADV
 _
   (twob)
 __
+g:PREP->ADJ TO
+ l[^spat]>>++
+         >>--
+_
+  (twob)
+__
 
+g:NUM-> MONY NUM
+__
 g:NUM->ADV NUM
 _
   (twob)
@@ -487,6 +544,10 @@ g:ADJ->ADJ[:-*l,-*r] XER
 _
   (twob)
 __
+g:ADV->ADV[:-*l,-*r] XER
+_
+  (twob)
+__
 g:ADJ->ADJ[:-*l,-*r] XEST
 _
   (twob)
@@ -498,6 +559,7 @@ _
   (lxtd)
 __
 g:DEM[:*r]->PREP DEM[:ind]
+ >>-
 _
   var typg=prep
   (lxtd)
@@ -578,6 +640,9 @@ d:outside <- PREP
 __
 d:about   <- PREP
 __
+d:like    <- PREP
+ >>+
+__
 
 d:to   <- TO
 __
@@ -625,6 +690,8 @@ __
 
 d:all  <- QUAN
 __
+d:any  <- QUAN
+__
 d:some <- QUAN
 __
 d:many <- QUAN
@@ -670,6 +737,14 @@ d:them <- PRO
 __
 d:her  <- PRO
 __
+d:1    <- PRO[:mod]
+_
+  append one
+__
+d:someone <- PRO
+__
+d:anyone  <- PRO
+__
 
 d:and  <- CONJ
 __
@@ -694,6 +769,8 @@ __
 d:as   <- CONJ
 __
 d:despite <- CONJ
+__
+d:than <- CONJ
 __
 
 d:is   <- BE
@@ -804,10 +881,16 @@ d:-ist  <- SUFX[#nTOn]
 __
 d:-ive  <- SUFX[#vTOa]
 __
+d:-ory  <- SUFX[#vTOa]
+__
+d:-y <- SUFX[#nTOa]
+__
 
 d:[ <- PUNC
 __
 d:] <- PUNC
+__
+d:$ <- MONY
 __
 
 ####

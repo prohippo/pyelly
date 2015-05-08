@@ -35,7 +35,7 @@ rocket science : NOUN
 signal rocket : NOUN
 booster : NOUN
 
-at least : ADV
+at least : ADV[~mod]
 
 Scotts : NOUN
 Scotts Miracle-Gro Company : NOUN
@@ -52,6 +52,8 @@ again : ADV
 agriculture : NOUN
 alarm : NOUN
 alarm : VERB
+ancient : NOUN
+ancient : ADJ
 announce : VERB
 approval : NOUN
 approve : VERB
@@ -77,6 +79,10 @@ clear : ADJ
 clear : ADV
 clear : NOUN
 clear : VERB
+close : NOUN
+close : VERB
+close : ADJ [^spat] 0
+close : ADV
 commerce : NOUN
 company : NOUN
 company : VERB
@@ -103,13 +109,16 @@ department : NOUN
 describe : VERB
 develop : VERB
 disaster : NOUN
-disastrously : ADV
+disastrously : ADV [^prd] 0
 doom : NOUN
 doom : VERB
 draft : NOUN
 draft : NOUN
 drive : NOUN
 drive : VERB[^ptcl]
+dry : NOUN
+dry : VERB
+dry : ADJ
 early : ADJ
 early : ADV
 ecology : NOUN
@@ -129,7 +138,7 @@ escape : VERB
 even : NOUN - -1
 even : VERB
 even : ADJ
-even : ADV[~mod] - +1
+even : ADV[~mod] [^deg] 0
 examine : VERB
 example : NOUN
 exist : VERB
@@ -171,7 +180,7 @@ last : VERB
 last : ADJ
 last : ADV
 less : ADJ - +1
-less : ADV
+less : ADV [^deg] 0
 like : ADJ
 like : NOUN
 like : VERB
@@ -181,6 +190,7 @@ long : ADJ
 look : NOUN
 look : VERB
 loophole : NOUN
+mandatory : ADJ
 market : NOUN
 manufacture : NOUN
 manufacture : VERB
@@ -189,6 +199,9 @@ method : NOUN
 michael : NOUN
 miracle : NOUN
 modify : VERB
+more : NOUN - -1
+more : ADJ
+more : ADV [^deg] 0
 mow : NOUN
 mow : VERB
 need : NOUN
@@ -199,6 +212,8 @@ new : ADV - -1
 new year's : NOUN
 next : ADJ
 next : ADV
+normal : NOUN
+normal : ADJ
 nuclear : ADJ
 office : NOUN
 once : ADV
@@ -223,6 +238,7 @@ pollute : VERB
 popular : ADJ
 press : NOUN
 press : VERB
+previous : ADJ
 primary : NOUN
 primary : ADJ
 process : NOUN
@@ -251,6 +267,7 @@ senior : NOUN
 severe : ADJ
 significant : ADJ
 small-business : ADJ
+so-called : ADJ
 sort : NOUN
 sort : VERB
 specific : ADJ
@@ -266,6 +283,8 @@ tailor : VERB
 technique : NOUN
 test : NOUN
 test : VERB
+thirst : NOUN
+thirst : VERB
 time : NOUN
 time : VERB
 treat : NOUN
@@ -283,7 +302,7 @@ union : NOUN
 use : NOUN
 use : VERB
 very : adj
-very : adv
+very : adv [^deg] 0
 victory : NOUN
 violate : VERB
 warn : VERB
@@ -299,4 +318,5 @@ wild : ADJ
 wild : ADV
 wild : NOUN
 world power : NOUN
+worse : ADJ
 year : NOUN

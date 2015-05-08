@@ -2,19 +2,13 @@
 # marking.p.elly
 
 0 &#$ NUM -1
-0 #,   - 1
-0 ##,  - 1
-0 ###, - 1
-1 ###, - 1
-1 ###$ NUM -1
 0 &#   -    2
 2 .    -    3
 2 $    NUM -1
 3 &#$  NUM -1
-3 $    NUM -1
 
 0 \0   - 4
-0 \#   - 4     # this is the start of a same line comment!
+0 \#   - 4     # must excape or else starts a same line comment!
 0 \##  - 4
 0 \### - 4
 4 0th$ NUM -1
