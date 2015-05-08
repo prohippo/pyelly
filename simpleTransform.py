@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# simpleTransform.py : 06nov2014 CPM
+# simpleTransform.py : 07may2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -42,7 +42,6 @@ import ellyChar
 N = 20       # upper limit on substring for match
 
 ALSO   = [ "-" , "/" , "'" ]  # accept in sublist gotten also
-PERIOD = '.' # skip over this for sublist
 COMMA  = ',' # number divider
 
 # general recognition support for spelled out numbers
@@ -69,7 +68,7 @@ Magn = {
      'hundred':100 , 'thousand':1000 , 'million':1000000 ,
      'billion':1000000000 , 'trillion':1000000000000 ,
      'hundredth':100 , 'thousandth':1000 , 'millionth':1000000 ,
-     'billionth':1000000000 , 'trillionth':1000000000000 
+     'billionth':1000000000 , 'trillionth':1000000000000
 }
 
 class SimpleTransform(object):
@@ -90,6 +89,7 @@ class SimpleTransform(object):
             self
         """
 
+        self.string = None
         self.reset()
 
     def reset ( self ):
@@ -129,9 +129,7 @@ class SimpleTransform(object):
         while i < lm:                     # scan input text up to char limit
             lc = c
             c = ts[i]                     # get next char
-            if c == PERIOD:               # special treatment of PERIOD
-                if lc == PERIOD: break
-            elif c == COMMA:              # special treatment of COMMA
+            if c == COMMA:                # special treatment of COMMA
 #               print 'comma'
                 if ( not ellyChar.isDigit(lc) or
                      i + 1 == lm or
@@ -292,7 +290,7 @@ class SimpleTransform(object):
         if vA > 0:                      # check for type of rewriting
             s = str(vA) + xA            # numerical value as string + any ordinal indicator
         else:
-            s = salt                    # recombined string that is not interpretable as number 
+            s = salt                    # recombined string that is not interpretable as number
 #       print 's=' , s
         for c in s[::-1]:               # insert rewritten substring
             ts.insert(0,c)
@@ -325,7 +323,14 @@ if __name__ == '__main__':
         u'first national' ,
         u'two million two hundred thirty-five thousand eight hundred seventy-one' ,
         u'abe lincoln' ,
-        u'four years'
+        u'four years' ,
+        u'one.' ,
+        u'one!' ,
+        u'four.' ,
+        u'four,' ,
+        u'four yaks' ,
+        u'twenty-one.' ,
+        u'twenty-one yaks'
     ]
 
     se = SimpleTransform()        # set up transformation object
