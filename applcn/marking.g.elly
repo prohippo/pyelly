@@ -49,6 +49,8 @@ __
 #
 # syntax rules
 g:SENT->SS
+#?>>?
+  >>+0
 _
   append <sent>
   linefeed
@@ -128,6 +130,7 @@ g:SEGM[|*unique]->ELEM
  >>*l
 __
 g:SEGM[|*unique]->SEGM ELEM
+#?>>?
  l[!pro] r[!n]>>--
  l[!n] r[!n]>>*r--
  l[!v] r[!v]>>*r--
@@ -259,6 +262,23 @@ _
   var typg=prep
   (lxtd)
 __
+g:NCLU[:*l]->NCLU POSTP
+_
+  var typg=postp
+  (rxtd)
+__
+g:NCLU[:*l]->NCLU ADJ
+ r[$prd]>>+
+        >>----
+_
+  var typg=adj
+  (rxtd)
+__
+g:NOUN->NOUN NUM
+ >>++
+_
+  (twob)
+__
 g:NCLU[:prep]->PREP YEAR
 _
   append <time>
@@ -295,6 +315,17 @@ __
 g:NCLU->NCLU[:poss] NCLU[:-poss]
   >>+
 __
+g:NCLU->DET NUM
+ >>--
+_
+  append <nclu>
+  var typg=det
+  (typg)
+  append <num>
+  right
+  append </num></nclu>
+__
+
 g:NOUN->UNKN
 __
 g:NOUN->PRO[:mod]
@@ -325,17 +356,19 @@ __
 g:NOUN[:hyph]->NOUN[:-hyph] HYPH
 __
 g:NOUN[:*r]->NOUN[:hyph] NOUN
- >>++
+#?>>?
+  >>++
+__
+g:NOUN[:*r,cjn]->NOUN[:-hyph,-plur,-cjn,-ing] NOUN[:-cjn]
+#?>>?
+  >>+
+_
+ (twob)
 __
 g:ADJ[:*r]->NOUN[:hyph] ADJ
  >>++
 __
-g:NOUN[:*r,cjn]->NOUN[:-hyph,-plur,-cjn,-ing] NOUN[:-cjn]
- >>+
-_
- (twob)
-__
-g:PRO[:*r]->PREP PRO
+g:PRO[:*r]->PREP PRO[:-ind]
 _
   var typg=prep
   (typg)
@@ -355,8 +388,8 @@ _
   (lxtd)
 __
 g:VCLU[^*l]->VCLU ADV[~-mod]
-  r[^deg]>>+0
-  r[^prd]>>++
+  r[$deg]>>+0
+  r[$prd]>>++
   >>----
 _
   var typg=adv
@@ -464,7 +497,7 @@ __
 g:ADJ[:*r]->NOUN[:hyph] ADJ
 __
 g:ADJ[:*r]->ADV ADJ
- l[^deg]>>++
+ l[$deg]>>++
 _
   var typg=adv
   (typg)
@@ -485,7 +518,7 @@ _
 __
 
 g:ADV->ADJ SUFX[#aTOr]
- >>[^prd]
+ >>[$prd]
 _
   (twob)
 __
@@ -499,7 +532,7 @@ _
   (twob)
 __
 g:PREP->ADJ TO
- l[^spat]>>++
+ l[$spat]>>++
          >>--
 _
   (twob)
@@ -507,9 +540,12 @@ __
 
 g:NUM-> MONY NUM
 __
-g:NUM->ADV NUM
+g:NUM->ADJ[:mod] NUM
+ >>+++
 _
-  (twob)
+  var typg=adj
+  (typg)
+  right
 __
 
 #
@@ -584,6 +620,11 @@ _
   right
 __
 
+g:QUAN->ADV[~prox] QUAN
+_
+  (twob)
+__
+
 #
 # predicate negation
 g:AUXL[^neg,*l]->AUXL[^-neg] NEGN
@@ -622,6 +663,8 @@ d:on   <- PREP
 __
 d:by   <- PREP
 __
+d:at   <- PREP
+__
 d:into <- PREP
 __
 d:to   <- PREP
@@ -638,13 +681,24 @@ d:through <- PREP
 __
 d:outside <- PREP
 __
+d:against <- PREP
+__
+d:across  <- PREP
+__
 d:about   <- PREP
+__
+d:above   <- PREP
 __
 d:like    <- PREP
  >>+
 __
+d:except  <- PREP
+__
 
 d:to   <- TO
+__
+
+d:ago  <- POSTP
 __
 
 d:a   <- DET[:sgl]
@@ -707,19 +761,19 @@ __
 d:both <- QUAN
 __
 
-d:i    <- PRO
+d:i    <- PRO[:ind]
 __
 d:you  <- PRO
 __
-d:he   <- PRO
+d:he   <- PRO[:ind]
 __
-d:she  <- PRO
+d:she  <- PRO[:ind]
 __
 d:it   <- PRO
 __
-d:we   <- PRO
+d:we   <- PRO[:ind]
 __
-d:they <- PRO
+d:they <- PRO[:ind]
 __
 d:mine <- PRO
 __
@@ -770,7 +824,9 @@ d:as   <- CONJ
 __
 d:despite <- CONJ
 __
-d:than <- CONJ
+d:than    <- CONJ
+__
+d:except  <- CONJ
 __
 
 d:is   <- BE

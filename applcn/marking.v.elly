@@ -36,6 +36,8 @@ signal rocket : NOUN
 booster : NOUN
 
 at least : ADV[~mod]
+out of : PREP
+pretty much : ADV[~mod,prox] [$deg] 0
 
 Scotts : NOUN
 Scotts Miracle-Gro Company : NOUN
@@ -45,6 +47,7 @@ Reaganite : NOUN
 
 for example : PEXP
 such as : DEM
+round-up : NOUN
 
 act : NOUN
 act : VERB
@@ -52,6 +55,7 @@ again : ADV
 agriculture : NOUN
 alarm : NOUN
 alarm : VERB
+almost : ADV[~mod,prox]
 ancient : NOUN
 ancient : ADJ
 announce : VERB
@@ -64,6 +68,7 @@ attempt : NOUN
 attempt : VERB
 authority : NOUN
 authorize : VERB
+available : ADJ [$prd] 0
 before : ADV
 biotech : NOUN
 business: NOUN
@@ -81,7 +86,7 @@ clear : NOUN
 clear : VERB
 close : NOUN
 close : VERB
-close : ADJ [^spat] 0
+close : ADJ [$spat] 0
 close : ADV
 commerce : NOUN
 company : NOUN
@@ -109,7 +114,7 @@ department : NOUN
 describe : VERB
 develop : VERB
 disaster : NOUN
-disastrously : ADV [^prd] 0
+disastrously : ADV [$prd] 0
 doom : NOUN
 doom : VERB
 draft : NOUN
@@ -121,6 +126,7 @@ dry : VERB
 dry : ADJ
 early : ADJ
 early : ADV
+easily : ADV
 ecology : NOUN
 edit : VERB
 effect : NOUN
@@ -138,9 +144,10 @@ escape : VERB
 even : NOUN - -1
 even : VERB
 even : ADJ
-even : ADV[~mod] [^deg] 0
+even : ADV[~mod] [$deg] 0
 examine : VERB
 example : NOUN
+except : VERB - -2
 exist : VERB
 face : NOUN
 face : VERB
@@ -177,10 +184,10 @@ kill : NOUN
 kill : VERB
 last : NOUN - -1
 last : VERB
-last : ADJ
+last : ADJ[:mod]
 last : ADV
 less : ADJ - +1
-less : ADV [^deg] 0
+less : ADV [$deg] 0
 like : ADJ
 like : NOUN
 like : VERB
@@ -195,23 +202,26 @@ market : NOUN
 manufacture : NOUN
 manufacture : VERB
 market : VERB
+media : NOUN
 method : NOUN
 michael : NOUN
 miracle : NOUN
 modify : VERB
 more : NOUN - -1
 more : ADJ
-more : ADV [^deg] 0
+more : ADV [$deg] 0
 mow : NOUN
 mow : VERB
+nearly : ADV[~mod,prox]
 need : NOUN
 need : VERB
 negotiate : VERB
 new : ADJ - +1
 new : ADV - -1
 new year's : NOUN
-next : ADJ
+next : ADJ[:mod]
 next : ADV
+nice : ADJ
 normal : NOUN
 normal : ADJ
 nuclear : ADJ
@@ -253,6 +263,8 @@ regardless : ADV
 regulate : VERB
 republican : NOUN
 republican : ADJ
+resident : NOUN
+resident : ADJ
 resist : VERB
 resistant : ADJ
 revolution : NOUN
@@ -302,7 +314,7 @@ union : NOUN
 use : NOUN
 use : VERB
 very : adj
-very : adv [^deg] 0
+very : adv [$deg] 0
 victory : NOUN
 violate : VERB
 warn : VERB
