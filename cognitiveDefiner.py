@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveDefiner.py : 04feb2015 CPM
+# cognitiveDefiner.py : 13may2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -43,7 +43,7 @@ import sys
 
 def convertDefinition ( stb , inp ):
 
-    """ 
+    """
     defines cognitive semantic procedure for a syntax rule
 
     arguments:
@@ -66,12 +66,16 @@ def convertDefinition ( stb , inp ):
         if len(elem) < 2 or len(elem[1]) == 0:
             print >> sys.stderr , '** incomplete cognitive semantic clause'
             return None
-        left  = _leftside (stb,elem[0].strip()) # conditions for clause
-        right = _rightside(stb,elem[1].strip()) # actions
-        if left == None or right == None:
-            return None
+        if elem[0] == '?' and elem[1] == '?':
+            left  = [ [ semanticCommand.Ctrc , [ ] ] ]
+            right = [ ]
+        else:
+            left  = _leftside (stb,elem[0].strip()) # conditions for clause
+            right = _rightside(stb,elem[1].strip()) # actions
+            if left == None or right == None:
+                return None
         store.append([ left , right ])          # save clause
-        
+
     return store
 
 def _err ( s ):
@@ -112,7 +116,6 @@ def _leftside ( stb , txt ):
             return None
 
         k = 0
-
         if txt[0] == '[':                   # semantic feature check?
             k = txt.find(']')               # if so, look for closing bracket
             if k < 0:
@@ -274,7 +277,7 @@ def showCode ( cod ):
                 s = ",".join(arg)
             prs.append(semanticCommand.Copn[opn] + ' ' + s)
         print '|' ,
-        if len(prs) > 0: print ' and '.join(prs) , 
+        if len(prs) > 0: print ' and '.join(prs) ,
         print '>>' ,
         actn = c[1]
         acs = [ ]  # to collect actions of cognitive clause
