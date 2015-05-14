@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBottomUp.py : 04jan2015 CPM
+# parseTreeBottomUp.py : 13may2015 CPM
 # -----------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -165,7 +165,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
     def enqueue ( self , phr ):
 
         """
-        check if phrase is ambiguity and enqueue it if not 
+        check if phrase is ambiguity and enqueue it if not
 
         arguments:
             self  -
@@ -181,9 +181,9 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
 
 #           print phr.typx , ':' , pho.typx
 #           print phr.synf.hexadecimal() , ':' , pho.synf.hexadecimal()
-            if (         phr.typx == pho.typx
-                 and     phr.synf.equal(pho.synf)
-                 and not phr.synf.test(featureSpecification.LAST) # *UNIQUE check
+            if (        phr.typx == pho.typx
+                and     phr.synf.equal(pho.synf)
+                and not phr.synf.test(featureSpecification.LAST) # *UNIQUE check
                ):                          # ambiguity?
 #*              print 'ambiguity:' , phr.typx , phr.synf.hexadecimal() , 'for' , phr.seqn , pho.seqn
                 if pho.alnk == None:       # if so, is ambiguity new?
@@ -194,6 +194,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
                 phr.alnk = phs             #
                 if phr.bias > pho.bias:    # make sure most plausible is at front of list
                     phr.swap(pho)
+                    self.reorder()         # update tree for latest plausibility scores
                 return                     # and process no further
 
             pho = pho.llnk                 # if no match, go to next group of phrases
@@ -250,7 +251,21 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
         self.queue = q
 #       print 'requeue'
         return n
-        
+
+    def reorder ( self ):
+
+        """
+        update ambiguity lists after swapping of phrase nodes]
+
+        arguments:
+            self
+        """
+
+        while self.swapped:
+            self.swapped = False
+            for rep in self.ambig:
+                rep.order()
+
     #################################
     # make leaf nodes in parse tree #
     #################################
@@ -268,7 +283,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
         returns:
             True if phrases created, False otherwise
         """
-    
+
 #       print 'internal dictionary: word=',word
         if word == None:
             return False
@@ -418,7 +433,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
         nt = len(ctx.tokns)
 #*      print 'evaluate:' , nt , 'tokens' , 'wordno=' , self.wordno
         gs = self.goal[nt]
-#*      print 'at' , nt , 'with' , len(gs) , 'goals' 
+#*      print 'at' , nt , 'with' , len(gs) , 'goals'
         topg = None
         tops = -11111
         for g in gs:
@@ -494,7 +509,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
 #       print 'goal bits=' , gbs.hexadecimal() , 'at' , self.wordno
 
         if (typ == self.gtb.UNKN or
-          self.gtb.mat.derivable(typ,gbs)):                 # acceptable syntax type?
+            self.gtb.mat.derivable(typ,gbs)):               # acceptable syntax type?
             ph = self.makePhrase(self.wordno,r)             # make phrase with rule
 #           print 'adding leaf' , ph
             if ph != None:
@@ -507,7 +522,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
                 return True
 #       print 'fail'
         return False
-    
+
     def _makeLiteralRule ( self , typ , fet , gens=None ):
 
         """
@@ -606,31 +621,31 @@ if __name__ == '__main__':
     print '----'
     sgm = 'abc'          # test example in dictionary
     sta = tree.createPhrasesFromDictionary(sgm,False)
-    print sgm , ':' , sta , ', phlim=' , tree.phlim , 'lastph=' , tree.lastph 
+    print sgm , ':' , sta , ', phlim=' , tree.phlim , 'lastph=' , tree.lastph
 
     print '----'
     sgm = 'abcd'         # test example not in dictionary
     sta = tree.createPhrasesFromDictionary(sgm,False)
-    print sgm , ':' , sta,', phlim=' , tree.phlim , 'lastph=' , tree.lastph 
+    print sgm , ':' , sta,', phlim=' , tree.phlim , 'lastph=' , tree.lastph
 
     print '----'
     sgm = 'xyz'          # test example in dictionary
     sta = tree.createPhrasesFromDictionary(sgm,False)
-    print sgm , ':' , sta , ', phlim=' , tree.phlim , 'lastph=' , tree.lastph 
+    print sgm , ':' , sta , ', phlim=' , tree.phlim , 'lastph=' , tree.lastph
 
     print '----'
     sgm = 'pqr'          # test example not in dictionary
     sta = tree.createUnknownPhrase(ellyToken.EllyToken(sgm))
-    print sgm , ':' , sta , ', phlim=' , tree.phlim , 'lastph=' , tree.lastph 
+    print sgm , ':' , sta , ', phlim=' , tree.phlim , 'lastph=' , tree.lastph
 
     print '----'
     sgm = '.'            # test example not in dictionary
     tree.gbits[0].clear()
     sta = tree.addLiteralPhrase(tree.gtb.PUNC,fbbs)
-    print sgm , ':' , sta , ', phlim=' , tree.phlim , 'lastph=' , tree.lastph 
+    print sgm , ':' , sta , ', phlim=' , tree.phlim , 'lastph=' , tree.lastph
     tree.gbits[0].set(tree.gtb.PUNC)
     sta = tree.addLiteralPhrase(tree.gtb.PUNC,fbbs)
-    print sgm , ':' , sta , ', phlim=' , tree.phlim , 'lastph=' , tree.lastph 
+    print sgm , ':' , sta , ', phlim=' , tree.phlim , 'lastph=' , tree.lastph
 
     print ''
     print 'ambiguities:'

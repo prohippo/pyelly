@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBase.py : 30apr2015 CPM
+# parseTreeBase.py : 13may2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -51,6 +51,9 @@ class ParseTreeBase(object):
         phlim   - phrase allocation limit
         glim    - goal   allocation limit
         lastph  - last phrase allocated
+        lowswp  - lowest swapped sequence number
+        hghswp  - highest
+        swapped - flag for node swap
     """
 
     class Phrase(object):
@@ -75,6 +78,7 @@ class ParseTreeBase(object):
             lens  - token length
             seqn  - sequence ID for debugging
             dump  - flag for tree dumping
+            tree  - overall parse tree
         """
 
         def __init__ ( self ):
@@ -87,6 +91,7 @@ class ParseTreeBase(object):
             self.synf = ellyBits.EllyBits(symbolTable.FMAX)
             self.semf = ellyBits.EllyBits(symbolTable.FMAX)
             self.seqn = -1
+            self.tree = None
             self.reset()
 
         def __unicode__ ( self ):
@@ -142,7 +147,7 @@ class ParseTreeBase(object):
             """
             bring most plausible phrase to front of ambiguity list
             arguments:
-                self
+                self  -
             """
 
             if self.alnk == None:
@@ -154,7 +159,7 @@ class ParseTreeBase(object):
             while phn != None:
                 if bias < phn.bias: # check bias against best far
                     bias = phn.bias # update best bias
-                    best  = phn     # and associated phrase
+                    best = phn      # and associated phrase
                 phn = phn.alnk
 
             if best == None:
@@ -168,28 +173,59 @@ class ParseTreeBase(object):
         def swap ( self , othr ):
 
             """
-            exchange basic contents of two phrases
+            exchange basic contents of two phrase nodes
 
             arguments:
                 self  -
                 othr  - phrase to swap with
             """
 
-#           print 'swap phrases'
-#           print 'self=' , self
-#           print 'othr=' , othr
+#           print '  swap phrase node contents'
+#           print '  self=' , self
+#           print '  othr=' , othr
+            oldn = self.seqn
+            newn = othr.seqn
+            delb = self.bias - othr.bias
+#           print '  delb=' , delb
             self.rule, othr.rule = othr.rule, self.rule
             self.lftd, othr.lftd = othr.lftd, self.lftd
             self.rhtd, othr.rhtd = othr.rhtd, self.rhtd
             self.bias, othr.bias = othr.bias, self.bias
             self.cncp, othr.cncp = othr.cncp, self.cncp
             self.ctxc, othr.ctxc = othr.ctxc, self.ctxc
-            self.seqn, othr.seqn = othr.seqn, self.seqn
-            if self.lftd == self:
-                self.lftd = None
-#           print 'result'
-#           print 'self=' , self
-#           print 'othr=' , othr
+            self.seqn = newn
+            othr.seqn = oldn
+            if self.lftd == self: self.lftd = None
+
+#           print '  result'
+#           print '  self=' , self
+#           print '  othr=' , othr
+            if self.tree.lowswp > oldn: self.tree.lowswp = oldn
+            if self.tree.lowswp > newn: self.tree.lowswp = newn
+            if self.tree.hghswp < oldn: self.tree.hghswp = oldn
+            if self.tree.hghswp < newn: self.tree.hghswp = newn
+
+#           print '  delb=' , delb , 'oldn=' , oldn , 'newn=' , newn
+            if delb == 0: return           # should never return
+            iteration = range(self.tree.lowswp,self.tree.hghswp + 1)
+#           print 'iteration=' , iteration
+
+            cur = [ ]                      # nodes updated this round
+            nxt = [ othr ]                 # starting nodes for next round
+            while len(nxt) > 0:            # continue until all nodes updated
+                cur = nxt
+                nxt = [ ]
+#               print 'iterating'
+                for n in iteration:        # only these nodes might be updated
+                    phrn = self.tree.phrases[n]
+#                   if phrn.seqn <= oldn: continue
+#                   print ' at' , phrn
+                    if phrn.lftd in cur or phrn.rhtd in cur:
+                        phrn.bias += delb
+#                       print ' >> ' , phrn.bias
+                        nxt.append(phrn)
+
+            self.tree.swapped = True       # indicate followup is needed
 
     class Goal(object):
 
@@ -256,7 +292,7 @@ class ParseTreeBase(object):
         if npre > NOMINAL: npre = NOMINAL
         for i in range(npre):           # preallocate phrases and goals
             phrase = self.Phrase()      # get phrase
-            phrase.seqn = i             # assign ID
+            phrase.tree = self          # associate with tree
             self.phrases.append(phrase)
             goal = self.Goal()          # get goal
             goal.seq = i                # assign ID
@@ -277,10 +313,9 @@ class ParseTreeBase(object):
         self.phlim = 0
         self.glim  = 0
         self.lastph = None
-        n = 0
-        for ph in self.phrases:
-            ph.seqn = n
-            n += 1
+        self.lowswp = 1000000
+        self.hghswp = 0
+        self.swapped = False
 
     def _limitCheck ( self ):
 
@@ -312,16 +347,17 @@ class ParseTreeBase(object):
         if self.phlim >= len(self.phrases):    # do we have to allocate more phrases?
             self._limitCheck()                 # stop runaway analysis?
             phrase = self.Phrase()             # if so, allocate more
-            phrase.seqn = self.phlim
+            phrase.tree = self
             self.phrases.append(phrase)
         self.lastph = self.phrases[self.phlim] # get next available phrase
         self.lastph.reset()                    #
+        self.lastph.seqn = self.phlim          # set phrase index
         self.lastph.posn = po                  # parse position
         self.lastph.rule = ru                  # grammar rule defining phrase
         self.lastph.typx = ru.styp             #
         self.lastph.synf.combine(ru.sfet)
         self.phlim += 1
-#*      print 'make' , self.lastph
+#       print 'make' , self.lastph
         return self.lastph
 
     def makeGoal ( self , ru , ph ):
@@ -340,12 +376,12 @@ class ParseTreeBase(object):
 
         if self.glim >= len(self.goals):
             goal = self.Goal()
-            goal.seq = self.glim
             self.goals.append(goal)
         g = self.goals[self.glim]
         g.cat = ru.rtyp
         g.lph = ph
         g.rul = ru
+        g.seq = self.glim
         self.glim += 1
         return g
 
@@ -404,3 +440,16 @@ if __name__ == '__main__':
     print '** RESET'
     tree.reset()
     print 'glim =' , tree.glim
+
+    print '** SWAP'
+    phr3 = tree.makePhrase(1,R(103,11))
+    phr4 = tree.makePhrase(1,R(104,11))
+    print 'phr3=' , phr3
+    print 'phr4=' , phr4
+    phr3.bias = 3
+    phr4.bias = 4
+    print 'phr3=' , phr3
+    print 'phr4=' , phr4
+    phr3.swap(phr4)
+    print 'phr3=' , phr3
+    print 'phr4=' , phr4
