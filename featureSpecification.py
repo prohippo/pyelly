@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# featureSpecification.py : 15feb2015 CPM
+# featureSpecification.py : 13may2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -91,7 +91,7 @@ class FeatureSpecification(object):
 #       print "features=",segm,"semantic=",semantic
         if segm == None or len(segm) < 3 or segm[0] != '[' or segm[-1] != ']':
             raise ellyException.FormatFailure
-        elif segm[1] == ' ' or ellyChar.isLetterOrDigit(segm[1]):
+        elif segm[1] == ' ' or ellyChar.isLetterOrDigit(segm[1]) or segm[1] == '*':
             raise ellyException.FormatFailure
         else:
             self.id = segm[1]
@@ -132,7 +132,7 @@ class FeatureSpecification(object):
         combine feature bit string with its complement for testing
 
         arguments:
-            self 
+            self
 
         returns:
             joined bit string to be tested
