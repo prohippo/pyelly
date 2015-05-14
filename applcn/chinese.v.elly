@@ -117,6 +117,8 @@ understand : verb =明白
 eat :  verb =吃
 build: verb =蓋
 have:  verbo - -1 =有
+run:  verb =跑歩
+walk: verb =走路
 
 want: mode =想要
 need: mode =需要

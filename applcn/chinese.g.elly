@@ -66,11 +66,13 @@ _
 __
 d:we <- pron[:1p,pl]
 _
-  append 我們
+  append 我
+  pick lang (#tra=們#=们)
 __
 d:they <- pron[:3p,pl]
 _
-  append 他們
+  append 他
+  pick lang (#tra=們#=们)
 __
 
 #
