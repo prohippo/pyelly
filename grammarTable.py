@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# grammarTable.py : 11feb2015 CPM
+# grammarTable.py : 20may2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -94,7 +94,7 @@ class GrammarTable(object):
         dctn   - builtin dictionary
         pndx   - standalone named procedures
         extens - 1-branch rules
-        splits - 2-branch rules 
+        splits - 2-branch rules
         mat    - derivability matrix
 
         START  - start symbol for grammar (reserved)
@@ -206,7 +206,7 @@ class GrammarTable(object):
 #           print 'after line' , lno , '[' + line + ']'
 
             if not isNewRule(line):
-#               print 'SKIP'
+                print '*  skipped: [' , line , ']'
                 skp += 1
                 continue
 
@@ -217,7 +217,7 @@ class GrammarTable(object):
             genr = [ ]  # for generative semantics
             p = cogn    # start with cognitive
 
-            if c != 'i':                 # not global variable initialization? 
+            if c != 'i':                 # not global variable initialization?
                 dl = line
                 dlno = lno
                 while True:
@@ -418,7 +418,7 @@ class GrammarTable(object):
         ru.rtfet = fu.makeTest()       # combine positive and negative features for testing
         ru.rtyp  = nu
         if t == '...':
-            if u == '...': 
+            if u == '...':
                 print >> sys.stderr , '** bad type 0 rule'
                 return None            # cannot have a rule of the form X->... ...
             else:
