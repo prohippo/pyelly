@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBottomUp.py : 13may2015 CPM
+# parseTreeBottomUp.py : 24may2015 CPM
 # -----------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -145,7 +145,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
         """
 
         q = map(lambda x: str(x.seqn) , self.queue)
-        print 'queue:' , '<' + ' '.join(q) + '>'
+#       print 'queue:' , '<' + ' '.join(q) + '>'
 
     def restartQueue ( self ):
 
@@ -172,7 +172,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
             phr   - phrase to insert
         """
 
-#*      print 'enqueue:' , phr , len(self.newph) , 'phrase positions'
+#       print 'enqueue:' , phr , len(self.newph) , 'phrase positions'
 #       self._showQ()
         po = phr.posn
         pho = self.newph[po]
@@ -295,13 +295,13 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
             print >> sys.stderr , 'no rules for' , '[' + ws + ']'
             return False
         lw = len(ws)
-#*      print len(rules) , 'rule(s)'
+#       print len(rules) , 'rule(s)' , 'split=' , split
         for r in rules:               # create new phrase for each rule found
             if self._addTerminal(r,split):
                 self.lastph.lens = lw
         return True
 
-    def addLiteralPhrase ( self , cat , fbs ):
+    def addLiteralPhrase ( self , cat , fbs , spl=False ):
 
         """
         make a phrase for a literal obtained by various means and enqueue
@@ -310,6 +310,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
             self  -
             cat   - syntactic category
             fbs   - feature bits
+            spl   - splitting flag
 
         returns:
             True on success, False otherwise
@@ -317,9 +318,9 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
 
 #       print 'literal phrase'
         r = self._makeLiteralRule(cat,fbs)
-        return self._addTerminal(r,False)
+        return self._addTerminal(r,spl)
 
-    def addLiteralPhraseWithSemantics ( self , cat , fbs , sbs , bias , gen=None ):
+    def addLiteralPhraseWithSemantics ( self , cat , fbs , sbs , bias , gen=None , spl=False ):
 
         """
         make a phrase for a literal obtained by various means and enqueue
@@ -331,14 +332,15 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
             sbs   - semantic  feature bits
             bias  - cognitive bias
             gen   - generative procedure
+            spl   - splitting flag
 
         returns:
             True on success, False otherwise
         """
 
-#       print 'literal phrase with semantics, cat=' , cat , 'gen=' , gen
+#       print 'literal phrase with semantics: cat=' , cat , 'gen=' , gen , 'spl=' , spl
         r = self._makeLiteralRule(cat,fbs,gen)
-        if self._addTerminal(r,False):
+        if self._addTerminal(r,spl):
             self.lastph.semf = sbs
             self.lastph.bias = bias
             return True
@@ -488,7 +490,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
     #################################################################
     ################ private methods only after this ################
 
-    def _addTerminal ( self , r , split ):
+    def _addTerminal ( self , r , dvdd ):
 
         """
         create a leaf phrase node from a definition for a term
@@ -497,13 +499,13 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
         arguments:
             self  -
             r     -  basic rule
-            split -  whether segment has been analyzed
+            dvdd  -  whether segment has been analyzed
 
         returns:
             True if successful, False otherwise
         """
 
-#       print '_addTerminal:' , unicode(r)
+#       print '_addTerminal: r=' , unicode(r) , 'dvdd=' , dvdd
         typ = r.styp
         gbs = self.gbits[self.wordno]
 #       print 'goal bits=' , gbs.hexadecimal() , 'at' , self.wordno
@@ -512,9 +514,11 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
             self.gtb.mat.derivable(typ,gbs)):               # acceptable syntax type?
             ph = self.makePhrase(self.wordno,r)             # make phrase with rule
 #           print 'adding leaf' , ph
+#           print 'r=' , r , 'dvdd =' , dvdd
             if ph != None:
                 self.initializeBias(ph)                     # for ranking of ambiguities
-                if split and len(self.gtb.splits[typ]) > 0: # segment analyzed?
+                if dvdd and len(self.gtb.splits[typ]) > 0:  # segment analyzed?
+#                   print 'limit ramification'
                     ph.usen = 1
 #               print 'ph.lens=' , ph.lens
                 self.enqueue(ph)                            # save phrase to ramify

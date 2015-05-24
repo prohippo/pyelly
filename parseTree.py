@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTree.py : 31jan2015 CPM
+# parseTree.py : 22may2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -111,7 +111,7 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
         if phr.rule.cogs == None:
             print >> sys.stderr , 'bad phr=' , phr , 'rule=' , phr.rule.seqn
         phr.bias = phr.rule.cogs.score(self.ctx,phr)
-#       print >> sys.stderr , 'initialize bias' , phr 
+#       print >> sys.stderr , 'initialize bias' , phr
 
     def digest ( self ):
 
@@ -127,11 +127,12 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
             if ph == None: break    # until empty
             if ph.rule == None:
                 print >> sys.stderr , 'no rule for phrase' , ph.seqn
-#*          print 'digest' , ph , 'rule=' , ph.rule.seqn , 'wordno=' , self.wordno
+#           print 'digest' , ph , 'rule=' , ph.rule.seqn , 'wordno=' , self.wordno
             self.getConsequence(ph) # ramify, adding to parse tree and possibly to queue
+#           print 'phlim=' , self.phlim , 'glim=' , self.glim
 
         self.wordno += 1            # move to next parse position
-#*      print 'now at' , self.wordno
+#       print 'now at' , self.wordno
 
     def getConsequence ( self , phr ):
 
@@ -149,7 +150,7 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
         fbs = phr.synf.compound()
 #       print 'fbs=' , fbs , '[' + str(phr.synf.data) + ']'
 
-#*      print 'consequences: phrase=' , phr.seqn , 'usen=' , phr.usen
+#       print 'consequences: phrase=' , phr.seqn , 'usen=' , phr.usen
         if phr.usen <= 0:         # do goal satisfaction?
             self._phase1(phr,fbs)
             if phr.usen != 0:     # do extensions and set goals for current phrase?
@@ -158,7 +159,7 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
         self._phase3(phr,fbs)     # set goals
 
     ################ private methods only after this ################
-    
+
     def _phase1 ( self , phr , fbs ):
 
         """
@@ -170,12 +171,12 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
             phr   - current phrase
             fbs   - its compounded feature bits
         """
-    
+
         po = phr.posn
         gls = self.goal[po]
-#*      print '> PHASE 1 at' , po , '=' , len(gls) , 'goals'
+#       print '> PHASE 1 at' , po , '=' , len(gls) , 'goals'
         for g in gls:
-#*          print 'goal of' , g.cat
+#           print 'goal of' , g.cat
             if phr.typx == g.cat:
                 r = g.rul
                 if ellyBits.check(fbs,r.rtfet):
@@ -186,16 +187,15 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
                     phn.lftd = phx                     # goal phrase is left part of new one
                     phn.rhtd = phr                     # current phrase is right part
                     self._score(phn)                   # compute bias score
-                    if phn.synf.test(0):               # inherit features from ramified phrase?
+                    rcnd = phn.synf.test(0)            # check syntactic features
+                    lcnd = phn.synf.test(1)            #    prior to any inheritance!
+                    if rcnd:                           # inherit features from ramified phrase?
                         phn.synf.combine(phr.synf)
-                    if phn.synf.test(1):               # inherit features from previous phrase?
+                    if lcnd:                           # inherit features from previous phrase?
                         phn.synf.combine(phx.synf)
 #                   print 'phr=' , phr , 'phn=' , phn
-#                   if phr.typx == phn.typx and phr.synf.match(phn.synf):
-#                       phn.usen = 1                   # special right-recursion rule applies
-                                                       # set goals only in digesting new phrase
                     self.enqueue(phn)                  # save new phrase for ramification
-    
+
     def _phase2 ( self , phr , fbs ):
 
         """
@@ -216,8 +216,8 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
             nt = r.styp
 #           print 'type=' , nt , 'dm=' , self.gtb.mat.dm[nt].hexadecimal()
             if self.gtb.mat.derivable(nt,gb):          # rule applicable at current position?
-#               print 'fbs=' , fbs
-#               print 'fet=' , r.utfet
+#               print 'phr fet=' , fbs
+#               print 'rul fet=' , r.utfet
                 if ellyBits.check(fbs,r.utfet):        # phrase has required features for rule?
                     phn = self.makePhrase(po,r)        # make new phrase if checks succeed
                     if phn == None:
@@ -247,7 +247,7 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
         if po < 0 : po = 0                       # position check needed for ... phrase type
         gb = self.gbits[po]
         np = self.wordno + 1
-#*      print '> PHASE 3 at' , po , '=' , len(rls) , 'rules, gb=' , gb.hexadecimal()
+#       print '> PHASE 3 at' , po , '=' , len(rls) , 'rules, gb=' , gb.hexadecimal()
         for r in rls:
             nt = r.styp
 #           print 'type=' , nt , 'dm=' , self.gtb.mat.dm[nt].hexadecimal()
@@ -255,7 +255,7 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
 #               print 'left test=' , r.ltfet
                 if ellyBits.check(fbs,r.ltfet):  # phrase has required features for rule?
                     g = self.makeGoal(r,phr)     # allocate new goal
-#*                  print 'at ' + str(np) + ',' , g
+#                   print 'at ' + str(np) + ',' , g
                     if np == len(self.goal):     # check for end of goal array
                         self.addGoalPositions()  # add new positions when needed
                     self.goal[np].append(g)      # add it to next position
@@ -280,7 +280,7 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
         rv = self.gtb.splits[self.gtb.XXX]
         if len(rv) > 0:      # any ... splitting rules defined?
                              # if so, create a empty phrase at current position for it
-            ph = self.makePhrase(self.wordno,self.gtb.arbr) 
+            ph = self.makePhrase(self.wordno,self.gtb.arbr)
             if ph == None:   # error check
                 return
             ph.synf.set(SF1) # must do this to avoid ambiguity problem with ...
