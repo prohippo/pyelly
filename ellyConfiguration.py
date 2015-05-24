@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyConfiguration.py : 30apr2015 CPM
+# ellyConfiguration.py : 23may2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -61,4 +61,4 @@ extractors = [                # what entity extraction procedures to use
 
 noteIndentation = True        # for reformatting free text
 
-phraseLimit = 10000           # nominal limit for single sentence
+phraseLimit = 50000           # nominal limit for single sentence

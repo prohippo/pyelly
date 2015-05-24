@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBase.py : 13may2015 CPM
+# parseTreeBase.py : 23may2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -327,6 +327,7 @@ class ParseTreeBase(object):
         """
 
         if self.phlim == ellyConfiguration.phraseLimit:
+            print >> sys.stderr , '\n'
             print >> sys.stderr , '** nominal phrase limit of' , ellyConfiguration.phraseLimit , 'reached!'
             print >> sys.stderr , '** either increase ellyConfiguration.phraseLimit or reduce ambiguous rules'
             sys.exit(2)
