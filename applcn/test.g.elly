@@ -61,6 +61,11 @@ g:noun -> noun sufx
 _
   (2bs)
 __
+g:unkn -> unkn sufx
+ >>-
+_
+  (2bs)
+__
 d:nn   <- noun[:aa,bb]
 __
 d:nnx  <- noun[:aa,bb]
@@ -69,9 +74,16 @@ d:ve   <- verb[:cc,dd]
 __
 d:vex  <- verb
 __
+d:vxx  <- verb
+__
 g:verb -> verb sufx
 _
   (2bs)
+__
+g:verb -> unkn sufx[^ed]
+ >>+
+__
+g:verb -> unkn sufx[^ing]
 __
 d:av   <- adverb
 _
@@ -81,26 +93,32 @@ d:aj   <- adjective
 __
 d:b    <- be
 __
+d:be   <- be
+__
 d:d    <- det
 __
 g:sbj  -> sbj adverb
->>-1
+ >>-1
 _
   (2bs)
 __
 g:prd  -> adverb prd
->>+1
+ >>+1
+_
+  (2bs)
+__
+g:prd  -> aux verb
 _
   (2bs)
 __
 g:noun -> unkn
->>-1
+ >>-1
 __
 g:verb -> unkn
->>-2
+ >>-2
 __
 g:adjective -> unkn
->>-2
+ >>-2
 __
 g:np[:*r,num] -> num np[:-num,-det]
 _
@@ -154,6 +172,21 @@ d:been <- be[^ed]
  >>++
 __
 g:be[^*r]->be sufx
+ >>+
+_
+  (2bs)
+__
+g:aux  <- aux neg
+_
+  (2b)
+__
+d:did  <- aux
+__
+d:not  <- neg
+__
+d:-s   <- sufx[^s]
+__
+d:-ed  <- sufx[^ed]
  >>+
 __
 d:-en  <- sufx[^ed]
