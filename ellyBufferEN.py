@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBufferEN.py : 14apr2015 CPM
+# ellyBufferEN.py : 19may2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -63,6 +63,7 @@ class EllyBufferEN(ellyBuffer.EllyBuffer):
             self  -
         """
 
+#       print 'init' , super(EllyBufferEN,self)
         super(EllyBufferEN,self).__init__()
         if ellyConfiguration.inflectionalStemming:  # English inflectional stemmer?
             try:                                    # of so, try to load
@@ -76,8 +77,8 @@ class EllyBufferEN(ellyBuffer.EllyBuffer):
     def getNext ( self ):
 
         """
-        get next token from buffer and automatically apply inflectional stemming
-        overriding EllyBuffer method
+        override EllyBuffer method to get next token from buffer
+        with automatic inflectional stemming
 
         arguments:
             self
@@ -89,11 +90,13 @@ class EllyBufferEN(ellyBuffer.EllyBuffer):
             StemmingError
         """
 
+#       print super(EllyBufferEN,self) , 'getNext'
         w = super(EllyBufferEN,self).getNext() # use getNext() without inflectional stemmer
         if w == None: return None
-#       print 'got:' , unicode(w)
+#       print 'got unstemmed:' , w , w.isSplit()
         if not w.isSplit():                    # check for stemming
             self.divide(w)                     # if not, do inflectional stemming
+#       print 'return token'
         return w
 
     def putSuffixBack ( self , suffix ):
@@ -149,9 +152,13 @@ class EllyBufferEN(ellyBuffer.EllyBuffer):
             return
 
         if ellyChar.isLetter(word.charAt(0)):
+#           print 'apply stemmer'
             self.stemmer.apply(word)  # apply any inflectional stemmer
+#           print 'word= ' , word
             if word.isSplit():
+#               print 'is split'
                 sufs = word.getSuffixes()
+#               print 'pres=' , word.getPrefixes()
 #               print 'sufs=' , sufs
                 while len(sufs) > 0:
                     self.putSuffixBack(sufs.pop())

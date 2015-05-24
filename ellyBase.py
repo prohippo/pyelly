@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 08may2015 CPM
+# ellyBase.py : 23may2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -74,7 +74,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.2.4'                      # current version of PyElly software
+release = 'v1.2.5'                      # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -422,6 +422,7 @@ class EllyBase(object):
             to = ellyToken.EllyToken(u''.join(chs))
 #           print 'long token=' , to
             self.ctx.tokns.append(to)
+            if mr[2] != '' : to.dvdd = True  # must note suffix removal for token!
             return True
 
         wsk = self.sbu.buffer[:k]
@@ -437,10 +438,11 @@ class EllyBase(object):
             to = ellyToken.EllyToken(rws)
             self.ctx.tokns.append(to)
             return True
-#       print 'not found'
+#       print '[' + rws + ']' , 'not found in dictionary'
 
         to = self._extractToken()      # single-word matching with analysis
 
+#       print 'to=' , to
         if to == None: return False if mx == 0 else True
 
 #       print 'to=' , to , 'len(s)=' , len(s) , s
@@ -493,19 +495,21 @@ class EllyBase(object):
             n = vocabularyTable.toIndex(ss)  # get actual indexing
 #           print 'n=' , n
             rl = self.vtb.lookUp(sb,n) # get list of the longest matches
+#           print len(rl) , 'matches'
             if len(rl) > 0:            #
                 r0 = rl[0]             # look at first record
+#               print 'r0=' , r0
                 nspan = r0.nspan       # should be same for all matches
                 vmchs = r0.vem.chs     #
                 suffx = r0.suffx       #
 
-#               print len(rl) , 'matching vocabulary entries'
+#               print len(rl) , 'suffx=' , suffx
                 for r in rl:
                     ve = r.vem         # get vocabulary entry
 #                   print 've=' , ve
 #                   if ve.gen != None: print 've.gen=' , ve.gen
                     if tr.addLiteralPhraseWithSemantics(
-                            ve.cat,ve.syf,ve.smf,ve.bia,ve.gen):
+                            ve.cat,ve.syf,ve.smf,ve.bia,ve.gen,len(suffx) > 0):
                         tr.lastph.lens = nspan  # set char length of leaf phrase node
                                                 # just added for later selection
                         tr.lastph.cncp = ve.con
@@ -532,7 +536,7 @@ class EllyBase(object):
 
         return [ nspan , vmchs , suffx ]
 
-    def _tableLookUp ( self , ws , tree ):
+    def _tableLookUp ( self , ws , tree , spl=False ):
 
         """
         simple external dictionary lookup
@@ -554,7 +558,7 @@ class EllyBase(object):
 #       print len(vs) , 'candidates'
         for v in vs:                        # try to make phrases from vocabulary elements
             if tree.addLiteralPhraseWithSemantics(
-                v.cat,v.syf,v.smf,v.bia,v.gen
+                v.cat,v.syf,v.smf,v.bia,v.gen,spl
             ):
 #               print 'vtb sbuf=' , self.sbu.buffer
                 count += 1
@@ -573,35 +577,39 @@ class EllyBase(object):
             token on success, otherwise None
         """
 
-#       print 'extract: found=' , found , 'wso=' , wso
-
         d = self.rul                        # grammar rule definitions
 
         tree = self.ptr                     # parse tree
         buff = self.sbu                     # input source
 
+#       print 'start extraction'
         try:
             w = buff.getNext()              # extract next token
+#           print 'got token=' , w
             ws = u''.join(w.root)
-#           print 'extract' , ws
         except ellyException.StemmingError as e:
             print >> sys.stderr , 'FATAL error' , e
             sys.exit(1)
+#       print 'extracted' , '['+ ws + ']'
 
-        found = self._tableLookUp(ws,tree) > 0
+        found = self._tableLookUp(ws,tree,w.isSplit()) > 0
+#       print 'found in external table=' , found
 
         if ws in self.rul.gtb.dctn:         # look up internally regardless
 #           print '"' + ws + '" in dictionary'
             if tree.createPhrasesFromDictionary(ws,w.isSplit()):
                 found = True
 
+#       print 'found in internal dictionary=' , found
         if found:                           # if any success, we are done
             return w
 
 #       print 'logic: ' , d.man.pref , d.man.suff
+        dvdd = False
         if d.man.analyze(w):                # any analysis possible?
             root = u''.join(w.root)         # if so, get parts of analysis
             tan = w.pres + [ root ] + w.sufs
+            dvdd = len(w.pres) > 0 or len(w.sufs) > 0
 #           print 'token analysis=' , tan
             while len(tan) > 0:             # and put back into input
                 x = tan.pop()
@@ -618,8 +626,11 @@ class EllyBase(object):
                     found = True
 
         if found:                           # if any success, we are done
+#           print 'token recognized'
+            w.dvdd = dvdd
             return w
 
+#       print 'unrecognized token w=' , w
         if self.pnc.match(w.root):          # check if next token is punctuation
             if tree.addLiteralPhrase(self.pnc.catg,self.pnc.synf):
                 tree.lastph.lens = w.getLength()
@@ -697,11 +708,10 @@ if __name__ == '__main__':
 
     print ""
     dumpEllyGrammar.dumpCategories(eb.rul.stb)
+    eb.symbolCheck()
     dumpEllyGrammar.dumpExtensions(eb.rul.stb,eb.rul.gtb.extens,False)
     dumpEllyGrammar.dumpSplits(eb.rul.stb,eb.rul.gtb.splits,False)
     dumpEllyGrammar.dumpDictionary(eb.rul.stb,eb.rul.gtb.dctn,False)
-
-    eb.symbolCheck()
 
     so.write('\n')
 
@@ -725,7 +735,7 @@ if __name__ == '__main__':
         if lo == None:
             print >> sys.stderr , '????'
         else:
+            eb.ptr.dumpAll()
             so.write('=[' + u''.join(lo) + ']\n')
-        eb.ptr.dumpAll()
 
     so.write('\n')

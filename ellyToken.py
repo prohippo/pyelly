@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyToken.py : 10jan2015 CPM
+# ellyToken.py : 20may2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -34,17 +34,18 @@ encapsulation of a token string and results of its analysis
 
 import unicodedata
 
-class EllyToken:
+class EllyToken(object):
 
     """
     lexical token for morphological analysis
-        
+
     attributes:
         orig - original word
         root - root from analysis
         pres - prefix list
         sufs - suffix list
         capn - capitalization flag
+        dvdd - divided flag
     """
 
     def __init__ ( self , x=None ):
@@ -112,6 +113,7 @@ class EllyToken:
         self.pres = [ ]
         self.sufs = [ ]
         self.root = list(x.lower())
+        self.dvdd = False
 
     def store ( self , s ):
 
@@ -137,7 +139,7 @@ class EllyToken:
         """
 
         return self.orig
-    
+
     def getRoot ( self ):
 
         """
@@ -180,7 +182,7 @@ class EllyToken:
     def chopPrefix ( self , n ):
 
         """
-        add prefix to list for token
+        drop first n chars in token and add as prefix
 
         arguments:
             self
@@ -191,11 +193,12 @@ class EllyToken:
             x = u''.join(self.root[:n])
             self.root = self.root[n:]
             self.pres.append(x)
+            self.dvdd = True
 
     def chopSuffix (self , n ):
 
         """
-        add suffix to list for token
+        drop last n chars in token and add as suffix
 
         arguments:
             self
@@ -206,6 +209,7 @@ class EllyToken:
             x = u''.join(self.root[-n:])
             self.root = self.root[:-n]
             self.sufs.insert(0,x)
+            self.dvdd = True
 
     def addSuffix ( self , x ):
 
@@ -218,6 +222,7 @@ class EllyToken:
         """
 
         self.sufs.insert(0,x)
+        self.dvdd = True
 
     def addPrefix ( self , x ):
 
@@ -230,6 +235,7 @@ class EllyToken:
         """
 
         self.pres.append(x)
+        self.dvdd = True
 
     def getLength ( self ):
 
@@ -278,7 +284,7 @@ class EllyToken:
             True if suffixes removed, otherwise False
         """
 
-        return (len(self.sufs) > 0 or len(self.pres) > 0)
+        return self.dvdd
 
     def isAffix ( self ):
 
@@ -360,8 +366,9 @@ if __name__ == "__main__":
 
     print 'initial definition'
     print t
-    print "capn=", t.capn
+    print 'capn=' , t.capn
     print "suffixes=" , map(lambda x: '-'+x , t.getSuffixes())
+    print 'dvdd=' , t.dvdd
     print ''
 
     t.shortenBy(1,both=True)
