@@ -1,7 +1,7 @@
 split
 append <xxx>BBB</xxx>
 back
-find > >
+find > <
 shift 1 <
 append !!!!
 merge
