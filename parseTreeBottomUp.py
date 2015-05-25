@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBottomUp.py : 24may2015 CPM
+# parseTreeBottomUp.py : 25may2015 CPM
 # -----------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -282,6 +282,9 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
 
         returns:
             True if phrases created, False otherwise
+
+        exceptions:
+            ParseOverflow
         """
 
 #       print 'internal dictionary: word=',word
@@ -314,6 +317,9 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
 
         returns:
             True on success, False otherwise
+
+        exceptions:
+            ParseOverflow
         """
 
 #       print 'literal phrase'
@@ -336,6 +342,9 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
 
         returns:
             True on success, False otherwise
+
+        exceptions:
+            ParseOverflow
         """
 
 #       print 'literal phrase with semantics: cat=' , cat , 'gen=' , gen , 'spl=' , spl
@@ -358,6 +367,9 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
 
         returns:
             True on success, False otherwise
+
+        exceptions:
+            ParseOverflow
         """
 
 #       print 'unknown phrase'
@@ -503,6 +515,9 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
 
         returns:
             True if successful, False otherwise
+
+        exceptions:
+            ParseOverflow
         """
 
 #       print '_addTerminal: r=' , unicode(r) , 'dvdd=' , dvdd

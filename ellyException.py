@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyException.py : 15oct2014 CPM
+# ellyException.py : 25may2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -29,7 +29,7 @@
 # -----------------------------------------------------------------------------
 
 """
-PyElly exceptions in language definition
+PyElly exceptions in language definition and processing
 """
 
 class TableFailure(Exception):
@@ -40,3 +40,6 @@ class FormatFailure(Exception):
 
 class StemmingError(Exception):
     "logic failure"
+
+class ParseOverflow(Exception):
+    "parse tree too large"

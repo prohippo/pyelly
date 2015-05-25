@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTree.py : 22may2015 CPM
+# parseTree.py : 25may2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -120,6 +120,9 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
 
         arguments:
             self
+
+        exceptions:
+            ParseOverflow
         """
 
         while True:
@@ -145,6 +148,9 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
         arguments:
             self  -
             phr   - phrase to process
+
+        exceptions:
+            ParseOverflow
         """
 
         fbs = phr.synf.compound()
@@ -170,6 +176,9 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
             self  -
             phr   - current phrase
             fbs   - its compounded feature bits
+
+        exceptions:
+            ParseOverflow
         """
 
         po = phr.posn
@@ -206,6 +215,9 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
             self  -
             phr   - current phrase
             fbs   - its compounded feature bits
+
+        exceptions:
+            ParseOverflow
         """
 
         po = phr.posn
@@ -273,6 +285,9 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
 
         arguments:
             self  -
+
+        exceptions:
+            ParseOverflow
         """
 
 #       print 'startUpX'
@@ -297,6 +312,9 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
 
         arguments:
             self  -
+
+        exceptions:
+            ParseOverflow
         """
 
 #       print 'finishUp'

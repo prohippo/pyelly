@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 23may2015 CPM
+# ellyBase.py : 25may2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -324,37 +324,40 @@ class EllyBase(object):
         """
 
 #       print 'EllyBase.translate()'
-        self.ptr.reset()            # empty out any previous parse tree
-        self.ctx.tokns = [ ]        #       and its token list
-        self.ctx.clearBuffers()     # clear out output buffer
-        self.ctx.clearLocalStack()  # clear out local variables
+        self.ptr.reset()                # empty out any previous parse tree
+        self.ctx.tokns = [ ]            #       and its token list
+        self.ctx.clearBuffers()         # clear output buffer
+        self.ctx.clearLocalStack()      # clear local variables
 
-        if len(text) == 0:          # if no text, done
+        if len(text) == 0:              # if no text, done
             return ''
 #       print 'list' , list(text)
-        self.sbu.refill(text)       # put text to translate into input buffer
+        self.sbu.refill(text)           # put text to translate into input buffer
 
-        while True:
-#           print 'current text chars=' , self.sbu.buffer
-            if len(self.sbu.buffer) == 0:
-                break               # stop when sentence buffer is empty
-            self.ptr.startUpX()     # for any initial ... grammar rule
-            stat = self._lookUpNext()
-            if not stat:
-#               print 'lookup FAIL'
-                return None         # if next token cannot be handled, quit
-            if len(self.ptr.queue) == 0:
-                break
-            self.ptr.digest()       # process tokens to get all resulting phrases
-            self.ptr.restartQueue() # for any leading zero production
-#           print len(self.ctx.tokns) , 'tokens after digestion'
+        try:
+            while True:
+#               print 'current text chars=' , self.sbu.buffer
+                if len(self.sbu.buffer) == 0:
+                    break               # stop when sentence buffer is empty
+                self.ptr.startUpX()     # for any initial ... grammar rule
+                stat = self._lookUpNext()
+                if not stat:
+#                   print 'lookup FAIL'
+                    return None         # if next token cannot be handled, quit
+                if len(self.ptr.queue) == 0:
+                    break
+                self.ptr.digest()       # process tokens to get all resulting phrases
+                self.ptr.restartQueue() # for any leading zero production
+#               print len(self.ctx.tokns) , 'tokens after digestion'
 
-        self.ptr.finishUpX()        # for any trailing ... grammar rule
+            self.ptr.finishUpX()        # for any trailing ... grammar rule
+        except ellyException.ParseOverflow:
+            return None
 
         if not self.ptr.evaluate(self.ctx):
-            return None             # translation fails
+            return None                 # translation fails
 
-        if plsb:                    # show plausibility in output if requested
+        if plsb:                        # show plausibility in output if requested
             s = '=' + str(self.ptr.getLastPlausibility())
             if self.ctx.cncp != conceptualHierarchy.NOname:
                 cnm = self.ctx.wghtg.hiery.generalize(self.ctx.cncp)
@@ -377,6 +380,9 @@ class EllyBase(object):
 
         returns:
             True on successful lookup, False otherwise
+
+        exceptions:
+            ParseOverflow
         """
 
         self.sbu.skipSpaces()          # skip leading spaces
@@ -467,6 +473,9 @@ class EllyBase(object):
 
         returns:
             match parameters [ text span of match , suffix removed ]
+
+        exceptions:
+            ParseOverflow
         """
 
 #       print '_scanText k=' , k
@@ -548,6 +557,9 @@ class EllyBase(object):
 
         returns:
             count of matches found
+
+        exceptions:
+            ParseOverflow
         """
 
 #       print 'look up [' + ws + '] externally'
@@ -575,6 +587,9 @@ class EllyBase(object):
 
         returns:
             token on success, otherwise None
+
+        exceptions:
+            ParseOverflow
         """
 
         d = self.rul                        # grammar rule definitions

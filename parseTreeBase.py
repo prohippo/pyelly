@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBase.py : 23may2015 CPM
+# parseTreeBase.py : 25may2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -32,10 +32,11 @@
 support for syntax analysis with preallocated, extensible arrays of data elements
 """
 
-import ellyBits
 import symbolTable
 import conceptualHierarchy
 import ellyConfiguration
+import ellyException
+import ellyBits
 import sys
 
 NOMINAL = 256 # default starting allocation for phrases and goals
@@ -324,13 +325,18 @@ class ParseTreeBase(object):
 
         arguments:
             self
+
+        returns:
+            True if limit reached, False otherwise
         """
 
         if self.phlim == ellyConfiguration.phraseLimit:
             print >> sys.stderr , '\n'
             print >> sys.stderr , '** nominal phrase limit of' , ellyConfiguration.phraseLimit , 'reached!'
             print >> sys.stderr , '** either increase ellyConfiguration.phraseLimit or reduce ambiguous rules'
-            sys.exit(2)
+            return True
+        else:
+            return False
 
     def makePhrase ( self , po , ru ):
 
@@ -343,20 +349,24 @@ class ParseTreeBase(object):
 
         returns:
             new phrase node
+
+        exceptions:
+            ParseOverflow
         """
 
-        if self.phlim >= len(self.phrases):    # do we have to allocate more phrases?
-            self._limitCheck()                 # stop runaway analysis?
-            phrase = self.Phrase()             # if so, allocate more
-            phrase.tree = self
+        if self.phlim >= len(self.phrases):       # do we have to allocate more phrases?
+            if self._limitCheck():                # if so, first check for runaway analysis
+                raise ellyException.ParseOverflow # on reaching limit, signal overflow
+            phrase = self.Phrase()                # otherwise, continue with allocation
+            phrase.tree = self                    # identify where phrase belongs
             self.phrases.append(phrase)
-        self.lastph = self.phrases[self.phlim] # get next available phrase
-        self.lastph.reset()                    #
-        self.lastph.seqn = self.phlim          # set phrase index
-        self.lastph.posn = po                  # parse position
-        self.lastph.rule = ru                  # grammar rule defining phrase
-        self.lastph.typx = ru.styp             #
-        self.lastph.synf.combine(ru.sfet)
+        self.lastph = self.phrases[self.phlim]    # get next available phrase
+        self.lastph.reset()                       #
+        self.lastph.seqn = self.phlim             # set phrase index
+        self.lastph.posn = po                     # parse position
+        self.lastph.rule = ru                     # grammar rule defining phrase
+        self.lastph.typx = ru.styp                #
+        self.lastph.synf.combine(ru.sfet)         # set syntactic features from rule
         self.phlim += 1
 #       print 'make' , self.lastph
         return self.lastph
