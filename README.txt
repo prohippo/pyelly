@@ -18,7 +18,7 @@ framework for translating text from UTF-8 to UTF-8.
 The latest version has been completely rewritten in mostly object-oriented
 Python 2.7. It completed multiple stages of beta testing in 2014 and may
 now be downloaded from GitHub at https://github.com/prohippo/pyelly.git .
-The current release is v1.2.4.
+The current release is v1.2.5.
 
 To learn how to use PyElly, see the PyEllyManual.pdf file in the same
 directory as this README.txt file. The manual has over a hundred pages of
@@ -49,9 +49,9 @@ PyElly package on GitHub in the future. You may use them as models for
 building your own systems.
 
 PyElly is intended mostly for educational use and is being released under
-a BSD open-source license. Be advised that the current software and documentation
-is still evolving, although the v1.1 release should be much more stable than
-previous beta releases.
+a BSD open-source license. Be advised that the current software and
+documentation is still evolving, although releases after v1.1 should be
+more stable than previous beta releases.
 
 Release Notes:
 
@@ -95,7 +95,7 @@ Release Notes:
                       more information in "disambig" application translations
                       better English inflectional and morphological stemming
                       English irregular stemming, update "echo" application
-                      extend "chinese" application, better classifiers
+                      extend "chinese" application, improve classifiers
  1.0    -  24dec2014  add comprehensive error reporting in inflectional stemming
                       add WordNet exceptions to cases handled by stemmers
                       upgrade pattern table matching and clean up code
@@ -149,7 +149,14 @@ Release Notes:
                       fix bug in scoring plausibility of phrases
                       fix simple character translation in "chinese" test
                       add tracing to cognitive semantic logic
-                      better check for feature set identifiers
+                      better checking on feature set identifiers
+ 1.2.5  -  25may2015  clean up "marking" rules and integration test
+                      improve input code for syntactic and semantic features
+                      increase upper limit on phrase count
+                      fix bugs in parse tree growth restrictions
+                      fix bug in inheriting syntactic features with *L, *R
+                      change directions of FIND command to be more consistent
+                      update "test" and "bad" grammars for PyElly changes
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will require regeneration of any previously saved *.elly.bin files to ensure
