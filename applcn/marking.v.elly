@@ -28,6 +28,7 @@ yet : ADV
 
 U.S. : NOUN
 New York : NOUN
+Arizona : NOUN
 
 rocket : NOUN
 rocket : VERB
@@ -38,19 +39,31 @@ booster : NOUN
 at least : ADV[~mod]
 out of : PREP
 pretty much : ADV[~mod,prox] [$deg] 0
+a lot of : QUAN
+all at once : ADV
+some of which : CONJ
 
 Scotts : NOUN
 Scotts Miracle-Gro Company : NOUN
 Gov. Jerry Brown : NOUN
 George Will : NOUN
 Reaganite : NOUN
+Walmart : NOUN
+Walmart supercenter : NOUN
+USNORTHCOM : NOUN
+jade helm : NOUN
+Caterpillar : NOUN
 
-for example : PEXP
+for example : PEXP[|eg]
 such as : DEM
 round-up : NOUN
 
+#### WordNet 3.1 entries
+
 act : NOUN
 act : VERB
+add : NOUN - -1
+add : VERB
 again : ADV
 agriculture : NOUN
 alarm : NOUN
@@ -59,6 +72,7 @@ almost : ADV[~mod,prox]
 ancient : NOUN
 ancient : ADJ
 announce : VERB
+apple : NOUN
 approval : NOUN
 approve : VERB
 associate : ADJ
@@ -68,39 +82,45 @@ attempt : NOUN
 attempt : VERB
 authority : NOUN
 authorize : VERB
-available : ADJ [$prd] 0
+available : ADJ[%to] [$prd] 0
 before : ADV
+bell : NOUN
 biotech : NOUN
 business: NOUN
 cancer : NOUN
 canola : NOUN
 carry : VERB
-certain : ADJ
-chance : ADJ
+certain : ADJ[%to]
 chance : NOUN
-character : NOUN
 chance : VERB
-clear : ADJ
+chance : ADJ[%to]
+character : NOUN
+china : NOUN
+claim : NOUN
+claim : VERB
+clear : ADJ[%to]
 clear : ADV
 clear : NOUN
 clear : VERB
 close : NOUN
 close : VERB
-close : ADJ [$spat] 0
+close : ADJ[%to] [$spat] 0
 close : ADV
 commerce : NOUN
 company : NOUN
 company : VERB
 comprehensive : ADJ
+connect : VERB
 constitution : NOUN
 consume : VERB
+coordination : NOUN
 corn : NOUN
 corn : VERB
 create : VERB
 credit : NOUN
 credit : VERB
 critic : NOUN
-critical : ADJ
+critical : ADJ[%to]
 crop : NOUN
 crop : VERB
 damage : NOUN
@@ -110,6 +130,7 @@ dark : NOUN
 deep : ADJ
 deep : ADV
 deep : NOUN
+definite : ADJ
 department : NOUN
 describe : VERB
 develop : VERB
@@ -117,6 +138,8 @@ disaster : NOUN
 disastrously : ADV [$prd] 0
 doom : NOUN
 doom : VERB
+dot : NOUN
+dot : VERB
 draft : NOUN
 draft : NOUN
 drive : NOUN
@@ -133,11 +156,12 @@ effect : NOUN
 effect : VERB
 elect : NOUN
 elect : VERB
+emerge : VERB
 end : NOUN
 end : VERB
 engineer : NOUN
 engineer : VERB - -1
-enough : ADJ
+enough : ADJ[%to]
 envision : VERB
 escape : NOUN
 escape : VERB
@@ -148,9 +172,12 @@ even : ADV[~mod] [$deg] 0
 examine : VERB
 example : NOUN
 except : VERB - -2
+exercise : NOUN
+exercise : VERB
 exist : VERB
 face : NOUN
 face : VERB
+facility : NOUN
 federal : ADJ
 federal : NOUN
 federation : NOUN
@@ -158,46 +185,62 @@ few : NOUN - -1
 few : ADJ
 field : NOUN
 field : VERB
+further : VERB
+further : ADJ
+further : ADV
 gene : NOUN
 genetically : ADV
 genome : NOUN
+give : NOUN
+give : VERB
 glow : NOUN
 glow : VERB
+go : NOUN - -1
+go : VERB
 govern : VERB
 grass : NOUN
 grass : VERB - -1
 grassroots : ADJ
-great : ADJ
+great : ADJ[%to]
 green : ADJ
 green : NOUN
 green : VERB
 hear : VERB
+head : NOUN
+head : VERB
 herbicide : NOUN
 hope : NOUN
-verb : VERB
+hope : VERB
 impact : NOUN
 impact : VERB
+important : ADJ[%to]
 impose : VERB
 independent : ADJ
+infrastructure : NOUN
+issue : NOUN
+issue : VERB
+jigsaw puzzle : NOUN
 jurisdiction : NOUN
 kill : NOUN
-kill : VERB
+kill : VERB - +1
 last : NOUN - -1
 last : VERB
-last : ADJ[:mod]
+last : ADJ[%mod,to]
 last : ADV
-less : ADJ - +1
+less : ADJ[%to] - +1
 less : ADV [$deg] 0
-like : ADJ
-like : NOUN
+like : NOUN - -2
 like : VERB
+like : ADJ  - -2
+list : NOUN
+list : VERB
 livestock : NOUN
 long : VERB
 long : ADJ
 look : NOUN
 look : VERB
 loophole : NOUN
-mandatory : ADJ
+mandatory : ADJ[%to]
 market : NOUN
 manufacture : NOUN
 manufacture : VERB
@@ -205,26 +248,35 @@ market : VERB
 media : NOUN
 method : NOUN
 michael : NOUN
+military : NOUN
 miracle : NOUN
 modify : VERB
 more : NOUN - -1
-more : ADJ
+more : ADJ[%to]
 more : ADV [$deg] 0
 mow : NOUN
 mow : VERB
+much : NOUN
+much : ADJ[%to]
+much : ADV
 nearly : ADV[~mod,prox]
 need : NOUN
 need : VERB
 negotiate : VERB
-new : ADJ - +1
+new : ADJ[%to] - +1
 new : ADV - -1
 new year's : NOUN
-next : ADJ[:mod]
+news : NOUN
+next : ADJ[%mod,to] [$spat] +0
 next : ADV
-nice : ADJ
+nice : ADJ[%to]
+night : NOUN
 normal : NOUN
 normal : ADJ
 nuclear : ADJ
+off : VERB - -1
+off : ADJ
+off : ADV
 office : NOUN
 once : ADV
 orbit : NOUN
@@ -239,13 +291,23 @@ out : NOUN
 out : VERB
 out : ADJ
 out : ADV
+part : NOUN
+part : VERB
 passionate : ADJ
+people : NOUN
+people : VERB - -1
+picture : NOUN
+picture : VERB
+piece : NOUN
+piece : VERB
 plant : NOUN
 plant : VERB
 plot : NOUN
 plot : VERB
+plumbing : NOUN
 pollute : VERB
 popular : ADJ
+prepare : VERB
 press : NOUN
 press : VERB
 previous : ADJ
@@ -257,16 +319,22 @@ produce : NOUN
 produce : VERB
 product : NOUN
 production : NOUN
+put : NOUN - -1
+put : VERB
+recent : ADJ
 reduce : VERB
 regardless : ADJ
 regardless : ADV
 regulate : VERB
 republican : NOUN
 republican : ADJ
+research : NOUN
+research : VERB
 resident : NOUN
 resident : ADJ
 resist : VERB
-resistant : ADJ
+resistant : ADJ[%to]
+response : NOUN
 revolution : NOUN
 rick : NOUN
 rick : VERB
@@ -274,15 +342,23 @@ roundup : NOUN
 satellite : NOUN
 satellite : ADJ
 science : NOUN
-senior : ADJ
+see : NOUN - -1
+see : VERB
 senior : NOUN
+senior : ADJ[%to]
 severe : ADJ
-significant : ADJ
+show : NOUN
+show : VERB
+shutter : NOUN
+shutter : VERB
+significant : ADJ[%to]
 small-business : ADJ
 so-called : ADJ
 sort : NOUN
 sort : VERB
-specific : ADJ
+specific : ADJ[%to]
+state : NOUN
+state : VERB
 stockpile : NOUN
 stockpile : VERB
 success : NOUN
@@ -293,38 +369,43 @@ switch grass : NOUN
 tailor : NOUN
 tailor : VERB
 technique : NOUN
+terrify : VERB
 test : NOUN
 test : VERB
 thirst : NOUN
 thirst : VERB
 time : NOUN
 time : VERB
+together : ADJ
+together : ADV
 treat : NOUN
 treat : VERB
 trend : NOUN
 trend : VERB
-true : noun
-true : verb
-true : adj
-true : adv
+true : NOUN
+true : VERB
+true : ADJ[%to]
+true : ADV
 uncertain : ADJ
 unintended : ADJ
 union : ADJ
 union : NOUN
 use : NOUN
 use : VERB
-very : adj
-very : adv [$deg] 0
+very : ADJ
+very : ADV [$deg] 0
 victory : NOUN
 violate : VERB
 warn : VERB
 waste : ADJ
 waste : NOUN
 waste : VERB
+watch : NOUN
+watch : VERB
 weedkiller : NOUN
 well : NOUN
 well : VERB
-well : ADJ
+well : ADJ[%to]
 well : ADV
 wild : ADJ
 wild : ADV

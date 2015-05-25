@@ -328,7 +328,7 @@ __
 
 g:NOUN->UNKN
 __
-g:NOUN->PRO[:mod]
+g:NOUN->PRO[%mod]
 _
   var typg=pro
   (typg)
@@ -365,10 +365,10 @@ g:NOUN[:*r,cjn]->NOUN[:-hyph,-plur,-cjn,-ing] NOUN[:-cjn]
 _
  (twob)
 __
-g:ADJ[:*r]->NOUN[:hyph] ADJ
+g:ADJ[%*r]->NOUN[:hyph] ADJ
  >>++
 __
-g:PRO[:*r]->PREP PRO[:-ind]
+g:PRO[%*r]->PREP PRO[%-ind]
 _
   var typg=prep
   (typg)
@@ -453,7 +453,7 @@ _
 __
 g:VERB[:*r]->NOUN[:hyph] VERB
 __
-g:VERB[^beaj]->BE ADJ[:-ed,-ing]
+g:VERB[^beaj]->BE ADJ[%-ed,-ing]
 _
   (twob)
 __
@@ -494,19 +494,19 @@ g:ADJ->NOUN SUFX[#nTOa]
 _
   (twob)
 __
-g:ADJ[:*r]->NOUN[:hyph] ADJ
+g:ADJ[%*r]->NOUN[:hyph] ADJ
 __
-g:ADJ[:*r]->ADV ADJ
+g:ADJ[%*r]->ADV ADJ
  l[$deg]>>++
 _
   var typg=adv
   (typg)
   right
 __
-g:ADJ[:ed]->VERB[^ed]
+g:ADJ[%ed]->VERB[^ed]
  >>-
 __
-g:ADJ[:ing]->VERB[^ing]
+g:ADJ[%ing]->VERB[^ing]
  >>-
 __
 g:ADJ->VERB SUFX[#vTOa]
@@ -540,7 +540,7 @@ __
 
 g:NUM-> MONY NUM
 __
-g:NUM->ADJ[:mod] NUM
+g:NUM->ADJ[%mod] NUM
  >>+++
 _
   var typg=adj
@@ -576,15 +576,15 @@ g:VERB[^*l]->VERB[^ptcl] PTCL
 _
   (twob)
 __
-g:ADJ->ADJ[:-*l,-*r] XER
+g:ADJ->ADJ[%-*l,-*r] XER
 _
   (twob)
 __
-g:ADV->ADV[:-*l,-*r] XER
+g:ADV->ADV[~-*l,-*r] XER
 _
   (twob)
 __
-g:ADJ->ADJ[:-*l,-*r] XEST
+g:ADJ->ADJ[%-*l,-*r] XEST
 _
   (twob)
 __
@@ -649,6 +649,11 @@ __
 g:DET[:*r,dit]->THAT DET
 _
   right
+__
+
+g:QUAN->THERE BE
+_
+  (twob)
 __
 
 #
@@ -760,20 +765,25 @@ d:several<-QUAN
 __
 d:both <- QUAN
 __
+d:multiple <- QUAN
+__
 
-d:i    <- PRO[:ind]
+d:there <- THERE
+__
+
+d:i    <- PRO[%ind]
 __
 d:you  <- PRO
 __
-d:he   <- PRO[:ind]
+d:he   <- PRO[%ind]
 __
-d:she  <- PRO[:ind]
+d:she  <- PRO[%ind]
 __
 d:it   <- PRO
 __
-d:we   <- PRO[:ind]
+d:we   <- PRO[%ind]
 __
-d:they <- PRO[:ind]
+d:they <- PRO[%ind]
 __
 d:mine <- PRO
 __
@@ -791,7 +801,7 @@ d:them <- PRO
 __
 d:her  <- PRO
 __
-d:1    <- PRO[:mod]
+d:1    <- PRO[%mod]
 _
   append one
 __
