@@ -191,12 +191,15 @@ further : ADV
 gene : NOUN
 genetically : ADV
 genome : NOUN
+get : NOUN - -2
+get : VERB[^ptcl]
 give : NOUN
 give : VERB
 glow : NOUN
 glow : VERB
 go : NOUN - -1
-go : VERB
+go : VERB[^ptcl]
+go : ADJ - -4
 govern : VERB
 grass : NOUN
 grass : VERB - -1
@@ -274,7 +277,7 @@ night : NOUN
 normal : NOUN
 normal : ADJ
 nuclear : ADJ
-off : VERB - -1
+off : VERB - -2
 off : ADJ
 off : ADV
 office : NOUN
@@ -320,7 +323,7 @@ produce : VERB
 product : NOUN
 production : NOUN
 put : NOUN - -1
-put : VERB
+put : VERB[^ptcl]
 recent : ADJ
 reduce : VERB
 regardless : ADJ
@@ -346,6 +349,9 @@ see : NOUN - -1
 see : VERB
 senior : NOUN
 senior : ADJ[%to]
+set : NOUN
+set : VERB[^ptcl]
+set : ADJ - -1
 severe : ADJ
 show : NOUN
 show : VERB
