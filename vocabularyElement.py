@@ -152,7 +152,7 @@ class VocabularyElement(object):
         tm = u''.join(self.chs)
 
         df  = u'cat=' + unicode(self.cat) + u' '
-        df += self.syf.hexadecimal() + u' ' + self.smf.hexadecimal() + u' '
+        df += self.syf.hexadecimal() + u' . ' + self.smf.hexadecimal() + u' '
         df += u'plaus=' + unicode(self.bia) + u' , '
         df += u'concp=' + self.con + ', '
         df += unicode(self._nt) + u' TRANSLATION'

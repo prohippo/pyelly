@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyDefinition.py : 30apr2015 CPM
+# ellyDefinition.py : 27may2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -45,6 +45,9 @@ import conceptualHierarchy
 import ellyDefinitionReader
 import ellyConfiguration
 import ellyException
+import ellyPickle
+
+grammar    = '.grammar.elly.bin'        # for saving compiled grammar rules
 
 class EllyDefinition(object):
 
@@ -52,7 +55,6 @@ class EllyDefinition(object):
     superclass for managing Elly definitions
 
     attributes:
-        version - PyElly ID for compatibility check
         errors  - accumulated errors needed by inpT() method
     """
 
@@ -65,7 +67,6 @@ class EllyDefinition(object):
             self
         """
 
-        self.version = '????' # initialize as unknown
         self.errors = [ ]     # initialize as empty list
 
     def inpT ( self , system , part ):
@@ -98,7 +99,7 @@ class EllyDefinition(object):
             print >> sys.stderr , ': succeeded'
             return rdr
 
-class Rules(EllyDefinition):
+class Grammar(EllyDefinition):
 
     """
     Elly language rule definitions
@@ -114,62 +115,86 @@ class Rules(EllyDefinition):
         rls   - saved PyElly software ID
     """
 
-    def __init__ ( self , system , rid ):
+    def __init__ ( self , system , create , rid ):
 
         """
-        load all definitions from text files
+        load all definitions from binary or text files
 
         arguments:
             self     -
-            system   - which set of table definitions
+            system   - which PyElly application
+            create   - whether to create new binary
             rid      - PyElly release ID
 
         exceptions:
             TableFailure on error
         """
 
-        super(Rules,self).__init__()
+        super(Grammar,self).__init__()
 
         self.rls = rid
+        sysf = system + grammar
 
-        self.stb = symbolTable.SymbolTable()  # new empty table to fill in
+        if create:
+            print "recompiling grammar rules"
 
-        el = [ ]
+            self.stb = symbolTable.SymbolTable()  # new empty table to fill in
 
-        try:
-            self.mtb = macroTable.MacroTable(self.inpT(system,'m'))
-        except ellyException.TableFailure:
-            el.append('macro')
-        try:
-            self.gtb = grammarTable.GrammarTable(self.stb,self.inpT(system,'g'))
-            self.stb.setBaseSymbols()
-        except ellyException.TableFailure:
-            el.append('grammar')
-        try:
-            self.ptb = patternTable.PatternTable(self.stb,self.inpT(system,'p'))
-        except ellyException.TableFailure:
-            el.append('pattern')
+            el = [ ]
 
-        try:
-            self.hry = conceptualHierarchy.ConceptualHierarchy(self.inpT(system,'h'))
-        except ellyException.TableFailure:
-            el.append('concept')
+            try:
+                self.mtb = macroTable.MacroTable(self.inpT(system,'m'))
+            except ellyException.TableFailure:
+                el.append('macro')
+            try:
+                self.gtb = grammarTable.GrammarTable(self.stb,self.inpT(system,'g'))
+                self.stb.setBaseSymbols()
+            except ellyException.TableFailure:
+                el.append('grammar')
+            try:
+                self.ptb = patternTable.PatternTable(self.stb,self.inpT(system,'p'))
+            except ellyException.TableFailure:
+                el.append('pattern')
 
-        try:
-            self.ntb = nameTable.NameTable(self.inpT(system,'n'))
-        except ellyException.TableFailure:
-            el.append('name')
+            try:
+                self.hry = conceptualHierarchy.ConceptualHierarchy(self.inpT(system,'h'))
+            except ellyException.TableFailure:
+                el.append('concept')
 
-        sa = self.inpT(system,'stl')
-        pa = self.inpT(system,'ptl')
-        try:
-            self.man = morphologyAnalyzer.MorphologyAnalyzer(sa,pa)
-        except ellyException.TableFailure:
-            el.append('morphology')
+            try:
+                self.ntb = nameTable.NameTable(self.inpT(system,'n'))
+            except ellyException.TableFailure:
+                el.append('name')
 
-        if len(el) > 0:
-            print >> sys.stderr , 'rule FAILures on' , el
-            raise ellyException.TableFailure
+            sa = self.inpT(system,'stl')
+            pa = self.inpT(system,'ptl')
+            try:
+                self.man = morphologyAnalyzer.MorphologyAnalyzer(sa,pa)
+            except ellyException.TableFailure:
+                el.append('morphology')
+
+            if len(el) > 0:
+                print >> sys.stderr , 'rule FAILures on' , el
+                raise ellyException.TableFailure
+
+            ellyPickle.save(self,sysf)
+
+        else:
+            print "loading saved language rules from" , sysf
+
+            gram = ellyPickle.load(sysf)
+            if gram == None:
+                raise ellyException.TableFailure
+            if gram.rls != rid:
+                print >> sys.stderr , 'inconsistent PyElly version for saved rules'
+                sys.exit(1)
+            self.stb = gram.stb  # copy in saved language definition objects
+            self.mtb = gram.mtb  #
+            self.gtb = gram.gtb  #
+            self.ptb = gram.ptb  #
+            self.ntb = gram.ntb  #
+            self.hry = gram.hry  #
+            self.man = gram.man  #
 
 class Vocabulary(EllyDefinition):
 
@@ -187,8 +212,8 @@ class Vocabulary(EllyDefinition):
 
         arguments:
             self    -
-            system  - which database
-            create  - whether to create
+            system  - which PyElly application
+            create  - whether to create new binary
             syms    - Elly symbols defined for vocabulary
             stem    - what stemming to use on vocabulary words
 
@@ -199,14 +224,17 @@ class Vocabulary(EllyDefinition):
 #       print 'set vocabulary'
         super(Vocabulary,self).__init__()
 
-        if create:
-#           print 'compiling' , system , 'vocabulary'
-            self.version = id
-            dT = self.inpT(system,'v')
-#           dT.dump()
-            vocabularyTable.compile(system,syms,dT)
+        try:
+            if create:
+#               print 'compiling' , system , 'vocabulary'
+                dT = self.inpT(system,'v')
+#               dT.dump()
+                vocabularyTable.compile(system,syms,dT)
 
-        self.vtb = vocabularyTable.VocabularyTable(system,stem)
+            self.vtb = vocabularyTable.VocabularyTable(system,stem)
+        except ellyException.TableFailure:
+            print >> sys.stderr , 'rule FAILures on vocabulary'
+            raise ellyException.TableFailure
 
 #
 # unit test
@@ -214,48 +242,41 @@ class Vocabulary(EllyDefinition):
 
 if __name__ == '__main__':
 
-    import ellyPickle
-
     sym = symbolTable.SymbolTable()
     nam = sys.argv[1] if len(sys.argv) > 1 else 'test'
     idn = sys.argv[2] if len(sys.argv) > 2 else ''
-    print 'PyElly' , idn , ', system=' , nam
-    print "------------ rules"
-    if idn != '':
-        try:
-            rul = Rules(nam,idn)
-        except ellyException.TableFailure:
-            print >> sys.stderr , 'grammar rules failed to compile'
-            sys.exit(1)
-    else:
-        rul = ellyPickle.load(nam + '.rules.elly.bin')
-        if rul == None:
-            print >> sys.stderr , 'grammar rules failed to load'
-            sys.exit(1)
-#   print dir(rul)
-    print rul.stb
-    print rul.mtb
-    print rul.gtb
-    print rul.ptb
-    print rul.ntb
-    print rul.hry
-    print rul.man
-    for e in rul.errors:
-        print "    " , e
+    rnw = (idn == '')
+    print 'PyElly' , idn , ', system=' , nam , 'renew=' , rnw
+    print "------------ grammar"
+    try:
+        grm = Grammar(nam,rnw,idn)
+    except ellyException.TableFailure:
+        print >> sys.stderr , 'grammar rules failed to load'
+        if rnw: print >> sys.stderr , '  after recompilation'
+        sys.exit(1)
+
+#   print dir(grm)
+    print grm.stb
+    print grm.mtb
+    print grm.gtb
+    print grm.ptb
+    print grm.ntb
+    print grm.hry
+    print grm.man
+    for e in grm.errors:
+        print " *err   " , e
     print "------------ internal dictionary"
-    print rul.gtb.dctn.keys()
+    print grm.gtb.dctn.keys()
     print "------------ external vocabulary"
     try:
-        voc = Vocabulary(nam,True,sym)
+        voc = Vocabulary(nam,rnw,sym)
     except ellyException.TableFailure:
-        print 'vocabulary failed to load'
+        print >> sys.stderr , 'vocabulary failed to load'
         sys.exit(1)
     print voc.vtb
     for e in voc.errors:
-        print "    " , e
-    syn = rul.stb.sxindx
-    sem = rul.stb.smindx
+        print " *err   " , e
+    syn = grm.stb.sxindx
+    sem = grm.stb.smindx
     print 'synf=' , syn.keys()
     print 'semf=' , sem.keys()
-    if idn != '':
-        ellyPickle.save(rul,nam + '.rules.elly.bin')

@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 30apr2015 CPM
+# vocabularyTable.py : 28may2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -133,7 +133,7 @@ def compile ( name , stb , defn ):
             print >> sys.stderr , 'no' , filn
 
 #### SQLite
-#
+####
         try:
             cdb = dbs.connect(filn)                  # create new database
             cur = cdb.cursor()
@@ -152,7 +152,7 @@ def compile ( name , stb , defn ):
 
         while True:                                       # process vocabulary records
 
-            try:
+            try:                                          # for catching FormatFailure exception
 #               print >> sys.stderr , '------------'
                 r = defn.readline()                       # next definition
                 if len(r) == 0: break                     # stop on EOF
@@ -164,7 +164,6 @@ def compile ( name , stb , defn ):
                     tsave = r
                     dsave = None
                     _err()                                # report error and quit entry
-                    continue
 
                 t = r[:k].strip()                         # term to go into dictionary
                 d = r[k+1:].strip()                       # its definition
@@ -174,16 +173,13 @@ def compile ( name , stb , defn ):
 #               print >> sys.stderr , ' tm=' , '<' + t + '>' , 'df=' , '<' + d + '>'
                 if len(t) == 0 or len(d) == 0:
                     _err()                                # quit on missing parts
-                    continue
                 c = t[0]
                 if not ellyChar.isLetterOrDigit(c) and c != '.' and c != '"':
                     _err('bad term')
-                    continue
 
                 n = toIndex(t)                            # get part of term to index
                 if n == 0:
                     _err()                                # quit on bad term
-                    continue
                 wky = t[:n].lower()                       # first word of term to define
 #               print >> sys.stderr , '  SQLite key=' , wky
 
@@ -201,7 +197,6 @@ def compile ( name , stb , defn ):
 #                   print >> sys.stderr , 'VT ss =' , ss
                 except ellyException.FormatFailure:
                     _err('malformed syntax specification')
-                    continue
                 cat = str(ss.catg)                        #   syntax category
                 syf = ss.synf.positive.hexadecimal(False) #   syntactic flags
 #               print >> sys.stderr , 'syf=' , syf
@@ -217,14 +212,12 @@ def compile ( name , stb , defn ):
                         if x != '[':                      # a '0' or '-' means to take default
                             if len(d) == 1 or d[1] != ' ':
                                 _err('missing semantic features')
-                                continue
                             d = d[2:].strip()             # skip over
                         else:
                             ns = featureSpecification.scan(d) # look for ']' of features
 #                           print >> sys.stderr , 'ns=' , ns
                             if ns < 0:
                                 _err()
-                                continue
                             sem = d[:ns]                  # get semantic features
                             d = d[ns:].strip()            # skip over
                             try:
@@ -232,7 +225,6 @@ def compile ( name , stb , defn ):
                                 fs = FSpec(stb,sem,True)
                             except ellyException.FormatFailure:
                                 _err('bad semantic features')
-                                continue
                             smf = fs.positive.hexadecimal(False) # convert to hex
 
 #                       print >> sys.stderr , '1:d=[' + d + ']'
@@ -240,7 +232,6 @@ def compile ( name , stb , defn ):
 #                       print >> sys.stderr , 'ld=' , ld
                         if ld == 0:
                             _err('missing plausibility')
-                            continue
                         np = 0
                         x = d[np]
                         if x == '+' or x == '-':
@@ -251,7 +242,6 @@ def compile ( name , stb , defn ):
 #                       print >> sys.stderr , 'np=' , np
                         if np == 0:
                             _err('missing plausibility')
-                            continue
                         pb = d[:np]                       # plausibility bias
 #                       print >> sys.stderr , 'pb=' , pb
                         d = d[np:]
@@ -269,22 +259,18 @@ def compile ( name , stb , defn ):
                                     np += 1
                                 if np == 0:
                                     _err('missing concept for plausibility')
-                                    continue
                                 cn = d[:np]               # extract concept
                                 d = d[np:]
                             elif c != ' ':
                                 _err()                    # signal bad format
-                                continue
                         elif ld > 0:
                             _err()                        # unidentifiable trailing text
-                            continue
 
                 d = d.strip()                             # rest of definition
 #               print 'rest of d=' , d
                 if len(d) > 0 and d[-1] == '=':
                     if len(d) == 1 or d[0] != '=':
                         _err('incomplete definition')
-                        continue
 
                 ld = [ ]                            # for normalizing definition
 
@@ -317,9 +303,9 @@ def compile ( name , stb , defn ):
 #               print >> sys.stderr , '3:d=[' + d + ']'
 
                 vrc = [ t , ':' , cat , syf , smf ,
-                        pb , cn ]                         # start data record
-                vss = u' '.join(vrc)                      # convert to string
-                vss += u' ' + d                           # fill out record with rest of input
+                        pb , cn ]                   # start data record
+                vss = u' '.join(vrc)                # convert to string
+                vss += u' ' + d                     # fill out record with rest of input
 #               print >> sys.stderr , 'type(vss)=' , type(vss)
 
 #               print >> sys.stderr , 'rec=' , vrc , 'tra=' , d
@@ -330,10 +316,10 @@ def compile ( name , stb , defn ):
                 if dsave != None:
                     print >> sys.stderr , ':' , dsave ,
                 print >> sys.stderr , ']'
-                continue
+                continue                            # skip rest of processing
 
 #### SQLite
-#
+####
             try:
                 sql = "INSERT INTO Vocab VALUES(?,?)"
 #               print >> sys.stderr , type(wky) , wky , type(vss) , vss
@@ -346,7 +332,7 @@ def compile ( name , stb , defn ):
 
 
 #### SQLite
-#
+####
         cdb.commit()
         cdb.close()                                   # clean up
 #       print >> sys.stderr , 'DONE'

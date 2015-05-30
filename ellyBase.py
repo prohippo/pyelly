@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 25may2015 CPM
+# ellyBase.py : 28may2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -61,7 +61,7 @@ sys.stderr = codecs.getwriter('utf8')(sys.stderr) # error streams for UTF-8 enco
 
 # binary files
 
-rules      = '.rules.elly.bin'          # for saving compiled rules
+rules = ellyDefinition.grammar          # for saving grammar rules
 vocabulary = vocabularyTable.vocabulary # for saving compiled vocabulary
 
 _session = '.session.elly.bin'          # for saving session information
@@ -74,7 +74,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.2.5'                      # current version of PyElly software
+release = 'v1.2.6'                      # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -187,21 +187,13 @@ class EllyBase(object):
 #       print 'EllyBase.__init__()'
         sysf = system + rules
         redefine = not _isSaved(system,rules,_rules)
-        if redefine:
-            print "recompiling language rules"
-            try:
-                self.rul = ellyDefinition.Rules(system,release)
-            except ellyException.TableFailure:
-                nfail += 1
-            if nfail == 0:
-                self.gundef = self.rul.stb.findUnknown()
-                ellyPickle.save(self.rul,sysf)
-        else:
-            print "loading saved language rules from" , sysf
-            self.rul = ellyPickle.load(sysf)
-            if self.rul.rls != release:
-                print >> sys.stderr , 'inconsistent PyElly version for saved rules'
-                sys.exit(1)
+        try:
+            self.rul = ellyDefinition.Grammar(system,redefine,release)
+        except ellyException.TableFailure:
+            nfail += 1
+        if nfail == 0:
+            self.gundef = self.rul.stb.findUnknown()
+            ellyPickle.save(self.rul,sysf)
 
         if restore != None:
             self.ses = ellyPickle.load(restore + '.' + system + _session)
@@ -569,6 +561,7 @@ class EllyBase(object):
         vs = self.vtb.lookUpSingleWord(ws)  # look up token as word externally
 #       print len(vs) , 'candidates'
         for v in vs:                        # try to make phrases from vocabulary elements
+#           print 'v=' , v
             if tree.addLiteralPhraseWithSemantics(
                 v.cat,v.syf,v.smf,v.bia,v.gen,spl
             ):
