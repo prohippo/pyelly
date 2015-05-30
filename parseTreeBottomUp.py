@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBottomUp.py : 25may2015 CPM
+# parseTreeBottomUp.py : 28may2015 CPM
 # -----------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -347,11 +347,14 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
             ParseOverflow
         """
 
-#       print 'literal phrase with semantics: cat=' , cat , 'gen=' , gen , 'spl=' , spl
+#       print 'literal phrase with semantics: cat=' , cat , 'fbs=' , fbs , 'sbs=' , sbs
+#       print 'spl=' , spl
+#       print 'gen=' , gen
         r = self._makeLiteralRule(cat,fbs,gen)
         if self._addTerminal(r,spl):
             self.lastph.semf = sbs
             self.lastph.bias = bias
+#           print 'lastph=' , self.lastph
             return True
         else:
             return False

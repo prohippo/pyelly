@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveProcedure.py : 13may2015 CPM
+# cognitiveProcedure.py : 28may2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -118,7 +118,10 @@ class CognitiveProcedure(object):
                     break
 
             else:             # execute actions of clause if ALL predicates satisfied
-                if trce: print >> sys.stderr , '  cog sem at clause' , clno
+                if trce:
+                    print >> sys.stderr , '  cog sem at clause' , clno
+                    print >> sys.stderr , '  l:' , phrs.lftd
+                    print >> sys.stderr , '  r:' , phrs.rhtd
                 for a in cls[1]:                      # get mext action
                     op = a[0]
                     if op == semanticCommand.Cadd:    # add to score?
