@@ -127,21 +127,21 @@ _
     end
 __
 g:SEGM[|*unique]->ELEM
- >>*l
+               >>*l
 __
 g:SEGM[|*unique]->SEGM ELEM
-#?>>?
- l[!pro] r[!n]>>--
- l[!n] r[!n]>>*r--
- l[!v] r[!v]>>*r----
-            >>*r
+#             ?>>?
+ l[!pro] r[!ln]>>--
+ l[!rn]  r[!ln]>>*r--
+ l[!rv]  r[!lv]>>*r----
+               >>*r
 _
   left
   linefeed
   right
 __
 g:SEGM->SEGM PUNC
- >>*l----
+ >>----
 _
   left
   linefeed
@@ -150,7 +150,7 @@ _
   append </punc>
 __
 g:SEGM->SEGM CONJ
- >>*l----
+ >>----
 _
   left
   linefeed
@@ -160,7 +160,7 @@ _
 __
 
 g:ELEM->ADV[~mod] NCLU
- >>[!n]+
+ >>[!rn]+
 _
   var typg=adv
   (typg)
@@ -168,44 +168,46 @@ _
 __
 g:ELEM->NCLU[:-dit, prep,-poss]
 #?>>?
-  >>+0
+  >>[!rn]+0
 __
 g:ELEM->NCLU[:-dit,-prep,-poss]
- >>[!n]
+ >>[!ln,rn]
 __
 g:ELEM->NCLU[:dit]
- >>[!n]+
+ >>[!rn]+
 _
   append <conj>that</conj>
   linefeed
   left
 __
 g:ELEM->PRO
- >>[!n,pro]
+ >>[!rn,pro]
 _
   var typg=pro
   (typg)
 __
 g:ELEM[^*l]->VCLU[^-to,-infn]
- >>[!v]
+ >>[!lv,rv]
 __
 g:ELEM[^*l]->VCLU[^-to, infn]
+ >>[!rv]
 __
 g:ELEM->VCLU[^to] NCLU
- >>+
+ >>[!rn]+
 _
   left
   linefeed
   right
 __
 g:ELEM->THAT VCLU[^s]
- >>++
+ >>[!rv]++
 _
   append <dem>that</dem>
   right
 __
 g:ELEM->ELEM[^dit] THAT
- >>++
+ l[!lv]>>[!lv]++
+       >>++
 _
   left
   linefeed
@@ -514,6 +516,7 @@ _
   (twob)
 __
 g:NOUN[:ing]->VERB XING
+ l[$trns]>>--
 _
   (twob)
 __
@@ -699,7 +702,8 @@ g:ADJ[%ed]->VERB[^ed]
  >>-
 __
 g:ADJ[%ing]->VERB[^ing]
- >>-
+ l[$trns]>>----
+         >>-
 __
 g:ADJ->VERB SUFX[#vTOa]
 __
@@ -759,7 +763,6 @@ _
   (twob)
 __
 g:VERB[^ing]->UNKN XING
- >>-
 _
   (twob)
 __
@@ -773,10 +776,11 @@ _
   (twob)
 __
 g:VERB[^*l,ing]->VERB[^-*l,-*r] XING
+ >>*l
 _
   (twob)
 __
-g:VERB[^*l]->VERB[^ptcl] PTCL
+g:VERB->VERB[^ptcl] PTCL
  >>+
 _
   (twob)
@@ -957,6 +961,8 @@ d:while<- CONJ
 __
 d:how  <- CONJ
 __
+d:although <- CONJ
+__
 
 d:all  <- QUAN[:ind]
 __
@@ -1096,6 +1102,8 @@ __
 d:out <- PTCL
 __
 d:out <- PTCL
+__
+d:off <- PTCL
 __
 
 d:not  <- NEGN

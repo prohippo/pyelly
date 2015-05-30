@@ -52,6 +52,7 @@ Walmart : NOUN
 Walmart supercenter : NOUN
 USNORTHCOM : NOUN
 jade helm : NOUN
+Apple Watch : NOUN
 Caterpillar : NOUN
 
 for example : PEXP[|eg]
@@ -97,7 +98,7 @@ chance : ADJ[%to]
 character : NOUN
 china : NOUN
 claim : NOUN
-claim : VERB
+claim : VERB [$trns] 0
 clear : ADJ[%to]
 clear : ADV
 clear : NOUN
@@ -220,6 +221,7 @@ important : ADJ[%to]
 impose : VERB
 independent : ADJ
 infrastructure : NOUN
+involve : VERB [$trns] 0
 issue : NOUN
 issue : VERB
 jigsaw puzzle : NOUN
@@ -262,6 +264,8 @@ mow : VERB
 much : NOUN
 much : ADJ[%to]
 much : ADV
+much like : VERB - -1
+much like : PREP
 nearly : ADV[~mod,prox]
 need : NOUN
 need : VERB
@@ -310,6 +314,8 @@ plot : VERB
 plumbing : NOUN
 pollute : VERB
 popular : ADJ
+positive : NOUN
+positive : ADJ
 prepare : VERB
 press : NOUN
 press : VERB
@@ -356,7 +362,7 @@ severe : ADJ
 show : NOUN
 show : VERB
 shutter : NOUN
-shutter : VERB
+shutter : VERB [$trns] 0
 significant : ADJ[%to]
 small-business : ADJ
 so-called : ADJ
