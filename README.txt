@@ -157,6 +157,12 @@ Release Notes:
                       fix bug in inheriting syntactic features with *L, *R
                       change directions of FIND command to be more consistent
                       update "test" and "bad" grammars for PyElly changes
+                      raise exception for  phrase overflows
+ 1.2.6  -  01jun2015  clean up "marking" rules
+                      extend "marking" integration test
+                      clean up logic for loading grammar and vocabulary
+                      improve cognitive semantic tracing
+                      add diagnostic output for parsing
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will require regeneration of any previously saved *.elly.bin files to ensure
