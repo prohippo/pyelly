@@ -25,6 +25,7 @@ now : ADV
 then: ADV
 soon: ADV
 yet : ADV
+ought : VERB
 
 U.S. : NOUN
 New York : NOUN
@@ -35,6 +36,7 @@ rocket : VERB
 rocket science : NOUN
 signal rocket : NOUN
 booster : NOUN
+military exercise : NOUN
 
 at least : ADV[~mod]
 out of : PREP
@@ -42,6 +44,7 @@ pretty much : ADV[~mod,prox] [$deg] 0
 a lot of : QUAN
 all at once : ADV
 some of which : CONJ
+pros and cons : NOUN
 
 Scotts : NOUN
 Scotts Miracle-Gro Company : NOUN
@@ -66,9 +69,11 @@ act : VERB
 add : NOUN - -1
 add : VERB
 again : ADV
+agree : VERB
 agriculture : NOUN
 alarm : NOUN
 alarm : VERB
+alive : ADJ
 almost : ADV[~mod,prox]
 ancient : NOUN
 ancient : ADJ
@@ -76,6 +81,8 @@ announce : VERB
 apple : NOUN
 approval : NOUN
 approve : VERB
+arm : NOUN
+arm : VERB
 associate : ADJ
 associate : NOUN
 associate : VERB
@@ -84,6 +91,10 @@ attempt : VERB
 authority : NOUN
 authorize : VERB
 available : ADJ[%to] [$prd] 0
+back : NOUN
+back : VERB
+back : ADJ
+back : ADV
 before : ADV
 bell : NOUN
 biotech : NOUN
@@ -107,6 +118,10 @@ close : NOUN
 close : VERB
 close : ADJ[%to] [$spat] 0
 close : ADV
+collar : NOUN
+collar : VERB
+come : NOUN - -4
+come : VERB
 commerce : NOUN
 company : NOUN
 company : VERB
@@ -186,6 +201,7 @@ few : NOUN - -1
 few : ADJ
 field : NOUN
 field : VERB
+forget : VERB
 further : VERB
 further : ADJ
 further : ADV
@@ -226,8 +242,12 @@ issue : NOUN
 issue : VERB
 jigsaw puzzle : NOUN
 jurisdiction : NOUN
+just : ADJ
+just : ADV
 kill : NOUN
 kill : VERB - +1
+know : NOUN - -2
+know : VERB
 last : NOUN - -1
 last : VERB
 last : ADJ[%mod,to]
@@ -245,10 +265,14 @@ long : ADJ
 look : NOUN
 look : VERB
 loophole : NOUN
+make : NOUN
+make : VERB
 mandatory : ADJ[%to]
 market : NOUN
 manufacture : NOUN
 manufacture : VERB
+mark : NOUN
+mark : VERB
 market : VERB
 media : NOUN
 method : NOUN
@@ -278,8 +302,11 @@ next : ADJ[%mod,to] [$spat] +0
 next : ADV
 nice : ADJ[%to]
 night : NOUN
+nohow : ADV
 normal : NOUN
 normal : ADJ
+nothing : NOUN
+nothing : ADV - -4
 nuclear : ADJ
 off : VERB - -2
 off : ADJ
@@ -298,9 +325,11 @@ out : NOUN
 out : VERB
 out : ADJ
 out : ADV
-part : NOUN
+part : NOUN - +1
 part : VERB
 passionate : ADJ
+pay : NOUN
+pay : VERB
 people : NOUN
 people : VERB - -1
 picture : NOUN
@@ -330,6 +359,7 @@ product : NOUN
 production : NOUN
 put : NOUN - -1
 put : VERB[^ptcl]
+quite : ADV
 recent : ADJ
 reduce : VERB
 regardless : ADJ
@@ -347,6 +377,10 @@ response : NOUN
 revolution : NOUN
 rick : NOUN
 rick : VERB
+round : NOUN
+round : VERB
+round : ADJ
+round : ADV
 roundup : NOUN
 satellite : NOUN
 satellite : ADJ
@@ -369,8 +403,16 @@ so-called : ADJ
 sort : NOUN
 sort : VERB
 specific : ADJ[%to]
+stand : NOUN
+stand : VERB
+startle : NOUN - -2
+startle : VERB
 state : NOUN
 state : VERB
+still : NOUN
+still : VERB
+still : ADJ
+still : ADV
 stockpile : NOUN
 stockpile : VERB
 success : NOUN
@@ -384,6 +426,8 @@ technique : NOUN
 terrify : VERB
 test : NOUN
 test : VERB
+think : NOUN - -2
+think : VERB
 thirst : NOUN
 thirst : VERB
 time : NOUN
@@ -392,6 +436,8 @@ together : ADJ
 together : ADV
 treat : NOUN
 treat : VERB
+tree : NOUN
+tree : VERB - -1
 trend : NOUN
 trend : VERB
 true : NOUN
@@ -399,6 +445,8 @@ true : VERB
 true : ADJ[%to]
 true : ADV
 uncertain : ADJ
+underground : NOUN
+underground : ADJ
 unintended : ADJ
 union : ADJ
 union : NOUN
@@ -408,12 +456,16 @@ very : ADJ
 very : ADV [$deg] 0
 victory : NOUN
 violate : VERB
+voice : NOUN
+voice : VERB
 warn : VERB
 waste : ADJ
 waste : NOUN
 waste : VERB
 watch : NOUN
 watch : VERB
+wax : NOUN
+wax : VERB
 weedkiller : NOUN
 well : NOUN
 well : VERB
@@ -422,6 +474,11 @@ well : ADV
 wild : ADJ
 wild : ADV
 wild : NOUN
+word : NOUN
+word : VERB - -1
+work : NOUN
+work : VERB
 world power : NOUN
 worse : ADJ
+write : VERB
 year : NOUN
