@@ -3,4 +3,7 @@ append aabbaabbxxaabbaabb
 back
 find xx
 merge /aa/zz/
-return
+split
+append aaaa/nn/bbbb
+back
+merge :/nn/::
