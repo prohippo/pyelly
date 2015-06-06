@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# treeLogic.py : 11apr2015 CPM
+# treeLogic.py : 05jun2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -107,6 +107,7 @@ class Node(object):
             integer change in length
         """
 
+#       print 'left=' , left
         if self.actns == None:
             return 0
         else:
@@ -428,7 +429,7 @@ class TreeLogic(object):
                     break                      # if so, act on this match
 
                 elif con == 2:                 # first unmatched is consonant?
-                    if not ellyChar.isVowel(uch):
+                    if uch != '|' and not ellyChar.isVowel(uch):
                         break                  # if so, act on match
 
                 elif con == 3:                 # first unmatched is consonant or U?
