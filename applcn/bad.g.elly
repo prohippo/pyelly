@@ -9,7 +9,7 @@ _
     APPEND ?
     END
 __
-g:sent->noun
+g:sent->noun[:f]
  >>
 _
   LEFT

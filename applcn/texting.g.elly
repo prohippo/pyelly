@@ -550,7 +550,7 @@ d:'m <- aux
 _
   (nil)
 __
-g:aux[|*L]->aux infl
+g:aux[!*L]->aux infl
 _
   left
 __ 

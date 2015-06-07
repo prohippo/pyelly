@@ -793,7 +793,7 @@ __
 g:.w.->feel
 >>--
 __
-g:key[@0,2,4]->pro[=1] feel[#*r]
+g:key[@0,2,4]->pro[=1] feel[@*r]
 __
 g:ss[!*right]->x[@ 0,-1, 2,-3, 4,-5,-6] ...
 >>++
@@ -904,7 +904,7 @@ g:ss[!*right]->x[@-0,-1,-2, 3, 4,-5,-6] ...
 _
   append DOES THAT TROUBLE YOU
 __
-g:key[@0,3,4]->pro[=1] feel[#-*r]
+g:key[@0,3,4]->pro[=1] feel[@-*r]
 >>-
 __
 g:ss[!*right]->x[@ 0,-1,-2, 3, 4,-5,-6] ...
@@ -933,7 +933,7 @@ _
   blank
   append REMIND YOU OF
 __
-g:unkn[@*r]->unkn[#-*r] pro[=2]
+g:unkn[@*r]->unkn[@-*r] pro[=2]
 _
   left
   if full=t
@@ -941,7 +941,7 @@ _
     right
     end
 __
-g:key[@1,3,4]->pro[=1] unkn[#*r]
+g:key[@1,3,4]->pro[=1] unkn[@*r]
 _
   if full=t
     left

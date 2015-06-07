@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# syntaxSpecification.py : 04nov2014 CPM
+# syntaxSpecification.py : 07jun2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -36,6 +36,8 @@ import sys
 import ellyChar
 import ellyException
 import featureSpecification
+
+catid = { }  # feature IDs seen with categories
 
 def scan ( strg ):
 
@@ -116,6 +118,10 @@ class SyntaxSpecification(object):
             raise ellyException.FormatFailure
         else:               # decode features
 #           print >> sys.stderr , 'syms=' , syms , 's=' , s
+            if len(s) > 3 and typs in catid and catid[typs] != s[1]:
+                print >> sys.stderr , '** type' , typs.upper() , 'has two feature IDs:' , catid[typs] , s[1]
+                raise ellyException.FormatFailure
+            catid[typs] = s[1]
             synf = featureSpecification.FeatureSpecification(syms,s)
 
         # FormatFailure exception may be raised above, but will not be caught here
