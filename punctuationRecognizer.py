@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# punctuationRecognizer.py : 14apr2015 CPM
+# punctuationRecognizer.py : 07jun2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -46,6 +46,10 @@ import featureSpecification
 from ellySentenceReader import Stops
 
 category = 'punc' # this must be used in Elly grammars for punctuation!
+features = '|'    #      must be used for punctuation syntactic features
+
+stopf  = '[' + features + 'stop]'
+startf = '[' + features + 'start]'
 
 Starting = [ u'"' , u"'" , u'“' , u'[' , u'(' ]
 
@@ -77,8 +81,8 @@ class PunctuationRecognizer(object):
         self.catg  = syms.getSyntaxTypeIndexNumber(category)
         self.synf  = None
         self.zero  = ellyBits.EllyBits()  # zero bits for all features turned off
-        self.stop  = featureSpecification.FeatureSpecification(syms,'[~stop]').positive
-        self.start = featureSpecification.FeatureSpecification(syms,'[~start]').positive
+        self.stop  = featureSpecification.FeatureSpecification(syms,stopf).positive
+        self.start = featureSpecification.FeatureSpecification(syms,startf).positive
 
         self.listing  = Stops + [ u',' , u'\'' , u'\"' ] + ellyChar.Pnc
 
