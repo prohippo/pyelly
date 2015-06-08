@@ -57,7 +57,7 @@ _
   left
   append </sent>
 __
-g:SS->SS PUNC[~stop]
+g:SS->SS PUNC[|stop]
 _
   left
   linefeed
@@ -65,7 +65,8 @@ _
   right
   append </punc>
 __
-g:SS->PUNC[~start] SS
+g:SS->PUNC[|start,-quo] SS
+ >>--
 _
   append <punc>
   left
@@ -80,7 +81,7 @@ _
   linefeed
   right
 __
-g:SS->SS PUNC[~-stop]
+g:SS->SS PUNC[|-stop]
 _
   left
   linefeed
@@ -95,10 +96,12 @@ _
   var typg=conj
   (brack)
 __
-g:SS->CONJ
+g:SS->CONJ SS
 _
   var typg=conj
-  (brack)
+  (typg)
+  linefeed
+  right
 __
 
 p:brack   # handle bracketing
@@ -130,7 +133,7 @@ g:SEGM[|*unique]->ELEM
                >>*l
 __
 g:SEGM[|*unique]->SEGM ELEM
-#             ?>>?
+              ?>>?
  l[!pro] r[!ln]>>--
  l[!rn]  r[!ln]>>*r--
  l[!rv]  r[!lv]>>*r----
@@ -140,8 +143,8 @@ _
   linefeed
   right
 __
-g:SEGM->SEGM PUNC
- >>----
+g:SEGM->SEGM PUNC[|-*l]
+ >>--
 _
   left
   linefeed
@@ -156,7 +159,10 @@ _
   linefeed
   append <conj>
   right
-  append </conh>
+  append </conj>
+__
+g:SEGM->PEXP
+ >>--
 __
 
 g:ELEM->ADV[~mod] NCLU
@@ -226,14 +232,25 @@ __
 g:ELEM->DEM[:ind]
  >>--
 _
+  append <nclu>
   var typg=dem
   (typg)
+  append </nclu>
 __
 g:ELEM->ADJ
  >>----
 _
   var typg=adj
   (typg)
+__
+g:ELEM->DET ADJ
+ >>----
+_
+  append <adj><det>
+  left
+  append </det>
+  right
+  append </adj>
 __
 g:ELEM->ADV
  >>----
@@ -250,10 +267,6 @@ _
 __
 g:ELEM[^dit]->PEXP[|eg]
  >>++
-_
-  append <pexp>
-  left
-  append </pexp>
 __
 g:ELEM[^dit]->PEXP[|quo] PUNC[|*r,quo]
  >>------
@@ -266,13 +279,11 @@ _
   append </punc>
 __
 g:ELEM[^dit]->PEXP[|eg,-cm]
-_ 
-  var typg=pexp
-  (typg)
+ >>*l
 __
 
 g:PEXP[|eg,cm]->PUNC[|com] PEXP[|eg,-cm]
- >>++
+ >>*r++
 _
   (pbeg)
   linefeed
@@ -296,27 +307,27 @@ _
   right
 __
 g:PEXP[|*l,nom]->PUNC[|*l] NCLU
- >>+
+ >>[!ln,rn]+
 _
   (pbeg)
 __
 g:PEXP[|*l,vrb]->PUNC[|*l] VCLU[^-ed,-ing]
- >>+
+ >>[!lv,rv]+
 _
   (pbeg)
 __
 g:PEXP[|*l,vrb,ed]->PUNC[|*l] VCLU[^ed]
- >>+
+ >>[!lv,rv]+
 _
   (pbeg)
 __
 g:PEXP[|*l,vrb,ing]->PUNC[|*l] VCLU[^ing]
- >>+
+ >>[!lv,rv]+
 _
   (pbeg)
 __
 g:PEXP[|*l]->PUNC[|*l] SEGM
- >>+
+ >>*r+
 _
   (pbeg)
 __
@@ -327,16 +338,11 @@ __
 
 p:pend
 _
-  append <
-  insert < typg
-  append >
   left
   linefeed
   append <punc>
   right
-  append </punc></
-  insert < typg
-  append >
+  append </punc>
 __
 g:NCLU->PEXP[|nom,eg,-cm]
  >>++
@@ -378,7 +384,6 @@ __
 g:SEGM->PEXP[|-nom,-vrb] PUNC[|*r]
  >>--
 _
-  var typg=pexp
   (pend)
 __
 g:DET->PEXP[|det] PUNC[|*r]
@@ -416,6 +421,7 @@ _
   (lxtd)
 __
 g:NCLU[:*r,prep]->PREP NCLU[:-prep]
+ l[$-to]>>+
 _
   var typg=prep
   (lxtd)
@@ -479,7 +485,13 @@ _
   (lxtd)
 __
 g:NCLU->NCLU[:poss] NCLU[:-poss]
- >>+
+ >>*l++
+_
+  split
+  left
+  right
+  back
+  merge :</nclu><nclu>::
 __
 g:NCLU->DET NUM
  >>--
@@ -536,8 +548,10 @@ g:NOUN[:*r,cjn]->NOUN[:-hyph,-plur,-cjn,-ing] NOUN[:-cjn,-ing]
 _
  (twob)
 __
-g:ADJ[%*r]->NOUN[:hyph] ADJ
- >>++
+g:NOUN->DET[:def] ADJ
+ >>----
+_
+ (twob)
 __
 g:PRO[%*r]->PREP PRO[%-nom]
 _
@@ -627,7 +641,7 @@ _
   (twob)
 __
 g:VERB[^beaj]->ADJ[%to] TO
- l[$spat]>>+
+ l[$spat]>>++
 _
   append [be]
   space
@@ -646,7 +660,7 @@ g:VERB->ADJ SUFX[#aTOv]
 _
   (twob)
 __
-g:VERB[:*r]->NOUN[:hyph] VERB
+g:VERB[^*r]->NOUN[:hyph] VERB
 __
 g:VERB[^beaj]->BE ADJ[%-ed,-ing]
 _
@@ -698,6 +712,9 @@ _
   (typg)
   right
 __
+g:ADJ[%*r]->NOUN[:hyph] ADJ
+ >>++
+__
 g:ADJ[%ed]->VERB[^ed]
  >>-
 __
@@ -706,11 +723,6 @@ g:ADJ[%ing]->VERB[^ing]
          >>-
 __
 g:ADJ->VERB SUFX[#vTOa]
-__
-g:ADJ->DET ADJ
- >>----
-_
- (twob)
 __
 
 g:ADV->ADJ SUFX[#aTOr]
@@ -881,7 +893,7 @@ d:at   <- PREP
 __
 d:into <- PREP
 __
-d:to   <- PREP
+d:to   <- PREP[%to]
 __
 d:for  <- PREP
 __
@@ -899,6 +911,9 @@ d:against <- PREP
 __
 d:across  <- PREP
 __
+d:under   <- PREP
+ >>+
+__
 d:about   <- PREP
 __
 d:above   <- PREP
@@ -907,6 +922,8 @@ d:like    <- PREP
  >>+
 __
 d:except  <- PREP
+__
+d:round   <- PREP
 __
 
 d:to   <- TO
@@ -919,7 +936,7 @@ d:a   <- DET[:sgl]
 __
 d:an  <- DET[:sgl]
 __
-d:the <- DET
+d:the <- DET[:def]
 __
 
 d:this <- DEM[:ind,sgl]
@@ -949,6 +966,7 @@ __
 d:such <- DEM[:ind]
 __
 d:which <- DEM[:ind]
+ >>-
 __
 
 d:who  <- CONJ
@@ -962,6 +980,8 @@ __
 d:how  <- CONJ
 __
 d:although <- CONJ
+__
+d:because <- CONJ
 __
 
 d:all  <- QUAN[:ind]
@@ -1018,6 +1038,23 @@ d:them <- PRO
 __
 d:her  <- PRO
 __
+d:myself   <- PRO[%rflx]
+__
+d:yourself <- PRO[%rflx]
+__
+d:himself  <- PRO[%rflx]
+__
+d:herself  <- PRO[%rflx]
+__
+d:itself   <- PRO[%rflx]
+__
+d:ourselves  <- PRO[%rflx]
+__
+d:yourselves <- PRO[%rflx]
+__
+d:themselves <- PRO[%rflx]
+__
+
 d:1    <- PRO[%mod]
 _
   append one
@@ -1181,15 +1218,19 @@ d:( <- PUNC[|*l]
 __
 d:) <- PUNC[|*r]
 __
-d:“ <- PUNC[|*l,quo] 
+d:“ <- PUNC[|*l,quo,start] 
 __
 d:” <- PUNC[|*r,quo]
 __
-d:" <- PUNC[|*l,*r,quo]
+d:" <- PUNC[|*l,*r,quo,start]
 __
-d:‘ <- PUNC[|*l,quo]
+d:‘ <- PUNC[|*l,quo,start]
 __
 d:’ <- PUNC[|*r,quo]
+__
+d:` <- PUNC[|*l,quo,start]
+__
+d:' <- PUNC[|*r,quo,start]
 __
 d:$ <- MONY
 __
@@ -1198,7 +1239,7 @@ __
 d:! <- PUNC[|emb]
 __
 d:? <- PUNC[|emb]
-__|
+__
 d:, <- PUNC[|com]
 __
 

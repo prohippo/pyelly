@@ -57,6 +57,7 @@ USNORTHCOM : NOUN
 jade helm : NOUN
 Apple Watch : NOUN
 Caterpillar : NOUN
+wax-work : NOUN
 
 for example : PEXP[|eg]
 such as : DEM
@@ -416,6 +417,7 @@ still : ADV
 stockpile : NOUN
 stockpile : VERB
 success : NOUN
+suppose : VERB
 surgeon : NOUN
 switch : NOUN
 switch : VERB
@@ -474,6 +476,8 @@ well : ADV
 wild : ADJ
 wild : ADV
 wild : NOUN
+witness : NOUN - -1
+witness : VERB
 word : NOUN
 word : VERB - -1
 work : NOUN
