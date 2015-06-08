@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 28may2015 CPM
+# ellyBase.py : 03jun2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -74,7 +74,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.2.6'                      # current version of PyElly software
+release = 'v1.2.7'                      # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -417,6 +417,7 @@ class EllyBase(object):
                     self.sbu.prepend(suf)
             else:
                 chs = self.sbu.extract(mx)
+#               print 'extracted chs=' , chs
             to = ellyToken.EllyToken(u''.join(chs))
 #           print 'long token=' , to
             self.ctx.tokns.append(to)
