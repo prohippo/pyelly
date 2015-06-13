@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeWithDisplay.py : 21may2015 CPM
+# parseTreeWithDisplay.py : 11jun2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -70,7 +70,7 @@ def _idbias ( ph ):
     if ph == None:
         return "         "
     else:
-        return NBSP + "{:3d}".format(ph.seqn) + " ={:3d}".format(ph.bias)
+        return "{:4d}".format(ph.seqn) + " ={:3d}".format(ph.bias)
 
 class ParseTreeWithDisplay(parseTree.ParseTree):
 
@@ -197,6 +197,7 @@ class ParseTreeWithDisplay(parseTree.ParseTree):
 
         stk = [ ]                                      # stack for tree traversal
 
+        out.write(NBSP)
         while True:                                    # traverse subtree from given phrase
             ph.dump = False                            # mark phrase node as being displayed
 
@@ -242,17 +243,19 @@ class ParseTreeWithDisplay(parseTree.ParseTree):
                 if ph.cncp != conceptualHierarchy.NOname:
                     out.write(' ' + ph.cncp)
                 out.write('\n')                        # end of output line
+                out.write(NBSP)
 
-                for sr in stk:                         # show semantic features in next line
+                for sr in stk:                         # show phrase IDs and biases in next line
                     if sr == None:                     # already shown?
                         out.write(_idbias(None))       # if so, just add spaces for alignment
                     else:
-                        out.write(_idbias(sr[0]))      # if no, show features
+                        out.write(_idbias(sr[0]))      # if no, show phrase info
                         sr[0] = None                   # and indicate they have been shown
                     cc = CNN if sr != None and sr[1] != None else u' '
                     out.write(cc)
-                out.write(_idbias(ph))                 # add features for current phrase
+                out.write(_idbias(ph))                 # add phrase info for current phrase
                 out.write('\n')
+                out.write(NBSP)
 
                 while True:                            # have to back up in tree
                     if len(stk) == 0:                  # if stack empty, done
