@@ -79,7 +79,7 @@ __
 # verbs and predicates
 #
 
-g:pred[!*r] -> mode pred
+g:pred[|*r] -> mode pred
 __
 g:mode -> mode s
 _
@@ -93,7 +93,7 @@ g:mode -> mode to
 _
   left
 __
-g:pred[!*r] -> vp
+g:pred[|*r] -> vp
 _
   var sups=t
   var neg=f
