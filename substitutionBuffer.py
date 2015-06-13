@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# substitutionBuffer.py : 19may2015 CPM
+# substitutionBuffer.py : 12jun2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -105,6 +105,7 @@ class SubstitutionBuffer(
         nto = self.sup.getNext()         # then get next token
         if nto.getRoot() == oto.getRoot():
             nto = oto
+#       print 'substitution nto=' , nto
         return nto
 
     def expand ( self ):

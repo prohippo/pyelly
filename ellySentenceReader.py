@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellySentenceReader.py : 06mar2015 CPM
+# ellySentenceReader.py : 13jun2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -90,7 +90,7 @@ class EllySentenceReader(object):
         extract next sentence for Elly translation from input stream
 
         arguments:
-            self 
+            self
 
         returns:
             list of chars for next sentence on success, None on empty stream
@@ -207,7 +207,7 @@ class EllySentenceReader(object):
                         if d != u'-': break
                     sent.append(c)
                 self.inp.unread(d)
-                continue 
+                continue
 
             # check for sentence break on punctuation
 
@@ -215,17 +215,14 @@ class EllySentenceReader(object):
                 continue
 
             else:
-
-#               print 'stopping!'
+#               print 'stopping possible!'
                 d = self.inp.read()
 #               print '4  <<' , self.inp.buf
 
                 if d == None: d = u'!!'
 #               print 'stop=' , '<' + c + '> <' + d + '>'
 
-                # special check for ellipsis
-
-#               print 'ellipsis'
+#               print 'ellipsis check'
                 if c == u'.' and c == d:
                     if self.inp.peek() != c:
                         self.inp.unread(c)
@@ -238,6 +235,7 @@ class EllySentenceReader(object):
 
                 # special check for multiple stops
 
+#               print 'Stops d=' , d , ord(d) if d != '' else 'NONE'
                 if d in Stops:
                     while True:
                         d = self.inp.read()
@@ -262,6 +260,7 @@ class EllySentenceReader(object):
                 # be included with current sentence after stop punctuation
 
                 elif d in QUOs:
+#                   print 'QUO d=' , d , ord(d)
                     x = self.inp.peek()
                     if x == END or ellyChar.isWhiteSpace(x):
                         sent.append(d)
@@ -278,7 +277,8 @@ class EllySentenceReader(object):
 
                 # if no match for lookahead, put back
 
-                else:
+                elif d != '':
+#                   print 'unread d=' , d
                     self.inp.unread(d)
 
                 # final check: is sentence long enough?
@@ -287,7 +287,7 @@ class EllySentenceReader(object):
                 cx = self.inp.peek()
                 if cx == None: cx = u'!!'
 #               print 'sentence break: next=' , '<' + cx + '>' , len(cx) , sent
-                if (nAN > 1):
+                if nAN > 1:
                     break
 
         if len(sent) > 0 or self.last != END:
