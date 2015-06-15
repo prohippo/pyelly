@@ -133,7 +133,7 @@ g:SEGM[|*unique]->ELEM
                >>*l
 __
 g:SEGM[|*unique]->SEGM ELEM
-              ?>>?
+#             ?>>?
  l[!pro] r[!ln]>>--
  l[!rn]  r[!ln]>>*r--
  l[!rv]  r[!lv]>>*r----
@@ -166,7 +166,8 @@ g:SEGM->PEXP
 __
 
 g:ELEM->ADV[~mod] NCLU
- >>[!rn]+
+ r[$trlg]>>+
+         >>[!rn]+
 _
   var typg=adv
   (typg)
@@ -278,8 +279,37 @@ _
   right
   append </punc>
 __
+g:ELEM->PREP PCLS[^ing]
+ >>+
+_
+  var typg=prep
+  (lxtd)
+__
 g:ELEM[^dit]->PEXP[|eg,-cm]
  >>*l
+__
+g:ELEM[^*r]->PUNC[|*l,quo] ELEM
+ >>--
+_
+ var typg=punc
+ (typg)
+ right
+__
+
+g:PUNC[|*l]->PUNC[|*l,quo] CONJ
+ >>[$trlg]
+_
+  split
+  linefeed
+  append <conj>
+  right
+  append </conj>
+  insert < add
+  back
+  delete <
+  store add
+  merge
+  left
 __
 
 g:PEXP[|eg,cm]->PUNC[|com] PEXP[|eg,-cm]
@@ -300,14 +330,17 @@ __
 
 p:pbeg
 _
+  var add=
   append <punc>
   left
   append </punc>
+  insert < add
   linefeed
   right
 __
 g:PEXP[|*l,nom]->PUNC[|*l] NCLU
- >>[!ln,rn]+
+ r[$trlg]>>[!ln]+
+         >>[!ln,rn]+
 _
   (pbeg)
 __
@@ -351,6 +384,7 @@ _
   (typg)
 __
 g:NCLU->PEXP[|nom] PUNC[|*r]
+ >>*r
 _
   append <nclu>
   split
@@ -362,10 +396,36 @@ _
   delete 7 <
   merge
   linefeed
+  var add=
   append <punc>
   right
   append </punc></nclu>
+  insert < add
 __
+
+g:VCLU[^*r,infn]->TO VCLU[^-aux]
+ >>++
+_
+  split
+  right
+  back
+  append <vclu>to
+  delete to >
+  merge
+__
+g:VCLU[^*r]->VERB VCLU[^infn]
+ >>++
+_
+  append <vclu><verb>
+  left
+  append </verb>
+  split
+  right
+  back
+  delete to >
+  merge
+__
+
 g:VCLU->PEXP[|vrb,-ed,-ing] PUNC[|*r]
 _
   var typg=vclu
@@ -411,17 +471,19 @@ _
   append </nclu>
 __
 g:NCLU[:*l,*r,det]->DET[:sgl] NCLU[:-det,-prep,-plur]
+ >>*r
 _
   var typg=det
   (lxtd)
 __
 g:NCLU[:*l,*r,det]->DET[:-sgl] NCLU[:-det,-prep]
+ >>*r
 _
   var typg=det
   (lxtd)
 __
 g:NCLU[:*r,prep]->PREP NCLU[:-prep]
- l[$-to]>>+
+ l[$-to]>>*r+
 _
   var typg=prep
   (lxtd)
@@ -463,29 +525,32 @@ _
   (lxtd)
 __
 g:NCLU[:*l,*r,det]->DEM[:sgl]  NCLU[:-det,-prep,-plur]
- >>++
+ >>*r++
 _
   var typg=dem
   (lxtd)
 __
 g:NCLU[:*r]->ADJ NCLU[:-det,-prep,-num]
- >>++
+ >>*r++
 _
   var typg=adj
   (lxtd)
 __
 g:NCLU[:*r,num]-> NUM NCLU[:-det,-prep,-num]
+ >>*r
 _
   var typg=num
   (lxtd)
 __
 g:NCLU[:*r,det]->QUAN NCLU[:-prep,-num]
+ >>*r
 _
   var typg=quan
   (lxtd)
 __
 g:NCLU->NCLU[:poss] NCLU[:-poss]
- >>*l++
+ r[$trlg]>>*l[$trlg]++
+          >>*l++
 _
   split
   left
@@ -603,12 +668,6 @@ _
   (lxtd)
 __
 
-g:ELEM->PREP PCLS[^ing]
- >>+
-_
-  var typg=prep
-  (lxtd)
-__
 g:PCLS[^*l]->VERB[^ing] NCLU
 _
   append <clause><vclu><verb>
@@ -630,22 +689,21 @@ __
 g:VERB->UNKN
  >>-
 __
-g:VERB[^*r,infn]->TO VERB[^-aux]
- >>++
-_
-  (twob)
-__
-g:VERB[^*r]->VERB[^-beaj] VERB[^infn]
- >>++
-_
-  (twob)
-__
-g:VERB[^beaj]->ADJ[%to] TO
+g:VERB[^beaj,to]->ADJ[%to] TO
  l[$spat]>>++
 _
-  append [be]
+  if be=
+    append [be]
+    end
   space
   (twob)
+__
+g:VERB[^beaj,to]->BE VERB[^beaj,to]
+ >>++++
+_
+  var be=T
+  append be
+  right
 __
 g:VERB[^*r]->VERB[^proc] VERB[^ing]
  >>++
@@ -857,6 +915,16 @@ _
   (twob)
 __
 g:HAVE[^neg,*l]->HAVE[^-neg] NEGN
+_
+  (twob)
+__
+g:AUXL[^hav]->HAVE[^-neg] TO
+ >>++++
+_
+  (twob)
+__
+g:AUXL[^*r]->AUXL AUXL
+ >>++
 _
   (twob)
 __
@@ -1142,6 +1210,8 @@ d:out <- PTCL
 __
 d:off <- PTCL
 __
+d:at  <- PTCL
+__
 
 d:not  <- NEGN
 __
@@ -1230,7 +1300,7 @@ d:’ <- PUNC[|*r,quo]
 __
 d:` <- PUNC[|*l,quo,start]
 __
-d:' <- PUNC[|*r,quo,start]
+d:' <- PUNC[|*l,*r,quo,start]
 __
 d:$ <- MONY
 __

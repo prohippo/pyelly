@@ -76,6 +76,7 @@ alarm : NOUN
 alarm : VERB
 alive : ADJ
 almost : ADV[~mod,prox]
+also : ADV
 ancient : NOUN
 ancient : ADJ
 announce : VERB
@@ -131,6 +132,9 @@ connect : VERB
 constitution : NOUN
 consume : VERB
 coordination : NOUN
+cope : NOUN - -2
+cope : VERB - +1
+copy : VERB
 corn : NOUN
 corn : VERB
 create : VERB
@@ -253,6 +257,7 @@ last : NOUN - -1
 last : VERB
 last : ADJ[%mod,to]
 last : ADV
+learn : VERB
 less : ADJ[%to] - +1
 less : ADV [$deg] 0
 like : NOUN - -2
@@ -264,7 +269,7 @@ livestock : NOUN
 long : VERB
 long : ADJ
 look : NOUN
-look : VERB
+look : VERB[^ptcl]
 loophole : NOUN
 make : NOUN
 make : VERB
@@ -326,8 +331,8 @@ out : NOUN
 out : VERB
 out : ADJ
 out : ADV
-part : NOUN - +1
-part : VERB
+part : NOUN - +2
+part : VERB - -1
 passionate : ADJ
 pay : NOUN
 pay : VERB
@@ -419,6 +424,7 @@ stockpile : VERB
 success : NOUN
 suppose : VERB
 surgeon : NOUN
+surgery : NOUN
 switch : NOUN
 switch : VERB
 switch grass : NOUN
