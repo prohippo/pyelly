@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 14apr2015 CPM
+# ellyWildcard.py : 12jun2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -473,7 +473,7 @@ def match ( patn , text , offs=0 , limt=None ):
                 if offs == limt or ellyChar.isWhiteSpace(text[offs]):
                     offs -= 1
                     continue
-            elif ellyBuffer.separators.find(last) >= 0:
+            elif last in ellyBuffer.separators:
                 offs -= 1
                 continue
             elif last in [ '?' , '!' ]:

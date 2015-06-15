@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBuffer.py : 14apr2015 CPM
+# ellyBuffer.py : 13jun2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -35,28 +35,38 @@ an input buffer class for Elly language analysis
 import ellyChar
 import ellyToken
 
-separators = u"-, \t\r\n()[]<>"   # for tokenization
+separators = [                 # for breaking tokenization scan
+    u'-'  ,
+    u' '  ,
+    u'\t' , u'\r' , u'\n' ,
+    u'('  , u')'  ,
+    u'['  , u']'  ,
+    u'<'  , u'>'  ,
+    '"' , u'\u201c' , u'\u2018' , u'\u201b' , u'\u201f' ,
+          u'\u201d' ,             u'\u201a' , u'\u201e'
+]
 
-PLS = u'+'                        # special token chars
+PLS = u'+'                     # special token chars
 MIN = u'-'
 COM = u','
 UNS = u'_'
 DOT = u'.'
 
-DSH = u'--'                       # dash
-ELP = u'...'                      # ellipsis
-SPH = u' -'                       # space + hyphen
-APO = ellyChar.APO                # apostrophe literal
-APX = u'\u2019'                   # formatted apostrophe
+DSH = u'--'                    # dash
+ELP = u'...'                   # ellipsis
+SPH = u' -'                    # space + hyphen
+APO = ellyChar.APO             # apostrophe literal
+APX = u'\u2019'                # formatted apostrophe
+
 
 def normalize ( s ):
 
     """
-    convert all unrecognizable chars in input to _ and
-    consecutive multiple white spaces to a single space
+    convert all unrecognizable input chars to _ and any
+    consecutive white spaces to a single space
 
     arguments:
-        s   - Unicode input sequence to operate on
+        s   - Unicode input char sequence to operate on
     """
 
     spaced = False
@@ -157,8 +167,8 @@ class EllyBuffer(object):
             text  - text to append, string or list of chars
         """
 
-        if type(text) != list:          # get new text as list
-            text = list(text)
+        if not isinstance(text,list):
+            text = list(text)           # get new text as list if not already
         if len(self.buffer) > 0:
             if not ellyChar.isWhiteSpace(self.buffer[-1]) and text[0] != ' ':
                 self.buffer.append(' ') # put in space separator if needed
@@ -200,31 +210,6 @@ class EllyBuffer(object):
         self._reset()
         return s
 
-    def find ( self , chs , skip=0 ):
-
-        """
-        look for one of a set of chars in buffer
-
-        arguments:
-            self  -
-            chs   - string of chars to look for
-            skip  - how many chars to skip in buffer
-
-        returns:
-            offset in buffer if char found, -1 otherwise
-        """
-
-        n = len(self.buffer)
-        if skip >= n:                         # is skip too long?
-            return -1                         # if so, fail
-
-        for i in range(skip,n):
-            if chs.find(self.buffer[i]) >= 0: # is buffer char in set?
-                self.index = i                # if so, note buffer position
-                return i
-
-        return -1                             # fail
-
     def getFound ( self , n=0 ):
 
         """
@@ -246,6 +231,36 @@ class EllyBuffer(object):
         else:
             return self.buffer[k] # return char
 
+    def find ( self , chs , skip=0 ):
+
+        """
+        look for one of a list of chars in buffer
+
+        arguments:
+            self  -
+            chs   - list of chars to look for
+            skip  - how many chars to skip in buffer
+
+        returns:
+            offset in buffer if char found, -1 otherwise
+        """
+
+        n = len(self.buffer)
+        if skip >= n:                         # is skip too long?
+            return -1                         # if so, fail
+
+        if skip == 0 and self.buffer[0] == APO:
+            return 1                          # special case!
+
+#       print 'chs=' , chs
+#       print 'skip=' , skip, 'n=' , n
+        for k in range(skip,n):
+            if self.buffer[k] in chs:         # is buffer char in set?
+                self.index = k                # if so, note buffer position
+                return k
+
+        return -1                             # fail
+
     def findBreak ( self ):
 
         """
@@ -259,7 +274,18 @@ class EllyBuffer(object):
             otherwise, count of chars to next break if nonzero, but 1 if zero,
         """
 
+        if len(self.buffer) == 0:
+            return 0
+
+        if self.buffer[0] == APO:
+            return 1
+
         k = ellyChar.findBreak(self.buffer)
+#       print 'findBreak k=' , k
+        if k > 2 and self.buffer[k-1] in [ APO , APX ]:
+            k -= 1
+        if k > 2 and self.buffer[k-1] in [ APO , APX , COM ]:
+            k -= 1
         self.index = k
         return k
 
@@ -300,7 +326,7 @@ class EllyBuffer(object):
     def atToken ( self ):
 
         """
-        look for token char at start of buffer
+        look for combining token char at start of buffer
 
         arguments:
             self
@@ -435,7 +461,7 @@ class EllyBuffer(object):
     def refill ( self , s ):
 
         """
-        replace contents of buffer with chars
+        replace contents of buffer with new input chars
 
         arguments:
             self  -
@@ -528,16 +554,18 @@ class EllyBuffer(object):
             EllyToken on success, None otherwise
         """
 
+#       print '_getRaw() from' , len(self.buffer) , 'chars'
         self.skipSpaces()
-#       print "|",len(self.buffer)
         ln = len(self.buffer)
-#       print "|",len(self.buffer)
+#       print "after skip=",ln
         if ln == 0:
             return None
-#       print "proceed"
 
         ## get length of next token and if it has
         ## initial - or +, check for word fragment
+
+        bs = self.buffer[0]
+#       print 'buffer start=' , bs
 
         k = 0                   # number of chars for next token
 
@@ -553,22 +581,27 @@ class EllyBuffer(object):
                 k = 3
             else:               # otherwise, single punctuation char
                 k = 1
-        elif not ellyChar.isCombining(self.buffer[0]):
-            k = 1               # if next char cannot start multi-char token, take as 1-char token
+        elif bs == APO:
+            k = 1
         else:
+#           print 'full token extraction'
             k = self.find(separators)
+#           print 'k=' , k
             if k < 0:           # break multi-char token at next separator
                 k = ln          # if no separator, go up to end of buffer
-            while k < ln:       # look at any separator and following contex
-                x = self.buffer[k]
-                if x != MIN and x != COM:
-                    break       # no further check if separator not hyphen or comma
-                if not ellyChar.isDigit(self.buffer[k+1]):
-                    break       # accept hyphen or comma if NOT followed by digit
-                else:           # otherwise, look for another separator
-                    k = self.find(separators,k+2)
-                    if k < 0:
-                        k = ln
+            elif k == 0:
+                k = 1           # immediate break in scanning
+            else:
+                while k < ln:       # look at any separator and following context
+                    x = self.buffer[k]
+                    if x != MIN and x != COM:
+                        break       # no further check if separator not hyphen or comma
+                    if not ellyChar.isDigit(self.buffer[k+1]):
+                        break       # accept hyphen or comma if NOT followed by digit
+                    else:           # otherwise, look for another separator
+                        k = self.find(separators,k+2)
+                        if k < 0:
+                            k = ln
 
         ## if token not delimited, take rest of buffer as
         ## will fit into token working area
@@ -628,45 +661,49 @@ class EllyBuffer(object):
 #
 
 if __name__ == '__main__':
+    import codecs
+    import sys
 
-    dat0 = u'The aa vv. We xx "yy" zz ee? A U.S. resp wil do!'
-    dat1 = u'more stuff.'
-    dat2 = u'ff, gg, hh'
-    uncd = u'\u00c0\u00c1\u00c2 \u265e'
-    qqqq = u'QQQQ'
-    poss = u'zz\'s yy'
-    hyph = u'aa-bb-cc'
+    if len(sys.argv) == 1:
+        test = [  # lines
+            u"'oops,'" ,
+            u'The aa vv. We xx "yy" zz ee? A U.S. resp wil do!' ,
+            u'more stuff.' ,
+            u'ff, gg, hh' ,
+            u'\u00c0\u00c1\u00c2 \u265e' ,
+            u'QQQQ' ,
+            u'zz\'s yy' ,
+            u'wh (123 456)' ,
+            u'aa-bb-cc'
+        ]
+    else:
+        test = [ ]
+        try :
+            inp = codecs.open(sys.argv[1],"r","utf-8")
+            while True:
+                dat = inp.readline( )
+                if len(dat) == 0: break
+                test.append(dat.strip())
+            inp.close()
+        except IOError as e:
+            print >> sys.stderr , e
+            sys.exit(1)
 
     eb = EllyBuffer()     # create an empty buffer
-#   print eb
 
 #   fill buffer with test data
 
-    print eb.count() , 'chars + >' , "'" + dat0 + "'"
-    eb.append(dat0)
-    print eb.count() , 'chars + >' , "'" + dat1 + "'"
-    eb.append(dat1)
-    print eb.count() , 'chars + >' , "'" + dat2 + "'"
-    eb.append(dat2)
-    print eb.count() , 'chars + <' , "'" + uncd + "'"
-    eb.prepend(uncd)
-    print eb.count() , 'chars + <' , "'" + qqqq + "'"
-    eb.prepend(qqqq)
-    print eb.count() , 'chars + <' , "'" + poss + "'"
-    eb.prepend(poss)
-    print eb.count() , 'chars + >' , "'" + hyph + "'"
-    eb.append(hyph)
-
+    print len(test) , 'lines of input'
+    for r in test:
+        print eb.count() , 'chars + [' + r + ']'
+        eb.append(r)
+    print '------------'
     print ''
-    print eb
 
     print 'getting text elements'
 
     while eb.count() > 0: # extract consecutive text elements from buffer
 
-        eb.skipSpaces()
-        ncs = eb.findBreak()
-        if ncs == 0: ncs = 1
-        tk = eb.extract(ncs)
-        print 'extract' , ncs , 'chars leaving' , eb.count()
-        print 'token=' , tk , '<' + u''.join(tk) + '>'
+        tkn = eb.getNext()
+        if tkn == None: break
+        print 'extract <' + u''.join(tkn.root) + '>'

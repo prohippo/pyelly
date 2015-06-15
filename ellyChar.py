@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 26apr2015 CPM
+# ellyChar.py : 12jun2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -35,6 +35,7 @@ for handing ASCII plus Latin-1 chars as Unicode
 """
 
 APO = unichr(39)   # Unicode apostrophe
+APX = u'\u2019'    # Unicode formatted apostrophe
 USC = u'_'         # Unicode underscore
 LBR = u'['         # Unicode left bracket
 RBR = u']'         # Unicode right bracket
@@ -159,8 +160,7 @@ def isCombining ( x ):
     returns:
         True if a most general token char, False otherwise
     """
-    return (isLetterOrDigit(x) or x == USC or x == APO or x == SLA or
-            x == BSL or x == NBS)
+    return (isLetterOrDigit(x) or x in [ USC , APO , APX , SLA , BSL , NBS ])
 
 def isEmbeddedCombining ( x ):
     """
