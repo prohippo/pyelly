@@ -1,8 +1,12 @@
 PyElly is a rule-based natural language processing tool that has existed
-for over forty years in various incarnations. It can speed development of
-many kinds of NLP applications by taking care of low-level language
-details not central to a given data problem or solution. It is now freely
-available on the web to anyone wanting to process or pre-process text data.
+for over forty years in various incarnations.  It is now freely available
+on the Web to anyone wanting to try it out.
+
+PyElly is intended mainly for educational use, in that it allows a student
+to engage natural language at a fine level of detail and learn the issues
+involved in processing text data. It can be of interest to others, though,
+because of its extensive support for handling the messy aspects of
+language not central to a given data problem or its solution.
 
 The basic paradigm of PyElly is to rewrite natural language input into
 some other text output, which might be SQL, XML, or some other form. This
@@ -27,8 +31,8 @@ Python pydoc utility.
 
 At present, PyElly consists of 63 Python modules comprising about fifteen
 thousand lines of source code. There are also various definition files
-to support basic various language processing capabilities in example
-applications, including
+to support basic various language processing capabilities. The PyElly
+download also includes rules for some  example applications, including
 
 * indexing - remove stopwords and get stems for content words from raw
              text input.
@@ -47,10 +51,10 @@ comprehensive integration testing. Other applications will be added to the
 PyElly package on GitHub in the future. You may use them as models for
 building your own systems.
 
-PyElly is intended mostly for educational use and is being released under
-a BSD open-source license. Be advised that the current software and
+PyElly is free software released under a BSD open-source license for
+educational and other uses. Be advised that the current software and
 documentation is still evolving, although releases after v1.1 should be
-more stable than previous beta releases.
+more stable than preceding beta releases.
 
 Release Notes:
 
@@ -146,7 +150,7 @@ Release Notes:
                       clean up rule definition diagnostics
  1.2.4  -  15may2015  extend "marking" integration test
                       fix bug in scoring plausibility of phrases
-                      fix simple character translation in "chinese" test
+                      fix simplified character translation in "chinese" test
                       add tracing to cognitive semantic logic
                       better checking on feature set identifiers
  1.2.5  -  25may2015  clean up "marking" rules and integration test
@@ -164,9 +168,15 @@ Release Notes:
                       add diagnostic output for parsing
  1.2.7  -  08jun2015  clean up "marking" rules and change integration test key
                       fix bug in morphological analysis match conditions
-                      make punctuation recognition syntax feature ID consistent
+                      make punctuation syntax feature ID consistent
                       add automatic check for consistency of all feature IDs
                       fill out description of MERGE command in User's Manual
+ 1.2.8  -  15jun2015  better debugging for reading in sentences to process
+                      fix incorrect stop exception
+                      fix inconsistent feature ID in "chinese" grammar
+                      fix problem in parse tree dump with big phrase IDs
+                      fix bug with apostrophe as quotation mark
+                      clean up "marking" application
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will require regeneration of any previously saved *.elly.bin files to ensure
