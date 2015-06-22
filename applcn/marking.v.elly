@@ -40,6 +40,7 @@ military exercise : NOUN
 
 at least : ADV[~mod]
 out of : PREP
+round at : PREP
 pretty much : ADV[~mod,prox] [$deg] 0
 a lot of : QUAN
 all at once : ADV
@@ -297,6 +298,8 @@ much : ADV
 much like : VERB - -1
 much like : PREP
 nearly : ADV[~mod,prox]
+neck : NOUN
+neck : VERB - -1
 need : NOUN
 need : VERB
 negotiate : VERB
@@ -383,7 +386,7 @@ response : NOUN
 revolution : NOUN
 rick : NOUN
 rick : VERB
-round : NOUN
+round : NOUN [$cond] -1
 round : VERB
 round : ADJ
 round : ADV

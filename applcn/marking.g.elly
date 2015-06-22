@@ -130,6 +130,7 @@ _
     end
 __
 g:SEGM[|*unique]->ELEM
+#             ?>>?
                >>*l
 __
 g:SEGM[|*unique]->SEGM ELEM
@@ -178,10 +179,12 @@ g:ELEM->NCLU[:-dit, prep,-poss]
   >>[!rn]+0
 __
 g:ELEM->NCLU[:-dit,-prep,-poss]
- >>[!ln,rn]
+#?>>?
+  >>[!ln,rn]
 __
 g:ELEM->NCLU[:dit]
- >>[!rn]+
+#?>>?
+  >>[!rn]+
 _
   append <conj>that</conj>
   linefeed
@@ -193,11 +196,8 @@ _
   var typg=pro
   (typg)
 __
-g:ELEM[^*l]->VCLU[^-to,-infn]
+g:ELEM[^*l]->VCLU[^-to]
  >>[!lv,rv]
-__
-g:ELEM[^*l]->VCLU[^-to, infn]
- >>[!rv]
 __
 g:ELEM->VCLU[^to] NCLU
  >>[!rn]+
@@ -219,6 +219,12 @@ _
   left
   linefeed
   append <conj>that</conj>
+__
+g:ELEM->THAT
+ >>-
+_
+  var typg=conj
+  (typg)
 __
 g:ELEM->DATE
 _
@@ -245,13 +251,14 @@ _
   (typg)
 __
 g:ELEM->DET ADJ
- >>----
+ ?>>?
 _
-  append <adj><det>
+  append <nclu><det>
   left
-  append </det>
+  append </det><adj>
   right
-  append </adj>
+  append </adj></nclu>
+  linefeed
 __
 g:ELEM->ADV
  >>----
@@ -403,7 +410,7 @@ _
   insert < add
 __
 
-g:VCLU[^*r,infn]->TO VCLU[^-aux]
+g:VCLU[^*r,infn]->TO VCLU[^-aux,-infn]
  >>++
 _
   split
@@ -413,8 +420,10 @@ _
   delete to >
   merge
 __
-g:VCLU[^*r]->VERB VCLU[^infn]
- >>++
+g:VCLU[^*l]->VERB VCLU[^infn]
+#       ?>>?
+ r[$cmpd]>>*r--
+         >>*r[$cmpd]++
 _
   append <vclu><verb>
   left
@@ -464,6 +473,7 @@ _
 __
 
 g:NCLU[:*l]->NOUN
+ >>*l
 _
   append <nclu>
   var typg=noun
@@ -471,7 +481,8 @@ _
   append </nclu>
 __
 g:NCLU[:*l,*r,det]->DET[:sgl] NCLU[:-det,-prep,-plur]
- >>*r
+ r[$cond]>>*r+
+         >>*r
 _
   var typg=det
   (lxtd)
@@ -483,6 +494,7 @@ _
   (lxtd)
 __
 g:NCLU[:*r,prep]->PREP NCLU[:-prep]
+#      ?>>?
  l[$-to]>>*r+
 _
   var typg=prep
@@ -548,15 +560,27 @@ _
   var typg=quan
   (lxtd)
 __
-g:NCLU->NCLU[:poss] NCLU[:-poss]
- r[$trlg]>>*l[$trlg]++
-          >>*l++
+p:poss
 _
   split
   left
   right
   back
   merge :</nclu><nclu>::
+__
+g:NCLU[:*r]->NCLU[:poss,-det,-prep] NCLU[:-poss]
+#       ?>>?
+ r[$trlg]>>*l[$trlg]++
+         >>*l++
+_
+  (poss)
+__
+g:NCLU[:*r,det]->NCLU[:poss,det,-prep] NCLU[:-poss]
+#       ?>>?
+ r[$trlg]>>*l[$trlg]++
+         >>*l++
+_
+  (poss)
 __
 g:NCLU->DET NUM
  >>--
@@ -603,18 +627,15 @@ g:NOUN[:*r]->NOUN[:hyph] NOUN
 #?>>?
   >>++
 __
-g:NOUN[:*r,cjn]->NOUN[:-hyph,-plur,-cjn,-ing] NOUN[:-cjn,ing]
+g:NOUN[:*r,cjn]->NOUN[:-hyph,-poss,-plur,-cjn,-ing] NOUN[:-det,-cjn,ing]
+#?>>?
+  >>+0
 _
  (twob)
 __
-g:NOUN[:*r,cjn]->NOUN[:-hyph,-plur,-cjn,-ing] NOUN[:-cjn,-ing]
+g:NOUN[:*r,cjn]->NOUN[:-hyph,-poss,-plur,-cjn,-ing] NOUN[:-det,-cjn,-ing]
 #?>>?
   >>+
-_
- (twob)
-__
-g:NOUN->DET[:def] ADJ
- >>----
 _
  (twob)
 __
@@ -763,12 +784,17 @@ _
 __
 g:ADJ[%*r]->NOUN[:hyph] ADJ
 __
-g:ADJ[%*r]->ADV ADJ
+g:ADJ[%*r,more]->ADV ADJ
  l[$deg]>>+++
 _
   var typg=adv
   (typg)
   right
+__
+g:ADJ->ADJ[%more] THAT
+ >>++
+_
+  (twob)
 __
 g:ADJ[%*r]->NOUN[:hyph] ADJ
  >>++
@@ -859,11 +885,19 @@ g:ADJ[%*l]->ADJ[%-*l,-*r] XER
 _
   (twob)
 __
-g:ADV->ADV XER
+g:ADJ[%*l]->ADJ[%-*l,-*r] XEST
 _
   (twob)
 __
-g:ADJ[%*l]->ADJ[%-*l,-*r] XEST
+g:ADJ[%*r]->ADV[~adj] ADJ
+ >>++
+_
+  append <adv>
+  left
+  append </adv>
+  right
+__
+g:ADV->ADV XER
 _
   (twob)
 __
@@ -923,10 +957,30 @@ g:AUXL[^hav]->HAVE[^-neg] TO
 _
   (twob)
 __
+
+#
+# compound auxiliaries
+p:aux
+_
+  left
+  append <quan>
+  right
+  append </quan>
+__
 g:AUXL[^*r]->AUXL AUXL
  >>++
 _
   (twob)
+__
+g:AUXL->AUXL QUAN[:cnj]
+ >>++
+_
+  (aux)
+__
+g:HAVE->HAVE QUAN[:cnj]
+ >>++
+_
+  (aux)
 __
 
 #
@@ -1052,7 +1106,7 @@ __
 d:because <- CONJ
 __
 
-d:all  <- QUAN[:ind]
+d:all  <- QUAN[:ind,cnj]
 __
 d:any  <- QUAN[:ind]
 __
@@ -1060,7 +1114,7 @@ d:some <- QUAN[:ind]
 __
 d:many <- QUAN[:ind]
 __
-d:each <- QUAN[:ind]
+d:each <- QUAN[:ind,cnj]
 __
 d:every<- QUAN
 __
@@ -1068,7 +1122,7 @@ d:no   <- QUAN
 __
 d:several<-QUAN[:ind]
 __
-d:both <- QUAN[:ind]
+d:both <- QUAN[:ind,cnj]
 __
 d:multiple <- QUAN
 __
@@ -1141,6 +1195,9 @@ __
 d:if   <- CONJ
 __
 d:so   <- CONJ
+__
+d:so   <- ADV[~adj]
+ >>+
 __
 d:when <- CONJ
 __
@@ -1369,3 +1426,4 @@ g:CONJ[:*l]->CONJ CLSP
 _
   (clspr)
 __
+
