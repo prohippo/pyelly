@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBase.py : 28may2015 CPM
+# parseTreeBase.py : 21jun2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -104,11 +104,11 @@ class ParseTreeBase(object):
                 summary string
             """
 
-            cn = '' if self.cncp == conceptualHierarchy.NOname else '/' + self.cncp
+            cn = '' if self.cncp == conceptualHierarchy.NOname else '/cnc=' + self.cncp
 
             return ( 'phrase ' + unicode(self.seqn) + ' @' + unicode(self.posn)
-                     + ': type=' + unicode(self.typx) + ' [' + self.synf.hexadecimal() + ']'
-                     + ' [' + self.semf.hexadecimal() + '] : '
+                     + ': type=' + unicode(self.typx) + ' syn[' + self.synf.hexadecimal() + ']'
+                     + ' sem[' + self.semf.hexadecimal() + '] : bia='
                      + unicode(self.bias) + cn + ' use=' + str(self.usen) )
 
         def __str__ ( self ):
@@ -192,6 +192,7 @@ class ParseTreeBase(object):
             self.rule, othr.rule = othr.rule, self.rule
             self.lftd, othr.lftd = othr.lftd, self.lftd
             self.rhtd, othr.rhtd = othr.rhtd, self.rhtd
+            self.semf, othr.semf = othr.semf, self.semf
             self.bias, othr.bias = othr.bias, self.bias
             self.cncp, othr.cncp = othr.cncp, self.cncp
             self.ctxc, othr.ctxc = othr.ctxc, self.ctxc
@@ -288,6 +289,7 @@ class ParseTreeBase(object):
         """
 
 #       print "at ParseTreeBase.__init__()"
+        self.lastph = None
         self.phrases = [ ]
         self.goals   = [ ]
         npre = ellyConfiguration.phraseLimit
