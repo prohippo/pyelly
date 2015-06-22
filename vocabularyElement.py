@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyElement.py : 31mar2015 CPM
+# vocabularyElement.py : 19jun2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -152,7 +152,7 @@ class VocabularyElement(object):
         tm = u''.join(self.chs)
 
         df  = u'cat=' + unicode(self.cat) + u' '
-        df += self.syf.hexadecimal() + u' . ' + self.smf.hexadecimal() + u' '
+        df += self.syf.hexadecimal(False) + u' : ' + self.smf.hexadecimal(False) + u' '
         df += u'plaus=' + unicode(self.bia) + u' , '
         df += u'concp=' + self.con + ', '
         df += unicode(self._nt) + u' TRANSLATION'

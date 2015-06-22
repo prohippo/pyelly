@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeWithDisplay.py : 11jun2015 CPM
+# parseTreeWithDisplay.py : 21jun2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -116,7 +116,6 @@ class ParseTreeWithDisplay(parseTree.ParseTree):
             return
         tks = self.ctx.tokns       # token list for parse
         out.write('dump all\n')
-        out.write('with ' + str(len(tks)) + ' tokens\n')
         out.write('\n')
         n = self.phlim - 1         # index of last node created
         while n >= 0:              # process until oldest node at n=0
@@ -124,6 +123,26 @@ class ParseTreeWithDisplay(parseTree.ParseTree):
             if ph.dump:            # if not already dumped
                 self.dumpTree(ph)  # dump subtree starting at current phrase
             n -= 1
+
+        out.write('rules invoked\n')
+        hr = { }                   # association of rules with phrase nodes
+        lm = 6                     # maximum number phrase nodes to report
+        for k in range(self.phlim):
+            ph = self.phrases[k]
+            rs = ph.rule.seqn
+            if not rs in hr: hr[rs] = [ ]
+            hr[rs].append(k)       # make association
+        for rs in hr.keys():       # iterate on rules found
+            ls = hr[rs]
+            if len(ls) > lm: ls = ls[:lm]
+            rss = '{:4d}:'.format(rs)
+            out.write('rule ')     # report up to lm phrase nodes for rule
+            out.write(rss)
+            for k in ls:
+                out.write(' ')
+                out.write(str(k))
+            out.write('\n')
+        out.write('\n')
 
         wn = len(self.ctx.tokns)   # last parse position in input
         gs = self.goal[wn]         # goals at end of parsed input
@@ -156,7 +175,8 @@ class ParseTreeWithDisplay(parseTree.ParseTree):
             out.write('\n')
         if nam == 0: out.write('NONE\n')
         out.write('\n')
-        out.write('raw tokens=')
+        out.write(str(len(tks)))
+        out.write(' raw tokens=')
         for tk in tks:
             if tk == None:
                 out.write(' [[NONE]]')
@@ -191,7 +211,6 @@ class ParseTreeWithDisplay(parseTree.ParseTree):
             return
         out.write('dumping from ' + str(ph) + '\n')
         tks = self.ctx.tokns
-        out.write('with ' + str(len(tks)) + ' tokens\n')
 
         trunc = False                                  # flag that display was truncated
 

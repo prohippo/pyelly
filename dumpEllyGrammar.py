@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# dumpEllyGrammar.py : 16may2015 CPM
+# dumpEllyGrammar.py : 21jun2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -34,6 +34,8 @@ methods to dump a grammar table
 
 import cognitiveDefiner
 import generativeDefiner
+import codecs
+import sys
 
 def dumpAll ( symbols , table , level ):
 
@@ -45,6 +47,8 @@ def dumpAll ( symbols , table , level ):
         table   - grammar table
         level   - degree of detail
     """
+
+    sys.stdout = codecs.getwriter('utf8')(sys.stdout) # redefine standard output
 
     print len(symbols.ntindx) , 'syntactic categories'
 
@@ -314,13 +318,13 @@ def dumpDictionary ( stb, dctn , full ):
         for dr in dv:
             print stb.ntname[dr.styp] ,
             print '[{}]->'.format(dr.sfet.hexadecimal(False)) ,
-            print '"' + w + '"'
+            print u'"' + w + u'"'
 
             if full: showProcedures(dr)
 
         no += k
 
-    print len(dctn) , 'unique words in' , no , "entries"
+    print len(dctn) , 'unique tokens in' , no , "entries"
 
 #
 # unit test
@@ -328,7 +332,6 @@ def dumpDictionary ( stb, dctn , full ):
 
 if __name__ == '__main__':
 
-    import sys
     import ellyException
     import ellyDefinition
     import ellyPickle
@@ -339,7 +342,7 @@ if __name__ == '__main__':
 
     if ver == '':
         try:
-            rul = ellyDefinition.Rules(nam,ver)
+            rul = ellyDefinition.Grammar(nam,True,ver)
         except ellyException.TableFailure:
             print >> sys.stderr , 'grammar rules failed to compile'
             sys.exit(1)

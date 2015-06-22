@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBottomUp.py : 28may2015 CPM
+# parseTreeBottomUp.py : 21jun2015 CPM
 # -----------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -475,6 +475,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
                     self.dumpTree(phr)        # show parse tree only for SENT phrase
                 return True
 
+        print >> sys.stderr , ''
         if topg == None:
             print >> sys.stderr , 'parse FAILed!'
         else:

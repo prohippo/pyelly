@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveProcedure.py : 28may2015 CPM
+# cognitiveProcedure.py : 17jun2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -88,7 +88,8 @@ class CognitiveProcedure(object):
                 if phrs.lftd == None:
                     pass
                 elif op == semanticCommand.Ctrc:
-                    print >> sys.stderr , '  tracing phrase' , phrs.seqn
+                    print >> sys.stderr , ''
+                    print >> sys.stderr , '  tracing phrase' , phrs.seqn , 'rul=' , phrs.rule.seqn
                     trce = True
                     break
                 elif op == semanticCommand.Clftf or op == semanticCommand.Crhtf:
@@ -122,7 +123,7 @@ class CognitiveProcedure(object):
                     print >> sys.stderr , '  cog sem at clause' , clno
                     print >> sys.stderr , '  l:' , phrs.lftd
                     print >> sys.stderr , '  r:' , phrs.rhtd
-                for a in cls[1]:                      # get mext action
+                for a in cls[1]:                      # get next action
                     op = a[0]
                     if op == semanticCommand.Cadd:    # add to score?
                         psum += a[1]
@@ -163,13 +164,8 @@ class CognitiveProcedure(object):
 #       print >> sys.stderr , 'phrase' , phrs.seqn, 'intersect=' , phrs.ctxc
 
         if trce:
-            print >> sys.stderr , '  immediate scoring=' , psum
-            phd = phrs.lftd
-            if phd != None:
-                print >> sys.stderr , '  left =' , phd.seqn , 'bias=' , phd.bias
-            phd = phrs.rhtd
-            if phd != None:
-                print >> sys.stderr , '  right=' , phd.seqn , 'bias=' , phd.bias
+            print >> sys.stderr , '  incremental scoring=' , psum ,
+            print >> sys.stderr , 'sem[' + phrs.semf.hexadecimal() + ']'
         return psum
 
 #
