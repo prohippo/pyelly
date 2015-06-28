@@ -1,8 +1,17 @@
 # assigning from undefined variable
 
 var x=0
+var y=1234
 assign x=y
 show x
 show y
-set y=syzygy
+set y=syzygÿ
+show y
+append xx
+linefeed
+append yy
+view
+delete >
+view
+store y
 show y

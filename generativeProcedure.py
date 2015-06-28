@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeProcedure.py : 30apr2015 CPM
+# generativeProcedure.py : 26jun2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -36,8 +36,9 @@ import sys
 import semanticCommand
 import generativeDefiner
 import conceptualHierarchy
-import ellyBits
 import grammarRule
+import ellyChar
+import ellyBits
 
 class Code(object):
 
@@ -95,6 +96,28 @@ class Code(object):
 BAD  = -11111  # bias for phrase with failed generative semantics
 LSTJ = ','     # substring for joining substrings in list value
 PNAM = '_pnam' # variable for last procedure call in local stack
+
+space = { u'\n':u'\\n' , u'\r':u'\\r' , u' ':ellyChar.NBS , u'\t':u'\\t' }
+
+def despace ( strs ):
+
+    """
+    get Unicode string with ASCII space chars normalized for dumping
+
+    arguments:
+        strs  - string to convert
+
+    returns:
+        normalized string
+    """
+
+    lstg = [ ]
+    for c in strs:
+        if c in space:
+            lstg.append(space[c])
+        else:
+            lstg.append(c)
+    return u''.join(lstg)
 
 class GenerativeProcedure(object):
 
@@ -340,8 +363,7 @@ class GenerativeProcedure(object):
                     val = val[:-nde]           # drop final chars
                 elif nde < 0:
                     val = val[-nde:]           # drop initial chars
-                sv = ''.join(val)              # convert to string
-                cntx.setLocalVariable(var,sv)  # set variable
+                cntx.setLocalVariable(var,val) # set variable to deleted string
             elif op == semanticCommand.Gfnd:   # find sequence in buffer
                 cntx.findCharsInBuffer(code.next(),code.next())
             elif op == semanticCommand.Gpick:  # use local variable to select text
@@ -431,18 +453,29 @@ class GenerativeProcedure(object):
                     cntx.insertCharsIntoBuffer(c.lower(),1)
             elif op == semanticCommand.Gtrce:  # show phrase info to trace execution
                 cat = cntx.syms.getSyntaxTypeName(phrs.typx)
-                brn = "1" if isinstance(phrs.rule,grammarRule.ExtendingRule) else "2"
+                brn = 1 if isinstance(phrs.rule,grammarRule.ExtendingRule) else 2
                 pnam = cntx.getLocalVariable(PNAM)
-                print >> sys.stderr, "TRACE @" + str(phrs.posn) + " type=" + cat ,
-                print >> sys.stderr, "rule=" + str(phrs.rule.seqn) ,
-                print >> sys.stderr, "(" + brn + "-br)" ,
+                fm = u'TRACE @{0:d} type={1:s} rule={2:d} ({3:d}-br)'
+                fs = fm.format(phrs.posn,cat,phrs.rule.seqn,brn)
+                sys.stderr.write(fs)
+                sys.stderr.flush()
                 cntx.printStatus(pnam)
             elif op == semanticCommand.Gshow:   # show local variable
                 vr = code.next()
                 ms = code.next()
-                st = cntx.getLocalVariable(vr)
-                print >> sys.stderr, u'SHOW @phr' , phrs.seqn, u': [' + ms + ' ]' ,
-                print >> sys.stderr, u'VAR ' + vr + u'= [' + st + u']'
+                st = despace(cntx.getLocalVariable(vr))
+                fm = u'SHOW @phr {0:d} : [{1:s}] VAR {2:s}= [{3:s}]'
+                fs = fm.format(phrs.seqn,ms,vr,st)
+                sys.stderr.write(fs)
+                sys.stderr.write('\n')
+                sys.stderr.flush()
+            elif op == semanticCommand.Gview:   # show current and new buffers partially
+                nc = code.next()
+                cbl , nbl = cntx.viewBufferDivide(nc)
+                fm = u'VIEW @phr {0:d} : {1:s} | {2:s}\n'
+                st = fm.format(phrs.seqn,str(cbl),str(nbl))
+                sys.stderr.write(st)
+                sys.stderr.flush()
             elif op == semanticCommand.Gproc:  # semantic subprocedure
                 name = code.next()
 #               print >> sys.stderr , 'run procedure (' + name + ')'

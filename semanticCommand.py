@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# semanticCommand.py : 10may2015 CPM
+# semanticCommand.py : 26jun2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -93,7 +93,8 @@ Gcapt = 37  # capitalize first char in buffer
 Gucpt = 38  # uncapitalize first char in buffer
 Gtrce = 39  # instrumented no op for debugging
 Gshow = 40  # see local variable for debugging
-Gproc = 41  # call procedure
+Gview = 41  # see parts of current and next buffer
+Gproc = 42  # call procedure
 
 Gerr  = 99  # error return value
 
@@ -139,6 +140,7 @@ Glen = {    # command lengths used in dumping generative procedures
     Gucpt : 1 ,
     Gtrce : 1 ,
     Gshow : 3 ,
+    Gview : 2 ,
     Gerr  : 1 ,
     Gproc : 2
 }
@@ -150,5 +152,5 @@ Gopn = [    # operation names for dumping (must align with 43 numerical codes ab
     'EXTL' , 'EXTR' , 'INSN' , 'INSR' , 'SHFT' , 'DELE' ,
     'DLTO' , 'STOR' , 'FIND' , 'PICK' , 'APPD' , 'GETG' ,
     'PUTG' , 'ASSG' , 'QUEU' , 'UNIO' , 'INTR' , 'COMP' ,
-    'OBTN' , 'CAPT' , 'UCPT' , 'TRCE' , 'SHOW' , 'CALL'
+    'OBTN' , 'CAPT' , 'UCPT' , 'TRCE' , 'SHOW' , 'VIEW' , 'CALL'
 ]

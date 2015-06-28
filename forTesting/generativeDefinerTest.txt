@@ -58,6 +58,7 @@ LEFT
 RIGHT
 TRACE
 SHOW x nothing at all
+VIEW 8
 RETURN
 FAIL
 IF [!sem]

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# interpretiveContext.py : 14apr2015 CPM
+# interpretiveContext.py : 26jun2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -36,7 +36,7 @@ their output into a single stream
 import sys
 import conceptualWeighting
 
-deletion = '_d_'  # where to save deletions
+deletion = '_d_'  # name to save deletions under in local stack
 
 class InterpretiveContext(object):
 
@@ -208,11 +208,11 @@ class InterpretiveContext(object):
             self
 
         returns:
-            list of chars
+            string of last deleted chars
         """
 
-        h = self.locls[deletion]   # find deletion saver
-        return h[-1]               # get last deletion
+        h = self.locls[deletion]            # find deletion saver
+        return '' if len(h) == 0 else h[-1] # get last deletion if there was one
 
     def putDeletion ( self , ds ):
 
@@ -630,6 +630,39 @@ class InterpretiveContext(object):
             b.append(bs)  # append buffer content, but keep lists separate
         return b
 
+    def viewBufferDivide ( self , n ):
+
+        """
+        show last n chars of current buffer and
+        first n chars of next buffer
+
+        arguments:
+            self  -
+            n     - char count
+
+        returns:
+            list of two char lists
+        """
+
+        k = self.buffn
+        buf = self.buffs[k]
+        nbc = len(buf)
+        if nbc == 0:
+            curs = [ ]
+        else:
+            curs = buf[-n:] if nbc > n else buf[-nbc:]
+        k += 1
+        if k == len(self.buffs):
+            nxts = [ ]
+        else:
+            buf = self.buffs[k]
+            nbc = len(buf)
+            if nbc == 0:
+                nxts = [ ]
+            else:
+                nxts = buf[:n] if nbc > n else buf[:nbc]
+        return [ curs , nxts ]
+
     def addTokenToListing ( self , tok ):
 
         """
@@ -728,11 +761,12 @@ class InterpretiveContext(object):
             pnam  - procedure name to report
         """
 
-        print >> sys.stderr , 'stk=' + str(len(self.lbstk)) ,
+        sys.stderr.write(' stk=' + str(len(self.lbstk)))
         if pnam != '':
-            print >> sys.stderr , 'in (' + pnam + ')' ,
-        print >> sys.stderr , 'buf=' + str(len(self.buffs)) ,
-        print >> sys.stderr , '(' +  str(len(self.buffs[self.buffn])) + ' chars)'
+            sys.stderr.write(' in (' + pnam + ')')
+        sys.stderr.write(' buf=' + str(len(self.buffs)))
+        sys.stderr.write(' (' +  str(len(self.buffs[self.buffn])) + ' chars)\n')
+        sys.stderr.flush()
 
     def echoTokensToOutput ( self ):
 

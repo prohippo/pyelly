@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeDefiner.py : 23may2015 CPM
+# generativeDefiner.py : 26jun2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -56,6 +56,8 @@ _simple = {  # commands with no arguments
 }
 
 _dir = [ '<' , '>' ] # direction qualifier for some semantic commands
+
+defaultVIEW = 5      # limits on VIEW command, if unspecified
 
 def compileDefinition ( stb , inp ):
 
@@ -391,6 +393,12 @@ def compileDefinition ( stb , inp ):
             vr = rs if k < 0 else rs[:k]
             ms = '' if k < 0 else rs[k+1:]
             store.extend([ semanticCommand.Gshow , vr , ms ])
+        elif op == 'view':
+            try:
+                nm = int(rs) if len(rs) > 0 else defaultVIEW
+            except ValueError:
+                _err('bad viewing range',l=line)
+            store.extend([ semanticCommand.Gview , nm ])
         else:
             return _err("bad operation: " + op)
 
