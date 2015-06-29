@@ -387,7 +387,7 @@ revolution : NOUN
 rick : NOUN
 rick : VERB
 round : NOUN [$cond] -1
-round : VERB
+round : VERB [$cond] -1
 round : ADJ
 round : ADV
 roundup : NOUN

@@ -104,13 +104,15 @@ _
   right
 __
 
-p:brack   # handle bracketing
+p:brack   # handle bracketing, if any
 _
+# trace
   var lbr=
   var rbr=
   split
   right
   back
+# view 9
   if ~lbr=
     insert < lbr
     end
@@ -124,7 +126,9 @@ _
     append </
     insert < typg
     append >
+#   view 9
     end
+# show rbr brack
   if ~rbr=
     insert < rbr
     end
@@ -250,16 +254,6 @@ _
   var typg=adj
   (typg)
 __
-g:ELEM->DET ADJ
- ?>>?
-_
-  append <nclu><det>
-  left
-  append </det><adj>
-  right
-  append </adj></nclu>
-  linefeed
-__
 g:ELEM->ADV
  >>----
 _
@@ -338,9 +332,14 @@ __
 p:pbeg
 _
   var add=
+  peek > x
+  if ~x SP
+    linefeed
+    end
   append <punc>
   left
   append </punc>
+# show add pbeg
   insert < add
   linefeed
   right
@@ -391,7 +390,7 @@ _
   (typg)
 __
 g:NCLU->PEXP[|nom] PUNC[|*r]
- >>*r
+ >>*r[$quo]
 _
   append <nclu>
   split
@@ -475,6 +474,7 @@ __
 g:NCLU[:*l]->NOUN
  >>*l
 _
+# trace
   append <nclu>
   var typg=noun
   (brack)
@@ -543,7 +543,8 @@ _
   (lxtd)
 __
 g:NCLU[:*r]->ADJ NCLU[:-det,-prep,-num]
- >>*r++
+ r[$quo]>>*r+0
+        >>*r++
 _
   var typg=adj
   (lxtd)
@@ -562,10 +563,13 @@ _
 __
 p:poss
 _
+# trace
   split
   left
+# view 9
   right
   back
+# view 9
   merge :</nclu><nclu>::
 __
 g:NCLU[:*r]->NCLU[:poss,-det,-prep] NCLU[:-poss]
@@ -573,6 +577,7 @@ g:NCLU[:*r]->NCLU[:poss,-det,-prep] NCLU[:-poss]
  r[$trlg]>>*l[$trlg]++
          >>*l++
 _
+# trace
   (poss)
 __
 g:NCLU[:*r,det]->NCLU[:poss,det,-prep] NCLU[:-poss]
@@ -580,6 +585,7 @@ g:NCLU[:*r,det]->NCLU[:poss,det,-prep] NCLU[:-poss]
  r[$trlg]>>*l[$trlg]++
          >>*l++
 _
+# trace
   (poss)
 __
 g:NCLU->DET NUM
@@ -592,6 +598,27 @@ _
   right
   append </num></nclu>
 __
+g:NCLU[:*l,poss]->NCLU APOS
+ >>-
+_
+  left
+  split
+  back
+# trace
+  find < >
+  right
+  merge
+__
+g:NCLU[:det]->DET ADJ
+ ?>>?
+  >>--
+_
+  append <nclu><det>
+  left
+  append </det><adj>
+  right
+  append </adj></nclu>
+__
 
 g:NOUN->UNKN
 __
@@ -599,10 +626,6 @@ g:NOUN->PRO[%mod]
 _
   var typg=pro
   (typg)
-__
-g:NOUN[:*l,poss]->NOUN APOS
-_
-  (twob)
 __
 g:NOUN->VERB SUFX[#vTOn]
 _
@@ -647,6 +670,7 @@ _
 __
 
 g:VCLU[^*l]->VERB
+ >>*l
 _
   append <vclu>
   var typg=verb
@@ -667,11 +691,13 @@ _
   (rxtd)
 __
 g:VCLU[^hav,*r]->HAVE VCLU[^-hav]
+ r[$cond]>>+1
 _
   var typg=aux
   (lxtd)
 __
 g:VCLU[^aux,*r]->AUXL VCLU[^-aux]
+ r[$cond]>>+1
 _
   var typg=aux
   (lxtd)
