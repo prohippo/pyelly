@@ -11,8 +11,12 @@ else
   append ??
 end
 peek y <
+show y PEEKED
 if y SP
   append ....
+  end
+if ~y SP
+  append ,,,,
   end
 var v=abc
 insert v >

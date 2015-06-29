@@ -6,7 +6,6 @@ if [ ${s} == 'doctor'   ]; then x='-noLang'; fi
 if [ ${s} == 'indexing' ]; then x='-d 8'   ; fi
 if [ ${s} == 'chinese'  ]; then x='-g tra' ; fi
 if [ ${s} == 'disambig' ]; then x='-noLang -p' ; fi
-if [ ${s} == 'combo'    ]; then x='-noLang -p' ; fi
 rm -f *.elly.bin
 python ellyMain.py ${x} $2 $3 $4 ${s} < ${s}.main.txt &> ttmm
 egrep FAIL\|$'\r'\|'^ [^ ]' ttmm
