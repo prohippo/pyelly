@@ -177,9 +177,14 @@ Release Notes:
                       fix problem in parse tree dump with big phrase IDs
                       fix bug with apostrophe as quotation mark
                       clean up "marking" application
- 1.2.9  -  22jun2015  clean up "marking: application
+ 1.2.9  -  22jun2015  clean up "marking" application
                       fix swapping bug in reordering of ambiguous phrases
                       improve diagnostic output
+ 1.2.10 -  29jun2015  clean up and extend"marking" application
+                      fix formatting problem in SHOW semantic command
+                      clean up output for TRACE and SHOW
+                      add VIEW instrumentation command
+                      minor improvements in test scripts and data
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 may require regeneration of any previously saved *.elly.bin files to ensure
