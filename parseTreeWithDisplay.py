@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeWithDisplay.py : 21jun2015 CPM
+# parseTreeWithDisplay.py : 01jul2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -53,7 +53,8 @@ SPCG = NBSP+NBSP+NBSP+NBSP+NBSP+NBSP+NBSP+NBSP+NBSP # for indentation
 
 out  = codecs.getwriter('utf8')(sys.stderr) # must do this for any redirection to work
 
-L = 4            # maximum syntax type name length for output
+L =  4           # maximum syntax type name length for output
+N = 24           # maximum number of phrase nodes to report for rule
 
 def _idbias ( ph ):
 
@@ -126,7 +127,7 @@ class ParseTreeWithDisplay(parseTree.ParseTree):
 
         out.write('rules invoked\n')
         hr = { }                   # association of rules with phrase nodes
-        lm = 6                     # maximum number phrase nodes to report
+        lm = N                     # maximum number phrase nodes to report
         for k in range(self.phlim):
             ph = self.phrases[k]
             rs = ph.rule.seqn
