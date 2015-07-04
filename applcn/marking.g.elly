@@ -180,7 +180,7 @@ _
 __
 g:ELEM->NCLU[:-dit, prep,-poss]
 #?>>?
-  >>[!rn]+0
+  >>[!rn]
 __
 g:ELEM->NCLU[:-dit,-prep,-poss]
 #?>>?
@@ -390,7 +390,7 @@ _
   (typg)
 __
 g:NCLU->PEXP[|nom] PUNC[|*r]
- >>*r[$quo]
+ >>*r[$quo]+
 _
   append <nclu>
   split
@@ -543,8 +543,8 @@ _
   (lxtd)
 __
 g:NCLU[:*r]->ADJ NCLU[:-det,-prep,-num]
- r[$quo]>>*r+0
-        >>*r++
+ r[$quo]>>*r
+        >>*r+++
 _
   var typg=adj
   (lxtd)
@@ -610,7 +610,7 @@ _
   merge
 __
 g:NCLU[:det]->DET ADJ
- ?>>?
+#?>>?
   >>--
 _
   append <nclu><det>
@@ -691,7 +691,7 @@ _
   (rxtd)
 __
 g:VCLU[^hav,*r]->HAVE VCLU[^-hav]
- r[$cond]>>+1
+ r[$cond]>>++
 _
   var typg=aux
   (lxtd)
@@ -826,13 +826,15 @@ g:ADJ[%*r]->NOUN[:hyph] ADJ
  >>++
 __
 g:ADJ[%ed]->VERB[^ed]
- >>-
+ >>--
 __
 g:ADJ[%ing]->VERB[^ing]
  l[$trns]>>----
          >>-
 __
 g:ADJ->VERB SUFX[#vTOa]
+_
+  (twob)
 __
 
 g:ADV->ADJ SUFX[#aTOr]
@@ -893,7 +895,7 @@ _
   (twob)
 __
 g:VERB[^*l,ed]->VERB[^-*l,-*r] XED
- >>++
+ >>++++
 _
   (twob)
 __
@@ -1073,6 +1075,8 @@ d:except  <- PREP
 __
 d:round   <- PREP
 __
+d:atop    <- PREP
+__
 
 d:to   <- TO
 __
@@ -1129,7 +1133,9 @@ d:how  <- CONJ
 __
 d:although <- CONJ
 __
-d:because <- CONJ
+d:because  <- CONJ
+__
+d:until    <- CONJ
 __
 
 d:all  <- QUAN[:ind,cnj]
@@ -1151,6 +1157,8 @@ __
 d:both <- QUAN[:ind,cnj]
 __
 d:multiple <- QUAN
+__
+d:another <- QUAN[:ind]
 __
 
 d:there <- THERE
@@ -1360,7 +1368,11 @@ d:-ive  <- SUFX[#vTOa]
 __
 d:-ory  <- SUFX[#vTOa]
 __
+d:-able <- SUFX[#vTOa]
+__
 d:-y <- SUFX[#nTOa]
+__
+d:-y <- SUFX[#aTOr]
 __
 
 d:[ <- PUNC[|*l]

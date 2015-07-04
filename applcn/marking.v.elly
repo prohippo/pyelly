@@ -45,7 +45,9 @@ pretty much : ADV[~mod,prox] [$deg] 0
 a lot of : QUAN
 all at once : ADV
 some of which : CONJ
+not only : CONJ
 pros and cons : NOUN
+one another : PRO - +2
 
 Scotts : NOUN
 Scotts Miracle-Gro Company : NOUN
@@ -70,6 +72,7 @@ act : NOUN
 act : VERB
 add : NOUN - -1
 add : VERB
+addition : NOUN
 again : ADV
 agree : VERB
 agriculture : NOUN
@@ -89,15 +92,20 @@ arm : VERB
 associate : ADJ
 associate : NOUN
 associate : VERB
+atop : ADV - -1
 attempt : NOUN
 attempt : VERB
 authority : NOUN
 authorize : VERB
 available : ADJ[%to] [$prd] 0
+away : ADJ - -1
+away : ADV
 back : NOUN
 back : VERB
 back : ADJ
 back : ADV
+became : VERB[^ed]
+become : VERB
 before : ADV
 bell : NOUN
 biotech : NOUN
@@ -106,6 +114,8 @@ cancer : NOUN
 canola : NOUN
 carry : VERB
 certain : ADJ[%to]
+chair : NOUN
+chair : VERB
 chance : NOUN
 chance : VERB
 chance : ADJ[%to]
@@ -125,6 +135,9 @@ collar : NOUN
 collar : VERB
 come : NOUN - -4
 come : VERB
+comfort : NOUN
+comfort : VERB
+comfortable : ADJ
 commerce : NOUN
 company : NOUN
 company : VERB
@@ -149,6 +162,7 @@ damage : NOUN
 damage : VERB
 dark : ADJ
 dark : NOUN
+décor : NOUN
 deep : ADJ
 deep : ADV
 deep : NOUN
@@ -172,6 +186,8 @@ dry : ADJ
 early : ADJ
 early : ADV
 easily : ADV
+easy : ADJ
+easy : ADV
 ecology : NOUN
 edit : VERB
 effect : NOUN
@@ -212,6 +228,7 @@ further : VERB
 further : ADJ
 further : ADV
 gene : NOUN
+generous : ADJ
 genetically : ADV
 genome : NOUN
 get : NOUN - -2
@@ -234,8 +251,14 @@ green : VERB
 hear : VERB
 head : NOUN
 head : VERB
+help : NOUN
+help : VERB
 herbicide : NOUN
 hope : NOUN
+home : NOUN
+home : VERB
+home : ADJ
+home : ADV
 hope : VERB
 impact : NOUN
 impact : VERB
@@ -272,20 +295,29 @@ long : ADJ
 look : NOUN
 look : VERB[^ptcl]
 loophole : NOUN
+love : NOUN
+love : VERB
 make : NOUN
 make : VERB
 mandatory : ADJ[%to]
 market : NOUN
+marvel : NOUN
+marvel : VERB
 manufacture : NOUN
 manufacture : VERB
 mark : NOUN
 mark : VERB
 market : VERB
+mean : NOUN
+mean : VERB
+mean : ADJ
 media : NOUN
 method : NOUN
 michael : NOUN
 military : NOUN
 miracle : NOUN
+modern : NOUN
+modern : ADJ
 modify : VERB
 more : NOUN - -1
 more : ADJ[%to]
@@ -311,12 +343,16 @@ next : ADJ[%mod,to] [$spat] +0
 next : ADV
 nice : ADJ[%to]
 night : NOUN
+nod : NOUN
+nod : VERB
 nohow : ADV
 normal : NOUN
 normal : ADJ
 nothing : NOUN
 nothing : ADV - -4
 nuclear : ADJ
+occasion : NOUN
+occasion : VERB
 off : VERB - -2
 off : ADJ
 off : ADV
@@ -337,6 +373,9 @@ out : ADV
 part : NOUN - +2
 part : VERB - -1
 passionate : ADJ
+past : NOUN
+past : ADJ
+past : ADV
 pay : NOUN
 pay : VERB
 people : NOUN
@@ -368,6 +407,9 @@ product : NOUN
 production : NOUN
 put : NOUN - -1
 put : VERB[^ptcl]
+quick : NOUN - -4
+quick : ADJ - +1
+quick : ADV
 quite : ADV
 recent : ADJ
 reduce : VERB
@@ -394,6 +436,8 @@ roundup : NOUN
 satellite : NOUN
 satellite : ADJ
 science : NOUN
+seat : NOUN
+seat : VERB
 see : NOUN - -1
 see : VERB
 senior : NOUN
@@ -412,6 +456,8 @@ so-called : ADJ
 sort : NOUN
 sort : VERB
 specific : ADJ[%to]
+stack : NOUN
+stack : VERB
 stand : NOUN
 stand : VERB
 startle : NOUN - -2
@@ -424,13 +470,18 @@ still : ADJ
 still : ADV
 stockpile : NOUN
 stockpile : VERB
+storage : NOUN
 success : NOUN
+support : NOUN
+support : VERB
 suppose : VERB
 surgeon : NOUN
 surgery : NOUN
 switch : NOUN
 switch : VERB
 switch grass : NOUN
+swoop : NOUN
+swoop : VERB
 tailor : NOUN
 tailor : VERB
 technique : NOUN
@@ -461,6 +512,8 @@ underground : ADJ
 unintended : ADJ
 union : ADJ
 union : NOUN
+update : NOUN
+update : VERB
 use : NOUN
 use : VERB
 very : ADJ
@@ -482,6 +535,8 @@ well : NOUN
 well : VERB
 well : ADJ[%to]
 well : ADV
+wide : ADJ
+wide : ADV
 wild : ADJ
 wild : ADV
 wild : NOUN
