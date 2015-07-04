@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBase.py : 21jun2015 CPM
+# parseTreeBase.py : 02jul2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -53,7 +53,6 @@ class ParseTreeBase(object):
         glim    - goal   allocation limit
         lastph  - last phrase allocated
         lowswp  - lowest swapped sequence number
-        hghswp  - highest
         swapped - flag for node swap
     """
 
@@ -187,8 +186,10 @@ class ParseTreeBase(object):
 #           print '  othr=' , othr
             oldn = self.seqn
             newn = othr.seqn
-            delb = self.bias - othr.bias
-#           print '  delb=' , delb
+            delb = self.bias - othr.bias   # bias change
+#           print '  delb=' , delb , 'oldn=' , oldn , 'newn=' , newn
+            if delb <= 0: return           # this should never happen
+
             self.rule, othr.rule = othr.rule, self.rule
             self.lftd, othr.lftd = othr.lftd, self.lftd
             self.rhtd, othr.rhtd = othr.rhtd, self.rhtd
@@ -200,35 +201,31 @@ class ParseTreeBase(object):
             othr.seqn = oldn
             if self.lftd == self: self.lftd = None
 
-#           print '  result'
+#           print '  after swap'
 #           print '  self=' , self
 #           print '  othr=' , othr
             if self.tree.lowswp > oldn: self.tree.lowswp = oldn
             if self.tree.lowswp > newn: self.tree.lowswp = newn
-            if self.tree.hghswp < oldn: self.tree.hghswp = oldn
-            if self.tree.hghswp < newn: self.tree.hghswp = newn
 
-#           print '  delb=' , delb , 'oldn=' , oldn , 'newn=' , newn
-            if delb == 0: return           # should never return
-            iteration = range(self.tree.lowswp,self.tree.hghswp + 1)
-#           print 'iteration=' , iteration
-
-            cur = [ ]                      # nodes updated this round
+            cur = None                     # nodes updated this round
             nxt = [ othr ]                 # starting nodes for next round
-            while len(nxt) > 0:            # continue until all nodes updated
+            while len(nxt) > 0:            # continue until no more rounds
                 cur = nxt
                 nxt = [ ]
-#               print 'iterating'
-                for n in iteration:        # only these nodes might be updated
+#               print 'propagate up bias change'
+                n = self.tree.lowswp + 1   # need to update biases
+                while n < self.tree.phlim: # higher up in parse tree
                     phrn = self.tree.phrases[n]
-#                   if phrn.seqn <= oldn: continue
+                    n += 1
 #                   print ' at' , phrn
                     if phrn.lftd in cur or phrn.rhtd in cur:
-                        phrn.bias += delb
-#                       print ' >> ' , phrn.bias
-                        nxt.append(phrn)
+                        phrn.bias += delb  # increase bias
+#                       print 'new bias=' , phrn.bias
+                        nxt.append(phrn)   # have to continue updating
+                                           # up parse tree
 
             self.tree.swapped = True       # indicate followup is needed
+                                           # to update ambiguity resolutions
 
     class Goal(object):
 
@@ -318,7 +315,6 @@ class ParseTreeBase(object):
         self.glim  = 0
         self.lastph = None
         self.lowswp = 1000000
-        self.hghswp = 0
         self.swapped = False
 
     def _limitCheck ( self ):
@@ -368,7 +364,7 @@ class ParseTreeBase(object):
         self.lastph.seqn = self.phlim             # set phrase index
         self.lastph.posn = po                     # parse position
         self.lastph.rule = ru                     # grammar rule defining phrase
-        self.lastph.typx = ru.styp                #
+        self.lastph.typx = ru.styp                # set syntactic type     from rule
         self.lastph.synf.combine(ru.sfet)         # set syntactic features from rule
         self.phlim += 1
 #       print 'make' , self.lastph
@@ -464,6 +460,6 @@ if __name__ == '__main__':
     phr4.bias = 4
     print 'phr3=' , phr3
     print 'phr4=' , phr4
-    phr3.swap(phr4)
+    phr4.swap(phr3)
     print 'phr3=' , phr3
     print 'phr4=' , phr4
