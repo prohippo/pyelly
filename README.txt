@@ -180,11 +180,15 @@ Release Notes:
  1.2.9  -  22jun2015  clean up "marking" application
                       fix swapping bug in reordering of ambiguous phrases
                       improve diagnostic output
- 1.2.10 -  29jun2015  clean up and extend"marking" application
+ 1.2.10 -  29jun2015  clean up and extend "marking" application
                       fix formatting problem in SHOW semantic command
                       clean up output for TRACE and SHOW
                       add VIEW instrumentation command
                       minor improvements in test scripts and data
+ 1.2.11 -  06jul2015  fix bug in computing plausibility scores for parses
+                      improve reporting of rule usage in parse tree dump
+                      clean up "marking" application rules
+                      extend "marking" integration test
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 may require regeneration of any previously saved *.elly.bin files to ensure
