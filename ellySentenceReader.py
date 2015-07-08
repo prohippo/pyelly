@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellySentenceReader.py : 13jun2015 CPM
+# ellySentenceReader.py : 07jul2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -219,18 +219,20 @@ class EllySentenceReader(object):
                 d = self.inp.read()
 #               print '4  <<' , self.inp.buf
 
-                if d == None: d = u'!!'
+                if d == None: d = u'!'
 #               print 'stop=' , '<' + c + '> <' + d + '>'
 
 #               print 'ellipsis check'
                 if c == u'.' and c == d:
-                    if self.inp.peek() != c:
-                        self.inp.unread(c)
+                    if self.inp.peek() != c: # look for third '.' in ellipsis
+                        self.inp.unread(c)   # if none, keep only first '.'
                     else:
-                        self.inp.skip() # drop last char from input
-                        sent.append(d)  # finish ellipsis in sentence buffer
-                        sent.append(d)  #
-                        sent.append('!')
+                        self.inp.skip()      # found ellipsis
+                        sent.append(d)       # complete it in sentence buffer
+                        sent.append(d)       #
+                        x = self.inp.peek()  # look at char after ellipsis
+                        if ellyChar.isCombining(x):
+                            sent.append(' ') # if part of token, put in space as separator
                     continue
 
                 # special check for multiple stops
