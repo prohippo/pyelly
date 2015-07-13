@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeProcedure.py : 26jun2015 CPM
+# generativeProcedure.py : 12jul2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -181,23 +181,26 @@ class GenerativeProcedure(object):
 
         if phs.ctxc != conceptualHierarchy.NOname: cntx.cncp = phs.ctxc
 
+
         if phs.alnk != None:         # on ambiguity, adjust biases for phrase rules
 #           print >> sys.stderr , 'adjust rule bias' , phrs
+            mnb = phs.bias - 1       # plausibility minimum
             phi = phs
             rls = [ ]                # for list of unique rules for ambiguities
             while phi != None:
-                if not phi.rule in rls: rls.append(phi.rule)
+                if phi.bias >= mnb and not phi.rule in rls:
+                    rls.append(phi.rule)
                 phi = phi.alnk
-            ru = rls[0]              # first rule is the one chosen for phrase analysis
+            ru  = rls[0]             # first rule is the one chosen for phrase analysis
             rls = rls[1:]            # remaining unique rules
-            if len(rls) == 0:
-                pass                 # if only a single rule involved, no bias adjustment
-            elif ru.bias == 0:       # if zero bias for chosen rule,
-                ru.bias = -1         #   mark it to be less favored next time
-            else:
-                for ru in rls:
-                    if ru.bias < 0:  # reset all negative rule biases
-                        ru.bias = 0  #   to zero
+#           print >> sys.stderr , 'rls=' , rls
+            if len(rls) > 0:
+                if ru.bias == 0:     # if zero bias for chosen rule,
+                    ru.bias = -1     #   mark it to be less favored next time
+                else:
+                    for ru in rls:
+                        ru.bias = 0  # make all rule biases zero
+
         return True
 
     def run ( self , cntx , phrs , pnam=None ):
