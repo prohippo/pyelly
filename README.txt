@@ -189,6 +189,11 @@ Release Notes:
                       improve reporting of rule usage in parse tree dump
                       clean up "marking" application rules
                       extend "marking" integration test
+                      fix bug in handling forms of ellipsis
+ 1.2.12 -  13jul2015  fix bug in converting ellyBase parse tree depth arg
+                      fix bug in adjusting grammar rule biases
+                      clean up diagnostic output
+                      extend "marking" integration test
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 may require regeneration of any previously saved *.elly.bin files to ensure
