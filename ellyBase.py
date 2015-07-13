@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 02jul2015 CPM
+# ellyBase.py : 09jul2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -74,7 +74,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.2.11'                     # current version of PyElly software
+release = 'v1.2.12'                     # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -424,7 +424,7 @@ class EllyBase(object):
             if mr[2] != '' : to.dvdd = True  # must note suffix removal for token!
             return True
 
-        wsk = self.sbu.buffer[:k]
+        wsk = map(lambda x: x.lower(),self.sbu.buffer[:k])
 #       print 'wsk=' , wsk
 #       print 'queue before=' , len(self.ptr.queue)
         rws = u''.join(wsk)
@@ -702,8 +702,12 @@ if __name__ == '__main__':
 
 #   print 'stdin=' , si.encoding , 'stdout=' , so.encoding
 
-    syst = sys.argv[1] if len(sys.argv) > 1 else 'test'  # which rule definitions to run
-    dpth = sys.argv[2] if len(sys.argv) > 2 else -1      # depth of parse tree reporting
+    try:
+        syst = sys.argv[1] if len(sys.argv) > 1 else 'test'  # which rule definitions to run
+        dpth = int(sys.argv[2]) if len(sys.argv) > 2 else -1 # depth of parse tree reporting
+    except ValueError , e:
+        print >> sys.stderr , e
+        sys.exit(1)
 
     print 'system=' , syst
     try:
