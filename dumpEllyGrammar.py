@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# dumpEllyGrammar.py : 21jun2015 CPM
+# dumpEllyGrammar.py : 09jul2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -291,7 +291,7 @@ def dumpExtensions ( stb, extens , full ):
 def dumpDictionary ( stb, dctn , full ):
 
     """
-    dump grammar dictionary
+    dump internal dictionary
 
     arguments:
         stb   - symbol table
@@ -300,8 +300,8 @@ def dumpDictionary ( stb, dctn , full ):
     """
 
     print ''
-    print "Grammar Dictionary"
-    print "------------------"
+    print "Internal Dictionary"
+    print "-------------------"
 
     no = 0
 

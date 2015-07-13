@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveProcedure.py : 17jun2015 CPM
+# cognitiveProcedure.py : 11jun2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -89,7 +89,8 @@ class CognitiveProcedure(object):
                     pass
                 elif op == semanticCommand.Ctrc:
                     print >> sys.stderr , ''
-                    print >> sys.stderr , '  tracing phrase' , phrs.seqn , 'rul=' , phrs.rule.seqn
+                    print >> sys.stderr , '  tracing phrase' , phrs.seqn , ': rule=' , phrs.rule.seqn ,
+                    print >> sys.stderr , 'with current bias= ' , phrs.rule.bias
                     trce = True
                     break
                 elif op == semanticCommand.Clftf or op == semanticCommand.Crhtf:
