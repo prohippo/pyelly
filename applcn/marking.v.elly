@@ -37,6 +37,7 @@ rocket science : NOUN
 signal rocket : NOUN
 booster : NOUN
 military exercise : NOUN
+livestock waste : NOUN
 
 at least : ADV[~mod]
 out of : PREP
@@ -68,11 +69,14 @@ round-up : NOUN
 
 #### WordNet 3.1 entries
 
+accord : NOUN
+accord : VERB - -1
 act : NOUN
 act : VERB
 add : NOUN - -1
 add : VERB
 addition : NOUN
+afternoon : NOUN
 again : ADV
 agree : VERB
 agriculture : NOUN
@@ -80,6 +84,7 @@ alarm : NOUN
 alarm : VERB
 alive : ADJ
 almost : ADV[~mod,prox]
+along : ADV - -1
 also : ADV
 ancient : NOUN
 ancient : ADJ
@@ -87,6 +92,7 @@ announce : VERB
 apple : NOUN
 approval : NOUN
 approve : VERB
+area : NOUN
 arm : NOUN
 arm : VERB
 associate : ADJ
@@ -104,6 +110,8 @@ back : NOUN
 back : VERB
 back : ADJ
 back : ADV
+balance : NOUN
+balance : VERB
 became : VERB[^ed]
 become : VERB
 before : ADV
@@ -141,6 +149,8 @@ comfortable : ADJ
 commerce : NOUN
 company : NOUN
 company : VERB
+complex : NOUN
+complex : ADJ
 comprehensive : ADJ
 connect : VERB
 constitution : NOUN
@@ -170,8 +180,11 @@ definite : ADJ
 department : NOUN
 describe : VERB
 develop : VERB
+differ : VERB
 disaster : NOUN
 disastrously : ADV [$prd] 0
+do: NOUN - -2
+do: VERB
 doom : NOUN
 doom : VERB
 dot : NOUN
@@ -223,6 +236,12 @@ few : NOUN - -1
 few : ADJ
 field : NOUN
 field : VERB
+flash : NOUN
+flash : VERB
+flash : ADJ
+flash flood : NOUN
+flood : NOUN
+flood : VERB
 forget : VERB
 further : VERB
 further : ADJ
@@ -248,17 +267,22 @@ great : ADJ[%to]
 green : ADJ
 green : NOUN
 green : VERB
-hear : VERB
+hail : NOUN
+hail : VERB
 head : NOUN
 head : VERB
+hear : VERB
+heavy : NOUN
+heavy : ADJ
+heavy : ADV
 help : NOUN
 help : VERB
 herbicide : NOUN
-hope : NOUN
 home : NOUN
 home : VERB
 home : ADJ
 home : ADV
+hope : NOUN
 hope : VERB
 impact : NOUN
 impact : VERB
@@ -266,7 +290,12 @@ important : ADJ[%to]
 impose : VERB
 independent : ADJ
 infrastructure : NOUN
+intend : VERB
+interstate : NOUN - -1
+interstate : ADJ
 involve : VERB [$trns] 0
+isolate : VERB
+iran : NOUN
 issue : NOUN
 issue : VERB
 jigsaw puzzle : NOUN
@@ -277,16 +306,25 @@ kill : NOUN
 kill : VERB - +1
 know : NOUN - -2
 know : VERB
+large : NOUN - -1
+large : ADJ
+large : ADV - -2
 last : NOUN - -1
 last : VERB
 last : ADJ[%mod,to]
 last : ADV
+lead : NOUN
+lead : VERB
 learn : VERB
 less : ADJ[%to] - +1
 less : ADV [$deg] 0
 like : NOUN - -2
 like : VERB
 like : ADJ  - -2
+likely : ADJ
+likely : ADV - -1
+line : NOUN
+line : VERB
 list : NOUN
 list : VERB
 livestock : NOUN
@@ -297,17 +335,19 @@ look : VERB[^ptcl]
 loophole : NOUN
 love : NOUN
 love : VERB
+main : NOUN
+main : ADJ
 make : NOUN
 make : VERB
 mandatory : ADJ[%to]
-market : NOUN
-marvel : NOUN
-marvel : VERB
 manufacture : NOUN
 manufacture : VERB
 mark : NOUN
 mark : VERB
+market : NOUN
 market : VERB
+marvel : NOUN
+marvel : VERB
 mean : NOUN
 mean : VERB
 mean : ADJ
@@ -370,6 +410,8 @@ out : NOUN
 out : VERB
 out : ADJ
 out : ADV
+overnight : ADJ
+overnight : ADV
 part : NOUN - +2
 part : VERB - -1
 passionate : ADJ
@@ -393,6 +435,8 @@ pollute : VERB
 popular : ADJ
 positive : NOUN
 positive : ADJ
+possible : ADJ
+possible : NOUN
 prepare : VERB
 press : NOUN
 press : VERB
@@ -411,6 +455,9 @@ quick : NOUN - -4
 quick : ADJ - +1
 quick : ADV
 quite : ADV
+rainfall : NOUN
+read : NOUN - -1
+read : VERB
 recent : ADJ
 reduce : VERB
 regardless : ADJ
@@ -425,6 +472,8 @@ resident : ADJ
 resist : VERB
 resistant : ADJ[%to]
 response : NOUN
+result : NOUN
+result : VERB
 revolution : NOUN
 rick : NOUN
 rick : VERB
@@ -471,6 +520,9 @@ still : ADV
 stockpile : NOUN
 stockpile : VERB
 storage : NOUN
+storm : NOUN
+storm : VERB
+strong : ADJ
 success : NOUN
 support : NOUN
 support : VERB
@@ -492,6 +544,7 @@ think : NOUN - -2
 think : VERB
 thirst : NOUN
 thirst : VERB
+threat : NOUN
 time : NOUN
 time : VERB
 together : ADJ
@@ -540,6 +593,8 @@ wide : ADV
 wild : ADJ
 wild : ADV
 wild : NOUN
+wind : NOUN
+wind : VERB
 witness : NOUN - -1
 witness : VERB
 word : NOUN
@@ -550,3 +605,28 @@ world power : NOUN
 worse : ADJ
 write : VERB
 year : NOUN
+
+north : NOUN
+north : ADJ
+north : ADV[~dir]
+south : NOUN
+south : ADJ
+south : ADV[~dir]
+east : NOUN
+east : ADJ
+east : ADV[~dir]
+west : NOUN
+west : ADJ
+west : ADV[~dir]
+northwest : NOUN
+northwest : ADJ
+northwest : ADV[~dir]
+northeast : NOUN
+northeast : ADJ
+northeast : ADV[~dir]
+southwest : NOUN
+southwest : ADJ
+southwest : ADV[~dir]
+southeast : NOUN
+southeast : ADJ
+southeast : ADV[~dir]

@@ -493,7 +493,7 @@ _
   var typg=det
   (lxtd)
 __
-g:NCLU[:*r,prep]->PREP NCLU[:-prep]
+g:NCLU[:*r,prep]->PREP[%-cnj] NCLU[:-prep]
 #      ?>>?
  l[$-to]>>*r+
 _
@@ -518,14 +518,14 @@ _
   (twob)
 __
 g:NCLU->NUM
- >>--
+ >>----
 _
   append <nclu>
   var typg=num
   (typg)
   append </nclu>
 __
-g:NCLU[:prep]->PREP YEAR
+g:NCLU[:prep]->PREP[%-cnj] YEAR
 _
   append <time>
   (twob)
@@ -662,7 +662,7 @@ g:NOUN[:*r,cjn]->NOUN[:-hyph,-poss,-plur,-cjn,-ing] NOUN[:-det,-cjn,-ing]
 _
  (twob)
 __
-g:PRO[%*r]->PREP PRO[%-nom]
+g:PRO[%*r]->PREP[%-cnj] PRO[%-nom]
 _
   var typg=prep
   (typg)
@@ -734,7 +734,7 @@ _
 __
 
 g:VERB->UNKN
- >>-
+ >>--
 __
 g:VERB[^beaj,to]->ADJ[%to] TO
  l[$spat]>>++
@@ -829,8 +829,8 @@ g:ADJ[%ed]->VERB[^ed]
  >>--
 __
 g:ADJ[%ing]->VERB[^ing]
- l[$trns]>>----
-         >>-
+ l[$trns]>>-----
+         >>--
 __
 g:ADJ->VERB SUFX[#vTOa]
 _
@@ -851,11 +851,30 @@ g:ADV->ADV ADV
 _
   (twob)
 __
+
 g:PREP->ADJ TO
  l[$spat]>>++
          >>--
 _
   (twob)
+__
+g:PREP[%cnj]->PREP[%-cnj] CONJ
+ >>+
+_
+  left
+  append <conj>
+  right
+  append </conj>
+__
+g:PREP->PREP[%cnj] PREP
+ >>++++
+__
+g:PREP->ADV[~dir] PREP[%of]
+ >>++
+_
+  var typg=adv
+  (typg)
+  right
 __
 
 g:NUM-> MONY NUM
@@ -917,13 +936,19 @@ g:ADJ[%*l]->ADJ[%-*l,-*r] XEST
 _
   (twob)
 __
-g:ADJ[%*r]->ADV[~adj] ADJ
+g:ADJ[%*r]->ADV[~int] ADJ
  >>++
 _
   append <adv>
   left
   append </adv>
   right
+__
+
+g:ADV->ADV[~int] ADV
+ >>++++
+_
+  (twob)
 __
 g:ADV->ADV XER
 _
@@ -935,21 +960,23 @@ _
   var typg=quan
   (lxtd)
 __
-g:DEM[:*r]->PREP DEM[:ind]
+g:DEM[:*r]->PREP[%-cnj] DEM[:ind]
  >>-
 _
   var typg=prep
   (lxtd)
 __
-g:DATE[:*r]->PREP DATE
+g:DATE[:*r]->PREP[%-cnj] DATE
 _
   var typg=prep
-  (lxtd)
+  (typg)
+  right
 __
-g:TIME[:*r]->PREP TIME
+g:TIME[:*r]->PREP[%-cnj] TIME
 _
   var typg=prep
-  (lxtd)
+  (typg)
+  right
 __
 
 g:CONJ->ADV[~mod] CONJ
@@ -1033,7 +1060,7 @@ d:- <- HYPH
 __
 d:in   <- PREP
 __
-d:of   <- PREP
+d:of   <- PREP[%of]
 __
 d:on   <- PREP
 __
@@ -1076,6 +1103,10 @@ __
 d:round   <- PREP
 __
 d:atop    <- PREP
+__
+d:along   <- PREP
+__
+d:between <- PREP
 __
 
 d:to   <- TO
@@ -1230,7 +1261,7 @@ d:if   <- CONJ
 __
 d:so   <- CONJ
 __
-d:so   <- ADV[~adj]
+d:so   <- ADV[~int]
  >>+
 __
 d:when <- CONJ
@@ -1464,4 +1495,5 @@ g:CONJ[:*l]->CONJ CLSP
 _
   (clspr)
 __
+
 
