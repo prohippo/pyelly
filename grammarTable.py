@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# grammarTable.py : 20may2015 CPM
+# grammarTable.py : 17jul2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -292,6 +292,10 @@ class GrammarTable(object):
                 k = line.find(' ')    # name should have no spaces
                 if k > 0 or len(genr) == 0:
                     print >> sys.stderr , '** ERROR p: bad format [' , line , ']'
+                    eno += 1
+                    continue
+                if line in self.pndx:
+                    print >> sys.stderr , '** ERROR p: subprocedure' , line , 'redefined'
                     eno += 1
                     continue
                 nop += 1
