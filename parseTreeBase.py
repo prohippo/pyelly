@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBase.py : 02jul2015 CPM
+# parseTreeBase.py : 16jul2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -56,29 +56,24 @@ class ParseTreeBase(object):
         swapped - flag for node swap
     """
 
-    class Phrase(object):
+    class Kernel(object):
 
         """
-        phrase node in a parse tree
+        phrase kernel info - swapped parts of phrase
 
         attributes:
             rule  - generating rule
             posn  - starting token position in sentence
-            lftd  - descendant phrase
-            rhtd  - descendant phrase
             typx  - syntax category
             usen  - usage flag for parser
             synf  - syntax features
             semf  - semantic features
             cncp  - semantic concept
             ctxc  - conceptual context
-            llnk  - listing link
-            alnk  - ambiguity link
             bias  - plausibility scoring for ambiguity ranking
-            lens  - token length
             seqn  - sequence ID for debugging
-            dump  - flag for tree dumping
-            tree  - overall parse tree
+            lftd  - descendant phrase
+            rhtd  - descendant phrase
         """
 
         def __init__ ( self ):
@@ -87,11 +82,9 @@ class ParseTreeBase(object):
             arguments:
                 self
             """
-
             self.synf = ellyBits.EllyBits(symbolTable.FMAX)
             self.semf = ellyBits.EllyBits(symbolTable.FMAX)
             self.seqn = -1
-            self.tree = None
             self.reset()
 
         def __unicode__ ( self ):
@@ -100,9 +93,8 @@ class ParseTreeBase(object):
             arguments:
                 self
             returns:
-                summary string
+                summary Unicode string
             """
-
             cn = '' if self.cncp == conceptualHierarchy.NOname else '/cnc=' + self.cncp
 
             return ( 'phrase ' + unicode(self.seqn) + ' @' + unicode(self.posn)
@@ -116,9 +108,8 @@ class ParseTreeBase(object):
             arguments:
                 self
             returns:
-                summary string
+                summary ASCII string
             """
-
             return unicode(self).encode('utf8')
 
         def reset ( self ):
@@ -127,22 +118,81 @@ class ParseTreeBase(object):
             arguments:
                 self
             """
-
             self.rule = None
             self.posn = -1
-            self.lftd = None
-            self.rhtd = None
             self.typx = -1
             self.usen = 0
             self.synf.clear()
             self.semf.clear()
             self.cncp = conceptualHierarchy.NOname
             self.ctxc = conceptualHierarchy.NOname
+            self.bias = 0
+            self.lftd = None
+            self.rhtd = None
+
+    class Phrase(object):
+
+        """
+        phrase node in a parse tree
+
+        attributes:
+            krnl  - kernel info
+            llnk  - listing link
+            alnk  - ambiguity link
+            lens  - token length
+            dump  - flag for tree dumping
+            tree  - overall parse tree
+        """
+
+        def __init__ ( self ):
+            """
+            initialize node to defaults
+            arguments:
+                self
+            """
+            self.krnl = ParseTreeBase.Kernel()
+            self.tree = None
+            self._reset()
+
+        def __unicode__ ( self ):
+            """
+            get information summary to support testing
+            arguments:
+                self
+            returns:
+                unicode summary string
+            """
+            return unicode(self.krnl)
+
+        def __str__ ( self ):
+            """
+            get information summary to support testing
+            arguments:
+                self
+            returns:
+                ASCII summary string
+            """
+            return str(self.krnl)
+
+        def reset ( self ):
+            """
+            reintialize
+            arguments:
+                self
+            """
+            self.krnl.reset()
+            self._reset()
+
+        def _reset ( self ):
+            """
+            reinitialize
+            arguments:
+                self
+            """
             self.llnk = None
             self.alnk = None
-            self.bias = 0
-            self.lens = 0
             self.dump = True
+            self.lens = 0
 
         def order ( self ):
             """
@@ -150,26 +200,26 @@ class ParseTreeBase(object):
             arguments:
                 self  -
             """
-
             if self.alnk == None:
                 return
-#*          print 'ordering ambiguities for phrase' , self
-            best = None             # phrase with best bias so far
-            bias = -10000           # its bias value
+#           print 'order for phrase' , self
+            best = None                   # phrase with best bias so far
+            bias = -10000                 # its bias value
             phn = self
             while phn != None:
-                if bias < phn.bias: # check bias against best far
-                    bias = phn.bias # update best bias
-                    best = phn      # and associated phrase
+                if  bias < phn.krnl.bias: # check bias against best far
+                    bias = phn.krnl.bias  # update best bias
+                    best = phn            # and associated phrase
                 phn = phn.alnk
 
             if best == None:
                 return              # no need to order
 
-#           print 'best bias=' , bias
+#           print 'best=' , best
 
             if self != best:        # need to swap phrases to get best at start
                 self.swap(best)
+#           print 'self=' , self
 
         def swap ( self , othr ):
 
@@ -184,31 +234,30 @@ class ParseTreeBase(object):
 #           print '  swap phrase node contents'
 #           print '  self=' , self
 #           print '  othr=' , othr
-            oldn = self.seqn
-            newn = othr.seqn
-            delb = self.bias - othr.bias   # bias change
+            oldn = self.krnl.seqn
+            newn = othr.krnl.seqn
+
+            delb = self.krnl.bias - othr.krnl.bias   # bias change after swap
+            if   delb == 0:                          # done if bias unchanged
+                return
+            elif delb > 0:
+                strt = othr
+            else:
+                strt = self
+                delb = -delb                         # always want positive difference
 #           print '  delb=' , delb , 'oldn=' , oldn , 'newn=' , newn
-            if delb <= 0: return           # this should never happen
 
-            self.rule, othr.rule = othr.rule, self.rule
-            self.lftd, othr.lftd = othr.lftd, self.lftd
-            self.rhtd, othr.rhtd = othr.rhtd, self.rhtd
-            self.semf, othr.semf = othr.semf, self.semf
-            self.bias, othr.bias = othr.bias, self.bias
-            self.cncp, othr.cncp = othr.cncp, self.cncp
-            self.ctxc, othr.ctxc = othr.ctxc, self.ctxc
-            self.seqn = newn
-            othr.seqn = oldn
-            if self.lftd == self: self.lftd = None
-
+            self.krnl, othr.krnl = othr.krnl, self.krnl
+            if self.krnl.lftd == self: self.krnl.lftd = None
 #           print '  after swap'
 #           print '  self=' , self
 #           print '  othr=' , othr
+
             if self.tree.lowswp > oldn: self.tree.lowswp = oldn
             if self.tree.lowswp > newn: self.tree.lowswp = newn
 
             cur = None                     # nodes updated this round
-            nxt = [ othr ]                 # starting nodes for next round
+            nxt = [ strt ]                 # starting nodes for next round
             while len(nxt) > 0:            # continue until no more rounds
                 cur = nxt
                 nxt = [ ]
@@ -218,11 +267,11 @@ class ParseTreeBase(object):
                     phrn = self.tree.phrases[n]
                     n += 1
 #                   print ' at' , phrn
-                    if phrn.lftd in cur or phrn.rhtd in cur:
-                        phrn.bias += delb  # increase bias
-#                       print 'new bias=' , phrn.bias
-                        nxt.append(phrn)   # have to continue updating
-                                           # up parse tree
+                    if phrn.krnl.lftd in cur or phrn.krnl.rhtd in cur:
+                        phrn.krnl.bias += delb  # increase bias
+#                       print 'new bias=' , phrn.krnl.bias
+                        nxt.append(phrn)        # have to continue updating
+                                                # up parse tree
 
             self.tree.swapped = True       # indicate followup is needed
                                            # to update ambiguity resolutions
@@ -260,7 +309,6 @@ class ParseTreeBase(object):
             returns:
                 summary string
             """
-
             n = self.rul.seqn
             return ( 'goal ' + unicode(self.seq) + ': type=' + unicode(self.cat)
                     + ' for [' + unicode(self.lph) + ']' + ' [rule= ' + str(n) + ']' )
@@ -273,7 +321,6 @@ class ParseTreeBase(object):
             returns:
                 summary string
             """
-
             return unicode(self).encode('utf8')
 
     def __init__ ( self ):
@@ -284,7 +331,6 @@ class ParseTreeBase(object):
         arguments:
             self
         """
-
 #       print "at ParseTreeBase.__init__()"
         self.lastph = None
         self.phrases = [ ]
@@ -302,7 +348,6 @@ class ParseTreeBase(object):
 #       print "leaving ParseTreeBase.__init__()"
 
     def reset ( self ):
-
         """
         reset parse tree for new input
 
@@ -361,11 +406,11 @@ class ParseTreeBase(object):
             self.phrases.append(phrase)
         self.lastph = self.phrases[self.phlim]    # get next available phrase
         self.lastph.reset()                       #
-        self.lastph.seqn = self.phlim             # set phrase index
-        self.lastph.posn = po                     # parse position
-        self.lastph.rule = ru                     # grammar rule defining phrase
-        self.lastph.typx = ru.styp                # set syntactic type     from rule
-        self.lastph.synf.combine(ru.sfet)         # set syntactic features from rule
+        self.lastph.krnl.seqn = self.phlim        # set phrase index
+        self.lastph.krnl.posn = po                # parse position
+        self.lastph.krnl.rule = ru                # grammar rule defining phrase
+        self.lastph.krnl.typx = ru.styp           # set syntactic type     from rule
+        self.lastph.krnl.synf.combine(ru.sfet)    # set syntactic features from rule
         self.phlim += 1
 #       print 'make' , self.lastph
         return self.lastph
@@ -436,7 +481,7 @@ if __name__ == '__main__':
 
     print '** MAKE NEW PHRASE'
     uph = tree.makePhrase(2,R(104,14))
-    uph.cncp = 'xccx'
+    uph.krnl.cncp = 'xccx'
     print 'new phrase=' , uph
     print 'phlim=' , tree.phlim
     print 'glim =' , tree.glim
@@ -456,8 +501,8 @@ if __name__ == '__main__':
     phr4 = tree.makePhrase(1,R(104,11))
     print 'phr3=' , phr3
     print 'phr4=' , phr4
-    phr3.bias = 3
-    phr4.bias = 4
+    phr3.krnl.bias = 3
+    phr4.krnl.bias = 4
     print 'phr3=' , phr3
     print 'phr4=' , phr4
     phr4.swap(phr3)
