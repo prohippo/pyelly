@@ -1352,6 +1352,7 @@ sudsing suds
 sufferance suffer
 sufficient suffice
 sugary sugar
+suggest suggest
 sulphide sulfide
 summarize summare
 summary summare
@@ -1424,6 +1425,7 @@ timetable timetable
 tolerant toler
 tolerate toler
 took take
+topical topic
 toppled topple
 total total
 tourism tour
@@ -1443,6 +1445,8 @@ troublesome trouble
 truest true
 tubal tube
 tumultuous tumult
+typical type
+typically type
 tyrannical tyrant
 tyranny tyrant
 ulcerate ulcer
