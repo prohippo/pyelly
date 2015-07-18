@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# procedureTestFrame.py : 05feb2015 CPM
+# procedureTestFrame.py : 18jul2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -96,7 +96,7 @@ class ProcedureTestFrame(object):
         cX = [ ]                                # cognitive
         cL = [ ">> +1" ]                        #
         cR = [ ">> -1" ]                        #
-   
+
         ctx.pushStack()                         # needed for local variables usable in testing
         ctx.setLocalVariable("vl","LLLL")       # make two variables available to work with
         ctx.setLocalVariable("vr","RRRR")       #
@@ -113,8 +113,8 @@ class ProcedureTestFrame(object):
         spl.cogs = self._cogp(cX)          #
 
         phr = ptb.makePhrase(0,spl)        # make phrase for splitting plus
-        phr.lftd = ptb.makePhrase(0,exL)   # left and right descendants
-        phr.rhtd = ptb.makePhrase(1,exR)   # defined by left and right
+        phr.krnl.lftd = ptb.makePhrase(0,exL)   # left and right descendants
+        phr.krnl.rhtd = ptb.makePhrase(1,exR)   # defined by left and right
                                            # extending rules from above
 
         stb.getFeatureSet('!sem',True)     # define semantic feature
@@ -122,8 +122,8 @@ class ProcedureTestFrame(object):
         smx = stb.smindx['!']              #
         ix = smx['sem']                    #
 #       print 'ix=' , ix
-        phr.semf.set(ix)                   # turn on feature for phrase
-#       print 'semf=' , phr.semf
+        phr.krnl.semf.set(ix)              # turn on feature for phrase
+#       print 'semf=' , phr.krnl.semf
 
         self.phrase = phr                  # make phrase available
 

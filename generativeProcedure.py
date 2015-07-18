@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeProcedure.py : 12jul2015 CPM
+# generativeProcedure.py : 15jul2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -172,24 +172,24 @@ class GenerativeProcedure(object):
         while True:
             if self.run(cntx,phs):   # try running generative procedure for phrase
                 break                # if success, all done here
-            phs.bias = BAD           # mark as implausible
+            phs.krnl.bias = BAD      # mark as implausible
             phs.order()              # get next most plausible phrase
-            if phs.bias == BAD:      # if out of alternatives,
+            if phs.krnl.bias == BAD: # if out of alternatives,
                 return False         #   fail
 
-#       print >> sys.stderr , 'running' , phs, 'ctxc=' , phs.ctxc
+#       print >> sys.stderr , 'running' , phs, 'ctxc=' , phs.krnl.ctxc
 
-        if phs.ctxc != conceptualHierarchy.NOname: cntx.cncp = phs.ctxc
+        if phs.krnl.ctxc != conceptualHierarchy.NOname: cntx.cncp = phs.krnl.ctxc
 
 
         if phs.alnk != None:         # on ambiguity, adjust biases for phrase rules
 #           print >> sys.stderr , 'adjust rule bias' , phrs
-            mnb = phs.bias - 1       # plausibility minimum
+            mnb = phs.krnl.bias - 1  # plausibility minimum
             phi = phs
             rls = [ ]                # for list of unique rules for ambiguities
             while phi != None:
-                if phi.bias >= mnb and not phi.rule in rls:
-                    rls.append(phi.rule)
+                if phi.krnl.bias >= mnb and not phi.krnl.rule in rls:
+                    rls.append(phi.krnl.rule)
                 phi = phi.alnk
             ru  = rls[0]             # first rule is the one chosen for phrase analysis
             rls = rls[1:]            # remaining unique rules
@@ -224,7 +224,7 @@ class GenerativeProcedure(object):
             print >> sys.stderr , 'null phrase:' , self
             return False
 
-#       print 'run semantics for phr' , phrs.seqn , 'rule=' , phrs.rule.seqn
+#       print 'run semantics for phr' , phrs.krnl.seqn , 'rule=' , phrs.krnl.rule.seqn
 
         cntx.pushStack()        # ready for any local variables
 #       print 'pnam=' , pnam
@@ -252,23 +252,23 @@ class GenerativeProcedure(object):
                 print >> sys.stderr , 'generative semantic FAIL'
                 status = False
             elif op == semanticCommand.Gleft:  # go to procedure for left descendant
-                if phrs.lftd == None:
+                if phrs.krnl.lftd == None:
                     print >> sys.stderr , 'no left descendant for:' , phrs
                     status = False
                 else:
 #                   print 'to left descendant'
-                    status = phrs.lftd.rule.gens.doRun(cntx,phrs.lftd)
+                    status = phrs.krnl.lftd.krnl.rule.gens.doRun(cntx,phrs.krnl.lftd)
             elif op == semanticCommand.Grght:  # go to procedure for right descendant, or left
 #               print 'descent from' , phrs
-                if phrs.rhtd == None:
-                    if phrs.lftd == None:
+                if phrs.krnl.rhtd == None:
+                    if phrs.krnl.lftd == None:
                         print >> sys.stderr , 'no descendants for:' , phrs
                         status = False
 #                   print 'to left descendant instead'
-                    status = phrs.lftd.rule.gens.doRun(cntx,phrs.lftd)
+                    status = phrs.krnl.lftd.krnl.rule.gens.doRun(cntx,phrs.krnl.lftd)
                 else:
 #                   print 'to right descendant'
-                    status = phrs.rhtd.rule.gens.doRun(cntx,phrs.rhtd)
+                    status = phrs.krnl.rhtd.krnl.rule.gens.doRun(cntx,phrs.krnl.rhtd)
             elif op == semanticCommand.Gblnk:  # insert space into output buffer
                 cntx.insertCharsIntoBuffer(u' ')
             elif op == semanticCommand.Glnfd:  # insert linefeed into output buffer
@@ -305,7 +305,7 @@ class GenerativeProcedure(object):
                 code.skip()                    # match fails
             elif op == semanticCommand.Gchkf:
                 refr = code.next()
-                dblb = phrs.semf.compound()
+                dblb = phrs.krnl.semf.compound()
                 if ellyBits.check(dblb,refr):
                     code.next()
                     continue
@@ -443,7 +443,7 @@ class GenerativeProcedure(object):
                 cntx.setLocalVariable(dst,js)
 
             elif op == semanticCommand.Gobtn:  # obtain string for current parse position
-                tok = cntx.getNthTokenInListing(phrs.posn)
+                tok = cntx.getNthTokenInListing(phrs.krnl.posn)
 #               print 'obtain: ' , tok.toUnicode()
                 cntx.insertCharsIntoBuffer(tok.toUnicode())
             elif op == semanticCommand.Gcapt:  # capitalize first char in buffer
@@ -455,11 +455,11 @@ class GenerativeProcedure(object):
                 if c != '':
                     cntx.insertCharsIntoBuffer(c.lower(),1)
             elif op == semanticCommand.Gtrce:  # show phrase info to trace execution
-                cat = cntx.syms.getSyntaxTypeName(phrs.typx)
-                brn = 1 if isinstance(phrs.rule,grammarRule.ExtendingRule) else 2
+                cat = cntx.syms.getSyntaxTypeName(phrs.krnl.typx)
+                brn = 1 if isinstance(phrs.krnl.rule,grammarRule.ExtendingRule) else 2
                 pnam = cntx.getLocalVariable(PNAM)
                 fm = u'TRACE @{0:d} type={1:s} rule={2:d} ({3:d}-br)'
-                fs = fm.format(phrs.posn,cat,phrs.rule.seqn,brn)
+                fs = fm.format(phrs.krnl.posn,cat,phrs.krnl.rule.seqn,brn)
                 sys.stderr.write(fs)
                 sys.stderr.flush()
                 cntx.printStatus(pnam)
@@ -468,7 +468,7 @@ class GenerativeProcedure(object):
                 ms = code.next()
                 st = despace(cntx.getLocalVariable(vr))
                 fm = u'SHOW @phr {0:d} : [{1:s}] VAR {2:s}= [{3:s}]'
-                fs = fm.format(phrs.seqn,ms,vr,st)
+                fs = fm.format(phrs.krnl.seqn,ms,vr,st)
                 sys.stderr.write(fs)
                 sys.stderr.write('\n')
                 sys.stderr.flush()
@@ -476,7 +476,7 @@ class GenerativeProcedure(object):
                 nc = code.next()
                 cbl , nbl = cntx.viewBufferDivide(nc)
                 fm = u'VIEW @phr {0:d} : {1:s} | {2:s}\n'
-                st = fm.format(phrs.seqn,str(cbl),str(nbl))
+                st = fm.format(phrs.krnl.seqn,str(cbl),str(nbl))
                 sys.stderr.write(st)
                 sys.stderr.flush()
             elif op == semanticCommand.Gproc:  # semantic subprocedure

@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTest.py : 03nov2014 CPM
+# parseTest.py : 18jul2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -35,21 +35,32 @@ support for unit testing only
 import ellyBits
 import symbolTable
 
-class Phrase(object):
-    """ dummy Elly phrase class for testing
+class Kernel(object):
+    """ dummy Elly phrase kernel class for testing
     """
     def __init__ ( self ):
         """ initialization
         """
         self.catg = 0
         self.synf = ellyBits.EllyBits(symbolTable.FMAX)
+    def __str__ ( self ):
+        """ representation of phrase kernel for printing
+        """
+        return ( 'phrase catg=' + str(self.catg) +
+                       ' synf=' + self.synf.hexadecimal(False) )
+
+class Phrase(object):
+    """ dummy Elly phrase class for testing
+    """
+    def __init__ ( self ):
+        """ initialization
+        """
+        self.krnl = Kernel()
         self.lens = 0
     def __str__ ( self ):
         """ representation of phrase for printing
         """
-        return ( 'phrase catg=' + str(self.catg) +
-                       ' synf=' + self.synf.hexadecimal(False) +
-                       ' lens=' + str(self.lens) )
+        return str(self.krnl) + ' lens=' + str(self.lens)
 
 class Tree(object):
     """ dummy Elly tree class for testing
@@ -65,8 +76,8 @@ class Tree(object):
         """
         print 'add phrase: typ=' , typ
         ph = Phrase()
-        ph.catg = typ
-        ph.synf = fts
+        ph.krnl.catg = typ
+        ph.krnl.synf = fts
         self.queue.append(ph)
         self.lastph = ph
         return True

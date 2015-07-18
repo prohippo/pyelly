@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveProcedure.py : 11jun2015 CPM
+# cognitiveProcedure.py : 15jul2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -85,25 +85,25 @@ class CognitiveProcedure(object):
             clno += 1
             for p in cls[0]:   # go through all predicates of clause
                 op = p[0]
-                if phrs.lftd == None:
+                if phrs.krnl.lftd == None:
                     pass
                 elif op == semanticCommand.Ctrc:
                     print >> sys.stderr , ''
-                    print >> sys.stderr , '  tracing phrase' , phrs.seqn , ': rule=' , phrs.rule.seqn ,
-                    print >> sys.stderr , 'with current bias= ' , phrs.rule.bias
+                    print >> sys.stderr , '  at phrase' , phrs.krnl.seqn , ': rule=' , phrs.krnl.rule.seqn ,
+                    print >> sys.stderr , 'with current bias= ' , phrs.krnl.rule.bias
                     trce = True
                     break
                 elif op == semanticCommand.Clftf or op == semanticCommand.Crhtf:
                     # test features of descendants
-                    dph = ( phrs.lftd if op == semanticCommand.Clftf or phrs.rhtd == None
-                            else phrs.rhtd )
-                    bts = dph.semf.compound()
+                    dph = ( phrs.krnl.lftd if op == semanticCommand.Clftf or phrs.krnl.rhtd == None
+                            else phrs.krnl.rhtd )
+                    bts = dph.krnl.semf.compound()
                     if not ellyBits.check(p[1],bts): break
                 elif op == semanticCommand.Clftc or op == semanticCommand.Crhtc:
                     # check concepts of descendants
-                    dph = ( phrs.lftd if op == semanticCommand.Clftc or phrs.rhtd == None
-                            else phrs.rhtd )
-                    cnc = dph.cons
+                    dph = ( phrs.krnl.lftd if op == semanticCommand.Clftc or phrs.krnl.rhtd == None
+                            else phrs.krnl.rhtd )
+                    cnc = dph.krnl.cons
                     cx = p[1]  # concepts to check against
                     mxw = -1
                     mxc = None
@@ -122,51 +122,51 @@ class CognitiveProcedure(object):
             else:             # execute actions of clause if ALL predicates satisfied
                 if trce:
                     print >> sys.stderr , '  cog sem at clause' , clno
-                    print >> sys.stderr , '  l:' , phrs.lftd
-                    print >> sys.stderr , '  r:' , phrs.rhtd
+                    print >> sys.stderr , '  l:' , phrs.krnl.lftd
+                    print >> sys.stderr , '  r:' , phrs.krnl.rhtd
                 for a in cls[1]:                      # get next action
                     op = a[0]
                     if op == semanticCommand.Cadd:    # add to score?
                         psum += a[1]
                     elif op == semanticCommand.Csetf: # set semantic features?
-                        phrs.semf.combine(a[1])
+                        phrs.krnl.semf.combine(a[1])
                     elif op == semanticCommand.Csetc: # set concepts?
-                        phrs.cncp = a[1]
-                    elif phrs.lftd == None:
+                        phrs.krnl.cncp = a[1]
+                    elif phrs.krnl.lftd == None:
                         pass
                     elif op == semanticCommand.Clhr:  # inherit from left descendant?
-                        phrs.semf.combine(phrs.lftd.semf)
-                        phrs.cncp = phrs.lftd.cncp
+                        phrs.krnl.semf.combine(phrs.krnl.lftd.krnl.semf)
+                        phrs.krnl.cncp = phrs.krnl.lftd.krnl.cncp
                     elif op == semanticCommand.Crhr:  # inherit from right?
-                        dsc = phrs.rhtd if phrs.rhtd != None else phrs.lftd
-                        phrs.semf.combine(dsc.semf)
-                        phrs.cncp = dsc.cncp
+                        dsc = phrs.krnl.rhtd if phrs.krnl.rhtd != None else phrs.krnl.lftd
+                        phrs.krnl.semf.combine(dsc.krnl.semf)
+                        phrs.krnl.cncp = dsc.krnl.cncp
 
                 break  # ignore subsequent clauses on taking action
 
         inc = 0                  # compute conceptual contribution
-        rwy = phrs.rule.nmrg
+        rwy = phrs.krnl.rule.nmrg
 #       print >> sys.stderr , 'conceptual plausibility'
         if rwy == 2:             # 2-branch splitting rule?
 #           print '2-branch!'
-            inc = cntx.wghtg.relateConceptPair(phrs.lftd.cncp,phrs.rhtd.cncp)
-#           print >> sys.stderr , phrs.lftd.cncp , ':' , phrs.rhtd.cncp , '=' , inc , '!'
+            inc = cntx.wghtg.relateConceptPair(phrs.krnl.lftd.krnl.cncp,phrs.krnl.rhtd.krnl.cncp)
+#           print >> sys.stderr , phrs.krnl.lftd.krnl.cncp , ':' , phrs.krnl.rhtd.krnl.cncp , '=' , inc , '!'
             if inc > 1:
-                phrs.ctxc = cntx.wghtg.getIntersection()
+                phrs.krnl.ctxc = cntx.wghtg.getIntersection()
 #           print >> sys.stderr , '2-way bias incr=' , inc
-        elif phrs.lftd != None:  # 1-branch extending rule?
+        elif phrs.krnl.lftd != None:  # 1-branch extending rule?
 #           print >> sys.stderr , '1-branch!'
-            dst = cntx.wghtg.interpretConcept(phrs.lftd.cncp)
+            dst = cntx.wghtg.interpretConcept(phrs.krnl.lftd.krnl.cncp)
             if dst > 0:
-                phrs.ctxc = cntx.wghtg.getIntersection()
+                phrs.krnl.ctxc = cntx.wghtg.getIntersection()
                 inc = 1
 #           print >> sys.stderr , '1-way bias incr=' , inc
         if inc > 0: psum += inc  # only positive increments contribute
-#       print >> sys.stderr , 'phrase' , phrs.seqn, 'intersect=' , phrs.ctxc
+#       print >> sys.stderr , 'phrase' , phrs.krnl.seqn, 'intersect=' , phrs.krnl.ctxc
 
         if trce:
             print >> sys.stderr , '  incremental scoring=' , psum ,
-            print >> sys.stderr , 'sem[' + phrs.semf.hexadecimal() + ']'
+            print >> sys.stderr , 'sem[' + phrs.krnl.semf.hexadecimal() + ']'
         return psum
 
 #

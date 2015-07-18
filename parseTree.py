@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTree.py : 25may2015 CPM
+# parseTree.py : 15jul2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -80,23 +80,23 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
             phr   - phrase to score
         """
 
-        cs = phr.rule.cogs                # get cognitive semantics
-#       print >> sys.stderr , 'rule bias=' , phr.rule.bias
+        cs = phr.krnl.rule.cogs                # get cognitive semantics
+#       print >> sys.stderr , 'rule bias=' , phr.krnl.rule.bias
         lb = rb = 0
-        phb = cs.score(self.ctx,phr)      # set bias to plausibility score
-        phr.bias = phb
+        phb = cs.score(self.ctx,phr)           # set bias to plausibility score
+        phr.krnl.bias = phb
 #       print >> sys.stderr , 'after scoring' , phr
-        if phr.lftd != None:
-            lb = phr.lftd.bias
-            phr.bias += lb                # add in bias of left descendant
-        if phr.rhtd != None:
-            rb = phr.rhtd.bias
-            phr.bias += rb                #         and of right
-        phr.bias += phr.rule.bias         # add in delta bias of rule
-#       print >> sys.stderr , 'ld=' , phr.lftd , '   rd=' , phr.rhtd
+        if phr.krnl.lftd != None:
+            lb = phr.krnl.lftd.krnl.bias
+            phr.krnl.bias += lb                # add in bias of left descendant
+        if phr.krnl.rhtd != None:
+            rb = phr.krnl.rhtd.krnl.bias
+            phr.krnl.bias += rb                #         and of right
+        phr.krnl.bias += phr.krnl.rule.bias    # add in delta bias of rule
+#       print >> sys.stderr , 'ld=' , phr.krnl.lftd , ' rd=' , phr.krnl.rhtd
 #       print >> sys.stderr , "\n         : cg+ls+rs+ru"
 #       fm = "bias= {0:2d} : {1:2d}+{2:2d}+{3:2d}+{4:2d}"
-#       print >> sys.stderr , fm.format(phr.bias , phb , lb , rb , phr.rule.bias)
+#       print >> sys.stderr , fm.format(phr.krnl.bias , phb , lb , rb , phr.krnl.rule.bias)
 
     def initializeBias ( self , phr ):
 
@@ -108,9 +108,9 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
             phr   - phrase to be scored
         """
 
-        if phr.rule.cogs == None:
-            print >> sys.stderr , 'bad phr=' , phr , 'rule=' , phr.rule.seqn
-        phr.bias = phr.rule.cogs.score(self.ctx,phr)
+        if phr.krnl.rule.cogs == None:
+            print >> sys.stderr , 'bad phr=' , phr , 'rule=' , phr.krnl.rule.seqn
+        phr.krnl.bias = phr.krnl.rule.cogs.score(self.ctx,phr)
 #       print >> sys.stderr , 'initialize bias' , phr
 
     def digest ( self ):
@@ -128,9 +128,9 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
         while True:
             ph = self.dequeue()     # get next phrase from queue
             if ph == None: break    # until empty
-            if ph.rule == None:
-                print >> sys.stderr , 'no rule for phrase' , ph.seqn
-#           print 'digest' , ph , 'rule=' , ph.rule.seqn , 'wordno=' , self.wordno
+            if ph.krnl.rule == None:
+                print >> sys.stderr , 'no rule for phrase' , ph.krnl.seqn
+#           print 'digest' , ph , 'rule=' , ph.krnl.rule.seqn , 'wordno=' , self.wordno
             self.getConsequence(ph) # ramify, adding to parse tree and possibly to queue
 #           print 'phlim=' , self.phlim , 'glim=' , self.glim
 
@@ -153,16 +153,16 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
             ParseOverflow
         """
 
-        fbs = phr.synf.compound()
-#       print 'fbs=' , fbs , '[' + str(phr.synf.data) + ']'
+        fbs = phr.krnl.synf.compound()
+#       print 'fbs=' , fbs , '[' + str(phr.krnl.synf.data) + ']'
 
-#       print 'consequences: phrase=' , phr.seqn , 'usen=' , phr.usen
-        if phr.usen <= 0:         # do goal satisfaction?
+#       print 'consequences: phrase=' , phr.krnl.seqn , 'usen=' , phr.krnl.usen
+        if phr.krnl.usen <= 0:         # do goal satisfaction?
             self._phase1(phr,fbs)
-            if phr.usen != 0:     # do extensions and set goals for current phrase?
+            if phr.krnl.usen != 0:     # do extensions and set goals for current phrase?
                 return
-            self._phase2(phr,fbs) # do extensions
-        self._phase3(phr,fbs)     # set goals
+            self._phase2(phr,fbs)      # do extensions
+        self._phase3(phr,fbs)          # set goals
 
     ################ private methods only after this ################
 
@@ -181,29 +181,29 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
             ParseOverflow
         """
 
-        po = phr.posn
+        po = phr.krnl.posn
         gls = self.goal[po]
 #       print '> PHASE 1 at' , po , '=' , len(gls) , 'goals'
         for g in gls:
 #           print 'goal of' , g.cat
-            if phr.typx == g.cat:
+            if phr.krnl.typx == g.cat:
                 r = g.rul
                 if ellyBits.check(fbs,r.rtfet):
-                    phx = g.lph                        # phrase that generated pertinent goal
-                    phn = self.makePhrase(phx.posn,r)  # new phrase to satisfy goal
+                    phx = g.lph                             # phrase that generated pertinent goal
+                    phn = self.makePhrase(phx.krnl.posn,r)  # new phrase to satisfy goal
                     if phn == None:
                         break
-                    phn.lftd = phx                     # goal phrase is left part of new one
-                    phn.rhtd = phr                     # current phrase is right part
-                    self._score(phn)                   # compute bias score
-                    rcnd = phn.synf.test(0)            # check syntactic features
-                    lcnd = phn.synf.test(1)            #    prior to any inheritance!
-                    if rcnd:                           # inherit features from ramified phrase?
-                        phn.synf.combine(phr.synf)
-                    if lcnd:                           # inherit features from previous phrase?
-                        phn.synf.combine(phx.synf)
+                    phn.krnl.lftd = phx                     # goal phrase is left part of new one
+                    phn.krnl.rhtd = phr                     # current phrase is right part
+                    self._score(phn)                        # compute bias score
+                    rcnd = phn.krnl.synf.test(0)            # check syntactic features
+                    lcnd = phn.krnl.synf.test(1)            #    prior to any inheritance!
+                    if rcnd:                                # inherit features from ramified phrase?
+                        phn.krnl.synf.combine(phr.krnl.synf)
+                    if lcnd:                                # inherit features from previous phrase?
+                        phn.krnl.synf.combine(phx.krnl.synf)
 #                   print 'phr=' , phr , 'phn=' , phn
-                    self.enqueue(phn)                  # save new phrase for ramification
+                    self.enqueue(phn)                       # save new phrase for ramification
 
     def _phase2 ( self , phr , fbs ):
 
@@ -220,9 +220,9 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
             ParseOverflow
         """
 
-        po = phr.posn
+        po = phr.krnl.posn
         gb = self.gbits[po]
-        rls = self.gtb.extens[phr.typx]
+        rls = self.gtb.extens[phr.krnl.typx]
 #       print '> PHASE 2 at' , po , '=' , len(rls) , 'rules, gb=' , gb.hexadecimal()
         for r in rls:
             nt = r.styp
@@ -234,11 +234,11 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
                     phn = self.makePhrase(po,r)        # make new phrase if checks succeed
                     if phn == None:
                         break
-                    phn.lftd = phr                     # current phrase is part of new one
+                    phn.krnl.lftd = phr                # current phrase is part of new one
                     self._score(phn)                   # compute bias score
-                    if (phn.synf.test(0) or
-                        phn.synf.test(1)):             # inherit features from current phrase?
-                        phn.synf.combine(phr.synf)
+                    if (phn.krnl.synf.test(0) or
+                        phn.krnl.synf.test(1)):        # inherit features from current phrase?
+                        phn.krnl.synf.combine(phr.krnl.synf)
                     self.enqueue(phn)                  # save new phrase for ramification
 
     def _phase3 ( self , phr , fbs ):
@@ -254,8 +254,8 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
             fbs   - its compounded feature bits
         """
 
-        rls = self.gtb.splits[phr.typx]
-        po = phr.posn
+        rls = self.gtb.splits[phr.krnl.typx]
+        po = phr.krnl.posn
         if po < 0 : po = 0                       # position check needed for ... phrase type
         gb = self.gbits[po]
         np = self.wordno + 1
@@ -298,8 +298,8 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
             ph = self.makePhrase(self.wordno,self.gtb.arbr)
             if ph == None:   # error check
                 return
-            ph.synf.set(SF1) # must do this to avoid ambiguity problem with ...
-            ph.bias = -2     # disfavor
+            ph.krnl.synf.set(SF1) # must do this to avoid ambiguity problem with ...
+            ph.krnl.bias = -2     # disfavor
             self.enqueue(ph)
             self.wordno -= 1 # so that goals will be at CURRENT position
             self.digest()    # will increment wordno at end
@@ -331,8 +331,8 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
 #       print 'finishUpX:' , ph
         if ph == None: return                           # error check
 
-        ph.usen = -4                        # want only to realize goals for empty phrase
-        ph.synf.set(SF2)                    # must be different from ... for startUpX
+        ph.krnl.usen = -4                   # want only to realize goals for empty phrase
+        ph.krnl.synf.set(SF2)               # must be different from ... for startUpX
 
         self.enqueue(ph)                    # save phrase for ramifying
         self.wordno -= 1                    # so that any new goals go into right position

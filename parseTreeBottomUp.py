@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBottomUp.py : 21jun2015 CPM
+# parseTreeBottomUp.py : 16jul2015 CPM
 # -----------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -144,7 +144,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
             self
         """
 
-        q = map(lambda x: str(x.seqn) , self.queue)
+        q = map(lambda x: str(x.krnl.seqn) , self.queue)
 #       print 'queue:' , '<' + ' '.join(q) + '>'
 
     def restartQueue ( self ):
@@ -172,27 +172,28 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
             phr   - phrase to insert
         """
 
-#       print 'enqueue:' , phr , len(self.newph) , 'phrase positions'
+#       print 'enqueue:' , phr , len(self.newph) , 'token positions'
 #       self._showQ()
-        po = phr.posn
+        po = phr.krnl.posn
         pho = self.newph[po]
 #       print 'po=' , po , 'pho=' , pho
         while pho != None:
 
-#           print phr.typx , ':' , pho.typx
-#           print phr.synf.hexadecimal() , ':' , pho.synf.hexadecimal()
-            if (        phr.typx == pho.typx
-                and     phr.synf.equal(pho.synf)
-                and not phr.synf.test(featureSpecification.LAST) # *UNIQUE check
+#           print phr.krnl.typx , ':' , pho.krnl.typx
+#           print phr.krnl.synf.hexadecimal() , ':' , pho.krnl.synf.hexadecimal()
+            if (        phr.krnl.typx == pho.krnl.typx
+                and     phr.krnl.synf.equal(pho.krnl.synf)
+                and not phr.krnl.synf.test(featureSpecification.LAST) # *UNIQUE check
                ):                          # ambiguity?
-#*              print 'ambiguity:' , phr.typx , phr.synf.hexadecimal() , 'for' , phr.seqn , pho.seqn
+#               print 'ambiguity:' , phr.krnl.typx , phr.krnl.synf.hexadecimal() , 'for' , phr.krnl.seqn , pho.krnl.seqn
                 if pho.alnk == None:       # if so, is ambiguity new?
                     self.ambig.append(pho) # if so, start new ambiguity listing
 #*                  print 'new ambiguity'
                 phs = pho.alnk             # add new phrase after head of ambiguity list
                 pho.alnk = phr             #
                 phr.alnk = phs             #
-                if phr.bias > pho.bias:    # make sure most plausible is at front of list
+                if phr.krnl.bias > pho.krnl.bias: # make sure most plausible is at front of list
+#                   print 'refronting'
                     phr.swap(pho)
                     self.reorder()         # update tree for latest plausibility scores
                 return                     # and process no further
@@ -352,8 +353,8 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
 #       print 'gen=' , gen
         r = self._makeLiteralRule(cat,fbs,gen)
         if self._addTerminal(r,spl):
-            self.lastph.semf = sbs
-            self.lastph.bias = bias
+            self.lastph.krnl.semf = sbs
+            self.lastph.krnl.bias = bias
 #           print 'lastph=' , self.lastph
             return True
         else:
@@ -454,25 +455,25 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
         topg = None
         tops = -11111
         for g in gs:
-            if g.cat == self.gtb.END:   # look for goal expecting END type
-                                        # with START generating phrase at start of input
+            if g.cat == self.gtb.END:        # look for goal expecting END type
+                                             # with START generating phrase at start of input
                 phr = g.lph
-                if phr.posn == 0 and phr.typx == self.gtb.START:
-                    if tops < phr.bias: # find the most plausible sentence
-                        tops = phr.bias #
+                if phr.krnl.posn == 0 and phr.krnl.typx == self.gtb.START:
+                    if tops < phr.krnl.bias: # find the most plausible sentence
+                        tops = phr.krnl.bias #
                         topg = g
 
         if topg != None:                      # any START?
             g = topg                          # if so, get sentence translation to return
             phr = g.lph
-            self._pls = phr.bias              # save plausibility
+            self._pls = phr.krnl.bias         # save plausibility
 #*          print 'from' , g
 #*          print 'sent=' , phr
-            if phr.rule.gens.doRun(ctx,phr):  # run generative semantics
+            if phr.krnl.rule.gens.doRun(ctx,phr):  # run generative semantics
                 if ellyConfiguration.longDisplay:
-                    self.dumpAll()            # show complete parse tree
+                    self.dumpAll()                 # show complete parse tree
                 else:
-                    self.dumpTree(phr)        # show parse tree only for SENT phrase
+                    self.dumpTree(phr)             # show parse tree only for SENT phrase
                 return True
 
         print >> sys.stderr , ''
@@ -538,7 +539,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
                 self.initializeBias(ph)                     # for ranking of ambiguities
                 if dvdd and len(self.gtb.splits[typ]) > 0:  # segment analyzed?
 #                   print 'limit ramification'
-                    ph.usen = 1
+                    ph.krnl.usen = 1
 #               print 'ph.lens=' , ph.lens
                 self.enqueue(ph)                            # save phrase to ramify
 #               print 'queue of' , len(self.queue)

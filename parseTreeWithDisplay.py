@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeWithDisplay.py : 01jul2015 CPM
+# parseTreeWithDisplay.py : 15jul2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -71,7 +71,7 @@ def _idbias ( ph ):
     if ph == None:
         return "         "
     else:
-        return "{:4d}".format(ph.seqn) + " ={:3d}".format(ph.bias)
+        return "{:4d}".format(ph.krnl.seqn) + " ={:3d}".format(ph.krnl.bias)
 
 class ParseTreeWithDisplay(parseTree.ParseTree):
 
@@ -130,7 +130,7 @@ class ParseTreeWithDisplay(parseTree.ParseTree):
         lm = N                     # maximum number phrase nodes to report
         for k in range(self.phlim):
             ph = self.phrases[k]
-            rs = ph.rule.seqn
+            rs = ph.krnl.rule.seqn
             if not rs in hr: hr[rs] = [ ]
             hr[rs].append(k)       # make association
         for rs in hr.keys():       # iterate on rules found
@@ -163,16 +163,16 @@ class ParseTreeWithDisplay(parseTree.ParseTree):
         for i in range(nph):                 # scan all phrases for ambiguities
             ph = self.phrases[i]
             if ph.alnk == None or phx.test(i): continue # is this a new ambiguity?
-            s = self.stb.getSyntaxTypeName(ph.typx)     # if so, show phrase info
-            f = ph.synf.hexadecimal(False)              # convert to packed hexadecimal
-            out.write("{0:<5.5s} {1}: ".format(s,f))    # show syntax type of ambiguity
+            s = self.stb.getSyntaxTypeName(ph.krnl.typx)     # if so, show phrase info
+            f = ph.krnl.synf.hexadecimal(False)              # convert to packed hexadecimal
+            out.write("{0:<5.5s} {1}: ".format(s,f))         # show syntax type of ambiguity
             nam += 1
             while ph != None:
-                phx.set(ph.seqn)                        # mark phrase as scanned
-                out.write("{:2d} ".format(ph.seqn))     # show its sequence number
-                bx = '-' if ph.rule.bias < 0 else '0'   # show rule bias in effect
-                out.write("({0:+2d}/{1}) ".format(ph.bias,bx))
-                ph = ph.alnk                            # next phrase in ambiguity list
+                phx.set(ph.krnl.seqn)                        # mark phrase as scanned
+                out.write("{:2d} ".format(ph.krnl.seqn))     # show its sequence number
+                bx = '-' if ph.krnl.rule.bias < 0 else '0'   # show rule bias in effect
+                out.write("({0:+2d}/{1}) ".format(ph.krnl.bias,bx))
+                ph = ph.alnk                                 # next phrase in ambiguity list
             out.write('\n')
         if nam == 0: out.write('NONE\n')
         out.write('\n')
@@ -221,7 +221,7 @@ class ParseTreeWithDisplay(parseTree.ParseTree):
         while True:                                    # traverse subtree from given phrase
             ph.dump = False                            # mark phrase node as being displayed
 
-            sb = self.stb.getSyntaxTypeName(ph.typx)   # syntactic type name
+            sb = self.stb.getSyntaxTypeName(ph.krnl.typx)   # syntactic type name
             if len(sb) > L: sb = sb[:L]                # limit to L chars
             l = len(sb)
             while l < L:
@@ -229,9 +229,9 @@ class ParseTreeWithDisplay(parseTree.ParseTree):
                 l += 1
             out.write(sb)                              # write out for subtree display
             out.write(':')
-            out.write(ph.synf.hexadecimal(False))      # syntactic features as packed hexadecimal
-            phl = ph.lftd                              # get left  descendant
-            phr = ph.rhtd                              # get right descendant
+            out.write(ph.krnl.synf.hexadecimal(False)) # syntactic features as packed hexadecimal
+            phl = ph.krnl.lftd                         # get left  descendant
+            phr = ph.krnl.rhtd                         # get right descendant
             if len(stk) == self.dlm:                   # reached depth limit?
                 if phl != None:
                     phl = None
@@ -247,21 +247,21 @@ class ParseTreeWithDisplay(parseTree.ParseTree):
                 cc = BRN if phr != None else DWN
                 out.write(cc)                          # if so, add appropriate connector
                 stk.append([ ph , phr ])               # save any right descendant for recursion
-                ph = ph.lftd                           # do left descendant next
+                ph = ph.krnl.lftd                      # do left descendant next
             else:
-                out.write(' @' + str(ph.posn))         # at leaf of tree, show input position
-                if ph.posn < 0 or ph.posn >= len(tks):
+                out.write(' @' + str(ph.krnl.posn))    # at leaf of tree, show input position
+                if ph.krnl.posn < 0 or ph.krnl.posn >= len(tks):
                     tok = '--'
-                elif ph.rule != self.gtb.arbr:
-                    if tks[ph.posn] == None:
-                        tok = 'NONE'                       # anomalous situation
+                elif ph.krnl.rule != self.gtb.arbr:
+                    if tks[ph.krnl.posn] == None:
+                        tok = 'NONE'                   # anomalous situation
                     else:
-                        tok = ''.join(tks[ph.posn].root)   # leaf token string
+                        tok = ''.join(tks[ph.krnl.posn].root)   # leaf token string
                 else:
                     tok = ''                           # null string
                 out.write(' [' + tok + ']')            # write it out
-                if ph.cncp != conceptualHierarchy.NOname:
-                    out.write(' ' + ph.cncp)
+                if ph.krnl.cncp != conceptualHierarchy.NOname:
+                    out.write(' ' + ph.krnl.cncp)
                 out.write('\n')                        # end of output line
                 out.write(NBSP)
 

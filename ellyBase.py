@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 09jul2015 CPM
+# ellyBase.py : 15jul2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -74,7 +74,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.2.12'                     # current version of PyElly software
+release = 'v1.2.13'                     # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -514,7 +514,7 @@ class EllyBase(object):
                             ve.cat,ve.syf,ve.smf,ve.bia,ve.gen,len(suffx) > 0):
                         tr.lastph.lens = nspan  # set char length of leaf phrase node
                                                 # just added for later selection
-                        tr.lastph.cncp = ve.con
+                        tr.lastph.krnl.cncp = ve.con
 
 #       print 'vocabulary m=' , nspan
 
