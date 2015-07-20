@@ -38,10 +38,12 @@ signal rocket : NOUN
 booster : NOUN
 military exercise : NOUN
 livestock waste : NOUN
+time control : NOUN
 
 at least : ADV[~mod]
 out of : PREP
 round at : PREP
+up to : ADV[~mod]
 pretty much : ADV[~mod,prox] [$deg] 0
 a lot of : QUAN
 all at once : ADV
@@ -49,6 +51,7 @@ some of which : CONJ
 not only : CONJ
 pros and cons : NOUN
 one another : PRO - +2
+do that : VERB
 
 Scotts : NOUN
 Scotts Miracle-Gro Company : NOUN
@@ -62,6 +65,9 @@ jade helm : NOUN
 Apple Watch : NOUN
 Caterpillar : NOUN
 wax-work : NOUN
+fried liver attack : NOUN
+2 knights defense : NOUN
+Crafty : NOUN
 
 for example : PEXP[|eg]
 such as : DEM
@@ -76,9 +82,12 @@ act : VERB
 add : NOUN - -1
 add : VERB
 addition : NOUN
+advantage : NOUN
+advantage : VERB - -1
 afternoon : NOUN
 again : ADV
 agree : VERB
+aggressive : ADJ
 agriculture : NOUN
 alarm : NOUN
 alarm : VERB
@@ -99,6 +108,8 @@ associate : ADJ
 associate : NOUN
 associate : VERB
 atop : ADV - -1
+attack : NOUN
+attack : VERB
 attempt : NOUN
 attempt : VERB
 authority : NOUN
@@ -117,10 +128,16 @@ become : VERB
 before : ADV
 bell : NOUN
 biotech : NOUN
+black : NOUN
+black : VERB - -1
+black : ADJ
+book : NOUN
+book : VERB
 business: NOUN
 cancer : NOUN
 canola : NOUN
 carry : VERB
+century : NOUN
 certain : ADJ[%to]
 chair : NOUN
 chair : VERB
@@ -128,6 +145,7 @@ chance : NOUN
 chance : VERB
 chance : ADJ[%to]
 character : NOUN
+chess : NOUN
 china : NOUN
 claim : NOUN
 claim : VERB [$trns] 0
@@ -155,12 +173,16 @@ comprehensive : ADJ
 connect : VERB
 constitution : NOUN
 consume : VERB
+continue : VERB
+control : NOUN
+control : VERB
 coordination : NOUN
 cope : NOUN - -2
 cope : VERB - +1
 copy : VERB
 corn : NOUN
 corn : VERB
+crafty : ADJ
 create : VERB
 credit : NOUN
 credit : VERB
@@ -172,10 +194,13 @@ damage : NOUN
 damage : VERB
 dark : ADJ
 dark : NOUN
+decide : VERB
 décor : NOUN
 deep : ADJ
 deep : ADV
 deep : NOUN
+defend : VERB
+defense : NOUN
 definite : ADJ
 department : NOUN
 describe : VERB
@@ -205,17 +230,20 @@ ecology : NOUN
 edit : VERB
 effect : NOUN
 effect : VERB
+effective : ADJ
 elect : NOUN
 elect : VERB
 emerge : VERB
 end : NOUN
 end : VERB
+engine : NOUN
 engineer : NOUN
 engineer : VERB - -1
 enough : ADJ[%to]
 envision : VERB
 escape : NOUN
 escape : VERB
+especially : ADV
 even : NOUN - -1
 even : VERB
 even : ADJ
@@ -223,12 +251,15 @@ even : ADV[~mod] [$deg] 0
 examine : VERB
 example : NOUN
 except : VERB - -2
+exchange : NOUN
+exchange : VERB
 exercise : NOUN
 exercise : VERB
 exist : VERB
 face : NOUN
 face : VERB
 facility : NOUN
+fact : NOUN
 federal : ADJ
 federal : NOUN
 federation : NOUN
@@ -236,6 +267,8 @@ few : NOUN - -1
 few : ADJ
 field : NOUN
 field : VERB
+final : NOUN
+final : ADJ
 flash : NOUN
 flash : VERB
 flash : ADJ
@@ -243,22 +276,31 @@ flash flood : NOUN
 flood : NOUN
 flood : VERB
 forget : VERB
+fry : NOUN - -1
+fry : VERB
 further : VERB
 further : ADJ
 further : ADV
+gambit : NOUN
+game : NOUN - +1
+game : VERB
+game : ADJ
 gene : NOUN
 generous : ADJ
 genetically : ADV
 genome : NOUN
 get : NOUN - -2
 get : VERB[^ptcl]
-give : NOUN
-give : VERB
+give : NOUN - -2
+give : VERB[^ptcl]
 glow : NOUN
 glow : VERB
 go : NOUN - -1
 go : VERB[^ptcl]
 go : ADJ - -4
+good : NOUN
+good : ADJ
+good : ADV - -1
 govern : VERB
 grass : NOUN
 grass : VERB - -1
@@ -304,6 +346,9 @@ just : ADJ
 just : ADV
 kill : NOUN
 kill : VERB - +1
+king : NOUN
+knight : NOUN
+knight : VERB - -1
 know : NOUN - -2
 know : VERB
 large : NOUN - -1
@@ -318,6 +363,8 @@ lead : VERB
 learn : VERB
 less : ADJ[%to] - +1
 less : ADV [$deg] 0
+let : NOUN - -1
+let : VERB
 like : NOUN - -2
 like : VERB
 like : ADJ  - -2
@@ -327,6 +374,8 @@ line : NOUN
 line : VERB
 list : NOUN
 list : VERB
+liver : NOUN
+liver : ADJ - -1
 livestock : NOUN
 long : VERB
 long : ADJ
@@ -362,6 +411,8 @@ modify : VERB
 more : NOUN - -1
 more : ADJ[%to]
 more : ADV [$deg] 0
+move : NOUN
+move : VERB
 mow : NOUN
 mow : VERB
 much : NOUN
@@ -398,6 +449,9 @@ off : ADJ
 off : ADV
 office : NOUN
 once : ADV
+open : NOUN - -1
+open : VERB
+open : ADJ
 orbit : NOUN
 orbit : VERB
 ore : NOUN
@@ -405,7 +459,7 @@ oregon : NOUN
 organism : NOUN
 ornament : NOUN
 ornament : VERB
-other : ADJ
+other : ADJ [$ind] 0
 out : NOUN
 out : VERB
 out : ADJ
@@ -418,6 +472,8 @@ passionate : ADJ
 past : NOUN
 past : ADJ
 past : ADV
+pawn : NOUN
+pawn : VERB
 pay : NOUN
 pay : VERB
 people : NOUN
@@ -428,11 +484,17 @@ piece : NOUN
 piece : VERB
 plant : NOUN
 plant : VERB
+play : NOUN
+play : VERB
 plot : NOUN
 plot : VERB
 plumbing : NOUN
 pollute : VERB
+poor : NOUN - -1
+poor : ADJ
 popular : ADJ
+position : NOUN
+position : VERB
 positive : NOUN
 positive : ADJ
 possible : ADJ
@@ -440,15 +502,22 @@ possible : NOUN
 prepare : VERB
 press : NOUN
 press : VERB
+pressure : NOUN
+pressure : VERB
 previous : ADJ
 primary : NOUN
 primary : ADJ
+probable : NOUN
+probable : ADJ
+probably : ADV
 process : NOUN
 process : VERB
 produce : NOUN
 produce : VERB
 product : NOUN
 production : NOUN
+protect : VERB
+prove : VERB
 put : NOUN - -1
 put : VERB[^ptcl]
 quick : NOUN - -4
@@ -460,6 +529,8 @@ read : NOUN - -1
 read : VERB
 recent : ADJ
 reduce : VERB
+regard : NOUN
+regard : VERB
 regardless : ADJ
 regardless : ADV
 regulate : VERB
@@ -482,6 +553,9 @@ round : VERB [$cond] -1
 round : ADJ
 round : ADV
 roundup : NOUN
+safe : NOUN
+safe : ADJ
+safety : NOUN
 satellite : NOUN
 satellite : ADJ
 science : NOUN
@@ -500,6 +574,9 @@ show : VERB
 shutter : NOUN
 shutter : VERB [$trns] 0
 significant : ADJ[%to]
+slow : VERB
+slow : ADJ
+slow : ADV
 small-business : ADJ
 so-called : ADJ
 sort : NOUN
@@ -524,6 +601,7 @@ storm : NOUN
 storm : VERB
 strong : ADJ
 success : NOUN
+suggest : VERB
 support : NOUN
 support : VERB
 suppose : VERB
@@ -536,10 +614,13 @@ swoop : NOUN
 swoop : VERB
 tailor : NOUN
 tailor : VERB
+take : NOUN
+take : VERB
 technique : NOUN
 terrify : VERB
 test : NOUN
 test : VERB
+thing : NOUN
 think : NOUN - -2
 think : VERB
 thirst : NOUN
@@ -559,17 +640,24 @@ true : NOUN
 true : VERB
 true : ADJ[%to]
 true : ADV
+type : NOUN
+type : VERB
+typical : ADJ
+typically : ADV
 uncertain : ADJ
 underground : NOUN
 underground : ADJ
 unintended : ADJ
 union : ADJ
 union : NOUN
+up : VERB - -1
+up : ADJ
+up : ADV
 update : NOUN
 update : VERB
 use : NOUN
 use : VERB
-very : ADJ
+very : ADJ - -2
 very : ADV [$deg] 0
 victory : NOUN
 violate : VERB
@@ -584,10 +672,14 @@ watch : VERB
 wax : NOUN
 wax : VERB
 weedkiller : NOUN
+weak : ADJ
 well : NOUN
 well : VERB
 well : ADJ[%to]
 well : ADV
+white : NOUN
+white : VERB
+white : ADJ
 wide : ADJ
 wide : ADV
 wild : ADJ

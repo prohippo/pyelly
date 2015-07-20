@@ -286,7 +286,7 @@ _
   var typg=prep
   (lxtd)
 __
-g:ELEM[^dit]->PEXP[|eg,-cm]
+g:ELEM[^dit]->PEXP[|eg,-com]
  >>*l
 __
 g:ELEM[^*r]->PUNC[|*l,quo] ELEM
@@ -313,14 +313,14 @@ _
   left
 __
 
-g:PEXP[|eg,cm]->PUNC[|com] PEXP[|eg,-cm]
+g:PEXP[|eg,com]->PUNC[|com] PEXP[|eg,-com]
  >>*r++
 _
   (pbeg)
   linefeed
 __
 
-g:PEXP[|eg]->PEXP[|eg,cm] PUNC[|com]
+g:PEXP[|eg]->PEXP[|eg,com] PUNC[|com]
  >>++
 _
   left
@@ -344,7 +344,13 @@ _
   linefeed
   right
 __
-g:PEXP[|*l,nom]->PUNC[|*l] NCLU
+g:PEXP[|*l,nom,det]->PUNC[|*l] NCLU[:det]
+ r[$trlg]>>[!ln]+
+         >>[!ln,rn]+
+_
+  (pbeg)
+__
+g:PEXP[|*l,nom]->PUNC[|*l] NCLU[:-det]
  r[$trlg]>>[!ln]+
          >>[!ln,rn]+
 _
@@ -383,14 +389,23 @@ _
   right
   append </punc>
 __
-g:NCLU->PEXP[|nom,eg,-cm]
+g:NCLU->PEXP[|nom,eg,-com]
  >>++
 _
   var typg=nclu
   (typg)
 __
-g:NCLU->PEXP[|nom] PUNC[|*r]
+g:NCLU[:det]->PEXP[|det,nom] PUNC[|*r]
  >>*r[$quo]+
+_
+  (prom)
+__
+g:NCLU->PEXP[|-det,nom] PUNC[|*r]
+ >>*r[$quo]+
+_
+  (prom)
+__
+p:prom
 _
   append <nclu>
   split
@@ -543,8 +558,10 @@ _
   (lxtd)
 __
 g:NCLU[:*r]->ADJ NCLU[:-det,-prep,-num]
- r[$quo]>>*r
-        >>*r+++
+#      ?>>?
+ l[$ind]r[$quo]>>*r----
+        r[$quo]>>*r
+               >>*r+++
 _
   var typg=adj
   (lxtd)
@@ -883,6 +900,13 @@ g:NUM->ADJ[%mod] NUM
  >>+++
 _
   var typg=adj
+  (typg)
+  right
+__
+g:NUM->ADV[~MOD] NUM
+ >>+
+_
+  var typg=adv
   (typg)
   right
 __
@@ -1333,6 +1357,8 @@ __
 d:off <- PTCL
 __
 d:at  <- PTCL
+__
+d:up  <- PTCL
 __
 
 d:not  <- NEGN
