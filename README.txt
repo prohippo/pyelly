@@ -132,7 +132,7 @@ Release Notes:
                       clean up PyElly initialization logic
  1.2.1  -  15apr2015  extend rules for "marking" application
                       extend "marking" integration test
-                      more Unicode punctuation handling
+                      add more Unicode punctuation handling
                       fix input buffering for Unicode
                       fix morphological stemming problems
                       fix tokenization with new Unicode punctuation
@@ -161,7 +161,7 @@ Release Notes:
                       change directions of FIND command to be more consistent
                       update "test" and "bad" grammars for PyElly changes
                       raise exception for  phrase overflows
- 1.2.6  -  01jun2015  clean up "marking" rules
+ 1.2.6  -  01jun2015  clean up "marking" application rules
                       extend "marking" integration test
                       clean up logic for loading grammar and vocabulary
                       improve cognitive semantic tracing
@@ -176,8 +176,8 @@ Release Notes:
                       fix inconsistent feature ID in "chinese" grammar
                       fix problem in parse tree dump with big phrase IDs
                       fix bug with apostrophe as quotation mark
-                      clean up "marking" application
- 1.2.9  -  22jun2015  clean up "marking" application
+                      clean up "marking" application rules
+ 1.2.9  -  22jun2015  clean up "marking" application rules
                       fix swapping bug in reordering of ambiguous phrases
                       improve diagnostic output
  1.2.10 -  29jun2015  clean up and extend "marking" application
@@ -194,6 +194,11 @@ Release Notes:
                       fix bug in adjusting grammar rule biases
                       clean up diagnostic output
                       extend "marking" integration test
+ 1.2.13 -  20jul2015  fix swapping bug in reordering of ambiguous phrases
+                      define Kernel class to make phrase swapping cleaner
+                      add check for multiple definition of subprocedures
+                      extend "marking" integration test
+                      improve default suffix removal
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 may require regeneration of any previously saved *.elly.bin files to ensure
