@@ -143,6 +143,7 @@ biggest big
 biliary bile
 bilingual bilingua
 bilious bile
+birder
 bit bite
 biter bite
 bitten bite
@@ -578,6 +579,7 @@ foggiest fog
 foggy fog
 follower follow
 footage foot
+forage forage
 forcefully force
 forceps forceps
 foregoing forego
@@ -1068,6 +1070,7 @@ propeller propel
 prophesy prophet
 protectorate protect
 protester protest
+prototypical prototype
 protozoan protozoa
 proven prove
 prudent prudent
@@ -1495,6 +1498,7 @@ weakly weak
 weaponry weapon
 weekly week
 weighty weigh
+weirdest weird
 went go
 wettest wet
 whiten white
