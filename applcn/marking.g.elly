@@ -947,8 +947,18 @@ g:VERB[^*l,ing]->VERB[^-*l,-*r] XING
 _
   (twob)
 __
-g:VERB->VERB[^ptcl] PTCL
- >>+
+g:VERB->VERB[^ptcl,-ed,-ing] PTCL   # fix in v1.3
+ >>++
+_
+  (twob)
+__
+g:VERB[^ing]->VERB[^ptcl,ing] PTCL  # fix in v1.3
+ >>++
+_
+  (twob)
+__
+g:VERB[^ed]->VERB[^ptcl,ed] PTCL    # fix in v1.3
+ >>++
 _
   (twob)
 __

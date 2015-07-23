@@ -27,10 +27,6 @@ soon: ADV
 yet : ADV
 ought : VERB
 
-U.S. : NOUN
-New York : NOUN
-Arizona : NOUN
-
 rocket : NOUN
 rocket : VERB
 rocket science : NOUN
@@ -102,6 +98,8 @@ apple : NOUN
 approval : NOUN
 approve : VERB
 area : NOUN
+argentina : NOUN
+arizona : NOUN
 arm : NOUN
 arm : VERB
 associate : ADJ
@@ -128,15 +126,23 @@ become : VERB
 before : ADV
 bell : NOUN
 biotech : NOUN
+bird : NOUN
+bird : VERB
+birder : NOUN
 black : NOUN
 black : VERB - -1
 black : ADJ
 book : NOUN
 book : VERB
 business: NOUN
+california : NOUN
+call : NOUN
+call : VERB
 cancer : NOUN
 canola : NOUN
 carry : VERB
+catch : NOUN
+catch : VERB
 century : NOUN
 certain : ADJ[%to]
 chair : NOUN
@@ -182,10 +188,13 @@ cope : VERB - +1
 copy : VERB
 corn : NOUN
 corn : VERB
+cough : NOUN - -1
+cough : VERB[^ptcl]
 crafty : ADJ
 create : VERB
 credit : NOUN
 credit : VERB
+creek : NOUN
 critic : NOUN
 critical : ADJ[%to]
 crop : NOUN
@@ -194,6 +203,8 @@ damage : NOUN
 damage : VERB
 dark : ADJ
 dark : NOUN
+dart : NOUN
+dart : VERB[^ptcl]
 decide : VERB
 décor : NOUN
 deep : ADJ
@@ -256,13 +267,18 @@ exchange : VERB
 exercise : NOUN
 exercise : VERB
 exist : VERB
+explore : VERB
 face : NOUN
 face : VERB
 facility : NOUN
 fact : NOUN
+familiar : NOUN - -1
+familiar : ADJ
 federal : ADJ
 federal : NOUN
 federation : NOUN
+female : NOUN
+female : ADJ
 few : NOUN - -1
 few : ADJ
 field : NOUN
@@ -273,8 +289,13 @@ flash : NOUN
 flash : VERB
 flash : ADJ
 flash flood : NOUN
+flight : NOUN
 flood : NOUN
 flood : VERB
+foliage : NOUN
+forage : NOUN
+forage : VERB
+forages : VERB - 0 =forage -s
 forget : VERB
 fry : NOUN - -1
 fry : VERB
@@ -326,12 +347,15 @@ home : ADJ
 home : ADV
 hope : NOUN
 hope : VERB
+hover : VERB
 impact : NOUN
 impact : VERB
 important : ADJ[%to]
 impose : VERB
 independent : ADJ
+indigestible : ADJ
 infrastructure : NOUN
+insect : NOUN
 intend : VERB
 interstate : NOUN - -1
 interstate : ADJ
@@ -343,7 +367,7 @@ issue : VERB
 jigsaw puzzle : NOUN
 jurisdiction : NOUN
 just : ADJ
-just : ADV
+just : ADV - +1
 kill : NOUN
 kill : VERB - +1
 king : NOUN
@@ -384,10 +408,17 @@ look : VERB[^ptcl]
 loophole : NOUN
 love : NOUN
 love : VERB
+low : NOUN - -2
+low : VERB - -1
+low : ADJ
+low : ADV [$prd] 0
 main : NOUN
 main : ADJ
+maintain : VERB
 make : NOUN
 make : VERB
+male : NOUN
+male : ADJ
 mandatory : ADJ[%to]
 manufacture : NOUN
 manufacture : VERB
@@ -429,6 +460,7 @@ negotiate : VERB
 new : ADJ[%to] - +1
 new : ADV - -1
 new year's : NOUN
+new york : NOUN
 news : NOUN
 next : ADJ[%mod,to] [$spat] +0
 next : ADV
@@ -448,6 +480,7 @@ off : VERB - -2
 off : ADJ
 off : ADV
 office : NOUN
+often : ADV
 once : ADV
 open : NOUN - -1
 open : VERB
@@ -460,8 +493,8 @@ organism : NOUN
 ornament : NOUN
 ornament : VERB
 other : ADJ [$ind] 0
-out : NOUN
-out : VERB
+out : NOUN - -1
+out : VERB - -1
 out : ADJ
 out : ADV
 overnight : ADJ
@@ -478,6 +511,8 @@ pay : NOUN
 pay : VERB
 people : NOUN
 people : VERB - -1
+perch : NOUN
+perch : VERB
 picture : NOUN
 picture : VERB
 piece : NOUN
@@ -490,6 +525,7 @@ plot : NOUN
 plot : VERB
 plumbing : NOUN
 pollute : VERB
+pond : NOUN
 poor : NOUN - -1
 poor : ADJ
 popular : ADJ
@@ -525,6 +561,8 @@ quick : ADJ - +1
 quick : ADV
 quite : ADV
 rainfall : NOUN
+rapid : NOUN - -1
+rapid : ADJ
 read : NOUN - -1
 read : VERB
 recent : ADJ
@@ -534,6 +572,7 @@ regard : VERB
 regardless : ADJ
 regardless : ADV
 regulate : VERB
+relate : VERB
 republican : NOUN
 republican : ADJ
 research : NOUN
@@ -565,10 +604,16 @@ see : NOUN - -1
 see : VERB
 senior : NOUN
 senior : ADJ[%to]
+separate : NOUN - -1
+separate : VERB
+separate : ADJ
 set : NOUN
 set : VERB[^ptcl]
 set : ADJ - -1
 severe : ADJ
+sharp : NOUN - -1
+sharp : ADJ
+sharp : ADV
 show : NOUN
 show : VERB
 shutter : NOUN
@@ -578,9 +623,13 @@ slow : VERB
 slow : ADJ
 slow : ADV
 small-business : ADJ
+snap : NOUN
+snap : VERB[^ptcl]
 so-called : ADJ
+sometimes : ADV
 sort : NOUN
 sort : VERB
+species : NOUN
 specific : ADJ[%to]
 stack : NOUN
 stack : VERB
@@ -605,6 +654,9 @@ suggest : VERB
 support : NOUN
 support : VERB
 suppose : VERB
+surface : NOUN
+surface : VERB
+surface : ADJ - -2
 surgeon : NOUN
 surgery : NOUN
 switch : NOUN
@@ -618,6 +670,7 @@ take : NOUN
 take : VERB
 technique : NOUN
 terrify : VERB
+territory : NOUN
 test : NOUN
 test : VERB
 thing : NOUN
@@ -644,6 +697,7 @@ type : NOUN
 type : VERB
 typical : ADJ
 typically : ADV
+u.s. : NOUN
 uncertain : ADJ
 underground : NOUN
 underground : ADJ
@@ -651,8 +705,8 @@ unintended : ADJ
 union : ADJ
 union : NOUN
 up : VERB - -1
-up : ADJ
-up : ADV
+up : ADJ - -2
+up : ADV - -1
 update : NOUN
 update : VERB
 use : NOUN
@@ -669,6 +723,8 @@ waste : NOUN
 waste : VERB
 watch : NOUN
 watch : VERB
+water : NOUN
+water : ADJ - -2
 wax : NOUN
 wax : VERB
 weedkiller : NOUN
@@ -677,6 +733,8 @@ well : NOUN
 well : VERB
 well : ADJ[%to]
 well : ADV
+whistle : NOUN
+whistle : VERB
 white : NOUN
 white : VERB
 white : ADJ
@@ -687,6 +745,8 @@ wild : ADV
 wild : NOUN
 wind : NOUN
 wind : VERB
+winter : NOUN
+winter : VERB
 witness : NOUN - -1
 witness : VERB
 word : NOUN
@@ -710,6 +770,12 @@ east : ADV[~dir]
 west : NOUN
 west : ADJ
 west : ADV[~dir]
+northern : NOUN - -1
+northern : ADJ
+southern : ADJ
+western : NOUN - -1
+western : ADJ
+eastern : ADJ
 northwest : NOUN
 northwest : ADJ
 northwest : ADV[~dir]
