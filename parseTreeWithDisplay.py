@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeWithDisplay.py : 15jul2015 CPM
+# parseTreeWithDisplay.py : 25jul2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -46,7 +46,7 @@ DPTH = 32        # maximum stack depth for tree traversal
 BRN  = u'\u252C' # '+' branch  Unicode box-drawing characters for drawing tree
 DWN  = u'\u2500' # '-' down
 CNN  = u'\u2502' # '|' connect
-ANG  = u'\u2514' # '\' angle
+ANG  = u'\u2514' # '\' ell angle
 NBSP = u'\u00A0' # non-breaking space
 
 SPCG = NBSP+NBSP+NBSP+NBSP+NBSP+NBSP+NBSP+NBSP+NBSP # for indentation
@@ -95,7 +95,7 @@ class ParseTreeWithDisplay(parseTree.ParseTree):
             gtb  - grammar table
             ptb  - patterns for syntax categorization
             ctx  - interpretive context
-            dlm  - depth limit for tree display
+            dpth - depth limit for tree display
         """
 
         super(ParseTreeWithDisplay,self).__init__(stb,gtb,ptb,ctx)
@@ -116,8 +116,7 @@ class ParseTreeWithDisplay(parseTree.ParseTree):
         if self.dlm < 0:
             return
         tks = self.ctx.tokns       # token list for parse
-        out.write('dump all\n')
-        out.write('\n')
+        out.write('dump all\n\n')
         n = self.phlim - 1         # index of last node created
         while n >= 0:              # process until oldest node at n=0
             ph = self.phrases[n]   # get phrase
@@ -125,23 +124,23 @@ class ParseTreeWithDisplay(parseTree.ParseTree):
                 self.dumpTree(ph)  # dump subtree starting at current phrase
             n -= 1
 
-        out.write('rules invoked\n')
+        out.write('rules invoked and associated phrases\n')
         hr = { }                   # association of rules with phrase nodes
         lm = N                     # maximum number phrase nodes to report
         for k in range(self.phlim):
             ph = self.phrases[k]
             rs = ph.krnl.rule.seqn
             if not rs in hr: hr[rs] = [ ]
-            hr[rs].append(k)       # make association
-        for rs in hr.keys():       # iterate on rules found
+            hr[rs].append(ph)      # make association
+        for rs in hr.keys():       # iterate on sequence numbers for rules found
             ls = hr[rs]
             if len(ls) > lm: ls = ls[:lm]
-            rss = '{:4d}:'.format(rs)
-            out.write('rule ')     # report up to lm phrase nodes for rule
-            out.write(rss)
-            for k in ls:
+            rssn = 'rule {:4d}:'.format(rs)
+            out.write(rssn)        # report up to lm phrase nodes for rule
+                                   # with this sequence number
+            for ph in ls:
                 out.write(' ')
-                out.write(str(k))
+                out.write(str(ph.krnl.seqn))
             out.write('\n')
         out.write('\n')
 
@@ -403,6 +402,8 @@ if __name__ == '__main__':
     print "------ dump tree (should repeat some of the above output)"
     tree.dumpTree(tree.lastph)
     print "------"
+    sys.stdout.flush()
+    sys.stderr.flush()
     print "------ disable parse tree"
     tree.setDepth(0)
     tree.dumpTree(tree.lastph)
