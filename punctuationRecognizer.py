@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# punctuationRecognizer.py : 07jun2015 CPM
+# punctuationRecognizer.py : 27jul2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -31,27 +31,63 @@
 # -----------------------------------------------------------------------------
 
 """
-builtin single-char punctuation recognition for
+builtin single-char punctuation recognition for PyElly grammars
 
-provided as a convenience so that marks do not have to be listed in an internal
-or external dictionary for every Elly grammar definition
+provided as a convenience so that these marks do not have to be listed in an
+internal dictionary or an external table for every grammar definition
 
 multiple-char punctuation MUST be in an internal or external dictionary!
 """
 
 import ellyBits
-import ellyChar
 import featureSpecification
 
-from ellySentenceReader import Stops
+# NOTE: category and feature names here must be in lower case!
+#
 
-category = 'punc' # this must be used in Elly grammars for punctuation!
-features = '|'    #      must be used for punctuation syntactic features
+category = 'punc' # must be used in grammars for punctuation syntax type!
+pID      = '|'    # must be used for punctuation syntactic feature ID
 
-stopf  = '[' + features + 'stop]'
-startf = '[' + features + 'start]'
+defns = [                                      # syntactic significance of punctuation
+    [ u'[' , '[' + pID + '*l]' ] ,             # replacing D: rules in *.g.elly
+    [ u']' , '[' + pID + '*r]' ] ,             #
+    [ u'(' , '[' + pID + '*l]' ] ,             # you may override with punctuation rules
+    [ u')' , '[' + pID + '*r]' ] ,             # but must set higher plausibility for them
+    [ u'“' , '[' + pID + '*l,quo,start]' ] ,
+    [ u'”' , '[' + pID + '*r,quo]' ] ,
+    [ u'"' , '[' + pID + '*l,*r,quo,start]' ] ,
+    [ u'‘' , '[' + pID + '*l,quo,start]' ] ,
+    [ u'’' , '[' + pID + '*r,quo]' ] ,
+    [ u'`' , '[' + pID + '*l,quo,start]' ] ,
+    [ u"'" , '[' + pID + '*l,*r,quo,start]' ] ,
+    [ u',' , '[' + pID + 'com]' ] ,
+    [ u'.' , '[' + pID + 'stop,emb]' ] ,
+    [ u'!' , '[' + pID + 'stop,emb]' ] ,
+    [ u'?' , '[' + pID + 'stop,emb]' ] ,
+    [ u':' , '[' + pID + 'stop,emb]' ] ,
+    [ u';' , '[' + pID + 'stop]' ] ,
+    [ u'\u2013' ] ,  # en dash
+    [ u'\u2014' ] ,  # em dash
+    [ u'\u002d' ] ,  # hyphen-minus
+    [ u'…' ]         # ellipsis
+]
 
-Starting = [ u'"' , u"'" , u'“' , u'[' , u'(' ]
+def _FS ( symbls , featrs ):
+    """
+    get ellyBits encoding of syntactic features
+    arguments:
+        syms   - symbol table for feature names
+        featrs - feature string
+    returns:
+        ellyBits object on success
+    exceptions:
+        FormatFailure on error
+    """
+    return featureSpecification.FeatureSpecification(symbls,featrs).positive
+
+#
+## end static definitions
+#
 
 class PunctuationRecognizer(object):
 
@@ -59,13 +95,9 @@ class PunctuationRecognizer(object):
     recognizer to support parsing
 
     attributes:
-        catg     - syntactic info for recognized punctuation
-        synf     -
-        zero     - for no    syntactic flag
-        stop     - for stop  syntactic flag
-        start    - for start syntacetic flag
-
-        listing  - predefined punctuation except for hyphen and parentheses
+        catg     - syntactic category for recognized punctuation
+        synf     - syntactic features
+        hpnc     - hash lookup for punctuation chars
     """
 
     def __init__ ( self , syms ):
@@ -76,15 +108,20 @@ class PunctuationRecognizer(object):
         arguments:
             self  -
             syms  - Elly symbol table
+
+        exceptions:
+            FormatFailure on error
         """
 
-        self.catg  = syms.getSyntaxTypeIndexNumber(category)
-        self.synf  = None
-        self.zero  = ellyBits.EllyBits()  # zero bits for all features turned off
-        self.stop  = featureSpecification.FeatureSpecification(syms,stopf).positive
-        self.start = featureSpecification.FeatureSpecification(syms,startf).positive
-
-        self.listing  = Stops + [ u',' , u'\'' , u'\"' ] + ellyChar.Pnc
+        zero = ellyBits.EllyBits()
+        self.catg = syms.getSyntaxTypeIndexNumber(category)
+        self.synf = None
+        self.hpnc = { }
+        for defn in defns:
+            if len(defn) > 1:
+                self.hpnc[defn[0]] = _FS(syms,defn[1])
+            else:
+                self.hpnc[defn[0]] = zero
 
     def match ( self , s ):
 
@@ -93,7 +130,7 @@ class PunctuationRecognizer(object):
 
         arguments:
             self  -
-            s     - list of chars to check (usually an Elly token root)
+            s     - list or string of chars to check (usually an EllyToken root)
 
         returns:
             True if listed punctuation, False otherwise
@@ -102,12 +139,12 @@ class PunctuationRecognizer(object):
         if len(s) != 1:          # only single-char punctuation expected here!
             return False
 
-        schr = s[0]
-        if schr in self.listing: # simple lookup
-            self.synf = self.stop if schr in Stops else self.start if schr in Starting else self.zero
-            return True
-        else:
+        schr = s[0]              # possible punctuation char
+        if not schr in self.hpnc:
             return False
+        else:
+            self.synf = self.hpnc[schr] # for later reference along with synf.catg
+            return True
 
 #
 # unit test
@@ -117,10 +154,19 @@ if __name__ == '__main__':
 
     import symbolTable
 
-    ups = u'.?!ab,;:+cd$%&\'\"ef-—“”'
+    ups = u'.?!ab,;:+cd$%&\'\"ef-—“”…hg`i'
 
     symb = symbolTable.SymbolTable()
     punc = PunctuationRecognizer(symb)
 
+    ft = symb.sxindx[pID]
+    del ft['*left']
+    del ft['*right']
+    print 'punc [| ]:' , ft
+
     for chu in ups:
-        print chu , punc.match(chu)
+        print '[' , chu , ']' ,
+        if punc.match(chu):
+            print ' is PUNC' , punc.synf.hexadecimal()
+        else:
+            print ' not PUNC'

@@ -45,3 +45,5 @@ d:$   <- stop
 __
 d:-'s <- stop
 __
+d:-   <- stop
+__
