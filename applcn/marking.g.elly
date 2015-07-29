@@ -74,8 +74,14 @@ _
   right
 __
 g:SS[|segm]->SEGM
+ >>*l
 __
 g:SS[|segm]->SS[|-segm] SEGM
+#                 ?>>?
+ l[!coord,rn]r[!rn]>>++
+ l[!coord,rv]r[!rv]>>++
+             r[!rv]>>[!rv]
+             r[!rn]>>[!rn]
 _
   left
   linefeed
@@ -90,6 +96,7 @@ _
   append </punc>
 __
 g:SS->SS CONJ
+ r[!coord]>>*l[!coord]
 _
   left
   linefeed
@@ -148,7 +155,7 @@ _
   linefeed
   right
 __
-g:SEGM->SEGM PUNC[|-*l]
+g:SEGM->SEGM PUNC[|-*l,-stop]
  >>--
 _
   left
@@ -733,6 +740,7 @@ _
 __
 
 g:PCLS[^*l]->VERB[^ing] NCLU
+ l[$trns]>>+1
 _
   append <clause><vclu><verb>
   left
@@ -1276,7 +1284,7 @@ __
 d:themselves <- PRO[%rflx]
 __
 
-d:1    <- PRO[%mod]
+d:1 <- PRO[%mod]
 _
   append one
 __
@@ -1286,8 +1294,10 @@ d:anyone  <- PRO
 __
 
 d:and  <- CONJ
+ >>[!coord]
 __
 d:or   <- CONJ
+ >>[!coord]
 __
 d:but  <- CONJ
 __
@@ -1442,37 +1452,7 @@ __
 d:-y <- SUFX[#aTOr]
 __
 
-d:[ <- PUNC[|*l]
-__
-d:] <- PUNC[|*r]
-__
-d:( <- PUNC[|*l]
-__
-d:) <- PUNC[|*r]
-__
-d:“ <- PUNC[|*l,quo,start] 
-__
-d:” <- PUNC[|*r,quo]
-__
-d:" <- PUNC[|*l,*r,quo,start]
-__
-d:‘ <- PUNC[|*l,quo,start]
-__
-d:’ <- PUNC[|*r,quo]
-__
-d:` <- PUNC[|*l,quo,start]
-__
-d:' <- PUNC[|*l,*r,quo,start]
-__
 d:$ <- MONY
-__
-d:. <- PUNC[|emb]
-__
-d:! <- PUNC[|emb]
-__
-d:? <- PUNC[|emb]
-__
-d:, <- PUNC[|com]
 __
 
 ####
