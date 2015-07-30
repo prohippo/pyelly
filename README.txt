@@ -6,7 +6,7 @@ PyElly is intended mainly for educational use, in that it allows a student
 to engage natural language at a fine level of detail and learn the issues
 involved in processing text data. It can be of interest to others, though,
 because of its extensive support for handling the messy aspects of
-language not central to a given data problem or its solution.
+language not central to most data problems or their solutions.
 
 The basic paradigm of PyElly is to rewrite natural language input into
 some other text output, which might be SQL, XML, or some other form. This
@@ -22,6 +22,7 @@ framework for translating text from UTF-8 to UTF-8.
 The latest version has been completely rewritten in mostly object-oriented
 Python 2.7. It completed multiple stages of beta testing in 2014 and may
 now be downloaded from GitHub at https://github.com/prohippo/pyelly.git .
+Further development and refinement is ongoing.
 
 To learn how to use PyElly, see the PyEllyManual.pdf file in the same
 directory as this README.txt file. The manual has over a hundred pages of
@@ -32,7 +33,7 @@ Python pydoc utility.
 At present, PyElly consists of 63 Python modules comprising about fifteen
 thousand lines of source code. There are also various definition files
 to support basic various language processing capabilities. The PyElly
-download also includes rules for some  example applications, including
+download also includes rules for some example applications, including
 
 * indexing - remove stopwords and get stems for content words from raw
              text input.
@@ -199,6 +200,10 @@ Release Notes:
                       add check for multiple definition of subprocedures
                       extend "marking" integration test
                       improve default suffix removal
+ 1.2.14 -  30jul2015  fix minor bug in display of rules invoked for parse tree
+                      fix problems in punctuation recognition, clean up code
+                      fix bug in handling ` as punctuation in token extraction
+                      extend "marking" application rules
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 may require regeneration of any previously saved *.elly.bin files to ensure

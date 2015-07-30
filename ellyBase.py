@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 15jul2015 CPM
+# ellyBase.py : 26jul2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -74,7 +74,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.2.13'                     # current version of PyElly software
+release = 'v1.2.14'                     # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -641,6 +641,7 @@ class EllyBase(object):
 
 #       print 'unrecognized token w=' , w
         if self.pnc.match(w.root):          # check if next token is punctuation
+#           print 'catg=' , self.pnc.catg , self.pnc.synf.hexadecimal()
             if tree.addLiteralPhrase(self.pnc.catg,self.pnc.synf):
                 tree.lastph.lens = w.getLength()
             found = True
