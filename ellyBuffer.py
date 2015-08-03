@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBuffer.py : 27jul2015 CPM
+# ellyBuffer.py : 01aug2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -708,3 +708,4 @@ if __name__ == '__main__':
         tkn = eb.getNext()
         if tkn == None: break
         print 'extract <' + u''.join(tkn.root) + '>'
+        print 'tkn=' , tkn

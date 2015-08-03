@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyToken.py : 20may2015 CPM
+# ellyToken.py : 01aug2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -77,7 +77,8 @@ class EllyToken(object):
 
         p =  '[' + u' '.join(self.pres) + ']+' if len(self.pres) > 0 else ''
         s = '-[' + u' '.join(self.sufs) + ']'  if len(self.sufs) > 0 else ''
-        return u'EllyToken: ' + p + str(self.root) + s + u' (orig= "' + self.orig + u'")'
+        c = 'CAP' if self.capn else '-'
+        return u'EllyToken: ' + p + str(self.root) + s + u' (orig= "' + self.orig + u'") ' + c
 
     def __str__ ( self ):
 
