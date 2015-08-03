@@ -204,6 +204,9 @@ Release Notes:
                       fix problems in punctuation recognition, clean up code
                       fix bug in handling ` as punctuation in token extraction
                       extend "marking" application rules
+ 1.2.15 -  03aug2015  fix problems in tracking capitalization, clean up code
+                      improve diagnostic output
+                      extend "marking" integration test
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 may require regeneration of any previously saved *.elly.bin files to ensure
