@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 26jul2015 CPM
+# ellyBase.py : 01aug2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -74,7 +74,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.2.14'                     # current version of PyElly software
+release = 'v1.2.15'                     # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -160,6 +160,8 @@ class EllyBase(object):
         trs  - simple transformation
         pnc  - punctuation recognizer
 
+        nultok - null token
+
         gundef - undefined symbols in *.p.elly and *.n.elly
         vundef - undefined symbols in *.v.elly
         pundef - undefined symbols for punctuation recognition
@@ -178,6 +180,8 @@ class EllyBase(object):
 
         nfail = 0          # error count for reporting
         self.rul = None
+
+        self.nultok = ellyToken.EllyToken()
 
         self.gundef = [ ]  # initialize
         self.vundef = [ ]  #
@@ -332,13 +336,20 @@ class EllyBase(object):
                 if len(self.sbu.buffer) == 0:
                     break               # stop when sentence buffer is empty
                 self.ptr.startUpX()     # for any initial ... grammar rule
-                stat = self._lookUpNext()
-                if not stat:
+                tokn = self._lookUpNext()
+                if tokn == None:
 #                   print 'lookup FAIL'
                     return None         # if next token cannot be handled, quit
                 if len(self.ptr.queue) == 0:
                     break
-                self.ptr.digest()       # process tokens to get all resulting phrases
+#               print 'next tokn=' , tokn
+                if tokn.capn:
+#                   print 'capitalized, with' , len(self.ptr.queue) , 'leaf phrases'
+                    for ph in self.ptr.queue:
+#                       print 'ph=' , ph
+                        ph.krnl.semf.set(0)
+#                       print 'ph=' , ph , '!'
+                self.ptr.digest()       # process queue to get all ramifications
                 self.ptr.restartQueue() # for any leading zero production
 #               print len(self.ctx.tokns) , 'tokens after digestion'
 
@@ -371,7 +382,7 @@ class EllyBase(object):
             self
 
         returns:
-            True on successful lookup, False otherwise
+            ellyToken on successful lookup, None otherwise
 
         exceptions:
             ParseOverflow
@@ -380,7 +391,8 @@ class EllyBase(object):
         self.sbu.skipSpaces()          # skip leading spaces
         s = self.sbu.buffer
 
-        if len(s) == 0: return True    # check for end of input
+        if len(s) == 0:                # check for end of input
+            return self.nultok         # if so, done
 
         if self.trs != None:           # preanalysis of number expressions
             self.trs.rewriteNumber(s)
@@ -422,13 +434,13 @@ class EllyBase(object):
 #           print 'long token=' , to
             self.ctx.tokns.append(to)
             if mr[2] != '' : to.dvdd = True  # must note suffix removal for token!
-            return True
+            return to
 
-        wsk = map(lambda x: x.lower(),self.sbu.buffer[:k])
+        wsk = self.sbu.buffer[:k]
 #       print 'wsk=' , wsk
 #       print 'queue before=' , len(self.ptr.queue)
         rws = u''.join(wsk)
-        found = self.ptr.createPhrasesFromDictionary(rws,False)
+        found = self.ptr.createPhrasesFromDictionary(rws.lower(),False)
         if found or mx > 0:
 #           print 'found'
             self.sbu.skip(k)
@@ -436,7 +448,7 @@ class EllyBase(object):
 #           print 'queue after =' , len(self.ptr.queue)
             to = ellyToken.EllyToken(rws)
             self.ctx.tokns.append(to)
-            return True
+            return to
 #       print '[' + rws + ']' , 'not found in dictionary'
 
         to = self._extractToken()      # single-word matching with analysis
@@ -451,7 +463,7 @@ class EllyBase(object):
 #       posn = len(self.ctx.tokns) - 1 # put token into sentence sequence
 #       print 'posn=' , posn
 #       print 'token=' ,  self.ctx.tokns[posn].root
-        return True
+        return to
 
     def _scanText ( self , k ):
 
@@ -580,7 +592,7 @@ class EllyBase(object):
             self  -
 
         returns:
-            token on success, otherwise None
+            ellyToken on success, otherwise None
 
         exceptions:
             ParseOverflow

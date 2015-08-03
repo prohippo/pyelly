@@ -100,7 +100,10 @@ class FeatureSpecification(object):
             if not self.id in fsindx:
 #               print 'new feature set'
                 d = { }                  # new dictionary of feature names
-                if not semantic:
+                if semantic:
+                    d['*c'] = 0          # always define '*c' as semantic  feature
+                    d['*capital'] = 0    # equivalent to '*c'
+                else:
                     d['*r'] = 0          # always define '*r' as syntactic feature
                     d['*right'] = 0      # equivalent to '*r'
                     d['*l'] = 1          # always define '*l'
@@ -193,6 +196,6 @@ if __name__ == '__main__':
     for idn in idns:
         print idn , '=' , stb.smindx[idn]
     print '----'
-    st = '[^ab,cd,ef] ,'
-    num = scan(st)
-    print num , '<< ' + st[:num] + ' >>'
+    sts = '[^ab,cd,ef] , xxx'
+    num = scan(sts)
+    print num , 'feature chars in <<' + sts + '>> with <<' + sts[num:] + '>> left over'

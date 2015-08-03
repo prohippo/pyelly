@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# symbolTable.py : 16may2015 CPM
+# symbolTable.py : 01aug2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -119,8 +119,10 @@ class SymbolTable(object):
             if not nm in h:        # new name in feature set?
                 k = len(h)         # yes, this will be next free index
                 l = FMAX           # upper limit on feature index
-                if not ty:         # syntactic feature?
-                    k -= 3         # if so, adjust for *UNIQUE and extra names *L, *R
+                if ty:             # semantic feature?
+                    k -= 1         # if so, adjust for extra name *C
+                else:
+                    k -= 3         # else,  adjust for *UNIQUE and extra names *L, *R
                     l -= 1         #        adjust upper limit for *UNIQUE
                 if k == l:         # overflow check
                     print >> sys.stderr, '+* too many feature names'
