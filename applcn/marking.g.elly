@@ -554,12 +554,15 @@ _
   append </time>
 __
 g:NCLU[:*l,*r,det]->DEM[:-sgl] NCLU[:-det,-prep]
+ >>*r
 _
   var typg=dem
   (lxtd)
 __
 g:NCLU[:*l,*r,det]->DEM[:sgl]  NCLU[:-det,-prep,-plur]
- >>*r++
+#     ?>>?
+ r[$*c]>>*r--
+       >>*r++
 _
   var typg=dem
   (lxtd)
@@ -739,8 +742,15 @@ _
   (lxtd)
 __
 
+g:PCLS->PREP[%cls] PCLS[^ing]
+ >>+1
+_
+  var typg=prep
+  (typg)
+  right
+__
 g:PCLS[^*l]->VERB[^ing] NCLU
- l[$trns]>>+1
+ l[$trns]>>+2
 _
   append <clause><vclu><verb>
   left
@@ -1106,7 +1116,7 @@ d:of   <- PREP[%of]
 __
 d:on   <- PREP
 __
-d:by   <- PREP
+d:by  <- PREP[%cls]
 __
 d:at   <- PREP
 __
@@ -1114,7 +1124,7 @@ d:into <- PREP
 __
 d:to   <- PREP[%to]
 __
-d:for  <- PREP
+d:for <- PREP[%cls]
 __
 d:with <- PREP
 __
@@ -1300,6 +1310,8 @@ d:or   <- CONJ
  >>[!coord]
 __
 d:but  <- CONJ
+__
+d:plus <- CONJ
 __
 d:if   <- CONJ
 __

@@ -583,8 +583,8 @@ play : VERB
 plot : NOUN
 plot : VERB
 plumbing : NOUN
-plus : NOUN
-plus : ADJ
+plus : NOUN - -2
+plus : ADJ - -2
 pollute : VERB
 pond : NOUN
 poor : NOUN - -1
@@ -620,7 +620,7 @@ production : NOUN
 propel : VERB
 protect : VERB
 prove : VERB
-provide : VERB
+provide : VERB [$trns] 0
 purchase : NOUN
 purchase : VERB
 put : NOUN - -1
