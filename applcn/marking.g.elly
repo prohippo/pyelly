@@ -1395,7 +1395,7 @@ __
 
 d:not  <- NEGN
 __
-d:never<- NEGN
+d:never<- ADV
 __
 
 #
