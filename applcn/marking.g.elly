@@ -232,7 +232,7 @@ _
   append <conj>that</conj>
 __
 g:ELEM->THAT
- >>-
+ >>[!ln,rv]-
 _
   var typg=conj
   (typg)
@@ -248,7 +248,7 @@ _
   (typg)
 __
 g:ELEM->DEM[:ind]
- >>--
+ >>[!ln,rn]---
 _
   append <nclu>
   var typg=dem
@@ -492,6 +492,17 @@ _
   right
   append </punc>
 __
+g:VCLU->VCLU PREP
+ >>*l----
+_
+  left
+  linefeed
+  append <nclu><prep>
+  right
+  append </prep>
+  space
+  append *</nclu>
+__
 
 g:NCLU[:*l]->NOUN
  >>*l
@@ -554,14 +565,16 @@ _
   append </time>
 __
 g:NCLU[:*l,*r,det]->DEM[:-sgl] NCLU[:-det,-prep]
- >>*r
+#     ?>>?
+ r[$*c]>>*r----
+       >>*r
 _
   var typg=dem
   (lxtd)
 __
 g:NCLU[:*l,*r,det]->DEM[:sgl]  NCLU[:-det,-prep,-plur]
 #     ?>>?
- r[$*c]>>*r--
+ r[$*c]>>*r----
        >>*r++
 _
   var typg=dem
@@ -668,6 +681,7 @@ _
 __
 g:NOUN[:ing]->VERB XING
  l[$trns]>>--
+         >>-
 _
   (twob)
 __
@@ -886,6 +900,11 @@ g:ADV->ADV ADV
 _
   (twob)
 __
+g:ADV->NEGN ADV[~-non]
+ >>+
+_
+  (twob)
+__
 
 g:PREP->ADJ TO
  l[$spat]>>++
@@ -1038,6 +1057,10 @@ _
   left
   append </mod>
   right
+__
+g:CONJ->NEGN CONJ
+_
+  (twob)
 __
 
 g:QUAN->ADV[~prox] QUAN
@@ -1394,8 +1417,6 @@ d:up  <- PTCL
 __
 
 d:not  <- NEGN
-__
-d:never<- ADV
 __
 
 #
