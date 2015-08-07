@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 01aug2015 CPM
+# ellyBase.py : 06aug2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -355,6 +355,7 @@ class EllyBase(object):
 
             self.ptr.finishUpX()        # for any trailing ... grammar rule
         except ellyException.ParseOverflow:
+            print >> sys.stderr , 'parse FAILed! overflow'
             return None
 
         if not self.ptr.evaluate(self.ctx):
