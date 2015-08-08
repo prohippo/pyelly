@@ -28,3 +28,14 @@
 
 0 19##$ YEAR -1
 0 20##$ YEAR -1
+
+0 &# - 5
+5 -year - 6
+5 -year ADJ -1
+5 -month - 6
+5 -month ADJ -1
+5 -day - 6
+5 -day ADJ -1
+6 -old ADJ -1
+
+0 -&@ SUFX -1

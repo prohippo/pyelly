@@ -69,9 +69,11 @@ for example : PEXP[|eg]
 such as : DEM
 round-up : NOUN
 bill-to : ADJ
+bookended : VERB[^ed] - -1
 
 #### WordNet 3.1 entries
 
+abbey : NOUN
 accord : NOUN
 accord : VERB - -1
 account : NOUN
@@ -106,6 +108,7 @@ allow : VERB
 almost : ADV[~mod,prox]
 along : ADV - -1
 also : ADV
+amaze : VERB
 america : NOUN
 amount : NOUN
 amount : VERB
@@ -118,6 +121,9 @@ approval : NOUN
 applicable : ADJ
 apply : VERB
 approve : VERB
+architect : NOUN
+architectural : ADJ
+architecture : NOUN
 area : NOUN
 argentina : NOUN
 arizona : NOUN
@@ -133,6 +139,7 @@ attack : NOUN
 attack : VERB
 attempt : NOUN
 attempt : VERB
+austria : NOUN
 authority : NOUN
 authorize : VERB
 available : ADJ[%to] [$prd] 0
@@ -144,16 +151,23 @@ back : ADJ
 back : ADV
 balance : NOUN
 balance : VERB
+baroque : NOUN - -1
+baroque : ADJ
 base : NOUN
 base : VERB
 battle : NOUN
 battle : VERB
 base : ADJ
+beautiful : ADJ
+beauty : NOUN
 became : VERB[^ed]
 become : VERB
 before : ADV[~non]
 beg : VERB
 bell : NOUN
+benedictine : NOUN
+benedictine : ADJ
+berlin : NOUN
 bill : NOUN
 bill : VERB
 biotech : NOUN
@@ -165,6 +179,7 @@ black : VERB - -1
 black : ADJ
 book : NOUN
 book : VERB
+bookend : NOUN
 breakdown : NOUN
 brink : NOUN
 business: NOUN
@@ -210,6 +225,7 @@ clear : ADJ[%to]
 clear : ADV
 clear : NOUN
 clear : VERB
+cliff : NOUN
 close : NOUN
 close : VERB
 close : ADJ[%to] [$spat] 0
@@ -250,6 +266,7 @@ corn : NOUN
 corn : VERB
 cough : NOUN - -1
 cough : VERB[^ptcl]
+country : NOUN
 crafty : ADJ
 craze : NOUN
 craze : VERB
@@ -263,12 +280,15 @@ critic : NOUN
 critical : ADJ[%to]
 crop : NOUN
 crop : VERB
+cruise : NOUN
+cruise : VERB
 curve : NOUN
 curve : VERB
 custody : NOUN
 cutback : NOUN
 damage : NOUN
 damage : VERB
+danube : NOUN
 dark : ADJ
 dark : NOUN
 dart : NOUN
@@ -292,6 +312,7 @@ differ : VERB
 digital : ADJ
 disaster : NOUN
 disastrously : ADV [$prd] 0
+discover : VERB
 divorce : NOUN
 divorce : VERB
 do: NOUN - -2
@@ -306,6 +327,7 @@ download : NOUN
 download : VERB
 draft : NOUN
 draft : NOUN
+drama : NOUN
 dream : NOUN
 dream : VERB
 drive : NOUN
@@ -328,9 +350,11 @@ edit : VERB
 effect : NOUN
 effect : VERB
 effective : ADJ
+elbe : NOUN
 elect : NOUN
 elect : VERB
 emerge : VERB
+enchant : VERB
 end : NOUN
 end : VERB[^ptcl]
 engine : NOUN
@@ -341,6 +365,7 @@ envision : VERB
 escape : NOUN
 escape : VERB
 especially : ADV
+europe : NOUN
 even : NOUN - -1
 even : VERB
 even : ADJ
@@ -398,6 +423,8 @@ forages : VERB - 0 =forage -s
 forget : VERB
 form : NOUN
 form : VERB
+former : NOUN - -1
+former : ADJ
 framework : NOUN
 free : NOUN - -1
 free : VERB
@@ -417,6 +444,8 @@ gambit : NOUN
 game : NOUN - +1
 game : VERB
 game : ADJ
+garden : NOUN
+garden : VERB
 gene : NOUN
 general : NOUN
 general : VERB
@@ -424,6 +453,7 @@ general : ADJ
 generous : ADJ
 genetically : ADV
 genome : NOUN
+germany : NOUN
 get : NOUN - -2
 get : VERB[^ptcl]
 give : NOUN - -2
@@ -474,6 +504,7 @@ hope : VERB
 house : NOUN
 house : VERB
 hover : VERB
+hungary : NOUN
 immune : NOUN - -2
 immune : ADJ
 impact : NOUN
@@ -499,10 +530,13 @@ issue : NOUN
 issue : VERB
 item : NOUN
 item : ADV - -5
+itinerary : NOUN
 jesus : NOUN
 jigsaw puzzle : NOUN
 job : NOUN
 job : VERB - -2
+journey : NOUN
+journey : VERB
 judge : NOUN
 judge : VERB
 jurisdiction : NOUN
@@ -521,6 +555,8 @@ know : NOUN - -2
 know : VERB
 land : NOUN
 land : VERB
+landscape : NOUN
+landscape : VERB
 large : NOUN - -1
 large : ADJ
 large : ADV - -2
@@ -614,6 +650,7 @@ modern : NOUN
 modern : ADJ
 modify : VERB
 moment : NOUN
+monarch : NOUN
 month : NOUN
 more : NOUN - -1
 more : ADJ[%to]
@@ -629,7 +666,9 @@ much : ADJ[%to]
 much : ADV
 much like : VERB - -1
 much like : PREP
+multicultural : ADJ
 nation : NOUN
+nature : NOUN
 nearly : ADV[~mod,prox]
 neck : NOUN
 neck : VERB - -1
@@ -673,6 +712,8 @@ open : NOUN - -1
 open : VERB
 open : ADJ
 operate : VERB
+opulence : NOUN
+opulent : ADJ
 orbit : NOUN
 orbit : VERB
 ore : NOUN
@@ -692,6 +733,7 @@ overturn : NOUN - -2
 overturn : VERB
 own : VERB
 own : ADJ
+palace : NOUN
 part : NOUN - +2
 part : VERB - -1
 partner : NOUN
@@ -742,6 +784,7 @@ positive : NOUN
 positive : ADJ
 possible : ADJ
 possible : NOUN
+prague : NOUN
 pray : VERB
 prenuptial : ADJ
 prepare : VERB
@@ -826,6 +869,7 @@ review : VERB
 revolution : NOUN
 rick : NOUN
 rick : VERB
+river : NOUN
 rocket : NOUN
 rocket : VERB
 round : NOUN [$cond] -1
@@ -836,10 +880,15 @@ roundup : NOUN
 safe : NOUN
 safe : ADJ
 safety : NOUN
+sail : NOUN
+sail : VERB
 sale : NOUN
 sales tax : NOUN
+sandstone : NOUN
 satellite : NOUN
 satellite : ADJ
+saxon : NOUN
+saxon : ADJ
 science : NOUN
 scientist : NOUN
 seat : NOUN
@@ -874,6 +923,7 @@ sign : NOUN
 sign : VERB[^ptcl]
 sign : ADJ - -2
 significant : ADJ[%to]
+slovakia : NOUN
 slow : VERB
 slow : ADJ
 slow : ADV
@@ -889,6 +939,7 @@ sound : VERB
 sound : ADJ
 species : NOUN
 specific : ADJ[%to]
+spectacular : ADJ
 split : NOUN
 split : VERB
 split : ADJ
@@ -907,10 +958,14 @@ still : ADV
 stockpile : NOUN
 stockpile : VERB
 storage : NOUN
+storied : ADJ
 storm : NOUN
 storm : VERB
+story : NOUN
 stream : NOUN
 stream : VERB
+stroll : NOUN
+stroll : VERB
 strong : ADJ
 study : NOUN
 study : VERB
@@ -929,6 +984,7 @@ surprise : VERB
 switch : NOUN
 switch : VERB
 switch grass : NOUN
+switzerland : NOUN
 swoop : NOUN
 swoop : VERB
 system : NOUN
@@ -965,6 +1021,8 @@ too : ADV
 total : NOUN
 total : VERB
 total : ADJ
+tour : NOUN
+tour : VERB
 treat : NOUN
 treat : VERB
 tree : NOUN
@@ -1002,6 +1060,7 @@ upset : ADJ
 use : NOUN
 use : VERB
 valid : ADJ
+valley : NOUN
 very : ADJ - -2
 very : ADV [$deg] 0
 victory : NOUN
@@ -1057,6 +1116,8 @@ winter : VERB
 witness : NOUN - -1
 witness : VERB
 woman : NOUN
+wonder : NOUN
+wonder : VERB
 word : NOUN
 word : VERB - -1
 work : NOUN

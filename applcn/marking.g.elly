@@ -646,7 +646,9 @@ _
   back
 # trace
   find < >
+  append <poss>
   right
+  append </poss>
   merge
 __
 g:NCLU[:det]->DET ADJ
