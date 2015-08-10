@@ -10,25 +10,16 @@ has : HAVE
 had : HAVE[^ed]
 having : HAVE[^ing]
 
-box : NOUN
-cat : NOUN
-dog : NOUN
-big : ADJ
-red : ADJ
 ate : VERB[^ed]
-say : VERB[^dit]
-begin : VERB[^proc]
-sit : VERB
-now : ADV
-then: ADV
-soon: ADV
-yet : ADV
+
 ought : VERB
+
 anything : NOUN
+everything : NOUN
+something : NOUN
 
 rocket science : NOUN
 signal rocket : NOUN
-booster : NOUN
 military exercise : NOUN
 livestock waste : NOUN
 time control : NOUN
@@ -54,16 +45,18 @@ Reaganite : NOUN
 Walmart : NOUN
 Walmart supercenter : NOUN
 USNORTHCOM : NOUN
-jade helm : NOUN
+Jade Helm : NOUN
 Apple Watch : NOUN
+Crafty : NOUN
+Angelina : NOUN
+Angelina Jolie : NOUN
+Michael Keaton : NOUN
+Washington Post : NOUN
+
 wax-work : NOUN
 fried liver attack : NOUN
 2 knights defense : NOUN
-Crafty : NOUN
-
-angelina : NOUN
-angelina jolie : NOUN
-washington post : NOUN
+tighty-whities : NOUN
 
 for example : PEXP[|eg]
 such as : DEM
@@ -149,6 +142,7 @@ back : NOUN
 back : VERB
 back : ADJ
 back : ADV
+bacteria : NOUN
 balance : NOUN
 balance : VERB
 baroque : NOUN - -1
@@ -164,10 +158,17 @@ became : VERB[^ed]
 become : VERB
 before : ADV[~non]
 beg : VERB
+begin : NOUN - -2
+begin : VERB[^proc]
+behind : NOUN
+behind : ADJ
+behind : ADV
 bell : NOUN
 benedictine : NOUN
 benedictine : ADJ
 berlin : NOUN
+big : NOUN - -1
+big : ADJ
 bill : NOUN
 bill : VERB
 biotech : NOUN
@@ -180,8 +181,13 @@ black : ADJ
 book : NOUN
 book : VERB
 bookend : NOUN
+booster : NOUN
+box : NOUN
+box : VERB
+bratislava : NOUN
 breakdown : NOUN
 brink : NOUN
+budapest : NOUN
 business: NOUN
 buy : NOUN
 buy : VERB
@@ -196,6 +202,8 @@ capacity : NOUN
 carry : VERB
 case : NOUN
 case : VERB - -1
+cat : NOUN
+cat : VERB - -2
 catch : NOUN
 catch : VERB
 caterpillar : NOUN
@@ -267,6 +275,7 @@ corn : VERB
 cough : NOUN - -1
 cough : VERB[^ptcl]
 country : NOUN
+courtyard : NOUN
 crafty : ADJ
 craze : NOUN
 craze : VERB
@@ -319,6 +328,8 @@ do: NOUN - -2
 do: VERB
 doctor : NOUN
 doctor : VERB
+dog : NOUN
+dog : VERB
 doom : NOUN
 doom : VERB
 dot : NOUN
@@ -353,6 +364,7 @@ effective : ADJ
 elbe : NOUN
 elect : NOUN
 elect : VERB
+embroider : VERB
 emerge : VERB
 enchant : VERB
 end : NOUN
@@ -425,6 +437,7 @@ form : NOUN
 form : VERB
 former : NOUN - -1
 former : ADJ
+formerly : ADV
 framework : NOUN
 free : NOUN - -1
 free : VERB
@@ -495,6 +508,7 @@ heavy : ADV
 help : NOUN
 help : VERB
 herbicide : NOUN
+hideout : NOUN
 home : NOUN
 home : VERB
 home : ADJ
@@ -514,6 +528,7 @@ impose : VERB
 include : VERB [$trns] 0
 independent : ADJ
 indigestible : ADJ
+industry : NOUN
 infect : VERB [$trns] 0
 infrastructure : NOUN
 insect : NOUN
@@ -526,11 +541,13 @@ interstate : ADJ
 involve : VERB [$trns] 0
 isolate : VERB
 iran : NOUN
+islam : NOUN
 issue : NOUN
 issue : VERB
 item : NOUN
 item : ADV - -5
 itinerary : NOUN
+jerusalem : NOUN
 jesus : NOUN
 jigsaw puzzle : NOUN
 job : NOUN
@@ -694,6 +711,8 @@ note : NOUN
 note : VERB[^dit]
 nothing : NOUN
 nothing : ADV - -4
+now : NOUN - -4
+now : ADV - +2
 nuclear : ADJ
 oblige : VERB
 occasion : NOUN
@@ -739,7 +758,7 @@ part : VERB - -1
 partner : NOUN
 partner : VERB
 party : NOUN
-party : VERB - -1
+party : VERB - -2
 passionate : ADJ
 past : NOUN
 past : ADJ
@@ -750,10 +769,12 @@ pawn : NOUN
 pawn : VERB
 pay : NOUN
 pay : VERB
+pellet : NOUN
 people : NOUN
 people : VERB - -1
 perch : NOUN
 perch : VERB
+phoebe : NOUN
 photo : NOUN
 pick : NOUN
 pick : VERB
@@ -761,6 +782,7 @@ picture : NOUN
 picture : VERB
 piece : NOUN
 piece : VERB
+pigeon : NOUN
 place : NOUN
 place : VERB
 plant : NOUN
@@ -786,6 +808,7 @@ possible : ADJ
 possible : NOUN
 prague : NOUN
 pray : VERB
+precipitation : NOUN
 prenuptial : ADJ
 prepare : VERB
 press : NOUN
@@ -795,6 +818,7 @@ pressure : VERB
 previous : ADJ
 price : NOUN
 price : VERB
+priest : NOUN
 primary : NOUN
 primary : ADJ
 probable : NOUN
@@ -840,6 +864,8 @@ recent : ADJ
 recommend : VERB
 record : NOUN
 record : VERB
+red : NOUN
+red : ADJ
 reduce : VERB
 regard : NOUN
 regard : VERB
@@ -881,7 +907,7 @@ safe : NOUN
 safe : ADJ
 safety : NOUN
 sail : NOUN
-sail : VERB
+sail : VERB - +1
 sale : NOUN
 sales tax : NOUN
 sandstone : NOUN
@@ -889,8 +915,11 @@ satellite : NOUN
 satellite : ADJ
 saxon : NOUN
 saxon : ADJ
+say : NOUN - -4
+say : VERB[^dit] - +1
 science : NOUN
 scientist : NOUN
+scripture : NOUN
 seat : NOUN
 seat : VERB
 secret : NOUN
@@ -900,6 +929,8 @@ see : VERB
 seem : VERB
 sell : NOUN
 sell : VERB - +2
+senate : NOUN
+senator : NOUN
 senior : NOUN
 senior : ADJ[%to]
 separate : NOUN - -1
@@ -923,6 +954,7 @@ sign : NOUN
 sign : VERB[^ptcl]
 sign : ADJ - -2
 significant : ADJ[%to]
+sit : VERB
 slovakia : NOUN
 slow : VERB
 slow : ADJ
@@ -932,6 +964,7 @@ snap : NOUN
 snap : VERB[^ptcl]
 so-called : ADJ
 sometimes : ADV
+soon: ADV
 sort : NOUN
 sort : VERB
 sound : NOUN
@@ -940,6 +973,8 @@ sound : ADJ
 species : NOUN
 specific : ADJ[%to]
 spectacular : ADJ
+spell : NOUN
+spell : VERB
 split : NOUN
 split : VERB
 split : ADJ
@@ -957,6 +992,8 @@ still : ADJ
 still : ADV
 stockpile : NOUN
 stockpile : VERB
+stool : NOUN
+stool : VERB - -4
 storage : NOUN
 storied : ADJ
 storm : NOUN
@@ -981,6 +1018,9 @@ surgeon : NOUN
 surgery : NOUN
 surprise : NOUN
 surprise : VERB
+suspect : NOUN
+suspect : VERB
+suspect : ADJ
 switch : NOUN
 switch : VERB
 switch grass : NOUN
@@ -988,6 +1028,10 @@ switzerland : NOUN
 swoop : NOUN
 swoop : VERB
 system : NOUN
+table : NOUN
+table : VERB
+tail : NOUN
+tail : VERB
 tailor : NOUN
 tailor : VERB
 take : NOUN
@@ -1000,13 +1044,20 @@ taxable : ADJ
 teach : NOUN - -4
 teach : VERB
 technique : NOUN
+tehran : NOUN
 temperature : NOUN
+temple : NOUN
 terrify : VERB
 territory : NOUN
 test : NOUN
 test : VERB
 texas : NOUN
+theatre : NOUN
+then : NOUN - -6
+then : ADJ - -2
+then: ADV
 therapy : NOUN
+thief : NOUN
 thing : NOUN
 think : NOUN - -2
 think : VERB
@@ -1023,6 +1074,7 @@ total : VERB
 total : ADJ
 tour : NOUN
 tour : VERB
+toxin : NOUN
 treat : NOUN
 treat : VERB
 tree : NOUN
@@ -1033,6 +1085,11 @@ true : NOUN
 true : VERB
 true : ADJ[%to]
 true : ADV
+tuck : NOUN - -2
+tuck : VERB
+tumult : NOUN
+tunnel : NOUN
+tunnel : VERB
 turn : NOUN
 turn : VERB
 tv : NOUN
@@ -1061,12 +1118,16 @@ use : NOUN
 use : VERB
 valid : ADJ
 valley : NOUN
+verge : NOUN
+verge : VERB
 very : ADJ - -2
 very : ADV [$deg] 0
 victory : NOUN
 violate : VERB
 voice : NOUN
 voice : VERB
+wag : NOUN
+wag : VERB
 warn : VERB
 washington : NOUN
 waste : ADJ
@@ -1130,6 +1191,7 @@ worst : ADJ
 worst : ADV
 write : VERB
 year : NOUN
+yet : ADV
 
 north : NOUN
 north : ADJ

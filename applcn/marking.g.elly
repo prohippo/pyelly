@@ -476,7 +476,7 @@ g:SEGM->PEXP[|-nom,-vrb] PUNC[|*r]
 _
   (pend)
 __
-g:DET->PEXP[|det] PUNC[|*r]
+g:DET->PEXP[|det,-nom] PUNC[|*r]
 _
   append <det>
   left
