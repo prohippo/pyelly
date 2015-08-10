@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# patternTable.py : 07may2015 CPM
+# patternTable.py : 09aug2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -120,10 +120,12 @@ class Link(object):
             if self.patn == u'\x00':
                 pat = '\\0              '
             else:
-                pat = '{0:<16}'.format(ellyWildcard.deconvert(self.patn))
+                pat = u'{0:<16}'.format(ellyWildcard.deconvert(self.patn))
             cat = unicode(self.catg)
             fet = u'None' if self.synf == None else self.synf.hexadecimal(False)
             return pat + ' ' + cat + ' ' + fet + ' next=' + unicode(self.nxts)
+
+Trmls = ellyWildcard.Trmls
 
 def bound ( segm ):
 
@@ -147,7 +149,7 @@ def bound ( segm ):
     ll -= 1
     while ll > 0:    # exclude trailing non-alphanumeric from matching except for '.'
         c = segm[ll]
-        if c == '.' or ellyChar.isLetterOrDigit(c): break
+        if c in Trmls or ellyChar.isLetterOrDigit(c): break
         ll -= 1
     return ll + 1
 
@@ -344,6 +346,7 @@ class PatternTable(object):
                         mtls = mtl + m
                         tree.addLiteralPhrase(lk.catg,lk.synf)  # make phrase for it
                         tree.lastph.lens = mtls                 # save its length
+#                       print 'match state=' , state , 'length=' , mtls
 
 #               print 'ix=' , ix , 'nls=' , nls
                 if ix < nls:        # any links not yet checked?

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 12jun2015 CPM
+# ellyWildcard.py : 09aug2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -268,6 +268,11 @@ def minMatch ( patn ):
 
     return k
 
+RSQm = u'\u2019'  # right single quote
+RDQm = u'\u201D'  # right double quote
+
+Trmls = [ RDQm , u'"' , RSQm , u"'" , u'.' , u')' , u']' ]  # chars marking extent of pattern match
+
 def match ( patn , text , offs=0 , limt=None ):
 
     """
@@ -470,7 +475,11 @@ def match ( patn , text , offs=0 , limt=None ):
             if last == '':
                 continue
             elif last in [ '.' , ',' , '-' ]:
-                if offs == limt or ellyChar.isWhiteSpace(text[offs]):
+                if offs == limt:
+                    offs -= 1
+                    continue
+                txc = text[offs]
+                if ellyChar.isWhiteSpace(txc) or txc in Trmls:
                     offs -= 1
                     continue
             elif last in ellyBuffer.separators:
