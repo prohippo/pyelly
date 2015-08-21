@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# punctuationRecognizer.py : 27jul2015 CPM
+# punctuationRecognizer.py : 13aug2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -47,9 +47,12 @@ import featureSpecification
 
 category = 'punc' # must be used in grammars for punctuation syntax type!
 pID      = '|'    # must be used for punctuation syntactic feature ID
+sID      = '!'    #                              semantic  feature ID
+
+sBRK     = 'brk'  # reserved for semantic identification of punctuation
 
 defns = [                                      # syntactic significance of punctuation
-    [ u'[' , '[' + pID + '*l]' ] ,             # replacing D: rules in *.g.elly
+    [ u'[' , '[' + pID + '*l]' ] ,             # equivalent to D: rules in *.g.elly
     [ u']' , '[' + pID + '*r]' ] ,             #
     [ u'(' , '[' + pID + '*l]' ] ,             # you may override with punctuation rules
     [ u')' , '[' + pID + '*r]' ] ,             # but must set higher plausibility for them
@@ -60,7 +63,7 @@ defns = [                                      # syntactic significance of punct
     [ u'’' , '[' + pID + '*r,quo]' ] ,
     [ u'`' , '[' + pID + '*l,quo,start]' ] ,
     [ u"'" , '[' + pID + '*l,*r,quo,start]' ] ,
-    [ u',' , '[' + pID + 'com]' ] ,
+    [ u',' , '[' + pID + 'com]' , True ] ,     # special status for comma only so far
     [ u'.' , '[' + pID + 'stop,emb]' ] ,
     [ u'!' , '[' + pID + 'stop,emb]' ] ,
     [ u'?' , '[' + pID + 'stop,emb]' ] ,
@@ -72,18 +75,19 @@ defns = [                                      # syntactic significance of punct
     [ u'…' ]         # ellipsis
 ]
 
-def _FS ( symbls , featrs ):
+def _FS ( symbls , featrs , ftype=False ):
     """
     get ellyBits encoding of syntactic features
     arguments:
         syms   - symbol table for feature names
         featrs - feature string
+        ftype  - True for semantic, False for syntactic
     returns:
         ellyBits object on success
     exceptions:
         FormatFailure on error
     """
-    return featureSpecification.FeatureSpecification(symbls,featrs).positive
+    return featureSpecification.FeatureSpecification(symbls,featrs,ftype).positive
 
 #
 ## end static definitions
@@ -97,6 +101,7 @@ class PunctuationRecognizer(object):
     attributes:
         catg     - syntactic category for recognized punctuation
         synf     - syntactic features
+        semf     - semantic  features
         hpnc     - hash lookup for punctuation chars
     """
 
@@ -113,15 +118,19 @@ class PunctuationRecognizer(object):
             FormatFailure on error
         """
 
-        zero = ellyBits.EllyBits()
         self.catg = syms.getSyntaxTypeIndexNumber(category)
         self.synf = None
+        self.semf = None
         self.hpnc = { }
+        brkg = _FS(syms,'[' + sID + sBRK + ']',True)
+        zero = ellyBits.EllyBits()
         for defn in defns:
             if len(defn) > 1:
-                self.hpnc[defn[0]] = _FS(syms,defn[1])
+                sxf = _FS(syms,defn[1])
+                smf = brkg if len(defn) > 2 else zero
+                self.hpnc[defn[0]] = [ sxf  , smf  ]
             else:
-                self.hpnc[defn[0]] = zero
+                self.hpnc[defn[0]] = [ zero , zero ]
 
     def match ( self , s ):
 
@@ -143,7 +152,9 @@ class PunctuationRecognizer(object):
         if not schr in self.hpnc:
             return False
         else:
-            self.synf = self.hpnc[schr] # for later reference along with synf.catg
+            rec = self.hpnc[schr]
+            self.synf = rec[0]   # for later reference along with synf.catg
+            self.semf = rec[1]   #
             return True
 
 #
@@ -167,6 +178,6 @@ if __name__ == '__main__':
     for chu in ups:
         print '[' , chu , ']' ,
         if punc.match(chu):
-            print ' is PUNC' , punc.synf.hexadecimal()
+            print ' is PUNC' , punc.synf.hexadecimal() , ':' , punc.semf.hexadecimal()
         else:
             print ' not PUNC'
