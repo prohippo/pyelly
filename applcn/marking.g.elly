@@ -693,13 +693,13 @@ g:NOUN[:*r]->NOUN[:hyph] NOUN
 #?>>?
   >>++
 __
-g:NOUN[:*r,cjn]->NOUN[:-hyph,-poss,-plur,-cjn,-ing] NOUN[:-det,-cjn,ing]
+g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,-plur,-cnj,-ing] NOUN[:-det,-cnj,ing]
 #?>>?
   >>+0
 _
  (twob)
 __
-g:NOUN[:*r,cjn]->NOUN[:-hyph,-poss,-plur,-cjn,-ing] NOUN[:-det,-cjn,-ing]
+g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,-plur,-cnj,-ing] NOUN[:-det,-cnj,-ing]
 #?>>?
   >>+
 _
@@ -721,6 +721,7 @@ _
   append </vclu>
 __
 g:VCLU[^*r]->ADV VCLU
+ l[$deg]>>--
 _
   var typg=adv
   (lxtd)
@@ -1185,6 +1186,8 @@ d:along   <- PREP
 __
 d:between <- PREP
 __
+d:inside  <- PREP
+__
 
 d:to   <- TO
 __
@@ -1262,7 +1265,11 @@ d:no   <- QUAN
 __
 d:several<-QUAN[:ind]
 __
-d:both <- QUAN[:ind,cnj]
+d:both <- QUAN[:ind,cnj,spc]
+__
+d:neither <- QUAN[:ind,cnj,spc]
+__
+d:either  <- QUAN[:ind,cnj,spc]
 __
 d:multiple <- QUAN
 __
@@ -1362,6 +1369,15 @@ __
 d:than    <- CONJ
 __
 d:except  <- CONJ
+__
+d:both    <- CONJ
+ >>-
+__
+d:either  <- CONJ
+ >>-
+__
+d:neither <- CONJ
+ >>-
 __
 
 d:is   <- BE

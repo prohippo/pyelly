@@ -1,9 +1,9 @@
 # convert English text into simple XML
 # marking.v.elly
 #
-# this is a stripped down vocabulary for integration testing;
-# a full-fledged markup application would require a much larger
-# subset of default.v.elly (WordNet 3.1)
+# this stripped down vocabulary is for integration testing;
+# a full-fledged markup application would require a much
+# larger subset of default.v.elly (WordNet 3.1)
 #
 
 has : HAVE
@@ -11,6 +11,7 @@ had : HAVE[^ed]
 having : HAVE[^ing]
 
 ate : VERB[^ed]
+bit : VERB[^ed]
 
 ought : VERB
 
@@ -24,6 +25,7 @@ military exercise : NOUN
 livestock waste : NOUN
 time control : NOUN
 
+as well as : CONJ
 at least : ADV[~mod]
 out of : PREP
 round at : PREP
@@ -57,6 +59,9 @@ wax-work : NOUN
 fried liver attack : NOUN
 2 knights defense : NOUN
 tighty-whities : NOUN
+genetically modified : ADJ
+agriculture department : NOUN
+genome editing : NOUN
 
 for example : PEXP[|eg]
 such as : DEM
@@ -72,7 +77,10 @@ accord : VERB - -1
 account : NOUN
 account : VERB
 accrue : VERB
+ache : NOUN
+ache : VERB
 achieve : VERB
+acknowledge : VERB
 act : NOUN
 act : VERB
 activist : NOUN
@@ -89,8 +97,8 @@ affect : NOUN - -1
 affect : VERB
 afternoon : NOUN
 again : ADV
-agree : VERB
 aggressive : ADJ
+agree : VERB
 agriculture : NOUN
 air : NOUN
 air : VERB
@@ -105,14 +113,15 @@ amaze : VERB
 america : NOUN
 amount : NOUN
 amount : VERB
+amuse : VERB
 ancient : NOUN
 ancient : ADJ
 announce : VERB
 appear : VERB
 apple : NOUN
-approval : NOUN
 applicable : ADJ
 apply : VERB
+approval : NOUN
 approve : VERB
 architect : NOUN
 architectural : ADJ
@@ -149,9 +158,11 @@ baroque : NOUN - -1
 baroque : ADJ
 base : NOUN
 base : VERB
+base : ADJ
+bathe : NOUN - -2
+bathe : VERB
 battle : NOUN
 battle : VERB
-base : ADJ
 beautiful : ADJ
 beauty : NOUN
 became : VERB[^ed]
@@ -175,6 +186,7 @@ biotech : NOUN
 bird : NOUN
 bird : VERB
 birder : NOUN
+bit : NOUN
 black : NOUN
 black : VERB - -1
 black : ADJ
@@ -187,6 +199,7 @@ box : VERB
 bratislava : NOUN
 breakdown : NOUN
 brink : NOUN
+broadway : NOUN
 budapest : NOUN
 business: NOUN
 buy : NOUN
@@ -199,6 +212,8 @@ canola : NOUN
 cap : NOUN
 cap : VERB
 capacity : NOUN
+career : NOUN
+career : VERB - -1
 carry : VERB
 case : NOUN
 case : VERB - -1
@@ -249,6 +264,9 @@ comfortable : ADJ
 commerce : NOUN
 company : NOUN
 company : VERB
+comparative : NOUN - -2
+comparative : ADJ
+comparatively : ADV [$deg] 0
 complex : NOUN
 complex : ADJ
 comprehensive : ADJ
@@ -307,15 +325,19 @@ deal : NOUN
 deal : VERB
 decade : NOUN
 decide : VERB
-décor : NOUN
 deep : ADJ
 deep : ADV
 deep : NOUN
 defend : VERB[^ptcl]
 defense : NOUN
 definite : ADJ
+deliver : VERB
+delivery : NOUN
 department : NOUN
 describe : VERB
+desperate : NOUN - -2
+desperate : ADJ
+desperation : NOUN
 develop : VERB
 differ : VERB
 digital : ADJ
@@ -341,22 +363,27 @@ draft : NOUN
 drama : NOUN
 dream : NOUN
 dream : VERB
+dress : NOUN
+dress : VERB
+dress : ADJ
 drive : NOUN
 drive : VERB[^ptcl]
 drought : NOUN
 dry : NOUN
 dry : VERB
 dry : ADJ
+décor : NOUN
 early : ADJ
 early : ADV
 easily : ADV
+east : NOUN
+east : ADJ
+east : ADV[~dir]
+eastern : ADJ
 easy : ADJ
 easy : ADV
 ecology : NOUN
 economy : NOUN
-encourage : VERB
-ensure : VERB
-enterprise : NOUN
 edit : VERB
 effect : NOUN
 effect : VERB
@@ -367,12 +394,15 @@ elect : VERB
 embroider : VERB
 emerge : VERB
 enchant : VERB
+encourage : VERB
 end : NOUN
 end : VERB[^ptcl]
 engine : NOUN
 engineer : NOUN
 engineer : VERB - -1
 enough : ADJ[%to]
+ensure : VERB
+enterprise : NOUN
 envision : VERB
 escape : NOUN
 escape : VERB
@@ -408,8 +438,6 @@ female : NOUN
 female : ADJ
 fence : NOUN
 fence : VERB
-fuel : NOUN
-fuel : VERB
 few : NOUN - -1
 few : ADJ
 field : NOUN
@@ -428,6 +456,9 @@ flash flood : NOUN
 flight : NOUN
 flood : NOUN
 flood : VERB
+fly : NOUN
+fly : VERB
+fly : ADJ - -1
 foliage : NOUN
 forage : NOUN
 forage : VERB
@@ -448,6 +479,8 @@ french : VERB - -2
 french : ADJ
 fry : NOUN - -1
 fry : VERB
+fuel : NOUN
+fuel : VERB
 further : VERB
 further : ADJ
 further : ADV
@@ -473,6 +506,7 @@ give : NOUN - -2
 give : VERB[^ptcl]
 glow : NOUN
 glow : VERB
+gnaw : VERB
 go : NOUN - -1
 go : VERB[^ptcl]
 go : ADJ - -4
@@ -490,10 +524,16 @@ great : ADJ[%to]
 green : ADJ
 green : NOUN
 green : VERB
+grotesque : NOUN - -2
+grotesque : ADJ
 ground : NOUN
 ground : VERB
 grow : VERB
+growl : NOUN
+growl : VERB
 growth : NOUN
+grumble : NOUN
+grumble : VERB
 hail : NOUN
 hail : VERB
 harsh : ADJ
@@ -509,6 +549,10 @@ help : NOUN
 help : VERB
 herbicide : NOUN
 hideout : NOUN
+high : NOUN
+high : ADJ
+high : ADV
+history : NOUN
 home : NOUN
 home : VERB
 home : ADJ
@@ -532,16 +576,16 @@ industry : NOUN
 infect : VERB [$trns] 0
 infrastructure : NOUN
 insect : NOUN
-inside : NOUN
-inside : ADJ
-inside : ADV
+inside : NOUN - -2
+inside : ADJ - -1
+inside : ADV - -2
 intend : VERB
 interstate : NOUN - -1
 interstate : ADJ
 involve : VERB [$trns] 0
-isolate : VERB
 iran : NOUN
 islam : NOUN
+isolate : VERB
 issue : NOUN
 issue : VERB
 item : NOUN
@@ -554,6 +598,8 @@ job : NOUN
 job : VERB - -2
 journey : NOUN
 journey : VERB
+joy : NOUN
+joy : VERB - -2
 judge : NOUN
 judge : VERB
 jurisdiction : NOUN
@@ -570,12 +616,14 @@ knight : NOUN
 knight : VERB - -1
 know : NOUN - -2
 know : VERB
+lacerate : VERB
+lacerate : ADJ - -2
 land : NOUN
 land : VERB
 landscape : NOUN
 landscape : VERB
-large : NOUN - -1
-large : ADJ
+large : NOUN - -6
+large : ADJ - +2
 large : ADV - -2
 last : NOUN - -1
 last : VERB
@@ -595,6 +643,7 @@ let : VERB
 level : NOUN
 level : VERB
 level : ADJ
+levitate : VERB
 license : NOUN
 license : VERB
 like : NOUN - -2
@@ -623,6 +672,7 @@ loophole : NOUN
 lose : VERB
 lot : NOUN
 lot : VERB - -2
+lotus : NOUN
 love : NOUN
 love : VERB
 low : NOUN - -2
@@ -649,6 +699,8 @@ market : VERB
 marry : VERB
 marvel : NOUN
 marvel : VERB
+matter : NOUN
+matter : VERB
 mean : NOUN
 mean : VERB
 mean : ADJ
@@ -676,6 +728,7 @@ most : ADJ
 most : ADV [$deg] 0
 move : NOUN
 move : VERB
+movie : NOUN
 mow : NOUN
 mow : VERB
 much : NOUN
@@ -707,6 +760,17 @@ nod : VERB
 nohow : ADV
 normal : NOUN
 normal : ADJ
+north : NOUN
+north : ADJ
+north : ADV[~dir]
+northeast : NOUN
+northeast : ADJ
+northeast : ADV[~dir]
+northern : NOUN - -1
+northern : ADJ
+northwest : NOUN
+northwest : ADJ
+northwest : ADV[~dir]
 note : NOUN
 note : VERB[^dit]
 nothing : NOUN
@@ -769,11 +833,13 @@ pawn : NOUN
 pawn : VERB
 pay : NOUN
 pay : VERB
+peace : NOUN
 pellet : NOUN
 people : NOUN
 people : VERB - -1
 perch : NOUN
 perch : VERB
+persona : NOUN
 phoebe : NOUN
 photo : NOUN
 pick : NOUN
@@ -794,6 +860,7 @@ plot : VERB
 plumbing : NOUN
 plus : NOUN - -2
 plus : ADJ - -2
+poignant : ADJ
 pollute : VERB
 pond : NOUN
 poor : NOUN - -1
@@ -845,6 +912,10 @@ put : VERB[^ptcl]
 quick : NOUN - -4
 quick : ADJ - +1
 quick : ADV
+quiet : NOUN
+quiet : VERB
+quiet : ADJ
+quiet : ADV
 quite : ADV
 radar : NOUN
 radiate : VERB
@@ -898,6 +969,8 @@ rick : VERB
 river : NOUN
 rocket : NOUN
 rocket : VERB
+room : NOUN
+room : VERB
 round : NOUN [$cond] -1
 round : VERB [$cond] -1
 round : ADJ
@@ -920,6 +993,8 @@ say : VERB[^dit] - +1
 science : NOUN
 scientist : NOUN
 scripture : NOUN
+season : NOUN
+season : VERB
 seat : NOUN
 seat : VERB
 secret : NOUN
@@ -936,9 +1011,9 @@ senior : ADJ[%to]
 separate : NOUN - -1
 separate : VERB
 separate : ADJ
+serious : ADJ
 service : NOUN
 service : VERB
-serious : ADJ
 set : NOUN
 set : VERB[^ptcl]
 set : ADJ - -1
@@ -959,6 +1034,9 @@ slovakia : NOUN
 slow : VERB
 slow : ADJ
 slow : ADV
+small : NOUN - -6
+small : ADJ - +2
+small : ADV - -1
 small-business : ADJ
 snap : NOUN
 snap : VERB[^ptcl]
@@ -970,6 +1048,16 @@ sort : VERB
 sound : NOUN
 sound : VERB
 sound : ADJ
+south : NOUN
+south : ADJ
+south : ADV[~dir]
+southeast : NOUN
+southeast : ADJ
+southeast : ADV[~dir]
+southern : ADJ
+southwest : NOUN
+southwest : ADJ
+southwest : ADV[~dir]
 species : NOUN
 specific : ADJ[%to]
 spectacular : ADJ
@@ -982,6 +1070,9 @@ stack : NOUN
 stack : VERB
 stand : NOUN
 stand : VERB
+star : NOUN
+star : VERB
+star : ADJ
 startle : NOUN - -2
 startle : VERB
 state : NOUN
@@ -1000,7 +1091,7 @@ storm : NOUN
 storm : VERB
 story : NOUN
 stream : NOUN
-stream : VERB
+stream : VERB[^ptcl]
 stroll : NOUN
 stroll : VERB
 strong : ADJ
@@ -1008,6 +1099,7 @@ study : NOUN
 study : VERB
 success : NOUN
 suggest : VERB
+sunlight : NOUN
 support : NOUN
 support : VERB
 suppose : VERB
@@ -1053,9 +1145,9 @@ test : NOUN
 test : VERB
 texas : NOUN
 theatre : NOUN
+then: ADV
 then : NOUN - -6
 then : ADJ - -2
-then: ADV
 therapy : NOUN
 thief : NOUN
 thing : NOUN
@@ -1075,6 +1167,8 @@ total : ADJ
 tour : NOUN
 tour : VERB
 toxin : NOUN
+toy : NOUN
+toy : VERB
 treat : NOUN
 treat : VERB
 tree : NOUN
@@ -1118,6 +1212,7 @@ use : NOUN
 use : VERB
 valid : ADJ
 valley : NOUN
+verbal : ADJ
 verge : NOUN
 verge : VERB
 very : ADJ - -2
@@ -1143,21 +1238,26 @@ wax : NOUN
 wax : VERB
 way : NOUN
 way : ADV
+weak : ADJ
 weapon : NOUN
 weather : NOUN
 weather : VERB
 weather : ADJ
-weedkiller : NOUN
-weak : ADJ
-week : NOUN
 wed : NOUN
 wed : VERB
 wed : ADJ
 wedding : NOUN
+weedkiller : NOUN
+week : NOUN
 well : NOUN
 well : VERB
 well : ADJ[%to]
 well : ADV
+west : NOUN
+west : ADJ
+west : ADV[~dir]
+western : NOUN - -1
+western : ADJ
 whistle : NOUN
 whistle : VERB
 white : NOUN
@@ -1168,12 +1268,15 @@ wide : ADV
 wild : ADJ
 wild : ADV
 wild : NOUN
-wind : NOUN
-wind : VERB
 win : NOUN - -1
 win : VERB
+wind : NOUN
+wind : VERB
+window : NOUN
 winter : NOUN
 winter : VERB
+wistful : ADJ
+wistfulness : NOUN
 witness : NOUN - -1
 witness : VERB
 woman : NOUN
@@ -1190,36 +1293,6 @@ worst : VERB - -2
 worst : ADJ
 worst : ADV
 write : VERB
+wry : ADJ
 year : NOUN
 yet : ADV
-
-north : NOUN
-north : ADJ
-north : ADV[~dir]
-south : NOUN
-south : ADJ
-south : ADV[~dir]
-east : NOUN
-east : ADJ
-east : ADV[~dir]
-west : NOUN
-west : ADJ
-west : ADV[~dir]
-northern : NOUN - -1
-northern : ADJ
-southern : ADJ
-western : NOUN - -1
-western : ADJ
-eastern : ADJ
-northwest : NOUN
-northwest : ADJ
-northwest : ADV[~dir]
-northeast : NOUN
-northeast : ADJ
-northeast : ADV[~dir]
-southwest : NOUN
-southwest : ADJ
-southwest : ADV[~dir]
-southeast : NOUN
-southeast : ADJ
-southeast : ADV[~dir]
