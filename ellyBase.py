@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 06aug2015 CPM
+# ellyBase.py : 21aug2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -657,6 +657,9 @@ class EllyBase(object):
 #           print 'catg=' , self.pnc.catg , self.pnc.synf.hexadecimal()
             if tree.addLiteralPhrase(self.pnc.catg,self.pnc.synf):
                 tree.lastph.lens = w.getLength()
+                tree.lastph.krnl.semf.combine(self.pnc.semf)
+#               print 'semf=' , self.pnc.semf
+#               print 'lastph=' , tree.lastph
             found = True
 
         if not found:
