@@ -207,6 +207,12 @@ Release Notes:
  1.2.15 -  03aug2015  fix problems in tracking capitalization, clean up code
                       improve diagnostic output
                       extend "marking" integration test
+ 1.2.16 -  21aug2015  fix bug in pattern table method
+                      improve default suffix removal
+                      improve cognitive semantic diagnostics
+                      add handling of em and en dashes in tokentization
+                      extend default punctuation handling
+                      extend "marking" rules and integration test
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 may require regeneration of any previously saved *.elly.bin files to ensure
