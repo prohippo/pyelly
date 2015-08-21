@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveDefiner.py : 13may2015 CPM
+# cognitiveDefiner.py : 13aug2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -98,7 +98,7 @@ def _leftside ( stb , txt ):
 
     arguments:
         stb  - symbol table
-        txt  - string input for single clause
+        txt  - string input for left side of single clause
 
     returns:
         predicate list on success, None otherwise
@@ -106,13 +106,13 @@ def _leftside ( stb , txt ):
 
 #   print "left side"
     pred = [ ]
-    txt = txt.strip()
+    txt = txt.rstrip()
 
     while len(txt) > 0:
         side = txt[0]
         txt = txt[1:].lstrip()
         if len(txt) == 0:
-            _err('malformed clause condition')
+            _err('malformed conditions for clause')
             return None
 
         k = 0
@@ -120,9 +120,9 @@ def _leftside ( stb , txt ):
             k = txt.find(']')               # if so, look for closing bracket
             if k < 0:
                 return _err('incomplete semantic features to check')
-            p = txt[:k+1]                   # get semantic features
+            p = txt[:k+1]                   # get semantic feature string
 
-#           print "condition:",p
+#           print "side:" , side , "condition:" , p
             try:
                 f = featureSpecification.FeatureSpecification(stb,p,'semantic')
             except ellyException.FormatFailure:

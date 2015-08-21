@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveProcedure.py : 15jul2015 CPM
+# cognitiveProcedure.py : 15aug2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -91,6 +91,8 @@ class CognitiveProcedure(object):
                     print >> sys.stderr , ''
                     print >> sys.stderr , '  at phrase' , phrs.krnl.seqn , ': rule=' , phrs.krnl.rule.seqn ,
                     print >> sys.stderr , 'with current bias= ' , phrs.krnl.rule.bias
+                    print >> sys.stderr , '  l:' , phrs.krnl.lftd
+                    print >> sys.stderr , '  r:' , phrs.krnl.rhtd
                     trce = True
                     break
                 elif op == semanticCommand.Clftf or op == semanticCommand.Crhtf:
@@ -122,8 +124,7 @@ class CognitiveProcedure(object):
             else:             # execute actions of clause if ALL predicates satisfied
                 if trce:
                     print >> sys.stderr , '  cog sem at clause' , clno
-                    print >> sys.stderr , '  l:' , phrs.krnl.lftd
-                    print >> sys.stderr , '  r:' , phrs.krnl.rhtd
+#                   print >> sys.stderr , '   =' , cls[1]
                 for a in cls[1]:                      # get next action
                     op = a[0]
                     if op == semanticCommand.Cadd:    # add to score?
