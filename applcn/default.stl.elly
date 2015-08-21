@@ -116,6 +116,7 @@ applicate 1 4 y.
 apter 1 3 .
 arance 1 2 .
 arate 1 2 &.
+arative 2 2 e.
 ardate 1 3 .
 ardial 2 5 . 0a
 ardian 0 0 .
@@ -255,6 +256,7 @@ cancer 0 0 .
 cary 2 3 &.
 casion 0 0 .
 catory 1 3 &,
+cavitation 2 6 e.
 cavity 2 3 &.
 ccessive 3 3 ed. 2
 ccinate 1 4 &.
@@ -560,6 +562,7 @@ ery 2 2 ,
 ese 2 0 .
 eservate 2 5 &.
 esis 2 1 t. 3
+esitation 2 6 e.
 esity 2 2 &.
 esome 2 1 .
 ession 2 3 ,
@@ -594,6 +597,7 @@ evance 2 4 t.
 evention 2 4 t.
 everity 2 4 e.
 evitable 2 4 .
+evitation 2 6 e.
 evotion 2 4 e.
 evous 1 2 &,
 ewer 2 2 .
@@ -972,7 +976,7 @@ ital 2 2 .
 itance 2 4 t,
 itant 2 2 &.
 itarian 2 2 y,
-itate 2 2 &.
+itate 0 0 .
 itative 1 2 y,
 iten 2 3 . 0e
 iter 1 2 &.
@@ -1933,6 +1937,7 @@ ssection 1 5 .
 sser 1 2 .
 ssident 0 0 .
 ssify 0 0 .
+ssitate 2 0 .
 ssive 1 2 .
 ssly 1 2 .
 ssmen 1 3 an. 2s

@@ -277,6 +277,7 @@ commentator comment
 communal commune
 communicable communicable
 communicate communice
+comparative compare
 compassionate compassion
 compensate compense
 compensatory compense
@@ -641,6 +642,7 @@ governor govern
 gradual gradual
 grainy grain
 grasper grasp
+gravitation gravite
 gravity gravite
 greatest great
 greenery green
@@ -681,7 +683,8 @@ helper help
 heraldry herald
 heresy heret
 heroic hero
-hesitate hesit
+hesitate hesitate
+hesitation hesitate
 hewn hew
 hexagonal hexagon
 hidden hide
@@ -796,6 +799,7 @@ legitimate legitime
 length long
 leninism lenin
 leninist lenin
+levitation levitate
 libyan libya
 licensee license
 lineation line
