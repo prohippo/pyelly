@@ -1317,6 +1317,7 @@ spoiler spoil
 spoilt spoil
 spontaneity spontane
 squatter squat
+stable stable
 stammer stammer
 standardize standard
 standee stand
@@ -1461,6 +1462,7 @@ unblessed unbless
 unionism union
 uniquely unique
 unshipped unship
+unstable unstable
 ureteric ureter
 usurpation usurp
 utility utile
