@@ -151,8 +151,9 @@ _
     end
 __
 g:SEGM[|*unique]->ELEM
-#             ?>>?
-               >>*l
+#        ?>>?
+  l[!lv,s]>>*l-
+          >>*l
 __
 g:SEGM[|*unique]->SEGM ELEM
 #             ?>>?
@@ -220,8 +221,11 @@ _
   var typg=pro
   (typg)
 __
-g:ELEM[^*l]->VCLU[^-to]
+g:ELEM[^*l]->VCLU[^-to,-s]
  >>[!lv,rv]
+__
+g:ELEM[^*l]->VCLU[^-to,s]
+ >>[!lv,rv,s]
 __
 g:ELEM->VCLU[^to] NCLU
  >>[!lv,rn]+
@@ -832,6 +836,14 @@ g:VERB[^*r]->VERB[^proc] VERB[^ing]
  >>++
 _
   (twob)
+__
+g:VERB->VERB[^proc] ADJ
+ >>+++
+_
+  left
+  append <adj>
+  right
+  append </adj>
 __
 g:VERB->NOUN SUFX[#nTOv]
 _

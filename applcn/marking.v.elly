@@ -44,6 +44,7 @@ more than : ADV[~mod] [$deg] 0
 less than : ADV[~mod] [$deg] 0
 eat-in : ADJ
 fully-equipped : ADJ
+underutilize : VERB
 neighborhood setting : NOUN
 cul-de-sac street : NOUN
 ocean-view home : NOUN
@@ -63,6 +64,11 @@ Angelina : NOUN
 Angelina Jolie : NOUN
 Michael Keaton : NOUN
 Washington Post : NOUN
+federal open market committee : NOUN
+labor market : NOUN
+unemployment rate : NOUN
+purchasing power : NOUN
+fixed investment : NOUN
 
 wax-work : NOUN
 fried liver attack : NOUN
@@ -101,6 +107,9 @@ additional : ADJ
 address : NOUN
 address : VERB
 adultery : NOUN
+advance : NOUN
+advance : VERB
+advance : ADJ
 advantage : NOUN
 advantage : VERB - -1
 affect : NOUN - -1
@@ -196,6 +205,7 @@ behind : NOUN
 behind : ADJ
 behind : ADV
 bell : NOUN
+below : ADV
 benedictine : NOUN
 benedictine : ADJ
 berlin : NOUN
@@ -214,6 +224,8 @@ black : ADJ
 book : NOUN
 book : VERB
 bookend : NOUN
+boost : NOUN
+boost : VERB
 booster : NOUN
 box : NOUN
 box : VERB
@@ -286,11 +298,13 @@ comfort : NOUN
 comfort : VERB
 comfortable : ADJ
 commerce : NOUN
+committee : NOUN
 company : NOUN
 company : VERB
 comparative : NOUN - -2
 comparative : ADJ
 comparatively : ADV [$deg] 0
+compensation : NOUN
 complex : NOUN
 complex : ADJ
 comprehensive : ADJ
@@ -355,6 +369,8 @@ decade : NOUN
 decide : VERB
 deck : NOUN
 deck : VERB
+decline : NOUN
+decline : VERB
 decorate : VERB
 deep : ADJ
 deep : ADV
@@ -372,6 +388,7 @@ desperation : NOUN
 develop : VERB
 differ : VERB
 digital : ADJ
+diminish : VERB
 dine : VERB
 disaster : NOUN
 disastrously : ADV [$prd] 0
@@ -430,6 +447,7 @@ enchant : VERB
 encourage : VERB
 end : NOUN
 end : VERB[^ptcl]
+energy : NOUN
 engine : NOUN
 engineer : NOUN
 engineer : VERB - -1
@@ -455,7 +473,10 @@ exchange : VERB
 exercise : NOUN
 exercise : VERB
 exist : VERB
+expect : VERB
 explore : VERB
+export : NOUN
+export : VERB
 face : NOUN
 face : VERB
 facility : NOUN
@@ -484,6 +505,8 @@ final : ADJ
 finally : ADV
 find : NOUN
 find : VERB
+fix : NOUN - -1
+fix : VERB
 flair : NOUN
 flash : NOUN
 flash : VERB
@@ -527,6 +550,8 @@ further : ADJ
 further : ADV
 future : NOUN
 future : ADJ
+gain : NOUN
+gain : VERB
 gambit : NOUN
 game : NOUN - +1
 game : VERB
@@ -603,6 +628,7 @@ hope : NOUN
 hope : VERB
 house : NOUN
 house : VERB
+household : NOUN
 hover : VERB
 hungary : NOUN
 immune : NOUN - -2
@@ -611,11 +637,15 @@ impact : NOUN
 impact : VERB
 important : ADJ[%to]
 impose : VERB
+improve : VERB
 include : VERB [$trns] 0
 independent : ADJ
+indicate : VERB
 indigestible : ADJ
 industry : NOUN
 infect : VERB [$trns] 0
+inflate : VERB
+information : NOUN
 infrastructure : NOUN
 insect : NOUN
 inside : NOUN - -2
@@ -624,6 +654,7 @@ inside : ADV - -2
 intend : VERB
 interstate : NOUN - -1
 interstate : ADJ
+invest : VERB
 involve : VERB [$trns] 0
 iran : NOUN
 islam : NOUN
@@ -633,6 +664,7 @@ issue : VERB
 item : NOUN
 item : ADV - -5
 itinerary : NOUN
+january : NOUN
 jerusalem : NOUN
 jesus : NOUN
 jigsaw puzzle : NOUN
@@ -659,6 +691,8 @@ knight : NOUN
 knight : VERB - -1
 know : NOUN - -2
 know : VERB
+labor : NOUN
+labor : VERB
 lacerate : VERB
 lacerate : ADJ - -2
 land : NOUN
@@ -723,10 +757,11 @@ love : NOUN
 love : VERB
 low : NOUN - -2
 low : VERB - -1
-low : ADJ
+low : ADJ - +2
 low : ADV [$prd] 0
-lower : NOUN
+lower : NOUN - -2
 lower : VERB
+lower : ADJ
 main : NOUN
 main : ADJ
 maintain : VERB
@@ -758,6 +793,9 @@ mean : ADJ
 measure : NOUN
 measure : VERB
 media : NOUN
+meet : NOUN - -1
+meet : VERB
+meet : ADJ - -4
 method : NOUN
 michael : NOUN
 military : NOUN
@@ -768,6 +806,9 @@ mistake : NOUN
 mistake : VERB
 mix : NOUN
 mix : VERB
+moderate : NOUN
+moderate : VERB
+moderate : ADJ
 modern : NOUN
 modern : ADJ
 modify : VERB
@@ -836,6 +877,10 @@ nothing : ADV - -4
 now : NOUN - -4
 now : ADV - +2
 nuclear : ADJ
+object : NOUN
+object : VERB
+objective : NOUN
+objective : ADJ
 oblige : VERB
 occasion : NOUN
 occasion : VERB
@@ -934,6 +979,8 @@ positive : NOUN
 positive : ADJ
 possible : ADJ
 possible : NOUN
+power : NOUN
+power : VERB
 prague : NOUN
 pray : VERB
 precipitation : NOUN
@@ -998,19 +1045,24 @@ reach : NOUN
 reach : VERB
 read : NOUN - -1
 read : VERB
+receive : VERB
 recent : ADJ
 recommend : VERB
 record : NOUN
 record : VERB
+recover : VERB
+recovery : NOUN
 red : NOUN
 red : ADJ
 reduce : VERB
+reflect : VERB
 regard : NOUN
 regard : VERB
 regardless : ADJ
 regardless : ADV
 regulate : VERB
 relate : VERB
+remain : VERB[^proc]
 renown : NOUN
 renowned : ADJ
 report : NOUN
@@ -1025,6 +1077,7 @@ resident : NOUN
 resident : ADJ
 resist : VERB
 resistant : ADJ[%to]
+resource : NOUN
 response : NOUN
 responsible : ADJ
 restaurant : NOUN
@@ -1036,6 +1089,8 @@ review : VERB
 revolution : NOUN
 rick : NOUN
 rick : VERB
+rise : NOUN
+rise : VERB
 river : NOUN
 rocket : NOUN
 rocket : VERB
@@ -1046,6 +1101,8 @@ round : VERB [$cond] -1
 round : ADJ
 round : ADV
 roundup : NOUN
+run : NOUN
+run : VERB
 safe : NOUN
 safe : ADJ
 safety : NOUN
@@ -1069,6 +1126,7 @@ seat : NOUN
 seat : VERB
 secret : NOUN
 secret : ADJ
+sector : NOUN
 see : NOUN - -1
 see : VERB
 seem : VERB
@@ -1122,6 +1180,7 @@ snap : NOUN
 snap : VERB[^ptcl]
 so-called : ADJ
 sometimes : ADV
+somewhat : ADV
 soon: ADV
 sort : NOUN
 sort : VERB
@@ -1143,9 +1202,13 @@ specific : ADJ[%to]
 spectacular : ADJ
 spell : NOUN
 spell : VERB
+spend : VERB
 split : NOUN
 split : VERB
 split : ADJ
+stable : NOUN
+stable : VERB - -1
+stable : ADJ
 stack : NOUN
 stack : VERB
 stand : NOUN
@@ -1181,7 +1244,7 @@ study : VERB
 stun : VERB
 stunning : ADJ
 success : NOUN
-suggest : VERB
+suggest : VERB[^dit]
 suite : NOUN
 sunlight : NOUN
 support : NOUN
@@ -1194,6 +1257,8 @@ surgeon : NOUN
 surgery : NOUN
 surprise : NOUN
 surprise : VERB
+survey : NOUN
+survey : VERB
 suspect : NOUN
 suspect : VERB
 suspect : ADJ
@@ -1223,6 +1288,8 @@ technique : NOUN
 tehran : NOUN
 temperature : NOUN
 temple : NOUN
+term : NOUN
+term : VERB
 terrify : VERB
 territory : NOUN
 test : NOUN
@@ -1283,6 +1350,7 @@ uncertain : ADJ
 underground : NOUN
 underground : ADJ
 understand : VERB
+unemployment : NOUN
 unintended : ADJ
 union : ADJ
 union : NOUN
@@ -1333,6 +1401,7 @@ wax : VERB
 way : NOUN
 way : ADV
 weak : ADJ
+weaken : VERB
 weapon : NOUN
 weather : NOUN
 weather : VERB
