@@ -49,6 +49,8 @@ neighborhood setting : NOUN
 cul-de-sac street : NOUN
 ocean-view home : NOUN
 
+Agence France-Presse : NOUN
+China Central Television : NOUN
 Scotts : NOUN
 Scotts Miracle-Gro Company : NOUN
 Gov. Jerry Brown : NOUN
@@ -229,10 +231,12 @@ boost : VERB
 booster : NOUN
 box : NOUN
 box : VERB
+boy : NOUN
 bratislava : NOUN
 breakdown : NOUN
 brink : NOUN
 broadway : NOUN
+bubonic : ADJ
 budapest : NOUN
 business: NOUN
 buy : NOUN
@@ -317,6 +321,8 @@ connect : VERB
 constitution : NOUN
 consume : VERB
 continue : VERB
+contract : NOUN
+contract : VERB
 control : NOUN
 control : VERB
 cool : NOUN
@@ -363,6 +369,10 @@ dart : VERB[^ptcl]
 day : NOUN
 dazzle : NOUN
 dazzle : VERB
+dead : NOUN
+dead : ADJ
+dead : ADV
+death : NOUN
 deal : NOUN
 deal : VERB
 decade : NOUN
@@ -386,6 +396,8 @@ desperate : NOUN - -2
 desperate : ADJ
 desperation : NOUN
 develop : VERB
+die : NOUN - -1
+die : VERB
 differ : VERB
 digital : ADJ
 diminish : VERB
@@ -393,6 +405,7 @@ dine : VERB
 disaster : NOUN
 disastrously : ADV [$prd] 0
 discover : VERB
+disease : NOUN
 divorce : NOUN
 divorce : VERB
 do: NOUN - -2
@@ -477,12 +490,17 @@ expect : VERB
 explore : VERB
 export : NOUN
 export : VERB
+extreme : NOUN
+extreme : ADJ
 face : NOUN
 face : VERB
 facility : NOUN
 fact : NOUN
 familiar : NOUN - -1
 familiar : ADJ
+far : NOUN
+far : ADJ
+far : ADV
 federal : ADJ
 federal : NOUN
 federation : NOUN
@@ -519,6 +537,7 @@ fly : NOUN
 fly : VERB
 fly : ADJ - -1
 foliage : NOUN
+follow : VERB
 forage : NOUN
 forage : VERB
 forages : VERB - 0 =forage -s
@@ -528,7 +547,11 @@ form : VERB
 former : NOUN - -1
 former : ADJ
 formerly : ADV
+found : NOUN - -2
+found : VERB
+found : ADJ - -1
 framework : NOUN
+france : NOUN
 free : NOUN - -1
 free : VERB
 free : ADJ
@@ -556,6 +579,7 @@ gambit : NOUN
 game : NOUN - +1
 game : VERB
 game : ADJ
+gansu : NOUN
 garden : NOUN
 garden : VERB
 gene : NOUN
@@ -568,6 +592,7 @@ genome : NOUN
 germany : NOUN
 get : NOUN - -2
 get : VERB[^ptcl]
+girl : NOUN
 give : NOUN - -2
 give : VERB[^ptcl]
 glow : NOUN
@@ -644,6 +669,7 @@ indicate : VERB
 indigestible : ADJ
 industry : NOUN
 infect : VERB [$trns] 0
+infectious : ADJ
 inflate : VERB
 information : NOUN
 infrastructure : NOUN
@@ -713,6 +739,8 @@ lawyer : NOUN
 lead : NOUN
 lead : VERB
 learn : VERB
+leave : NOUN
+leave : VERB
 less : ADJ[%to] - +1
 less : ADV [$deg] 0
 let : NOUN - -1
@@ -772,6 +800,8 @@ make : NOUN
 make : VERB
 male : NOUN
 male : ADJ
+man : NOUN
+man : VERB
 mandatory : ADJ[%to]
 manufacture : NOUN
 manufacture : VERB
@@ -779,6 +809,7 @@ mark : NOUN
 mark : VERB
 market : NOUN
 market : VERB
+marmot : NOUN
 marry : VERB
 marvel : NOUN
 marvel : VERB
@@ -796,6 +827,7 @@ media : NOUN
 meet : NOUN - -1
 meet : VERB
 meet : ADJ - -4
+men : NOUN[:plur]
 method : NOUN
 michael : NOUN
 military : NOUN
@@ -957,6 +989,8 @@ piece : VERB
 pigeon : NOUN
 place : NOUN
 place : VERB
+plague : NOUN
+plague : VERB
 plant : NOUN
 plant : VERB
 play : NOUN
@@ -983,6 +1017,7 @@ power : NOUN
 power : VERB
 prague : NOUN
 pray : VERB
+precaution : NOUN
 precipitation : NOUN
 prenuptial : ADJ
 prepare : VERB
@@ -1009,16 +1044,20 @@ product : NOUN
 production : NOUN
 program : NOUN
 program : VERB
+prohibit : VERB
 project : NOUN
 project : VERB
 propel : VERB
 protect : VERB
 prove : VERB
 provide : VERB [$trns] 0
+province : NOUN
 purchase : NOUN
 purchase : VERB
 put : NOUN - -1
 put : VERB[^ptcl]
+quarantine : NOUN
+quarantine : VERB
 queen : NOUN
 queen : VERB
 quick : NOUN - -4
@@ -1094,6 +1133,7 @@ rise : VERB
 river : NOUN
 rocket : NOUN
 rocket : VERB
+rodent : NOUN
 room : NOUN
 room : VERB
 round : NOUN [$cond] -1
@@ -1206,6 +1246,7 @@ spend : VERB
 split : NOUN
 split : VERB
 split : ADJ
+squirrel : NOUN
 stable : NOUN
 stable : VERB - -1
 stable : ADJ
@@ -1219,7 +1260,7 @@ star : ADJ
 startle : NOUN - -2
 startle : VERB
 state : NOUN
-state : VERB
+state : VERB - -1
 still : NOUN
 still : VERB
 still : ADJ
@@ -1286,6 +1327,8 @@ teach : NOUN - -4
 teach : VERB
 technique : NOUN
 tehran : NOUN
+televise : VERB
+television : NOUN
 temperature : NOUN
 temple : NOUN
 term : NOUN
@@ -1317,6 +1360,7 @@ total : VERB
 total : ADJ
 tour : NOUN
 tour : VERB
+town : NOUN
 toxin : NOUN
 toy : NOUN
 toy : VERB
@@ -1332,6 +1376,7 @@ true : ADJ[%to]
 true : ADV
 tuck : NOUN - -2
 tuck : VERB
+tuesday : NOUN
 tumult : NOUN
 tunnel : NOUN
 tunnel : VERB
@@ -1443,6 +1488,7 @@ wistfulness : NOUN
 witness : NOUN - -1
 witness : VERB
 woman : NOUN
+women : NOUN[:plur]
 wonder : NOUN
 wonder : VERB
 word : NOUN

@@ -407,12 +407,12 @@ _
   (typg)
 __
 g:NCLU[:det]->PEXP[|det,nom] PUNC[|*r]
- >>*r[$quo]+
+ >>*r[$quo]+10
 _
   (prom)
 __
 g:NCLU->PEXP[|-det,nom] PUNC[|*r]
- >>*r[$quo]+
+ >>*r[$quo]+10
 _
   (prom)
 __
@@ -535,6 +535,11 @@ g:NCLU[:*r,prep]->PREP[%-cnj] NCLU[:-prep]
  l[$-to]>>*r+
 _
   var typg=prep
+  (lxtd)
+__
+g:NCLU->DATE NCLU[:-det,-num,-qnt,-prep]
+_
+  var typg=date
   (lxtd)
 __
 g:NCLU[:*l]->NCLU POSTP
@@ -1234,6 +1239,8 @@ __
 d:between <- PREP
 __
 d:inside  <- PREP
+__
+d:per     <- PREP
 __
 
 d:to   <- TO
