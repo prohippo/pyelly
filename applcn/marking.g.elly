@@ -237,7 +237,8 @@ __
 g:ELEM->THAT VCLU[^s]
  >>[!rv]++
 _
-  append <dem>that</dem>
+  append <conj>that</conj>
+  linefeed
   right
 __
 g:ELEM->ELEM[^dit] THAT
@@ -368,7 +369,7 @@ _
   (pbeg)
 __
 g:PEXP[|*l,vrb]->PUNC[|*l] VCLU[^-ed,-ing]
- >>[!lv,rv]+
+ >>[!lv,rv]
 _
   (pbeg)
 __
@@ -407,12 +408,12 @@ _
   (typg)
 __
 g:NCLU[:det]->PEXP[|det,nom] PUNC[|*r]
- >>*r[$quo]+10
+ >>*r[$quo]+4
 _
   (prom)
 __
 g:NCLU->PEXP[|-det,nom] PUNC[|*r]
- >>*r[$quo]+10
+ >>*r[$quo]+4
 _
   (prom)
 __
@@ -996,6 +997,7 @@ __
 #
 # simple inflections
 g:NOUN[:*l,plur]->NOUN[:-*l,-*r] XS
+ l[$sglr]>>--
 _
   (twob)
 __
@@ -1242,6 +1244,8 @@ d:inside  <- PREP
 __
 d:per     <- PREP
 __
+d:among   <- PREP
+__
 
 d:to   <- TO
 __
@@ -1284,6 +1288,8 @@ d:such <- DEM[:ind]
 __
 d:which <- DEM[:ind]
  >>-
+__
+d:what  <- DEM[:ind]
 __
 
 d:who  <- CONJ[:rel]

@@ -13,6 +13,7 @@ having : HAVE[^ing]
 ate : VERB[^ed]
 bit : VERB[^ed]
 
+rosé : NOUN
 ought : VERB
 
 anything : NOUN
@@ -24,8 +25,6 @@ signal rocket : NOUN
 military exercise : NOUN
 livestock waste : NOUN
 time control : NOUN
-cul-de-sac : NOUN
-world-renowned : ADJ
 
 as well as : CONJ
 at least : ADV[~mod]
@@ -42,12 +41,19 @@ one another : PRO - +2
 do that : VERB
 more than : ADV[~mod] [$deg] 0
 less than : ADV[~mod] [$deg] 0
-eat-in : ADJ
-fully-equipped : ADJ
 underutilize : VERB
 neighborhood setting : NOUN
+best suit : VERB
+best suit : NOUN
+
+eat-in : ADJ
+fully-equipped : ADJ
+cul-de-sac : NOUN
 cul-de-sac street : NOUN
+world-renowned : ADJ
 ocean-view home : NOUN
+top-rated : ADJ
+easy-to-use : ADJ
 
 Agence France-Presse : NOUN
 China Central Television : NOUN
@@ -211,6 +217,10 @@ below : ADV
 benedictine : NOUN
 benedictine : ADJ
 berlin : NOUN
+best : NOUN - -1
+best : VERB - -2
+best : ADJ
+best : ADV
 big : NOUN - -1
 big : ADJ
 bill : NOUN
@@ -223,6 +233,8 @@ bit : NOUN
 black : NOUN
 black : VERB - -1
 black : ADJ
+blush : NOUN
+blush : VERB
 book : NOUN
 book : VERB
 bookend : NOUN
@@ -351,6 +363,7 @@ credit : VERB
 creek : NOUN
 critic : NOUN
 critical : ADJ[%to]
+croatia : NOUN
 crop : NOUN
 crop : VERB
 cruise : NOUN
@@ -366,15 +379,16 @@ dark : ADJ
 dark : NOUN
 dart : NOUN
 dart : VERB[^ptcl]
+database : NOUN
 day : NOUN
 dazzle : NOUN
 dazzle : VERB
 dead : NOUN
 dead : ADJ
 dead : ADV
-death : NOUN
 deal : NOUN
 deal : VERB
+death : NOUN
 decade : NOUN
 decide : VERB
 deck : NOUN
@@ -468,6 +482,8 @@ enhance : VERB
 enough : ADJ[%to]
 ensure : VERB
 enterprise : NOUN
+enthuse : VERB
+enthusiast : NOUN
 envision : VERB
 equip : VERB
 escape : NOUN
@@ -490,6 +506,8 @@ expect : VERB
 explore : VERB
 export : NOUN
 export : VERB
+extend : VERB
+extensive : ADJ
 extreme : NOUN
 extreme : ADJ
 face : NOUN
@@ -521,7 +539,7 @@ fight : VERB
 final : NOUN
 final : ADJ
 finally : ADV
-find : NOUN
+find : NOUN - -2
 find : VERB
 fix : NOUN - -1
 fix : VERB
@@ -547,6 +565,10 @@ form : VERB
 former : NOUN - -1
 former : ADJ
 formerly : ADV
+forward : NOUN
+forward : VERB
+forward : ADJ
+forward : ADV
 found : NOUN - -2
 found : VERB
 found : ADJ - -1
@@ -609,6 +631,7 @@ gourmet : NOUN
 govern : VERB
 grade : NOUN
 grade : VERB
+grape : NOUN
 grass : NOUN
 grass : VERB - -1
 grassroots : ADJ
@@ -626,6 +649,8 @@ growl : VERB
 growth : NOUN
 grumble : NOUN
 grumble : VERB
+guide : NOUN
+guide : VERB
 hail : NOUN
 hail : VERB
 harsh : ADJ
@@ -656,6 +681,7 @@ house : VERB
 household : NOUN
 hover : VERB
 hungary : NOUN
+idea : NOUN
 immune : NOUN - -2
 immune : ADJ
 impact : NOUN
@@ -687,6 +713,7 @@ islam : NOUN
 isolate : VERB
 issue : NOUN
 issue : VERB
+italy : NOUN
 item : NOUN
 item : ADV - -5
 itinerary : NOUN
@@ -925,6 +952,7 @@ off : ADV
 office : NOUN
 often : ADV
 once : ADV
+online : ADJ
 only : ADJ - -2
 only : ADV
 open : NOUN - -1
@@ -938,6 +966,8 @@ orbit : VERB
 ore : NOUN
 oregon : NOUN
 organism : NOUN
+origin : NOUN
+originate : VERB
 ornament : NOUN
 ornament : VERB
 other : ADJ [$ind] 0
@@ -975,6 +1005,8 @@ peace : NOUN
 pellet : NOUN
 people : NOUN
 people : VERB - -1
+pep : NOUN
+pepper : NOUN
 perch : NOUN
 perch : VERB
 persona : NOUN
@@ -1038,7 +1070,7 @@ probable : ADJ
 probably : ADV
 process : NOUN
 process : VERB
-produce : NOUN
+produce : NOUN [$sglr] 0
 produce : VERB
 product : NOUN
 production : NOUN
@@ -1078,6 +1110,7 @@ range : NOUN
 range : VERB
 rapid : NOUN - -1
 rapid : ADJ
+raspberry : NOUN
 rate : NOUN
 rate : VERB
 reach : NOUN
@@ -1174,6 +1207,7 @@ select : VERB
 select : ADJ
 sell : NOUN
 sell : VERB - +2
+semisweet : ADJ
 senate : NOUN
 senator : NOUN
 senior : NOUN
@@ -1243,6 +1277,8 @@ spectacular : ADJ
 spell : NOUN
 spell : VERB
 spend : VERB
+spice : NOUN
+spice : VERB
 split : NOUN
 split : VERB
 split : ADJ
@@ -1286,6 +1322,8 @@ stun : VERB
 stunning : ADJ
 success : NOUN
 suggest : VERB[^dit]
+suit : NOUN
+suit : VERB
 suite : NOUN
 sunlight : NOUN
 support : NOUN
@@ -1355,6 +1393,9 @@ time : VERB
 together : ADJ
 together : ADV
 too : ADV
+top : NOUN
+top : VERB
+top : ADJ
 total : NOUN
 total : VERB
 total : ADJ
@@ -1481,6 +1522,8 @@ win : VERB
 wind : NOUN
 wind : VERB
 window : NOUN
+wine : NOUN
+wine : VERB - -4
 winter : NOUN
 winter : VERB
 wistful : ADJ
@@ -1507,3 +1550,4 @@ write : VERB
 wry : ADJ
 year : NOUN
 yet : ADV
+zinfandel : NOUN
