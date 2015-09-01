@@ -12,6 +12,7 @@ having : HAVE[^ing]
 
 ate : VERB[^ed]
 bit : VERB[^ed]
+did : VERB[^ed]
 
 rosé : NOUN
 ought : VERB
@@ -127,6 +128,8 @@ again : ADV
 aggressive : ADJ
 agree : VERB
 agriculture : NOUN
+ahead : ADJ - -1
+ahead : ADV
 air : NOUN
 air : VERB
 alarm : NOUN
@@ -221,6 +224,10 @@ best : NOUN - -1
 best : VERB - -2
 best : ADJ
 best : ADV
+better : NOUN - -1
+better : VERB
+better : ADJ [$er] +1
+better : ADV
 big : NOUN - -1
 big : ADJ
 bill : NOUN
@@ -235,6 +242,8 @@ black : VERB - -1
 black : ADJ
 blush : NOUN
 blush : VERB
+boil : NOUN
+boil : VERB
 book : NOUN
 book : VERB
 bookend : NOUN
@@ -451,10 +460,15 @@ dry : ADJ
 décor : NOUN
 early : ADJ
 early : ADV
+ease : NOUN
+ease : VERB
+easier : ADJ
+easiest : ADJ
 easily : ADV
 east : NOUN
 east : ADJ
 east : ADV[~dir]
+easter : NOUN
 eastern : ADJ
 easy : ADJ
 easy : ADV
@@ -465,6 +479,8 @@ edit : VERB
 effect : NOUN
 effect : VERB
 effective : ADJ
+egg : NOUN
+egg : VERB - -1
 elbe : NOUN
 elect : NOUN
 elect : VERB
@@ -581,6 +597,8 @@ free : ADV - -1
 french : NOUN
 french : VERB - -2
 french : ADJ
+fresh : ADJ
+fresh : ADV
 fry : NOUN - -1
 fry : VERB
 fuel : NOUN
@@ -653,6 +671,8 @@ guide : NOUN
 guide : VERB
 hail : NOUN
 hail : VERB
+hard : ADJ
+hard : ADV
 harsh : ADJ
 head : NOUN
 head : VERB
@@ -951,6 +971,8 @@ off : ADJ
 off : ADV
 office : NOUN
 often : ADV
+old : NOUN - -1
+old : ADJ
 once : ADV
 online : ADJ
 only : ADJ - -2
@@ -1002,6 +1024,8 @@ pawn : VERB
 pay : NOUN
 pay : VERB
 peace : NOUN
+peel : NOUN
+peel : VERB
 pellet : NOUN
 people : NOUN
 people : VERB - -1
@@ -1023,6 +1047,8 @@ place : NOUN
 place : VERB
 plague : NOUN
 plague : VERB
+plan : NOUN
+plan : VERB
 plant : NOUN
 plant : VERB
 play : NOUN
@@ -1329,6 +1355,8 @@ sunlight : NOUN
 support : NOUN
 support : VERB
 suppose : VERB
+sure : ADJ
+sure : ADV
 surface : NOUN
 surface : VERB
 surface : ADJ - -2
@@ -1471,6 +1499,8 @@ voice : NOUN
 voice : VERB
 wag : NOUN
 wag : VERB
+want : NOUN
+want : VERB
 warn : VERB
 washington : NOUN
 waste : ADJ

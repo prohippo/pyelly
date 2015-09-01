@@ -905,7 +905,8 @@ __
 g:ADJ[%*r]->NOUN[:hyph] ADJ
 __
 g:ADJ[%*r,more]->ADV ADJ
- l[$deg]>>+++
+ l[$deg]r[$er]>>++++++
+       l[$deg]>>+++
 _
   var typg=adv
   (typg)
