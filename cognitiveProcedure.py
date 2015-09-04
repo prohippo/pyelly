@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveProcedure.py : 15aug2015 CPM
+# cognitiveProcedure.py : 03sep2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -105,12 +105,12 @@ class CognitiveProcedure(object):
                     # check concepts of descendants
                     dph = ( phrs.krnl.lftd if op == semanticCommand.Clftc or phrs.krnl.rhtd == None
                             else phrs.krnl.rhtd )
-                    cnc = dph.krnl.cons
+                    cnc = dph.krnl.cncp
                     cx = p[1]  # concepts to check against
                     mxw = -1
                     mxc = None
                     for c in cx:
-                        w = cntx.wghtg.hier.isA(cnc,c)
+                        w = cntx.wghtg.hiery.isA(cnc,c)
                         if mxw < w:
                             mxw = w
                             mxc = c
@@ -129,8 +129,10 @@ class CognitiveProcedure(object):
                     op = a[0]
                     if op == semanticCommand.Cadd:    # add to score?
                         psum += a[1]
-                    elif op == semanticCommand.Csetf: # set semantic features?
+                    elif op == semanticCommand.Csetf: # set   semantic features?
                         phrs.krnl.semf.combine(a[1])
+                    elif op == semanticCommand.Crstf: # reset semantic features?
+                        phrs.krnl.semf.reset(a[1])
                     elif op == semanticCommand.Csetc: # set concepts?
                         phrs.krnl.cncp = a[1]
                     elif phrs.krnl.lftd == None:
@@ -142,6 +144,8 @@ class CognitiveProcedure(object):
                         dsc = phrs.krnl.rhtd if phrs.krnl.rhtd != None else phrs.krnl.lftd
                         phrs.krnl.semf.combine(dsc.krnl.semf)
                         phrs.krnl.cncp = dsc.krnl.cncp
+#                   if trce:
+#                       print >> sys.stderr , '->' , phr.krnl.semf
 
                 break  # ignore subsequent clauses on taking action
 
@@ -179,12 +183,19 @@ if __name__ == '__main__':
     import ellyDefinitionReader
     import procedureTestFrame
 
+    default = [
+        "?>>?" ,
+        "l[!f0,f1]>>*l[!f3] XXXX" ,
+        "l(YYYY)  >>+1" ,
+        ">>*l[!f3,-f4,-one]-2"      # expects procedureTestFrame definitions
+    ]
+
     frame = procedureTestFrame.ProcedureTestFrame()
     phr = frame.phrase
     ctx = frame.context
     stb = ctx.syms
 
-    src = sys.argv[1] if len(sys.argv) > 1 else 'cognitiveDefinerTest.txt'
+    src = sys.argv[1] if len(sys.argv) > 1 else default
     inp = ellyDefinitionReader.EllyDefinitionReader(src)
     if inp.error != None:
         sys.exit(1)
@@ -196,5 +207,6 @@ if __name__ == '__main__':
 
     cognitiveDefiner.showCode(cgs.logic)
 
+    print 'phr=' , phr
     s = cgs.score(ctx,phr)
     print 'plausibility=' , s

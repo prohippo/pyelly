@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveDefiner.py : 13aug2015 CPM
+# cognitiveDefiner.py : 03sep2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -170,7 +170,7 @@ def _rightside ( stb , txt ):
     val  = 0
     cnc  = ''                        # default is no concept specified
 
-    m = txt.rfind(']')
+    m = txt.rfind(']')               # look for semantic features to set or reset
     n = txt.rfind(' ')               # look for space marking explicit concept
 
 #   print 'n=',n
@@ -178,7 +178,7 @@ def _rightside ( stb , txt ):
 
     if n > m:                        # space must not be in semantic feature specification
         cnc = txt[n:].strip().upper()
-        txt = txt[:n]                # break off concept
+        txt = txt[:n]                # remove concept from input
 
 #   print "1 txt=[" , txt , "]"
 
@@ -206,7 +206,11 @@ def _rightside ( stb , txt ):
             f = featureSpecification.FeatureSpecification(stb,txt[:n+1],semantic=True)
         except ellyException.FormatFailure:
             return _err('bad semantic features')
+#       print 'features=' , f.positive , f.negative
         actn.append([ semanticCommand.Csetf , f.positive ])
+        if not f.negative.zeroed():
+            f.negative.complement()
+            actn.append([ semanticCommand.Crstf , f.negative ])
 #       print 'set:' , actn[-1]
         txt = txt[n+1:]
 
@@ -241,12 +245,12 @@ def _rightside ( stb , txt ):
 
 #   print 'val=' , val
 
-    ret = [ semanticCommand.Cadd , val ]
-
     if len(cnc) > 0:
         actn.append([ semanticCommand.Csetc , cnc ])
 
-    actn.append(ret)
+    if val != 0:
+        actn.append([ semanticCommand.Cadd , val ])
+
     return actn
 
 def showCode ( cod ):
@@ -284,7 +288,7 @@ def showCode ( cod ):
         for a in actn:
             opn = a[0]
             arg = a[1] if len(a) > 1 else ''
-            if opn == semanticCommand.Csetf:
+            if opn == semanticCommand.Csetf or opn == semanticCommand.Crstf:
 #               print 'single bit arg =' , arg
                 s = arg.hexadecimal(False)
             else:

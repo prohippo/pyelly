@@ -12,3 +12,4 @@ l[^x] r(CCCC,DDDD)>>+2
 l[^-x]r[^y]>>[^z]
 l(DDDD)>>*L EEEE
 >>+0 FFFF
+l[^x]>>*l[^xn,-x]
