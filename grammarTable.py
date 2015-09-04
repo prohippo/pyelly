@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# grammarTable.py : 17jul2015 CPM
+# grammarTable.py : 03sep2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -83,6 +83,7 @@ def isNewRule ( s ):
     """
 
     return (len(s) > 2 and ellyChar.isLetter(s[0]) and s[1] == ':')
+
 
 class GrammarTable(object):
 
@@ -365,7 +366,8 @@ class GrammarTable(object):
         if ns < 0 or nt < 0:
             print >> sys.stderr , '** bad syntax specification'
             return None
-        ru = grammarRule.ExtendingRule(ns,fs.positive)
+        fs.negative.complement()
+        ru = grammarRule.ExtendingRule(ns,fs.positive,fs.negative)
 #       print 'extd rule=' , unicode(ru)
         ru.gens = self.d1bp
         ru.utfet = ft.makeTest()       # precombined positive and negative features for testing
@@ -393,14 +395,16 @@ class GrammarTable(object):
             2-branch splitting rule on success, None otherwise
         """
 
-#       print "split=",s,'->',t,u
+#       print 'split=' , s , '->' , t , u
         if t == None or len(t) == 0 or u == None or len(u) == 0:
             print >> sys.stderr , '** incomplete grammar rule'
             return None
         try:
+#           print 's=' , s
             ss = syntaxSpecification.SyntaxSpecification(syms,s)
             ns = ss.catg
             fs = ss.synf
+#           print 'fs=' , fs
             st = syntaxSpecification.SyntaxSpecification(syms,t)
             nt = st.catg
             ft = st.synf
@@ -415,7 +419,8 @@ class GrammarTable(object):
         if ns < 0 or nt < 0 or nu < 0:
             print >> sys.stderr , '** bad syntax specification'
             return None
-        ru = grammarRule.SplittingRule(ns,fs.positive)
+        fs.negative.complement()
+        ru = grammarRule.SplittingRule(ns,fs.positive,fs.negative)
 #       print 'splt rule=' , unicode(ru)
         ru.gens = self.d2bp
         ru.ltfet = ft.makeTest()       # combine positive and negative features for testing

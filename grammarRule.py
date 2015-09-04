@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# grammarRule.py : 04feb2015 CPM
+# grammarRule.py : 03sep2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -33,6 +33,10 @@ classes for syntax rules with associated semantics
 """
 
 import featureSpecification
+import ellyBits
+
+_dfrs = ellyBits.EllyBits()
+_dfrs.complement()
 
 class BasicRule(object):
 
@@ -44,13 +48,14 @@ class BasicRule(object):
         gens  - generative semantics
         styp  - syntactic type produced by rule
         sfet  - syntactic features to set
+        sftr  -                    to reset
         bias  - for rule ordering in ambiguity handling
         nmrg  - to indicate degree of merging by rule (1 or 2)
         seqn  - unique ID for rule
     """
 
-    _index = 0  # for assigning unique ID number to rule 
- 
+    _index = 0  # for assigning unique ID number to rule
+
     def __init__ ( self , typ , fet ):
 
         """
@@ -66,6 +71,7 @@ class BasicRule(object):
         self.gens = None
         self.styp = typ
         self.sfet = fet
+        self.sftr = _dfrs
         self.bias = 0
         self.seqn = BasicRule._index
         BasicRule._index += 1
@@ -81,7 +87,7 @@ class BasicRule(object):
         """
 
         return BasicRule._index
-         
+
 class ExtendingRule(BasicRule):
 
     """
@@ -91,7 +97,7 @@ class ExtendingRule(BasicRule):
         utfet  - mask for testing features of possible subconstituent
     """
 
-    def __init__ ( self , typ, fet ):
+    def __init__ ( self , typ , fet , frs=_dfrs ):
 
         """
         initialization
@@ -99,12 +105,15 @@ class ExtendingRule(BasicRule):
         arguments:
             self  -
             typ   - syntactic type
-            fet   - syntactic features
+            fet   - syntactic features to set
+            frs   -                    to reset
         """
 
         super(ExtendingRule,self).__init__(typ,fet)
         self.utfet = featureSpecification.FeatureSpecification(None)
-        self.nmrg = 1
+        self.sftr  = frs
+        self.nmrg  = 1
+#       print 'xtd fet=' , fet , 'frs=' , frs
 
     def __unicode__ ( self ):
 
@@ -118,7 +127,8 @@ class ExtendingRule(BasicRule):
             partial representation as string
         """
 
-        syn = unicode(self.styp) + '[' + self.sfet.hexadecimal(False) + ']'
+        bhx = self.sfet.hexadecimal(False) + '-' + self.sftr.hexadecimal(False)
+        syn = unicode(self.styp) + '[' + bhx + ']'
         msk = unicode(self.utfet)
         return unicode(self.seqn) + ': ' + syn + '->' + '-- ' + msk
 
@@ -133,23 +143,26 @@ class SplittingRule(BasicRule):
         rtyp   = syntactic type of right subconstituent
     """
 
-    def __init__ ( self , typ, fet ):
+    def __init__ ( self , typ , fet , frs=_dfrs ):
 
         """
         initialization
-        
+
         arguments:
             self  -
             typ   - syntactic type
-            fet   - syntactic features
+            fet   - syntactic features to set
+            frs   -                    to reset
         """
 
         super(SplittingRule,self).__init__(typ,fet)
         self.ltfet = featureSpecification.FeatureSpecification(None)
         self.rtfet = featureSpecification.FeatureSpecification(None)
+        self.sftr  = frs
         self.rtyp  = -1
-        self.nmrg = 2
- 
+        self.nmrg  = 2
+#       print 'spl fet=' , fet , 'frs=' , frs
+
     def __unicode__ ( self ):
 
         """
@@ -165,15 +178,16 @@ class SplittingRule(BasicRule):
         lms = str(self.ltfet)
         rms = str(self.rtfet)
         ryn = unicode(self.rtyp) + ' ' + rms
-        syn = unicode(self.styp) + '[' + self.sfet.hexadecimal(False) + ']'
+        bhx = self.sfet.hexadecimal(False) + '-' + self.sftr.hexadecimal(False)
+        syn = unicode(self.styp) + '[' + bhx + ']'
         return unicode(self.seqn) + ': ' + syn + '->' + '-- ' + lms + '  ' + ryn
 
-#########################################################################
-# Note that the Y type of a rule is not saved as an attribute of a rule.
-# This information is redundant because every rule will be listed under
-# its respective Y type. The parsing algorithm implemented for Elly parse
-# trees has all the information it needs.
-#########################################################################
+###########################################################################
+# Note that the Y type of a syntax rule is not saved as an attribute of it.
+# This information is redundant because every rule will be listed under its
+# respective Y type. The parsing algorithm implemented for Elly parse trees
+# will have all the information it needs.
+###########################################################################
 
 #
 # unit test
@@ -185,17 +199,21 @@ if __name__ == '__main__':
 
     sym = symbolTable.SymbolTable()
 
-    fs = featureSpecification.FeatureSpecification(sym,'[:f0,f1]').positive
+    fs = featureSpecification.FeatureSpecification(sym,'[:f0,f1,-f2]')
+    pf = fs.positive
+    nf = fs.negative
+    nf.complement()
+    print 'features=' , pf , nf
 
     r = [ ]
 
     for i in range(4):
-        ru = ExtendingRule(0,fs)
+        ru = ExtendingRule(0,pf,nf)
         r.append(ru)
     for i in range(4):
-        ru = SplittingRule(0,fs)
+        ru = SplittingRule(0,pf,nf)
         r.append(ru)
-    rr = ExtendingRule(0,fs)
+    rr = ExtendingRule(0,pf)
     r.append(rr)
     for ru in r:
         print type(ru) , unicode(ru)

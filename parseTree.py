@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTree.py : 15jul2015 CPM
+# parseTree.py : 02sep2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -202,6 +202,7 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
                         phn.krnl.synf.combine(phr.krnl.synf)
                     if lcnd:                                # inherit features from previous phrase?
                         phn.krnl.synf.combine(phx.krnl.synf)
+                    phn.krnl.synf.reset(r.sftr)             # reset selected inherited bits
 #                   print 'phr=' , phr , 'phn=' , phn
                     self.enqueue(phn)                       # save new phrase for ramification
 
@@ -239,6 +240,7 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
                     if (phn.krnl.synf.test(0) or
                         phn.krnl.synf.test(1)):        # inherit features from current phrase?
                         phn.krnl.synf.combine(phr.krnl.synf)
+                    phn.krnl.synf.reset(r.sftr)        # reset selected inherited bits
                     self.enqueue(phn)                  # save new phrase for ramification
 
     def _phase3 ( self , phr , fbs ):

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBottomUp.py : 16jul2015 CPM
+# parseTreeBottomUp.py : 03sep2015 CPM
 # -----------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -39,7 +39,6 @@ import grammarRule
 import symbolTable
 import cognitiveProcedure
 import generativeProcedure
-import featureSpecification
 import parseTreeBase
 
 NPOSNS = 128          # nominal minimum number of tree leaf nodes
@@ -183,7 +182,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
 #           print phr.krnl.synf.hexadecimal() , ':' , pho.krnl.synf.hexadecimal()
             if (        phr.krnl.typx == pho.krnl.typx
                 and     phr.krnl.synf.equal(pho.krnl.synf)
-                and not phr.krnl.synf.test(featureSpecification.LAST) # *UNIQUE check
+                and not phr.krnl.synf.test(symbolTable.LAST) # *UNIQUE check
                ):                          # ambiguity?
 #               print 'ambiguity:' , phr.krnl.typx , phr.krnl.synf.hexadecimal() , 'for' , phr.krnl.seqn , pho.krnl.seqn
                 if pho.alnk == None:       # if so, is ambiguity new?
