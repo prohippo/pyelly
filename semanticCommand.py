@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# semanticCommand.py : 26jun2015 CPM
+# semanticCommand.py : 02sep2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -34,19 +34,20 @@ define operation codes for Elly cognitive and generative semantic procedures
 
 #### cognitive
 
-Cadd  =  0   # add contribution to total score
-Clhr  =  1   # inherit left
-Crhr  =  2   #         right
-Csetf =  3   # set features
-Clftf =  4   # test left descendant features
-Crhtf =  5   #      right
-Csetc =  6   # set concept
-Clftc =  7   # test left descendant concepts
-Crhtc =  8   #      right
-Ctrc  =  9   # trace
+Cadd  =   0  # add contribution to total score
+Clhr  =   1  # inherit left
+Crhr  =   2  #         right
+Csetf =   3  # set   features
+Crstf =   4  # reset features
+Clftf =   5  # test left descendant features
+Crhtf =   6  #      right
+Csetc =   7  # set concept
+Clftc =   8  # test left descendant concepts
+Crhtc =   9  #      right
+Ctrc  =  10  # trace
 
 Copn = [     # operation names for dumping (must align with numerical codes above)
-    'ADDN' , 'LHER' , 'RHER' , 'SETF' , 'LFTF' , 'RHTF' ,
+    'ADDN' , 'LHER' , 'RHER' , 'SETF' , 'RSTF' , 'LFTF' , 'RHTF' ,
     'SETC' , 'LFTC' , 'RHTC' , 'TRCE'
 ]
 

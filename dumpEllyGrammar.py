@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# dumpEllyGrammar.py : 09jul2015 CPM
+# dumpEllyGrammar.py : 02sep2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -241,7 +241,9 @@ def dumpSplits ( stb , splits , full ):
             r = rv[j]
             print '(' + str(r.seqn) + ')' ,
             print stb.ntname[r.styp] ,
-            print '[{}]->'.format(r.sfet.hexadecimal(False)) ,
+            sets = r.sfet.hexadecimal(False)
+            rsts = r.sftr.hexadecimal(False)
+            print '[{0}-{1}]->'.format(sets,rsts) ,
             print ty + ' ' + showMask(r.ltfet) + ' ' ,
             print stb.ntname[r.rtyp] + ' ' + showMask(r.rtfet)
 
@@ -279,7 +281,9 @@ def dumpExtensions ( stb, extens , full ):
         for r in rv:
             print '(' + str(r.seqn) + ')' ,
             print stb.ntname[r.styp] ,
-            print '[{}]->'.format(r.sfet.hexadecimal(False)) ,
+            sets = r.sfet.hexadecimal(False)
+            rsts = r.sftr.hexadecimal(False)
+            print '[{0}-{1}]->'.format(sets,rsts) ,
             print ty + ' ' + showMask(r.utfet)
 
             if full: showProcedures(r)

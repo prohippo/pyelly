@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# symbolTable.py : 01aug2015 CPM
+# symbolTable.py : 03sep2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -42,6 +42,8 @@ import sys
 NMAX = 64  # maximum number of syntactic type names
 FMAX = 16  # maximum number of feature names per set
 
+LAST = FMAX - 1
+
 class SymbolTable(object):
 
     """
@@ -75,7 +77,7 @@ class SymbolTable(object):
     def getFeatureSet ( self , fs , ty=False ):
 
         """
-        get feature index associated with given name in given set
+        get feature indices associated with given names in given set
 
         arguments:
             self  -
@@ -91,45 +93,59 @@ class SymbolTable(object):
         bp = ellyBits.EllyBits(FMAX) # all feature bits zeroed
         bn = ellyBits.EllyBits(FMAX) #
 
-        fsx = self.sxindx if not ty else self.smindx
+        fsx = self.smindx if ty else self.sxindx
 #       print '--------  fs=' , fs
-        fid = fs[0]                # feature set ID
-        fnm = fs[1:].split(',')    # feature names
-        if not fid in fsx:         # known ID?
-            fsx[fid] = { }         # if not, make it known
-        h = fsx[fid]               # for hashing of feature names
-        if len(fnm) == 0:          # check for empty features
+        fid = fs[0]                  # feature set ID
+        fnm = fs[1:].split(',')      # feature names
+        if not fid in fsx:           # known ID?
+#           print 'new feature set'
+            d = { }                  # new dictionary of feature names
+            if ty:
+                d['*c'] = 0          # always define '*c' as semantic  feature
+                d['*capital'] = 0    # equivalent to '*c'
+            else:
+                d['*r'] = 0          # always define '*r' as syntactic feature
+                d['*right'] = 0      # equivalent to '*r'
+                d['*l'] = 1          # always define '*l'
+                d['*left']  = 1      # equivalent to '*l'
+                d['*unique'] = LAST  # always define
+            fsx[fid] = d             # if not, make it known
+        h = fsx[fid]                 # for hashing of feature names
+        if len(fnm) == 0:            # check for empty features
             return [ bp , bn ]
         for nm in fnm:
             nm = nm.strip()
             if len(nm) == 0: continue
-            if nm[0] == '-':       # negative feature?
-                b = bn             # if so, look at negative bits
+            if nm[0] == '-':         # negative feature?
+                b = bn               # if so, look at negative bits
                 nm = nm[1:]
-            elif nm[0] == '+':     # positive feature?
-                b = bp             # if so, look at positive bits
+            elif nm[0] == '+':       # positive feature?
+                b = bp               # if so, look at positive bits
                 nm = nm[1:]
             else:
-                b = bp             # positive bits by default
+                b = bp               # positive bits by default
 
 #           print '--------  nm=' , nm
-            for c in nm:           # check feature name
+            for c in nm:             # check feature name
                 if not ellyChar.isLetterOrDigit(c) and c != '*':
                     return None
-            if not nm in h:        # new name in feature set?
-                k = len(h)         # yes, this will be next free index
-                l = FMAX           # upper limit on feature index
-                if ty:             # semantic feature?
-                    k -= 1         # if so, adjust for extra name *C
+            if not nm in h:          # new name in feature set?
+                k = len(h)           # yes, this will be next free index
+                l = FMAX             # upper limit on feature index
+                if ty:               # semantic feature?
+                    k -= 1           # if so, adjust for extra name *C
                 else:
-                    k -= 3         # else,  adjust for *UNIQUE and extra names *L, *R
-                    l -= 1         #        adjust upper limit for *UNIQUE
-                if k == l:         # overflow check
+                    k -= 3           # else,  adjust for *UNIQUE and extra names *L, *R
+                    l -= 1           #        adjust upper limit for *UNIQUE
+                if k == l:           # overflow check
                     print >> sys.stderr, '+* too many feature names'
                     return None
-                h[nm] = k          # define new feature
+                if k < 0:
+                    print >> sys.stderr , 'bad index=' , k , 'l=' , l
+                    return None
+                h[nm] = k            # define new feature
 
-            b.set(h[nm])           # set bit for feature
+            b.set(h[nm])             # set bit for feature
         return [ bp , bn ]
 
     def getSyntaxTypeIndexNumber ( self , s ):

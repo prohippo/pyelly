@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# featureSpecification.py : 13may2015 CPM
+# featureSpecification.py : 03sep2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -36,8 +36,6 @@ import ellyBits
 import ellyChar
 import ellyException
 import symbolTable
-
-LAST = symbolTable.FMAX - 1  # for reserved bit
 
 def scan ( strg ):
 
@@ -96,20 +94,6 @@ class FeatureSpecification(object):
         else:
             self.id = segm[1]
 #           print "id=",self.id
-            fsindx = syms.sxindx if not semantic else syms.smindx
-            if not self.id in fsindx:
-#               print 'new feature set'
-                d = { }                  # new dictionary of feature names
-                if semantic:
-                    d['*c'] = 0          # always define '*c' as semantic  feature
-                    d['*capital'] = 0    # equivalent to '*c'
-                else:
-                    d['*r'] = 0          # always define '*r' as syntactic feature
-                    d['*right'] = 0      # equivalent to '*r'
-                    d['*l'] = 1          # always define '*l'
-                    d['*left']  = 1      # equivalent to '*l'
-                    d['*unique'] = LAST  # always define
-                fsindx[self.id] = d      #   and save
             fs = syms.getFeatureSet(segm[1:-1] , semantic)
             if fs == None:
                 raise ellyException.FormatFailure

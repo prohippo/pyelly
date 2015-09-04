@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBits.py : 05feb2015 CPM
+# ellyBits.py : 03sep2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -214,7 +214,19 @@ class EllyBits(object):
         for i in range(n):
             if self.data[i] & r.data[i] != 0: return True
         return False
-            
+
+    def zeroed ( self ):
+        """
+        check if all bits zero
+        arguments:
+            self
+        returns:
+            True if all zero, False otherwise
+        """
+        for i in range(len(self.data)):
+            if self.data[i] != 0: return False
+        return True
+
     def clear ( self ):
         """
         reset all bits to zero
@@ -243,6 +255,19 @@ class EllyBits(object):
         if n > m: n = m
         for i in range(n):
             self.data[i] |= r.data[i]  # disjunction
+
+    def reset ( self , r ):
+        """
+        reset selected bits
+        arguments:
+            self  -
+            r     - = 1 for bits to keep
+        """
+        m = len(self.data)
+        n = len(r.data)
+        if n > m: n = m
+        for i in range(n):
+            self.data[i] &= r.data[i]  # conjunction
 
     def compound ( self ):
         """
@@ -354,3 +379,17 @@ if __name__ == "__main__":
     bbs.reinit('FFEE')
     print 'set bbs to FFEE'
     print "bbs:" , bbs.data , "hex=" , bbs.hexadecimal()
+
+    bbs.reinit('FF12')
+    print 'set bbs to FF12'
+    print '=' , bbs.hexadecimal(False)
+    print 'resetting with EEEE'
+    rbs = EllyBits(K)
+    rbs.reinit('EEEE')
+    bbs.reset(rbs)
+    print '=' , bbs.hexadecimal(False)
+
+    bbs.reinit('0000')
+    print '=' , bbs , 'zeroed=' , bbs.zeroed()
+    bbs.set(1)
+    print '=' , bbs , 'zeroed=' , bbs.zeroed()
