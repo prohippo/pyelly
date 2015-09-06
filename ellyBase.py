@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 21aug2015 CPM
+# ellyBase.py : 02sep2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -74,7 +74,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.2.16'                     # current version of PyElly software
+release = 'v1.3'                        # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -262,10 +262,10 @@ class EllyBase(object):
         nto = len(stb.ntname)         # for consistency check
 
         if ellyConfiguration.treeDisplay:
-            print "tree display on"
+            print "tree display ON"
             self.ptr = parseTreeWithDisplay.ParseTreeWithDisplay(stb,d.gtb,d.ptb,self.ctx)
         else:
-            print "tree display off"
+            print "tree display OFF"
             self.ptr = parseTree.ParseTree(stb,d.gtb,d.ptb,self.ctx)
 
         ntabl = d.ntb

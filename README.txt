@@ -6,7 +6,7 @@ PyElly is intended mainly for educational use, in that it allows a student
 to engage natural language at a fine level of detail and learn the issues
 involved in processing text data. It can be of interest to others, though,
 because of its extensive support for handling the messy aspects of
-language not central to most data problems or their solutions.
+language not central to most text data problems or their solutions.
 
 The basic paradigm of PyElly is to rewrite natural language input into
 some other text output, which might be SQL, XML, or some other form. This
@@ -213,9 +213,11 @@ Release Notes:
                       add handling of em and en dashes in tokentization
                       extend default punctuation handling
                       extend "marking" rules and integration test
+ 1.3    -  06sep2015  add reset of inherited syntactic and semantic features
+                      fix bugs in handling features and clean up code
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
-may require regeneration of any previously saved *.elly.bin files to ensure
+will require regeneration of any previously saved *.elly.bin files to ensure
 correct operation. Changes only to PyElly sample application definition files,
 unit testing input or key files, and PyElly documentation will be made from time
 to time, but these will leave version numbers the same.
