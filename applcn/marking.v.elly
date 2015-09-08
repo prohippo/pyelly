@@ -31,6 +31,7 @@ as well as : CONJ
 at least : ADV[~mod]
 out of : PREP
 round at : PREP
+ahead of : PREP
 up to : ADV[~mod]
 pretty much : ADV[~mod,prox] [$deg] 0
 a lot of : QUAN
@@ -46,6 +47,7 @@ underutilize : VERB
 neighborhood setting : NOUN
 best suit : VERB
 best suit : NOUN
+hard boiled : ADJ
 
 eat-in : ADJ
 fully-equipped : ADJ
@@ -54,7 +56,9 @@ cul-de-sac street : NOUN
 world-renowned : ADJ
 ocean-view home : NOUN
 top-rated : ADJ
-easy-to-use : ADJ
+wax-work : NOUN
+bill-to : ADJ
+round-up : NOUN
 
 Agence France-Presse : NOUN
 China Central Television : NOUN
@@ -79,7 +83,6 @@ unemployment rate : NOUN
 purchasing power : NOUN
 fixed investment : NOUN
 
-wax-work : NOUN
 fried liver attack : NOUN
 2 knights defense : NOUN
 tighty-whities : NOUN
@@ -89,12 +92,11 @@ genome editing : NOUN
 
 for example : PEXP[|eg]
 such as : DEM
-round-up : NOUN
-bill-to : ADJ
 bookended : VERB[^ed] - -1
 
 #### WordNet 3.1 entries
 
+a bit : ADV [$deg] 0
 abbey : NOUN
 accord : NOUN
 accord : VERB - -1
@@ -193,6 +195,7 @@ baroque : ADJ
 base : NOUN
 base : VERB
 base : ADJ
+basket : NOUN
 bath : NOUN
 bath : VERB
 bathe : NOUN - -2
@@ -673,6 +676,7 @@ hail : NOUN
 hail : VERB
 hard : ADJ
 hard : ADV
+hard-boiled : ADJ
 harsh : ADJ
 head : NOUN
 head : VERB
@@ -709,6 +713,8 @@ impact : VERB
 important : ADJ[%to]
 impose : VERB
 improve : VERB
+inch : NOUN
+inch : VERB - -1
 include : VERB [$trns] 0
 independent : ADJ
 indicate : VERB
@@ -897,6 +903,7 @@ month : NOUN
 more : NOUN - -1
 more : ADJ[%to]
 more : ADV [$deg] 0
+more or less : ADV
 most : ADJ
 most : ADV [$deg] 0
 mountain : NOUN
@@ -1027,6 +1034,7 @@ peace : NOUN
 peel : NOUN
 peel : VERB
 pellet : NOUN
+penetrate : VERB
 people : NOUN
 people : VERB - -1
 pep : NOUN
@@ -1323,6 +1331,9 @@ startle : NOUN - -2
 startle : VERB
 state : NOUN
 state : VERB - -1
+steam : NOUN
+steam : VERB
+steamer : NOUN
 still : NOUN
 still : VERB
 still : ADJ
@@ -1509,7 +1520,7 @@ waste : VERB
 watch : NOUN
 watch : VERB
 water : NOUN
-water : ADJ - -2
+water : WATER
 wave : NOUN
 wave : VERB
 wax : NOUN
@@ -1581,3 +1592,21 @@ wry : ADJ
 year : NOUN
 yet : ADV
 zinfandel : NOUN
+
+bring : VERB
+check : NOUN - -1
+check : VERB
+cover : NOUN
+cover : VERB
+half : NOUN
+half : ADJ
+half : ADV
+insert : NOUN
+insert : VERB
+pot : NOUN
+pot : VERB
+pour : VERB
+shell : NOUN
+shell : VERB
+try : NOUN
+try : VERB

@@ -755,7 +755,7 @@ _
   append </vclu>
 __
 g:VCLU[^*r]->ADV VCLU
- l[$deg]>>--
+ l[$deg]>>----
 _
   var typg=adv
   (lxtd)
@@ -1465,6 +1465,8 @@ __
 d:would<- AUXL
 __
 d:should<-AUXL
+__
+d:do   <- AUXL
 __
 d:can  <- AUXL
 __
