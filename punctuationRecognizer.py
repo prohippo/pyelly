@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# punctuationRecognizer.py : 13aug2015 CPM
+# punctuationRecognizer.py : 06sep2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -52,9 +52,9 @@ sID      = '!'    #                              semantic  feature ID
 sBRK     = 'brk'  # reserved for semantic identification of punctuation
 
 defns = [                                      # syntactic significance of punctuation
-    [ u'[' , '[' + pID + '*l]' ] ,             # equivalent to D: rules in *.g.elly
+    [ u'[' , '[' + pID + '*l,start]' ] ,       # equivalent to D: rules in *.g.elly
     [ u']' , '[' + pID + '*r]' ] ,             #
-    [ u'(' , '[' + pID + '*l]' ] ,             # you may override with punctuation rules
+    [ u'(' , '[' + pID + '*l,start]' ] ,       # you may override with punctuation rules
     [ u')' , '[' + pID + '*r]' ] ,             # but must set higher plausibility for them
     [ u'“' , '[' + pID + '*l,quo,start]' ] ,
     [ u'”' , '[' + pID + '*r,quo]' ] ,
@@ -165,7 +165,7 @@ if __name__ == '__main__':
 
     import symbolTable
 
-    ups = u'.?!ab,;:+cd$%&\'\"ef-—“”…hg`i'
+    ups = u'.?!ab,;:+cd()$%&\'\"ef-—“”…hg`i'
 
     symb = symbolTable.SymbolTable()
     punc = PunctuationRecognizer(symb)
