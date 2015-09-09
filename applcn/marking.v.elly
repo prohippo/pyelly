@@ -258,6 +258,7 @@ box : VERB
 boy : NOUN
 bratislava : NOUN
 breakdown : NOUN
+bring : VERB
 brink : NOUN
 broadway : NOUN
 bubonic : ADJ
@@ -298,6 +299,8 @@ chance : ADJ[%to]
 character : NOUN
 charge : NOUN
 charge : VERB
+check : NOUN - -1
+check : VERB
 chess : NOUN
 chief : NOUN
 chief : ADJ
@@ -362,6 +365,8 @@ cough : NOUN - -1
 cough : VERB[^ptcl]
 country : NOUN
 courtyard : NOUN
+cover : NOUN
+cover : VERB
 cozy : NOUN
 cozy : ADJ
 crafty : ADJ
@@ -674,6 +679,9 @@ guide : NOUN
 guide : VERB
 hail : NOUN
 hail : VERB
+half : NOUN
+half : ADJ
+half : ADV
 hard : ADJ
 hard : ADV
 hard-boiled : ADJ
@@ -726,6 +734,8 @@ inflate : VERB
 information : NOUN
 infrastructure : NOUN
 insect : NOUN
+insert : NOUN
+insert : VERB
 inside : NOUN - -2
 inside : ADJ - -1
 inside : ADV - -2
@@ -1079,6 +1089,9 @@ positive : NOUN
 positive : ADJ
 possible : ADJ
 possible : NOUN
+pot : NOUN
+pot : VERB
+pour : VERB
 power : NOUN
 power : VERB
 prague : NOUN
@@ -1262,6 +1275,8 @@ share : VERB
 sharp : NOUN - -1
 sharp : ADJ
 sharp : ADV
+shell : NOUN
+shell : VERB
 shop : NOUN
 shop : VERB
 show : NOUN
@@ -1454,6 +1469,8 @@ true : NOUN
 true : VERB
 true : ADJ[%to]
 true : ADV
+try : NOUN
+try : VERB
 tuck : NOUN - -2
 tuck : VERB
 tuesday : NOUN
@@ -1592,21 +1609,3 @@ wry : ADJ
 year : NOUN
 yet : ADV
 zinfandel : NOUN
-
-bring : VERB
-check : NOUN - -1
-check : VERB
-cover : NOUN
-cover : VERB
-half : NOUN
-half : ADJ
-half : ADV
-insert : NOUN
-insert : VERB
-pot : NOUN
-pot : VERB
-pour : VERB
-shell : NOUN
-shell : VERB
-try : NOUN
-try : VERB
