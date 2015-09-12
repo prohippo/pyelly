@@ -198,8 +198,10 @@ _
   right
 __
 g:ELEM->NCLU[:-dit, prep,-poss]
-#?>>?
-  >>[!rn]
+#      ?>>?
+ l[$msr]>>[!ln,rn]
+        >>[!rn]
+
 __
 g:ELEM->NCLU[:-dit,-prep,-poss]
 #      ?>>?
@@ -531,12 +533,29 @@ _
   var typg=det
   (lxtd)
 __
-g:NCLU[:*r,prep]->PREP[%-cnj] NCLU[:-prep]
-#      ?>>?
- l[$-to]>>*r+
+p:pphr
 _
   var typg=prep
   (lxtd)
+__
+
+g:NCLU[:*r,prep]->PREP[%-cnj] NCLU[:-prep,-det,num]
+#      ?>>?
+ r[$msr]>>*r
+ l[$-to]>>*r[$-msr]+
+_
+  trace
+  (pphr)
+__
+g:NCLU[:*r,prep]->PREP[%-cnj] NCLU[:-prep,det,num]
+ l[$-to]>>*r[$-msr]+
+_
+  (pphr)
+__
+g:NCLU[:*r,prep]->PREP[%-cnj] NCLU[:-prep,-num]
+ l[$-to]>>*r[$-msr]+
+_
+  (pphr)
 __
 g:NCLU->DATE NCLU[:-det,-num,-qnt,-prep]
 _
@@ -998,7 +1017,9 @@ __
 #
 # simple inflections
 g:NOUN[:*l,plur]->NOUN[:-*l,-*r] XS
- l[$sglr]>>--
+#       ?>>?
+ l[$sglr]>>*l--
+         >>*l
 _
   (twob)
 __
@@ -1622,5 +1643,3 @@ g:CONJ[:*l]->CONJ CLSP
 _
   (clspr)
 __
-
-

@@ -365,7 +365,7 @@ cough : NOUN - -1
 cough : VERB[^ptcl]
 country : NOUN
 courtyard : NOUN
-cover : NOUN
+cover : NOUN - -1
 cover : VERB
 cozy : NOUN
 cozy : ADJ
@@ -894,7 +894,7 @@ men : NOUN[:plur]
 method : NOUN
 michael : NOUN
 military : NOUN
-minute : NOUN
+minute : NOUN [$msr] 0
 minute : ADJ
 miracle : NOUN
 mistake : NOUN
@@ -1537,7 +1537,7 @@ waste : VERB
 watch : NOUN
 watch : VERB
 water : NOUN
-water : WATER
+water : VERB
 wave : NOUN
 wave : VERB
 wax : NOUN
