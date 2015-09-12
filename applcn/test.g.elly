@@ -128,9 +128,15 @@ g:np[:*r]     -> adjective np[:-num,-det]
 _
   (2b)
 __
-g:np   -> noun
+g:np[:*r,-wh] -> noun
+ >>*l[$-a]
 _
   trace
+  if [$a]
+     append -a-
+  elif [$u]
+     append -u-
+     end
   left
 __
 g:vp   -> verb
@@ -194,4 +200,20 @@ d:-en  <- sufx[^ed]
 __
 d:-ing <- sufx[^ing]
  >>+
+__
+d:and <- conj
+__
+d:but <- conj
+__
+d:wha <- noun[:wh]
+ >>[$a]
+__
+d:whu <- noun
+ >>[$u]
+__
+g:sent->conj np[:-wh]
+_
+  left
+  append -+-
+  right
 __

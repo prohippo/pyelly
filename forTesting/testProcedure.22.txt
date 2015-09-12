@@ -1,13 +1,19 @@
 trace
 linefeed
-if [!sem]
-  append sem SET!
+if [!one]
+  append one SET!
 else
-  append sem NOT SET!
+  append one NOT SET!
   end
 linefeed
-if [!tem]
-  append tem SET!
+if [!two]
+  append two SET!
 else
-  append tem NOT SET!
+  append two NOT SET!
+  end
+linefeed
+if [!three]
+  append three SET!
+else
+  append three NOT SET!
   end
