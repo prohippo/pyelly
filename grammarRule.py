@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# grammarRule.py : 03sep2015 CPM
+# grammarRule.py : 12sep2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -130,7 +130,8 @@ class ExtendingRule(BasicRule):
         bhx = self.sfet.hexadecimal(False) + '-' + self.sftr.hexadecimal(False)
         syn = unicode(self.styp) + '[' + bhx + ']'
         msk = unicode(self.utfet)
-        return unicode(self.seqn) + ': ' + syn + '->' + '-- ' + msk
+        cgs = ' cgs:' + str(self.cogs != None)
+        return unicode(self.seqn) + ': ' + syn + '->' + '-- ' + msk + cgs
 
 class SplittingRule(BasicRule):
 
@@ -180,7 +181,8 @@ class SplittingRule(BasicRule):
         ryn = unicode(self.rtyp) + ' ' + rms
         bhx = self.sfet.hexadecimal(False) + '-' + self.sftr.hexadecimal(False)
         syn = unicode(self.styp) + '[' + bhx + ']'
-        return unicode(self.seqn) + ': ' + syn + '->' + '-- ' + lms + '  ' + ryn
+        cgs = ' cgs:' + str(self.cogs != None)
+        return unicode(self.seqn) + ': ' + syn + '->' + '-- ' + lms + '  ' + ryn + cgs
 
 ###########################################################################
 # Note that the Y type of a syntax rule is not saved as an attribute of it.
