@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBottomUp.py : 03sep2015 CPM
+# parseTreeBottomUp.py : 12sep2015 CPM
 # -----------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -66,6 +66,8 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
         litc   - cognitive
         ntyp   - count of syntax types
 
+        ctx    - interpretive context
+
         _zbs   - all-zero syntactic features
         _pls   - saved plausibility score from last evaluation
     """
@@ -90,6 +92,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
         self.ntyp = stb.getSyntaxTypeCount()
         self.gtb = gtb
         self.ptb = ptb
+        self.ctx = None   # set by ParseTree, if at all
         super(ParseTreeBottomUp,self).__init__()
 #       print "back in ParseTreeBottomUp"
         self.nul  = ( len(gtb.splits[gtb.XXX]) > 0 )
@@ -468,11 +471,11 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
             self._pls = phr.krnl.bias         # save plausibility
 #*          print 'from' , g
 #*          print 'sent=' , phr
-            if phr.krnl.rule.gens.doRun(ctx,phr):  # run generative semantics
+            if phr.krnl.rule.gens.doRun(ctx,phr): # run generative semantics
                 if ellyConfiguration.longDisplay:
-                    self.dumpAll()                 # show complete parse tree
+                    self.dumpAll()                # show complete parse tree
                 else:
-                    self.dumpTree(phr)             # show parse tree only for SENT phrase
+                    self.dumpTree(phr)            # show parse tree only for SENT phrase
                 return True
 
         print >> sys.stderr , ''
@@ -532,8 +535,11 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
         if (typ == self.gtb.UNKN or
             self.gtb.mat.derivable(typ,gbs)):               # acceptable syntax type?
             ph = self.makePhrase(self.wordno,r)             # make phrase with rule
-#           print 'adding leaf' , ph
-#           print 'r=' , r , 'dvdd =' , dvdd
+#           print 'ph=' , ph
+            if r.cogs != None:
+#               print 'score'
+                r.cogs.score(self.ctx,ph)                   # score it cognitively
+#           print 'dvdd =' , dvdd
             if ph != None:
                 self.initializeBias(ph)                     # for ranking of ambiguities
                 if dvdd and len(self.gtb.splits[typ]) > 0:  # segment analyzed?
@@ -546,7 +552,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
 #       print 'fail'
         return False
 
-    def _makeLiteralRule ( self , typ , fet , gens=None ):
+    def _makeLiteralRule ( self , typ , fet , gens=None , cogs=None ):
 
         """
         create a temporary dictionary rule for a unknown term
@@ -556,6 +562,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
             typ   - syntactic type
             fet   - syntactic features
             gens  - generative procedure
+            cogs  - cognitive
 
         returns:
             rule for unknown term
@@ -564,7 +571,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
 #       print 'makeLiteralRule typ=' , typ , 'gens=' , gens
         r = grammarRule.ExtendingRule(typ,fet)
         r.gens = self.litg if gens == None else gens
-        r.cogs = self.litc
+        r.cogs = self.litc if cogs == None else cogs
         return r
 
 #
@@ -597,6 +604,7 @@ if __name__ == '__main__':
             """
             self.styp = n
             self.sfet = ellyBits.EllyBits()
+            self.cogs = None
 
     class G(object):  # dummy grammar table class
         """ dummy class for testing

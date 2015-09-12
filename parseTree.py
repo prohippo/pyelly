@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTree.py : 02sep2015 CPM
+# parseTree.py : 11sep2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -51,7 +51,7 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
     create parser with grammar, syntax type patterns, and macros
 
     attributes:
-        ctx  - interpretive context for cognitive semantics
+        ctx (inherited from ParseTreeBottomUp)
     """
 
     def __init__ ( self , stb , gtb , ptb , ctx ):

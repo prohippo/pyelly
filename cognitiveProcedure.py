@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveProcedure.py : 03sep2015 CPM
+# cognitiveProcedure.py : 12sep2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -74,7 +74,7 @@ class CognitiveProcedure(object):
         """
 
         if self.logic == None: return 0
-#       print 'cognitive scoring'
+#       print 'cognitive scoring: phrs=' , phrs
 
         trce = False           # enable diagnostic tracing
         clno = 0               # clause index
@@ -83,11 +83,10 @@ class CognitiveProcedure(object):
         for cls in self.logic: # go through all clauses
 
             clno += 1
+#           print 'clno=' , clno
             for p in cls[0]:   # go through all predicates of clause
                 op = p[0]
-                if phrs.krnl.lftd == None:
-                    pass
-                elif op == semanticCommand.Ctrc:
+                if op == semanticCommand.Ctrc:
                     print >> sys.stderr , ''
                     print >> sys.stderr , '  at phrase' , phrs.krnl.seqn , ': rule=' , phrs.krnl.rule.seqn ,
                     print >> sys.stderr , 'with current bias= ' , phrs.krnl.rule.bias
@@ -97,12 +96,17 @@ class CognitiveProcedure(object):
                     break
                 elif op == semanticCommand.Clftf or op == semanticCommand.Crhtf:
                     # test features of descendants
+                    if phrs.krnl.lftd == None: break
                     dph = ( phrs.krnl.lftd if op == semanticCommand.Clftf or phrs.krnl.rhtd == None
                             else phrs.krnl.rhtd )
                     bts = dph.krnl.semf.compound()
                     if not ellyBits.check(p[1],bts): break
                 elif op == semanticCommand.Clftc or op == semanticCommand.Crhtc:
                     # check concepts of descendants
+                    if phrs.krnl.lftd == None: break
+                    if cntx == None:
+                        print >> sys.stderr , '  no context for conceptual hierarchy'
+                        break
                     dph = ( phrs.krnl.lftd if op == semanticCommand.Clftc or phrs.krnl.rhtd == None
                             else phrs.krnl.rhtd )
                     cnc = dph.krnl.cncp
@@ -123,7 +127,8 @@ class CognitiveProcedure(object):
 
             else:             # execute actions of clause if ALL predicates satisfied
                 if trce:
-                    print >> sys.stderr , '  cog sem at clause' , clno
+                    ncls = len(self.logic)
+                    print >> sys.stderr , '  cog sem at clause' , clno , 'of' , ncls
 #                   print >> sys.stderr , '   =' , cls[1]
                 for a in cls[1]:                      # get next action
                     op = a[0]
