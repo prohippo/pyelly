@@ -215,6 +215,11 @@ Release Notes:
                       extend "marking" rules and integration test
  1.3    -  06sep2015  add reset of inherited syntactic and semantic features
                       fix bugs in handling features and clean up code
+ 1.3.1  -  13sep2015  make integration testing script more flexible
+                      extend basic "test" integration test
+                      clean up "marking" integration test
+                      fix missing cognitive semantics for leaf phrase nodes
+                      improve diagnostic output
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will require regeneration of any previously saved *.elly.bin files to ensure
