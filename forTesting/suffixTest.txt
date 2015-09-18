@@ -23,6 +23,7 @@ adapter adapt
 addition add
 adherence adhere
 administrate administr
+admiral admiral
 admiration admire
 admittance admit
 adolescent adolesce

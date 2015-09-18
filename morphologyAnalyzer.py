@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# morphologyAnalyzer.py : 15oct2014 CPM
+# morphologyAnalyzer.py : 17sep2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -125,7 +125,7 @@ if __name__ == '__main__':
     intr = not stat.S_ISREG(mode)  # flag for reading from keyboard
 
     sfil = sys.argv[1] if len(sys.argv) > 1 else 'default'
-    pfil = sys.argv[2] if len(sys.argv) > 2 else 'default'
+    pfil = sys.argv[2] if len(sys.argv) > 2 else sfil
 
     base = ellyConfiguration.baseSource + '/'
     sdfn = ellyDefinitionReader.EllyDefinitionReader(base + sfil + '.stl.elly')

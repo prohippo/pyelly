@@ -392,7 +392,7 @@ dse 3 1 .
 dster 0 0 .
 ducer 1 4 . 0e
 duct 1 3 &.
-duction 1 4 ,
+duction 1 4 .
 ductive 1 3 &.
 dug 1 1 ig. 2ed
 dulance 3 5 t,
@@ -1195,7 +1195,6 @@ meter 1 3 r.
 metric 1 4 .
 metry 1 4 .
 mier 1 1 y, 1
-premier 0 0 .
 miest 1 1 y, 1
 miliate 3 1 ble.
 mility 3 1 ble.
@@ -1206,6 +1205,7 @@ minate 1 3 &.
 minent 1 4 . 0e
 minist 1 3 &.
 minous 3 3 e.
+miral 0 0 .
 mirate 1 3 &.
 missible 2 2 t. 3a
 mission 1 2 t.
@@ -1394,6 +1394,7 @@ odden 2 2 , 1
 oder 2 3 . 0e
 odial 2 2 y. 1
 odic 2 2 &.
+oduction 2 4 e. 1
 ogenate 2 4 .
 oggier 1 3 y, 1
 oggiest 1 3 y, 1
@@ -1637,6 +1638,7 @@ pplause 1 5 d.
 ppliance 0 0 .
 pplicate 0 0 .
 pposition 1 4 &.
+premier 0 0 .
 priation 1 5 &.
 private 0 0 .
 psis 1 1 t. 3
@@ -2122,7 +2124,7 @@ ugal 2 2 &.
 ugant 2 2 &.
 ugary 2 4 .
 ugate 2 2 &.
-ugee 2 3 .
+ugee 2 3 . 0e
 uggest 0 2 .
 ugly 2 2 .
 uidize 2 3 .
