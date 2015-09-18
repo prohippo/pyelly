@@ -176,6 +176,7 @@ _
   append </punc>
 __
 g:SEGM->SEGM CONJ
+ r[!aux]>>-6
  l[$cnj]>>-8
         >>[$cnj]-4
 _
@@ -1268,6 +1269,12 @@ d:per     <- PREP
 __
 d:among   <- PREP
 __
+d:upon    <- PREP
+__
+d:during  <- PREP
+__
+d:without <- PREP
+__
 
 d:to   <- TO
 __
@@ -1329,6 +1336,10 @@ __
 d:because  <- CONJ
 __
 d:until    <- CONJ
+__
+d:whatever <- CONJ
+__
+d:whenever <- CONJ
 __
 
 d:all  <- QUAN[:ind,cnj]
@@ -1424,6 +1435,9 @@ d:or   <- CONJ
  >>[!coord]
 __
 d:but  <- CONJ
+__
+d:nor  <- CONJ
+ >>[!coord]
 __
 d:plus <- CONJ
 __
@@ -1642,4 +1656,34 @@ g:CONJ[:*l]->CONJ CLSP
  >>+
 _
   (clspr)
+__
+g:CNJA->CONJ AUXL
+ l[!-aux,coord]>>+0
+               >>--
+_
+  (twob)
+__
+g:AUXL->AUXL CNJA
+ r[!aux]>>++
+        >>------
+_
+  (twob)
+__
+g:AUXL[^*r]->PUNC[|*l,quo] AUXL
+ >>[$quo]
+_
+  var typg=punc
+  (typg)
+  linefeed
+  right
+__
+g:AUXL->AUXL[^*r] PUNC[|*r,quo]
+ l[$quo]>>+
+        >>--
+_
+  left
+  append <punc>
+  right
+  append </punc>
+  linefeed
 __

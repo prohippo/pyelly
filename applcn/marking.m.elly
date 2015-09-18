@@ -8,17 +8,26 @@
 
 &@'ll -> \\1 will
 &@’ll -> \\1 will
-we're -> we are
-weren't -> were not
-don't -> do not
-they've -> they have
-they're -> they are
-you're -> you are
-it’s -> it is
-he’s -> he is
-
-there’s -> there is
-that’s -> that is
+&@'re -> \\1 are
+&@’re -> \\1 are
+&@n't -> \\1 not
+&@n’t -> \\1 not
+&@'ve -> \\1 have
+&@’ve -> \\1 have
+he -'s  -> he is
+he -’s  -> he is
+it -'s  -> it is
+it -’s  -> it is
+here -'s  -> here is
+here -’s  -> here is
+@here -'s  -> \\1here is
+@here -’s  -> \\1here is
+that -'s  -> that is
+that -’s  -> that is
+&@'d  -> \\1 had
+&@’d  -> \\1 had
+i'm   -> i am
+i'm   -> i am
 
 1 another -> one another
 
