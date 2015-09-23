@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBuffer.py : 10aug2015 CPM
+# ellyBuffer.py : 21sep2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -67,12 +67,14 @@ def normalize ( s ):
     consecutive white spaces to a single space
 
     arguments:
-        s   - Unicode input char sequence to operate on
+        s   - Unicode string or char list to operate on
+    returns:
+        normalized sequence
     """
 
     spaced = False
-    k = 0
     n = len(s)
+    ns = [ ]
     for i in range(n):
         x = s[i]
         if ellyChar.isLetter(x):
@@ -86,9 +88,8 @@ def normalize ( s ):
             spaced = False
         else:
             spaced = False
-        s[k] = x
-        k += 1
-    s = s[:k]
+        ns.append(x)
+    return ns
 
 class EllyBuffer(object):
 
@@ -482,8 +483,7 @@ class EllyBuffer(object):
             s     - list or string of chars to fill with
         """
 
-        normalize(s)
-        self.append(s)
+        self.append(normalize(s))
 
     def putBack ( self , w ):
 
@@ -668,7 +668,7 @@ if __name__ == '__main__':
     if len(sys.argv) == 1:
         test = [  # lines
             u"'oops,'" ,
-            u'The aa vv. We xx "yy" zz ee? A U.S. resp wil do!' ,
+            u'The aa vv.  We xx "yy" zz ee?  A U.S. resp wil do!' ,
             u'more stuff.' ,
             u'ff, gg, hh' ,
             u'\u00c0\u00c1\u00c2 \u265e' ,
