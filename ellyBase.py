@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 11sep2015 CPM
+# ellyBase.py : 21sep2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -56,8 +56,8 @@ import symbolTable
 
 import os   # needed to get file modification times
 
-sys.stdout = codecs.getwriter('utf8')(sys.stdout) # redefine standard output and standard
-sys.stderr = codecs.getwriter('utf8')(sys.stderr) # error streams for UTF-8 encoding
+sys.stdout = codecs.getwriter('utf8')(sys.stdout) # redefine standard output and error
+sys.stderr = codecs.getwriter('utf8')(sys.stderr) # streams for UTF-8 encoding
 
 # binary files
 
@@ -74,7 +74,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.3.1'                      # current version of PyElly software
+release = 'v1.3.2'                      # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -274,7 +274,7 @@ class EllyBase(object):
             nameRecognition.setUp(ntabl)
             ellyConfiguration.extractors.append( [ nameRecognition.scan , 'name' ] )
 
-        self.iex = entityExtractor.EntityExtractor(self.ptr,self.ctx) # set up extractors
+        self.iex = entityExtractor.EntityExtractor(self.ptr,stb) # set up extractors
 
         self.eundef = stb.findUnknown()
 
@@ -421,9 +421,9 @@ class EllyBase(object):
         s = self.sbu.buffer
 #       print 'mx=' , mx , 'len(s)=' , len(s) , 's=' , s
 
-        if k < mx:                    # next word cannot produce token as long as already seen?
-            chs = mr[1]               # any vocabulary element matched
-            suf = mr[2]               # any suffix removed in matching
+        if k < mx:                     # next word cannot produce token as long as already seen?
+            chs = mr[1]                # any vocabulary element matched
+            suf = mr[2]                # any suffix removed in matching
             if len(chs) > 0:
                 self.sbu.skip(mx)
                 if suf != '':
@@ -452,7 +452,7 @@ class EllyBase(object):
             return to
 #       print '[' + rws + ']' , 'not found in dictionary'
 
-        to = self._extractToken()      # single-word matching with analysis
+        to = self._extractToken(mx)    # single-word matching with analysis
 
 #       print 'to=' , to
         if to == None: return False if mx == 0 else True
@@ -478,7 +478,7 @@ class EllyBase(object):
             k     - length of first component in buffer
 
         returns:
-            match parameters [ text span of match , suffix removed ]
+            match parameters [ text span of match , vocabulary match , suffix removed ]
 
         exceptions:
             ParseOverflow
@@ -488,7 +488,7 @@ class EllyBase(object):
         sb = self.sbu.buffer           # input buffer
         tr = self.ptr                  # parse tree for results
 
-                                       # match status
+                                       # initialize match status
         nspan = 0                      #   total span of match
         vmchs = [ ]                    #   chars of vocabulary entry matched
         suffx = ''                     #   any suffix removed in match
@@ -584,13 +584,14 @@ class EllyBase(object):
 
         return count
 
-    def _extractToken ( self ):
+    def _extractToken ( self , mnl ):
 
         """
         extract next token from input buffer and look up in grammar table
 
         arguments:
             self  -
+            mnl   - minimum length for any match
 
         returns:
             ellyToken on success, otherwise None
@@ -614,13 +615,16 @@ class EllyBase(object):
             sys.exit(1)
 #       print 'extracted' , '['+ ws + ']'
 
-        found = self._tableLookUp(ws,tree,w.isSplit()) > 0
-#       print 'found in external table=' , found
+        wl = len(ws)
+        if wl > mnl:
+            found = self._tableLookUp(ws,tree,w.isSplit()) > 0
+#           print 'found in external table=' , found
 
-        if ws in self.rul.gtb.dctn:         # look up internally regardless
-#           print '"' + ws + '" in dictionary'
-            if tree.createPhrasesFromDictionary(ws,w.isSplit()):
-                found = True
+        if wl >= mnl:
+            if ws in self.rul.gtb.dctn:      # look up internally
+#               print '"' + ws + '" in dictionary'
+                if tree.createPhrasesFromDictionary(ws,w.isSplit()):
+                    found = True
 
 #       print 'found in internal dictionary=' , found
         if found:                           # if any success, we are done
@@ -640,6 +644,7 @@ class EllyBase(object):
             w = buff.getNext()              # get token again with stemming and macros
 
             ws = u''.join(w.root)
+            if len(ws) < mnl: return None
             if self._tableLookUp(ws,tree):  # external lookup
                 found = True
 
@@ -761,6 +766,7 @@ if __name__ == '__main__':
         if len(l) == 0 or l[0] == '\n': break
 #       print 'input:' , type(line) , '->' , type(l) , l
         txt = list(l.strip())
+        so.write('\n')
         lo = eb.translate(txt,True)
         if lo == None:
             print >> sys.stderr , '????'
