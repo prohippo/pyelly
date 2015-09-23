@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# entityExtractor.py : 28feb2015 CPM
+# entityExtractor.py : 21sep2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -42,11 +42,11 @@ class EntityExtractor(object):
 
     attributes:
         ptr   - parse tree for extracted information
-        ctx   - saved context
+        sym   - saved symbol table
         exs   - extraction procedure list
     """
 
-    def __init__ ( self , ptr , ctx ):
+    def __init__ ( self , ptr , sym ):
 
         """
         initialization
@@ -54,15 +54,15 @@ class EntityExtractor(object):
         arguments:
             self  -
             ptr   - parse tree
-            ctx   - context
+            sym   - symbol table
         """
 
         self.ptr = ptr
-        self.ctx = ctx
+        self.sym = sym
         self.exs = [ ]
         for x in ellyConfiguration.extractors:
             proc = x[0]
-            synt = syntaxSpecification.SyntaxSpecification(ctx.syms,x[1])
+            synt = syntaxSpecification.SyntaxSpecification(sym,x[1])
             self.exs.append([ proc , synt.catg , synt.synf.positive ])
 
     def dump ( self ):
@@ -75,7 +75,7 @@ class EntityExtractor(object):
         """
         for ex in self.exs:
             print ex[0] ,
-            print  'syntax cat=' , self.ctx.syms.getSyntaxTypeName(ex[1]).upper() ,
+            print  'syntax cat=' , self.sym.getSyntaxTypeName(ex[1]).upper() ,
             print 'fet=' , ex[2].hexadecimal(False)
 
     def run ( self , segm ):
@@ -84,7 +84,7 @@ class EntityExtractor(object):
         execute each extractor and store results
 
         arguments:
-            self  -   
+            self  -
             segm  - input buffer
 
         returns:
@@ -121,7 +121,7 @@ if __name__ == '__main__':
     utre = parseTest.Tree()
     uctx = parseTest.Context()
 
-    ee = EntityExtractor(utre,uctx)
+    ee = EntityExtractor(utre,uctx.syms)
     print 'procedures:'
     ee.dump()
     print ''
