@@ -30,7 +30,7 @@ information, including an overview of some basic linguistics. Documentation
 of individual Python source files can be generated as needed with the
 Python pydoc utility.
 
-At present, PyElly consists of 63 Python modules comprising about fifteen
+At present, PyElly consists of 64 Python modules comprising about sixteen
 thousand lines of source code. There are also various definition files
 to support basic various language processing capabilities. The PyElly
 download also includes rules for some example applications, including
@@ -220,6 +220,12 @@ Release Notes:
                       clean up "marking" integration test
                       fix missing cognitive semantics for leaf phrase nodes
                       improve diagnostic output
+ 1.3.2  -  23sep2015  add ellySurvey tool for vocabulary development
+                      fix text normalization bug in handling input
+                      add apostrophe wildcard
+                      fix bugs in binding to text matching wildcards
+                      clean up token lookup
+                      clean up "marking" rules
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will require regeneration of any previously saved *.elly.bin files to ensure
