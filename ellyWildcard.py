@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 09aug2015 CPM
+# ellyWildcard.py : 22sep2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -38,6 +38,10 @@ import ellyBuffer
 X  = 0xE000       # start of private codes in Unicode, used for pattern syntax
 Xc = unichr(X)    #   (Python 2.* only)
 
+RSQm = u'\u2019'  # right single quote
+RDQm = u'\u201D'  # right double quote
+PRME = u'\u2032'  # prime
+
 def isWild ( c ):
 
     """
@@ -68,7 +72,10 @@ cSAL = unichr(X+11) # match any sequence of 1 or more letters
 cSOS = unichr(X+12) # start of optional sequence
 cEOS = unichr(X+13) # end of optional sequence
 cSPC = unichr(X+14) # match any space
-cEND = unichr(X+15) # match end of token
+cAPO = unichr(X+15) # match any apostrophe
+cEND = unichr(X+16) # match end of token
+
+Separate = [ cSPC , cAPO ] # must each be in a separate binding
 
 ## special pattern input characters to be interpreted as wildcards for matching
 
@@ -82,13 +89,14 @@ wSPC = u'_'    # to match space char
 wCAN = u'~'    # to match nonalphanumeric
 wALL = u'*'    # to match any substring
 wSPN = u'&'    # to match one or more characters of next wildcard type
+wAPO = RSQm    # to match any apostrophe
 wEND = u'$'    # to match end of token
 
 ## encoding of wildcards
 
 Coding = [ wANY , wCAN , wDIG , wALF , wUPR , wVWL , wCNS , wALL ,
            wSPN + wANY , wSPN + wDIG , wSPN + wALF , u'[' , u']' ,
-           wSPC , wEND ]
+           wSPC , wAPO , wEND ]
 
 ## associating wildcards with char type checking methods
 
@@ -146,6 +154,8 @@ def convert ( strg ):
             t.append(cCNS)
         elif x == wSPC:
             t.append(cSPC)
+        elif x == wAPO:
+            t.append(cAPO)
         elif x == wEND:
             t.append(cEND)
         elif x == wALL:
@@ -202,7 +212,7 @@ def convert ( strg ):
 
 #   print "converted=", t
 
-    return u''.join(t).lower() # converted string
+    return u''.join(t).lower() # converted string to match against
 
 def deconvert ( patn ):
 
@@ -267,9 +277,6 @@ def minMatch ( patn ):
         m += 1
 
     return k
-
-RSQm = u'\u2019'  # right single quote
-RDQm = u'\u201D'  # right double quote
 
 Trmls = [ RDQm , u'"' , RSQm , u"'" , u'.' , u')' , u']' ]  # chars marking extent of pattern match
 
@@ -358,6 +365,14 @@ def match ( patn , text , offs=0 , limt=None ):
         bf[0] = os            # set binding to range of chars
         bf[1] = os + ns       #
         return bf
+
+    def _modify ( ):
+        """
+        set special tag for binding
+        arguments:
+
+        """
+        mbd[mbi].append(None)
 
     def _mark ( kind ):
         """
@@ -508,6 +523,13 @@ def match ( patn , text , offs=0 , limt=None ):
         elif tc == cSPC: # space wildcard?
 #           print "SPC:"
             if last != '' and ellyChar.isWhiteSpace(last):
+                _bind(); _modify(); mbi += 1
+                continue
+
+        elif tc == cAPO: # apostrophe wildcard?
+#           print "APO: last=" , last
+            if last in [ RSQm , "'" , PRME ]:
+                _bind(); _modify(); mbi += 1
                 continue
 
         elif tc == cSOS:
@@ -599,7 +621,12 @@ def match ( patn , text , offs=0 , limt=None ):
     mbdo.pop(0)            # ignore empty binding
     while len(mbdo) > 0:   #
         bd = mbdo.pop(0)   # get next binding
-        if bd[0] < 0:      # check for optional match indicator here
+        if len(bd) > 2:
+            bd.pop()
+            mbd.append(bd)
+            lbd = bd
+            lb = -1
+        elif bd[0] < 0:    # check for optional match indicator here
             lb = -1        # if so, drop from new consolidated bindings
         elif lb == bd[0]:  # check for binding continuous with previous
             lb = bd[1]     #
@@ -628,9 +655,11 @@ if __name__ == "__main__":
         print "usage: X pattern"
         sys.exit(0)
 
-    print "pat=" , sys.argv[1]
+    rawp = unicode(sys.argv[1],'utf-8')
 
-    pattern = convert(sys.argv[1])
+    print "pat=" , rawp
+
+    pattern = convert(rawp)
 
     print "testing wildcard matching"
     print "enter text to match:"
@@ -642,7 +671,7 @@ if __name__ == "__main__":
         except KeyboardInterrupt:
             break
 
-        txt = list(unicode(line.rstrip()))
+        txt = list(unicode(line.rstrip(),'utf-8'))
         if len(txt) == 0: break
         print "text=" , txt
         b = match(pattern,txt,0)
@@ -650,8 +679,8 @@ if __name__ == "__main__":
         if b != None:
             n = b.pop(0)
             print n , "chars matched"
-            while len(b) > 0:
-                r = b.pop(0)
-                print r
+            for j in range(len(b)):
+                r = b[j]
+                print '\\\\' + str(j + 1) , r
         else:
             print "NO MATCH!"
