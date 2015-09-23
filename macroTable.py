@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# macroTable.py : 14apr2015 CPM
+# macroTable.py : 22sep2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -45,6 +45,8 @@ import definitionLine
 #
 # the next two functions check for common problems in macro rules
 
+special = ellyWildcard.Separate
+
 def _checkBindings ( left , right ):
 
     """
@@ -70,23 +72,25 @@ def _checkBindings ( left , right ):
                 break
             b = right[k]
             k += 1
-            if 1 <= b and b <= '9':
+            if '1' <= b and b <= '9':  # note character comparisons!
                 if mxb < b: mxb = b
 
 #       print 'mxb=' , mxb
 
     if mxb == '0': return True
 
-    m = int(mxb) - int('0')
+    m = int(mxb)    # maximum binding
 
-    n = 0           # count of wildcard sequences
-    k = 0
-    l = len(left)   # iterate on substitution string
+    n = 0           # to count up possible wildcard bindings
+    k = 0           # to iterate on pattern string
+    l = len(left)   # iteration limit
     while True:
         while k < l:
             c = left[k]
             k += 1
-            if ellyWildcard.isWild(c):
+            if c in special:
+                n += 1
+            elif ellyWildcard.isWild(c):
                 if c != ellyWildcard.cEND: n += 1
                 break
         if k == l:
@@ -94,7 +98,10 @@ def _checkBindings ( left , right ):
         while k < l:
             c = left[k]
             k += 1
-            if not ellyWildcard.isWild(c):
+            if c in special:
+                n += 1
+                break
+            elif not ellyWildcard.isWild(c):
                 break
 
 #       print 'BIND: m=' , m , 'n=' , n
@@ -263,6 +270,7 @@ class MacroTable(object):
             TableFailure on error
         """
 
+#       print defs.linecount() , 'lines'
         while True:
             l = defs.readline()               # next macro rule
 #           print "rule input=" , l
@@ -338,6 +346,7 @@ class MacroTable(object):
                 self.letWx.append(r)          # everything else under letter wildcard
 
             self.count += 1                   # count up macro substitution
+#           print 'count=' , self.count
 
         if self._errcount > 0:
             print >> sys.stderr , '**' , self._errcount , 'macro errors in all'
@@ -415,6 +424,7 @@ if __name__ == '__main__':
     if mtb.count == 0:                 # check for success
         print >> sys.stderr , 'empty table'
         sys.exit(1)                    # quit on no table
+    print ''
     mtb.dump()
 
     sb = substitutionBuffer.SubstitutionBuffer(mtb)
@@ -422,7 +432,7 @@ if __name__ == '__main__':
         sys.stdout.write('> ')
         st = sys.stdin.readline()      # get test input
         if len(st) <= 1: break
-        ss = st.strip().decode('utf8') # convert to Unicode
+        ss = st.decode('utf8').strip() # convert to Unicode
         sb.clear()
         sb.append(ss)
 
