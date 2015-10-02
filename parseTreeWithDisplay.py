@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeWithDisplay.py : 25jul2015 CPM
+# parseTreeWithDisplay.py : 28sep2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -144,13 +144,18 @@ class ParseTreeWithDisplay(parseTree.ParseTree):
             out.write('\n')
         out.write('\n')
 
-        wn = len(self.ctx.tokns)   # last parse position in input
+        wn = len(self.ctx.tokns)   # set to last parse position in input
+        while wn > 0 and len(self.goal[wn]) == 0:
+            wn -= 1
         gs = self.goal[wn]         # goals at end of parsed input
         gl = len(gs)               # number of goals at last position
 
-        out.write(str(gl) + ' goals at final position= ' + str(wn) + '\n')
+        out.write(str(gl) + ' final goals at position= ' + str(wn) + '\n')
         for g in gs:
-            out.write(" " + str(g) + "\n")
+            fs = '{:4.4s}'.format(self.stb.getSyntaxTypeName(g.cat))
+            grs = str(g)
+            kn = grs.find(':') + 1
+            out.write(NBSP + grs[:kn] + ' ' + fs + grs[kn:] + '\n')
         out.write("\n")
         out.write(str(self.phlim) + ' phrases altogether\n')
         out.write('\nambiguities\n')

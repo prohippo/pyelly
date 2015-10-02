@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBase.py : 16jul2015 CPM
+# parseTreeBase.py : 30sep2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -98,9 +98,10 @@ class ParseTreeBase(object):
             cn = '' if self.cncp == conceptualHierarchy.NOname else '/cnc=' + self.cncp
 
             return ( 'phrase ' + unicode(self.seqn) + ' @' + unicode(self.posn)
-                     + ': type=' + unicode(self.typx) + ' syn[' + self.synf.hexadecimal() + ']'
+                     + ': typ=' + u'{:2d}'.format(self.typx)
+                     + ' syn[' + self.synf.hexadecimal() + ']'
                      + ' sem[' + self.semf.hexadecimal() + '] : bia='
-                     + unicode(self.bias) + cn + ' use=' + str(self.usen) )
+                     + unicode(self.bias) + cn +' use=' + unicode(self.usen) )
 
         def __str__ ( self ):
             """
@@ -310,8 +311,8 @@ class ParseTreeBase(object):
                 summary string
             """
             n = self.rul.seqn
-            return ( 'goal ' + unicode(self.seq) + ': type=' + unicode(self.cat)
-                    + ' for [' + unicode(self.lph) + ']' + ' [rule= ' + str(n) + ']' )
+            return ( 'goal ' + unicode(self.seq) + ': typ=' + u'{:2d}'.format(self.cat)
+                   + ' for [' + unicode(self.lph) + ']' + ' rul=' + str(n) )
 
         def __str__ ( self ):
             """
