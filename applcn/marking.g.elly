@@ -1550,6 +1550,8 @@ d:-est <- XEST
 __
 d:-'s  <- APOS
 __
+d:-’s  <- APOS
+__
 
 d:-ion  <- SUFX[#vTOn]
 __
