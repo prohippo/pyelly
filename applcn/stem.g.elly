@@ -1,0 +1,55 @@
+# stem.g.elly
+# grammar rules for testing inflectional stemmer integration
+g:sent->ss
+__
+g:sent->sent punc[|stop]
+__
+g:ss->nclu
+__
+g:ss->vclu
+__
+g:ss->ss xx
+__
+g:nclu->noun
+__
+g:vclu->verb
+__
+g:nclu->adj noun
+__
+g:nclu->nclu apos
+__
+g:noun->noun xs
+__
+g:verb->verb xs
+__
+g:verb->verb xed
+__
+g:verb->verb xing
+__ 
+g:ss->ss punc
+__
+d:-s <- xs
+__
+d:-ed <- xed
+__
+d:-ing <- xing
+__
+d:-'s <- apos
+__
+d:xx <- xx
+_
+ space
+ obtain
+__
+d:thing <- noun
+__
+d:bake <- verb
+__
+g:noun->unkn xs
+__
+g:verb->unkn xs
+__
+g:verb->unkn xed
+__
+g:verb->unkn xing
+__

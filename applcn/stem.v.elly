@@ -1,0 +1,11 @@
+# stem.v.elly
+# vocabulary rules for testing inflectional stemmer integration
+big : ADJ
+cat : NOUN
+dog : NOUN
+pig : NOUN
+news : NOUN
+big pig : NOUN
+take : VERB
+so take : VERB
+ever so take : VERB
