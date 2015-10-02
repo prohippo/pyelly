@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyToken.py : 01aug2015 CPM
+# ellyToken.py : 01oct2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -55,7 +55,7 @@ class EllyToken(object):
 
         arguments:
             self  -
-            x     - Unicode input string
+            x     - Unicode input string or list of chars
         """
 
         if x != None:
@@ -101,7 +101,7 @@ class EllyToken(object):
 
         arguments:
             self  -
-            x     - Unicode input string or list
+            x     - Unicode input string or list of chars
         """
 
         if not isinstance(x,basestring):
@@ -355,7 +355,7 @@ if __name__ == "__main__":
     else:
         ux = sys.argv[1]
         print len(ux) , type(ux) , ux
-        if type(ux) != 'unicode':
+        if not isinstance(ux,unicode):
             ux = ux.decode('utf8')
         print type(ux)
 
@@ -386,3 +386,6 @@ if __name__ == "__main__":
 
     print 'ascii=  ' , str(t)
     print 'unicode=' , unicode(t)
+
+    tls = EllyToken([ u'x' , u'y' , u'z' ])
+    print 'tls=' , tls
