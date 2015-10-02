@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyDefinition.py : 27may2015 CPM
+# ellyDefinition.py : 24sep2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -177,7 +177,8 @@ class Grammar(EllyDefinition):
                 print >> sys.stderr , 'rule FAILures on' , el
                 raise ellyException.TableFailure
 
-            ellyPickle.save(self,sysf)
+            if self.rls != None:
+                ellyPickle.save(self,sysf)
 
         else:
             print "loading saved language rules from" , sysf
