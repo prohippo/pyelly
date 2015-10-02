@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 12jun2015 CPM
+# ellyChar.py : 28sep2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -43,6 +43,10 @@ SLA = u'/'         # Unicode slash
 BSL = u'\\'        # Unicode backslash
 SPC = u' '         # Unicode space
 NBS = u'\u00A0'    # Unicode no-break space
+
+RSQm = u'\u2019'   # right single quote (same as APX)
+RDQm = u'\u201D'   # right double quote
+PRME = u'\u2032'   # prime
 
 Pnc = [ u'“' , u'”' , u'‘' , u'’' , u'–' , u'—' , u'…' ] # special punctuation
 
@@ -273,9 +277,20 @@ def isWhiteSpace ( x ):
     arguments:
         x - the char
     returns:
-        True if ordingary space, False otherwise
+        True if Unicode space, False otherwise
     """
     return (x < Lim and Space[ord(x)])
+
+def isApostrophe ( x ):
+    """
+    check for variations of apostrophes
+
+    arguments:
+        x - the char
+    returns:
+        True if apostrophe space, False otherwise
+    """
+    return x == APO or x == APX or x == PRME
 
 ## for equating Latin-1 letters with 26 ASCII letters when indexing
 
@@ -411,7 +426,7 @@ def findBreak ( text , offset=0 ):
             if x == '-' or isEmbeddedCombining(x):
                 if k + 1 < n:
                     c = text[k+1]
-                    if c == APO or isLetterOrDigit(c):
+                    if isApostrophe(c) or isLetterOrDigit(c):
                         k += 2
                         continue
             if k == offset:

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 22sep2015 CPM
+# ellyWildcard.py : 28sep2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -37,10 +37,6 @@ import ellyBuffer
 
 X  = 0xE000       # start of private codes in Unicode, used for pattern syntax
 Xc = unichr(X)    #   (Python 2.* only)
-
-RSQm = u'\u2019'  # right single quote
-RDQm = u'\u201D'  # right double quote
-PRME = u'\u2032'  # prime
 
 def isWild ( c ):
 
@@ -78,6 +74,10 @@ cEND = unichr(X+16) # match end of token
 Separate = [ cSPC , cAPO ] # must each be in a separate binding
 
 ## special pattern input characters to be interpreted as wildcards for matching
+
+RSQm = ellyChar.RSQm  # right single quote
+RDQm = ellyChar.RDQm  # right double quote
+PRME = ellyChar.PRME  # prime
 
 wANY = u'?'    # to match any alphanumeric character
 wDIG = u'#'    # to match digit
@@ -528,7 +528,7 @@ def match ( patn , text , offs=0 , limt=None ):
 
         elif tc == cAPO: # apostrophe wildcard?
 #           print "APO: last=" , last
-            if last in [ RSQm , "'" , PRME ]:
+            if ellyChar.isApostrophe(last):
                 _bind(); _modify(); mbi += 1
                 continue
 
