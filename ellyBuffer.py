@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBuffer.py : 21sep2015 CPM
+# ellyBuffer.py : 01oct2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -34,6 +34,7 @@ an input buffer class for Elly language analysis
 
 import ellyChar
 import ellyToken
+import unicodedata
 
 separators = [                 # for breaking tokenization scan
     u'-'  ,
@@ -114,27 +115,41 @@ class EllyBuffer(object):
         self.index  = None
         self.clear()
 
-    def __str__ ( self ):
+    def __unicode__ ( self ):
 
         """
-        show print representation of buffer
+        get print representation of buffer
 
         arguments:
             self
 
         returns:
-            string representation
+            Unicode string representation
         """
 
         nc = self.count()
         bf = self.buffer
-        out = list('EllyBuffer with {:d} chars'.format(nc))
+        out = list(u'EllyBuffer: {:d} chars'.format(nc))
         md = 16
         for i in range(nc):
-            if i%md == 0: out.append('\n')
-            out.extend([ '<' , bf[i] , '>' ])
-        out.append('\n')
-        return u''.join(out).encode('utf8')
+            if i%md == 0: out.append(u'\n')
+            out.extend([ u'<' , bf[i] , u'>' ])
+        out.append(u'\n')
+        return u''.join(out)
+
+    def __str__ ( self ):
+
+        """
+        get print representation of buffer
+
+        arguments:
+            self
+
+        returns:
+            ASCII string representation
+        """
+
+        return unicodedata.normalize('NFKD',unicode(self)).encode('ascii','ignore')
 
     def clear ( self ):
 
@@ -170,11 +185,11 @@ class EllyBuffer(object):
         """
 
         if not isinstance(text,list):
-            text = list(text)           # get new text as list if not already
+            text = list(text)            # get new text as list if not already
         if len(self.buffer) > 0:
             if not ellyChar.isWhiteSpace(self.buffer[-1]) and text[0] != ' ':
-                self.buffer.append(' ') # put in space separator if needed
-        self.buffer.extend(text)        # add new text
+                self.buffer.append(u' ') # put in space separator if needed
+        self.buffer.extend(text)         # add new text
 
     def prepend ( self , text ):
 
@@ -286,7 +301,7 @@ class EllyBuffer(object):
 #       print 'findBreak k=' , k
         if k > 2 and self.buffer[k-1] in [ APO , APX ]:
             k -= 1
-        if k > 2 and self.buffer[k-1] in [ APO , APX , COM ]:
+        if k > 2 and self.buffer[k-1] in [ APO , APX , COM , DOT ]:
             k -= 1
         self.index = k
         return k
@@ -709,4 +724,4 @@ if __name__ == '__main__':
         tkn = eb.getNext()
         if tkn == None: break
         print 'extract <' + u''.join(tkn.root) + '>'
-        print 'tkn=' , tkn
+        print 'next token=' , unicode(tkn)

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBufferEN.py : 13jun2015 CPM
+# ellyBufferEN.py : 01oct2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -187,7 +187,7 @@ if __name__ == "__main__":
                 print "len=" , len(buf.buffer)
                 t = buf.getNext()
                 if t == None: break
-                print ">>>> " , t
+                print ">>>> " , unicode(t)
         except ellyException.StemmingError:
             print >> sys.stderr , 'stemming error'
             continue

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# substitutionBuffer.py : 12jun2015 CPM
+# substitutionBuffer.py : 01oct2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -253,7 +253,8 @@ if __name__ == "__main__":
     while True:
         try:
             sys.stdout.write("> ")
-            l = sys.stdin.readline()
+            line = sys.stdin.readline()
+            l = line.decode('utf8')
         except KeyboardInterrupt:
             break
         l = l.strip()
@@ -272,6 +273,6 @@ if __name__ == "__main__":
                 print >> sys.stderr , 'stemming error'
                 break
             if t == None: break
-            print ">>>>" , t
+            print ">>>>" , unicode(t)
         print "------------"
     sys.stdout.write("\n")
