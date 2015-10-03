@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 21sep2015 CPM
+# ellyBase.py : 01oct2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -74,7 +74,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.3.2'                      # current version of PyElly software
+release = 'v1.3.3'                      # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -342,12 +342,12 @@ class EllyBase(object):
                     return None         # if next token cannot be handled, quit
                 if len(self.ptr.queue) == 0:
                     break
-#               print 'next tokn=' , tokn
+#               print 'from lookup tokn=' , tokn
                 if tokn.capn:
 #                   print 'capitalized, with' , len(self.ptr.queue) , 'leaf phrases'
                     for ph in self.ptr.queue:
 #                       print 'ph=' , ph
-                        ph.krnl.semf.set(0)
+                        ph.krnl.semf.set(0) # set capitalization as reserved semantic feature
 #                       print 'ph=' , ph , '!'
                 self.ptr.digest()       # process queue to get all ramifications
                 self.ptr.restartQueue() # for any leading zero production
@@ -406,35 +406,47 @@ class EllyBase(object):
 
         if len(s) == 0: return True    # macros can empty out buffer
 
+#       print unicode(self.sbu)
         k = self.sbu.findBreak()       # try to find first component for lookup
         if k == 0:
             k = 1                      # must have at least one char in token
 
+#       print 'break at k=' , k
         kl = len(s)
         if  k + 1 < kl and s[k] == '+' and s[k+1] == ' ':
             k += 1                     # recognize possible prefix
 
 #       print 'len(s)=' , kl , 'k=' , k , 's=', s
 
-        mr = self._scanText(k)         # text matching
-        mx = mr[0]
+        mr = self._scanText(k)         # text matching in various ways
+        mx  = mr[0]                    # overall maximum match length
+        chs = mr[1]                    # any vocabulary element matched
+        suf = mr[2]                    # any suffix removed in matching
         s = self.sbu.buffer
-#       print 'mx=' , mx , 'len(s)=' , len(s) , 's=' , s
+#       print 'scan result mx=' , mx , 'chs=' , chs , 'suf=' , suf
+#       print 'len(s)=' , len(s) , 's=' , s
 
-        if k < mx:                     # next word cannot produce token as long as already seen?
-            chs = mr[1]                # any vocabulary element matched
-            suf = mr[2]                # any suffix removed in matching
-            if len(chs) > 0:
-                self.sbu.skip(mx)
-                if suf != '':
-                    self.sbu.prepend(suf)
+        if ( k < mx or
+             k == mx and suf != '' ):  # next word cannot produce token as long as already seen?
+
+#           print 'queue:' , len(self.ptr.queue)
+#           print 'chs=' , chs
+            if len(chs) > 0:           # any vocabulary matches?
+#               print 'put back' , suf , mx , s
+                self.sbu.skip(mx)      # if so, they supersede
+                if suf != '':          # handle any suffix removal
+                    self.sbu.prepend(list(suf))
+#                   print 'suf=' , suf
             else:
                 chs = self.sbu.extract(mx)
 #               print 'extracted chs=' , chs
-            to = ellyToken.EllyToken(u''.join(chs))
-#           print 'long token=' , to
+            to = ellyToken.EllyToken(chs)
+#           print 'long token=' , unicode(to)
             self.ctx.tokns.append(to)
-            if mr[2] != '' : to.dvdd = True  # must note suffix removal for token!
+            if suf != '':
+                if not ellyChar.isApostrophe(suf[1]):
+                    to.dvdd = True     # must note suffix removal for token!
+#           print 'queue:' , len(self.ptr.queue)
             return to
 
         wsk = self.sbu.buffer[:k]
@@ -443,21 +455,32 @@ class EllyBase(object):
         rws = u''.join(wsk)
         found = self.ptr.createPhrasesFromDictionary(rws.lower(),False)
         if found or mx > 0:
-#           print 'found'
+#           print 'found internally'
             self.sbu.skip(k)
 #           print 'next=' , self.sbu.buffer[self.sbu.index:]
 #           print 'queue after =' , len(self.ptr.queue)
             to = ellyToken.EllyToken(rws)
-            self.ctx.tokns.append(to)
+            if len(suf) > 1:           # change token to show suffix properly
+#               print 'suf=' , suf
+                cs = suf[1]            # first char in suffix after '-'
+                rt = to.root           # this is a list!
+                lk = -1                # start at last char in token
+                while rt[lk] != cs: lk -= 1
+                sn = len(rt) + lk      # where to divide suffix from root
+#               print 'sn=' , sn , rt
+                to.root = rt[:sn]      # root without suffix
+                self.sbu.prepend(suf)  # restore suffix to input for processing
+            self.ctx.tokns.append(to)  # add token to parse tree
             return to
+
 #       print '[' + rws + ']' , 'not found in dictionary'
 
         to = self._extractToken(mx)    # single-word matching with analysis
 
-#       print 'to=' , to
+#       print 'to=' , unicode(to)
         if to == None: return False if mx == 0 else True
 
-#       print 'to=' , to , 'len(s)=' , len(s) , s
+#       print 'to=' , unicode(to) , 'len(s)=' , len(s) , s
 #       print 'at', len(self.ctx.tokns) , 'in token list'
         self.ctx.tokns.append(to)
 
@@ -494,6 +517,7 @@ class EllyBase(object):
         suffx = ''                     #   any suffix removed in match
 
         lm = len(sb)                   # scan limit
+        vmx = 0                        # external vocabulary match maximum
 #       print 'next component=' , sb[:k] , ', context=' , sb[k:lm]
 
         if self.vtb != None:           # look in external dictionary first, if it exists
@@ -506,8 +530,8 @@ class EllyBase(object):
                         break
                     ks += 1
             ss = u''.join(sb[:ks])     # where to start for indexing
-#           print 'ss=' , ss
-            n = vocabularyTable.toIndex(ss)  # get actual indexing
+#           print 'ss=' , ss , sb[:ks]
+            n = vocabularyTable.delimitKey(ss)  # get actual indexing
 #           print 'n=' , n
             rl = self.vtb.lookUp(sb,n) # get list of the longest matches
 #           print len(rl) , 'matches'
@@ -518,7 +542,8 @@ class EllyBase(object):
                 vmchs = r0.vem.chs     #
                 suffx = r0.suffx       #
 
-#               print len(rl) , 'suffx=' , suffx
+                vmx = nspan
+
                 for r in rl:
                     ve = r.vem         # get vocabulary entry
 #                   print 've=' , ve
@@ -528,6 +553,10 @@ class EllyBase(object):
                         tr.lastph.lens = nspan  # set char length of leaf phrase node
                                                 # just added for later selection
                         tr.lastph.krnl.cncp = ve.con
+#                       print 'vocab phr=' , tr.lastph , 'len=' , tr.lastph.lens
+                        if suffx != '':
+                            if ellyChar.isApostrophe(suffx[1]):
+                                tr.lastph.krnl.usen = 0
 
 #       print 'vocabulary m=' , nspan
 
@@ -549,9 +578,13 @@ class EllyBase(object):
         if nspan > 0:                  # any matches at all?
             tr.requeue()               # if so, keep only longest of them
 
+        if vmx > 0 and nspan > vmx:    # any longer match than vocabulary table?
+            vmchs = ''                 # if so, remove vocabulary info in result
+            suffx = ''
+#       print 'returns [' , nspan , ',' , vmchs , ',' , suffx , ']'
         return [ nspan , vmchs , suffx ]
 
-    def _tableLookUp ( self , ws , tree , spl=False ):
+    def _simpleTableLookUp ( self , ws , tree , spl=False ):
 
         """
         simple external dictionary lookup
@@ -591,7 +624,7 @@ class EllyBase(object):
 
         arguments:
             self  -
-            mnl   - minimum length for any match
+            mnl   - minimum length for any previous match
 
         returns:
             ellyToken on success, otherwise None
@@ -617,11 +650,11 @@ class EllyBase(object):
 
         wl = len(ws)
         if wl > mnl:
-            found = self._tableLookUp(ws,tree,w.isSplit()) > 0
+            found = self._simpleTableLookUp(ws,tree,w.isSplit()) > 0
 #           print 'found in external table=' , found
 
         if wl >= mnl:
-            if ws in self.rul.gtb.dctn:      # look up internally
+            if ws in self.rul.gtb.dctn:     # look up internally
 #               print '"' + ws + '" in dictionary'
                 if tree.createPhrasesFromDictionary(ws,w.isSplit()):
                     found = True
@@ -629,13 +662,17 @@ class EllyBase(object):
 #       print 'found in internal dictionary=' , found
         if found:                           # if any success, we are done
             return w
+        if mnl > 0:
+            return None                     # defer to previous lookup
 
 #       print 'logic: ' , d.man.pref , d.man.suff
         dvdd = False
         if d.man.analyze(w):                # any analysis possible?
             root = u''.join(w.root)         # if so, get parts of analysis
             tan = w.pres + [ root ] + w.sufs
-            dvdd = len(w.pres) > 0 or len(w.sufs) > 0
+            if len(w.sufs) > 0:
+                sx = w.sufs[-1]
+                dvdd = not ellyChar.isApostrophe(sx[1])
 #           print 'token analysis=' , tan
             while len(tan) > 0:             # and put back into input
                 x = tan.pop()
@@ -645,7 +682,7 @@ class EllyBase(object):
 
             ws = u''.join(w.root)
             if len(ws) < mnl: return None
-            if self._tableLookUp(ws,tree):  # external lookup
+            if self._simpleTableLookUp(ws,tree):  # external lookup
                 found = True
 
             if ws in self.rul.gtb.dctn:     # internal lookup
@@ -657,7 +694,7 @@ class EllyBase(object):
             w.dvdd = dvdd
             return w
 
-#       print 'unrecognized token w=' , w
+#       print 'unrecognized token w=' , unicode(w)
         if self.pnc.match(w.root):          # check if next token is punctuation
 #           print 'catg=' , self.pnc.catg , self.pnc.synf.hexadecimal()
             if tree.addLiteralPhrase(self.pnc.catg,self.pnc.synf):
@@ -665,12 +702,12 @@ class EllyBase(object):
                 tree.lastph.krnl.semf.combine(self.pnc.semf)
 #               print 'semf=' , self.pnc.semf
 #               print 'lastph=' , tree.lastph
-            found = True
+#           print 'punc w=' , unicode(w)
+            return w
 
-        if not found:
-#           print 'must create UNKN leaf node'
-            tree.createUnknownPhrase(w)     # unknown type as last resort
-            tree.lastph.lens = len(ws)
+#       print 'must create UNKN leaf node'
+        tree.createUnknownPhrase(w)     # unknown type as last resort
+        tree.lastph.lens = len(ws)
 
         return w
 
