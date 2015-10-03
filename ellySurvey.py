@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellySurvey.py : 22sep2015 CPM
+# ellySurvey.py : 03oct2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2015, Clinton Prentiss Mah
 # All rights reserved.
@@ -124,43 +124,45 @@ class EllySurvey(object):
 
     attributes:
         sbu  - input buffer with macro substitutions
+        gtb  - grammar    table
         vtb  - vocabulary table
         rul  - grammar definitions
         pat  - pattern definitions:$
+        iex  - entity extractors
 
         trs  - simple transformation
         pnc  - punctuation recognizer
 
         ptr  - dummy parse tree
 
-        tks  - token list
+        tks  - token list for output
     """
 
-    def __init__ ( self , system , restore=None ):
+    def __init__ ( self , system ):
 
         """
-        initialization
+        initialization of processing rules
 
         arguments:
             system   - root name for PyElly tables to load
-            restore  - name of session to continue
         """
 
         nfail = 0          # error count for reporting
+
         self.rul = None
 
         self.tks = None    # token list for output
 
         self.ptr = Tree()
 
-        sysf = system + rules
-        redefine = True
         try:
-            self.rul = ellyDefinition.Grammar(system,redefine,None)
+            self.rul = ellyDefinition.Grammar(system,True,None)
         except ellyException.TableFailure:
             nfail += 1
 
         d = self.rul  # language rules
+
+        self.gtb = d.gtb if d != None else None
 
         mtb = d.mtb if d != None else None
         self.sbu = substitutionBuffer.SubstitutionBuffer(mtb)
@@ -169,13 +171,14 @@ class EllySurvey(object):
             inflx = self.sbu.stemmer
         except AttributeError:
             inflx = None
+
         if d != None:
             d.man.suff.infl = inflx   # define root restoration logic
 
         stb = d.stb if d != None else symbolTable.SymbolTable()
 
         try:
-            voc = ellyDefinition.Vocabulary(system,redefine,stb,inflx)
+            voc = ellyDefinition.Vocabulary(system,True,stb,inflx)
         except ellyException.TableFailure:
             nfail += 1
 
@@ -187,18 +190,15 @@ class EllySurvey(object):
 
         self.pnc = punctuationRecognizer.PunctuationRecognizer(stb)
 
+        self.iex = entityExtractor.EntityExtractor(self.ptr,stb) # set up extractors
+
+        self.trs = simpleTransform.SimpleTransform()
+
         ntabl = d.ntb
 
         if ntabl != None and ntabl.filled():
             nameRecognition.setUp(ntabl)
             ellyConfiguration.extractors.append( [ nameRecognition.scan , 'name' ] )
-
-        self.iex = entityExtractor.EntityExtractor(self.ptr,stb) # set up extractors
-
-        if ellyConfiguration.rewriteNumbers:
-            self.trs = simpleTransform.SimpleTransform()
-        else:
-            self.trs = None           # no automatic conversion of written out numbers
 
     def survey ( self , text ):
 
@@ -268,13 +268,14 @@ class EllySurvey(object):
         mr  = self._scanText(k)        # text matching
         mx  = mr[0]
         mty = mr[1]
+        chs = mr[2]                    # any vocabulary element matched
+        suf = mr[3]                    # any suffix removed in matching
         s = self.sbu.buffer
 #       print 'mx=' , mx , 'len(s)=' , len(s), 'k=' , k
 #       print 's=' , s
 
-        if k < mx:                     # next word cannot produce token as long as already seen?
-            chs = mr[2]                # any vocabulary element matched
-            suf = mr[3]                # any suffix removed in matching
+        if ( k < mx or
+             k == mx and suf != '' ):  # next token cannot be as long as already seen?
             if len(chs) > 0:
                 self.sbu.skip(mx)
                 if suf != '':
@@ -283,11 +284,35 @@ class EllySurvey(object):
                 chs = self.sbu.extract(mx)
             to = ellyToken.EllyToken(u''.join(chs))
             self.tks.append([ mty , to ])
-            if mr[2] != '' : to.dvdd = True  # must note suffix removal for token!
-            print
             return True
 
-        self._extractToken(mx,mty)           # single-word matching with analysis
+        wsk = self.sbu.buffer[:k]
+#       print 'wsk=' , wsk
+        rws = u''.join(wsk).lower()
+        found = rws in self.gtb.dctn
+
+        if found:
+    #       print 'found internally'
+            mty += 'D'
+
+        if found or mx > 0:
+            self.sbu.skip(k)
+            to = ellyToken.EllyToken(rws)
+            if len(suf) > 1:           # change token to show suffix properly
+#               print 'suf=' , suf
+                cs = suf[1]            # first char in suffix after '-'
+                rt = to.root           # this is a list!
+                lk = -1                # start at last char in token
+                while rt[lk] != cs: lk -= 1
+                sn = len(rt) + lk      # where to divide suffix from root
+#               print 'sn=' , sn , rt
+                to.root = rt[:sn]      # root without suffix
+                self.sbu.prepend(suf)  # restore suffix to input for processing
+            self.tks.append([ mty , to ])
+            return True
+
+#       print 'extract token'
+        self._extractToken(mx,mty)     # single-word matching with analysis
         return True
 
     def _scanText ( self , k ):
@@ -328,7 +353,7 @@ class EllySurvey(object):
                     ks += 1
             ss = u''.join(sb[:ks])     # where to start for indexing
 #           print 'ss=' , ss
-            n = vocabularyTable.toIndex(ss)  # get actual indexing
+            n = vocabularyTable.delimitKey(ss)  # get actual indexing
 #           print 'n=' , n
             rl = self.vtb.lookUp(sb,n) # get list of the longest matches
             if len(rl) > 0:            #
@@ -367,7 +392,7 @@ class EllySurvey(object):
 
         return [ nspan , mtype , vmchs , suffx ]
 
-    def _tableLookUp ( self , ws ):
+    def _simpleTableLookUp ( self , ws ):
 
         """
         simple external dictionary lookup
@@ -377,14 +402,14 @@ class EllySurvey(object):
             ws    - single-word string
 
         returns:
-            count of matches found
+            True if matches found, False otherwise
         """
 
 #       print 'look up [' + ws + '] externally'
         vs = self.vtb.lookUpSingleWord(ws)  # look up token as word externally
 #       print len(vs) , 'candidates'
 
-        return len(vs)
+        return len(vs) > 0
 
     def _extractToken ( self , mnl , mty ):
 
@@ -411,14 +436,16 @@ class EllySurvey(object):
 #       print 'token ws=' , ws
         if len(ws) >= mnl:
             if len(mty) == 0 or mty[0] != 'V':
-                if self._tableLookUp(ws) > 0:
+                if self._simpleTableLookUp(ws) > 0:
                     mty += 'V'
 
-            if ws in self.rul.gtb.dctn:         # look up internally regardless
+            if ws in self.rul.gtb.dctn:     # look up internally regardless
                 mty += 'D'
 
         if len(mty) > 0:                    # if any success, we are done
             self.tks.append([ mty , w ])
+            return
+        if mnl > 0:                         # go no further if we had matches at start
             return
 
         dvdd = False
@@ -435,7 +462,7 @@ class EllySurvey(object):
 
             ws = u''.join(w.root)
             if len(ws) < mnl: return
-            if self._tableLookUp(ws):       # external lookup
+            if self._simpleTableLookUp(ws): # external lookup
                 mty  = 'V'
 
             if ws in self.rul.gtb.dctn:     # internal lookup
