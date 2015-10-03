@@ -226,6 +226,13 @@ Release Notes:
                       fix bugs in binding to text matching wildcards
                       clean up token lookup
                       clean up "marking" rules
+ 1.3.3  -  04oct2015  fix bugs in vocabulary lookup and tokenization
+                      clean up vocabulary development tool
+                      clean up char and wildcard definitions
+                      improve release checking for binary tables
+                      improve diagnostic output
+                      extend "echo", "marking" rules and integration test
+                      add "stem" application rules and integration test
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will require regeneration of any previously saved *.elly.bin files to ensure
