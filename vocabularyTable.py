@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 28may2015 CPM
+# vocabularyTable.py : 03oct2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -40,7 +40,9 @@ import ellyException
 import vocabularyElement
 import syntaxSpecification
 import featureSpecification
+import conceptualHierarchy
 import sqlite3 as dbs
+import unicodedata
 
 SSpec = syntaxSpecification.SyntaxSpecification
 FSpec = featureSpecification.FeatureSpecification
@@ -48,29 +50,57 @@ FSpec = featureSpecification.FeatureSpecification
 vocabulary = '.vocabulary.elly.bin' # compiled vocabulary file suffix
 source     = '.v.elly'              # input vocabulary text file suffix
 
-nerr = 0                            # shared error count among methods
+nerr = 0                            # shared error count among definition methods
 
-def toIndex ( t ):
+def delimitKey ( t ):
 
     """
     get part of term for vocabulary table indexing that
     ends in alphanumeric or is a single nonalphanumeric
+    with special stripping of 'S at the end
 
     arguments:
-        t  - term as string
+        t  - text string to scan
 
     returns:
-        count of chars to index
+        count of chars to put into search key
     """
 
-    ln = len(t)                   # number of chars in term
+    ln = len(t)                   # number of chars in input text
     if ln == 0: return 0
-    n = t.find(' ')               # find first part of term
-    if n < 0: n = ln              # if indivisible, take everything
-    n -= 1                        # find last alphanumeric chars of first part
-    while n > 0 and not ellyChar.isLetterOrDigit(t[n]):
-        n -= 1
-    return n + 1
+    n = t.find(' ')               # find rough range of key for SQLite in text
+    if n < 0: n = ln              # if undivided by spaces, take everything
+    n -= 1                        # index of last char in range
+    while n > 0:                  # scan input text backwards
+        c = t[n]                  # check char for alphanumeric
+        if ellyChar.isLetterOrDigit(c):
+#           print 'n=' , n , 'c=' , c
+            if n > 1:             # check for 'S as special case!
+                if ( c in [ 's' , 'S' ] and
+                     ellyChar.isApostrophe(t[n-1]) ):
+#                   print 'drop \'S from SQLite key'
+                    n -= 1
+                else:
+                    break
+            else:
+                break
+        n -= 1                    # continue scanning backwards
+    return n + 1                  # to get key length ending in alphanumeric
+
+def toKey ( s ):
+
+    """
+    convert string or list of chars to ASCII key for SQLite
+
+    arguments:
+        s   - string of list of Unicode chars
+
+    returns:
+        ASCII key
+    """
+
+    if isinstance(s,list): s = u''.join(s)
+    return unicodedata.normalize('NFKD',s.lower()).encode('ascii','ignore')
 
 def _err ( s='malformed vocabulary input' ):
 
@@ -89,13 +119,27 @@ def _err ( s='malformed vocabulary input' ):
     print >> sys.stderr , '** vocabulary error:' , s
     raise ellyException.FormatFailure('in vocabulary entry')
 
+def _terminate ( c ):
+
+    """
+    check char for termination of match
+
+    arguments:
+        c  - char to check
+
+    returns:
+        True if termination, False otherwise
+    """
+
+    return not ellyChar.isLetterOrDigit(c)
+
 def compile ( name , stb , defn ):
 
     """
     static method to create an Elly vocabulary database from text file input
 
     arguments:
-        name  - for new BSDDB database
+        name  - for new SQLite database
         stb   - Elly symbol table
         defn  - Elly definition reader for vocabulary
 
@@ -108,7 +152,7 @@ def compile ( name , stb , defn ):
     cdb = None  # SQLite db connection
     cur = None  # SQLite db cursor
 
-#   print >> sys.stderr , 'compiled stb=' , stb
+#   print 'compiled stb=' , stb
 
     if stb == None :
         print >> sys.stderr, 'no symbol table'
@@ -120,7 +164,7 @@ def compile ( name , stb , defn ):
         print >> sys.stderr , 'unexpected failure with zero features'
         raise ellyException.TableFailure
 
-#   print >> sys.stderr , 'zfs=' , zfs               # hexadecimal for all features off
+#   print 'zfs=' , zfs               # hexadecimal for all features off
 
     tsave = ''                                       # original term
     dsave = ''                                       #          definition
@@ -130,7 +174,7 @@ def compile ( name , stb , defn ):
         try:
             os.remove(filn)                          # delete the file if it exists
         except OSError:
-            print >> sys.stderr , 'no' , filn
+            print >> sys.stderr , 'no' , filn        # if no such file, warn but proceed
 
 #### SQLite
 ####
@@ -139,25 +183,23 @@ def compile ( name , stb , defn ):
             cur = cdb.cursor()
             cur.execute("CREATE TABLE Vocab(Keyx TEXT, Defn TEXT)")
             cdb.commit()
-
         except dbs.Error , e:
             print >> sys.stderr , e
-            raise ellyException.TableFailure         # give up on any failure
+            raise ellyException.TableFailure         # give up on any database failure
 
-#       print >> sys.stderr , 'creating' , filn
+#       print 'creating' , filn
 #
 ####
 
         r = None                                          # for error reporting
 
-        while True:                                       # process vocabulary records
+        while True:                                       # process vocabulary definition records
 
             try:                                          # for catching FormatFailure exception
-#               print >> sys.stderr , '------------'
+#               print '------------'
                 r = defn.readline()                       # next definition
                 if len(r) == 0: break                     # stop on EOF
-                if r[0] == '#': continue                  # skip comment line
-#               print >> sys.stderr , type(r) , r
+#               print type(r) , r
 
                 k = r.find(':')                           # look for first ':'
                 if k < 0:
@@ -170,42 +212,42 @@ def compile ( name , stb , defn ):
                 tsave = t                                 # save for any error reporting
                 dsave = d                                 #
 
-#               print >> sys.stderr , ' tm=' , '<' + t + '>' , 'df=' , '<' + d + '>'
+#               print ' tm=' , '<' + t + '>' , 'df=' , '<' + d + '>'
                 if len(t) == 0 or len(d) == 0:
                     _err()                                # quit on missing parts
                 c = t[0]
                 if not ellyChar.isLetterOrDigit(c) and c != '.' and c != '"':
                     _err('bad term')
 
-                n = toIndex(t)                            # get part of term to index
-                if n == 0:
+                n = delimitKey(t)                         # get part of term to index
+                if n <= 0:
                     _err()                                # quit on bad term
-                wky = t[:n].lower()                       # first word of term to define
-#               print >> sys.stderr , '  SQLite key=' , wky
+                wky = toKey(t[:n])                        # key part of term to define
+#               print '  SQLite key=' , wky
 
                 ns = syntaxSpecification.scan(d)          # find extent of syntax info
-#               print >> sys.stderr , 'ns=' , ns
+#               print 'ns=' , ns
                 if ns <= 0: _err('bad syntax specification')
-#               print >> sys.stderr , 'PoS=' , d[:ns]
+#               print 'PoS=' , d[:ns]
 
                 syn = d[:ns]                              # syntax info as string
                 d = d[ns:].strip()                        # rest of definition
 
                 try:
-#                   print >> sys.stderr , 'VT syn=' , syn
-                    ss = SSpec(stb,syn)                   # decode syntax info to get
-#                   print >> sys.stderr , 'VT ss =' , ss
+#                   print 'VT syn=' , syn
+                    ss = SSpec(stb,syn)                   # decode syntax info
+#                   print 'VT ss =' , ss
                 except ellyException.FormatFailure:
                     _err('malformed syntax specification')
                 cat = str(ss.catg)                        #   syntax category
                 syf = ss.synf.positive.hexadecimal(False) #   syntactic flags
-#               print >> sys.stderr , 'syf=' , syf
+#               print 'syf=' , syf
 
                 smf = zfs                                 # initialize defaults for
                 pb = '0'                                  #   cognitive semantics
-                cn = '-'                                  #
+                cn = conceptualHierarchy.NOname           #
 
-#               print >> sys.stderr , '0:d=[' + d + ']'
+#               print '0:d=[' + d + ']'
                 if len(d) > 1:                            # check for cognitive semantics
                     x = d[0]
                     if x == '[' or x == '0' or x == '-':  # semantic features?
@@ -215,21 +257,21 @@ def compile ( name , stb , defn ):
                             d = d[2:].strip()             # skip over
                         else:
                             ns = featureSpecification.scan(d) # look for ']' of features
-#                           print >> sys.stderr , 'ns=' , ns
+#                           print 'ns=' , ns
                             if ns < 0:
                                 _err()
                             sem = d[:ns]                  # get semantic features
                             d = d[ns:].strip()            # skip over
                             try:
-#                               print >> sys.stderr , 'smf=' , smf
+#                               print 'smf=' , smf
                                 fs = FSpec(stb,sem,True)
                             except ellyException.FormatFailure:
                                 _err('bad semantic features')
                             smf = fs.positive.hexadecimal(False) # convert to hex
 
-#                       print >> sys.stderr , '1:d=[' + d + ']'
+#                       print '1:d=[' + d + ']'
                         ld = len(d)
-#                       print >> sys.stderr , 'ld=' , ld
+#                       print 'ld=' , ld
                         if ld == 0:
                             _err('missing plausibility')
                         np = 0
@@ -239,20 +281,20 @@ def compile ( name , stb , defn ):
                         while np < ld:                    # and successive digits
                             if ellyChar.isDigit(d[np]): np += 1
                             else: break
-#                       print >> sys.stderr , 'np=' , np
+#                       print 'np=' , np
                         if np == 0:
                             _err('missing plausibility')
                         pb = d[:np]                       # plausibility bias
-#                       print >> sys.stderr , 'pb=' , pb
+#                       print 'pb=' , pb
                         d = d[np:]
                         ld = len(d)
-#                       print >> sys.stderr , '2:d=[' + d + ']'
+#                       print '2:d=[' + d + ']'
                         if ld > 1:                        # any more to process?
                             c = d[0]                      # get next char after bias
                             d = d[1:]                     # advance scan
                             ld -= 1
                             if c == '/':                  # check for explicit concept
-#                               print >> sys.stderr , 'getting concept'
+#                               print 'getting concept'
                                 np = 0
                                 while np < ld:            # get extent of concept
                                     if ellyChar.isWhiteSpace(d[np]): break
@@ -300,16 +342,16 @@ def compile ( name , stb , defn ):
                 if k > 0:
                     d = ''.join(ld)                 # definition with spaces removed
 
-#               print >> sys.stderr , '3:d=[' + d + ']'
+#               print '3:d=[' + d + ']'
 
                 vrc = [ t , ':' , cat , syf , smf ,
                         pb , cn ]                   # start data record
                 vss = u' '.join(vrc)                # convert to string
                 vss += u' ' + d                     # fill out record with rest of input
-#               print >> sys.stderr , 'type(vss)=' , type(vss)
+#               print 'type(vss)=' , type(vss)
 
-#               print >> sys.stderr , 'rec=' , vrc , 'tra=' , d
-#               print >> sys.stderr , '   =' , vss
+#               print 'rec=' , vrc , 'tra=' , d
+#               print '   =' , vss
 
             except ellyException.FormatFailure:
                 print >> sys.stderr , '*  at [' , tsave ,
@@ -322,7 +364,7 @@ def compile ( name , stb , defn ):
 ####
             try:
                 sql = "INSERT INTO Vocab VALUES(?,?)"
-#               print >> sys.stderr , type(wky) , wky , type(vss) , vss
+#               print type(wky) , wky , type(vss) , vss
                 cur.execute(sql,(wky,vss))
             except dbs.Error , e:
                 print >> sys.stderr , 'FATAL' , e
@@ -335,7 +377,7 @@ def compile ( name , stb , defn ):
 ####
         cdb.commit()
         cdb.close()                                   # clean up
-#       print >> sys.stderr , 'DONE'
+#       print 'DONE'
 #
 ####
 
@@ -356,8 +398,8 @@ class Result(object):
     structured data to return as result of vocabulary table search
 
     attributes:
-        vem    - vocabulary entry matched
-        nspan  - match length for phrase selection
+        vem    - vocabulary entry record matched
+        nspan  - character count in match including any suffix
         suffx  - suffix disregarded in matching
     """
 
@@ -369,13 +411,41 @@ class Result(object):
         arguments:
             self  -
             vem   - vocabulary entry record
-            nspan - character count spanned in match including suffix
+            nspan - total character span in match
             suffx - suffix removed
         """
 
         self.vem   = vem
         self.nspan = nspan
         self.suffx = suffx
+
+    def __unicode__ ( self ):
+
+        """
+        show result parts
+
+        arguments:
+            self
+
+        returns:
+            string representation
+        """
+
+        return u''.join(self.vem.chs) + u' ' + unicode(self.nspan) + u' [' + ''.join(self.suffx) + u']'
+
+    def __str__ ( self ):
+
+        """
+        ASCII string representation
+
+        arguments:
+            self
+
+        returns:
+            string representation
+        """
+
+        return unicodedata.normalize('NFKD',unicode(self)).encode('ascii','ignore')
 
 class VocabularyTable(object):
 
@@ -416,6 +486,7 @@ class VocabularyTable(object):
             self.cdb = dbs.connect(database)
             self.cur = self.cdb.cursor()
             self.stm = stem
+#           print 'stemmer=' , self.stm
         except dbs.Error , e:
             print >> sys.stderr , 'FATAL' , e
             sys.exit(1)
@@ -452,12 +523,13 @@ class VocabularyTable(object):
         if self.cdb == None: return None
 
         try:
+
             rs = [ ]                      # for results
 
-#           print >> sys.stderr , '_ stm=' , self.stm
+#           print '_ stm=' , self.stm
             akey = key.lower()            # convert to ASCII lower case for lookup
 
-#           print >> sys.stderr , 'key=' , type(akey) ,akey
+#           print 'key=' , type(akey) ,akey
 
 #### SQLite
 #
@@ -467,7 +539,7 @@ class VocabularyTable(object):
 #
 ####
 
-#           print >> sys.stderr , 'loop, tup=',tup
+#           print 'loop, tup=',tup
             for v in tup:                 # retrieved vocabulary match
                 ve = vocabularyElement.VocabularyElement(v)
                 rs.append(ve)             # add entry to results
@@ -493,50 +565,71 @@ class VocabularyTable(object):
             count of txs chars matched, 0 on mismatch
         """
 
+#       print 'match up vcs=' , vcs
         self.endg = ''                       # default inflection
         lvc = len(vcs)
         ltx = len(txs)
-        tc = txs[-1]                         # last char in text segment
+        if ltx < lvc: return 0
         dnc = ltx - lvc
+
         nr = icmpr(vcs,txs)                  # do match on lists of chars
 #       print 'nr=' , nr , 'dnc=' , dnc
-#       print 'txs=' , txs
-        if nr > 1:                           # only one missed char allowed
-            return 0
-        elif nr == 0 and dnc == 0:           # exact match?
-            return lvc
-        elif nr == 0 and dnc == 2 and txs[-2:] == ['\'' , 's']:
-#           print 'apostrophe s'
-            self.endg = '-\'s'               # apostrophe + S
-            return ltx
-        elif lvc < 2:                        # can have inflectional ending?
-            return 0
-        else:                                # if so, look for one
-#           print 'tc=' , tc
-            if tc != 's' and tc != 'd' and tc != 'g':
-                return 0                     # only -S, -ED, and -ING checked
-            m = dnc + nr + 1
+#       print 'txs=' , txs , 'ltx=' , ltx
 
-            for i in range(m,ltx):
-                if txs[-i] == ' ':
-                    m += i - 1
-                    break
-            else:
-                m += ltx - 2
-            tw = txs[-m:]                    # start of last word in text chars
-            sw = self.stm.simplify(tw)       # inflectional stemming
-#           print 'sw=' + sw , 'tw=' + tw
-            if len(tw) - len(sw) != dnc:     # stemmed result should now align
-                return 0                     #   with vocabulary entry
-            nr += 1
-#           print 'nr=' , nr
-            ns = icmpr(vcs[-nr:],sw[-nr:])
-            if ns == 0:                      # mismatch gone?
-                self.endg = ( '-s'   if tc == 's' else
-                              '-ed'  if tc == 'd' else
-                              '-ing' )
-                return ltx
-        return 0
+        if nr == 0:                          # vocabulary entry fully matched?
+            if ltx == lvc:
+                return ltx                   # if no more text, done
+            dnc = ltx - lvc                  # otherwise, check text past match
+
+            if ellyChar.isApostrophe(txs[lvc]):             # apostrophe check
+                if dnc > 1 and txs[lvc+1] in [ 's' , 'S' ]: # 'S found?
+                    if dnc == 2 or _terminate(txs[lvc+2]):
+                        self.endg = '-\'s'                  #
+                        return lvc + 2                      # if so, remove ending
+                    return 0
+                if txs[lvc-1] in [ 's' , 'S' ]:             # S' found?
+                    if dnc == 1 or _terminate(txs[lvc+1]):
+                        self.endg = '-\'s'                  # put in implied S!
+                        return lvc + 1                      # if so, remove ending
+                    return 0
+                return lvc                                  # break at
+            if _terminate(txs[lvc]):
+                return lvc                                  # successful match
+
+#       alphanumeric follows match either full or partial
+#       try inflectional stemming to align a match here
+
+        if self.stm == None:
+            return 0                     # if no stemmer, no match possible
+
+        k = lvc - nr + 1                 # get start of mismatch
+        while k < ltx:
+            if _terminate(txs[k]): break # find current end of text to match
+            k += 1
+
+        tc = txs[k-1]                    # last char at end of text
+#       print 'tc=' , tc
+        if tc != 's' and tc != 'd' and tc != 'g':
+            return 0                     # only -S, -ED, and -ING checked
+
+        tw = ''.join(txs[:k])            # start of last word in text chars
+        sw = self.stm.simplify(tw)       # inflectional stemming
+#       print 'sw=' , sw , 'tw=' , tw
+        if len(sw) != lvc:               # stemmed result should now align
+            return 0                     #   with vocabulary entry
+
+#       print 'nr=' , nr
+        ns = icmpr(vcs[-nr:],sw[-nr:])   # continue comparison from previous match
+#       print 'ns=' , ns
+        if ns == 0:                      # mismatch gone?
+            self.endg = ( '-s'   if tc == 's' else
+                          '-ed'  if tc == 'd' else
+                          '-ing' )       # indicate ending removed
+#           print 'txs=' , txs
+#           print 'ltx=' , ltx , 'endg=' , self.endg
+            return k                     # successful match
+
+        return 0                         # no match by default
 
     def lookUp ( self , chrs , keyl ):
 
@@ -558,31 +651,31 @@ class VocabularyTable(object):
         if len(chrs) == 0:
             return res                # empty list at this point
 
-#       print >> sys.stderr , 'chrs=' , type(chrs) , type(chrs[0])
+#       print 'chrs=' , type(chrs) , type(chrs[0])
 
         if keyl < 1:
             return res                # still empty list
 
-        strg = u''.join(chrs[:keyl])
+        strg = toKey(chrs[:keyl])
 
-#       print >> sys.stderr , 'vocab first word=' , list(strg) , type(strg)
+#       print 'vocab first word=' , list(strg) , type(strg)
 
         vs = self._getDB(strg)        # look up first word in vocabulary table
 
         if vs == None or len(vs) == 0:
             return res
 
-#       print >> sys.stderr , len(vs) , 'raw entries found'
+#       print len(vs) , 'raw entries found'
 
         lm = len(chrs)                # total length of text for lookup
 
         for v in vs:                  # look at possible vocabulary matches
 
-#           print >> sys.stderr , 'entry=' , v
+#           print 'entry=' , v
 
             ln = v.length()           # total possible match length for vocabulary entry
 
-#           print >> sys.stderr , 'rln=' , rln , 'ln=' , ln , 'lm=' , lm
+#           print 'rln=' , rln , 'ln=' , ln , 'lm=' , lm
 
             if ln  > lm:              # must be enough text in entry to match
                 continue
@@ -592,17 +685,18 @@ class VocabularyTable(object):
                 chrsk = chrs[k]
                 if not ellyChar.isLetter(chrsk) and chrsk != '\'': break
                 k += 1
-#           print >> sys.stderr , 'k=' , k
-#           print >> sys.stderr , v.chs , ':' , chrs[:k]
-            nm = self.doMatchUp(v.chs,chrs[:k])
+#           print 'k=' , k
+#           print v.chs , ':' , chrs[:k]
+            nm = self.doMatchUp(v.chs,chrs)
             if nm == 0 or nm < rln: continue
 
-#           print >> sys.stderr , 'rln=' , rln , 'ln=' , ln
+#           print 'rln=' , rln , 'ln=' , ln
             if rln < nm:              # longer match than before?
-#               print >> sys.stderr , 'new list'
+#               print 'new list'
                 res = [ ]             # if so, start new result list for longer matches
                 rln = nm              # set new minimum match length
 
+#           print 'returning' , v.chs , nm , self.endg
             rs = Result(v,nm,self.endg)   # new result object be returned
             res.append(rs)            # add to current result list
 
@@ -622,21 +716,25 @@ class VocabularyTable(object):
         """
 
         ves = [ ]                     # result list initially empty
-        if not isinstance(word,basestring):
-            word = u''.join(word)     # make sure argument is list
+#       print 'word=' , word
 
         lw = len(word)
+#       print 'lw=' , lw
         if lw == 0:
             return ves                # empty list at this point
+        key = toKey(word)             # SQLite search key
 
-        vs = self._getDB(word)        # look up first word in vocabulary table
+        vs = self._getDB(key)         # look up key in vocabulary table
+#       print 'vs=' , vs
 
         if vs == None or len(vs) == 0:
             return ves
 
         for v in vs:                  # look at possible vocabulary matches
 
-            if lw == v.length():
+#           print 'v=' , v , v.length() , lw
+            if lw == v.length() and icmpr(v.chs,word) == 0:
+#               print 'match'
                 ves.append(v)         # only exact match acceptable
 
         return ves                    # return all exact matches
@@ -655,8 +753,9 @@ def icmpr ( vc , tc ):
     """
 
     k = len(vc)
-#   print >> sys.stderr , 'vc=' , vc
-#   print >> sys.stderr , 'tc=' , tc[:k]
+    if k == 0: return len(tc)
+#   print 'vc=' , vc
+#   print 'tc=' , tc[:k]
     for i in range(k):
 #       print i , vc[i] , tc[i]
         if vc[i].lower() != tc[i].lower(): return k - i
@@ -683,7 +782,7 @@ if __name__ == '__main__':
         """
         if kl == None: kl = len(ts)
         rs = vtb.lookUp(ts,kl)               # check for possible vocabulary matches
-        print 'for' , '"' + u''.join(ts) + '"' ,
+        print 'in text' , '"' + u''.join(ts) + '"' ,
         if len(rs) == 0:                     # any vocabulary entries found?
             print 'FOUND NONE'
         else:
@@ -767,7 +866,7 @@ if __name__ == '__main__':
     for ky in unqk:
         if nu >= limt: break
         nu += 1
-        check(uvtb,list(ky))                # dump all info for each key
+        check(uvtb,list(ky))           # dump all info for each key
         print ''
 
     print 'enter SINGLE- and MULTI-word terms to look up in table'
@@ -777,7 +876,7 @@ if __name__ == '__main__':
         if len(ul) <= 1: break
         ssx = ul.strip().decode('utf8')
         tsx = list(ssx)                # get list of chars
-        kn = toIndex(ssx)              # get part of term for indexing
+        kn = delimitKey(ssx)           # get part of term for indexing
         if kn == 0:                    # if none, cannot look up
             print 'index NOT FOUND:' , ssx
             continue
