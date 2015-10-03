@@ -1,3 +1,4 @@
 # echo Elly input
 # echo.v.elly
-
+new york : unit =new_york
+st. paul : unit =st._paul
