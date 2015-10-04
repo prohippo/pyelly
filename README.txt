@@ -226,7 +226,7 @@ Release Notes:
                       fix bugs in binding to text matching wildcards
                       clean up token lookup
                       clean up "marking" rules
- 1.3.3  -  04oct2015  fix bugs in vocabulary lookup and tokenization
+ 1.3.3  -  03oct2015  fix bugs in vocabulary lookup and tokenization
                       clean up vocabulary development tool
                       clean up char and wildcard definitions
                       improve release checking for binary tables
