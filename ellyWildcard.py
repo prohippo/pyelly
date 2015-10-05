@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 28sep2015 CPM
+# ellyWildcard.py : 05oct2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -113,6 +113,7 @@ Matching = {
     cSOS : lambda x: True    ,
     cSAL : ellyChar.isLetter ,
     cSDG : ellyChar.isDigit  ,
+    cAPO : ellyChar.isApostrophe ,
     cSAN : ellyChar.isLetterOrDigit
 }
 
