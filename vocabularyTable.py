@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 03oct2015 CPM
+# vocabularyTable.py : 04oct2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -570,16 +570,16 @@ class VocabularyTable(object):
         lvc = len(vcs)
         ltx = len(txs)
         if ltx < lvc: return 0
-        dnc = ltx - lvc
 
         nr = icmpr(vcs,txs)                  # do match on lists of chars
-#       print 'nr=' , nr , 'dnc=' , dnc
+#       print 'nr=' , nr , 'nt='
 #       print 'txs=' , txs , 'ltx=' , ltx
 
         if nr == 0:                          # vocabulary entry fully matched?
             if ltx == lvc:
                 return ltx                   # if no more text, done
             dnc = ltx - lvc                  # otherwise, check text past match
+#           print 'dnc=' , dnc
 
             if ellyChar.isApostrophe(txs[lvc]):             # apostrophe check
                 if dnc > 1 and txs[lvc+1] in [ 's' , 'S' ]: # 'S found?
@@ -602,24 +602,36 @@ class VocabularyTable(object):
         if self.stm == None:
             return 0                     # if no stemmer, no match possible
 
-        k = lvc - nr + 1                 # get start of mismatch
+        k = lvc - nr + 1                 # get extent of text to match against
         while k < ltx:
-            if _terminate(txs[k]): break # find current end of text to match
+            if _terminate(txs[k]):
+                break                    # find current end of text to match
             k += 1
+        n = k - 1
+        while n > 0:
+            if _terminate(txs[n]):
+                n += 1
+                break                    # find start of stemming
+            n -= 1
 
-        tc = txs[k-1]                    # last char at end of text
+#       print 'k=' , k , 'n=' , n , 'nr=' , nr
+
+        if k - n < nr:                   # check if stemming could help match
+            return 0
+
+        tc = txs[k-1]                    # last char at end of text to match
 #       print 'tc=' , tc
         if tc != 's' and tc != 'd' and tc != 'g':
             return 0                     # only -S, -ED, and -ING checked
 
-        tw = ''.join(txs[:k])            # start of last word in text chars
+        tw = ''.join(txs[n:k])           # segment of text for stemming
         sw = self.stm.simplify(tw)       # inflectional stemming
 #       print 'sw=' , sw , 'tw=' , tw
-        if len(sw) != lvc:               # stemmed result should now align
+        if len(sw) + n != lvc:           # stemmed result should now align
             return 0                     #   with vocabulary entry
 
 #       print 'nr=' , nr
-        ns = icmpr(vcs[-nr:],sw[-nr:])   # continue comparison from previous match
+        ns = 0 if nr == 0 else icmpr(vcs[-nr:],sw[-nr:]) # continue from previous match
 #       print 'ns=' , ns
         if ns == 0:                      # mismatch gone?
             self.endg = ( '-s'   if tc == 's' else

@@ -1,5 +1,7 @@
 # stem.v.elly
 # vocabulary rules for testing inflectional stemmer integration
+air : NOUN
+dry : VERB
 big : ADJ
 cat : NOUN
 dog : NOUN
@@ -9,3 +11,4 @@ big pig : NOUN
 take : VERB
 so take : VERB
 ever so take : VERB
+air dry : VERB
