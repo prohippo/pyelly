@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellySurvey.py : 03oct2015 CPM
+# ellySurvey.py : 04oct2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2015, Clinton Prentiss Mah
 # All rights reserved.
@@ -293,7 +293,7 @@ class EllySurvey(object):
 
         if found:
     #       print 'found internally'
-            mty += 'D'
+            mty += 'Id'
 
         if found or mx > 0:
             self.sbu.skip(k)
@@ -360,7 +360,7 @@ class EllySurvey(object):
 #               print 'len(rl)=' , len(rl)
                 r0 = rl[0]             # look at first record
                 nspan = r0.nspan       # should be same for all matches
-                mtype = 'V'
+                mtype = 'Vt'
                 vmchs = r0.vem.chs     #
                 suffx = r0.suffx       #
 
@@ -372,9 +372,9 @@ class EllySurvey(object):
 #       print 'pattern m=' , m
         if  nspan < m:
             nspan = m                  # on longer match, update maximum
-            mtype = 'A'
+            mtype = 'Fa'
         elif m > 0 and nspan == m:
-            mtype = 'VA'
+            mtype = 'VtFa'
 
 #       print 'mtype=' , mtype
 
@@ -382,9 +382,9 @@ class EllySurvey(object):
 #       print 'extractor m=' , m
         if  nspan < m:
             nspan = m                  # on longer match, update maximum
-            mtype = 'E'
+            mtype = 'Ee'
         elif m > 0 and nspan == m:
-            mtype += 'E'               # unchanged match length, add type
+            mtype += 'Ee'               # unchanged match length, add type
 
 #       print 'maximum match=' , nspan
 #       print 'mtype=' , mtype
@@ -437,10 +437,10 @@ class EllySurvey(object):
         if len(ws) >= mnl:
             if len(mty) == 0 or mty[0] != 'V':
                 if self._simpleTableLookUp(ws) > 0:
-                    mty += 'V'
+                    mty += 'Vt'
 
             if ws in self.rul.gtb.dctn:     # look up internally regardless
-                mty += 'D'
+                mty += 'Id'
 
         if len(mty) > 0:                    # if any success, we are done
             self.tks.append([ mty , w ])
@@ -463,10 +463,10 @@ class EllySurvey(object):
             ws = u''.join(w.root)
             if len(ws) < mnl: return
             if self._simpleTableLookUp(ws): # external lookup
-                mty  = 'V'
+                mty  = 'Vt'
 
             if ws in self.rul.gtb.dctn:     # internal lookup
-                mty += 'D'
+                mty += 'Id'
 
         if len(mty) > 0:                    # if any success, we are done
             w.dvdd = dvdd
@@ -474,9 +474,9 @@ class EllySurvey(object):
             return
 
         if self.pnc.match(w.root):          # check if next token is punctuation
-            mty = 'P'
+            mty = 'Pu'
         else:
-            mty = 'U'
+            mty = 'Un'
 
         self.tks.append([ mty , w ])
 
