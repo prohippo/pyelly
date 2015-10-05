@@ -2357,6 +2357,7 @@ zzy 1 2 .
 |cement 0 0 .
 |cloven 1 3 eave. 2
 |clung 1 3 ing. 3ed
+|condom 0 0 .
 |cuable 1 3 e.
 |cursive 0 0 .
 |dally 0 0 .
@@ -2414,10 +2415,9 @@ zzy 1 2 .
 |peter 0 0 .
 |quality 0 0 .
 |rally 0 0 .
+|random 0 0 .
 |rang 1 2 ing. 3ed
 |reckless 0 0 .
-|rode 1 2 ide. 3ed
-|rung 1 2 ing. 3n
 |ruthless 0 0 .
 |ration 0 0 .
 |redden 1 4 . 1
@@ -2427,7 +2427,9 @@ zzy 1 2 .
 |restation 0 0 .
 |rival 0 0 .
 |river 0 0 .
+|rode 1 2 ide. 3ed
 |rodent 0 0 .
+|rung 1 2 ing. 3n
 |safer 1 5 . 0e
 |sally 0 0 .
 |script 0 0 .
@@ -2438,6 +2440,7 @@ zzy 1 2 .
 |singer 1 5 .
 |singly 1 6 e.
 |sister 0 0 .
+|sky 0 0 .
 |slew 1 3 ay. 2ed
 |solder 0 0 .
 |stable 0 0 .

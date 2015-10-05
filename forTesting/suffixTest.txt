@@ -293,6 +293,7 @@ computerize compute
 concentric concentr
 condemnation condemn
 condition condition
+condom condom
 conducive conduce
 configurate configure
 confirmatory confirm
@@ -1098,6 +1099,7 @@ radian radian
 radii radius
 raiment raiment
 rambler ramble
+random random
 randomize random
 rang ring
 reactant react
@@ -1282,6 +1284,7 @@ simplest simple
 simplify simple
 sincerity sincere
 siphoner siphon
+sky sky
 slain slay
 slavic slav
 sleepy sleep
