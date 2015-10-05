@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyDefinitionReader.py : 03jan2015 CPM
+# ellyDefinitionReader.py : 05oct2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -101,9 +101,15 @@ class EllyDefinitionReader(object):
             line  - UTF-8 string
         """
 
-        if len(line) == 0:  return
-        if line[0] == u'#': return     # filter out leading comments
-        k = line.rfind(u' # ')         # and trailing ones starting with " # "
+#       print 'len=' , len(line) , '[' , list(line) , ']'
+        if len(line) <= 1:             # definition lines should be nonempty
+            return
+        start = line[:2]
+        if ( start == u'# '  or        # filter out comment lines starting
+             start == u'#\r' or        # with "# " or consisting only of
+             start == u'#\n' ):        # "#" and "\r" or "\n" following and
+            return                     # trim trailing comments starting
+        k = line.rfind(u' # ')         # from the LAST " # " in a line
         if k >= 0: line = line[:k]     #
 #       print 'line=' , line
 
@@ -141,12 +147,11 @@ class EllyDefinitionReader(object):
 
 #       print "assign ", source
 
-        if type(source) == list:
+        if isinstance(source,list):
 
             for l in source:
-                if type(l) != unicode:
-#                   print 'line type=' , type(l) , l
-                    l = l.decode('utf8')
+                if isinstance(l,unicode):
+                    l = unicode(l)
                 self.save(l)  # fill buffer from list
 
         else:
@@ -253,10 +258,14 @@ if __name__ == "__main__":
         u''    ,
         u'    ',
         u'#   ',            # comment
+        u'#'   ,            # comment
+        u'##  ',            # not comment
         u'    ##' ,         # not comment
         u'xx ' + unichr(0x6211) + unichr(0x5011) + u' # Chinese Unicode' ,
         unichr(0x00e9) + u't' + unichr(0x00e9)   + u' # Latin-1 Unicode' ,
         u'[-]&#[.]#*       num' ,
+        u'#\r\n' ,
+        u'#\n'   ,
         u'\n'
     ]  # default test input
 

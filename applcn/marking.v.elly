@@ -12,8 +12,13 @@ having : HAVE[^ing]
 
 ate : VERB[^ed]
 bit : VERB[^ed]
+built : VERB[^ed]
 did : VERB[^ed]
 hove : VERB[^ed]
+said : VERB[^ed]
+taken : VERB[^ed]
+thought : VERB[^ed]
+written : VERB[^ed]
 
 rosé : NOUN
 ought : VERB
@@ -87,6 +92,7 @@ labor market : NOUN
 unemployment rate : NOUN
 purchasing power : NOUN
 fixed investment : NOUN
+James : NOUN
 
 fried liver attack : NOUN
 2 knights defense : NOUN
@@ -102,7 +108,7 @@ bookended : VERB[^ed] - -1
 "thousands" : NUM
 r&b : NOUN
 
-#### WordNet 3.1 entries
+# # # # WordNet 3.1 entries
 
 a bit : ADV [$deg] 0
 abbey : NOUN
@@ -2337,10 +2343,51 @@ yonder : ADV
 zinfandel : NOUN
 
 at times : ADV
+built : ADJ
+condom : NOUN
+conjunction : NOUN
+connection : NOUN
+creator : NOUN
+criticize : VERB
+difference : NOUN
 different : ADJ
+election : NOUN
 emotional : ADJ
+frankness : NOUN
 front-runner : NOUN
+generally : ADJ
+height : NOUN
+hourly : ADJ
+hourly : ADV
+historical : ADJ
+impression : NOUN
+industrial : ADJ
+infection : NOUN
+innovative : ADJ
+intelligence : NOUN
+metaphorically : ADV
+milky : ADJ
+musical : NOUN - -1
+musical : ADJ
+natural : ADJ
+opportunity : NOUN
+persistence : NOUN
+politeness : NOUN
 possibly : ADV
 presidential : ADJ
+reasonable : ADJ
 responsibility : NOUN
+scrutinise : VERB
+scrutinize : VERB
+secondary : NOUN
+secondary : ADJ
+selection : NOUN
 server : NOUN
+silently : ADV
+strengthen : VERB
+taken : ADJ
+temptation : NOUN
+thought : NOUN
+unfortunately : ADV
+variation : NOUN
+winner : NOUN

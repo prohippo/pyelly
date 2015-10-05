@@ -49,8 +49,8 @@ __
 #
 # syntax rules
 g:SENT->SS
-#?>>?
- >>+0
+# ?>>?
+   >>+0
 _
   append <sent>
   linefeed
@@ -211,8 +211,8 @@ g:ELEM->NCLU[:-dit,-prep,-poss]
         >>[!ln,rn]
 __
 g:ELEM->NCLU[:dit]
-#?>>?
-  >>[!rn]+
+# ?>>?
+   >>[!rn]+
 _
   append <conj>that</conj>
   linefeed
@@ -704,8 +704,8 @@ _
   merge
 __
 g:NCLU[:det]->DET ADJ
-#?>>?
-  >>--
+# ?>>?
+   >>--
 _
   append <nclu><det>
   left
@@ -744,18 +744,18 @@ __
 g:NOUN[:hyph]->NOUN[:-hyph] HYPH
 __
 g:NOUN[:*r]->NOUN[:hyph] NOUN
-#?>>?
-  >>++
+# ?>>?
+   >>++
 __
 g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,-plur,-cnj,-ing] NOUN[:-det,-cnj,ing]
-#?>>?
-  >>+0
+# ?>>?
+   >>+0
 _
  (twob)
 __
 g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,-plur,-cnj,-ing] NOUN[:-det,-cnj,-ing]
-#?>>?
-  >>+
+# ?>>?
+   >>+
 _
  (twob)
 __
@@ -1605,7 +1605,7 @@ __
 d:$ <- MONY
 __
 
-####
+# # # # # # # #
 
 p:opnpl
 _

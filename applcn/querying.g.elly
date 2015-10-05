@@ -1,7 +1,7 @@
 # translate English questions to SQL
 # querying.g.elly
 
-#### global variable initializations for SQL query building
+# ### global variable initializations for SQL query building
 
 i:iterate   = abcdefghijklm
 i:main      = Ai
@@ -10,7 +10,7 @@ i:gfrms =
 i:gsels =
 i:gwhrs =
 
-####
+# ###
 
 p:tell
 _
@@ -332,7 +332,7 @@ _
   # handle contextual reference in general
   (refer)
 
-  ####
+  # # # #
   IF selects=
     IF wheres=
       INSERT froms >
@@ -351,7 +351,7 @@ _
 
   GET it iterate
 
-  ####
+  # # # #
   APPEND from
   SPACE
 
@@ -370,7 +370,7 @@ _
     END
   LINEFEED
 
-  ####
+  # # # #
   (simplify)
 
   APPEND select
@@ -383,7 +383,7 @@ _
     END
   LINEFEED
 
-  ####
+  # # # #
   (joiner)
 
   IF ~wheres=

@@ -1,14 +1,14 @@
 # Eliza Doctor simulation
 # doctor.g.elly
 
-####
+# # # #
 
 p:mumble     # what to say when off the script
 _
   append PLEASE GO ON
 __
 
-####
+# # # #
 
 g:sent[^*right]->ss   # scripted sentence
 __
@@ -20,7 +20,7 @@ __
 g:sent->sent punc
 __
 
-####
+# # # #
 
 p:LbR
 _
@@ -39,7 +39,7 @@ _
   right
 __
 
-####
+# # # #
 
 g:.w.->unkn
 >>-
@@ -58,7 +58,7 @@ _
   left
 __
 
-####
+# # # #
 
 d:you <- pro[=2]
 _
@@ -75,7 +75,7 @@ __
 g:.w.->pro
 __
 
-########## start script
+# # # # # # # # # # # # start script
 
 g:x[@*right]->... key
 >>++++
@@ -574,7 +574,7 @@ _
   (bR)
 __
 
-####
+# # # #
 
 d:mother <- fmly
 _
@@ -1102,7 +1102,7 @@ _
   (bL)
 __
 
-#### part of the Doctor script added much later
+# # # #
 
 d:pro[=2] <- key[@1,2,3,4]
 __
@@ -1207,7 +1207,7 @@ _
   (bL)
 __
 
-####
+# # # #
 
 d:poss[=1] <- key[@1,5]
 __

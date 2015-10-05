@@ -12,7 +12,7 @@
 #
 # They are also ORDER DEPENDENT, as noted below.
 #
-#################### for common expressions
+# ################### for common expressions
 #
    occur in$ -> in
    occur[r]$ -* in -> in
@@ -37,7 +37,7 @@
    in *['s] interest$ -> help \\1
    in regard[s] to$ -> RE
 #
-#################### for business, finance, and government
+# ################### for business, finance, and government
 #
 # order-dependent!
    *national$ -> \\1natl
@@ -83,7 +83,7 @@
    biograph* -> bio
    *graph[ic]$ -> \\1gr
 #
-#################### for names - assume periods already removed
+# ################### for names - assume periods already removed
 #
    [, ]Inc[.]$ ->
    [, ]Ltd[.]$ ->
@@ -96,7 +96,7 @@
    sir$ ->
    dr[.]$  ->
 #
-#################### for dates and time of day
+# ################### for dates and time of day
 #
 # interpret as year
    19##$ -> '\\1
@@ -105,7 +105,7 @@
    #* @[.]m$ -> \\1\\2m
    #*:## @[.]m$ -> \\1:\\2\\3
 #
-#################### for numbers
+# ################### for numbers
 #
 # order-dependent!
    &#000000000000$ -> \\1T
@@ -116,7 +116,7 @@
 # order-dependent!
    \\\\$.0#$ -> \\1c
    \\\\$.##$ -> \\1c
-##
+#
 # 800 telephone numbers
    1-8##-###-####$ -> 18\\1\\2\\3
    1-8## - ???-????$ -> 18\\1\\2\\3
@@ -129,7 +129,7 @@
 #
    no #* -> #\\1
 #
-#################### for verb auxiliaries
+# ################### for verb auxiliaries
 #
    were not$ -> not
    was not$  -> not
@@ -144,16 +144,16 @@
 #
    it -'s$ ->
 #
-#################### for verbs
+# ################### for verbs
 #
    hope -* -> hope
    beg@n to$ ->
 #
-## order dependent!
+#  order dependent!
    to be able$ ->
    to be$ -> be
 #
-#################### for referentials
+# ################### for referentials
 #
    wh*[e]soever$ -> wh\\1ever
    in which$  -> which
@@ -161,12 +161,12 @@
    was @hat$ -> \\1hat
    is @hat$  -> \\1hat
 #
-#################### for conjunctions
+# ################### for conjunctions
 #
    in th* case$ ->
    on account$ -> because
 #
-#################### for word fragments
+# ################### for word fragments
 #
 # exception for readability
    *ight$ -> \\1ght
@@ -175,7 +175,7 @@
    under -@@* -> undr\\1
    -cat$ -> -c
 #
-#################### for inflections
+# ################### for inflections
 #
 # inflectional stemming compensation
    @ed$ -> \\1d
@@ -185,7 +185,7 @@
    * -s'$ -> \\1 -'s
    *sis -s$ -> \\1t
 #
-#################### for punctuation
+# ################### for punctuation
 #
    . -* -> -\\1
    .)   -> )
@@ -196,14 +196,14 @@
 #
    *gramme$ -> \\1gram
 #
-#################### miscellaneous
+# ################### miscellaneous
 #
    need -* to$ -> must
    need to$ -> must
    carry -* out$ -> do
    carry out$ -> do
 
-#################### contractions
+# ################### contractions
 #
    *'ll -> \\1
    *'ve -> \\1

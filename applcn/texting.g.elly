@@ -1,7 +1,7 @@
 # readable text compression
 # texting.g.elly
 
-############ shared procedures
+# ########### shared procedures
 
 p:ldvw    # for non-leaf phrase in parse tree
 _
@@ -91,7 +91,7 @@ _
   return
 __
 
-############ syntax rules
+# ########### syntax rules
 
 g:sent->sent punc
 __
@@ -295,9 +295,9 @@ __
 g:num->cmp num
 __
 
-############ internal dictionary
+# ########### internal dictionary
 
-#### determiners
+# ### determiners
 
 d:the <- det
 _
@@ -329,7 +329,7 @@ d:a <- noun
  >>----
 __
 
-#### prepositions
+# ### prepositions
 
 d:about <- prep[:nr]
 _
@@ -452,7 +452,7 @@ _
   append wo
 __
  
-#### alternative interpretation of some prepositions
+# ### alternative interpretation of some prepositions
  
 d:near <- mod
  >>--
@@ -464,7 +464,7 @@ _
   append ovr
 __
 
-#### auxiliaries
+# ### auxiliaries
  
 d:is <- aux[!BE,IN]
 _
@@ -555,7 +555,7 @@ _
   left
 __ 
  
-#### auxiliaries or nouns
+# ### auxiliaries or nouns
 
 d:can <- aux[!MO]
 _
@@ -587,14 +587,14 @@ d:will <- noun
  >>---
 __
  
-#### auxiliaries and verbs
+# ### auxiliaries and verbs
 
 d:go <- verb
 __
 d:do <- aux[!MO,SV]
 __
  
-#### pronouns
+# ### pronouns
 
 d:he <- pro
 __
@@ -653,7 +653,7 @@ __
 d:their <- mod[#ps]
 __
 
-#### negative
+# ### negative
 
 d:no    <- negn
 __
