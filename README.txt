@@ -233,6 +233,13 @@ Release Notes:
                       improve diagnostic output
                       extend "echo", "marking" rules and integration test
                       add "stem" application rules and integration test
+ 1.3.4  -  07oct2015  improve morphological stemming
+                      fix stemming bugs in vocabulary table lookup, clean code
+                      extend various integration tests for stemming
+                      improve output of ellySurvey
+                      extend "marking" vocabulary
+                      clean up "marking" integration test
+                      change comment format in language definition files
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will require regeneration of any previously saved *.elly.bin files to ensure
