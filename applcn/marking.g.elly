@@ -4,13 +4,20 @@
 #
 # subprocedures
 p:lxtd  # adding a tagged element on the left to a list on the right
+        # ('set' defines variable punc if not already done higher up in parse tree)
 _
+  set punc=
   split
   right
   back
-  delete to >
-  store    tmp
-  insert < tmp
+# trace
+# show punc in_lxtd
+  if ~punc=
+#   view 15
+    find </punc> <
+#   view 15
+    end 
+  find > <
   (typg)
   merge
 __
@@ -226,15 +233,23 @@ _
 __
 g:ELEM[^*l]->VCLU[^-to,-s]
  >>[!lv,rv]
+_
+  var punc=
+  left
 __
 g:ELEM[^*l]->VCLU[^-to,s]
  >>[!lv,rv,s]
+_
+  var punc=
+  left
 __
 g:ELEM->VCLU[^to] NCLU
  >>[!lv,rn]+
 _
+  var punc=
   left
   linefeed
+  var punc=
   right
 __
 g:ELEM->THAT VCLU[^s]
@@ -242,6 +257,7 @@ g:ELEM->THAT VCLU[^s]
 _
   append <conj>that</conj>
   linefeed
+  var punc=
   right
 __
 g:ELEM->ELEM[^dit] THAT
@@ -346,6 +362,7 @@ __
 
 p:pbeg
 _
+# trace
   var add=
   peek > x
   if ~x SP
@@ -353,11 +370,13 @@ _
     end
   append <punc>
   left
+# view 24
   append </punc>
 # show add pbeg
   insert < add
   linefeed
   right
+# view 24
 __
 g:PEXP[|*l,nom,det]->PUNC[|*l] NCLU[:det]
  r[$trlg]>>[!ln]+
@@ -375,25 +394,49 @@ g:PEXP[|*l,vrb]->PUNC[|*l] VCLU[^-ed,-ing]
  >>[!lv,rv]
 _
   (pbeg)
+  set punc=T
 __
 g:PEXP[|*l,vrb,ed]->PUNC[|*l] VCLU[^ed]
- >>[!lv,rv]+
+ >>[!lv,rv]++
 _
+# trace
   (pbeg)
+  set punc=T
+# show punc
 __
 g:PEXP[|*l,vrb,ing]->PUNC[|*l] VCLU[^ing]
- >>[!lv,rv]+
+ >>[!lv,rv]++
 _
+# trace
   (pbeg)
+  set punc=T
 __
 g:PEXP[|*l]->PUNC[|*l] SEGM
  >>*r+
 _
   (pbeg)
+  set punc=T
 __
 g:PEXP[|det]->PUNC[|*l] DET
 _
   (pbeg)
+  set punc=T
+__
+g:PEXP[|*l]->PEXP NCLU
+ >>*l[!-rv,rn]--
+_
+  var save=
+  left
+# show punc
+  if ~punc=
+    set save=T
+    set punc=
+    end
+  linefeed
+  right
+  if ~save=
+    set punc=T
+    end
 __
 
 p:pend
@@ -427,9 +470,9 @@ _
   left
   back
   find <nclu> <
-  delete 6 <
+  delete 6 >      # for new v1.3.5 find
   find </nclu> <
-  delete 7 <
+  delete 7 >      # for new v1.3.5 find
   merge
   linefeed
   var add=
@@ -545,7 +588,7 @@ g:NCLU[:*r,prep]->PREP[%-cnj] NCLU[:-prep,-det,num]
  r[$msr]>>*r
  l[$-to]>>*r[$-msr]+
 _
-  trace
+# trace
   (pphr)
 __
 g:NCLU[:*r,prep]->PREP[%-cnj] NCLU[:-prep,det,num]
@@ -1054,18 +1097,8 @@ g:VERB[^*l,ing]->VERB[^-*l,-*r] XING
 _
   (twob)
 __
-g:VERB->VERB[^ptcl,-ed,-ing] PTCL   # fix in v1.3
- >>++
-_
-  (twob)
-__
-g:VERB[^ing]->VERB[^ptcl,ing] PTCL  # fix in v1.3
- >>++
-_
-  (twob)
-__
-g:VERB[^ed]->VERB[^ptcl,ed] PTCL    # fix in v1.3
- >>++
+g:VERB[^*l,-ptcl]->VERB[^ptcl] PTCL   # inherited feature may be turned off in v1.3
+ >>*l++
 _
   (twob)
 __

@@ -66,6 +66,7 @@ A COMPLEX OF STORMS WILL LIKELY IMPACT AREAS NORTH OF INTERSTATE
 WHICH MAY RESULT TO FLASH FLOODING. HAIL AND STRONG WINDS WILL
 ALSO BE POSSIBLE. A FLASH FLOOD WATCH IS IN EFFECT ALONG AND
 NORTH OF A LINE FROM GRAHAM TO MCKINNEY THROUGH 4 AM.
+
 The Fried Liver Attack is a continuation of the Two Knights Defense. It is an aggressive gambit where white gives up a knight in exchange for poor king safety for black. This attack has not been proven decisive, especially under slower time controls, and in fact, Crafty (a popular chess engine), gives black a significant advantage in the final position shown. But it can be effective in a quick game against a weaker player.
 
 One thing to note regarding this attack, black's fifth move, as shown, is typically regarded as a mistake. Many books, such as "Modern Chess Openings 14th edition" suggest Na5 for black's fifth move. After Qf3+, black probably will protect the knight with his king since other moves let white take it and white will be up a pawn with a good position. If black decides to do that then it will be under great pressure with Nc3, with white having a good position.

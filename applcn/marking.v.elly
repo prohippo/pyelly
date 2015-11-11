@@ -33,7 +33,7 @@ military exercise : NOUN
 livestock waste : NOUN
 time control : NOUN
 submillimeter : ADJ
-interferomeetry : NOUN
+interferometry : NOUN
 
 as well as : CONJ
 at least : ADV[~mod]
@@ -56,6 +56,7 @@ neighborhood setting : NOUN
 best suit : VERB
 best suit : NOUN
 hard boiled : ADJ
+sorry about that : ADJ
 
 eat-in : ADJ
 fully-equipped : ADJ
@@ -70,6 +71,7 @@ round-up : NOUN
 one-of-a-kind : ADJ
 at-times : ADV
 
+ABC News : NOUN
 Agence France-Presse : NOUN
 China Central Television : NOUN
 Scotts : NOUN
@@ -93,6 +95,7 @@ unemployment rate : NOUN
 purchasing power : NOUN
 fixed investment : NOUN
 James : NOUN
+World News Tonight with David Muir : NOUN
 
 fried liver attack : NOUN
 2 knights defense : NOUN
@@ -120,13 +123,13 @@ accrue : VERB
 ache : NOUN
 ache : VERB
 achieve : VERB
-acknowledge : VERB
+acknowledge : VERB[^dit]
 acquire : VERB
 act : NOUN
 act : VERB
 activist : NOUN
 activity : NOUN
-add : NOUN - -1
+add : NOUN - -2
 add : VERB
 addition : NOUN
 additional : ADJ
@@ -1502,6 +1505,8 @@ persecution : NOUN
 persist : VERB
 person : NOUN
 persona : NOUN
+personal : ADJ
+personal business : NOUN
 phoebe : NOUN
 photo : NOUN
 pick : NOUN
