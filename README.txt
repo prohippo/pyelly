@@ -240,6 +240,11 @@ Release Notes:
                       extend "marking" vocabulary
                       clean up "marking" integration test
                       change comment format in language definition files
+ 1.3.5  -  11nov2015  add control character for management of parse trees
+                      filter out extra ASCII control chars from text input
+                      clean up "marking" rules and integration test
+                      fix minor bug in generative semantic compilation
+                      make FIND semantic command consistent with other operations
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will require regeneration of any previously saved *.elly.bin files to ensure

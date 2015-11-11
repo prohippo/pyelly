@@ -74,7 +74,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.3.4'                      # current version of PyElly software
+release = 'v1.3.5'                      # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
