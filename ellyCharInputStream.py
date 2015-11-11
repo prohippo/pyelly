@@ -3,21 +3,21 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyCharInputStream.py : 30jan2015 CPM
+# ellyCharInputStream.py : 05nov2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -104,7 +104,7 @@ class EllyCharInputStream(object):
 
             c = self.buf.pop(0)          # next raw char in buffer
 
-            if not ellyChar.isText(c):   # recognizable Elly char?
+            if not ellyChar.isText(c):   # unrecognizable Elly char?
 #               print 'c=' , ord(c)
                 c = NBSP                 # if so, replace with no-break space
 
@@ -343,7 +343,7 @@ if __name__ == '__main__':
         print 'reading from sys.stdin'
     else:
         inpu = open(sys.argv[1],'r')     #            from text file
-    chs = EllyCharInputStream(inpu) 
+    chs = EllyCharInputStream(inpu)
     cs = chs.peek()                      # check peek()
     if cs == END:
         sys.exit(1)

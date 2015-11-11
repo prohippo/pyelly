@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 28sep2015 CPM
+# ellyChar.py : 05nov2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -43,6 +43,7 @@ SLA = u'/'         # Unicode slash
 BSL = u'\\'        # Unicode backslash
 SPC = u' '         # Unicode space
 NBS = u'\u00A0'    # Unicode no-break space
+RS  = u'\u003E'    # ASCII record separator with special significance for parsing
 
 RSQm = u'\u2019'   # right single quote (same as APX)
 RDQm = u'\u201D'   # right double quote
@@ -395,14 +396,30 @@ def isUpperCaseLetter ( x ):
 
 def isText ( x ):
     """
-    check for ASCII or Latin-1
+    check for ASCII text or Latin-1 or special punctuation
 
     arguments:
         x - the char
     returns:
         True if ASCII or Latin-1 or punctuation , False otherwise
     """
-    return (x != '') if x < Lim else (x in Pnc)
+    return False if x == '' else False if isPureControl(x) else (x in Pnc) if x > Lim else True
+
+control = [
+    T,T,T,T,T,T,T,T,T,F,F,T,T,F,T,T,
+    T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T
+]
+
+def isPureControl ( x ):
+    """
+    identify ASCII non-text control char
+
+    arguments:
+        x - the char
+    returns:
+        True if non-text control, False otherwise
+    """
+    return False if x >= u' ' else control[ord(x)]
 
 def findBreak ( text , offset=0 ):
 

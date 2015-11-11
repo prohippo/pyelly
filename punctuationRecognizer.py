@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# punctuationRecognizer.py : 06sep2015 CPM
+# punctuationRecognizer.py : 04nov2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -64,14 +64,15 @@ defns = [                                      # syntactic significance of punct
     [ u'`' , '[' + pID + '*l,quo,start]' ] ,
     [ u"'" , '[' + pID + '*l,*r,quo,start]' ] ,
     [ u',' , '[' + pID + 'com]' , True ] ,     # special status for comma only so far
-    [ u'.' , '[' + pID + 'stop,emb]' ] ,
+    [ u'.' , '[' + pID + 'stop,emb]' ] ,       # these will end sentences, but could be embedded
     [ u'!' , '[' + pID + 'stop,emb]' ] ,
     [ u'?' , '[' + pID + 'stop,emb]' ] ,
     [ u':' , '[' + pID + 'stop,emb]' ] ,
     [ u';' , '[' + pID + 'stop]' ] ,
+    [ u'\u003E' , '[' + pID + 'separate]' ] ,  # ASCII RS control char treated like partal stop
     [ u'\u2013' ] ,  # en dash
     [ u'\u2014' ] ,  # em dash
-    [ u'\u002d' ] ,  # hyphen-minus
+    [ u'\u002d' ] ,  # hyphen or minus
     [ u'…' ]         # ellipsis
 ]
 
@@ -181,3 +182,11 @@ if __name__ == '__main__':
             print ' is PUNC' , punc.synf.hexadecimal() , ':' , punc.semf.hexadecimal()
         else:
             print ' not PUNC'
+
+    chu = u'\u003E'
+    print '[ RS ]' ,
+    if punc.match(chu):
+        print 'is PUNC' , punc.synf.hexadecimal() , ':' , punc.semf.hexadecimal()
+    else:
+        print 'not PUNC'
+

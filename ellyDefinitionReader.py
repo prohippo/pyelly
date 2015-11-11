@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyDefinitionReader.py : 05oct2015 CPM
+# ellyDefinitionReader.py : 05nov2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -35,9 +35,11 @@ to remove blank lines and comments
 
 import sys
 import codecs
+import ellyChar
 
 Slash = u'\\'    # for escaping
-Nul   = u'\x00'  # ASCII nul
+Nul   = u'\x00'  # ASCII NUL
+RS    = u'\x3E'  # ASCII RS control char
 
 class EllyDefinitionReader(object):
 
@@ -131,6 +133,8 @@ class EllyDefinitionReader(object):
                 le = le[1:]
             elif le[0] == '0':
                 line += Slash          # keep \0
+            elif le[0] == 's':
+                line += ellyChar.RS    # special separator char for input
 
         if len(line) > 0:
             self.buffer.append(line)   # add line to input
@@ -234,11 +238,30 @@ class EllyDefinitionReader(object):
         for b in self.buffer:
             out.write(u'{0:3d}'.format(len(b)))
             out.write(str(type(b)))
+            b = encode(b)
             try:
                 out.write(u'[' + b + u']')
             except UnicodeEncodeError:
                 out.write('[**!**]')
             out.write(u'\n')
+
+def encode ( s ):
+
+    """
+    encode special control chars for printing
+
+    arguments:
+        s  - string
+
+    returns:
+        encoded string
+    """
+
+    while True:
+        n = s.find(RS)
+        if n < 0: break
+        s = s[:n] + '\\s' + s[n+1:]
+    return s
 
 #
 # unit test
@@ -266,7 +289,8 @@ if __name__ == "__main__":
         u'[-]&#[.]#*       num' ,
         u'#\r\n' ,
         u'#\n'   ,
-        u'\n'
+        u'\n'    ,
+        u' ' + RS + u' tha' # special PyElly separator to break up input
     ]  # default test input
 
     src = sys.argv[1] if len(sys.argv) > 1 else unicodetext
@@ -279,4 +303,5 @@ if __name__ == "__main__":
     while True:
         ll = inp.readline()
         if len(ll) == 0: break
-        print ">>[" + ll + "]" , len(ll)
+        ln = len(ll)
+        print ">>[" + encode(ll) + "]" , ln
