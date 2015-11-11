@@ -1,9 +1,12 @@
 var x=123
 var y=ZYX
+var z=
 append +++
 blank
 insert < y
 append ---
 blank
 insert < x
+insert < z
+append +++
 return

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeDefiner.py : 26jun2015 CPM
+# generativeDefiner.py : 08nov2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -396,9 +396,9 @@ def compileDefinition ( stb , inp ):
         elif op == 'view':
             try:
                 nm = int(rs) if len(rs) > 0 else defaultVIEW
+                store.extend([ semanticCommand.Gview , nm ])
             except ValueError:
                 _err('bad viewing range',l=line)
-            store.extend([ semanticCommand.Gview , nm ])
         else:
             return _err("bad operation: " + op)
 

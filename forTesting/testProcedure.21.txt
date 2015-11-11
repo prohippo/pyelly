@@ -3,7 +3,7 @@
 var x=0
 var y=1234
 assign x=y
-show x
+show x what_is_this?
 show y
 set y=syzygÿ
 show y

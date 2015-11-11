@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# interpretiveContext.py : 26jun2015 CPM
+# interpretiveContext.py : 09nov2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -298,8 +298,8 @@ class InterpretiveContext(object):
     def findCharsInBuffer ( self , ts , sns=True ):
 
         """
-        find string ts in next buffer and transfer chars up to first occurrence
-        or until entire next buffer is exhausted
+        find string ts in next buffer and transfer chars up to and including
+        first occurrence or until entire next buffer is exhausted
 
         arguments:
             self  -
@@ -316,6 +316,8 @@ class InterpretiveContext(object):
         if sns:              # forward scanning
             while len(bn) >= ln:
                 if t == bn[:ln]:
+                    bc += t
+                    self.buffs[n] = bn[ln:]
                     return   # match
                 bc.append(bn.pop(0))
             bc.extend(bn)
