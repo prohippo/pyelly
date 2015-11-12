@@ -434,9 +434,7 @@ _
     end
   linefeed
   right
-  if ~save=
-    set punc=T
-    end
+  assign punc=save
 __
 
 p:pend
