@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveDefiner.py : 03sep2015 CPM
+# cognitiveDefiner.py : 18nov2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -221,7 +221,10 @@ def _rightside ( stb , txt ):
         c = txt[0]                   # check for sign of plausibility change
 
         if c != '+' and c != '-':
-            return _err('plausibility must begin with + or -')
+            if ellyChar.isDigit(c):
+                return _err('plausibility must begin with + or -')
+            else:
+                return _err('bad cognitive semantic action')
 
 #       print "2 txt=[",txt,"]"
 

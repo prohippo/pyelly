@@ -244,6 +244,7 @@ Release Notes:
                       filter out extra ASCII control chars from text input
                       clean up "marking" rules and integration test
                       fix minor bug in generative semantic compilation
+                      better error reporting in cognitive semantic compilation
                       make FIND semantic command consistent with other operations
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
