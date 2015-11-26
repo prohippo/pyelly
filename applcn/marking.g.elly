@@ -816,7 +816,7 @@ _
   append </vclu>
 __
 g:VCLU[^*r]->ADV VCLU
- l[$deg]>>----
+ l[$deg]>>------
 _
   var typg=adv
   (lxtd)
@@ -852,6 +852,15 @@ g:VCLU[^*r,pass]->BE VCLU[^ed,-hav]
 _
   var typg=aux
   (lxtd)
+__
+g:VCLU->AUXL PUNC
+_
+  append <vclu>
+  var typg=aux
+  (typg)
+  append </vclu><punc>
+  right
+  append </punc>
 __
 
 g:PCLS->PREP[%cls] PCLS[^ing]
@@ -1086,7 +1095,7 @@ _
   (twob)
 __
 g:VERB[^*l,ed]->VERB[^-*l,-*r] XED
- >>++++
+ >>*l++++
 _
   (twob)
 __
@@ -1722,3 +1731,25 @@ _
   append </punc>
   linefeed
 __
+g:VCLU->BE PEXP[|emb,quo]
+ >>++++
+_
+  split
+  right
+  back
+  append <punc>
+  shift 1 <
+  append </punc><vclu>
+  var typg=aux
+  (typg)
+  shift   <    # get all but the last char
+  shift 1 >    # in the new buffer
+  append </vclu><punc>
+  merge
+  append </punc>
+__
+g:PEXP[|emb,quo]->PUNC[|quo,*l] ADJ[%rquo]
+__
+g:ADJ[%*l,rquo]->ADJ[%-rquo] PUNC[|quo,*r]
+__
+

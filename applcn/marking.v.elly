@@ -83,6 +83,7 @@ Walmart : NOUN
 Walmart supercenter : NOUN
 USNORTHCOM : NOUN
 Jade Helm : NOUN
+Hillary Clinton : NOUN
 Apple Watch : NOUN
 Crafty : NOUN
 Angelina : NOUN
@@ -113,7 +114,7 @@ r&b : NOUN
 
 # # # # WordNet 3.1 entries
 
-a bit : ADV [$deg] 0
+a bit : ADV [$deg,cmpd] 0
 abbey : NOUN
 accord : NOUN
 accord : VERB - -1
@@ -349,7 +350,7 @@ call : VERB
 calm : NOUN
 calm : VERB
 calm : ADJ
-campaign : NOUN
+campaign : NOUN - +1
 campaign : VERB
 cancer : NOUN
 candle : NOUN
@@ -882,9 +883,9 @@ full : ADJ
 full : ADV
 fully : ADV
 fundament : NOUN
-further : VERB
+further : VERB - -1
 further : ADJ
-further : ADV - +1
+further : ADV - +2
 future : NOUN
 future : ADJ
 gain : NOUN
@@ -1233,7 +1234,7 @@ major : NOUN
 major : VERB - -1
 major : ADJ
 make : NOUN
-make : VERB
+make : VERB [$trns] 0
 male : NOUN
 male : ADJ
 man : NOUN
@@ -2050,7 +2051,7 @@ tail : VERB
 tailor : NOUN
 tailor : VERB
 take : NOUN
-take : VERB[^ptcl]
+take : VERB[^ptcl] - +2
 talk : NOUN
 talk : VERB
 tangible : ADJ
