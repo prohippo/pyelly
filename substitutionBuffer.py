@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# substitutionBuffer.py : 01oct2015 CPM
+# substitutionBuffer.py : 26nov2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -63,6 +63,7 @@ class SubstitutionBuffer(
             macros - indexed macro substitutions
         """
 
+        self.buffer = None
         self.sup = super(SubstitutionBuffer,self)
 #       print "parent:",self.sup
 
@@ -130,6 +131,7 @@ class SubstitutionBuffer(
 
             x = self.peek()
             if x == None: break
+#           print 'expand x=' , ord(x) , x
             lr = self.mtb.getRules(x)
 
             # try selected macros sequentially on start of input buffer
@@ -190,6 +192,7 @@ class SubstitutionBuffer(
         while mr < me:               # iterate on rewrite
 
             c = rewrite[mr]          # next char in rewrite
+#           print '_match c=' , c
             mr += 1
 
             if c != u'\\':           # literal char

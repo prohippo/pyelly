@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 05nov2015 CPM
+# ellyChar.py : 25nov2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -43,9 +43,11 @@ SLA = u'/'         # Unicode slash
 BSL = u'\\'        # Unicode backslash
 SPC = u' '         # Unicode space
 NBS = u'\u00A0'    # Unicode no-break space
-RS  = u'\u003E'    # ASCII record separator with special significance for parsing
+RS  = u'\u001E'    # ASCII record separator with special significance for parsing
 
+LSQm = u'\u2018'   # left  single quote
 RSQm = u'\u2019'   # right single quote (same as APX)
+LDQm = u'\u201C'   # left  double quote
 RDQm = u'\u201D'   # right double quote
 PRME = u'\u2032'   # prime
 

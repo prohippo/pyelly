@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# definitionLine.py : 02nov2014 CPM
+# definitionLine.py : 26nov2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -32,9 +32,14 @@
 parsing support for Elly table definition X->A B C D...
 """
 
+import ellyChar
+
 spc = u' '  # space char
 lbr = u'['  # left  bracket
 rbr = u']'  # right
+bs  = u'\\' # backslash
+
+SPs = u' \t\n\r\0'
 
 def normalize ( strg ):
 
@@ -52,6 +57,7 @@ def normalize ( strg ):
 
     f = False                 # in-brackets flag
 
+    lc = ''
     for c in strg:            # check each input char in succession
         if c == spc:
             if f or s[-1] == spc:
@@ -62,9 +68,13 @@ def normalize ( strg ):
                 s.pop()       # a space preceding a left bracket is dropped
         elif c == rbr:
             f = False
+        elif lc == bs and c == 's':
+            s.pop()           # special check to convert \s in rule definition
+            c = ellyChar.RS
+        lc = c
         s.append(c)
 
-    return u''.join(s).strip() # trimmed string
+    return u''.join(s).strip(SPs)  # trimmed string
 
 class DefinitionLine(object):
 

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# macroTable.py : 22sep2015 CPM
+# macroTable.py : 26nov2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -179,7 +179,7 @@ class MacroTable(object):
 
     attributes:
         count        - number of patterns altogether
-        index        - for finding macro patterns starting with specified chars
+        index        - for macro patterns starting with a text char
         letWx        -   starting with letter  wildcard
         digWx        -            with digit   wildcard
         anyWx        -            with general wildcard
@@ -204,7 +204,7 @@ class MacroTable(object):
         lim = ellyChar.Max + 11      # number of simple alphabetic + 10 digits + 1
         self.index = [ [ ]
             for i in range(lim) ]    # slots for patterns starting with letter or digit
-        self.letWx = [ ]             #                                  letter  wildcard
+        self.letWx = [ ]             # slot                             letter  wildcard
         self.digWx = [ ]             #                                  digit   wildcard
         self.anyWx = [ ]             #                                  general wildcard
 
@@ -254,6 +254,7 @@ class MacroTable(object):
             ls = self.index[k] + ws + self.anyWx
         else:
             ls = self.index[0] + self.anyWx
+#       print len(ls) , ' rules to check'
         return ls
 
     def _store ( self , defs , nowarn ):
@@ -369,7 +370,10 @@ class MacroTable(object):
         i = 0
         for slot in self.index:
             if len(slot) > 0:
-                print '[' + ellyChar.toChar(i) + ']:'
+                if i == 0:
+                    print '[ ]:'
+                else:
+                    print '[' + ellyChar.toChar(i) + ']:'
                 _dmpall(slot)
             i += 1
         if len(self.letWx) > 0:
@@ -392,7 +396,7 @@ def _dmpall ( slot ):
     """
 
     for r in slot:
-        print u' {:16s}'.format(ellyWildcard.deconvert(r[0])) + ' -> ' + r[1]
+        print u' {:16s}'.format(ellyWildcard.deconvert(r[0])) + ' -> ' , list(r[1])
 
 #
 # unit test
@@ -433,6 +437,7 @@ if __name__ == '__main__':
         st = sys.stdin.readline()      # get test input
         if len(st) <= 1: break
         ss = st.decode('utf8').strip() # convert to Unicode
+        print 'TEXT=' , list(ss) , '(' + str(len(ss)) + ')'
         sb.clear()
         sb.append(ss)
 

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyDefinitionReader.py : 05nov2015 CPM
+# ellyDefinitionReader.py : 25nov2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -37,9 +37,9 @@ import sys
 import codecs
 import ellyChar
 
-Slash = u'\\'    # for escaping
-Nul   = u'\x00'  # ASCII NUL
-RS    = u'\x3E'  # ASCII RS control char
+Slash = u'\\'        # for escaping
+Nul   = u'\x00'      # ASCII NUL
+RS    = ellyChar.RS  # ASCII RS control char
 
 class EllyDefinitionReader(object):
 

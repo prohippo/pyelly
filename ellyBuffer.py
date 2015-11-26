@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBuffer.py : 01oct2015 CPM
+# ellyBuffer.py : 26nov2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -40,6 +40,7 @@ separators = [                 # for breaking tokenization scan
     u'-'  ,
     u' '  ,
     u'\t' , u'\r' , u'\n' ,
+    ellyChar.RS ,
     u'('  , u')'  ,
     u'['  , u']'  ,
     u'<'  , u'>'  ,
@@ -691,7 +692,8 @@ if __name__ == '__main__':
             u'zz\'s yy' ,
             u'`DUM\'' ,
             u'wh (123 456)' ,
-            u'aa-bb-cc'
+            u'aa-bb-cc' ,
+            ellyChar.RS + u'www xxx'
         ]
     else:
         test = [ ]

@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# punctuationRecognizer.py : 04nov2015 CPM
+# punctuationRecognizer.py : 25nov2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -40,6 +40,7 @@ multiple-char punctuation MUST be in an internal or external dictionary!
 """
 
 import ellyBits
+import ellyChar
 import featureSpecification
 
 # NOTE: category and feature names here must be in lower case!
@@ -50,6 +51,8 @@ pID      = '|'    # must be used for punctuation syntactic feature ID
 sID      = '!'    #                              semantic  feature ID
 
 sBRK     = 'brk'  # reserved for semantic identification of punctuation
+
+RS = ellyChar.RS  # special control character
 
 defns = [                                      # syntactic significance of punctuation
     [ u'[' , '[' + pID + '*l,start]' ] ,       # equivalent to D: rules in *.g.elly
@@ -69,7 +72,7 @@ defns = [                                      # syntactic significance of punct
     [ u'?' , '[' + pID + 'stop,emb]' ] ,
     [ u':' , '[' + pID + 'stop,emb]' ] ,
     [ u';' , '[' + pID + 'stop]' ] ,
-    [ u'\u003E' , '[' + pID + 'separate]' ] ,  # ASCII RS control char treated like partal stop
+    [ RS , '[' + pID + 'separate]' ] ,         # ASCII RS control char treated like partal stop
     [ u'\u2013' ] ,  # en dash
     [ u'\u2014' ] ,  # em dash
     [ u'\u002d' ] ,  # hyphen or minus
@@ -166,7 +169,7 @@ if __name__ == '__main__':
 
     import symbolTable
 
-    ups = u'.?!ab,;:+cd()$%&\'\"ef-—“”…hg`i'
+    ups = u'.?!ab,;:+cd()$%&\'\"ef-—“”…hg`i\x1E'
 
     symb = symbolTable.SymbolTable()
     punc = PunctuationRecognizer(symb)
@@ -183,7 +186,7 @@ if __name__ == '__main__':
         else:
             print ' not PUNC'
 
-    chu = u'\u003E'
+    chu = u'\u001E'
     print '[ RS ]' ,
     if punc.match(chu):
         print 'is PUNC' , punc.synf.hexadecimal() , ':' , punc.semf.hexadecimal()
