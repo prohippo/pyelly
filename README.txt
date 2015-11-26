@@ -248,6 +248,7 @@ Release Notes:
                       make FIND semantic command consistent with other operations
  1.3.5.1 - 26nov2015  fix bugs in control characters for parse tree management
                       clean up affected code modules
+                      clean up "marking" rules and integration test
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will require regeneration of any previously saved *.elly.bin files to ensure
