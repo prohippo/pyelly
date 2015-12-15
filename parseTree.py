@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTree.py : 11sep2015 CPM
+# parseTree.py : 09dec2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -108,9 +108,8 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
             phr   - phrase to be scored
         """
 
-        if phr.krnl.rule.cogs == None:
-            print >> sys.stderr , 'bad phr=' , phr , 'rule=' , phr.krnl.rule.seqn
-        phr.krnl.bias = phr.krnl.rule.cogs.score(self.ctx,phr)
+        cs = phr.krnl.rule.cogs
+        phr.krnl.bias = cs.score(self.ctx,phr) if cs != None else 0
 #       print >> sys.stderr , 'initialize bias' , phr
 
     def digest ( self ):
