@@ -18,6 +18,7 @@ that -’s  -> that is
 
 , @&@ing that -> ,\\s\\1ing that
 ," @&@ing that -> ",\\s\\1ing that
+,” @&@ing that -> ",\\s\\1ing that
 
 . . . -> …
 ...   -> …
