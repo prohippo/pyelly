@@ -249,6 +249,12 @@ Release Notes:
  1.3.5.1 - 26nov2015  fix bugs in control characters for parse tree management
                       clean up affected code modules
                       clean up "marking" rules and integration test
+ 1.3.5.2 - 15dec2015  fix bug in null check for cognitive semantics
+                      rework control characters to be no longer punctuation
+                      add rendering of contral characters in rule dumps
+                      extend "marking" rules with control characters
+                      adjust "chinese" and "querying" integration test
+                      adjust integration test script
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will require regeneration of any previously saved *.elly.bin files to ensure
