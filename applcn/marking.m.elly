@@ -16,5 +16,8 @@ that -’s  -> that is
 
 1 another -> one another
 
+, @&@ing that -> ,\\s\\1ing that
+," @&@ing that -> ",\\s\\1ing that
+
 . . . -> …
 ...   -> …

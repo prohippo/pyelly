@@ -1752,4 +1752,18 @@ g:PEXP[|emb,quo]->PUNC[|quo,*l] ADJ[%rquo]
 __
 g:ADJ[%*l,rquo]->ADJ[%-rquo] PUNC[|quo,*r]
 __
-
+g:SSNT->SEPR SENT
+_
+  trace
+  right
+__
+g:SENT->SENT SSNT
+_
+  left
+  delete from <
+  split
+  right
+  back
+  delete to >
+  merge
+__
