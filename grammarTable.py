@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# grammarTable.py : 03sep2015 CPM
+# grammarTable.py : 03dec2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -140,6 +140,7 @@ class GrammarTable(object):
         self.START = syms.getSyntaxTypeIndexNumber('sent')
         self.END   = syms.getSyntaxTypeIndexNumber('end')
         self.UNKN  = syms.getSyntaxTypeIndexNumber('unkn')
+        self.SEPR  = syms.getSyntaxTypeIndexNumber('sepr')
         self.XXX   = syms.getSyntaxTypeIndexNumber('...')
 
         # special rule for ... type going to null
@@ -157,6 +158,13 @@ class GrammarTable(object):
         ru.cogs = None
         ru.gens = None
         self.splits[self.START].append(ru)
+
+        # special rule for RS (ASCII record separator)
+
+        ru = grammarRule.ExtendingRule(self.SEPR,fets)
+        ru.cogs = None
+        ru.gens = None
+        self.dctn[ellyChar.RS] = [ ru ] # should be only rule here ever
 
         # predefined generative semantic procedures
 

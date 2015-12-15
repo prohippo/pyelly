@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# dumpEllyGrammar.py : 02sep2015 CPM
+# dumpEllyGrammar.py : 03dec2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -32,6 +32,7 @@
 methods to dump a grammar table
 """
 
+import ellyChar
 import cognitiveDefiner
 import generativeDefiner
 import codecs
@@ -322,7 +323,10 @@ def dumpDictionary ( stb, dctn , full ):
         for dr in dv:
             print stb.ntname[dr.styp] ,
             print '[{}]->'.format(dr.sfet.hexadecimal(False)) ,
-            print u'"' + w + u'"'
+            if w == ellyChar.RS:
+                print u"<RS>"
+            else:
+                print u'"' + w + u'"'
 
             if full: showProcedures(dr)
 
