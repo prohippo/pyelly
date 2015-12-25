@@ -1,5 +1,5 @@
 PyElly is a rule-based natural language processing tool that has existed
-for over forty years in various incarnations.  It is now freely available
+for over forty years in various incarnations. It is now freely available
 on the Web to anyone wanting to try it out.
 
 PyElly is intended mainly for educational use, in that it allows a student
@@ -43,14 +43,14 @@ download also includes rules for some example applications, including
              or traditional characters.
 * querying - rewrite English questions as SQL queries for a Soviet
              military aircraft database.
-* marking  - rewrite English text with XML markup
-* name     - extract English personal names from text
+* marking  - rewrite English text from the Web with XML markup
+* name     - extract mostly English personal names from text
 * disambig - disambiguation of phrases with WordNet concept information.
 
 These illustrate what you can do with PyElly and also serve as a basis for
 comprehensive integration testing. Other applications will be added to the
 PyElly package on GitHub in the future. You may use them as models for
-building your own systems.
+building your own PyElly applications.
 
 PyElly is free software released under a BSD open-source license for
 educational and other uses. Be advised that the current software and
@@ -252,9 +252,11 @@ Release Notes:
  1.3.5.2 - 15dec2015  fix bug in null check for cognitive semantics
                       rework control characters to be no longer punctuation
                       add rendering of contral characters in rule dumps
-                      extend "marking" rules with control characters
                       adjust "chinese" and "querying" integration test
                       adjust integration test script
+                      extend "marking" rules with control characters
+                      extend "marking" grammar and vocabulary
+                      extend "marking" integration test
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will require regeneration of any previously saved *.elly.bin files to ensure
