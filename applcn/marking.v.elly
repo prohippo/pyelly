@@ -56,7 +56,9 @@ neighborhood setting : NOUN
 best suit : VERB
 best suit : NOUN
 hard boiled : ADJ
-sorry about that : ADJ
+sorry about that : ADJ [$cmpd] 0
+than ever : CMPC
+than ever before : CMPC
 
 eat-in : ADJ
 fully-equipped : ADJ
@@ -885,7 +887,7 @@ fully : ADV
 fundament : NOUN
 further : VERB - -1
 further : ADJ
-further : ADV - +2
+further : ADV[~er] - +2
 future : NOUN
 future : ADJ
 gain : NOUN
@@ -1885,6 +1887,7 @@ slave : VERB
 slight : NOUN
 slight : VERB
 slight : ADJ
+slightly : ADV
 slovakia : NOUN
 slow : VERB
 slow : ADJ
@@ -2155,7 +2158,7 @@ try : NOUN
 try : VERB
 tuck : NOUN - -2
 tuck : VERB
-tuesday : NOUN
+tuesday : NAVB
 tumult : NOUN
 tunnel : NOUN
 tunnel : VERB

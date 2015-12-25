@@ -764,6 +764,8 @@ __
 
 g:NOUN->UNKN
 __
+g:NOUN->NAVB
+__
 g:NOUN->VERB SUFX[#vTOn]
 _
   (twob)
@@ -825,6 +827,12 @@ g:VCLU[^*l]->VCLU ADV[~-mod]
   r[$deg]>>+0
   r[$prd]>>++++
   >>----
+_
+  var typg=adv
+  (rxtd)
+__
+g:VCLU[^*l]->VCLU NAVB
+  >>++++
 _
   var typg=adv
   (rxtd)
@@ -932,6 +940,7 @@ __
 g:VERB[^*r]->NOUN[:hyph] VERB
 __
 g:VERB[^beaj]->BE ADJ[%-ed,-ing]
+ r[$cmpd]>>++++
 _
   (twob)
 __
@@ -1056,7 +1065,7 @@ _
   (typg)
   right
 __
-g:NUM->ADV[~MOD] NUM
+g:NUM->ADV[~mod] NUM
  l[$deg]>>[$cmpd]++++
         >>[$cmpd]+
 _
@@ -1109,7 +1118,7 @@ g:VERB[^*l,-ptcl]->VERB[^ptcl] PTCL   # inherited feature may be turned off in v
 _
   (twob)
 __
-g:ADJ[%*l]->ADJ[%-*l,-*r] XER
+g:ADJ[%*l,er]->ADJ[%-*l,-*r] XER
 _
   (twob)
 __
@@ -1125,13 +1134,22 @@ _
   append </adv>
   right
 __
+g:ADJ[%*l]->ADJ[%er] CMPC
+ >>++
+_
+ (twob)
+__
 
 g:ADV->ADV[~int] ADV
  >>++++
 _
   (twob)
 __
-g:ADV->ADV XER
+g:ADV[~er]->ADV XER
+_
+  (twob)
+__
+g:ADV[~*l]->ADV[~er] CMPC
 _
   (twob)
 __
