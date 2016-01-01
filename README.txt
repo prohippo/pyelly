@@ -257,6 +257,10 @@ Release Notes:
                       extend "marking" rules with control characters
                       extend "marking" grammar and vocabulary
                       extend "marking" integration test
+ 1.3.6   - 01jan2016  fix bug in pattern matching of tokens
+                      more flexible use of predefined syntactic features
+                      extend "marking" language definition
+                      extend "marking" integration testing
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will require regeneration of any previously saved *.elly.bin files to ensure
