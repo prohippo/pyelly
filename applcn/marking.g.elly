@@ -323,9 +323,9 @@ __
 g:ELEM[^*r]->PUNC[|*l,quo] ELEM
  >>--
 _
- var typg=punc
- (typg)
- right
+  var typg=punc
+  (typg)
+  right
 __
 
 g:PUNC[|*l]->PUNC[|*l,quo] CONJ
@@ -452,7 +452,7 @@ _
   (typg)
 __
 g:NCLU[:det]->PEXP[|det,nom] PUNC[|*r]
- >>*r[$quo]+4
+ >>*l[$quo]+4
 _
   (prom)
 __
@@ -664,8 +664,8 @@ _
   (lxtd)
 __
 g:NCLU[:*r,num]->NUM NCLU[:-det,-prep,-num,-qnt]
- l[$cmpd]>>*r[!adv]
-         >>*r
+ l[$cmpd]>>*r[!adv]++++
+         >>*r++++
 _
   var typg=num
   (lxtd)
@@ -678,7 +678,7 @@ _
   left
   append </quan></nclu>
 __
-g:NCLU[:*r,det,qnt]->QUAN[:ind] NCLU[:-prep,-num,-ing]                       
+g:NCLU[:*r,det,qnt]->QUAN[:ind] NCLU[:-prep,-ing]                       
 #                ?>>?
  l[!corrl]r[$-nml]>>*r------
                   >>*r++
@@ -686,7 +686,7 @@ _
   var typg=quan                                               
   (lxtd)
 __
-g:NCLU[:*r,det,qnt]->QUAN[:-ind] NCLU[:-prep,-num]                       
+g:NCLU[:*r,det,qnt]->QUAN[:-ind] NCLU[:-prep]                       
 #                ?>>?
  l[!corrl]r[$-nml]>>*r------
                   >>*r++
@@ -721,7 +721,7 @@ _
 # trace
   (poss)
 __
-g:NCLU->DET NUM
+g:NCLU[:det]->DET NUM
  >>--
 _
   append <nclu>
@@ -794,13 +794,18 @@ g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,-plur,-cnj,-ing] NOUN[:-det,-cnj,ing]
 # ?>>?
    >>+0
 _
- (twob)
+  (twob)
 __
 g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,-plur,-cnj,-ing] NOUN[:-det,-cnj,-ing]
 # ?>>?
    >>+
 _
- (twob)
+  (twob)
+__
+g:NOUN->NOUN[:*x,-plur] XID
+ >>++++
+_
+  (twob)
 __
 g:PRO[%*r]->PREP[%-cnj] PRO[%-nom]
 _
@@ -1000,7 +1005,7 @@ g:ADJ[%*r]->NOUN[:hyph] ADJ
  >>++
 __
 g:ADJ[%ed]->VERB[^ed]
- >>--
+ >>[$ind]--
 __
 g:ADJ[%ing]->VERB[^ing]
  l[$trns]>>-----
@@ -1137,7 +1142,7 @@ __
 g:ADJ[%*l]->ADJ[%er] CMPC
  >>++
 _
- (twob)
+  (twob)
 __
 
 g:ADV->ADV[~int] ADV
@@ -1315,6 +1320,9 @@ d:except  <- PREP
 __
 d:round   <- PREP
 __
+d:around  <- PREP
+ >>+
+__
 d:atop    <- PREP
 __
 d:along   <- PREP
@@ -1430,6 +1438,9 @@ d:another <- QUAN[:ind]
 __
 
 d:there <- THERE
+ >>+
+__
+d:there <- ADV
 __
 
 d:i    <- PRO[%nom]

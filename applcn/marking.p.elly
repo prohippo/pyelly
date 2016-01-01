@@ -39,8 +39,12 @@
 6 -old ADJ -1
 
 0 easy-to-&@ ADJ -1
+0 &#- - 7
+7 hp ADJ -1
 
 0 -&@ SUFX -1
 
 0 ," PUNC[|com,*r,quo] -1
 0 ,” PUNC[|com,*r,quo] -1
+
+0 @$ XID -1

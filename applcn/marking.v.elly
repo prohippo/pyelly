@@ -52,6 +52,7 @@ do that : VERB
 more than : ADV[~mod] [$deg] 0
 less than : ADV[~mod] [$deg] 0
 underutilize : VERB
+underutilization : NOUN
 neighborhood setting : NOUN
 best suit : VERB
 best suit : NOUN
@@ -59,6 +60,9 @@ hard boiled : ADJ
 sorry about that : ADJ [$cmpd] 0
 than ever : CMPC
 than ever before : CMPC
+for now : ADV
+such a : QUAN
+such an : QUAN
 
 eat-in : ADJ
 fully-equipped : ADJ
@@ -72,6 +76,9 @@ bill-to : ADJ
 round-up : NOUN
 one-of-a-kind : ADJ
 at-times : ADV
+rear-drive : ADJ
+top-shelf : ADJ
+long-drawn : ADJ
 
 ABC News : NOUN
 Agence France-Presse : NOUN
@@ -157,6 +164,7 @@ age : VERB
 agent : NOUN
 aggressive : ADJ
 agree : VERB
+agreement : NOUN
 agriculture : NOUN
 ahead : ADJ - -1
 ahead : ADV
@@ -313,7 +321,7 @@ blend : NOUN
 blend : VERB
 blow : NOUN
 blow : VERB
-blush : NOUN
+blush : NOUN - +1
 blush : VERB
 boar : NOUN
 boil : NOUN
@@ -406,6 +414,8 @@ chat : NOUN
 chat : VERB
 check : NOUN - -1
 check : VERB
+checker : NOUN - +1
+checker : VERB
 chess : NOUN
 chief : NOUN
 chief : ADJ
@@ -572,6 +582,7 @@ deal : VERB
 death : NOUN
 decade : NOUN
 decide : VERB
+decisive : ADJ
 deck : NOUN
 deck : VERB
 decline : NOUN
@@ -852,6 +863,7 @@ found : VERB
 found : ADJ
 four : ADJ
 four : NOUN
+four-wheel drive : NOUN
 fourpenny : ADJ
 framework : NOUN
 france : NOUN
@@ -938,6 +950,7 @@ good : ADJ
 good : ADV - -1
 gourmet : NOUN
 govern : VERB
+government : NOUN
 grade : NOUN
 grade : VERB
 grape : NOUN
@@ -1296,7 +1309,7 @@ mistrust : VERB
 mix : NOUN
 mix : VERB
 mo : NOUN
-model : NOUN
+model : NOUN[:*x]
 model : VERB
 model : ADJ
 moderate : NOUN
@@ -1486,6 +1499,7 @@ pawn : NOUN
 pawn : VERB
 pay : NOUN
 pay : VERB
+payment : NOUN
 peace : NOUN
 pear : NOUN
 peculiar : ADJ
@@ -1692,8 +1706,9 @@ regard : NOUN
 regard : VERB
 regardless : ADJ
 regardless : ADV
-regular : NOUN
+regular : NOUN - -1
 regular : ADJ
+regularity : NOUN
 regulate : VERB
 reject : NOUN
 reject : VERB
@@ -2012,6 +2027,7 @@ stunning : ADJ
 success : NOUN
 suck : NOUN
 suck : VERB
+sucker : NOUN
 sudden : ADJ
 suggest : VERB[^dit]
 suit : NOUN
@@ -2060,6 +2076,7 @@ talk : VERB
 tangible : ADJ
 tap : NOUN
 tap : VERB
+tapper : NOUN
 tax : NOUN
 tax : VERB
 taxable : ADJ
@@ -2170,7 +2187,7 @@ twin : VERB
 twin : ADJ
 two : NOUN
 two : ADJ
-type : NOUN
+type : NOUN[:*x]
 type : VERB
 typical : ADJ
 typically : ADV
