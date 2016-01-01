@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# symbolTable.py : 03sep2015 CPM
+# symbolTable.py : 27dec2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -108,7 +108,9 @@ class SymbolTable(object):
                 d['*right'] = 0      # equivalent to '*r'
                 d['*l'] = 1          # always define '*l'
                 d['*left']  = 1      # equivalent to '*l'
-                d['*unique'] = LAST  # always define
+                d['*x'] = LAST       # always define '*x'
+                d['*u'] = LAST       # always define '*u'
+                d['*unique'] = LAST  # equivalent to '*u' and '*x'
             fsx[fid] = d             # if not, make it known
         h = fsx[fid]                 # for hashing of feature names
         if len(fnm) == 0:            # check for empty features
@@ -135,7 +137,7 @@ class SymbolTable(object):
                 if ty:               # semantic feature?
                     k -= 1           # if so, adjust for extra name *C
                 else:
-                    k -= 3           # else,  adjust for *UNIQUE and extra names *L, *R
+                    k -= 5           # else,  adjust for *UNIQUE and extra names *L, *R , *U , *X
                     l -= 1           #        adjust upper limit for *UNIQUE
                 if k == l:           # overflow check
                     print >> sys.stderr, '+* too many feature names'
