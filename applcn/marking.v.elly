@@ -23,9 +23,10 @@ written : VERB[^ed]
 rosé : NOUN
 ought : VERB
 
-anything : NOUN
-everything : NOUN
-something : NOUN
+anything : NOUN[:qnt]
+everything : NOUN[:qnt]
+something : NOUN[:qnt]
+others : NOUN
 
 rocket science : NOUN
 signal rocket : NOUN
