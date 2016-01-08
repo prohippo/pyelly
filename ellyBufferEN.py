@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBufferEN.py : 01oct2015 CPM
+# ellyBufferEN.py : 07jan2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -52,6 +52,7 @@ class EllyBufferEN(ellyBuffer.EllyBuffer):
 
     attributes:
         stemmer - inflectional stemmer
+        divided - saved flag for next token
     """
 
     def __init__ ( self ):
@@ -73,6 +74,7 @@ class EllyBufferEN(ellyBuffer.EllyBuffer):
                 print >> sys.stderr , 'stemmer failure'
         else:
             self.stemmer = ellyStemmer.EllyStemmer()      # null stemmer
+        self.divided = False
 
     def getNext ( self ):
 
@@ -93,7 +95,10 @@ class EllyBufferEN(ellyBuffer.EllyBuffer):
 #       print super(EllyBufferEN,self) , 'getNext'
         w = super(EllyBufferEN,self).getNext() # use getNext() without inflectional stemmer
         if w == None: return None
-#       print 'got unstemmed:' , w , w.isSplit()
+#       print 'got unstemmed:' , w , 'divided=' , self.divided
+        if self.divided:
+            w.dvdd = True
+            self.divided = False
         if not w.isSplit():                    # check for stemming
             self.divide(w)                     # if not, do inflectional stemming
 #       print 'return token=' , w
@@ -109,6 +114,7 @@ class EllyBufferEN(ellyBuffer.EllyBuffer):
             suffix - as a string
         """
 
+#       print 'put back' , suffix
         if self.atToken(): self.prepend(ellyChar.SPC)
         self.prepend(suffix)
 
@@ -132,6 +138,8 @@ class EllyBufferEN(ellyBuffer.EllyBuffer):
 
         if word.isAffix():          # if term is already product of division, stop
             return
+
+#       print 'word suffixes=' , word.sufs , word.dvdd
 
         x = word.charAt(wl-1)       # get last two chars of word
         y = word.charAt(wl-2)
@@ -188,6 +196,7 @@ if __name__ == "__main__":
                 t = buf.getNext()
                 if t == None: break
                 print ">>>> " , unicode(t)
+                print ">>>> " , t.pres , t.sufs
         except ellyException.StemmingError:
             print >> sys.stderr , 'stemming error'
             continue
