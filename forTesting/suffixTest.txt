@@ -144,7 +144,7 @@ biggest big
 biliary bile
 bilingual bilingua
 bilious bile
-birder
+birder bird
 bit bite
 biter bite
 bitten bite
@@ -1427,6 +1427,7 @@ thieving thief
 thinly thin
 thinner thin
 thinnest thin
+thoughts thought
 threw throw
 thrown throw
 tibetan tibet
