@@ -261,6 +261,11 @@ Release Notes:
                       more flexible use of predefined syntactic features
                       extend "marking" language definition
                       extend "marking" integration testing
+ 1.3.6.1 - 08jan2016  fix bug integrating inflectional stemming and macros
+                      clean up English inflectional stemming
+                      extend and clean up suffix test cases
+                      extend "echo" integration test
+                      clean up and extend "marking" rules
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will require regeneration of any previously saved *.elly.bin files to ensure
