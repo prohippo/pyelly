@@ -15,7 +15,7 @@ bit : VERB[^ed]
 built : VERB[^ed]
 did : VERB[^ed]
 hove : VERB[^ed]
-said : VERB[^ed]
+said : VERB[^ed,dit]
 taken : VERB[^ed]
 thought : VERB[^ed]
 written : VERB[^ed]
@@ -36,6 +36,7 @@ time control : NOUN
 submillimeter : ADJ
 interferometry : NOUN
 
+as if : CONJ
 as well as : CONJ
 at least : ADV[~mod]
 out of : PREP
@@ -64,6 +65,7 @@ than ever before : CMPC
 for now : ADV
 such a : QUAN
 such an : QUAN
+calm and collected : ADJ
 
 eat-in : ADJ
 fully-equipped : ADJ
@@ -107,6 +109,8 @@ purchasing power : NOUN
 fixed investment : NOUN
 James : NOUN
 World News Tonight with David Muir : NOUN
+Mimi Spear : NOUN
+Harry : NOUN
 
 fried liver attack : NOUN
 2 knights defense : NOUN
@@ -114,10 +118,22 @@ tighty-whities : NOUN
 genetically modified : ADJ
 agriculture department : NOUN
 genome editing : NOUN
+world war ii : NOUN
+world war i  : NOUN
 
 for example : PEXP[|eg]
 such as : DEM
 bookended : VERB[^ed] - -1
+my own : DEM[:ind]
+your own : DEM[:ind]
+his own : DEM[:ind]
+her own : DEM[:ind]
+its own : DEM[:ind]
+our own : DEM[:ind]
+their own : DEM[:ind]
+about to : TO
+
+g.i. : ADJ
 
 "thousands" : NUM
 r&b : NOUN
@@ -185,6 +201,8 @@ also : ADV
 always : ADV
 amaze : VERB
 america : NOUN
+american : NOUN - -1
+american : ADJ
 amount : NOUN
 amount : VERB
 amuse : VERB
@@ -991,10 +1009,10 @@ hand : VERB
 hang : NOUN
 hang : VERB
 happen : VERB
-hard : ADJ
+hard : ADJ - +1
 hard : ADV
 hard-boiled : ADJ
-harry : VERB
+harry : VERB - -1
 harsh : ADJ
 hawaii : NOUN
 head : NOUN
@@ -1459,9 +1477,9 @@ originate : VERB
 ornament : NOUN
 ornament : VERB
 other : ADJ [$ind] 0
-out : NOUN - -1
-out : VERB - -1
-out : ADJ
+out : NOUN - -2
+out : VERB - -2
+out : ADJ  - -1
 out : ADV
 outline : NOUN
 outline : VERB
@@ -1632,7 +1650,7 @@ prove : VERB
 provide : VERB [$trns] 0
 province : NOUN
 pull : NOUN
-pull : VERB
+pull : VERB[^ptcl]
 purchase : NOUN
 purchase : VERB
 put : NOUN - -1
@@ -1668,7 +1686,7 @@ range : NOUN
 range : VERB
 rap : NOUN
 rap : VERB
-rapid : NOUN - -1
+rapid : NOUN - -2
 rapid : ADJ
 raspberry : NOUN
 rate : NOUN
@@ -2258,8 +2276,6 @@ wait : NOUN
 wait : VERB
 want : NOUN
 want : VERB
-war : NOUN
-war : VERB
 war : NOUN
 war : VERB
 warn : VERB

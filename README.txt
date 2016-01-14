@@ -266,6 +266,7 @@ Release Notes:
                       extend and clean up suffix test cases
                       extend "echo" integration test
                       clean up and extend "marking" rules
+                      extend "marking" integration test
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will require regeneration of any previously saved *.elly.bin files to ensure

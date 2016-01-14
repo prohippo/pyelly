@@ -292,6 +292,14 @@ _
   var typg=adj
   (typg)
 __
+g:ELEM[^]->ADJ CONJ[:*x]
+_
+  var typg=adj
+  (typg)
+  append <conj>
+  right
+  append </conj>
+__
 g:ELEM->ADV
  >>----
 _
@@ -486,7 +494,8 @@ _
   split
   right
   back
-  append <vclu>to
+  append <vclu>
+  left
   delete to >
   merge
 __
@@ -542,7 +551,7 @@ _
   append </punc>
 __
 g:VCLU->VCLU PREP
- >>*l----
+ >>*l------
 _
   left
   linefeed
@@ -641,7 +650,7 @@ __
 g:NCLU[:*l,*r,det]->DEM[:-sgl] NCLU[:-det,-prep,-qnt]
 #            ?>>?
  l[$-*c]r[$*c]>>*r----
-              >>*r
+              >>*r+
 _
   var typg=dem
   (lxtd)
@@ -921,12 +930,12 @@ _
   append be
   right
 __
-g:VERB[^*r]->VERB[^proc] VERB[^ing]
+g:VERB[^*r,proc]->VERB[^proc] VERB[^ing]
  >>++
 _
   (twob)
 __
-g:VERB->VERB[^proc] ADJ
+g:VERB[^proc]->VERB[^proc] ADJ
  >>+++
 _
   left
@@ -1004,10 +1013,10 @@ __
 g:ADJ[%*r]->NOUN[:hyph] ADJ
  >>++
 __
-g:ADJ[%ed]->VERB[^ed]
+g:ADJ[%ed]->VERB[^ed,-dit]
  >>[$ind]--
 __
-g:ADJ[%ing]->VERB[^ing]
+g:ADJ[%ing]->VERB[^ing,-proc]
  l[$trns]>>-----
          >>--
 __
@@ -1038,7 +1047,7 @@ __
 
 g:PREP->ADJ TO
  l[$spat]>>++
-         >>--
+         >>----
 _
   (twob)
 __
@@ -1061,7 +1070,7 @@ _
   right
 __
 
-g:NUM-> MONY NUM
+g:NUM-> MONEY NUM
 __
 g:NUM->ADJ[%mod] NUM
  >>+++
@@ -1120,6 +1129,11 @@ _
 __
 g:VERB[^*l,-ptcl]->VERB[^ptcl] PTCL   # inherited feature may be turned off in v1.3
  >>*l++
+_
+  (twob)
+__
+g:VERB[^*l,-ptcl]->VERB[^ptcl] TO     #
+ >>*l--
 _
   (twob)
 __
@@ -1527,7 +1541,7 @@ d:before<-CONJ
 __
 d:after<- CONJ
 __
-d:as   <- CONJ
+d:as   <- CONJ[:*x]
 __
 d:despite <- CONJ
 __
@@ -1573,6 +1587,8 @@ __
 d:should<-AUXL
 __
 d:do   <- AUXL
+__
+d:did  <- AUXL
 __
 d:can  <- AUXL
 __
@@ -1671,7 +1687,7 @@ __
 d:-y <- SUFX[#aTOr]
 __
 
-d:$ <- MONY
+d:$ <- MONEY
 __
 
 # # # # # # # #
