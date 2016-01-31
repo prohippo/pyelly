@@ -754,8 +754,9 @@ _
   merge
 __
 g:NCLU[:det]->DET ADJ
-# ?>>?
-   >>--
+#      ?>>?
+ r[$ind]>>-
+        >>---
 _
   append <nclu><det>
   left
@@ -1244,6 +1245,11 @@ g:AUXL[^hav]->HAVE[^-neg] TO
 _
   (twob)
 __
+g:NEGN->ADV NEGN
+ >>+
+_
+  (twob)
+__
 
 #
 # compound auxiliaries
@@ -1340,6 +1346,8 @@ __
 d:atop    <- PREP
 __
 d:along   <- PREP
+__
+d:alongside <- PREP
 __
 d:between <- PREP
 __

@@ -66,6 +66,9 @@ for now : ADV
 such a : QUAN
 such an : QUAN
 calm and collected : ADJ
+just as : ADV
+just as : CONJ - -1
+from across : PREP
 
 eat-in : ADJ
 fully-equipped : ADJ
@@ -111,6 +114,8 @@ James : NOUN
 World News Tonight with David Muir : NOUN
 Mimi Spear : NOUN
 Harry : NOUN
+Black Lives Matter : NOUN
+ferguson : NOUN
 
 fried liver attack : NOUN
 2 knights defense : NOUN
@@ -335,7 +340,7 @@ birder : NOUN
 bit : NOUN
 black : NOUN
 black : VERB - -1
-black : ADJ
+black : ADJ  - +2
 blend : NOUN
 blend : VERB
 blow : NOUN
@@ -893,6 +898,8 @@ free : NOUN - -1
 free : VERB
 free : ADJ
 free : ADV - -1
+freedom : NOUN
+freedom ride : NOUN
 french : NOUN
 french : VERB - -2
 french : ADJ
@@ -1170,6 +1177,7 @@ know : NOUN - -2
 know : VERB
 labor : NOUN
 labor : VERB
+labor day : NOUN
 lacerate : VERB
 lacerate : ADJ - -2
 land : NOUN
@@ -1528,7 +1536,7 @@ pellet : NOUN
 penetrate : VERB
 penny : NOUN
 people : NOUN
-people : VERB - -1
+people : VERB - -2
 pep : NOUN
 pepper : NOUN
 percent : NOUN
@@ -2305,7 +2313,7 @@ wed : ADJ
 wedding : NOUN
 weedkiller : NOUN
 week : NOUN
-weekend : NOUN
+weekend : NOUN - +1
 weekend : VERB
 welcome : NOUN
 welcome : VERB
@@ -2358,9 +2366,7 @@ wonder : VERB
 word : NOUN
 word : VERB - -1
 work : NOUN
-work : VERB
-work : NOUN
-work : VERB
+work : VERB - +1
 world : NOUN
 world : ADJ
 world power : NOUN
