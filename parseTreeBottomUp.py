@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBottomUp.py : 12sep2015 CPM
+# parseTreeBottomUp.py : 14feb2016 CPM
 # -----------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -535,17 +535,16 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
         if (typ == self.gtb.UNKN or
             self.gtb.mat.derivable(typ,gbs)):               # acceptable syntax type?
             ph = self.makePhrase(self.wordno,r)             # make phrase with rule
-#           print 'ph=' , ph
-            if r.cogs != None:
-#               print 'score'
-                r.cogs.score(self.ctx,ph)                   # score it cognitively
-#           print 'dvdd =' , dvdd
             if ph != None:
+                ph.ntok = 1                                 # set token count
+#               print '_addTerminal ph=' , ph
+#               print 'dvdd =' , dvdd
                 self.initializeBias(ph)                     # for ranking of ambiguities
                 if dvdd and len(self.gtb.splits[typ]) > 0:  # segment analyzed?
 #                   print 'limit ramification'
                     ph.krnl.usen = 1
 #               print 'ph.lens=' , ph.lens
+#               print 'ph=' , ph
                 self.enqueue(ph)                            # save phrase to ramify
 #               print 'queue of' , len(self.queue)
                 return True

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveDefiner.py : 18nov2015 CPM
+# cognitiveDefiner.py : 14feb2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -66,7 +66,7 @@ def convertDefinition ( stb , inp ):
         if len(elem) < 2 or len(elem[1]) == 0:
             print >> sys.stderr , '** incomplete cognitive semantic clause'
             return None
-        if elem[0] == '?' and elem[1] == '?':
+        if elem[0].strip() == '?' and elem[1].strip() == '?':
             left  = [ [ semanticCommand.Ctrc , [ ] ] ]
             right = [ ]
         else:
@@ -109,12 +109,32 @@ def _leftside ( stb , txt ):
     txt = txt.rstrip()
 
     while len(txt) > 0:
-        side = txt[0]
-        txt = txt[1:].lstrip()
-        if len(txt) == 0:
+        txt = txt.lstrip()
+        if len(txt) <= 1:
             _err('malformed conditions for clause')
             return None
+        side = txt[0]
+        txt = txt[1:]
 
+        if side == 'n':
+            sns = txt[0]
+            txt = txt[1:]
+            if sns != '<' and sns != '>':
+                _err('invalid token count condition')
+                return None
+            op = semanticCommand.Cngt if sns == '>' else semanticCommand.Cnlt
+            nd = 0
+            lt = len(txt)
+            while nd < lt:
+                if not ellyChar.isDigit(txt[nd]): break
+                nd += 1
+            if nd == 0:
+                _err('no token count for condition')
+                return None
+            test = int(txt[:nd])
+            txt = txt[nd:]
+            pred.append([ op , test ])
+            continue
         k = 0
         if txt[0] == '[':                   # semantic feature check?
             k = txt.find(']')               # if so, look for closing bracket
@@ -279,6 +299,8 @@ def showCode ( cod ):
             if opn == semanticCommand.Clftf or opn == semanticCommand.Crhtf:
 #               print 'double bit arg =' , arg
                 s = ellyBits.show(arg)
+            elif opn == semanticCommand.Cngt or opn == semanticCommand.Cnlt:
+                s = str(arg)
             else:
 #               print 'cnc args=' , arg
                 s = ",".join(arg)

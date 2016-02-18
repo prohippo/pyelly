@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveProcedure.py : 12sep2015 CPM
+# cognitiveProcedure.py : 16feb2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -92,6 +92,8 @@ class CognitiveProcedure(object):
                     print >> sys.stderr , 'with current bias= ' , phrs.krnl.rule.bias
                     print >> sys.stderr , '  l:' , phrs.krnl.lftd
                     print >> sys.stderr , '  r:' , phrs.krnl.rhtd
+                    print >> sys.stderr , ' ' , phrs.ntok , 'token(s) spanned'
+                    print >> sys.stderr , ''
                     trce = True
                     break
                 elif op == semanticCommand.Clftf or op == semanticCommand.Crhtf:
@@ -120,6 +122,14 @@ class CognitiveProcedure(object):
                             mxc = c
                     if mxw < 0: break
                     cntx.wghtg.noteConcept(mxc)
+                elif op == semanticCommand.Cngt or op == semanticCommand.Cnlt:
+                    # check token count of evaluated phrase
+                    nt = phrs.ntok
+                    nm = p[1]
+                    if op == semanticCommand.Cngt:
+                        if nt <= nm: break
+                    else:
+                        if nt >= nm: break
                 else:
                     # unknown command
                     print >> sys.stderr , 'bad cog sem action=' , op
@@ -130,6 +140,7 @@ class CognitiveProcedure(object):
                     ncls = len(self.logic)
                     print >> sys.stderr , '  cog sem at clause' , clno , 'of' , ncls
 #                   print >> sys.stderr , '   =' , cls[1]
+                    print >> sys.stderr , ''
                 for a in cls[1]:                      # get next action
                     op = a[0]
                     if op == semanticCommand.Cadd:    # add to score?
@@ -175,7 +186,7 @@ class CognitiveProcedure(object):
 #       print >> sys.stderr , 'phrase' , phrs.krnl.seqn, 'intersect=' , phrs.krnl.ctxc
 
         if trce:
-            print >> sys.stderr , '  incremental scoring=' , psum ,
+            print >> sys.stderr , '  plausibility adjustment=' , psum ,
             print >> sys.stderr , 'sem[' + phrs.krnl.semf.hexadecimal() + ']'
         return psum
 
@@ -192,6 +203,7 @@ if __name__ == '__main__':
         "?>>?" ,
         "l[!f0,f1]>>*l[!f3] XXXX" ,
         "l(YYYY)  >>+1" ,
+        "n>2>>-1" ,
         ">>*l[!f3,-f4,-one]-2"      # expects procedureTestFrame definitions
     ]
 

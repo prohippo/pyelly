@@ -1,4 +1,5 @@
 ?>>?
+ ? >> ?
 l[^x,-yy,zz] >> -1
 l[^x] r[^yy] >> +3 XXXX
 >>[^a]-----
@@ -13,3 +14,6 @@ l[^-x]r[^y]>>[^z]
 l(DDDD)>>*L EEEE
 >>+0 FFFF
 l[^x]>>*l[^xn,-x]
+n>2 l[^yy,zz]>>*l
+l[^yy,zz]n>2>>+
+n<8 n>1 >> +2

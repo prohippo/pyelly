@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTree.py : 09dec2015 CPM
+# parseTree.py : 14feb2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -194,6 +194,7 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
                         break
                     phn.krnl.lftd = phx                     # goal phrase is left part of new one
                     phn.krnl.rhtd = phr                     # current phrase is right part
+                    phn.ntok = phx.ntok + phr.ntok          # set token count for new phrase
                     self._score(phn)                        # compute bias score
                     rcnd = phn.krnl.synf.test(0)            # check syntactic features
                     lcnd = phn.krnl.synf.test(1)            #    prior to any inheritance!
@@ -235,6 +236,9 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
                     if phn == None:
                         break
                     phn.krnl.lftd = phr                # current phrase is part of new one
+                    phn.ntok = phr.ntok                # set token count for new phrase
+#                   print 'phn=' , phn
+#                   print 'phr=' , phr
                     self._score(phn)                   # compute bias score
                     if (phn.krnl.synf.test(0) or
                         phn.krnl.synf.test(1)):        # inherit features from current phrase?

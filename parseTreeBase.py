@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBase.py : 30sep2015 CPM
+# parseTreeBase.py : 14feb2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -143,6 +143,7 @@ class ParseTreeBase(object):
             lens  - token length
             dump  - flag for tree dumping
             tree  - overall parse tree
+            ntok  - token count
         """
 
         def __init__ ( self ):
@@ -163,7 +164,7 @@ class ParseTreeBase(object):
             returns:
                 unicode summary string
             """
-            return unicode(self.krnl)
+            return unicode(self.krnl) + ' ' + str(self.ntok) + ' token(s)'
 
         def __str__ ( self ):
             """
@@ -173,7 +174,7 @@ class ParseTreeBase(object):
             returns:
                 ASCII summary string
             """
-            return str(self.krnl)
+            return str(unicode(self))
 
         def reset ( self ):
             """
@@ -194,6 +195,7 @@ class ParseTreeBase(object):
             self.alnk = None
             self.dump = True
             self.lens = 0
+            self.ntok = 0
 
         def order ( self ):
             """
