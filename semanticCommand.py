@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# semanticCommand.py : 11feb2016 CPM
+# semanticCommand.py : 17feb2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -47,10 +47,12 @@ Crhtc =   9  #      right
 Ctrc  =  10  # trace
 Cngt  =  11  # test n > token count
 Cnlt  =  12  #      n <
+Cpgt  =  13  # test p > position
+Cplt  =  14  #      p <
 
 Copn = [     # operation names for dumping (must align with numerical codes above)
     'ADDN' , 'LHER' , 'RHER' , 'SETF' , 'RSTF' , 'LFTF' , 'RHTF' ,
-    'SETC' , 'LFTC' , 'RHTC' , 'TRCE' , 'NGTR' , 'NLSS'
+    'SETC' , 'LFTC' , 'RHTC' , 'TRCE' , 'NGTR' , 'NLSS' , 'PGTR' , 'PLSS'
 ]
 
 #### generative
