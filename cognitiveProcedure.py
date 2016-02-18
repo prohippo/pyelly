@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveProcedure.py : 16feb2016 CPM
+# cognitiveProcedure.py : 18feb2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -86,13 +86,14 @@ class CognitiveProcedure(object):
 #           print 'clno=' , clno
             for p in cls[0]:   # go through all predicates of clause
                 op = p[0]
+#               print 'cog sem op=' , op
                 if op == semanticCommand.Ctrc:
-                    print >> sys.stderr , ''
                     print >> sys.stderr , '  at phrase' , phrs.krnl.seqn , ': rule=' , phrs.krnl.rule.seqn ,
                     print >> sys.stderr , 'with current bias= ' , phrs.krnl.rule.bias
                     print >> sys.stderr , '  l:' , phrs.krnl.lftd
                     print >> sys.stderr , '  r:' , phrs.krnl.rhtd
-                    print >> sys.stderr , ' ' , phrs.ntok , 'token(s) spanned'
+                    print >> sys.stderr , ' ' , phrs.ntok , 'token(s) spanned' ,
+                    print >> sys.stderr , '@' + str(phrs.krnl.posn)
                     print >> sys.stderr , ''
                     trce = True
                     break
@@ -130,6 +131,16 @@ class CognitiveProcedure(object):
                         if nt <= nm: break
                     else:
                         if nt >= nm: break
+                elif op == semanticCommand.Cpgt or op == semanticCommand.Cplt:
+                    # check position of evaluated phrase
+                    po = phrs.krnl.posn
+                    nm = p[1]
+#                   print 'po=' , po , 'nm=' ,nm
+                    if op == semanticCommand.Cpgt:
+                        if po <= nm: break
+                    else:
+                        if po >= nm: break
+#                   print 'no break'
                 else:
                     # unknown command
                     print >> sys.stderr , 'bad cog sem action=' , op
@@ -188,6 +199,7 @@ class CognitiveProcedure(object):
         if trce:
             print >> sys.stderr , '  plausibility adjustment=' , psum ,
             print >> sys.stderr , 'sem[' + phrs.krnl.semf.hexadecimal() + ']'
+            print >> sys.stderr , ''
         return psum
 
 #
@@ -201,6 +213,7 @@ if __name__ == '__main__':
 
     default = [
         "?>>?" ,
+        "p>10000 >> +100" ,
         "l[!f0,f1]>>*l[!f3] XXXX" ,
         "l(YYYY)  >>+1" ,
         "n>2>>-1" ,

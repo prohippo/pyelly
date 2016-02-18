@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveDefiner.py : 14feb2016 CPM
+# cognitiveDefiner.py : 18feb2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -110,19 +110,23 @@ def _leftside ( stb , txt ):
 
     while len(txt) > 0:
         txt = txt.lstrip()
+#       print 'clause=' , txt
         if len(txt) <= 1:
             _err('malformed conditions for clause')
             return None
         side = txt[0]
         txt = txt[1:]
 
-        if side == 'n':
+        if side == 'n' or side == 'p':
             sns = txt[0]
             txt = txt[1:]
             if sns != '<' and sns != '>':
-                _err('invalid token count condition')
+                _err('invalid comparison in clause condition=' + sns)
                 return None
-            op = semanticCommand.Cngt if sns == '>' else semanticCommand.Cnlt
+            if side == 'n':
+                op = semanticCommand.Cngt if sns == '>' else semanticCommand.Cnlt
+            else:
+                op = semanticCommand.Cpgt if sns == '>' else semanticCommand.Cplt
             nd = 0
             lt = len(txt)
             while nd < lt:
@@ -276,6 +280,11 @@ def _rightside ( stb , txt ):
 
     return actn
 
+cmprcode = [
+    semanticCommand.Cngt , semanticCommand.Cnlt ,
+    semanticCommand.Cpgt , semanticCommand.Cplt
+]
+
 def showCode ( cod ):
 
     """
@@ -299,7 +308,7 @@ def showCode ( cod ):
             if opn == semanticCommand.Clftf or opn == semanticCommand.Crhtf:
 #               print 'double bit arg =' , arg
                 s = ellyBits.show(arg)
-            elif opn == semanticCommand.Cngt or opn == semanticCommand.Cnlt:
+            elif opn in cmprcode:
                 s = str(arg)
             else:
 #               print 'cnc args=' , arg
