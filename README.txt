@@ -267,6 +267,13 @@ Release Notes:
                       extend "echo" integration test
                       clean up and extend "marking" rules
                       extend "marking" integration test
+ 1.3.7   - 18feb2016  add token count to phrase data
+                      check token position in cognitive semantics
+                      check token count in cognitive semantics
+                      allow more spaces in cognitive semantic clauses
+                      clean up parse tree building
+                      extend "marking" rules and integration test
+                      extend, revise, correct cognitive semantic writeup
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will require regeneration of any previously saved *.elly.bin files to ensure
