@@ -66,6 +66,7 @@ _
 __
 g:SS->SS PUNC[|stop]
  l[!corrl]>>-10
+          >>*l
 _
   left
   linefeed
@@ -82,7 +83,8 @@ _
   right
 __
 g:SS[|segm]->SEGM
- >>*l
+# ?>>?
+   >>*l
 __
 g:SS[|segm]->SS[|-segm] SEGM
 #                 ?>>?
@@ -122,8 +124,18 @@ __
 g:SS->CONJ SS
  l[!corrl]>>*r[!corrl]
 _
-  var typg=conj
-  (typg)
+  append <conj>
+  left
+  var x=
+  extract > x
+  if ~x=,
+    insert < x
+    end
+  append </conj>
+  if  x=,
+    linefeed
+    append <punc>,</punc>
+    end
   linefeed
   right
 __
@@ -159,14 +171,15 @@ _
 __
 g:SEGM[|*unique]->ELEM
 #        ?>>?
+  l[!spcs]>>*l-6
   l[!lv,s]>>*l-
           >>*l
 __
 g:SEGM[|*unique]->SEGM ELEM
 #             ?>>?
  l[!pro] r[!ln]>>--
- l[!rn]  r[!ln]>>*r--
- l[!rv]  r[!lv]>>*r----
+ l[!rn] r[!ln] >>*r--
+ l[!rv] r[!lv] >>*r----
                >>*r
 _
   left
@@ -231,8 +244,16 @@ _
   var typg=pro
   (typg)
 __
-g:ELEM[^*l]->VCLU[^-to,-s]
+g:ELEM[^*l]->VCLU[^-to,-s,-ed]
  >>[!lv,rv]
+_
+  var punc=
+  left
+__
+g:ELEM[^*l]->VCLU[^-to,-s,ed]
+#      ?>>?
+ p<1 n<3>>[!lv,rv,spcs]
+        >>[!lv,rv]
 _
   var punc=
   left
@@ -287,7 +308,8 @@ _
   append </nclu>
 __
 g:ELEM->ADJ
- >>----
+ l[$time]>>--------
+         >>----
 _
   var typg=adj
   (typg)
@@ -301,7 +323,8 @@ _
   append </conj>
 __
 g:ELEM->ADV
- >>----
+ l[$deg]>>--
+        >>---
 _
   var typg=adv
   (typg)
@@ -621,7 +644,7 @@ _
 __
 g:NCLU[:*l]->NCLU ADJ
  r[$prd]>>*l+
-        >>*l----
+        >>*l------
 _
   var typg=adj
   (rxtd)
@@ -663,11 +686,21 @@ _
   var typg=dem
   (lxtd)
 __
-g:NCLU[:*r]->ADJ NCLU[:-det,-prep,-num,-qnt]
-#      ?>>?
- l[$ind]r[$quo]>>*r----
-        r[$quo]>>*r
-               >>*r+++
+g:NCLU[:*r]->ADJ[%-ed] NCLU[:-det,-prep,-num,-qnt]
+#             ?>>?
+ l[$ind]r[$quo]>>*r[$cmpd]----
+        r[$quo]>>*r[$cmpd]
+               >>*r[$cmpd]+++
+_
+  var typg=adj
+  (lxtd)
+__
+g:NCLU[:*r]->ADJ[%ed] NCLU[:-det,-prep,-num,-qnt]
+#             ?>>?
+       r[$cmpd]>>*r[$cmpd]----
+ l[$ind]r[$quo]>>*r[$cmpd]----
+        r[$quo]>>*r[$cmpd]
+               >>*r[$cmpd]+++
 _
   var typg=adj
   (lxtd)
@@ -801,14 +834,16 @@ g:NOUN[:*r]->NOUN[:hyph] NOUN
    >>++
 __
 g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,-plur,-cnj,-ing] NOUN[:-det,-cnj,ing]
-# ?>>?
-   >>+0
+#     ?>>?
+ l[!rn]>>-2
+       >>+0
 _
   (twob)
 __
 g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,-plur,-cnj,-ing] NOUN[:-det,-cnj,-ing]
-# ?>>?
-   >>+
+#     ?>>?
+ l[!rn]>>-2
+       >>+
 _
   (twob)
 __
@@ -870,7 +905,7 @@ _
   var typg=aux
   (lxtd)
 __
-g:VCLU[^*r,pass]->BE VCLU[^ed,-hav]
+g:VCLU[^pass,*r]->BE VCLU[^ed,-hav]
  >>+
 _
   var typg=aux
@@ -998,9 +1033,15 @@ _
 __
 g:ADJ[%*r]->NOUN[:hyph] ADJ
 __
-g:ADJ[%*r,more]->ADV ADJ
- l[$deg]r[$er]>>++++++
-       l[$deg]>>+++
+g:ADJ[%*r,more]->ADV ADJ[%er]
+ l[$deg]>>++++++
+_
+  var typg=adv
+  (typg)
+  right
+__
+g:ADJ[%*r,more]->ADV ADJ[%-er]
+ l[$deg]>>++++
 _
   var typg=adv
   (typg)
@@ -1015,7 +1056,8 @@ g:ADJ[%*r]->NOUN[:hyph] ADJ
  >>++
 __
 g:ADJ[%ed]->VERB[^ed,-dit]
- >>[$ind]--
+ p<1>>-
+    >>[$ind]--
 __
 g:ADJ[%ing]->VERB[^ing,-proc]
  l[$trns]>>-----
@@ -1044,6 +1086,11 @@ g:ADV->NEGN ADV[~-non]
  >>+
 _
   (twob)
+__
+g:ADJ->NEGN ADJ
+ >>-
+_
+ (twob)
 __
 
 g:PREP->ADJ TO
@@ -1129,7 +1176,7 @@ _
   (twob)
 __
 g:VERB[^*l,-ptcl]->VERB[^ptcl] PTCL   # inherited feature may be turned off in v1.3
- >>*l++
+ >>*l+++
 _
   (twob)
 __
@@ -1139,15 +1186,17 @@ _
   (twob)
 __
 g:ADJ[%*l,er]->ADJ[%-*l,-*r] XER
+ >>*l
 _
   (twob)
 __
 g:ADJ[%*l]->ADJ[%-*l,-*r] XEST
+ >>*l
 _
   (twob)
 __
 g:ADJ[%*r]->ADV[~int] ADJ
- >>++
+ >>*r++
 _
   append <adv>
   left
@@ -1155,7 +1204,7 @@ _
   right
 __
 g:ADJ[%*l]->ADJ[%er] CMPC
- >>++
+ >>*l++
 _
   (twob)
 __
@@ -1166,6 +1215,7 @@ _
   (twob)
 __
 g:ADV[~er]->ADV XER
+ >>----
 _
   (twob)
 __
@@ -1219,6 +1269,8 @@ __
 g:CONJ->NEGN CONJ
 _
   (twob)
+__
+g:CONJ->CONJ[:-*l,-rel] PUNC[|com]
 __
 
 g:QUAN->ADV[~prox] QUAN
@@ -1315,6 +1367,9 @@ __
 d:with <- PREP
 __
 d:from <- PREP
+__
+d:within <- PREP
+ >>++
 __
 d:over <- PREP
 __
@@ -1612,6 +1667,7 @@ __
 d:in  <- PTCL
 __
 d:out <- PTCL
+ >>+
 __
 d:out <- PTCL
 __
@@ -1623,6 +1679,8 @@ d:up  <- PTCL
 __
 
 d:not  <- NEGN
+__
+d:never <- ADV
 __
 
 #

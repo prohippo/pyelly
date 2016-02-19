@@ -69,6 +69,8 @@ calm and collected : ADJ
 just as : ADV
 just as : CONJ - -1
 from across : PREP
+even though : CONJ
+since then : ADV
 
 eat-in : ADJ
 fully-equipped : ADJ
@@ -326,7 +328,7 @@ best : ADV
 betray : VERB
 better : NOUN - -1
 better : VERB
-better : ADJ [$er] +1
+better : ADJ[%er] - +1
 better : ADV
 bible : NOUN
 big : NOUN - -1
@@ -691,7 +693,7 @@ dry : ADJ
 duration : NOUN
 duty : NOUN
 décor : NOUN
-early : ADJ
+early : ADJ [$time] 0
 early : ADV
 ease : NOUN
 ease : VERB
@@ -1485,7 +1487,7 @@ originate : VERB
 ornament : NOUN
 ornament : VERB
 other : ADJ [$ind] 0
-out : NOUN - -2
+out : NOUN - -3
 out : VERB - -2
 out : ADJ  - -1
 out : ADV
@@ -1510,6 +1512,7 @@ parch : VERB
 parlour : NOUN
 part : NOUN - +2
 part : VERB - -1
+participant : NOUN
 participate : VERB
 partner : NOUN
 partner : VERB
@@ -1535,7 +1538,7 @@ peel : VERB
 pellet : NOUN
 penetrate : VERB
 penny : NOUN
-people : NOUN
+people : NOUN[:plur]
 people : VERB - -2
 pep : NOUN
 pepper : NOUN
@@ -1670,7 +1673,7 @@ queen : VERB
 question : NOUN
 question : VERB
 quick : NOUN - -4
-quick : ADJ - +1
+quick : ADJ - +2
 quick : ADV
 quiet : NOUN
 quiet : VERB
@@ -1731,7 +1734,7 @@ refuge : NOUN
 refugee : NOUN
 regard : NOUN
 regard : VERB
-regardless : ADJ
+regardless : ADJ - -1
 regardless : ADV
 regular : NOUN - -1
 regular : ADJ
@@ -1887,6 +1890,8 @@ setup : NOUN
 severe : ADJ
 sex : NOUN
 sex : VERB
+sexual : ADJ
+sexually : ADV
 share : NOUN
 share : VERB
 sharp : NOUN - -1
@@ -2064,7 +2069,7 @@ sunlight : NOUN
 support : NOUN
 support : VERB
 suppose : VERB
-sure : ADJ
+sure : ADJ - +2
 sure : ADV
 surface : NOUN
 surface : VERB
@@ -2164,7 +2169,7 @@ time : NOUN
 time : VERB
 toe : NOUN
 toe : VERB
-together : ADJ
+together : ADJ - +1
 together : ADV
 tonight : NOUN
 tonight : ADV
@@ -2207,7 +2212,7 @@ tumult : NOUN
 tunnel : NOUN
 tunnel : VERB
 turn : NOUN
-turn : VERB
+turn : VERB[^ptcl]
 tv : NOUN
 twin : NOUN
 twin : VERB
@@ -2230,6 +2235,7 @@ unfortunate : NOUN
 unfortunate : ADJ
 unfortunate : NOUN - -1
 unfortunate : ADJ
+unfortunately : ADV
 unify : VERB
 unintended : ADJ
 union : ADJ
@@ -2251,7 +2257,7 @@ upstairs : ADJ
 upstairs : ADV
 urgent : ADJ
 us : NOUN
-use : NOUN
+use : NOUN [!rn] 0
 use : VERB
 utterance : NOUN
 vacant : ADJ
