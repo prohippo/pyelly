@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBuffer.py : 26nov2015 CPM
+# ellyBuffer.py : 22feb2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -249,15 +249,14 @@ class EllyBuffer(object):
         else:
             return self.buffer[k] # return char
 
-    def find ( self , chs , skip=0 ):
+    def findSeparator ( self , skip=0 ):
 
         """
-        look for one of a list of chars in buffer
+        scan for one of a list of chars in buffer
 
         arguments:
             self  -
-            chs   - list of chars to look for
-            skip  - how many chars to skip in buffer
+            skip  - how many chars to skip in buffer to start scan
 
         returns:
             offset in buffer if char found, -1 otherwise
@@ -270,10 +269,9 @@ class EllyBuffer(object):
         if skip == 0 and self.buffer[0] == APO:
             return 1                          # special case!
 
-#       print 'chs=' , chs
 #       print 'skip=' , skip, 'n=' , n
         for k in range(skip,n):
-            if self.buffer[k] in chs:         # is buffer char in set?
+            if self.buffer[k] in separators:  # is buffer char a separator?
                 self.index = k                # if so, note buffer position
                 return k
 
@@ -590,9 +588,9 @@ class EllyBuffer(object):
             if self.match(DSH): # it is a dash when doubled
                 k = 2
             else:               # otherwise, could be word fragment
-                k = self.find(separators,1)
+                k = self.findSeparator(1)
         elif self.match(PLS):   # check for Elly prefix
-            k = self.find(separators,1)
+            k = self.findSeparator(1)
         elif self.match(DOT):   # check for period
             if self.match(ELP): # it is ellipsis when tripled
                 k = 3
@@ -602,7 +600,7 @@ class EllyBuffer(object):
             k = 1
         else:
 #           print 'full token extraction'
-            k = self.find(separators)
+            k = self.findSeparator()
 #           print 'k=' , k
             if k < 0:           # break multi-char token at next separator
                 k = ln          # if no separator, go up to end of buffer
@@ -613,11 +611,11 @@ class EllyBuffer(object):
                     x = self.buffer[k]
                     if x != MIN and x != COM:
                         break       # no further check if separator not hyphen or comma
-                    if not ellyChar.isDigit(self.buffer[k+1]):
+                    if k + 1 >= ln or not ellyChar.isDigit(self.buffer[k+1]):
                         break       # accept hyphen or comma if NOT followed by digit
                     else:           # otherwise, look for another separator
-                        k = self.find(separators,k+2)
-                        if k < 0:
+                        k = self.findSeparator(k+2)
+                        if k < 0:   #
                             k = ln
 
         ## if token not delimited, take rest of buffer as
@@ -693,7 +691,8 @@ if __name__ == '__main__':
             u'`DUM\'' ,
             u'wh (123 456)' ,
             u'aa-bb-cc' ,
-            ellyChar.RS + u'www xxx'
+            ellyChar.RS + u'www xxx' ,
+            u'sh*t'
         ]
     else:
         test = [ ]
@@ -725,5 +724,4 @@ if __name__ == '__main__':
 
         tkn = eb.getNext()
         if tkn == None: break
-        print 'extract <' + u''.join(tkn.root) + '>'
-        print 'next token=' , unicode(tkn)
+        print 'extract <' + u''.join(tkn.root) + '> ' , unicode(tkn)
