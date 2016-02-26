@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 25nov2015 CPM
+# ellyChar.py : 21feb2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -34,6 +34,10 @@
 for handing ASCII plus Latin-1 chars as Unicode
 """
 
+DOT = '.'          # Unicode period
+COM = ','          # Unicode comma
+COL = ':'          # Unicode colon
+AST = '*'          # Unicode asterix
 APO = unichr(39)   # Unicode apostrophe
 APX = u'\u2019'    # Unicode formatted apostrophe
 USC = u'_'         # Unicode underscore
@@ -50,6 +54,8 @@ RSQm = u'\u2019'   # right single quote (same as APX)
 LDQm = u'\u201C'   # left  double quote
 RDQm = u'\u201D'   # right double quote
 PRME = u'\u2032'   # prime
+
+Apd = [ u'*' , u'+' , u'-' ]                             # marks appending to token
 
 Pnc = [ u'“' , u'”' , u'‘' , u'’' , u'–' , u'—' , u'…' ] # special punctuation
 
@@ -94,11 +100,10 @@ def isStrongConsonant ( x ):
     returns:
         True if non-Y consonant, False otherwise
     """
-    if not isLetter(x) or isStrictVowel(x):
+    if not isConsonant(x) or x == u'Y' or x == u'y':
         return False
     else:
-        n = Mapping[ord(x)]
-        return (n != 21 and n != 25)  # i.e. not U or Y
+        return True
 
 def isConsonant ( x ):
     """
@@ -109,7 +114,10 @@ def isConsonant ( x ):
     returns:
         True if consonant, False otherwise
     """
-    return (isStrongConsonant(x) or x == u'y') # accept only Y without diacritic
+    if not isLetter(x) or isVowel(x):
+        return False
+    else:
+        return True
 
 ## ASCII plus Latin-1 vowels
 
@@ -137,7 +145,7 @@ def isStrictVowel ( x ):
     returns:
         True if non-U vowel, False otherwise
     """
-    return (x < Lim and Vowel[ord(x)])
+    return x < Lim and Vowel[ord(x)]
 
 def isVowel ( x ):
     """
@@ -148,11 +156,8 @@ def isVowel ( x ):
     returns:
         True if vowel, False otherwise
     """
-    if isStrictVowel(x):
+    if isStrictVowel(x) or x == u'U' or x == u'u':
         return True
-    elif x < Lim:
-        n = Mapping[ord(x)]
-        return (n == 21)  # i.e. U
     else:
         return False
 
@@ -167,7 +172,7 @@ def isCombining ( x ):
     returns:
         True if a most general token char, False otherwise
     """
-    return (isLetterOrDigit(x) or x in [ USC , APO , APX , SLA , BSL , NBS ])
+    return isLetterOrDigit(x) or x in [ USC , APO , APX , SLA , BSL , NBS ]
 
 def isEmbeddedCombining ( x ):
     """
@@ -178,7 +183,7 @@ def isEmbeddedCombining ( x ):
     returns:
         True if char can be in the middle of a token, False otherwise
     """
-    return (x == u"." or x == u"," or x == u":" or x == u"'" or x == u"’")
+    return x in [ DOT , COM , COL , APO , APX , AST ]
 
 def isPureCombining ( x ):
     """
@@ -189,7 +194,7 @@ def isPureCombining ( x ):
     returns:
         True if strictest kind of token char, False otherwise
     """
-    return (isLetterOrDigit(x) or x == USC or x == NBS)
+    return isLetterOrDigit(x) or x == USC or x == NBS
 
 ## for replacing standard library char typing and case conversion
 
@@ -226,7 +231,7 @@ def isLetterOrDigit ( x ):
     returns:
         True if letter or digit, False otherwise
     """
-    return (x < Lim and LetterOrDigit[ord(x)])
+    return x < Lim and LetterOrDigit[ord(x)]
 
 def isNotLetterOrDigit ( x ):
     """
@@ -248,7 +253,7 @@ def isLetter ( x ):
     returns:
         True if letter, False otherwise
     """
-    return (x < Lim and Letter[ord(x)])
+    return x < Lim and Letter[ord(x)]
 
 def isDigit ( x ):
     """
@@ -259,7 +264,7 @@ def isDigit ( x ):
     returns:
         True if digit, False otherwise
     """
-    return (x <= '9' and x >= '0')
+    return x <= '9' and x >= '0'
 
 Space = [
     T,F,F,F,F,F,F,F,F,T,T,T,T,T,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
@@ -282,7 +287,7 @@ def isWhiteSpace ( x ):
     returns:
         True if Unicode space, False otherwise
     """
-    return (x < Lim and Space[ord(x)])
+    return x < Lim and Space[ord(x)]
 
 def isApostrophe ( x ):
     """

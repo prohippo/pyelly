@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# patternTable.py : 28dec2015 CPM
+# patternTable.py : 25feb2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -65,7 +65,7 @@ class Link(object):
         """
 
 #       print 'dfls=' , dfls
-        if len(dfls) != 3:                            # must have 3 elements
+        if len(dfls) != 3:                                # must have 3 elements
             raise ellyException.FormatFailure
         else:
             if dfls[0] == '\\0':
@@ -76,9 +76,11 @@ class Link(object):
                 if self.patn == None or ellyWildcard.minMatch(self.patn) == 0:
                     print >> sys.stderr , '** bad link pattern:' , dfls[0]
                     raise ellyException.FormatFailure
+#               print 'appended patn=' , list(self.patn) , '=' , len(self.patn)
+
             self.catg = None                          # defaults
             self.synf = None                          #
-            sss = dfls[1].lower()                     # cannot be Unicode!
+            sss = dfls[1].lower()                     # assumed not to be Unicode
 #           print 'sss=' , sss
             if sss != '-':                            # allow for no category
                 syx = syntaxSpecification.SyntaxSpecification(syms,sss)
@@ -98,7 +100,7 @@ class Link(object):
                 if ( pe != ellyWildcard.cALL and      # final pattern must end with * or $
                      pe != ellyWildcard.cEND ):
                     self.patn += ellyWildcard.cEND    # default is $
-                    print >> sys.stderr , '** default $ added to pattern' , dfls
+                    print >> sys.stderr , '** final $ added to pattern' , list(self.patn)
 
             self.nxts = n                             # specify next state
 
@@ -118,12 +120,12 @@ class Link(object):
             return u'None'
         else:
             if self.patn == u'\x00':
-                pat = '\\0              '
+                p = '\\0              '
             else:
-                pat = u'{0:<16}'.format(ellyWildcard.deconvert(self.patn))
-            cat = unicode(self.catg)
-            fet = u'None' if self.synf == None else self.synf.hexadecimal(False)
-            return pat + ' ' + cat + ' ' + fet + ' next=' + unicode(self.nxts)
+                p = u'{0:<24}'.format(ellyWildcard.deconvert(self.patn))
+            c = unicode(self.catg)
+            f = u'None' if self.synf == None else self.synf.hexadecimal(False)
+            return p + ' ' + ' ' + c + ' ' + f + ' next=' + unicode(self.nxts)
 
 Trmls = ellyWildcard.Trmls
 
@@ -147,9 +149,10 @@ def bound ( segm ):
         ll += 1
 #   print 'll=' , ll , ', lm=' , lm
     ll -= 1
-    while ll > 0:    # exclude trailing non-alphanumeric from matching except for '.'
+    while ll > 0:    # exclude trailing non-alphanumeric from matching
+                     # except for '.' and '*' and bracketing
         c = segm[ll]
-        if c in Trmls or ellyChar.isLetterOrDigit(c): break
+        if c in Trmls or c == '*' or ellyChar.isLetterOrDigit(c): break
         ll -= 1
     return ll + 1
 
@@ -213,6 +216,7 @@ class PatternTable(object):
             TableFailure on error
         """
 
+                        # for error checking
         ins = [ 0 ]     # states with incoming links
         sss = [   ]     # starting states
         lss = [ 0 ]     # all defined states
@@ -336,6 +340,7 @@ class PatternTable(object):
                 if lk.patn == u'\x00': # do state change without matching?
                     m = 0           # no match length
                 else:
+#                   print 'match lk=' , unicode(lk) , 'sg=' , sg
                     bds = ellyWildcard.match(lk.patn,sg)
 #                   print 'bds=' , bds
                     if bds == None: continue
@@ -435,7 +440,7 @@ if __name__ == '__main__':
         print 'no pattern table generated'
         sys.exit(1)
 
-    print len(patn.indx) , 'distinct FSA states'
+    print len(patn.indx) , 'distinct FSA state(s)'
 
     print ''
     dumpEllyGrammar.dumpCategories(ctx.syms)

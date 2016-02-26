@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 05oct2015 CPM
+# ellyWildcard.py : 25feb2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -52,7 +52,7 @@ def isWild ( c ):
 
 #   print ' c=' , c  , '(' + str(ord(c))  + ')'
 #   print 'Xc=' , Xc , '(' + str(ord(Xc)) + ')'
-    return (c >= Xc)
+    return c >= Xc
 
 cANY = unichr(X+1 ) # match any char
 cCAN = unichr(X+2 ) # match nonalphanumeric char
@@ -215,6 +215,12 @@ def convert ( strg ):
 
     return u''.join(t).lower() # converted string to match against
 
+toEscape = [ # chars that could be wildcards plus backslash itself
+    RSQm, RDQm, PRME, u'\\',
+    wANY, wDIG, wALF, wUPR, wVWL, wCNS,
+    wSPC, wCAN, wALL, wSPN, wAPO, wEND
+]
+
 def deconvert ( patn ):
 
     """
@@ -232,11 +238,13 @@ def deconvert ( patn ):
     s = [ ]           # for output
     for x in patn:
         xo = ord(x)
-        if xo < X:    # check for wildcard
+        if xo < X:    # check for non-wildcard
+            if x in toEscape:
+                s.append('\\')
             s.append(x)
-        else:
+        else:         # convert wildcard
             s.append(Coding[xo - X - 1])
-    return u''.join(s)
+    return u' '.join(s)
 
 def minMatch ( patn ):
 
@@ -658,9 +666,9 @@ if __name__ == "__main__":
 
     rawp = unicode(sys.argv[1],'utf-8')
 
-    print "pat=" , rawp
-
     pattern = convert(rawp)
+
+    print "pat=" , rawp , "converted to" , list(pattern)
 
     print "testing wildcard matching"
     print "enter text to match:"
