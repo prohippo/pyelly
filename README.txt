@@ -1,6 +1,6 @@
 PyElly is a rule-based natural language processing tool that has existed
 for over forty years in various incarnations. It is now freely available
-on the Web to anyone wanting to try it out.
+as open source software on the Web to anyone wanting to try it out.
 
 PyElly is intended mainly for educational use, in that it allows a student
 to engage natural language at a fine level of detail and learn the issues
@@ -49,7 +49,7 @@ download also includes rules for some example applications, including
 
 These illustrate what you can do with PyElly and also serve as a basis for
 comprehensive integration testing. Other applications will be added to the
-PyElly package on GitHub in the future. You may use them as models for
+PyElly package on GitHub in the future. You may use any of them as models for
 building your own PyElly applications.
 
 PyElly is free software released under a BSD open-source license for
@@ -274,12 +274,17 @@ Release Notes:
                       clean up parse tree building
                       extend "marking" rules and integration test
                       extend, revise, correct cognitive semantic writeup
+ 1.3.8   - 25feb2016  extend token extraction for nonalphabetic additions
+                      clean up basic character handling
+                      extend "echo" integration test
+                      update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will require regeneration of any previously saved *.elly.bin files to ensure
 correct operation. Changes only to PyElly sample application definition files,
 unit testing input or key files, and PyElly documentation will be made from time
-to time, but these will leave version numbers the same.
+to time, but these will leave version numbers the same, if they are the only
+changes. Updates are still frequent; check for the latest files.
 
 The PyElly website is at
 
