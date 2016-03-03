@@ -278,6 +278,9 @@ Release Notes:
                       clean up basic character handling
                       extend "echo" integration test
                       update documentation
+ 1.3.9   - 03mar2016  fix various problems with checking of capitalization
+                      clean up parse tree code
+                      clean up documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will require regeneration of any previously saved *.elly.bin files to ensure
