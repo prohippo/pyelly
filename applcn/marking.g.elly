@@ -177,7 +177,7 @@ g:SEGM[|*unique]->ELEM
 __
 g:SEGM[|*unique]->SEGM ELEM
 #             ?>>?
- l[!pro] r[!ln]>>--
+ l[!pro] r[!ln]>>---
  l[!rn] r[!ln] >>*r--
  l[!rv] r[!lv] >>*r----
                >>*r
@@ -671,17 +671,17 @@ _
   append </dem></nclu>
 __
 g:NCLU[:*l,*r,det]->DEM[:-sgl] NCLU[:-det,-prep,-qnt]
-#            ?>>?
- l[$-*c]r[$*c]>>*r----
-              >>*r+
+#                 ?>>?
+ l[!-*c,spcs]r[!*c]>>*r----
+                   >>*r+
 _
   var typg=dem
   (lxtd)
 __
 g:NCLU[:*l,*r,det]->DEM[:sgl] NCLU[:-det,-prep,-plur,-qnt]
-#            ?>>?
- l[$-*c]r[$*c]>>*r----
-              >>*r++
+#                 ?>>?
+ l[!-*c,spcs]r[!*c]>>*r----
+                   >>*r++
 _
   var typg=dem
   (lxtd)
@@ -1435,6 +1435,7 @@ __
 d:this <- DEM[:ind,sgl]
 __
 d:that <- DEM[:ind,sgl]
+ >>[!spcs]
 __
 d:that <- THAT
 __

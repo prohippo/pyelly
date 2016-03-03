@@ -7,6 +7,18 @@ _
   blank
   right
 __
+p:sbr
+_
+  split
+  left
+  back
+  view
+  if [$capital]
+    trace
+    capitalize
+    end
+  merge
+__
 g:sent->ss
 __
 g:ss->ss punc
@@ -18,14 +30,21 @@ _
   (lbr)
 __
 g:unit->unkn
+ ?>>?
+_
+  (sbr)
 __
 g:unkn->unkn sufx
 _
   (lbr)
 __
 g:unit->time
+_
+  (sbr)
 __
 g:unit->date
+_
+  (sbr)
 __
 d:-s   <- sufx
 __
