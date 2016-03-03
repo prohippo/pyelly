@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# patternTable.py : 25feb2016 CPM
+# patternTable.py : 02mar2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -315,6 +315,7 @@ class PatternTable(object):
         ls = self.indx[state]
         ix = 0
         sg = segm[:lim] # text subsegment for matching
+        capd = False if len(sg) == 0 else ellyChar.isUpperCaseLetter(sg[0])
 
         while True:                 # run FSA to find all possible matches
 #           print 'state=' , state
@@ -348,7 +349,7 @@ class PatternTable(object):
                     m = bds[0]      # get match length, ignore wildcard bindings
 
                     if lk.nxts < 0: # final state?
-                        if tree.addLiteralPhrase(lk.catg,lk.synf):    # make phrase for it
+                        if tree.addLiteralPhrase(lk.catg,lk.synf,False,capd): # make phrase
                             mtls = mtl + m
                             tree.lastph.lens = mtls                   # save its length
 #                           print 'match state=' , state , 'length=' , mtls

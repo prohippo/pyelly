@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyToken.py : 01oct2015 CPM
+# ellyToken.py : 02mar2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -286,6 +286,20 @@ class EllyToken(object):
         """
 
         return self.dvdd
+
+    def isCapitalized ( self ):
+
+        """
+        check if first char is upper case
+
+        arguments:
+            self
+
+        returns:
+            True if upper case, otherwise False
+        """
+
+        return self.capn
 
     def isAffix ( self ):
 

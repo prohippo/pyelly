@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeWithDisplay.py : 28sep2015 CPM
+# parseTreeWithDisplay.py : 01mar2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -389,7 +389,7 @@ if __name__ == '__main__':
 
     for w in ws:
 
-        tree.createPhrasesFromDictionary(w,False)
+        tree.createPhrasesFromDictionary(w,False,False)
         print '****' , tree.phlim , tree.lastph
         tree.digest()
         print '****' , tree.phlim , tree.lastph

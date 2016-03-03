@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTest.py : 18jul2015 CPM
+# parseTest.py : 02mar2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -71,7 +71,7 @@ class Tree(object):
         print 'tree with stub methods'
         self.queue = [ ]
         self.lastph = None
-    def addLiteralPhrase (self,typ,fts):
+    def addLiteralPhrase (self,typ,fts,dvd,cap):
         """ dummy method
         """
         print 'add phrase: typ=' , typ

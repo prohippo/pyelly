@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# entityExtractor.py : 21sep2015 CPM
+# entityExtractor.py : 01mar2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -32,6 +32,7 @@
 runs extraction methods and generates phrases
 """
 
+import ellyChar
 import ellyConfiguration
 import syntaxSpecification
 
@@ -93,6 +94,7 @@ class EntityExtractor(object):
 
         mx = 0
         ms = [ ]
+        capd = ellyChar.isUpperCaseLetter(segm[0])
         for xr in self.exs:       # try each extraction procedure in order
             m = xr[0](segm)       #
             if m > 0:             # match?
@@ -104,7 +106,7 @@ class EntityExtractor(object):
                 ms.append(xr[1:]) # add to match list
         if mx > 0:                # any matches?
             for mr in ms:         # if so, make phrases for them
-                if self.ptr.addLiteralPhrase(mr[0],mr[1]):
+                if self.ptr.addLiteralPhrase(mr[0],mr[1],False,capd):
                     self.ptr.lastph.lens = mx
         return mx
 

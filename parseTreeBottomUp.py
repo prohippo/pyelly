@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBottomUp.py : 14feb2016 CPM
+# parseTreeBottomUp.py : 01mar2016 CPM
 # -----------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -273,7 +273,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
     # make leaf nodes in parse tree #
     #################################
 
-    def createPhrasesFromDictionary ( self , word , split ):
+    def createPhrasesFromDictionary ( self , word , split , capzn ):
 
         """
         create phrases from word by internal dictionary lookup
@@ -282,6 +282,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
             self  -
             word  - input segment string to look up
             split - was segment already analyzed?
+            capzn - first char was capitalized
 
         returns:
             True if phrases created, False otherwise
@@ -303,11 +304,11 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
         lw = len(ws)
 #       print len(rules) , 'rule(s)' , 'split=' , split
         for r in rules:               # create new phrase for each rule found
-            if self._addTerminal(r,split):
+            if self._addTerminal(r,split,capzn):
                 self.lastph.lens = lw
         return True
 
-    def addLiteralPhrase ( self , cat , fbs , spl=False ):
+    def addLiteralPhrase ( self , cat , fbs , spl=False , cap=False ):
 
         """
         make a phrase for a literal obtained by various means and enqueue
@@ -317,6 +318,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
             cat   - syntactic category
             fbs   - feature bits
             spl   - splitting flag
+            cap   - capitalization flag
 
         returns:
             True on success, False otherwise
@@ -327,7 +329,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
 
 #       print 'literal phrase'
         r = self._makeLiteralRule(cat,fbs)
-        return self._addTerminal(r,spl)
+        return self._addTerminal(r,spl,cap)
 
     def addLiteralPhraseWithSemantics ( self , cat , fbs , sbs , bias , gen=None , spl=False ):
 
@@ -380,11 +382,11 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
 
 #       print 'unknown phrase'
         r = self._makeLiteralRule(self.gtb.UNKN,self._zbs)
-        return self._addTerminal(r,tokn.isSplit())
+        return self._addTerminal(r,tokn.isSplit(),tokn.isCapitalized())
 
-    #################################
-    # dummy methods to be overriden #
-    #################################
+    ##################################
+    # dummy methods to be overridden #
+    ##################################
 
     def dumpTree ( self , phr ):
 
@@ -419,7 +421,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
             dpth  - new depth
         """
 
-        pass  # should be overriden in derived class
+        pass  # should be overridden in derived class
 
     def initializeBias ( self , phr ):
 
@@ -431,7 +433,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
             phr   - phrase to be scored
         """
 
-        pass  # should be overriden in derived class
+        pass  # should be overridden in derived class
 
     #########################################
     # produce output for results of parsing #
@@ -509,7 +511,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
     #################################################################
     ################ private methods only after this ################
 
-    def _addTerminal ( self , r , dvdd ):
+    def _addTerminal ( self , r , dvdd , capn=False ):
 
         """
         create a leaf phrase node from a definition for a term
@@ -543,6 +545,8 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
                 if dvdd and len(self.gtb.splits[typ]) > 0:  # segment analyzed?
 #                   print 'limit ramification'
                     ph.krnl.usen = 1
+                if capn:                                    # note capitalization?
+                    ph.krnl.semf.set(0)
 #               print 'ph.lens=' , ph.lens
 #               print 'ph=' , ph
                 self.enqueue(ph)                            # save phrase to ramify
@@ -650,17 +654,17 @@ if __name__ == '__main__':
 
     print '----'
     sgm = 'abc'          # test example in dictionary
-    sta = tree.createPhrasesFromDictionary(sgm,False)
+    sta = tree.createPhrasesFromDictionary(sgm,False,False)
     print sgm , ':' , sta , ', phlim=' , tree.phlim , 'lastph=' , tree.lastph
 
     print '----'
     sgm = 'abcd'         # test example not in dictionary
-    sta = tree.createPhrasesFromDictionary(sgm,False)
+    sta = tree.createPhrasesFromDictionary(sgm,False,False)
     print sgm , ':' , sta,', phlim=' , tree.phlim , 'lastph=' , tree.lastph
 
     print '----'
     sgm = 'xyz'          # test example in dictionary
-    sta = tree.createPhrasesFromDictionary(sgm,False)
+    sta = tree.createPhrasesFromDictionary(sgm,False,False)
     print sgm , ':' , sta , ', phlim=' , tree.phlim , 'lastph=' , tree.lastph
 
     print '----'

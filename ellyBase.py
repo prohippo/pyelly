@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 22feb2016 CPM
+# ellyBase.py : 02mar2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -74,7 +74,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.3.8'                      # current version of PyElly software
+release = 'v1.3.9'                      # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -342,13 +342,6 @@ class EllyBase(object):
                     return None         # if next token cannot be handled, quit
                 if len(self.ptr.queue) == 0:
                     break
-#               print 'from lookup tokn=' , tokn
-                if tokn.capn:
-#                   print 'capitalized, with' , len(self.ptr.queue) , 'leaf phrases'
-                    for ph in self.ptr.queue:
-#                       print 'ph=' , ph
-                        ph.krnl.semf.set(0) # set capitalization as reserved semantic feature
-#                       print 'ph=' , ph , '!'
                 self.ptr.digest()       # process queue to get all ramifications
                 self.ptr.restartQueue() # for any leading zero production
 #               print len(self.ctx.tokns) , 'tokens after digestion'
@@ -450,10 +443,11 @@ class EllyBase(object):
             return to
 
         wsk = self.sbu.buffer[:k]
+        cap = ellyChar.isUpperCaseLetter(wsk[0])
 #       print 'wsk=' , wsk
 #       print 'queue before=' , len(self.ptr.queue)
         rws = u''.join(wsk)
-        found = self.ptr.createPhrasesFromDictionary(rws.lower(),False)
+        found = self.ptr.createPhrasesFromDictionary(rws.lower(),False,cap)
         if found or mx > 0:
 #           print 'found internally'
             self.sbu.skip(k)
@@ -517,6 +511,7 @@ class EllyBase(object):
         suffx = ''                     #   any suffix removed in match
 
         lm = len(sb)                   # scan limit
+        capd = ellyChar.isUpperCaseLetter(sb[0])
         vmx = 0                        # external vocabulary match maximum
 #       print 'next component=' , sb[:k] , ', context=' , sb[k:lm]
 
@@ -553,6 +548,8 @@ class EllyBase(object):
                         tr.lastph.lens = nspan  # set char length of leaf phrase node
                                                 # just added for later selection
                         tr.lastph.krnl.cncp = ve.con
+                        if capd:
+                            tr.lastph.krnl.semf.set(0)
 #                       print 'vocab phr=' , tr.lastph , 'len=' , tr.lastph.lens
                         if suffx != '':
                             if ellyChar.isApostrophe(suffx[1]):
@@ -584,7 +581,7 @@ class EllyBase(object):
 #       print 'returns [' , nspan , ',' , vmchs , ',' , suffx , ']'
         return [ nspan , vmchs , suffx ]
 
-    def _simpleTableLookUp ( self , ws , tree , spl=False ):
+    def _simpleTableLookUp ( self , ws , tree , spl=False , cap=False ):
 
         """
         simple external dictionary lookup
@@ -593,6 +590,8 @@ class EllyBase(object):
             self  -
             ws    - single-word string
             tree  - parse tree for putting matches
+            spl   - splitting of token flag
+            cap   - capitalization of token flag
 
         returns:
             count of matches found
@@ -612,6 +611,8 @@ class EllyBase(object):
             if tree.addLiteralPhraseWithSemantics(
                 v.cat,v.syf,v.smf,v.bia,v.gen,spl
             ):
+                if cap:
+                    tree.lastph.krnl.semf.set(0)
 #               print 'vtb sbuf=' , self.sbu.buffer
                 count += 1
 
@@ -647,16 +648,18 @@ class EllyBase(object):
             print >> sys.stderr , 'FATAL error' , e
             sys.exit(1)
 #       print 'extracted' , '['+ ws + ']'
+        wcapzn = w.isCapitalized()
+        wsplit = w.isSplit()
 
         wl = len(ws)
         if wl > mnl:
-            found = self._simpleTableLookUp(ws,tree,w.isSplit()) > 0
+            found = self._simpleTableLookUp(ws,tree,wsplit,wcapzn) > 0
 #           print 'found in external table=' , found
 
         if wl >= mnl:
             if ws in self.rul.gtb.dctn:     # look up internally
 #               print '"' + ws + '" in dictionary'
-                if tree.createPhrasesFromDictionary(ws,w.isSplit()):
+                if tree.createPhrasesFromDictionary(ws,wsplit,wcapzn):
                     found = True
 
 #       print 'found in internal dictionary=' , found
@@ -681,12 +684,12 @@ class EllyBase(object):
             w = buff.getNext()              # get token again with stemming and macros
 
             ws = u''.join(w.root)
-            if len(ws) < mnl: return None
-            if self._simpleTableLookUp(ws,tree):  # external lookup
+            if len(ws) < mnl: return None   # external lookup?
+            if self._simpleTableLookUp(ws,tree,False,wcapzn):  # external lookup
                 found = True
 
-            if ws in self.rul.gtb.dctn:     # internal lookup
-                if tree.createPhrasesFromDictionary(ws,w.isSplit()):
+            if ws in self.rul.gtb.dctn:     # internal lookup?
+                if tree.createPhrasesFromDictionary(ws,wsplit,wcapzn):
                     found = True
 
         if found:                           # if any success, we are done
@@ -694,7 +697,7 @@ class EllyBase(object):
             w.dvdd = dvdd
             return w
 
-#       print 'unrecognized token w=' , unicode(w)
+#       print 'still unrecognized token w=' , unicode(w)
         if self.pnc.match(w.root):          # check if next token is punctuation
 #           print 'catg=' , self.pnc.catg , self.pnc.synf.hexadecimal()
             if tree.addLiteralPhrase(self.pnc.catg,self.pnc.synf):
