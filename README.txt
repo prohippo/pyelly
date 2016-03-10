@@ -281,6 +281,8 @@ Release Notes:
  1.3.9   - 03mar2016  fix various problems with checking of capitalization
                       clean up parse tree code
                       clean up documentation
+                      extend "marking" rules and integration test
+                      extend "echo" rules
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will require regeneration of any previously saved *.elly.bin files to ensure

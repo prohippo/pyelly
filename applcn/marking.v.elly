@@ -71,6 +71,7 @@ just as : CONJ - -1
 from across : PREP
 even though : CONJ
 since then : ADV
+from beginning to end : ADV
 
 eat-in : ADJ
 fully-equipped : ADJ
@@ -112,12 +113,12 @@ labor market : NOUN
 unemployment rate : NOUN
 purchasing power : NOUN
 fixed investment : NOUN
-James : NOUN
 World News Tonight with David Muir : NOUN
 Mimi Spear : NOUN
 Harry : NOUN
 Black Lives Matter : NOUN
 ferguson : NOUN
+Institute for Radio Astronomy Millimetrique : NOUN
 
 fried liver attack : NOUN
 2 knights defense : NOUN
@@ -343,6 +344,7 @@ bit : NOUN
 black : NOUN
 black : VERB - -1
 black : ADJ  - +2
+black hole : NOUN
 blend : NOUN
 blend : VERB
 blow : NOUN
@@ -700,7 +702,7 @@ ease : VERB
 easier : ADJ
 easiest : ADJ
 easily : ADV
-east : NOUN
+east : NOUN - -2
 east : ADJ
 east : ADV[~dir]
 easter : NOUN
@@ -773,8 +775,9 @@ exercise : NOUN
 exercise : VERB
 exist : VERB
 expect : VERB
+expectation : NOUN
 experiment : NOUN
-experiment : VERB
+experiment : VERB - -3
 explore : VERB
 export : NOUN
 export : VERB
@@ -963,7 +966,7 @@ get : NOUN - -2
 get : VERB[^ptcl]
 girl : NOUN
 give : NOUN - -2
-give : VERB[^ptcl]
+give : VERB[^ptcl] [$trns] 0
 glance : NOUN
 glance : VERB
 glow : NOUN
@@ -1101,6 +1104,7 @@ infantry : NOUN
 infect : VERB [$trns] 0
 infectious : ADJ
 inflate : VERB
+inflation : NOUN
 information : NOUN
 infrastructure : NOUN
 innovate : VERB
@@ -1146,6 +1150,7 @@ italy : NOUN
 item : NOUN
 item : ADV - -5
 itinerary : NOUN
+james clerk maxwell : NOUN
 january : NOUN
 jerusalem : NOUN
 jesus : NOUN
@@ -1169,6 +1174,7 @@ keep : VERB
 kill : NOUN
 kill : VERB - +1
 kilometer : NOUN
+kilometre : NOUN
 kind : NOUN
 kind : ADJ
 king : NOUN
@@ -1324,6 +1330,7 @@ michael : NOUN
 military : NOUN
 milk : NOUN
 milk : VERB
+milky way : NOUN
 millimeter : NOUN
 minister : NOUN
 minister : VERB
@@ -1415,15 +1422,16 @@ nod : VERB
 nohow : ADV
 normal : NOUN
 normal : ADJ
-north : NOUN
+north : NOUN - -2
 north : ADJ
 north : ADV[~dir]
-northeast : NOUN
+north pole : NOUN
+northeast : NOUN - 2
 northeast : ADJ
 northeast : ADV[~dir]
 northern : NOUN - -1
 northern : ADJ
-northwest : NOUN
+northwest : NOUN - 2
 northwest : ADJ
 northwest : ADV[~dir]
 nose : NOUN
@@ -1965,14 +1973,15 @@ sound : VERB
 sound : ADJ
 source : NOUN
 source : VERB
-south : NOUN
+south : NOUN - -2
 south : ADJ
 south : ADV[~dir]
-southeast : NOUN
+south pole : NOUN
+southeast : NOUN - -2
 southeast : ADJ
 southeast : ADV[~dir]
 southern : ADJ
-southwest : NOUN
+southwest : NOUN - -2
 southwest : ADJ
 southwest : ADV[~dir]
 spain : NOUN
@@ -2090,6 +2099,7 @@ switch grass : NOUN
 switzerland : NOUN
 swoop : NOUN
 swoop : VERB
+synthesize : VERB
 synthetic : NOUN
 synthetic : ADJ
 system : NOUN
@@ -2123,7 +2133,7 @@ technique : NOUN
 teeth : NOUN
 tehran : NOUN
 telescope : NOUN
-telescope : VERB
+telescope : VERB - -3
 televise : VERB
 television : NOUN
 tell : NOUN
@@ -2257,7 +2267,7 @@ upstairs : ADJ
 upstairs : ADV
 urgent : ADJ
 us : NOUN
-use : NOUN [!rn] 0
+use : NOUN [!spcs] 0
 use : VERB
 utterance : NOUN
 vacant : ADJ
@@ -2328,7 +2338,7 @@ well : NOUN
 well : VERB
 well : ADJ[%to]
 well : ADV
-west : NOUN
+west : NOUN - -2
 west : ADJ
 west : ADV[~dir]
 western : NOUN - -1
