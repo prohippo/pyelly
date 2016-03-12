@@ -35,6 +35,7 @@ livestock waste : NOUN
 time control : NOUN
 submillimeter : ADJ
 interferometry : NOUN
+sales team : NOUN
 
 as if : CONJ
 as well as : CONJ
@@ -199,6 +200,7 @@ air : NOUN
 air : VERB
 alarm : NOUN
 alarm : VERB
+alexander hamilton : NOUN
 alive : ADJ
 allow : VERB
 almost : ADV[~mod,prox]
@@ -1592,6 +1594,8 @@ pole : NOUN
 pole : VERB
 polite : ADJ
 politic : ADJ
+political : ADJ
+politics : NOUN
 pollute : VERB
 pond : NOUN
 poor : NOUN - -1
@@ -1703,7 +1707,7 @@ raise : NOUN
 raise : VERB
 range : NOUN
 range : VERB
-rap : NOUN
+rap : NOUN - +1
 rap : VERB
 rapid : NOUN - -2
 rapid : ADJ
@@ -2173,7 +2177,7 @@ thousand : ADJ
 threat : NOUN
 throughout : ADV
 ticket : NOUN
-ticket : VERB
+ticket : VERB - -2
 timbre : NOUN
 time : NOUN
 time : VERB
