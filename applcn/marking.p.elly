@@ -49,3 +49,11 @@
 
 0 @$ XID -1
 0 @\\*$ XID -1
+
+0 &#/&# - 8
+8 th  NUM -1
+8 ths NUM -1
+8 nd  NUM -1
+8 nds NUM -1
+8 rd  NUM -1
+8 rds NUM -1
