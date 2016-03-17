@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 25feb2016 CPM
+# ellyWildcard.py : 16mar2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -453,6 +453,7 @@ def match ( patn , text , offs=0 , limt=None ):
 
         ## literally match as many next chars as possible
 
+#       print 'loop mp=' , mp , 'ml=' , ml
         while mp < ml:
             if offs >= limt:
                 last = ''
@@ -568,6 +569,7 @@ def match ( patn , text , offs=0 , limt=None ):
         elif tc == cSAN or tc == cSDG or tc == cSAL:
             if last != '':            # still more to match?
                 offs -= 1
+#               print 'spanning tc=' , ord(tc)
                 nm = _span(tc)        # maximum match possible
 #               print 'spanning=' , nm
                 if nm >= 1:
@@ -605,6 +607,7 @@ def match ( patn , text , offs=0 , limt=None ):
         else:
 #           print "no unwinding"
             break                   # quit if unwinding is exhausted
+#       print 'cnt=' , uf.count , 'off=' , offs
 
     ##
     ## clean up on match mode or on no match possible

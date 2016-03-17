@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# entityExtractor.py : 01mar2016 CPM
+# entityExtractor.py : 12mar2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -134,7 +134,7 @@ if __name__ == '__main__':
         if len(l) <= 1: break
         b = list(l)
         mn = ee.run(b)
-        print 'mn=' , mn
+        print 'match n=' , mn
         if mn > 0:
             print utre.lastph
             print 'new buffer:' , b

@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 21feb2016 CPM
+# ellyChar.py : 16mar2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -183,7 +183,7 @@ def isEmbeddedCombining ( x ):
     returns:
         True if char can be in the middle of a token, False otherwise
     """
-    return x in [ DOT , COM , COL , APO , APX , AST ]
+    return x in [ DOT , COM , COL , APO , APX , AST , SLA ]
 
 def isPureCombining ( x ):
     """

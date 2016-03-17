@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# simpleTransform.py : 07may2015 CPM
+# simpleTransform.py : 15mar2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -163,9 +163,11 @@ class SimpleTransform(object):
             True on any rewriting, False otherwise
         """
 
-        vA = 0      # accumulated value
+        vA = 0      # accumulated main value
+        dA = 0      # any denominator value
         lA = 0      # accumulated length of matched substring
         xA = ''     # ordinal ending
+        sA = ''     # for ordinal plural
 
         salt = ''   # for alternative handling of hyphenated numbers
 
@@ -176,7 +178,7 @@ class SimpleTransform(object):
 
         while True: # collect all components of a number
 
-            k = self.get(t)             # next component
+            k = self.get(t)             # next component as string
 #           print 'got k=' , k
 
             if k == 0: break            # if none, stop collecting
@@ -185,15 +187,20 @@ class SimpleTransform(object):
 
             tl = self.string.split('-') # split up compound like 'twenty-four'
 
-            if len(tl) > 2: break       # cannot have more than one hyphen
+            lentl = len(tl)
+
+#           print 'lentl=' , lentl
+
+            if lentl > 3: break         # cannot have more than two hyphens
 
 #           print 'tl=' , tl
 
             w = tl[0]                   # start of possible number
 #           print 'w=' , w.encode('utf8')
+
             if w == '': break           # if current component starts with '-'
 
-            if len(tl) == 1:            # no hyphenated part?
+            if lentl == 1:              # no hyphenated part?
 #               print 'no hyphen lA=' , lA , 'k=' , k
                 if w in Card:           # if so, is it a cardinal
 #                   print 'cardinal'
@@ -230,38 +237,76 @@ class SimpleTransform(object):
                     break
 #               print 'continue scan lA=' , lA , 'k=' , k
 
-            elif len(tl) != 2:          # expecting expression like 'thirty-five'
-                break
-
             elif not w in Card:
                 break                   # if non-cardinal, stop collection
 
+            elif lentl == 3:            # expecting something like 'one-thirty-second'
+#               print 'fraction tl[1]=' , tl[1]
+                if tl[1] in Card:
+                    dm10 = Card[tl[1]]
+#                   print 'dm10=' , dm10
+                    if dm10 > 10 and dm10 < 100:
+                        dx = tl[2]
+                        if dx[-1] == 's':
+                            dx = dx[:-1]
+                            sA = 's'
+#                       print 'dx=' , dx , 'sA=' , sA
+                        if dx in Ord and Ord[dx] < 10:
+                            vA = Card[w]
+                            dA = dm10 + Ord[dx]
+                            xA = dx[-2:]
+                            lA += k
+#                           print 'vA=' , vA , 'dA=' , dA , 'xA=' , xA , 'lA=' , lA
+                break
+
+            elif lentl != 2:            # expecting expression like 'thirty-five'
+                break                   #     or 'one-eighth'
+
             else:                       # otherwise, continue
                 n = Card[w]             # get value of cardinal
+#               print 'cardinal n=' , n
                 x = tl[1]               # get second part of hyphenated number
-                if ( not x in Card and  # must be written out number
-                     not x in Ord ):
-                    break
 
-                if x in Card:           # get numerical values for two components
-                    m = Card[x]         # cardinal
-                elif x in Ord:
-                    m = Ord[x]          # ordinal
-                    xA = x[-2:]         # and its marker
+                if n == 1 or x[-1] == 's':
+                    if n != 1:          # interpret hyphenation as simple fraction
+                        x = x[:-1]
+                        sA = 's'        # for something like 'two-thirds'
+#                       print 'x=' , x , 'sA=' , sA
+                    if x == 'half' or x == 'halve':
+                        x = 'second'    # normalize
+                    elif x == 'quarter':
+                        x = 'fourth'    # normalize
+                    elif not x in Ord:
+                        break
+                    vA = n
+                    dA = Ord[x]
+                    xA = x[-2:]         # mapping to simple fraction
+#                   print 'fraction=' , vA , dA , xA , sA
 
-                if n >= 20 and m < 10:
-                    vA += n + m         # make single number here if this makes sense
-                    if xA != '':
-                        lA += k
-                        break           # ordinal stops collection
-                elif lA > 0:            # if cannot combine
-                    break               # then stop scan if anything successfully parsed already
-                elif vA == 0:           # if nothing scanned, then recombine hyphenated parts
-                    salt = str(n) + '-' + str(m)
-                    lA += k
-                    break               # have to stop scan
                 else:
-                    break               # out of options, stop scan
+                    if ( not x in Card and  # must be written out number
+                         not x in Ord ):
+                        break
+
+                    if x in Card:           # get numerical values for two components
+                        m = Card[x]         # cardinal
+                    elif x in Ord:
+                        m = Ord[x]          # ordinal
+                        xA = x[-2:]         # and its marker
+
+                    if n >= 20 and m < 10:
+                        vA += n + m         # make single number here if this makes sense
+                        if xA != '':
+                            lA += k
+                            break           # ordinal stops collection
+                    elif lA > 0:            # if cannot combine
+                        break               # then stop scan if anything successfully parsed already
+                    elif vA == 0:           # if nothing scanned, then recombine hyphenated parts
+                        salt = str(n) + '-' + str(m)
+                        lA += k
+                        break               # have to stop scan
+                    else:
+                        break               # out of options, stop scan
 
 #           print 'lA=' , lA , 'k=' , k
             lA += k                     # increment match char count
@@ -275,22 +320,26 @@ class SimpleTransform(object):
 #           print 'ns=' , ns
 
         lA += ns
+#       print 'lA=' , lA
+#       print 'ts=' , ts
         if lA == 0: return False        # if nothing matched, do nothing more
 
         if ts[lA-1] == ' ':             # must restore trailing space on match
             lA -= 1
 
-#       print 'lA=' , lA
 #       print 'ts=' , ts[:lA] , ts[lA:]
 
         while lA > 0:                   # remove matching substring
             ts.pop(0)
             lA -= 1
 
-        if vA > 0:                      # check for type of rewriting
-            s = str(vA) + xA            # numerical value as string + any ordinal indicator
-        else:
-            s = salt                    # recombined string that is not interpretable as number
+        if vA == 0:                     # no number found to rewrite?
+            s = salt
+        elif dA > 0:                    # a simple fraction found?
+            s = str(vA) + '/' + str(dA) + xA + sA
+        else:                           # numerical value as string + any ordinal indicator
+            s = str(vA) + xA
+
 #       print 's=' , s
         for c in s[::-1]:               # insert rewritten substring
             ts.insert(0,c)
@@ -330,7 +379,15 @@ if __name__ == '__main__':
         u'four,' ,
         u'four yaks' ,
         u'twenty-one.' ,
-        u'twenty-one yaks'
+        u'twenty-one yaks' ,
+        u'thirteenth' ,
+        u'one-eighth' ,
+        u'one-half' ,
+        u'three-quarters' ,
+        u'two-thirds' ,
+        u'four-thirds' ,
+        u'one-twentieth' ,
+        u'two-thirty-seconds'
     ]
 
     se = SimpleTransform()        # set up transformation object
