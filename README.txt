@@ -283,9 +283,11 @@ Release Notes:
                       clean up documentation
                       extend "marking" rules and integration test
                       extend "echo" rules
+ 1.3.10  - 17mar2016  allow fractions to be handled as single tokens
+                      extend "marking" rules and integration test
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
-will require regeneration of any previously saved *.elly.bin files to ensure
+will often require regenerating any previously saved *.elly.bin files to ensure
 correct operation. Changes only to PyElly sample application definition files,
 unit testing input or key files, and PyElly documentation will be made from time
 to time, but these will leave version numbers the same, if they are the only
