@@ -74,6 +74,10 @@ from across : PREP
 even though : CONJ
 since then : ADV
 from beginning to end : ADV
+and so on : MISC
+and so : CONJ
+ah : MISC
+yes : MISC
 
 eat-in : ADJ
 fully-equipped : ADJ
@@ -230,6 +234,7 @@ apology : NOUN
 appear : VERB
 apple : NOUN
 applicable : ADJ
+application : NOUN
 apply : VERB
 approval : NOUN
 approve : VERB
@@ -2088,6 +2093,7 @@ suck : VERB
 sucker : NOUN
 sudden : ADJ
 suggest : VERB[^dit]
+suggestion : NOUN
 suit : NOUN
 suit : VERB
 suite : NOUN
@@ -2231,7 +2237,7 @@ true : NOUN
 true : VERB
 true : ADJ[%to]
 true : ADV
-try : NOUN
+try : NOUN - -2
 try : VERB
 tuck : NOUN - -2
 tuck : VERB
@@ -2316,7 +2322,7 @@ wage : NOUN
 wage : VERB
 wait : NOUN
 wait : VERB
-want : NOUN
+want : NOUN - -1
 want : VERB
 war : NOUN
 war : VERB
@@ -2474,3 +2480,4 @@ thought : NOUN
 unfortunately : ADV
 variation : NOUN
 winner : NOUN
+yes : NOUN - -3

@@ -359,6 +359,11 @@ _
   (typg)
   right
 __
+g:ELEM->MISC
+_
+  var typg=elem
+  (typg)
+__
 
 g:PUNC[|*l]->PUNC[|*l,quo] CONJ
  >>[$trlg]
@@ -523,7 +528,7 @@ _
   delete to >
   merge
 __
-g:VCLU[^*l]->VERB VCLU[^infn]
+g:VCLU[^*l]->VERB[^-*r] VCLU[^infn]
 #       ?>>?
  r[$cmpd]>>*r--
          >>*r[$cmpd]++
@@ -1014,7 +1019,7 @@ g:VERB[^*l,to]->VERB[^beaj] TO
 _
   (twob)
 __
-g:VERB->BE
+g:VERB[^*r]->BE
  >>-
 __
 g:VERB->HAVE
@@ -1287,6 +1292,7 @@ _
   (twob)
 __
 g:CONJ->CONJ[:-*l,-rel] PUNC[|com]
+ >>+
 __
 
 g:QUAN->ADV[~prox] QUAN
