@@ -71,6 +71,7 @@ calm and collected : ADJ
 just as : ADV
 just as : CONJ - -1
 from across : PREP
+over from : PREP
 even though : CONJ
 since then : ADV
 from beginning to end : ADV
@@ -78,6 +79,8 @@ and so on : MISC
 and so : CONJ
 ah : MISC
 yes : MISC
+of course : ADV
+so many : QUAN[:ind]
 
 eat-in : ADJ
 fully-equipped : ADJ
@@ -132,8 +135,6 @@ tighty-whities : NOUN
 genetically modified : ADJ
 agriculture department : NOUN
 genome editing : NOUN
-world war ii : NOUN
-world war i  : NOUN
 
 for example : PEXP[|eg]
 such as : DEM
@@ -151,6 +152,11 @@ g.i. : ADJ
 
 "thousands" : NUM
 r&b : NOUN
+
+could a  : AUXL
+would a  : AUXL
+should a : AUXL
+most as many : ADJ
 
 # # # # WordNet 3.1 entries
 
@@ -567,7 +573,7 @@ cover : VERB
 cozy : NOUN
 cozy : ADJ
 craft : NOUN
-craft : VERB
+craft : VERB - -1
 crafty : ADJ
 craze : NOUN
 craze : VERB
@@ -677,8 +683,8 @@ dot : NOUN
 dot : VERB
 down : NOUN
 down : VERB
-down : ADJ
-down : ADV
+down : ADJ - -2
+down : ADV [$trlg] +1
 download : NOUN
 download : VERB
 draft : NOUN
@@ -749,6 +755,7 @@ encounter : VERB
 encourage : VERB
 end : NOUN
 end : VERB[^ptcl]
+end up : VERB
 energy : NOUN
 engine : NOUN
 engineer : NOUN
@@ -978,6 +985,7 @@ geology : NOUN
 germany : NOUN
 get : NOUN - -2
 get : VERB[^ptcl]
+get : BE
 girl : NOUN
 give : NOUN - -2
 give : VERB[^ptcl] [$trns] 0
@@ -1036,7 +1044,7 @@ hang : NOUN
 hang : VERB
 happen : VERB
 hard : ADJ - +1
-hard : ADV
+hard : ADV - -1
 hard-boiled : ADJ
 harry : VERB - -1
 harsh : ADJ
@@ -1210,7 +1218,7 @@ lap : NOUN
 lap : VERB
 lapse : NOUN
 lapse : VERB
-large : NOUN - -6
+large : NOUN - -8
 large : ADJ - +2
 large : ADV - -2
 last : NOUN - -1
@@ -1225,9 +1233,9 @@ laugh : NOUN
 laugh : VERB
 law : NOUN
 lawyer : NOUN
-lay : NOUN
+lay : NOUN - -2
 lay : VERB
-lay : ADJ
+lay : ADJ - -2
 lead : NOUN
 lead : VERB
 learn : VERB
@@ -1273,7 +1281,7 @@ locate : VERB
 long : VERB
 long : ADJ
 look : NOUN
-look : VERB[^ptcl]
+look : VERB[^ptcl] - +1
 loophole : NOUN
 lose : VERB
 lot : NOUN
@@ -1959,6 +1967,8 @@ sit : VERB
 size : NOUN
 size : VERB
 size : ADJ
+sky : noun
+sky : verb - -2
 slave : NOUN
 slave : VERB
 slight : NOUN
@@ -2278,7 +2288,7 @@ unit : NOUN
 united states : NOUN
 up : VERB - -6
 up : ADJ - -2
-up : ADV - -2
+up : ADV - -1
 upcoming : ADJ
 update : NOUN
 update : VERB
@@ -2359,9 +2369,10 @@ welcome : NOUN
 welcome : VERB
 welcome : ADJ
 well : NOUN
-well : VERB
+well : VERB - -1
 well : ADJ[%to]
 well : ADV
+well : MISC [!spcs] -2
 west : NOUN - -2
 west : ADJ
 west : ADV[~dir]
@@ -2480,4 +2491,6 @@ thought : NOUN
 unfortunately : ADV
 variation : NOUN
 winner : NOUN
+world war i  : NOUN
+world war ii : NOUN
 yes : NOUN - -3

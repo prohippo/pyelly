@@ -176,11 +176,12 @@ g:SEGM[|*unique]->ELEM
           >>*l
 __
 g:SEGM[|*unique]->SEGM ELEM
-#             ?>>?
- l[!pro] r[!ln]>>---
- l[!rn] r[!ln] >>*r--
- l[!rv] r[!lv] >>*r----
-               >>*r
+#                 ?>>?
+ l[!ppps,rv]r[!ppps,rn]>>*r-8
+ l[!pro]    r[!ln]     >>*r-3
+ l[!rn]     r[!ln]     >>*r-2
+ l[!rv]     r[!lv]     >>*r-4
+                       >>*r
 _
   left
   linefeed
@@ -197,8 +198,8 @@ _
 __
 g:SEGM->SEGM CONJ
  r[!aux]>>-6
- l[$cnj]>>-8
-        >>[$cnj]-4
+ l[!cnj]>>-8
+        >>[!cnj]-4
 _
   left
   linefeed
@@ -220,9 +221,8 @@ _
 __
 g:ELEM->NCLU[:-dit, prep,-poss]
 #      ?>>?
- l[$msr]>>[!ln,rn]
-        >>[!rn]
-
+ l[$msr]>>[!ln,rn,ppps]
+        >>[!rn,ppps]
 __
 g:ELEM->NCLU[:-dit,-prep,-poss]
 #      ?>>?
@@ -239,13 +239,16 @@ _
   left
 __
 g:ELEM->PRO
- >>[!rn,pro]
+# ?>>?
+   >>*l[!rn,pro]
 _
   var typg=pro
   (typg)
 __
 g:ELEM[^*l]->VCLU[^-to,-s,-ed]
- >>[!lv,rv]
+#       ?>>?
+  l[$pts]>>[!lv,rv,ppps]
+         >>[!lv,rv]
 _
   var punc=
   left
@@ -324,6 +327,7 @@ _
   append </conj>
 __
 g:ELEM->ADV
+ n>2    >>-
  l[$deg]>>--
         >>---
 _
@@ -360,6 +364,7 @@ _
   right
 __
 g:ELEM->MISC
+ p<1 l[!spcs]>>+3
 _
   var typg=elem
   (typg)
@@ -580,7 +585,7 @@ _
   append </punc>
 __
 g:VCLU->VCLU PREP
- >>*l------
+ >>*l-8
 _
   left
   linefeed
@@ -676,7 +681,7 @@ _
   left
   append </dem></nclu>
 __
-g:NCLU[:*l,*r,det]->DEM[:-sgl] NCLU[:-det,-prep,-qnt]
+g:NCLU[:*l,*r,det]->DEM[:-sgl,-plur] NCLU[:-det,-prep,-qnt]
 #                 ?>>?
  l[!-*c,spcs]r[!*c]>>*r----
                    >>*r+
@@ -688,6 +693,13 @@ g:NCLU[:*l,*r,det]->DEM[:sgl] NCLU[:-det,-prep,-plur,-qnt]
 #                 ?>>?
  l[!-*c,spcs]r[!*c]>>*r----
                    >>*r++
+_
+  var typg=dem
+  (lxtd)
+__
+g:NCLU[:*l,*r,det]->DEM[:plur] NCLU[:-det,-prep,-qnt,plur]
+# ?>>?
+  >>*r++++
 _
   var typg=dem
   (lxtd)
@@ -872,7 +884,9 @@ g:NOUN->NOUN[:-*x,-plur,-ing] XID
 _
   (twob)
 __
-g:PRO[%*r]->PREP[%-cnj] PRO[%-nom]
+g:PRO[%*r,-mod]->PREP[%-cnj] PRO[%-nom]
+# ?>>?
+   >>[!ppps]
 _
   var typg=prep
   (typg)
@@ -888,45 +902,46 @@ _
   append </vclu>
 __
 g:VCLU[^*r]->ADV VCLU
- l[$deg]>>------
+ l[$deg]>>*r------
 _
   var typg=adv
   (lxtd)
 __
 g:VCLU[^*l]->VCLU ADV[~-mod]
-  r[$deg]>>+0
-  r[$prd]>>++++
+  r[$deg]  >>*l+0
+  r[$prd]  >>*l++++
+  l[$-trns]r[$trlg]>>*l+
   >>----
 _
   var typg=adv
   (rxtd)
 __
 g:VCLU[^*l]->VCLU NAVB
-  >>++++
+  >>*l++++
 _
   var typg=adv
   (rxtd)
 __
 g:VCLU[^hav,*r]->HAVE VCLU[^-hav]
- r[$cond]>>++
+ r[$cond]>>*r++
 _
   var typg=aux
   (lxtd)
 __
 g:VCLU[^aux,*r]->AUXL VCLU[^-aux]
- r[$cond]>>+1
+ r[$cond]>>*r+1
 _
   var typg=aux
   (lxtd)
 __
 g:VCLU[^*r]->BE VCLU[^ing,-hav]
- >>++
+ >>*r++
 _
   var typg=aux
   (lxtd)
 __
 g:VCLU[^pass,*r]->BE VCLU[^ed,-hav]
- >>+
+ >>*r+
 _
   var typg=aux
   (lxtd)
@@ -1022,7 +1037,7 @@ __
 g:VERB[^*r]->BE
  >>-
 __
-g:VERB->HAVE
+g:VERB[^hav]->HAVE
  >>-
 __
 
@@ -1054,7 +1069,7 @@ __
 g:ADJ[%*r]->NOUN[:hyph] ADJ
 __
 g:ADJ[%*r,more]->ADV ADJ[%er]
- l[$deg]>>++++++
+ l[$deg]>>+8
 _
   var typg=adv
   (typg)
@@ -1197,7 +1212,7 @@ _
   (twob)
 __
 g:VERB[^*l,-ptcl]->VERB[^ptcl] PTCL   # inherited feature may be turned off in v1.3
- >>*l+++
+ >>*l[$pts]+++
 _
   (twob)
 __
@@ -1479,6 +1494,9 @@ d:our  <- DEM
 __
 d:their<- DEM
 __
+d:them <- DEM[:plur]
+ >>--
+__
 d:such <- DEM[:ind]
 __
 d:which <- DEM[:ind]
@@ -1594,6 +1612,10 @@ d:1 <- PRO[%mod]
 _
   append one
 __
+d:2 <- NUM[:cnj]
+_
+  append two
+__
 d:someone <- PRO
 __
 d:anyone  <- PRO
@@ -1602,7 +1624,7 @@ __
 d:and  <- CONJ
  >>[!coord]
 __
-d:or   <- CONJ
+d:or   <- CONJ[:qnt]
  >>[!coord]
 __
 d:but  <- CONJ
@@ -1900,4 +1922,31 @@ _
   back
   delete to >
   merge
+__
+
+g:HAVE[^ed]->XD
+_
+  append 'd
+__
+g:AUXL->XD
+ >>-
+_
+  append 'd
+__
+g:NOUN->CONJ[:qnt] NUM[:cnj]
+ >>-
+_
+  (twob)
+__
+d:kind <- GENR
+__
+g:ADV->GENR PREP[%of]
+ >>-2
+__
+g:ADV->ADV NCLU[:prep]
+ >>-1
+__
+g:ADV->ADV PRO
+ r[!ppps]>>+2
+         >>-8
 __

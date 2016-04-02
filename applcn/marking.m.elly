@@ -6,7 +6,6 @@
 &@’re -> \\1 are
 &@n’t -> \\1 not
 &@’ve -> \\1 have
-&@’d  -> \\1 had
 i'm   -> i am
 he -’s  -> he is
 it -’s  -> it is
@@ -24,6 +23,8 @@ that -’s  -> that is
 ...   -> …
 
 @. @* -> \\1.\\2
+
+&@'d -> \\1 'd
 
 # 
 # spelling correction
