@@ -81,6 +81,13 @@ ah : MISC
 yes : MISC
 of course : ADV
 so many : QUAN[:ind]
+in a way : ADV
+all evening : ADV
+at first : ADV
+at last  : ADV
+his own : DEM
+now and then : ADV
+often enough : ADV
 
 eat-in : ADJ
 fully-equipped : ADJ
@@ -97,6 +104,7 @@ at-times : ADV
 rear-drive : ADJ
 top-shelf : ADJ
 long-drawn : ADJ
+four-penny : ADJ
 
 ABC News : NOUN
 Agence France-Presse : NOUN
@@ -149,9 +157,12 @@ their own : DEM[:ind]
 about to : TO
 
 g.i. : ADJ
+, for example : MISC
+, for : PCNJ
 
 "thousands" : NUM
 r&b : NOUN
+fourpenny : NOUN
 
 could a  : AUXL
 would a  : AUXL
@@ -259,8 +270,8 @@ array : VERB
 arrive : VERB
 art : NOUN
 art : NOUN
-aside : ADV
-aside : NOUN
+aside : ADV  - +1
+aside : NOUN - -4
 ask : VERB
 associate : ADJ
 associate : NOUN
@@ -362,7 +373,7 @@ black : ADJ  - +2
 black hole : NOUN
 blend : NOUN
 blend : VERB
-blow : NOUN
+blow : NOUN - -1
 blow : VERB
 blush : NOUN - +1
 blush : VERB
@@ -403,6 +414,7 @@ call : VERB
 calm : NOUN
 calm : VERB
 calm : ADJ
+came back : VERB[^ed]
 campaign : NOUN - +1
 campaign : VERB
 cancer : NOUN
@@ -500,6 +512,7 @@ combine : NOUN
 combine : VERB
 come : NOUN - -4
 come : VERB
+come back : VERB
 comfort : NOUN
 comfort : VERB
 comfortable : ADJ
@@ -681,10 +694,10 @@ doom : VERB
 door : NOUN
 dot : NOUN
 dot : VERB
-down : NOUN
-down : VERB
+down : NOUN - -2
+down : VERB - -4
 down : ADJ - -2
-down : ADV [$trlg] +1
+down : ADV [$trlg] +2
 download : NOUN
 download : VERB
 draft : NOUN
@@ -1332,7 +1345,6 @@ matter : VERB
 maxim : NOUN
 maxwell : NOUN
 maybe : ADV
-me : NOUN
 mean : NOUN
 mean : VERB
 mean : ADJ
@@ -1932,6 +1944,7 @@ sexual : ADJ
 sexually : ADV
 share : NOUN
 share : VERB
+sharer : NOUN
 sharp : NOUN - -1
 sharp : ADJ
 sharp : ADV
@@ -2054,7 +2067,7 @@ stand : VERB
 star : NOUN
 star : VERB
 star : ADJ
-stare : NOUN
+stare : NOUN - -2
 stare : VERB
 start : NOUN
 start : VERB

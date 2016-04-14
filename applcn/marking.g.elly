@@ -367,7 +367,7 @@ g:ELEM->MISC
  p<1 l[!spcs]>>+3
 _
   var typg=elem
-  (typg)
+  (decom)
 __
 
 g:PUNC[|*l]->PUNC[|*l,quo] CONJ
@@ -1314,6 +1314,11 @@ g:QUAN->ADV[~prox] QUAN
 _
   (twob)
 __
+g:QUAN->QUAN QUAN
+ >>+++
+_
+  (twob)
+__
 
 #
 # predicate negation
@@ -1562,6 +1567,8 @@ d:there <- ADV
 __
 
 d:i    <- PRO[%nom]
+__
+d:me   <- PRO
 __
 d:you  <- PRO
 __
@@ -1950,3 +1957,29 @@ g:ADV->ADV PRO
  r[!ppps]>>+2
          >>-8
 __
+
+p:decom
+_
+  split
+  left
+  back
+  var x
+  peek x <
+  if x=,
+    delete 2 <
+    append <punc>,</punc>
+    end
+  append <
+  insert < typg
+  append >
+  merge
+  append </
+  insert < typg
+  append >
+__
+g:ELEM->PCNJ
+_
+  var typg=conj
+  (decom)
+__
+
