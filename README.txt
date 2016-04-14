@@ -285,6 +285,8 @@ Release Notes:
                       extend "echo" rules
  1.3.10  - 17mar2016  allow fractions to be handled as single tokens
                       extend "marking" rules and integration test
+ 1.3.11  - 13apr2016  allow vocabulary table entries to start with ','
+                      extend "marking" rules and integration test
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure

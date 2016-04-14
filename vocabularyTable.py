@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 04oct2015 CPM
+# vocabularyTable.py : 11apr2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -216,7 +216,7 @@ def compile ( name , stb , defn ):
                 if len(t) == 0 or len(d) == 0:
                     _err()                                # quit on missing parts
                 c = t[0]
-                if not ellyChar.isLetterOrDigit(c) and c != '.' and c != '"':
+                if not ellyChar.isLetterOrDigit(c) and not c in [ '.' , '"' , ',' ]:
                     _err('bad term')
 
                 n = delimitKey(t)                         # get part of term to index
