@@ -88,6 +88,10 @@ at last  : ADV
 his own : DEM
 now and then : ADV
 often enough : ADV
+whenever and wherever : CONJ
+from what : CONJ[:rel]
+from which : CONJ[:rel]
+all that : ALLTHT
 
 eat-in : ADJ
 fully-equipped : ADJ
@@ -104,6 +108,7 @@ at-times : ADV
 rear-drive : ADJ
 top-shelf : ADJ
 long-drawn : ADJ
+long-past  : ADJ
 four-penny : ADJ
 
 ABC News : NOUN
@@ -188,7 +193,7 @@ act : VERB
 activist : NOUN
 activity : NOUN
 add : NOUN - -2
-add : VERB
+add : VERB[^ptcl]
 addition : NOUN
 additional : ADJ
 address : NOUN
@@ -340,6 +345,8 @@ begin : VERB[^proc]
 behind : NOUN
 behind : ADJ
 behind : ADV
+being : AUXL[^ing]
+being : NOUN - -2
 bell : NOUN
 below : ADV
 bend : NOUN
@@ -994,6 +1001,7 @@ general : ADJ
 generous : ADJ
 genetically : ADV
 genome : NOUN
+geological : ADJ
 geology : NOUN
 germany : NOUN
 get : NOUN - -2
@@ -1012,7 +1020,7 @@ go : VERB[^ptcl]
 go : ADJ - -4
 god : NOUN
 good : NOUN
-good : ADJ
+good : ADJ [$cmpd] 0
 good : ADV - -1
 gourmet : NOUN
 govern : VERB
@@ -1121,7 +1129,7 @@ impact : NOUN
 impact : VERB
 impatient : ADJ
 imperfect : ADJ
-imperfect : NOUN
+imperfect : NOUN - -2
 important : ADJ[%to]
 impose : VERB
 impress : NOUN
@@ -1477,7 +1485,7 @@ nothing : NOUN
 nothing : ADV - -4
 notion : NOUN
 now : NOUN - -4
-now : ADV - +2
+now : ADV[~timg] - +2
 nuclear : ADJ
 number : NOUN
 number : VERB

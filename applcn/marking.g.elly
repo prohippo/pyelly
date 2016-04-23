@@ -1051,6 +1051,11 @@ g:BE->BE XING
 _
   (twob)
 __
+g:BE->BE ADV[~timg]
+ >>++
+_
+  (twob)
+__
 g:HAVE->HAVE XED
  >>+
 _
@@ -1076,7 +1081,7 @@ _
   right
 __
 g:ADJ[%*r,more]->ADV ADJ[%-er]
- l[$deg]>>++++
+ l[$deg]>>+4
 _
   var typg=adv
   (typg)
@@ -1981,5 +1986,20 @@ g:ELEM->PCNJ
 _
   var typg=conj
   (decom)
+__
+g:ELEM->ALLTHT VCLU
+ >>++
+_
+  append <nclu><quan>all</quan></nclu>
+  linefeed
+  append <conj>that</conj>
+  linefeed
+  right
+__
+g:ELEM->ALLTHT
+ >>-
+_
+  append <nclu><quan>all</quan>
+  append <dem>that</dem></nclu>
 __
 
