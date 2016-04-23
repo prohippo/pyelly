@@ -287,6 +287,9 @@ Release Notes:
                       extend "marking" rules and integration test
  1.3.11  - 13apr2016  allow vocabulary table entries to start with ','
                       extend "marking" rules and integration test
+ 1.3.12  - 23apr2016  more error checking in vocabulary table entries
+                      extend "bad" rules to test error checking
+                      extend "marking" rules and integration test
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
