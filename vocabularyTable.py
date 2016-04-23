@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 11apr2016 CPM
+# vocabularyTable.py : 17apr2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -307,6 +307,13 @@ def compile ( name , stb , defn ):
                                 _err()                    # signal bad format
                         elif ld > 0:
                             _err()                        # unidentifiable trailing text
+                    elif d[0] != '(':
+                        dd = d
+                        while ellyChar.isLetterOrDigit(dd[0]):
+                            dd = dd[1:]
+                        if len(dd) == 0 or dd[0] != '=':
+                            _err()
+
 
                 d = d.strip()                             # rest of definition
 #               print 'rest of d=' , d
