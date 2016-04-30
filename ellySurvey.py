@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellySurvey.py : 04oct2015 CPM
+# ellySurvey.py : 30apr2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2015, Clinton Prentiss Mah
 # All rights reserved.
@@ -101,7 +101,7 @@ class Tree(object):
         """
         self.lastph = Tree.Phrase()
 
-    def addLiteralPhrase ( self , cat , fet ):
+    def addLiteralPhrase ( self , cat , fet , dvd=False , cap=False ):
         """
         required dummy method
 
@@ -109,6 +109,8 @@ class Tree(object):
             self
             cat
             fet
+            dvd
+            cap
         """
 #       print >> sys.stderr , 'addLiteralPhrase cat=' , cat , 'fet=' , fet.hexadecimal(False)
         return
