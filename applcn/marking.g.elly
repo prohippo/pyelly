@@ -1081,7 +1081,7 @@ _
   right
 __
 g:ADJ[%*r,more]->ADV ADJ[%-er]
- l[$deg]>>+4
+ l[$deg]>>[$cmpd]+4
 _
   var typg=adv
   (typg)
@@ -1096,10 +1096,12 @@ g:ADJ[%*r]->NOUN[:hyph] ADJ
  >>++
 __
 g:ADJ[%ed]->VERB[^ed,-dit]
+ n<2>>------
  p<1>>-
     >>[$ind]--
 __
 g:ADJ[%ing]->VERB[^ing,-proc]
+      n<2>>------
  l[$trns]>>-----
       n>2>>---
          >>--
@@ -1633,10 +1635,10 @@ __
 d:anyone  <- PRO
 __
 
-d:and  <- CONJ
+d:and  <- CONJ[:cnj]
  >>[!coord]
 __
-d:or   <- CONJ[:qnt]
+d:or   <- CONJ[:qnt,cnj]
  >>[!coord]
 __
 d:but  <- CONJ
@@ -2002,4 +2004,18 @@ _
   append <nclu><quan>all</quan>
   append <dem>that</dem></nclu>
 __
-
+g:ADJC->ADJ PUNC[|com]
+ >>*l
+_
+  (twob)
+__
+g:ADJC->ADJ CONJ[:-rel,cnj]
+ >>*l--
+_
+  (twob)
+__
+g:ADJ[%*r]->ADJC ADJ[%-ed,-ing]
+ >>*l++++
+_
+  (twob)
+__

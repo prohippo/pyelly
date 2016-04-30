@@ -16,6 +16,7 @@ built : VERB[^ed]
 did : VERB[^ed]
 hove : VERB[^ed]
 said : VERB[^ed,dit]
+sat down : VERB[^ed]
 taken : VERB[^ed]
 thought : VERB[^ed]
 written : VERB[^ed]
@@ -68,7 +69,7 @@ for now : ADV
 such a : QUAN
 such an : QUAN
 calm and collected : ADJ
-just as : ADV
+just as : ADV [$deg] 0
 just as : CONJ - -1
 from across : PREP
 over from : PREP
@@ -703,7 +704,7 @@ dot : NOUN
 dot : VERB
 down : NOUN - -2
 down : VERB - -4
-down : ADJ - -2
+down : ADJ - -4
 down : ADV [$trlg] +2
 download : NOUN
 download : VERB
@@ -1242,6 +1243,7 @@ lapse : VERB
 large : NOUN - -8
 large : ADJ - +2
 large : ADV - -2
+largely : ADV
 last : NOUN - -1
 last : VERB
 last : ADJ[%mod,to]
@@ -1301,6 +1303,9 @@ local : ADJ
 locate : VERB
 long : VERB
 long : ADJ
+longer : NOUN - -2
+longer : ADJ
+longer : ADV - -1
 look : NOUN
 look : VERB[^ptcl] - +1
 loophole : NOUN
@@ -1985,6 +1990,7 @@ silver : VERB
 similar : ADJ
 sing : VERB
 sit : VERB
+sit down : VERB
 size : NOUN
 size : VERB
 size : ADJ
