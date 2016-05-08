@@ -1697,9 +1697,7 @@ off : VERB - -2
 off : ADJ
 off : ADV
 offer : NOUN
-offer : VERB
-offer : NOUN
-offer : VERB
+offer : VERB - +1
 office : NOUN
 often : ADV
 old : NOUN - -1
@@ -1711,7 +1709,7 @@ ongoing : ADJ
 online : ADJ
 only : ADJ - -2
 only : ADV
-open : NOUN - -1
+open : NOUN - -8
 open : VERB
 open : ADJ
 operate : VERB
