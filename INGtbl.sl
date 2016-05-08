@@ -77,6 +77,7 @@ BLOCK ing
     IF re {FA}
     IF ht {FA}
     IF bi {FA}
+    IF gd {FA}
     IF pmu {FA}
     IF pas {FA}
     IF pirts {FA}

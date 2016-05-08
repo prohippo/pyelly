@@ -570,6 +570,7 @@ fixer fix
 flasher flash
 flatten flat
 flavorant flavor
+fledgling fledgling
 flew fly
 flexible flex
 flocculate floccule
