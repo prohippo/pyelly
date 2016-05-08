@@ -93,6 +93,9 @@ whenever and wherever : CONJ
 from what : CONJ[:rel]
 from which : CONJ[:rel]
 all that : ALLTHT
+at the same time as : CONJ
+right after : CONJ
+straight after : CONJ
 
 eat-in : ADJ
 fully-equipped : ADJ
@@ -132,8 +135,6 @@ Angelina Jolie : NOUN
 Michael Keaton : NOUN
 Washington Post : NOUN
 federal open market committee : NOUN
-labor market : NOUN
-unemployment rate : NOUN
 purchasing power : NOUN
 fixed investment : NOUN
 World News Tonight with David Muir : NOUN
@@ -142,12 +143,13 @@ Harry : NOUN
 Black Lives Matter : NOUN
 ferguson : NOUN
 Institute for Radio Astronomy Millimetrique : NOUN
+Andras : NOUN
+Fairchild : NOUN
 
 fried liver attack : NOUN
 2 knights defense : NOUN
 tighty-whities : NOUN
 genetically modified : ADJ
-agriculture department : NOUN
 genome editing : NOUN
 
 for example : PEXP[|eg]
@@ -179,6 +181,8 @@ most as many : ADJ
 
 a bit : ADV [$deg,cmpd] 0
 abbey : NOUN
+absent : VERB
+absent : ADJ
 accord : NOUN
 accord : VERB - -1
 account : NOUN
@@ -220,12 +224,14 @@ aggressive : ADJ
 agree : VERB
 agreement : NOUN
 agriculture : NOUN
+agriculture department : NOUN
 ahead : ADJ - -1
 ahead : ADV
 aid : NOUN
 aid : VERB
 air : NOUN
 air : VERB
+airport : NOUN
 alarm : NOUN
 alarm : VERB
 alexander hamilton : NOUN
@@ -255,17 +261,21 @@ antique : ADJ
 apex : NOUN
 apology : NOUN
 appear : VERB
+applaud : VERB
 apple : NOUN
 applicable : ADJ
 application : NOUN
 apply : VERB
 approval : NOUN
 approve : VERB
+arc : NOUN
+arc : VERB
 architect : NOUN
 architectural : ADJ
 architecture : NOUN
 area : NOUN
 argentina : NOUN
+argue : VERB
 arizona : NOUN
 arm : NOUN
 arm : VERB
@@ -287,6 +297,7 @@ astound : VERB
 astounding : ADJ
 astronomy : NOUN
 asylum : NOUN
+at times : ADV
 atom : NOUN
 atop : ADV - -1
 attack : NOUN
@@ -300,6 +311,7 @@ authority : NOUN
 authorize : VERB
 available : ADJ[%to] [$prd] 0
 avoid : VERB
+awaken : VERB
 award : NOUN
 award : VERB
 away : ADJ - -1
@@ -323,6 +335,7 @@ base : VERB
 base : ADJ
 baseline : NOUN
 basket : NOUN
+basketball : NOUN
 bath : NOUN
 bath : VERB
 bathe : NOUN - -2
@@ -365,6 +378,7 @@ better : NOUN - -1
 better : VERB
 better : ADJ[%er] - +1
 better : ADV
+beyond : ADV
 bible : NOUN
 big : NOUN - -1
 big : ADJ
@@ -394,11 +408,16 @@ bookend : NOUN
 boost : NOUN
 boost : VERB
 booster : NOUN
+born : NOUN - -2
+born : ADJ
 box : NOUN
 box : VERB
 boy : NOUN
 brass : NOUN
 bratislava : NOUN
+brave : NOUN
+brave : VERB
+brave : ADJ
 breakdown : NOUN
 bring : VERB
 brink : NOUN
@@ -407,25 +426,32 @@ britain : NOUN
 broadway : NOUN
 brooklyn : NOUN
 brow : NOUN
+bruno : NOUN
 bubonic : ADJ
 budapest : NOUN
 build : NOUN
 build : VERB
+built : ADJ
+bureau : NOUN
 business: NOUN
 buy : NOUN
 buy : VERB
+ca : NOUN
 cabin : NOUN
 cabin : VERB
+calculate : VERB
 california : NOUN
 call : NOUN
 call : VERB
 calm : NOUN
 calm : VERB
 calm : ADJ
+calvin : NOUN
 came back : VERB[^ed]
 campaign : NOUN - +1
 campaign : VERB
 cancer : NOUN
+candidate : NOUN
 candle : NOUN
 candle : VERB
 canola : NOUN
@@ -440,11 +466,15 @@ career : VERB - -1
 carry : VERB
 case : NOUN
 case : VERB - -1
+castro : NOUN
 cat : NOUN
 cat : VERB - -2
 catch : NOUN
 catch : VERB
+category : NOUN
 caterpillar : NOUN
+cathedral : NOUN
+cathedral : ADJ
 cause : NOUN
 cause : VERB
 cease : NOUN - -4
@@ -479,10 +509,18 @@ check : NOUN - -1
 check : VERB
 checker : NOUN - +1
 checker : VERB
+cheer : NOUN
+cheer : VERB
+chemical : NOUN
+chemical : ADJ
+chemist : NOUN
+chemistry : NOUN
 chess : NOUN
 chief : NOUN
 chief : ADJ
 china : NOUN
+chip : NOUN
+chip : VERB
 choose : VERB
 circumstance : NOUN
 circumstantial : ADJ
@@ -529,6 +567,11 @@ comment : NOUN
 comment : VERB
 commerce : NOUN
 committee : NOUN
+common : NOUN
+common : ADJ
+commune : NOUN
+commune : VERB
+communist : ADJ
 company : NOUN
 company : VERB
 comparative : NOUN - -2
@@ -536,24 +579,37 @@ comparative : ADJ
 comparatively : ADV [$deg] 0
 compassion : NOUN
 compensation : NOUN
+compete : VERB
+competition : NOUN
 complex : NOUN
 complex : ADJ
 compose : VERB
 comprehensive : ADJ
+compute : VERB
+computer : NOUN
 concern : NOUN
 concern : VERB
 conclude : VERB
 condemn : VERB
 condition : NOUN
 condition : VERB
+condom : NOUN
+conduct : NOUN
+conduct : VERB
 cone : NOUN
 cone : VERB
 confer : VERB
 conference : NOUN
 conflict : NOUN
 conflict : VERB
+congress : NOUN
 conjunct : ADJ
+conjunction : NOUN
 connect : VERB
+connection : NOUN
+consecutive : ADJ
+consecutive : ADV
+consider : VERB
 constitute : VERB
 constitution : NOUN
 consume : VERB
@@ -565,19 +621,29 @@ contract : VERB
 control : NOUN
 control : VERB
 controversy : NOUN
+conversation : NOUN
+converse : NOUN
+converse : VERB
+converse : ADJ
 cool : NOUN
 cool : VERB
 cool : ADJ
+coolidge : NOUN
 coordination : NOUN
 cope : NOUN - -2
 cope : VERB - +1
 copy : VERB
+core : NOUN
+core : VERB
 corn : NOUN
 corn : VERB
 corner : NOUN
 corner : VERB
 correct : VERB
 correct : ADJ
+correlate : NOUN
+correlate : VERB
+correlate : ADJ
 cough : NOUN - -1
 cough : VERB[^ptcl]
 count : NOUN
@@ -601,19 +667,28 @@ craze : VERB
 crazy : NOUN - -2
 crazy : ADJ
 create : VERB
+creator : NOUN
 credit : NOUN
 credit : VERB
 creek : NOUN
 crisis : NOUN
 critic : NOUN
 critical : ADJ[%to]
+criticize : VERB
 croatia : NOUN
 crop : NOUN
 crop : VERB
 cruise : NOUN
 cruise : VERB
+crush : NOUN - -2
+crush : VERB
+cuba : NOUN
+cuban : NOUN
+cuban : ADJ
 cup : NOUN
 cup : VERB
+curry : NOUN
+curry : VERB
 curtain : NOUN
 curtain : VERB
 curve : NOUN
@@ -633,6 +708,7 @@ dark : ADJ
 dark : NOUN
 dart : NOUN
 dart : VERB[^ptcl]
+data : NOUN
 database : NOUN
 david : NOUN
 day : NOUN
@@ -677,26 +753,40 @@ desperation : NOUN
 develop : VERB
 die : NOUN - -1
 die : VERB
+diehard : NOUN
 differ : VERB
+difference : NOUN
+different : ADJ
 difficult : ADJ
 digital : ADJ
+dignitary : NOUN
 diminish : VERB
 dine : VERB
+direct : VERB
+direct : ADJ
+direct : ADV
+director : NOUN
 disaster : NOUN
 disastrously : ADV [$prd] 0
+discourage : VERB
 discover : VERB
 discuss : VERB
 disease : NOUN
 displease : VERB
 distribute : VERB
+district : NOUN
+district : VERB
 divorce : NOUN
 divorce : VERB
 do: NOUN - -2
 do: VERB
 doctor : NOUN
 doctor : VERB
+doctorate : NOUN
+doe : NOUN
 dog : NOUN
 dog : VERB
+dominate : VERB
 doom : NOUN
 doom : VERB
 door : NOUN
@@ -728,11 +818,15 @@ drug : VERB
 dry : NOUN
 dry : VERB
 dry : ADJ
+due : NOUN
+due : ADJ
+due : ADV
 duration : NOUN
 duty : NOUN
 décor : NOUN
 early : ADJ [$time] 0
 early : ADV
+earn : VERB
 ease : NOUN
 ease : VERB
 easier : ADJ
@@ -753,21 +847,29 @@ edition : NOUN
 effect : NOUN
 effect : VERB
 effective : ADJ
+effort : NOUN
 egg : NOUN
 egg : VERB - -1
 elbe : NOUN
 elect : NOUN
 elect : VERB
+election : NOUN
 electric : ADJ
 electricity : NOUN
 email : NOUN
 email : VERB
+embassy : NOUN
 embroider : VERB
 emerge : VERB
+emigrate : VERB
 emote : VERB
 emotion : NOUN
 emotional : ADJ
+emotional : ADJ
 emotionally : ADV
+employ : NOUN
+employ : VERB
+employee : NOUN
 emulate : VERB
 emulation : NOUN
 enchant : VERB
@@ -778,9 +880,14 @@ end : NOUN
 end : VERB[^ptcl]
 end up : VERB
 energy : NOUN
+engage : VERB
 engine : NOUN
 engineer : NOUN
 engineer : VERB - -1
+engineering : NOUN
+engineering : VERB[^ing] - -2
+english : NOUN
+english : ADJ
 enhance : VERB
 enlarge : VERB
 enough : ADJ[%to]
@@ -789,6 +896,9 @@ enter : VERB
 enterprise : NOUN
 enthuse : VERB
 enthusiast : NOUN
+entire : NOUN
+entire : ADJ
+entirety : NOUN
 envision : VERB
 equip : VERB
 escape : NOUN
@@ -796,6 +906,7 @@ escape : VERB
 especially : ADV
 essay : NOUN
 essay : VERB
+establish : VERB
 eu : NOUN
 eumulate : VERB
 europe : NOUN
@@ -819,6 +930,7 @@ expect : VERB
 expectation : NOUN
 experiment : NOUN
 experiment : VERB - -3
+explain : VERB
 explore : VERB
 export : NOUN
 export : VERB
@@ -841,6 +953,8 @@ fall : VERB
 familiar : NOUN - -1
 familiar : ADJ
 family : NOUN
+fan : NOUN
+fan : VERB
 fancy : NOUN
 fancy : VERB
 fancy : ADJ
@@ -855,6 +969,7 @@ favor : NOUN
 favor : VERB
 feature : NOUN
 feature : VERB
+february : NOUN
 federal : ADJ
 federal : NOUN
 federation : NOUN
@@ -879,6 +994,9 @@ fifty : NOUN
 fifty : ADJ
 fight : NOUN
 fight : VERB
+figurehead : NOUN
+final : NOUN
+final : ADJ
 final : NOUN
 final : ADJ
 finally : ADV
@@ -894,6 +1012,10 @@ flash : NOUN
 flash : VERB
 flash : ADJ
 flash flood : NOUN
+flaw : NOUN
+flaw : VERB
+fledgling : NOUN
+fledgling : ADJ
 flee : VERB
 flight : NOUN
 flip : NOUN
@@ -904,17 +1026,27 @@ flood : VERB
 fly : NOUN
 fly : VERB
 fly : ADJ - -1
+focal : ADJ
+focus : NOUN
+focus : VERB
 fog : NOUN
 fog : VERB
 foliage : NOUN
 follow : VERB
+foot : NOUN
+foot : VERB
 forage : NOUN
 forage : VERB
 forages : VERB - 0 =forage -s
+force : NOUN
+force : VERB
 forehead : NOUN
+foreign : ADJ
 forget : VERB
 form : NOUN
 form : VERB
+formal : NOUN
+formal : ADJ
 former : NOUN - -1
 former : ADJ
 formerly : ADV
@@ -940,6 +1072,7 @@ france : NOUN
 frank : NOUN
 frank : VERB
 frank : ADJ
+frankness : NOUN
 free : NOUN - -1
 free : VERB
 free : ADJ
@@ -954,11 +1087,15 @@ frequent : VERB
 fresh : ADJ
 fresh : ADV
 friend : NOUN
+friendship : NOUN
 frog : NOUN
 frog : VERB
 front : NOUN
 front : VERB
 front : ADJ
+front-runner : NOUN
+frustrate : VERB
+frustration : NOUN
 fry : NOUN - -1
 fry : VERB
 fuel : NOUN
@@ -986,6 +1123,8 @@ game : ADJ
 gansu : NOUN
 garden : NOUN
 garden : VERB
+gather : NOUN
+gather : VERB
 gene : NOUN
 general : NOUN
 general : VERB
@@ -999,6 +1138,7 @@ general : ADJ
 general : NOUN
 general : VERB
 general : ADJ
+generally : ADJ
 generous : ADJ
 genetically : ADV
 genome : NOUN
@@ -1020,6 +1160,7 @@ go : NOUN - -1
 go : VERB[^ptcl]
 go : ADJ - -4
 god : NOUN
+golden : ADJ
 good : NOUN
 good : ADJ [$cmpd] 0
 good : ADV - -1
@@ -1036,11 +1177,13 @@ great : ADJ[%to]
 green : ADJ
 green : NOUN
 green : VERB
+greet : VERB
 grim : ADJ
 grotesque : NOUN - -2
 grotesque : ADJ
 ground : NOUN
 ground : VERB
+grove : NOUN
 grow : VERB
 growl : NOUN
 growl : VERB
@@ -1070,6 +1213,7 @@ hard : ADV - -1
 hard-boiled : ADJ
 harry : VERB - -1
 harsh : ADJ
+havana : NOUN
 hawaii : NOUN
 head : NOUN
 head : VERB
@@ -1080,6 +1224,7 @@ heavily : ADV
 heavy : NOUN
 heavy : ADJ
 heavy : ADV
+height : NOUN
 help : NOUN
 help : VERB
 herbicide : NOUN
@@ -1093,6 +1238,7 @@ high : ADV
 hillary : NOUN
 hip : NOUN
 hip : ADJ
+historical : ADJ
 history : NOUN
 hiv : NOUN
 hold : NOUN
@@ -1111,7 +1257,10 @@ hope : VERB
 horizon : NOUN
 horn : NOUN
 horn : VERB
+hotel : NOUN
 hour : NOUN
+hourly : ADJ
+hourly : ADV
 house : NOUN
 house : VERB
 household : NOUN
@@ -1135,6 +1284,7 @@ important : ADJ[%to]
 impose : VERB
 impress : NOUN
 impress : VERB
+impression : NOUN
 improve : VERB
 impulse : NOUN
 inch : NOUN
@@ -1143,15 +1293,22 @@ include : VERB [$trns] 0
 independent : ADJ
 indicate : VERB
 indigestible : ADJ
+industrial : ADJ
 industry : NOUN
 infantry : NOUN
 infect : VERB [$trns] 0
+infection : NOUN
 infectious : ADJ
 inflate : VERB
 inflation : NOUN
 information : NOUN
 infrastructure : NOUN
+initial : NOUN
+initial : VERB
+initial : ADJ
+initially : ADV
 innovate : VERB
+innovative : ADJ
 inorganic : ADJ
 insect : NOUN
 insensibly : ADV
@@ -1167,8 +1324,10 @@ institute : NOUN
 institute : VERB
 instrument : NOUN
 instrument : VERB
+instrumental : ADJ
 insurgent : NOUN
 insurgent : ADJ
+intelligence : NOUN
 intelligent : ADJ
 intend : VERB
 interest : NOUN
@@ -1213,6 +1372,9 @@ jurisdiction : NOUN
 just : ADJ
 just : ADV - +1
 justice : NOUN
+keen : NOUN
+keen : VERB
+keen : ADJ
 keep : NOUN - -2
 keep : VERB
 kill : NOUN
@@ -1227,9 +1389,12 @@ knight : NOUN
 knight : VERB - -1
 know : NOUN - -2
 know : VERB
+label : NOUN
+label : VERB
 labor : NOUN
 labor : VERB
 labor day : NOUN
+labor market : NOUN
 lacerate : VERB
 lacerate : ADJ - -2
 land : NOUN
@@ -1264,6 +1429,10 @@ lead : VERB
 learn : VERB
 leave : NOUN
 leave : VERB
+left : NOUN
+left : VERB[^ed] - +2
+left : ADJ
+left : ADV
 leg : NOUN
 less : ADJ[%to] - +1
 less : ADV [$deg] 0
@@ -1327,6 +1496,7 @@ magistrate : NOUN
 magnitude : NOUN
 main : NOUN
 main : ADJ
+mainstream : NOUN
 maintain : VERB
 major : NOUN
 major : VERB - -1
@@ -1337,10 +1507,13 @@ male : NOUN
 male : ADJ
 man : NOUN
 man : VERB
+manage : VERB
 mandatory : ADJ[%to]
 mantra : NOUN
 manufacture : NOUN
 manufacture : VERB
+march : NOUN
+march : VERB
 mark : NOUN
 mark : VERB
 market : NOUN
@@ -1353,6 +1526,7 @@ marvel : VERB
 master : NOUN
 master : VERB
 master : ADJ
+masterpiece : NOUN
 matter : NOUN
 matter : VERB
 maxim : NOUN
@@ -1367,16 +1541,20 @@ media : NOUN
 meet : NOUN - -1
 meet : VERB
 meet : ADJ - -4
+memory : NOUN
 men : NOUN[:plur]
 mere : NOUN
 mere : ADJ
 metaphor : NOUN
+metaphorically : ADV
 method : NOUN
 mexico : NOUN
 michael : NOUN
+microcomputer : NOUN
 military : NOUN
 milk : NOUN
 milk : VERB
+milky : ADJ
 milky way : NOUN
 millimeter : NOUN
 minister : NOUN
@@ -1403,9 +1581,11 @@ modern : ADJ
 modify : VERB
 moment : NOUN
 monarch : NOUN
+monday : NOUN
 month : NOUN
 moon : NOUN
 moon : VERB
+moore : NOUN
 more : NOUN - -1
 more : ADJ[%to]
 more : ADV [$deg] 0
@@ -1426,6 +1606,7 @@ movie : NOUN
 mow : NOUN
 mow : VERB
 mph : NOUN
+mr : NOUN
 much : NOUN
 much : ADJ[%to]
 much : ADV
@@ -1436,8 +1617,14 @@ multicultural : ADJ
 multitude : NOUN
 museum : NOUN
 music : NOUN
+musical : NOUN - -1
+musical : ADJ
+narrate : VERB
 nation : NOUN
+natural : ADJ
 nature : NOUN
+nazi : NOUN
+nazi : ADJ - -1
 nearby : ADJ
 nearby : ADV
 nearly : ADV[~mod,prox]
@@ -1468,6 +1655,7 @@ night : NOUN
 nod : NOUN
 nod : VERB
 nohow : ADV
+norm : NOUN
 normal : NOUN
 normal : ADJ
 north : NOUN - -2
@@ -1519,6 +1707,7 @@ old : ADJ
 once : ADV
 one : NOUN
 one : ADJ
+ongoing : ADJ
 online : ADJ
 only : ADJ - -2
 only : ADV
@@ -1526,7 +1715,9 @@ open : NOUN - -1
 open : VERB
 open : ADJ
 operate : VERB
+opinion : NOUN
 opportune : ADJ
+opportunity : NOUN
 opulence : NOUN
 opulent : ADJ
 orbit : NOUN
@@ -1551,6 +1742,7 @@ outline : NOUN
 outline : VERB
 overnight : ADJ
 overnight : ADV
+oversee : VERB
 overshadow : VERB
 overturn : NOUN - -2
 overturn : VERB
@@ -1560,6 +1752,8 @@ page : NOUN
 page : VERB
 paint : NOUN
 paint : VERB
+pair : NOUN
+pair : VERB
 palace : NOUN
 pale : NOUN
 pale : VERB
@@ -1587,6 +1781,7 @@ pay : NOUN
 pay : VERB
 payment : NOUN
 peace : NOUN
+pc : NOUN
 pear : NOUN
 peculiar : ADJ
 peel : NOUN
@@ -1601,16 +1796,22 @@ pepper : NOUN
 percent : NOUN
 perch : NOUN
 perch : VERB
+perfect : NOUN
+perfect : VERB
+perfect : ADJ
+perhaps : ADV
 period : NOUN
 perpetual : ADJ
 perpetuate : VERB
 persecute : VERB
 persecution : NOUN
 persist : VERB
+persistence : NOUN
 person : NOUN
 persona : NOUN
 personal : ADJ
 personal business : NOUN
+personal computer : NOUN
 phoebe : NOUN
 photo : NOUN
 pick : NOUN
@@ -1630,6 +1831,7 @@ plant : NOUN
 plant : VERB
 play : NOUN
 play : VERB
+playoff : NOUN
 pleasure : NOUN
 plot : NOUN
 plot : VERB
@@ -1637,12 +1839,17 @@ plumbing : NOUN
 plus : NOUN - -2
 plus : ADJ - -2
 poignant : ADJ
+point : NOUN
+point : VERB
 pole : NOUN
 pole : VERB
 polite : ADJ
+politeness : NOUN
 politic : ADJ
 political : ADJ
 politics : NOUN
+poll : NOUN
+poll : VERB
 pollute : VERB
 pollution : NOUN
 pond : NOUN
@@ -1651,12 +1858,16 @@ poor : ADJ
 popular : ADJ
 populate : VERB
 population : NOUN
+portend : VERB
+portion : NOUN
+portion : VERB
 position : NOUN
 position : VERB
 positive : NOUN
 positive : ADJ
 possible : ADJ
 possible : NOUN
+possibly : ADV
 pot : NOUN
 pot : VERB
 potion : NOUN
@@ -1678,6 +1889,7 @@ preserve : NOUN
 preserve : VERB
 preside : VERB
 president : NOUN
+presidential : ADJ
 press : NOUN
 press : VERB
 press conference : NOUN
@@ -1700,8 +1912,10 @@ private : ADJ
 probable : NOUN
 probable : ADJ
 probably : ADV
+problem : NOUN
 process : NOUN
 process : VERB
+processor : NOUN
 produce : NOUN [$sglr] 0
 produce : VERB
 product : NOUN
@@ -1752,6 +1966,8 @@ raft : NOUN
 raft : VERB
 rage : NOUN
 rage : VERB
+rain : NOUN
+rain : VERB
 rainfall : NOUN
 raise : NOUN
 raise : VERB
@@ -1779,6 +1995,7 @@ rear : VERB
 rear : ADJ
 reason : NOUN
 reason : VERB
+reasonable : ADJ
 receive : VERB
 recent : ADJ
 recognition : NOUN
@@ -1798,6 +2015,9 @@ regard : NOUN
 regard : VERB
 regardless : ADJ - -1
 regardless : ADV
+regime : NOUN
+register : NOUN
+register : VERB
 regular : NOUN - -1
 regular : ADJ
 regularity : NOUN
@@ -1806,6 +2026,8 @@ regulation : NOUN
 reject : NOUN
 reject : VERB
 relate : VERB
+release : NOUN
+release : VERB
 relevant : ADJ
 remain : VERB[^proc]
 remember : VERB
@@ -1820,6 +2042,8 @@ report : NOUN
 report : VERB
 reported : ADJ
 reportedly : ADV
+repress : VERB
+repression : NOUN
 republican : NOUN
 republican : ADJ
 require : VERB
@@ -1831,6 +2055,7 @@ resist : VERB
 resistant : ADJ[%to]
 resource : NOUN
 response : NOUN
+responsibility : NOUN
 responsible : ADJ
 restaurant : NOUN
 restrict : VERB
@@ -1841,8 +2066,11 @@ rethink : VERB
 return : NOUN
 return : VERB
 reveal : VERB
+revenue : NOUN
 review : NOUN
 review : VERB
+revise : NOUN
+revise : VERB
 revolution : NOUN
 rick : NOUN
 rick : VERB
@@ -1857,6 +2085,7 @@ rise : NOUN
 rise : VERB
 river : NOUN
 road : NOUN
+robert : NOUN
 rock : NOUN
 rock : VERB
 rocket : NOUN
@@ -1866,6 +2095,8 @@ role : NOUN
 ron : NOUN
 room : NOUN
 room : VERB
+rose : NOUN
+rose : ADJ
 round : NOUN [$cond] -1
 round : VERB [$cond] -1
 round : ADJ
@@ -1875,6 +2106,7 @@ rum : ADJ
 rum : NOUN
 run : NOUN
 run : VERB
+rv : NOUN
 s : NOUN
 safe : NOUN
 safe : ADJ
@@ -1900,10 +2132,13 @@ school : NOUN
 school : VERB
 science : NOUN
 scientist : NOUN
+scope : NOUN
 scow : NOUN
 scowl : NOUN
 scowl : VERB
 scripture : NOUN
+scrutinise : VERB
+scrutinize : VERB
 scrutiny : NOUN
 seafaring : NOUN
 seafaring : VERB
@@ -1916,6 +2151,8 @@ second : NOUN
 second : VERB
 second : ADJ
 second : ADV
+secondary : NOUN
+secondary : ADJ
 secret : NOUN
 secret : ADJ
 secretary : NOUN
@@ -1928,10 +2165,12 @@ seeker : NOUN
 seem : VERB
 select : VERB
 select : ADJ
+selection : NOUN
 self : NOUN
 self : ADJ
 sell : NOUN
 sell : VERB - +2
+semiconductor : NOUN
 semisweet : ADJ
 senate : NOUN
 senator : NOUN
@@ -1943,6 +2182,7 @@ separate : ADJ
 serious : ADJ
 serve : NOUN
 serve : VERB
+server : NOUN
 service : NOUN
 service : VERB
 set : NOUN
@@ -1961,11 +2201,14 @@ sharer : NOUN
 sharp : NOUN - -1
 sharp : ADJ
 sharp : ADV
+sharpshoot : VERB
 shave : NOUN
 shave : VERB
 shelf : NOUN
 shell : NOUN
 shell : VERB
+shift : NOUN
+shift : VERB
 shoot : NOUN
 shoot : VERB
 shop : NOUN
@@ -1974,8 +2217,10 @@ show : NOUN
 show : VERB
 shutter : NOUN
 shutter : VERB [$trns] 0
+siege : NOUN
 sigh : NOUN
 sigh : VERB
+sightseeing : NOUN
 sign : NOUN
 sign : VERB[^ptcl]
 sign : ADJ - -2
@@ -1984,6 +2229,7 @@ signal : VERB
 signal : ADJ
 significant : ADJ[%to]
 silent : ADJ
+silently : ADV
 silver : ADJ
 silver : NOUN
 silver : VERB
@@ -2010,6 +2256,9 @@ small : NOUN - -6
 small : ADJ - +2
 small : ADV - -1
 small-business : ADJ
+smart : NOUN
+smart : VERB
+smart : ADJ
 smile : NOUN
 smile : VERB
 snap : NOUN
@@ -2017,6 +2266,8 @@ snap : VERB[^ptcl]
 snow : NOUN
 snow : VERB
 so-called : ADJ
+soft : ADJ
+soft : ADV
 somber : ADJ
 sombre : ADJ
 somehow : ADV
@@ -2043,6 +2294,8 @@ southern : ADJ
 southwest : NOUN - -2
 southwest : ADJ
 southwest : ADV[~dir]
+soviet : NOUN - -1
+soviet : ADJ
 spain : NOUN
 spark : NOUN
 spark : VERB
@@ -2076,6 +2329,9 @@ stable : VERB - -1
 stable : ADJ
 stack : NOUN
 stack : VERB
+staff : NOUN
+staff : VERB
+stance : NOUN
 stand : NOUN
 stand : VERB
 star : NOUN
@@ -2089,9 +2345,13 @@ startle : NOUN - -2
 startle : VERB
 state : NOUN
 state : VERB - -1
+statistic : NOUN
 steam : NOUN
 steam : VERB
 steamer : NOUN
+step : NOUN
+step : VERB
+stephen : NOUN
 stifle : NOUN
 stifle : VERB
 still : NOUN
@@ -2111,12 +2371,18 @@ storied : ADJ
 storm : NOUN
 storm : VERB
 story : NOUN
+straight : NOUN
+straight : ADJ
+straight : ADV
+strategy : NOUN
 streak : NOUN
 streak : VERB
 stream : NOUN
 stream : VERB[^ptcl]
 street : NOUN
 strength : NOUN
+strengthen : VERB
+strenuous : ADJ
 stroll : NOUN
 stroll : VERB
 strong : ADJ
@@ -2124,6 +2390,9 @@ study : NOUN
 study : VERB
 stun : VERB
 stunning : ADJ
+subject : NOUN
+subject : VERB
+subject : ADJ
 success : NOUN
 suck : NOUN
 suck : VERB
@@ -2134,6 +2403,7 @@ suggestion : NOUN
 suit : NOUN
 suit : VERB
 suite : NOUN
+sunday : NOUN
 sunlight : NOUN
 support : NOUN
 support : VERB
@@ -2153,12 +2423,17 @@ suspect : NOUN
 suspect : VERB
 suspect : ADJ
 suv : NOUN
+sweep : NOUN
+sweep : VERB
+swept : ADJ
 switch : NOUN
 switch : VERB
 switch grass : NOUN
 switzerland : NOUN
 swoop : NOUN
 swoop : VERB
+synonym : NOUN
+synonymous : ADJ
 synthesize : VERB
 synthetic : NOUN
 synthetic : ADJ
@@ -2173,12 +2448,15 @@ tailor : NOUN
 tailor : VERB
 take : NOUN
 take : VERB[^ptcl] - +2
+taken : ADJ
 talk : NOUN
 talk : VERB
 tangible : ADJ
 tap : NOUN
 tap : VERB
 tapper : NOUN
+target : NOUN
+target : VERB
 tax : NOUN
 tax : VERB
 taxable : ADJ
@@ -2201,6 +2479,7 @@ tell : VERB
 temperature : NOUN
 temple : NOUN
 tempt : VERB
+temptation : NOUN
 term : NOUN
 term : VERB
 terrify : VERB
@@ -2229,9 +2508,12 @@ think : VERB
 thirst : NOUN
 thirst : VERB
 though : ADV
+thought : NOUN
 thousand : NOUN
 thousand : ADJ
 threat : NOUN
+three : NOUN
+three : ADJ
 throughout : ADV
 ticket : NOUN
 ticket : VERB - -2
@@ -2268,12 +2550,16 @@ tree : NOUN
 tree : VERB - -1
 trend : NOUN
 trend : VERB
+trip : NOUN
+trip : VERB
 triumph : NOUN
 triumph : VERB
 true : NOUN
 true : VERB
 true : ADJ[%to]
 true : ADV
+trump : NOUN
+trump : VERB
 try : NOUN - -2
 try : VERB
 tuck : NOUN - -2
@@ -2301,11 +2587,15 @@ unchanged : ADJ
 underground : NOUN
 underground : ADJ
 understand : VERB
+understate : VERB
+undervalue : VERB
 unemployment : NOUN
+unemployment rate : NOUN
 unfortunate : NOUN
 unfortunate : ADJ
 unfortunate : NOUN - -1
 unfortunate : ADJ
+unfortunately : ADV
 unfortunately : ADV
 unify : VERB
 unintended : ADJ
@@ -2319,6 +2609,7 @@ up : ADV - -1
 upcoming : ADJ
 update : NOUN
 update : VERB
+uprising : NOUN
 upset : NOUN
 upset : VERB
 upset : ADJ
@@ -2328,12 +2619,14 @@ upstairs : ADJ
 upstairs : ADV
 urgent : ADJ
 us : NOUN
+usa : NOUN
 use : NOUN [!spcs] 0
 use : VERB
 utterance : NOUN
 vacant : ADJ
 valid : ADJ
 valley : NOUN
+variation : NOUN
 vary : VERB
 vehicle : NOUN
 verbal : ADJ
@@ -2349,10 +2642,15 @@ viewpoint : NOUN
 vigor : NOUN
 violate : VERB
 visible : ADJ
+visit : NOUN
+visit : VERB
 vocal : NOUN - -1
 vocal : ADJ
 voice : NOUN
 voice : VERB
+vote : NOUN
+vote : VERB
+voter : NOUN
 wag : NOUN
 wag : VERB
 wage : NOUN
@@ -2364,6 +2662,7 @@ want : VERB
 war : NOUN
 war : VERB
 warn : VERB
+warrior : NOUN
 washington : NOUN
 waste : ADJ
 waste : NOUN
@@ -2430,6 +2729,7 @@ wine : NOUN
 wine : VERB - -4
 wing : NOUN
 wing : VERB
+winner : NOUN
 winter : NOUN
 winter : VERB
 wistful : ADJ
@@ -2448,6 +2748,8 @@ work : VERB - +1
 world : NOUN
 world : ADJ
 world power : NOUN
+world war i  : NOUN
+world war ii : NOUN
 worse : ADJ
 worst : NOUN - -1
 worst : VERB - -2
@@ -2464,60 +2766,8 @@ yellow : NOUN
 yellow : VERB
 yellow : ADJ
 yes : NOUN
+yes : NOUN - -3
 yet : ADV
 yonder : ADJ - -1
 yonder : ADV
 zinfandel : NOUN
-
-at times : ADV
-built : ADJ
-condom : NOUN
-conjunction : NOUN
-connection : NOUN
-creator : NOUN
-criticize : VERB
-difference : NOUN
-different : ADJ
-election : NOUN
-emotional : ADJ
-frankness : NOUN
-front-runner : NOUN
-generally : ADJ
-height : NOUN
-hourly : ADJ
-hourly : ADV
-historical : ADJ
-impression : NOUN
-industrial : ADJ
-infection : NOUN
-innovative : ADJ
-intelligence : NOUN
-metaphorically : ADV
-milky : ADJ
-musical : NOUN - -1
-musical : ADJ
-natural : ADJ
-opportunity : NOUN
-persistence : NOUN
-politeness : NOUN
-possibly : ADV
-presidential : ADJ
-reasonable : ADJ
-responsibility : NOUN
-scrutinise : VERB
-scrutinize : VERB
-secondary : NOUN
-secondary : ADJ
-selection : NOUN
-server : NOUN
-silently : ADV
-strengthen : VERB
-taken : ADJ
-temptation : NOUN
-thought : NOUN
-unfortunately : ADV
-variation : NOUN
-winner : NOUN
-world war i  : NOUN
-world war ii : NOUN
-yes : NOUN - -3

@@ -176,12 +176,13 @@ g:SEGM[|*unique]->ELEM
           >>*l
 __
 g:SEGM[|*unique]->SEGM ELEM
-#                 ?>>?
- l[!ppps,rv]r[!ppps,rn]>>*r-8
- l[!pro]    r[!ln]     >>*r-3
- l[!rn]     r[!ln]     >>*r-2
- l[!rv]     r[!lv]     >>*r-4
-                       >>*r
+#                      ?>>?
+  l[!ppps,rv  ]r[!ppps,rn]>>*r-8
+  l[!pro]      r[!ln]     >>*r-3
+  l[!pro,-brk] r[!lv]     >>*r+2
+  l[!rn]       r[!ln]     >>*r-2
+  l[!rv]       r[!lv]     >>*r-4
+                          >>*r
 _
   left
   linefeed
@@ -238,9 +239,16 @@ _
   linefeed
   left
 __
-g:ELEM->PRO
+g:ELEM->PRO[%nom]
 # ?>>?
    >>*l[!rn,pro]
+_
+  var typg=pro
+  (typg)
+__
+g:ELEM->PRO[%-nom]
+# ?>>?
+   >>*l[!rn,pro,brk]
 _
   var typg=pro
   (typg)
@@ -326,7 +334,7 @@ _
   right
   append </conj>
 __
-g:ELEM->ADV
+g:ELEM->ADV[~-int]
  n>2    >>-
  l[$deg]>>--
         >>---
@@ -1813,6 +1821,12 @@ d:-y <- SUFX[#aTOr]
 __
 
 d:$ <- MONEY
+__
+d:£ <- MONEY
+__
+d:€ <- MONEY
+__
+d:¥ <- MONEY
 __
 
 # # # # # # # #
