@@ -2,6 +2,7 @@
 # stemming logic for -N (a participial variation of -ED) in English
 # see stemLogic.py
 BLOCK n
+  LEN = 3 {FA}
   IF e
     LEN = 4
       IF eb {SU 1}
