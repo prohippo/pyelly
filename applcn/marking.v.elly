@@ -621,6 +621,7 @@ contract : VERB
 control : NOUN
 control : VERB
 controversy : NOUN
+controversial : ADJ
 conversation : NOUN
 converse : NOUN
 converse : VERB
@@ -644,6 +645,7 @@ correct : ADJ
 correlate : NOUN
 correlate : VERB
 correlate : ADJ
+correlation : NOUN
 cough : NOUN - -1
 cough : VERB[^ptcl]
 count : NOUN
@@ -1211,6 +1213,7 @@ happen : VERB
 hard : ADJ - +1
 hard : ADV - -1
 hard-boiled : ADJ
+hardly : ADV
 harry : VERB - -1
 harsh : ADJ
 havana : NOUN
@@ -1508,6 +1511,7 @@ male : ADJ
 man : NOUN
 man : VERB
 manage : VERB
+management : NOUN
 mandatory : ADJ[%to]
 mantra : NOUN
 manufacture : NOUN
@@ -1620,6 +1624,8 @@ music : NOUN
 musical : NOUN - -1
 musical : ADJ
 narrate : VERB
+narrative : NOUN
+narrative : ADJ - -1
 nation : NOUN
 natural : ADJ
 nature : NOUN
@@ -1792,11 +1798,13 @@ people : VERB - -2
 pep : NOUN
 pepper : NOUN
 percent : NOUN
+percentage : NOUN
 perch : NOUN
 perch : VERB
 perfect : NOUN
 perfect : VERB
 perfect : ADJ
+perfectly : ADV
 perhaps : ADV
 period : NOUN
 perpetual : ADJ
@@ -1829,6 +1837,7 @@ plant : NOUN
 plant : VERB
 play : NOUN
 play : VERB
+player : NOUN
 playoff : NOUN
 pleasure : NOUN
 plot : NOUN
@@ -1987,7 +1996,8 @@ ready : VERB
 ready : ADJ
 real : NOUN
 real : ADJ
-real : ADV
+real : ADV - -1
+really : ADV
 rear : NOUN
 rear : VERB
 rear : ADJ
@@ -2200,6 +2210,7 @@ sharp : NOUN - -1
 sharp : ADJ
 sharp : ADV
 sharpshoot : VERB
+sharpshooter : NOUN
 shave : NOUN
 shave : VERB
 shelf : NOUN
@@ -2381,6 +2392,7 @@ street : NOUN
 strength : NOUN
 strengthen : VERB
 strenuous : ADJ
+strenuously : ADV
 stroll : NOUN
 stroll : VERB
 strong : ADJ
@@ -2768,4 +2780,5 @@ yes : NOUN - -3
 yet : ADV
 yonder : ADJ - -1
 yonder : ADV
+zen : NOUN
 zinfandel : NOUN
