@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# punctuationRecognizer.py : 03dec2015 CPM
+# punctuationRecognizer.py : 09may2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -75,7 +75,8 @@ defns = [                                      # syntactic significance of punct
     [ u'\u2013' ] ,  # en dash
     [ u'\u2014' ] ,  # em dash
     [ u'\u002d' ] ,  # hyphen or minus
-    [ u'…' ]         # ellipsis
+    [ u'…' ]      ,  # ellipsis
+    [ u'\u2122' ]    # TM
 ]
 
 def _FS ( symbls , featrs , ftype=False ):
@@ -168,7 +169,7 @@ if __name__ == '__main__':
 
     import symbolTable
 
-    ups = u'.?!ab,;:+cd()$%&\'\"ef-—“”…hg`i\x1E'
+    ups = u'.?!ab,;:+cd()$%&\'\"ef-—“”…hg`i™\x1E'
 
     symb = symbolTable.SymbolTable()
     punc = PunctuationRecognizer(symb)

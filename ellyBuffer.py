@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBuffer.py : 22feb2016 CPM
+# ellyBuffer.py : 09may2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -692,7 +692,8 @@ if __name__ == '__main__':
             u'wh (123 456)' ,
             u'aa-bb-cc' ,
             ellyChar.RS + u'www xxx' ,
-            u'sh*t'
+            u'sh*t' ,
+            u'xxx\u2122'
         ]
     else:
         test = [ ]

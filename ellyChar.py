@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 16mar2016 CPM
+# ellyChar.py : 09may2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -55,9 +55,9 @@ LDQm = u'\u201C'   # left  double quote
 RDQm = u'\u201D'   # right double quote
 PRME = u'\u2032'   # prime
 
-Apd = [ u'*' , u'+' , u'-' ]                             # marks appending to token
+Apd = [ u'*' , u'+' , u'-' ]                                    # marks appending to token
 
-Pnc = [ u'“' , u'”' , u'‘' , u'’' , u'–' , u'—' , u'…' ] # special punctuation
+Pnc = [ u'“' , u'”' , u'‘' , u'’' , u'–' , u'—' , u'…' , u'™' ] # special punctuation
 
 Lim = u'\u0100'    # limit of Unicode chars recognized except for Pnc
 
