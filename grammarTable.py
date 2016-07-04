@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# grammarTable.py : 03dec2015 CPM
+# grammarTable.py : 03jul2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -453,6 +453,7 @@ if __name__ == '__main__':
 
     import ellyConfiguration
     import dumpEllyGrammar
+    import punctuationRecognizer
 
     filn = sys.argv[1] if len(sys.argv) > 1 else 'test'
     sym = symbolTable.SymbolTable()
@@ -465,6 +466,7 @@ if __name__ == '__main__':
     print 'loading' , '[' + filn + ']' , len(inp.buffer) , 'lines'
     try:
         gtb = GrammarTable(sym,inp)
+        pnc = punctuationRecognizer.PunctuationRecognizer(sym)
 #       print gtb
         dumpEllyGrammar.dumpAll(sym,gtb,5)
     except ellyException.TableFailure:
