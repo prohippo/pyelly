@@ -290,6 +290,10 @@ Release Notes:
  1.3.12  - 23apr2016  more error checking in vocabulary table entries
                       extend "bad" rules to test error checking
                       extend "marking" rules and integration test
+ 1.3.13  - 04jul2016  better handling of hyphens
+                      do vocabulary recompilation only when needed
+                      improve parse tree full dump
+                      clean up documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
