@@ -291,9 +291,13 @@ Release Notes:
                       extend "bad" rules to test error checking
                       extend "marking" rules and integration test
  1.3.13  - 04jul2016  better handling of hyphens
-                      do vocabulary recompilation only when needed
                       improve parse tree full dump
                       clean up documentation
+ 1.3.14  - 14jul2016  add method to turn off single feature bit
+                      clean up handling of *L and *R syntactic features
+                      fix capitalization bug in vocabulary lookup
+                      recompile vocabulary only when needed
+                      clean up and extend documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
