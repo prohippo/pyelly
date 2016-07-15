@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 03jul2016 CPM
+# ellyBase.py : 12jul2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -74,7 +74,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.3.13'                     # current version of PyElly software
+release = 'v1.3.14'                     # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -118,7 +118,8 @@ def _isSaved ( systm , compn , srcs ):
         try:
             d = _timeModified(basn,systm + f)
         except OSError:
-            d = 0
+            continue      # ignore inaccessible files
+#       print f , ' d=' , d , 'date=' , date
         if d > date:
             return False
     return True
@@ -136,8 +137,14 @@ def _notToDate ( system ):
     """
 
     aid = './' + system
-    return (_timeModified(aid,rules) >
-            _timeModified(aid,vocabulary))
+    try:
+        rt = _timeModified(aid,rules)
+        vt = _timeModified(aid,vocabulary)
+#       print 'rt=' , rt , 'vt=' , vt
+    except:
+        print >> sys.stderr , 'rule+vocabulary time exception!'
+        return True
+    return vt < rt
 
 #
 # main class for processing single sentences
@@ -183,22 +190,38 @@ class EllyBase(object):
 
         self.nultok = ellyToken.EllyToken()
 
-        self.gundef = [ ]  # initialize
+        self.gundef = [ ]  # record definition changes by module
         self.vundef = [ ]  #
         self.pundef = [ ]  #
         self.eundef = [ ]  #
 
 #       print 'EllyBase.__init__()'
+#       aid = './' + system
+#       try:
+#           print 'a rul time=' , _timeModified(aid,rules)
+#           print 'a voc time=' , _timeModified(aid,vocabulary)
+#       except:
+#           print 'a rul or voc time exception'
+
         sysf = system + rules
         redefine = not _isSaved(system,rules,_rules)
+#       print '0 redefine=' , redefine
         try:
             self.rul = ellyDefinition.Grammar(system,redefine,release)
         except ellyException.TableFailure:
             nfail += 1
         if nfail == 0:
             self.gundef = self.rul.stb.findUnknown()
-            ellyPickle.save(self.rul,sysf)
+            if redefine:
+                ellyPickle.save(self.rul,sysf)
 
+#       try:
+#           print 'b rul time=' , _timeModified(aid,rules)
+#           print 'b voc time=' , _timeModified(aid,vocabulary)
+#       except:
+#           print 'b rul or voc time exception'
+
+#       print '1 redefine=' , redefine
         if restore != None:
             self.ses = ellyPickle.load(restore + '.' + system + _session)
         else:
@@ -221,17 +244,12 @@ class EllyBase(object):
         if d != None:
             d.man.suff.infl = inflx   # define root restoration logic
 
+#       print '2 redefine=' , redefine
         if not redefine:
             if not _isSaved(system,vocabulary,_vocabulary) or _notToDate(system):
                 redefine = True
 
         stb = d.stb if d != None else symbolTable.SymbolTable()
-
-        if redefine: print 'recompiling vocabulary'
-        try:
-            voc = ellyDefinition.Vocabulary(system,redefine,stb,inflx)
-        except ellyException.TableFailure:
-            nfail += 1
 
 #       print self.rul.stb
 #       print stb
@@ -239,11 +257,6 @@ class EllyBase(object):
         if nfail > 0:
             print >> sys.stderr , 'exiting: table generation FAILures'
             sys.exit(1)
-
-#       print 'vundef=' , self.vundef
-        self.vtb = voc.vtb
-        self.vundef = stb.findUnknown()
-#       print 'vundef=' , self.vundef
 
 #       print '1:' , len(stb.ntname) , 'syntactic categories'
 
@@ -284,6 +297,26 @@ class EllyBase(object):
             self.trs = None           # no automatic conversion of written out numbers
 
 #       print '4:' , len(stb.ntname) , 'syntactic categories'
+
+#       print '3 redefine=' , redefine
+        if redefine: print 'recompiling vocabulary'
+        try:
+            voc = ellyDefinition.Vocabulary(system,redefine,stb,inflx)
+        except ellyException.TableFailure:
+            nfail += 1
+
+#       try:
+#           print 'c rul time=' , _timeModified(aid,rules)
+#           print 'c voc time=' , _timeModified(aid,vocabulary)
+#           print 'd rul time=' , _timeModified(aid,rules)
+#           print 'd voc time=' , _timeModified(aid,vocabulary)
+#       except:
+#           print 'rul or voc time exception'
+
+#       print 'vundef=' , self.vundef
+        self.vtb = voc.vtb
+        self.vundef = stb.findUnknown()
+#       print 'vundef=' , self.vundef
 
         ntn = len(stb.ntname)         # do consistency check on syntactic category count
         if nto != ntn:
@@ -391,6 +424,7 @@ class EllyBase(object):
         if self.trs != None:           # preanalysis of number expressions
             self.trs.rewriteNumber(s)
 
+#       print 'macro expansion s[0]=' , s[0]
         self.sbu.expand()              # apply macro substitutions
 
         s = self.sbu.buffer
@@ -511,6 +545,7 @@ class EllyBase(object):
         suffx = ''                     #   any suffix removed in match
 
         lm = len(sb)                   # scan limit
+#       print 'lm=' , lm
         capd = ellyChar.isUpperCaseLetter(sb[0])
         vmx = 0                        # external vocabulary match maximum
 #       print 'next component=' , sb[:k] , ', context=' , sb[k:lm]
@@ -524,10 +559,10 @@ class EllyBase(object):
                     if not ellyChar.isLetterOrDigit(sb[ks]):
                         break
                     ks += 1
-            ss = u''.join(sb[:ks])     # where to start for indexing
+            ss = u''.join(sb[:ks]).lower()      # where to start for vocabulary indexing
 #           print 'ss=' , ss , sb[:ks]
             n = vocabularyTable.delimitKey(ss)  # get actual indexing
-#           print 'n=' , n
+#           print 'delimiting n=' , n
             rl = self.vtb.lookUp(sb,n) # get list of the longest matches
 #           print len(rl) , 'matches'
             if len(rl) > 0:            #
