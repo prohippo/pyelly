@@ -46,6 +46,12 @@ _
   insert < typg
   append >
 __
+p:elma
+_
+  append <adj>
+  obtain
+  append </adj>
+__
 p:twob  # simple spaced output for 2-branch rule
 _
   left
@@ -853,7 +859,7 @@ g:NOUN[:ing]->VERB XING
 _
   (twob)
 __
-g:NOUN[:hyph]->NOUN[:-hyph] HYPH
+g:NOUN[:hyph]->NOUN[:-hyph] PUNC[|hyph]
 __
 g:NOUN[:*r]->NOUN[:hyph] NOUN
 # ?>>?
@@ -866,14 +872,14 @@ g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,-plur,-ing] NOUN[:-cnj,ing]
 _
   (twob)
 __
-g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,-plur,-ing] NOUN[:-cnj,-ing]
+g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,-plur,-ing] NOUN[:-cnj,-ing,-*x]
 #       ?>>?
  l[!spcs]>>-2
          >>+1
 _
   (twob)
 __
-g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,plur,-ing] NOUN[:-cnj,-ing,-plur]
+g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,plur,-ing] NOUN[:-cnj,-ing,-plur,-*x]
 #           ?>>?
  l[!*c]r[!*c]>>+2
        l[!*c]>>+0
@@ -1403,8 +1409,6 @@ __
 
 #
 # internal dictionary
-d:- <- HYPH
-__
 d:in   <- PREP
 __
 d:of   <- PREP[%of]
@@ -1744,6 +1748,8 @@ d:at  <- PTCL
 __
 d:up  <- PTCL
 __
+d:over <- PTCL
+__
 
 d:not  <- NEGN
 __
@@ -2032,4 +2038,9 @@ g:ADJ[%*r]->ADJC ADJ[%-ed,-ing]
  >>*l++++
 _
   (twob)
+__
+g:HYPA->PUNC[|hyph] VERB[^ed]
+__
+g:ADJ->ADV HYPA
+ >>++++
 __

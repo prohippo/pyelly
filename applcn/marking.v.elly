@@ -48,6 +48,7 @@ ahead of : PREP
 up to : ADV[~mod]
 pretty much : ADV[~mod,prox] [$deg] 0
 a lot of : QUAN
+a few : QUAN
 all at once : ADV
 some of which : CONJ
 not only : CONJ
@@ -96,6 +97,16 @@ all that : ALLTHT
 at the same time as : CONJ
 right after : CONJ
 straight after : CONJ
+like never before : ADV
+this year : NOUN[:*x]
+that year : NOUN[:*x]
+last year : NOUN[:*x]
+next year : NOUN[:*x]
+from beyond : PREP
+other than : CONJ
+the entirety : NOUN
+
+it is easy : ELEM - +4 (elma)
 
 eat-in : ADJ
 fully-equipped : ADJ
@@ -114,6 +125,8 @@ top-shelf : ADJ
 long-drawn : ADJ
 long-past  : ADJ
 four-penny : ADJ
+3-point : ADJ
+3-point shot : NOUN
 
 ABC News : NOUN
 Agence France-Presse : NOUN
@@ -145,6 +158,9 @@ ferguson : NOUN
 Institute for Radio Astronomy Millimetrique : NOUN
 Andras : NOUN
 Fairchild : NOUN
+NBA : NOUN
+Stephen Curry : NOUN
+Golden State : ADJ
 
 fried liver attack : NOUN
 2 knights defense : NOUN
@@ -244,6 +260,8 @@ already : ADV
 also : ADV
 always : ADV
 amaze : VERB
+amazing : VERB[^ing]
+amazing : ADJ - +1
 america : NOUN
 american : NOUN - -1
 american : ADJ
@@ -1475,6 +1493,7 @@ local : ADJ
 locate : VERB
 long : VERB
 long : ADJ
+long : ADV
 longer : NOUN - -2
 longer : ADJ
 longer : ADV - -1
@@ -1611,7 +1630,7 @@ mow : NOUN
 mow : VERB
 mph : NOUN
 mr : NOUN
-much : NOUN
+much : NOUN - -1
 much : ADJ[%to]
 much : ADV
 much like : VERB - -1
@@ -1902,8 +1921,8 @@ press : VERB
 press conference : NOUN
 pressure : NOUN
 pressure : VERB
-pretty : ADJ
-pretty : ADV
+pretty : ADJ - -2
+pretty : ADV [$deg] +1
 prevent : VERB
 previous : ADJ
 price : NOUN
@@ -2435,7 +2454,8 @@ suspect : ADJ
 suv : NOUN
 sweep : NOUN
 sweep : VERB
-swept : ADJ
+swept : VERB[^ed]
+swept up : VERB[^ed]
 switch : NOUN
 switch : VERB
 switch grass : NOUN
