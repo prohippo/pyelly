@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTree.py : 14feb2016 CPM
+# parseTree.py : 12jul2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -196,12 +196,15 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
                     phn.krnl.rhtd = phr                     # current phrase is right part
                     phn.ntok = phx.ntok + phr.ntok          # set token count for new phrase
                     self._score(phn)                        # compute bias score
-                    rcnd = phn.krnl.synf.test(0)            # check syntactic features
-                    lcnd = phn.krnl.synf.test(1)            #    prior to any inheritance!
-                    if rcnd:                                # inherit features from ramified phrase?
-                        phn.krnl.synf.combine(phr.krnl.synf)
-                    if lcnd:                                # inherit features from previous phrase?
+                    rF = phn.krnl.synf.test(0)
+                    lF = phn.krnl.synf.test(1)
+                    if lF:                                  # inherit features from previous phrase?
                         phn.krnl.synf.combine(phx.krnl.synf)
+                        phn.krnl.synf.unset(0)
+                    if rF:                                  # inherit features from ramified phrase?
+                        phn.krnl.synf.combine(phr.krnl.synf)
+                        phn.krnl.synf.unset(1)
+                        phn.krnl.synf.set(0)
                     phn.krnl.synf.reset(r.sftr)             # reset selected inherited bits
 #                   print 'phr=' , phr , 'phn=' , phn
                     self.enqueue(phn)                       # save new phrase for ramification
@@ -240,9 +243,12 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
 #                   print 'phn=' , phn
 #                   print 'phr=' , phr
                     self._score(phn)                   # compute bias score
-                    if (phn.krnl.synf.test(0) or
-                        phn.krnl.synf.test(1)):        # inherit features from current phrase?
+                    rF = phn.krnl.synf.test(0)
+                    lF = phn.krnl.synf.test(1)
+                    if lF or rF:                       # inherit features from current phrase?
                         phn.krnl.synf.combine(phr.krnl.synf)
+                        phn.krnl.synf.unset(1)
+                        phn.krnl.synf.set(0)
                     phn.krnl.synf.reset(r.sftr)        # reset selected inherited bits
                     self.enqueue(phn)                  # save new phrase for ramification
 

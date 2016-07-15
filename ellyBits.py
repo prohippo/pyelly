@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBits.py : 03sep2015 CPM
+# ellyBits.py : 11jul2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -42,13 +42,14 @@ hxh = { '0':0 , '1':1 , '2':2 , '3':3 , '4':4 ,  # convert hex digit to integer
 
 hxd = u'0123456789ABCDEF'  # for converting to hexadecimal
 
-sel = [ 0200, 0100, 0040, 0020, 0010, 0004, 0002, 0001 ] # define bits in byte
+sel = [ 0200, 0100, 0040, 0020, 0010, 0004, 0002, 0001 ] # define bits in single byte
+usl = [ 0177, 0277, 0337, 0357, 0367, 0373, 0375, 0373 ] # define bits in single byte
 
 N   = len(sel)                                           # bit-count in byte
 nB  = 2                                                  # default byte count for bit string
 
 def _com(x): return(255-x)  # hack to get complement of unsigned byte x
-                            # should NOT have to do this!
+                            # but should NOT have to do this!
 
 def getByteCountFor ( nbc ):
 
@@ -156,6 +157,17 @@ class EllyBits(object):
         n , m = divmod(k,N)
         if n >= len(self.data): return
         self.data[n] |= sel[m]
+
+    def unset ( self , k ):
+        """
+        unset kth bit by AND'ing
+        arguments:
+            self  -
+            k     - which bit
+        """
+        n , m = divmod(k,N)
+        if n >= len(self.data): return
+        self.data[n] &= usl[m]
 
     def test ( self , k ):
         """
@@ -303,7 +315,7 @@ class EllyBits(object):
         reset bits to hexadecimal specification
         arguments:
             self  -
-            hexb  - hexadecimal bit specification
+            hexb  - hexadecimal bit specification as string
         """
         ln = len(self.data)
         if len(hexb)//2 != ln: return
@@ -392,4 +404,8 @@ if __name__ == "__main__":
     bbs.reinit('0000')
     print '=' , bbs , 'zeroed=' , bbs.zeroed()
     bbs.set(1)
-    print '=' , bbs , 'zeroed=' , bbs.zeroed()
+    print '=' , bbs , 'set 1 =' , bbs.zeroed()
+    bbs.set(11)
+    bbs.unset(1)
+    print '=' , bbs , 'unset +' , str(bbs)
+
