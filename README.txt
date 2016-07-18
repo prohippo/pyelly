@@ -297,6 +297,8 @@ Release Notes:
                       clean up handling of *L and *R syntactic features
                       fix capitalization bug in vocabulary lookup
                       recompile vocabulary only when needed
+                      fix commentary bug with # at end of line
+                      minor changes in reporting of table definition
                       clean up and extend documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
