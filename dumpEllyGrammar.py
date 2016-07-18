@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# dumpEllyGrammar.py : 03dec2015 CPM
+# dumpEllyGrammar.py : 16jul2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -252,7 +252,7 @@ def dumpSplits ( stb , splits , full ):
 
         no += k
 
-    print no , "2-branch rules"
+    print no , "2-branch grammar rules"
 
 def dumpExtensions ( stb, extens , full ):
 
@@ -291,7 +291,7 @@ def dumpExtensions ( stb, extens , full ):
 
         no += k
 
-    print no , "1-branch rules"
+    print no , "1-branch grammar rules"
 
 def dumpDictionary ( stb, dctn , full ):
 
@@ -332,7 +332,7 @@ def dumpDictionary ( stb, dctn , full ):
 
         no += k
 
-    print len(dctn) , 'unique tokens in' , no , "entries"
+    print len(dctn) , 'unique tokens in' , no , "dictionary rules"
 
 #
 # unit test

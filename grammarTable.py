@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# grammarTable.py : 03jul2016 CPM
+# grammarTable.py : 06jul2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -334,8 +334,8 @@ class GrammarTable(object):
             return False
 
         print "added"
-        print '{0:4} rules'.format(nor)
-        print '{0:4} words'.format(now)
+        print '{0:4} grammar rules'.format(nor)
+        print '{0:4} dictionary rules'.format(now)
         print '{0:4} procedures'.format(nop)
         return True
 
