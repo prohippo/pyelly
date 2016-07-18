@@ -82,7 +82,7 @@ and so : CONJ
 ah : MISC
 yes : MISC
 of course : ADV
-so many : QUAN[:ind]
+so many : QUAN[@ind]
 in a way : ADV
 all evening : ADV
 at first : ADV
@@ -91,8 +91,8 @@ his own : DEM
 now and then : ADV
 often enough : ADV
 whenever and wherever : CONJ
-from what : CONJ[:rel]
-from which : CONJ[:rel]
+from what : CONJ[@rel]
+from which : CONJ[@rel]
 all that : ALLTHT
 at the same time as : CONJ
 right after : CONJ
@@ -171,13 +171,13 @@ genome editing : NOUN
 for example : PEXP[|eg]
 such as : DEM
 bookended : VERB[^ed] - -1
-my own : DEM[:ind]
-your own : DEM[:ind]
-his own : DEM[:ind]
-her own : DEM[:ind]
-its own : DEM[:ind]
-our own : DEM[:ind]
-their own : DEM[:ind]
+my own : DEM[@ind]
+your own : DEM[@ind]
+his own : DEM[@ind]
+her own : DEM[@ind]
+its own : DEM[@ind]
+our own : DEM[@ind]
+their own : DEM[@ind]
 about to : TO
 
 g.i. : ADJ

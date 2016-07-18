@@ -332,7 +332,7 @@ _
   var typg=adj
   (typg)
 __
-g:ELEM[^]->ADJ CONJ[:*x]
+g:ELEM[^]->ADJ CONJ[@*x]
 _
   var typg=adj
   (typg)
@@ -619,18 +619,26 @@ _
   (brack)
   append </nclu>
 __
-g:NCLU[:*l,*r,det]->DET[:sgl] NCLU[:-det,-prep,-plur]
- r[$cond]>>*r+
-         >>*r
+
+p:dtnc
 _
   var typg=det
   (lxtd)
 __
-g:NCLU[:*l,*r,det]->DET[:-sgl] NCLU[:-det,-prep]
+g:NCLU[:*r,det,dit]->DET[@dit] NCLU[:-det,-prep,-dit]
+_
+  (dtnc)
+__
+g:NCLU[:*r,det]->DET[@sgl] NCLU[:-det,-prep,-plur]
+ r[$cond]>>*r+
+         >>*r
+_
+  (dtnc)
+__
+g:NCLU[:*r,det]->DET[@-sgl] NCLU[:-det,-prep]
  >>*r
 _
-  var typg=det
-  (lxtd)
+  (dtnc)
 __
 p:pphr
 _
@@ -688,36 +696,45 @@ _
   (typg)
   append </nclu>
 __
-g:NCLU[:det]->DEM[:ind]
+g:NCLU[:det]->DEM[@ind]
  >>[!1wy]---
 _
   append <nclu><dem>
   left
   append </dem></nclu>
 __
-g:NCLU[:*l,*r,det]->DEM[:-sgl,-plur] NCLU[:-det,-prep,-qnt]
+
+p:dmnc
+_
+  var typg=dem
+  (lxtd)
+__
+g:NCLU[:*r,det,dit]->DEM[@dit] NCLU[:-det,-prep,-qnt,-dit]
+  >>+
+_
+  (dmnc)
+__
+g:NCLU[:*r,det]->DEM[@-sgl,-plur,-dit] NCLU[:-det,-prep,-qnt,-dit]
 #                 ?>>?
  l[!-*c,spcs]r[!*c]>>*r----
                    >>*r+
 _
-  var typg=dem
-  (lxtd)
+  (dmnc)
 __
-g:NCLU[:*l,*r,det]->DEM[:sgl] NCLU[:-det,-prep,-plur,-qnt]
+g:NCLU[:*r,det,sgl]->DEM[@sgl,-dit] NCLU[:-det,-prep,-plur,-qnt,-dit]
 #                 ?>>?
  l[!-*c,spcs]r[!*c]>>*r----
                    >>*r++
 _
-  var typg=dem
-  (lxtd)
+  (dmnc)
 __
-g:NCLU[:*l,*r,det]->DEM[:plur] NCLU[:-det,-prep,-qnt,plur]
+g:NCLU[:*r,det,plur]->DEM[@plur,-dit] NCLU[:-det,-prep,-qnt,plur,-dit]
 # ?>>?
   >>*r++++
 _
-  var typg=dem
-  (lxtd)
+  (dmnc)
 __
+
 g:NCLU[:*r]->ADJ[%-ed] NCLU[:-det,-prep,-num,-qnt]
 #             ?>>?
  l[$ind]r[$quo]>>*r[$cmpd]----
@@ -744,7 +761,7 @@ _
   var typg=num
   (lxtd)
 __
-g:NCLU[:qnt,num]->QUAN[:ind]
+g:NCLU[:qnt,num]->QUAN[@ind]
  l[!corrl]>>[!1wy]----
           >>[!1wy]--
 _
@@ -752,7 +769,7 @@ _
   left
   append </quan></nclu>
 __
-g:NCLU[:*r,det,qnt]->QUAN[:ind] NCLU[:-prep,-ing]                       
+g:NCLU[:*r,det,qnt]->QUAN[@ind] NCLU[:-prep,-ing]                       
 #                ?>>?
  l[!corrl]r[$-nml]>>*r------
                   >>*r++
@@ -760,7 +777,7 @@ _
   var typg=quan                                               
   (lxtd)
 __
-g:NCLU[:*r,det,qnt]->QUAN[:-ind] NCLU[:-prep]                       
+g:NCLU[:*r,det,qnt]->QUAN[@-ind] NCLU[:-prep]                       
 #                ?>>?
  l[!corrl]r[$-nml]>>*r------
                   >>*r++
@@ -1281,7 +1298,7 @@ _
   (twob)
 __
 
-g:DEM[:*r]->PREP[%-cnj] DEM[:ind]
+g:DEM[@*r]->PREP[%-cnj] DEM[@ind]
  >>-
 _
   var typg=prep
@@ -1327,7 +1344,7 @@ g:CONJ->NEGN CONJ
 _
   (twob)
 __
-g:CONJ->CONJ[:-*l,-rel] PUNC[|com]
+g:CONJ->CONJ[@-*l,-rel] PUNC[|com]
  >>+
 __
 
@@ -1380,12 +1397,12 @@ g:AUXL[^*r]->AUXL AUXL
 _
   (twob)
 __
-g:AUXL->AUXL QUAN[:cnj]
+g:AUXL->AUXL QUAN[@cnj]
  >>++
 _
   (aux)
 __
-g:HAVE->HAVE QUAN[:cnj]
+g:HAVE->HAVE QUAN[@cnj]
  >>++
 _
   (aux)
@@ -1393,11 +1410,11 @@ __
 
 #
 # special contextual check
-g:DEM[:*r,dit]->THAT DEM
+g:DEM[@*r,dit]->THAT DEM
 _
   right
 __
-g:DET[:*r,dit]->THAT DET
+g:DET[@*r,dit]->THAT DET
 _
   right
 __
@@ -1486,29 +1503,29 @@ __
 d:ago  <- POSTP
 __
 
-d:a   <- DET[:sgl]
+d:a   <- DET[@sgl]
 __
-d:an  <- DET[:sgl]
+d:an  <- DET[@sgl]
 __
 d:the <- DET
 __
 
-d:this <- DEM[:ind,sgl]
+d:this <- DEM[@ind,sgl]
 __
-d:that <- DEM[:ind,sgl]
+d:that <- DEM[@ind,sgl]
  >>[!spcs]
 __
 d:that <- THAT
 __
-d:these<- DEM[:ind]
+d:these<- DEM[@ind]
 __
-d:those<- DEM[:ind]
+d:those<- DEM[@ind]
 __
 d:my   <- DEM
 __
 d:your <- DEM
 __
-d:his  <- DEM[:ind]
+d:his  <- DEM[@ind]
 __
 d:her  <- DEM
 __
@@ -1518,22 +1535,22 @@ d:our  <- DEM
 __
 d:their<- DEM
 __
-d:them <- DEM[:plur]
+d:them <- DEM[@plur]
  >>--
 __
-d:such <- DEM[:ind]
+d:such <- DEM[@ind]
 __
-d:which <- DEM[:ind]
+d:which <- DEM[@ind]
  >>-
 __
-d:what  <- DEM[:ind]
+d:what  <- DEM[@ind]
 __
 
-d:who  <- CONJ[:rel]
+d:who  <- CONJ[@rel]
 __
-d:which<- CONJ[:rel]
+d:which<- CONJ[@rel]
 __
-d:where<- CONJ[:rel]
+d:where<- CONJ[@rel]
 __
 d:while<- CONJ
 __
@@ -1552,31 +1569,31 @@ __
 d:whether  <- CONJ
 __
 
-d:all  <- QUAN[:ind,cnj]
+d:all  <- QUAN[@ind,cnj]
 __
-d:any  <- QUAN[:ind]
+d:any  <- QUAN[@ind]
 __
-d:some <- QUAN[:ind]
+d:some <- QUAN[@ind]
 __
-d:many <- QUAN[:ind]
+d:many <- QUAN[@ind]
 __
-d:each <- QUAN[:ind,cnj]
+d:each <- QUAN[@ind,cnj]
 __
 d:every<- QUAN
 __
 d:no   <- QUAN
 __
-d:several<-QUAN[:ind]
+d:several<-QUAN[@ind]
 __
-d:both   <- QUAN[:ind,cnj]
+d:both   <- QUAN[@ind,cnj]
  >>[!corrl]
 __
-d:either <- QUAN[:ind,cnj]
+d:either <- QUAN[@ind,cnj]
  >>[!corrl]
 __
 d:multiple <- QUAN
 __
-d:another <- QUAN[:ind]
+d:another <- QUAN[@ind]
 __
 
 d:there <- THERE
@@ -1647,10 +1664,10 @@ __
 d:anyone  <- PRO
 __
 
-d:and  <- CONJ[:cnj]
+d:and  <- CONJ[@cnj]
  >>[!coord]
 __
-d:or   <- CONJ[:qnt,cnj]
+d:or   <- CONJ[@cnj,qnt]
  >>[!coord]
 __
 d:but  <- CONJ
@@ -1675,7 +1692,7 @@ d:before<-CONJ
 __
 d:after<- CONJ
 __
-d:as   <- CONJ[:*x]
+d:as   <- CONJ[@*x]
 __
 d:despite <- CONJ
 __
@@ -1873,20 +1890,20 @@ g:VERB[^*l]->VERB CLSP
 _
   (clspr)
 __
-g:DET[:*r]->OPNP DET
+g:DET[@*r]->OPNP DET
 _
   (opnpl)
 __
-g:DET[:*l]->DET CLSP
+g:DET[@*l]->DET CLSP
  >>+
 _
   (clspr)
 __
-g:CONJ[:*r]->OPNP CONJ
+g:CONJ[@*r]->OPNP CONJ
 _
   (opnpl)
 __
-g:CONJ[:*l]->CONJ CLSP
+g:CONJ[@*l]->CONJ CLSP
  >>+
 _
   (clspr)
@@ -1967,7 +1984,7 @@ g:AUXL->XD
 _
   append 'd
 __
-g:NOUN->CONJ[:qnt] NUM[:cnj]
+g:NOUN->CONJ[@qnt] NUM[:cnj]
  >>-
 _
   (twob)
@@ -2029,7 +2046,7 @@ g:ADJC->ADJ PUNC[|com]
 _
   (twob)
 __
-g:ADJC->ADJ CONJ[:-rel,cnj]
+g:ADJC->ADJ CONJ[@cnj,-rel]
  >>*l--
 _
   (twob)
