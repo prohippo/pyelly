@@ -21,17 +21,17 @@ _
 __
 g:sent -> sent punc
 _
-  set lang=b
+  set lang=b #
   (deflr)
 __
 g:sent -> sbj
 _
-  trace
-  left
+  trace      #
+  left       #
 __
 g:sent -> sbj prd
 _
-  (2bs)
+  (2bs)      #
 __
 g:sbj  -> np
 __
