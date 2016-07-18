@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyDefinitionReader.py : 25nov2015 CPM
+# ellyDefinitionReader.py : 16jul2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -110,9 +110,12 @@ class EllyDefinitionReader(object):
         if ( start == u'# '  or        # filter out comment lines starting
              start == u'#\r' or        # with "# " or consisting only of
              start == u'#\n' ):        # "#" and "\r" or "\n" following and
-            return                     # trim trailing comments starting
-        k = line.rfind(u' # ')         # from the LAST " # " in a line
-        if k >= 0: line = line[:k]     #
+            return
+        if line[-2:] == u' #':
+            line = line[:-1]           # drop "#" at the end of a line after space
+        else:
+            k = line.rfind(u' # ')     # from the LAST " # " in a line
+            if k >= 0: line = line[:k] # treat as comment
 #       print 'line=' , line
 
         le = line.strip()
