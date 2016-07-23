@@ -15,6 +15,7 @@ bit : VERB[^ed]
 built : VERB[^ed]
 did : VERB[^ed]
 hove : VERB[^ed]
+made up : VERB[^ed]
 said : VERB[^ed,dit]
 sat down : VERB[^ed]
 taken : VERB[^ed]
@@ -67,7 +68,7 @@ sorry about that : ADJ [$cmpd] 0
 than ever : CMPC
 than ever before : CMPC
 for now : ADV
-such a : QUAN
+such a  : QUAN
 such an : QUAN
 calm and collected : ADJ
 just as : ADV [$deg] 0
@@ -91,7 +92,7 @@ his own : DEM
 now and then : ADV
 often enough : ADV
 whenever and wherever : CONJ
-from what : CONJ[@rel]
+from what  : CONJ[@rel]
 from which : CONJ[@rel]
 all that : ALLTHT
 at the same time as : CONJ
@@ -559,7 +560,7 @@ close : VERB
 close : ADJ[%to] [$spat] 0
 close : ADV
 coach : NOUN
-coach : VERB
+coach : VERB [$trns] 0
 coast : NOUN
 coast : VERB
 collar : NOUN
@@ -1583,7 +1584,7 @@ millimeter : NOUN
 minister : NOUN
 minister : VERB
 ministry : NOUN
-minute : NOUN [$msr] 0
+minute : NOUN [&msr] 0
 minute : ADJ
 miracle : NOUN
 mistake : NOUN
@@ -1643,7 +1644,7 @@ music : NOUN
 musical : NOUN - -1
 musical : ADJ
 narrate : VERB
-narrative : NOUN
+narrative : NOUN [&stry] 0
 narrative : ADJ - -1
 nation : NOUN
 natural : ADJ
@@ -1942,7 +1943,7 @@ problem : NOUN
 process : NOUN
 process : VERB
 processor : NOUN
-produce : NOUN [$sglr] 0
+produce : NOUN [&sglo] 0
 produce : VERB
 product : NOUN
 production : NOUN
@@ -2124,7 +2125,7 @@ room : NOUN
 room : VERB
 rose : NOUN
 rose : ADJ
-round : NOUN [$cond] -1
+round : NOUN [&cond] -1
 round : VERB [$cond] -1
 round : ADJ
 round : ADV

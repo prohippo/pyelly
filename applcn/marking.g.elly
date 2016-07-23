@@ -89,11 +89,13 @@ _
   right
 __
 g:SS[|segm]->SEGM
-# ?>>?
-   >>*l
+#           ?>>?
+     l[!trng]>>-4
+             >>*l
 __
 g:SS[|segm]->SS[|-segm] SEGM
 #                 ?>>?
+           r[!trng]>>-4
  l[!coord,rn]r[!rn]>>*l++
  l[!coord,rv]r[!rv]>>*l++
              r[!rv]>>*l[!rv]
@@ -176,13 +178,14 @@ _
     end
 __
 g:SEGM[|*unique]->ELEM
-#        ?>>?
-  l[!spcs]>>*l-6
-  l[!lv,s]>>*l-
-          >>*l
+#            ?>>?
+      l[!spcs]>>*l-6
+      l[!lv,s]>>*l-
+  l[!trng] n<3>>*l
+              >>*l[!-trng]
 __
 g:SEGM[|*unique]->SEGM ELEM
-#                      ?>>?
+#                        ?>>?
   l[!ppps,rv  ]r[!ppps,rn]>>*r-8
   l[!pro]      r[!ln]     >>*r-3
   l[!pro,-brk] r[!lv]     >>*r+2
@@ -204,7 +207,6 @@ _
   append </punc>
 __
 g:SEGM->SEGM CONJ
- r[!aux]>>-6
  l[!cnj]>>-8
         >>[!cnj]-4
 _
@@ -226,15 +228,15 @@ _
   (typg)
   right
 __
-g:ELEM->NCLU[:-dit, prep,-poss]
+g:ELEM->NCLU[:-dit,-dat, prep,-poss]
 #      ?>>?
- l[$msr]>>[!ln,rn,ppps]
+ l[&msr]>>[!ln,rn,ppps]
         >>[!rn,ppps]
 __
-g:ELEM->NCLU[:-dit,-prep,-poss]
+g:ELEM->NCLU[:-dit,-dat,-prep,-poss]
 #      ?>>?
- l[!1wy]>>[!rn]
- l[!adv]>>[!rn]
+ l[&1wy]>>[!rn]
+ l[&adv]>>[!rn]
         >>[!ln,rn]
 __
 g:ELEM->NCLU[:dit]
@@ -244,6 +246,13 @@ _
   append <conj>that</conj>
   linefeed
   left
+__
+g:ELEM->NCLU[:dat]
+  >>[!ln]+
+_
+  left
+  linefeed
+  append <conj>that</conj>
 __
 g:ELEM->PRO[%nom]
 # ?>>?
@@ -259,7 +268,16 @@ _
   var typg=pro
   (typg)
 __
-g:ELEM[^*l]->VCLU[^-to,-s,-ed]
+g:ELEM[^*l]->VCLU[^-to,-s,-ed,ing]
+#        ?>>?
+   l[$pts]>>[!lv,rv,ppps]
+  l[$trns]>>[!lv,rv,trng]
+          >>[!lv,rv]
+_
+  var punc=
+  left
+__
+g:ELEM[^*l]->VCLU[^-to,-s,-ed,-ing]
 #       ?>>?
   l[$pts]>>[!lv,rv,ppps]
          >>[!lv,rv]
@@ -508,12 +526,12 @@ _
   (typg)
 __
 g:NCLU[:det]->PEXP[|det,nom] PUNC[|*r]
- >>*l[$quo]+4
+ >>*l[&quo]+4
 _
   (prom)
 __
 g:NCLU->PEXP[|-det,nom] PUNC[|*r]
- >>*r[$quo]+4
+ >>*r[&quo]+4
 _
   (prom)
 __
@@ -611,7 +629,7 @@ _
 __
 
 g:NCLU[:*l]->NOUN
- >>*l[$nml]
+ >>*l[&nml]
 _
 # trace
   append <nclu>
@@ -626,11 +644,18 @@ _
   (lxtd)
 __
 g:NCLU[:*r,det,dit]->DET[@dit] NCLU[:-det,-prep,-dit]
+ >>*r
 _
   (dtnc)
 __
+g:NCLU[:*l,dat]->NCLU[:-dat] THAT
+ l[&stry]>>++
+         >>-8
+_
+  left
+__
 g:NCLU[:*r,det]->DET[@sgl] NCLU[:-det,-prep,-plur]
- r[$cond]>>*r+
+ r[&cond]>>*r+
          >>*r
 _
   (dtnc)
@@ -648,19 +673,19 @@ __
 
 g:NCLU[:*r,prep]->PREP[%-cnj] NCLU[:-prep,-det,num]
 #      ?>>?
- r[$msr]>>*r
-        >>*r[$-msr]+
+ r[&msr]>>*r
+        >>*r[&-msr]+
 _
 # trace
   (pphr)
 __
 g:NCLU[:*r,prep]->PREP[%-cnj] NCLU[:-prep,det,num]
- >>*r[$-msr]+
+ >>*r[&-msr]+
 _
   (pphr)
 __
 g:NCLU[:*r,prep]->PREP[%-cnj] NCLU[:-prep,-num]
- >>*r[$-msr]+
+ >>*r[&-msr]+
 _
   (pphr)
 __
@@ -683,7 +708,7 @@ _
   (rxtd)
 __
 g:NOUN->NOUN NUM
- r[$cmpd]>>----
+ r[&cmpd]>>----
          >>++
 _
   (twob)
@@ -697,7 +722,7 @@ _
   append </nclu>
 __
 g:NCLU[:det]->DEM[@ind]
- >>[!1wy]---
+ >>[&1wy]---
 _
   append <nclu><dem>
   left
@@ -710,7 +735,7 @@ _
   (lxtd)
 __
 g:NCLU[:*r,det,dit]->DEM[@dit] NCLU[:-det,-prep,-qnt,-dit]
-  >>+
+  >>*r+
 _
   (dmnc)
 __
@@ -737,33 +762,33 @@ __
 
 g:NCLU[:*r]->ADJ[%-ed] NCLU[:-det,-prep,-num,-qnt]
 #             ?>>?
- l[$ind]r[$quo]>>*r[$cmpd]----
-        r[$quo]>>*r[$cmpd]
-               >>*r[$cmpd]+++
+ l[$ind]r[&quo]>>*r[&cmpd]----
+        r[&quo]>>*r[&cmpd]
+               >>*r[&cmpd]+++
 _
   var typg=adj
   (lxtd)
 __
 g:NCLU[:*r]->ADJ[%ed] NCLU[:-det,-prep,-num,-qnt]
 #             ?>>?
-       r[$cmpd]>>*r[$cmpd]----
- l[$ind]r[$quo]>>*r[$cmpd]----
-        r[$quo]>>*r[$cmpd]
-               >>*r[$cmpd]+++
+       r[&cmpd]>>*r[&cmpd]----
+ l[$ind]r[&quo]>>*r[&cmpd]----
+        r[&quo]>>*r[&cmpd]
+               >>*r[&cmpd]+++
 _
   var typg=adj
   (lxtd)
 __
 g:NCLU[:*r,num]->NUM NCLU[:-det,-prep,-num,-qnt]
- l[$cmpd]>>*r[!adv]++++
+ l[$cmpd]>>*r[&adv]++++
          >>*r++++
 _
   var typg=num
   (lxtd)
 __
 g:NCLU[:qnt,num]->QUAN[@ind]
- l[!corrl]>>[!1wy]----
-          >>[!1wy]--
+ l[!corrl]>>[&1wy]----
+          >>[&1wy]--
 _
   append <nclu><quan>
   left
@@ -771,7 +796,7 @@ _
 __
 g:NCLU[:*r,det,qnt]->QUAN[@ind] NCLU[:-prep,-ing]                       
 #                ?>>?
- l[!corrl]r[$-nml]>>*r------
+ l[!corrl]r[&-nml]>>*r------
                   >>*r++
 _
   var typg=quan                                               
@@ -779,7 +804,7 @@ _
 __
 g:NCLU[:*r,det,qnt]->QUAN[@-ind] NCLU[:-prep]                       
 #                ?>>?
- l[!corrl]r[$-nml]>>*r------
+ l[!corrl]r[&-nml]>>*r------
                   >>*r++
 _
   var typg=quan                                               
@@ -867,12 +892,13 @@ _
   (twob)
 __
 g:NOUN->NOUN SUFX[#nTOn]
+ >>*l
 _
   (twob)
 __
 g:NOUN[:ing]->VERB XING
- l[$trns]>>--
-         >>-
+# ?>>?
+   >>-
 _
   (twob)
 __
@@ -925,7 +951,8 @@ _
 __
 
 g:VCLU[^*l]->VERB
- >>*l
+# ?>>?
+   >>*l
 _
   append <vclu>
   var typg=verb
@@ -1214,7 +1241,7 @@ __
 # simple inflections
 g:NOUN[:*l,plur]->NOUN[:-*l,-*r] XS
 #       ?>>?
- l[$sglr]>>*l--
+ l[&sglo]>>*l--
          >>*l
 _
   (twob)
@@ -1245,7 +1272,8 @@ _
   (twob)
 __
 g:VERB[^*l,ing]->VERB[^-*l,-*r] XING
- >>*l
+# ?>>?
+   >>*l
 _
   (twob)
 __
@@ -1909,14 +1937,13 @@ _
   (clspr)
 __
 g:CNJA->CONJ AUXL
- l[!-aux,coord]>>+0
-               >>--
+ l[!coord]>>+0
+          >>--
 _
   (twob)
 __
 g:AUXL->AUXL CNJA
- r[!aux]>>++
-        >>------
+ >>++
 _
   (twob)
 __
