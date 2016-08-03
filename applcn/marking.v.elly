@@ -14,8 +14,10 @@ ate : VERB[^ed]
 bit : VERB[^ed]
 built : VERB[^ed]
 did : VERB[^ed]
+does not : AUXL[^s]
 hove : VERB[^ed]
 made up : VERB[^ed]
+ought : VERB
 said : VERB[^ed,dit]
 sat down : VERB[^ed]
 taken : VERB[^ed]
@@ -23,7 +25,6 @@ thought : VERB[^ed]
 written : VERB[^ed]
 
 rosé : NOUN
-ought : VERB
 
 anything : NOUN[:qnt]
 everything : NOUN[:qnt]
@@ -622,6 +623,7 @@ conference : NOUN
 conflict : NOUN
 conflict : VERB
 congress : NOUN
+congressional : ADJ
 conjunct : ADJ
 conjunction : NOUN
 connect : VERB
@@ -1312,6 +1314,7 @@ impulse : NOUN
 inch : NOUN
 inch : VERB - -1
 include : VERB [$trns] 0
+inclusive : ADJ
 independent : ADJ
 indicate : VERB
 indigestible : ADJ
@@ -1524,6 +1527,7 @@ maintain : VERB
 major : NOUN
 major : VERB - -1
 major : ADJ
+majority : NOUN
 make : NOUN
 make : VERB [$trns] 0
 male : NOUN
@@ -1572,6 +1576,7 @@ mere : ADJ
 metaphor : NOUN
 metaphorically : ADV
 method : NOUN
+methodology : NOUN
 mexico : NOUN
 michael : NOUN
 microcomputer : NOUN
@@ -1926,6 +1931,7 @@ pretty : ADJ - -2
 pretty : ADV [$deg] +1
 prevent : VERB
 previous : ADJ
+previously : ADV
 price : NOUN
 price : VERB
 priest : NOUN
@@ -2026,6 +2032,7 @@ reason : VERB
 reasonable : ADJ
 receive : VERB
 recent : ADJ
+recently : ADV
 recognition : NOUN
 recognize : VERB
 recommend : VERB
