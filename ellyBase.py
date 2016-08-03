@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 12jul2016 CPM
+# ellyBase.py : 31jul2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -74,7 +74,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.3.14'                     # current version of PyElly software
+release = 'v1.3.15'                     # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -110,6 +110,7 @@ def _isSaved ( systm , compn , srcs ):
     try:
         date = _timeModified('./',systm + compn)
     except OSError:
+        print >> sys.stderr , '**** time error on' , compn
         return False
 
     basn = ellyConfiguration.baseSource + '/'
@@ -201,7 +202,7 @@ class EllyBase(object):
 #           print 'a rul time=' , _timeModified(aid,rules)
 #           print 'a voc time=' , _timeModified(aid,vocabulary)
 #       except:
-#           print 'a rul or voc time exception'
+#           print '\n**** a rul or voc time exception'
 
         sysf = system + rules
         redefine = not _isSaved(system,rules,_rules)
@@ -219,7 +220,7 @@ class EllyBase(object):
 #           print 'b rul time=' , _timeModified(aid,rules)
 #           print 'b voc time=' , _timeModified(aid,vocabulary)
 #       except:
-#           print 'b rul or voc time exception'
+#           print '\n**** b rul or voc time exception'
 
 #       print '1 redefine=' , redefine
         if restore != None:
@@ -321,7 +322,7 @@ class EllyBase(object):
         ntn = len(stb.ntname)         # do consistency check on syntactic category count
         if nto != ntn:
             print >> sys.stderr , 'WARNING: grammar rules should predefine all syntactic categories'
-            print >> sys.stderr , '         and features identified in other language definitions'
+            print >> sys.stderr , '         and features referenced in language definition files'
 
 #       print 'EllyBase.__init__() DONE'
 

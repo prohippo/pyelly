@@ -300,6 +300,12 @@ Release Notes:
                       fix commentary bug with # at end of line
                       minor changes in reporting of table definition
                       clean up and extend documentation
+ 1.3.15  - 03aug2016  clean up procedure for recompiling language tables
+                      clean up commentary and reporting
+                      add basic cognitive semantics to pattern tables
+                      extend "test" integration testing for new patterns
+                      extend "marking" application rules
+                      clean up and extend documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
