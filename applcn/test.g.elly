@@ -217,3 +217,13 @@ _
   append -+-
   right
 __
+g:sent->typ punc[|stop]
+ ?>>?
+  >>*l
+_
+  if [!hit]
+    append YES
+  else
+    append NO
+    end
+__

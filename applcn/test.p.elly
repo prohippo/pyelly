@@ -18,8 +18,8 @@
 3 $    NUM -1
 0 pseudo* NOUN -1
 
-0 -&@$ sufx -1
-0 -'s$ sufx[^apos] -1
+0 -&@$ SUFX -1
+0 -'s$ SUFX[^apos] -1
 
 0 &@000 -    4
 0 aaa&# -    5
@@ -30,3 +30,6 @@
 
 0 b0 - 7
 7 $ ZZ3 -1
+
+0 @#$  TYP[:not] [!hit] 5 -1
+0 @#@$ TYP - 2 -1
