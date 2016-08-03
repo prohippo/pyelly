@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBits.py : 11jul2016 CPM
+# ellyBits.py : 31jul2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -270,10 +270,10 @@ class EllyBits(object):
 
     def reset ( self , r ):
         """
-        reset selected bits
+        reset unselected bits
         arguments:
             self  -
-            r     - = 1 for bits to keep
+            r     - = 1 for each bit to keep
         """
         m = len(self.data)
         n = len(r.data)
