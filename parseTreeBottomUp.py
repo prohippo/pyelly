@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBottomUp.py : 01mar2016 CPM
+# parseTreeBottomUp.py : 01aug2016 CPM
 # -----------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -331,7 +331,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
         r = self._makeLiteralRule(cat,fbs)
         return self._addTerminal(r,spl,cap)
 
-    def addLiteralPhraseWithSemantics ( self , cat , fbs , sbs , bias , gen=None , spl=False ):
+    def addLiteralPhraseWithSemantics ( self , cat , fbs , sbs , bias , gen=None , spl=False , cap=False ):
 
         """
         make a phrase for a literal obtained by various means and enqueue
@@ -344,6 +344,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
             bias  - cognitive bias
             gen   - generative procedure
             spl   - splitting flag
+            cap   - capitalization flag
 
         returns:
             True on success, False otherwise
@@ -353,11 +354,11 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
         """
 
 #       print 'literal phrase with semantics: cat=' , cat , 'fbs=' , fbs , 'sbs=' , sbs
-#       print 'spl=' , spl
 #       print 'gen=' , gen
+#       print 'spl=' , spl , 'cap=' , cap
         r = self._makeLiteralRule(cat,fbs,gen)
-        if self._addTerminal(r,spl):
-            self.lastph.krnl.semf = sbs
+        if self._addTerminal(r,spl,cap):
+            self.lastph.krnl.semf.combine(sbs)
             self.lastph.krnl.bias = bias
 #           print 'lastph=' , self.lastph
             return True

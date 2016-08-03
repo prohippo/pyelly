@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# patternTable.py : 02mar2016 CPM
+# patternTable.py : 02aug2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -37,6 +37,7 @@ import ellyChar
 import ellyWildcard
 import ellyException
 import syntaxSpecification
+import featureSpecification
 
 class Link(object):
 
@@ -48,6 +49,8 @@ class Link(object):
         nxts  - next state on match
         catg  - syntactic category
         synf  - syntactic features
+        semf  - semantic  features
+        bias  - initial plausibility score
     """
 
     def __init__ ( self , syms , dfls ):
@@ -65,7 +68,9 @@ class Link(object):
         """
 
 #       print 'dfls=' , dfls
-        if len(dfls) != 3:                                # must have 3 elements
+        ne = len(dfls)
+#       print 'ne=' , ne
+        if 3 > ne or ne > 5:                              # must have 3 to 5 elements
             raise ellyException.FormatFailure
         else:
             if dfls[0] == '\\0':
@@ -78,20 +83,44 @@ class Link(object):
                     raise ellyException.FormatFailure
 #               print 'appended patn=' , list(self.patn) , '=' , len(self.patn)
 
+            lastat = dfls[-1]
             self.catg = None                          # defaults
             self.synf = None                          #
+            self.semf = None                          #
+            self.bias = 0                             #
             sss = dfls[1].lower()                     # assumed not to be Unicode
 #           print 'sss=' , sss
             if sss != '-':                            # allow for no category
                 syx = syntaxSpecification.SyntaxSpecification(syms,sss)
                 if syx != None:
+                    if lastat != '-1':                    # not a stop state for matching
+                        raise ellyException.FormatFailure # cannot have syntax here
                     self.catg = syx.catg              # syntactic category
                     self.synf = syx.synf.positive     # syntactic features
 
+            if ne > 3:
+                if lastat != '-1':                    # not a stop state for matching
+                    raise ellyException.FormatFailure # cannot have semantics here
+                sss = None if dfls[2] == '-' else dfls[2].lower()
+            else:
+                sss = None
+#           print 'semantic features=' , sss
+            sem = featureSpecification.FeatureSpecification(syms,sss,True)
+            self.semf = sem.positive                  # get semantic features
+#           print 'semf=' , self.semf
+
+            if ne > 4:
+                try:
+                    self.bias = int(dfls[3])
+                except ValueError:
+                    raise ellyException.FormatFailure # unrecognizable bias
+
             try:
-                n = int(dfls[2])                      # next state for link
-            except:
+                n = int(lastat)                       # next state for link
+            except ValueError:
                 raise ellyException.FormatFailure     # unrecognizable number
+
+#           print 'transition=' , n
 
             if n < 0:                                 # final transition?
                 if self.patn == u'\x00':
@@ -124,8 +153,11 @@ class Link(object):
             else:
                 p = u'{0:<24}'.format(ellyWildcard.deconvert(self.patn))
             c = unicode(self.catg)
-            f = u'None' if self.synf == None else self.synf.hexadecimal(False)
-            return p + ' ' + ' ' + c + ' ' + f + ' next=' + unicode(self.nxts)
+            x = u'' if self.synf == None else self.synf.hexadecimal(False)
+            m = u'' if self.semf == None else self.semf.hexadecimal(False)
+            b = str(self.bias)
+            n = unicode(self.nxts)
+            return p + ' ' + ' ' + c + ' ' + x + ' ' + m + ' ' + b + ' next=' + n
 
 Trmls = ellyWildcard.Trmls
 
@@ -225,7 +257,7 @@ class PatternTable(object):
 #       print 'FSA definition line count=' , fsa.linecount()
         while True: # read all input from ellyDefinitionReader
             line = fsa.readline()
-#           print 'input line=' , line
+#           print 'input line=[' , line , '], len=' , len(line)
             if len(line) == 0: break         # EOF check
             ls = line.strip().split(' ')     # get link definition as list
 #           print 'ls=' , ls
@@ -349,9 +381,11 @@ class PatternTable(object):
                     m = bds[0]      # get match length, ignore wildcard bindings
 
                     if lk.nxts < 0: # final state?
-                        if tree.addLiteralPhrase(lk.catg,lk.synf,False,capd): # make phrase
+#                       print 'flags=' , lk.synf , '/' , lk.semf
+                        if tree.addLiteralPhraseWithSemantics(lk.catg,lk.synf,lk.semf,lk.bias,
+                                                              cap=capd): # make phrase
                             mtls = mtl + m
-                            tree.lastph.lens = mtls                   # save its length
+                            tree.lastph.lens = mtls                      # save its length
 #                           print 'match state=' , state , 'length=' , mtls
 #                       else:
 #                           print 'lastph=' , tree.lastph

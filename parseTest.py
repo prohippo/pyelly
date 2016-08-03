@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTest.py : 30apr2016 CPM
+# parseTest.py : 02aug2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -46,8 +46,7 @@ class Kernel(object):
     def __str__ ( self ):
         """ representation of phrase kernel for printing
         """
-        return ( 'phrase catg=' + str(self.catg) +
-                       ' synf=' + self.synf.hexadecimal(False) )
+        return 'phrase catg=' + str(self.catg) + ' ' + self.synf.hexadecimal(False)
 
 class Phrase(object):
     """ dummy Elly phrase class for testing
@@ -71,13 +70,25 @@ class Tree(object):
         print 'tree with stub methods'
         self.queue = [ ]
         self.lastph = None
-    def addLiteralPhrase (self,typ,fts,dvd=False,cap=False):
+    def addLiteralPhrase (self,typ,sxs,dvd=False,cap=False):
         """ dummy method
         """
         print 'add phrase: typ=' , typ
         ph = Phrase()
         ph.krnl.catg = typ
-        ph.krnl.synf = fts
+        ph.krnl.synf = sxs
+        self.queue.append(ph)
+        self.lastph = ph
+        return True
+    def addLiteralPhraseWithSemantics (self,typ,sxs,sms,bia,gen=None,dvd=False,cap=False):
+        """ dummy method
+        """
+        print 'add phrase: typ=' , typ
+        ph = Phrase()
+        ph.krnl.catg = typ
+        ph.krnl.synf = sxs
+        ph.krnl.semf = sms
+        ph.krnl.bias = bia
         self.queue.append(ph)
         self.lastph = ph
         return True
