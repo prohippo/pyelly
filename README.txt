@@ -302,7 +302,7 @@ Release Notes:
                       clean up and extend documentation
  1.3.15  - 03aug2016  clean up procedure for recompiling language tables
                       clean up commentary and reporting
-                      add basic cognitive semantics to pattern tables
+                      add basic cognitive semantics to pattern tables, entities
                       extend "test" integration testing for new patterns
                       extend "marking" application rules
                       clean up and extend documentation

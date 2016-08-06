@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# entityExtractor.py : 12mar2016 CPM
+# entityExtractor.py : 04aug2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -32,9 +32,14 @@
 runs extraction methods and generates phrases
 """
 
+import ellyBits
 import ellyChar
 import ellyConfiguration
 import syntaxSpecification
+import featureSpecification
+import ellyException
+
+noBits = ellyBits.EllyBits()
 
 class EntityExtractor(object):
 
@@ -56,6 +61,9 @@ class EntityExtractor(object):
             self  -
             ptr   - parse tree
             sym   - symbol table
+
+        exceptions:
+            FormatFailure on error
         """
 
         self.ptr = ptr
@@ -63,8 +71,15 @@ class EntityExtractor(object):
         self.exs = [ ]
         for x in ellyConfiguration.extractors:
             proc = x[0]
-            synt = syntaxSpecification.SyntaxSpecification(sym,x[1])
-            self.exs.append([ proc , synt.catg , synt.synf.positive ])
+            synt = syntaxSpecification.SyntaxSpecification(sym,x[1].lower())
+            entry = [ proc , synt.catg , synt.synf.positive ]
+            if len(x) > 2:
+                f = None if x[2] == '-' else x[2].lower()
+                smnt = featureSpecification.FeatureSpecification(sym,f,True)
+                entry.append(smnt.positive)
+            if len(x) > 3:
+                entry.append(x[3])
+            self.exs.append(entry)
 
     def dump ( self ):
 
@@ -77,7 +92,12 @@ class EntityExtractor(object):
         for ex in self.exs:
             print ex[0] ,
             print  'syntax cat=' , self.sym.getSyntaxTypeName(ex[1]).upper() ,
-            print 'fet=' , ex[2].hexadecimal(False)
+            print ' fet=' , ex[2].hexadecimal(False) ,
+            if len(ex) > 3:
+                print ' sem=' , ex[3].hexadecimal(False) ,
+            if len(ex) > 4:
+                print ' pls=' , str(ex[4]) ,
+            print ''
 
     def run ( self , segm ):
 
@@ -106,7 +126,9 @@ class EntityExtractor(object):
                 ms.append(xr[1:]) # add to match list
         if mx > 0:                # any matches?
             for mr in ms:         # if so, make phrases for them
-                if self.ptr.addLiteralPhrase(mr[0],mr[1],False,capd):
+                sbs = mr[2] if len(mr) > 2 else noBits
+                bia = mr[3] if len(mr) > 3 else 0
+                if self.ptr.addLiteralPhraseWithSemantics(mr[0],mr[1],sbs,bia,None,False,capd):
                     self.ptr.lastph.lens = mx
         return mx
 
