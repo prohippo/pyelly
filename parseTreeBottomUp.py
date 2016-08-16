@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBottomUp.py : 01aug2016 CPM
+# parseTreeBottomUp.py : 16aug2016 CPM
 # -----------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -183,7 +183,8 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
 
 #           print phr.krnl.typx , ':' , pho.krnl.typx
 #           print phr.krnl.synf.hexadecimal() , ':' , pho.krnl.synf.hexadecimal()
-            if (        phr.krnl.typx == pho.krnl.typx
+            if (        phr.ntok == pho.ntok
+                and     phr.krnl.typx == pho.krnl.typx
                 and     phr.krnl.synf.equal(pho.krnl.synf)
                 and not phr.krnl.synf.test(symbolTable.LAST) # *UNIQUE check
                ):                          # ambiguity?

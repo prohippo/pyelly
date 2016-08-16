@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTree.py : 12jul2016 CPM
+# parseTree.py : 16jul2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -127,6 +127,7 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
         while True:
             ph = self.dequeue()     # get next phrase from queue
             if ph == None: break    # until empty
+#           print 'digest' , ph
             if ph.krnl.rule == None:
                 print >> sys.stderr , 'no rule for phrase' , ph.krnl.seqn
 #           print 'digest' , ph , 'rule=' , ph.krnl.rule.seqn , 'wordno=' , self.wordno
@@ -250,6 +251,7 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
                         phn.krnl.synf.unset(1)
                         phn.krnl.synf.set(0)
                     phn.krnl.synf.reset(r.sftr)        # reset selected inherited bits
+#                   print 'phn=' , phn
                     self.enqueue(phn)                  # save new phrase for ramification
 
     def _phase3 ( self , phr , fbs ):
@@ -270,6 +272,7 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
         if po < 0 : po = 0                       # position check needed for ... phrase type
         gb = self.gbits[po]
         np = self.wordno + 1
+#       print '> PHASE 3' , phr
 #       print '> PHASE 3 at' , po , '=' , len(rls) , 'rules, gb=' , gb.hexadecimal()
         for r in rls:
             nt = r.styp
