@@ -303,8 +303,11 @@ Release Notes:
  1.3.15  - 03aug2016  clean up procedure for recompiling language tables
                       clean up commentary and reporting
                       add basic cognitive semantics to pattern tables, entities
+                      add feature inheritance checking
+                      fix bug in disambiguation with type 0 rules
                       extend "test" integration testing for new patterns
                       extend "marking" application rules
+                      clean up "doctor rules"
                       clean up and extend documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
