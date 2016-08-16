@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveProcedure.py : 18feb2016 CPM
+# cognitiveProcedure.py : 13aug2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -47,7 +47,7 @@ class CognitiveProcedure(object):
         logic   - code and data for procedure
     """
 
-    def __init__ ( self , syms , defn ):
+    def __init__ ( self , syms , defn , nwy=0 ):
 
         """
         initialization from EllyDefinitionReader input
@@ -57,7 +57,7 @@ class CognitiveProcedure(object):
             defn  - EllyDefinitionReader
         """
 
-        self.logic = cognitiveDefiner.convertDefinition(syms,defn)
+        self.logic = cognitiveDefiner.convertDefinition(syms,defn,nwy)
 
     def score ( self , cntx , phrs ):
 

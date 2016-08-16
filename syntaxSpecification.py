@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# syntaxSpecification.py : 07jun2015 CPM
+# syntaxSpecification.py : 13aug2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -114,6 +114,8 @@ class SyntaxSpecification(object):
 
         if len(s) == 0:     # check if there are any features
             synf = featureSpecification.FeatureSpecification(syms,None)
+            if typs == '...':
+                synf.id = '...'
         elif typs == '...': # ... category may have no features!
             raise ellyException.FormatFailure
         else:               # decode features
@@ -142,7 +144,7 @@ class SyntaxSpecification(object):
             string representation
         """
 
-        fs = '+....-....' if self.synf == None else str(self.synf)
+        fs = '  +....-....' if self.synf == None else self.synf.id + ' ' + str(self.synf)
         return 'type=' + str(self.catg) + ' ' + fs
 
 #
@@ -159,9 +161,10 @@ if __name__ == '__main__':
     stb.getSyntaxTypeIndexNumber('unkn')
     stb.getSyntaxTypeIndexNumber('...')
 
-#   note that ... is not allowed to have syntactic features specified
+#   note that ... may not have syntactic features specified
 
-    spcl = sys.argv[1:] if len(sys.argv) > 1 else [ '...[.0,1]' ]
+    spcl = sys.argv[1:] if len(sys.argv) > 1 else [ '...[.0,1]' , 'unkn[:x]' ]
+    print 'testing' , len(spcl) , 'examples'
     for spc in spcl:
         ns = scan(spc)
         sx = spc[:ns]
@@ -171,4 +174,5 @@ if __name__ == '__main__':
         except ellyException.FormatFailure:
             print >> sys.stderr , '** fail on [' , sx , ']'
             continue
-        print 'syntax specification' , sx , '=' , ss
+        print 'syntax specification  {0:20s}='.format(sx) ,
+        print '' , ss

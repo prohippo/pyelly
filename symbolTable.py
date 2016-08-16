@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# symbolTable.py : 27dec2015 CPM
+# symbolTable.py : 13aug2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -43,6 +43,65 @@ NMAX = 64  # maximum number of syntactic type names
 FMAX = 16  # maximum number of feature names per set
 
 LAST = FMAX - 1
+
+def featureConsistencySplit ( rslt , lfts , rhts , lh=False , rh=False ):
+
+    """
+    check consistency of syntactic and semantic feature sets
+    for splitting rule
+
+    arguments:
+        rslt  - result feature bits
+        lfts  - first  component feature bits
+        rhts  - second
+        lh    - left  inheritance?
+        rh    - right
+
+    returns:
+        True if consistent, False otherwise
+    """
+
+#   print '-- Split' , rslt
+    if rslt == None or rslt.id == '':
+        return True
+#   print 'set' , rslt.id , 'lh=' , lh , 'rh=' , rh
+#   print 'left=' , lfts , 'right=', rhts
+    if lh and lfts != None and lfts.id != '' and rslt.id != lfts.id:
+#       print 'lh=' , lh , rslt.id , rslt , lfts.id , lfts
+        return False
+    if rh and rhts != None and rhts.id != '' and rslt.id != rhts.id:
+#       print 'rh=' , rh , rslt.id , rslt , rhts.id , rhts
+        return False
+    return True
+
+def featureConsistencyExtend ( rslt , lfts , rhts , lh=False , rh=False ):
+
+    """
+    check consistency of syntactic and semantic feature sets
+    for extending rule
+
+    arguments:
+        rslt  - result feature bits
+        lfts  - first  component feature bits
+        rhts  - second
+        lh    - left  inheritance?
+        rh    - right
+
+    returns:
+        True if consistent, False otherwise
+    """
+
+#   print '-- Extend' , rslt
+    if rslt == None or rslt.id == '':
+        return True
+    if lh or rh:
+        if lfts != None and lfts.id != '' and rslt.id != lfts.id:
+#           print 'lh=' , lh , rslt.id , rslt , lfts.id , lfts
+            return False
+        if rhts != None and rhts.id != '' and rslt.id != rhts.id:
+#           print 'rh=' , rh , rslt.id , rslt , rhts.id , rhts
+            return False
+    return True
 
 class SymbolTable(object):
 

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# featureSpecification.py : 03sep2015 CPM
+# featureSpecification.py : 09aug2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -83,6 +83,7 @@ class FeatureSpecification(object):
         if syms == None or fets == None:  # special case generating zero feature set
             self.positive = ellyBits.EllyBits(symbolTable.FMAX)
             self.negative = ellyBits.EllyBits(symbolTable.FMAX)
+            self.id = ''
             return
 
         segm = fets.lower()
@@ -151,20 +152,20 @@ if __name__ == '__main__':
     try:
         w = s = "[!a,-b,c,+d,-e]"
         fes = FeatureSpecification(stb,s)       # syntactic features
-        print 'fes=' , fes , 'for' , s , 'syntactic'
+        print 'fes=' , fes.id , fes , 'for' , s , 'syntactic'
         fes = FeatureSpecification(stb,s,True)  # semantic  features
-        print 'fes=' , fes , 'for' , s , 'semantic'
+        print 'fes=' , fes.id , fes , 'for' , s , 'semantic'
         w = t = "[:x,y]"
         fet = FeatureSpecification(stb,t,True)  # semantic  features
-        print 'fet=' , fet , 'for' , t , 'semantic'
+        print 'fet=' , fet.id , fet , 'for' , t , 'semantic'
         fet = FeatureSpecification(stb,t,False) # syntactic features
-        print 'fet=' , fet , 'for' , t , 'syntactic'
+        print 'fet=' , fet.id , fet , 'for' , t , 'syntactic'
         w = u = ''
         feu = FeatureSpecification(None)        # empty features
-        print 'feu=' , feu , 'for' , "''"
+        print 'feu=' , feu.id + ' ' , feu , 'for' , "''"
         w = v = '[:*l,*r,*unique]'
         fev = FeatureSpecification(stb,v)       # special syntactic features
-        print 'fev=' , fev , 'for' , v , 'syntactic'
+        print 'fev=' , fev.id , fev , 'for' , v , 'syntactic'
         w = "[:x"
         few = FeatureSpecification(stb,w)       # bad syntactic features
         print "should never get here!"

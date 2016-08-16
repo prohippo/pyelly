@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveDefiner.py : 18feb2016 CPM
+# cognitiveDefiner.py : 16aug2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -39,9 +39,25 @@ import ellyChar
 import ellyException
 import semanticCommand
 import featureSpecification
+import symbolTable
 import sys
 
-def convertDefinition ( stb , inp ):
+_check = [ (lambda s : True)  ,
+           (lambda s : symbolTable.featureConsistencyExtend(s.res,s.lft,s.rht,s.lh,s.rh)) ,
+           (lambda s : symbolTable.featureConsistencySplit (s.res,s.lft,s.rht,s.lh,s.rh)) ]
+
+class Status(object):
+    """
+    to group arguments for feature inheritance checking
+    """
+    def __init__ (self):
+        self.res = None
+        self.lft = None
+        self.rht = None
+        self.lh  = False
+        self.rh  = False
+
+def convertDefinition ( stb , inp , nwy ):
 
     """
     defines cognitive semantic procedure for a syntax rule
@@ -49,6 +65,9 @@ def convertDefinition ( stb , inp ):
     arguments:
         stb   - symbol table
         inp   - EllyDefinitionReader for procedure definition
+        nwy   - 0 = vocabulary
+                1 = extending rule
+                2 = splitting rule
 
     returns:
         procedure body as a list of commands and data on success, None otherwise
@@ -58,11 +77,13 @@ def convertDefinition ( stb , inp ):
 
     while True:  # process every clause
 
-        line = inp.readline()
-        if len(line) == 0: break
+        s = Status()                                  # initialize for inheritance check
+
+        line = inp.readline()                         # get next input line
+        if len(line) == 0: break                      # end of input test
 #       print "cog def:",line
 
-        elem = line.lower().split('>>')         # mandatory for all clauses
+        elem = line.lower().split('>>')               # mandatory for all clauses
         if len(elem) < 2 or len(elem[1]) == 0:
             print >> sys.stderr , '** incomplete cognitive semantic clause'
             return None
@@ -70,28 +91,31 @@ def convertDefinition ( stb , inp ):
             left  = [ [ semanticCommand.Ctrc , [ ] ] ]
             right = [ ]
         else:
-            left  = _leftside (stb,elem[0].strip()) # conditions for clause
-            right = _rightside(stb,elem[1].strip()) # actions
+            left  = _leftside (stb,elem[0].strip(),s) # conditions for clause
+            right = _rightside(stb,elem[1].strip(),s) # actions
             if left == None or right == None:
                 return None
-        store.append([ left , right ])          # save clause
+        if not (_check[nwy])(s):                      # apply inheritance check
+            print >> sys.stderr , '** bad semantic feature inheritance'
+            return None
+        store.append([ left , right ])                # save clause
 
     return store
 
-def _err ( s ):
+def _err ( ms ):
 
     """
     show an error message
     arguments:
-        s  - message string
+        ms  - message string
     returns:
         None
     """
 
-    print >> sys.stderr , '** cognitive semantic error:' , s
+    print >> sys.stderr , '** cognitive semantic error:' , ms
     return None
 
-def _leftside ( stb , txt ):
+def _leftside ( stb , txt , sta ):
 
     """
     process conditions for a clause and store
@@ -99,6 +123,7 @@ def _leftside ( stb , txt ):
     arguments:
         stb  - symbol table
         txt  - string input for left side of single clause
+        sta   - for status reporting
 
     returns:
         predicate list on success, None otherwise
@@ -152,6 +177,10 @@ def _leftside ( stb , txt ):
             except ellyException.FormatFailure:
                 return _err('bad semantic features')
             op = semanticCommand.Crhtf if side == 'r' else semanticCommand.Clftf
+            if side == 'r':
+                sta.rht = f
+            else:
+                sta.lft = f
 #           print 'test:' , f.positive.hexadecimal() , f.negative.hexadecimal()
             test = ellyBits.join(f.positive,f.negative)
 #           print test
@@ -175,7 +204,7 @@ def _leftside ( stb , txt ):
 
     return pred
 
-def _rightside ( stb , txt ):
+def _rightside ( stb , txt ,sta ):
 
     """
     process actions for a clause
@@ -183,6 +212,7 @@ def _rightside ( stb , txt ):
     arguments:
         stb   - symbol table
         txt   - string input for single clause
+        sta   - for status reporting
 
     returns:
         action list on success, None otherwise
@@ -212,8 +242,10 @@ def _rightside ( stb , txt ):
             c = txt[1]
             if c == 'l':
                 actn.append([ semanticCommand.Clhr ])
+                sta.lh = True
             elif c == 'r':
                 actn.append([ semanticCommand.Crhr ])
+                sta.rh = True
             else:
                 return _err('bad inheritance')
             txt = txt[2:].strip()
@@ -228,6 +260,7 @@ def _rightside ( stb , txt ):
             return _err('incomplete semantic features to set')
         try:
             f = featureSpecification.FeatureSpecification(stb,txt[:n+1],semantic=True)
+            sta.res = f
         except ellyException.FormatFailure:
             return _err('bad semantic features')
 #       print 'features=' , f.positive , f.negative
@@ -337,7 +370,6 @@ def showCode ( cod ):
 if __name__ == "__main__":
 
     import ellyDefinitionReader
-    import symbolTable
 
     ustb = symbolTable.SymbolTable()
 
@@ -349,7 +381,7 @@ if __name__ == "__main__":
         print >> sys.stderr, uinp.error
         sys.exit(1)
 
-    ucod = convertDefinition(ustb,uinp)
+    ucod = convertDefinition(ustb,uinp,2)
     if ucod == None:
         print >> sys.stderr, "conversion error"
         sys.exit(1)

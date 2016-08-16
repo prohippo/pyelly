@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# grammarTable.py : 06jul2016 CPM
+# grammarTable.py : 13aug2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -45,7 +45,7 @@ import ellyException
 import definitionLine
 import sys
 
-def compile ( syms, clss , code ):
+def compile ( syms, clss , code , nwy=0 ):
 
     """
     create cognitive or generative semantic procedure from code
@@ -54,6 +54,7 @@ def compile ( syms, clss , code ):
         syms  - symbol table
         clss  - type of procedure: 'c'=cognitive, 'g'=generative
         code  - list of semantic commands
+        nwy   - type of grammar rule
 
     returns:
         cognitive or generative procedure on success, None otherwise
@@ -61,7 +62,7 @@ def compile ( syms, clss , code ):
 
     inps = ellyDefinitionReader.EllyDefinitionReader(code)
     if   clss == 'c':
-        cp = cognitiveProcedure.CognitiveProcedure(syms,inps)
+        cp = cognitiveProcedure.CognitiveProcedure(syms,inps,nwy)
         return cp if cp.logic != None else None
     elif clss == 'g':
         gp = generativeProcedure.GenerativeProcedure(syms,inps)
@@ -243,7 +244,7 @@ class GrammarTable(object):
                         defn.unreadline(l)
                         lno -= 1
                         print >> sys.stderr , '** no termination of semantic procedures'
-                        print >> sys.stderr , '*  after line' , dlno , '[' + dl + ']'
+                        print >> sys.stderr , '*  on or after line' , dlno , '[' + dl + ']'
                         eno += 1
                         c = '?'
                         break
@@ -257,18 +258,20 @@ class GrammarTable(object):
                 if dl.isEmptyTail():
                     ru = self._doExtend(syms,dl.left,first) # make 1-branch rule
                     if ru == None:
-                        print >> sys.stderr , '*  after line' , lno , '[' , line , ']'
+                        print >> sys.stderr , '*  on or after line' , lno , '[' , line , ']'
                         eno += 1
                         continue
                     ru.gens = self.d1bp                     # default 1-branch procedure
+                    nwy = 1
                 else:
                     ru = self._doSplit (syms,dl.left,first,dl.nextInTail()) # 2-branch rule
                     if ru == None:
-                        print >> sys.stderr , '*  after line' , lno , '[' , line , ']'
+                        print >> sys.stderr , '*  on or after line' , lno , '[' , line , ']'
                         eno += 1
                         continue
                     ru.gens = self.d2bp                     # default 2-branch procedure
-                ru.cogs = compile(syms,'c',cogn)            # compile semantics
+                    nwy = 2
+                ru.cogs = compile(syms,'c',cogn,nwy)        # compile semantics
                 if len(genr) > 0:                           # generative procedure defined?
                     ru.gens = compile(syms,'g',genr)        # if so, replace default
                 if ru.cogs == None or ru.gens == None:
@@ -320,7 +323,7 @@ class GrammarTable(object):
                 self.initzn.append([ vr , va ])             # add initialization
             else:
                 print >> sys.stderr, '** unknown rule type=' , c + ':'
-                print >> sys.stderr, '*  after line' , lno , '[' + line + ']'
+                print >> sys.stderr, '*  on or after line' , lno , '[' + line + ']'
                 eno += 1
                 continue
 
@@ -365,6 +368,16 @@ class GrammarTable(object):
             st = syntaxSpecification.SyntaxSpecification(syms,t)
             nt = st.catg
             ft = st.synf
+
+            if fs == None: #
+                lh = False
+                rh = False
+            else:            #
+                rh = fs.positive.test(0)
+                lh = fs.positive.test(1)
+            if not symbolTable.featureConsistencyExtend(fs,st.synf,None,lh,rh):
+                print >> sys.stderr , '** bad syntactic feature inheritance'
+                raise ellyException.FormatFailure
         except ellyException.FormatFailure:
             print >> sys.stderr , '** bad syntactic category or features'
             return None
@@ -419,6 +432,16 @@ class GrammarTable(object):
             su = syntaxSpecification.SyntaxSpecification(syms,u)
             nu = su.catg
             fu = su.synf
+
+            if fs == None: #
+                lh = False
+                rh = False
+            else:            #
+                rh = fs.positive.test(0)
+                lh = fs.positive.test(1)
+            if not symbolTable.featureConsistencySplit(fs,ft,fu,lh,rh):
+                print >> sys.stderr , '** bad syntactic feature inheritance'
+                raise ellyException.FormatFailure
         except ellyException.FormatFailure:
             return None
         if ns >= symbolTable.NMAX or nt >= symbolTable.NMAX or nu >= symbolTable.NMAX:
