@@ -311,7 +311,7 @@ Release Notes:
                       clean up and extend documentation
  1.3.16  - 21aug2016  add another recognizer for space chars
                       fix bug in pattern matching with spaces
-                      clean up "marking" integration test
+                      clean up integration tests for space matching
                       update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
