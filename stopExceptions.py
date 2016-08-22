@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# stopExceptions.py : 30apr2015 CPM
+# stopExceptions.py : 21aug2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -136,8 +136,8 @@ class StopExceptions(object):
             if not idc in self.lstg:       # make sure punctuation is already in dictionary
                 self.lstg[idc] = [ ]
 
-            p = self.Pattern(left,right)
-            self.lstg[idc].append(p)       # save pattern in dictionary
+            pat = self.Pattern(left,right)
+            self.lstg[idc].append(pat)     # save pattern in dictionary
 
             ll = len(left)
             if self.maxl < ll : self.maxl = ll
@@ -185,7 +185,7 @@ class StopExceptions(object):
             self
         """
 
-        return (self._plvl > 0 or self._blvl > 0)
+        return self._plvl > 0 or self._blvl > 0
 
     def match ( self , txt , pnc , nxt ):
 
@@ -233,6 +233,7 @@ class StopExceptions(object):
 #               print 'left pat=' , '[' + ellyWildcard.deconvert(p.left) + ']'
 #               print 'versus t=' , t
                 if not ellyWildcard.match(p.left,t,0):
+#                   print 'no left match'
                     continue
                 if n < lt and ellyChar.isLetterOrDigit(t[0]):
                     if ellyChar.isLetterOrDigit(txs[-n-1]):
@@ -242,16 +243,20 @@ class StopExceptions(object):
 #           print 'rght pat=' , '[' + ellyWildcard.deconvert(p.right) + ']'
 #           print 'versus c=' , nc
 
-            if p.right == u'' or p.right == nxt: # check for specific char after possible stop
+            if p.right == []:
                 return True
-            if p.right == ellyWildcard.cCAN:     # check for nonalphanumeric
+            pcx = p.right[0]
+            if pcx == nxt:                     # check for specific char after possible stop
+                return True
+            if pcx == ellyWildcard.cCAN:       # check for nonalphanumeric
                 if nxt == u'' or not ellyChar.isLetterOrDigit(nxt):
                     return True
-            if p.right == ellyWildcard.cSPC:     # check for white space
+            if pcx == ellyWildcard.cSPC:       # check for white space
 #               print 'looking for space'
                 if nxt == u'' or nxt == u' ' or nxt == u'\n':
                     return True
-            if p.right == u'.':                  # check for any punctuation
+#           print 'last check'
+            if p.right == u'.':                # check for any punctuation
                 if not ellyChar.isLetterOrDigit(nxt) and not ellyChar.isWhiteSpace(nxt):
                     return True
 
@@ -282,14 +287,16 @@ if __name__ == '__main__':
         sys.exit(1)
 
     np = len(stpx.lstg)
-    print np , 'sets of punctuation patterns'
+    print np , 'sets of punctuation pattern(s)'
     if np == 0: sys.exit(0)
 
     for px in stpx.lstg:
         pxs = stpx.lstg[px]
         print '<' + px + '>'
-        for pch in pxs:
-            print '    ' , unicode(pch)
+        for pc in pxs:
+            print '    ' , unicode(pc)
+
+    SQW = ellyWildcard.wAPO
 
     test = [
         [ 'u' , '.' , 's' , '.' , 's' , '.' , ' ' , 'w' , 'a' , 's' , 'p' ] ,
@@ -301,7 +308,8 @@ if __name__ == '__main__':
         [ '-' , "'" , ' ' ] ,
         [ ':' , '-' , ')' ] ,       # emoticon
         [ 'x' , 'x' , 'x' , 'x' , '.' , ' ' , 'Y' ] ,
-        [  ' ' , '.' , ' ' ]
+        [ ' ' , '.' , ' ' ] ,
+        [ ' ' , 'm', '.' , ' ' , 'm' , 'o' , 'r' , 'r' , 'e' , 'l' , SQW , 's' , ' ' , 's' , 'a' , 'l' ]
     ]
 
     nlu = len(sys.argv) - 2
@@ -325,4 +333,4 @@ if __name__ == '__main__':
             continue
         res = stpx.match( ts[:ku-1] , ts[ku-1] , ts[ku] )
         print '[ ' + ''.join(ts) + ' ]' ,
-        print ('stop EXCEPTION' if res else 'stopped')
+        print 'stop EXCEPTION' if res else 'sentence stopped'

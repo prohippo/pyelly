@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 09may2016 CPM
+# ellyChar.py : 21aug2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -47,6 +47,7 @@ SLA = u'/'         # Unicode slash
 BSL = u'\\'        # Unicode backslash
 SPC = u' '         # Unicode space
 NBS = u'\u00A0'    # Unicode no-break space
+TAB = u'\u0009'    # ASCII horizontal tab
 RS  = u'\u001E'    # ASCII record separator with special significance for parsing
 
 LSQm = u'\u2018'   # left  single quote
@@ -195,6 +196,17 @@ def isPureCombining ( x ):
         True if strictest kind of token char, False otherwise
     """
     return isLetterOrDigit(x) or x == USC or x == NBS
+
+def isSpace ( x ):
+    """
+    tests whether char is space
+
+    arguments:
+        x - the char
+    returns:
+        True if strictest kind of token char, False otherwise
+    """
+    return x in [ SPC , NBS , USC , TAB ]
 
 ## for replacing standard library char typing and case conversion
 
@@ -428,7 +440,7 @@ def isPureControl ( x ):
     """
     return False if x >= u' ' else control[ord(x)]
 
-def findBreak ( text , offset=0 ):
+def findBreak ( text , offset=0 , nspace=0 ):
 
     """
     look for next break in text from given offset
@@ -436,6 +448,7 @@ def findBreak ( text , offset=0 ):
     arguments:
         text   - what to scan
         offset - starting offset
+        nspace - how many spaces can be non-breaking
     returns:
         remaining char count in text if no break is found
         otherwise, count of chars to next break if nonzero, but 1 if zero,
@@ -446,18 +459,36 @@ def findBreak ( text , offset=0 ):
 #   print 'find break k=' , k , 'n=' ,n
     while k < n:
         x = text[k]
+#       print 'char=' , x
         if not isPureCombining(x):
             if x == '-' or isEmbeddedCombining(x):
                 if k + 1 < n:
                     c = text[k+1]
+#                   print 'next char=' , c
                     if isApostrophe(c) or isLetterOrDigit(c):
                         k += 2
                         continue
+                    if isSpace(c):
+#                       print 'is space, nspace=' , nspace
+                        if nspace > 0:
+                            k += 2
+                            nspace -= 1
+                            continue
+                        else:
+#                           print 'append embedding char to scan range'
+                            k += 1
+                            break
+#           print 'space check, nspace=' , nspace
+            if nspace > 0 and isSpace(x):
+                k += 1
+                nspace -= 1
+                continue
             if k == offset:
                 k += 1  # if immediate break, take 1 char
             break
         elif x in Pnc:
             break
         k += 1
+#   print 'k=' , k
     return k - offset
 

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 16mar2016 CPM
+# ellyWildcard.py : 21aug2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -52,7 +52,7 @@ def isWild ( c ):
 
 #   print ' c=' , c  , '(' + str(ord(c))  + ')'
 #   print 'Xc=' , Xc , '(' + str(ord(Xc)) + ')'
-    return c >= Xc
+    return Xc < c and c <= cEND
 
 cANY = unichr(X+1 ) # match any char
 cCAN = unichr(X+2 ) # match nonalphanumeric char
@@ -123,10 +123,10 @@ def convert ( strg ):
     convert wildcard and escaped chars in a string to coded chars
 
     arguments:
-        strg  - the original string
+        strg  - the original string or list of chars
 
     returns:
-        the converted string on success, None otherwise
+       list of converted Unicode chars on success, None otherwise
     """
 
     if strg == None: return None
@@ -199,10 +199,10 @@ def convert ( strg ):
                 if ellyChar.isDigit(z):
                     t.append(x)      # if digit, preserve backslash to indicate substitution
                 else:
-                    t.append(z)      # otherwise, keep the next char literally
+                    t.append(z)      # otherwise, keep the next char as lower case
                     i += 1
         else:
-            t.append(x)
+            t.append(x.lower())
             wild = False
 
         if wild and nlb > 0 and x != ellyChar.LBR:
@@ -213,7 +213,7 @@ def convert ( strg ):
 
 #   print "converted=", t
 
-    return u''.join(t).lower() # converted string to match against
+    return t                         # converted pattern to match against
 
 toEscape = [ # chars that could be wildcards plus backslash itself
     RSQm, RDQm, PRME, u'\\',
@@ -221,22 +221,22 @@ toEscape = [ # chars that could be wildcards plus backslash itself
     wSPC, wCAN, wALL, wSPN, wAPO, wEND
 ]
 
-def deconvert ( patn ):
+def deconvert ( patl ):
 
     """
     ASCII representation of pattern
 
     arguments:
-        patn  - pattern to represent
+        patl  - pattern to represent
 
     returns:
         Unicode string representation
     """
 
-    if patn == None:
+    if patl == None:
         return u''
     s = [ ]           # for output
-    for x in patn:
+    for x in patl:
         xo = ord(x)
         if xo < X:    # check for non-wildcard
             if x in toEscape:
@@ -245,6 +245,32 @@ def deconvert ( patn ):
         else:         # convert wildcard
             s.append(Coding[xo - X - 1])
     return u' '.join(s)
+
+def numSpaces ( seg , cnv=False ):
+
+    """
+    check for space chars and wildcards,
+    optionally converting chars to wildcards
+
+    arguments:
+        seg  - text segment as list
+        cnv  - flag for wildcard conversion
+
+    returns:
+        number of space chars and wildcards
+    """
+
+    nsp = 0
+    ls = len(seg)
+    for i in range(ls):
+        c = seg[i]
+        if ellyChar.isSpace(c):
+            if cnv:
+                seg[i] = cSPC
+            nsp += 1
+        elif c == cSPC:
+            nsp += 1
+    return nsp
 
 def minMatch ( patn ):
 
@@ -289,7 +315,7 @@ def minMatch ( patn ):
 
 Trmls = [ RDQm , u'"' , RSQm , u"'" , u'.' , u')' , u']' ]  # chars marking extent of pattern match
 
-def match ( patn , text , offs=0 , limt=None ):
+def match ( patn , text , offs=0 , limt=None , nsps=0 ):
 
     """
     compare a pattern with wildcards to input text
@@ -299,6 +325,7 @@ def match ( patn , text , offs=0 , limt=None ):
         text  - what to match against
         offs  - start text offset for matching
         limt  - limit of matching
+        nsps  - number of spaces to match in pattern
 
     returns:
         bindings if match is successful, None otherwise
@@ -315,6 +342,7 @@ def match ( patn , text , offs=0 , limt=None ):
             pats   - saved pattern index for backup
             txts   - saved input text index
             bnds   - saved binding index
+            nsps   - saved count of spaces matched
         """
 
         def __init__ ( self , kind ):
@@ -330,6 +358,7 @@ def match ( patn , text , offs=0 , limt=None ):
             self.pats  = 0
             self.txts  = 0
             self.bnds  = 1
+            self.nsps  = 0
 
         def __unicode__ ( self ):
             """
@@ -344,7 +373,8 @@ def match ( patn , text , offs=0 , limt=None ):
                      ',ct=' + unicode(self.count) +
                      ',pa=' + unicode(self.pats)  +
                      ',tx=' + unicode(self.txts)  +
-                     ',bd=' + unicode(self.bnds)  + ']' )
+                     ',bd=' + unicode(self.bnds)  +
+                     ',ns=' + unicode(self.nsps)  + ']' )
 
     #### local variables for match( ) ####
 
@@ -383,7 +413,7 @@ def match ( patn , text , offs=0 , limt=None ):
         """
         mbd[mbi].append(None)
 
-    def _mark ( kind ):
+    def _mark ( kind , nsp=0 ):
         """
         set up for backing up pattern match
         arguments:
@@ -399,23 +429,28 @@ def match ( patn , text , offs=0 , limt=None ):
         uf.pats  = mp
         uf.txts  = offs
         uf.bnds  = mbi
+        uf.nsps  = nsp
         return uf
 
-    def _span ( typw ):
+    def _span ( typw , nsp=0 ):
         """
         count chars available for wildcard match
         arguments:
             typw - wildcard
+            nsp  - spaces to be matched in pattern
         returns:
             non-negative count if any match possible, otherwise -1
         """
+#       print "_span: txt @",offs,"pat @",mp
+#       print "text to span:",text[offs:]
         k = minMatch(patn[mp:])  # calculate min char count to match rest of pattern
 
-#       print "exclude=",k,"@",offs
+#       print "exclude=",k,"chars from possible span for rest of pattern"
 
         # calculate maximum chars a wildcard can match
 
-        mx = ellyChar.findBreak(text,offs) - k # max span reduced by exclusion
+        mx = ellyChar.findBreak(text,offs,nsp) #
+        mx -= k                                # max span reduced by exclusion
         if mx < 0: return -1                   # cannot match if max span < 0
 
         tfn = Matching[typw]                   # char type matching a wildcard
@@ -442,12 +477,14 @@ def match ( patn , text , offs=0 , limt=None ):
 
     matched = False  # successful pattern match?
 
+#   print 'starting match, limt=',limt
     if limt == None: limt = len(text)
+#   print "limt=",limt,text
 
     mp = 0           # pattern index
     ml = len(patn)   # pattern match limit
 
-#   print text[offs:limt],":",list(patn)
+#   print text[offs:limt],":",patn
 
     while True:
 
@@ -456,6 +493,7 @@ def match ( patn , text , offs=0 , limt=None ):
 #       print 'loop mp=' , mp , 'ml=' , ml
         while mp < ml:
             if offs >= limt:
+#               print "offs=",offs,"limt=",limt
                 last = ''
             else:
                 last = text[offs].lower()
@@ -466,8 +504,8 @@ def match ( patn , text , offs=0 , limt=None ):
 
         ## check whether mismatch is due to special pattern char
 
-#       print 'pat',mp,"<",ml
-#       print "txt @",offs
+#       print 'pat @',mp,"<",ml
+#       print "txt @",offs,last
 
         if mp >= ml:        # past end of pattern?
             matched = True  # if so, match is made
@@ -475,14 +513,14 @@ def match ( patn , text , offs=0 , limt=None ):
 
         tc = patn[mp]       # otherwise, get unmatched pattern element
         mp += 1             #
-#       print "tc=",ord(tc)
+#       print "tc=",ord(tc),deconvert(tc)
 
         if tc == cALL:   # a * wildcard?
 
 #           print "ALL last=< " + last + " >"
             if last != '': offs -= 1
 
-            nm = _span(cALL)
+            nm = _span(cALL,nsps)
 
             ## save info for restart of matching on subsequent failure
 
@@ -531,7 +569,7 @@ def match ( patn , text , offs=0 , limt=None ):
                 continue
 
         elif tc == cSPC: # space wildcard?
-#           print "SPC:"
+#           print "SPC:","["+last+"]"
             if last != '' and ellyChar.isWhiteSpace(last):
                 _bind(); _modify(); mbi += 1
                 continue
@@ -567,10 +605,10 @@ def match ( patn , text , offs=0 , limt=None ):
             continue
 
         elif tc == cSAN or tc == cSDG or tc == cSAL:
+#           print 'spanning wildcard, offs=' , offs , 'last=' , last
             if last != '':            # still more to match?
                 offs -= 1
-#               print 'spanning tc=' , ord(tc)
-                nm = _span(tc)        # maximum match possible
+                nm = _span(tc,nsps)   # maximum match possible
 #               print 'spanning=' , nm
                 if nm >= 1:
                     bf = _bind(nm); mbi += 1
@@ -579,6 +617,8 @@ def match ( patn , text , offs=0 , limt=None ):
                     bf[1] = offs      # bind to   new     offset
                     uf = _mark(1); unj += 1
                     uf.count = nm - 1 # at least one char must be matched
+#                   print 'offs=' , offs
+                    last = text[offs] if offs < limt else ''
                     continue
 
         elif tc == '':
@@ -587,6 +627,7 @@ def match ( patn , text , offs=0 , limt=None ):
                 break
 
         ## match failure: rewind to last match branch
+        ##
 
 #       print "fail - unwinding",unj
 
@@ -603,6 +644,7 @@ def match ( patn , text , offs=0 , limt=None ):
             offs = uf.txts           # unwind text input
             mbi = uf.bnds            # restore binding
             mbd[mbi-1][1] -= uf.kind # reduce span of binding if for wildcard
+            nsps = uf.nsps           #
             break
         else:
 #           print "no unwinding"
@@ -621,9 +663,11 @@ def match ( patn , text , offs=0 , limt=None ):
 
     ## consolidate contiguous bindings for subsequent substitutions
 
-#   print "BEFORE consolidating"
+#   print "BEFORE consolidating consecutive bindings"
 #   print "bd:",len(mbd)
-#   for b in mbd:
+#   print mbd[0]
+#   print '----'
+#   for b in mbd[1:]:
 #       print b
 
     mbdo = mbd
@@ -652,7 +696,9 @@ def match ( patn , text , offs=0 , limt=None ):
 
 #   print "AFTER"
 #   print "bd:",len(mbd)
-#   for b in mbd:
+#   print mbd[0]
+#   print '----'
+#   for b in mbd[1:]:
 #       print b
 
     return mbd             # consolidated bindings plus new offset
@@ -664,14 +710,20 @@ if __name__ == "__main__":
     import sys
 
     if len(sys.argv) < 2:
-        print "usage: X pattern"
+        print "usage: X pattern [spaces]"
         sys.exit(0)
 
     rawp = unicode(sys.argv[1],'utf-8')
+    spcg = (len(sys.argv) > 2)
+    print 'spcg=' , spcg
 
-    pattern = convert(rawp)
+    patx = convert(rawp)
+    nspx = numSpaces(patx,spcg)
+    if nspx > 0 and not spcg:
+        print >> sys.stderr , "** space in pattern without second command line argument"
+        sys.exit(1)
 
-    print "pat=" , rawp , "converted to" , list(pattern)
+    print "pat=" , rawp , "converted to" , list(patx)
 
     print "testing wildcard matching"
     print "enter text to match:"
@@ -685,14 +737,14 @@ if __name__ == "__main__":
 
         txt = list(unicode(line.rstrip(),'utf-8'))
         if len(txt) == 0: break
-        print "text=" , txt
-        b = match(pattern,txt,0)
+        print "test text=" , txt
+        b = match(patx,txt,0,None,nspx)
 
         if b != None:
             n = b.pop(0)
             print n , "chars matched"
             for j in range(len(b)):
                 r = b[j]
-                print '\\\\' + str(j + 1) , r
+                print '\\\\' + str(j + 1) , '=' , r
         else:
             print "NO MATCH!"

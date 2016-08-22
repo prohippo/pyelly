@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# macroTable.py : 26nov2015 CPM
+# macroTable.py : 21aug2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -40,6 +40,8 @@ import ellyChar
 import ellyWildcard
 import ellyException
 import definitionLine
+
+cEOS = ellyWildcard.cEOS
 
 ####
 #
@@ -279,9 +281,16 @@ class MacroTable(object):
             dl = definitionLine.DefinitionLine(l,False)
             left = dl.left                    # pattern to be matched
             tail = dl.tail                    # transformation to apply to match
+            if left.find(' ') >= 0:
+                self._err(l=l,d=1)
+                continue
             if left == None or tail == None:
                 self._err(l=l)                # report missing part of rule
                 continue
+
+            nleft = list(left)
+            nspm = ellyWildcard.numSpaces(nleft,True)
+            if nspm > 0: left = ''.join(nleft)
             pat = ellyWildcard.convert(left)  # get pattern with encoded wildcards
             if pat == None:
                 self._err('bad wildcards',l)
@@ -294,17 +303,20 @@ class MacroTable(object):
                 continue
             if not nowarn and not _checkExpansion(pat,tail):
                 self._err('substitution longer than original string',l,0)
-#           print "rule =" , [ left , tail ]
+
+#           print "rule =" , [ left , nspm , tail ]
             if pat == None:
                 self._err('no pattern',l)
                 continue
-            r = [ pat , tail ]
+            r = [ pat , nspm , tail ]
             c = pat[0]                        # first char of pattern
                                               # check type to see how to index rule
 #           print 'c=' , ellyWildcard.deconvert(c) , ', pat=' , ellyWildcard.deconvert(pat)
             p = pat
             while c == ellyWildcard.cSOS:     # optional sequence?
-                k = p.find(ellyWildcard.cEOS) # if so, find the end of sequence
+                if not cEOS in p:
+                    break
+                k = p.index(cEOS)             # if so, find the end of sequence
                 if k < 0 or k == 1: break     # if no end or empty sequence, stop
                 k += 1
                 if k == len(pat): break       # should be something after sequence
@@ -396,7 +408,9 @@ def _dmpall ( slot ):
     """
 
     for r in slot:
-        print u' {:16s}'.format(ellyWildcard.deconvert(r[0])) + ' -> ' , list(r[1])
+        print u' {:16s}'.format(ellyWildcard.deconvert(r[0])) ,
+        print u'    ({:2d})'.format(r[1]) ,
+        print '->' , list(r[2])
 
 #
 # unit test

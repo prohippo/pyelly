@@ -156,7 +156,7 @@ class SubstitutionBuffer(
 
         arguments:
             self  -
-            rule  - [ pattern , rewriting ]
+            rule  - [ pattern , spaces , rewriting ]
 
         returns:
             True if matched and substituted, False otherwise
@@ -167,7 +167,8 @@ class SubstitutionBuffer(
         capital = self.isCapital()   # starts with capital?
 
         pattern = rule[0]            # split up macro substitution rule
-        rewrite = rule[1]            #
+        spaces  = rule[1]            #
+        rewrite = rule[2]            #
 
 #       print 'pattern=' , ellyWildcard.deconvert(pattern)
 #       print 'text   =' , self.buffer
@@ -176,8 +177,8 @@ class SubstitutionBuffer(
 
 #       print 'lim=' , lim
 
-        mbd = ellyWildcard.match(pattern,self.buffer,0,lim) # try to match
-        if mbd == None: return False                        # if no match bindings, stop
+        mbd = ellyWildcard.match(pattern,self.buffer,0,lim,spaces) # try to match
+        if mbd == None: return False                               # if no match bindings, stop
 
         mbl = len(mbd)               # limit on wildcard bindings from match
 
