@@ -48,8 +48,11 @@
 0 ," PUNC[|com,*r,quo] -1
 0 ,” PUNC[|com,*r,quo] -1
 
-0 @$ XID -1
+0 @$    XID -1
 0 @\\*$ XID -1
+0 @.$     ABBR -1
+0 @.@.$   ABBR -1
+0 @.@.@.$ ABBR -1
 
 0 &#/&# - 8
 8 th  NUM -1

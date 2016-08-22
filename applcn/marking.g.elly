@@ -941,6 +941,10 @@ g:NOUN->NOUN[:-*x,-plur,-ing] XID
 _
   (twob)
 __
+g:NOUN->ABBR NOUN
+_
+  (twob)
+__
 g:PRO[%*r,-mod]->PREP[%-cnj] PRO[%-nom]
 # ?>>?
    >>[!ppps]

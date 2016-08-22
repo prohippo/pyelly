@@ -13,24 +13,22 @@ here’s  -> here is
 @here’s -> \\1here is
 that’s  -> that is
 
-1 another -> one another
+1_another -> one another
 
-, @&@ing that -> ,\\s\\1ing that
-," @&@ing that -> ",\\s\\1ing that
-,” @&@ing that -> ",\\s\\1ing that
+,_@&@ing_that  ->  ,\\s\\2ing that
+,"_@&@ing_that -> ",\\s\\2ing that
+,”_@&@ing_that -> ",\\s\\2ing that
 
-. . . -> …
+._._. -> …
 ...   -> …
 
-@. @* -> \\1.\\2
-
 &@'d -> \\1 'd
+
+long-*ed -> long - \\1ed
+much-*ed -> much - \\1ed
 
 # 
 # spelling correction
 # 
 
 vou -> you
-
-long-*ed -> long - \\1ed
-much-*ed -> much - \\1ed

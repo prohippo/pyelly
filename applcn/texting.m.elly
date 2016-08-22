@@ -14,28 +14,31 @@
 #
 # ################### for common expressions
 #
-   occur in$ -> in
-   occur[r]$ -* in -> in
-   a[ ]lot[ of]$->
-   of * significance$ -> of signif
-   of signif*  -> imp
+   occur_in$ -> in
+   occur[r]$_-*_in -> in
+   alot$    ->
+   alot_of$ ->
+   a_lot$   ->
+   a_lot_of$->
+   of_*_significance$ -> of signif
+   of_signif*  -> imp
    significant$ -> imp
-   so - called$   ->
+   so_-_called$   ->
 
-   want -*$ -> want
-   need -*$ -> need
-   want to have$  -> want
-   need to have$  -> need
-   be sure to$ ->
+   want_-*$ -> want
+   need_-*$ -> need
+   want_to_have$  -> want
+   need_to_have$  -> need
+   be_sure_to$ ->
 
    firstly$  -> 1st
    secondly$ -> 2nd
    thirdly$  -> 3rd
-   second -s$ -> sec -s
+   second_-s$ -> sec -s
 
-   * * not be[en]$ -> \\1 \\2 be not
-   in *['s] interest$ -> help \\1
-   in regard[s] to$ -> RE
+   *_*_not_be[en]$ -> \\1 \\2 be not
+   in_*['s]_interest$ -> help \\1
+   in_regard[s]_to$ -> RE
 #
 # ################### for business, finance, and government
 #
@@ -58,22 +61,25 @@
    *market$ -> \\1mkt
    administr* -> admin
    ident* -> ID
-   demonstrat* -*  -> demo
+   demonstrat*_-*  -> demo
    demonstrat* -> demo
    operation* -> op
    exami* -> exam
    *chemical$  -> \\1chem
    establish* -> estab
-   data[ ]base -> DB
+   database  -> DB
+   data_base -> DB
    organi@ation$ -> org
    econom* -> econ
-   * - dimensional$ -> \\1-D
+   *_-_dimensional$ -> \\1-D
    *degree$ -> \\1deg
 
    view* -> vw\\1
    requir[e]* -> rq\\1
-   easy[ to]$ -> ez
-   easie*[ to]$ -> ez\\1
+   easy$ -> ez
+   easy_to$ -> ez
+   easie* -> ez\\1
+   easie*_to$ -> ez\\1
    substitut[e]$ -> subst
    singl[e]$ -> sgl
    doubl[e]$ -> dbl
@@ -85,8 +91,10 @@
 #
 # ################### for names - assume periods already removed
 #
-   [, ]Inc[.]$ ->
-   [, ]Ltd[.]$ ->
+   Inc[.]$ ->
+   ,_Inc[.]$ ->
+   Ltd[.]$ ->
+   ,_Ltd[.]$ ->
 
    mr[.]_and_mrs[.] -> 
    mr[.]$  ->
@@ -102,8 +110,8 @@
    19##$ -> '\\1
    20##$ -> '\\1
 # time of day
-   #* @[.]m$ -> \\1\\2m
-   #*:## @[.]m$ -> \\1:\\2\\3
+   #*_@[.]m$ -> \\1\\2m
+   #*:##_@[.]m$ -> \\1:\\2\\3
 #
 # ################### for numbers
 #
@@ -119,60 +127,60 @@
 #
 # 800 telephone numbers
    1-8##-###-####$ -> 18\\1\\2\\3
-   1-8## - ???-????$ -> 18\\1\\2\\3
+   1-8##_-_???-????$ -> 18\\1\\2\\3
 #
-   (###) ###-####$ -> \\1\\2\\3
+   (###)_###-####$ -> \\1\\2\\3
    ###-###-####$ -> \\1\\2\\3
    1-###-###-####$ -> 1\\1\\2\\3
 #
-   #* inch[ -es]$ -> \\1"
+   #*_inch[_-es]$ -> \\1"
 #
-   no #* -> #\\1
+   no_#* -> #\\1
 #
 # ################### for verb auxiliaries
 #
-   were not$ -> not
-   was not$  -> not
-   there exist[s]$ ->
+   were_not$ -> not
+   was_not$  -> not
+   there_exist[s]$ ->
 #
-   this is$ ->
-   that is$ ->
-   this * be$ ->
-   that * be$ ->
-   that was$ ->
-   this was$ ->
+   this_is$ ->
+   that_is$ ->
+   this_*_be$ ->
+   that_*_be$ ->
+   that_was$ ->
+   this_was$ ->
 #
-   it -'s$ ->
+   it_-'s$ ->
 #
 # ################### for verbs
 #
-   hope -* -> hope
-   beg@n to$ ->
+   hope_-* -> hope
+   beg@n_to$ ->
 #
 #  order dependent!
-   to be able$ ->
-   to be$ -> be
+   to_be_able$ ->
+   to_be$ -> be
 #
 # ################### for referentials
 #
    wh*[e]soever$ -> wh\\1ever
-   in which$  -> which
-   the above$ -> that
-   was @hat$ -> \\1hat
-   is @hat$  -> \\1hat
+   in_which$  -> which
+   the_above$ -> that
+   was_@hat$ -> \\1hat
+   is_@hat$  -> \\1hat
 #
 # ################### for conjunctions
 #
-   in th* case$ ->
-   on account$ -> because
+   in_th*_case$ ->
+   on_account$ -> because
 #
 # ################### for word fragments
 #
 # exception for readability
    *ight$ -> \\1ght
    @ure$ -> \\1ur
-   pre - * -> pre- -\\1
-   under -@@* -> undr\\1
+   pre_-_* -> pre- -\\3
+   under_-@@* -> undr\\2
    -cat$ -> -c
 #
 # ################### for inflections
@@ -182,26 +190,26 @@
 #
 # (N.B. "speed -ed -> sped" does NOT work!)
 #
-   * -s'$ -> \\1 -'s
-   *sis -s$ -> \\1t
+   *_-s'$ -> \\1 -'s
+   *sis_-s$ -> \\1t
 #
 # ################### for punctuation
 #
-   . -* -> -\\1
+   ._-* -> -\\1
    .)   -> )
    .,   -> ,
 #
-   * - through-* -> \\1-\\2
-   - the-* -> - \\1
+   *_-_through-* -> \\1-\\2
+   -_the-* -> - \\1
 #
    *gramme$ -> \\1gram
 #
 # ################### miscellaneous
 #
-   need -* to$ -> must
-   need to$ -> must
-   carry -* out$ -> do
-   carry out$ -> do
+   need_-*_to$ -> must
+   need_to$ -> must
+   carry_-*_out$ -> do
+   carry_out$ -> do
 
 # ################### contractions
 #

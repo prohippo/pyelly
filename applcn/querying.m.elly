@@ -1,10 +1,10 @@
 # translate English questions to SQL
 # querying.m.elly
 
-is there  -> bethere
-are there -> bethere
-it -s -> its
-tell me about ->
+is_there  -> bethere
+are_there -> bethere
+it_-s -> its
+tell_me_about ->
 is  -> be
 was -> be
 were-> be
@@ -13,11 +13,11 @@ do   ->
 does ->
 did  ->
 
-greater than -> >
-greater than or equal to -> >=
-less than -> <
-less than or equal -> <=
-not equal to -> <>
-not greater than -> <=
-not less than -> >=
-carry -ing -> with
+greater_than -> >
+greater_than_or_equal_to -> >=
+less_than -> <
+less_than_or_equal -> <=
+not_equal_to -> <>
+not_greater_than_-> <=
+not_less_than -> >=
+carry_-ing -> with
