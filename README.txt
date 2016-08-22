@@ -309,6 +309,10 @@ Release Notes:
                       extend "marking" application rules
                       clean up "doctor rules"
                       clean up and extend documentation
+ 1.3.16  - 21aug2016  add another recognizer for space chars
+                      fix bug in pattern matching with spaces
+                      clean up "marking" integration test
+                      update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
