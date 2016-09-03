@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 21aug2016 CPM
+# ellyWildcard.py : 02sep2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -745,6 +745,6 @@ if __name__ == "__main__":
             print n , "chars matched"
             for j in range(len(b)):
                 r = b[j]
-                print '\\\\' + str(j + 1) , '=' , r
+                print '\\\\' + str(j + 1) , '=' , r , txt[r[0]:r[1]]
         else:
             print "NO MATCH!"
