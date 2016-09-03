@@ -311,6 +311,7 @@ Release Notes:
                       clean up and extend documentation
  1.3.16  - 21aug2016  add another recognizer for space chars
                       fix bug in pattern matching with spaces
+                      extend "test" integration testing for space matching
                       clean up integration tests for space matching
                       update documentation
 

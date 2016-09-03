@@ -17,7 +17,7 @@ _
 __
 p:doit # dummy external dictionary procedure
 _
-  append do what?
+  append do what
 __
 g:sent -> sent punc
 _
