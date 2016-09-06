@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# patternTable.py : 20aug2016 CPM
+# patternTable.py : 04sep2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -477,7 +477,6 @@ if __name__ == '__main__':
     except ellyException.TableFailure:
         print 'no pattern table generated'
         sys.exit(1)
-    print ctx.syms.getAllSymbols()
 
     print len(patn.indx) , 'distinct FSA state(s)'
 
@@ -486,7 +485,7 @@ if __name__ == '__main__':
     print ''
     patn.dump()
 
-    print 'enter tokens to recognize'
+    print 'enter tokens in context to recognize'
 
     while True: # try FSA with test examples
 
