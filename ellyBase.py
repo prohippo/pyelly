@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 19aug2016 CPM
+# ellyBase.py : 05sep2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -61,7 +61,7 @@ sys.stderr = codecs.getwriter('utf8')(sys.stderr) # streams for UTF-8 encoding
 
 # binary files
 
-rules = ellyDefinition.grammar          # for saving grammar rules
+rules      = ellyDefinition.grammar     # for saving grammar rules
 vocabulary = vocabularyTable.vocabulary # for saving compiled vocabulary
 
 _session = '.session.elly.bin'          # for saving session information
@@ -74,7 +74,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.3.16'                     # current version of PyElly software
+release = 'v1.3.17'                     # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -451,6 +451,7 @@ class EllyBase(object):
         chs = mr[1]                    # any vocabulary element matched
         suf = mr[2]                    # any suffix removed in matching
         s = self.sbu.buffer
+#       print 'k=' , k
 #       print 'scan result mx=' , mx , 'chs=' , chs , 'suf=' , suf
 #       print 'len(s)=' , len(s) , 's=' , s
 
@@ -477,18 +478,27 @@ class EllyBase(object):
 #           print 'queue:' , len(self.ptr.queue)
             return to
 
+#       print 'mx=' , mx
         wsk = self.sbu.buffer[:k]
         cap = ellyChar.isUpperCaseLetter(wsk[0])
 #       print 'wsk=' , wsk
 #       print 'queue before=' , len(self.ptr.queue)
         rws = u''.join(wsk)
         found = self.ptr.createPhrasesFromDictionary(rws.lower(),False,cap)
+        if not found:
+            if k > mx and k > 1 and ellyChar.isEmbeddedCombining(rws[-1]):
+                k -= 1
+                rws = rws[:-1]
+                found = self.ptr.createPhrasesFromDictionary(rws.lower(),False,cap)
+#       print 'found in dictionary=' , found
         if found or mx > 0:
-#           print 'found internally'
+            if not found:
+                k = mx
+                rws = rws[:k]
             self.sbu.skip(k)
 #           print 'next=' , self.sbu.buffer[self.sbu.index:]
 #           print 'queue after =' , len(self.ptr.queue)
-            to = ellyToken.EllyToken(rws)
+            to = ellyToken.EllyToken(rws[:k])
             if len(suf) > 1:           # change token to show suffix properly
 #               print 'suf=' , suf
                 cs = suf[1]            # first char in suffix after '-'
@@ -502,7 +512,7 @@ class EllyBase(object):
             self.ctx.tokns.append(to)  # add token to parse tree
             return to
 
-#       print '[' + rws + ']' , 'not found in dictionary'
+#       print '[' + rws + ']' , 'still unrecognized'
 
         to = self._extractToken(mx)    # single-word matching with analysis
 
@@ -610,6 +620,7 @@ class EllyBase(object):
 
         if nspan > 0:                  # any matches at all?
             tr.requeue()               # if so, keep only longest of them
+#       print 'queue after scan:' , len(self.ptr.queue)
 
         if vmx > 0 and nspan > vmx:    # any longer match than vocabulary table?
             vmchs = ''                 # if so, remove vocabulary info in result
