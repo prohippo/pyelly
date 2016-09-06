@@ -1,8 +1,9 @@
 # simple Elly patterns to support various unit testing
 # test.p.elly - basic FSA
 #
-# each input record is a 4-tuple
+# each input record is a 4-tuple or a 6-tupe
 # STATE  PATTERN  SYNTAX  NEXT
+# STATE  PATTERN  SYNTAX  SEMANTICS  BIAS  NEXT
 
 0 ###-##-####$ SSN -1
 0 &#$  NUM -1
@@ -28,8 +29,12 @@
 5 x$    ZZ1 -1
 6 x$    ZZ2 -1
 
+0 0&@[00]$ NOUN -1
+
 0 b0 - 7
 7 $ ZZ3 -1
 
 0 @#$  TYP[:not] [!hit] 5 -1
 0 @#@$ TYP - 2 -1
+
+0 !!’s$ NOUN -1
