@@ -24,8 +24,8 @@ that’s  -> that is
 
 &@'d -> \\1 'd
 
-long-*ed -> long - \\1ed
-much-*ed -> much - \\1ed
+long-&@ed -> long - \\1ed
+much-&@ed -> much - \\1ed
 
 # 
 # spelling correction
