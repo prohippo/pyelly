@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 21aug2016 CPM
+# ellyChar.py : 04sep2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -34,10 +34,10 @@
 for handing ASCII plus Latin-1 chars as Unicode
 """
 
-DOT = '.'          # Unicode period
-COM = ','          # Unicode comma
-COL = ':'          # Unicode colon
-AST = '*'          # Unicode asterix
+DOT = u'.'         # Unicode period
+COM = u','         # Unicode comma
+COL = u':'         # Unicode colon
+AST = u'*'         # Unicode asterix
 APO = unichr(39)   # Unicode apostrophe
 APX = u'\u2019'    # Unicode formatted apostrophe
 USC = u'_'         # Unicode underscore
@@ -440,6 +440,8 @@ def isPureControl ( x ):
     """
     return False if x >= u' ' else control[ord(x)]
 
+termina = [ COL , COM ]
+
 def findBreak ( text , offset=0 , nspace=0 ):
 
     """
@@ -461,6 +463,7 @@ def findBreak ( text , offset=0 , nspace=0 ):
         x = text[k]
 #       print 'char=' , x
         if not isPureCombining(x):
+#           print 'special checking needed'
             if x == '-' or isEmbeddedCombining(x):
                 if k + 1 < n:
                     c = text[k+1]
@@ -474,10 +477,14 @@ def findBreak ( text , offset=0 , nspace=0 ):
                             k += 2
                             nspace -= 1
                             continue
-                        else:
+                        elif not x in termina:
 #                           print 'append embedding char to scan range'
                             k += 1
                             break
+                elif not x in termina:
+#                   print 'non breaking' , x
+                    k += 1
+                    break
 #           print 'space check, nspace=' , nspace
             if nspace > 0 and isSpace(x):
                 k += 1
