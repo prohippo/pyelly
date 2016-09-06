@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 02sep2016 CPM
+# ellyWildcard.py : 05sep2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -69,9 +69,9 @@ cSOS = unichr(X+12) # start of optional sequence
 cEOS = unichr(X+13) # end of optional sequence
 cSPC = unichr(X+14) # match any space
 cAPO = unichr(X+15) # match any apostrophe
-cEND = unichr(X+16) # match end of token
+cEND = unichr(X+16) # match end of token (must be highest wildcard code)
 
-Separate = [ cSPC , cAPO ] # must each be in a separate binding
+Separate = [ cSPC , cAPO ] # must each be in a separate match binding for wildcards
 
 ## special pattern input characters to be interpreted as wildcards for matching
 
@@ -82,12 +82,12 @@ PRME = ellyChar.PRME  # prime
 wANY = u'?'    # to match any alphanumeric character
 wDIG = u'#'    # to match digit
 wALF = u'@'    # to match alphabetic
-wUPR = u'!'    # to match upper case alphabetic
+wUPR = u'!'    # to match uppercase alphabetic
 wVWL = u'^'    # to match vowel
 wCNS = u'%'    # to match consonant
 wSPC = u'_'    # to match space char
 wCAN = u'~'    # to match nonalphanumeric
-wALL = u'*'    # to match any substring
+wALL = u'*'    # to match any substring with no spaces
 wSPN = u'&'    # to match one or more characters of next wildcard type
 wAPO = RSQm    # to match any apostrophe
 wEND = u'$'    # to match end of token
@@ -104,7 +104,7 @@ Matching = {
     cANY : ellyChar.isLetterOrDigit ,
     cDIG : ellyChar.isDigit  ,
     cALF : ellyChar.isLetter ,
-    cUPR : ellyChar.isLetter ,
+    cUPR : ellyChar.isUpperCaseLetter ,
     cVWL : ellyChar.isVowel  ,
     cCNS : ellyChar.isConsonant  ,
     cSPC : ellyChar.isWhiteSpace ,
@@ -299,14 +299,17 @@ def minMatch ( patn ):
         elif ellyChar.isText(tmc):     # ordinary text char is counted
             if not inOption: k += 1
         elif tmc == cSOS:              # optional start code
+#           print "START optional match" , inOption
             inOption = True
         elif tmc == cEOS:              # optional end   code
+#           print "END optional match" , inOption
             inOption = False
         elif tmc == cALL:              # ALL (*) wildcard?
             pass
         elif tmc == cEND:              # END code
             pass
         else:                          # any other wildcard
+#           print "count up wildcard minimum match"
             k += 1
 
         m += 1
@@ -441,15 +444,17 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
         returns:
             non-negative count if any match possible, otherwise -1
         """
-#       print "_span: txt @",offs,"pat @",mp
+#       print "_span: txt @",offs,"pat @",mp,"nsp=",nsp
 #       print "text to span:",text[offs:]
-        k = minMatch(patn[mp:])  # calculate min char count to match rest of pattern
+#       print "pat rest=" , patn[mp:]
+        k = minMatch(patn[mp:])                # calculate min char count to match rest of pattern
 
 #       print "exclude=",k,"chars from possible span for rest of pattern"
 
         # calculate maximum chars a wildcard can match
 
         mx = ellyChar.findBreak(text,offs,nsp) #
+#       print mx,"chars available to scan"
         mx -= k                                # max span reduced by exclusion
         if mx < 0: return -1                   # cannot match if max span < 0
 
@@ -477,14 +482,11 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
 
     matched = False  # successful pattern match?
 
-#   print 'starting match, limt=',limt
     if limt == None: limt = len(text)
-#   print "limt=",limt,text
+#   print 'starting match, limt=',limt,text[offs:limt],":",patn
 
     mp = 0           # pattern index
     ml = len(patn)   # pattern match limit
-
-#   print text[offs:limt],":",patn
 
     while True:
 
@@ -496,16 +498,16 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
 #               print "offs=",offs,"limt=",limt
                 last = ''
             else:
-                last = text[offs].lower()
+                last = text[offs]
                 offs += 1
 #           print 'matching last=' , last , 'at' , offs
-            if patn[mp] != last: break
+            if patn[mp] != last.lower(): break
             mp += 1
 
         ## check whether mismatch is due to special pattern char
 
 #       print 'pat @',mp,"<",ml
-#       print "txt @",offs,last
+#       print "txt @",offs,limt,last
 
         if mp >= ml:        # past end of pattern?
             matched = True  # if so, match is made
@@ -568,11 +570,18 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
                 _bind(); mbi += 1
                 continue
 
+        elif tc == cUPR: # uppercase letter wildcard?
+#           print "UPR:",last,offs
+            if last != '' and ellyChar.isUpperCaseLetter(last):
+                _bind(); mbi += 1
+                continue
+
         elif tc == cSPC: # space wildcard?
 #           print "SPC:","["+last+"]"
             if last != '' and ellyChar.isWhiteSpace(last):
                 _bind(); _modify(); mbi += 1
                 continue
+#           print 'NO space'
 
         elif tc == cAPO: # apostrophe wildcard?
 #           print "APO: last=" , last
@@ -608,6 +617,7 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
 #           print 'spanning wildcard, offs=' , offs , 'last=' , last
             if last != '':            # still more to match?
                 offs -= 1
+#               print 'nsps=' , nsps
                 nm = _span(tc,nsps)   # maximum match possible
 #               print 'spanning=' , nm
                 if nm >= 1:
