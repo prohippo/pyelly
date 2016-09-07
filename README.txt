@@ -314,6 +314,13 @@ Release Notes:
                       extend "test" integration testing for space matching
                       clean up integration tests for space matching
                       update documentation
+ 1.3.17  - 07sep2016  fix bugs in handling tokenization breaks
+                      fix problems in ellyBase from changes in ellyChar.findBreak
+                      implement alphabetic uppercase wildcard
+                      clarify patternTable unit test
+                      extend "test" integration testing
+                      clean up "marking" pattern and macro rules
+                      clean up documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
