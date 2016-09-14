@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# macroTable.py : 21aug2016 CPM
+# macroTable.py : 14sep2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -451,12 +451,15 @@ if __name__ == '__main__':
         st = sys.stdin.readline()      # get test input
         if len(st) <= 1: break
         ss = st.decode('utf8').strip() # convert to Unicode
+        print 'RAW =' , st.strip()
         print 'TEXT=' , list(ss) , '(' + str(len(ss)) + ')'
         sb.clear()
         sb.append(ss)
+        print ' ' , unicode(sb)
 
         no = 0
         while True:
+            print '+' , unicode(sb)
             to = sb.getNext()
             if to == None: break
             no += 1

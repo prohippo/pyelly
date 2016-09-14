@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 05sep2016 CPM
+# ellyWildcard.py : 13sep2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -487,6 +487,7 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
 
     mp = 0           # pattern index
     ml = len(patn)   # pattern match limit
+    last = ''
 
     while True:
 
@@ -508,6 +509,7 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
 
 #       print 'pat @',mp,"<",ml
 #       print "txt @",offs,limt,last
+#       print '@',offs,text
 
         if mp >= ml:        # past end of pattern?
             matched = True  # if so, match is made
@@ -517,7 +519,7 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
         mp += 1             #
 #       print "tc=",ord(tc),deconvert(tc)
 
-        if tc == cALL:   # a * wildcard?
+        if tc == cALL:      # a * wildcard?
 
 #           print "ALL last=< " + last + " >"
             if last != '': offs -= 1
@@ -614,10 +616,11 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
             continue
 
         elif tc == cSAN or tc == cSDG or tc == cSAL:
-#           print 'spanning wildcard, offs=' , offs , 'last=' , last
+#           print 'spanning wildcard, offs=' , offs , 'last=(' + last + ')'
             if last != '':            # still more to match?
                 offs -= 1
 #               print 'nsps=' , nsps
+#               print '@' , offs , text
                 nm = _span(tc,nsps)   # maximum match possible
 #               print 'spanning=' , nm
                 if nm >= 1:
@@ -735,6 +738,7 @@ if __name__ == "__main__":
 
     print "pat=" , rawp , "converted to" , list(patx)
 
+    print ""
     print "testing wildcard matching"
     print "enter text to match:"
 
@@ -752,7 +756,7 @@ if __name__ == "__main__":
 
         if b != None:
             n = b.pop(0)
-            print n , "chars matched"
+            print n , "chars matched with" , len(b) , "wildcard bindings"
             for j in range(len(b)):
                 r = b[j]
                 print '\\\\' + str(j + 1) , '=' , r , txt[r[0]:r[1]]
