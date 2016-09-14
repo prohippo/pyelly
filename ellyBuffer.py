@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBuffer.py : 09may2016 CPM
+# ellyBuffer.py : 14sep2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -130,13 +130,13 @@ class EllyBuffer(object):
 
         nc = self.count()
         bf = self.buffer
-        out = list(u'EllyBuffer: {:d} chars'.format(nc))
+        out = [ ]
         md = 16
         for i in range(nc):
             if i%md == 0: out.append(u'\n')
             out.extend([ u'<' , bf[i] , u'>' ])
         out.append(u'\n')
-        return u''.join(out)
+        return u'EllyBuffer: {:d} chars'.format(nc) + u''.join(out)
 
     def __str__ ( self ):
 
@@ -509,15 +509,20 @@ class EllyBuffer(object):
             w     - token to put back
         """
 
-        if self.atToken():
+        wr = w.getRoot()
+        if len(wr) == 0:
+            return
+        elif wr[-1] in ellyChar.Opn:
+            self.prepend(wr)
+            return
+        elif self.atToken():
             self.prepend(ellyChar.SPC)
         ss = w.getSuffixes()
         if len(ss) > 0:
             self.prepend(u' -' + u' -'.join(ss))
 #       print "putBack 1" , len(self.buffer)
 #       print self.buffer
-        a = u''.join(w.getRoot())
-        self.prepend(a)
+        self.prepend(wr)
 #       print "putBack 2" , len(self.buffer)
         ps = w.getPrefixes()
         if len(ps) > 0:

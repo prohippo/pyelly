@@ -315,9 +315,12 @@ Release Notes:
                       clean up integration tests for space matching
                       update documentation
  1.3.17  - 07sep2016  fix bugs in handling tokenization breaks
+                      define left enclosing punctuation in ellyChar
                       fix problems in ellyBase from changes in ellyChar.findBreak
+                      fix ellyChar bug putting back left enclosing punctuation
                       implement alphabetic uppercase wildcard
                       clarify patternTable unit test
+                      clarify macroTable unit test
                       extend "test" integration testing
                       clean up "marking" pattern and macro rules
                       clean up documentation

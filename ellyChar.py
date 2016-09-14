@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 04sep2016 CPM
+# ellyChar.py : 13sep2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -59,6 +59,8 @@ PRME = u'\u2032'   # prime
 Apd = [ u'*' , u'+' , u'-' ]                                    # marks appending to token
 
 Pnc = [ u'“' , u'”' , u'‘' , u'’' , u'–' , u'—' , u'…' , u'™' ] # special punctuation
+
+Opn = [ u'“' , u'‘' , u'"' , u"'" , '[' , ']' ]
 
 Lim = u'\u0100'    # limit of Unicode chars recognized except for Pnc
 
