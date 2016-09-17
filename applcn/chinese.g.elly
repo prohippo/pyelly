@@ -1,7 +1,7 @@
-# simple Elly grammar for English to Chinese (simple or traditional characters)
+# simple Elly translator for English to Chinese (simple or traditional characters)
 # chinese.g.elly
 #
-# this translates only sentences of the forms
+# this recognizes sentences only of the forms
 #      subj
 #      subj verb
 #      subj verb object

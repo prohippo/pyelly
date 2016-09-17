@@ -1,32 +1,32 @@
-# simple Elly vocabulary for English to Chinese
+# simple Elly translator for English to Chinese
 # chinese.v.elly
 
-1  : num =一
-2  : num =兩
-3  : num =三
-4  : num =四
-5  : num =五
-6  : num =六
-7  : num =七
-8  : num =八
-9  : num =九
-10 : num =十
+1  : num - +1 =一
+2  : num - +1 =兩
+3  : num - +1 =三
+4  : num - +1 =四
+5  : num - +1 =五
+6  : num - +1 =六
+7  : num - +1 =七
+8  : num - +1 =八
+9  : num - +1 =九
+10 : num - +1 =十
 
-1st  : ord =第一
-2nd  : ord =第二
-3rd  : ord =第三
-4th  : ord =第四
-5th  : ord =第五
-6th  : ord =第六
-7th  : ord =第七
-8th  : ord =第八
-9th  : ord =第九
-10th : ord =第十
+1st  : ord - +1 =第一
+2nd  : ord - +1 =第二
+3rd  : ord - +1 =第三
+4th  : ord - +1 =第四
+5th  : ord - +1 =第五
+6th  : ord - +1 =第六
+7th  : ord - +1 =第七
+8th  : ord - +1 =第八
+9th  : ord - +1 =第九
+10th : ord - +1 =第十
 
 #
 # the ^ in front of a noun translation indicates that the first
 # zì is the favored classifier for the cì that follows, and any
-# Elly grammar must know how to handle all of this
+# Elly grammar for Chinese must know how to handle all of this
 #
 # authorities often disagree on the choice of classifier; these
 # are from Rosetta Stone Mandarin
