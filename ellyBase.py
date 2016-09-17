@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 15sep2016 CPM
+# ellyBase.py : 16sep2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -570,7 +570,6 @@ class EllyBase(object):
         lm = len(sb)                   # scan limit
 #       print 'lm=' , lm
         capd = ellyChar.isUpperCaseLetter(sb[0])
-        vmx = 0                        # external vocabulary match maximum
 #       print 'next component=' , sb[:k] , ', context=' , sb[k:lm]
 
         if self.vtb != None:           # look in external dictionary first, if it exists
@@ -599,7 +598,6 @@ class EllyBase(object):
                      vmln == nspan and vsfx == '' ):
 
                     nspan = vmln       # keep vocabulary matches
-                    vmx   = vmln       #
                     vmchs = vchs       #
                     suffx = vsfx       #
 
@@ -619,8 +617,8 @@ class EllyBase(object):
                                 if ellyChar.isApostrophe(suffx[1]):
                                     tr.lastph.krnl.usen = 0
 
-#           print 'vocabulary m=' , vmx
-#           print 'queue after table lookup:' , len(self.ptr.queue)
+#               print 'vocabulary m=' , vmln
+#               print 'queue after table lookup:' , len(self.ptr.queue)
 
 #       print 'maximum match=' , nspan
 #       print 'input=' , self.sbu.buffer[:nspan]
