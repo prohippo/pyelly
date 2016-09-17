@@ -325,6 +325,12 @@ Release Notes:
                       clean up "marking" pattern and macro rules
                       clean up documentation
 
+ 1.3.18  - 16sep2016  fix integration problems in token lookup
+                      improve unit testing for patternTable, substitutionBuffer
+                      improve output representation of ellyBuffer
+                      clean up "marking" rules and integration tests
+                      clean up "chinese" rules
+
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
 correct operation. Changes only to PyElly sample application definition files,
