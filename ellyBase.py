@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 05sep2016 CPM
+# ellyBase.py : 15sep2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -74,7 +74,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.3.17'                     # current version of PyElly software
+release = 'v1.3.18'                     # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -555,6 +555,18 @@ class EllyBase(object):
         vmchs = [ ]                    #   chars of vocabulary entry matched
         suffx = ''                     #   any suffix removed in match
 
+        d = self.rul                   # grammar rule definitions
+
+        m = d.ptb.match(sb,tr)         # try entity by pattern match next
+#       print 'pattern m=' , m
+        if  nspan < m:
+            nspan = m                  # on longer match, update maximum
+
+        m = self.iex.run(sb)           # try entity extractors next
+#       print 'extractor m=' , m
+        if  nspan < m:
+            nspan = m                  # on longer match, update maximum
+
         lm = len(sb)                   # scan limit
 #       print 'lm=' , lm
         capd = ellyChar.isUpperCaseLetter(sb[0])
@@ -574,46 +586,41 @@ class EllyBase(object):
 #           print 'ss=' , ss , sb[:ks]
             n = vocabularyTable.delimitKey(ss)  # get actual indexing
 #           print 'delimiting n=' , n
-            rl = self.vtb.lookUp(sb,n) # get list of the longest matches
+            rl = self.vtb.lookUp(sb,n) # get list of the maximum text matches
 #           print len(rl) , 'matches'
             if len(rl) > 0:            #
                 r0 = rl[0]             # look at first record
 #               print 'r0=' , r0
-                nspan = r0.nspan       # should be same for all matches
-                vmchs = r0.vem.chs     #
-                suffx = r0.suffx       #
+                vmln = r0.nspan        # should be same for all matches
+                vchs = r0.vem.chs      #
+                vsfx = r0.suffx        #
 
-                vmx = nspan
+                if ( vmln > nspan or
+                     vmln == nspan and vsfx == '' ):
 
-                for r in rl:
-                    ve = r.vem         # get vocabulary entry
-#                   print 've=' , ve
-#                   if ve.gen != None: print 've.gen=' , ve.gen
-                    if tr.addLiteralPhraseWithSemantics(
-                            ve.cat,ve.syf,ve.smf,ve.bia,ve.gen,len(suffx) > 0):
-                        tr.lastph.lens = nspan  # set char length of leaf phrase node
-                                                # just added for later selection
-                        tr.lastph.krnl.cncp = ve.con
-                        if capd:
-                            tr.lastph.krnl.semf.set(0)
-#                       print 'vocab phr=' , tr.lastph , 'len=' , tr.lastph.lens
-                        if suffx != '':
-                            if ellyChar.isApostrophe(suffx[1]):
-                                tr.lastph.krnl.usen = 0
+                    nspan = vmln       # keep vocabulary matches
+                    vmx   = vmln       #
+                    vmchs = vchs       #
+                    suffx = vsfx       #
 
-#       print 'vocabulary m=' , nspan
+                    for r in rl:
+                        ve = r.vem     # get vocabulary entry
+#                       print 've=' , ve
+#                       if ve.gen != None: print 've.gen=' , ve.gen
+                        if tr.addLiteralPhraseWithSemantics(
+                                ve.cat,ve.syf,ve.smf,ve.bia,ve.gen,len(suffx) > 0):
+                            tr.lastph.lens = nspan  # char length of leaf phrase node
+                                                    # needed for later selection
+                            tr.lastph.krnl.cncp = ve.con
+                            if capd:
+                                tr.lastph.krnl.semf.set(0)
+#                           print 'vocab phr=' , tr.lastph , 'len=' , tr.lastph.lens
+                            if suffx != '':
+                                if ellyChar.isApostrophe(suffx[1]):
+                                    tr.lastph.krnl.usen = 0
 
-        d = self.rul                   # grammar rule definitions
-
-        m = d.ptb.match(sb,tr)         # try entity by pattern match next
-#       print 'pattern m=' , m
-        if  nspan < m:
-            nspan = m                  # on longer match, update maximum
-
-        m = self.iex.run(sb)           # try entity extractors next
-#       print 'extractor m=' , m
-        if  nspan < m:
-            nspan = m                  # on longer match, update maximum
+#           print 'vocabulary m=' , vmx
+#           print 'queue after table lookup:' , len(self.ptr.queue)
 
 #       print 'maximum match=' , nspan
 #       print 'input=' , self.sbu.buffer[:nspan]
@@ -622,9 +629,6 @@ class EllyBase(object):
             tr.requeue()               # if so, keep only longest of them
 #       print 'queue after scan:' , len(self.ptr.queue)
 
-        if vmx > 0 and nspan > vmx:    # any longer match than vocabulary table?
-            vmchs = ''                 # if so, remove vocabulary info in result
-            suffx = ''
 #       print 'returns [' , nspan , ',' , vmchs , ',' , suffx , ']'
         return [ nspan , vmchs , suffx ]
 
