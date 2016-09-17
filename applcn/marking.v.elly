@@ -55,7 +55,7 @@ all at once : ADV
 some of which : CONJ
 not only : CONJ
 pros and cons : NOUN
-one another : PRO - +2
+one another : PRO - +4
 do that : VERB
 more than : ADV[~mod] [$deg] 0
 less than : ADV[~mod] [$deg] 0
@@ -107,6 +107,7 @@ next year : NOUN[:*x]
 from beyond : PREP
 other than : CONJ
 the entirety : NOUN
+1 another : PRO =one another
 
 it is easy : ELEM - +4 (elma)
 
@@ -163,6 +164,7 @@ Fairchild : NOUN
 NBA : NOUN
 Stephen Curry : NOUN
 Golden State : ADJ
+PDF : NOUN
 
 fried liver attack : NOUN
 2 knights defense : NOUN
@@ -241,6 +243,7 @@ agent : NOUN
 aggressive : ADJ
 agree : VERB
 agreement : NOUN
+agricultural : ADJ
 agriculture : NOUN
 agriculture department : NOUN
 ahead : ADJ - -1
@@ -305,7 +308,7 @@ array : NOUN
 array : VERB
 arrive : VERB
 art : NOUN
-art : NOUN
+artist : NOUN
 aside : ADV  - +1
 aside : NOUN - -4
 ask : VERB
@@ -319,6 +322,7 @@ astronomy : NOUN
 asylum : NOUN
 at times : ADV
 atom : NOUN
+atomic : ADJ
 atop : ADV - -1
 attack : NOUN
 attack : VERB
@@ -574,6 +578,7 @@ color : ADJ
 color : NOUN
 color : VERB
 column : NOUN
+columnist : NOUN
 combine : NOUN
 combine : VERB
 come : NOUN - -4
@@ -582,7 +587,10 @@ come back : VERB
 comfort : NOUN
 comfort : VERB
 comfortable : ADJ
+comfortably : ADV
 commence : VERB
+commercial : NOUN - -1
+commercial : ADJ
 comment : NOUN
 comment : VERB
 commerce : NOUN
@@ -631,12 +639,14 @@ connection : NOUN
 consecutive : ADJ
 consecutive : ADV
 consider : VERB
+considerably : ADV
 constitute : VERB
 constitution : NOUN
 consume : VERB
 contemporary : NOUN
 contemporary : ADJ
 continue : VERB
+continuation : NOUN
 contract : NOUN
 contract : VERB
 control : NOUN
@@ -763,6 +773,7 @@ deliver : VERB
 delivery : NOUN
 delve : VERB
 democrat : NOUN
+democratic : ADJ
 department : NOUN
 depress : VERB
 depression : NOUN
@@ -824,6 +835,7 @@ download : VERB
 draft : NOUN
 draft : NOUN
 drama : NOUN
+dramatic : ADJ
 draw : NOUN
 draw : VERB
 dream : NOUN
@@ -864,6 +876,7 @@ easy : ADJ
 easy : ADV
 eat : VERB
 ecology : NOUN
+economic : ADJ
 economy : NOUN
 edit : VERB
 edition : NOUN
@@ -990,6 +1003,7 @@ fault : NOUN
 fault : VERB
 favor : NOUN
 favor : VERB
+favorably : ADV
 feature : NOUN
 feature : VERB
 february : NOUN
@@ -1105,8 +1119,9 @@ freedom ride : NOUN
 french : NOUN
 french : VERB - -2
 french : ADJ
-frequent : ADJ
 frequent : VERB
+frequent : ADJ
+frequently : ADV
 fresh : ADJ
 fresh : ADV
 friend : NOUN
@@ -1152,17 +1167,10 @@ gene : NOUN
 general : NOUN
 general : VERB
 general : ADJ
-general : ADJ
-general : NOUN
-general : VERB
-general : NOUN
-general : VERB
-general : ADJ
-general : NOUN
-general : VERB
-general : ADJ
 generally : ADJ
 generous : ADJ
+generously : ADV
+genetic : ADJ
 genetically : ADV
 genome : NOUN
 geological : ADJ
@@ -1204,6 +1212,7 @@ greet : VERB
 grim : ADJ
 grotesque : NOUN - -2
 grotesque : ADJ
+grotesquely : ADV
 ground : NOUN
 ground : VERB
 grove : NOUN
@@ -1262,6 +1271,7 @@ high : ADV
 hillary : NOUN
 hip : NOUN
 hip : ADJ
+historic : ADJ
 historical : ADJ
 history : NOUN
 hiv : NOUN
@@ -1350,6 +1360,7 @@ institute : VERB
 instrument : NOUN
 instrument : VERB
 instrumental : ADJ
+instrumentalist : NOUN
 insurgent : NOUN
 insurgent : ADJ
 intelligence : NOUN
@@ -1370,6 +1381,7 @@ invoke : VERB
 involve : VERB [$trns] 0
 iran : NOUN
 islam : NOUN
+islamic : ADJ
 island : NOUN
 isolate : VERB
 issue : NOUN
@@ -1510,6 +1522,7 @@ lot : VERB - -2
 lotus : NOUN
 love : NOUN
 love : VERB
+lovely : ADJ
 low : NOUN - -2
 low : VERB - -1
 low : ADJ - +2
@@ -1551,6 +1564,8 @@ marmot : NOUN
 marry : VERB
 marvel : NOUN
 marvel : VERB
+marvelous : ADJ
+marvelously : ADV
 master : NOUN
 master : VERB
 master : ADJ
@@ -1573,6 +1588,7 @@ memory : NOUN
 men : NOUN[:plur]
 mere : NOUN
 mere : ADJ
+merely : ADV
 metaphor : NOUN
 metaphorically : ADV
 method : NOUN
@@ -1605,8 +1621,10 @@ model : ADJ
 moderate : NOUN
 moderate : VERB
 moderate : ADJ
+moderately : ADV [$deg] 0
 modern : NOUN
 modern : ADJ
+modification : NOUN
 modify : VERB
 moment : NOUN
 monarch : NOUN
@@ -1621,6 +1639,7 @@ more : ADV [$deg] 0
 more or less : ADV
 most : ADJ
 most : ADV [$deg] 0
+mostly : ADV
 mother : NOUN
 mother : VERB
 motor : NOUN
@@ -1652,6 +1671,8 @@ narrate : VERB
 narrative : NOUN [&stry] 0
 narrative : ADJ - -1
 nation : NOUN
+national : NOUN - -1
+national : ADJ
 natural : ADJ
 nature : NOUN
 nazi : NOUN
@@ -1721,6 +1742,8 @@ oblige : VERB
 observe : VERB
 occasion : NOUN
 occasion : VERB
+occasional : ADJ
+occasionally : ADV
 ocean : NOUN
 odd : ADJ
 odds : NOUN
@@ -1762,6 +1785,8 @@ origin : NOUN
 originate : VERB
 ornament : NOUN
 ornament : VERB
+ornamental : NOUN - -1
+ornamental : ADJ
 other : ADJ [$ind] 0
 out : NOUN - -3
 out : VERB - -2
@@ -1810,8 +1835,11 @@ pay : NOUN
 pay : VERB
 payment : NOUN
 peace : NOUN
+peaceful : ADJ
 pc : NOUN
 pear : NOUN
+pearly : NOUN - -3
+pearly : ADJ
 peculiar : ADJ
 peel : NOUN
 peel : VERB
@@ -1863,6 +1891,7 @@ plant : VERB
 play : NOUN
 play : VERB
 player : NOUN
+playful : ADJ
 playoff : NOUN
 pleasure : NOUN
 plot : NOUN
@@ -1906,6 +1935,8 @@ potion : NOUN
 pour : VERB
 power : NOUN
 power : VERB
+powerful : NOUN - -1
+powerful : ADJ
 prague : NOUN
 praise : NOUN
 praise : VERB
@@ -2036,6 +2067,7 @@ recently : ADV
 recognition : NOUN
 recognize : VERB
 recommend : VERB
+recommendation : NOUN
 record : NOUN
 record : VERB
 recover : VERB
@@ -2288,6 +2320,7 @@ slovakia : NOUN
 slow : VERB
 slow : ADJ
 slow : ADV
+slowly : ADV
 small : NOUN - -6
 small : ADJ - +2
 small : ADV - -1
@@ -2348,6 +2381,7 @@ spell : VERB
 spend : VERB
 spice : NOUN
 spice : VERB
+spicy : ADJ
 spin : NOUN
 spin : VERB
 spirit : NOUN
@@ -2545,6 +2579,7 @@ think : NOUN - -2
 think : VERB
 thirst : NOUN
 thirst : VERB
+thirsty : ADJ
 though : ADV
 thought : NOUN
 thousand : NOUN
@@ -2558,6 +2593,7 @@ ticket : VERB - -2
 timbre : NOUN
 time : NOUN
 time : VERB
+timely : ADJ
 toe : NOUN
 toe : VERB
 together : ADJ - +1
@@ -2604,6 +2640,7 @@ tuck : NOUN - -2
 tuck : VERB
 tuesday : NAVB
 tumult : NOUN
+tumultuous : ADJ
 tunnel : NOUN
 tunnel : VERB
 turn : NOUN
@@ -2662,6 +2699,7 @@ use : NOUN [!spcs] 0
 use : VERB
 utterance : NOUN
 vacant : ADJ
+vacantly : ADV
 valid : ADJ
 valley : NOUN
 variation : NOUN

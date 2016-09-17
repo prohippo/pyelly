@@ -24,6 +24,8 @@ that’s  -> that is
 
 &@'d -> \\1 'd
 
+‘&@_&@s’ -> ‘ \\1 \\3s ’
+
 long-&@ed -> long - \\1ed
 much-&@ed -> much - \\1ed
 
