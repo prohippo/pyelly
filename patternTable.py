@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# patternTable.py : 04sep2016 CPM
+# patternTable.py : 15sep2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -378,8 +378,8 @@ class PatternTable(object):
                 else:
 #                   print 'match lk=' , unicode(lk) , 'sg=' , sg
                     bds = ellyWildcard.match(lk.patn,sg)
-#                   print 'bds=' , bds
                     if bds == None: continue
+                    print 'bds=' , bds
 
                     m = bds[0]      # get match length, ignore wildcard bindings
 

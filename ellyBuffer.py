@@ -560,6 +560,7 @@ class EllyBuffer(object):
         if w == None:
             return None
 #       print 'got w=' , unicode(w)
+#       print 'NextSimple' , unicode(self)
         return w
 
     def _getRaw ( self ):
@@ -575,6 +576,7 @@ class EllyBuffer(object):
         """
 
 #       print '_getRaw() from' , len(self.buffer) , 'chars'
+#       print unicode(self)
         self.skipSpaces()
         ln = len(self.buffer)
 #       print "after skip=",ln

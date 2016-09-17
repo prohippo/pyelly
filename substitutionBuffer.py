@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# substitutionBuffer.py : 07jan2016 CPM
+# substitutionBuffer.py : 14sep2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -90,26 +90,30 @@ class SubstitutionBuffer(
 
         oto = None
         while True:
-#           print 'substitution buffer=' , self.buffer
+#           print 'substitution 0=' , unicode(self)
             to = self.sup.getNext()      # get the next token with parent method first
                                          #   (for side effects)
+#           print 'substitution 1=' , self.buffer
             if to == None: return None   # stop on end of input
 #           print 'to=' , to , 'divided=' , to.isSplit()
             if oto == None: oto = to
 #           print 'subs to=' , to
             self.putBack(to)             # put it back in buffer for pattern matching
+#           print 'substitution 2=' , unicode(self)
             if not self.expand(): break  # apply macro substitutions on buffer
                                          # until no more will match
 
+#           print 'substitution 3=' , unicode(self)
             if len(self.buffer) > limit: # to avoid infinite expansion
                 return None
 
-#       print 'substitution buffer=' , self.buffer , '[*]'
+#       print 'substitution *=' , unicode(self)
         self.divided = oto.dvdd
         nto = self.sup.getNext()         # then get next token
         if nto.getRoot() == oto.getRoot():
             nto = oto
 #       print 'substitution nto=' , nto
+#       print unicode(self)
         return nto
 
     def expand ( self ):
