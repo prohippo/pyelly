@@ -379,7 +379,7 @@ class PatternTable(object):
 #                   print 'match lk=' , unicode(lk) , 'sg=' , sg
                     bds = ellyWildcard.match(lk.patn,sg)
                     if bds == None: continue
-                    print 'bds=' , bds
+#                   print 'bds=' , bds
 
                     m = bds[0]      # get match length, ignore wildcard bindings
 
