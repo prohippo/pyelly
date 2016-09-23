@@ -327,9 +327,11 @@ Release Notes:
 
  1.3.18  - 16sep2016  fix integration problems in token lookup
                       improve unit testing for patternTable, substitutionBuffer
-                      improve output representation of ellyBuffer
+                      improve diagnostics for ellyBase, generativeProcedure
+                      improve output representation of ellyBuffer, grammarRule
                       clean up "marking" rules and integration tests
                       clean up "chinese" rules
+                      fix late setting of bias in leaf phrase nodes
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
