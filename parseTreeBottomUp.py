@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBottomUp.py : 16aug2016 CPM
+# parseTreeBottomUp.py : 22sep2016 CPM
 # -----------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -43,6 +43,8 @@ import parseTreeBase
 
 NPOSNS = 128          # nominal minimum number of tree leaf nodes
 
+ZEROfs = ellyBits.EllyBits(symbolTable.FMAX)
+
 _error = list('????') # what to show when input cannot be parsed
 
 class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
@@ -61,14 +63,12 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
         goal   - goals set at each position
         gbits  - flags for syntax types of goals at each position
         wordno - index of next word in sentence to process
-        nul    - splitting rules for ... syntax type?
         litg   - generative semantic procedure for literal rule
         litc   - cognitive
         ntyp   - count of syntax types
 
         ctx    - interpretive context
 
-        _zbs   - all-zero syntactic features
         _pls   - saved plausibility score from last evaluation
     """
 
@@ -95,8 +95,6 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
         self.ctx = None   # set by ParseTree, if at all
         super(ParseTreeBottomUp,self).__init__()
 #       print "back in ParseTreeBottomUp"
-        self.nul  = ( len(gtb.splits[gtb.XXX]) > 0 )
-        self._zbs = ellyBits.EllyBits(symbolTable.FMAX)
         self._pls = 0
 
     def addGoalPositions ( self , n=10 ):
@@ -191,10 +189,11 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
 #               print 'ambiguity:' , phr.krnl.typx , phr.krnl.synf.hexadecimal() , 'for' , phr.krnl.seqn , pho.krnl.seqn
                 if pho.alnk == None:       # if so, is ambiguity new?
                     self.ambig.append(pho) # if so, start new ambiguity listing
-#*                  print 'new ambiguity'
+#                   print 'add to ambiguities'
                 phs = pho.alnk             # add new phrase after head of ambiguity list
                 pho.alnk = phr             #
                 phr.alnk = phs             #
+#               print 'new bias=' , phr.krnl.bias
                 if phr.krnl.bias > pho.krnl.bias: # make sure most plausible is at front of list
 #                   print 'refronting'
                     phr.swap(pho)
@@ -358,13 +357,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
 #       print 'gen=' , gen
 #       print 'spl=' , spl , 'cap=' , cap
         r = self._makeLiteralRule(cat,fbs,gen)
-        if self._addTerminal(r,spl,cap):
-            self.lastph.krnl.semf.combine(sbs)
-            self.lastph.krnl.bias = bias
-#           print 'lastph=' , self.lastph
-            return True
-        else:
-            return False
+        return self._addTerminal(r,spl,cap,bias,sbs)
 
     def createUnknownPhrase ( self , tokn ):
 
@@ -383,7 +376,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
         """
 
 #       print 'unknown phrase'
-        r = self._makeLiteralRule(self.gtb.UNKN,self._zbs)
+        r = self._makeLiteralRule(self.gtb.UNKN,ZEROfs)
         return self._addTerminal(r,tokn.isSplit(),tokn.isCapitalized())
 
     ##################################
@@ -513,7 +506,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
     #################################################################
     ################ private methods only after this ################
 
-    def _addTerminal ( self , r , dvdd , capn=False ):
+    def _addTerminal ( self , r , dvdd , capn=False , bias=None , smfs=None ):
 
         """
         create a leaf phrase node from a definition for a term
@@ -523,6 +516,9 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
             self  -
             r     -  basic rule
             dvdd  -  whether segment has been analyzed
+            capn  -  capitalization flag
+            bias  -  predefined bias
+            smfs  -  predefined semantic features
 
         returns:
             True if successful, False otherwise
@@ -531,7 +527,8 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
             ParseOverflow
         """
 
-#       print '_addTerminal: r=' , unicode(r) , 'dvdd=' , dvdd
+#       print '_addTerminal: r=' , unicode(r)
+#       print 'dvdd=' , dvdd , 'capn=' , capn , 'bias=' , bias , 'smfs=' , smfs
         typ = r.styp
         gbs = self.gbits[self.wordno]
 #       print 'goal bits=' , gbs.hexadecimal() , 'at' , self.wordno
@@ -541,7 +538,6 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
             ph = self.makePhrase(self.wordno,r)             # make phrase with rule
             if ph != None:
                 ph.ntok = 1                                 # set token count
-#               print '_addTerminal ph=' , ph
 #               print 'dvdd =' , dvdd
                 self.initializeBias(ph)                     # for ranking of ambiguities
                 if dvdd and len(self.gtb.splits[typ]) > 0:  # segment analyzed?
@@ -549,8 +545,10 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
                     ph.krnl.usen = 1
                 if capn:                                    # note capitalization?
                     ph.krnl.semf.set(0)
-#               print 'ph.lens=' , ph.lens
-#               print 'ph=' , ph
+                if bias != None: ph.krnl.bias = bias        # must do before enqueuing
+                if smfs != None: ph.krnl.semf.combine(smfs) #  (CANNOT JUST ASSIGN!)
+#               print 'terminal ph.lens=' , ph.lens
+#               print 'terminal ph=' , ph
                 self.enqueue(ph)                            # save phrase to ramify
 #               print 'queue of' , len(self.queue)
                 return True
