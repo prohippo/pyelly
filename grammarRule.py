@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# grammarRule.py : 12sep2015 CPM
+# grammarRule.py : 22sep2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -131,7 +131,8 @@ class ExtendingRule(BasicRule):
         syn = unicode(self.styp) + '[' + bhx + ']'
         msk = unicode(self.utfet)
         cgs = ' cgs:' + str(self.cogs != None)
-        return unicode(self.seqn) + ': ' + syn + '->' + '-- ' + msk + cgs
+        rbs = ' bia:' + str(self.bias)
+        return unicode(self.seqn) + ': ' + syn + '->' + '-- ' + msk + cgs + rbs
 
 class SplittingRule(BasicRule):
 
