@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 16sep2016 CPM
+# ellyBase.py : 20sep2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -550,6 +550,7 @@ class EllyBase(object):
         sb = self.sbu.buffer           # input buffer
         tr = self.ptr                  # parse tree for results
 
+#       print '_scanText sb=' , sb
                                        # initialize match status
         nspan = 0                      #   total span of match
         vmchs = [ ]                    #   chars of vocabulary entry matched
@@ -582,7 +583,7 @@ class EllyBase(object):
                         break
                     ks += 1
             ss = u''.join(sb[:ks]).lower()      # where to start for vocabulary indexing
-#           print 'ss=' , ss , sb[:ks]
+#           print 'vocabulary lookup=' , ss , sb[:ks]
             n = vocabularyTable.delimitKey(ss)  # get actual indexing
 #           print 'delimiting n=' , n
             rl = self.vtb.lookUp(sb,n) # get list of the maximum text matches

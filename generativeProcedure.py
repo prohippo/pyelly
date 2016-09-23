@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeProcedure.py : 15jul2015 CPM
+# generativeProcedure.py : 22sep2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -177,14 +177,14 @@ class GenerativeProcedure(object):
             if phs.krnl.bias == BAD: # if out of alternatives,
                 return False         #   fail
 
-#       print >> sys.stderr , 'running' , phs, 'ctxc=' , phs.krnl.ctxc
+#       print 'running' , phs, 'ctxc=' , phs.krnl.ctxc
 
         if phs.krnl.ctxc != conceptualHierarchy.NOname: cntx.cncp = phs.krnl.ctxc
 
 
         if phs.alnk != None:         # on ambiguity, adjust biases for phrase rules
-#           print >> sys.stderr , 'adjust rule bias' , phrs
-            mnb = phs.krnl.bias - 1  # plausibility minimum
+#           print 'adjust rule bias for:' , phs
+            mnb = phs.krnl.bias - 1  # plausibility lower limit
             phi = phs
             rls = [ ]                # for list of unique rules for ambiguities
             while phi != None:
@@ -193,13 +193,16 @@ class GenerativeProcedure(object):
                 phi = phi.alnk
             ru  = rls[0]             # first rule is the one chosen for phrase analysis
             rls = rls[1:]            # remaining unique rules
-#           print >> sys.stderr , 'rls=' , rls
+#           print 'rls=' , rls
+#           print 'ru=' , unicode(ru)
             if len(rls) > 0:
                 if ru.bias == 0:     # if zero bias for chosen rule,
                     ru.bias = -1     #   mark it to be less favored next time
+#                   print '0 bias to -1'
                 else:
                     for ru in rls:
                         ru.bias = 0  # make all rule biases zero
+#                   print 'restore all biases to 0'
 
         return True
 
