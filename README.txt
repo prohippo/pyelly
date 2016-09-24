@@ -330,6 +330,7 @@ Release Notes:
                       improve diagnostics for ellyBase, generativeProcedure
                       improve output representation of ellyBuffer, grammarRule
                       clean up "marking" rules and integration tests
+                      extend "test" rules and integration test
                       clean up "chinese" rules
                       fix late setting of bias in leaf phrase nodes
 
