@@ -331,7 +331,7 @@ Release Notes:
                       improve output representation of ellyBuffer, grammarRule
                       clean up "marking" rules and integration tests
                       extend "test" rules and integration test
-                      clean up "chinese" rules
+                      clean up "doctor" and "chinese" rules
                       fix late setting of bias in leaf phrase nodes
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
