@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 13sep2016 CPM
+# ellyChar.py : 03oct2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -63,20 +63,6 @@ Pnc = [ u'“' , u'”' , u'‘' , u'’' , u'–' , u'—' , u'…' , u'™' ] 
 Opn = [ u'“' , u'‘' , u'"' , u"'" , '[' , ']' ]
 
 Lim = u'\u0100'    # limit of Unicode chars recognized except for Pnc
-
-## Latin-1 definitions for Unicode processing
-
-Lat1Us = u'\u00C2' # start of Latin-1 uppercase (main range)
-Lat1Ue = u'\u00DE' # end
-Lat1Ls = u'\u00E0' # start of Latin-1 lowercase (main range)
-Lat1Le = u'\u00FE' # end
-Lat1Ux = u'\u00D7' # uppercase exception (main range)
-Lat1Lx = u'\u00F7' # lowercase
-
-ASCiUs = u'A'      # just for consistency with the above
-ASCiUe = u'Z'      #
-ASCiLs = u'a'      #
-ASCiLe = u'z'      #
 
 ######## The full alphabet currently defined for PyElly is ASCII plus Latin-1.
 ######## They include the first two blocks of Unicode with the following actual
@@ -388,21 +374,10 @@ def toLowerCaseASCII ( x ):
         x - the char
     returns:
         equivalent lower case ASCII char on success, space char otherwise
+        (has side effect of removing all diacritical marks!)
     """
     n = Mapping[ord(x)]
     return Unmapping[n]
-
-Upper = [
-    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
-    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
-    F,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,T,T,T,T,F,F,F,F,F,
-    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
-
-    F,F,F,F,F,F,F,F,F,F,T,F,T,F,T,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,T,
-    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
-    T,T,T,T,T,T,T,F,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,F,T,T,T,T,T,T,T,F,
-    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F
-]
 
 def isUpperCaseLetter ( x ):
     """
@@ -413,7 +388,7 @@ def isUpperCaseLetter ( x ):
     returns:
         True if lower case letter, False otherwise
     """
-    return False if x == '' or x >= Lim else Upper[ord(x)]
+    return False if x == '' else x.isupper()
 
 def isText ( x ):
     """
