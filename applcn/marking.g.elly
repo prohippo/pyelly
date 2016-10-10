@@ -713,6 +713,14 @@ g:NOUN->NOUN NUM
 _
   (twob)
 __
+g:NOUN[:*l]->NOUN PRO[%rflx]
+ >>++
+_
+  left
+  append <pro>
+  right
+  append </pro>
+__
 g:NCLU[:num]->NUM
  >>----
 _
@@ -908,7 +916,7 @@ g:NOUN[:*r]->NOUN[:hyph] NOUN
 # ?>>?
    >>++
 __
-g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,-plur,-ing] NOUN[:-cnj,ing]
+g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,-plur,-ing] NOUN[:-cnj,ing,-*x]
 #       ?>>?
  l[!spcs]>>-2
          >>+0
@@ -916,9 +924,10 @@ _
   (twob)
 __
 g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,-plur,-ing] NOUN[:-cnj,-ing,-*x]
-#       ?>>?
- l[!spcs]>>-2
-         >>+1
+#            ?>>?
+      l[!spcs]>>-2
+ l[!-*c]r[!*c]>>+2
+              >>+1
 _
   (twob)
 __
@@ -931,12 +940,14 @@ _
   (twob)
 __
 g:NOUN->NOUN[:*x] XID
- >>+3
+ l[!*c]>>+3
+       >>-2
 _
   (twob)
 __
 g:NOUN->NOUN[:-*x,-plur,-ing] XID
  l[!*c]r[!*c]>>+2
+      l[!-*c]>>-2
       r[!-*c]>>-2
 _
   (twob)
@@ -1182,7 +1193,7 @@ g:ADV->VERB SUFX[#vTOr]
 _
   (twob)
 __
-g:ADV->ADV ADV
+g:ADV->ADV[~-int] ADV
  >>+
 _
   (twob)
@@ -1239,6 +1250,11 @@ _
   var typg=adv
   (typg)
   right
+__
+g:NUM[:*r]->ADV[~ord] NUM[:-*r]
+ >>++
+_
+  (twob)
 __
 
 #
@@ -1528,6 +1544,8 @@ d:during  <- PREP
 __
 d:without <- PREP
 __
+d:toward  <- PREP
+__
 
 d:to   <- TO
 __
@@ -1788,8 +1806,6 @@ d:in  <- PTCL
 __
 d:out <- PTCL
  >>+
-__
-d:out <- PTCL
 __
 d:off <- PTCL
 __

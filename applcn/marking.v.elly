@@ -105,6 +105,7 @@ that year : NOUN[:*x]
 last year : NOUN[:*x]
 next year : NOUN[:*x]
 from beyond : PREP
+due to : PREP
 other than : CONJ
 the entirety : NOUN
 1 another : PRO =one another
@@ -165,6 +166,7 @@ NBA : NOUN
 Stephen Curry : NOUN
 Golden State : ADJ
 PDF : NOUN
+Donald Trump : NOUN
 
 fried liver attack : NOUN
 2 knights defense : NOUN
@@ -582,7 +584,7 @@ columnist : NOUN
 combine : NOUN
 combine : VERB
 come : NOUN - -4
-come : VERB
+come : VERB[^ptcl]
 come back : VERB
 comfort : NOUN
 comfort : VERB
@@ -1243,6 +1245,7 @@ happen : VERB
 hard : ADJ - +1
 hard : ADV - -1
 hard-boiled : ADJ
+hard-core : ADJ
 hardly : ADV
 harry : VERB - -1
 harsh : ADJ
@@ -1789,7 +1792,7 @@ ornamental : NOUN - -1
 ornamental : ADJ
 other : ADJ [$ind] 0
 out : NOUN - -3
-out : VERB - -2
+out : VERB - -3
 out : ADJ  - -1
 out : ADV
 outline : NOUN
@@ -1825,7 +1828,7 @@ party : VERB - -2
 passionate : ADJ
 past : NOUN
 past : ADJ
-past : ADV
+past : ADV[~ord]
 pathfinder : NOUN
 patient : NOUN
 patient : ADJ
@@ -2233,6 +2236,7 @@ seem : VERB
 select : VERB
 select : ADJ
 selection : NOUN
+selective : ADJ
 self : NOUN
 self : ADJ
 sell : NOUN
@@ -2336,7 +2340,7 @@ snow : NOUN
 snow : VERB
 so-called : ADJ
 soft : ADJ
-soft : ADV
+soft : ADV - -1
 somber : ADJ
 sombre : ADJ
 somehow : ADV
@@ -2424,8 +2428,8 @@ step : VERB
 stephen : NOUN
 stifle : NOUN
 stifle : VERB
-still : NOUN
-still : VERB
+still : NOUN - -2
+still : VERB - -2
 still : ADJ
 still : ADV
 stir : NOUN
@@ -2710,7 +2714,7 @@ verge : NOUN
 verge : VERB
 version : NOUN
 very : ADJ - -2
-very : ADV [$deg] 0
+very : ADV[~int] [$deg] 0
 victory : NOUN
 view : NOUN
 view : VERB
