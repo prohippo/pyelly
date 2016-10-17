@@ -324,7 +324,6 @@ Release Notes:
                       extend "test" integration testing
                       clean up "marking" pattern and macro rules
                       clean up documentation
-
  1.3.18  - 16sep2016  fix integration problems in token lookup
                       improve unit testing for patternTable, substitutionBuffer
                       improve diagnostics for ellyBase, generativeProcedure
@@ -333,6 +332,10 @@ Release Notes:
                       extend "test" rules and integration test
                       clean up "doctor" and "chinese" rules
                       fix late setting of bias in leaf phrase nodes
+ 1.3.19  - 17oct1016  reorganize sentence extraction
+                      fix problems with quotations and bracketed text
+                      clean up "marking" rules and integration tests
+                      clean up documentation 
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure

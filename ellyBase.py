@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 20sep2016 CPM
+# ellyBase.py : 16oct2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -74,7 +74,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.3.18'                     # current version of PyElly software
+release = 'v1.3.19'                     # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -142,7 +142,7 @@ def _notToDate ( system ):
         rt = _timeModified(aid,rules)
         vt = _timeModified(aid,vocabulary)
 #       print 'rt=' , rt , 'vt=' , vt
-    except:
+    except OSError:
         print >> sys.stderr , 'rule+vocabulary time exception!'
         return True
     return vt < rt
