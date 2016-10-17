@@ -11,6 +11,7 @@ had : HAVE[^ed]
 having : HAVE[^ing]
 
 ate : VERB[^ed]
+began : VERB[^ed,proc]
 bit : VERB[^ed]
 built : VERB[^ed]
 did : VERB[^ed]
@@ -22,6 +23,7 @@ said : VERB[^ed,dit]
 sat down : VERB[^ed]
 taken : VERB[^ed]
 thought : VERB[^ed]
+went : VERB[^ed]
 written : VERB[^ed]
 
 rosé : NOUN
@@ -109,8 +111,11 @@ due to : PREP
 other than : CONJ
 the entirety : NOUN
 1 another : PRO =one another
-
+this time : ADV
+at one point : ADV
+a few hundred : QUAN
 it is easy : ELEM - +4 (elma)
+cheer on : VERB
 
 eat-in : ADJ
 fully-equipped : ADJ
@@ -131,6 +136,7 @@ long-past  : ADJ
 four-penny : ADJ
 3-point : ADJ
 3-point shot : NOUN
+sightseeing tour : NOUN
 
 ABC News : NOUN
 Agence France-Presse : NOUN
@@ -167,6 +173,7 @@ Stephen Curry : NOUN
 Golden State : ADJ
 PDF : NOUN
 Donald Trump : NOUN
+Obamas : NOUN[:plur] =obama -s
 
 fried liver attack : NOUN
 2 knights defense : NOUN
@@ -720,6 +727,7 @@ crush : VERB
 cuba : NOUN
 cuban : NOUN
 cuban : ADJ
+culminate : VERB
 cup : NOUN
 cup : VERB
 curry : NOUN
@@ -756,6 +764,7 @@ deal : NOUN
 deal : VERB
 death : NOUN
 decade : NOUN
+december : NOUN
 decide : VERB
 decisive : ADJ
 deck : NOUN
@@ -1081,6 +1090,7 @@ force : NOUN
 force : VERB
 forehead : NOUN
 foreign : ADJ
+foreign minister : NOUN
 forget : VERB
 form : NOUN
 form : VERB
@@ -1383,6 +1393,7 @@ invest : VERB
 invoke : VERB
 involve : VERB [$trns] 0
 iran : NOUN
+irreversible : ADJ
 islam : NOUN
 islamic : ADJ
 island : NOUN
@@ -1713,6 +1724,7 @@ nohow : ADV
 norm : NOUN
 normal : NOUN
 normal : ADJ
+normalize : VERB
 north : NOUN - -2
 north : ADJ
 north : ADV[~dir]
@@ -2091,11 +2103,13 @@ register : VERB
 regular : NOUN - -1
 regular : ADJ
 regularity : NOUN
+regularly : ADV
 regulate : VERB
 regulation : NOUN
 reject : NOUN
 reject : VERB
 relate : VERB
+relation : NOUN
 release : NOUN
 release : VERB
 relevant : ADJ
@@ -2403,7 +2417,7 @@ stable : VERB - -1
 stable : ADJ
 stack : NOUN
 stack : VERB
-staff : NOUN
+staff : NOUN - +1
 staff : VERB
 stance : NOUN
 stand : NOUN
@@ -2525,6 +2539,7 @@ tailor : VERB
 take : NOUN
 take : VERB[^ptcl] - +2
 taken : ADJ
+take place : VERB
 talk : NOUN
 talk : VERB
 tangible : ADJ
