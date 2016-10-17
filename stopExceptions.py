@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# stopExceptions.py : 21aug2016 CPM
+# stopExceptions.py : 14oct2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -49,9 +49,6 @@ class StopExceptions(object):
     attributes:
         lstg  - listing of punctuation patterns as Python dictionary keyed on the punctuation
         maxl  - maximum length of left parts of pattern
-
-        _plvl - parentheses level
-        _blvl - bracket level
     """
 
     class Pattern(object):
@@ -87,8 +84,6 @@ class StopExceptions(object):
 
         self.lstg = { }  # empty at start
         self.maxl = 0    # maximum is zero to start with
-        self._plvl = 0
-        self._blvl = 0
         if defs != None: self.load(defs)
 
     def load ( self , defs ):
@@ -145,48 +140,6 @@ class StopExceptions(object):
         if nerr > 0:
             raise ellyException.TableFailure
 
-    def noteBracketing ( self , c ):
-
-        """
-        track level of bracketing within sentence being accumulated
-
-        arguments:
-            self  -
-            c     - bracketing char to take account of
-        """
-
-        if   c == u'(':
-            self._plvl += 1
-        elif c == u'[':
-            self._blvl += 1
-        elif c == u')':
-            self._plvl -= 1
-        elif c == u']':
-            self._blvl -= 1
-
-    def resetBracketing ( self ):
-
-        """
-        reset bracketing levels
-
-        arguments:
-            self
-        """
-
-        self._plvl = 0
-        self._blvl = 0
-
-    def inBracketing ( self ):
-
-        """
-        check whether the current punctuation is within parentheses or brackets
-
-        arguments:
-            self
-        """
-
-        return self._plvl > 0 or self._blvl > 0
-
     def match ( self , txt , pnc , nxt ):
 
         """
@@ -203,7 +156,6 @@ class StopExceptions(object):
         """
 
 #       print 'matching for txt=' , txt , 'pnc=' , pnc , 'nxt=' , nxt
-        self.noteBracketing(pnc)  # just in case this is bracketing
 
 #       print 'lstg=' , self.lstg
         if not pnc in self.lstg:  # get stored patterns for punctuation
@@ -240,24 +192,28 @@ class StopExceptions(object):
                         continue  # fail because of no break in text
 
 #           nc = '\\n' if nxt == '\n' else nxt
-#           print 'rght pat=' , '[' + ellyWildcard.deconvert(p.right) + ']'
+#           print 'right pat=' , '[' + ellyWildcard.deconvert(p.right) + ']'
 #           print 'versus c=' , nc
 
             if p.right == []:
                 return True
             pcx = p.right[0]
             if pcx == nxt:                     # check for specific char after possible stop
+#               print 'right=' , nxt
                 return True
             if pcx == ellyWildcard.cCAN:       # check for nonalphanumeric
                 if nxt == u'' or not ellyChar.isLetterOrDigit(nxt):
+#                   print 'right nonalphanumeric=' , nxt
                     return True
             if pcx == ellyWildcard.cSPC:       # check for white space
 #               print 'looking for space'
                 if nxt == u'' or nxt == u' ' or nxt == u'\n':
+#                   print 'right space'
                     return True
 #           print 'last check'
             if p.right == u'.':                # check for any punctuation
                 if not ellyChar.isLetterOrDigit(nxt) and not ellyChar.isWhiteSpace(nxt):
+#                   print 'right punc=' , nxt
                     return True
 
         return False
@@ -320,15 +276,16 @@ if __name__ == '__main__':
     else:
         print 'no added test cases'
     print '--------'
+    print len(test) , 'cases in all'
 
     for ts in test:
         ku = 0
         lu = len(ts)
-        for cu in ts:
+        for cu in ts:             # scan input line
             ku += 1
-            if cu in stpx.lstg:
+            if cu in stpx.lstg:   # find first candidate stop
                 if ku == lu or not ellyChar.isLetterOrDigit(ts[ku]):
-                    break
+                    break         # must not be followed by letter or digit
         else:
             continue
         res = stpx.match( ts[:ku-1] , ts[ku-1] , ts[ku] )

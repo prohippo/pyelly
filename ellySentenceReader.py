@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellySentenceReader.py : 07jul2015 CPM
+# ellySentenceReader.py : 16oct2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -43,17 +43,24 @@ NL  = u'\n'     # new line = linefeed
 SP  = u' '      # space
 END = u''       # EOF indicator is null char
 
-LBs = [ u'(' , u'[' , u'{' ]   # left bracketing
-RBs = [ u')' , u']' , u'}' ]   # right
-SLs = [ u'\\', u'/' , u'|' ]   # slashes
-BRs = LBs + SLs
+LSQm = ellyChar.LSQm
+RSQm = ellyChar.RSQm
+LDQm = ellyChar.LDQm
+RDQm = ellyChar.RDQm
+
+SQuo = "'"
+DQuo = '"'
+
+RBs   = [ u')' , u']' , u'}' ]               # right bracketing
 
 Stops = [ u'.' , u'!' , u'?' , u':' , u';' ] # should end sentence
 
 QUOs = [ unichr(34) , unichr(39) , # ASCII double and single quote
-         u'\u201d'  ,              # right double quote
-         u'\u2019'                 # right single quote
+         RDQm ,                    # right Unicode double quote
+         RSQm                      # right Unicode single quote
        ]
+
+MXBr = 31                          # limit on bracketing override of stop
 
 class EllySentenceReader(object):
 
@@ -65,6 +72,11 @@ class EllySentenceReader(object):
         stpx - stop exception matcher
         drop - flag for removing stop punctuation exceptions
         last - last char encountered in buffering input lines
+
+        _plvl - parentheses level
+        _blvl - bracket     level
+        _qlvl - quotation   level
+        _bcnt - bracketing  count for candidate punctuation
     """
 
     def __init__ ( self , inpts , stpx , drop=False ):
@@ -84,6 +96,66 @@ class EllySentenceReader(object):
         self.drop = drop
         self.last = END
 
+        self._plvl = 0
+        self._blvl = 0
+        self._qlvl = 0
+        self._bcnt = 0
+
+    def checkBracketing ( self , c ):
+
+        """
+        check for bracketing within sentence being accumulated
+
+        arguments:
+            self  -
+            c     - bracketing char to take account of
+
+        returns:
+            True if c is bracketed, False otherwise
+        """
+
+#       print 'check c=[' , c , ']'
+        if   c == u'(':            # check for certain kinds of bracket
+            self._plvl += 1
+        elif c == u'[':
+            self._blvl += 1
+        elif c == u')' and self._plvl > 0:
+            self._plvl -= 1
+        elif c == u']' and self._blvl > 0:
+            self._blvl -= 1
+        elif c == ellyChar.LDQm:
+            self._qlvl += 1
+        elif c == ellyChar.RDQm and self._qlvl > 0:
+            self._qlvl -=1
+
+        if self._plvl > 0 or self._blvl > 0 or self._qlvl > 0:
+#           print 'in bracketing'
+            if self._bcnt >= MXBr: # check limit on char count for bracketing
+#               print 'reset for char limit'
+                self.resetBracketing()
+                return False       # no bracketing
+            else:
+                self._bcnt += 1
+#               print 'count at' , self._bcnt
+                return True        # bracketing with inscreased char count
+        else:
+            self._bcnt = 0
+            return False           # no bracketing
+
+    def resetBracketing ( self ):
+
+        """
+        reset bracketing levels
+
+        arguments:
+            self
+        """
+
+        self._plvl = 0
+        self._blvl = 0
+        self._qlvl = 0
+        self._bcnt = 0
+
     def getNext ( self ):
 
         """
@@ -98,24 +170,27 @@ class EllySentenceReader(object):
 
 #       print 'getNext'
 
+        self.resetBracketing()
+
         sent = [ ]         # list buffer to fill
 
-        parenstop = False  # initially, parentheses will NOT stop sentence
+        x  = self.inp.read()
+        if x == SP:
+            x = self.inp.read()
 
-        c = self.inp.read()
-        if c == SP:
-            c = self.inp.read()
-
-        if c == END:       # EOF check
+        if x == END:       # EOF check
             return None
 
-#       print 'c=' , ord(c)
-        self.inp.unread(c,SP)
+        c =  END           # reset
+        lc = END
+
+#       print 'x=' , '<' + x + '>' , ord(x)
+        self.inp.unread(x,SP)       # put first char back to restore input
 #       print '0  <<" , self.inp.buf
 
-        # fill sentence buffer up to next stop punctuation
+        # fill sentence buffer up to next stop punctuation in input
 
-        nAN = 0            # alphanumeric count in sentence
+        nAN = 0                     # alphanumeric count in sentence
 
         while True:
 
@@ -124,7 +199,7 @@ class EllySentenceReader(object):
             if x == END:            # handle any EOF
                 break
 
-#           print 'x=' , '<' + x + '>'
+#           print 'x=' , '<' + x + '>' , 'c=' , '<' + c + '>'
 #           print 'sent=' , sent
 
             # check for table delimiters in text
@@ -145,8 +220,27 @@ class EllySentenceReader(object):
             # accumulate chars and count alphanumeric
             #########################################
 
-            c = x
-            sent.append(c)
+            lc = c
+            c  = x
+            nc = self.inp.peek()
+            if ellyChar.isWhiteSpace(nc): nc = SP
+
+#           print 'lc=' , '<' + lc + '>, nc=' , '<' + nc + '>'
+            if lc == SP or lc == END: # normalize chars for proper bracketing
+                if x == SQuo:         #
+                    x = LSQm          # a SQuo preceded by a space becomes LSQm
+                elif x == DQuo:       #
+                    x = LDQm          # a DQuo preceded by a space becomes LDQm
+            if nc == SP or nc == END: #
+                if x == SQuo:         # a SQuo followed by a space becomes RSQm
+                    x = RSQm          #
+                elif x == DQuo:       # a DQuo followed by a space becomes RDQm
+                    x = RDQm          #
+
+#           print 'lc=' , '<' + lc + '>' , 'bracketing x=' , '<' + x + '>'
+            inBrkt = self.checkBracketing(x)    # do bracket checking with modified chars
+
+            sent.append(c)                      # but buffer original chars
             if ellyChar.isLetterOrDigit(c):
                 nAN += 1
                 continue                        # if alphanumeric, just add to sentence
@@ -164,37 +258,28 @@ class EllySentenceReader(object):
             # look for stop punctuation exception
 
             z = self.inp.peek()  # for context of match call
-#           print 'peek z=' , z
 
 #           print '0  <<' , self.inp.buf
 
 #           print 'sent=' , sent[:-1]
 #           print 'punc=' , '<' + c + '>'
 #           print 'next=' , '<' + z + '>'
-            if self.stpx.match(sent[:-1],c,z):
+            if c in Stops and self.stpx.match(sent[:-1],c,z):
 #               print 'exception MATCH'
                 if self.drop:
                     sent.pop()   # remove punctuation char from sentence
+                    lc = SP
                 continue
 
-#           print '1  <<' , self.inp.buf
+#           print 'no stop exception MATCH'
 
-#           print 'no exception MATCH'
+#           print '@1  <<' , self.inp.buf
 
             # handle any nonstandard punctuation
 
             exoticPunctuation.normalize(c,self.inp)
 
-#           print '2  <<' , self.inp.buf
-
-            # handle parentheses as possible stop
-
-            if nAN == 0 and self.stpx.inBracketing():
-                parenstop = True
-            elif parenstop and not self.stpx.inBracketing():
-                break            # treat as stop
-
-#           print '3  <<' , self.inp.buf
+#           print '@2  <<' , self.inp.buf
 
             # check for dash
 
@@ -211,13 +296,30 @@ class EllySentenceReader(object):
 
             # check for sentence break on punctuation
 
-            if not c in Stops:
+#           print '@3  c=' , c
+
+            if c in QUOs or c in RBs:
+
+                # special check for single or double quotes or
+                # bracketing, which can immediately follow stop
+                # punctuation for current sentence
+
+#               print 'bracketing c=' , c , ord(c) , inBrkt
+                if not inBrkt:
+                    z = self.inp.peek()
+#                   print 'z=' , '[' + z + ']' , 'lc=' , '[' + lc + ']'
+                    if z == END or ellyChar.isWhiteSpace(z) and lc in Stops:
+                        if nAN > 1:
+                            break
+                continue
+
+            elif not c in Stops or inBrkt:
                 continue
 
             else:
-#               print 'stopping possible!'
+#               print 'check stopping!'
                 d = self.inp.read()
-#               print '4  <<' , self.inp.buf
+#               print '@3  <<' , self.inp.buf
 
                 if d == None: d = u'!'
 #               print 'stop=' , '<' + c + '> <' + d + '>'
@@ -232,64 +334,40 @@ class EllySentenceReader(object):
                         sent.append(d)       #
                         x = self.inp.peek()  # look at char after ellipsis
                         if ellyChar.isCombining(x):
-                            sent.append(' ') # if part of token, put in space as separator
+                            sent.append(SP)  # if part of token, put in space as separator
                     continue
 
                 # special check for multiple stops
 
-#               print 'Stops d=' , d , ord(d) if d != '' else 'NONE'
+#               print 'next char d=' , d , ord(d) if d != END else 'NONE'
                 if d in Stops:
                     while True:
                         d = self.inp.read()
-                        if d in Stops: break
+                        if not d in Stops: break
                     self.inp.unread(d)
                     if not ellyChar.isWhiteSpace(d):
-                        d = u' '
-
-                # break sentence except when in parentheses
-
-                elif d in RBs:
-#                   print 'followed by' , '<' + d + '>'
-                    if not self.stpx.inBracketing():
-                        break
-                    else:
-                        if self.drop:
-                            sent.pop()
-                        self.inp.unread(d)
-                        continue
-
-                # special check for single or double quotes, which should
-                # be included with current sentence after stop punctuation
-
-                elif d in QUOs:
-#                   print 'QUO d=' , d , ord(d)
-                    x = self.inp.peek()
-                    if x == END or ellyChar.isWhiteSpace(x):
-                        sent.append(d)
-                        break
-                    else:
-                        self.inp.unread(SP)
-                        continue
+                        d = SP               # make rightside context for stop
 
                 # special check for blank or null after stops
 
                 elif d != END and not ellyChar.isWhiteSpace(d):
-                    sent.append(d)
+                    self.inp.unread(d)
+#                   print 'no space after punc'
                     continue
 
                 # if no match for lookahead, put back
 
-                elif d != '':
+                elif d != END:
 #                   print 'unread d=' , d
                     self.inp.unread(d)
 
                 # final check: is sentence long enough?
 
-#               print '5  <<' , self.inp.buf
+#               print '@4  <<' , self.inp.buf
                 cx = self.inp.peek()
                 if cx == None: cx = u'!!'
 #               print 'sentence break: next=' , '<' + cx + '>' , len(cx) , sent
-                if nAN > 1:
+                if nAN > 1 and not inBrkt:
                     break
 
         if len(sent) > 0 or self.last != END:
@@ -309,7 +387,7 @@ if __name__ == '__main__':
 
     base = ellyConfiguration.baseSource
     dfs = base + (sys.argv[2] if len(sys.argv) > 2 else 'default') + '.sx.elly'
-    print 'exception file:' , dfs
+    print 'reading exception file:' , dfs
     inp = ellyDefinitionReader.EllyDefinitionReader(dfs)
     if inp.error != None:
         print >> sys.stderr, 'cannot read stop exceptions'
@@ -322,10 +400,11 @@ if __name__ == '__main__':
     ins = open(tst,'r')
     rdr = EllySentenceReader(ins,stpxs)
 
+    print ""
     while True:
         sents = rdr.getNext()
         if sents == None or len(sents) == 0: break
         s = u''.join(sents)
-        print '\n>>>>' , '[' + s + ']'
+        print '>>>>' , u'\u27ea' + s + u'\u27eb'
 
     ins.close()
