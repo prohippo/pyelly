@@ -361,6 +361,7 @@ dangerous danger
 darkest dark
 darkly dark
 deadly dead
+december december
 dee dee
 deepen deep
 deeper deep
@@ -461,6 +462,8 @@ driven drive
 drunk drink
 dryer dry
 dug dig
+dumber dumb
+dumbest dumb
 dumpster dumpster
 dwarves dwarf
 dwelt dwell
@@ -805,6 +808,7 @@ leninist lenin
 levitation levitate
 libyan libya
 licensee license
+limber limber
 lineation line
 linger linger
 linkage link
@@ -864,6 +868,7 @@ meanest mean
 mechanism mechan
 mechanize mechan
 media medium
+member member
 membranal membrane
 memoranda memorandum
 men man
@@ -1154,8 +1159,8 @@ reluctance reluct
 remainder remain
 remaining remain
 remedial remedy
-remember remembr
-remembrance remembr
+remember remember
+remembrance remember
 reminiscent reminisce
 renewal renew
 repellent repel
