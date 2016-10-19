@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellySurvey.py : 30apr2016 CPM
+# ellySurvey.py : 18oct2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2015, Clinton Prentiss Mah
 # All rights reserved.
@@ -114,6 +114,13 @@ class Tree(object):
         """
 #       print >> sys.stderr , 'addLiteralPhrase cat=' , cat , 'fet=' , fet.hexadecimal(False)
         return
+
+    def addLiteralPhraseWithSemantics (self,typ,sxs,sms,bia,gen=None,dvd=False,cap=False):
+        """ dummy method
+        """
+        ph = Tree.Phrase()
+        self.lastph = ph
+        return True
 
 #
 # main class for processing text file to get tokens

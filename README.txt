@@ -337,6 +337,7 @@ Release Notes:
                       fix problems with English morphology rules
                       clean up and extend "marking" rules and integration tests
                       clean up documentation 
+                      fix ellySurvey dummy Tree class
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
