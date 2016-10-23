@@ -254,14 +254,14 @@ _
   linefeed
   append <conj>that</conj>
 __
-g:ELEM->PRO[%nom]
+g:ELEM->PRO[=nom]
 # ?>>?
    >>*l[!rn,pro]
 _
   var typg=pro
   (typg)
 __
-g:ELEM->PRO[%-nom]
+g:ELEM->PRO[=-nom]
 # ?>>?
    >>*l[!rn,pro,brk]
 _
@@ -713,7 +713,7 @@ g:NOUN->NOUN NUM
 _
   (twob)
 __
-g:NOUN[:*l]->NOUN PRO[%rflx]
+g:NOUN[:*l]->NOUN PRO[=rflx]
  >>++
 _
   left
@@ -879,7 +879,7 @@ _
   right
   append </adj></nclu>
 __
-g:NCLU->PRO[%mod]
+g:NCLU->PRO[=mod]
 _
   append <nclu>
   var typg=pro
@@ -956,7 +956,7 @@ g:NOUN->ABBR NOUN
 _
   (twob)
 __
-g:PRO[%*r,-mod]->PREP[%-cnj] PRO[%-nom]
+g:PRO[=*r,-mod]->PREP[%-cnj] PRO[=-nom]
 # ?>>?
    >>[!ppps]
 _
@@ -974,8 +974,14 @@ _
   (typg)
   append </vclu>
 __
-g:VCLU[^*r]->ADV VCLU
+g:VCLU[^*r]->ADV VCLU[^-ed]
  l[$deg]>>*r------
+_
+  var typg=adv
+  (lxtd)
+__
+g:VCLU[^*r]->ADV VCLU[^ed]
+ l[$deg,cmpd]>>*r+
 _
   var typg=adv
   (lxtd)
@@ -1046,13 +1052,20 @@ _
   right
   append </clause>
 __
-g:PCLS[^*l]->VERB[^ing] PRO[%-ind]
+g:PCLS[^*l]->VERB[^ing] PRO
 _
   append <clause><vclu><verb>
   left
   append </verb></vclu><pro>
   right
   append </pro></clause>
+__
+
+g:ADJX[%*r,lquo]->punc[|*l,quo] ADJ
+ >>--
+__
+g:ADJ[%*l,-lquo]->ADJX[%lquo] PUNC[|*r,quo]
+ >>++++
 __
 
 g:VERB->UNKN
@@ -1099,6 +1112,7 @@ g:VERB[^*r]->NOUN[:hyph] VERB
 __
 g:VERB[^beaj]->BE ADJ[%-ed,-ing]
  r[$cmpd]>>++++
+         >>+
 _
   (twob)
 __
@@ -1652,21 +1666,21 @@ __
 d:there <- ADV
 __
 
-d:i    <- PRO[%nom]
+d:i    <- PRO[=nom]
 __
 d:me   <- PRO
 __
 d:you  <- PRO
 __
-d:he   <- PRO[%nom]
+d:he   <- PRO[=nom]
 __
-d:she  <- PRO[%nom]
+d:she  <- PRO[=nom]
 __
 d:it   <- PRO
 __
-d:we   <- PRO[%nom]
+d:we   <- PRO[=nom]
 __
-d:they <- PRO[%nom]
+d:they <- PRO[=nom]
 __
 d:mine <- PRO
 __
@@ -1684,24 +1698,24 @@ d:them <- PRO
 __
 d:her  <- PRO
 __
-d:myself   <- PRO[%rflx]
+d:myself   <- PRO[=rflx]
 __
-d:yourself <- PRO[%rflx]
+d:yourself <- PRO[=rflx]
 __
-d:himself  <- PRO[%rflx]
+d:himself  <- PRO[=rflx]
 __
-d:herself  <- PRO[%rflx]
+d:herself  <- PRO[=rflx]
 __
-d:itself   <- PRO[%rflx]
+d:itself   <- PRO[=rflx]
 __
-d:ourselves  <- PRO[%rflx]
+d:ourselves  <- PRO[=rflx]
 __
-d:yourselves <- PRO[%rflx]
+d:yourselves <- PRO[=rflx]
 __
-d:themselves <- PRO[%rflx]
+d:themselves <- PRO[=rflx]
 __
 
-d:1 <- PRO[%mod]
+d:1 <- PRO[=mod]
 _
   append one
 __
@@ -1800,6 +1814,8 @@ __
 d:must <- AUXL
 __
 d:could<- AUXL
+__
+d:cannot<- AUXL
 __
 
 d:in  <- PTCL
@@ -2096,17 +2112,17 @@ _
   append <nclu><quan>all</quan>
   append <dem>that</dem></nclu>
 __
-g:ADJC->ADJ PUNC[|com]
+g:ADJX[%cnj]->ADJ PUNC[|com]
  >>*l
 _
   (twob)
 __
-g:ADJC->ADJ CONJ[@cnj,-rel]
+g:ADJX[%cnj]->ADJ CONJ[@cnj,-rel]
  >>*l--
 _
   (twob)
 __
-g:ADJ[%*r]->ADJC ADJ[%-ed,-ing]
+g:ADJ[%*r]->ADJX[%cnj] ADJ[%-ed,-ing]
  >>*l++++
 _
   (twob)

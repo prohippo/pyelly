@@ -10,6 +10,8 @@ has : HAVE
 had : HAVE[^ed]
 having : HAVE[^ing]
 
+discouraged : VERB[^ed]
+
 ate : VERB[^ed]
 began : VERB[^ed,proc]
 bit : VERB[^ed]
@@ -25,6 +27,7 @@ taken : VERB[^ed]
 thought : VERB[^ed]
 went : VERB[^ed]
 written : VERB[^ed]
+rose : VERB[^ed] - +1
 
 rosé : NOUN
 
@@ -116,7 +119,10 @@ at one point : ADV
 a few hundred : QUAN
 it is easy : ELEM - +4 (elma)
 cheer on : VERB
-three-day : ADJ
+according to : PREP
+in addition to : PREP
+up slightly : ADJ
+up slightly : ADV - +1
 
 eat-in : ADJ
 fully-equipped : ADJ
@@ -138,6 +144,7 @@ four-penny : ADJ
 3-point : ADJ
 3-point shot : NOUN
 sightseeing tour : NOUN
+three-day : ADJ
 
 ABC News : NOUN
 Agence France-Presse : NOUN
@@ -815,6 +822,7 @@ director : NOUN
 disaster : NOUN
 disastrously : ADV [$prd] 0
 discourage : VERB
+discouraged : ADJ
 discover : VERB
 discuss : VERB
 disease : NOUN
@@ -955,6 +963,8 @@ especially : ADV
 essay : NOUN
 essay : VERB
 establish : VERB
+estimate : NOUN
+estimate : VERB
 eu : NOUN
 eumulate : VERB
 europe : NOUN
@@ -1156,6 +1166,8 @@ full : VERB - -2
 full : ADJ
 full : ADV
 fully : ADV
+full-time : ADJ
+full-time : ADV
 fundament : NOUN
 fundamental : ADJ
 further : VERB - -1
@@ -1769,6 +1781,8 @@ off : ADV
 offer : NOUN
 offer : VERB - +1
 office : NOUN
+official : NOUN
+official : ADJ
 often : ADV
 old : NOUN - -1
 old : ADJ
@@ -1838,6 +1852,8 @@ partner : NOUN
 partner : VERB
 party : NOUN
 party : VERB - -2
+part-time : ADJ
+part-time : ADV
 passionate : ADJ
 past : NOUN
 past : ADJ
@@ -2156,6 +2172,7 @@ review : NOUN
 review : VERB
 revise : NOUN
 revise : VERB
+revision : NOUN
 revolution : NOUN
 rick : NOUN
 rick : VERB
@@ -2679,6 +2696,8 @@ u.s. : NOUN
 uk : NOUN
 uncertain : ADJ
 unchanged : ADJ
+unemployed : NOUN
+unemployed : ADJ
 underground : NOUN
 underground : ADJ
 understand : VERB
@@ -2793,7 +2812,7 @@ welcome : ADJ
 well : NOUN
 well : VERB - -1
 well : ADJ[%to]
-well : ADV
+well : ADV [$deg,cmpd] 0
 well : MISC [!spcs] -2
 west : NOUN - -2
 west : ADJ
@@ -2841,6 +2860,7 @@ word : NOUN
 word : VERB - -1
 work : NOUN
 work : VERB - +1
+worker : NOUN
 world : NOUN
 world : ADJ
 world power : NOUN
