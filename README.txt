@@ -335,9 +335,10 @@ Release Notes:
  1.3.19  - 17oct1016  reorganize sentence extraction
                       fix problems with quotations and bracketed text
                       fix problems with English morphology rules
+                      fix problem with ampersand in tokenization
                       clean up and extend "marking" rules and integration tests
                       clean up documentation 
-                      fix ellySurvey dummy Tree class
+                      clean up ellySurvey code and fix dummy Tree class
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
