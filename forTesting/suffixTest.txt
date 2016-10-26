@@ -429,6 +429,7 @@ dismissal dismiss
 disparate dispar
 dispersant disperse
 disposition dispose
+disturber disturb
 distillate distill
 distillery distill
 disunity disunite
@@ -1060,6 +1061,7 @@ primary prime
 printer print
 prismatic prism
 prisoner prison
+prize prize
 probable probable
 problematic problem
 prodigal prodigy
