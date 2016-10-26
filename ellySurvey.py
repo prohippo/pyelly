@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellySurvey.py : 18oct2016 CPM
+# ellySurvey.py : 26oct2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2015, Clinton Prentiss Mah
 # All rights reserved.
@@ -136,9 +136,8 @@ class EllySurvey(object):
         gtb  - grammar    table
         vtb  - vocabulary table
         rul  - grammar definitions
-        pat  - pattern definitions:$
+        pat  - pattern definitions
         iex  - entity extractors
-
         trs  - simple transformation
         pnc  - punctuation recognizer
 
@@ -153,7 +152,7 @@ class EllySurvey(object):
         initialization of processing rules
 
         arguments:
-            system   - root name for PyElly tables to load
+            system   - root name of PyElly tables to load
         """
 
         nfail = 0          # error count for reporting
@@ -261,6 +260,7 @@ class EllySurvey(object):
         s = self.sbu.buffer
 
 #       print 'expanded len=' , len(s)
+#       print 'sbu=' , s
 
         if len(s) == 0: return True    # macros can empty out buffer
 
@@ -301,7 +301,7 @@ class EllySurvey(object):
         found = rws in self.gtb.dctn
 
         if found:
-    #       print 'found internally'
+#           print 'found internally'
             mty += 'Id'
 
         if found or mx > 0:
