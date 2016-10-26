@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 03oct2016 CPM
+# ellyChar.py : 26oct2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -46,6 +46,7 @@ RBR = u']'         # Unicode right bracket
 SLA = u'/'         # Unicode slash
 BSL = u'\\'        # Unicode backslash
 SPC = u' '         # Unicode space
+AMP = u'&'         # Unicode ampersand
 NBS = u'\u00A0'    # Unicode no-break space
 TAB = u'\u0009'    # ASCII horizontal tab
 RS  = u'\u001E'    # ASCII record separator with special significance for parsing
@@ -172,7 +173,7 @@ def isEmbeddedCombining ( x ):
     returns:
         True if char can be in the middle of a token, False otherwise
     """
-    return x in [ DOT , COM , COL , APO , APX , AST , SLA ]
+    return x in [ DOT , COM , COL , APO , APX , AST , AMP , SLA ]
 
 def isPureCombining ( x ):
     """
@@ -445,7 +446,7 @@ def findBreak ( text , offset=0 , nspace=0 ):
                 if k + 1 < n:
                     c = text[k+1]
 #                   print 'next char=' , c
-                    if isApostrophe(c) or isLetterOrDigit(c):
+                    if isApostrophe(c) or isLetterOrDigit(c) or c == AMP:
                         k += 2
                         continue
                     if isSpace(c):
