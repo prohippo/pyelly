@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 26oct2016 CPM
+# ellyChar.py : 01nov2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -61,7 +61,7 @@ Apd = [ u'*' , u'+' , u'-' ]                                    # marks appendin
 
 Pnc = [ u'“' , u'”' , u'‘' , u'’' , u'–' , u'—' , u'…' , u'™' ] # special punctuation
 
-Opn = [ u'“' , u'‘' , u'"' , u"'" , '[' , ']' ]
+Opn = [ u'“' , u'‘' , u'"' , u"'" , u'[' ]
 
 Lim = u'\u0100'    # limit of Unicode chars recognized except for Pnc
 
@@ -78,8 +78,6 @@ Lim = u'\u0100'    # limit of Unicode chars recognized except for Pnc
 ####    ¡ ¢ £ ¤ ¥ ¦ § ¨ © ª « ¬   ® ¯     ° ± ² ³ ´ µ ¶ · ¸ ¹ º » ¼ ½ ¾ ¿
 ####  À Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï     Ð Ñ Ò Ó Ô Õ Ö × Ø Ù Ú Û Ü Ý Þ ß
 ####  à á â ã ä å æ ç è é ê ë ì í î ï     ð ñ ò ó ô õ ö ÷ ø ù ú û ü ý þ ÿ
-
-## To define various linguistic characteristics of the PyElly alphabet:
 
 def isStrongConsonant ( x ):
     """
@@ -469,11 +467,12 @@ def findBreak ( text , offset=0 , nspace=0 ):
                 nspace -= 1
                 continue
             if k == offset:
-                k += 1  # if immediate break, take 1 char
+                k += 1      # if immediate break, take 1 char anyway
             break
         elif x in Pnc:
+#           print 'punctuation break'
             break
         k += 1
-#   print 'k=' , k
+#   print 'k=' , k , 'offset=' , offset
     return k - offset
 

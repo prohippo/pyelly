@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 13sep2016 CPM
+# ellyWildcard.py : 01nov2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -444,6 +444,7 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
         returns:
             non-negative count if any match possible, otherwise -1
         """
+#       print "_span: typw=" , ord(typw) , convert(typw)
 #       print "_span: txt @",offs,"pat @",mp,"nsp=",nsp
 #       print "text to span:",text[offs:]
 #       print "pat rest=" , patn[mp:]
@@ -465,6 +466,7 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
         nm = 0
         for i in range(mx):
             c = text[offs+i]                   # next char in text from offset
+#           print 'span c=' , c
             if not tfn(c): break               # stop when it fails to match
             nm += 1
 
@@ -622,6 +624,12 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
 #               print 'nsps=' , nsps
 #               print '@' , offs , text
                 nm = _span(tc,nsps)   # maximum match possible
+
+                if nm == 0:                             # compensate for findBreak peculiarity with
+                    if offs + 1 < limt and mp < ml:     # closing ] or ) to be matched for pattern
+                        if patn[mp] in [ u']' , u')' ]: # in text input
+                            nm += 1
+
 #               print 'spanning=' , nm
                 if nm >= 1:
                     bf = _bind(nm); mbi += 1
