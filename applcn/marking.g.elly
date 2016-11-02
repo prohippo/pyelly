@@ -2136,4 +2136,5 @@ g:ADJ->ADV HYPA
 __
 
 g:PUNC->PUNC SPCL[|*r]
+ >>++
 __
