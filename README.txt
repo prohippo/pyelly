@@ -336,6 +336,7 @@ Release Notes:
                       fix problems with quotations and bracketed text
                       fix problems with English morphology rules
                       fix problem with ampersand in tokenization
+                      fix problem with pattern matching on strings with brackets
                       clean up and extend "marking" rules and integration tests
                       clean up documentation 
                       clean up ellySurvey code and fix dummy Tree class
