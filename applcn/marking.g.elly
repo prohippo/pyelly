@@ -379,8 +379,14 @@ _
   right
   append </punc>
 __
-g:ELEM->PREP PCLS[^ing]
+g:ELEM->PREP[%-neg] PCLS[^ing]
  >>+
+_
+  var typg=prep
+  (lxtd)
+__
+g:ELEM->PREP[%neg] PCLS[^ing]
+ >>+++
 _
   var typg=prep
   (lxtd)
@@ -1187,7 +1193,7 @@ g:ADJ[%ed]->VERB[^ed,-dit]
  p<1>>-
     >>[$ind]--
 __
-g:ADJ[%ing]->VERB[^ing,-proc]
+g:ADJ[%ing]->VERB[^ing,-proc,-ed]
       n<2>>------
  l[$trns]>>-----
       n>2>>---
@@ -1556,7 +1562,7 @@ d:upon    <- PREP
 __
 d:during  <- PREP
 __
-d:without <- PREP
+d:without <- PREP[%neg]
 __
 d:toward  <- PREP
 __
@@ -2062,6 +2068,11 @@ __
 g:ADV->ADV NCLU[:prep]
  >>-1
 __
+g:VERB[^*r,hav,ing]->HAVE[^ing] VERB[^ed]
+ >>+4
+_
+  (twob)
+__
 
 # uses semantic feature !ppps since no syntactic feature %prep is available
 
@@ -2137,4 +2148,11 @@ __
 
 g:PUNC->PUNC SPCL[|*r]
  >>++
+__
+g:NOUN->NOUN SPCL[|*r]
+ >>+
+_
+  left
+  space
+  right
 __

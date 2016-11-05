@@ -47,6 +47,7 @@ bookended : VERB[^ed] - -1
 
 ah : MISC
 yes : MISC
+no : MISC - -1
 rosé : NOUN
 PDF : NOUN
 r&b : NOUN
@@ -68,6 +69,7 @@ livestock waste : NOUN
 time control : NOUN
 sales team : NOUN
 colored slave : NOUN
+cast recording : NOUN
 
 as if : CONJ
 as well as : CONJ
@@ -539,6 +541,7 @@ britain : NOUN
 broadway : NOUN
 brooklyn : NOUN
 brother : NOUN
+brotherhood : NOUN
 brow : NOUN
 brown : NOUN
 brown : VERB
@@ -963,6 +966,8 @@ distribution : NOUN
 district : NOUN
 district : VERB
 diverse : ADJ
+diversion : NOUN
+diversionary : ADJ
 diversity : NOUN
 divert : VERB
 divorce : NOUN
@@ -1185,6 +1190,8 @@ fault : VERB
 favor : NOUN
 favor : VERB
 favorably : ADV
+favour : NOUN
+favour : VERB - -1
 feature : NOUN
 feature : VERB
 february : NOUN
@@ -1460,8 +1467,8 @@ hawaii : NOUN
 head : NOUN
 head : VERB
 headquarter : VERB
-hear : VERB
-heard : VERB[^ed]
+hear  : VERB [$trns] 0
+heard : VERB[^ed] [$trns] 0
 heart : NOUN
 heavily : ADV
 heavy : NOUN
@@ -1481,6 +1488,7 @@ high : ADV
 hillary : NOUN
 hip : NOUN
 hip : ADJ
+hip-hop : NOUN
 hispanic : NOUN
 hispanic : ADJ
 historic : ADJ
@@ -2660,6 +2668,7 @@ sign : ADJ - -2
 signal : NOUN
 signal : VERB
 signal : ADJ
+signature : NOUN
 significant : ADJ[%to]
 silent : ADJ
 silently : ADV
