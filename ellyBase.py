@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 01nov2016 CPM
+# ellyBase.py : 03nov2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -304,6 +304,7 @@ class EllyBase(object):
         try:
             voc = ellyDefinition.Vocabulary(system,redefine,stb,inflx)
         except ellyException.TableFailure:
+            voc = None
             nfail += 1
 
 #       try:
@@ -315,7 +316,7 @@ class EllyBase(object):
 #           print 'rul or voc time exception'
 
 #       print 'vundef=' , self.vundef
-        self.vtb = voc.vtb
+        if voc != None: self.vtb = voc.vtb
         self.vundef = stb.findUnknown()
 #       print 'vundef=' , self.vundef
 
@@ -323,6 +324,10 @@ class EllyBase(object):
         if nto != ntn:
             print >> sys.stderr , 'WARNING: grammar rules should predefine all syntactic categories'
             print >> sys.stderr , '         and features referenced in language definition files'
+
+        if nfail > 0:
+            print >> sys.stderr , 'exiting: table generation FAILures'
+            sys.exit(1)
 
 #       print 'EllyBase.__init__() DONE'
 
