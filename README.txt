@@ -340,13 +340,16 @@ Release Notes:
                       clean up and extend "marking" rules and integration tests
                       clean up documentation 
                       clean up ellySurvey code and fix dummy Tree class
+                      fix problem with rule sequence numbers in parse tree dumping
+                      add missing error exit in loading vocabulary table
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
 correct operation. Changes only to PyElly sample application definition files,
 unit testing input or key files, and PyElly documentation will be made from time
 to time, but these will leave version numbers the same, if they are the only
-changes. Updates are still frequent; check for the latest files.
+changes. Updates are still frequent; check for the latest files. The dates above
+are for the initial release of a version,
 
 The PyElly website is at
 
