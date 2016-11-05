@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBottomUp.py : 23sep2016 CPM
+# parseTreeBottomUp.py : 04nov2016 CPM
 # -----------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -357,6 +357,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
 #       print 'gen=' , gen
 #       print 'spl=' , spl , 'cap=' , cap
         r = self._makeLiteralRule(cat,fbs,gen)
+        r.seqn = -1    # no permanent sequence number
         return self._addTerminal(r,spl,cap,bias,sbs)
 
     def createUnknownPhrase ( self , tokn ):
@@ -377,6 +378,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
 
 #       print 'unknown phrase'
         r = self._makeLiteralRule(self.gtb.UNKN,ZEROfs)
+        r.seqn = -1    # no permanent sequence number
         return self._addTerminal(r,tokn.isSplit(),tokn.isCapitalized())
 
     ##################################

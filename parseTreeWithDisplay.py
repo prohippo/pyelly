@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeWithDisplay.py : 03jul2016 CPM
+# parseTreeWithDisplay.py : 05nov2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -29,7 +29,7 @@
 # -----------------------------------------------------------------------------
 
 """
-parse tree with formatted tree dump for debugging
+parse tree with formatted tree dump for monitoring and debugging
 """
 
 import sys
@@ -43,13 +43,13 @@ mark = 256       # distinct flag for tree node already dumped
 
 DPTH = 32        # maximum stack depth for tree traversal
 
-BRN  = u'\u252C' # '+' branch  Unicode box-drawing characters for drawing tree
+BRN  = u'\u252C' # '+' branch  Unicode box-drawing chars for laying out parse tree
 DWN  = u'\u2500' # '-' down
 CNN  = u'\u2502' # '|' connect
 ANG  = u'\u2514' # '\' ell angle
 NBSP = u'\u00A0' # non-breaking space
 
-SPCG = NBSP+NBSP+NBSP+NBSP+NBSP+NBSP+NBSP+NBSP+NBSP # for indentation
+SPCG = NBSP+NBSP+NBSP+NBSP+NBSP+NBSP+NBSP+NBSP+NBSP # for indentation in parse tree
 
 out  = codecs.getwriter('utf8')(sys.stderr) # must do this for any redirection to work
 
@@ -129,18 +129,23 @@ class ParseTreeWithDisplay(parseTree.ParseTree):
         lm = N                     # maximum number phrase nodes to report
         for k in range(self.phlim):
             ph = self.phrases[k]
+            phno = ph.krnl.seqn
             rs = ph.krnl.rule.seqn
+#           print '!!!!  ' , phno , ':' , rs
             if not rs in hr: hr[rs] = [ ]
-            hr[rs].append(ph)      # make association
+            hr[rs].append(phno)    # make association
+#           print '!!!! =' , hr[rs]
+#       print len(hr) , 'distinct rules'
+#       print 'keys=' , hr.keys()
         for rs in hr.keys():       # iterate on sequence numbers for rules found
             ls = hr[rs]
-            if len(ls) > lm: ls = ls[:lm]
+            if len(ls) > lm:
+                ls = ls[:lm]
+                ls.append('...')
             rssn = 'rule {:4d}:'.format(rs)
             out.write(rssn)        # report up to lm phrase nodes for rule
                                    # with this sequence number
-            for ph in ls:
-                out.write(' ')
-                out.write(str(ph.krnl.seqn))
+            out.write(str(ls))
             out.write('\n')
         out.write('\n')
 
@@ -184,14 +189,14 @@ class ParseTreeWithDisplay(parseTree.ParseTree):
         out.write('\n')
         out.write(str(len(tks)))
         out.write(' raw tokens=')
-        for tk in tks:
-            if tk == None:
+        for tko in tks:
+            if tko == None:
                 out.write(' [[NONE]]')
             else:
-                if len(tk.root) < len(tk.orig):
-                    tstr = ''.join(tk.root)
+                if len(tko.root) < len(tko.orig):
+                    tstr = ''.join(tko.root)
                 else:
-                    tstr = tk.orig
+                    tstr = tko.orig
                 out.write(' [[' + tstr + ']]')          # original tokens for parse tree
 
         out.write('\n')
@@ -377,8 +382,11 @@ if __name__ == '__main__':
     tksu = ctxu.tokns
 
     tree = ParseTreeWithDisplay(stbu,gtbu,None,ctxu)
+    print ''
     print tree
+    print ''
     print dir(tree)
+    print ''
 
     cat = stbu.getSyntaxTypeIndexNumber('num')
     fbs = ellyBits.EllyBits(symbolTable.FMAX)
@@ -387,23 +395,38 @@ if __name__ == '__main__':
     tksu.append(ellyToken.EllyToken('66'))
     tree.restartQueue()
 
-    ws = [ u'nn' , u'b' , u'aj' ]  # more input to test rules from test.g.elly
+    ws = [ u'nn' , u'b' , u'aj'  ]         # from test.g.elly
+    wu = [ u'ww' , u'wx' , u'wy' , u'wz' ] # unknown terms
 
     for w in ws:
 
         tree.createPhrasesFromDictionary(w,False,False)
-        print '****' , tree.phlim , tree.lastph
+#       print '**** to' , tree.phlim , tree.lastph , 'rule=' , tree.lastph.krnl.rule.seqn
         tree.digest()
-        print '****' , tree.phlim , tree.lastph
+#       print '**** to' , tree.phlim , tree.lastph , 'rule=' , tree.lastph.krnl.rule.seqn
         tksu.append(ellyToken.EllyToken(w))
         tree.restartQueue()
 
-    print tksu
+    for w in wu:
+
+        tk = ellyToken.EllyToken(w)
+        tree.createUnknownPhrase(tk)
+#       print '**** to' , tree.phlim , tree.lastph , 'rule=' , tree.lastph.krnl.rule.seqn
+        tree.digest()
+#       print '**** to' , tree.phlim , tree.lastph , 'rule=' , tree.lastph.krnl.rule.seqn
+        tksu.append(tk)
+        tree.restartQueue()
+
+    print 'token roots= [' ,
+    for tk in tksu:
+        print u''.join(tk.root) ,
+    print ']'
 
     print 'limits=' , tree.phlim , tree.glim
 
     print "------"
     print "------ dump all"
+    N = 3            # check truncated printing of phrase
     tree.dumpAll()
     print "------"
     print "------ dump tree (should repeat some of the above output)"

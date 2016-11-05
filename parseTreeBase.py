@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBase.py : 20sep2016 CPM
+# parseTreeBase.py : 04nov2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -415,7 +415,7 @@ class ParseTreeBase(object):
         self.lastph.krnl.typx = ru.styp           # set syntactic type     from rule
         self.lastph.krnl.synf.combine(ru.sfet)    # set syntactic features from rule
         self.phlim += 1
-#       print 'make' , self.lastph
+#       print 'make' , self.lastph , 'rule' , ru.seqn
         return self.lastph
 
     def makeGoal ( self , ru , ph ):
