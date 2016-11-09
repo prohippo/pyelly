@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellySentenceReader.py : 16oct2016 CPM
+# ellySentenceReader.py : 09nov2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -61,6 +61,8 @@ QUOs = [ unichr(34) , unichr(39) , # ASCII double and single quote
        ]
 
 MXBr = 31                          # limit on bracketing override of stop
+
+LS   = 4                           # limit on special bracketing lookahead
 
 class EllySentenceReader(object):
 
@@ -156,6 +158,35 @@ class EllySentenceReader(object):
         self._qlvl = 0
         self._bcnt = 0
 
+    def shortBracketing ( self , sent , d ):
+
+        """
+        look for short bracketed segment
+
+        arguments:
+            self  -
+            sent  - accumulated sentence
+            d     - next char
+
+        returns:
+            True if bracketed segment found, False otherwise
+        """
+
+        if d in [ '[' , '(' ]:
+            sg = [ ]
+            ls = 0
+            while ls < LS:
+                nd = self.inp.read()
+                if nd in [ ']' , ')' ]: break
+                sg.append(nd)
+                ls += 1
+            if ls < LS:
+                sent.append(d)
+                sent.extend(sg)
+                sent.append(nd)
+                return True
+            return False
+
     def getNext ( self ):
 
         """
@@ -181,7 +212,7 @@ class EllySentenceReader(object):
         if x == END:       # EOF check
             return None
 
-        c =  END           # reset
+        c  = END           # reset
         lc = END
 
 #       print 'x=' , '<' + x + '>' , ord(x)
@@ -236,9 +267,15 @@ class EllySentenceReader(object):
                     x = RSQm          #
                 elif x == DQuo:       # a DQuo followed by a space becomes RDQm
                     x = RDQm          #
+            elif not ellyChar.isLetterOrDigit(nc):
+                if x == SQuo:         # a SQuo followed by nonalphanumeric becomes RSQm
+                    x = RSQm          #
+                elif x == DQuo:       # a DQuo followed by nonalphanumeric becomes RDQm
+                    x = RDQm          #
 
-#           print 'lc=' , '<' + lc + '>' , 'bracketing x=' , '<' + x + '>'
             inBrkt = self.checkBracketing(x)    # do bracket checking with modified chars
+
+#           print 'lc=' , '<' + lc + '>' , 'bracketing x=' , '<' + x + '>' , inBrkt
 
             sent.append(c)                      # but buffer original chars
             if ellyChar.isLetterOrDigit(c):
@@ -271,7 +308,7 @@ class EllySentenceReader(object):
                     lc = SP
                 continue
 
-#           print 'no stop exception MATCH'
+#           print 'no stop exception MATCH for' , c
 
 #           print '@1  <<' , self.inp.buf
 
@@ -304,9 +341,14 @@ class EllySentenceReader(object):
                 # bracketing, which can immediately follow stop
                 # punctuation for current sentence
 
-#               print 'bracketing c=' , c , ord(c) , inBrkt
+#               print 'bracketing c=' , c , ord(c) , inBrkt , 'at' , len(sent)
+
                 if not inBrkt:
-                    z = self.inp.peek()
+#                   print sent , 'so far'
+                    z = self.inp.read()
+                    if self.shortBracketing(sent,z):
+                        break
+                    self.inp.unread(z)
 #                   print 'z=' , '[' + z + ']' , 'lc=' , '[' + lc + ']'
                     if z == END or ellyChar.isWhiteSpace(z) and lc in Stops:
                         if nAN > 1:
@@ -351,6 +393,7 @@ class EllySentenceReader(object):
                 # special check for blank or null after stops
 
                 elif d != END and not ellyChar.isWhiteSpace(d):
+                    if self.shortBracketing(sent,d): break
                     self.inp.unread(d)
 #                   print 'no space after punc'
                     continue
