@@ -72,6 +72,7 @@ colored slave : NOUN
 cast recording : NOUN
 
 as if : CONJ
+as though : CONJ
 as well as : CONJ
 at least : ADV[~mod]
 out of : PREP
@@ -145,6 +146,8 @@ in addition to : PREP
 up slightly : ADJ
 up slightly : ADV - +1
 about whether : CONJ
+insofar as : CONJ
+each other : PRO
 
 purchasing power : NOUN
 fixed investment : NOUN
@@ -195,6 +198,7 @@ sightseeing tour : NOUN
 three-day : ADJ
 tighty-whities : NOUN
 half-full : ADJ
+watered-down : ADJ
 
 # # # # names to recognize explicitly
 
@@ -236,6 +240,7 @@ Bitcoin : NOUN
 Warner Brothers : NOUN
 CNN : NOUN
 HBO : NOUN
+Cubbies : NOUN[:plur]
 
 # # # # miscellaneous
 
@@ -630,6 +635,7 @@ chair : VERB
 champion : NOUN
 champion : VERB
 champion : ADJ
+championship : NOUN
 chance : NOUN
 chance : VERB
 chance : ADJ[%to]

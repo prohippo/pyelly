@@ -1133,6 +1133,12 @@ __
 g:VERB[^hav]->HAVE
  >>-
 __
+g:VERB->AUXL[^*l] ADV
+ n<3 >> ++
+     >> ----
+_
+  (twob)
+__
 
 g:BE->BE XED
  >>+
@@ -1327,6 +1333,12 @@ g:VERB[^*l,-ptcl]->VERB[^ptcl] TO     #
 _
   (twob)
 __
+g:VERB[^*l]->VERB PREP[%mod]
+ >>*l[$trns]++
+_
+  (twob)
+__
+
 g:ADJ[%*l,er]->ADJ[%-*l,-*r] XER
  >>*l
 _
@@ -1534,7 +1546,7 @@ d:about   <- PREP
 __
 d:above   <- PREP
 __
-d:like    <- PREP
+d:like    <- PREP[%mod]
  >>+
 __
 d:except  <- PREP
@@ -1809,9 +1821,9 @@ d:would<- AUXL
 __
 d:should<-AUXL
 __
-d:do   <- AUXL
+d:do   <- AUXL[^*l]
 __
-d:did  <- AUXL
+d:did  <- AUXL[^*l]
 __
 d:can  <- AUXL
 __
@@ -2146,7 +2158,7 @@ g:ADJ->ADV HYPA
  >>++++
 __
 
-g:PUNC->PUNC SPCL[|*r]
+g:PUNC[|*l]->PUNC SPCL[|*r]
  >>++
 __
 g:NOUN->NOUN SPCL[|*r]
