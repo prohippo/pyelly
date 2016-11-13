@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 01nov2016 CPM
+# ellyChar.py : 12nov2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -230,7 +230,7 @@ def isLetterOrDigit ( x ):
     returns:
         True if letter or digit, False otherwise
     """
-    return x < Lim and LetterOrDigit[ord(x)]
+    return x != '' and x < Lim and LetterOrDigit[ord(x)]
 
 def isNotLetterOrDigit ( x ):
     """
@@ -252,7 +252,7 @@ def isLetter ( x ):
     returns:
         True if letter, False otherwise
     """
-    return x < Lim and Letter[ord(x)]
+    return x != '' and x < Lim and Letter[ord(x)]
 
 def isDigit ( x ):
     """
@@ -286,7 +286,7 @@ def isWhiteSpace ( x ):
     returns:
         True if Unicode space, False otherwise
     """
-    return x < Lim and Space[ord(x)]
+    return x != '' and x < Lim and Space[ord(x)]
 
 def isApostrophe ( x ):
     """
