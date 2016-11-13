@@ -31,6 +31,7 @@ went : VERB[^ed]
 written : VERB[^ed]
 rose : VERB[^ed] - +1
 fishermen : NOUN[:plur]
+believes : VERB[^s]
 
 # # # # because word is already in WordNet as different entry or needs to be listed
 
@@ -148,6 +149,7 @@ up slightly : ADV - +1
 about whether : CONJ
 insofar as : CONJ
 each other : PRO
+no one : PRO
 
 purchasing power : NOUN
 fixed investment : NOUN
@@ -1893,6 +1895,7 @@ mix : VERB
 mo : NOUN
 mobile : NOUN
 mobile : ADJ
+mobile phone : NOUN
 model : NOUN[:*x]
 model : VERB
 model : ADJ
@@ -2529,7 +2532,7 @@ rocket : VERB
 rodent : NOUN
 role : NOUN
 roman : NOUN
-roman : ADJ
+roman : ADJ - +1
 ron : NOUN
 room : NOUN
 room : VERB
@@ -2630,6 +2633,7 @@ service : VERB
 set : NOUN
 set : VERB[^ptcl]
 set : ADJ - -1
+setting : VERB[^ptcl,ing] - +1
 setting : NOUN
 setup : NOUN
 severe : ADJ
@@ -3068,6 +3072,7 @@ turkish : ADJ
 turn : NOUN
 turn : VERB[^ptcl]
 tv : NOUN
+tv channel : NOUN
 twin : NOUN
 twin : VERB
 twin : ADJ
@@ -3226,9 +3231,9 @@ wick : NOUN
 wicked : ADJ
 wide : ADJ
 wide : ADV
-wild : ADJ
-wild : ADV
 wild : NOUN
+wild : ADJ - +2
+wild : ADV - -1
 win : NOUN - -1
 win : VERB
 wind : NOUN
@@ -3259,6 +3264,7 @@ worker : NOUN
 world : NOUN
 world : ADJ
 world power : NOUN
+world series : NOUN[:*u]
 world war i  : NOUN
 world war ii : NOUN
 worse : ADJ

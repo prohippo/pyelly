@@ -32,6 +32,8 @@ let's   -> let us
 long-&@ed -> long - \\1ed
 much-&@ed -> much - \\1ed
 
+is_what -> is cjwhat
+
 # 
 # spelling correction
 # 

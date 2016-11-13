@@ -72,6 +72,7 @@ _
 __
 g:SS->SS PUNC[|stop]
  l[!corrl]>>-10
+  l[!hang]>>-8
           >>*l
 _
   left
@@ -96,10 +97,10 @@ __
 g:SS[|segm]->SS[|-segm] SEGM
 #                 ?>>?
            r[!trng]>>-4
- l[!coord,rn]r[!rn]>>*l++
- l[!coord,rv]r[!rv]>>*l++
-             r[!rv]>>*l[!rv]
-             r[!rn]>>*l[!rn]
+ l[!coord,rn]r[!rn]>>*l[!-hang]++
+ l[!coord,rv]r[!rv]>>*l[!-hang]++
+             r[!rv]>>*l[!rv,-hang]
+             r[!rn]>>*l[!rn,-hang]
 _
   left
   linefeed
@@ -116,13 +117,14 @@ _
   append </punc>
 __
 g:SS->SS CONJ
-#                 ?>>?
- l[!corrl]r[!coord]>>*l
- l[!corrl]r[!corrl]>>-16
-          r[!coord]>>*l[!coord,cnj]
-  l[!-cnj]r[!corrl]>>*l[!corrl,cnj]
-  l[! cnj]r[!corrl]>>*l[!corrl,cnj]-1
-            l[!cnj]>>-1
+#                      ?>>?
+      l[!corrl]r[!coord]>>*l
+      l[!corrl]r[!corrl]>>-16
+               r[!coord]>>*l[!coord,cnj]
+       l[!-cnj]r[!corrl]>>*l[!corrl,cnj]
+       l[! cnj]r[!corrl]>>*l[!corrl]-1
+  r[!-coord,-corrl,-ind]>>*l[!hang]-1
+                 l[!cnj]>>-1
 _
   left
   linefeed
@@ -191,6 +193,7 @@ g:SEGM[|*unique]->SEGM ELEM
   l[!pro,-brk] r[!lv]     >>*r+2
   l[!rn]       r[!ln]     >>*r-2
   l[!rv]       r[!lv]     >>*r-4
+  l[!that]     r[!lone]   >>*r-4
                           >>*r
 _
   left
@@ -325,7 +328,7 @@ _
   append <conj>that</conj>
 __
 g:ELEM->THAT
- >>[!ln,rv]-
+ >>[!ln,rv,that]-
 _
   var typg=conj
   (typg)
@@ -1628,15 +1631,15 @@ __
 d:what  <- DEM[@ind]
 __
 
-d:who  <- CONJ[@rel]
+d:who  <- CONJ[@rel,ind]
 __
-d:which<- CONJ[@rel]
+d:which<- CONJ[@rel,ind]
 __
-d:where<- CONJ[@rel]
+d:where<- CONJ[@rel,ind]
 __
 d:while<- CONJ
 __
-d:how  <- CONJ
+d:how  <- CONJ[@ind]
 __
 d:although <- CONJ
 __
