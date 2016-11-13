@@ -43,7 +43,7 @@ download also includes rules for some example applications, including
              or traditional characters.
 * querying - rewrite English questions as SQL queries for a Soviet
              military aircraft database.
-* marking  - rewrite English text from the Web with XML markup
+* marking  - rewrite English text from the Web with shallow XML markup
 * name     - extract mostly English personal names from text
 * disambig - disambiguation of phrases with WordNet concept information.
 
@@ -341,6 +341,8 @@ Release Notes:
                       clean up documentation 
                       clean up ellySurvey code and fix dummy Tree class
                       fix problem with rule sequence numbers in parse tree dumping
+                      use *x syntactic feature to identify period
+                      add check to avoid ord() error on ''
                       add missing error exit in loading vocabulary table
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
