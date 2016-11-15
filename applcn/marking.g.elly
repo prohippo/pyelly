@@ -3,14 +3,15 @@
 
 #
 # subprocedures
-p:lxtd  # adding a tagged element on the left to a list on the right
-        # ('set' defines variable punc if not already done higher up in parse tree)
+p:lxtd  # adding a tagged element from left side to a rightside markup
+        # ('set' overrides any variable punc higher up in parse tree)
 _
+  trace
   set punc=
   split
   right
   back
-# trace
+# view 8
 # show punc in_lxtd
   if ~punc=
 #   view 15
@@ -18,10 +19,11 @@ _
 #   view 15
     end 
   find > <
+# view 12
   (typg)
   merge
 __
-p:rxtd  # adding tagged element on the right to list on the left
+p:rxtd  # adding tagged element from right side to leftside markup
 _
   left
   split
@@ -36,6 +38,8 @@ _
   append >
   merge
 __
+
+
 p:typg  # left generation of element tagged as specified type
 _
   append <
@@ -72,7 +76,6 @@ _
 __
 g:SS->SS PUNC[|stop]
  l[!corrl]>>-10
-  l[!hang]>>-8
           >>*l
 _
   left
@@ -97,10 +100,10 @@ __
 g:SS[|segm]->SS[|-segm] SEGM
 #                 ?>>?
            r[!trng]>>-4
- l[!coord,rn]r[!rn]>>*l[!-hang]++
- l[!coord,rv]r[!rv]>>*l[!-hang]++
-             r[!rv]>>*l[!rv,-hang]
-             r[!rn]>>*l[!rn,-hang]
+ l[!coord,rn]r[!rn]>>*l++
+ l[!coord,rv]r[!rv]>>*l++
+             r[!rv]>>*l[!rv]
+             r[!rn]>>*l[!rn]
 _
   left
   linefeed
@@ -108,6 +111,7 @@ _
 __
 g:SS->SS PUNC[|-stop]
 #               ?>>?
+         l[!that]>>*l-4
  l[!corrl]r[!brk]>>-10
 _
   left
@@ -117,14 +121,14 @@ _
   append </punc>
 __
 g:SS->SS CONJ
-#                      ?>>?
-      l[!corrl]r[!coord]>>*l
-      l[!corrl]r[!corrl]>>-16
-               r[!coord]>>*l[!coord,cnj]
-       l[!-cnj]r[!corrl]>>*l[!corrl,cnj]
-       l[! cnj]r[!corrl]>>*l[!corrl]-1
-  r[!-coord,-corrl,-ind]>>*l[!hang]-1
-                 l[!cnj]>>-1
+#                 ?>>?
+           l[!that]>>*l-4
+ l[!corrl]r[!coord]>>*l
+ l[!corrl]r[!corrl]>>-16
+          r[!coord]>>*l[!coord,cnj]
+  l[!-cnj]r[!corrl]>>*l[!corrl,cnj]
+  l[! cnj]r[!corrl]>>*l[!corrl]-1
+            l[!cnj]>>-1
 _
   left
   linefeed
@@ -193,7 +197,6 @@ g:SEGM[|*unique]->SEGM ELEM
   l[!pro,-brk] r[!lv]     >>*r+2
   l[!rn]       r[!ln]     >>*r-2
   l[!rv]       r[!lv]     >>*r-4
-  l[!that]     r[!lone]   >>*r-4
                           >>*r
 _
   left
@@ -246,7 +249,7 @@ g:ELEM->NCLU[:dit]
 # ?>>?
    >>[!rn]+
 _
-  append <conj>that</conj>
+  append that
   linefeed
   left
 __
@@ -255,7 +258,7 @@ g:ELEM->NCLU[:dat]
 _
   left
   linefeed
-  append <conj>that</conj>
+  append that
 __
 g:ELEM->PRO[=nom]
 # ?>>?
@@ -314,7 +317,7 @@ __
 g:ELEM->THAT VCLU[^s]
  >>[!rv]++
 _
-  append <conj>that</conj>
+  append that
   linefeed
   var punc=
   right
@@ -325,13 +328,10 @@ g:ELEM->ELEM[^dit] THAT
 _
   left
   linefeed
-  append <conj>that</conj>
+  right
 __
 g:ELEM->THAT
  >>[!ln,rv,that]-
-_
-  var typg=conj
-  (typg)
 __
 g:ELEM->DATE
 _
@@ -919,7 +919,17 @@ g:NOUN[:ing]->VERB XING
 _
   (twob)
 __
+g:NOUN[:*r]->TITL NOUN
+  >>+
+_
+  (twob)
+__
 g:NOUN[:hyph]->NOUN[:-hyph] PUNC[|hyph]
+__
+g:NOUN[:*r]->YEAR NOUN[:*u]
+ >>++++
+_
+  (twob)
 __
 g:NOUN[:*r]->NOUN[:hyph] NOUN
 # ?>>?
@@ -983,15 +993,16 @@ _
   (typg)
   append </vclu>
 __
-g:VCLU[^*r]->ADV VCLU[^-ed]
+g:VCLU[^*r]->ADV[~-cplx] VCLU[^-ed]
  l[$deg]>>*r------
 _
   var typg=adv
   (lxtd)
 __
-g:VCLU[^*r]->ADV VCLU[^ed]
+g:VCLU[^*r]->ADV[~-cplx] VCLU[^ed]
  l[$deg,cmpd]>>*r+
 _
+  view
   var typg=adv
   (lxtd)
 __
@@ -1137,8 +1148,8 @@ g:VERB[^hav]->HAVE
  >>-
 __
 g:VERB->AUXL[^*l] ADV
- n<3 >> ++
-     >> ----
+ n<3 >>++
+     >>----
 _
   (twob)
 __
@@ -1182,8 +1193,15 @@ _
   (typg)
   right
 __
-g:ADJ[%*r,more]->ADV ADJ[%-er]
- l[$deg]>>[$cmpd]+4
+g:ADJ[%*r,more]->ADV[~-int] ADJ[%-er]
+ l[$deg]>>[$cmpd]+6
+_
+  var typg=adv
+  (typg)
+  right
+__
+g:ADJ[%*r,more]->ADV[~int] ADJ[%-er]
+ >>+4
 _
   var typg=adv
   (typg)
@@ -1581,6 +1599,8 @@ d:without <- PREP[%neg]
 __
 d:toward  <- PREP
 __
+d:unto <- PREP
+__
 
 d:to   <- TO
 __
@@ -1630,6 +1650,10 @@ d:which <- DEM[@ind]
 __
 d:what  <- DEM[@ind]
 __
+d:cjwhat <- CONJ[@ind]
+_
+  append what
+__
 
 d:who  <- CONJ[@rel,ind]
 __
@@ -1647,7 +1671,7 @@ d:because  <- CONJ
 __
 d:until    <- CONJ
 __
-d:whatever <- CONJ
+d:whatever <- CONJ[@rel]
 __
 d:whenever <- CONJ
 __
@@ -1769,7 +1793,7 @@ __
 d:so   <- CONJ
 __
 d:so   <- ADV[~int]
- >>+
+ >>++
 __
 d:when <- CONJ
 __
@@ -2080,13 +2104,28 @@ __
 g:ADV->GENR PREP[%of]
  >>-2
 __
-g:ADV->ADV NCLU[:prep]
+g:ADV[~cplx]->ADV NCLU[:prep]
  >>-1
 __
 g:VERB[^*r,hav,ing]->HAVE[^ing] VERB[^ed]
  >>+4
 _
   (twob)
+__
+
+# abbreviated titles
+
+d:mr  <- TITL
+__
+d:mrs <- TITL
+__
+d:ms  <- TITL
+__
+d:dr  <- TITL
+__
+
+g:TITL[@dot]->TITL[@-dot] PUNC[|*x]
+ >>++++
 __
 
 # uses semantic feature !ppps since no syntactic feature %prep is available
@@ -2130,7 +2169,7 @@ g:ELEM->ALLTHT VCLU
 _
   append <nclu><quan>all</quan></nclu>
   linefeed
-  append <conj>that</conj>
+  append that
   linefeed
   right
 __
