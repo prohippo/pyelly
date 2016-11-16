@@ -1543,6 +1543,7 @@ woollen wool
 worthiness worth
 wove weave
 woven weave
+wrist wrist
 writer write
 written write
 wrote write
