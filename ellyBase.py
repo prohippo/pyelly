@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 03nov2016 CPM
+# ellyBase.py : 15nov2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -66,7 +66,7 @@ vocabulary = vocabularyTable.vocabulary # for saving compiled vocabulary
 
 _session = '.session.elly.bin'          # for saving session information
 
-# source text files
+# source text file suffixes
 
 _rules      = [ '.g.elly' , '.m.elly' , '.p.elly' , '.n.elly' , '.h.elly' ,
                 '.stl.elly' , '.ptl.elly' ]
@@ -148,7 +148,7 @@ def _notToDate ( system ):
     return vt < rt
 
 #
-# main class for processing single sentences
+# main class for processing single sentences, presented without NL's
 #
 
 class EllyBase(object):
@@ -167,8 +167,6 @@ class EllyBase(object):
         iex  - entity extractor
         trs  - simple transformation
         pnc  - punctuation recognizer
-
-        nultok - null token
 
         gundef - undefined symbols in *.p.elly and *.n.elly
         vundef - undefined symbols in *.v.elly
@@ -189,9 +187,7 @@ class EllyBase(object):
         nfail = 0          # error count for reporting
         self.rul = None
 
-        self.nultok = ellyToken.EllyToken()
-
-        self.gundef = [ ]  # record definition changes by module
+        self.gundef = [ ]  # record orphan symbols by module
         self.vundef = [ ]  #
         self.pundef = [ ]  #
         self.eundef = [ ]  #
@@ -347,7 +343,7 @@ class EllyBase(object):
     def translate ( self , text , plsb=False ):
 
         """
-        Elly processing of text input
+        Elly processing loop for text input
 
         arguments:
             self  -
@@ -375,8 +371,7 @@ class EllyBase(object):
                 if len(self.sbu.buffer) == 0:
                     break               # stop when sentence buffer is empty
                 self.ptr.startUpX()     # for any initial ... grammar rule
-                tokn = self._lookUpNext()
-                if tokn == None:
+                if not self._lookUpNext():
 #                   print 'lookup FAIL'
                     return None         # if next token cannot be handled, quit
                 if len(self.ptr.queue) == 0:
@@ -409,13 +404,14 @@ class EllyBase(object):
     def _lookUpNext ( self ):
 
         """
-        look up next segment in input buffer by various means
+        look up possible next segments in input buffer by various means,
+        keeping tokens only for the LONGEST segment
 
         arguments:
             self
 
         returns:
-            ellyToken on successful lookup, None otherwise
+            True on successful lookup, False otherwise
 
         exceptions:
             ParseOverflow
@@ -425,7 +421,7 @@ class EllyBase(object):
         s = self.sbu.buffer
 
         if len(s) == 0:                # check for end of input
-            return self.nultok         # if so, done
+            return False               # if so, done
 
         if self.trs != None:           # preanalysis of number expressions
             self.trs.rewriteNumber(s)
@@ -436,7 +432,6 @@ class EllyBase(object):
         s = self.sbu.buffer
 
 #       print 'expanded len=' , len(s)
-
         if len(s) == 0: return True    # macros can empty out buffer
 
 #       print unicode(self.sbu)
@@ -481,7 +476,7 @@ class EllyBase(object):
                 if not ellyChar.isApostrophe(suf[1]):
                     to.dvdd = True     # must note suffix removal for token!
 #           print 'queue:' , len(self.ptr.queue)
-            return to
+            return True
 
 #       print 'mx=' , mx
         wsk = self.sbu.buffer[:k]
@@ -491,6 +486,7 @@ class EllyBase(object):
         rws = u''.join(wsk)
         found = self.ptr.createPhrasesFromDictionary(rws.lower(),False,cap)
         if not found:
+#           print 'not found, k=' , k
             if k > mx and k > 1 and ellyChar.isEmbeddedCombining(rws[-1]):
                 k -= 1
                 rws = rws[:-1]
@@ -515,23 +511,24 @@ class EllyBase(object):
                 to.root = rt[:sn]      # root without suffix
                 self.sbu.prepend(suf)  # restore suffix to input for processing
             self.ctx.tokns.append(to)  # add token to parse tree
-            return to
+            return True
 
 #       print '[' + rws + ']' , 'still unrecognized'
 
-        to = self._extractToken(mx)    # single-word matching with analysis
+        to = self._extractToken(mx)    # single-word matching with analysis with lookup
 
 #       print 'to=' , unicode(to)
-        if to == None: return False if mx == 0 else True
+        if to == None:                 # if no match, we are done and will return
+            return False if mx == 0 else True  # still success if _scanText() found something
 
 #       print 'to=' , unicode(to) , 'len(s)=' , len(s) , s
 #       print 'at', len(self.ctx.tokns) , 'in token list'
-        self.ctx.tokns.append(to)
+        self.ctx.tokns.append(to)              # add token to parse queue
 
-#       posn = len(self.ctx.tokns) - 1 # put token into sentence sequence
+#       posn = len(self.ctx.tokns) - 1 # show where token is in sentence sequence
 #       print 'posn=' , posn
 #       print 'token=' ,  self.ctx.tokns[posn].root
-        return to
+        return True                    # successful lookup
 
     def _scanText ( self , k ):
 

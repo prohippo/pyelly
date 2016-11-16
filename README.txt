@@ -339,6 +339,7 @@ Release Notes:
                       fix problem with pattern matching on strings with brackets
                       clean up and extend "marking" rules and integration tests
                       clean up documentation 
+                      clean up ellyBase code and commentary
                       clean up ellySurvey code and fix dummy Tree class
                       fix problem with rule sequence numbers in parse tree dumping
                       use *x syntactic feature to identify period
