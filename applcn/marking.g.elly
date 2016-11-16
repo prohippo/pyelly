@@ -1601,6 +1601,8 @@ d:toward  <- PREP
 __
 d:unto <- PREP
 __
+d:via  <- PREP
+__
 
 d:to   <- TO
 __

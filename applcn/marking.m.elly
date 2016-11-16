@@ -8,13 +8,13 @@ can't -> cannot
 won't -> will not
 &@n’t -> \\1 not
 &@’ve -> \\1 have
-i'm   -> i am
+i’m   -> i am
 he’s  -> he is
 it’s  -> it is
 here’s  -> here is
 @here’s -> \\1here is
 that’s  -> that is
-let's   -> let us
+let’s   -> let us
 
 1_another -> one another
 
