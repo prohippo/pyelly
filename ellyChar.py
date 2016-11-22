@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 12nov2016 CPM
+# ellyChar.py : 18nov2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -436,30 +436,30 @@ def findBreak ( text , offset=0 , nspace=0 ):
     n = len(text)
 #   print 'find break k=' , k , 'n=' ,n
     while k < n:
-        x = text[k]
+        x = text[k]                                # iterate on next chars in input
 #       print 'char=' , x
-        if not isPureCombining(x):
+        if not isPureCombining(x):                 # check if not ordinary token char
 #           print 'special checking needed'
-            if x == '-' or isEmbeddedCombining(x):
+            if x == '-' or isEmbeddedCombining(x): # check if embeddable punctuation
                 if k + 1 < n:
-                    c = text[k+1]
+                    c = text[k+1]                  # look at next char in input
 #                   print 'next char=' , c
-                    if isApostrophe(c) or isLetterOrDigit(c) or c == AMP:
+                    if isApostrophe(c) or isLetterOrDigit(c) or c == AMP or c == '-':
                         k += 2
                         continue
-                    if isSpace(c):
+                    if isSpace(c):                 # if next char is space, is it expected?
 #                       print 'is space, nspace=' , nspace
                         if nspace > 0:
-                            k += 2
+                            k += 2                 # allow for space in token
                             nspace -= 1
                             continue
-                        elif not x in termina:
-#                           print 'append embedding char to scan range'
-                            k += 1
+                        elif not x in termina:     # look for a token break
+#                           print 'non breaking' , x
+                            k += 1                 # if none, continue scan
                             break
-                elif not x in termina:
-#                   print 'non breaking' , x
-                    k += 1
+                elif not x in termina:             # the above code must be repeated
+#                   print 'non breaking' , x       # since the elif code is paired
+                    k += 1                         # with a different if
                     break
 #           print 'space check, nspace=' , nspace
             if nspace > 0 and isSpace(x):
