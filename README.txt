@@ -337,12 +337,13 @@ Release Notes:
                       fix problems with English morphology rules
                       fix problem with ampersand in tokenization
                       fix problem with pattern matching on strings with brackets
+                      fix problem with abbreviations and hyphenation
                       clean up and extend "marking" rules and integration tests
                       clean up documentation 
                       clean up ellyBase code and commentary
                       clean up ellySurvey code and fix dummy Tree class
                       fix problem with rule sequence numbers in parse tree dumping
-                      use *x syntactic feature to identify period
+                      use *x syntactic feature to identify period as punctuation
                       add check to avoid ord() error on ''
                       add missing error exit in loading vocabulary table
 
