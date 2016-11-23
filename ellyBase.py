@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 15nov2016 CPM
+# ellyBase.py : 18nov2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -30,7 +30,7 @@
 
 """
 integrating PyElly components into a language processing tool
-to handle a single sentence at a time
+to handle a single sentence with no \n chars at one time
 """
 
 import sys
@@ -435,7 +435,7 @@ class EllyBase(object):
         if len(s) == 0: return True    # macros can empty out buffer
 
 #       print unicode(self.sbu)
-        k = self.sbu.findBreak()       # try to find first component for lookup
+        k = self.sbu.findBreak()       # find extent of first component for lookup
         if k == 0:
             k = 1                      # must have at least one char in token
 
