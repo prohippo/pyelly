@@ -6,7 +6,7 @@
 p:lxtd  # adding a tagged element from left side to a rightside markup
         # ('set' overrides any variable punc higher up in parse tree)
 _
-  trace
+# trace
   set punc=
   split
   right
@@ -222,7 +222,7 @@ _
   right
   append </conj>
 __
-g:SEGM->PEXP
+g:SEGM->PEXP[|-stop]
  >>--
 __
 
@@ -369,14 +369,23 @@ _
   var typg=adv
   (typg)
 __
-g:ELEM[^dit]->PEXP[|eg]
+g:ELEM[^dit]->PEXP[|eg,-stop]
  >>++
 __
-g:ELEM[^dit]->PEXP[|quo] PUNC[|*r,quo]
+g:ELEM[^dit]->PEXP[|quo,-stop] PUNC[|*r,quo]
  >>------
 _
   var typg=quote
   (typg)
+  linefeed
+  append <punc>
+  right
+  append </punc>
+__
+g:ELEM->PEXP[|stop] PUNC[|*r,quo]
+ >>[!ln]++
+_
+  left
   linefeed
   append <punc>
   right
@@ -394,7 +403,7 @@ _
   var typg=prep
   (lxtd)
 __
-g:ELEM[^dit]->PEXP[|eg,-com]
+g:ELEM[^dit]->PEXP[|eg,-com,-stop]
  >>*l
 __
 g:ELEM[^*r]->PUNC[|*l,quo] ELEM
@@ -434,7 +443,7 @@ _
   linefeed
 __
 
-g:PEXP[|eg]->PEXP[|eg,com] PUNC[|com]
+g:PEXP[|eg]->PEXP[|eg,com,-stop] PUNC[|com]
  >>++
 _
   left
@@ -505,7 +514,7 @@ _
   (pbeg)
   set punc=T
 __
-g:PEXP[|*l]->PEXP NCLU
+g:PEXP[|*l]->PEXP[|-stop] NCLU
  >>*l[!-rv,rn]--
 _
   var save=
@@ -528,18 +537,18 @@ _
   right
   append </punc>
 __
-g:NCLU->PEXP[|nom,eg,-com]
+g:NCLU->PEXP[|nom,eg,-com,-stop]
  >>++
 _
   var typg=nclu
   (typg)
 __
-g:NCLU[:det]->PEXP[|det,nom] PUNC[|*r]
+g:NCLU[:det]->PEXP[|det,nom,-stop] PUNC[|*r]
  >>*l[&quo]+4
 _
   (prom)
 __
-g:NCLU->PEXP[|-det,nom] PUNC[|*r]
+g:NCLU->PEXP[|-det,nom,-stop] PUNC[|*r]
  >>*r[&quo]+4
 _
   (prom)
@@ -589,27 +598,27 @@ _
   merge
 __
 
-g:VCLU->PEXP[|vrb,-ed,-ing] PUNC[|*r]
+g:VCLU->PEXP[|vrb,-ed,-ing,-stop] PUNC[|*r]
 _
   var typg=vclu
   (pend)
 __
-g:VCLU[^ed]->PEXP[|vrb,ed] PUNC[|*r]
+g:VCLU[^ed]->PEXP[|vrb,ed,-stop] PUNC[|*r]
 _
   var typg=vclu
   (pend)
 __
-g:VCLU[^ing]->PEXP[|vrb,ing] PUNC[|*r]
+g:VCLU[^ing]->PEXP[|vrb,ing,-stop] PUNC[|*r]
 _
   var typg=vclu
   (pend)
 __
-g:SEGM->PEXP[|-nom,-vrb] PUNC[|*r]
+g:SEGM->PEXP[|-nom,-vrb,-stop] PUNC[|*r]
  >>--
 _
   (pend)
 __
-g:DET->PEXP[|det,-nom] PUNC[|*r]
+g:DET->PEXP[|det,-nom,-stop] PUNC[|*r]
 _
   append <det>
   left
@@ -617,7 +626,7 @@ _
   right
   append </punc></det>
 __
-g:PEXP[|*l]->PEXP PUNC[|emb]
+g:PEXP[|*l]->PEXP[|-stop] PUNC[|emb]
 _
   left
   linefeed
@@ -2073,7 +2082,7 @@ g:ADJ[%*l,rquo]->ADJ[%-rquo] PUNC[|quo,*r]
 __
 g:SSNT->SEPR SENT
 _
-  trace
+# trace
   right
 __
 g:SENT->SENT SSNT
@@ -2211,4 +2220,73 @@ _
   left
   space
   right
+__
+
+#
+# special rules for quoted chants
+#
+
+p:lone
+_
+  append <
+  insert < ltyp
+  append >
+  left
+  right
+  append </
+  insert < ltyp
+  append >
+__
+
+g:SNGL[|vrb]->VERB PUNC[|stop]
+ l[$*c] n<3>>[$vls]++++
+           >>-8
+_
+  var ltyp=verb
+  (lone)
+__
+g:SNGL[|nom]->NOUN PUNC[|stop]
+ l[$*c] n<3>>[$nls]++++
+           >>-8
+_
+  var ltyp=noun
+  (lone)
+__
+g:SNGL->ADJ PUNC[|stop]
+ l[$*c] n<3>>++++
+           >>-8
+_
+  var ltyp=adj
+  (lone)
+__
+p:chnt
+_
+  append <punc>
+  left
+  append </punc>
+  linefeed
+  right
+__
+g:PEXP[|stop]->PUNC[|*l,quo] SNGL[|nom]
+ >>[$nls]
+_
+  (chnt)
+__
+g:PEXP[|stop]->PUNC[|*l,quo] SNGL[|vrb]
+_
+  (chnt)
+__
+g:PEXP[|stop]->PUNC[|*l,quo] SNGL[|-nom,-vrb]
+_
+  (chnt)
+__
+g:PEXP[|*l]->PEXP[|stop] SNGL[|nom]
+ l[$nls]>>[$nls]--
+        >>[$nls]
+__
+g:PEXP[|*l]->PEXP[|stop] SNGL[|vrb]
+ l[$-nls]>>--
+__
+g:PEXP[|*l]->PEXP[|stop] SNGL[|-nom,-vrb]
+ l[$nls]>>--
 __

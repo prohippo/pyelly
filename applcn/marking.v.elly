@@ -33,8 +33,8 @@ rose : VERB[^ed] - +1
 fishermen : NOUN[:plur]
 believes : VERB[^s]
 internationals : NOUN[:plur]
-rebaptizer : NOUN
-la nina : NOUN
+led : NOUN - -2
+led : VERB[^-ed]
 
 # # # # because word is already in WordNet as different entry or needs to be listed
 
@@ -42,8 +42,10 @@ building : VERB[^ing]
 discouraged : VERB[^ed]
 underutilize : VERB
 underutilization : NOUN
+lives : NOUN[:plur]   =life -s
+lives : VERB[^s] - +1 =live -s
 
-submillimeter : ADJ
+submillimeter  : ADJ
 interferometry : NOUN
 
 storytelling : NOUN
@@ -53,6 +55,7 @@ estimative : ADJ
 policymaker : NOUN
 hashtag : NOUN
 airstrike : NOUN
+rebaptizer : NOUN
 
 ah : MISC
 yes : MISC
@@ -140,6 +143,7 @@ straight after : CONJ
 like never before : ADV
 this year : NOUN[:*x]
 that year : NOUN[:*x]
+past year : NOUN[:*x]
 last year : NOUN[:*x]
 next year : NOUN[:*x]
 from beyond : PREP
@@ -160,6 +164,11 @@ about whether : CONJ
 insofar as : CONJ
 each other : PRO
 no one : PRO
+over the course of : PREP
+percent chance : NOUN
+at least one : NUM
+somewhere along : PREP
+approximately average : ADJ
 
 purchasing power : NOUN
 fixed investment : NOUN
@@ -211,6 +220,8 @@ three-day : ADJ
 tighty-whities : NOUN
 half-full : ADJ
 watered-down : ADJ
+full-throated : ADJ
+U.S.-led : ADJ
 
 # # # # names to recognize explicitly
 
@@ -260,6 +271,8 @@ twitter : NOUN
 U.N. : NOUN
 janis : NOUN
 Gallagher : NOUN
+Becker : NOUN
+la nina : NOUN
 
 # # # # miscellaneous
 
@@ -586,8 +599,8 @@ bird : NOUN
 bird : VERB
 birder : NOUN
 bit : NOUN
-black : NOUN
-black : VERB - -1
+black : NOUN - -1
+black : VERB - -4
 black : ADJ  - +2
 black hole : NOUN
 blend : NOUN
@@ -924,6 +937,7 @@ connect : VERB
 connection : NOUN
 consecutive : ADJ
 consecutive : ADV
+consequence : NOUN
 consequent : ADJ
 consider : VERB
 considerably : ADV
@@ -1764,6 +1778,7 @@ hard : ADV - -1
 hard-boiled : ADJ
 hard-core : ADJ
 hardly : ADV
+hardship : NOUN
 harry : VERB - -1
 harsh : ADJ
 havana : NOUN
@@ -2101,6 +2116,7 @@ left : ADJ
 left : ADV
 leg : NOUN
 legal : ADJ
+length : NOUN
 less : ADJ[%to] - +1
 less : ADV [$deg] 0
 lesser : adj
@@ -2243,7 +2259,7 @@ math : NOUN
 mathematical : ADJ
 mathematics : NOUN
 matter : NOUN
-matter : VERB
+matter : VERB - +1
 maxim : NOUN
 maxwell : NOUN
 maya : NOUN
