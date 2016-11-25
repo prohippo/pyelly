@@ -69,3 +69,8 @@
 0 \\[@\\]$  SPCL[|*r] -1
 
 0 !!’s$ NOUN[:plur] - 2 -1
+
+0 *.gov NOUN -1
+0 *.org NOUN -1
+0 *.edu NOUN -1
+0 *.com NOUN -1
