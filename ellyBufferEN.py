@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBufferEN.py : 07jan2016 CPM
+# ellyBufferEN.py : 25nov2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -40,8 +40,8 @@ import ellyException
 import ellyConfiguration
 import inflectionStemmerEN
 
-APO = ellyChar.APO                # literal   apostrophe
-APX = u'\u2019'                   # formatted apostrophe
+APO = ellyChar.APO                # literal ASCII apostrophe
+APX = u'\u2019'                   # formatted Unicode apostrophe
 ESS = u's'                        # literal S
 SFX = '-' + APO + ESS             # -'S suffix
 
@@ -145,15 +145,19 @@ class EllyBufferEN(ellyBuffer.EllyBuffer):
         y = word.charAt(wl-2)
 #       print 'word= ...' , y , x
 
-        if x == u's' and (
-           y == APO or y == APX     # check for -'S
+        if   x == ESS and (
+             y == APO or y == APX   # check for -'S
         ):
+#           print "-'s ending"
             word.shortenBy(2)
             self.putSuffixBack(SFX)
 #           print 'word=' , word , 'without -\'S'
             return
 
-        elif x == APO and y == ESS: # check for implied -'S
+        elif y == ESS and (
+             x == APO or x == APX   # check for implied -'S
+        ):
+#           print "-s' ending"
             word.shortenBy(1)
             self.putSuffixBack(SFX)
 #           print 'word=' , word , 'without -\''
