@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# patternTable.py : 20sep2016 CPM
+# patternTable.py : 25nov2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -159,8 +159,8 @@ class Link(object):
             x = u'' if self.synf == None else self.synf.hexadecimal(False)
             m = u'' if self.semf == None else self.semf.hexadecimal(False)
             b = str(self.bias)
-            n = unicode(self.nxts)
-            return p + ' ' + ' ' + c + ' ' + x + ' ' + m + ' ' + b + ' next=' + n
+            n = ' next=' + unicode(self.nxts) if self.nxts >= 0 else ' stop'
+            return p + ' ' + ' ' + c + ' ' + x + ' ' + m + ' ' + b + n
 
 Trmls = ellyWildcard.Trmls
 
