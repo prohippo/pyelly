@@ -2222,6 +2222,21 @@ _
   right
 __
 
+g:NCLU[:*r]->NEGN NCLU[:prep]
+ >>-
+_
+  (twob)
+__
+g:NCLU[:*r]->NEGN NCLU[:-prep,det]
+ >>-
+_
+  (twob)
+__
+g:VCLU[^*r]->NEGN VCLU[^infn]
+_
+  (twob)
+__
+
 #
 # special rules for quoted chants
 #

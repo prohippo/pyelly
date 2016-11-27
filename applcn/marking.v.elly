@@ -554,20 +554,20 @@ become : VERB
 bed : NOUN
 bed : VERB
 bedroom : NOUN
-before : ADV[~non]
+before : ADV[~non,trlg]
 beg : VERB
 begin : NOUN - -2
 begin : VERB[^proc]
 behind : NOUN
 behind : ADJ
-behind : ADV
+behind : ADV[~trlg]
 being : AUXL[^ing]
 being : NOUN - -2
 belief : NOUN
 bell : NOUN
 beloved : NOUN
 beloved : ADJ
-below : ADV
+below : ADV[~trlg]
 bend : NOUN
 bend : VERB
 benedictine : NOUN
@@ -586,9 +586,9 @@ betray : VERB
 better : NOUN - -1
 better : VERB
 better : ADJ[%er] - +1
-better : ADV
+better : ADV[~er]
 bewilder : VERB
-beyond : ADV
+beyond : ADV[~trlg]
 bible : NOUN
 big : NOUN - -1
 big : ADJ
@@ -859,7 +859,7 @@ colleague : NOUN
 collect : NOUN
 collect : VERB
 collect : ADJ
-collect : ADV
+collect : ADV - -2
 college : NOUN
 color : ADJ
 color : NOUN
@@ -1131,7 +1131,7 @@ decrease : VERB
 dedicate : VERB
 deep : NOUN
 deep : ADJ
-deep : ADV
+deep : ADV[~trlg]
 default : NOUN
 default : VERB
 defend : VERB[^ptcl]
@@ -1273,7 +1273,7 @@ duty : NOUN
 dylan : NOUN
 décor : NOUN
 early : ADJ [$time] 0
-early : ADV
+early : ADV[~trlg]
 earn : VERB
 earth : NOUN
 earth : VERB
@@ -1285,7 +1285,7 @@ easiest : ADJ
 easily : ADV
 east : NOUN - -2
 east : ADJ
-east : ADV[~dir]
+east : ADV[~dir,trlg]
 easter : NOUN
 eastern : ADJ
 easy : ADJ
@@ -1385,7 +1385,7 @@ evidence : VERB
 evident : ADJ
 exact : VERB
 exact : ADJ
-exactly : ADV
+exactly : ADV[~trlg]
 examine : VERB
 example : NOUN
 except : VERB - -2
@@ -1580,7 +1580,7 @@ formerly : ADV
 forward : NOUN
 forward : VERB
 forward : ADJ
-forward : ADV
+forward : ADV[~trlg]
 found : NOUN - -2
 found : VERB
 found : ADJ - -1
@@ -1643,7 +1643,7 @@ fundament : NOUN
 fundamental : ADJ
 further : VERB - -1
 further : ADJ
-further : ADV[~er] - +2
+further : ADV[~er,trlg] - +2
 future : NOUN
 future : ADJ
 gain : NOUN
@@ -2081,10 +2081,10 @@ last : VERB
 last : ADJ[%mod,to]
 last : ADV
 late : ADJ
-late : ADV
+late : ADV[~trlg]
 lately : ADV
 later : ADJ
-later : ADV
+later : ADV[~trlg]
 latin : NOUN
 latin : ADJ
 laugh : NOUN
@@ -2112,7 +2112,7 @@ leg : NOUN
 legal : ADJ
 length : NOUN
 less : ADJ[%to] - +1
-less : ADV [$deg] 0
+less : ADV[~trlg] [$deg] 0
 lesser : ADJ
 let : NOUN - -1
 let : VERB
@@ -2166,7 +2166,7 @@ long : ADJ
 long : ADV
 longer : NOUN - -2
 longer : ADJ
-longer : ADV - -1
+longer : ADV[~trlg] - -1
 look : NOUN
 look : VERB[^ptcl] - +1
 loophole : NOUN
@@ -2184,7 +2184,7 @@ lovely : ADJ
 low : NOUN - -2
 low : VERB - -1
 low : ADJ - +2
-low : ADV [$prd] 0
+low : ADV[~trlg] [$prd] 0
 lower : NOUN - -2
 lower : VERB
 lower : ADJ
@@ -2350,7 +2350,7 @@ moon : VERB
 moore : NOUN
 more : NOUN - -1
 more : ADJ[%to]
-more : ADV [$deg] 0
+more : ADV[~trlg] [$deg] 0
 more or less : ADV
 most : ADJ
 most : ADV [$deg] 0
@@ -2463,16 +2463,16 @@ normal : ADJ
 normalize : VERB
 north : NOUN - -2
 north : ADJ
-north : ADV[~dir]
+north : ADV[~dir,trlg]
 north pole : NOUN
 northeast : NOUN - 2
 northeast : ADJ
-northeast : ADV[~dir]
+northeast : ADV[~dir,trlg]
 northern : NOUN - -1
 northern : ADJ
 northwest : NOUN - 2
 northwest : ADJ
-northwest : ADV[~dir]
+northwest : ADV[~dir,trlg]
 nose : NOUN
 nose : VERB
 notable : NOUN
@@ -2511,7 +2511,7 @@ odd : ADJ
 odds : NOUN
 off : VERB - -2
 off : ADJ
-off : ADV
+off : ADV[~trlg]
 offend : VERB
 offensive : NOUN
 offensive : ADJ
@@ -2571,7 +2571,7 @@ other : ADJ [$ind] 0
 out : NOUN - -3
 out : VERB - -3
 out : ADJ  - -1
-out : ADV
+out : ADV[~trlg]
 outbreak : NOUN
 outcome : NOUN
 outline : NOUN
@@ -3054,7 +3054,7 @@ ride : VERB
 right : NOUN
 right : VERB
 right : ADJ
-right : ADV
+right : ADV[~trlg]
 righteous : ADJ
 rise : NOUN
 rise : VERB
@@ -3329,15 +3329,15 @@ source : NOUN
 source : VERB
 south : NOUN - -2
 south : ADJ
-south : ADV[~dir]
+south : ADV[~dir,trlg]
 south pole : NOUN
 southeast : NOUN - -2
 southeast : ADJ
-southeast : ADV[~dir]
+southeast : ADV[~dir,trlg]
 southern : ADJ
 southwest : NOUN - -2
 southwest : ADJ
-southwest : ADV[~dir]
+southwest : ADV[~dir,trlg]
 soviet : NOUN - -1
 soviet : ADJ
 spain : NOUN
@@ -3794,7 +3794,7 @@ unsettle : VERB
 unwilling : ADJ
 up : VERB - -6
 up : ADJ - -2
-up : ADV - -1
+up : ADV[~trlg] - -1
 upcoming : ADJ
 update : NOUN
 update : VERB
@@ -3914,7 +3914,7 @@ well : MISC [!spcs] -2
 well-known : ADJ
 west : NOUN - -2
 west : ADJ
-west : ADV[~dir]
+west : ADV[~dir,trlg]
 western : NOUN - -1
 western : ADJ
 wheel : NOUN
@@ -3931,7 +3931,7 @@ whole : NOUN
 wick : NOUN
 wicked : ADJ
 wide : ADJ
-wide : ADV
+wide : ADV[~trlg]
 wild : NOUN
 wild : ADJ - +2
 wild : ADV - -1
