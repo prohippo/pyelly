@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# macroTable.py : 14sep2016 CPM
+# macroTable.py : 30nov2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -296,8 +296,8 @@ class MacroTable(object):
                 self._err('bad wildcards',l)
                 continue
             pe = pat[-1]
-            if pe != ellyWildcard.cALL and pe != ellyWildcard.cEND:
-                pat += ellyWildcard.cEND      # pattern must end in $ if it does not end in *
+            if not pe in [ ellyWildcard.cALL , ellyWildcard.cEND , ellyWildcard.cSPC ]:
+                pat += ellyWildcard.cEND      # pattern must end in $ if it does not end in * or _
             if not _checkBindings(pat,tail):
                 self._err('bad bindings in substitution',l)
                 continue
@@ -409,7 +409,7 @@ def _dmpall ( slot ):
 
     for r in slot:
         print u' {:16s}'.format(ellyWildcard.deconvert(r[0])) ,
-        print u'    ({:2d})'.format(r[1]) ,
+        print u'    ({:2d} spWC)'.format(r[1]) ,
         print '->' , list(r[2])
 
 #

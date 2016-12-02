@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# substitutionBuffer.py : 14sep2016 CPM
+# substitutionBuffer.py : 30nov2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -140,15 +140,18 @@ class SubstitutionBuffer(
             if x == None: break
 #           print 'expand x=' , ord(x) , x
             lr = self.mtb.getRules(x)
+#           print len(lr) , ' macros to check'
 
             # try selected macros sequentially on start of input buffer
 
             for r in lr:
                 if self._match(r):
+#                   print 'macro match'
                     done = True
                     break
             else:
-                break   # no macros matched
+#               print 'no macros matched'
+                break
 
         return done
 
@@ -182,6 +185,7 @@ class SubstitutionBuffer(
 #       print 'lim=' , lim
 
         mbd = ellyWildcard.match(pattern,self.buffer,0,lim,spaces) # try to match
+#       print 'match=' , not (mbd == None)
         if mbd == None: return False                               # if no match bindings, stop
 
         mbl = len(mbd)               # limit on wildcard bindings from match

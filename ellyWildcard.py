@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 01nov2016 CPM
+# ellyWildcard.py : 30nov2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -503,8 +503,10 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
             else:
                 last = text[offs]
                 offs += 1
-#           print 'matching last=' , last , 'at' , offs
+#           print 'matching last=' , last, '(' , ord(last) , ') at' , offs
+#           print 'against       ' , patn[mp] , '(' , ord(patn[mp]) , ')'
             if patn[mp] != last.lower(): break
+#           print 'matched!'
             mp += 1
 
         ## check whether mismatch is due to special pattern char
