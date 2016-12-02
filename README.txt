@@ -346,6 +346,11 @@ Release Notes:
                       use *x syntactic feature to identify period as punctuation
                       add check to avoid ord() error on ''
                       add missing error exit in loading vocabulary table
+ 1.3.20  - 01dec2016  clean up toplevel error checking and reporting
+                      clean up logic for what rule files to recompile
+                      fix problem with macro patterns ending in _ wildcard
+                      add print statements for debugging
+                      clean up PyElly table and tree dumps
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
