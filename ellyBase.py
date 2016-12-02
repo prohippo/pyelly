@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 18nov2016 CPM
+# ellyBase.py : 01dec2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -74,7 +74,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.3.19'                     # current version of PyElly software
+release = 'v1.3.20'                     # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -85,13 +85,18 @@ def _timeModified ( basn , filn ):
         file  - pathname
 
     returns:
-        integer number of seconds since base time
+        integer number of seconds since base time if filn exists, 0 otherwise
 
     exceptions:
         OSError
     """
 
-    return int(os.path.getmtime(basn + filn))
+    pathn = basn + filn
+#   print 'time check:' , pathn
+    if os.path.isfile(pathn):
+        return int(os.path.getmtime(pathn))
+    else:
+        return 0       # i.e. really, really old
 
 def _isSaved ( systm , compn , srcs ):
 
@@ -113,7 +118,7 @@ def _isSaved ( systm , compn , srcs ):
         print >> sys.stderr , '**** time error on' , compn
         return False
 
-    basn = ellyConfiguration.baseSource + '/'
+    basn = ellyConfiguration.baseSource
 
     for f in srcs:
         try:
@@ -125,7 +130,7 @@ def _isSaved ( systm , compn , srcs ):
             return False
     return True
 
-def _notToDate ( system ):
+def _notVocabularyToDate ( system ):
 
     """
     check vocabulary versus grammar time stamps
@@ -243,7 +248,7 @@ class EllyBase(object):
 
 #       print '2 redefine=' , redefine
         if not redefine:
-            if not _isSaved(system,vocabulary,_vocabulary) or _notToDate(system):
+            if not _isSaved(system,vocabulary,_vocabulary) or _notVocabularyToDate(system):
                 redefine = True
 
         stb = d.stb if d != None else symbolTable.SymbolTable()
@@ -272,10 +277,8 @@ class EllyBase(object):
         nto = len(stb.ntname)         # for consistency check
 
         if ellyConfiguration.treeDisplay:
-            print "tree display ON"
             self.ptr = parseTreeWithDisplay.ParseTreeWithDisplay(stb,d.gtb,d.ptb,self.ctx)
         else:
-            print "tree display OFF"
             self.ptr = parseTree.ParseTree(stb,d.gtb,d.ptb,self.ctx)
 
         ntabl = d.ntb
@@ -296,12 +299,17 @@ class EllyBase(object):
 #       print '4:' , len(stb.ntname) , 'syntactic categories'
 
 #       print '3 redefine=' , redefine
-        if redefine: print 'recompiling vocabulary'
+        if redefine: print 'recompiling vocabulary rules'
         try:
             voc = ellyDefinition.Vocabulary(system,redefine,stb,inflx)
         except ellyException.TableFailure:
             voc = None
             nfail += 1
+
+        if ellyConfiguration.treeDisplay:
+            print "tree display ON"
+        else:
+            print "tree display OFF"
 
 #       try:
 #           print 'c rul time=' , _timeModified(aid,rules)
@@ -318,6 +326,7 @@ class EllyBase(object):
 
         ntn = len(stb.ntname)         # do consistency check on syntactic category count
         if nto != ntn:
+            print >> sys.stderr , ''
             print >> sys.stderr , 'WARNING: grammar rules should predefine all syntactic categories'
             print >> sys.stderr , '         and features referenced in language definition files'
 
