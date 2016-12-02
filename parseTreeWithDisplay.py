@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeWithDisplay.py : 05nov2016 CPM
+# parseTreeWithDisplay.py : 01dec2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -201,7 +201,7 @@ class ParseTreeWithDisplay(parseTree.ParseTree):
 
         out.write('\n')
         ng = self.glim
-        out.write(str(nph) + ' phrases, ' + str(ng) + ' goals\n')
+        out.write(str(nph) + ' phrases, ' + str(ng) + ' goals\n\n')
         out.flush()
 
     def dumpTree ( self , ph ):

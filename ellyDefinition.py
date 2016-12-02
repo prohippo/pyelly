@@ -48,6 +48,7 @@ import ellyException
 import ellyPickle
 
 grammar    = '.grammar.elly.bin'        # for saving compiled grammar rules
+vocabulary = '.vocabulary.elly.bin'     #                     vocabulary
 
 class EllyDefinition(object):
 
@@ -181,7 +182,7 @@ class Grammar(EllyDefinition):
                 ellyPickle.save(self,sysf)
 
         else:
-            print "loading saved language rules from" , sysf
+            print "loading saved grammar rules from" , sysf
 
             gram = ellyPickle.load(sysf)
             if gram == None:
@@ -227,10 +228,12 @@ class Vocabulary(EllyDefinition):
 
         try:
             if create:
-#               print 'compiling' , system , 'vocabulary'
                 dT = self.inpT(system,'v')
 #               dT.dump()
                 vocabularyTable.compile(system,syms,dT)
+            else:
+                sysf = system + vocabulary
+                print "loading saved vocabulary rules from" , sysf
 
             self.vtb = vocabularyTable.VocabularyTable(system,stem)
         except ellyException.TableFailure:

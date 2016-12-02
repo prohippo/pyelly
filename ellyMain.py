@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyMain.py : 18nov2016 CPM
+# ellyMain.py : 01dec2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -116,6 +116,7 @@ except ellyException.TableFailure as e:
     sys.exit(1)
 
 if interact:
+    print ''
     print 'Enter text with one or more sentences per line.'
     print 'End input with E-O-F character on its own line.'
 
