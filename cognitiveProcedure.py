@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveProcedure.py : 13aug2016 CPM
+# cognitiveProcedure.py : 28nov2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -99,10 +99,15 @@ class CognitiveProcedure(object):
                     break
                 elif op == semanticCommand.Clftf or op == semanticCommand.Crhtf:
                     # test features of descendants
+#                   print >> sys.stderr , 'op=' , p
                     if phrs.krnl.lftd == None: break
+#                   print >> sys.stderr , 'lftd=' , phrs.krnl.lftd.krnl.seqn
                     dph = ( phrs.krnl.lftd if op == semanticCommand.Clftf or phrs.krnl.rhtd == None
                             else phrs.krnl.rhtd )
+#                   print >> sys.stderr , 'dph=' , dph
                     bts = dph.krnl.semf.compound()
+#                   print >> sys.stderr , 'bts=' , bts
+#                   print >> sys.stderr , 'cnd=' , p[1]
                     if not ellyBits.check(p[1],bts): break
                 elif op == semanticCommand.Clftc or op == semanticCommand.Crhtc:
                     # check concepts of descendants
