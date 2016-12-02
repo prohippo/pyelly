@@ -1572,9 +1572,9 @@ __
 d:under   <- PREP
  >>+
 __
-d:about   <- PREP
+d:about   <- PREP[%*l]
 __
-d:above   <- PREP
+d:above   <- PREP[%*l]
 __
 d:like    <- PREP[%mod]
  >>+
@@ -2233,6 +2233,22 @@ _
   (twob)
 __
 g:VCLU[^*r]->NEGN VCLU[^infn]
+_
+  (twob)
+__
+
+g:NUM->PREP[%*l] NUM
+ >>-
+_
+  (twob)
+__
+
+d:AD <- SPCL[|*l]
+__
+g:NCLU->NUM SPCL[|*l]
+#     ?>>?
+ r[$*c]>>+++++++
+       >>----
 _
   (twob)
 __

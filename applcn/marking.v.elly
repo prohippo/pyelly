@@ -143,7 +143,7 @@ straight after : CONJ
 like never before : ADV
 this year : NOUN[:*x]
 that year : NOUN[:*x]
-past year : NOUN[:*x]
+the past year : NOUN[:*x]
 last year : NOUN[:*x]
 next year : NOUN[:*x]
 from beyond : PREP
@@ -169,6 +169,11 @@ percent chance : NOUN
 at least one : NUM
 somewhere along : PREP
 approximately average : ADJ
+to do much more : VCLU[^infn]
+and now : CONJ
+but now : CONJ
+and then : CONJ
+but then : CONJ
 
 purchasing power : NOUN
 fixed investment : NOUN
@@ -269,10 +274,12 @@ catalina : NOUN
 rockette : NOUN
 twitter : NOUN
 U.N. : NOUN
+U.S. : NOUN
 janis : NOUN
 Gallagher : NOUN
 Becker : NOUN
 la nina : NOUN
+Farhan Haq : NOUN
 
 # # # # miscellaneous
 
@@ -3780,6 +3787,7 @@ union : ADJ - -1
 union : NOUN
 unit : NOUN
 unite : VERB
+united nations : NOUN
 united states : NOUN
 unity : NOUN
 universal : NOUN

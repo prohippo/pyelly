@@ -74,3 +74,5 @@
 0 *.org NOUN -1
 0 *.edu NOUN -1
 0 *.com NOUN -1
+
+0 #&#-#&#$ NUM -1
