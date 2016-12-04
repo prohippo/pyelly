@@ -40,10 +40,13 @@ led : VERB[^-ed]
 
 building : VERB[^ing]
 discouraged : VERB[^ed]
-underutilize : VERB
-underutilization : NOUN
 lives : NOUN[:plur]   =life -s
 lives : VERB[^s] - +1 =live -s
+regarding : PREP - +1
+regarding : NOUN - -1
+regarding : VERB
+underutilize : VERB
+underutilization : NOUN
 
 submillimeter  : ADJ
 interferometry : NOUN
@@ -169,7 +172,7 @@ percent chance : NOUN
 at least one : NUM
 somewhere along : PREP
 approximately average : ADJ
-to do much more : VCLU[^infn]
+do much more : VERB
 and now : CONJ
 but now : CONJ
 and then : CONJ
@@ -1620,7 +1623,7 @@ frequent : ADJ
 frequently : ADV
 fresh : ADJ
 fresh : ADV
-friday : NOUN
+friday : NAVB
 friend : NOUN
 friendship : NOUN
 fright : NOUN
@@ -2345,7 +2348,7 @@ modification : NOUN
 modify : VERB
 moment : NOUN
 monarch : NOUN
-monday : NOUN
+monday : NAVB
 monetize : VERB
 money : NOUN
 monitor : NOUN
@@ -3121,7 +3124,7 @@ sap : NOUN
 sap : VERB
 satellite : NOUN
 satellite : ADJ
-saturday : NOUN
+saturday : NAVB
 save : NOUN
 save : VERB
 sawm : NOUN
@@ -3501,7 +3504,7 @@ suicide : NOUN
 suit : NOUN
 suit : VERB
 suite : NOUN
-sunday : NOUN
+sunday : NAVB
 sunlight : NOUN
 support : NOUN
 support : VERB
@@ -3647,7 +3650,7 @@ three : NOUN
 three : ADJ
 throat : NOUN
 throughout : ADV
-thursday : NOUN
+thursday : NAVB
 ticket : NOUN
 ticket : VERB - -2
 tidbit : NOUN
@@ -3663,7 +3666,7 @@ time : VERB
 timely : ADJ
 title : NOUN
 title : VERB
-today : NOUN
+today : NAVB
 today :ADV
 toe : NOUN
 toe : VERB
@@ -3997,7 +4000,7 @@ wrong : VERB
 wrong : ADJ
 wrong : ADV
 wry : ADJ
-year : NOUN
+year : NOUN [&msr] 0
 yearn : VERB
 yellow : NOUN
 yellow : VERB

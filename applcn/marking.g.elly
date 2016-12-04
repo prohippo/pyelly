@@ -908,6 +908,7 @@ __
 g:NOUN->UNKN
 __
 g:NOUN->NAVB
+ >>-
 __
 g:NOUN->VERB SUFX[#vTOn]
 _
@@ -927,6 +928,14 @@ g:NOUN[:ing]->VERB XING
    >>-
 _
   (twob)
+__
+g:NOUN[:*l]->NOUN[:ing] NAVB
+ >>++
+_
+  left
+  append <adv>
+  right
+  append </adv>
 __
 g:NOUN[:*r]->TITL NOUN
   >>+
@@ -1406,6 +1415,14 @@ __
 g:ADV[~*l]->ADV[~er] CMPC
 _
   (twob)
+__
+g:ADV[~*r]->NCLU[:-prep,-det,num] ADV[~trlg]
+ l[&msr]>>++++
+        >>----
+__
+g:ADV[~*r]->NCLU[:-prep,-det,-num,plur] ADV[~trlg]
+ l[&msr]>>++++
+        >>----
 __
 
 g:DEM[@*r]->PREP[%-cnj] DEM[@ind]
@@ -2078,7 +2095,7 @@ _
 __
 g:PEXP[|emb,quo]->PUNC[|quo,*l] ADJ[%rquo]
 __
-g:ADJ[%*l,rquo]->ADJ[%-rquo] PUNC[|quo,*r]
+g:ADJ[%*l,rquo]->ADJ[%-rquo] PUNC[|quo,-com,*r]
 __
 g:SSNT->SEPR SENT
 _
