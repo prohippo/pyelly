@@ -351,6 +351,7 @@ Release Notes:
                       fix problem with macro patterns ending in _ wildcard
                       add print statements for debugging
                       clean up PyElly table and tree dumps
+                      extend "marking" rules and integration testing
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
