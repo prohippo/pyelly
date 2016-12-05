@@ -34,7 +34,8 @@ fishermen : NOUN[:plur]
 believes : VERB[^s]
 internationals : NOUN[:plur]
 led : NOUN - -2
-led : VERB[^-ed]
+led : VERB[^ed]
+born : VERB[^ed] - +2
 
 # # # # because word is already in WordNet as different entry or needs to be listed
 
@@ -177,6 +178,10 @@ and now : CONJ
 but now : CONJ
 and then : CONJ
 but then : CONJ
+as a result : CONJ
+as a result of : PREP
+some of : QUAN
+a few of : QUAN
 
 purchasing power : NOUN
 fixed investment : NOUN
