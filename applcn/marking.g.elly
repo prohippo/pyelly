@@ -39,7 +39,6 @@ _
   merge
 __
 
-
 p:typg  # left generation of element tagged as specified type
 _
   append <
@@ -371,6 +370,9 @@ _
 __
 g:ELEM[^dit]->PEXP[|eg,-stop]
  >>++
+_
+  var typg=conj
+  (typg)
 __
 g:ELEM[^dit]->PEXP[|quo,-stop] PUNC[|*r,quo]
  >>------
@@ -707,6 +709,7 @@ g:NCLU[:*r,prep]->PREP[%-cnj] NCLU[:-prep,-num]
 _
   (pphr)
 __
+
 g:NCLU->DATE NCLU[:-det,-num,-qnt,-prep]
 _
   var typg=date
@@ -1083,20 +1086,21 @@ __
 g:PCLS[^*l]->VERB[^ing] NCLU
  l[$trns]>>+2
 _
-  append <clause><vclu><verb>
+  append <vclu><verb>
   left
   append </verb></vclu>
   linefeed
   right
-  append </clause>
 __
 g:PCLS[^*l]->VERB[^ing] PRO
 _
-  append <clause><vclu><verb>
+  append <vclu><verb>
   left
-  append </verb></vclu><pro>
+  append </verb></vclu>
+  linefeed
+  append <pro>
   right
-  append </pro></clause>
+  append </pro>
 __
 
 g:ADJX[%*r,lquo]->punc[|*l,quo] ADJ
@@ -1280,7 +1284,7 @@ g:PREP->ADJ TO
 _
   (twob)
 __
-g:PREP[%cnj]->PREP[%-cnj] CONJ
+g:PREP[%cnj]->PREP[%-cnj] CONJ[@-rel]
  >>+
 _
   left

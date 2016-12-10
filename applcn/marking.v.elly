@@ -36,6 +36,7 @@ internationals : NOUN[:plur]
 led : NOUN - -2
 led : VERB[^ed]
 born : VERB[^ed] - +2
+based on : VERB[^ed]
 
 # # # # because word is already in WordNet as different entry or needs to be listed
 
@@ -182,11 +183,15 @@ as a result : CONJ
 as a result of : PREP
 some of : QUAN
 a few of : QUAN
+has to do : VERB
+the default is : VERB
+making it easier : VERB[^ing]
 
 purchasing power : NOUN
 fixed investment : NOUN
 genetically modified : ADJ
 genome editing : NOUN
+results page : NOUN
 
 for example : PEXP[|eg]
 such as : DEM
@@ -1074,7 +1079,7 @@ cup : NOUN
 cup : VERB
 cur : NOUN
 currency : NOUN
-current : NOUN
+current : NOUN - -1
 current : ADJ
 curry : NOUN
 curry : VERB
@@ -3631,7 +3636,7 @@ theme : NOUN
 theme : VERB
 then: ADV
 then : NOUN - -6
-then : ADJ - -2
+then : ADJ - -4
 theorem : NOUN
 therapy : NOUN
 therefore : ADV
