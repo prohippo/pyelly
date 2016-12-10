@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 18nov2016 CPM
+# ellyChar.py : 09dec2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -61,7 +61,8 @@ Apd = [ u'*' , u'+' , u'-' ]                                    # marks appendin
 
 Pnc = [ u'“' , u'”' , u'‘' , u'’' , u'–' , u'—' , u'…' , u'™' ] # special punctuation
 
-Opn = [ u'“' , u'‘' , u'"' , u"'" , u'[' ]
+Opn = [ u'“' , u'‘' , u'"' , u"'" , u'[' , u'(' ]
+Cls = [ u'”' , u'’' , u'"' , u"'" , u']' , u')' ]
 
 Lim = u'\u0100'    # limit of Unicode chars recognized except for Pnc
 
@@ -437,7 +438,7 @@ def findBreak ( text , offset=0 , nspace=0 ):
 #   print 'find break k=' , k , 'n=' ,n
     while k < n:
         x = text[k]                                # iterate on next chars in input
-#       print 'char=' , x
+#       print 'char=' , x , '@' , k
         if not isPureCombining(x):                 # check if not ordinary token char
 #           print 'special checking needed'
             if x == '-' or isEmbeddedCombining(x): # check if embeddable punctuation
@@ -461,6 +462,23 @@ def findBreak ( text , offset=0 , nspace=0 ):
 #                   print 'non breaking' , x       # since the elif code is paired
                     k += 1                         # with a different if
                     break
+            elif k == offset and x in Opn:
+#               print 'look for short bracketed segment'
+                j  = k + 1
+                jl = k + 4
+                if jl > n: jl = n
+#               print 'j=' , j , 'jl=' , jl
+#               print 'input=' , text[k:]
+                while j < jl:
+                    if text[j] in Cls: break
+                    j += 1
+#               print 'j=' , j , 'jl=' , jl
+                if j < jl:
+#                   print 'segment found'
+                    k = j
+                k += 1
+                break
+
 #           print 'space check, nspace=' , nspace
             if nspace > 0 and isSpace(x):
                 k += 1
@@ -473,6 +491,6 @@ def findBreak ( text , offset=0 , nspace=0 ):
 #           print 'punctuation break'
             break
         k += 1
-#   print 'k=' , k , 'offset=' , offset
+#   print 'break=' , k , 'offset=' , offset
     return k - offset
 
