@@ -352,6 +352,11 @@ Release Notes:
                       add print statements for debugging
                       clean up PyElly table and tree dumps
                       extend "marking" rules and integration testing
+ 1.3.21  - 10dec2016  fix problem recognizing short bracketed tokens
+                      clean up basic PyElly character handling
+                      simplify output tags for "marking" example application
+                      extend "marking" rules and integration testing
+                      update and clarify documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
