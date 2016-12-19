@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# symbolTable.py : 13aug2016 CPM
+# symbolTable.py : 17dec2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -39,7 +39,7 @@ import ellyBits
 import ellyChar
 import sys
 
-NMAX = 64  # maximum number of syntactic type names
+NMAX = 72  # maximum number of syntactic type names
 FMAX = 16  # maximum number of feature names per set
 
 LAST = FMAX - 1
