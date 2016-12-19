@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 17apr2016 CPM
+# vocabularyTable.py : 19dec2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -35,6 +35,7 @@ Elly vocabulary database support using SQLite
 import os
 import sys
 
+import symbolTable
 import ellyChar
 import ellyException
 import vocabularyElement
@@ -132,6 +133,8 @@ def _terminate ( c ):
     """
 
     return not ellyChar.isLetterOrDigit(c)
+
+_smfchk = [None]*symbolTable.NMAX     # for extra consistency check
 
 def compile ( name , stb , defn ):
 
@@ -240,7 +243,9 @@ def compile ( name , stb , defn ):
                 except ellyException.FormatFailure:
                     _err('malformed syntax specification')
                 cat = str(ss.catg)                        #   syntax category
+                cid = _smfchk[ss.catg]                    #   associated semantic feature ID
                 syf = ss.synf.positive.hexadecimal(False) #   syntactic flags
+#               print 'cat=' , cat
 #               print 'syf=' , syf
 
                 smf = zfs                                 # initialize defaults for
@@ -261,7 +266,14 @@ def compile ( name , stb , defn ):
                             if ns < 0:
                                 _err()
                             sem = d[:ns]                  # get semantic features
-                            d = d[ns:].strip()            # skip over
+                            d = d[ns:].strip()            # skip over for subsequent processing
+
+                            sid = sem[1]                  # feature ID
+                            if sid != cid:
+                                if cid != None:
+                                    _err('inconsistent semantic feature id')
+                                _smfchk[ss.catg] = sid
+
                             try:
 #                               print 'smf=' , smf
                                 fs = FSpec(stb,sem,True)
@@ -314,7 +326,6 @@ def compile ( name , stb , defn ):
                         if len(dd) == 0 or dd[0] != '=':
                             _err()
 
-
                 d = d.strip()                             # rest of definition
 #               print 'rest of d=' , d
                 if len(d) > 0 and d[-1] == '=':
@@ -360,12 +371,12 @@ def compile ( name , stb , defn ):
 #               print 'rec=' , vrc , 'tra=' , d
 #               print '   =' , vss
 
-            except ellyException.FormatFailure:
+            except ellyException.FormatFailure:     # will catch exceptions from _err()
                 print >> sys.stderr , '*  at [' , tsave ,
                 if dsave != None:
                     print >> sys.stderr , ':' , dsave ,
                 print >> sys.stderr , ']'
-                continue                            # skip rest of processing
+                continue                            # skip rest of processing this rule
 
 #### SQLite
 ####
@@ -382,7 +393,8 @@ def compile ( name , stb , defn ):
 
 #### SQLite
 ####
-        cdb.commit()
+        if nerr == 0:
+            cdb.commit()
         cdb.close()                                   # clean up
 #       print 'DONE'
 #
@@ -789,7 +801,6 @@ if __name__ == '__main__':
     import ellyDefinitionReader
     import ellyConfiguration
     import inflectionStemmerEN
-    import symbolTable
 
     from ellyPickle import load
     from ellyBase   import rules
