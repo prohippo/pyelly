@@ -8,35 +8,45 @@
 
 # # # # common irregularities handled explicitly
 
-has : HAVE
-had : HAVE[^ed]
-having : HAVE[^ing]
 biggest : ADJ
 largest : ADJ
 
-ate : VERB[^ed]
-began : VERB[^ed,proc]
-bit : VERB[^ed]
-built : VERB[^ed]
-did : VERB[^ed]
-does not : AUXL[^s]
-hove : VERB[^ed]
-made up : VERB[^ed]
-ought : VERB
-said : VERB[^ed,dit]
-sat down : VERB[^ed]
-taken : VERB[^ed]
-thought : VERB[^ed]
-went : VERB[^ed]
-written : VERB[^ed]
-rose : VERB[^ed] - +1
-fishermen : NOUN[:plur]
+ate : VERB[^ed,*x]
+based on : VERB[^ed,*x]
+became : VERB[^ed,chng]
+began : VERB[^ed,proc,*x]
 believes : VERB[^s]
+bit : VERB[^ed,*x]
+born : VERB[^ed] - +2
+built : VERB[^ed]
+did : VERB[^ed,*x]
+does not : AUXL[^s]
+fishermen : NOUN[:plur]
+forgave : VERB[^ed,*x]
+forgot : VERB[^ed,*x]
+forgotten : VERB[^ed]
+gave : VERB[^ed,*x]
+get out : VERB
+got : VERB[^ed,chng,*x]
+got out : VERB[^ed]
+got up : VERB[^ed,*x]
+had : HAVE[^ed]
+has : HAVE
+having : HAVE[^ing]
+hove : VERB[^ed]
 internationals : NOUN[:plur]
 led : NOUN - -2
 led : VERB[^ed]
-born : VERB[^ed] - +2
-based on : VERB[^ed]
+made up : VERB[^ed,*x]
+ought : VERB
+rose : VERB[^ed,*x] - +1
+said : VERB[^ed,dit]
+sat down : VERB[^ed,*x]
+taken : VERB[^ed]
+thought : VERB[^ed]
+went : VERB[^ed,*x]
+written : VERB[^ed]
+wrote : VERB[^ed,*x]
 
 # # # # because word is already in WordNet as different entry or needs to be listed
 
@@ -89,6 +99,8 @@ time control : NOUN
 sales team : NOUN
 colored slave : NOUN
 cast recording : NOUN
+intelligence survey : NOUN
+intelligence study : NOUN
 
 as if : CONJ
 as though : CONJ
@@ -119,7 +131,7 @@ than ever before : CMPC
 for now : ADV
 such a  : QUAN
 such an : QUAN
-calm and collected : ADJ
+calm and collected : ADJ [$cmpd] 0
 just as : ADV [$deg] 0
 just as : CONJ - -1
 from across : PREP
@@ -186,6 +198,8 @@ a few of : QUAN
 has to do : VERB
 the default is : VERB
 making it easier : VERB[^ing]
+make available : VERB
+made available : VERB[^ed] =make -ed available
 
 purchasing power : NOUN
 fixed investment : NOUN
@@ -547,8 +561,8 @@ base : NOUN
 base : VERB
 base : ADJ
 baseline : NOUN
-basic : NOUN
-basic : ADJ
+basic : NOUN - -6
+basic : ADJ - +1
 basis : NOUN
 basket : NOUN
 basketball : NOUN
@@ -568,9 +582,8 @@ bean : NOUN
 bean : VERB
 beautiful : ADJ
 beauty : NOUN
-became : VERB[^ed]
 beck : NOUN
-become : VERB
+become : VERB[^chng]
 bed : NOUN
 bed : VERB
 bedroom : NOUN
@@ -1079,7 +1092,7 @@ cup : NOUN
 cup : VERB
 cur : NOUN
 currency : NOUN
-current : NOUN - -1
+current : NOUN - -2
 current : ADJ
 curry : NOUN
 curry : VERB
@@ -1695,8 +1708,8 @@ geological : ADJ
 geology : NOUN
 george : NOUN
 germany : NOUN
-get : NOUN - -2
-get : VERB[^ptcl]
+get : NOUN - -4
+get : VERB[^chng,ptcl]
 get : BE
 giant : NOUN
 giant : ADJ
@@ -2029,8 +2042,8 @@ john : NOUN
 join : NOUN
 join : VERB
 joint : NOUN
-joint : VERB
-joint : ADJ
+joint : VERB - -2
+joint : ADJ - +1
 joke : NOUN
 joke : VERB
 journal : NOUN
@@ -2587,7 +2600,7 @@ ornament : NOUN
 ornament : VERB
 ornamental : NOUN - -1
 ornamental : ADJ
-other : ADJ [$ind] 0
+other : ADJ[%mod] [$ind] 0
 out : NOUN - -3
 out : VERB - -3
 out : ADJ  - -1
@@ -2721,7 +2734,7 @@ pillar : NOUN
 pin : NOUN
 pin : VERB
 place : NOUN
-place : VERB
+place : VERB [$noaj] 0
 plague : NOUN
 plague : VERB
 plan : NOUN
@@ -2936,6 +2949,7 @@ rate : NOUN
 rate : VERB
 raw : NOUN
 raw : ADJ
+raw data : NOUN
 reach : NOUN
 reach : VERB
 read : NOUN - -1
@@ -3060,7 +3074,7 @@ revenge : VERB
 revenue : NOUN
 review : NOUN
 review : VERB
-revise : NOUN
+revise : NOUN - -2
 revise : VERB
 revision : NOUN
 revive : VERB
@@ -3751,7 +3765,7 @@ turk : NOUN
 turkish : NOUN
 turkish : ADJ
 turn : NOUN
-turn : VERB[^ptcl]
+turn : VERB[^chng,ptcl]
 tv : NOUN
 tv channel : NOUN
 tweet : NOUN
@@ -3831,7 +3845,7 @@ urban : ADJ
 urgent : ADJ
 us : NOUN
 usa : NOUN
-use : NOUN [!spcs] 0
+use : NOUN [&spcs] 0
 use : VERB
 useful : ADJ
 usually : ADV

@@ -421,6 +421,11 @@ _
   var typg=elem
   (decom)
 __
+g:ELEM->SPCL[|*r]
+_
+  var typg=conj
+  (typg)
+__
 
 g:PUNC[|*l]->PUNC[|*l,quo] CONJ
  >>[$trlg]
@@ -770,14 +775,14 @@ _
 __
 g:NCLU[:*r,det]->DEM[@-sgl,-plur,-dit] NCLU[:-det,-prep,-qnt,-dit]
 #                 ?>>?
- l[!-*c,spcs]r[!*c]>>*r----
+ l[!-*c,spcs]r[&*c]>>*r----
                    >>*r+
 _
   (dmnc)
 __
 g:NCLU[:*r,det,sgl]->DEM[@sgl,-dit] NCLU[:-det,-prep,-plur,-qnt,-dit]
 #                 ?>>?
- l[!-*c,spcs]r[!*c]>>*r----
+ l[!-*c,spcs]r[&*c]>>*r----
                    >>*r++
 _
   (dmnc)
@@ -789,7 +794,7 @@ _
   (dmnc)
 __
 
-g:NCLU[:*r]->ADJ[%-ed] NCLU[:-det,-prep,-num,-qnt]
+g:NCLU[:*r]->ADJ[%-ed,-cnj] NCLU[:-det,-prep,-num,-qnt]
 #             ?>>?
  l[$ind]r[&quo]>>*r[&cmpd]----
         r[&quo]>>*r[&cmpd]
@@ -798,7 +803,7 @@ _
   var typg=adj
   (lxtd)
 __
-g:NCLU[:*r]->ADJ[%ed] NCLU[:-det,-prep,-num,-qnt]
+g:NCLU[:*r]->ADJ[%ed,-cnj] NCLU[:-det,-prep,-num,-qnt]
 #             ?>>?
        r[&cmpd]>>*r[&cmpd]----
  l[$ind]r[&quo]>>*r[&cmpd]----
@@ -958,36 +963,36 @@ g:NOUN[:*r]->NOUN[:hyph] NOUN
 __
 g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,-plur,-ing] NOUN[:-cnj,ing,-*x]
 #       ?>>?
- l[!spcs]>>-2
+ l[&spcs]>>-2
          >>+0
 _
   (twob)
 __
 g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,-plur,-ing] NOUN[:-cnj,-ing,-*x]
 #            ?>>?
-      l[!spcs]>>-2
- l[!-*c]r[!*c]>>+2
+      l[&spcs]>>-2
+ l[&-*c]r[&*c]>>+2
               >>+1
 _
   (twob)
 __
 g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,plur,-ing] NOUN[:-cnj,-ing,-plur,-*x]
 #           ?>>?
- l[!*c]r[!*c]>>+2
-       l[!*c]>>+0
+ l[&*c]r[&*c]>>+2
+       l[&*c]>>+0
              >>----
 _
   (twob)
 __
 g:NOUN->NOUN[:*x] XID
- l[!*c]>>+3
+ l[&*c]>>+3
        >>-2
 _
   (twob)
 __
 g:NOUN->NOUN[:-*x,-plur,-ing] XID
- l[!*c]r[!*c]>>+2
-      l[!-*c]>>-2
+ l[&*c]r[!*c]>>+2
+      l[&-*c]>>-2
       r[!-*c]>>-2
 _
   (twob)
@@ -1005,15 +1010,20 @@ _
   right
 __
 
-g:VCLU[^*l]->VERB
-# ?>>?
-   >>*l
+p:vrbl
 _
   append <vclu>
   var typg=verb
   (typg)
   append </vclu>
 __
+g:VCLU[^*l]->VERB
+# ?>>?
+   >>*l
+_
+  (vrbl)
+__
+
 g:VCLU[^*r]->ADV[~-cplx] VCLU[^-ed]
  l[$deg]>>*r------
 _
@@ -1060,7 +1070,7 @@ _
   var typg=aux
   (lxtd)
 __
-g:VCLU[^pass,*r]->BE VCLU[^ed,-hav]
+g:VCLU[^*r]->BE VCLU[^ed,-hav]
  >>*r+
 _
   var typg=aux
@@ -1158,6 +1168,11 @@ g:VERB[^beaj]->BE ADJ[%-ed,-ing]
 _
   (twob)
 __
+g:VERB->VERB[^chng] ADJ
+ >>*l++
+_
+  (twob)
+__
 g:VERB[^*l,to]->VERB[^beaj] TO
  >>+
 _
@@ -1237,15 +1252,16 @@ __
 g:ADJ[%*r]->NOUN[:hyph] ADJ
  >>++
 __
-g:ADJ[%ed]->VERB[^ed,-dit]
- n<2>>------
- p<1>>-
-    >>[$ind]--
+g:ADJ[%ed]->VERB[^ed,-dit,-*x]
+ l[$noaj]>>-------
+      n<2>>------
+      p<1>>-
+         >>[$ind]--
 __
 g:ADJ[%ing]->VERB[^ing,-proc,-ed]
       n<2>>------
  l[$trns]>>-----
-      n>2>>---
+      n>2>>-----
          >>--
 __
 g:ADJ->VERB SUFX[#vTOa]
@@ -1272,10 +1288,23 @@ g:ADV->NEGN ADV[~-non]
 _
   (twob)
 __
+
 g:ADJ->NEGN ADJ
  >>-
 _
- (twob)
+  (twob)
+__
+g:ADJ[%cnj]->CONJ[@cnj] ADJ[%-*x]
+ n>3>>*r----
+ n>2>>*r--
+    >>*r-
+_
+  (twob)
+__
+g:ADJ[%*r,-cnj]->ADJ[%-*x] ADJ[%cnj]
+ >>*r++++
+_
+  (twob)
 __
 
 g:PREP->ADJ TO
@@ -2099,7 +2128,7 @@ _
 __
 g:PEXP[|emb,quo]->PUNC[|quo,*l] ADJ[%rquo]
 __
-g:ADJ[%*l,rquo]->ADJ[%-rquo] PUNC[|quo,-com,*r]
+g:ADJ[%*l,rquo]->ADJ[%-rquo,-*x] PUNC[|quo,-com,*r]
 __
 g:SSNT->SEPR SENT
 _
@@ -2212,12 +2241,14 @@ _
   append <dem>that</dem></nclu>
 __
 g:ADJX[%cnj]->ADJ PUNC[|com]
- >>*l
+ l[$cmpd]>>----
+         >>*l
 _
   (twob)
 __
 g:ADJX[%cnj]->ADJ CONJ[@cnj,-rel]
- >>*l--
+ l[$cmpd]>>----
+         >>*l--
 _
   (twob)
 __
@@ -2232,7 +2263,7 @@ g:ADJ->ADV HYPA
  >>++++
 __
 
-g:PUNC[|*l]->PUNC SPCL[|*r]
+g:PUNC[|*l]->PUNC SPCL[|*r,-*x]
  >>++
 __
 g:NOUN->NOUN SPCL[|*r]
