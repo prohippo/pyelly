@@ -33,7 +33,7 @@ Python pydoc utility.
 At present, PyElly consists of 64 Python modules comprising about sixteen
 thousand lines of source code. There are also various definition files
 to support basic various language processing capabilities. The PyElly
-download also includes rules for some example applications, including
+download includes rules for some example applications, including
 
 * indexing - remove stopwords and get stems for content words from raw
              text input.
@@ -357,6 +357,11 @@ Release Notes:
                       simplify output tags for "marking" example application
                       extend "marking" rules and integration testing
                       update and clarify documentation
+ 1.3.22  - 21dec2016  increase maximum syntactic category count to 72
+                      add checks on semantic feature IDs in vocabulary rules
+                      extend and clean up "marking" rules
+                      extend "marking" integration testing
+                      update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure

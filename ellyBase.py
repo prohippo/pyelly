@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 09dec2016 CPM
+# ellyBase.py : 17dec2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -74,7 +74,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.3.21'                     # current version of PyElly software
+release = 'v1.3.22'                     # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -312,8 +312,8 @@ class EllyBase(object):
             print "tree display OFF"
 
 #       try:
-#           print 'rul time=' , _timeModified(aid,rules)
-#           print 'voc time=' , _timeModified(aid,vocabulary)
+#           print 'c rul time=' , _timeModified(aid,rules)
+#           print 'c voc time=' , _timeModified(aid,vocabulary)
 #       except:
 #           print 'rul or voc time exception'
 
@@ -839,7 +839,7 @@ if __name__ == '__main__':
         print >> sys.stderr , 'cannot initialize rules and vocabulary'
         sys.exit(1)
 
-    if dpth >= 0: eb.ptr.setDepth(dpth)
+    if dpth >= 0: eb.ptr.setDepth(dpth)  # for parsse trees
 
     print ""
     dumpEllyGrammar.dumpCategories(eb.rul.stb)
