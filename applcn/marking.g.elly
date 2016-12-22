@@ -828,7 +828,16 @@ _
   left
   append </quan></nclu>
 __
-g:NCLU[:*r,det,qnt]->QUAN[@ind] NCLU[:-prep,-ing]                       
+g:NCLU[:*r,det,qnt]->QUAN[@ind] NCLU[:-prep,-ing,-plur]
+#                ?>>?
+          l[!mltp]>>*r--------
+ l[!corrl]r[&-nml]>>*r------
+                  >>*r++
+_
+  var typg=quan
+  (lxtd)
+__
+g:NCLU[:*r,det,qnt]->QUAN[@ind] NCLU[:-prep,-ing,plur]
 #                ?>>?
  l[!corrl]r[&-nml]>>*r------
                   >>*r++
@@ -836,6 +845,7 @@ _
   var typg=quan                                               
   (lxtd)
 __
+
 g:NCLU[:*r,det,qnt]->QUAN[@-ind] NCLU[:-prep]                       
 #                ?>>?
  l[!corrl]r[&-nml]>>*r------
@@ -1748,6 +1758,7 @@ __
 d:some <- QUAN[@ind]
 __
 d:many <- QUAN[@ind]
+ >>[!mltp]
 __
 d:each <- QUAN[@ind,cnj]
 __
@@ -1756,6 +1767,7 @@ __
 d:no   <- QUAN
 __
 d:several<-QUAN[@ind]
+ >>[!mltp]
 __
 d:both   <- QUAN[@ind,cnj]
  >>[!corrl]
@@ -1943,6 +1955,8 @@ __
 d:not  <- NEGN
 __
 d:never <- ADV
+__
+d:non  <- PREF
 __
 
 #
@@ -2260,7 +2274,8 @@ __
 g:HYPA->PUNC[|hyph] VERB[^ed]
 __
 g:ADJ->ADV HYPA
- >>++++
+ n>4>>----
+    >>++++
 __
 
 g:PUNC[|*l]->PUNC SPCL[|*r,-*x]
@@ -2303,6 +2318,19 @@ g:NCLU->NUM SPCL[|*l]
        >>----
 _
   (twob)
+__
+
+g:PREF[|hyph]->PREF[|-hyph] PUNC[|hyph]
+ >>+++
+__
+g:NOUN->PREF NOUN
+ >>++
+__
+g:ADJ->PREF ADJ
+ >>++
+__
+g:ADJ->NOUN HYPA
+ >>++++
 __
 
 #

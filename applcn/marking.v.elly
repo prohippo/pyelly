@@ -101,6 +101,8 @@ colored slave : NOUN
 cast recording : NOUN
 intelligence survey : NOUN
 intelligence study : NOUN
+zone training : NOUN
+calories burned : NOUN
 
 as if : CONJ
 as though : CONJ
@@ -112,7 +114,7 @@ ahead of : PREP
 up to : ADV[~mod]
 pretty much : ADV[~mod,prox] [$deg] 0
 a lot of : QUAN
-a few : QUAN
+a few : QUAN[@ind] [!mltp] 0
 all at once : ADV
 some of which : CONJ
 not only : CONJ
@@ -200,6 +202,9 @@ the default is : VERB
 making it easier : VERB[^ing]
 make available : VERB
 made available : VERB[^ed] =make -ed available
+increase or decrease : VERB
+in order to : TO
+along with : PREP
 
 purchasing power : NOUN
 fixed investment : NOUN
@@ -336,6 +341,7 @@ account : VERB
 accountability : NOUN
 accountable : ADJ
 accrue : VERB
+accuracy : NOUN
 accurate : ADJ
 accurately : ADV
 ache : NOUN
@@ -1818,6 +1824,7 @@ heal : VERB
 hear  : VERB [$trns] 0
 heard : VERB[^ed] [$trns] 0
 heart : NOUN
+heart rate : NOUN
 heavily : ADV
 heavy : NOUN
 heavy : ADJ
