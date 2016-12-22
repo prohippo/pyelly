@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 17dec2016 CPM
+# ellyBase.py : 21dec2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -331,6 +331,8 @@ class EllyBase(object):
         if nfail > 0:
             print >> sys.stderr , 'exiting: table generation FAILures'
             sys.exit(1)
+
+        sys.stderr.flush()
 
 #       print 'EllyBase.__init__() DONE'
 
