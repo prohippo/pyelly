@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# symbolTable.py : 17dec2016 CPM
+# symbolTable.py : 23dec2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -170,7 +170,7 @@ class SymbolTable(object):
                 d['*x'] = LAST       # always define '*x'
                 d['*u'] = LAST       # always define '*u'
                 d['*unique'] = LAST  # equivalent to '*u' and '*x'
-            fsx[fid] = d             # if not, make it known
+            fsx[fid] = d             # make new feature set known
         h = fsx[fid]                 # for hashing of feature names
         if len(fnm) == 0:            # check for empty features
             return [ bp , bn ]
@@ -187,10 +187,15 @@ class SymbolTable(object):
                 b = bp               # positive bits by default
 
 #           print '--------  nm=' , nm
-            for c in nm:             # check feature name
-                if not ellyChar.isLetterOrDigit(c) and c != '*':
+            nmc = nm if nm[0] != '*' else nm[1:]
+            for c in nmc:            # check feature name chars
+                if not ellyChar.isLetterOrDigit(c):
+                    print >> sys.stderr , 'bad feature name=' , nm
                     return None
             if not nm in h:          # new name in feature set?
+                if nm[0] == '*':     # user cannot define reserved name
+                    print >> sys.stderr , 'unknown reserved feature=' , nm
+                    return None
                 k = len(h)           # yes, this will be next free index
                 l = FMAX             # upper limit on feature index
                 if ty:               # semantic feature?
@@ -206,6 +211,7 @@ class SymbolTable(object):
                     return None
                 h[nm] = k            # define new feature
 
+#           print 'set bit' , h[nm] , 'for' , fid + nm
             b.set(h[nm])             # set bit for feature
         return [ bp , bn ]
 
