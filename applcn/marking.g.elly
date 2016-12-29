@@ -794,7 +794,7 @@ _
   (dmnc)
 __
 
-g:NCLU[:*r]->ADJ[%-ed,-cnj] NCLU[:-det,-prep,-num,-qnt]
+g:NCLU[:*r]->ADJ[%-ed,-ing,-cnj] NCLU[:-det,-prep,-num,-qnt]
 #             ?>>?
  l[$ind]r[&quo]>>*r[&cmpd]----
         r[&quo]>>*r[&cmpd]
@@ -805,7 +805,16 @@ _
 __
 g:NCLU[:*r]->ADJ[%ed,-cnj] NCLU[:-det,-prep,-num,-qnt]
 #             ?>>?
-       r[&cmpd]>>*r[&cmpd]----
+       r[&cmpd]>>*r----
+ l[$ind]r[&quo]>>*r[&cmpd]----
+        r[&quo]>>*r[&cmpd]
+               >>*r[&cmpd]+++
+_
+  var typg=adj
+  (lxtd)
+__
+g:NCLU[:*r]->ADJ[%ing,-cnj] NCLU[:-det,-prep,-num,-qnt]
+ r[&prop]>>----
  l[$ind]r[&quo]>>*r[&cmpd]----
         r[&quo]>>*r[&cmpd]
                >>*r[&cmpd]+++
@@ -881,15 +890,29 @@ _
 # trace
   (poss)
 __
-g:NCLU[:det]->DET NUM
+g:NCLU[:det]->DET NUM  # ####
  >>--
 _
   append <nclu>
   var typg=det
   (typg)
-  append <num>
+
+  split
   right
-  append </num></nclu>
+  back
+  delete 2 <
+  var tem
+  store tem
+  if tem=1
+    append <pro>one</pro>
+    merge
+  else
+    append <num>
+    insert < tem
+    merge
+    append </num>
+    end
+  append </nclu>
 __
 g:NCLU[:*l,poss]->NCLU APOS
  >>*l-
@@ -915,7 +938,8 @@ _
   right
   append </adj></nclu>
 __
-g:NCLU->PRO[=mod]
+g:NCLU->PRO[=one]  # ####
+ >>--
 _
   append <nclu>
   var typg=pro
@@ -1011,7 +1035,7 @@ g:NOUN->ABBR NOUN
 _
   (twob)
 __
-g:PRO[=*r,-mod]->PREP[%-cnj] PRO[=-nom]
+g:PRO[=*r,-one]->PREP[%-cnj] PRO[=-nom]
 # ?>>?
    >>[!ppps]
 _
@@ -1835,7 +1859,7 @@ __
 d:themselves <- PRO[=rflx]
 __
 
-d:1 <- PRO[=mod]
+d:1 <- PRO[=one]
 _
   append one
 __
@@ -1856,7 +1880,7 @@ d:or   <- CONJ[@cnj,qnt]
 __
 d:but  <- CONJ
 __
-d:nor  <- CONJ
+d:nor  <- CONJ[@cnj,qnt]
  >>[!coord]
 __
 d:plus <- CONJ
@@ -1883,12 +1907,6 @@ __
 d:than    <- CONJ
 __
 d:except  <- CONJ
-__
-d:both    <- CONJ
- >>[!corrl]
-__
-d:either  <-CONJ
- >>[!corrl]
 __
 
 d:is   <- BE
@@ -2323,7 +2341,7 @@ __
 g:PREF[|hyph]->PREF[|-hyph] PUNC[|hyph]
  >>+++
 __
-g:NOUN->PREF NOUN
+g:ADJ->PREF NOUN
  >>++
 __
 g:ADJ->PREF ADJ
@@ -2400,4 +2418,125 @@ g:PEXP[|*l]->PEXP[|stop] SNGL[|vrb]
 __
 g:PEXP[|*l]->PEXP[|stop] SNGL[|-nom,-vrb]
  l[$nls]>>--
+__
+
+#
+# conjoined correlative expressions
+#
+
+d:neither <- ECJS
+__
+d:nor     <- ECJN
+__
+d:both    <- ECJS
+__
+d:and     <- ECJN
+__
+d:either  <- ECJS
+__
+d:or      <- ECJN
+__
+
+p:dfcj
+_
+  append <conj>
+  left
+  append </conj>
+__
+p:dfnm
+_
+  append <nclu><quan>
+  left
+  append </quan></nclu>
+__
+
+# do NOT enforce exact correlation!
+
+g:ECJS[=*l]->ECJS[=idn] ECJN[=idn]
+ >>+11
+_
+  var typc=
+  left
+  linefeed
+  right
+__
+g:ECJS[=idn,*r]->ECJS[=-idn] ITM
+# ?>>?
+   >>++
+_
+  if   typc=nom
+    split
+    right
+    back
+    shift 6 <
+    append <quan>
+    left
+    append </quan>
+    merge
+  elif typc=vrb
+    (dfnm)
+    linefeed
+    right
+  else
+    (dfcj)
+    right
+    end
+__
+g:ECJN[=idn,*r]->ECJN[=-idn] ITM
+ >>+
+_
+  (dfcj)
+  right
+__
+g:ITM[=nom]->NCLU
+ >>+
+__
+g:ITM[=vrb,ing]->VCLU[^ing]
+__
+g:ITM[=vrb]->VCLU[^-ing]
+__
+g:ITM->ADJ
+_
+  append <adj>
+  left
+  append </adj>
+__
+g:ITM->ADV
+_
+  append <adv>
+  left
+  append </adv>
+__
+
+g:ELEM->ECJS[=idn,-*l,nom]
+ >>+
+_
+  var typc=nom
+  left
+__
+g:ELEM->ECJS[=idn,-*l,vrb,-ing]
+ >>+
+_
+  var typc=vrb
+  left
+__
+g:ELEM->ECJS[=idn,-*l,vrb,ing]
+ >>+++
+_
+  var typc=vrb
+  left
+__
+g:ELEM->ECJS[=idn,-*l,-nom,-vrb]
+ >>+
+_
+  var typc=
+  left
+__
+g:ELEM->ECJS[=-idn,-*l]
+ >>-
+_
+  (dfnm)
+__
+g:ELEM->ECJS[=*l]
+ >>+
 __

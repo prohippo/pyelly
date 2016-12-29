@@ -35,6 +35,7 @@ has : HAVE
 having : HAVE[^ing]
 hove : VERB[^ed]
 internationals : NOUN[:plur]
+known : VERB[^ed,*x]
 led : NOUN - -2
 led : VERB[^ed]
 made up : VERB[^ed,*x]
@@ -47,6 +48,7 @@ thought : VERB[^ed]
 went : VERB[^ed,*x]
 written : VERB[^ed]
 wrote : VERB[^ed,*x]
+anti : PREF
 
 # # # # because word is already in WordNet as different entry or needs to be listed
 
@@ -205,6 +207,9 @@ made available : VERB[^ed] =make -ed available
 increase or decrease : VERB
 in order to : TO
 along with : PREP
+more like : PREP
+less like : PREP
+full time : ADV
 
 purchasing power : NOUN
 fixed investment : NOUN
@@ -603,6 +608,7 @@ behind : ADV[~trlg]
 being : AUXL[^ing]
 being : NOUN - -2
 belief : NOUN
+believe : VERB
 bell : NOUN
 beloved : NOUN
 beloved : ADJ
@@ -1515,7 +1521,7 @@ fee : NOUN
 fee : VERB - -2
 feed : NOUN
 feed : VERB
-feel : NOUN
+feel : NOUN - -1
 feel : VERB
 fellow : NOUN
 female : NOUN
@@ -1583,7 +1589,7 @@ float : VERB
 flood : NOUN
 flood : VERB
 flow : NOUN
-flow : VERB
+flow : VERB - +1
 fly : NOUN
 fly : VERB
 fly : ADJ - -1
@@ -1867,6 +1873,7 @@ hollywood : NOUN
 hollywood : ADJ
 holy : NOUN
 holy : ADJ
+holy spirit : NOUN
 home : NOUN
 home : VERB
 home : ADJ
@@ -2041,7 +2048,8 @@ japan : NOUN
 japan : VERB
 jersey : NOUN
 jerusalem : NOUN
-jesus : NOUN
+jesus : NOUN [&prop] 0
+jesus christ : NOUN [&prop] 0
 jigsaw puzzle : NOUN
 job : NOUN
 job : VERB - -2
@@ -2471,7 +2479,6 @@ negotiation : NOUN
 neighbor : NOUN
 neighbor : VERB
 neighborhood : NOUN
-neither : ADJ
 nest : NOUN
 nest : VERB
 net : NOUN
@@ -3470,7 +3477,7 @@ stifle : VERB
 still : NOUN - -2
 still : VERB - -2
 still : ADJ
-still : ADV
+still : ADV - +1
 stir : NOUN
 stir : VERB
 stockpile : NOUN
