@@ -361,8 +361,8 @@ Release Notes:
                       add checks on semantic feature IDs in vocabulary rules
                       extend and clean up "marking" rules
                       extend "marking" integration testing
-                      update documentation
                       fix doTest script to make it self-complete
+                      update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
