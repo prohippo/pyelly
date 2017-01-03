@@ -120,7 +120,7 @@ at least : ADV[~mod]
 out of : PREP
 round at : PREP
 ahead of : PREP
-up to : ADV[~mod]
+up to : ADV[~mod] [$deg] 0
 pretty much : ADV[~mod,prox] [$deg] 0
 a lot of : QUAN
 a few : QUAN[@ind] [!mltp] 0
@@ -219,6 +219,8 @@ less like : PREP
 full time : ADV
 by far : ADV
 can and will : AUXL
+or more : POST
+each : POST - -1
 
 purchasing power : NOUN
 fixed investment : NOUN
@@ -227,7 +229,7 @@ genome editing : NOUN
 results page : NOUN
 
 for example : PEXP[|eg]
-such as : DEM
+such as : PREP
 my own : DEM[@ind]
 your own : DEM[@ind]
 his own : DEM[@ind]

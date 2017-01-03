@@ -763,6 +763,18 @@ _
   left
   append </dem></nclu>
 __
+g:NCLU[:*l]->NCLU[:num] POST
+ >>++++
+_
+  left
+  split
+  back
+  shift 7 >
+  append <adv>
+  right
+  append </adv>
+  merge
+__
 
 p:dmnc
 _
@@ -1402,6 +1414,13 @@ g:NUM[:*r]->ADV[~ord] NUM[:-*r]
  >>++
 _
   (twob)
+__
+g:NUM[:*l]->NUM[:-*l] POST
+_
+  left
+  append <adv>
+  right
+  append </adv>
 __
 
 #
