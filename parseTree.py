@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTree.py : 16jul2016 CPM
+# parseTree.py : 30dec2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -200,12 +200,15 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
                     rF = phn.krnl.synf.test(0)
                     lF = phn.krnl.synf.test(1)
                     if lF:                                  # inherit features from previous phrase?
+#                       print '*l set' , str(phx.krnl.synf)
                         phn.krnl.synf.combine(phx.krnl.synf)
                         phn.krnl.synf.unset(0)
+#                       print 'TO' , str(phn.krnl.synf)
                     if rF:                                  # inherit features from ramified phrase?
+#                       print '*r set' , str(phx.krnl.synf)
                         phn.krnl.synf.combine(phr.krnl.synf)
                         phn.krnl.synf.unset(1)
-                        phn.krnl.synf.set(0)
+#                       print 'TO' , str(phn.krnl.synf)
                     phn.krnl.synf.reset(r.sftr)             # reset selected inherited bits
 #                   print 'phr=' , phr , 'phn=' , phn
                     self.enqueue(phn)                       # save new phrase for ramification
@@ -247,9 +250,13 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
                     rF = phn.krnl.synf.test(0)
                     lF = phn.krnl.synf.test(1)
                     if lF or rF:                       # inherit features from current phrase?
+#                       print 'lF or rF'
                         phn.krnl.synf.combine(phr.krnl.synf)
-                        phn.krnl.synf.unset(1)
-                        phn.krnl.synf.set(0)
+                        if lF:
+                            phn.krnl.synf.unset(0)
+                        else:
+                            phn.krnl.synf.unset(1)
+#                       print 'TO' , str(phn.krnl.synf)
                     phn.krnl.synf.reset(r.sftr)        # reset selected inherited bits
 #                   print 'phn=' , phn
                     self.enqueue(phn)                  # save new phrase for ramification

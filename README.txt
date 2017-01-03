@@ -357,11 +357,12 @@ Release Notes:
                       simplify output tags for "marking" example application
                       extend "marking" rules and integration testing
                       update and clarify documentation
- 1.3.22  - 21dec2016  increase maximum syntactic category count to 72
+ 1.3.22  - 20dec2016  increase maximum syntactic category count to 72
                       add checks on semantic feature IDs in vocabulary rules
                       extend and clean up "marking" rules
                       extend "marking" integration testing
                       fix doTest script to make it self-complete
+                      fix bug in *LEFT syntactic feature inheritance
                       update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
