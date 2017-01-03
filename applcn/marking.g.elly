@@ -184,6 +184,7 @@ _
 __
 g:SEGM[|*unique]->ELEM
 #            ?>>?
+           n<2>>*l-
       l[!spcs]>>*l-6
       l[!lv,s]>>*l-
   l[!trng] n<3>>*l
@@ -995,39 +996,52 @@ g:NOUN[:*r]->NOUN[:hyph] NOUN
 # ?>>?
    >>++
 __
-g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,-plur,-ing] NOUN[:-cnj,ing,-*x]
+g:NOUN[:*r,cnj]->NOUN[:-*l,-hyph,-poss,-plur,-ing] NOUN[:-cnj,ing,-*x]
 #       ?>>?
+ r[&prop]>>-2
  l[&spcs]>>-2
-         >>+0
 _
   (twob)
 __
-g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,-plur,-ing] NOUN[:-cnj,-ing,-*x]
+g:NOUN[:*r,cnj]->NOUN[:-*l,-hyph,-poss,-plur,-ing] NOUN[:-cnj,-ing,-*x]
 #            ?>>?
+      r[&prop]>>-2
       l[&spcs]>>-2
  l[&-*c]r[&*c]>>+2
               >>+1
 _
   (twob)
 __
+
 g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,plur,-ing] NOUN[:-cnj,-ing,-plur,-*x]
 #           ?>>?
+     r[&prop]>>-2
  l[&*c]r[&*c]>>+2
        l[&*c]>>+0
-             >>----
+             >>-4
 _
   (twob)
 __
+g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,plur,-ing] NOUN[:-cnj,-ing,plur,-*x]
+#             ?>>?	
+       r[&prop]>>-2
+ l[&-*c]r[&-*c]>>-4
+  l[&*c]r[&-*c]>>+1
+               >>-4
+_
+  (twob)
+__
+
 g:NOUN->NOUN[:*x] XID
  l[&*c]>>+3
-       >>-2
+       >>-3
 _
   (twob)
 __
 g:NOUN->NOUN[:-*x,-plur,-ing] XID
  l[&*c]r[!*c]>>+2
-      l[&-*c]>>-2
-      r[!-*c]>>-2
+      l[&-*c]>>-3
+      r[!-*c]>>-3
 _
   (twob)
 __
@@ -1092,7 +1106,8 @@ _
   var typg=aux
   (lxtd)
 __
-g:VCLU[^aux,*r]->AUXL VCLU[^-aux]
+g:VCLU[^aux,*r]->AUXL[^-*r] VCLU[^-aux]
+ l[$quo] >>*r-4
  r[$cond]>>*r+1
 _
   var typg=aux
@@ -1212,7 +1227,7 @@ g:VERB[^*l,to]->VERB[^beaj] TO
 _
   (twob)
 __
-g:VERB[^*r]->BE
+g:VERB[^*l]->BE
  >>-
 __
 g:VERB[^hav]->HAVE
@@ -1555,6 +1570,7 @@ __
 #
 # predicate negation
 g:AUXL[^neg,*l]->AUXL[^-neg] NEGN
+ >>*l
 _
   (twob)
 __
@@ -2124,7 +2140,7 @@ _
   (twob)
 __
 g:AUXL[^*r]->PUNC[|*l,quo] AUXL
- >>[$quo]
+ >>[$quo]++
 _
   var typg=punc
   (typg)
@@ -2197,7 +2213,7 @@ __
 g:ADV->GENR PREP[%of]
  >>-2
 __
-g:ADV[~cplx]->ADV NCLU[:prep]
+g:ADV[~cplx]->ADV NCLU[:prep,-poss]
  >>-1
 __
 g:VERB[^*r,hav,ing]->HAVE[^ing] VERB[^ed]

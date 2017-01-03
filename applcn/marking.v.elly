@@ -31,7 +31,10 @@ got : VERB[^ed,chng,*x]
 got out : VERB[^ed]
 got up : VERB[^ed,*x]
 had : HAVE[^ed]
+had to : AUXL[^ed]
 has : HAVE
+has to : AUXL[^s]
+have to : AUXL
 having : HAVE[^ing]
 hove : VERB[^ed]
 internationals : NOUN[:plur]
@@ -46,6 +49,8 @@ sat down : VERB[^ed,*x]
 taken : VERB[^ed]
 thought : VERB[^ed]
 went : VERB[^ed,*x]
+will have to : AUXL
+will not have to : AUXL
 written : VERB[^ed]
 wrote : VERB[^ed,*x]
 anti : PREF
@@ -73,6 +78,7 @@ policymaker : NOUN
 hashtag : NOUN
 airstrike : NOUN
 rebaptizer : NOUN
+spectator : ADJ - +1
 
 ah : MISC
 yes : MISC
@@ -105,6 +111,7 @@ intelligence survey : NOUN
 intelligence study : NOUN
 zone training : NOUN
 calories burned : NOUN
+bat and ball : ADJ
 
 as if : CONJ
 as though : CONJ
@@ -210,6 +217,8 @@ along with : PREP
 more like : PREP
 less like : PREP
 full time : ADV
+by far : ADV
+can and will : AUXL
 
 purchasing power : NOUN
 fixed investment : NOUN
@@ -309,6 +318,7 @@ Cubbies : NOUN[:plur]
 West Indies : NOUN[:plur]
 catalina : NOUN
 rockette : NOUN
+The Verge : NOUN [&prop] 0
 twitter : NOUN
 U.N. : NOUN
 U.S. : NOUN
@@ -732,7 +742,7 @@ cacao : NOUN
 calculate : VERB
 calculation : NOUN
 california : NOUN
-call : NOUN
+call : NOUN - -1
 call : VERB
 calm : NOUN
 calm : VERB
@@ -781,7 +791,7 @@ castro : NOUN
 cat : NOUN
 cat : VERB - -2
 catch : NOUN
-catch : VERB
+catch : VERB - +2
 categorize : VERB
 category : NOUN
 caterpillar : NOUN
@@ -827,7 +837,7 @@ charge : NOUN
 charge : VERB
 chat : NOUN
 chat : VERB
-check : NOUN - -1
+check : NOUN - -2
 check : VERB
 checker : NOUN - +1
 checker : VERB
@@ -1058,7 +1068,7 @@ course : VERB
 course : ADV
 courtyard : NOUN
 cove : NOUN
-cover : NOUN - -1
+cover : NOUN - -2
 cover : VERB
 cozy : NOUN
 cozy : ADJ
@@ -1589,7 +1599,7 @@ float : VERB
 flood : NOUN
 flood : VERB
 flow : NOUN
-flow : VERB - +1
+flow : VERB - +2
 fly : NOUN
 fly : VERB
 fly : ADJ - -1
@@ -2162,7 +2172,7 @@ length : NOUN
 less : ADJ[%to] - +1
 less : ADV[~trlg] [$deg] 0
 lesser : ADJ
-let : NOUN - -1
+let : NOUN - -2
 let : VERB
 lettuce : NOUN
 level : NOUN
@@ -2375,7 +2385,7 @@ mobile : ADJ
 mobile phone : NOUN
 model : NOUN[:*x]
 model : VERB
-model : ADJ
+model : ADJ - -2
 moderate : NOUN
 moderate : VERB
 moderate : ADJ
@@ -2396,7 +2406,7 @@ month : NOUN
 moon : NOUN
 moon : VERB
 moore : NOUN
-more : NOUN - -1
+more : NOUN - -3
 more : ADJ[%to]
 more : ADV[~trlg] [$deg] 0
 more or less : ADV
@@ -2492,6 +2502,7 @@ new : ADJ[%to] - +1
 new : ADV - -1
 new year's : NOUN
 new york : NOUN
+new zealand : NOUN
 news : NOUN
 next : ADJ[%mod,to] [$spat] +0
 next : ADV
@@ -2563,7 +2574,7 @@ offend : VERB
 offensive : NOUN
 offensive : ADJ
 offer : NOUN
-offer : VERB - +1
+offer : VERB - +2
 office : NOUN
 officer : NOUN
 officer : VERB
@@ -2966,7 +2977,7 @@ raw : ADJ
 raw data : NOUN
 reach : NOUN
 reach : VERB
-read : NOUN - -1
+read : NOUN - -2
 read : VERB
 ready : NOUN
 ready : VERB
@@ -3177,7 +3188,7 @@ science : NOUN
 scientist : NOUN
 scope : NOUN
 score : NOUN
-score : VERB
+score : VERB - +2
 scow : NOUN
 scowl : NOUN
 scowl : VERB
@@ -3378,6 +3389,8 @@ source : VERB
 south : NOUN - -2
 south : ADJ
 south : ADV[~dir,trlg]
+south america : NOUN
+south africa : NOUN
 south pole : NOUN
 southeast : NOUN - -2
 southeast : ADJ
@@ -3653,6 +3666,7 @@ terry : NOUN
 tesla : NOUN
 test : NOUN
 test : VERB
+test match : NOUN
 texas : NOUN
 textbook : NOUN
 textbook : ADJ
@@ -3664,7 +3678,7 @@ theme : NOUN
 theme : VERB
 then: ADV
 then : NOUN - -6
-then : ADJ - -4
+then : ADJ  - -6
 theorem : NOUN
 therapy : NOUN
 therefore : ADV
@@ -4000,7 +4014,7 @@ wistful : ADJ
 wistfulness : NOUN
 withhold : VERB
 within : ADV
-witness : NOUN - -1
+witness : NOUN - -2
 witness : VERB
 woman : NOUN
 women : NOUN[:plur]
