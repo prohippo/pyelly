@@ -2386,16 +2386,6 @@ _
   (twob)
 __
 
-d:AD <- SPCL[|*l]
-__
-g:NCLU->NUM SPCL[|*l]
-#     ?>>?
- r[$*c]>>+++++++
-       >>----
-_
-  (twob)
-__
-
 g:PREF[|hyph]->PREF[|-hyph] PUNC[|hyph]
  >>+++
 __
