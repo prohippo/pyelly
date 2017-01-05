@@ -221,6 +221,7 @@ by far : ADV
 can and will : AUXL
 or more : POST
 each : POST - -1
+what is today : ADV
 
 purchasing power : NOUN
 fixed investment : NOUN
@@ -377,7 +378,7 @@ actress : NOUN
 actual : ADJ
 actually : ADV
 ad : NOUN
-ad : ADV
+ad : ADV[~date]
 adam : NOUN
 add : NOUN - -2
 add : VERB[^ptcl]
@@ -598,7 +599,7 @@ bathe : VERB
 battery : NOUN
 battle : NOUN
 battle : VERB
-bc :ADV
+bc :ADV[~date]
 beach : NOUN
 beach : VERB
 bean : NOUN
@@ -744,7 +745,7 @@ cacao : NOUN
 calculate : VERB
 calculation : NOUN
 california : NOUN
-call : NOUN - -1
+call : NOUN - -2
 call : VERB
 calm : NOUN
 calm : VERB
@@ -2147,6 +2148,7 @@ later : ADJ
 later : ADV[~trlg]
 latin : NOUN
 latin : ADJ
+latin america : NOUN
 laugh : NOUN
 laugh : VERB
 launch : NOUN
@@ -3468,9 +3470,9 @@ star : NOUN
 star : VERB
 star : ADJ
 stare : NOUN - -2
-stare : VERB
+stare : VERB - +2
 start : NOUN
-start : VERB
+start : VERB[^ptcl] - +2
 startle : NOUN - -2
 startle : VERB
 state : NOUN
@@ -3873,7 +3875,7 @@ upstairs : ADJ
 upstairs : ADV
 urban : ADJ
 urgent : ADJ
-us : NOUN
+us : NOUN - -1
 usa : NOUN
 use : NOUN [&spcs] 0
 use : VERB
@@ -3997,7 +3999,7 @@ wick : NOUN
 wicked : ADJ
 wide : ADJ
 wide : ADV[~trlg]
-wild : NOUN
+wild : NOUN - -1
 wild : ADJ - +2
 wild : ADV - -1
 win : NOUN - -1

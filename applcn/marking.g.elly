@@ -943,7 +943,7 @@ __
 g:NCLU[:det]->DET ADJ
 #      ?>>?
  r[$ind]>>-
-        >>---
+        >>----
 _
   append <nclu><det>
   left
@@ -1349,6 +1349,15 @@ g:ADV->NEGN ADV[~-non]
 _
   (twob)
 __
+g:ADV->CONJ[@prep] DATE
+ >>++++
+_
+  append <prep>
+  left
+  append </prep><date>
+  right
+  append </date>
+__
 
 g:ADJ->NEGN ADJ
  >>-
@@ -1553,6 +1562,17 @@ g:DATE[:*r]->PREP[%-cnj] DATE
 _
   var datime=date
   (datime)
+__
+g:DATE->DATE ADV[~date]
+ >>++
+_
+  split
+  back
+  left
+  shift 7 >
+  space
+  right
+  merge
 __
 g:TIME[:*r]->PREP[%-cnj] TIME
 _
@@ -1859,6 +1879,9 @@ d:it   <- PRO
 __
 d:we   <- PRO[=nom]
 __
+d:us   <- PRO
+ >>+
+__
 d:they <- PRO[=nom]
 __
 d:mine <- PRO
@@ -1929,11 +1952,11 @@ d:so   <- ADV[~int]
 __
 d:when <- CONJ
 __
-d:since<- CONJ
+d:since<- CONJ[@prep]
 __
-d:before<-CONJ
+d:before<-CONJ[@prep]
 __
-d:after<- CONJ
+d:after<- CONJ[@prep]
 __
 d:as   <- CONJ[@*x]
 __
