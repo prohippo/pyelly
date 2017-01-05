@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# dateTransform.py : 06nov2014 CPM
+# dateTransform.py : 04jan2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -31,7 +31,7 @@
 """
 recognize English date references in text and normalize to 00/00/0000 form
 """
- 
+
 import ellyChar
 import simpleTransform
 import datetime
@@ -56,12 +56,15 @@ class DateTransform(simpleTransform.SimpleTransform):
     to extract date as entity
 
     attributes:
-        ycur  - current year (2 digits)
-        cent  - century      (2 digits)
+        ycur - current year  (2 digits)
+        cent - century       (2 digits)
+
+        lgth - length of rewritten date
 
         _mo  - month of year (2 digits)
         _dy  - day of month  (2 digits)
         _yr  - year          (4 digits)
+        _ep  - epoch         (2 chars )
     """
 
     def __init__ ( self ):
@@ -78,6 +81,7 @@ class DateTransform(simpleTransform.SimpleTransform):
         ce = yr[:2]
         self.ycur = yr[2:]
         self.cent = [ str(int(ce) - 1) , ce ]
+        self.lgth = 0
 
     def rewrite ( self , ts ):
 
@@ -95,6 +99,9 @@ class DateTransform(simpleTransform.SimpleTransform):
         self._mo = [ '0' , '0' ]             # set defaults for return
         self._dy = [ '0' , '0' ]             #
         self._yr = [ '_' , '_' , '_' , '_' ] #
+        self._ep = [ ]                       #
+
+        self.lgth = 0
 
 #       print 'ts=' , ts
 
@@ -103,23 +110,34 @@ class DateTransform(simpleTransform.SimpleTransform):
 
         if m <= 0: return False   # if no date matched, done
 
-#       print 'prepop:' , m , ts
+        print 'prepop:' , m , ts
 
         while m > 0:              # remove matched chars from text
             ts.pop(0)             #
             m -= 1                #
-
-        ts.insert(0,self._yr[3])  # insert normalized date instead
+                                  # insert normalized date instead
+        epo = self._ep            #
+        while len(epo) > 0:       #
+            ts.insert(0,epo[-1])  #
+            epo = epo[:-1]        #
+        ts.insert(0,self._yr[3])  #
         ts.insert(0,self._yr[2])  #
         ts.insert(0,self._yr[1])  #
         ts.insert(0,self._yr[0])  #
-        ts.insert(0,u'/')
+
+        self.lgth = 4 + len(self._ep)
+        print 'date lgth=' , self.lgth
+        if self._mo[0] == '0' and self._mo[1] == '0': return True
+
+        ts.insert(0,u'/')         #
         ts.insert(0,self._dy[1])  #
         ts.insert(0,self._dy[0])  #
-        ts.insert(0,u'/')
+        ts.insert(0,u'/')         #
         ts.insert(0,self._mo[1])  #
         ts.insert(0,self._mo[0])  #
 
+        self.lgth += 6
+        print 'date lgth=' , self.lgth
         return True
 
     def length ( self ):
@@ -134,7 +152,7 @@ class DateTransform(simpleTransform.SimpleTransform):
             char count
         """
 
-        return 10  # rewritten date will always be  MM/DD/YYYY
+        return self.lgth
 
     def _matchAN ( self , ts ):
 
@@ -171,9 +189,9 @@ class DateTransform(simpleTransform.SimpleTransform):
             if len(t) == 0: return tl
             k = self._aYear(t)         # look for year
             return tl - len(t) + k
-        else:
-            k = self._aDay(t)          # look for day of month to start date string
-            if k == 0 or k == tl: return 0
+
+        k = self._aDay(t)              # look for day of month to start date string
+        if k > 0 and k < tl:           # cannot be just bare number by itself
             tl = len(ts)               # _aDay may have rewritten alphabetic day
             t = t[k:]
 #           print 'new t=' , t
@@ -206,6 +224,17 @@ class DateTransform(simpleTransform.SimpleTransform):
             else:
                 return ntl - nd        # only month and day of date found
 
+#       print 'look for year only in' , t
+        k = self._aYear(t)
+        if k > 0:
+            if k == tl:
+                return k
+            elif not ellyChar.isLetter(t[k]) and t[k] != '-':
+                return k
+
+        return 0                       # nothing found
+
+
     def _aMonth ( self , ts ):
 
         """
@@ -237,7 +266,7 @@ class DateTransform(simpleTransform.SimpleTransform):
 
         """
         parse a day number
-        
+
         arguments:
             self  -
             ts    - text stream as list of chars
@@ -321,7 +350,7 @@ class DateTransform(simpleTransform.SimpleTransform):
 
         """
         parse a year
-        
+
         arguments:
             self  -
             ts    - text stream as list of chars
@@ -361,8 +390,10 @@ class DateTransform(simpleTransform.SimpleTransform):
 #       print 'lss=' , lss
         if self.string in Ep:
             k += lss
+            self._ep = list(self.string)
 
-        return k + ns
+        kns = k + ns
+        return kns if kns > 3 else 0
 
     def _matchN ( self , ts ):
 
@@ -472,12 +503,13 @@ if __name__ == '__main__':
         u'dec. 25th, 1880' ,
         u'Sep 33, 1955' ,
         u'Sept 3, 1955' ,
-        u'Twelfth of Never'
+        u'Twelfth of Never' ,
+        u'1000 BC'
     ]
 
     de = DateTransform()
     for xd in tdat:
-        tst = list(xd) 
+        tst = list(xd)
         stat = de.rewrite(tst)
-        print xd , '>>' , ''.join(tst) , '=' , stat
+        print xd , '-->>' , ''.join(tst) , '=' , stat
         print ''

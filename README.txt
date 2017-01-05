@@ -363,6 +363,7 @@ Release Notes:
                       extend "marking" integration testing
                       fix doTest script to make it self-complete
                       fix bug in *LEFT syntactic feature inheritance
+                      fix bugs in date entity extraction
                       update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
