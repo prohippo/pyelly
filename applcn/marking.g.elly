@@ -223,7 +223,7 @@ _
   append </conj>
 __
 g:SEGM->PEXP[|-stop]
- >>--
+ >>-
 __
 
 g:ELEM->ADV[~mod] NCLU
@@ -680,7 +680,13 @@ g:NCLU[:*l,dat]->NCLU[:-dat] THAT
 _
   left
 __
-g:NCLU[:*r,det]->DET[@sgl] NCLU[:-det,-prep,-plur]
+g:NCLU[:*r,det,num]->DET[@sgl,num] NCLU[:-det,-prep,-plur]
+ r[&cond]>>*r+
+         >>*r
+_
+  (dtnc)
+__
+g:NCLU[:*r,det]->DET[@sgl,-num] NCLU[:-det,-prep,-plur]
  r[&cond]>>*r+
          >>*r
 _
@@ -721,8 +727,8 @@ _
   var typg=date
   (lxtd)
 __
-g:NCLU[:*l]->NCLU POSTP
- >>*l
+g:NCLU[:*l]->NCLU[:num] POSTP
+ >>*l++
 _
   var typg=postp
   (rxtd)
@@ -762,18 +768,6 @@ _
   append <nclu><dem>
   left
   append </dem></nclu>
-__
-g:NCLU[:*l]->NCLU[:num] POST
- >>++++
-_
-  left
-  split
-  back
-  shift 7 >
-  append <adv>
-  right
-  append </adv>
-  merge
 __
 
 p:dmnc
@@ -1229,8 +1223,8 @@ g:VERB[^beaj]->BE ADJ[%-ed,-ing]
 _
   (twob)
 __
-g:VERB->VERB[^chng] ADJ
- >>*l++
+g:VERB->VERB[^chng] ADJ[%-*x]
+ >>*l+++
 _
   (twob)
 __
@@ -1424,7 +1418,7 @@ g:NUM[:*r]->ADV[~ord] NUM[:-*r]
 _
   (twob)
 __
-g:NUM[:*l]->NUM[:-*l] POST
+g:NUM[:*l]->NUM[:-*l] POSTP[@num]
 _
   left
   append <adv>
@@ -1558,21 +1552,17 @@ _
   var datime=date
   (datime)
 __
-g:DATE[:*r]->PREP[%-cnj] DATE
+g:DATE[:*r]->PREP[%-cnj,*l] DATE
+_
+  (twob)
+__
+g:DATE[:*r]->PREP[%-cnj,-*l] DATE
 _
   var datime=date
   (datime)
 __
-g:DATE->DATE ADV[~date]
- >>++
-_
-  split
-  back
-  left
-  shift 7 >
-  space
-  right
-  merge
+g:DATE->NUM[:*x] ADV[~date]
+ >>+12
 __
 g:TIME[:*r]->PREP[%-cnj] TIME
 _
@@ -1758,9 +1748,9 @@ __
 d:ago  <- POSTP
 __
 
-d:a   <- DET[@sgl]
+d:a   <- DET[@sgl,num]
 __
-d:an  <- DET[@sgl]
+d:an  <- DET[@sgl,num]
 __
 d:the <- DET
 __
@@ -2380,7 +2370,12 @@ _
   (twob)
 __
 
-g:NUM->PREP[%*l] NUM
+g:NUM->PREP[%*l] NUM[:-*x]
+ >>-
+_
+  (twob)
+__
+g:NUM[:*x]->PREP[%*l] NUM[:*x]
  >>-
 _
   (twob)

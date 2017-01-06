@@ -219,8 +219,8 @@ less like : PREP
 full time : ADV
 by far : ADV
 can and will : AUXL
-or more : POST
-each : POST - -1
+or more : POSTP[@num]
+each : POSTP[@num] - -1
 what is today : ADV
 
 purchasing power : NOUN
@@ -378,7 +378,7 @@ actress : NOUN
 actual : ADJ
 actually : ADV
 ad : NOUN
-ad : ADV[~date]
+ad : ADV[~date] - -1
 adam : NOUN
 add : NOUN - -2
 add : VERB[^ptcl]
@@ -599,7 +599,7 @@ bathe : VERB
 battery : NOUN
 battle : NOUN
 battle : VERB
-bc :ADV[~date]
+bc :ADV[~date] - -1
 beach : NOUN
 beach : VERB
 bean : NOUN
@@ -1796,7 +1796,7 @@ ground : VERB
 group : NOUN
 group : VERB
 grove : NOUN
-grow : VERB
+grow : VERB[^chng,ptcl]
 growl : NOUN
 growl : VERB
 growth : NOUN
@@ -2709,7 +2709,7 @@ pearly : NOUN - -3
 pearly : ADJ
 peculiar : ADJ
 peel : NOUN
-peel : VERB
+peel : VERB - +1
 pellet : NOUN
 penetrate : VERB
 penny : NOUN
@@ -2866,7 +2866,7 @@ price : NOUN
 price : VERB
 priest : NOUN
 primary : NOUN
-primary : ADJ
+primary : ADJ[%*x]
 prime : NOUN
 prime : VERB
 prime : ADJ
@@ -3494,7 +3494,7 @@ stifle : VERB
 still : NOUN - -2
 still : VERB - -2
 still : ADJ
-still : ADV - +1
+still : ADV - +2
 stir : NOUN
 stir : VERB
 stockpile : NOUN
