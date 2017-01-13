@@ -47,6 +47,7 @@ rose : VERB[^ed,*x] - +1
 said : VERB[^ed,dit]
 sat down : VERB[^ed,*x]
 taken : VERB[^ed]
+terrifyinng : VERB[^ing]
 thought : VERB[^ed]
 went : VERB[^ed,*x]
 will have to : AUXL
@@ -64,6 +65,8 @@ lives : VERB[^s] - +1 =live -s
 regarding : PREP - +1
 regarding : NOUN - -1
 regarding : VERB
+swooping : ADJ[%ing] - +1
+swooping : VERB[^ing]
 underutilize : VERB
 underutilization : NOUN
 
@@ -112,6 +115,8 @@ intelligence study : NOUN
 zone training : NOUN
 calories burned : NOUN
 bat and ball : ADJ
+media pack : NOUN
+buying guide : NOUN
 
 as if : CONJ
 as though : CONJ
@@ -222,6 +227,9 @@ can and will : AUXL
 or more : POSTP[@num]
 each : POSTP[@num] - -1
 what is today : ADV
+at odds: ADJ
+all of : QUAN
+up to his neck : ADJ
 
 purchasing power : NOUN
 fixed investment : NOUN
@@ -427,7 +435,7 @@ alexander hamilton : NOUN
 align : VERB
 alive : ADJ
 allow : VERB
-almost : ADV[~mod,prox]
+almost : ADV[~mod,prox,int]
 along : ADV - -1
 alongside : ADV
 already : ADV
@@ -560,10 +568,10 @@ award : NOUN
 award : VERB
 away : ADJ - -1
 away : ADV
-back : NOUN
+back : NOUN - -1
 back : VERB
 back : ADJ
-back : ADV
+back : ADV [$trlg] +2
 bacteria : NOUN
 bad : ADJ
 bad : ADV
@@ -677,7 +685,7 @@ bomb : NOUN
 bomb : VERB
 bond : NOUN
 bond : VERB
-book : NOUN
+book : NOUN - +2
 book : VERB
 bookend : NOUN
 boost : NOUN
@@ -736,6 +744,8 @@ burn : VERB
 business: NOUN
 buy : NOUN
 buy : VERB
+buying : NOUN
+buying : VERB[^ing]
 ca : NOUN
 cabin : NOUN
 cabin : VERB
@@ -1140,6 +1150,8 @@ daily : ADJ
 daily : ADV
 damage : NOUN
 damage : VERB
+damaging : VERB[^ing]
+damaging : ADJ[%ing]
 dance : NOUN
 dance : VERB
 dancer : NOUN
@@ -1160,6 +1172,8 @@ david : NOUN
 day : NOUN
 dazzle : NOUN
 dazzle : VERB
+dazzling : VERB[^ing]
+dazzling : ADJ[%ing]
 dead : NOUN
 dead : ADJ
 dead : ADV
@@ -1940,9 +1954,9 @@ implication : NOUN
 impolite : ADJ
 important : ADJ[%to]
 impose : VERB
-impossible : NOUN
+impossible : NOUN - -2
 impossible : ADJ
-impress : NOUN
+impress : NOUN - -2
 impress : VERB
 impression : NOUN
 improve : VERB
@@ -2323,7 +2337,7 @@ maybe : ADV
 mean : NOUN
 mean : VERB
 mean : ADJ
-meanwhile : NOUN
+meanwhile : NOUN - -4
 meanwhile :ADV
 measure : NOUN
 measure : VERB
@@ -2630,10 +2644,10 @@ ornament : VERB
 ornamental : NOUN - -1
 ornamental : ADJ
 other : ADJ[%mod] [$ind] 0
-out : NOUN - -3
-out : VERB - -3
+out : NOUN - -4
+out : VERB - -4
 out : ADJ  - -1
-out : ADV[~trlg]
+out : ADV [$trlg] 0
 outbreak : NOUN
 outcome : NOUN
 outline : NOUN
@@ -3016,6 +3030,8 @@ refer : VERB
 reference : NOUN
 reference : VERB
 reflect : VERB
+reflecting : VERB[^ing]
+reflecting : ADJ[%ing] - -2
 refresh : VERB
 refuge : NOUN
 refugee : NOUN
@@ -3180,6 +3196,9 @@ satellite : ADJ
 saturday : NAVB
 save : NOUN
 save : VERB
+saving : VERB[^ing]
+saving : ADJ[%ing]
+savings : NOUN
 sawm : NOUN
 saxon : NOUN
 saxon : ADJ
@@ -3238,6 +3257,8 @@ self : NOUN
 self : ADJ
 sell : NOUN
 sell : VERB - +2
+selling : NOUN - -2
+selling : VERB[^ing]
 semiconductor : NOUN
 semisweet : ADJ
 senate : NOUN
@@ -3626,7 +3647,7 @@ talk : NOUN
 talk : VERB
 tangible : ADJ
 tangle : NOUN
-tangle : VERB
+tangle : VERB - +1
 tap : NOUN
 tap : VERB
 tapper : NOUN
@@ -3664,6 +3685,7 @@ term : NOUN
 term : VERB
 terminology : NOUN
 terrify : VERB
+terrifying : ADJ -  +1
 territorial : ADJ
 territory : NOUN
 terry : NOUN
@@ -4032,7 +4054,7 @@ work : NOUN
 work : VERB - +1
 worker : NOUN
 workout : NOUN
-world : NOUN
+world : NOUN - +3
 world : ADJ
 world power : NOUN
 world series : NOUN[:*u]

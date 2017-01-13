@@ -824,7 +824,7 @@ g:NCLU[:*r]->ADJ[%ing,-cnj] NCLU[:-det,-prep,-num,-qnt]
  r[&prop]>>----
  l[$ind]r[&quo]>>*r[&cmpd]----
         r[&quo]>>*r[&cmpd]
-               >>*r[&cmpd]+++
+               >>*r[&cmpd]++
 _
   var typg=adj
   (lxtd)
@@ -1665,7 +1665,7 @@ __
 
 #
 # internal dictionary
-d:in   <- PREP
+d:in   <- PREP[%in]
 __
 d:of   <- PREP[%of]
 __
@@ -1846,7 +1846,7 @@ d:either <- QUAN[@ind,cnj]
 __
 d:multiple <- QUAN
 __
-d:another <- QUAN[@ind]
+d:another <- QUAN[@ind,adv]
 __
 
 d:there <- THERE
@@ -1946,7 +1946,7 @@ d:since<- CONJ[@prep]
 __
 d:before<-CONJ[@prep]
 __
-d:after<- CONJ[@prep]
+d:after<- CONJ[@prep,aftr]
 __
 d:as   <- CONJ[@*x]
 __
@@ -2323,8 +2323,6 @@ __
 g:ADJX[%cnj]->ADJ PUNC[|com]
  l[$cmpd]>>----
          >>*l
-_
-  (twob)
 __
 g:ADJX[%cnj]->ADJ CONJ[@cnj,-rel]
  l[$cmpd]>>----
@@ -2582,4 +2580,25 @@ _
 __
 g:ELEM->ECJS[=*l]
  >>+
+__
+
+g:PPRP->ADV PREP[%in]
+ l[$trlg]>>++++
+         >>----
+_
+  var typg=adv
+  (typg)
+  right
+__
+g:NCLU[:*r]->PPRP NCLU[:-prep]
+ >>+
+_
+  var typg=prep
+  (lxtd)
+__
+
+g:ADV->CONJ[@aftr] QUAN[@ind,adv]
+ >>[$trlg]
+_
+  (twob)
 __
