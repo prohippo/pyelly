@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# dateTransform.py : 04jan2017 CPM
+# dateTransform.py : 11jan2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -110,7 +110,7 @@ class DateTransform(simpleTransform.SimpleTransform):
 
         if m <= 0: return False   # if no date matched, done
 
-        print 'prepop:' , m , ts
+#       print 'prepop:' , m , ts
 
         while m > 0:              # remove matched chars from text
             ts.pop(0)             #
@@ -126,7 +126,7 @@ class DateTransform(simpleTransform.SimpleTransform):
         ts.insert(0,self._yr[0])  #
 
         self.lgth = 4 + len(self._ep)
-        print 'date lgth=' , self.lgth
+#       print 'date lgth=' , self.lgth
         if self._mo[0] == '0' and self._mo[1] == '0': return True
 
         ts.insert(0,u'/')         #
@@ -137,7 +137,7 @@ class DateTransform(simpleTransform.SimpleTransform):
         ts.insert(0,self._mo[0])  #
 
         self.lgth += 6
-        print 'date lgth=' , self.lgth
+#       print 'date lgth=' , self.lgth
         return True
 
     def length ( self ):
