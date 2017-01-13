@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyCharInputStream.py : 05nov2015 CPM
+# ellyCharInputStream.py : 11jan2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -43,7 +43,20 @@ NL = u'\n'        # new line has special significance
 CR = u'\r'        # carriage return
 UN = ellyChar.Lim # undefined Elly char
 END  = u''        # end of input
+HYPH = u'-'       # hyphen
+DASH = u'\u2013'  # n-dash
 NBSP = u'\u00A0'  # Unicode no-break space
+
+def spc ( c ):
+
+    """
+    special space check
+    arguments:
+        c  - single char
+    returns:
+        True if white space or null, False otherwise
+    """
+    return c == '' or ellyChar.isWhiteSpace(c)
 
 class EllyCharInputStream(object):
 
@@ -115,7 +128,11 @@ class EllyCharInputStream(object):
 #           if c == "'":
 #               print 'apostrophe' , self.buf
 
-            if not ellyChar.isWhiteSpace(c):
+            if c == HYPH:                # special treatment for isolated hyphens
+                if spc(lc) and spc(self.peek()):
+                    c = DASH
+                break
+            elif not ellyChar.isWhiteSpace(c):
                 break
             elif c == CR:                # always ignore
                 continue
@@ -316,19 +333,20 @@ if __name__ == '__main__':
                 return [ ]
 
     datd = [  # test examples
-      'abcd\n',
-      'éèêë\n',
-      'ef gh    ijk   \n',
-      'lm	o  	p\n',
-      '\n',
-      '\n',
-      '    \n',
-      '“gene”',
-      "qrst",
-      "uv's\n",
-      'xx\r\n',
-      'yy\t\tzz',
-      '  wxyz'
+        'abcd\n',
+        'éèêë\n',
+        'ef gh    ijk   \n',
+        'lm	o  	p\n',
+        '\n',
+        '\n',
+        '    \n',
+        '“gene”',
+        "qrst",
+        "uv's\n",
+        'xx\r\n',
+        'yy\t\tzz',
+        '  wxyz',
+        ' - '
     ]
 
     def hexd ( c ):
