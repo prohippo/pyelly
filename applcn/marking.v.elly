@@ -21,6 +21,7 @@ born : VERB[^ed] - +2
 built : VERB[^ed]
 did : VERB[^ed,*x]
 does not : AUXL[^s]
+exciting : VERB[^ing]
 fishermen : NOUN[:plur]
 forgave : VERB[^ed,*x]
 forgot : VERB[^ed,*x]
@@ -102,21 +103,26 @@ others : NOUN
 
 # # # # compound word vocabulary 
 
-rocket science : NOUN
-signal rocket : NOUN
-military exercise : NOUN
-livestock waste : NOUN
-time control : NOUN
-sales team : NOUN
-colored slave : NOUN
-cast recording : NOUN
-intelligence survey : NOUN
-intelligence study : NOUN
-zone training : NOUN
-calories burned : NOUN
 bat and ball : ADJ
-media pack : NOUN
 buying guide : NOUN
+calories burned : NOUN
+cast recording : NOUN
+christmas cheer : NOUN
+christmas spectacular : NOUN
+colored slave : NOUN
+dance number : NOUN
+dance company : NOUN
+intelligence study : NOUN
+intelligence survey : NOUN
+livestock waste : NOUN
+media pack : NOUN
+military exercise : NOUN
+rocket science : NOUN
+sales team : NOUN
+signal rocket : NOUN
+time control : NOUN
+yuletide spirit : NOUN
+zone training : NOUN
 
 as if : CONJ
 as though : CONJ
@@ -230,6 +236,7 @@ what is today : ADV
 at odds: ADJ
 all of : QUAN
 up to his neck : ADJ
+after all : CONJ[@*l]
 
 purchasing power : NOUN
 fixed investment : NOUN
@@ -284,6 +291,7 @@ half-full : ADJ
 watered-down : ADJ
 full-throated : ADJ
 U.S.-led : ADJ
+lesser-known : ADJ
 
 # # # # names to recognize explicitly
 
@@ -877,6 +885,7 @@ choreograph : VERB
 choreographer : NOUN
 chorus : NOUN
 chorus : VERB
+chorus line : NOUN
 christ : NOUN
 christian : NOUN
 christian : ADJ
@@ -1465,6 +1474,7 @@ exception : NOUN
 exchange : NOUN
 exchange : VERB
 excite : VERB
+exciting : ADJ - +1
 exclude : VERB
 exclusive : NOUN
 exclusive : ADJ
@@ -1529,6 +1539,7 @@ fast : ADJ
 fast :ADV
 father : NOUN
 father : VERB
+father figure : NOUN
 fault : NOUN
 fault : VERB
 favor : NOUN
@@ -4098,6 +4109,7 @@ zero : NOUN
 zero : VERB
 zero : ADJ
 ziegfeld : NOUN
+ziegfeld follies : NOUN[:plur]
 zimbabwe : NOUN
 zinfandel : NOUN
 zone : NOUN
