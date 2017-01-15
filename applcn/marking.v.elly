@@ -61,11 +61,12 @@ anti : PREF
 
 building : VERB[^ing]
 discouraged : VERB[^ed]
+fighting : VERB[^ing]
 lives : NOUN[:plur]   =life -s
 lives : VERB[^s] - +1 =live -s
 regarding : PREP - +1
 regarding : NOUN - -1
-regarding : VERB
+regarding : VERB[^ing]
 swooping : ADJ[%ing] - +1
 swooping : VERB[^ing]
 underutilize : VERB
@@ -103,6 +104,7 @@ others : NOUN
 
 # # # # compound word vocabulary 
 
+armored vehicle : NOUN
 bat and ball : ADJ
 buying guide : NOUN
 calories burned : NOUN
@@ -112,11 +114,14 @@ christmas spectacular : NOUN
 colored slave : NOUN
 dance number : NOUN
 dance company : NOUN
+entry point : NOUN
+heavy fighting : NOUN
 intelligence study : NOUN
 intelligence survey : NOUN
 livestock waste : NOUN
 media pack : NOUN
 military exercise : NOUN
+open desert : NOUN
 rocket science : NOUN
 sales team : NOUN
 signal rocket : NOUN
@@ -237,6 +242,7 @@ at odds: ADJ
 all of : QUAN
 up to his neck : ADJ
 after all : CONJ[@*l]
+over the course of : PREP
 
 purchasing power : NOUN
 fixed investment : NOUN
@@ -346,6 +352,7 @@ Gallagher : NOUN
 Becker : NOUN
 la nina : NOUN
 Farhan Haq : NOUN
+Islamic State : NOUN
 
 # # # # miscellaneous
 
@@ -1579,6 +1586,8 @@ fifty : NOUN
 fifty : ADJ
 fight : NOUN
 fight : VERB
+fighting : NOUN - +1
+fighting : ADJ
 figure : NOUN
 figure : VERB
 figurehead : NOUN
@@ -2389,6 +2398,7 @@ mile : NOUN
 militant : NOUN
 militant : ADJ
 military : NOUN
+military officer : NOUN
 milk : NOUN
 milk : VERB
 milky : ADJ
@@ -3447,6 +3457,7 @@ spear : NOUN
 spear : VERB
 special : NOUN
 special : ADJ
+special forces : NOUN[:plur]
 specialize : VERB
 species : NOUN
 specific : ADJ[%to]
@@ -3809,6 +3820,7 @@ triumph : VERB
 triune : ADJ
 troop : NOUN
 troop : VERB
+troops : NOUN
 troupe : NOUN
 true : NOUN
 true : VERB
@@ -3907,6 +3919,7 @@ upstairs : NOUN
 upstairs : ADJ
 upstairs : ADV
 urban : ADJ
+urban area : NOUN
 urgent : ADJ
 us : NOUN - -1
 usa : NOUN
