@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveDefiner.py : 16aug2016 CPM
+# cognitiveDefiner.py : 22jan2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -171,11 +171,11 @@ def _leftside ( stb , txt , sta ):
                 return _err('incomplete semantic features to check')
             p = txt[:k+1]                   # get semantic feature string
 
-#           print "side:" , side , "condition:" , p
+#           print "side:" , side , "test:" , p
             try:
                 f = featureSpecification.FeatureSpecification(stb,p,'semantic')
             except ellyException.FormatFailure:
-                return _err('bad semantic features')
+                return _err('bad semantic features to check')
             op = semanticCommand.Crhtf if side == 'r' else semanticCommand.Clftf
             if side == 'r':
                 sta.rht = f
@@ -232,7 +232,7 @@ def _rightside ( stb , txt ,sta ):
 
     if n > m:                        # space must not be in semantic feature specification
         cnc = txt[n:].strip().upper()
-        txt = txt[:n]                # remove concept from input
+        txt = txt[:n]                # remove concept from right size of clause
 
 #   print "1 txt=[" , txt , "]"
 
@@ -254,15 +254,15 @@ def _rightside ( stb , txt ,sta ):
 
     if len(txt) > 3 and txt[0] == '[':
 
-        n = txt.find(']')        # set semantic features for phrase?
+        n = txt.find(']')        # set or unset semantic features for phrase?
 #       print 'n=' , n
         if n < 3:
-            return _err('incomplete semantic features to set')
+            return _err('incomplete semantic features to set or unset')
         try:
             f = featureSpecification.FeatureSpecification(stb,txt[:n+1],semantic=True)
             sta.res = f
         except ellyException.FormatFailure:
-            return _err('bad semantic features')
+            return _err('bad semantic features to set or unset')
 #       print 'features=' , f.positive , f.negative
         actn.append([ semanticCommand.Csetf , f.positive ])
         if not f.negative.zeroed():
@@ -281,7 +281,7 @@ def _rightside ( stb , txt ,sta ):
             if ellyChar.isDigit(c):
                 return _err('plausibility must begin with + or -')
             else:
-                return _err('bad cognitive semantic action')
+                return _err('bad cognitive semantic action: ' + txt)
 
 #       print "2 txt=[",txt,"]"
 
