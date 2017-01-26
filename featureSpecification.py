@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# featureSpecification.py : 09aug2016 CPM
+# featureSpecification.py : 22jan2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -96,6 +96,7 @@ class FeatureSpecification(object):
             self.id = segm[1]
 #           print "id=",self.id
             fs = syms.getFeatureSet(segm[1:-1] , semantic)
+#           print 'fs=' , str(fs[0]) , ',' , str(fs[1])
             if fs == None:
                 raise ellyException.FormatFailure
             self.positive , self.negative = fs

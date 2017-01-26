@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# symbolTable.py : 23dec2016 CPM
+# symbolTable.py : 22jan2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -148,6 +148,7 @@ class SymbolTable(object):
         """
 
         if len(fs) < 1: return None
+#       print 'fs=' , fs
 
         bp = ellyBits.EllyBits(FMAX) # all feature bits zeroed
         bn = ellyBits.EllyBits(FMAX) #
@@ -196,6 +197,7 @@ class SymbolTable(object):
                 if nm[0] == '*':     # user cannot define reserved name
                     print >> sys.stderr , 'unknown reserved feature=' , nm
                     return None
+#               print 'define new feature'
                 k = len(h)           # yes, this will be next free index
                 l = FMAX             # upper limit on feature index
                 if ty:               # semantic feature?
@@ -210,6 +212,7 @@ class SymbolTable(object):
                     print >> sys.stderr , 'bad index=' , k , 'l=' , l
                     return None
                 h[nm] = k            # define new feature
+#               print 'k=' , k
 
 #           print 'set bit' , h[nm] , 'for' , fid + nm
             b.set(h[nm])             # set bit for feature
