@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeDefiner.py : 08nov2015 CPM
+# generativeDefiner.py : 19jan2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -320,6 +320,8 @@ def compileDefinition ( stb , inp ):
                 if first != '<' and first != '>':
                     nc = int(first)
                     if len(ar) > 1 and ar[1] == '>': nc = -nc
+                elif co == semanticCommand.Gshft and len(ar) > 1:
+                    return _err('bad SHIFT arguments')
                 elif first == '>':
                     nc = -nc
                 store.extend([ co , nc ])
