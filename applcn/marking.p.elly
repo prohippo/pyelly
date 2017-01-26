@@ -26,9 +26,6 @@
 
 0 &#m NUM -1
 
-0 19##$ YEAR -1
-0 20##$ YEAR -1
-
 0 &# - 3
 3 -year - 4
 3 -year ADJ -1

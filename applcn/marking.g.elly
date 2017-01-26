@@ -77,11 +77,7 @@ g:SS->SS PUNC[|stop]
  l[!corrl]>>-10
           >>*l
 _
-  left
-  linefeed
-  append <punc>
-  right
-  append </punc>
+  (pend)
 __
 g:SS->PUNC[|start,-quo] SS
  >>*r--
@@ -91,12 +87,12 @@ _
   append </punc>
   right
 __
-g:SS[|segm]->SEGM
+g:SS[|ctrl]->SEGM
 #           ?>>?
      l[!trng]>>-4
              >>*l
 __
-g:SS[|segm]->SS[|-segm] SEGM
+g:SS[|ctrl]->SS[|-ctrl] SEGM
 #                 ?>>?
            r[!trng]>>-4
  l[!coord,rn]r[!rn]>>*l++
@@ -112,12 +108,9 @@ g:SS->SS PUNC[|-stop]
 #               ?>>?
          l[!that]>>*l-4
  l[!corrl]r[!brk]>>-10
+                 >>-1
 _
-  left
-  linefeed
-  append <punc>
-  right
-  append </punc>
+  (pend)
 __
 g:SS->SS CONJ
 #                 ?>>?
@@ -184,20 +177,33 @@ _
 __
 g:SEGM[|*unique]->ELEM
 #            ?>>?
-           n<2>>*l-
-      l[!spcs]>>*l-6
-      l[!lv,s]>>*l-
-  l[!trng] n<3>>*l
-              >>*l[!-trng]
+           n<2>>*r-1
+      l[!spcs]>>*r-6
+      l[!lv,s]>>*r-1
+  l[!trng] n<3>>*r
+              >>*r[!-trng]
+              >>*r
 __
 g:SEGM[|*unique]->SEGM ELEM
-#                        ?>>?
-  l[!ppps,rv  ]r[!ppps,rn]>>*r-8
-  l[!pro]      r[!ln]     >>*r-3
-  l[!pro,-brk] r[!lv]     >>*r+2
-  l[!rn]       r[!ln]     >>*r-2
-  l[!rv]       r[!lv]     >>*r-4
-                          >>*r
+#                           ?>>?
+  l[!ln,ppps,rv  ]r[!ppps,ln]>>*r[! ln,-lv]-8
+  l[!lv,ppps,rv  ]r[!ppps,ln]>>*r[!-ln, lv]-8
+  l[!   ppps,rv  ]r[!ppps,ln]>>*r[!-ln,-lv]-8
+  l[!ln,pro]      r[!ln]     >>*r[! ln,-lv]-3
+  l[!lv,pro]      r[!ln]     >>*r[!-ln, lv]-3
+  l[!   pro]      r[!ln]     >>*r[!-ln,-lv]-3
+  l[!ln,pro,-brk] r[!lv]     >>*r[! ln,-lv]+2
+  l[!lv,pro,-brk] r[!lv]     >>*r[!-ln, lv]+2
+  l[!   pro,-brk] r[!lv]     >>*r[!-ln,-lv]+2
+  l[!ln,rn]       r[!ln]     >>*r[! ln,-lv]-2
+  l[!lv,rn]       r[!ln]     >>*r[!-ln, lv]-2
+  l[!   rn]       r[!ln]     >>*r[!-ln,-lv]-2
+  l[!ln,rv]       r[!lv]     >>*r[! ln,-lv]-4
+  l[!lv,rv]       r[!lv]     >>*r[!-ln, lv]-4
+  l[!   rv]       r[!lv]     >>*r[!-ln,-lv]-4
+  l[!ln]                     >>*r[! ln,-lv]
+  l[!lv]                     >>*r[!-ln, lv]
+                             >>*r[!-ln,-lv]
 _
   left
   linefeed
@@ -206,11 +212,7 @@ __
 g:SEGM->SEGM PUNC[|-*l,-com,-stop]
  >>--
 _
-  left
-  linefeed
-  append <punc>
-  right
-  append </punc>
+  (pend)
 __
 g:SEGM->SEGM CONJ
  l[!cnj]>>-8
@@ -335,15 +337,15 @@ g:ELEM->THAT
 __
 g:ELEM->DATE
 _
-  append <nclu>
+  append <nclu><date>
   left
-  append </nclu>
+  append </date></nclu>
 __
 g:ELEM->TIME
 _
-  append <nclu>
+  append <nclu><time>
   left
-  append </nclu>
+  append </time></nclu>
 __
 g:ELEM->ADJ
  l[$time]>>--------
@@ -378,21 +380,17 @@ __
 g:ELEM[^dit]->PEXP[|quo,-stop] PUNC[|*r,quo]
  >>------
 _
-  var typg=quote
-  (typg)
-  linefeed
-  append <punc>
-  right
-  append </punc>
-__
-g:ELEM->PEXP[|stop] PUNC[|*r,quo]
- >>[!ln]++
-_
+  append <quote>
   left
   linefeed
   append <punc>
   right
-  append </punc>
+  append </punc></quote>
+__
+g:ELEM->PEXP[|stop] PUNC[|*r,quo]
+ >>[!ln]++
+_
+  (pend)
 __
 g:ELEM->PREP[%-neg] PCLS[^ing]
  >>+
@@ -432,14 +430,12 @@ g:PUNC[|*l]->PUNC[|*l,quo] CONJ
  >>[$trlg]
 _
   split
-  linefeed
   append <conj>
   right
   append </conj>
-  insert < add
-  back
-  delete <
+  delete >
   store add
+  back
   merge
   left
 __
@@ -512,7 +508,7 @@ _
   set punc=T
 __
 g:PEXP[|*l]->PUNC[|*l] SEGM
- >>*r+
+ >>*l++
 _
   (pbeg)
   set punc=T
@@ -551,13 +547,13 @@ _
   var typg=nclu
   (typg)
 __
-g:NCLU[:det]->PEXP[|det,nom,-stop] PUNC[|*r]
- >>*l[&quo]+4
+g:NCLU[:det]->PEXP[|det,nom,-stop,-ctrl] PUNC[|*r]
+ >>+4
 _
   (prom)
 __
-g:NCLU->PEXP[|-det,nom,-stop] PUNC[|*r]
- >>*r[&quo]+4
+g:NCLU->PEXP[|-det,nom,-stop,-ctrl] PUNC[|*r]
+ >>+4
 _
   (prom)
 __
@@ -636,11 +632,12 @@ _
 __
 g:PEXP[|*l]->PEXP[|-stop] PUNC[|emb]
 _
-  left
-  linefeed
-  append <punc>
-  right
-  append </punc>
+  (pend)
+__
+g:PEXP[|*l,ctrl]->PEXP[|-ctrl] PUNC[|*l]
+ >>++
+_
+  (pend)
 __
 g:VCLU->VCLU PREP
  >>*l-8
@@ -754,7 +751,7 @@ _
   right
   append </pro>
 __
-g:NCLU[:num]->NUM
+g:NCLU[:num]->NUM[:-cnj]
  >>----
 _
   append <nclu>
@@ -829,7 +826,7 @@ _
   var typg=adj
   (lxtd)
 __
-g:NCLU[:*r,num]->NUM NCLU[:-det,-prep,-num,-qnt]
+g:NCLU[:*r,num]->NUM[:-cnj] NCLU[:-det,-prep,-num,-qnt]
  l[$cmpd]>>*r[&adv]++++
          >>*r++++
 _
@@ -993,11 +990,6 @@ _
 __
 g:NOUN[:hyph]->NOUN[:-hyph] PUNC[|hyph]
 __
-g:NOUN[:*r]->YEAR NOUN[:*u]
- >>++++
-_
-  (twob)
-__
 g:NOUN[:*r]->NOUN[:hyph] NOUN
 # ?>>?
    >>++
@@ -1087,7 +1079,7 @@ __
 g:VCLU[^*r]->ADV[~-cplx] VCLU[^ed]
  l[$deg,cmpd]>>*r+
 _
-  view
+# view
   var typg=adv
   (lxtd)
 __
@@ -1114,7 +1106,8 @@ _
 __
 g:VCLU[^aux,*r]->AUXL[^-*r] VCLU[^-aux]
  l[$quo] >>*r-4
- r[$cond]>>*r+1
+ r[$cond]>>*r+2
+         >>*r+1
 _
   var typg=aux
   (lxtd)
@@ -1180,6 +1173,8 @@ g:VERB->UNKN
 __
 g:VERB[^beaj,to]->ADJ[%to] TO
  l[$spat]>>++
+  l[$vls]>>------
+         >>+
 _
   if be=
     append [be]
@@ -1346,11 +1341,16 @@ __
 g:ADV->CONJ[@prep] DATE
  >>++++
 _
-  append <prep>
+  append <date><prep>
   left
-  append </prep><date>
+  append </prep>
   right
   append </date>
+__
+g:ADV->PREP[%*r] QUAN
+ >>[$deg]--
+_
+  (twob)
 __
 
 g:ADJ->NEGN ADJ
@@ -1358,7 +1358,7 @@ g:ADJ->NEGN ADJ
 _
   (twob)
 __
-g:ADJ[%cnj]->CONJ[@cnj] ADJ[%-*x]
+g:ADJ[%cnj,*r]->CONJ[@cnj] ADJ[%-*x]
  n>3>>*r----
  n>2>>*r--
     >>*r-
@@ -1373,7 +1373,7 @@ __
 
 g:PREP->ADJ TO
  l[$spat]>>++
-         >>----
+         >>----------
 _
   (twob)
 __
@@ -1418,12 +1418,22 @@ g:NUM[:*r]->ADV[~ord] NUM[:-*r]
 _
   (twob)
 __
-g:NUM[:*l]->NUM[:-*l] POSTP[@num]
+g:NUM[:*l]->NUM[:-*l,-cnj] POSTP[@num]
 _
   left
   append <adv>
   right
   append </adv>
+__
+g:NUM->NUM NUM[:cnj]
+ >>++
+_
+  (twob)
+__
+g:NUM[:cnj]->PREP[%*r] NUM[:-cnj]
+ >>--
+_
+  (twob)
 __
 
 #
@@ -1537,37 +1547,33 @@ _
 __
 p:datime
 _
-  var typg=prep
-  (typg)
-  append <
-  insert < datime
-  append >
+  append <prep>
+  left
+  append </prep>
   right
-  append </
-  insert < datime
-  append >
 __
-g:DATE->PREP[%-cnj] YEAR
+g:DATE[:*r]->PREP[%-cnj,-*l] DATE
+ >>++
 _
-  var datime=date
   (datime)
 __
 g:DATE[:*r]->PREP[%-cnj,*l] DATE
+ >>++
 _
   (twob)
 __
-g:DATE[:*r]->PREP[%-cnj,-*l] DATE
+g:TIME[:*r]->PREP[%-cnj,-*l] TIME
+ >>++
 _
-  var datime=date
   (datime)
 __
-g:DATE->NUM[:*x] ADV[~date]
- >>+12
-__
-g:TIME[:*r]->PREP[%-cnj] TIME
+g:TIME[:*r]->PREP[%-cnj,*l] TIME
+ >>++
 _
-  var datime=time
-  (datime)
+  (twob)
+__
+g:DATE->NUM ADV[~date]
+ >>++++++++++
 __
 
 g:CONJ->ADV[~mod] CONJ
@@ -1587,11 +1593,17 @@ g:CONJ->CONJ[@-*l,-rel] PUNC[|com]
 __
 
 g:QUAN->ADV[~prox] QUAN
+ >>+
 _
   (twob)
 __
 g:QUAN->QUAN QUAN
  >>+++
+_
+  (twob)
+__
+g:QUAN->ADV[~prox] NOUN[:quan]
+ >>++
 _
   (twob)
 __
@@ -1752,7 +1764,7 @@ d:a   <- DET[@sgl,num]
 __
 d:an  <- DET[@sgl,num]
 __
-d:the <- DET
+d:the <- DET[@the]
 __
 
 d:this <- DEM[@ind,sgl]
@@ -1919,6 +1931,11 @@ d:someone <- PRO
 __
 d:anyone  <- PRO
 __
+g:PRO->DET[@the] PRO[=one]
+ >>++++++++++
+_
+  (twob)
+__
 
 d:and  <- CONJ[@cnj]
  >>[!coord]
@@ -2006,8 +2023,10 @@ __
 
 d:in  <- PTCL
 __
+d:on  <- PTCL
+__
 d:out <- PTCL
- >>+
+ >>++
 __
 d:off <- PTCL
 __
@@ -2150,6 +2169,14 @@ g:DET[@*l]->DET CLSP
  >>+
 _
   (clspr)
+__
+g:DET->DET[@the] DATE
+ >>++++
+_
+  left
+  append <date>
+  right
+  append </date>
 __
 g:CONJ[@*r]->OPNP CONJ
 _
@@ -2331,7 +2358,8 @@ _
   (twob)
 __
 g:ADJ[%*r]->ADJX[%cnj] ADJ[%-ed,-ing]
- >>*l++++
+# ?>>?
+   >>*l++++
 _
   (twob)
 __
@@ -2369,12 +2397,12 @@ _
 __
 
 g:NUM->PREP[%*l] NUM[:-*x]
- >>-
+ >>--
 _
   (twob)
 __
 g:NUM[:*x]->PREP[%*l] NUM[:*x]
- >>-
+ >>--
 _
   (twob)
 __

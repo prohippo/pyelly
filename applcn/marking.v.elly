@@ -21,7 +21,9 @@ born : VERB[^ed] - +2
 built : VERB[^ed]
 did : VERB[^ed,*x]
 does not : AUXL[^s]
+did not : AUXL[^ed]
 exciting : VERB[^ing]
+financing : VERB[^ing]
 fishermen : NOUN[:plur]
 forgave : VERB[^ed,*x]
 forgot : VERB[^ed,*x]
@@ -43,7 +45,10 @@ known : VERB[^ed,*x]
 led : NOUN - -2
 led : VERB[^ed]
 made up : VERB[^ed,*x]
+marked : VERB[^ed]
+marking : VERB[^ing]
 ought : VERB
+related : VERB[^ed]
 rose : VERB[^ed,*x] - +1
 said : VERB[^ed,dit]
 sat down : VERB[^ed,*x]
@@ -59,7 +64,7 @@ anti : PREF
 
 # # # # because word is already in WordNet as different entry or needs to be listed
 
-building : VERB[^ing]
+building : VERB[^ing,ptcl]
 discouraged : VERB[^ed]
 fighting : VERB[^ing]
 lives : NOUN[:plur]   =life -s
@@ -115,6 +120,9 @@ colored slave : NOUN
 dance number : NOUN
 dance company : NOUN
 entry point : NOUN
+fixed investment : NOUN
+genetically modified : ADJ
+genome editing : NOUN
 heavy fighting : NOUN
 intelligence study : NOUN
 intelligence survey : NOUN
@@ -122,144 +130,146 @@ livestock waste : NOUN
 media pack : NOUN
 military exercise : NOUN
 open desert : NOUN
+purchasing power : NOUN
+results page : NOUN
 rocket science : NOUN
 sales team : NOUN
+shadow banking : NOUN
 signal rocket : NOUN
 time control : NOUN
 yuletide spirit : NOUN
 zone training : NOUN
 
+1 another : PRO =one another
+a few : QUAN[@ind] [!mltp] 0
+a few hundred : QUAN
+a few of : QUAN
+a lot of : QUAN
+about to : TO
+about whether : CONJ
+according to : PREP
+after all : CONJ[@*l]
+ahead of : PREP
+all at once : ADV
+all evening : ADV
+all of : QUAN
+all that : ALLTHT
+along with : PREP
+and now : CONJ
+and so : CONJ
+and so on : MISC
+and then : CONJ
+approximately average : ADJ
+as a result : CONJ
+as a result of : PREP
 as if : CONJ
 as though : CONJ
 as well as : CONJ
-at least : ADV[~mod]
-out of : PREP
-round at : PREP
-ahead of : PREP
-up to : ADV[~mod] [$deg] 0
-pretty much : ADV[~mod,prox] [$deg] 0
-a lot of : QUAN
-a few : QUAN[@ind] [!mltp] 0
-all at once : ADV
-some of which : CONJ
-not only : CONJ
-pros and cons : NOUN
-one another : PRO - +4
-do that : VERB
-more than : ADV[~mod] [$deg] 0
-less than : ADV[~mod] [$deg] 0
-neighborhood setting : NOUN
-best suit : VERB
-best suit : NOUN
-hard boiled : ADJ
-sorry about that : ADJ [$cmpd] 0
-than ever : CMPC
-than ever before : CMPC
-for now : ADV
-such a  : QUAN
-such an : QUAN
-calm and collected : ADJ [$cmpd] 0
-just as : ADV [$deg] 0
-just as : CONJ - -1
-from across : PREP
-over from : PREP
-even though : CONJ
-since then : ADV
-from beginning to end : ADV
-and so on : MISC
-and so : CONJ
-of course : ADV
-so many : QUAN[@ind]
-in a way : ADV
-all evening : ADV
 at first : ADV
 at last  : ADV
-his own : DEM
-now and then : ADV
-often enough : ADV
-whenever and wherever : CONJ
+at least : ADV[~mod]
+at least one : NUM
+at odds: ADJ
+at one point : ADV
+at the same time as : CONJ
+best suit : NOUN
+best suit : VERB
+but now : CONJ
+but then : CONJ
+by far : ADV
+calm and collected : ADJ [$cmpd] 0
+can and will : AUXL
+cheer on : VERB
+do much more : VERB
+do that : VERB
+due to : PREP
+each : POSTP[@num] - -1
+each other : PRO
+even though : CONJ
+for example : PEXP[|eg]
+for now : ADV
+from across : PREP
+from beginning to end : ADV
+from beyond : PREP
 from what  : CONJ[@rel]
 from which : CONJ[@rel]
-all that : ALLTHT
-at the same time as : CONJ
-right after : CONJ
-straight after : CONJ
-like never before : ADV
-this year : NOUN[:*x]
-that year : NOUN[:*x]
-the past year : NOUN[:*x]
-last year : NOUN[:*x]
-next year : NOUN[:*x]
-from beyond : PREP
-due to : PREP
-other than : CONJ
-the entirety : NOUN
-1 another : PRO =one another
-this time : ADV
-at one point : ADV
-a few hundred : QUAN
-it is easy : ELEM - +4 (elma)
-cheer on : VERB
-according to : PREP
+full time : ADV
+hard boiled : ADJ
+has to do : VERB
+in a way : ADV
 in addition to : PREP
+in order to : TO
+in turn : ADV
+increase or decrease : VERB
+insofar as : CONJ
+it is easy : ELEM - +4 (elma)
+just as : ADV [$deg] 0
+just as : CONJ - -1
+last year : NOUN[:*x]
+less like : PREP
+less than : ADV[~mod] [$deg] 0
+like never before : ADV
+made available : VERB[^ed] =make -ed available
+make available : VERB
+making it easier : VERB[^ing]
+more like : PREP
+more than : ADV[~mod] [$deg] 0
+neighborhood setting : NOUN
+next year : NOUN[:*x]
+no one : PRO
+not only : CONJ
+now and then : ADV
+of course : ADV
+often enough : ADV
+one another : PRO - +4
+or more : POSTP[@num]
+other than : CONJ
+out of : PREP[%*r]
+over from : PREP
+over the course of : PREP
+over the course of : PREP
+peculiar to : PREP
+percent chance : NOUN
+pretty much : ADV[~mod,prox] [$deg] 0
+pros and cons : NOUN
+related to : PREP
+right after : CONJ
+round at : PREP
+since then : ADV
+so many : QUAN[@ind]
+some of : QUAN
+some of which : CONJ
+somewhere along : PREP
+sorry about that : ADJ [$cmpd] 0
+straight after : CONJ
+such a  : QUAN
+such an : QUAN
+such as : PREP
+than ever : CMPC
+than ever before : CMPC
+thanks to : PREP
+that year : NOUN[:*x]
+the default is : VERB
+the entirety : NOUN
+the past year : NOUN[:*x]
+this time : ADV
+this year : NOUN[:*x]
+unwilling to : TO
 up slightly : ADJ
 up slightly : ADV - +1
-about whether : CONJ
-insofar as : CONJ
-each other : PRO
-no one : PRO
-over the course of : PREP
-percent chance : NOUN
-at least one : NUM
-somewhere along : PREP
-approximately average : ADJ
-do much more : VERB
-and now : CONJ
-but now : CONJ
-and then : CONJ
-but then : CONJ
-as a result : CONJ
-as a result of : PREP
-some of : QUAN
-a few of : QUAN
-has to do : VERB
-the default is : VERB
-making it easier : VERB[^ing]
-make available : VERB
-made available : VERB[^ed] =make -ed available
-increase or decrease : VERB
-in order to : TO
-along with : PREP
-more like : PREP
-less like : PREP
-full time : ADV
-by far : ADV
-can and will : AUXL
-or more : POSTP[@num]
-each : POSTP[@num] - -1
-what is today : ADV
-at odds: ADJ
-all of : QUAN
+up to : ADV[~mod] [$deg] 0
 up to his neck : ADJ
-after all : CONJ[@*l]
-over the course of : PREP
+what is today : ADV
+whenever and wherever : CONJ
+willing to : TO
 
-purchasing power : NOUN
-fixed investment : NOUN
-genetically modified : ADJ
-genome editing : NOUN
-results page : NOUN
-
-for example : PEXP[|eg]
-such as : PREP
-my own : DEM[@ind]
-your own : DEM[@ind]
-his own : DEM[@ind]
 her own : DEM[@ind]
+his own : DEM[@ind]
 its own : DEM[@ind]
+my own : DEM[@ind]
 our own : DEM[@ind]
 their own : DEM[@ind]
-about to : TO
+your own : DEM[@ind]
 
 could a  : AUXL
 would a  : AUXL
@@ -666,7 +676,7 @@ best : ADV
 betray : VERB
 better : NOUN - -1
 better : VERB
-better : ADJ[%er] - +1
+better : ADJ[%er,to] [$vls] +1
 better : ADV[~er]
 bewilder : VERB
 beyond : ADV[~trlg]
@@ -746,7 +756,7 @@ bruno : NOUN
 bubonic : ADJ
 budapest : NOUN
 build : NOUN
-build : VERB
+build : VERB[^ptcl]
 building : NOUN
 built : ADJ
 bulldoze : VERB
@@ -842,7 +852,7 @@ centre : NOUN
 centre : VERB
 century : NOUN
 ceremony : NOUN
-certain : ADJ[%to]
+certain : ADJ[%to] [$vls] 0
 certify : VERB
 chair : NOUN
 chair : VERB
@@ -852,7 +862,7 @@ champion : ADJ
 championship : NOUN
 chance : NOUN
 chance : VERB
-chance : ADJ[%to]
+chance : ADJ[%to] [$vls] 0
 change : NOUN
 change : VERB
 channel : NOUN
@@ -1119,7 +1129,7 @@ cricket : VERB
 crime : NOUN
 crisis : NOUN
 critic : NOUN
-critical : ADJ[%to]
+critical : ADJ
 criticize : VERB
 croatia : NOUN
 crop : NOUN
@@ -1368,7 +1378,7 @@ earth : VERB
 earthquake : NOUN
 ease : NOUN
 ease : VERB
-easier : ADJ
+easier : ADJ[%to,er] [$vls] 0
 easiest : ADJ
 easily : ADV
 east : NOUN - -2
@@ -1436,7 +1446,7 @@ english : ADJ
 enhance : VERB
 enjoy : VERB
 enlarge : VERB
-enough : ADJ[%to]
+enough : ADJ[%to] [$vls] 0
 enroll : VERB
 ensure : VERB
 enter : VERB
@@ -1468,6 +1478,7 @@ even : ADJ
 even : ADV[~mod] [$deg] 0
 event : NOUN
 ever : ADV
+everywhere : ADV
 evidence : NOUN
 evidence : VERB
 evident : ADJ
@@ -1604,6 +1615,7 @@ finance : NOUN
 finance : VERB
 financial : ADJ
 financially : ADV
+financing : NOUN[:ing]
 find : NOUN - -2
 find : VERB
 finish : NOUN
@@ -1702,7 +1714,7 @@ french : ADJ
 frenzy : NOUN
 frequent : VERB
 frequent : ADJ
-frequently : ADV
+frequently : ADV [$deg] 0
 fresh : ADJ
 fresh : ADV
 friday : NAVB
@@ -1797,6 +1809,7 @@ google : VERB
 gourmet : NOUN
 govern : VERB
 government : NOUN
+government bond : NOUN
 grace : NOUN
 grace : VERB
 grade : NOUN
@@ -1809,7 +1822,7 @@ grape : NOUN
 grass : NOUN
 grass : VERB - -1
 grassroots : ADJ
-great : ADJ[%to]
+great : ADJ[%to] [$vls] 0
 greek : NOUN
 greek : ADJ
 green : NOUN
@@ -1819,9 +1832,9 @@ greet : VERB
 grim : ADJ
 groom : NOUN
 groom : VERB
-gross : NOUN
+gross : NOUN - -1
 gross : VERB
-gross : ADJ
+gross : ADJ - +2
 grotesque : NOUN - -2
 grotesque : ADJ
 grotesquely : ADV
@@ -1848,7 +1861,7 @@ hail : NOUN
 hail : VERB
 haiti : NOUN
 hajj : NOUN
-half : NOUN
+half : NOUN[:quan]
 half : ADJ
 half : ADV
 hamilton : NOUN
@@ -1972,7 +1985,7 @@ imperfect : NOUN - -2
 implicate : VERB
 implication : NOUN
 impolite : ADJ
-important : ADJ[%to]
+important : ADJ[%to] [$vls] 0
 impose : VERB
 impossible : NOUN - -2
 impossible : ADJ
@@ -2173,7 +2186,7 @@ large : ADV - -2
 largely : ADV
 last : NOUN - -1
 last : VERB
-last : ADJ[%mod,to]
+last : ADJ[%mod,to] [$vls] 0
 last : ADV
 late : ADJ
 late : ADV[~trlg]
@@ -2313,7 +2326,7 @@ man : NOUN
 man : VERB
 manage : VERB
 management : NOUN
-mandatory : ADJ[%to]
+mandatory : ADJ[%to] [$vls] 0
 mankind : NOUN
 mantra : NOUN
 manufacture : NOUN
@@ -2324,9 +2337,11 @@ march : NOUN
 march : VERB
 mark : NOUN
 mark : VERB
+marked : ADJ
 market : NOUN
 market : VERB
 marketplace : NOUN
+marking : NOUN[:ing]
 marmot : NOUN
 marriage : NOUN
 marry : VERB
@@ -2472,8 +2487,8 @@ mow : VERB
 mph : NOUN
 mr : NOUN
 much : NOUN - -1
-much : ADJ[%to]
-much : ADV
+much : ADJ[%to] [$vls] 0
+much : ADV [$deg] +2
 much like : VERB - -1
 much like : PREP
 muhammad : NOUN
@@ -2532,7 +2547,7 @@ nest : NOUN
 nest : VERB
 net : NOUN
 net : VERB
-net : ADJ
+net : ADJ - +1
 network : NOUN
 network : VERB
 nevada : NOUN
@@ -2744,7 +2759,7 @@ pearly : NOUN - -3
 pearly : ADJ
 peculiar : ADJ
 peel : NOUN
-peel : VERB - +1
+peel : VERB - +2
 pellet : NOUN
 penetrate : VERB
 penny : NOUN
@@ -3075,6 +3090,7 @@ reign : VERB
 reject : NOUN
 reject : VERB
 relate : VERB
+related : ADJ
 relation : NOUN
 release : NOUN
 release : VERB
@@ -3524,7 +3540,7 @@ statement : NOUN
 statistic : NOUN
 stead : NOUN
 steam : NOUN
-steam : VERB
+steam : VERB - +1
 steamer : NOUN
 step : NOUN
 step : VERB
@@ -3838,6 +3854,7 @@ tumultuous : ADJ
 tunnel : NOUN
 tunnel : VERB
 turing : NOUN
+turing machine : NOUN
 turk : NOUN
 turkish : NOUN
 turkish : ADJ
@@ -4021,7 +4038,7 @@ welcome : VERB
 welcome : ADJ
 well : NOUN
 well : VERB - -1
-well : ADJ[%to]
+well : ADJ[%to] [$vls] 0
 well : ADV [$deg,cmpd] 0
 well : MISC [!spcs] -2
 well-known : ADJ
