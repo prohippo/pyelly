@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# dateTransform.py : 11jan2017 CPM
+# dateTransform.py : 17jan2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -368,6 +368,7 @@ class DateTransform(simpleTransform.SimpleTransform):
                 break
             k += 1
 
+#       print k , 'digits scanned'
         if k != 2 and k != 4:   # simple check for year range (change this as needed)
             return 0
         if k == 4 and ts[0] != '1' and ts[0] != '2':
@@ -380,6 +381,7 @@ class DateTransform(simpleTransform.SimpleTransform):
             self._yr[:2] = ts[k-4:]
 
         t = ts[k:]              # look for what follows year
+#       print 'epoch t=' , t
 
         ns = 0
         if len(t) > 0 and t[0] == ' ':
@@ -389,11 +391,11 @@ class DateTransform(simpleTransform.SimpleTransform):
         lss = self.get(t)
 #       print 'lss=' , lss
         if self.string in Ep:
-            k += lss
             self._ep = list(self.string)
+            k += ns + lss
 
-        kns = k + ns
-        return kns if kns > 3 else 0
+#       print 'k=' , k
+        return k if k > 3 else 0
 
     def _matchN ( self , ts ):
 
@@ -504,7 +506,9 @@ if __name__ == '__main__':
         u'Sep 33, 1955' ,
         u'Sept 3, 1955' ,
         u'Twelfth of Never' ,
-        u'1000 BC'
+        u'1000 BC' ,
+        u'1234 x' ,
+        u'123 x'
     ]
 
     de = DateTransform()
@@ -512,4 +516,18 @@ if __name__ == '__main__':
         tst = list(xd)
         stat = de.rewrite(tst)
         print xd , '-->>' , ''.join(tst) , '=' , stat
+        print ''
+
+    print "----------------"
+    print ""
+
+    import sys
+
+    while True:
+        print '> ' ,
+        st = sys.stdin.readline().strip()
+        if len(st) <= 0: break
+        tst = list(st.strip())
+        stat = de.rewrite(tst)
+        print st , '-->>' , ''.join(tst) , '=' , stat
         print ''
