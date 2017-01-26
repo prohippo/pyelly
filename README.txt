@@ -364,6 +364,8 @@ Release Notes:
                       fix doTest script to make it self-complete
                       fix bug in *LEFT syntactic feature inheritance
                       fix bugs in date entity extraction
+                      better checking of arguments for generative semantics
+                      better error messages for cognitive semantic logic
                       update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
