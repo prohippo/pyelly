@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# grammarTable.py : 13aug2016 CPM
+# grammarTable.py : 30jan2016 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -44,6 +44,8 @@ import ellyDefinitionReader
 import ellyException
 import definitionLine
 import sys
+
+NBSP = ellyChar.NBS
 
 def compile ( syms, clss , code , nwy=0 ):
 
@@ -337,9 +339,9 @@ class GrammarTable(object):
             return False
 
         print "added"
-        print '{0:4} grammar rules'.format(nor)
-        print '{0:4} dictionary rules'.format(now)
-        print '{0:4} procedures'.format(nop)
+        print NBSP + '{0:4} grammar rules'.format(nor)
+        print NBSP + '{0:4} dictionary rules'.format(now)
+        print NBSP + '{0:4} procedures'.format(nop)
         return True
 
     def _doExtend ( self , syms , s , t ):
