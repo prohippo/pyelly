@@ -6,7 +6,8 @@
 # larger subset of default.v.elly (WordNet 3.1)
 #
 
-# # # # common irregularities handled explicitly
+# # # # common irregularities handled explicitly or
+# # # # inflections needed because of explicit definitions elsewhere
 
 biggest : ADJ
 largest : ADJ
@@ -18,11 +19,14 @@ began : VERB[^ed,proc,*x]
 believes : VERB[^s]
 bit : VERB[^ed,*x]
 born : VERB[^ed] - +2
+building : VERB[^ing,ptcl]
 built : VERB[^ed]
 did : VERB[^ed,*x]
 does not : AUXL[^s]
 did not : AUXL[^ed]
+discouraged : VERB[^ed]
 exciting : VERB[^ing]
+fighting : VERB[^ing]
 financing : VERB[^ing]
 fishermen : NOUN[:plur]
 forgave : VERB[^ed,*x]
@@ -41,54 +45,49 @@ have to : AUXL
 having : HAVE[^ing]
 hove : VERB[^ed]
 internationals : NOUN[:plur]
+knew : VERB[^ed]
 known : VERB[^ed,*x]
 led : NOUN - -2
 led : VERB[^ed]
+lives : NOUN[:plur]   =life -s
+lives : VERB[^s] - +1 =live -s
 made up : VERB[^ed,*x]
 marked : VERB[^ed]
 marking : VERB[^ing]
 ought : VERB
+regarding : PREP - +1
+regarding : NOUN - -1
+regarding : VERB[^ing]
 related : VERB[^ed]
 rose : VERB[^ed,*x] - +1
 said : VERB[^ed,dit]
 sat down : VERB[^ed,*x]
+swooping : ADJ[%ing] - +1
+swooping : VERB[^ing]
 taken : VERB[^ed]
-terrifyinng : VERB[^ing]
+terrifying : VERB[^ing]
 thought : VERB[^ed]
 went : VERB[^ed,*x]
 will have to : AUXL
 will not have to : AUXL
 written : VERB[^ed]
 wrote : VERB[^ed,*x]
-anti : PREF
 
-# # # # because word is already in WordNet as different entry or needs to be listed
+# # # # definitions missing from WordNet
 
-building : VERB[^ing,ptcl]
-discouraged : VERB[^ed]
-fighting : VERB[^ing]
-lives : NOUN[:plur]   =life -s
-lives : VERB[^s] - +1 =live -s
-regarding : PREP - +1
-regarding : NOUN - -1
-regarding : VERB[^ing]
-swooping : ADJ[%ing] - +1
-swooping : VERB[^ing]
+airstrike : NOUN
+bookended : VERB[^ed] - -1
+estimative : ADJ
+hashtag : NOUN
+interferometry : NOUN
+policymaker : NOUN
+rebaptizer : NOUN
+retweet : VERB
+spectator : ADJ - +1
+storytelling : NOUN
+submillimeter  : ADJ
 underutilize : VERB
 underutilization : NOUN
-
-submillimeter  : ADJ
-interferometry : NOUN
-
-storytelling : NOUN
-bookended : VERB[^ed] - -1
-retweet : VERB
-estimative : ADJ
-policymaker : NOUN
-hashtag : NOUN
-airstrike : NOUN
-rebaptizer : NOUN
-spectator : ADJ - +1
 
 ah : MISC
 yes : MISC
@@ -106,6 +105,8 @@ anything : NOUN[:qnt]
 everything : NOUN[:qnt]
 something : NOUN[:qnt]
 others : NOUN
+
+anti : PREF
 
 # # # # compound word vocabulary 
 
@@ -224,7 +225,7 @@ often enough : ADV
 one another : PRO - +4
 or more : POSTP[@num]
 other than : CONJ
-out of : PREP[%*r]
+out of : PREP['*r]
 over from : PREP
 over the course of : PREP
 over the course of : PREP
@@ -309,60 +310,61 @@ full-throated : ADJ
 U.S.-led : ADJ
 lesser-known : ADJ
 
-# # # # names to recognize explicitly
+# # # # some names to recognize explicitly
 
 ABC News : NOUN
 Agence France-Presse : NOUN
-China Central Television : NOUN
-Scotts : NOUN
-Scotts Miracle-Gro Company : NOUN
-Gov. Jerry Brown : NOUN
-George Will : NOUN
-Reaganite : NOUN
-Walmart : NOUN
-Walmart supercenter : NOUN
-USNORTHCOM : NOUN
-Jade Helm : NOUN
-Hillary Clinton : NOUN
-Apple Watch : NOUN
-Crafty : NOUN
+Andras : NOUN
 Angelina : NOUN
 Angelina Jolie : NOUN
-Michael Keaton : NOUN
-Washington Post : NOUN
-federal open market committee : NOUN
-World News Tonight with David Muir : NOUN
-Mimi Spear : NOUN
-Harry : NOUN
-Black Lives Matter : NOUN
-ferguson : NOUN
-Institute for Radio Astronomy Millimetrique : NOUN
-Andras : NOUN
-Fairchild : NOUN
-NBA : NOUN
-Stephen Curry : NOUN
-Golden State : ADJ
-Donald Trump : NOUN
-Obamas : NOUN[:plur] =obama -s
+Apple Watch : NOUN
 AT&T : NOUN
+Becker : NOUN
 Bitcoin : NOUN
-Warner Brothers : NOUN
-CNN : NOUN
-HBO : NOUN
-Cubbies : NOUN[:plur]
-West Indies : NOUN[:plur]
+Black Lives Matter : NOUN
 catalina : NOUN
+China Central Television : NOUN
+CNN : NOUN
+Crafty : NOUN
+Cubbies : NOUN[:plur]
+Donald Trump : NOUN
+El Nino : NOUN
+Fairchild : NOUN
+Farhan Haq : NOUN
+federal open market committee : NOUN
+ferguson : NOUN
+Gallagher : NOUN
+George Will : NOUN
+Golden State : ADJ
+Gov. Jerry Brown : NOUN
+Harry : NOUN
+HBO : NOUN
+Hillary Clinton : NOUN
+Institute for Radio Astronomy Millimetrique : NOUN
+Islamic State : NOUN
+Jade Helm : NOUN
+janis : NOUN
+la nina : NOUN
+Michael Keaton : NOUN
+Mimi Spear : NOUN
+NBA : NOUN
+Obamas : NOUN[:plur] =obama -s
+Reaganite : NOUN
 rockette : NOUN
+Scotts : NOUN
+Scotts Miracle-Gro Company : NOUN
+Stephen Curry : NOUN
 The Verge : NOUN [&prop] 0
 twitter : NOUN
 U.N. : NOUN
 U.S. : NOUN
-janis : NOUN
-Gallagher : NOUN
-Becker : NOUN
-la nina : NOUN
-Farhan Haq : NOUN
-Islamic State : NOUN
+USNORTHCOM : NOUN
+Walmart : NOUN
+Walmart supercenter : NOUN
+Warner Brothers : NOUN
+Washington Post : NOUN
+West Indies : NOUN[:plur]
+World News Tonight with David Muir : NOUN
 
 # # # # miscellaneous
 
@@ -459,6 +461,7 @@ alas : ADV
 alexander hamilton : NOUN
 align : VERB
 alive : ADJ
+all the time : ADV
 allow : VERB
 almost : ADV[~mod,prox,int]
 along : ADV - -1
@@ -513,7 +516,7 @@ application : NOUN
 apply : VERB
 approval : NOUN
 approve : VERB
-approximately : ADV
+approximately : ADV[~prox]
 arab : NOUN
 arabic : NOUN
 arabic : ADJ
@@ -1861,7 +1864,7 @@ hail : NOUN
 hail : VERB
 haiti : NOUN
 hajj : NOUN
-half : NOUN[:quan]
+half : NOUN[:qnt]
 half : ADJ
 half : ADV
 hamilton : NOUN
@@ -2155,6 +2158,7 @@ knight : VERB - -1
 know : NOUN - -2
 know : VERB
 knowledge : NOUN
+known : ADJ [$cmpd] +1
 kurd : NOUN
 kurdish : NOUN
 kurdish : ADJ
@@ -3552,7 +3556,7 @@ stifle : NOUN
 stifle : VERB
 still : NOUN - -2
 still : VERB - -2
-still : ADJ
+still : ADJ - -1
 still : ADV - +2
 stir : NOUN
 stir : VERB

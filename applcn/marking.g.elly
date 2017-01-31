@@ -392,13 +392,13 @@ g:ELEM->PEXP[|stop] PUNC[|*r,quo]
 _
   (pend)
 __
-g:ELEM->PREP[%-neg] PCLS[^ing]
+g:ELEM->PREP['-neg] PCLS[^ing]
  >>+
 _
   var typg=prep
   (lxtd)
 __
-g:ELEM->PREP[%neg] PCLS[^ing]
+g:ELEM->PREP['neg] PCLS[^ing]
  >>+++
 _
   var typg=prep
@@ -700,7 +700,7 @@ _
   (lxtd)
 __
 
-g:NCLU[:*r,prep]->PREP[%-cnj] NCLU[:-prep,-det,num]
+g:NCLU[:*r,prep]->PREP['-cnj] NCLU[:-prep,-det,num]
 #      ?>>?
  r[&msr]>>*r
         >>*r[&-msr]+
@@ -708,12 +708,12 @@ _
 # trace
   (pphr)
 __
-g:NCLU[:*r,prep]->PREP[%-cnj] NCLU[:-prep,det,num]
+g:NCLU[:*r,prep]->PREP['-cnj] NCLU[:-prep,det,num]
  >>*r[&-msr]+
 _
   (pphr)
 __
-g:NCLU[:*r,prep]->PREP[%-cnj] NCLU[:-prep,-num]
+g:NCLU[:*r,prep]->PREP['-cnj] NCLU[:-prep,-num]
  >>*r[&-msr]+
 _
   (pphr)
@@ -1047,7 +1047,7 @@ g:NOUN->ABBR NOUN
 _
   (twob)
 __
-g:PRO[=*r,-one]->PREP[%-cnj] PRO[=-nom]
+g:PRO[=*r,-one]->PREP['-cnj] PRO[=-nom]
 # ?>>?
    >>[!ppps]
 _
@@ -1134,7 +1134,7 @@ _
   append </punc>
 __
 
-g:PCLS->PREP[%cls] PCLS[^ing]
+g:PCLS->PREP['cls] PCLS[^ing]
  >>+1
 _
   var typg=prep
@@ -1347,7 +1347,7 @@ _
   right
   append </date>
 __
-g:ADV->PREP[%*r] QUAN
+g:ADV->PREP['*r] QUAN
  >>[$deg]--
 _
   (twob)
@@ -1377,7 +1377,7 @@ g:PREP->ADJ TO
 _
   (twob)
 __
-g:PREP[%cnj]->PREP[%-cnj] CONJ[@-rel]
+g:PREP['cnj]->PREP['-cnj] CONJ[@-rel]
  >>+
 _
   left
@@ -1385,10 +1385,10 @@ _
   right
   append </conj>
 __
-g:PREP->PREP[%cnj] PREP
+g:PREP->PREP['cnj] PREP
  >>++++
 __
-g:PREP->ADV[~dir] PREP[%of]
+g:PREP->ADV[~dir] PREP['of]
  >>++
 _
   var typg=adv
@@ -1430,7 +1430,7 @@ g:NUM->NUM NUM[:cnj]
 _
   (twob)
 __
-g:NUM[:cnj]->PREP[%*r] NUM[:-cnj]
+g:NUM[:cnj]->PREP['*r] NUM[:-cnj]
  >>--
 _
   (twob)
@@ -1486,7 +1486,7 @@ g:VERB[^*l,-ptcl]->VERB[^ptcl] TO     #
 _
   (twob)
 __
-g:VERB[^*l]->VERB PREP[%mod]
+g:VERB[^*l]->VERB PREP['mod]
  >>*l[$trns]++
 _
   (twob)
@@ -1539,7 +1539,7 @@ g:ADV[~*r]->NCLU[:-prep,-det,-num,plur] ADV[~trlg]
         >>----
 __
 
-g:DEM[@*r]->PREP[%-cnj] DEM[@ind]
+g:DEM[@*r]->PREP['-cnj] DEM[@ind]
  >>-
 _
   var typg=prep
@@ -1552,22 +1552,22 @@ _
   append </prep>
   right
 __
-g:DATE[:*r]->PREP[%-cnj,-*l] DATE
+g:DATE[:*r]->PREP['-cnj,-*l] DATE
  >>++
 _
   (datime)
 __
-g:DATE[:*r]->PREP[%-cnj,*l] DATE
+g:DATE[:*r]->PREP['-cnj,*l] DATE
  >>++
 _
   (twob)
 __
-g:TIME[:*r]->PREP[%-cnj,-*l] TIME
+g:TIME[:*r]->PREP['-cnj,-*l] TIME
  >>++
 _
   (datime)
 __
-g:TIME[:*r]->PREP[%-cnj,*l] TIME
+g:TIME[:*r]->PREP['-cnj,*l] TIME
  >>++
 _
   (twob)
@@ -1677,21 +1677,21 @@ __
 
 #
 # internal dictionary
-d:in   <- PREP[%in]
+d:in   <- PREP['in]
 __
-d:of   <- PREP[%of]
+d:of   <- PREP['of]
 __
 d:on   <- PREP
 __
-d:by   <- PREP[%cls]
+d:by   <- PREP['cls]
 __
 d:at   <- PREP
 __
 d:into <- PREP
 __
-d:to   <- PREP[%to]
+d:to   <- PREP['to]
 __
-d:for  <- PREP[%cls]
+d:for  <- PREP['cls]
 __
 d:with <- PREP
 __
@@ -1713,11 +1713,11 @@ __
 d:under   <- PREP
  >>+
 __
-d:about   <- PREP[%*l]
+d:about   <- PREP['*l]
 __
-d:above   <- PREP[%*l]
+d:above   <- PREP['*l]
 __
-d:like    <- PREP[%mod]
+d:like    <- PREP['mod]
  >>+
 __
 d:except  <- PREP
@@ -1745,7 +1745,7 @@ d:upon    <- PREP
 __
 d:during  <- PREP
 __
-d:without <- PREP[%neg]
+d:without <- PREP['neg]
 __
 d:toward  <- PREP
 __
@@ -2269,7 +2269,7 @@ _
 __
 d:kind <- GENR
 __
-g:ADV->GENR PREP[%of]
+g:ADV->GENR PREP['of]
  >>-2
 __
 g:ADV[~cplx]->ADV NCLU[:prep,-poss]
@@ -2396,12 +2396,12 @@ _
   (twob)
 __
 
-g:NUM->PREP[%*l] NUM[:-*x]
+g:NUM->PREP['*l] NUM[:-*x]
  >>--
 _
   (twob)
 __
-g:NUM[:*x]->PREP[%*l] NUM[:*x]
+g:NUM[:*x]->PREP['*l] NUM[:*x]
  >>--
 _
   (twob)
@@ -2610,7 +2610,7 @@ g:ELEM->ECJS[=*l]
  >>+
 __
 
-g:PPRP->ADV PREP[%in]
+g:PPRP->ADV PREP['in]
  l[$trlg]>>++++
          >>----
 _
