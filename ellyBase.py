@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 21dec2016 CPM
+# ellyBase.py : 30jan2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -832,7 +832,7 @@ if __name__ == '__main__':
         print >> sys.stderr , e
         sys.exit(1)
 
-    print 'release=' , release
+    print 'release=' , 'PyElly' , release
     print 'system =' , syst
     try:
         eb = EllyBase(syst)
