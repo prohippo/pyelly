@@ -111,14 +111,17 @@ anti : PREF
 # # # # compound word vocabulary 
 
 armored vehicle : NOUN
+asset purchase : NOUN
 bat and ball : ADJ
+bond market : NOUN
+corporate bond market : NOUN
+dance number : NOUN
 buying guide : NOUN
 calories burned : NOUN
 cast recording : NOUN
 christmas cheer : NOUN
 christmas spectacular : NOUN
 colored slave : NOUN
-dance number : NOUN
 dance company : NOUN
 entry point : NOUN
 fixed investment : NOUN
@@ -1198,7 +1201,7 @@ database : NOUN
 date : NOUN
 date : VERB
 david : NOUN
-day : NOUN
+day : NOUN [&durn] 0
 dazzle : NOUN
 dazzle : VERB
 dazzling : VERB[^ing]
@@ -1836,7 +1839,7 @@ grim : ADJ
 groom : NOUN
 groom : VERB
 gross : NOUN - -1
-gross : VERB
+gross : VERB - -3
 gross : ADJ - +2
 grotesque : NOUN - -2
 grotesque : ADJ
@@ -2550,8 +2553,8 @@ neighborhood : NOUN
 nest : NOUN
 nest : VERB
 net : NOUN
-net : VERB
-net : ADJ - +1
+net : VERB - -2
+net : ADJ - +2
 network : NOUN
 network : VERB
 nevada : NOUN
@@ -3054,7 +3057,7 @@ reason : VERB
 reasonable : ADJ
 receive : VERB
 recent : ADJ
-recently : ADV
+recently : ADV[~trlg]
 recognition : NOUN
 recognize : VERB
 recommend : VERB
