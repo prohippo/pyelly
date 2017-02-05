@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveDefiner.py : 22jan2017 CPM
+# cognitiveDefiner.py : 03feb2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -84,7 +84,7 @@ def convertDefinition ( stb , inp , nwy ):
 #       print "cog def:",line
 
         elem = line.lower().split('>>')               # mandatory for all clauses
-        if len(elem) < 2 or len(elem[1]) == 0:
+        if len(elem) < 2:
             print >> sys.stderr , '** incomplete cognitive semantic clause'
             return None
         if elem[0].strip() == '?' and elem[1].strip() == '?':
