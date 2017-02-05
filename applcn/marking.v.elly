@@ -51,6 +51,7 @@ led : NOUN - -2
 led : VERB[^ed]
 lives : NOUN[:plur]   =life -s
 lives : VERB[^s] - +1 =live -s
+made : VERB[^ed]
 made up : VERB[^ed,*x]
 marked : VERB[^ed]
 marking : VERB[^ing]
@@ -67,6 +68,7 @@ swooping : VERB[^ing]
 taken : VERB[^ed]
 terrifying : VERB[^ing]
 thought : VERB[^ed]
+unified : VERB[^ed]
 went : VERB[^ed,*x]
 will have to : AUXL
 will not have to : AUXL
@@ -114,6 +116,7 @@ armored vehicle : NOUN
 asset purchase : NOUN
 bat and ball : ADJ
 bond market : NOUN
+computer model : NOUN
 corporate bond market : NOUN
 dance number : NOUN
 buying guide : NOUN
@@ -128,6 +131,7 @@ fixed investment : NOUN
 genetically modified : ADJ
 genome editing : NOUN
 heavy fighting : NOUN
+hurricane activity : NOUN
 intelligence study : NOUN
 intelligence survey : NOUN
 livestock waste : NOUN
@@ -198,6 +202,7 @@ from beyond : PREP
 from what  : CONJ[@rel]
 from which : CONJ[@rel]
 full time : ADV
+half inch : NOUN
 hard boiled : ADJ
 has to do : VERB
 in a way : ADV
@@ -213,7 +218,7 @@ last year : NOUN[:*x]
 less like : PREP
 less than : ADV[~mod] [$deg] 0
 like never before : ADV
-made available : VERB[^ed] =make -ed available
+made available : VERB[^ed]
 make available : VERB
 making it easier : VERB[^ing]
 more like : PREP
@@ -240,6 +245,7 @@ related to : PREP
 right after : CONJ
 round at : PREP
 since then : ADV
+so far : ADV
 so many : QUAN[@ind]
 some of : QUAN
 some of which : CONJ
@@ -328,6 +334,7 @@ Black Lives Matter : NOUN
 catalina : NOUN
 China Central Television : NOUN
 CNN : NOUN
+colorado state university : NOUN
 Crafty : NOUN
 Cubbies : NOUN[:plur]
 Donald Trump : NOUN
@@ -470,7 +477,7 @@ almost : ADV[~mod,prox,int]
 along : ADV - -1
 alongside : ADV
 already : ADV
-also : ADV
+also : ADV[~cnj]
 always : ADV
 amaze : VERB
 amazing : VERB[^ing]
@@ -873,7 +880,7 @@ change : NOUN
 change : VERB
 channel : NOUN
 channel : VERB
-chant : NOUN
+chant : NOUN - +1
 chant : VERB
 chapter : NOUN
 character : NOUN
@@ -1867,7 +1874,7 @@ hail : NOUN
 hail : VERB
 haiti : NOUN
 hajj : NOUN
-half : NOUN[:qnt]
+half : NOUN[:val]
 half : ADJ
 half : ADV
 hamilton : NOUN
@@ -2199,7 +2206,7 @@ late : ADJ
 late : ADV[~trlg]
 lately : ADV
 later : ADJ
-later : ADV[~trlg]
+later : ADV[~trlg] - +2
 latin : NOUN
 latin : ADJ
 latin america : NOUN
@@ -3331,7 +3338,7 @@ set : ADJ - -1
 setting : VERB[^ptcl,ing] - +1
 setting : NOUN
 settle : NOUN
-settle : VERB
+settle : VERB[^ptcl]
 setup : NOUN
 severe : ADJ
 sex : NOUN
@@ -3905,6 +3912,7 @@ unemployment rate : NOUN
 unfortunate : NOUN - -1
 unfortunate : ADJ
 unfortunately : ADV
+unified : ADJ - +1
 uniform : NOUN
 uniform : VERB
 uniform : ADJ
@@ -3985,7 +3993,7 @@ visit : NOUN
 visit : VERB
 vocal : NOUN - -1
 vocal : ADJ
-voice : NOUN
+voice : NOUN - +1
 voice : VERB
 volatile : NOUN
 volatile : ADJ

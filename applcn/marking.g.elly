@@ -65,8 +65,6 @@ __
 #
 # syntax rules
 g:SENT->SS
-# ?>>?
-   >>+0
 _
   append <sent>
   linefeed
@@ -387,6 +385,15 @@ _
   right
   append </punc></quote>
 __
+g:ELEM->PREP['of] PEXP
+ >>--
+_
+  append <quote><prep>
+  left
+  append <prep>
+  right
+  append </quote>
+__
 g:ELEM->PEXP[|stop] PUNC[|*r,quo]
  >>[!ln]++
 _
@@ -640,7 +647,7 @@ _
   (pend)
 __
 g:VCLU->VCLU PREP
- >>*l-8
+ >>*l-10
 _
   left
   linefeed
@@ -825,7 +832,7 @@ _
   (lxtd)
 __
 g:NCLU[:*r]->ADJ[%ing,-cnj] NCLU[:-det,-prep,-num,-qnt]
- r[&prop]>>----
+       r[&prop]>>----
  l[$ind]r[&quo]>>*r[&cmpd]----
         r[&quo]>>*r[&cmpd]
                >>*r[&cmpd]++
@@ -1030,7 +1037,7 @@ g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,plur,-ing] NOUN[:-cnj,-ing,-plur,-*x]
 #           ?>>?
      r[&prop]>>-2
  l[&*c]r[&*c]>>+2
-       l[&*c]>>+0
+       l[&*c]>>
              >>-4
 _
   (twob)
@@ -1099,7 +1106,7 @@ _
   (lxtd)
 __
 g:VCLU[^*l]->VCLU ADV[~-mod]
-  r[$deg]  >>*l+0
+  r[$deg]  >>*l
   r[$prd]  >>*l++++
   l[$-trns]r[$trlg]>>*l+
   >>----
@@ -1344,7 +1351,9 @@ _
   (twob)
 __
 g:ADV->ADV[~-int] ADV
- >>+
+ l[$trlg]>>--
+      n>5>>--
+         >>+
 _
   (twob)
 __
@@ -1560,17 +1569,22 @@ _
   var typg=prep
   (lxtd)
 __
-p:datime
+p:prep
 _
   append <prep>
   left
   append </prep>
   right
 __
+g:DATE->PREP NAVB
+ >>++
+_
+  (prep)
+__
 g:DATE[:*r]->PREP['-cnj,-*l] DATE
  >>++
 _
-  (datime)
+  (prep)
 __
 g:DATE[:*r]->PREP['-cnj,*l] DATE
  >>++
@@ -1580,7 +1594,7 @@ __
 g:TIME[:*r]->PREP['-cnj,-*l] TIME
  >>++
 _
-  (datime)
+  (prep)
 __
 g:TIME[:*r]->PREP['-cnj,*l] TIME
  >>++
@@ -1617,7 +1631,7 @@ g:QUAN->QUAN QUAN
 _
   (twob)
 __
-g:QUAN->ADV[~prox] NOUN[:quan]
+g:QUAN->ADV[~prox] NOUN[:val]
  >>++
 _
   (twob)
@@ -2204,7 +2218,7 @@ _
   (clspr)
 __
 g:CNJA->CONJ AUXL
- l[!coord]>>+0
+ l[!coord]>>
           >>--
 _
   (twob)
@@ -2648,14 +2662,11 @@ _
 __
 
 g:ADV->PREP DEGR
- >>[$deg]+
+ >>[$deg,trlg]++++
 _
-  append <prep>
-  left
-  append </prep>
-  right
+  (prep)
 __
-g:DEGR->NOUN[:qnt]
+g:DEGR->NOUN[:val]
 __
 g:DEGR[:det]->DET[@sgl] DEGR[:-det]
 _
