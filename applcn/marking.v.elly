@@ -145,6 +145,7 @@ sales team : NOUN
 shadow banking : NOUN
 signal rocket : NOUN
 time control : NOUN
+water use : NOUN
 yuletide spirit : NOUN
 zone training : NOUN
 
@@ -214,7 +215,7 @@ insofar as : CONJ
 it is easy : ELEM - +4 (elma)
 just as : ADV [$deg] 0
 just as : CONJ - -1
-last year : NOUN[:*x]
+last year : NAVB[:det]
 less like : PREP
 less than : ADV[~mod] [$deg] 0
 like never before : ADV
@@ -224,7 +225,7 @@ making it easier : VERB[^ing]
 more like : PREP
 more than : ADV[~mod] [$deg] 0
 neighborhood setting : NOUN
-next year : NOUN[:*x]
+next year : NAVB[:det]
 no one : PRO
 not only : CONJ
 now and then : ADV
@@ -258,12 +259,13 @@ such as : PREP
 than ever : CMPC
 than ever before : CMPC
 thanks to : PREP
-that year : NOUN[:*x]
+that year : NAVB[:det]
 the default is : VERB
 the entirety : NOUN
-the past year : NOUN[:*x]
+the past year : NAVB[:det]
+this month : NAVB[:det]
 this time : ADV
-this year : NOUN[:*x]
+this year : NAVB[:det]
 unwilling to : TO
 up slightly : ADJ
 up slightly : ADV - +1
@@ -1383,6 +1385,8 @@ duration : NOUN
 duty : NOUN
 dylan : NOUN
 décor : NOUN
+earlier : ADJ [$time] 0
+earlier : ADV[~trlg] [$deg,time] +1
 early : ADJ [$time] 0
 early : ADV[~trlg]
 earn : VERB
@@ -2206,7 +2210,7 @@ late : ADJ
 late : ADV[~trlg]
 lately : ADV
 later : ADJ
-later : ADV[~trlg] - +2
+later : ADV[~trlg] [$deg,time] +2
 latin : NOUN
 latin : ADJ
 latin america : NOUN
@@ -2551,7 +2555,7 @@ necessary : ADJ
 neck : NOUN
 neck : VERB - -1
 need : NOUN
-need : VERB
+need : VERB - +2
 negotiate : VERB
 negotiation : NOUN
 neighbor : NOUN
@@ -2902,7 +2906,7 @@ precaution : NOUN
 precipitation : NOUN
 precise : ADJ
 precision : NOUN
-predict : VERB
+predict : VERB [$trns] 0
 prenuptial : ADJ
 prepare : VERB
 present : ADJ

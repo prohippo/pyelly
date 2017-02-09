@@ -346,6 +346,7 @@ _
   append </time></nclu>
 __
 g:ELEM->ADJ
+  l[$cnj]>>--
  l[$time]>>--------
       p<1>>--------
          >>----
@@ -375,8 +376,10 @@ _
   var typg=conj
   (typg)
 __
-g:ELEM[^dit]->PEXP[|quo,-stop] PUNC[|*r,quo]
- >>------
+g:ELEM[^dit]->PEXP[|quo,-nom,-vrb,-stop] PUNC[|*r,quo]
+#  ?>>?
+ n<4>>----
+    >>--
 _
   append <quote>
   left
@@ -520,7 +523,7 @@ _
   (pbeg)
   set punc=T
 __
-g:PEXP[|det]->PUNC[|*l] DET
+g:PEXP[|*l,det]->PUNC[|*l] DET
 _
   (pbeg)
   set punc=T
@@ -625,7 +628,8 @@ _
   (pend)
 __
 g:SEGM->PEXP[|-nom,-vrb,-stop] PUNC[|*r]
- >>--
+  ?>>?
+   >>--
 _
   (pend)
 __
@@ -975,7 +979,7 @@ __
 
 g:NOUN->UNKN
 __
-g:NOUN->NAVB
+g:NOUN[:*r]->NAVB
  >>-
 __
 g:NOUN->VERB SUFX[#vTOn]
@@ -1016,14 +1020,14 @@ g:NOUN[:*r]->NOUN[:hyph] NOUN
 # ?>>?
    >>++
 __
-g:NOUN[:*r,cnj]->NOUN[:-*l,-hyph,-poss,-plur,-ing] NOUN[:-cnj,ing,-*x]
+g:NOUN[:*r,cnj]->NOUN[:-*l,-hyph,-poss,-plur,-ing] NOUN[:-cnj,ing,-det]
 #       ?>>?
  r[&prop]>>-2
  l[&spcs]>>-2
 _
   (twob)
 __
-g:NOUN[:*r,cnj]->NOUN[:-*l,-hyph,-poss,-plur,-ing] NOUN[:-cnj,-ing,-*x]
+g:NOUN[:*r,cnj]->NOUN[:-*l,-hyph,-poss,-plur,-ing] NOUN[:-cnj,-ing,-det]
 #            ?>>?
       r[&prop]>>-2
       l[&spcs]>>-2
@@ -1033,7 +1037,7 @@ _
   (twob)
 __
 
-g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,plur,-ing] NOUN[:-cnj,-ing,-plur,-*x]
+g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,plur,-ing] NOUN[:-cnj,-ing,-plur,-det]
 #           ?>>?
      r[&prop]>>-2
  l[&*c]r[&*c]>>+2
@@ -1042,7 +1046,7 @@ g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,plur,-ing] NOUN[:-cnj,-ing,-plur,-*x]
 _
   (twob)
 __
-g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,plur,-ing] NOUN[:-cnj,-ing,plur,-*x]
+g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,plur,-ing] NOUN[:-cnj,-ing,plur,-det]
 #             ?>>?	
        r[&prop]>>-2
  l[&-*c]r[&-*c]>>-4
@@ -1340,6 +1344,11 @@ g:ADJ->VERB SUFX[#vTOa]
 _
   (twob)
 __
+g:ADJ[%*r]->ADV[~cnj] ADJ
+ n<3>>*r[$cnj]++++
+_
+  (advb)
+__
 
 g:ADV->ADJ SUFX[#aTOr]
  >>[$prd]
@@ -1350,10 +1359,18 @@ g:ADV->VERB SUFX[#vTOr]
 _
   (twob)
 __
-g:ADV->ADV[~-int] ADV
+g:ADV->ADV[~-int,-cnj] ADV
  l[$trlg]>>--
       n>5>>--
          >>+
+_
+  (twob)
+__
+g:ADV[~*l]->ADV NAVB
+#           ?>>?
+          n>2>>------
+ l[$deg,time]>>*l++++++
+             >>----
 _
   (twob)
 __
@@ -1526,13 +1543,17 @@ g:ADJ[%*l]->ADJ[%-*l,-*r] XEST
 _
   (twob)
 __
-g:ADJ[%*r]->ADV[~int] ADJ
- >>*r++
+p:advb
 _
   append <adv>
   left
   append </adv>
   right
+__
+g:ADJ[%*r]->ADV[~int] ADJ
+ >>*r++
+_
+  (advb)
 __
 g:ADJ[%*l]->ADJ[%er] CMPC
  >>*l++
@@ -1622,7 +1643,7 @@ g:CONJ->CONJ[@-*l,-rel] PUNC[|com]
 __
 
 g:QUAN->ADV[~prox] QUAN
- >>+
+ >>++
 _
   (twob)
 __
@@ -2680,10 +2701,7 @@ __
 g:ADJ[%*r]->QUAN[@cnj,ind,adv] ADJ
  >>+
 _
-  append <adv>
-  left
-  append </adv>
-  right
+  (advb)
 __
 
 g:ADV[~trlg]->QUAN[@ind,cnj,adv] NOUN[:-plur]
