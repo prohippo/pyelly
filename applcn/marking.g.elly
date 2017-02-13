@@ -184,21 +184,23 @@ g:SEGM[|*unique]->ELEM
 __
 g:SEGM[|*unique]->SEGM ELEM
 #                           ?>>?
-  l[!ln,ppps,rv  ]r[!ppps,ln]>>*r[! ln,-lv]-8
-  l[!lv,ppps,rv  ]r[!ppps,ln]>>*r[!-ln, lv]-8
-  l[!   ppps,rv  ]r[!ppps,ln]>>*r[!-ln,-lv]-8
-  l[!ln,pro]      r[!ln]     >>*r[! ln,-lv]-3
-  l[!lv,pro]      r[!ln]     >>*r[!-ln, lv]-3
-  l[!   pro]      r[!ln]     >>*r[!-ln,-lv]-3
-  l[!ln,pro,-brk] r[!lv]     >>*r[! ln,-lv]+2
-  l[!lv,pro,-brk] r[!lv]     >>*r[!-ln, lv]+2
-  l[!   pro,-brk] r[!lv]     >>*r[!-ln,-lv]+2
-  l[!ln,rn]       r[!ln]     >>*r[! ln,-lv]-2
-  l[!lv,rn]       r[!ln]     >>*r[!-ln, lv]-2
-  l[!   rn]       r[!ln]     >>*r[!-ln,-lv]-2
-  l[!ln,rv]       r[!lv]     >>*r[! ln,-lv]-4
-  l[!lv,rv]       r[!lv]     >>*r[!-ln, lv]-4
-  l[!   rv]       r[!lv]     >>*r[!-ln,-lv]-4
+  l[!ln,ppps,rv] r[!ppps,ln] >>*r[! ln,-lv]-8
+  l[!lv,ppps,rv] r[!ppps,ln] >>*r[!-ln, lv]-8
+  l[!   ppps,rv] r[!ppps,ln] >>*r[!-ln,-lv]-8
+  l[!ln,pro]     r[!ln]      >>*r[! ln,-lv]-3
+  l[!lv,pro]     r[!ln]      >>*r[!-ln, lv]-3
+  l[!   pro]     r[!ln]      >>*r[!-ln,-lv]-3
+  l[!ln,pro,-brk]r[!lv]      >>*r[! ln,-lv]+2
+  l[!lv,pro,-brk]r[!lv]      >>*r[!-ln, lv]+2
+  l[!   pro,-brk]r[!lv]      >>*r[!-ln,-lv]+2
+  l[!ln,rn]      r[!ln]      >>*r[! ln,-lv]-2
+  l[!lv,rn]      r[!ln]      >>*r[!-ln, lv]-2
+  l[!   rn]      r[!ln]      >>*r[!-ln,-lv]-2
+  l[!   rn]      r[!pro,-brk]>>*r[! ln,-lv,-pro]
+  l[!   rn]      r[!pro]     >>*r[! ln,-lv,-pro]-4
+  l[!ln,rv]      r[!lv]      >>*r[! ln,-lv]-4
+  l[!lv,rv]      r[!lv]      >>*r[!-ln, lv]-4
+  l[!   rv]      r[!lv]      >>*r[!-ln,-lv]-4
   l[!ln]                     >>*r[! ln,-lv]
   l[!lv]                     >>*r[!-ln, lv]
                              >>*r[!-ln,-lv]
@@ -262,14 +264,21 @@ _
 __
 g:ELEM->PRO[=nom]
 # ?>>?
-   >>*l[!rn,pro]
+   >>*l[!ln,rn,pro]
 _
   var typg=pro
   (typg)
 __
-g:ELEM->PRO[=-nom]
+g:ELEM->PRO[=-nom,-prep]
 # ?>>?
    >>*l[!rn,pro,brk]
+_
+  var typg=pro
+  (typg)
+__
+g:ELEM->PRO[=-nom,prep]
+# ?>>?
+   >>*l[!-ln,rn,pro]
 _
   var typg=pro
   (typg)
@@ -366,6 +375,12 @@ g:ELEM->ADV[~-int]
  n>2    >>-
  l[$deg]>>--
         >>---
+_
+  var typg=adv
+  (typg)
+__
+g:ELEM->ADV[~int,sep]
+ >>-
 _
   var typg=adv
   (typg)
@@ -724,11 +739,21 @@ g:NCLU[:*r,prep]->PREP['-cnj] NCLU[:-prep,det,num]
 _
   (pphr)
 __
-g:NCLU[:*r,prep]->PREP['-cnj] NCLU[:-prep,-num]
+g:NCLU[:*r,prep]->PREP['-cnj,-mod] NCLU[:-prep,-num]
  >>*r[&-msr]+
 _
   (pphr)
 __
+g:NCLU[:*r,prep]->PREP['-cnj,mod] NCLU[:-prep,-num,det]
+ n<3>>++
+_
+  (pphr)
+__
+g:NCLU[:*r,prep]->PREP['-cnj,mod] NCLU[:-prep,-num,-det]
+_
+  (pphr)
+__
+
 
 g:NCLU->DATE NCLU[:-det,-num,-qnt,-prep]
 _
@@ -778,7 +803,8 @@ _
   append </dem></nclu>
 __
 g:NCLU[:det]->DEM[@ind,-plur]
- >>[&1wy]---
+ l[!spcs]>>-----
+         >>[&1wy]---
 _
   append <nclu><dem>
   left
@@ -1073,9 +1099,7 @@ g:NOUN->ABBR NOUN
 _
   (twob)
 __
-g:PRO[=*r,-one]->PREP['-cnj] PRO[=-nom]
-# ?>>?
-   >>[!ppps]
+g:PRO[=*r,-one,prep]->PREP['-cnj] PRO[=-nom]
 _
   var typg=prep
   (typg)
@@ -1373,6 +1397,14 @@ g:ADV[~*l]->ADV NAVB
              >>----
 _
   (twob)
+__
+g:ADV->QUAN NAVB
+ >>++++
+_
+  append <quan>
+  left
+  append </quan>
+  right
 __
 g:ADV->NEGN ADV[~-non]
  >>+
@@ -1768,7 +1800,7 @@ __
 d:above   <- PREP['*l]
 __
 d:like    <- PREP['mod]
- >>+
+ >>++
 __
 d:except  <- PREP
 __
@@ -1833,6 +1865,7 @@ __
 d:your <- DEM
 __
 d:his  <- DEM[@ind]
+ >>[!spcs]
 __
 d:her  <- DEM
 __
@@ -2012,7 +2045,7 @@ d:when <- CONJ
 __
 d:since<- CONJ[@prep]
 __
-d:before<-CONJ[@prep]
+d:before<-CONJ[@prep,aftr]
 __
 d:after<- CONJ[@prep,aftr]
 __
@@ -2347,11 +2380,7 @@ g:TITL[@dot]->TITL[@-dot] PUNC[|*x]
  >>++++
 __
 
-# uses semantic feature !ppps since no syntactic feature %prep is available
-
-g:ADV->ADV PRO
- r[!ppps]>>+2
-         >>-8
+g:ADV->ADV PRO[=prep]
 _
   left
   append <pro>
@@ -2713,4 +2742,40 @@ _
   append </quan><noun>
   right
   append </noun>
+__
+
+p:cjpr
+_
+  split
+  right
+  back
+  shift 6 <
+  append <prep>
+  left
+  append </prep>
+  merge
+__
+g:ELEM->CONJ[@prep,aftr] NCLU[:-plur,-prep,-det,-qnt]
+      n>4>>[!rv]------
+ r[&evnt]>>[!rv]++
+         >>[!rv]-
+_
+  (cjpr)
+__
+g:ELEM->CONJ[@prep,aftr] NCLU[:-plur,-prep, det,-qnt]
+      n>5>>[!rv]------
+ r[&evnt]>>[!rv]++
+ r[&durn]>>[!rv]++
+         >>[!rv]-
+_
+  (cjpr)
+__
+g:ELEM->CONJ[@prep,aftr] NCLU[: plur,-prep, det,-qnt]
+      n>3>>[!rv]------
+ r[&evnt]>>[!rv]++
+ r[&durn]>>[!rv]++
+      n<3>>[!rv]
+         >>[!rv]----
+_
+  (cjpr)
 __

@@ -22,6 +22,7 @@ born : VERB[^ed] - +2
 building : VERB[^ing,ptcl]
 built : VERB[^ed]
 did : VERB[^ed,*x]
+caught : VERB[^ed] [$trns] 0
 does not : AUXL[^s]
 did not : AUXL[^ed]
 discouraged : VERB[^ed]
@@ -32,6 +33,7 @@ fishermen : NOUN[:plur]
 forgave : VERB[^ed,*x]
 forgot : VERB[^ed,*x]
 forgotten : VERB[^ed]
+founding :VERB[^ing] - -2
 gave : VERB[^ed,*x]
 get out : VERB
 got : VERB[^ed,chng,*x]
@@ -56,6 +58,7 @@ made up : VERB[^ed,*x]
 marked : VERB[^ed]
 marking : VERB[^ing]
 ought : VERB
+potions : NOUN
 regarding : PREP - +1
 regarding : NOUN - -1
 regarding : VERB[^ing]
@@ -116,6 +119,7 @@ armored vehicle : NOUN
 asset purchase : NOUN
 bat and ball : ADJ
 bond market : NOUN
+caught wind : VERB[^ed]
 computer model : NOUN
 corporate bond market : NOUN
 dance number : NOUN
@@ -127,6 +131,7 @@ christmas spectacular : NOUN
 colored slave : NOUN
 dance company : NOUN
 entry point : NOUN
+family show : NOUN
 fixed investment : NOUN
 genetically modified : ADJ
 genome editing : NOUN
@@ -137,6 +142,7 @@ intelligence survey : NOUN
 livestock waste : NOUN
 media pack : NOUN
 military exercise : NOUN
+muslim tradition : NOUN
 open desert : NOUN
 purchasing power : NOUN
 results page : NOUN
@@ -150,6 +156,7 @@ yuletide spirit : NOUN
 zone training : NOUN
 
 1 another : PRO =one another
+1 of the : QUAN =one of the
 a few : QUAN[@ind] [!mltp] 0
 a few hundred : QUAN
 a few of : QUAN
@@ -175,17 +182,14 @@ as if : CONJ
 as though : CONJ
 as well as : CONJ
 at first : ADV
-at last  : ADV
-at least : ADV[~mod]
 at least one : NUM
-at odds: ADJ
 at one point : ADV
 at the same time as : CONJ
 best suit : NOUN
 best suit : VERB
+better of it : ADV
 but now : CONJ
 but then : CONJ
-by far : ADV
 calm and collected : ADJ [$cmpd] 0
 can and will : AUXL
 cheer on : VERB
@@ -206,14 +210,12 @@ full time : ADV
 half inch : NOUN
 hard boiled : ADJ
 has to do : VERB
-in a way : ADV
+his or her : DEM
 in addition to : PREP
 in order to : TO
-in turn : ADV
 increase or decrease : VERB
 insofar as : CONJ
 it is easy : ELEM - +4 (elma)
-just as : ADV [$deg] 0
 just as : CONJ - -1
 last year : NAVB[:det]
 less like : PREP
@@ -228,8 +230,6 @@ neighborhood setting : NOUN
 next year : NAVB[:det]
 no one : PRO
 not only : CONJ
-now and then : ADV
-of course : ADV
 often enough : ADV
 one another : PRO - +4
 or more : POSTP[@num]
@@ -240,13 +240,11 @@ over the course of : PREP
 over the course of : PREP
 peculiar to : PREP
 percent chance : NOUN
-pretty much : ADV[~mod,prox] [$deg] 0
 pros and cons : NOUN
 related to : PREP
 right after : CONJ
 round at : PREP
 since then : ADV
-so far : ADV
 so many : QUAN[@ind]
 some of : QUAN
 some of which : CONJ
@@ -260,12 +258,15 @@ than ever : CMPC
 than ever before : CMPC
 thanks to : PREP
 that year : NAVB[:det]
+the better of it : ADV
 the default is : VERB
 the entirety : NOUN
 the past year : NAVB[:det]
 this month : NAVB[:det]
 this time : ADV
 this year : NAVB[:det]
+time of year : NAVB
+time of the year : NAVB
 unwilling to : TO
 up slightly : ADJ
 up slightly : ADV - +1
@@ -293,6 +294,7 @@ most as many : ADJ
 
 # # # # common hyphenations
 
+asian-american : ADJ
 eat-in : ADJ
 fully-equipped : ADJ
 cul-de-sac : NOUN
@@ -356,6 +358,7 @@ Institute for Radio Astronomy Millimetrique : NOUN
 Islamic State : NOUN
 Jade Helm : NOUN
 janis : NOUN
+Jim : NOUN
 la nina : NOUN
 Michael Keaton : NOUN
 Mimi Spear : NOUN
@@ -576,6 +579,10 @@ astound : VERB
 astounding : ADJ
 astronomy : NOUN
 asylum : NOUN
+at last  : ADV
+at least : ADV[~mod,int,sep]
+at most  : ADV[~mod,int,sep]
+at odds  : ADJ
 at times : ADV
 atlantic : NOUN
 atlantic : ADJ
@@ -786,6 +793,7 @@ buy : NOUN
 buy : VERB
 buying : NOUN
 buying : VERB[^ing]
+by far : ADV
 ca : NOUN
 cabin : NOUN
 cabin : VERB
@@ -994,7 +1002,7 @@ commerce : NOUN
 commercial : NOUN - -1
 commercial : ADJ
 committee : NOUN
-common : NOUN
+common : NOUN - -1
 common : ADJ
 commonwealth : NOUN
 commune : NOUN
@@ -1223,7 +1231,7 @@ deadly : ADV
 deal : NOUN
 deal : VERB
 dealer : NOUN
-death : NOUN
+death : NOUN [&evnt] 0
 debate : NOUN
 debate : VERB
 decade : NOUN
@@ -1706,6 +1714,8 @@ found : NOUN - -2
 found : VERB
 found : ADJ - -1
 foundation : NOUN
+founding : NOUN
+founding father : NOUN
 four : ADJ
 four : NOUN
 four-wheel drive : NOUN
@@ -1814,7 +1824,7 @@ glow : NOUN
 glow : VERB
 gnaw : VERB
 go : NOUN - -1
-go : VERB[^ptcl]
+go : VERB[^ptcl] - +1
 go : ADJ - -4
 god : NOUN
 golden : ADJ
@@ -2011,6 +2021,8 @@ impress : VERB
 impression : NOUN
 improve : VERB
 impulse : NOUN
+in a way : ADV
+in turn : ADV
 inception : NOUN
 inch : NOUN
 inch : VERB - -1
@@ -2149,6 +2161,7 @@ judge : VERB
 jurisdiction : NOUN
 just : ADJ
 just : ADV - +1
+just as : ADV [$deg] 0
 justice : NOUN
 keen : NOUN
 keen : VERB
@@ -2257,7 +2270,7 @@ life : NOUN
 lifetime : NOUN
 like : NOUN - -2
 like : VERB
-like : ADJ  - -2
+like : ADJ  - -4
 likely : ADJ
 likely : ADV - -1
 limit : NOUN
@@ -2576,6 +2589,7 @@ new year's : NOUN
 new york : NOUN
 new zealand : NOUN
 news : NOUN
+news media : NOUN
 next : ADJ[%mod,to] [$spat] +0
 next : ADV
 nice : ADJ[%to]
@@ -2617,6 +2631,7 @@ novel : ADJ
 november : NOUN
 now : NOUN - -4
 now : ADV[~timg] - +2
+now and then : ADV
 nuclear : ADJ
 number : NOUN
 number : VERB
@@ -2639,6 +2654,7 @@ oceanic : NOUN
 oceanic : ADJ
 odd : ADJ
 odds : NOUN
+of course : ADV
 off : VERB - -2
 off : ADJ
 off : ADV[~trlg]
@@ -2927,6 +2943,7 @@ prestige : NOUN
 prestigious : ADJ
 pretty : ADJ - -2
 pretty : ADV [$deg] +1
+pretty much : ADV[~mod,prox] [$deg] 0
 prevent : VERB
 previous : ADJ
 previously : ADV
@@ -3435,12 +3452,13 @@ small-business : ADJ
 smart : NOUN
 smart : VERB
 smart : ADJ
-smile : NOUN
+smile : NOUN - +2
 smile : VERB
 snap : NOUN
 snap : VERB[^ptcl]
 snow : NOUN
 snow : VERB
+so far : ADV
 so-called : ADJ
 soft : ADJ
 soft : ADV - -1
@@ -3694,7 +3712,7 @@ tail : NOUN
 tail : VERB
 tailor : NOUN
 tailor : VERB
-take : NOUN
+take : NOUN - -1
 take : VERB[^ptcl] - +2
 take place : VERB
 taken : ADJ
@@ -3757,7 +3775,7 @@ theater : NOUN
 theatre : NOUN
 thematic : ADJ
 theme : NOUN
-theme : VERB
+theme : VERB - -2
 then: ADV
 then : NOUN - -6
 then : ADJ  - -6
@@ -4057,8 +4075,8 @@ welcome : VERB
 welcome : ADJ
 well : NOUN
 well : VERB - -1
-well : ADJ[%to] [$vls] 0
-well : ADV [$deg,cmpd] 0
+well : ADJ[%to] [$vls] +1
+well : ADV [$deg,cmpd] +1
 well : MISC [!spcs] -2
 well-known : ADJ
 west : NOUN - -2
