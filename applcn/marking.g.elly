@@ -1771,6 +1771,8 @@ d:at   <- PREP
 __
 d:into <- PREP
 __
+d:onto <- PREP
+__
 d:to   <- PREP['to]
 __
 d:for  <- PREP['cls]
@@ -2025,6 +2027,9 @@ d:and  <- CONJ[@cnj]
  >>[!coord]
 __
 d:or   <- CONJ[@cnj,qnt]
+ >>[!coord]
+__
+d:and/or <- CONJ[@cnj]
  >>[!coord]
 __
 d:but  <- CONJ
