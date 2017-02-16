@@ -443,10 +443,11 @@ ectorial 1 3 .
 ectra 2 4 um. 1s
 ecture 1 3 .
 ecular 2 4 &.
+edator 0 0 .
 edatory 2 6 .
 eddest 2 2 . 1
 edent 0 0 .
-ederate 2 5 l.
+ederate 2 5 l. a
 ederation 2 5 l.
 edial 2 2 y. 1
 edier 1 2 y,
@@ -768,7 +769,7 @@ hood 2 0 ,
 hoove 1 3 f.
 horical 2 5 ,
 hority 2 5 .
-horize 2 4 t.
+horize 2 4 t. 0i
 hrank 2 2 ink. 3ed
 hrenia 2 4 .
 hritic 2 4 .
@@ -1210,7 +1211,7 @@ minous 3 3 e.
 miral 0 0 .
 mirate 1 3 &.
 missible 2 2 t. 3a
-mission 1 2 t.
+mission 1 2 t. 2
 mistry 1 1 &.
 mitate 0 0 .
 mittal 1 3 . 1
@@ -1472,6 +1473,7 @@ onsular 2 5 .
 onsulate 2 5 .
 ontage 1 3 .
 ontal 2 3 .
+ontest 0 0 .
 oody 2 3 .
 oolant 2 3 .
 oolen 2 3 .
@@ -1654,6 +1656,7 @@ ptic 1 2 .
 ptize 1 2 .
 ptomatic 2 4 .
 ptor 1 2 .
+ptuous 2 2 . 1
 pular 1 1 . 2
 putate 2 3 &.
 puty 1 3 &.
@@ -1674,6 +1677,7 @@ radian 0 0 .
 raider 1 4 .
 raint 2 4 . 1ed
 ralist 1 3 ,
+rammable 2 3 . 1
 ramme 2 3 . 2
 ranal 2 3 &.
 ranation 0 0 .
@@ -1862,7 +1866,7 @@ salty 1 4 .
 sang 1 1 ing. 3ed
 sank 1 1 ink. 3ed
 santry 1 4 ,
-sarial 2 3 y.
+sarial 2 3 y,
 saster 1 4 r.
 sate 2 1 &.
 sation 1 1 &.
@@ -2234,6 +2238,7 @@ vergent 1 5 . 0e
 verish 1 3 .
 veritable 1 5 e.
 verity 1 5 e.
+versary 2 4 e.
 version 1 3 t.
 versive 2 3 t.
 vertise 0 0 .
@@ -2327,7 +2332,7 @@ yzer 2 1 t.
 zenry 1 3 .
 zier 1 1 y, 1
 ziest 1 1 y, 1
-zilian 1 3 . 0a
+zilian 1 3 .
 zlement 1 3 .
 zzer 1 2 .
 zzy 1 2 .
@@ -2413,6 +2418,7 @@ zzy 1 2 .
 |outer 1 4 .
 |oval 0 0 .
 |panic 0 0 .
+|pastor 0 0 .
 |pensive 0 0 .
 |peter 0 0 .
 |prize 0 0 .
@@ -2438,6 +2444,7 @@ zzy 1 2 .
 |script 0 0 .
 |sedition 0 0 .
 |serer 1 5 . 0e
+|serial 1 5 es.
 |session 0 0 .
 |severance 1 6 .
 |singer 1 5 .

@@ -132,6 +132,7 @@ BLOCK s
       IF ooh {SU 2 f}
       IF l
         IF ow {SU 2 f}
+        IF o {SU}
         IF a
           IS ch {SU 2 f}
           END

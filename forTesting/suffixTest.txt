@@ -28,6 +28,7 @@ admiration admire
 admittance admit
 adolescent adolesce
 adopter adopt
+adversarial adverse
 advisor advise
 aeronautic aeronaut
 affiliate affile
@@ -1052,6 +1053,7 @@ position position
 prankster prank
 prayerful prayer
 precious precious
+predator predator
 predatory predator
 pregnancy pregn
 preservate preserve
@@ -1071,6 +1073,7 @@ profitable profit
 profligacy proflige
 profligate proflige
 prognosticate prognost
+programmable program
 programmatic program
 programme program
 programmer program
@@ -1257,6 +1260,7 @@ sequencer sequent
 serbia serb
 serbo serb
 serer sere
+serial series
 serious serious
 settlement settle
 settler settle
@@ -1319,6 +1323,7 @@ solder solder
 solely sole
 soloist solo
 solver solve
+solves solve
 sooner soon
 soonest soon
 sovereignty sovereign
