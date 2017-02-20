@@ -643,7 +643,7 @@ _
   (pend)
 __
 g:SEGM->PEXP[|-nom,-vrb,-stop] PUNC[|*r]
-  ?>>?
+# ?>>?
    >>--
 _
   (pend)
@@ -1094,6 +1094,9 @@ g:NOUN->NOUN[:-*x,-plur,-ing] XID
       r[!-*c]>>-3
 _
   (twob)
+__
+g:ABBR->ABBR ABBR
+ >>++
 __
 g:NOUN->ABBR NOUN
 _
@@ -2202,6 +2205,8 @@ d:-y <- SUFX[#nTOa]
 __
 d:-y <- SUFX[#aTOr]
 __
+d:-ese <- SUFX[#nTOn]
+__
 
 d:$ <- MONEY
 __
@@ -2783,4 +2788,9 @@ g:ELEM->CONJ[@prep,aftr] NCLU[: plur,-prep, det,-qnt]
          >>[!rv]----
 _
   (cjpr)
+__
+
+g:DATE->DATE DATE
+_
+  (twob)
 __

@@ -24,9 +24,12 @@ built : VERB[^ed]
 children : NOUN[:plur]
 did : VERB[^ed,*x]
 caught : VERB[^ed] [$trns] 0
-does not : AUXL[^s]
+determined : VERB[^ed]
 did not : AUXL[^ed]
 discouraged : VERB[^ed]
+djs : NOUN[:plur]
+djs : VERB[^s]
+does not : AUXL[^s]
 exciting : VERB[^ing]
 fighting : VERB[^ing]
 financing : VERB[^ing]
@@ -58,6 +61,7 @@ made : VERB[^ed]
 made up : VERB[^ed,*x]
 marked : VERB[^ed]
 marking : VERB[^ing]
+means : VERB[^s] - +1
 mice : NOUN[:plur]
 millennia : NOUN[:plur]
 ought : VERB
@@ -89,20 +93,22 @@ wrote : VERB[^ed,*x]
 
 airstrike : NOUN
 bookended : VERB[^ed] - -1
+clean energy : NOUN
 configurable : ADJ
-dj : NOUN
-dj : VERB
-djs : NOUN[:plur]
-djs : VERB[^s]
+confraternity : NOUN
 dubstep : NOUN
 estimative : ADJ
+grant aid : NOUN
 hashtag : NOUN
+homiletics : NOUN
 hydro : NOUN
 interferometry : NOUN
+jain : NOUN
 manga : NOUN
 mannerist : NOUN
 metallicity : NOUN
 nano : NOUN
+on-grid : ADJ
 phenom : NOUN
 pinyin : NOUN
 policymaker : NOUN
@@ -134,14 +140,14 @@ no  : MISC - -1
 etc : MISC
 née : MISC[:*l]
 
-rosé : NOUN
-PDF : NOUN
-r&b : NOUN
 at&t : NOUN
+el niño : NOUN
 fourpenny : NOUN
 g.i. : ADJ
 la niña : NOUN
-el niño : NOUN
+PDF : NOUN
+r&b : NOUN
+rosé : NOUN
 
 anything   : NOUN[:qnt]
 everything : NOUN[:qnt]
@@ -151,7 +157,34 @@ others : NOUN
 anti : PREF
 hydro : PREF
 multi : PREF
+over : PREF
 tele : PREF
+
+in may : NCLU =<nclu><prep>in</prep><noun>may</noun></nclu>
+the may : ADJ
+
+# # # # extra vocabulary not yet integrated
+
+Battle of Dug Springs : NOUN
+Union force : NOUN
+Confederate force : NOUN
+Arkansas State : NOUN
+Missouri State : NOUN
+Berenice Summerfield : NOUN
+Ship of Fools : NOUN
+Dave Stone : NOUN
+Apple II computer : NOUN
+presentation system : NOUN
+RGB monitor : NOUN
+Katie Sierra : NOUN
+A New Day Has Come : NOUN
+recording artist : NOUN
+Celine Dion : NOUN
+english-language : ADJ
+China Great Wall Industry Corporation : NOUN
+upper atmosphere : NOUN
+research commission : NOUN
+space authority : NOUN
 
 # # # # compound word vocabulary 
 
@@ -170,26 +203,33 @@ christmas cheer : NOUN
 christmas spectacular : NOUN
 colored slave : NOUN
 dance company : NOUN
+electricity generation system : NOUN
 entry point : NOUN
 family show : NOUN
+feed & farm supply store : NOUN
 fixed investment : NOUN
 genetically modified : ADJ
 genome editing : NOUN
+hi res : ADJ
 heavy fighting : NOUN
 hurricane activity : NOUN
 intelligence study : NOUN
 intelligence survey : NOUN
+internet access : NOUN
 livestock waste : NOUN
 media pack : NOUN
 military exercise : NOUN
 muslim tradition : NOUN
 open desert : NOUN
+piano four hands : NOUN
 purchasing power : NOUN
+renewable energy : NOUN
 results page : NOUN
 rocket science : NOUN
 sales team : NOUN
 shadow banking : NOUN
 signal rocket : NOUN
+television deal : NOUN
 time control : NOUN
 water use : NOUN
 yuletide spirit : NOUN
@@ -245,6 +285,7 @@ from across : PREP
 from beginning to end : ADV
 from beyond : PREP
 from what  : CONJ[@rel]
+from where : CONJ[@rel]
 from which : CONJ[@rel]
 full time : ADV
 half inch : NOUN
@@ -266,6 +307,7 @@ make available : VERB
 making it easier : VERB[^ing]
 more like : PREP
 more than : ADV[~mod] [$deg] 0
+most of : QUAN
 neighborhood setting : NOUN
 next year : NAVB[:det]
 no one : PRO
@@ -277,9 +319,9 @@ other than : CONJ
 out of : PREP['*r]
 over from : PREP
 over the course of : PREP
-over the course of : PREP
 peculiar to : PREP
 percent chance : NOUN
+prior to : PREP
 pros and cons : NOUN
 related to : PREP
 right after : CONJ
@@ -334,35 +376,36 @@ most as many : ADJ
 
 # # # # common hyphenations
 
-asian-american : ADJ
-eat-in : ADJ
-fully-equipped : ADJ
-cul-de-sac : NOUN
-cul-de-sac street : NOUN
-world-renowned : ADJ
-ocean-view home : NOUN
-top-rated : ADJ
-wax-work : NOUN
-bill-to : ADJ
-round-up : NOUN
-one-of-a-kind : ADJ
-at-times : ADV
-rear-drive : ADJ
-top-shelf : ADJ
-long-drawn : ADJ
-long-past  : ADJ
-four-penny : ADJ
 3-point : ADJ
 3-point shot : NOUN
+asian-american : ADJ
+at-times : ADV
+bill-to : ADJ
+cul-de-sac : NOUN
+cul-de-sac street : NOUN
+eat-in : ADJ
+four-penny : ADJ
+full-throated : ADJ
+fully-equipped : ADJ
+half-full : ADJ
+lesser-known : ADJ
+long-drawn : ADJ
+long-past  : ADJ
+mid-air : NOUN
+ocean-view home : NOUN
+one-of-a-kind : ADJ
+rear-drive : ADJ
+round-up : NOUN
 sightseeing tour : NOUN
+start-up : NOUN
 three-day : ADJ
 tighty-whities : NOUN
-half-full : ADJ
-watered-down : ADJ
-full-throated : ADJ
+top-rated : ADJ
+top-shelf : ADJ
 U.S.-led : ADJ
-lesser-known : ADJ
-mid-air : NOUN
+watered-down : ADJ
+wax-work : NOUN
+world-renowned : ADJ
 
 # # # # some names to recognize explicitly
 
@@ -378,11 +421,15 @@ Bitcoin : NOUN
 Black Lives Matter : NOUN
 Catalina : NOUN
 China Central Television : NOUN
+Clever : NOUN - -6
 CNN : NOUN
 Colorado State University : NOUN
+Coolio Earth Partnership : NOUN
 Crafty : NOUN
 Cubbies : NOUN[:plur]
 Donald Trump : NOUN
+Dugs : NOUN
+Grants Pass : NOUN
 El Nino : NOUN
 Fairchild : NOUN
 Farhan Haq : NOUN
@@ -400,12 +447,16 @@ Institute for Radio Astronomy Millimetrique : NOUN
 Islamic State : NOUN
 Jade Helm : NOUN
 Janis : NOUN
+Japan International Cooperation Agency : NOUN
 Jim : NOUN
-la nina : NOUN
+Josephine County : NOUN
+La Nina : NOUN
+Lin-Manuel Miranda : NOUN
 Michael Keaton : NOUN
 Mimi Spear : NOUN
 MTV : NOUN
 NBA : NOUN
+Novaes : NOUN
 Obamas : NOUN[:plur] =obama -s
 Reaganite : NOUN
 Rockette : NOUN
@@ -1011,6 +1062,9 @@ buy : VERB
 buying : NOUN
 buying : VERB[^ing]
 by far : ADV
+by-election : NOUN
+by-law : NOUN
+by-product : NOUN
 ca : NOUN
 cabin : NOUN
 cabin : VERB
@@ -1037,8 +1091,6 @@ campaign : NOUN - +1
 campaign : VERB
 campus : NOUN
 canada : NOUN
-canadian : NOUN
-canadian : ADJ
 canadian : NOUN
 canadian : ADJ
 canberra : NOUN
@@ -1244,10 +1296,12 @@ club : NOUN
 club : VERB
 cm : NOUN
 co : NOUN
+co-op : NOUN
 coach : NOUN
 coach : VERB [$trns] 0
 coal : NOUN
 coal : VERB
+coal mine : NOUN
 coalition : NOUN
 coast : NOUN
 coast : VERB
@@ -1255,6 +1309,7 @@ coastline : NOUN
 code : NOUN
 code : VERB
 coffee : NOUN
+coffee shop : NOUN
 cognition : NOUN
 collar : NOUN
 collar : VERB
@@ -1306,6 +1361,7 @@ commune : NOUN
 commune : VERB
 communicate : VERB
 communication : NOUN
+communications satellite : NOUN
 communist : ADJ
 community : NOUN
 companion : NOUN
@@ -1337,6 +1393,7 @@ comprehensive : ADJ
 computable : ADJ
 compute : VERB
 computer : NOUN
+computer system : NOUN
 concept : NOUN
 conception : NOUN
 concern : NOUN
@@ -1384,7 +1441,6 @@ constant : ADJ
 constantly : ADV
 constellation : NOUN
 constitute : VERB
-constitution : NOUN
 constitution : NOUN
 constitutional : NOUN
 constitutional : ADJ
@@ -1682,6 +1738,7 @@ destroy : VERB
 destruction : NOUN
 detect : VERB
 determine : VERB
+determined : ADJ
 detonate : VERB
 devastate : VERB
 devastation : NOUN
@@ -1702,6 +1759,7 @@ difference : NOUN
 different : ADJ
 differential : NOUN
 differential : ADJ
+differential equation : NOUN
 difficult : ADJ
 difficulty : NOUN
 dig : NOUN
@@ -1766,6 +1824,7 @@ diversity : NOUN
 divert : VERB
 divide : NOUN
 divide : VERB
+divided highway : NOUN
 division : NOUN
 divorce : NOUN
 divorce : VERB
@@ -1862,6 +1921,7 @@ easy : ADV
 eat : VERB
 ecology : NOUN
 economic : ADJ
+economics : NOUN[:plur]
 economy : NOUN
 edit : VERB
 edition : NOUN
@@ -1882,6 +1942,7 @@ elect : VERB
 election : NOUN
 electric : ADJ
 electrical : ADJ
+electrical system : ADJ
 electricity : NOUN
 element : NOUN
 elevate : VERB
@@ -2210,6 +2271,7 @@ follower : NOUN
 folly : NOUN
 font : NOUN
 food : NOUN
+food market : NOUN
 fool : NOUN
 fool : VERB
 foot : NOUN
@@ -2272,6 +2334,7 @@ free : VERB
 free : ADJ
 free : ADV - -1
 freedom : NOUN
+freedom of speech : NOUN
 freedom ride : NOUN
 french : NOUN
 french : VERB - -2
@@ -2309,6 +2372,7 @@ full : NOUN
 full : VERB - -2
 full : ADJ
 full : ADV
+full-length : ADJ
 full-time : ADJ
 full-time : ADV
 fully : ADV
@@ -2553,6 +2617,7 @@ hieronymus : NOUN
 high : NOUN
 high : ADJ
 high : ADV
+high school : NOUN
 higher : ADJ
 highlight : NOUN
 highlight : VERB
@@ -2817,7 +2882,6 @@ iv : NOUN
 iv : ADJ
 jack : NOUN
 jack : VERB
-jain : ADJ
 jain : ADJ
 jainism : NOUN
 james clerk maxwell : NOUN
@@ -3176,6 +3240,7 @@ meadow : NOUN
 mean : NOUN
 mean : VERB
 mean : ADJ
+means : NOUN[:plur] - -2
 meanwhile : NOUN - -4
 meanwhile :ADV
 measure : NOUN
@@ -3186,6 +3251,7 @@ mecca : NOUN
 mechanic : NOUN
 mechanic : ADJ
 mechanical : ADJ
+mechanical system : NOUN
 media : NOUN
 mediate : VERB
 mediate : ADJ
@@ -3243,7 +3309,6 @@ militant : NOUN
 militant : ADJ
 militarism : NOUN
 militarist : NOUN
-military : NOUN
 military : NOUN
 military : ADJ
 military officer : NOUN
@@ -3452,8 +3517,6 @@ nordic : ADJ
 norm : NOUN
 normal : NOUN
 normal : ADJ
-normal : NOUN
-normal : ADJ
 normalize : VERB
 normally : ADV
 north : NOUN - -2
@@ -3596,7 +3659,6 @@ osage : NOUN
 oscillate : VERB
 oscillator : NOUN
 other : ADJ[%mod] [$ind] 0
-ottawa : NOUN
 ottawa : NOUN
 out : NOUN - -4
 out : VERB - -4
@@ -3832,6 +3894,7 @@ plain : ADV
 plan : NOUN
 plan : VERB
 planet : NOUN
+planning commission : NOUN
 plant : NOUN
 plant : VERB
 play : NOUN
@@ -3907,6 +3970,7 @@ potion : NOUN
 pour : VERB
 power : NOUN
 power : VERB
+power plant : NOUN
 powerful : NOUN - -1
 powerful : ADJ
 pr : NOUN
@@ -3983,6 +4047,7 @@ prior : ADJ
 priority : NOUN
 private : NOUN
 private : ADJ
+private practice : NOUN
 prize : NOUN
 prize : VERB
 prize : ADJ
@@ -4110,6 +4175,7 @@ radiation : NOUN
 radio : NOUN
 radio : VERB
 radio : ADJ
+radio transmitter : ADJ
 radius : NOUN
 raft : NOUN
 raft : VERB
@@ -4360,6 +4426,7 @@ robotic : ADJ
 robotics : NOUN
 rock : NOUN
 rock : VERB
+rock band : NOUN
 rocket : NOUN
 rocket : VERB
 rodent : NOUN
@@ -4532,9 +4599,6 @@ sensitive : ADJ
 sensor : NOUN
 sensory : ADJ
 separate : NOUN - -1
-separate : VERB
-separate : ADJ
-separate : NOUN
 separate : VERB
 separate : ADJ
 separately : ADV
@@ -4711,6 +4775,7 @@ soft : ADJ
 soft : ADV - -1
 software : NOUN
 solar : ADJ
+solar power : NOUN
 soldier : NOUN
 soldier : VERB
 sole : NOUN
@@ -4720,7 +4785,6 @@ solo : NOUN
 solo : VERB
 solo : ADJ
 solo : ADV
-solve : VERB
 solve : VERB
 somber : ADJ
 sombre : ADJ
@@ -4937,6 +5001,7 @@ strike : NOUN
 strike : VERB
 string : NOUN
 string : VERB
+string orchestra : NOUN
 stroll : NOUN
 stroll : VERB
 strong : ADJ
@@ -4979,8 +5044,6 @@ suicide : NOUN
 suit : NOUN
 suit : VERB
 suite : NOUN
-sun : NOUN
-sun : VERB
 sun : NOUN
 sun : VERB
 sunday : NAVB
@@ -5424,7 +5487,6 @@ us : NOUN - -1
 usa : NOUN
 use : NOUN [&spcs] 0
 use : VERB
-useful : ADJ
 useful : ADJ
 usefully : ADV
 user : NOUN

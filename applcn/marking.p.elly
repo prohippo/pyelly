@@ -72,4 +72,6 @@
 0 *.edu NOUN -1
 0 *.com NOUN -1
 
+0 &@-based ADJ -1
+
 0 #&#-#&#$ NUM[:*x] -1
