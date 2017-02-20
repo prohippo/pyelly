@@ -366,6 +366,8 @@ Release Notes:
                       fix bugs in date entity extraction
                       better checking of arguments for generative semantics
                       better error messages for cognitive semantic logic
+                      fix bugs in stop punctuation exceptions
+                      add nomatch logic for stop exceptions
                       update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
