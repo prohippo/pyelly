@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellySentenceReader.py : 09nov2016 CPM
+# ellySentenceReader.py : 20feb2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -302,7 +302,7 @@ class EllySentenceReader(object):
 #           print 'punc=' , '<' + c + '>'
 #           print 'next=' , '<' + z + '>'
             if c in Stops and self.stpx.match(sent[:-1],c,z):
-#               print 'exception MATCH'
+#               print 'stop exception MATCH'
                 if self.drop:
                     sent.pop()   # remove punctuation char from sentence
                     lc = SP
@@ -430,7 +430,7 @@ if __name__ == '__main__':
 
     base = ellyConfiguration.baseSource
     dfs = base + (sys.argv[2] if len(sys.argv) > 2 else 'default') + '.sx.elly'
-    print 'reading exception file:' , dfs
+    print 'reading exceptions from:' , dfs
     inp = ellyDefinitionReader.EllyDefinitionReader(dfs)
     if inp.error != None:
         print >> sys.stderr, 'cannot read stop exceptions'

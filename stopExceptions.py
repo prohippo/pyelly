@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# stopExceptions.py : 14oct2016 CPM
+# stopExceptions.py : 20feb2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -54,6 +54,7 @@ class StopExceptions(object):
     class Pattern(object):
         """
         exception pattern instances
+
         attributes:
             left  - left  context
             right - right context
@@ -147,7 +148,7 @@ class StopExceptions(object):
 
         arguments:
             self  -
-            txt   - list of text chars up to and including punctuation char
+            txt   - list of text chars leading up to punctuation char
             pnc   - punctuation char
             nxt   - single char after punctuation
 
@@ -155,7 +156,11 @@ class StopExceptions(object):
             True on match, False otherwise
         """
 
-#       print 'matching for txt=' , txt , 'pnc=' , pnc , 'nxt=' , nxt
+#       print 'matching for txt=' , txt , 'pnc=' , pnc , 'nxt=' , nxt , ord(nxt)
+
+        if nomatch(txt,pnc,nxt):
+            return False
+#       print 'nomatch() False'
 
 #       print 'lstg=' , self.lstg
         if not pnc in self.lstg:  # get stored patterns for punctuation
@@ -218,6 +223,56 @@ class StopExceptions(object):
 
         return False
 
+##
+
+def nomatch ( txt , pnc , nxt ):
+
+    """
+    special case checks - currently only for period in A.M. or P.M.
+
+    for overriding the checking done by the match() member method
+
+    arguments:
+        txt   - list of text chars leading up to punctuation char
+        pnc   - punctuation char
+        nxt   - single char after punctuation
+
+    returns:
+        True on match, False otherwise
+    """
+
+    ln = len(txt)
+#   print 'nomatch ln=' , ln , txt
+    if pnc != '.' or not ellyChar.isWhiteSpace(nxt) or ln < 5:
+        return False
+#   print 'check' , txt[-3:]
+    if not txt[-1] in [ 'M' , 'm' ] or txt[-2] != '.' or not txt[-3] in [ 'P' , 'p' , 'A' , 'a' ] or txt[-4] != ' ':
+        return False
+    ch = txt[-5]
+#   print 'ch=' , ch
+    if ellyChar.isDigit(ch):
+        return True
+    elif not ellyChar.isLetter(ch):
+        return False
+
+    nn = 6
+    while nn <= ln and ellyChar.isLetter(txt[-nn]):
+        nn += 1
+
+#   print 'nn=' , nn
+    if nn > ln:
+        wd = ''.join(txt[:-4]).lower()
+    elif not txt[-nn] in [ ' ' , '-' ]:
+        return False
+    else:
+        wd = ''.join(txt[-nn+1:-4]).lower()
+
+    if wd in [ 'one' , 'two' , 'three' , 'four' , 'five' , 'six' , 'seven' ,
+               'eight' , 'nine' , 'ten' , 'eleven' , 'twelve' ]:
+        return True
+    else:
+        return False
+
 #
 # unit test
 #
@@ -255,17 +310,23 @@ if __name__ == '__main__':
     SQW = ellyWildcard.wAPO
 
     test = [
-        [ 'u' , '.' , 's' , '.' , 's' , '.' , ' ' , 'w' , 'a' , 's' , 'p' ] ,
-        [ 'm' , 'r' , '.' , ' ' ] ,
-        [ 'x' , 'm' , 'r' , '.' , ' ' ] ,
-        [ 'p' , 'p' , '.' , ' ' ] ,
-        [ 'n' , 'n' , '.' , ' ' ] ,
-        [ ' ' , 'A' , '.' , ' ' ] ,
-        [ '-' , "'" , ' ' ] ,
-        [ ':' , '-' , ')' ] ,       # emoticon
-        [ 'x' , 'x' , 'x' , 'x' , '.' , ' ' , 'Y' ] ,
-        [ ' ' , '.' , ' ' ] ,
-        [ ' ' , 'm', '.' , ' ' , 'm' , 'o' , 'r' , 'r' , 'e' , 'l' , SQW , 's' , ' ' , 's' , 'a' , 'l' ]
+        list('u.s.s. wasp') ,
+        list('mr. ') ,
+        list('xmr. ') ,
+        list('pp. ') ,
+        list('nn. ') ,
+        list('Ph.D. ') ,
+        list('g.i. ') ,
+        list(' A. ') ,
+        list("-' ") ,
+        list(':-)') ,       # emoticon
+        list('xxxx. Y') ,
+        list(' . ') ,
+        list(' m. morrel' + SQW + 's sal') ,
+        list('J.S. Dillon') ,
+        list('two P.M. ') ,
+        list('after six p.m. ') ,
+        list('2:00. ')
     ]
 
     nlu = len(sys.argv) - 2
@@ -289,5 +350,5 @@ if __name__ == '__main__':
         else:
             continue
         res = stpx.match( ts[:ku-1] , ts[ku-1] , ts[ku] )
-        print '[ ' + ''.join(ts) + ' ]' ,
+        print '[ ' + ''.join(ts) + ' ] @' , ku-1 ,
         print 'stop EXCEPTION' if res else 'sentence stopped'
