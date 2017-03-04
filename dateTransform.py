@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# dateTransform.py : 17jan2017 CPM
+# dateTransform.py : 03mar2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -130,13 +130,16 @@ class DateTransform(simpleTransform.SimpleTransform):
         if self._mo[0] == '0' and self._mo[1] == '0': return True
 
         ts.insert(0,u'/')         #
-        ts.insert(0,self._dy[1])  #
-        ts.insert(0,self._dy[0])  #
-        ts.insert(0,u'/')         #
+        if self._dy[0] == '0' and self._dy[1] == '0':
+            self.lgth += 3
+        else:
+            ts.insert(0,self._dy[1])  #
+            ts.insert(0,self._dy[0])  #
+            ts.insert(0,u'/')         #
+            self.lgth += 6
         ts.insert(0,self._mo[1])  #
         ts.insert(0,self._mo[0])  #
 
-        self.lgth += 6
 #       print 'date lgth=' , self.lgth
         return True
 
@@ -179,7 +182,12 @@ class DateTransform(simpleTransform.SimpleTransform):
             if k == tl: return 0
             t = t[k:]
             k = self._aDay(t)          # look for day of month
-            if k == 0: return 0
+            if k == 0:
+                k = self._aYear(t)     # look for year immediately following
+                if k > 0:
+                    return tl - len(t) + k
+                else:
+                    return 0
             tl = len(ts)               # _aDay may have rewritten alphabetic day
             t = t[k:]
             if len(t) == 0: return 0
@@ -505,6 +513,8 @@ if __name__ == '__main__':
         u'dec. 25th, 1880' ,
         u'Sep 33, 1955' ,
         u'Sept 3, 1955' ,
+        u'May 1941' ,
+        u'December 1949' ,
         u'Twelfth of Never' ,
         u'1000 BC' ,
         u'1234 x' ,
