@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellySentenceReader.py : 20feb2017 CPM
+# ellySentenceReader.py : 02mar2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -294,14 +294,14 @@ class EllySentenceReader(object):
             # char was not alphanumeric or space
             # look for stop punctuation exception
 
-            z = self.inp.peek()  # for context of match call
+            cx = self.inp.preview()  # for context of match call
 
 #           print '0  <<' , self.inp.buf
 
 #           print 'sent=' , sent[:-1]
 #           print 'punc=' , '<' + c + '>'
-#           print 'next=' , '<' + z + '>'
-            if c in Stops and self.stpx.match(sent[:-1],c,z):
+#           print 'next=' , cx
+            if c in Stops and self.stpx.match(sent[:-1],c,cx):
 #               print 'stop exception MATCH'
                 if self.drop:
                     sent.pop()   # remove punctuation char from sentence

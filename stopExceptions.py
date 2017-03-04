@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# stopExceptions.py : 20feb2017 CPM
+# stopExceptions.py : 02mar2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -141,7 +141,7 @@ class StopExceptions(object):
         if nerr > 0:
             raise ellyException.TableFailure
 
-    def match ( self , txt , pnc , nxt ):
+    def match ( self , txt , pnc , ctx ):
 
         """
         compare a punctuation mark and its context with a pattern
@@ -150,17 +150,19 @@ class StopExceptions(object):
             self  -
             txt   - list of text chars leading up to punctuation char
             pnc   - punctuation char
-            nxt   - single char after punctuation
+            ctx   - next chars after punctuation
 
         returns:
             True on match, False otherwise
         """
 
-#       print 'matching for txt=' , txt , 'pnc=' , pnc , 'nxt=' , nxt , ord(nxt)
+#       print 'matching for txt=' , txt , 'pnc=' , pnc , 'ctx=' , ctx
 
-        if nomatch(txt,pnc,nxt):
+        if nomatch(txt,pnc,ctx):
             return False
 #       print 'nomatch() False'
+
+        nxt = ctx[0] if len(ctx) > 0 else ''
 
 #       print 'lstg=' , self.lstg
         if not pnc in self.lstg:  # get stored patterns for punctuation
@@ -225,7 +227,7 @@ class StopExceptions(object):
 
 ##
 
-def nomatch ( txt , pnc , nxt ):
+def nomatch ( txt , pnc , ctx ):
 
     """
     special case checks - currently only for period in A.M. or P.M.
@@ -243,6 +245,7 @@ def nomatch ( txt , pnc , nxt ):
 
     ln = len(txt)
 #   print 'nomatch ln=' , ln , txt
+    nxt = ctx[0] if len(ctx) > 0 else ''
     if pnc != '.' or not ellyChar.isWhiteSpace(nxt) or ln < 5:
         return False
 #   print 'check' , txt[-3:]
@@ -269,7 +272,10 @@ def nomatch ( txt , pnc , nxt ):
 
     if wd in [ 'one' , 'two' , 'three' , 'four' , 'five' , 'six' , 'seven' ,
                'eight' , 'nine' , 'ten' , 'eleven' , 'twelve' ]:
-        return True
+        if len(ctx) < 2 or ellyChar.isUpperCaseLetter(ctx[1]):
+            return False
+        else:
+            return True
     else:
         return False
 

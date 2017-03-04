@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyCharInputStream.py : 11jan2017 CPM
+# ellyCharInputStream.py : 02mar2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -46,6 +46,8 @@ END  = u''        # end of input
 HYPH = u'-'       # hyphen
 DASH = u'\u2013'  # n-dash
 NBSP = u'\u00A0'  # Unicode no-break space
+
+Limit = 3         # maximum char count for preview
 
 def spc ( c ):
 
@@ -185,10 +187,28 @@ class EllyCharInputStream(object):
         self.buf.insert(0,ch)
         self._lc = lc
 
+    def preview ( self ):
+
+        """
+       get list of up to the next three chars in input
+
+        arguments:
+            self
+
+        returns:
+            list char chars, possibly empty
+        """
+
+        if not self._reload():
+            return [ ]
+        bk = self.getBufferCount()
+        if bk > Limit: bk = Limit
+        return self.buf[:bk]
+
     def peek ( self ):
 
         """
-        look at next input char without removing it from input stream
+        look at next raw input char without removing it from input stream
 
         arguments:
             self
@@ -258,8 +278,16 @@ class EllyCharInputStream(object):
         """
 
 #       print '_reload'
-        if len(self.buf) > 0:
+        bex = ''                         # save space char at end of buffer
+        bcn = len(self.buf)
+        if bcn > 1:
             return True                  # no refilling needed
+        elif bcn == 1:
+            if ellyChar.isWhiteSpace(self.buf[0]):
+                bex = self.buf[0]        # special case when only space char left
+                self.buf = [ ]           # refill to get chars after that space
+            else:
+                return True              # no refilling yet
 
         if self._eof:
             return False                 # must return immediately on previous EOF
@@ -268,14 +296,14 @@ class EllyCharInputStream(object):
 
 #           print 'get more text'
 
-            try:
+            try:                         # read in UTF8 line from input stream
                 if self._prmpt: sys.stdout.write('>> ')
                 s = self.inp.readline()  # new text line to add
                 if len(s) == 0:
 #                   print '**EOF'
                     self._eof = True
                     return False         # EOF
-                s = s.decode('utf8')     # to tell Python how to interpret input string
+                s = s.decode('utf8')     # convert UTF8 to Unicode string
 #               print 'raw s=' , s
             except IOError:
                 print >> sys.stderr , '** char stream ERROR'
@@ -295,10 +323,12 @@ class EllyCharInputStream(object):
                 self.buf.insert(0,NL)    # if noted, indentation will break sentence
 
 #           print 'len=' , len(self.buf)
-            if len(self.buf) > 0:        # if no usable input, stop
+            if len(self.buf) > 0:        # if usable input, stop filling
+                if bex != '':            # but restore any saved space char from buffer
+                    self.buf.insert(0,bex)
                 return True
 
-        return False
+        return False                     # cannot refill, ignore trailing space char
 
 #
 # unit test
@@ -332,7 +362,7 @@ if __name__ == '__main__':
             else:
                 return [ ]
 
-    datd = [  # test examples
+    datd = [  # test input text
         'abcd\n',
         'éèêë\n',
         'ef gh    ijk   \n',
@@ -354,34 +384,39 @@ if __name__ == '__main__':
         """
         return '{:02x}'.format(ord(c))
 
-    if len(sys.argv) == 1:
-        inpu = EllyRawInput(datd)        # test input from list of 'sentences'
+    if len(sys.argv) == 1:               # no input file for testing?
+        inpu = EllyRawInput(datd)        # if so, use test input defined above
+        print 'reading from data array'
     elif sys.argv[1] == '-':
         inpu = sys.stdin                 #            from standard input
         print 'reading from sys.stdin'
     else:
         inpu = open(sys.argv[1],'r')     #            from text file
+        print 'reading from file:' , sys.argv[1]
     chs = EllyCharInputStream(inpu)
+    print 'preview=' , chs.preview()
     cs = chs.peek()                      # check peek()
     if cs == END:
         sys.exit(1)
     bf = [ ]
-    while True:                          # collect all chars from stream
+    while True:                          # collect each char from stream
 #       print 'main loop'
         chu = chs.read()
         if chu == END:
             break
         elif chu == '\n':
-            bf.append('\\n0a')           # represent \n as string
+            bf.append('\\n 0a')          # represent \n as string
+            print 'buffer counts after <\\n> input=' , chs.getBufferCount() ,
+            print 'output=' , len(bf)
         else:
             bf.append(chu + u' ' + hexd(chu))
-    Kn = 16                              # how many chars to show per line
+    Kn = 10                              # how many chars to show per line
     kn = 0                               # output char count
-    sys.stdout.write('full output=\n')
+    sys.stdout.write('full output is\n')
     for bc in bf:
         sys.stdout.write('<' + bc + '>') # dump all collected stream chars
         kn += 1
-        if kn%Kn == 0: print ''
+        if kn%Kn == 0: sys.stdout.write('\n')
     print ''
     print '---------'                    # check unread()
     print 'input start:' , '<' + cs + ' ' + hexd(cs) + '>'
