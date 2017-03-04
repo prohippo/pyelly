@@ -93,6 +93,7 @@ wrote : VERB[^ed,*x]
 
 airstrike : NOUN
 bookended : VERB[^ed] - -1
+christian doctrine : NOUN
 clean energy : NOUN
 configurable : ADJ
 confraternity : NOUN
@@ -109,6 +110,7 @@ mannerist : NOUN
 metallicity : NOUN
 nano : NOUN
 on-grid : ADJ
+our lady : NOUN
 phenom : NOUN
 pinyin : NOUN
 policymaker : NOUN
@@ -123,6 +125,7 @@ rgb : ADJ
 rpg : NOUN
 selectable : ADJ
 spectator : ADJ - +1
+spiritual director : NOUN
 storytelling : NOUN
 streetlamp : NOUN
 submillimeter  : ADJ
@@ -159,9 +162,6 @@ hydro : PREF
 multi : PREF
 over : PREF
 tele : PREF
-
-in may : NCLU =<nclu><prep>in</prep><noun>may</noun></nclu>
-the may : ADJ
 
 # # # # extra vocabulary not yet integrated
 
@@ -452,6 +452,7 @@ Jim : NOUN
 Josephine County : NOUN
 La Nina : NOUN
 Lin-Manuel Miranda : NOUN
+McCarthy : NOUN
 Michael Keaton : NOUN
 Mimi Spear : NOUN
 MTV : NOUN
@@ -462,6 +463,7 @@ Reaganite : NOUN
 Rockette : NOUN
 Scotts : NOUN
 Scotts Miracle-Gro Company : NOUN
+St. Mary : NOUN
 Stephen Curry : NOUN
 The Verge : NOUN [&prop] 0
 Twitter : NOUN
@@ -670,6 +672,7 @@ antique : ADJ
 antitrust : ADJ
 apart : ADJ
 apart : ADV
+apartment : NOUN
 apex : NOUN
 apology : NOUN
 apparent : ADJ
@@ -721,6 +724,7 @@ article : NOUN
 article : VERB
 artist : NOUN
 artistic : ADJ
+as well : ADV
 ascetic : NOUN
 ascetic : ADJ
 ascetical : ADJ
@@ -805,6 +809,7 @@ away : ADJ - -1
 away : ADV
 bachelor : NOUN
 bachelor : VERB
+bachelor of arts : NOUN
 back : NOUN - -1
 back : VERB
 back : ADJ
@@ -1524,6 +1529,7 @@ correlate : VERB
 correlate : ADJ
 correlation : NOUN
 cortez : NOUN
+costa : NOUN
 costa rica : NOUN
 cot : NOUN
 cough : NOUN - -1
@@ -1704,6 +1710,7 @@ deliberate : VERB
 deliberate : ADJ
 deliver : VERB
 delivery : NOUN
+delta : NOUN
 delve : VERB
 democrat : NOUN
 democratic : ADJ
@@ -2701,6 +2708,7 @@ imagine : VERB
 imam : NOUN
 imitate : VERB
 immaculate : ADJ
+immaculate conception : NOUN
 immediate : ADJ
 immediately : ADV
 immune : NOUN - -2
@@ -2905,6 +2913,7 @@ joint : VERB - -2
 joint : ADJ - +1
 joke : NOUN
 joke : VERB
+joseph : NOUN
 journal : NOUN
 journalist : NOUN
 journey : NOUN
@@ -3212,6 +3221,7 @@ marvel : NOUN
 marvel : VERB
 marvelous : ADJ
 marvelously : ADV
+mary : NOUN
 masculine : NOUN
 masculine : ADJ
 mass : NOUN
@@ -3220,6 +3230,7 @@ mass : ADJ
 master : NOUN
 master : VERB
 master : ADJ
+master of arts : NOUN
 masterpiece : NOUN
 match : NOUN
 match : VERB
@@ -3487,6 +3498,7 @@ nevada : NOUN
 never : ADV
 new : ADJ[%to] - +1
 new : ADV - -1
+new jersey : NOUN
 new year's : NOUN
 new york : NOUN
 new zealand : NOUN
@@ -3522,6 +3534,8 @@ normally : ADV
 north : NOUN - -2
 north : ADJ
 north : ADV[~dir,trlg]
+north american : NOUN
+north american : ADJ
 north pole : NOUN
 northbound : ADJ
 northeast : NOUN - 2
@@ -3959,6 +3973,7 @@ possible : NOUN
 possibly : ADV
 post : NOUN
 post : VERB
+postcode : NOUN
 pot : NOUN
 pot : VERB
 potent : ADJ
@@ -4620,6 +4635,7 @@ set : NOUN
 set : VERB[^ptcl]
 set : ADJ - -1
 setback : NOUN
+seton : NOUN
 setting : VERB[^ptcl,ing] - +1
 setting : NOUN
 settle : NOUN
@@ -5680,6 +5696,7 @@ wonder : VERB
 wood : NOUN
 woodcreeper : NOUN
 wooden : ADJ
+worcestershire : NOUN 
 word : NOUN
 word : VERB - -1
 work : NOUN
