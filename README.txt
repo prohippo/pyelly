@@ -369,6 +369,13 @@ Release Notes:
                       fix bugs in stop punctuation exceptions
                       add nomatch logic for stop exceptions
                       update documentation
+ 1.3.23  - 03mar2017  increase maximum syntactic category count to 80
+                      extend cases recognized by dateTransform
+                      add more context to ellyCharInputStream logic
+                      strengthen stopExceptions logic in nomatch()
+                      update integration testing for new handling of dates
+                      extend MARKING rules and integration test
+                      update and clean up documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
