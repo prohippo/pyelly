@@ -376,6 +376,15 @@ Release Notes:
                       update integration testing for new handling of dates
                       extend MARKING rules and integration test
                       update and clean up documentation
+ 1.3.24  - 15mar2017  fix bugs with buffer handling in generative semantics
+                      add to cognitive semantic tracing output
+                      show feature names sorted by index in grammar dump
+                      clean up symbolTable error message
+                      clean up commentary in parseTree
+                      adjust debugging code in dateTransform
+                      add extraction procedure for acronym definition
+                      extend MARKING rules and integration test
+                      update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
