@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# dateTransform.py : 03mar2017 CPM
+# dateTransform.py : 15mar2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -445,10 +445,11 @@ class DateTransform(simpleTransform.SimpleTransform):
             ss.append(c)
             k += 1
 
+#       print 'k=', k , 'Lm=' , Lm , 'ns=' , ns
         if k < Lm: return 0
         if ns != 1 and ns != 2: return 0
 
-#       print 'k=' , k , 'ns=' , ns , ss
+#       print 'ss=' , ss
 
         if k < lts and ellyChar.isLetterOrDigit(ts[k]):
             return 0

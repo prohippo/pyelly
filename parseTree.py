@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTree.py : 30dec2016 CPM
+# parseTree.py : 11mar2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -115,7 +115,9 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
     def digest ( self ):
 
         """
-        insert queued phrases to parse tree, possibly also adding to queue
+        process each phrase node from queue and build up new nodes from
+        grammar rules, putting them at the end of the queue according to
+        rules for ambiguity handling
 
         arguments:
             self
@@ -141,9 +143,9 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
 
         """
         ramify for given phrase by
-         (1) creating new phrases from goals
-         (2)                      from extensions
-         (3) and setting new goals
+         (1) creating new phrases from goals set previously
+         (2)                      for 1-branch rules
+         (3) and setting new goals for 2-branch rules
 
         arguments:
             self  -
