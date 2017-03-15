@@ -775,6 +775,7 @@ _
 __
 g:NOUN->NOUN NUM
  r[&cmpd]>>----
+      n>3>>----
          >>++
 _
   (twob)
@@ -787,8 +788,8 @@ _
   right
   append </pro>
 __
-g:NCLU[:num]->NUM[:-cnj]
- >>----
+g:NCLU[:num]->NUM
+ n<2>>----
 _
   append <nclu>
   var typg=num
@@ -870,10 +871,12 @@ _
   var typg=adj
   (lxtd)
 __
-g:NCLU[:*r,num]->NUM[:-cnj] NCLU[:-det,-prep,-num,-qnt]
+g:NCLU[:*r,num]->NUM NCLU[:-det,-prep,-num,-qnt]
+ r[&curr]>>*r++++
  l[$cmpd]>>*r[&adv]++++
          >>*r++++
 _
+  view 9
   var typg=num
   (lxtd)
 __
@@ -1078,6 +1081,11 @@ g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,plur,-ing] NOUN[:-cnj,-ing,plur,-det]
  l[&-*c]r[&-*c]>>-4
   l[&*c]r[&-*c]>>+1
                >>-4
+_
+  (twob)
+__
+
+g:NOUN->NOUN[:*r] ACRO
 _
   (twob)
 __
@@ -1446,6 +1454,12 @@ g:ADJ[%*r,-cnj]->ADJ[%-*x] ADJ[%cnj]
 _
   (twob)
 __
+g:ADJ[%*l]->ADJ[%*r] ACRO
+ l[$*c]>>+
+        >>----------
+_
+  (twob)
+__
 
 g:PREP->ADJ TO
  l[$spat]>>++
@@ -1501,15 +1515,39 @@ _
   right
   append </adv>
 __
-g:NUM->NUM NUM[:cnj]
- >>++
-_
-  (twob)
+g:NUM->NUM[:-cnj] NUM[:cnj,-prep]
+    >>+++
+_   
+  (twob)   # "3 in 4"
 __
-g:NUM[:cnj]->PREP['*r] NUM[:-cnj]
+g:NUM[:cnj]->PREP['div] NUM[:-cnj,-prep]
  >>--
 _
   (twob)
+__
+g:NUM[:cnj]->NUM[:cnj] NUM[:cnj]
+ n<4>>------
+ n<5>>++++++++
+    >>------
+_
+  (twob)
+__
+
+g:NUM[:prep]->PREP['prx] NUM[:-prep]
+ >>+
+_
+  var typg=prep
+  (typg)
+  right
+__
+
+g:NUM->NUM[:-cnj] NUM[:*r]
+  ?>>?
+   >>+
+_
+  left
+  view
+  (spellr) # "3 million"
 __
 
 #
@@ -1595,6 +1633,9 @@ g:ADJ[%*l]->ADJ[%er] CMPC
 _
   (twob)
 __
+g:ADJ->NUM UNIT
+ >>++
+__
 
 g:ADV->ADV[~int] ADV
  >>++++
@@ -1658,7 +1699,7 @@ _
   (twob)
 __
 g:DATE->NUM ADV[~date]
- >>++++++++++
+ >>+15
 __
 
 g:CONJ->ADV[~mod] CONJ
@@ -1762,13 +1803,13 @@ __
 
 #
 # internal dictionary
-d:in   <- PREP['in]
+d:in   <- PREP['in,div]
 __
-d:of   <- PREP['of]
+d:of   <- PREP['of,div]
 __
-d:on   <- PREP
+d:on   <- PREP['div]
 __
-d:by   <- PREP['cls]
+d:by   <- PREP['cls,div]
 __
 d:at   <- PREP
 __
@@ -1776,13 +1817,13 @@ d:into <- PREP
 __
 d:onto <- PREP
 __
-d:to   <- PREP['to]
+d:to   <- PREP['toi,div]
 __
-d:for  <- PREP['cls]
+d:for  <- PREP['cls,div]
 __
 d:with <- PREP
 __
-d:from <- PREP
+d:from <- PREP['div]
 __
 d:within <- PREP
  >>++
@@ -1793,16 +1834,16 @@ d:through <- PREP
 __
 d:outside <- PREP
 __
-d:against <- PREP
+d:against <- PREP['div]
 __
 d:across  <- PREP
 __
 d:under   <- PREP
  >>+
 __
-d:about   <- PREP['*l]
+d:about   <- PREP['prx]
 __
-d:above   <- PREP['*l]
+d:above   <- PREP['prx]
 __
 d:like    <- PREP['mod]
  >>++
@@ -1811,7 +1852,7 @@ d:except  <- PREP
 __
 d:round   <- PREP
 __
-d:around  <- PREP
+d:around  <- PREP['prx]
  >>+
 __
 d:atop    <- PREP
@@ -2013,6 +2054,7 @@ _
   append one
 __
 d:2 <- NUM[:cnj]
+ >>--
 _
   append two
 __
@@ -2486,17 +2528,6 @@ _
   (twob)
 __
 
-g:NUM->PREP['*l] NUM[:-*x]
- >>--
-_
-  (twob)
-__
-g:NUM[:*x]->PREP['*l] NUM[:*x]
- >>--
-_
-  (twob)
-__
-
 g:PREF[|hyph]->PREF[|-hyph] PUNC[|hyph]
  >>+++
 __
@@ -2793,4 +2824,35 @@ __
 g:DATE->DATE DATE
 _
   (twob)
+__
+
+p:spellr
+_
+# trace
+# view 12
+  split
+  right
+  back
+# view 12
+  var dltd=
+  delete <
+  store dltd
+# show dltd
+  if dltd=1000
+    append k
+  elif dltd=1000000
+    append mn
+  elif dltd=1000000000
+    append bn
+  else
+#   trace
+    insert < dltd
+    end
+  merge
+__
+d:1000000 <- NUM[:*r]
+ >>+
+__
+d:1000000000 <- NUM[:*r]
+ >>+
 __

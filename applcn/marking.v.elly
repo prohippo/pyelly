@@ -64,6 +64,7 @@ marking : VERB[^ing]
 means : VERB[^s] - +1
 mice : NOUN[:plur]
 millennia : NOUN[:plur]
+opening : VERB[^ing]
 ought : VERB
 paid : VERB[^ed]
 potions : NOUN
@@ -98,8 +99,10 @@ clean energy : NOUN
 configurable : ADJ
 confraternity : NOUN
 dubstep : NOUN
+engineering council : NOUN
 estimative : ADJ
 grant aid : NOUN
+grant aid project : NOUN
 hashtag : NOUN
 homiletics : NOUN
 hydro : NOUN
@@ -109,12 +112,17 @@ manga : NOUN
 mannerist : NOUN
 metallicity : NOUN
 nano : NOUN
+national intelligence : NOUN
 on-grid : ADJ
+on-grid power plant : NOUN
+openings : NOUN[:plur]
 our lady : NOUN
 phenom : NOUN
 pinyin : NOUN
 policymaker : NOUN
+private sector : NOUN
 programmable : ADJ
+public sector: NOUN
 pyroclastic : ADJ
 rebaptizer : NOUN
 relicense : VERB
@@ -147,7 +155,10 @@ at&t : NOUN
 el niño : NOUN
 fourpenny : NOUN
 g.i. : ADJ
+gw : UNIT
+kw : UNIT
 la niña : NOUN
+mw : UNIT
 PDF : NOUN
 r&b : NOUN
 rosé : NOUN
@@ -181,7 +192,7 @@ A New Day Has Come : NOUN
 recording artist : NOUN
 Celine Dion : NOUN
 english-language : ADJ
-China Great Wall Industry Corporation : NOUN
+China Great Wall Industry Corporation : NOUN[:*r]
 upper atmosphere : NOUN
 research commission : NOUN
 space authority : NOUN
@@ -316,7 +327,7 @@ often enough : ADV
 one another : PRO - +4
 or more : POSTP[@num]
 other than : CONJ
-out of : PREP['*r]
+out of : PREP['div]
 over from : PREP
 over the course of : PREP
 peculiar to : PREP
@@ -418,9 +429,9 @@ Apple Watch : NOUN
 AT&T : NOUN
 Becker : NOUN
 Bitcoin : NOUN
-Black Lives Matter : NOUN
+Black Lives Matter : NOUN[:*r]
 Catalina : NOUN
-China Central Television : NOUN
+China Central Television : NOUN[:*r]
 Clever : NOUN - -6
 CNN : NOUN
 Colorado State University : NOUN
@@ -433,7 +444,7 @@ Grants Pass : NOUN
 El Nino : NOUN
 Fairchild : NOUN
 Farhan Haq : NOUN
-Federal Open Market Committee : NOUN
+Federal Open Market Committee : NOUN[:*r]
 Ferguson : NOUN
 Gallagher : NOUN
 George Will : NOUN
@@ -443,11 +454,12 @@ Harry : NOUN
 HBO : NOUN
 Herzegovina : NOUN
 Hillary Clinton : NOUN
-Institute for Radio Astronomy Millimetrique : NOUN
+Institute for Radio Astronomy Millimetrique : NOUN[:*r]
+Islamabad Electric Supply Company : NOUN[:*r]
 Islamic State : NOUN
 Jade Helm : NOUN
 Janis : NOUN
-Japan International Cooperation Agency : NOUN
+Japan International Cooperation Agency : NOUN[:*r]
 Jim : NOUN
 Josephine County : NOUN
 La Nina : NOUN
@@ -1369,10 +1381,10 @@ communication : NOUN
 communications satellite : NOUN
 communist : ADJ
 community : NOUN
-companion : NOUN
+companion : NOUN - -2
 companion : VERB
 company : NOUN
-company : VERB
+company : VERB - -4
 comparative : NOUN - -2
 comparative : ADJ
 comparatively : ADV [$deg] 0
@@ -1846,6 +1858,7 @@ doctrine : NOUN
 doe : NOUN
 dog : NOUN
 dog : VERB
+dollar : NOUN [&curr] 0
 domestic : NOUN
 domestic : ADJ
 dominate : VERB
@@ -3625,6 +3638,8 @@ ontario : NOUN
 open : NOUN - -8
 open : VERB
 open : ADJ
+opening : NOUN
+opening : ADJ
 operate : VERB
 operation : NOUN
 operator : NOUN
@@ -3724,6 +3739,7 @@ pair : VERB
 pakistan : NOUN
 pakistani : NOUN
 pakistani : ADJ
+pakistani rupee : NOUN [&curr] 0
 pal : NOUN
 pal : VERB
 palace : NOUN
@@ -3867,7 +3883,7 @@ phoebe : NOUN
 phone : NOUN
 phone : VERB
 photo : NOUN
-photovoltaic : ADJ
+photovoltaic : ADJ[%*r]
 physic : NOUN
 physical : ADJ
 physically : ADV
@@ -5717,7 +5733,8 @@ worst : NOUN - -1
 worst : VERB - -2
 worst : ADJ
 worst : ADV
-worth : NOUN
+worth : NOUN - -2
+worth : VERB
 worth : ADJ
 wound : NOUN
 wound : VERB
@@ -5734,7 +5751,7 @@ yearn : VERB
 yellow : NOUN
 yellow : VERB
 yellow : ADJ
-yen : NOUN
+yen : NOUN [&curr] 0
 yen : VERB
 yes : NOUN
 yes : NOUN - -3
