@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# dumpEllyGrammar.py : 16jul2016 CPM
+# dumpEllyGrammar.py : 13mar2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -144,8 +144,12 @@ def dumpFeatures ( stb ):
             idn = fids[i]
             fl = fs[idn].keys()
             print '[{0:2}] {1} '.format(i,idn) ,
+            sls = [ ]
             for f in fl:
-                print '{0}={1}'.format(f,fs[idn][f]) ,
+                sls.append([ f , fs[idn][f] ])
+            sls.sort(key=lambda x: x[1])
+            for sr in sls:
+                print '{0}={1}'.format(sr[0],sr[1]) ,
             print ""
 
 def dumpSubprocedures ( index , full ):
