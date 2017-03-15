@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveProcedure.py : 28nov2016 CPM
+# cognitiveProcedure.py : 11mar2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -202,7 +202,8 @@ class CognitiveProcedure(object):
 #       print >> sys.stderr , 'phrase' , phrs.krnl.seqn, 'intersect=' , phrs.krnl.ctxc
 
         if trce:
-            print >> sys.stderr , '  plausibility adjustment=' , psum ,
+            print >> sys.stderr , '  raw plausibility=' , phrs.krnl.bias
+            print >> sys.stderr , '  adjustment=' , psum ,
             print >> sys.stderr , 'sem[' + phrs.krnl.semf.hexadecimal() + ']'
             print >> sys.stderr , ''
         return psum
