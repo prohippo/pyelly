@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeProcedure.py : 22sep2016 CPM
+# generativeProcedure.py : 14mar2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -285,13 +285,13 @@ class GenerativeProcedure(object):
 #               print "back",
 #               cntx.printStatus()
             elif op == semanticCommand.Gmrge:  # merge buffers into current one
-                cntx.mergeBuffers()
+                cntx.mergeBuffer()
 #               print "merge",
 #               cntx.printStatus()
             elif op == semanticCommand.Gchng:  # merge with substitution
                 ts = code.next()
                 ss = code.next()
-                cntx.mergeBuffersWithReplacement(ts,ss)
+                cntx.mergeBufferWithReplacement(ts,ss)
             elif ( op == semanticCommand.Gchck or
                    op == semanticCommand.Gnchk ):
                 sens = (op == semanticCommand.Gchck)

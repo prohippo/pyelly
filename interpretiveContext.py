@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# interpretiveContext.py : 09nov2015 CPM
+# interpretiveContext.py : 14mar2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -249,10 +249,7 @@ class InterpretiveContext(object):
         """
 
         self.buffn += 1
-        if self.buffn < len(self.buffs):
-            return
-        self.buffs.append([ ])
-        return
+        self.buffs.insert(self.buffn,[ ])
 
     def backBuffer ( self ):
 
@@ -263,25 +260,36 @@ class InterpretiveContext(object):
             self
         """
 
-        if self.buffn == 0:
-            return
-        self.buffn -= 1
-        return
+        if self.buffn > 0:
+            self.buffn -= 1
 
-    def mergeBuffers ( self ):
+    def mergeBuffer ( self ):
 
         """
-        merge current buffer with all later buffers
+        merge current buffer with next buffer
 
         arguments:
             self
         """
 
-        n = len(self.buffs) - self.buffn - 1   # how many buffers to merge in
-        while n > 0:
-            b = self.buffs.pop()               # get last buffer
-            self.buffs[-1].extend(b)           # merge its contents with preceding buffer
-            n -= 1
+        bnext = self.buffn + 1
+        if bnext < len(self.buffs):
+            b = self.buffs.pop(bnext)
+            self.buffs[self.buffn].extend(b)
+
+    def mergeBuffers ( self ):
+
+        """
+        merge current buffer and all next buffers
+
+        arguments:
+            self
+        """
+
+        bnext = self.buffn + 1
+        while bnext < len(self.buffs):
+            b = self.buffs.pop(bnext)
+            self.buffs[self.buffn].extend(b)
 
     def clearBuffers ( self ):
 
@@ -334,7 +342,7 @@ class InterpretiveContext(object):
             self.buffs[n] = bc + tmp + bn
             self.buffs[n-1] = [ ]
 
-    def mergeBuffersWithReplacement ( self , ts , ss ):
+    def mergeBufferWithReplacement ( self , ts , ss ):
 
         """
         merge current and next buffers, replacing occurrences of ts with ss
@@ -347,24 +355,20 @@ class InterpretiveContext(object):
 
         n = self.buffn + 1
         if n >= len(self.buffs): return
+        bt = self.buffs.pop(n)
+
         t = list(ts)
-        ln = len(t)
         s = list(ss)
-        bs = self.buffs
-        k = len(bs) - 1
-        while k > n:
-            b = bs.pop()             # merge all newer buffers
-            bs[k-1].extend(b)        #
-            k -= 1
-        bn = bs.pop()                # is now immediately next buffer
-        bc = bs[-1]                  # current one
-        while len(bn) >= ln:         # match is still possible?
-            if t == bn[:ln]:         # compare chars
-                bn = bn[ln:]         # on match, remove those chars
+        ln = len(t)
+
+        bc = self.buffs[self.buffn]  # chars in current buffer
+        while len(bt) >= ln:         # match is still possible?
+            if t == bt[:ln]:         # compare chars
+                bt = bt[ln:]         # on match, remove those chars
                 bc.extend(s)         # and put replacement in current buffer
             else:
-                bc.append(bn.pop(0)) # no match; move 1 char from next to current buffer
-        bc.extend(bn)                # move remaining chars from next to current one
+                bc.append(bt.pop(0)) # no match; move 1 char from next to current buffer
+        bc.extend(bt)                # move remaining chars from next to current one
 
     def deleteCharsFromBuffer ( self , n=1 ):
 
