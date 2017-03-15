@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# extractionProcedure.py : 05nov2014 CPM
+# extractionProcedure.py : 15mar2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -131,3 +131,64 @@ def stateZip ( buffr ):
             return 8 + 5                                # success: 9-digit zip
     else:
         return 8                       # success: 5-digit zip
+
+Lmin = 4
+Lmax = 8
+
+def acronym ( buffr ):
+
+    """
+    recognize parenthesized introdumction of acronym in text
+
+    arguments:
+        buffr - current contents as list of chars
+
+    returns:
+        char count matched on success, 0 otherwise
+    """
+
+    lb = len(buffr)
+    if lb > Lmax: lb = Lmax
+    if lb < Lmin or buffr[0] != '(': return 0
+
+    nu = 0          # uppercase count
+    ib = 1
+    while ib < lb:
+        bc = buffr[ib]
+        if bc == ')':
+            break
+        if not ellyChar.isLetter(bc): return 0
+        if ellyChar.isUpperCaseLetter(bc): nu += 1
+        ib += 1
+    else:
+        return 0    # must have enclosing ')'
+
+    if ib + 1 < Lmin or ib - 1 - 2*nu > 0: return 0
+    if len(buffr) > ib + 1 and ellyChar.isLetterOrDigit(buffr[ib+1]): return 0
+
+    return ib + 1
+
+#
+# unit test
+#
+
+if __name__ == '__main__':
+
+    import sys
+
+    so = sys.stdout
+    si = sys.stdin
+
+    while True:  # translate successive lines of text as sentences for testing
+
+        so.write('> ')
+        line = si.readline()
+        l = line.decode('utf8')
+        if len(l) == 0 or l[0] == '\n': break
+        txt = list(l.strip())
+        so.write('\n')
+        n = acronym(txt)
+        so.write(str(n) + ' char(s) matched')
+        so.write('\n')
+
+    so.write('\n')
