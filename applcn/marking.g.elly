@@ -767,8 +767,9 @@ _
   (rxtd)
 __
 g:NCLU[:*l]->NCLU ADJ
- r[$prd]>>*l+
-        >>*l------
+ n<3l[$*c]r[$*c]>>*l++++
+         r[$prd]>>*l+
+                >>*l------
 _
   var typg=adj
   (rxtd)
@@ -2372,6 +2373,7 @@ __
 g:PEXP[|emb,quo]->PUNC[|quo,*l] ADJ[%rquo]
 __
 g:ADJ[%*l,rquo]->ADJ[%-rquo,-*x] PUNC[|quo,-com,*r]
+ l[$*c]>>--
 __
 g:SSNT->SEPR SENT
 _

@@ -77,6 +77,7 @@ rose : VERB[^ed,*x] - +1
 said : VERB[^ed,dit]
 sat down : VERB[^ed,*x]
 shown : VERB[^ed]
+sitting : VERB[^ing]
 swooping : ADJ[%ing] - +1
 swooping : VERB[^ing]
 taken : VERB[^ed]
@@ -110,6 +111,7 @@ interferometry : NOUN
 jain : NOUN
 manga : NOUN
 mannerist : NOUN
+marchese : NOUN
 metallicity : NOUN
 nano : NOUN
 national intelligence : NOUN
@@ -203,17 +205,17 @@ armored vehicle : NOUN
 asset purchase : NOUN
 bat and ball : ADJ
 bond market : NOUN
-caught wind : VERB[^ed]
-computer model : NOUN
-corporate bond market : NOUN
-dance number : NOUN
 buying guide : NOUN
 calories burned : NOUN
 cast recording : NOUN
+caught wind : VERB[^ed]
+computer model : NOUN
 christmas cheer : NOUN
 christmas spectacular : NOUN
 colored slave : NOUN
+corporate bond market : NOUN
 dance company : NOUN
+dance number : NOUN
 electricity generation system : NOUN
 entry point : NOUN
 family show : NOUN
@@ -399,6 +401,7 @@ four-penny : ADJ
 full-throated : ADJ
 fully-equipped : ADJ
 half-full : ADJ
+half-sitting : VERB[^ed]
 lesser-known : ADJ
 long-drawn : ADJ
 long-past  : ADJ
@@ -441,6 +444,7 @@ Cubbies : NOUN[:plur]
 Donald Trump : NOUN
 Dugs : NOUN
 Grants Pass : NOUN
+Eclogues : NOUN
 El Nino : NOUN
 Fairchild : NOUN
 Farhan Haq : NOUN
@@ -646,6 +650,7 @@ ambush : VERB
 america : NOUN
 american : NOUN - -1
 american : ADJ
+amor : NOUN
 amount : NOUN
 amount : VERB
 amuse : VERB
@@ -720,7 +725,7 @@ arm : NOUN
 arm : VERB
 armor : NOUN
 armor : VERB
-armour : NOUN
+armour : NOUN - +1
 armour : VERB
 army : NOUN
 around : ADV
@@ -1237,6 +1242,7 @@ child : NOUN
 china : NOUN
 chinese : NOUN
 chinese : ADJ
+chios : NOUN
 chip : NOUN
 chip : VERB
 chocolate : NOUN
@@ -1390,7 +1396,7 @@ comparative : ADJ
 comparatively : ADV [$deg] 0
 compare : NOUN
 compare : VERB
-compass : NOUN
+compass : NOUN - +2
 compass : VERB
 compassion : NOUN
 compatible : ADJ
@@ -1646,7 +1652,7 @@ cycle : NOUN
 cycle : VERB
 cypher : NOUN
 cypher : VERB
-daily : NOUN
+daily : NOUN - -2
 daily : ADJ
 daily : ADV
 damage : NOUN
@@ -2274,7 +2280,7 @@ floor : VERB
 florida : NOUN
 flow : NOUN
 flow : VERB - +2
-flower : NOUN
+flower : NOUN - +1
 flower : VERB
 fly : NOUN
 fly : VERB
@@ -2573,8 +2579,8 @@ hail : VERB
 haiti : NOUN
 hajj : NOUN
 half : NOUN[:val]
-half : ADJ
-half : ADV
+half : ADJ [$deg] 0
+half : ADV [$deg] 0
 hall : NOUN
 hamburger : NOUN
 hamilton : NOUN
@@ -3530,6 +3536,7 @@ nigerian : ADJ
 night : NOUN
 nihon : NOUN
 nobel : NOUN
+nobel prize : NOUN
 noble : NOUN
 noble : ADJ
 nocturne : NOUN
@@ -3831,7 +3838,7 @@ peel : VERB - +2
 peer : NOUN
 peer : VERB
 pellet : NOUN
-pen : NOUN
+pen : NOUN - +1
 pen : VERB
 penetrate : VERB
 pennsylvania : NOUN
@@ -4759,6 +4766,8 @@ sit : VERB
 sit down : VERB
 site : NOUN
 site : VERB
+sitting : NOUN - -2
+sitting : ADJ
 situation : NOUN
 size : NOUN
 size : VERB
@@ -4920,7 +4929,7 @@ spring : NOUN
 spring : VERB
 sprint : NOUN
 sprint : VERB
-square : NOUN
+square : NOUN - +1
 square : VERB
 square : ADJ
 square : ADV
@@ -5690,7 +5699,7 @@ window : NOUN
 wine : NOUN
 wine : VERB - -4
 wing : NOUN
-wing : VERB
+wing : VERB - -2
 winner : NOUN
 winter : NOUN
 winter : VERB
