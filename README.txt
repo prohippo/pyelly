@@ -385,6 +385,11 @@ Release Notes:
                       add extraction procedure for acronym definition
                       extend MARKING rules and integration test
                       update documentation
+ 1.4.0   - 20mar2017  enlarge Unicode subset recognized in input text
+                      fix bugs and clean up ellyChar, add unit test
+                      add vowels with diacriticals fo pinyin
+                      special handling of CJK in ellyCharInputStream
+                      update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
