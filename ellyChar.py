@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 09dec2016 CPM
+# ellyChar.py : 20mar2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -64,21 +64,33 @@ Pnc = [ u'“' , u'”' , u'‘' , u'’' , u'–' , u'—' , u'…' , u'™' ] 
 Opn = [ u'“' , u'‘' , u'"' , u"'" , u'[' , u'(' ]
 Cls = [ u'”' , u'’' , u'"' , u"'" , u']' , u')' ]
 
-Lim = u'\u0100'    # limit of Unicode chars recognized except for Pnc
+Lim = u'\u01D5'    # limit of Unicode chars recognized
 
-######## The full alphabet currently defined for PyElly is ASCII plus Latin-1.
-######## They include the first two blocks of Unicode with the following actual
-######## printing chars:
+LaS = 0x0100       # start of Latin supplement
+LaT = 0x0120       # end of supplement control chars
 
-####  . . . . . . . . . . . . . . . .     . . . . . . . . . . . . . . . .
-####    ! " # $ % & ' ( ) * + , - . /     0 1 2 3 4 5 6 7 8 9 : ; < = > ?
-####  @ A B C D E F G H I J K L M N O     P Q R S T U V W X Y Z [ \ ] ^ _
-####  ` a b c d e f g h i j k l m n o     p q r s t u v w x y z { | } ~
+######## The full alphabet currently defined for PyElly is ASCII plus Latin-1
+######## Supplement and Latin Extended A plus parts of Latin Extended B. These
+######## are in the first four blocks of Unicode as follows:
 
-####  €   ‚ ƒ „ … † ‡ ˆ ‰ Š ‹ Œ   Ž         ‘ ’ “ ” • – — ˜ ™ š › œ   ž Ÿ
-####    ¡ ¢ £ ¤ ¥ ¦ § ¨ © ª « ¬   ® ¯     ° ± ² ³ ´ µ ¶ · ¸ ¹ º » ¼ ½ ¾ ¿
-####  À Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï     Ð Ñ Ò Ó Ô Õ Ö × Ø Ù Ú Û Ü Ý Þ ß
-####  à á â ã ä å æ ç è é ê ë ì í î ï     ð ñ ò ó ô õ ö ÷ ø ù ú û ü ý þ ÿ
+##00  . . . . . . . . . . . . . . . .     . . . . . . . . . . . . . . . .
+##20    ! " # $ % & ' ( ) * + , - . /     0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+##40  @ A B C D E F G H I J K L M N O     P Q R S T U V W X Y Z [ \ ] ^ _
+##60  ` a b c d e f g h i j k l m n o     p q r s t u v w x y z { | } ~
+
+##00  . . . . . . . . . . . . . . . .     . . . . . . . . . . . . . . . .
+##20    ¡ ¢ £ ¤ ¥ ¦ § ¨ © ª « ¬   ® ¯     ° ± ² ³ ´ µ ¶ · ¸ ¹ º » ¼ ½ ¾ ¿
+##40  À Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï     Ð Ñ Ò Ó Ô Õ Ö × Ø Ù Ú Û Ü Ý Þ ß
+##60  à á â ã ä å æ ç è é ê ë ì í î ï     ð ñ ò ó ô õ ö ÷ ø ù ú û ü ý þ ÿ
+
+##00  Ā ā Ă ă Ą ą Ć ć Ĉ ĉ Ċ ċ Č č Ď ď     Đ đ Ē ē Ĕ ĕ Ė ė Ę ę Ě ě Ĝ ĝ Ğ ğ
+##20  Ġ ġ Ģ ģ Ĥ ĥ Ħ ħ Ĩ ĩ Ī ī Ĭ ĭ Į į     İ ı Ĳ ĳ Ĵ ĵ Ķ ķ ĸ Ĺ ĺ Ļ ļ Ľ ľ Ŀ
+##40  ŀ Ł ł Ń ń Ņ ņ Ň ň ŉ Ŋ ŋ Ō ō Ŏ ŏ     Ő ő Œ œ Ŕ ŕ Ŗ ŗ Ř ř Ś ś Ŝ ŝ Ş ş
+##60  Š š Ţ ţ Ť ť Ŧ ŧ Ũ ũ Ū ū Ŭ ŭ Ů ů     Ű ű Ų ų Ŵ ŵ Ŷ ŷ Ÿ Ź ź Ż ż Ž ž ſ
+
+##00  . . . . . . . . . . . . . . . .     . . . . . . . . . . . . . . . .
+##20  . . . . . . . . . . . . . . . .     . . . . . . . . . . . . . . . .
+##40  . . . . . . . . . . . . . Ǎ ǎ Ǐ     ǐ Ǒ ǒ Ǔ ǔ
 
 def isStrongConsonant ( x ):
     """
@@ -122,8 +134,19 @@ Vowel = [
     F,F,F,F,F,F,F,F,F,F,F,F,T,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,T,F,F,F,
     F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
     T,T,T,T,T,T,T,F,T,T,T,T,T,T,T,T, F,F,T,T,T,T,T,F,T,T,T,T,T,T,F,T,
-    T,T,T,T,T,T,T,F,T,T,T,T,T,T,T,T, F,F,T,T,T,T,T,F,T,T,T,T,T,T,F,T
+    T,T,T,T,T,T,T,F,T,T,T,T,T,T,T,T, F,F,T,T,T,T,T,F,T,T,T,T,T,F,F,F,
+
+    T,T,T,T,T,T,F,F,F,F,F,F,F,F,F,F, F,F,T,T,T,T,T,T,T,T,T,T,F,F,F,F,
+    F,F,F,F,F,F,F,F,T,T,T,T,T,T,T,T, T,T,T,T,F,F,F,F,F,F,F,F,F,F,F,F,
+    F,F,F,F,F,F,F,F,F,F,F,F,T,T,T,T, T,T,T,T,F,F,F,F,F,F,F,F,F,F,F,F,
+    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
+
+    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
+    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
+    F,F,F,F,F,F,F,F,F,F,F,F,F,T,T,T, T,T,T,T,T
 ]
+
+Uindex = ord('u') - ord('a') + 1
 
 def isStrictVowel ( x ):
     """
@@ -145,10 +168,7 @@ def isVowel ( x ):
     returns:
         True if vowel, False otherwise
     """
-    if isStrictVowel(x) or x == u'U' or x == u'u':
-        return True
-    else:
-        return False
+    return isStrictVowel(x) or toIndex(x) == Uindex
 
 ## chars allowed in tokens
 
@@ -207,7 +227,16 @@ Letter = [
     F,F,F,F,F,F,F,F,F,F,T,F,T,F,T,F, F,F,F,F,F,F,F,F,F,F,F,F,T,F,T,T,
     F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
     T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,F,T,T,T,T,T,T,T,T,
-    T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,F,T,T,T,T,T,T,T,T
+    T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,F,T,T,T,T,T,T,T,T,
+
+    T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,
+    T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,
+    T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,
+    T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,
+
+    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
+    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
+    F,F,F,F,F,F,F,F,F,F,F,F,F,T,T,T, T,T,T,T,T
 ]
 
 LetterOrDigit = [
@@ -219,7 +248,16 @@ LetterOrDigit = [
     F,F,F,F,F,F,F,F,F,F,T,F,T,F,T,F, F,F,F,F,F,F,F,F,F,F,F,F,T,F,T,T,
     F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
     T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,F,T,T,T,T,T,T,T,T,
-    T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,F,T,T,T,T,T,T,T,T
+    T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,F,T,T,T,T,T,T,T,T,
+
+    T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,
+    T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,
+    T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,
+    T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,
+
+    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
+    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
+    F,F,F,F,F,F,F,F,F,F,F,F,F,T,T,T, T,T,T,T,T
 ]
 
 def isLetterOrDigit ( x ):
@@ -275,7 +313,16 @@ Space = [
     F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
     F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
     F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
-    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F
+    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
+
+    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
+    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
+    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
+    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
+
+    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
+    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
+    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F
 ]
 
 def isWhiteSpace ( x ):
@@ -300,26 +347,42 @@ def isApostrophe ( x ):
     """
     return x == APO or x == APX or x == PRME
 
-## for equating Latin-1 letters with 26 ASCII letters when indexing
+## for equating PyElly letters with 26 ASCII letters when indexing
 
 Mapping = [
-     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-     0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,
-    16,17,18,19,20,21,22,23,24,25,26, 0, 0, 0, 0, 0,
-     0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,
-    16,17,18,19,20,21,22,23,24,25,26, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,
+   16,17,18,19,20,21,22,23,24,25,26, 0, 0, 0, 0, 0,
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,
+   16,17,18,19,20,21,22,23,24,25,26, 0, 0, 0, 0, 0,
 
-     0, 0, 0, 0, 0, 0, 0, 0, 0, 0,19, 0,15, 0,26, 0,
-     0, 0, 0, 0, 0, 0, 0, 0, 0, 0,19, 0,15, 0,26,25,
-     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-     1, 1, 1, 1, 1, 1, 1, 3, 5, 5, 5, 5, 9, 9, 9, 9,
-    20,14,15,15,15,15,15, 0,15,21,21,21,21,25,20,19,
-     1, 1, 1, 1, 1, 1, 1, 3, 5, 5, 5, 5, 9, 9, 9, 9,
-    20,14,15,15,15,15,15, 0,15,21,21,21,21,25,20,25
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,19, 0,15, 0,26, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0,19, 0,15, 0,26,25,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    1, 1, 1, 1, 1, 1, 1, 3, 5, 5, 5, 5, 9, 9, 9, 9,
+   20,14,15,15,15,15,15, 0,15,21,21,21,21,25,20,19,
+    1, 1, 1, 1, 1, 1, 1, 3, 5, 5, 5, 5, 9, 9, 9, 9,
+   20,14,15,15,15,15,15, 0,15,21,21,21,21,25,20,25,
+
+    1, 1, 1, 1, 1, 1, 3, 3, 3, 3, 3, 3, 3, 3, 4, 4,
+    4, 4, 5, 5, 5, 5, 5, 5, 5, 5, 5, 5, 7, 7, 7, 7,
+    7, 7, 7, 7, 8, 8, 8, 8, 9, 9, 9, 9, 9, 9, 9, 9,
+    9, 9, 9, 9,10,10,11,11,11,12,12,12,12,12,12,12,
+   12,12,12,14,14,14,14,14,14,14,14,14,15,15,15,15,
+   15,15, 1, 1,18,18,18,18,18,18,19,19,19,19,19,19,
+   19,19,20,20,20,20,20,20,21,21,21,21,21,21,21,21,
+   21,21,21,21,23,23,25,25,25,26,26,26,26,26,26,19,
+
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 9,
+    9,15,15,21,21
 ]
 
 ## letters for codes
@@ -399,7 +462,10 @@ def isText ( x ):
     returns:
         True if ASCII or Latin-1 or punctuation , False otherwise
     """
-    return False if x == '' else False if isPureControl(x) else (x in Pnc) if x > Lim else True
+    if x == '' or isPureControl(x):
+        return False
+    else:
+        return x < Lim or x in Pnc
 
 control = [
     T,T,T,T,T,T,T,T,T,F,F,T,T,F,T,T,
@@ -415,7 +481,10 @@ def isPureControl ( x ):
     returns:
         True if non-text control, False otherwise
     """
-    return False if x >= u' ' else control[ord(x)]
+    if ord(x) < LaS:
+        return x < SPC and control[ord(x)]
+    else:
+        return x < LaT
 
 termina = [ COL , COM ]
 
@@ -494,3 +563,33 @@ def findBreak ( text , offset=0 , nspace=0 ):
 #   print 'break=' , k , 'offset=' , offset
     return k - offset
 
+############################ special CJK  ############################
+
+def isCJK ( x ):
+
+    """
+    check for CJK Unicode - only the 20,950 most common characters!
+
+    arguments:
+        x   - char to check
+    returns:
+        True if CJK, otherwise False
+    """
+
+    xo = ord(x)
+    return 0xA000 > xo and xo >= 0x4E00
+
+############################ unit testing ############################
+
+if __name__ == "__main__":
+
+    chrs = u"pqrstuvwxyz{|}~." + u"ðñòóôõö÷øùúûüýþÿ" + u"ŰűŲųŴŵŶŷŸŹźŻżŽžſ" + u"ǀǁǂǃǄǅǆǇǈǉǊǋǌǍǎǏǐǑǒǓǔ"
+
+    for cx in list(chrs):
+        ko = ord(cx)
+        mp = toChar(toIndex(cx))
+        print u'<' + cx + u'> ord=' , '{:3d}'.format(ko) , 'map=' , mp , 'vowel' if isVowel(cx) else ''
+
+    print isCJK(u'寶')
+    print isCJK(u'譽')
+    print isCJK(u'禮')
