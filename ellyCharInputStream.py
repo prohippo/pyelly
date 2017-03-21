@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyCharInputStream.py : 02mar2017 CPM
+# ellyCharInputStream.py : 19mar2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -121,7 +121,10 @@ class EllyCharInputStream(object):
 
             if not ellyChar.isText(c):   # unrecognizable Elly char?
 #               print 'c=' , ord(c)
-                c = NBSP                 # if so, replace with no-break space
+                if ellyChar.isCJK(c):
+                    c = '_'              # special handling for Chinese
+                else:
+                    c = NBSP             # by default, replace with no-break space
 
             lc = self._lc                # copy saved last char
 #           print 'lc=' , ord(lc)
@@ -376,7 +379,8 @@ if __name__ == '__main__':
         'xx\r\n',
         'yy\t\tzz',
         '  wxyz',
-        ' - '
+        ' - ' ,
+        '桂林'
     ]
 
     def hexd ( c ):
