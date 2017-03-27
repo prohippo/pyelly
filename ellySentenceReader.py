@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellySentenceReader.py : 02mar2017 CPM
+# ellySentenceReader.py : 26mar2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -60,8 +60,6 @@ QUOs = [ unichr(34) , unichr(39) , # ASCII double and single quote
          RSQm                      # right Unicode single quote
        ]
 
-MXBr = 31                          # limit on bracketing override of stop
-
 LS   = 4                           # limit on special bracketing lookahead
 
 class EllySentenceReader(object):
@@ -75,10 +73,8 @@ class EllySentenceReader(object):
         drop - flag for removing stop punctuation exceptions
         last - last char encountered in buffering input lines
 
-        _plvl - parentheses level
-        _blvl - bracket     level
-        _qlvl - quotation   level
-        _bcnt - bracketing  count for candidate punctuation
+        _cr - complementary brackets
+        _cl - bracketing level
     """
 
     def __init__ ( self , inpts , stpx , drop=False ):
@@ -98,10 +94,8 @@ class EllySentenceReader(object):
         self.drop = drop
         self.last = END
 
-        self._plvl = 0
-        self._blvl = 0
-        self._qlvl = 0
-        self._bcnt = 0
+        self._cr = { u'(' : u')' , u'[' : u']' , LDQm : RDQm , LSQm : RSQm , '{' : '}' }
+        self._cl = { u')' : 0 , u']' : 0 , RDQm : 0 , RSQm : 0 , '}' : 0 }
 
     def checkBracketing ( self , c ):
 
@@ -116,33 +110,20 @@ class EllySentenceReader(object):
             True if c is bracketed, False otherwise
         """
 
-#       print 'check c=[' , c , ']'
-        if   c == u'(':            # check for certain kinds of bracket
-            self._plvl += 1
-        elif c == u'[':
-            self._blvl += 1
-        elif c == u')' and self._plvl > 0:
-            self._plvl -= 1
-        elif c == u']' and self._blvl > 0:
-            self._blvl -= 1
-        elif c == ellyChar.LDQm:
-            self._qlvl += 1
-        elif c == ellyChar.RDQm and self._qlvl > 0:
-            self._qlvl -=1
-
-        if self._plvl > 0 or self._blvl > 0 or self._qlvl > 0:
-#           print 'in bracketing'
-            if self._bcnt >= MXBr: # check limit on char count for bracketing
-#               print 'reset for char limit'
-                self.resetBracketing()
-                return False       # no bracketing
+#       print 'check c=<' , c , '>'
+        if c in self._cr:            # check for known bracketing
+            cr = self._cr[c]         # get complementary bracket
+#           print 'c=' , c , 'cr=' , cr
+            if self._cl[cr] == 0:    # check if no prior brackets
+                if self.inp.findClose(c,cr):
+                    self._cl[cr] = 1 # note brackets only if short range
             else:
-                self._bcnt += 1
-#               print 'count at' , self._bcnt
-                return True        # bracketing with inscreased char count
-        else:
-            self._bcnt = 0
-            return False           # no bracketing
+                self._cl[cr] += 1    # just increase bracketing level
+        elif c in self._cl and self._cl[c] > 0:
+            self._cl[c] -= 1         # decrease bracketing level
+
+        return self._cl[')'] + self._cl[']'] + self._cl[RDQm] + self._cl['}'] > 0
+
 
     def resetBracketing ( self ):
 
@@ -153,10 +134,10 @@ class EllySentenceReader(object):
             self
         """
 
-        self._plvl = 0
-        self._blvl = 0
-        self._qlvl = 0
-        self._bcnt = 0
+        self._cl[')']  = 0
+        self._cl[']']  = 0
+        self._cl['}']  = 0
+        self._cl[RDQm] = 0
 
     def shortBracketing ( self , sent , d ):
 
@@ -202,6 +183,9 @@ class EllySentenceReader(object):
 #       print 'getNext'
 
         self.resetBracketing()
+        inBrkt = False
+
+        nspc = 0           # set space count
 
         sent = [ ]         # list buffer to fill
 
@@ -231,7 +215,7 @@ class EllySentenceReader(object):
                 break
 
 #           print 'x=' , '<' + x + '>' , 'c=' , '<' + c + '>'
-#           print 'sent=' , sent
+#           print 'sent=' , sent , 'nspc=' , nspc
 
             # check for table delimiters in text
 
@@ -247,9 +231,9 @@ class EllySentenceReader(object):
                             break               #
                     continue                    # ignore everything seen so far
 
-            #########################################
-            # accumulate chars and count alphanumeric
-            #########################################
+            ####################################################
+            # accumulate chars and count alphanumeric and spaces
+            ####################################################
 
             lc = c
             c  = x
@@ -272,8 +256,12 @@ class EllySentenceReader(object):
                     x = RSQm          #
                 elif x == DQuo:       # a DQuo followed by nonalphanumeric becomes RDQm
                     x = RDQm          #
+            elif ellyChar.isWhiteSpace(c) and inBrkt:
+                nspc += 1
 
+            svBrkt = inBrkt
             inBrkt = self.checkBracketing(x)    # do bracket checking with modified chars
+            if svBrkt and not inBrkt: nspc = 0
 
 #           print 'lc=' , '<' + lc + '>' , 'bracketing x=' , '<' + x + '>' , inBrkt
 
@@ -355,7 +343,7 @@ class EllySentenceReader(object):
                             break
                 continue
 
-            elif not c in Stops or inBrkt:
+            elif not c in Stops:
                 continue
 
             else:
@@ -394,6 +382,11 @@ class EllySentenceReader(object):
 
                 elif d != END and not ellyChar.isWhiteSpace(d):
                     if self.shortBracketing(sent,d): break
+                    if d in self._cl and self._cl[d] == 1:
+                        dn = self.inp.peek()
+                        if ellyChar.isWhiteSpace(dn):
+                            sent.append(d)
+                            break
                     self.inp.unread(d)
 #                   print 'no space after punc'
                     continue
@@ -404,13 +397,27 @@ class EllySentenceReader(object):
 #                   print 'unread d=' , d
                     self.inp.unread(d)
 
+#               print 'possible stop'
+
                 # final check: is sentence long enough?
+
+                if inBrkt:
+#                   print 'c=' , '<' + c + '>' , 'd=' , '<' + d + '>' , 'preview=' , self.inp.preview()
+#                   print 'nspc=' , nspc
+                    if c in [ ':' , ';' ] or nspc < 3:
+                        sent.append(d)
+#                       print 'add' , '<' + d + '> to sentence'
+#                       print 'sent=' , sent
+                        self.inp.skip()
+                        nspc -= 1
+                        continue
 
 #               print '@4  <<' , self.inp.buf
                 cx = self.inp.peek()
                 if cx == None: cx = u'!!'
 #               print 'sentence break: next=' , '<' + cx + '>' , len(cx) , sent
-                if nAN > 1 and not inBrkt:
+#               print 'nAN=' , nAN , 'inBrkt=' , inBrkt
+                if nAN > 1:
                     break
 
         if len(sent) > 0 or self.last != END:

@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 20mar2017 CPM
+# ellyChar.py : 25mar2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -334,7 +334,7 @@ def isWhiteSpace ( x ):
     returns:
         True if Unicode space, False otherwise
     """
-    return x != '' and x < Lim and Space[ord(x)]
+    return x != '' and x != None and x < Lim and Space[ord(x)]
 
 def isApostrophe ( x ):
     """

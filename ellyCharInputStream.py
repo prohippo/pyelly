@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyCharInputStream.py : 19mar2017 CPM
+# ellyCharInputStream.py: 25mar2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -47,7 +47,8 @@ HYPH = u'-'       # hyphen
 DASH = u'\u2013'  # n-dash
 NBSP = u'\u00A0'  # Unicode no-break space
 
-Limit = 3         # maximum char count for preview
+PLM = 3           # maximum char count for preview
+NLM = 80          # limit of look-ahead
 
 def spc ( c ):
 
@@ -204,8 +205,8 @@ class EllyCharInputStream(object):
 
         if not self._reload():
             return [ ]
-        bk = self.getBufferCount()
-        if bk > Limit: bk = Limit
+        bk = len(self.buf)
+        if bk > PLM: bk = PLM
         return self.buf[:bk]
 
     def peek ( self ):
@@ -240,7 +241,7 @@ class EllyCharInputStream(object):
         if self._reload():
             self.buf.pop(0)
 
-    def getBufferCount ( self ):
+    def getBufferCharCount ( self ):
 
         """
         get number of chars in current buffer
@@ -253,6 +254,35 @@ class EllyCharInputStream(object):
         """
 
         return len(self.buf)
+
+    def findClose ( self , opn , cls ):
+
+        """
+        look ahead for closing bracket in input stream buffer
+
+        arguments:
+            self  -
+            opn   - opening bracket
+            cls   - closing bracket to look for
+
+        returns:
+            offset in stream if found, -1 otherwise
+        """
+
+        skp = 0    # skip count
+        nos = 0    # offset in buffer
+        nlm = len(self.buf)
+        if nlm > NLM: nlm = NLM  # set lookahead limit
+        while nos < nlm:
+            if   self.buf[nos] == opn:  # another opening bracket means
+                skp += 1                # to skip a closing one
+            elif self.buf[nos] == cls:
+                if skp > 0:             # check for skip
+                    skp -= 1
+                elif nos + 1 == nlm or ellyChar.isWhiteSpace(self.buf[nos+1]):
+                    return nos          # offset for closure
+            nos += 1
+        return -1
 
     def indentation ( self ):
 
@@ -380,52 +410,59 @@ if __name__ == '__main__':
         'yy\t\tzz',
         '  wxyz',
         ' - ' ,
-        '桂林'
+        '桂林' ,
+        '(1. ) x'
     ]
 
     def hexd ( c ):
         """ simple hexadecimal conversion
         """
-        return '{:02x}'.format(ord(c))
+        return '{:04x}'.format(ord(c))
 
-    if len(sys.argv) == 1:               # no input file for testing?
-        inpu = EllyRawInput(datd)        # if so, use test input defined above
+####
+
+    if len(sys.argv) == 1:                # no input file for testing?
+        inpu = EllyRawInput(datd)         # if so, use test input defined above
         print 'reading from data array'
     elif sys.argv[1] == '-':
-        inpu = sys.stdin                 #            from standard input
+        inpu = sys.stdin                  #            from standard input
         print 'reading from sys.stdin'
     else:
-        inpu = open(sys.argv[1],'r')     #            from text file
+        inpu = open(sys.argv[1],'r')      #            from text file
         print 'reading from file:' , sys.argv[1]
     chs = EllyCharInputStream(inpu)
     print 'preview=' , chs.preview()
-    cs = chs.peek()                      # check peek()
+    cs = chs.peek()                       # check peek()
     if cs == END:
         sys.exit(1)
     bf = [ ]
-    while True:                          # collect each char from stream
+    while True:                           # collect each char from stream
 #       print 'main loop'
         chu = chs.read()
         if chu == END:
             break
         elif chu == '\n':
-            bf.append('\\n 0a')          # represent \n as string
-            print 'buffer counts after <\\n> input=' , chs.getBufferCount() ,
+            bf.append('\\n 000a')         # represent \n as string
+            print 'buffer char count after reading <\\n>=' , chs.getBufferCharCount() ,
             print 'output=' , len(bf)
         else:
-            bf.append(chu + u' ' + hexd(chu))
-    Kn = 10                              # how many chars to show per line
-    kn = 0                               # output char count
+            bf.append(u'{:3s}'.format(chu) + hexd(chu))
+    Kn = 10                               # how many chars to show per line
+    kn = 0                                # output char count
     sys.stdout.write('full output is\n')
     for bc in bf:
-        sys.stdout.write('<' + bc + '>') # dump all collected stream chars
+        sys.stdout.write('<' + bc + '> ') # dump all collected stream chars
         kn += 1
         if kn%Kn == 0: sys.stdout.write('\n')
     print ''
-    print '---------'                    # check unread()
+    print '---------'                     # check unread()
     print 'input start:' , '<' + cs + ' ' + hexd(cs) + '>'
+    chs.unread(')')
+    chs.unread(')')
+    chs.unread('(')
     chs.unread('?')
     chs.unread('!')
+    print 'lookahead: found ) at' , chs.findClose('(',')')
     cu = chs.read()
     du = chs.read()
     print 'checking putback:' , '<' + cu + ' ' + hexd(cu) + '>' ,
