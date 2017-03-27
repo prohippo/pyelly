@@ -390,6 +390,12 @@ Release Notes:
                       add vowels with diacriticals fo pinyin
                       special handling of CJK in ellyCharInputStream
                       update documentation
+ 1.4.1   - 26mar2017  improve encapsulation of ellyCharInputStream
+                      add lookahead method for matching up brackets
+                      extend and clean up unit test
+                      rework ellySentenceReader logic for bracketed punctuation
+                      extend and clean up MARKING rules and integration testing
+                      update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
