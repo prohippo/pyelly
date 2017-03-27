@@ -458,6 +458,7 @@ Harry : NOUN
 HBO : NOUN
 Herzegovina : NOUN
 Hillary Clinton : NOUN
+Hunnan New District : NOUN
 Institute for Radio Astronomy Millimetrique : NOUN[:*r]
 Islamabad Electric Supply Company : NOUN[:*r]
 Islamic State : NOUN
@@ -467,6 +468,7 @@ Japan International Cooperation Agency : NOUN[:*r]
 Jim : NOUN
 Josephine County : NOUN
 La Nina : NOUN
+Liaoning : NOUN
 Lin-Manuel Miranda : NOUN
 McCarthy : NOUN
 Michael Keaton : NOUN
@@ -2914,7 +2916,7 @@ jainism : NOUN
 james clerk maxwell : NOUN
 january : NOUN
 japan : NOUN
-japan : VERB
+japan : VERB - -2
 japanese : NOUN
 japanese : ADJ
 jersey : NOUN
@@ -5479,6 +5481,7 @@ union : NOUN
 unique : ADJ
 unit : NOUN
 unite : VERB
+united kingdom : NOUN
 united nations : NOUN
 united states : NOUN
 unity : NOUN
