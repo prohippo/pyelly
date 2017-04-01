@@ -272,6 +272,7 @@ approximately average : ADJ
 as a result : CONJ
 as a result of : PREP
 as if : CONJ
+as of : PREP
 as though : CONJ
 as well as : CONJ
 at first : ADV
@@ -4681,7 +4682,7 @@ shadow : VERB
 shaft : NOUN
 shaft : VERB
 share : NOUN
-share : VERB
+share : VERB - +1
 sharer : NOUN
 shark : NOUN
 shark : VERB
@@ -5261,8 +5262,8 @@ thematic : ADJ
 theme : NOUN
 theme : VERB - -2
 then: ADV
-then : NOUN - -6
-then : ADJ  - -6
+then : NOUN - -9
+then : ADJ  - -9
 theology : NOUN
 theorem : NOUN
 theory : NOUN

@@ -9,16 +9,16 @@
 0 \#   - 2     # must excape or else starts a same line comment!
 0 \##  - 2
 0 \### - 2
-2 0th$ NUM -1
-2 1st$ NUM -1
-2 2nd$ NUM -1
-2 3rd$ NUM -1
-2 4th$ NUM -1
-2 5th$ NUM -1
-2 6th$ NUM -1
-2 7th$ NUM -1
-2 8th$ NUM -1
-2 9th$ NUM -1
+2 0th$ NUM [&prop] +1 -1
+2 1st$ NUM [&prop] +1 -1
+2 2nd$ NUM [&prop] +1 -1
+2 3rd$ NUM [&prop] +1 -1
+2 4th$ NUM [&prop] +1 -1
+2 5th$ NUM [&prop] +1 -1
+2 6th$ NUM [&prop] +1 -1
+2 7th$ NUM [&prop] +1 -1
+2 8th$ NUM [&prop] +1 -1
+2 9th$ NUM [&prop] +1 -1
 
 0 11th$ NUM -1
 0 12th$ NUM -1

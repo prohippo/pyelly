@@ -874,10 +874,10 @@ _
 __
 g:NCLU[:*r,num]->NUM NCLU[:-det,-prep,-num,-qnt]
  r[&curr]>>*r++++
- l[$cmpd]>>*r[&adv]++++
+ r[&cmpd]>>*r[&adv]++++
          >>*r++++
 _
-  view 9
+# view 9
   var typg=num
   (lxtd)
 __
@@ -1497,8 +1497,8 @@ _
   right
 __
 g:NUM->ADV[~mod] NUM
- l[$deg]>>[$cmpd]++++
-        >>[$cmpd]+
+ l[$deg]>>[&cmpd]++++
+        >>[&cmpd]+
 _
   var typg=adv
   (typg)
@@ -1547,7 +1547,7 @@ g:NUM->NUM[:-cnj] NUM[:*r]
    >>+
 _
   left
-  view
+# view
   (spellr) # "3 million"
 __
 
