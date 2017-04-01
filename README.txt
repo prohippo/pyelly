@@ -395,6 +395,9 @@ Release Notes:
                       extend and clean up unit test
                       rework ellySentenceReader logic for bracketed punctuation
                       extend and clean up MARKING rules and integration testing
+                      improve unit testing support output
+                      add consistency checking for semantic features
+                      clean up source files along with line count of code
                       update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
