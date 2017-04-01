@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveDefiner.py : 03feb2017 CPM
+# cognitiveDefiner.py : 30mar2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -56,6 +56,7 @@ class Status(object):
         self.rht = None
         self.lh  = False
         self.rh  = False
+        self.id  = None
 
 def convertDefinition ( stb , inp , nwy ):
 
@@ -73,11 +74,14 @@ def convertDefinition ( stb , inp , nwy ):
         procedure body as a list of commands and data on success, None otherwise
     """
 
-    store = [ ]  # where to put resulting procedure
+    id = [None]*3 # for feaature id consistency check
 
-    while True:  # process every clause
+    store = [ ]   # where to put resulting procedure
+
+    while True:   # process every clause
 
         s = Status()                                  # initialize for inheritance check
+        s.id = id                                     #
 
         line = inp.readline()                         # get next input line
         if len(line) == 0: break                      # end of input test
@@ -95,7 +99,7 @@ def convertDefinition ( stb , inp , nwy ):
             right = _rightside(stb,elem[1].strip(),s) # actions
             if left == None or right == None:
                 return None
-        if not (_check[nwy])(s):                      # apply inheritance check
+        if not (_check[nwy])(s):                      # apply inheritance check by rule type
             print >> sys.stderr , '** bad semantic feature inheritance'
             return None
         store.append([ left , right ])                # save clause
@@ -114,6 +118,10 @@ def _err ( ms ):
 
     print >> sys.stderr , '** cognitive semantic error:' , ms
     return None
+
+sS = 0  # indices for feature ids in status frame
+lS = 1  #
+rS = 2  #
 
 def _leftside ( stb , txt , sta ):
 
@@ -172,11 +180,27 @@ def _leftside ( stb , txt , sta ):
             p = txt[:k+1]                   # get semantic feature string
 
 #           print "side:" , side , "test:" , p
+
             try:
                 f = featureSpecification.FeatureSpecification(stb,p,'semantic')
             except ellyException.FormatFailure:
                 return _err('bad semantic features to check')
+
+            if side == 'l':
+                if sta.id[lS] == None:
+                    sta.id[lS] = f.id
+                elif f.id != sta.id[lS]:
+                    _err('inconsistency: left features=' + p)
+                    return None
+            else:
+                if sta.id[rS] == None:
+                    sta.id[rS] = f.id
+                elif f.id != sta.id[rS]:
+                    _err('inconsistency: right features=' + p)
+                    return None
+
             op = semanticCommand.Crhtf if side == 'r' else semanticCommand.Clftf
+
             if side == 'r':
                 sta.rht = f
             else:
@@ -263,6 +287,13 @@ def _rightside ( stb , txt ,sta ):
             sta.res = f
         except ellyException.FormatFailure:
             return _err('bad semantic features to set or unset')
+
+        if sta.id[sS] == None:
+            sta.id[sS] = f.id
+        elif f.id != sta.id[sS]:
+            _err('inconsistency: final features=' + txt[:n+1])
+            return None
+
 #       print 'features=' , f.positive , f.negative
         actn.append([ semanticCommand.Csetf , f.positive ])
         if not f.negative.zeroed():
