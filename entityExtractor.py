@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# entityExtractor.py : 04aug2016 CPM
+# entityExtractor.py : 30mar2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -37,7 +37,6 @@ import ellyChar
 import ellyConfiguration
 import syntaxSpecification
 import featureSpecification
-import ellyException
 
 noBits = ellyBits.EllyBits()
 

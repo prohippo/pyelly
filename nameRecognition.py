@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# nameRecognition.py : 17mar2015 CPM
+# nameRecognition.py : 30mar2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2015, Clinton Prentiss Mah
 # All rights reserved.
@@ -421,7 +421,7 @@ def _planAhead ( buf ):
                         break
                     return
                 nix += 1
-               
+
             _toscan = lb + nsk - nix
 
 def infer ( tok ):

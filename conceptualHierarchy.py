@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# conceptualHierarchy.py : 04nov2014 CPM
+# conceptualHierarchy.py : 30mar2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -95,7 +95,7 @@ class Concept:
 class ConceptualHierarchy:
 
     """
-    hierarchy of concepts after the approach of WordNet 
+    hierarchy of concepts after the approach of WordNet
 
     attributes:
         index     - dictionary of concepts
@@ -245,7 +245,7 @@ class ConceptualHierarchy:
 
         stk.append([top])            # start at top
 
-        while len(stk) > 0:          
+        while len(stk) > 0:
             cs = stk[-1]             # list of nodes left to traverse at current level
             if len(cs) == 0:
                 stk.pop()            # if empty, go back up one level

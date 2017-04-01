@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# phondexEN.py : 20mar2015 CPM
+# phondexEN.py : 30mar2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2015, Clinton Prentiss Mah
 # All rights reserved.
@@ -55,7 +55,7 @@ _xfs = [
    "igl":"il"  , "ign":"in"  , "ise":"ize" , "isi":"izi" , "iso":"izo" ,
    "nio":"nYo" , "nyo":"nYo" , "ose":"oze" , "osi":"ozi" , "que":"ke"  ,
    "qui":"qWi" , "sch":"j"   , "tch":"j"   , "tia":"ja"  , "tio":"jo"  ,
-   "wyn":"Wn" 
+   "wyn":"Wn"
  } ,
  { "euph":"Yf"  , "iect":"YKt" , "quee":"kWe" , "quel":"kWl" ,
    "quen":"kWn" , "ssia":"ja"  , "ssio":"jo"  , "stle":"sle" ,
@@ -162,7 +162,7 @@ def phondex ( token ):
         if not chx in phonCOD:
             lpho = ''
         else:
-#           print 'lpho=' , lpho 
+#           print 'lpho=' , lpho
             if lpho != phonCOD[chx]:
                 lpho = phonCOD[chx]
                 rslt.append(lpho)

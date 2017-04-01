@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# exoticPunctuation.py : 30jan2015 CPM
+# exoticPunctuation.py : 30mar2917 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -33,7 +33,7 @@ ad hoc methods for nonstandard punctuation in
 just a few of the many imaginable permutations
 """
 
-base  = [ '!' , '?' , 
+base  = [ '!' , '?' ,
           '#' , '*' ,
           '@' , '$' ,
           '%' ]       # elements of nonstandard punctuation
@@ -50,7 +50,7 @@ def recognized ( char ):
     returns:
         True if recognized, False otherwise
     """
-    
+
     return (char in base)
 
 def normalize ( char , inp ):
@@ -65,7 +65,7 @@ def normalize ( char , inp ):
     returns:
         True if any conversion done, False otherwise
     """
-    
+
     if not recognized(char):
         return False
 

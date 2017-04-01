@@ -1,21 +1,21 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# prefixTreeLogic.py : 05sep2014 CPM
+# prefixTreeLogic.py : 30mar2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
-# 
+#
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are met:
-# 
+#
 #   Redistributions of source code must retain the above copyright notice, this
 #   list of conditions and the following disclaimer.
-# 
+#
 #   Redistributions in binary form must reproduce the above copyright notice,
 #   this list of conditions and the following disclaimer in the documentation
 #   and/or other materials provided with the distribution.
-# 
+#
 # THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
 # AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
 # IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
@@ -135,7 +135,7 @@ if __name__ == '__main__':
     nfail = 0
 
     for x in xs:
-        rec = x.strip().split()      # next test case 
+        rec = x.strip().split()      # next test case
         if len(rec) != 2: continue   # better be [ input , expected output ]
 
         w = rec[0]                   # get separate components
@@ -148,7 +148,7 @@ if __name__ == '__main__':
             print ' NO MATCH=' , rec
         m = (r == a)
         if not m:
-            print '     FAIL=' , rec , '!= <' + a + '>' 
+            print '     FAIL=' , rec , '!= <' + a + '>'
             nfail += 1
 
     print nfail , 'examples failed'
