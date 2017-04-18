@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# symbolTable.py : 09mar2017 CPM
+# symbolTable.py : 05apr2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -115,6 +115,8 @@ class SymbolTable(object):
         smindx - semantic  feature set names
         bsymbs - base symbol set for anomaly check
         excpns - symbols to ignore for anomaly check
+
+        _nt4   - short syntactic types
     """
 
     def __init__ ( self ):
@@ -132,6 +134,8 @@ class SymbolTable(object):
         self.smindx = { } #
         self.bsymbs = [ ] #
         self.excpns = [ ] #
+
+        self._nt4 = [ ]   #
 
     def getFeatureSet ( self , fs , ty=False ):
 
@@ -206,7 +210,7 @@ class SymbolTable(object):
                     k -= 5           # else,  adjust for *UNIQUE and extra names *L, *R , *U , *X
                     l -= 1           #        adjust upper limit for *UNIQUE
                 if k == l:           # overflow check
-                    print >> sys.stderr , '** too many feature names, nm=' , nm
+                    print >> sys.stderr , '** ERROR: too many feature names, nm=' , nm
                     return None
                 if k < 0:
                     print >> sys.stderr , 'bad index=' , k , 'l=' , l
@@ -228,7 +232,7 @@ class SymbolTable(object):
             s     - name
 
         returns:
-            type index index number
+            type index index number if successful, None otherwise
         """
 
         if s in self.ntindx:
@@ -236,7 +240,16 @@ class SymbolTable(object):
         else:
             n = len(self.ntindx)
             self.ntindx[s] = n
+            if n == NMAX:
+                print >> sys.stderr , '** ERROR: too many syntactic types'
+                return None
             self.ntname.append(s)
+
+            if len(s) > 4: s = s[:4]
+            if s in self._nt4:
+                print >> sys.stderr , '** WARNING: multiple syntactic type names start with=' , s
+            else:
+                self._nt4.append(s)
             return n
 
     def getSyntaxTypeName ( self , n ):
