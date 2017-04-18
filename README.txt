@@ -399,6 +399,16 @@ Release Notes:
                       add consistency checking for semantic features
                       clean up source files along with line count of code
                       update documentation
+ 1.4.2   - 17apr2017  add char count check to cognitive semantics
+                      add buffer alignment operation to generative semantics
+                      extend BAD rules to test error detection and recovery
+                      fix omission in ellyBase handling of phrase token count
+                      restore macroTable error check, normalize error messages
+                      fix Unicode output redirection in multiple main modules
+                      warn in symbolTable of syntactic types with similar names
+                      add error checks in syntaxSpecification 
+                      extend, reorganize, and clean up MARKING rules
+                      revise, correct, and update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
