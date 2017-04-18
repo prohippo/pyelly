@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTree.py : 11mar2017 CPM
+# parseTree.py : 08apr2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -198,6 +198,7 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
                     phn.krnl.lftd = phx                     # goal phrase is left part of new one
                     phn.krnl.rhtd = phr                     # current phrase is right part
                     phn.ntok = phx.ntok + phr.ntok          # set token count for new phrase
+                    phn.lens = phx.lens + phr.lens          # and char count
                     self._score(phn)                        # compute bias score
                     rF = phn.krnl.synf.test(0)
                     lF = phn.krnl.synf.test(1)
@@ -246,6 +247,7 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
                         break
                     phn.krnl.lftd = phr                # current phrase is part of new one
                     phn.ntok = phr.ntok                # set token count for new phrase
+                    phn.lens = phr.lens                # set token count for new phrase
 #                   print 'phn=' , phn
 #                   print 'phr=' , phr
                     self._score(phn)                   # compute bias score

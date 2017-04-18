@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveProcedure.py : 11mar2017 CPM
+# cognitiveProcedure.py : 03apr2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -146,6 +146,14 @@ class CognitiveProcedure(object):
                     else:
                         if po >= nm: break
 #                   print 'no break'
+                elif op == semanticCommand.Ccgt or op == semanticCommand.Cclt:
+                    # check token count of evaluated phrase
+                    nc = phrs.lens
+                    nm = p[1]
+                    if op == semanticCommand.Ccgt:
+                        if nc <= nm: break
+                    else:
+                        if nc >= nm: break
                 else:
                     # unknown command
                     print >> sys.stderr , 'bad cog sem action=' , op
@@ -217,13 +225,14 @@ if __name__ == '__main__':
     import ellyDefinitionReader
     import procedureTestFrame
 
-    default = [
+    default = [    # expects procedureTestFrame definitions
         "?>>?" ,
         "p>10000 >> +100" ,
         "l[!f0,f1]>>*l[!f3] XXXX" ,
         "l(YYYY)  >>+1" ,
         "n>2>>-1" ,
-        ">>*l[!f3,-f4,-one]-2"      # expects procedureTestFrame definitions
+        ">>*l[!f3,-f4,-one]-2" ,
+        "c<4>>+2"
     ]
 
     frame = procedureTestFrame.ProcedureTestFrame()

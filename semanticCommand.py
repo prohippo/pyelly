@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# semanticCommand.py : 17feb2016 CPM
+# semanticCommand.py : 09apr2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -49,10 +49,12 @@ Cngt  =  11  # test n > token count
 Cnlt  =  12  #      n <
 Cpgt  =  13  # test p > position
 Cplt  =  14  #      p <
+Ccgt  =  15  # test c > char count
+Cclt  =  16  #      c <
 
 Copn = [     # operation names for dumping (must align with numerical codes above)
-    'ADDN' , 'LHER' , 'RHER' , 'SETF' , 'RSTF' , 'LFTF' , 'RHTF' ,
-    'SETC' , 'LFTC' , 'RHTC' , 'TRCE' , 'NGTR' , 'NLSS' , 'PGTR' , 'PLSS'
+    'ADDN' , 'LHER' , 'RHER' , 'SETF' , 'RSTF' , 'LFTF' , 'RHTF' , 'SETC' , 'LFTC' ,
+    'RHTC' , 'TRCE' , 'NGTR' , 'NLSS' , 'PGTR' , 'PLSS' , 'CGTR' , 'CLSS'
 ]
 
 #### generative
@@ -84,22 +86,23 @@ Gdele = 23  # delete n chars in buffer
 Gdelt = 24  # delete chars in buffer to substring
 Gstor = 25  # store deletion in local variable
 Gfnd  = 26  # find substring
-Gpick = 27  # special table lookup and insertion
-Gappd = 28  # append string to buffer
-Gget  = 29  # set local  variable from global variable
-Gput  = 30  # set global variable from local  variable
-Gassg = 31  # assign value of local variable to another
-Gque  = 32  # use local variable as a character queue
-Gunio = 33  # set union
-Gintr = 34  # set intersection
-Gcomp = 35  # set complement
-Gobtn = 36  # obtain original text for token
-Gcapt = 37  # capitalize first char in buffer
-Gucpt = 38  # uncapitalize first char in buffer
-Gtrce = 39  # instrumented no op for debugging
-Gshow = 40  # see local variable for debugging
-Gview = 41  # see parts of current and next buffer
-Gproc = 42  # call procedure
+Galgn = 27  # align to start of line
+Gpick = 28  # special table lookup and insertion
+Gappd = 29  # append string to buffer
+Gget  = 30  # set local  variable from global variable
+Gput  = 31  # set global variable from local  variable
+Gassg = 32  # assign value of local variable to another
+Gque  = 33  # use local variable as a character queue
+Gunio = 34  # set union
+Gintr = 35  # set intersection
+Gcomp = 36  # set complement
+Gobtn = 37  # obtain original text for token
+Gcapt = 38  # capitalize first char in buffer
+Gucpt = 39  # uncapitalize first char in buffer
+Gtrce = 40  # instrumented no op for debugging
+Gshow = 41  # see local variable for debugging
+Gview = 42  # see parts of current and next buffer
+Gproc = 43  # call procedure
 
 Gerr  = 99  # error return value
 
@@ -131,6 +134,7 @@ Glen = {    # command lengths used in dumping generative procedures
     Gdelt : 3 ,
     Gstor : 3 ,
     Gfnd  : 3 ,
+    Galgn : 2 ,
     Gpick : 3 ,
     Gappd : 2 ,
     Gget  : 3 ,
@@ -150,12 +154,13 @@ Glen = {    # command lengths used in dumping generative procedures
     Gproc : 2
 }
 
-Gopn = [    # operation names for dumping (must align with 43 numerical codes above)
+Gopn = [    # operation names for dumping (must align with 44 numerical codes above)
     'PASS' , 'RETN' , 'FAIL' , 'LEFT' , 'RGHT' , 'BLNK' ,
     'LNFD' , 'SPLT' , 'BACK' , 'MRGE' , 'CHNG' , 'CHCK' ,
     'NCHK' , 'CHKF' , 'SKIP' , 'DEFV' , 'SETV' , 'PEEK' ,
     'EXTL' , 'EXTR' , 'INSN' , 'INSR' , 'SHFT' , 'DELE' ,
-    'DLTO' , 'STOR' , 'FIND' , 'PICK' , 'APPD' , 'GETG' ,
-    'PUTG' , 'ASSG' , 'QUEU' , 'UNIO' , 'INTR' , 'COMP' ,
-    'OBTN' , 'CAPT' , 'UCPT' , 'TRCE' , 'SHOW' , 'VIEW' , 'CALL'
+    'DLTO' , 'STOR' , 'FIND' , 'ALGN' , 'PICK' , 'APPD' ,
+    'GETG' , 'PUTG' , 'ASSG' , 'QUEU' , 'UNIO' , 'INTR' ,
+    'COMP' , 'OBTN' , 'CAPT' , 'UCPT' , 'TRCE' , 'SHOW' ,
+    'VIEW' , 'CALL'
 ]

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveDefiner.py : 30mar2017 CPM
+# cognitiveDefiner.py : 03apr2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -150,7 +150,7 @@ def _leftside ( stb , txt , sta ):
         side = txt[0]
         txt = txt[1:]
 
-        if side == 'n' or side == 'p':
+        if side in [ 'n' , 'p' , 'c' ]:
             sns = txt[0]
             txt = txt[1:]
             if sns != '<' and sns != '>':
@@ -158,8 +158,10 @@ def _leftside ( stb , txt , sta ):
                 return None
             if side == 'n':
                 op = semanticCommand.Cngt if sns == '>' else semanticCommand.Cnlt
-            else:
+            elif side == 'p':
                 op = semanticCommand.Cpgt if sns == '>' else semanticCommand.Cplt
+            else:
+                op = semanticCommand.Ccgt if sns == '>' else semanticCommand.Cclt
             nd = 0
             lt = len(txt)
             while nd < lt:
@@ -346,7 +348,8 @@ def _rightside ( stb , txt ,sta ):
 
 cmprcode = [
     semanticCommand.Cngt , semanticCommand.Cnlt ,
-    semanticCommand.Cpgt , semanticCommand.Cplt
+    semanticCommand.Cpgt , semanticCommand.Cplt ,
+    semanticCommand.Ccgt , semanticCommand.Cclt
 ]
 
 def showCode ( cod ):
