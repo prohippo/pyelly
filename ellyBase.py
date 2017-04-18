@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 26mar2017 CPM
+# ellyBase.py : 16apr2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -34,7 +34,6 @@ to handle a single sentence with no \n chars at one time
 """
 
 import sys
-import codecs
 import ellySession
 import ellyConfiguration
 import ellyDefinition
@@ -56,9 +55,6 @@ import symbolTable
 
 import os   # needed to get file modification times
 
-sys.stdout = codecs.getwriter('utf8')(sys.stdout) # redefine standard output and error
-sys.stderr = codecs.getwriter('utf8')(sys.stderr) # streams for UTF-8 encoding
-
 # binary files
 
 rules      = ellyDefinition.grammar     # for saving grammar rules
@@ -74,7 +70,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.4.1'                      # current version of PyElly software
+release = 'v1.4.2'                      # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -667,6 +663,7 @@ class EllyBase(object):
         count = 0
 
         vs = self.vtb.lookUpSingleWord(ws)  # look up token as word externally
+        lws = len(ws)
 #       print len(vs) , 'candidates'
         for v in vs:                        # try to make phrases from vocabulary elements
 #           print 'v=' , v
@@ -675,6 +672,7 @@ class EllyBase(object):
             ):
                 if cap:
                     tree.lastph.krnl.semf.set(0)
+                tree.lastph.lens = lws
 #               print 'vtb sbuf=' , self.sbu.buffer
                 count += 1
 

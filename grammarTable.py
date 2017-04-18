@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# grammarTable.py : 30jan2016 CPM
+# grammarTable.py : 16apr2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -283,6 +283,9 @@ class GrammarTable(object):
             elif c == 'd':            # internal dictionary entry?
                 now += 1
                 dl = definitionLine.DefinitionLine(line)
+#               print 'len=' , len(dl.left) , type(dl.left) , dl.left
+                dllf = dl.left
+#               print 'len=' , len(dllf) , type(dllf) , dllf
                 try:
                     ss = syntaxSpecification.SyntaxSpecification(syms,dl.tail)
                 except ellyException.FormatFailure:
@@ -295,9 +298,9 @@ class GrammarTable(object):
                     ru.gens = compile(syms,'g',genr)        # if so, compile it
                 else:
                     ru.gens = compile(syms,'g',['obtain'])  # otherwise, compile default
-                if not dl.left in self.dctn:                # make sure word is in dictionary
-                    self.dctn[dl.left] = [ ]                #
-                self.dctn[dl.left].append(ru)               # add rule to dictionary
+                if not dllf in self.dctn:                   # make sure word is in dictionary
+                    self.dctn[dllf] = [ ]                   #
+                self.dctn[dllf].append(ru)                  # add rule to dictionary
                 if ru.cogs == None or ru.gens == None:
                     print >> sys.stderr , '** ERROR d: [' , line , ']'
                     eno += 1
@@ -488,7 +491,7 @@ if __name__ == '__main__':
     if inp.error != None:
         print inp.error
         sys.exit(1)
-    print 'loading' , '[' + filn + ']' , len(inp.buffer) , 'lines'
+    print 'reading' , '[' + filn + ']' , len(inp.buffer) , 'lines of rule definitions'
     try:
         gtb = GrammarTable(sym,inp)
         pnc = punctuationRecognizer.PunctuationRecognizer(sym)

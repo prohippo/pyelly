@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# set up for Unicode in stdout, stderr
+
+export PYTHONIOENCODING=utf8
+
 # run integration test with language definition and test input
 
 if   [ $# -eq 0 ]; then

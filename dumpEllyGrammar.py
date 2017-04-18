@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# dumpEllyGrammar.py : 13mar2017 CPM
+# dumpEllyGrammar.py : 08apr2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -35,7 +35,6 @@ methods to dump a grammar table
 import ellyChar
 import cognitiveDefiner
 import generativeDefiner
-import codecs
 import sys
 
 def dumpAll ( symbols , table , level ):
@@ -48,8 +47,6 @@ def dumpAll ( symbols , table , level ):
         table   - grammar table
         level   - degree of detail
     """
-
-    sys.stdout = codecs.getwriter('utf8')(sys.stdout) # redefine standard output
 
     print len(symbols.ntindx) , 'syntactic categories'
 
@@ -315,6 +312,7 @@ def dumpDictionary ( stb, dctn , full ):
     no = 0
 
     ws = dctn.keys()
+#   print ws
 
     for w in ws:
 
@@ -328,9 +326,10 @@ def dumpDictionary ( stb, dctn , full ):
             print stb.ntname[dr.styp] ,
             print '[{}]->'.format(dr.sfet.hexadecimal(False)) ,
             if w == ellyChar.RS:
-                print u"<RS>"
+                print u'<RS>'
             else:
-                print u'"' + w + u'"'
+                us = u'"' + w + u'"'
+                print us
 
             if full: showProcedures(dr)
 
@@ -365,3 +364,4 @@ if __name__ == '__main__':
             sys.exit(1)
 
     dumpAll(rul.stb,rul.gtb,int(lvl))
+
