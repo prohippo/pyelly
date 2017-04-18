@@ -1,0 +1,8 @@
+append PPPPPP
+linefeed
+split
+back
+append 1234 5678 90
+align >
+append !!!!!
+merge

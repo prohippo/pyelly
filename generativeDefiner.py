@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeDefiner.py : 19jan2017 CPM
+# generativeDefiner.py : 16apr2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -340,6 +340,11 @@ def compileDefinition ( stb , inp ):
                 ss = ss[:-1] + ' ' + ar.pop(0)
             sens = True if len(ar) == 0 else False if ar[0] == '>' else True
             store.extend([ semanticCommand.Gfnd , ss , sens ])
+        elif op == 'align':
+            if len(rs) != 1:
+                return _err(l=line)
+            sens = False if rs[0] == '>' else True
+            store.extend([ semanticCommand.Galgn , sens ])
         elif op == 'pick':
 #           print 'rs=' , rs
             if len(rs) == 0:
@@ -431,7 +436,7 @@ def compileDefinition ( stb , inp ):
         _err('missing END')
         return None
 
-_code = { 'SP' : '\x20' , 'HT' : '\x09' , 'LF' : '\x0a' , 'CR' : '\x0d' }
+_code = { 'SP' : '\x20' , 'HT' : '\x09' , 'LF' : '\x0a' , 'NL' : '\x0a' , 'CR' : '\x0d' }
 
 def _eqsplit ( s ):
 

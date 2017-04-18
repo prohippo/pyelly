@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeProcedure.py : 14mar2017 CPM
+# generativeProcedure.py : 09apr2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -372,6 +372,15 @@ class GenerativeProcedure(object):
                 cntx.setLocalVariable(var,val) # set variable to deleted string
             elif op == semanticCommand.Gfnd:   # find sequence in buffer
                 cntx.findCharsInBuffer(code.next(),code.next())
+            elif op == semanticCommand.Galgn:  # align buffer to start of line
+                sens = code.next()
+                cntx.findCharsInBuffer('\n',sens)
+                if sens:
+                    if cntx.peekIntoBuffer(False) == '\n':
+                        cntx.moveCharsBufferToBuffer(1)
+                else:
+                    if cntx.peekIntoBuffer(True) == '\n':
+                        cntx.moveCharsBufferToBuffer(2)
             elif op == semanticCommand.Gpick:  # use local variable to select text
                 var = code.next()              #   to insert into buffer
                 s = cntx.getLocalVariable(var)
