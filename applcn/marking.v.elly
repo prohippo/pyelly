@@ -50,6 +50,7 @@ has to : AUXL[^s]
 have to : AUXL
 having : HAVE[^ing]
 hove : VERB[^ed]
+inspired : VERB[^ed]
 internationals : NOUN[:plur]
 knew : VERB[^ed]
 known : VERB[^ed,*x]
@@ -147,11 +148,12 @@ underutilization : NOUN
 underutilize : VERB
 usd : NOUN
 
-ah  : MISC
-yes : MISC
-no  : MISC - -1
+ah  : MISC[:*x]
+ah yes : MISC[:*x]
 etc : MISC
 née : MISC[:*l]
+no  : MISC[:*x] - -1
+yes : MISC[:*x]
 
 at&t : NOUN
 el niño : NOUN
@@ -162,6 +164,7 @@ kw : UNIT
 la niña : NOUN
 mw : UNIT
 PDF : NOUN
+percent : UNIT - +1
 r&b : NOUN
 rosé : NOUN
 
@@ -178,29 +181,31 @@ tele : PREF
 
 # # # # extra vocabulary not yet integrated
 
-Battle of Dug Springs : NOUN
-Union force : NOUN
-Confederate force : NOUN
-Arkansas State : NOUN
-Missouri State : NOUN
-Berenice Summerfield : NOUN
-Ship of Fools : NOUN
-Dave Stone : NOUN
-Apple II computer : NOUN
-presentation system : NOUN
-RGB monitor : NOUN
-Katie Sierra : NOUN
 A New Day Has Come : NOUN
-recording artist : NOUN
+Apple II computer : NOUN
+Arkansas State : NOUN
+Battle of Dug Springs : NOUN
+Berenice Summerfield : NOUN
 Celine Dion : NOUN
-english-language : ADJ
 China Great Wall Industry Corporation : NOUN[:*r]
-upper atmosphere : NOUN
+Confederate force : NOUN
+Dave Stone : NOUN
+english-language : ADJ
+Katie Sierra : NOUN
+Missouri State : NOUN
+presentation system : NOUN
+recording artist : NOUN
 research commission : NOUN
+RGB monitor : NOUN
+Ship of Fools : NOUN
 space authority : NOUN
+Union force : NOUN
+upper atmosphere : NOUN
 
 # # # # compound word vocabulary 
 
+a hundred : NUM
+a thousand : NUM
 armored vehicle : NOUN
 asset purchase : NOUN
 bat and ball : ADJ
@@ -216,6 +221,7 @@ colored slave : NOUN
 corporate bond market : NOUN
 dance company : NOUN
 dance number : NOUN
+each time : ADV
 electricity generation system : NOUN
 entry point : NOUN
 family show : NOUN
@@ -242,6 +248,7 @@ rocket science : NOUN
 sales team : NOUN
 shadow banking : NOUN
 signal rocket : NOUN
+telecoms giant : NOUN
 television deal : NOUN
 time control : NOUN
 water use : NOUN
@@ -251,7 +258,7 @@ zone training : NOUN
 1 another : PRO =one another
 1 of the : QUAN =one of the
 a few : QUAN[@ind] [!mltp] 0
-a few hundred : QUAN
+a few hundred : NUM
 a few of : QUAN
 a lot of : QUAN
 about to : TO
@@ -293,6 +300,7 @@ due to : PREP
 each : POSTP[@num] - -1
 each other : PRO
 even though : CONJ
+few hundred : NUM
 for example : PEXP[|eg]
 for now : ADV
 from across : PREP
@@ -305,6 +313,7 @@ full time : ADV
 half inch : NOUN
 hard boiled : ADJ
 has to do : VERB
+here you go : VERB
 his or her : DEM
 in addition to : PREP
 in order to : TO
@@ -334,7 +343,6 @@ out of : PREP['div]
 over from : PREP
 over the course of : PREP
 peculiar to : PREP
-percent chance : NOUN
 prior to : PREP
 pros and cons : NOUN
 related to : PREP
@@ -612,6 +620,7 @@ aim : NOUN
 aim : VERB
 air : NOUN
 air : VERB
+air force : NOUN
 airport : NOUN
 alarm : NOUN
 alarm : VERB
@@ -2169,7 +2178,7 @@ fast : VERB
 fast : ADJ
 fast :ADV
 fatality : NOUN
-father : NOUN
+father : NOUN - +1
 father : VERB
 father figure : NOUN
 fault : NOUN
@@ -2815,6 +2824,7 @@ inside : ADV - -2
 insofar : ADV
 inspiration : NOUN
 inspire : VERB
+inspired : ADJ
 installation : NOUN
 instance : NOUN
 instance : VERB
@@ -3435,7 +3445,7 @@ movement : NOUN
 movie : NOUN
 mow : NOUN
 mow : VERB
-mph : NOUN
+mph : NOUN[:plur]
 mr : NOUN
 much : NOUN - -1
 much : ADJ[%to] [$vls] 0
@@ -4165,7 +4175,7 @@ publisher : NOUN
 pull : NOUN
 pull : VERB[^ptcl]
 pump : NOUN
-pump : VERB
+pump : VERB - +1
 punch : NOUN
 punch : VERB
 punjab : NOUN
@@ -5297,7 +5307,7 @@ throughout : ADV
 throw : NOUN
 throw : VERB
 thursday : NAVB
-thus : NOUN
+thus : NOUN - -3
 thus : ADV
 thyroid : NOUN
 thyroid : ADJ
@@ -5666,7 +5676,7 @@ well : NOUN
 well : VERB - -1
 well : ADJ[%to] [$vls] +1
 well : ADV [$deg,cmpd] +1
-well : MISC [!spcs] -2
+well : MISC[:*x] [!spcs] -2
 well-known : ADJ
 west : NOUN - -2
 west : ADJ
@@ -5747,7 +5757,7 @@ worst : VERB - -2
 worst : ADJ
 worst : ADV
 worth : NOUN - -2
-worth : VERB
+worth : VERB - +2
 worth : ADJ
 wound : NOUN
 wound : VERB
@@ -5765,6 +5775,7 @@ yellow : NOUN
 yellow : VERB
 yellow : ADJ
 yen : NOUN [&curr] 0
+yen : NOUN[:plur] [&curr] 0
 yen : VERB
 yes : NOUN
 yes : NOUN - -3

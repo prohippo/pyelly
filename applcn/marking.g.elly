@@ -2,7 +2,7 @@
 # marking.g.elly
 
 #
-# subprocedures
+# principal subprocedures
 p:lxtd  # adding a tagged element from left side to a rightside markup
         # ('set' overrides any variable punc higher up in parse tree)
 _
@@ -153,12 +153,14 @@ _
   right
   back
 # view 9
+# show lbr
   if ~lbr=
     insert < lbr
     end
   if typg=
     merge
   else
+#   trace
     append <
     insert < typg
     append >
@@ -166,7 +168,7 @@ _
     append </
     insert < typg
     append >
-#   view 9
+#   view 32
     end
 # show rbr brack
   if ~rbr=
@@ -342,7 +344,7 @@ __
 g:ELEM->THAT
  >>[!ln,rv,that]-
 __
-g:ELEM->DATE
+g:ELEM->DATE[:-cnj]
 _
   append <nclu><date>
   left
@@ -354,7 +356,7 @@ _
   left
   append </time></nclu>
 __
-g:ELEM->ADJ
+g:ELEM->ADJ[%-num]
   l[$cnj]>>--
  l[$time]>>--------
       p<1>>--------
@@ -362,6 +364,13 @@ g:ELEM->ADJ
 _
   var typg=adj
   (typg)
+__
+g:ELEM->ADJ[%num]
+_
+  append <nclu>
+  var typg=adj
+  (typg)
+  append </nclu>
 __
 g:ELEM[^]->ADJ CONJ[@*x]
 _
@@ -451,6 +460,10 @@ _
   (typg)
 __
 
+g:MISC->MISC[:*x] PUNC[|com]
+ >>+++
+__
+
 g:PUNC[|*l]->PUNC[|*l,quo] CONJ
  >>[$trlg]
 _
@@ -468,7 +481,7 @@ __
 g:PEXP[|eg,com]->PUNC[|com] PEXP[|eg,-com]
  >>*r++
 _
-  (pbeg)
+  (pbgr)
   linefeed
 __
 
@@ -493,59 +506,88 @@ _
   left
 # view 24
   append </punc>
-# show add pbeg
+# show add (pbeg)
   insert < add
   linefeed
-  right
-# view 24
+# view 36
 __
+p:pbgn
+_
+  (pbeg)
+  split
+  right
+  back
+# view 36
+  merge
+# view 36
+__
+p:pbgr
+_
+  (pbeg)
+  right
+__
+
 g:PEXP[|*l,nom,det]->PUNC[|*l] NCLU[:det]
  r[$trlg]>>[!ln]+
          >>[!ln,rn]+
 _
-  (pbeg)
+  (pbgn)
+# trace
 __
 g:PEXP[|*l,nom]->PUNC[|*l] NCLU[:-det]
  r[$trlg]>>[!ln]+
          >>[!ln,rn]+
 _
-  (pbeg)
+  (pbgn)
 __
 g:PEXP[|*l,vrb]->PUNC[|*l] VCLU[^-ed,-ing]
  >>[!lv,rv]
 _
-  (pbeg)
-  set punc=T
+  (pbgr)
 __
 g:PEXP[|*l,vrb,ed]->PUNC[|*l] VCLU[^ed]
  >>[!lv,rv]++
 _
 # trace
-  (pbeg)
-  set punc=T
+  (pbgr)
 # show punc
 __
 g:PEXP[|*l,vrb,ing]->PUNC[|*l] VCLU[^ing]
  >>[!lv,rv]++
 _
 # trace
-  (pbeg)
-  set punc=T
+  (pbgr)
 __
 g:PEXP[|*l]->PUNC[|*l] SEGM
  >>*l++
 _
-  (pbeg)
-  set punc=T
+  (pbgr)
 __
 g:PEXP[|*l,det]->PUNC[|*l] DET
 _
-  (pbeg)
-  set punc=T
+  (pbgr)
 __
-g:PEXP[|*l]->PEXP[|-stop] NCLU
+
+g:PEXP[|*l]->PEXP[|-stop,nom] NCLU
  >>*l[!-rv,rn]--
 _
+  (pxdo)
+__
+g:PEXP[|*l]->PEXP[|-stop,vrb] NCLU
+ >>*l[!-rv,rn]----
+_
+  (pxdo)
+__
+g:PEXP[|*l]->PEXP[|-stop,-nom,-vrb] NCLU
+ ?>>?
+  >>*l[!-rv,rn]------
+_
+  trace
+  (pxdo)
+__
+p:pxdo
+_
+# trace
   var save=
   left
 # show punc
@@ -555,16 +597,20 @@ _
     end
   linefeed
   right
+# view 36
   assign punc=save
 __
 
 p:pend
 _
+# trace
   left
+# view 32
   linefeed
   append <punc>
   right
   append </punc>
+# view 32
 __
 g:NCLU->PEXP[|nom,eg,-com,-stop]
  >>++
@@ -573,32 +619,67 @@ _
   (typg)
 __
 g:NCLU[:det]->PEXP[|det,nom,-stop,-ctrl] PUNC[|*r]
- >>+4
+ >>+5
 _
-  (prom)
+  var typd=n
+  (pxnorv)
 __
 g:NCLU->PEXP[|-det,nom,-stop,-ctrl] PUNC[|*r]
- >>+4
+ >>+5
 _
-  (prom)
+  var typd=n
+  (pxnorv)
 __
-p:prom
+p:pxnorv  # set typd to indicate nclu or vclu
 _
-  append <nclu>
-  split
+# trace
+# view 32
+  if typd=n
+    append <nclu>
+  else
+    append <vclu>
+    end
+  split  
   left
   back
-  find <nclu> <
-  delete 6 >      # for new v1.3.5 find
-  find </nclu> <
-  delete 7 >      # for new v1.3.5 find
+# view 24
+  if typd=n
+    find <nclu> <
+  else
+    find <vclu> <
+    end
+  (rcur)  # strip <nclu>...</nclu> pairs in split buffer
   merge
   linefeed
-  var add=
   append <punc>
   right
-  append </punc></nclu>
-  insert < add
+  append </punc>
+  if typd=n
+    append </nclu>
+  else
+    append </vclu>
+    end
+__
+p:rcur   # recursive deletion subprocedure
+_
+# view 16
+  delete 6 >
+  if typd=n
+    find </nclu> <
+  else
+    find </vclu> <
+    end
+  delete 7 >
+  peek x <
+  if x LF
+    shift 2 <   # take accompanying space also
+    end
+  extract nxt < 6
+  insert < nxt
+# show nxt
+  if nxt=<nclu>, <vclu>
+    (rcur)
+    end
 __
 
 g:VCLU[^*r,infn]->TO VCLU[^-aux,-infn]
@@ -629,22 +710,22 @@ __
 
 g:VCLU->PEXP[|vrb,-ed,-ing,-stop] PUNC[|*r]
 _
-  var typg=vclu
-  (pend)
+  var typd=v
+  (pxnorv)
 __
 g:VCLU[^ed]->PEXP[|vrb,ed,-stop] PUNC[|*r]
 _
-  var typg=vclu
-  (pend)
+  var typd=v
+  (pxnorv)
 __
 g:VCLU[^ing]->PEXP[|vrb,ing,-stop] PUNC[|*r]
 _
-  var typg=vclu
-  (pend)
+  var typd=v
+  (pxnorv)
 __
 g:SEGM->PEXP[|-nom,-vrb,-stop] PUNC[|*r]
-# ?>>?
-   >>--
+#   ?>>?
+  n>3>>--
 _
   (pend)
 __
@@ -660,7 +741,7 @@ g:PEXP[|*l]->PEXP[|-stop] PUNC[|emb]
 _
   (pend)
 __
-g:PEXP[|*l,ctrl]->PEXP[|-ctrl] PUNC[|*l]
+g:PEXP[|*l,ctrl]->PEXP[|-ctrl,-stop] PUNC[|*l]
  >>++
 _
   (pend)
@@ -683,7 +764,9 @@ _
 # trace
   append <nclu>
   var typg=noun
+# view 32
   (brack)
+# view 32
   append </nclu>
 __
 
@@ -755,7 +838,7 @@ _
 __
 
 
-g:NCLU->DATE NCLU[:-det,-num,-qnt,-prep]
+g:NCLU->DATE[:-cnj] NCLU[:-det,-num,-qnt,-prep]
 _
   var typg=date
   (lxtd)
@@ -774,12 +857,9 @@ _
   var typg=adj
   (rxtd)
 __
-g:NOUN->NOUN NUM
- r[&cmpd]>>----
-      n>3>>----
-         >>++
-_
-  (twob)
+g:XID->NUM[:-*l,-*r]
+ n>1>>------
+ c>4>>------
 __
 g:NOUN[:*l]->NOUN PRO[=rflx]
  >>++
@@ -788,6 +868,13 @@ _
   append <pro>
   right
   append </pro>
+__
+g:NOUN->NOUN NUM[:cnj]
+ r[&cmpd]>>----
+      n>3>>----
+         >>++
+_
+  (twob)
 __
 g:NCLU[:num]->NUM
  n<2>>----
@@ -872,12 +959,26 @@ _
   var typg=adj
   (lxtd)
 __
-g:NCLU[:*r,num]->NUM NCLU[:-det,-prep,-num,-qnt]
+g:NCLU[:*r,num]->NUM NCLU[:-det,-prep,-num,-qnt, plur]
+#       ?>>?
+ l[&curr]>>++
+ l[&prop]>>*r--
  r[&curr]>>*r++++
  r[&cmpd]>>*r[&adv]++++
-         >>*r++++
+  r[&msr]>>*r++++
+         >>*r++
 _
-# view 9
+  var typg=num
+  (lxtd)
+__
+g:NCLU[:*r,num]->NUM NCLU[:-det,-prep,-num,-qnt,-plur]
+#        ?>>?
+  l[&curr]>>++
+ l[&-prop]>>---
+  r[&curr]>>*r++++
+  r[&cmpd]>>*r[&adv]++++
+          >>*r++
+_
   var typg=num
   (lxtd)
 __
@@ -1071,7 +1172,7 @@ g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,plur,-ing] NOUN[:-cnj,-ing,-plur,-det]
 #           ?>>?
      r[&prop]>>-2
  l[&*c]r[&*c]>>+2
-       l[&*c]>>
+       l[&*c]>>+1
              >>-4
 _
   (twob)
@@ -1091,13 +1192,20 @@ _
   (twob)
 __
 
-g:NOUN->NOUN[:*x] XID
+g:NOUN[:*l,-*l]->NOUN[:*x,-*l,-ing] XID
+    c>4>>-3
  l[&*c]>>+3
        >>-3
 _
   (twob)
 __
-g:NOUN->NOUN[:-*x,-plur,-ing] XID
+g:NOUN[:*l,-*l]->NOUN[:*x,-*l, ing] XID
+ c>4>>-3
+    >>-2
+_
+  (twob)
+__
+g:NOUN[:*l,-*l]->NOUN[:-*x,-*l,-plur,-ing] XID
  l[&*c]r[!*c]>>+2
       l[&-*c]>>-3
       r[!-*c]>>-3
@@ -1423,7 +1531,7 @@ g:ADV->NEGN ADV[~-non]
 _
   (twob)
 __
-g:ADV->CONJ[@prep] DATE
+g:ADV->CONJ[@prep] DATE[:-cnj]
  >>++++
 _
   append <date><prep>
@@ -1487,7 +1595,9 @@ _
   right
 __
 
-g:NUM-> MONEY NUM
+g:NUM->MONEY NUM
+# ?>>?
+   >>[&curr]
 __
 g:NUM->ADJ[%mod] NUM
  >>+++
@@ -1543,9 +1653,10 @@ _
 __
 
 g:NUM->NUM[:-cnj] NUM[:*r]
-  ?>>?
+# ?>>?
    >>+
 _
+# trace
   left
 # view
   (spellr) # "3 million"
@@ -1634,7 +1745,7 @@ g:ADJ[%*l]->ADJ[%er] CMPC
 _
   (twob)
 __
-g:ADJ->NUM UNIT
+g:ADJ[%num]->NUM UNIT
  >>++
 __
 
@@ -1679,12 +1790,12 @@ g:DATE->PREP NAVB
 _
   (prep)
 __
-g:DATE[:*r]->PREP['-cnj,-*l] DATE
+g:DATE[:*r]->PREP['-cnj,-*l] DATE[:-cnj]
  >>++
 _
   (prep)
 __
-g:DATE[:*r]->PREP['-cnj,*l] DATE
+g:DATE[:*r]->PREP['-cnj,*l] DATE[:-cnj]
  >>++
 _
   (twob)
@@ -1818,7 +1929,7 @@ d:into <- PREP
 __
 d:onto <- PREP
 __
-d:to   <- PREP['toi,div]
+d:to   <- PREP['to,div]
 __
 d:for  <- PREP['cls,div]
 __
@@ -2053,6 +2164,9 @@ __
 d:1 <- PRO[=one]
 _
   append one
+__
+d:1 <- NUM
+ >>[&prop]+
 __
 d:2 <- NUM[:cnj]
  >>--
@@ -2307,7 +2421,7 @@ g:DET[@*l]->DET CLSP
 _
   (clspr)
 __
-g:DET->DET[@the] DATE
+g:DET->DET[@the] DATE[:-cnj]
  >>++++
 _
   left
@@ -2491,7 +2605,7 @@ g:ADJX[%cnj]->ADJ CONJ[@cnj,-rel]
 _
   (twob)
 __
-g:ADJ[%*r]->ADJX[%cnj] ADJ[%-ed,-ing]
+g:ADJ[%*r]->ADJX[%cnj] ADJ[%-ed,-ing,-num]
 # ?>>?
    >>*l++++
 _
@@ -2823,9 +2937,15 @@ _
   (cjpr)
 __
 
-g:DATE->DATE DATE
+g:DATE->DATE DATE[:-cnj]
 _
   (twob)
+__
+g:DATE[:cnj]->PUNC[|*l] DATE[:-cnj]
+ n>4>>--------
+__
+g:DATE->DATE[:cnj] PUNC[|*r]
+ >>+++
 __
 
 p:spellr
@@ -2837,7 +2957,7 @@ _
   back
 # view 12
   var dltd=
-  delete <
+  delete 999 <
   store dltd
 # show dltd
   if dltd=1000

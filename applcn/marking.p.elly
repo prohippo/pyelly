@@ -44,8 +44,8 @@
 0 ," PUNC[|com,*r,quo] -1
 0 ,” PUNC[|com,*r,quo] -1
 
-0 @$    XID -1
-0 @\\*$ XID -1
+0 !$    XID -1
+0 !\\*$ XID -1
 0 @.$     ABBR -1
 0 @.@.$   ABBR -1
 0 @.@.@.$ ABBR -1
@@ -75,3 +75,5 @@
 0 &@-based ADJ -1
 
 0 #&#-#&#$ NUM[:*x] -1
+
+0 "@" NOuN -1
