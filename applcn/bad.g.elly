@@ -45,6 +45,10 @@ __
 g:ww->xx
  >>[$a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q]
 __
+g:ww->xx
+ >>[$a]
+ >>[&a]
+__
 p:pppp
 _
   trace
