@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# syntaxSpecification.py : 13aug2016 CPM
+# syntaxSpecification.py : 05apr2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -109,6 +109,8 @@ class SyntaxSpecification(object):
         typs = s[:n]        # save category name
 #       print >> sys.stderr , 'catg=' , self.catg
         catg = syms.getSyntaxTypeIndexNumber(typs)
+        if catg == None:
+            raise ellyException.FormatFailure
 
         s = s[n:].strip()   # feature part of syntax
 
