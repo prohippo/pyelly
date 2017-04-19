@@ -578,13 +578,6 @@ g:PEXP[|*l]->PEXP[|-stop,vrb] NCLU
 _
   (pxdo)
 __
-g:PEXP[|*l]->PEXP[|-stop,-nom,-vrb] NCLU
- ?>>?
-  >>*l[!-rv,rn]------
-_
-  trace
-  (pxdo)
-__
 p:pxdo
 _
 # trace
@@ -729,6 +722,15 @@ g:SEGM->PEXP[|-nom,-vrb,-stop] PUNC[|*r]
 _
   (pend)
 __
+g:DET[@*l]->DET DATE
+ >>[!spcs]+
+_
+  append <det>
+  left
+  append </det><date>
+  right
+  append </date>
+__
 g:DET->PEXP[|det,-nom,-stop] PUNC[|*r]
 _
   append <det>
@@ -787,21 +789,41 @@ _
   left
 __
 g:NCLU[:*r,det,num]->DET[@sgl,num] NCLU[:-det,-prep,-plur]
- r[&cond]>>*r+
-         >>*r
+ l[!spcs]r[&cond]>>*r[&nolt]+
+         r[&cond]>>*r+
+         l[!spcs]>>*r[&nolt]
+                 >>*r
 _
-  (dtnc)
+  (sdtnc)
 __
 g:NCLU[:*r,det]->DET[@sgl,-num] NCLU[:-det,-prep,-plur]
- r[&cond]>>*r+
-         >>*r
+ l[!spcs]r[&cond]>>*r[&spcs]+
+         r[&cond]>>*r+
+         l[!spcs]>>*r[&nolt]
+                 >>*r
 _
-  (dtnc)
+  (sdtnc)
 __
 g:NCLU[:*r,det]->DET[@-sgl] NCLU[:-det,-prep]
- >>*r
+#       ?>>?
+ l[!spcs]>>*r[&nolt]
+         >>*r
 _
-  (dtnc)
+  (sdtnc)
+__
+p:sdtnc
+_
+  if [&nolt]
+    append <nclu>
+    left
+    split
+    right
+    back
+    delete 6 <
+    merge
+  else
+    (dtnc)
+    end
 __
 p:pphr
 _
@@ -838,7 +860,8 @@ _
 __
 
 
-g:NCLU->DATE[:-cnj] NCLU[:-det,-num,-qnt,-prep]
+g:NCLU->DATE[:-cnj,-*r] NCLU[:-det,-num,-qnt,-prep]
+ >>---
 _
   var typg=date
   (lxtd)

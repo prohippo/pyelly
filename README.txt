@@ -408,6 +408,7 @@ Release Notes:
                       warn in symbolTable of syntactic types with similar names
                       add error checks in syntaxSpecification 
                       extend, reorganize, and clean up MARKING rules
+                      extemd MARKING integration test
                       revise, correct, and update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically

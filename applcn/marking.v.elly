@@ -1201,7 +1201,7 @@ ceremony : NOUN
 certain : ADJ[%to] [$vls] 0
 certify : VERB
 chain : NOUN
-chain : VERB
+chain : VERB - -1
 chair : NOUN
 chair : VERB
 chamberlain : NOUN
@@ -4180,7 +4180,7 @@ punch : NOUN
 punch : VERB
 punjab : NOUN
 purchase : NOUN
-purchase : VERB
+purchase : VERB - -1
 pure : ADJ
 purpose : NOUN
 purpose : VERB
@@ -4999,7 +4999,8 @@ stephenson : NOUN
 stereotypical : ADJ
 sterile : ADJ
 sterling : NOUN
-sterling : ADJ
+sterling : ADJ - -2
+sterling silver : NOUN
 stick : NOUN
 stick : VERB
 stifle : NOUN
