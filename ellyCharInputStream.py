@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyCharInputStream.py: 25mar2017 CPM
+# ellyCharInputStream.py: 25apr2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -74,6 +74,7 @@ class EllyCharInputStream(object):
         _in    - indentation count for list line
         _eof   - end of file flag
         _prmpt - turn on or off prompting for input
+        _cap   - capitalization flag
     """
 
     def __init__ ( self , inp ):
@@ -92,6 +93,7 @@ class EllyCharInputStream(object):
         self._in = 0
         self._eof   = False
         self._prmpt = False
+        self._cap   = False
 
 #       print 'init inp=' , inp
         if inp == sys.stdin:
@@ -139,6 +141,8 @@ class EllyCharInputStream(object):
                     c = DASH
                 break
             elif not ellyChar.isWhiteSpace(c):
+                if ellyChar.isWhiteSpace(lc):
+                    self._cap = ellyChar.isUpperCaseLetter(c)
                 break
             elif c == CR:                # always ignore
                 continue
@@ -168,6 +172,8 @@ class EllyCharInputStream(object):
             else:
 #               print 'lc=' , ord(lc) , 'c=' , ord(c)
                 c = SP                   # otherwise, convert white space to plain space
+
+            self._cap = False
 
             if not ellyChar.isWhiteSpace(lc): # preceding char was not white space?
 #               print 'return SP'
@@ -298,6 +304,20 @@ class EllyCharInputStream(object):
 
         return self._in
 
+    def capitalization ( self ):
+
+        """
+        get capitalization
+
+        arguments:
+            self
+
+        returns:
+            capitalization flag
+        """
+
+        return self._cap
+
     def _reload ( self ):
 
         """
@@ -411,7 +431,8 @@ if __name__ == '__main__':
         '  wxyz',
         ' - ' ,
         '桂林' ,
-        '(1. ) x'
+        '(1. ) x\n' ,
+        'Aaa'
     ]
 
     def hexd ( c ):
@@ -454,6 +475,8 @@ if __name__ == '__main__':
         sys.stdout.write('<' + bc + '> ') # dump all collected stream chars
         kn += 1
         if kn%Kn == 0: sys.stdout.write('\n')
+    print ''
+    print 'capitalization=' , chs.capitalization()
     print ''
     print '---------'                     # check unread()
     print 'input start:' , '<' + cs + ' ' + hexd(cs) + '>'
