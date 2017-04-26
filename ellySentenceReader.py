@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellySentenceReader.py : 16apr2017 CPM
+# ellySentenceReader.py : 22apr2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -260,12 +260,12 @@ class EllySentenceReader(object):
                 nspc += 1
 
             svBrkt = inBrkt
-            inBrkt = self.checkBracketing(x)    # do bracket checking with modified chars
+            inBrkt = self.checkBracketing(x)    # do bracketing check with modified chars
             if svBrkt and not inBrkt: nspc = 0
 
 #           print 'lc=' , '<' + lc + '>' , 'bracketing x=' , '<' + x + '>' , inBrkt
 
-            sent.append(c)                      # but buffer original chars
+            sent.append(c)                      # put original char into sentence buffer
             if ellyChar.isLetterOrDigit(c):
                 nAN += 1
                 continue                        # if alphanumeric, just add to sentence
@@ -289,12 +289,13 @@ class EllySentenceReader(object):
 #           print 'sent=' , sent[:-1]
 #           print 'punc=' , '<' + c + '>'
 #           print 'next=' , cx
-            if c in Stops and self.stpx.match(sent[:-1],c,cx):
-#               print 'stop exception MATCH'
-                if self.drop:
-                    sent.pop()   # remove punctuation char from sentence
-                    lc = SP
-                continue
+            if c in Stops and len(cx) > 0 and cx[0] == SP:
+                if self.stpx.match(sent[:-1],c,cx):
+#                   print 'stop exception MATCH'
+                    if self.drop:
+                        sent.pop()   # remove punctuation char from sentence
+                        lc = SP
+                    continue
 
 #           print 'no stop exception MATCH for' , c
 

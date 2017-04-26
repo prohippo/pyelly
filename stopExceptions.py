@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# stopExceptions.py : 02mar2017 CPM
+# stopExceptions.py : 22apr2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -109,13 +109,12 @@ class StopExceptions(object):
             if len(df) == 0: break
             lno += 1
             if len(df) <= 1:
-                print >> sys.stderr , 'bad pattern=[' + df + '] (' + str(lno) + ')'
+                print >> sys.stderr , 'bad pattern=[' + df + '] (@' + str(lno) + ')'
                 nerr += 1
                 continue
-
             ps = df.split('|')
             if len(ps) == 1:
-                print >> sys.stderr , 'missing | in pattern=[' + df + '] (' + str(lno) + ')'
+                print >> sys.stderr , 'missing | in pattern=[' + df + '] (@' + str(lno) + ')'
                 nerr += 1
                 continue
 #           print 'ps=' , ps
@@ -125,7 +124,11 @@ class StopExceptions(object):
             right = ellyWildcard.convert(ps[1])
 #           print 'idc=' , idc , 'left=' , left , 'right=' , right
             if left == None:
-                print >> sys.stderr , 'error:' , '<' + df + '>' , '<' + right + '>'
+                print >> sys.stderr , 'bad left context in pattern' , '<' + df + '>'
+                nerr += 1
+                continue
+            if len(right) > 1:
+                print >> sys.stderr , 'bad right context in pattern' , '<' + df + '>'
                 nerr += 1
                 continue
 
@@ -300,7 +303,7 @@ if __name__ == '__main__':
     try:
         stpx = StopExceptions(inp)
     except ellyException.TableFailure:
-        print >> sys.stderr , 'failed to load exceptions'
+        print >> sys.stderr , '** failed to load stop exceptions'
         sys.exit(1)
 
     np = len(stpx.lstg)
@@ -337,7 +340,7 @@ if __name__ == '__main__':
 
     nlu = len(sys.argv) - 2
     if nlu > 0:                     # add to test cases?
-        for a in sys.argv[2:]:
+        for a in sys.argv[2:]:      # get commandline args to test
             test.append(list(a.decode('utf8')))
         print 'added' , nlu , 'test case' + ('' if nlu == 1 else 's')
     else:
