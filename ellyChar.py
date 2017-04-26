@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 25mar2017 CPM
+# ellyChar.py : 22apr2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -441,6 +441,17 @@ def toLowerCaseASCII ( x ):
     """
     n = Mapping[ord(x)]
     return Unmapping[n]
+
+def isLowerCaseLetter ( x ):
+    """
+    check for no capitalization
+
+    arguments:
+        x - the char
+    returns:
+        True if lower case letter, False otherwise
+    """
+    return False if x == '' else x.islower()
 
 def isUpperCaseLetter ( x ):
     """

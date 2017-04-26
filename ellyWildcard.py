@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 30nov2016 CPM
+# ellyWildcard.py : 22apr2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -35,13 +35,13 @@ for defining wildcards in text pattern matching
 import ellyChar
 import ellyBuffer
 
-X  = 0xE000       # start of private codes in Unicode, used for pattern syntax
+X  = 0xE000       # start of private codes in Unicode, used for encoded pattern elements
 Xc = unichr(X)    #   (Python 2.* only)
 
 def isWild ( c ):
 
     """
-    check if char is wildchar
+    check if char is PyElly wildcard
 
     arguments:
         c   - character to check
@@ -59,17 +59,18 @@ cCAN = unichr(X+2 ) # match nonalphanumeric char
 cDIG = unichr(X+3 ) # match any digit
 cALF = unichr(X+4 ) # match any letter
 cUPR = unichr(X+5 ) # match any uppercase letter
-cVWL = unichr(X+6 ) # match any vowel
-cCNS = unichr(X+7 ) # match any consonant
-cALL = unichr(X+8 ) # match any character sequence, including empty
-cSAN = unichr(X+9 ) # match any sequence of 1 or more alphanumeric
-cSDG = unichr(X+10) # match any sequence of 1 or more digits
-cSAL = unichr(X+11) # match any sequence of 1 or more letters
-cSOS = unichr(X+12) # start of optional sequence
-cEOS = unichr(X+13) # end of optional sequence
-cSPC = unichr(X+14) # match any space
-cAPO = unichr(X+15) # match any apostrophe
-cEND = unichr(X+16) # match end of token (must be highest wildcard code)
+cLWR = unichr(X+6 ) # match any lowercase letter
+cVWL = unichr(X+7 ) # match any vowel
+cCNS = unichr(X+8 ) # match any consonant
+cALL = unichr(X+9 ) # match any character sequence, including empty
+cSAN = unichr(X+10) # match any sequence of 1 or more alphanumeric
+cSDG = unichr(X+11) # match any sequence of 1 or more digits
+cSAL = unichr(X+12) # match any sequence of 1 or more letters
+cSOS = unichr(X+13) # start of optional sequence
+cEOS = unichr(X+14) # end of optional sequence
+cSPC = unichr(X+15) # match any space
+cAPO = unichr(X+16) # match any apostrophe
+cEND = unichr(X+17) # match end of token (must be highest wildcard code)
 
 Separate = [ cSPC , cAPO ] # must each be in a separate match binding for wildcards
 
@@ -78,11 +79,13 @@ Separate = [ cSPC , cAPO ] # must each be in a separate match binding for wildca
 RSQm = ellyChar.RSQm  # right single quote
 RDQm = ellyChar.RDQm  # right double quote
 PRME = ellyChar.PRME  # prime
+LCWc = u'\u00A1'      # inverted exclamation mark
 
 wANY = u'?'    # to match any alphanumeric character
 wDIG = u'#'    # to match digit
 wALF = u'@'    # to match alphabetic
 wUPR = u'!'    # to match uppercase alphabetic
+wLWR = LCWc    # to match lowercase alphabetic
 wVWL = u'^'    # to match vowel
 wCNS = u'%'    # to match consonant
 wSPC = u'_'    # to match space char
@@ -94,7 +97,7 @@ wEND = u'$'    # to match end of token
 
 ## encoding of wildcards
 
-Coding = [ wANY , wCAN , wDIG , wALF , wUPR , wVWL , wCNS , wALL ,
+Coding = [ wANY , wCAN , wDIG , wALF , wUPR , wLWR , wVWL , wCNS , wALL ,
            wSPN + wANY , wSPN + wDIG , wSPN + wALF , u'[' , u']' ,
            wSPC , wAPO , wEND ]
 
@@ -105,6 +108,7 @@ Matching = {
     cDIG : ellyChar.isDigit  ,
     cALF : ellyChar.isLetter ,
     cUPR : ellyChar.isUpperCaseLetter ,
+    cLWR : ellyChar.isLowerCaseLetter ,
     cVWL : ellyChar.isVowel  ,
     cCNS : ellyChar.isConsonant  ,
     cSPC : ellyChar.isWhiteSpace ,
@@ -147,6 +151,8 @@ def convert ( strg ):
             t.append(cALF)
         elif x == wUPR:
             t.append(cUPR)
+        elif x == wLWR:
+            t.append(cLWR)
         elif x == wDIG:
             t.append(cDIG)
         elif x == wVWL:
@@ -217,7 +223,7 @@ def convert ( strg ):
 
 toEscape = [ # chars that could be wildcards plus backslash itself
     RSQm, RDQm, PRME, u'\\',
-    wANY, wDIG, wALF, wUPR, wVWL, wCNS,
+    wANY, wDIG, wALF, wUPR, wLWR, wVWL, wCNS,
     wSPC, wCAN, wALL, wSPN, wAPO, wEND
 ]
 
@@ -579,6 +585,12 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
         elif tc == cUPR: # uppercase letter wildcard?
 #           print "UPR:",last,offs
             if last != '' and ellyChar.isUpperCaseLetter(last):
+                _bind(); mbi += 1
+                continue
+
+        elif tc == cLWR: # lowercase letter wildcard?
+#           print "LWR:",last,offs
+            if last != '' and ellyChar.isLowerCaseLetter(last):
                 _bind(); mbi += 1
                 continue
 
