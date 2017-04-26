@@ -310,8 +310,10 @@ from what  : CONJ[@rel]
 from where : CONJ[@rel]
 from which : CONJ[@rel]
 full time : ADV
+guitar bridge : NOUN
 half inch : NOUN
 hard boiled : ADJ
+hard rock : NOUN
 has to do : VERB
 here you go : VERB
 his or her : DEM
@@ -460,6 +462,7 @@ Farhan Haq : NOUN
 Federal Open Market Committee : NOUN[:*r]
 Ferguson : NOUN
 Gallagher : NOUN
+Gene Simmons : NOUN
 George Will : NOUN
 Golden State : ADJ
 Gov. Jerry Brown : NOUN
@@ -2410,6 +2413,7 @@ full : NOUN
 full : VERB - -2
 full : ADJ
 full : ADV
+full-fledged : ADJ
 full-length : ADJ
 full-time : ADJ
 full-time : ADV

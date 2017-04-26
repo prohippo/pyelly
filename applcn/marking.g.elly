@@ -859,7 +859,6 @@ _
   (pphr)
 __
 
-
 g:NCLU->DATE[:-cnj,-*r] NCLU[:-det,-num,-qnt,-prep]
  >>---
 _
@@ -898,6 +897,14 @@ g:NOUN->NOUN NUM[:cnj]
          >>++
 _
   (twob)
+__
+g:NOUN->DATE APOS
+ >>++++
+_
+  append <date>
+  left
+  right
+  append </date>
 __
 g:NCLU[:num]->NUM
  n<2>>----
@@ -2318,32 +2325,27 @@ __
 
 #
 # inflectional endings and morphological suffixes
-d:-s   <- XS
+
+d:-'s  <- APOS
 __
 d:-ed  <- XED
-__
-d:-n   <- XED
-__
-d:-t   <- XED
-__
-d:-ing <- XING
 __
 d:-er  <- XER
 __
 d:-est <- XEST
 __
-d:-'s  <- APOS
+d:-ing <- XING
+__
+d:-n   <- XED
+__
+d:-s   <- XS
+__
+d:-t   <- XED
 __
 d:-’s  <- APOS
 __
 
-d:-ion  <- SUFX[#vTOn]
-__
-d:-ize  <- SUFX[#aTOv]
-__
-d:-ize  <- SUFX[#nTOv]
-__
-d:-ic   <- SUFX[#nTOa]
+d:-able <- SUFX[#vTOa]
 __
 d:-al   <- SUFX[#nTOa]
 __
@@ -2351,25 +2353,21 @@ d:-ar   <- SUFX[#nTOa]
 __
 d:-ate  <- SUFX[#nTOa]
 __
-d:-ern  <- SUFX[#nTOa]
-__
-d:-ment <- SUFX[#vTOn]
-__
 d:-ation<- SUFX[#vTOn]
-__
-d:-ly   <- SUFX[#aTOr]
-__
-d:-ly   <- SUFX[#nTOa]
-__
-d:-ful  <- SUFX[#nTOa]
-__
-d:-ous  <- SUFX[#nTOa]
 __
 d:-er   <- SUFX[#vTOn]
 __
-d:-or   <- SUFX[#vTOn]
+d:-ern  <- SUFX[#nTOa]
+__
+d:-ese  <- SUFX[#nTOn]
+__
+d:-ful  <- SUFX[#nTOa]
+__
+d:-ic   <- SUFX[#nTOa]
 __
 d:-ingly<- SUFX[#vTOr]
+__
+d:-ion  <- SUFX[#vTOn]
 __
 d:-ist  <- SUFX[#aTOn]
 __
@@ -2377,15 +2375,25 @@ d:-ist  <- SUFX[#nTOn]
 __
 d:-ive  <- SUFX[#vTOa]
 __
+d:-ize  <- SUFX[#aTOv]
+__
+d:-ize  <- SUFX[#nTOv]
+__
+d:-ly   <- SUFX[#aTOr]
+__
+d:-ly   <- SUFX[#nTOa]
+__
+d:-ment <- SUFX[#vTOn]
+__
+d:-or   <- SUFX[#vTOn]
+__
 d:-ory  <- SUFX[#vTOa]
 __
-d:-able <- SUFX[#vTOa]
+d:-ous  <- SUFX[#nTOa]
 __
-d:-y <- SUFX[#nTOa]
+d:-y    <- SUFX[#aTOr]
 __
-d:-y <- SUFX[#aTOr]
-__
-d:-ese <- SUFX[#nTOn]
+d:-y    <- SUFX[#nTOa]
 __
 
 d:$ <- MONEY
