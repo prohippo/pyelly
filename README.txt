@@ -30,7 +30,7 @@ information, including an overview of some basic linguistics. Documentation
 of individual Python source files can be generated as needed with the
 Python pydoc utility.
 
-At present, PyElly consists of 64 Python modules comprising about sixteen
+At present, PyElly consists of 64 Python modules comprising about ten
 thousand lines of source code. There are also various definition files
 to support basic various language processing capabilities. The PyElly
 download includes rules for some example applications, including
@@ -374,7 +374,7 @@ Release Notes:
                       add more context to ellyCharInputStream logic
                       strengthen stopExceptions logic in nomatch()
                       update integration testing for new handling of dates
-                      extend MARKING rules and integration test
+                      extend "marking" rules and integration test
                       update and clean up documentation
  1.3.24  - 15mar2017  fix bugs with buffer handling in generative semantics
                       add to cognitive semantic tracing output
@@ -383,7 +383,7 @@ Release Notes:
                       clean up commentary in parseTree
                       adjust debugging code in dateTransform
                       add extraction procedure for acronym definition
-                      extend MARKING rules and integration test
+                      extend "marking" rules and integration test
                       update documentation
  1.4.0   - 20mar2017  enlarge Unicode subset recognized in input text
                       fix bugs and clean up ellyChar, add unit test
@@ -394,22 +394,28 @@ Release Notes:
                       add lookahead method for matching up brackets
                       extend and clean up unit test
                       rework ellySentenceReader logic for bracketed punctuation
-                      extend and clean up MARKING rules and integration testing
+                      extend and clean up "marking" rules and integration testing
                       improve unit testing support output
                       add consistency checking for semantic features
                       clean up source files along with line count of code
                       update documentation
  1.4.2   - 17apr2017  add char count check to cognitive semantics
                       add buffer alignment operation to generative semantics
-                      extend BAD rules to test error detection and recovery
+                      extend "bad" rules to test error detection and recovery
                       fix omission in ellyBase handling of phrase token count
                       restore macroTable error check, normalize error messages
                       fix Unicode output redirection in multiple main modules
                       warn in symbolTable of syntactic types with similar names
                       add error checks in syntaxSpecification 
-                      extend, reorganize, and clean up MARKING rules
-                      extemd MARKING integration test
+                      extend, reorganize, and clean up "marking" rules
+                      extemd "marking" integration test
                       revise, correct, and update documentation
+ 1.4.3   - 26apr2017  add lowercase letter wildcard
+                      simplify stopExceptions and default rules
+                      note capitalization at start of current letter sequence
+                      clean up commentary in various modules
+                      extend "marking" rules
+                      correct and update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
