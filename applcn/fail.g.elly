@@ -1,0 +1,129 @@
+# test generative semantic failure handling
+# fail.v.elly
+#
+
+g:sent->ss punc[|stop]
+_
+  left
+  view 24
+__
+g:ss->aa
+# ?>>?
+   >>+
+_
+  trace
+  view 9
+  split
+  append == aa
+  view 9
+  left
+  back
+  append /Test 1/
+  trace
+__
+g:ss->bb
+# ?>>?
+   >>++
+_
+  trace
+  view 9
+  split
+  append == bb
+  view 9
+  left
+  back
+  fail
+__
+g:ss->cc
+# ?>>?
+   >>+++
+_
+  trace
+  view 9
+  split
+  append == cc
+  view 9
+  left
+  back
+  append !!!!
+  merge
+  view 9
+  fail
+__
+g:aa->unkn
+# ?>>?
+_
+  trace
+  left
+__
+g:bb->unkn
+  ?>>?
+_
+  trace
+  left
+__
+g:cc->unkn
+# ?>>?
+_
+  trace
+  left
+__
+
+d:yz00 <- zz
+ >>+
+_
+  append zz
+__
+d:yz00 <- yy
+ >>++
+_
+  append yy
+  fail
+__
+d:de <- de
+__
+
+g:ss->de zz
+_
+  append /Test 2/
+  left
+  space
+  right
+__
+g:ss->de yy
+__
+
+p:qqq
+_
+  append ==qq
+  (rrr)
+__
+p:rrr
+_
+  append ==rr
+  (sss)
+__
+p:sss
+_
+  append !?!?
+  fail
+__
+
+d:xxxx <- nom[:0]
+ >>++
+_
+  append ''''
+  (qqq)
+__
+d:xxxx <- nom[:1]
+ >>+
+_
+  append """"
+__
+g:ss->de nom
+_
+  append /Test 3/
+  left
+  space
+  right
+__
