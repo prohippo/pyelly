@@ -5533,9 +5533,9 @@ uplift : VERB
 upper : NOUN
 upper : ADJ
 uprising : NOUN
-upset : NOUN
+upset : NOUN - -1
 upset : VERB
-upset : ADJ
+upset : ADJ - +1
 upstair : ADJ
 upstairs : NOUN
 upstairs : ADJ
