@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeProcedure.py : 09apr2017 CPM
+# generativeProcedure.py : 02may2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -29,10 +29,11 @@
 # -----------------------------------------------------------------------------
 
 """
-generative semantic procedure with run() method
+generative semantic procedure object with run() method
 """
 
 import sys
+import copy
 import semanticCommand
 import generativeDefiner
 import conceptualHierarchy
@@ -40,17 +41,51 @@ import grammarRule
 import ellyChar
 import ellyBits
 
+#
+## for debugging only
+#
+
+def _showa ( ph ):
+    """
+    dump ambiguity listing for phrase
+    arguments:
+        ph  - phrase node object
+    """
+    print ''
+    while ph != None:        # look at alternatives in failure
+        krn = ph.krnl
+        print '*  phr=' , krn.seqn , 'rule=' , krn.rule.seqn ,
+        print 'type=' , krn.typx , 'bias=' , krn.bias
+        ph = ph.alnk
+
+def _showb ( ls ):
+    """
+    dump multi-buffer contents
+    arguments:
+        ls  - buffer char lists
+    """
+    n = 0
+    for s in ls:
+        print str(n) + ':<' ,
+        print u''.join(s) + '>'
+        n += 1
+
+#
+## generative semantic machine implementation
+#
+
 class Code(object):
 
     """
-    iteration on list of commands defining a semantic procedure with jumps
+    iteration on list of commands with jumps for a semantic procedure
 
     attributes:
         lstg  - the list
         indx  - keeping track of where we are
+        idno  - ID for code object
     """
 
-    def __init__ ( self , lstg ):
+    def __init__ ( self , lstg , idno=-1 ):
 
         """
         initialize
@@ -58,10 +93,26 @@ class Code(object):
         arguments:
             self  -
             lstg  - to iterate on
+            idno  - identifier for code
         """
 
         self.lstg = lstg
         self.indx = 0
+        self.idno = idno
+
+    def __str__ ( self ):
+
+        """
+        show ID for code
+
+        arguments:
+            self  -
+
+        returns:
+            ID string
+        """
+
+        return 'CODE: ' + str(self.idno) + ' (cnt= ' + str(len(self.lstg)) + ')'
 
     def next ( self ):
 
@@ -93,7 +144,7 @@ class Code(object):
 
         self.indx = self.lstg[self.indx]
 
-BAD  = -11111  # bias for phrase with failed generative semantics
+BAD  = -99     # bias for phrase with failed generative semantics
 LSTJ = ','     # substring for joining substrings in list value
 PNAM = '_pnam' # variable for last procedure call in local stack
 
@@ -128,8 +179,6 @@ class GenerativeProcedure(object):
         logic  - compiled procedure
     """
 
-    _error = "??????" # default output on error
-
     def __init__ ( self , syms , defs ):
 
         """
@@ -158,6 +207,7 @@ class GenerativeProcedure(object):
 
         """
         manage execution of generative semantics
+        including recovery from FAIL command
 
         arguments:
             self  -
@@ -168,19 +218,42 @@ class GenerativeProcedure(object):
             True on success, False otherwise
         """
 
+#       print 'doRun for phrs=' , phrs.krnl.seqn
         phs = phrs
-        while True:
-            if self.run(cntx,phs):   # try running generative procedure for phrase
-                break                # if success, all done here
+        scbn = cntx.buffn                       # save buffer index for any failure
+        scbs = copy.deepcopy(cntx.buffs[scbn:]) # copy current and later split-off buffers
+#       _showb(scbs)                            #
+        code = Code(self.logic,phs.krnl.seqn)
+#       print 'original =' , code
+        while True:                             # for phrase
+            if self.run(code,cntx,phs):         # try to run generative procedure
+#               print 'after run'               #
+#               _showb(cntx.getBufferContents())
+#               cntx.printStatus()              # dump buffers for debugging
+                break                           # if success, all done here
+#           _showa(phs)              # dump ambiguities
             phs.krnl.bias = BAD      # mark as implausible
             phs.order()              # get next most plausible phrase
-            if phs.krnl.bias == BAD: # if out of alternatives,
-                return False         #   fail
+#           _showa(phs)              # dump ambiguities again
+#           print 'at buffer=' , scbn
+#           _showb(cntx.getBufferContents())
+            rest = copy.deepcopy(scbs)
+            cntx.buffn = scbn                   # restore previous buffers before retry
+            if scbn == 0:                       #
+#               print '++++replace'
+                cntx.buffs = rest
+            else:
+#               print '++++extend'
+                cntx.buffs = cntx.buffs[:scbn] + rest
+#           _showb(cntx.getBufferContents())
+            if phs.krnl.bias == BAD:            # if out of alternatives,
+                return False                    #   fail completely
+            code = Code(phs.krnl.rule.gens.logic,phs.krnl.seqn)
+#           print 'alternate=' , code
 
 #       print 'running' , phs, 'ctxc=' , phs.krnl.ctxc
 
         if phs.krnl.ctxc != conceptualHierarchy.NOname: cntx.cncp = phs.krnl.ctxc
-
 
         if phs.alnk != None:         # on ambiguity, adjust biases for phrase rules
 #           print 'adjust rule bias for:' , phs
@@ -206,13 +279,14 @@ class GenerativeProcedure(object):
 
         return True
 
-    def run ( self , cntx , phrs , pnam=None ):
+    def run ( self , code , cntx , phrs , pnam=None ):
 
         """
         execute a generative procedure in context
 
         arguments:
             self  -
+            code  - actual generative semantics to run
             cntx  - interpretive context
             phrs  - phrase to which procedure is attached
             pnam  - procedure name to associate with call
@@ -221,11 +295,14 @@ class GenerativeProcedure(object):
             True on success, False otherwise
         """
 
-        if self.logic == None:
+        if code == None:
             return True         # trivial success
         if phrs == None:
             print >> sys.stderr , 'null phrase:' , self
             return False
+#       print 'run code =' , code
+#       if len(code.lstg) > 4:
+#           generativeDefiner.showCode(code.lstg)
 
 #       print 'run semantics for phr' , phrs.krnl.seqn , 'rule=' , phrs.krnl.rule.seqn
 
@@ -233,9 +310,6 @@ class GenerativeProcedure(object):
 #       print 'pnam=' , pnam
         if pnam != None:        # save any procedure name for TRACE
             cntx.defineLocalVariable(PNAM,pnam)
-        code = Code(self.logic) # get code of procedure to run
-
-#       generativeDefiner.showCode(self.logic)
 
         status = True           # success flag to be return
 
@@ -495,14 +569,14 @@ class GenerativeProcedure(object):
                 name = code.next()
 #               print >> sys.stderr , 'run procedure (' + name + ')'
                 if name == '': continue        # null procedure is no operation`
-                proc = cntx.getProcedure(name)
+                proc = cntx.getProcedure(name) # generative semantics object
                 if proc == None:
                     print >> sys.stderr , 'unknown subprocedure name' , name
                     status = False
                 else:
-                    status = proc.run(cntx,phrs,name)
+                    status = proc.run(Code(proc.logic),cntx,phrs,name)
             else:
-                print >> sys.stderr , GenerativeProcedure._error , 'op=' , op
+                print >> sys.stderr , '** unknown generative semantic op=' , op
                 status = False
 
         cntx.popStack()  # undefine local variables for procedure
@@ -539,11 +613,12 @@ if __name__ == "__main__":
         print ''
 
         gp = GenerativeProcedure(stb,inp)  # compile procedure
+
         print '*CODE*'
         if gp.logic != None:
             showCode(gp.logic)             # dump procedure logic
         else:
-            print 'null logic'
+            print 'no logic'
             continue
         res = gp.doRun(ctx,phr)            # run the procedure
 
