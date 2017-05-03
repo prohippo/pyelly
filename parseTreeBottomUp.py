@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBottomUp.py : 04nov2016 CPM
+# parseTreeBottomUp.py : 01may2017 CPM
 # -----------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -44,8 +44,6 @@ import parseTreeBase
 NPOSNS = 128          # nominal minimum number of tree leaf nodes
 
 ZEROfs = ellyBits.EllyBits(symbolTable.FMAX)
-
-_error = list('????') # what to show when input cannot be parsed
 
 class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
 
@@ -487,8 +485,6 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
 
         if ellyConfiguration.inputEcho:
             ctx.echoTokensToOutput()          # write out original input as translation
-        else:
-            ctx.insertCharsIntoBuffer(_error) # write out simple error message as translation
         return False
 
     def getLastPlausibility ( self ):
