@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# interpretiveContext.py : 09apr2017 CPM
+# interpretiveContext.py : 27apr2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -277,19 +277,23 @@ class InterpretiveContext(object):
             b = self.buffs.pop(bnext)
             self.buffs[self.buffn].extend(b)
 
-    def mergeBuffers ( self ):
+    def mergeBuffers ( self , bn=0 ):
 
         """
-        merge current buffer and all next buffers
+        merge merge buffers, all by default
 
         arguments:
             self
+            bn    - buffer index for merged results
         """
 
-        bnext = self.buffn + 1
+        if bn < 0 or bn >= len(self.buffs): return
+
+        bnext = bn + 1
         while bnext < len(self.buffs):
             b = self.buffs.pop(bnext)
-            self.buffs[self.buffn].extend(b)
+            self.buffs[bn].extend(b)
+        self.buffn = bn
 
     def clearBuffers ( self ):
 
@@ -773,8 +777,11 @@ class InterpretiveContext(object):
         sys.stderr.write(' stk=' + str(len(self.lbstk)))
         if pnam != '':
             sys.stderr.write(' in (' + pnam + ')')
-        sys.stderr.write(' buf=' + str(len(self.buffs)))
-        sys.stderr.write(' (' +  str(len(self.buffs[self.buffn])) + ' chars)\n')
+        if self.buffs == None:
+            sys.stderr.write(' buf= None  ERROR!\n')
+        else:
+            sys.stderr.write(' buf=' + str(len(self.buffs)))
+            sys.stderr.write(' (' +  str(len(self.buffs[self.buffn])) + ' chars)\n')
         sys.stderr.flush()
 
     def echoTokensToOutput ( self ):
