@@ -416,6 +416,11 @@ Release Notes:
                       clean up commentary in various modules
                       extend "marking" rules
                       correct and update documentation
+ 1.4.4   - 04may2017  fix bugs with FAIL in generative semantics
+                      fix bug with mergeBuffers() method in interpretiveContext
+                      clean up translation failure reporting
+                      add "fail" integration test with rules to PyElly suite
+                      update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure

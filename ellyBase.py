@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 22apr2017 CPM
+# ellyBase.py : 03may2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -70,7 +70,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.4.3'                      # current version of PyElly software
+release = 'v1.4.4'                      # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -392,7 +392,9 @@ class EllyBase(object):
 
         if not self.ptr.evaluate(self.ctx):
             return None                 # translation fails
+#       print 'parse succeeds'
         self.ctx.mergeBuffers()
+#       self.ctx.printStatus()
 
         if plsb:                        # show plausibility in output if requested
             s = '=' + str(self.ptr.getLastPlausibility())
