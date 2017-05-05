@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeProcedure.py : 02may2017 CPM
+# generativeProcedure.py : 05may2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -64,6 +64,8 @@ def _showb ( ls ):
     arguments:
         ls  - buffer char lists
     """
+    if ls == None:
+        return
     n = 0
     for s in ls:
         print str(n) + ':<' ,
@@ -221,8 +223,11 @@ class GenerativeProcedure(object):
 #       print 'doRun for phrs=' , phrs.krnl.seqn
         phs = phrs
         scbn = cntx.buffn                       # save buffer index for any failure
-        scbs = copy.deepcopy(cntx.buffs[scbn:]) # copy current and later split-off buffers
-#       _showb(scbs)                            #
+        if phrs.alnk == None:
+            scbs = None
+        else:                                   # copy current and split-off buffers
+            scbs = copy.deepcopy(cntx.buffs[scbn:])
+#       _showb(scbs)
         code = Code(self.logic,phs.krnl.seqn)
 #       print 'original =' , code
         while True:                             # for phrase
@@ -239,7 +244,9 @@ class GenerativeProcedure(object):
 #           _showb(cntx.getBufferContents())
             rest = copy.deepcopy(scbs)
             cntx.buffn = scbn                   # restore previous buffers before retry
-            if scbn == 0:                       #
+            if scbs == None:
+                pass
+            elif scbn == 0:                     #
 #               print '++++replace'
                 cntx.buffs = rest
             else:
