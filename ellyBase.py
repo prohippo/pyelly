@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 03may2017 CPM
+# ellyBase.py : 21may2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -70,7 +70,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.4.4'                      # current version of PyElly software
+release = 'v1.4.5'                      # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -568,7 +568,7 @@ class EllyBase(object):
 
         d = self.rul                   # grammar rule definitions
 
-        m = d.ptb.match(sb,tr)         # try entity by pattern match next
+        m = d.ptb.match(sb,tr)         # try token by pattern match next
 #       print 'pattern m=' , m
         if  nspan < m:
             nspan = m                  # on longer match, update maximum
@@ -869,6 +869,7 @@ if __name__ == '__main__':
         if len(l) == 0 or l[0] == '\n': break
 #       print 'input:' , type(line) , '->' , type(l) , l
         txt = list(l.strip())
+#       print 'txt=' , txt
         so.write('\n')
         lo = eb.translate(txt,True)
         if lo == None:

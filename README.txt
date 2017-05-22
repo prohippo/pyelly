@@ -421,6 +421,11 @@ Release Notes:
                       clean up translation failure reporting
                       add "fail" integration test with rules to PyElly suite
                       update documentation
+ 1.4.5   - 22may2017  fix bug in entity extraction when no phrase type is acceptable
+                      fix bug with Unicode ellipsis in token extraction
+                      add limited title recognition in entity extraction repertory
+                      enhance output in unit testing support
+                      extend marking rules and integration test
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
