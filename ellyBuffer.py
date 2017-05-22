@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBuffer.py : 14sep2016 CPM
+# ellyBuffer.py : 21may2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -46,7 +46,7 @@ separators = [                 # for breaking tokenization scan
     u'<'  , u'>'  ,
     '"' , u'\u201c' , u'\u2018' , u'\u201b' , u'\u201f' ,
     '`' , u'\u201d' ,             u'\u201a' , u'\u201e' ,
-          u'\u2013' , u'\u2014'
+          u'\u2013' , u'\u2014' , u'\u2026'
 ]
 
 PLS = u'+'                     # special token chars
@@ -61,6 +61,7 @@ SPH = u' -'                    # space + hyphen
 APO = ellyChar.APO             # apostrophe literal
 APX = u'\u2019'                # formatted apostrophe
 
+UELP = u'\u2026'               # unicode ellipsis
 
 def normalize ( s ):
 
@@ -602,6 +603,8 @@ class EllyBuffer(object):
             if self.match(ELP): # it is ellipsis when tripled
                 k = 3
             else:               # otherwise, single punctuation char
+                k = 1
+        elif self.match(UELP):  # check for Unicode ellipsis
                 k = 1
         elif bs == APO:
             k = 1
