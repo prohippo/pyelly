@@ -96,6 +96,7 @@ wrote : VERB[^ed,*x]
 
 airstrike : NOUN
 bookended : VERB[^ed] - -1
+box set : NOUN
 christian doctrine : NOUN
 clean energy : NOUN
 configurable : ADJ
@@ -103,10 +104,12 @@ confraternity : NOUN
 dubstep : NOUN
 engineering council : NOUN
 estimative : ADJ
+fan favorite : NOUN
 grant aid : NOUN
 grant aid project : NOUN
 hashtag : NOUN
 homiletics : NOUN
+hot 100 : NUM
 hydro : NOUN
 interferometry : NOUN
 jain : NOUN
@@ -142,6 +145,11 @@ streetlamp : NOUN
 submillimeter  : ADJ
 teenybopper : NOUN
 timelord : NOUN
+title track : NOUN
+top 40 : NUM
+top 40 hit : NOUN
+top forty : NUM
+top forty hit : NUM
 trackwork : NOUN
 uav : NOUN
 underutilization : NOUN
@@ -182,6 +190,7 @@ tele : PREF
 # # # # extra vocabulary not yet integrated
 
 A New Day Has Come : NOUN
+American Billboard Hot 100 : NOUN[:plur]
 Apple II computer : NOUN
 Arkansas State : NOUN
 Battle of Dug Springs : NOUN
@@ -373,6 +382,7 @@ this time : ADV
 this year : NAVB[:det]
 time of year : NAVB
 time of the year : NAVB
+u.s. charts : NOUN[:plur]
 unwilling to : TO
 up slightly : ADJ
 up slightly : ADV - +1
@@ -2920,7 +2930,7 @@ italian : ADJ
 italy : NOUN
 item : NOUN
 item : ADV - -5
-iteration : NOUN
+iteration : NOUN [&evnt] 0
 itinerary : NOUN
 iv : NOUN
 iv : ADJ
@@ -5459,6 +5469,7 @@ type : NOUN[:*x]
 type : VERB
 typical : ADJ
 typically : ADV
+u.k. : NOUN
 u.s. : NOUN
 uk : NOUN
 ultimate : NOUN

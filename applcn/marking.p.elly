@@ -79,3 +79,8 @@
 0 "@" NOUN -1
 
 0 's$ APOS -1
+
+0 1## - 7
+0 20# - 7
+7 0's$ DATE[:poss,val] - +2 -1
+7 #'s$ DATE[:poss] -1

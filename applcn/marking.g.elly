@@ -860,7 +860,7 @@ _
 __
 
 g:NCLU->DATE[:-cnj,-*r] NCLU[:-det,-num,-qnt,-prep]
- >>---
+ >>--
 _
   var typg=date
   (lxtd)
@@ -897,14 +897,6 @@ g:NOUN->NOUN NUM[:cnj]
          >>++
 _
   (twob)
-__
-g:NOUN->DATE APOS
- >>++++
-_
-  append <date>
-  left
-  right
-  append </date>
 __
 g:NCLU[:num]->NUM
  n<2>>----
@@ -1057,15 +1049,17 @@ __
 p:poss
 _
 # trace
-  split
   left
+  delete 7 >
+  split
 # view 9
   right
   back
 # view 9
-  merge :</nclu><nclu>::
+  delete 6 <
+  merge
 __
-g:NCLU[:*r]->NCLU[:poss,-det,-prep] NCLU[:-poss]
+g:NCLU[:*r]->NCLU[:poss,-det,-prep] NCLU[:-poss,-det,-prep]
 #       ?>>?
  r[$trlg]>>*l[$trlg]++
          >>*l++
@@ -1820,12 +1814,13 @@ g:DATE->PREP NAVB
 _
   (prep)
 __
-g:DATE[:*r]->PREP['-cnj,-*l] DATE[:-cnj]
- >>++
+g:DATE[:*r]->PREP['-cnj,-*l] DATE[:-cnj,-poss]
+ n<3c<8>>+++
+       >>++
 _
   (prep)
 __
-g:DATE[:*r]->PREP['-cnj,*l] DATE[:-cnj]
+g:DATE[:*r]->PREP['-cnj,*l] DATE[:-cnj,-poss]
  >>++
 _
   (twob)
@@ -3008,4 +3003,34 @@ d:1000000 <- NUM[:*r]
 __
 d:1000000000 <- NUM[:*r]
  >>+
+__
+
+d:iii <- XID[:val]
+__
+d:iv  <- XID[:val]
+__
+g:NOUN->ADJ XID[:val]
+  l[&*c]r[&*c]>>++++
+              >>--
+_
+  (twob)
+__
+g:NOUN->DET[@the] NOUN
+#           ?>>?
+          p<1>>-15
+ l[&*c]r[&*c]>>++++
+             >>-15
+_
+  (twob)
+__
+g:NOUN->DET[@the] DATE[:poss,val]
+ >>++
+_
+  (twob)
+__
+g:NOUN->NTTL
+ >>++
+_
+  var typg=name
+  (typg)
 __
