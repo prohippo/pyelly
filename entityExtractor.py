@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# entityExtractor.py : 30mar2017 CPM
+# entityExtractor.py : 21may2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -123,13 +123,16 @@ class EntityExtractor(object):
                     mx = m
                     ms = [ ]
                 ms.append(xr[1:]) # add to match list
+        nmatch = 0
         if mx > 0:                # any matches?
             for mr in ms:         # if so, make phrases for them
                 sbs = mr[2] if len(mr) > 2 else noBits
                 bia = mr[3] if len(mr) > 3 else 0
                 if self.ptr.addLiteralPhraseWithSemantics(mr[0],mr[1],sbs,bia,None,False,capd):
                     self.ptr.lastph.lens = mx
-        return mx
+                    nmatch += 1
+
+        return mx if nmatch > 0 else 0
 
 #
 # unit test
