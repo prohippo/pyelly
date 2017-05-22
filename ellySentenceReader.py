@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellySentenceReader.py : 22apr2017 CPM
+# ellySentenceReader.py : 21may2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -43,6 +43,7 @@ NL  = u'\n'     # new line = linefeed
 SP  = u' '      # space
 END = u''       # EOF indicator is null char
 
+ELLP = ellyChar.ELLP
 LSQm = ellyChar.LSQm
 RSQm = ellyChar.RSQm
 LDQm = ellyChar.LDQm
@@ -358,7 +359,7 @@ class EllySentenceReader(object):
 #               print 'ellipsis check'
                 if c == u'.' and c == d:
                     if self.inp.peek() != c: # look for third '.' in ellipsis
-                        self.inp.unread(c)   # if none, keep only first '.'
+                        self.inp.unread(d)   # if none, keep only first '.'
                     else:
                         self.inp.skip()      # found ellipsis
                         sent.append(d)       # complete it in sentence buffer
@@ -367,6 +368,13 @@ class EllySentenceReader(object):
                         if ellyChar.isCombining(x):
                             sent.append(SP)  # if part of token, put in space as separator
                     continue
+
+                if c == ELLP:
+#                   print 'found Unicode ellipsis, d=' , d
+                    if ellyChar.isUpperCaseLetter(d):
+                        self.inp.unread(d)   # super special case of bad punctuation
+                        self.inp.unread(' ') # put in implied period and space
+                        self.inp.unread('.') #
 
                 # special check for multiple stops
 

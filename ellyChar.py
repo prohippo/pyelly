@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 22apr2017 CPM
+# ellyChar.py : 21may2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -56,6 +56,7 @@ RSQm = u'\u2019'   # right single quote (same as APX)
 LDQm = u'\u201C'   # left  double quote
 RDQm = u'\u201D'   # right double quote
 PRME = u'\u2032'   # prime
+ELLP = u'\u2026'   # horizontal ellipsis
 
 Apd = [ u'*' , u'+' , u'-' ]                                    # marks appending to token
 
