@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# extractionProcedure.py : 15mar2017 CPM
+# extractionProcedure.py : 21may2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -155,18 +155,69 @@ def acronym ( buffr ):
     ib = 1
     while ib < lb:
         bc = buffr[ib]
+        ib += 1
         if bc == ')':
             break
         if not ellyChar.isLetter(bc): return 0
         if ellyChar.isUpperCaseLetter(bc): nu += 1
-        ib += 1
     else:
         return 0    # must have enclosing ')'
 
-    if ib + 1 < Lmin or ib - 1 - 2*nu > 0: return 0
-    if len(buffr) > ib + 1 and ellyChar.isLetterOrDigit(buffr[ib+1]): return 0
+    if ib < Lmin or ib - 2*nu > 0: return 0
+    if len(buffr) > ib and ellyChar.isLetterOrDigit(buffr[ib]): return 0
 
-    return ib + 1
+    return ib
+
+Tmin = 10
+Tmax = 44
+lDQ = ellyChar.LDQm
+rDQ = ellyChar.RDQm
+aDQ = '"'
+
+def title ( buffr ):
+
+    """
+    recognize double-quoted title in text
+
+    arguments:
+        buffr - current contents as list of chars
+
+    returns:
+        char count matched on success, 0 otherwise
+    """
+
+    lb = len(buffr)
+    if lb > Tmax: lb = Tmax
+    if lb < Tmin: return 0
+    qm = buffr[0]
+    if qm != aDQ and qm != lDQ: return 0
+
+    ib = 1
+    while ib < lb:
+        bc = buffr[ib]
+        ib += 1
+        if bc == rDQ:
+            break
+        if not ellyChar.isUpperCaseLetter(bc): return 0
+
+        while ib < lb:
+            bc = buffr[ib]
+            ib += 1
+            if bc == ' ': break
+            if qm == aDQ:
+                if bc == aDQ: break
+            else:
+                if bc == rDQ: break
+            if bc in [ '!' , '?' ]:
+                return 0
+        if bc == rDQ or bc == aDQ: break
+    else:
+        return 0    # must have enclosing rDQ or aDQ
+
+    if ib < Tmin: return 0
+    if len(buffr) > ib and ellyChar.isLetterOrDigit(buffr[ib]): return 0
+
+    return ib
 
 #
 # unit test
@@ -188,7 +239,10 @@ if __name__ == '__main__':
         txt = list(l.strip())
         so.write('\n')
         n = acronym(txt)
-        so.write(str(n) + ' char(s) matched')
+        so.write(str(n) + ' char(s) matched for acronym')
+        so.write('\n')
+        n = title(txt)
+        so.write(str(n) + ' char(s) matched for title')
         so.write('\n')
 
     so.write('\n')
