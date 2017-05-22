@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTest.py : 28mar2017 CPM
+# parseTest.py : 08may2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -83,7 +83,7 @@ class Tree(object):
     def addLiteralPhraseWithSemantics (self,typ,sxs,sms,bia,gen=None,dvd=False,cap=False):
         """ dummy method
         """
-        print 'add phrase: typ=' , typ , '[' + sxs.hexadecimal() + ']' , '[' + sms.hexadecimal() + ']'
+        print 'add phrase: typ=' , typ , '[' + sxs.hexadecimal() + ']' , '[' + sms.hexadecimal() + '] =' , bia
         ph = Phrase()
         ph.krnl.catg = typ
         ph.krnl.synf = sxs
