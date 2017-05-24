@@ -68,6 +68,7 @@ millennia : NOUN[:plur]
 opening : VERB[^ing]
 ought : VERB
 paid : VERB[^ed]
+points of View : NOUN[:plur]
 potions : NOUN
 ran : VERB[^ed]
 regarding : PREP - +1
@@ -2341,7 +2342,7 @@ foreign minister : NOUN
 forest : NOUN
 forest : VERB
 forget : VERB
-form : NOUN
+form : NOUN - +1
 form : VERB
 formal : NOUN
 formal : ADJ
@@ -3979,6 +3980,7 @@ poetry : NOUN
 poignant : ADJ
 point : NOUN
 point : VERB
+point of view : NOUN
 pole : NOUN
 pole : VERB
 police : NOUN
