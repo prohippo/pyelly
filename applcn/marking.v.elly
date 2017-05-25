@@ -929,7 +929,7 @@ behavior : NOUN
 behind : NOUN
 behind : ADJ
 behind : ADV[~trlg]
-being : AUXL[^ing]
+being : BE[^ing]
 being : NOUN - -2
 belarus : NOUN
 belief : NOUN
@@ -2161,7 +2161,7 @@ eye : VERB
 face : NOUN
 face : VERB
 facility : NOUN
-fact : NOUN
+fact : NOUN[:dat]
 faction : NOUN
 factual : ADJ
 fail : VERB
@@ -4007,7 +4007,7 @@ popularity : NOUN
 populate : VERB
 population : NOUN
 pork : NOUN
-port : NOUN
+port : NOUN [&spcs] 0
 port : VERB
 port : ADJ
 portable : NOUN
@@ -4206,6 +4206,7 @@ push : VERB
 pushkin : NOUN
 put : NOUN - -1
 put : VERB[^ptcl]
+put forward : VERB
 quality : NOUN
 quality : ADJ
 quarantine : NOUN
@@ -4615,7 +4616,7 @@ season : NOUN
 season : VERB
 seasonal : NOUN
 seasonal : ADJ
-seat : NOUN
+seat : NOUN - +1
 seat : VERB
 sec : NOUN
 sec : ADJ

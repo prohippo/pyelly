@@ -253,16 +253,14 @@ g:ELEM->NCLU[:dit]
 # ?>>?
    >>[!rn]+
 _
-  append that
-  linefeed
+  (that)
   left
 __
 g:ELEM->NCLU[:dat]
   >>[!ln]+
 _
   left
-  linefeed
-  append that
+  (that)
 __
 g:ELEM->PRO[=nom]
 # ?>>?
@@ -325,11 +323,16 @@ _
   var punc=
   right
 __
+p:that
+_
+  linefeed
+  append <>that</>
+  linefeed
+__
 g:ELEM->THAT VCLU[^s]
  >>[!rv]++
 _
-  append that
-  linefeed
+  (that)
   var punc=
   right
 __
@@ -338,11 +341,12 @@ g:ELEM->ELEM[^dit] THAT
        >>++
 _
   left
-  linefeed
-  right
+  (that)
 __
 g:ELEM->THAT
  >>[!ln,rv,that]-
+_
+  (that)
 __
 g:ELEM->DATE[:-cnj]
 _
@@ -760,7 +764,7 @@ _
   append *</nclu>
 __
 
-g:NCLU[:*l]->NOUN
+g:NCLU[:*l,-dat]->NOUN
  >>*l[&nml]
 _
 # trace
@@ -770,6 +774,14 @@ _
   (brack)
 # view 32
   append </nclu>
+__
+g:NCLU[:*r,-dat]->NOUN[:dat] THAT
+ >>++
+_
+  append <nclu><noun>
+  left
+  append </noun></nclu>
+  (that)
 __
 
 p:dtnc
@@ -1183,11 +1195,12 @@ _
   (twob)
 __
 g:NOUN[:*r,cnj]->NOUN[:-*l,-hyph,-poss,-plur,-ing] NOUN[:-cnj,-ing,-det]
-#            ?>>?
-      r[&prop]>>-2
-      l[&spcs]>>-2
- l[&-*c]r[&*c]>>+2
-              >>+1
+#                ?>>?
+ l[&spcs,*c]r[&*c]>>+2
+          r[&prop]>>-2
+          l[&spcs]>>-2
+     l[&-*c]r[&*c]>>+2
+                  >>+1
 _
   (twob)
 __
@@ -1261,7 +1274,11 @@ g:VCLU[^*l]->VERB
 # ?>>?
    >>*l
 _
+  var vdat=
   (vrbl)
+  if vdat=T
+    (that)
+    end
 __
 
 g:VCLU[^*r]->ADV[~-cplx] VCLU[^-ed]
@@ -1422,6 +1439,11 @@ g:VERB[^*l,to]->VERB[^beaj] TO
 _
   (twob)
 __
+g:VERB[^*r,neg]->NEGN VERB[^ing,-neg]
+ >>-
+_
+  (twob)
+__
 g:VERB[^*l]->BE
  >>-
 __
@@ -1488,10 +1510,11 @@ _
   (typg)
   right
 __
-g:ADJ->ADJ[%more] THAT
+g:ADJ[%dat]->ADJ[%more] THAT
  >>++
 _
-  (twob)
+  left
+  set vdat=T
 __
 g:ADJ[%*r]->NOUN[:hyph] ADJ
  >>++
@@ -1875,6 +1898,10 @@ __
 # predicate negation
 g:AUXL[^neg,*l]->AUXL[^-neg] NEGN
  >>*l
+_
+  (twob)
+__
+g:BE[^*r,neg]->NEGN BE[^ing,-neg]
 _
   (twob)
 __
@@ -2610,9 +2637,7 @@ g:ELEM->ALLTHT VCLU
  >>++
 _
   append <nclu><quan>all</quan></nclu>
-  linefeed
-  append that
-  linefeed
+  (that)
   right
 __
 g:ELEM->ALLTHT
