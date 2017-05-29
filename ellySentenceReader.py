@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellySentenceReader.py : 21may2017 CPM
+# ellySentenceReader.py : 28may2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -407,6 +407,26 @@ class EllySentenceReader(object):
                     self.inp.unread(d)
 
 #               print 'possible stop'
+
+                # check special case of number ending in decimal point
+
+                if c == '.':
+                    ixb = len(sent) - 2
+                    ixn = ixb + 1
+                    cxn = ''
+#                   print 'sent=' , sent
+#                   print 'ixn=' ,ixn
+                    while ixn > 0:
+                        ixn -= 1
+                        cxn = sent[ixn]
+#                       print 'cxn=' , cxn
+                        if not ellyChar.isDigit(cxn): break
+#                   print 'break: ixn=' , ixn , 'ixb=' , ixb
+                    if ixn < ixb and cxn in [ ' ' , '-' , '+' ]:
+                        prvw = self.inp.preview()
+#                       print 'prvw=' , prvw
+                        if len(prvw) > 1 and not ellyChar.isUpperCaseLetter(prvw[1]):
+                            continue
 
                 # final check: is sentence long enough?
 
