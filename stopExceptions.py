@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# stopExceptions.py : 22apr2017 CPM
+# stopExceptions.py : 28may2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -104,7 +104,7 @@ class StopExceptions(object):
         nerr = 0
         while True:
 
-            df = defs.readline().lower().strip()
+            df = defs.readline().strip()
 #           print 'df=' , df
             if len(df) == 0: break
             lno += 1
@@ -137,6 +137,7 @@ class StopExceptions(object):
 
             pat = self.Pattern(left,right)
             self.lstg[idc].append(pat)     # save pattern in dictionary
+#           print 'lstg=' , self.lstg.keys()
 
             ll = len(left)
             if self.maxl < ll : self.maxl = ll
@@ -165,9 +166,9 @@ class StopExceptions(object):
             return False
 #       print 'nomatch() False'
 
-        nxt = ctx[0] if len(ctx) > 0 else ''
+        nxt = ctx[1] if len(ctx) > 1 else ''
 
-#       print 'lstg=' , self.lstg
+#       print 'lstg=' , self.lstg.keys()
         if not pnc in self.lstg:  # get stored patterns for punctuation
             return False
 
@@ -175,9 +176,7 @@ class StopExceptions(object):
 
 #       print len(lp) , 'patterns'
 
-        txl = txt[-self.maxl:] if len(txt) > self.maxl else txt
-
-        txs = map(lambda x: x.lower(),txl) # actual left context for matching
+        txs = txt[-self.maxl:] if len(txt) > self.maxl else txt
 
         lt = len(txs)             # its length
 
@@ -226,6 +225,7 @@ class StopExceptions(object):
 #                   print 'right punc=' , nxt
                     return True
 
+#       print "no matches"
         return False
 
 ##
