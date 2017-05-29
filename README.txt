@@ -1,6 +1,7 @@
 PyElly is a rule-based natural language processing tool that has existed
 for over forty years in various incarnations. It is now freely available
-as open source software on the Web to anyone wanting to try it out.
+as open source software on the Web to anyone wanting to try it out. It is
+written in version 2.7 of Python and employs SQLite for data management.
 
 PyElly is intended mainly for educational use, in that it allows a student
 to engage natural language at a fine level of detail and learn the issues
@@ -25,10 +26,10 @@ now be downloaded from GitHub at https://github.com/prohippo/pyelly.git .
 Further development and refinement is ongoing.
 
 To learn how to use PyElly, see the PyEllyManual.pdf file in the same
-directory as this README.txt file. The manual has over a hundred pages of
-information, including an overview of some basic linguistics. Documentation
+directory as this README.txt file. The manual has over a hundred fory pages
+of information, including an overview of basic linguistics. Documentation
 of individual Python source files can be generated as needed with the
-Python pydoc utility.
+Python pydoc utility from PyElly source files..
 
 At present, PyElly consists of 64 Python modules comprising about ten
 thousand lines of source code. There are also various definition files
@@ -425,7 +426,13 @@ Release Notes:
                       fix bug with Unicode ellipsis in token extraction
                       add limited title recognition in entity extraction repertory
                       enhance output in unit testing support
-                      extend marking rules and integration test
+                      extend "marking" rules and integration test
+ 1.4.6   - 29may2017  make numbers with final decimal point as sentence stop exception
+                      add lowercase letters as semiwildcards in PyElly pattern matches
+                      correct bug in handling of right context in stopExceptions
+                      change stopExceptions to make use of semiwildcard matching
+                      clean up "default" stop exceptions
+                      extend "marking" rules
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
