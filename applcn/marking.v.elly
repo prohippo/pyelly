@@ -419,6 +419,7 @@ bill-to : ADJ
 cul-de-sac : NOUN
 cul-de-sac street : NOUN
 eat-in : ADJ
+five-lane : ADJ
 four-penny : ADJ
 full-throated : ADJ
 fully-equipped : ADJ
@@ -429,6 +430,7 @@ long-drawn : ADJ
 long-past  : ADJ
 mid-air : NOUN
 ocean-view home : NOUN
+one-lane : ADJ
 one-of-a-kind : ADJ
 rear-drive : ADJ
 round-up : NOUN
@@ -1104,7 +1106,7 @@ burn : VERB
 bury : VERB
 bus : NOUN
 bus : VERB
-business: NOUN
+business : NOUN[:*x]
 buy : NOUN
 buy : VERB
 buying : NOUN
@@ -2368,6 +2370,7 @@ founding : NOUN
 founding father : NOUN
 four : ADJ
 four : NOUN
+four-lane : ADJ
 four-wheel drive : NOUN
 fourpenny : ADJ
 fragment : NOUN
@@ -4519,7 +4522,7 @@ round : ADV
 roundabout : NOUN
 roundabout : ADJ
 roundup : NOUN
-route : NOUN
+route : NOUN - +2
 route : VERB
 row : NOUN
 row : VERB
@@ -5320,6 +5323,7 @@ threat : NOUN
 threaten : VERB
 three : NOUN
 three : ADJ
+three-lane : ADJ
 throat : NOUN
 throughout : ADV
 throw : NOUN
@@ -5468,6 +5472,7 @@ twit : NOUN
 twit : VERB
 two : NOUN
 two : ADJ
+two-lane : ADJ
 type : NOUN[:*x]
 type : VERB
 typical : ADJ
