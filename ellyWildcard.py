@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 22apr2017 CPM
+# ellyWildcard.py : 28may2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -29,7 +29,7 @@
 # -----------------------------------------------------------------------------
 
 """
-for defining wildcards in text pattern matching
+for defining wildcards and semi-wildcards in text pattern matching
 """
 
 import ellyChar
@@ -53,6 +53,22 @@ def isWild ( c ):
 #   print ' c=' , c  , '(' + str(ord(c))  + ')'
 #   print 'Xc=' , Xc , '(' + str(ord(Xc)) + ')'
     return Xc < c and c <= cEND
+
+def isSemiWild ( c ):
+
+    """
+    check if char is PyElly lowercase letter in a pattern--
+    this is semiwild in that it will match both upper and lowercase,
+    but is NOT encoded
+
+    arguments:
+        c   - character to check
+
+    returns:
+        True if semiwild, False otherwise
+    """
+
+    return ellyChar.isLowerCaseLetter(c)
 
 cANY = unichr(X+1 ) # match any char
 cCAN = unichr(X+2 ) # match nonalphanumeric char
@@ -208,7 +224,7 @@ def convert ( strg ):
                     t.append(z)      # otherwise, keep the next char as lower case
                     i += 1
         else:
-            t.append(x.lower())
+            t.append(x)
             wild = False
 
         if wild and nlb > 0 and x != ellyChar.LBR:
@@ -393,7 +409,7 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
     unj = 0           # current unwinding index
 
     ##
-    # three private functions using local variables of match()
+    # four private functions using local variables of match() defined just above
     #
 
     def _bind ( ns=None ):
@@ -509,9 +525,11 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
             else:
                 last = text[offs]
                 offs += 1
+            mc = patn[mp]
 #           print 'matching last=' , last, '(' , ord(last) , ') at' , offs
-#           print 'against       ' , patn[mp] , '(' , ord(patn[mp]) , ')'
-            if patn[mp] != last.lower(): break
+#           print 'against       ' , mc , '(' , ord(mc , ')'
+            if mc != last:
+                if mc != last.lower(): break
 #           print 'matched!'
             mp += 1
 
