@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# stopExceptions.py : 28may2017 CPM
+# stopExceptions.py : 03jun2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -40,6 +40,22 @@ import sys
 import ellyChar
 import ellyWildcard
 import ellyException
+
+def _rejectWild ( p ):
+
+    """
+    check that all pattern wildcards are acceptable
+
+    arguments:
+        p  - list of pattern elements
+
+    returns:
+        True if any element can match other than one char, otherwise False
+    """
+
+    for pc in p:
+        if ellyWildcard.isNonSimpleMatch(pc): return True
+    return False
 
 class StopExceptions(object):
 
@@ -127,8 +143,12 @@ class StopExceptions(object):
                 print >> sys.stderr , 'bad left context in pattern' , '<' + df + '>'
                 nerr += 1
                 continue
-            if len(right) > 1:
+            if right == None or len(right) > 1:
                 print >> sys.stderr , 'bad right context in pattern' , '<' + df + '>'
+                nerr += 1
+                continue
+            if _rejectWild(left) or _rejectWild(right):
+                print >> sys.stderr , 'bad wildcard in pattern'
                 nerr += 1
                 continue
 
@@ -196,6 +216,7 @@ class StopExceptions(object):
                 if not ellyWildcard.match(p.left,t,0):
 #                   print 'no left match'
                     continue
+#               print 'left match=' , t
                 if n < lt and ellyChar.isLetterOrDigit(t[0]):
                     if ellyChar.isLetterOrDigit(txs[-n-1]):
                         continue  # fail because of no break in text
@@ -210,14 +231,12 @@ class StopExceptions(object):
             if pcx == nxt:                     # check for specific char after possible stop
 #               print 'right=' , nxt
                 return True
-            if pcx == ellyWildcard.cCAN:       # check for nonalphanumeric
-                if nxt == u'' or not ellyChar.isLetterOrDigit(nxt):
-#                   print 'right nonalphanumeric=' , nxt
+            if pcx == ellyWildcard.cDIG:       # check for anumeric
+                if ellyChar.isLetterOrDigit(nxt):
+#                   print 'right is numeric=' , nxt
                     return True
-            if pcx == ellyWildcard.cSPC:       # check for white space
-#               print 'looking for space'
-                if nxt == u'' or nxt == u' ' or nxt == u'\n':
-#                   print 'right space'
+            elif pcx == ellyWildcard.cLWR:     # check for lower case
+                if ellyChar.isLowerCaseLetter(nxt):
                     return True
 #           print 'last check'
             if p.right == u'.':                # check for any punctuation
@@ -313,8 +332,8 @@ if __name__ == '__main__':
     for px in stpx.lstg:
         pxs = stpx.lstg[px]
         print '<' + px + '>'
-        for pc in pxs:
-            print '    ' , unicode(pc)
+        for pxc in pxs:
+            print '    ' , unicode(pxc)
 
     SQW = ellyWildcard.wAPO
 
