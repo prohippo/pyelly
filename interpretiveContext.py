@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# interpretiveContext.py : 27apr2017 CPM
+# interpretiveContext.py : 02jun2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -238,6 +238,17 @@ class InterpretiveContext(object):
 
         self.locls = { }
         self.locls[ deletion ] = [ [ ] ] # for saving deletions
+
+    def getCurrentBuffer ( self ):
+
+        """
+        index of current buffer
+
+        arguments:
+            self
+        """
+
+        return self.buffn
 
     def splitBuffer ( self ):
 
@@ -478,27 +489,6 @@ class InterpretiveContext(object):
         self.insertCharsIntoBuffer(s,1) # insert into next
         self.buffn += 1                 # next becomes current again
 
-    def insertCharsIntoBuffer ( self , s , dirn=0 ):
-
-        """
-        insert specified chars in current or next buffer
-
-        arguments:
-            self  -
-            s     - chars in string
-            dirn  - direction (0= current, 1= next)
-        """
-
-        if dirn == 0:
-            b = self.buffs[self.buffn]
-            b.extend(list(s))
-        else:
-            k = self.buffn + 1
-            if k >= len(self.buffs):
-                self.buffs.append([ ])
-            b = self.buffs[k]
-            self.buffs[k] = list(s) + b
-
     def checkBufferForChars ( self , s ):
 
         """
@@ -516,6 +506,32 @@ class InterpretiveContext(object):
         b = self.buffs[self.buffn]
         return False if l > len(b) or s != b[:l] else True
 
+    def insertCharsIntoBuffer ( self , s , m=0 ):
+
+        """
+        insert specified chars in current or next buffer
+
+        arguments:
+            self  -
+            s     - chars in string
+            m     - mode
+                  -   m == 0 means into current buffer
+                  -   m == 1            next    buffer
+        """
+
+#       print 'in m=' , m
+#       print 'in buf=' , self.buffn
+        if m == 0:
+            b = self.buffs[self.buffn]
+            b.extend(list(s))
+        else:
+            k = self.buffn + 1
+#           print 'in k=' , k
+            if k >= len(self.buffs):
+                return
+            b = self.buffs[k]
+            self.buffs[k] = list(s) + b
+
     def extractCharsFromBuffer ( self , n=1 , m=0 ):
 
         """
@@ -525,15 +541,19 @@ class InterpretiveContext(object):
             self  -
             n     - character count
             m     - mode
-                  -   m == 0 means from next    buffer
-                  -   m == 1            current buffer
+                  -   m == 0 means from current buffer
+                  -   m == 1            next    buffer
         returns:
             string of chars if successful, '' otherwise
         """
 
-        if n == 0:
+#       print 'ex no of buf=' , len(self.buffs)
+#       print 'ex at buf=', self.buffn , len(self.buffs[self.buffn]) , len(self.buffs[self.buffn+1])
+#       print 'ex m=' , m
+#       print 'ex buf=' , (self.buffn + 1)
+        if n <= 0:
             return ''
-        elif m == 0:
+        elif m == 1:
             k = self.buffn + 1
             if k == len(self.buffs): return ''
             b = self.buffs[k]
