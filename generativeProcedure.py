@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeProcedure.py : 05may2017 CPM
+# generativeProcedure.py : 02jun2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -411,11 +411,11 @@ class GenerativeProcedure(object):
                    op == semanticCommand.Gextr ):
                 var = code.next()              # set a local variable
                 if op == semanticCommand.Gset:
-                    val = code.next()                                # from string
-                elif op == semanticCommand.Gextl:
-                    val = cntx.extractCharsFromBuffer(code.next(),1) # from buffer chars
-                else:
-                    val = cntx.extractCharsFromBuffer(code.next(),0) # from buffer chars
+                    val = code.next()                                  # from string
+                elif op == semanticCommand.Gextl:                      # source is current buffer
+                    val = cntx.extractCharsFromBuffer(code.next(),m=0) #   get buffer chars
+                else:                                                  # source is next    buffer
+                    val = cntx.extractCharsFromBuffer(code.next(),m=1) #   get buffer chars
 #               print 'val=' , val
                 cntx.setLocalVariable(var,val)
             elif ( op == semanticCommand.Ginsr or
@@ -424,9 +424,9 @@ class GenerativeProcedure(object):
                 s = cntx.getLocalVariable(var)
                 if s != '':
                     if op == semanticCommand.Ginsn:
-                        cntx.insertCharsIntoBuffer(s,1)
+                        cntx.insertCharsIntoBuffer(s,m=1)
                     else:
-                        cntx.insertCharsIntoBuffer(s,0)
+                        cntx.insertCharsIntoBuffer(s,m=0)
             elif op == semanticCommand.Gshft:  # shift text between buffers
                 cntx.moveCharsBufferToBuffer(code.next())
             elif op == semanticCommand.Gdele:  # delete text from buffers
@@ -539,14 +539,14 @@ class GenerativeProcedure(object):
                 tok = cntx.getNthTokenInListing(phrs.krnl.posn)
 #               print 'obtain: ' , tok.toUnicode()
                 cntx.insertCharsIntoBuffer(tok.toUnicode())
-            elif op == semanticCommand.Gcapt:  # capitalize first char in buffer
-                c = cntx.extractCharsFromBuffer()
+            elif op == semanticCommand.Gcapt:  #   capitalize first char in next buffer
+                c = cntx.extractCharsFromBuffer(m=1)
                 if c != '':
-                    cntx.insertCharsIntoBuffer(c.upper(),1)
-            elif op == semanticCommand.Gucpt:  # capitalize first char in buffer
-                c = cntx.extractCharsFromBuffer()
+                    cntx.insertCharsIntoBuffer(c.upper(),m=1)
+            elif op == semanticCommand.Gucpt:  # uncapitalize first char in next buffer
+                c = cntx.extractCharsFromBuffer(m=1)
                 if c != '':
-                    cntx.insertCharsIntoBuffer(c.lower(),1)
+                    cntx.insertCharsIntoBuffer(c.lower(),m=1)
             elif op == semanticCommand.Gtrce:  # show phrase info to trace execution
                 cat = cntx.syms.getSyntaxTypeName(phrs.krnl.typx)
                 brn = 1 if isinstance(phrs.krnl.rule,grammarRule.ExtendingRule) else 2
@@ -568,8 +568,9 @@ class GenerativeProcedure(object):
             elif op == semanticCommand.Gview:   # show current and new buffers partially
                 nc = code.next()
                 cbl , nbl = cntx.viewBufferDivide(nc)
-                fm = u'VIEW @phr {0:d} : {1:s} | {2:s}\n'
-                st = fm.format(phrs.krnl.seqn,str(cbl),str(nbl))
+                cbn = cntx.getCurrentBuffer()
+                fm = u'VIEW ={0:2d} @phr {1:d} : {2:s} | {3:s}\n'
+                st = fm.format(cbn,phrs.krnl.seqn,str(cbl),str(nbl))
                 sys.stderr.write(st)
                 sys.stderr.flush()
             elif op == semanticCommand.Gproc:  # semantic subprocedure

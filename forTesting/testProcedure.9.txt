@@ -1,16 +1,24 @@
 append +
 (do)
+view 6
 linefeed
 split
 (do)
 back
+view 6
 capitalize
+view 6
 append +
 shift 1
+view 6
 capitalize
+view 6
 peek x <
 insert < x
+view 6
 uncapitalize
+view 6
 merge
+view 6
 ()
 return
