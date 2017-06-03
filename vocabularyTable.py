@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 19dec2016 CPM
+# vocabularyTable.py : 01jun2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -100,8 +100,9 @@ def toKey ( s ):
         ASCII key
     """
 
-    if isinstance(s,list): s = u''.join(s)
-    return unicodedata.normalize('NFKD',s.lower()).encode('ascii','ignore')
+    s = list(s)
+    ellyChar.toLowerCaseListASCII(s)
+    return ''.join(s)
 
 def _err ( s='malformed vocabulary input' ):
 
