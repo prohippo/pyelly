@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 21may2017 CPM
+# ellyChar.py : 03jun2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -142,8 +142,8 @@ Vowel = [
     F,F,F,F,F,F,F,F,F,F,F,F,T,T,T,T, T,T,T,T,F,F,F,F,F,F,F,F,F,F,F,F,
     F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
 
-    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
-    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
+    F,F,F,F,F,F,T,T,F,F,F,F,F,F,T,T, T,F,F,F,F,F,T,T,F,F,F,F,F,F,F,T,
+    T,T,T,T,F,F,F,F,F,F,F,F,F,F,F,T, T,T,T,T,F,F,F,F,F,F,F,F,F,F,F,F,
     F,F,F,F,F,F,F,F,F,F,F,F,F,T,T,T, T,T,T,T,T
 ]
 
@@ -235,9 +235,9 @@ Letter = [
     T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,
     T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,
 
-    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
-    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
-    F,F,F,F,F,F,F,F,F,F,F,F,F,T,T,T, T,T,T,T,T
+    T,T,T,T,F,F,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,
+    T,T,T,T,T,T,T,F,F,T,T,T,T,T,T,T, T,T,T,T,T,T,T,T,T,T,T,T,F,F,F,F,
+    F,F,F,F,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T
 ]
 
 LetterOrDigit = [
@@ -256,9 +256,9 @@ LetterOrDigit = [
     T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,
     T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,
 
-    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
-    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
-    F,F,F,F,F,F,F,F,F,F,F,F,F,T,T,T, T,T,T,T,T
+    T,T,T,T,F,F,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,
+    T,T,T,T,T,T,T,F,F,T,T,T,T,T,T,T, T,T,T,T,T,T,T,T,T,T,T,T,F,F,F,F,
+    F,F,F,F,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T
 ]
 
 def isLetterOrDigit ( x ):
@@ -348,13 +348,13 @@ def isApostrophe ( x ):
     """
     return x == APO or x == APX or x == PRME
 
-## for equating PyElly letters with 26 ASCII letters when indexing
+## for equating PyElly Unicode with 26 ASCII letters when indexing
 
 Mapping = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+   27,28,29,30,31,32,33,34,35,36, 0, 0, 0, 0, 0, 0,
     0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,
    16,17,18,19,20,21,22,23,24,25,26, 0, 0, 0, 0, 0,
     0, 1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12,13,14,15,
@@ -378,11 +378,11 @@ Mapping = [
    19,19,20,20,20,20,20,20,21,21,21,21,21,21,21,21,
    21,21,21,21,23,23,25,25,25,26,26,26,26,26,26,19,
 
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 9,
+    2, 2, 2, 2, 0, 0,15,15, 3, 4, 4, 4, 4, 4, 5, 5,
+    5, 6, 6, 7, 7, 8, 9, 9,11,11,12,12,13,14,14,15,
+   15,15,15,15,16,16,18, 0, 0,19,19,20,20,20,20,21,
+   21,21,22,25,25,26,26,26,26,26,26,20, 0, 0, 0, 0,
+    0, 0, 0, 0,10,10,10,12,12,12,14,14,14, 1, 1, 9,
     9,15,15,21,21
 ]
 
@@ -430,18 +430,51 @@ def toChar ( k ):
     else:
         return Unmapping[k]
 
-def toLowerCaseASCII ( x ):
+Lower = [
+    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,     F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
+    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,     F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
+    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,     F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
+    F,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,     T,T,T,T,T,T,T,T,T,T,T,F,F,F,F,F,
+
+    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,     F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
+    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,     F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
+    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,     F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,T,
+    T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,     T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,
+
+    F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,     F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,
+    F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,     F,T,F,T,F,T,F,T,T,F,T,F,T,F,T,F,
+    T,F,T,F,T,F,T,F,T,T,F,T,F,T,F,T,     F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,
+    F,T,F,T,F,T,F,T,F,T,F,T,F,T,F,T,     F,T,F,T,F,T,F,T,F,F,T,F,T,F,T,T,
+
+    T,F,F,T,F,F,F,F,F,T,F,F,F,F,F,F,     F,F,T,F,F,F,F,F,F,T,F,F,F,F,F,F,
+    F,T,F,T,F,T,F,F,F,F,F,F,F,F,F,F,     T,F,F,F,T,F,T,F,F,T,F,F,F,F,F,F,
+    T,T,F,F,F,F,T,F,F,T,F,F,T,F,T,F,     T,F,T,F,T
+]
+
+def toLowerCaseListASCII ( ls , num=True ):
     """
-    convert char to lowercase ASCII alphanumeric
+    convert a list of chars to lowercase ASCII alphanumeric or alphabetic
+    depending on num argument
 
     arguments:
-        x - the char
-    returns:
-        equivalent lower case ASCII char on success, space char otherwise
-        (has side effect of removing all diacritical marks!)
+        ls  - a Unicode list
+        num - True is alphanumeric, otherwise alphabetic only
     """
-    n = Mapping[ord(x)]
-    return Unmapping[n]
+
+    if len(ls) == 0: return
+
+    ll = len(ls)
+    for i in range(ll):
+        c = ls[i]
+        if c >= Lim:
+            c = '_'
+        elif not isLetterOrDigit(c):
+            c = '.'
+        elif not num and isDigit(c):
+            c = '_'
+        else:
+            c = Unmapping[Mapping[ord(c)]]
+        ls[i] = c
 
 def isLowerCaseLetter ( x ):
     """
@@ -452,7 +485,8 @@ def isLowerCaseLetter ( x ):
     returns:
         True if lower case letter, False otherwise
     """
-    return False if x == '' else x.islower()
+#   print 'x=' , x
+    return x != '' and x < Lim and Lower[ord(x)]
 
 def isUpperCaseLetter ( x ):
     """
@@ -463,7 +497,8 @@ def isUpperCaseLetter ( x ):
     returns:
         True if lower case letter, False otherwise
     """
-    return False if x == '' else x.isupper()
+    no = ord(x) if x != '' and x < Lim else 0
+    return Letter[no] and not Lower[no]
 
 def isText ( x ):
     """
@@ -472,7 +507,7 @@ def isText ( x ):
     arguments:
         x - the char
     returns:
-        True if ASCII or Latin-1 or punctuation , False otherwise
+        True if ASCII or Latin or punctuation , False otherwise
     """
     if x == '' or isPureControl(x):
         return False
@@ -595,12 +630,19 @@ def isCJK ( x ):
 
 if __name__ == "__main__":
 
-    chrs = u"pqrstuvwxyz{|}~." + u"ðñòóôõö÷øùúûüýþÿ" + u"ŰűŲųŴŵŶŷŸŹźŻżŽžſ" + u"ǀǁǂǃǄǅǆǇǈǉǊǋǌǍǎǏǐǑǒǓǔ"
+    chr1 = u"pqrstuvwxyz{|}~."
+    chr2 = u"ðñòóôõö÷øùúûüýþÿ"
+    chr3 = u"ŰűŲųŴŵŶŷŸŹźŻżŽžſ"
+    chr4 = u"ǀǁǂǃǄǅǆǇǈǉǊǋǌǍǎǏǐǑǒǓǔ"
+    chr5 = u"ßÿĸŉŸſ"
+    chrs = chr1 + chr2 + chr3 + chr4 + chr5
 
     for cx in list(chrs):
         ko = ord(cx)
         mp = toChar(toIndex(cx))
-        print u'<' + cx + u'> ord=' , '{:3d}'.format(ko) , 'map=' , mp , 'vowel' if isVowel(cx) else ''
+        vo = 'vowel' if isVowel(cx) else ''
+        cy = cx.lower()
+        print u'<' + cx + cy + u'> ord=' , '{:3d}'.format(ko) , 'map=' , mp , vo
 
     print isCJK(u'寶')
     print isCJK(u'譽')
