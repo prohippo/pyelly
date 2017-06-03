@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 28may2017 CPM
+# ellyWildcard.py : 02jun2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -87,6 +87,25 @@ cEOS = unichr(X+14) # end of optional sequence
 cSPC = unichr(X+15) # match any space
 cAPO = unichr(X+16) # match any apostrophe
 cEND = unichr(X+17) # match end of token (must be highest wildcard code)
+
+def isNonSimpleMatch ( c ):
+
+    """
+    can pattern char match 0 or more than 1 char?
+
+    arguments:
+        c - pattern char
+
+    returns:
+        False if pattern char always matches one text char,
+        True otherwise
+    """
+
+    if c in [ cALL , cSAN , cSDG , cSOS , cEOS , cEND ]:
+        return True
+    else:
+        return False
+
 
 Separate = [ cSPC , cAPO ] # must each be in a separate match binding for wildcards
 
@@ -525,9 +544,10 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
             else:
                 last = text[offs]
                 offs += 1
+#           print 'patn=' , patn
             mc = patn[mp]
-#           print 'matching last=' , last, '(' , ord(last) , ') at' , offs
-#           print 'against       ' , mc , '(' , ord(mc , ')'
+#           print 'matching last=' , last, '(' , ord(last) if last != '' else '-', ') at' , offs
+#           print 'against       ' , mc , '(' , ord(mc) , ')'
             if mc != last:
                 if mc != last.lower(): break
 #           print 'matched!'
