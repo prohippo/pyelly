@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# nameRecognition.py : 30mar2017 CPM
+# nameRecognition.py : 01jun2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2015, Clinton Prentiss Mah
 # All rights reserved.
@@ -442,8 +442,7 @@ def infer ( tok ):
     if (nch < 5 or not ellyChar.isUpperCaseLetter(tok[0]) or
         len(ellyConfiguration.digraph) == 0): return False
 
-    for i in range(nch):     # drop diacritical marks, set lowercase
-        tok[i] = ellyChar.toLowerCaseASCII(tok[i])
+    ellyChar.toLowerCaseListASCII(tok,False)
 
     miss = 0
     last = ''
