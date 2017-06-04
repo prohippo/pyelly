@@ -427,12 +427,21 @@ Release Notes:
                       add limited title recognition in entity extraction repertory
                       enhance output in unit testing support
                       extend "marking" rules and integration test
+                      update documentation
  1.4.6   - 29may2017  make numbers with final decimal point as sentence stop exception
                       add lowercase letters as semiwildcards in PyElly pattern matches
                       correct bug in handling of right context in stopExceptions
                       change stopExceptions to make use of semiwildcard matching
                       clean up "default" stop exceptions
                       extend "marking" rules
+                      update documentation
+ 1.4.7   - 04jun2017  fix capitalization bugs in generative semantics
+                      clean up ellyChar methods and tables, extend unit test
+                      add method to check patterns for wildcards not matching 1-to-1
+                      add checking for patterns with only 1-to-1 wildcard marching
+                      put in missing code for stopException matching of right context
+                      clean up default stopException logic
+                      update documentation, make more accurate
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
