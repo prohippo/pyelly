@@ -442,6 +442,7 @@ Release Notes:
                       put in missing code for stopException matching of right context
                       clean up default stopException logic
                       update documentation, make more accurate
+                      extend "marking" rules and integration test
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure

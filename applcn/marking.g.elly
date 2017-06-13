@@ -49,17 +49,17 @@ _
   insert < typg
   append >
 __
-p:elma
-_
-  append <adj>
-  obtain
-  append </adj>
-__
 p:twob  # simple spaced output for 2-branch rule
 _
   left
   space
   right
+__
+p:elma  # needed for vocabulary definition
+_
+  append <adj>
+  obtain
+  append </adj>
 __
 
 #
@@ -969,6 +969,7 @@ g:NCLU[:*r]->ADJ[%-ed,-ing,-cnj] NCLU[:-det,-prep,-num,-qnt]
 #             ?>>?
  l[$ind]r[&quo]>>*r[&cmpd]----
         r[&quo]>>*r[&cmpd]
+   l[$*c]r[&*c]>>*r[&cmpd]+++++
                >>*r[&cmpd]+++
 _
   var typg=adj
@@ -1145,6 +1146,7 @@ _
 __
 
 g:NOUN->UNKN
+  l[&*c]>>[&*c]
 __
 g:NOUN[:*r]->NAVB
  >>-
@@ -1185,20 +1187,21 @@ g:NOUN[:hyph]->NOUN[:-hyph] PUNC[|hyph]
 __
 g:NOUN[:*r]->NOUN[:hyph] NOUN
 # ?>>?
-   >>++
+   >>*r++
 __
 g:NOUN[:*r,cnj]->NOUN[:-*l,-hyph,-poss,-plur,-ing] NOUN[:-cnj,ing,-det]
 #       ?>>?
- r[&prop]>>-2
- l[&spcs]>>-2
+ r[&prop]>>*r-2
+ l[&spcs]>>*r-2
 _
   (twob)
 __
 g:NOUN[:*r,cnj]->NOUN[:-*l,-hyph,-poss,-plur,-ing] NOUN[:-cnj,-ing,-det]
 #                ?>>?
- l[&spcs,*c]r[&*c]>>+2
+ l[&spcs,*c]r[&*c]>>[&*c]+2
           r[&prop]>>-2
           l[&spcs]>>-2
+      l[&*c]r[&*c]>>[&*c]+3
      l[&-*c]r[&*c]>>+2
                   >>+1
 _
@@ -1207,8 +1210,8 @@ __
 
 g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,plur,-ing] NOUN[:-cnj,-ing,-plur,-det]
 #           ?>>?
-     r[&prop]>>-2
- l[&*c]r[&*c]>>+2
+     r[&prop]>>*r+2
+ l[&*c]r[&*c]>>[&*c]+3
        l[&*c]>>+1
              >>-4
 _
@@ -1231,7 +1234,7 @@ __
 
 g:NOUN[:*l,-*l]->NOUN[:*x,-*l,-ing] XID
     c>4>>-3
- l[&*c]>>+3
+ l[&*c]>>+4
        >>-3
 _
   (twob)
@@ -1253,6 +1256,7 @@ g:ABBR->ABBR ABBR
  >>++
 __
 g:NOUN->ABBR NOUN
+ >>[&*c]
 _
   (twob)
 __
@@ -1281,7 +1285,14 @@ _
     end
 __
 
-g:VCLU[^*r]->ADV[~-cplx] VCLU[^-ed]
+g:VCLU[^*r]->ADV[~-cplx] VCLU[^-ed,-ing]
+ l[$deg]>>*r------
+_
+  var typg=adv
+  (lxtd)
+__
+g:VCLU[^*r]->ADV[~-cplx] VCLU[^ing]
+ l[$cnj]>>*r------
  l[$deg]>>*r------
 _
   var typg=adv
@@ -1294,11 +1305,18 @@ _
   var typg=adv
   (lxtd)
 __
-g:VCLU[^*l]->VCLU ADV[~-mod]
+g:VCLU[^*l]->VCLU ADV[~-mod,-dir]
   r[$deg]  >>*l
   r[$prd]  >>*l++++
   l[$-trns]r[$trlg]>>*l+
   >>----
+_
+  var typg=adv
+  (rxtd)
+__
+g:VCLU[^*l]->VCLU ADV[~dir,trlg]
+  l[$spat]>>++
+          >>-
 _
   var typg=adv
   (rxtd)
@@ -1405,7 +1423,7 @@ g:VERB[^*r,proc]->VERB[^proc] VERB[^ing]
 _
   (twob)
 __
-g:VERB[^proc]->VERB[^proc] ADJ
+g:VERB[^*l]->VERB[^proc] ADJ
  >>+++
 _
   left
@@ -1429,7 +1447,7 @@ g:VERB[^beaj]->BE ADJ[%-ed,-ing]
 _
   (twob)
 __
-g:VERB->VERB[^chng] ADJ[%-*x]
+g:VERB[^*l]->VERB[^chng] ADJ[%-*x]
  >>*l+++
 _
   (twob)
@@ -1673,12 +1691,12 @@ _
   right
   append </adv>
 __
-g:NUM->NUM[:-cnj] NUM[:cnj,-prep]
+g:NUM->NUM[:-cnj] NUM[:cnj,-prep,-*r]
     >>+++
 _   
   (twob)   # "3 in 4"
 __
-g:NUM[:cnj]->PREP['div] NUM[:-cnj,-prep]
+g:NUM[:cnj]->PREP['div] NUM[:-cnj,-prep,-*r]
  >>--
 _
   (twob)
@@ -1692,7 +1710,7 @@ _
 __
 
 g:NUM[:prep]->PREP['prx] NUM[:-prep]
- >>+
+ n<3>>++
 _
   var typg=prep
   (typg)
@@ -1719,6 +1737,7 @@ _
   (twob)
 __
 g:NOUN[:plur]->UNKN XS
+  l[&*c]>>[&*c]
 _
   (twob)
 __
@@ -2723,23 +2742,22 @@ _
   insert < ltyp
   append >
 __
-
 g:SNGL[|vrb]->VERB PUNC[|stop]
- l[$*c] n<3>>[$vls]++++
+ l[$*c] n<3>>[$vls]-1
            >>-8
 _
   var ltyp=verb
   (lone)
 __
 g:SNGL[|nom]->NOUN PUNC[|stop]
- l[$*c] n<3>>[$nls]++++
+ l[$*c] n<3>>[$nls]-1
            >>-8
 _
   var ltyp=noun
   (lone)
 __
 g:SNGL->ADJ PUNC[|stop]
- l[$*c] n<3>>++++
+ l[$*c] n<3>>-1
            >>-8
 _
   var ltyp=adj
@@ -2759,6 +2777,7 @@ _
   (chnt)
 __
 g:PEXP[|stop]->PUNC[|*l,quo] SNGL[|vrb]
+ >>[$vls]
 _
   (chnt)
 __
@@ -2767,14 +2786,14 @@ _
   (chnt)
 __
 g:PEXP[|*l]->PEXP[|stop] SNGL[|nom]
- l[$nls]>>[$nls]--
-        >>[$nls]
+ l[$-nls]>>[$nls]+4
+         >>[$nls]
 __
 g:PEXP[|*l]->PEXP[|stop] SNGL[|vrb]
- l[$-nls]>>--
+ l[$-vls]>>+4
 __
 g:PEXP[|*l]->PEXP[|stop] SNGL[|-nom,-vrb]
- l[$nls]>>--
+         >>+4
 __
 
 #
@@ -2963,7 +2982,7 @@ _
   append </prep>
   merge
 __
-g:ELEM->CONJ[@prep,aftr] NCLU[:-plur,-prep,-det,-qnt]
+g:ELEM->CONJ[@prep,aftr] NCLU[:-plur,-prep,-det,-qnt,-ing]
       n>4>>[!rv]------
  r[&evnt]>>[!rv]++
          >>[!rv]-
@@ -3035,7 +3054,7 @@ __
 d:iv  <- XID[:val]
 __
 g:NOUN->ADJ XID[:val]
-  l[&*c]r[&*c]>>++++
+  l[&*c]r[&*c]>>++++++
               >>--
 _
   (twob)
@@ -3058,4 +3077,24 @@ g:NOUN->NTTL
 _
   var typg=name
   (typg)
+__
+
+g:SVED[^aux]->BE SVED
+_
+  (twob)
+__
+g:VCLU[^ing]->SVED[^aux] VERB[^ing]
+ >>+11
+_
+  append <vclu><verb>
+  (twob)
+  append </verb></vclu>
+__
+g:BE->ADV[~mod] BE
+ l[$deg]>>+++
+        >>+
+_
+  var typg=adv
+  (typg)
+  right
 __

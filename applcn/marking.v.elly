@@ -49,6 +49,7 @@ has : HAVE
 has to : AUXL[^s]
 have to : AUXL
 having : HAVE[^ing]
+heard : SVED - -1
 hove : VERB[^ed]
 inspired : VERB[^ed]
 internationals : NOUN[:plur]
@@ -56,8 +57,8 @@ knew : VERB[^ed]
 known : VERB[^ed,*x]
 led : NOUN - -2
 led : VERB[^ed]
-lives : NOUN[:plur]   =life -s
-lives : VERB[^s] - +1 =live -s
+lives : NOUN[:plur] - +1  =life -s
+lives : VERB[^s]          =live -s
 made : VERB[^ed]
 made up : VERB[^ed,*x]
 marked : VERB[^ed]
@@ -78,6 +79,8 @@ related : VERB[^ed]
 rose : VERB[^ed,*x] - +1
 said : VERB[^ed,dit]
 sat down : VERB[^ed,*x]
+seen : VERB[^ed]
+seen : SVED - -1
 shown : VERB[^ed]
 sitting : VERB[^ing]
 swooping : ADJ[%ing] - +1
@@ -98,6 +101,8 @@ wrote : VERB[^ed,*x]
 airstrike : NOUN
 bookended : VERB[^ed] - -1
 box set : NOUN
+cable tv : NOUN
+cable tv channel : NOUN
 christian doctrine : NOUN
 clean energy : NOUN
 configurable : ADJ
@@ -309,6 +314,7 @@ do that : VERB
 due to : PREP
 each : POSTP[@num] - -1
 each other : PRO
+even so : CONJ
 even though : CONJ
 few hundred : NUM
 for example : PEXP[|eg]
@@ -547,7 +553,7 @@ academy : NOUN
 accelerate : VERB
 accept : VERB
 access : NOUN
-access : VERB
+access : VERB - +1
 accident : NOUN
 accommodate : VERB
 accord : NOUN
@@ -614,7 +620,7 @@ affect : VERB
 afghanistan : NOUN
 africa : NOUN
 african : NOUN
-african : ADJ
+african : ADJ - +2
 afternoon : NOUN
 afterward : ADV
 again : ADV
@@ -775,7 +781,7 @@ ascetic : ADJ
 ascetical : ADJ
 asia : NOUN
 asian : NOUN
-asian : ADJ
+asian : ADJ - +2
 aside : NOUN - -4
 aside : ADV  - +1
 ask : VERB
@@ -923,7 +929,7 @@ become : VERB[^chng]
 bed : NOUN
 bed : VERB
 bedroom : NOUN
-before : ADV[~non,trlg]
+before : ADV[~non,trlg] [$cnj] 0
 beg : VERB
 begin : NOUN - -2
 begin : VERB[^proc]
@@ -1045,7 +1051,7 @@ brave : VERB
 brave : ADJ
 brazil : NOUN
 brazilian : NOUN
-brazilian : ADJ
+brazilian : ADJ - +2
 bread : NOUN
 bread : VERB
 break : NOUN
@@ -1142,7 +1148,7 @@ campaign : VERB
 campus : NOUN
 canada : NOUN
 canadian : NOUN
-canadian : ADJ
+canadian : ADJ - +2
 canberra : NOUN
 cancer : NOUN
 candidate : NOUN
@@ -1285,7 +1291,7 @@ chorus : VERB
 chorus line : NOUN
 christ : NOUN
 christian : NOUN
-christian : ADJ
+christian : ADJ - +2
 christianity : NOUN
 christmas : NOUN
 church : NOUN
@@ -1646,7 +1652,7 @@ cub : NOUN
 cub : VERB
 cuba : NOUN
 cuban : NOUN
-cuban : ADJ
+cuban : ADJ - +1
 cubby : NOUN
 culminate : VERB
 cult : NOUN
@@ -2088,13 +2094,13 @@ eucharistic : ADJ
 eumulate : VERB
 europe : NOUN
 european : NOUN
-european : ADJ
+european : ADJ - +2
 evacuate : VERB
 evaluate : VERB
 even : NOUN - -2
 even : VERB
 even : ADJ
-even : ADV[~mod] [$deg] 0
+even : ADV[~mod] [$deg] +1
 event : NOUN
 eventually : ADV
 ever : ADV
@@ -2641,7 +2647,7 @@ harsh : ADJ
 havana : NOUN
 hawaii : NOUN
 head : NOUN
-head : VERB
+head : VERB [$spat] 0
 header : NOUN
 headmaster : NOUN
 headquarter : VERB
@@ -2736,7 +2742,7 @@ hp : NOUN
 hug : NOUN
 hug : VERB
 human : NOUN
-human : ADJ
+human : ADJ - +2
 humanoid : NOUN
 hungary : NOUN
 hurricane : NOUN
@@ -2798,7 +2804,7 @@ increase : VERB
 independent : ADJ
 india : NOUN
 indian : NOUN
-indian : ADJ
+indian : ADJ - +2
 indicate : VERB
 indigestible : ADJ
 indus : NOUN
@@ -2930,7 +2936,7 @@ issuance : NOUN
 issue : NOUN
 issue : VERB
 italian : NOUN
-italian : ADJ
+italian : ADJ - +2
 italy : NOUN
 item : NOUN
 item : ADV - -5
@@ -3495,7 +3501,7 @@ naked : ADJ
 name : NOUN
 name : VERB
 namibian : NOUN
-namibian : ADJ
+namibian : ADJ - +2
 narrate : VERB
 narrative : NOUN [&stry] 0
 narrative : ADJ - -1
@@ -3563,7 +3569,7 @@ nickname : NOUN
 nickname : VERB
 nigeria : NOUN
 nigerian : NOUN
-nigerian : ADJ
+nigerian : ADJ - +2
 night : NOUN
 nihon : NOUN
 nobel : NOUN
@@ -3586,7 +3592,7 @@ north : NOUN - -2
 north : ADJ
 north : ADV[~dir,trlg]
 north american : NOUN
-north american : ADJ
+north american : ADJ - +2
 north pole : NOUN
 northbound : ADJ
 northeast : NOUN - 2
@@ -3652,7 +3658,7 @@ off : ADV[~trlg]
 offend : VERB
 offensive : NOUN
 offensive : ADJ
-offer : NOUN
+offer : NOUN - -2
 offer : VERB - +2
 office : NOUN
 officer : NOUN
@@ -3767,7 +3773,7 @@ package : NOUN
 package : VERB
 paediatrician : NOUN
 pagan : NOUN
-pagan : ADJ
+pagan : ADJ - +2
 page : NOUN
 page : VERB
 paint : NOUN
@@ -4010,9 +4016,9 @@ popularity : NOUN
 populate : VERB
 population : NOUN
 pork : NOUN
-port : NOUN [&spcs] 0
+port : NOUN [&spcs] +2
 port : VERB
-port : ADJ
+port : ADJ - -1
 portable : NOUN
 portable : ADJ
 portend : VERB
@@ -4254,6 +4260,7 @@ rage : NOUN
 rage : VERB
 railroad : NOUN
 railroad : VERB
+railroad line : NOUN
 railway : NOUN
 rain : NOUN
 rain : VERB
@@ -4406,7 +4413,7 @@ reprint : NOUN
 reprint : VERB
 republic : NOUN
 republican : NOUN
-republican : ADJ
+republican : ADJ - +2
 reputation : NOUN
 require : VERB
 requirement : NOUN
@@ -4547,6 +4554,7 @@ rv : NOUN
 s : NOUN
 sacred : ADJ
 saddam : NOUN
+saddam hussein : NOUN
 safe : NOUN
 safe : ADJ
 safety : NOUN
@@ -5018,7 +5026,7 @@ stephen : NOUN
 stephenson : NOUN
 stereotypical : ADJ
 sterile : ADJ
-sterling : NOUN
+sterling : NOUN - +1
 sterling : ADJ - -2
 sterling silver : NOUN
 stick : NOUN
@@ -5539,7 +5547,7 @@ unsettle : VERB
 unsuccessful : ADJ
 unwilling : ADJ
 up : VERB - -6
-up : ADJ - -2
+up : ADJ - -3
 up : ADV[~trlg] - -1
 upcoming : ADJ
 update : NOUN
@@ -5824,7 +5832,7 @@ ziegfeld : NOUN
 ziegfeld follies : NOUN[:plur]
 zimbabwe : NOUN
 zimbabwean : NOUN
-zimbabwean : ADJ
+zimbabwean : ADJ - +2
 zinfandel : NOUN
 zone : NOUN
 zone : VERB
