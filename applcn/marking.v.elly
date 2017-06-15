@@ -12,6 +12,8 @@
 biggest : ADJ
 largest : ADJ
 
+advanced : VERB[^ed]
+advancing : VERB[^ing]
 ate : VERB[^ed,*x]
 based on : VERB[^ed,*x]
 became : VERB[^ed,chng]
@@ -22,6 +24,7 @@ born : VERB[^ed] - +2
 building : VERB[^ing,ptcl]
 built : VERB[^ed]
 children : NOUN[:plur]
+circulating : VERB[^ing]
 did : VERB[^ed,*x]
 caught : VERB[^ed] [$trns] 0
 determined : VERB[^ed]
@@ -30,7 +33,9 @@ discouraged : VERB[^ed]
 djs : NOUN[:plur]
 djs : VERB[^s]
 does not : AUXL[^s]
+elevated : VERB[^ed]
 exciting : VERB[^ing]
+feeding : VERB[^ing]
 fighting : VERB[^ing]
 financing : VERB[^ing]
 fishermen : NOUN[:plur]
@@ -52,6 +57,7 @@ having : HAVE[^ing]
 heard : SVED - -1
 hove : VERB[^ed]
 inspired : VERB[^ed]
+interesting : VERB[^ing]
 internationals : NOUN[:plur]
 knew : VERB[^ed]
 known : VERB[^ed,*x]
@@ -67,6 +73,7 @@ means : VERB[^s] - +1
 mice : NOUN[:plur]
 millennia : NOUN[:plur]
 opening : VERB[^ing]
+opposing : VERB[^ing]
 ought : VERB
 paid : VERB[^ed]
 points of View : NOUN[:plur]
@@ -83,6 +90,7 @@ seen : VERB[^ed]
 seen : SVED - -1
 shown : VERB[^ed]
 sitting : VERB[^ing]
+stimulating : VERB[^ing]
 swooping : ADJ[%ing] - +1
 swooping : VERB[^ing]
 taken : VERB[^ed]
@@ -422,6 +430,7 @@ most as many : ADJ
 asian-american : ADJ
 at-times : ADV
 bill-to : ADJ
+case-sensitive : ADJ
 cul-de-sac : NOUN
 cul-de-sac street : NOUN
 eat-in : ADJ
@@ -606,6 +615,8 @@ adultery : NOUN
 advance : NOUN
 advance : VERB
 advance : ADJ
+advanced : ADJ - +1
+advancing : ADJ[%ing] - +1
 advantage : NOUN
 advantage : VERB - -1
 adventure : NOUN
@@ -1300,6 +1311,7 @@ chutney : NOUN
 cipher : NOUN
 cipher : VERB
 circulate : VERB
+circulating : ADJ[%ing] - +1
 circumpolar : ADJ
 circumstance : NOUN
 circumstantial : ADJ
@@ -1687,7 +1699,7 @@ cycle : VERB
 cypher : NOUN
 cypher : VERB
 daily : NOUN - -2
-daily : ADJ
+daily : ADJ - +2
 daily : ADV
 damage : NOUN
 damage : VERB
@@ -1829,6 +1841,7 @@ dignitary : NOUN
 diminish : VERB
 dine : VERB
 diner : NOUN
+dining room : NOUN
 dire : ADJ
 direct : VERB
 direct : ADJ
@@ -2006,6 +2019,7 @@ electrical system : ADJ
 electricity : NOUN
 element : NOUN
 elevate : VERB
+elevated : ADJ[%ed] - +4
 elevation : NOUN
 elizabeth : NOUN
 elvis : NOUN
@@ -2225,6 +2239,7 @@ fee : VERB - -2
 feed : NOUN
 feed : VERB
 feedback : NOUN
+feeding : NOUN - +1
 feel : NOUN - -1
 feel : VERB
 fellow : NOUN
@@ -2731,7 +2746,7 @@ host : VERB
 hot : ADJ
 hotel : NOUN
 hour : NOUN
-hourly : ADJ
+hourly : ADJ - +2
 hourly : ADV
 house : NOUN
 house : VERB
@@ -2875,6 +2890,7 @@ interchange : NOUN
 interchange : VERB
 interest : NOUN
 interest : VERB
+interesting : ADJ[%ing] - +1
 interference : NOUN
 interferometer : NOUN
 interior : NOUN
@@ -3173,6 +3189,7 @@ liver : NOUN
 liver : ADJ - -1
 liverpool : NOUN
 livestock : NOUN
+living room : NOUN
 local : NOUN
 local : ADJ
 locate : VERB
@@ -3585,7 +3602,7 @@ nordic : NOUN
 nordic : ADJ
 norm : NOUN
 normal : NOUN
-normal : ADJ
+normal : ADJ - +2
 normalize : VERB
 normally : ADV
 north : NOUN - -2
@@ -3693,6 +3710,7 @@ opponent : ADJ
 opportune : ADJ
 opportunity : NOUN
 oppose : VERB
+opposing : ADJ[%ing] - +1
 opposition : NOUN
 ops : NOUN
 opt : VERB
@@ -4809,6 +4827,7 @@ site : NOUN
 site : VERB
 sitting : NOUN - -2
 sitting : ADJ
+sitting room : NOUN
 situation : NOUN
 size : NOUN
 size : VERB
@@ -4819,6 +4838,9 @@ sky : NOUN
 sky : VERB - -2
 slave : NOUN
 slave : VERB
+sleep : NOUN - -1
+sleep : VERB
+sleeping room : NOUN
 sleepy : ADJ
 slight : NOUN
 slight : VERB
@@ -5038,6 +5060,7 @@ still : VERB - -2
 still : ADJ - -1
 still : ADV - +2
 stimulate : VERB
+stimulating : ADJ[%ing] - +1
 stipulate : VERB
 stir : NOUN
 stir : VERB
@@ -5340,7 +5363,7 @@ thursday : NAVB
 thus : NOUN - -3
 thus : ADV
 thyroid : NOUN
-thyroid : ADJ
+thyroid : ADJ - +2
 ticket : NOUN
 ticket : VERB - -2
 tidbit : NOUN

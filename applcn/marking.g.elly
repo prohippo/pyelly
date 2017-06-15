@@ -1442,6 +1442,7 @@ __
 g:VERB[^*r]->NOUN[:hyph] VERB
 __
 g:VERB[^beaj]->BE ADJ[%-ed,-ing]
+      n>4>>---
  r[$cmpd]>>++++
          >>+
 _
@@ -1625,6 +1626,12 @@ _
 __
 g:ADJ[%*r,-cnj]->ADJ[%-*x] ADJ[%cnj]
  >>*r++++
+_
+  (twob)
+__
+g:ADJ->ADJ[%-ing] ADJ[%ing]
+ n>3>>*r----
+    >>*r+++
 _
   (twob)
 __
