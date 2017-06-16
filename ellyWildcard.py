@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 02jun2017 CPM
+# ellyWildcard.py : 15jun2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -175,6 +175,7 @@ def convert ( strg ):
     t = [ ]                          # converted output
     i = 0
     while True:
+#       print 'loop nlb=' , nlb
         if i == lng: break
         wild = True                  # flag for wildcard char, True by default
         x = strg[i]
@@ -182,6 +183,8 @@ def convert ( strg ):
 
         if   x == wANY:              # check for wildcard
             t.append(cANY)
+        elif x == wCAN:
+            t.append(cCAN)
         elif x == wALF:
             t.append(cALF)
         elif x == wUPR:
@@ -246,7 +249,7 @@ def convert ( strg ):
             t.append(x)
             wild = False
 
-        if wild and nlb > 0 and x != ellyChar.LBR:
+        if wild and nlb > 0 and x != ellyChar.LBR and x != ellyChar.USC:
 #           print 'at wildcard' , x , 'nlb=' , nlb
             return None              # no wildcards allowed in optional segments
 
@@ -302,6 +305,7 @@ def numSpaces ( seg , cnv=False ):
     """
 
     nsp = 0
+    if seg == '': return 0
     ls = len(seg)
     for i in range(ls):
         c = seg[i]
@@ -609,6 +613,13 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
                 _bind(); mbi += 1
                 continue
 
+        elif tc == cCAN: # nonalphanumeric wildcard?
+#           print 'at cCAN'
+            if last != ellyChar.AMP:
+                if last == '' or not ellyChar.isLetterOrDigit(last):
+                    _bind(); mbi += 1
+                    continue
+
         elif tc == cDIG: # digit wildcard?
             if last != '' and ellyChar.isDigit(last):
                 _bind(); mbi += 1
@@ -791,6 +802,9 @@ if __name__ == "__main__":
     print 'spcg=' , spcg
 
     patx = convert(rawp)
+    if patx == None:
+        print >> sys.stderr , "** cannot convert pattern"
+        sys.exit(1)
     nspx = numSpaces(patx,spcg)
     if nspx > 0 and not spcg:
         print >> sys.stderr , "** space in pattern without second command line argument"
