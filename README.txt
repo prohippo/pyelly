@@ -443,6 +443,9 @@ Release Notes:
                       clean up default stopException logic
                       update documentation, make more accurate
                       extend "marking" rules and integration test
+ 1.4.8   - 15jun2017  put in missing code for handling nonalphanumeric wildcard
+                      clean up macro substitution pattern matching
+                      update documentation for wildcards
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
