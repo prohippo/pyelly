@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# macroTable.py : 17apr2017 CPM
+# macroTable.py : 15jun2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -281,20 +281,23 @@ class MacroTable(object):
             dl = definitionLine.DefinitionLine(l,False)
             left = dl.left                    # pattern to be matched
             tail = dl.tail                    # transformation to apply to match
+#           print 'dl.left=' , left
             if left == None or tail == None:
                 self._err(l=l)                # report missing part of rule
                 continue
             if left.find(' ') >= 0:           # pattern side of macro rule
-                self._err(l=l,d=1)            # cannot contain spaces
+                ms = 'pattern in macro contains spaces'
+                self._err(s=ms,l=l,d=1)       # cannot contain spaces
                 continue
 
-            nleft = list(left)
-            nspm = ellyWildcard.numSpaces(nleft,True)
-            if nspm > 0: left = ''.join(nleft)
+            lefts = list(left)
+#           print 'left=' , lefts
+            nspm = ellyWildcard.numSpaces(lefts)
             pat = ellyWildcard.convert(left)  # get pattern with encoded wildcards
             if pat == None:
                 self._err('bad wildcards',l)
                 continue
+#           print 'pat=' , ellyWildcard.deconvert(pat) , 'len=' , len(pat)
             pe = pat[-1]
             if not pe in [ ellyWildcard.cALL , ellyWildcard.cEND , ellyWildcard.cSPC ]:
                 pat += ellyWildcard.cEND      # pattern must end in $ if it does not end in * or _
