@@ -444,8 +444,10 @@ Release Notes:
                       update documentation, make more accurate
                       extend "marking" rules and integration test
  1.4.8   - 15jun2017  put in missing code for handling nonalphanumeric wildcard
+                      allow space wildcard in optional pattern components
                       clean up macro substitution pattern matching
                       update documentation for wildcards
+                      extend MARKING rules
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
