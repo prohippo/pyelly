@@ -76,6 +76,7 @@ opening : VERB[^ing]
 opposing : VERB[^ing]
 ought : VERB
 paid : VERB[^ed]
+phenomena : NOUN[:plur]
 points of View : NOUN[:plur]
 potions : NOUN
 ran : VERB[^ed]
@@ -137,7 +138,6 @@ on-grid : ADJ
 on-grid power plant : NOUN
 openings : NOUN[:plur]
 our lady : NOUN
-phenom : NOUN
 pinyin : NOUN
 policymaker : NOUN
 private sector : NOUN
@@ -299,6 +299,7 @@ and so : CONJ
 and so on : MISC
 and then : CONJ
 approximately average : ADJ
+as a means of : CONJ
 as a result : CONJ
 as a result of : PREP
 as if : CONJ
@@ -1284,6 +1285,7 @@ chicken : ADJ
 chief : NOUN
 chief : ADJ
 child : NOUN
+child abuse : NOUN
 china : NOUN
 chinese : NOUN
 chinese : ADJ
@@ -3939,6 +3941,7 @@ peshmerga : NOUN
 peter : NOUN
 petroleum : NOUN
 ph.d. : NOUN
+phenomenon : NOUN
 philip : NOUN
 philosophy : NOUN
 phoebe : NOUN
@@ -4787,6 +4790,7 @@ sicken : VERB
 side : NOUN
 side : VERB
 side : ADJ
+sids : NOUN
 siege : NOUN
 sierra : NOUN
 sigh : NOUN
@@ -5104,7 +5108,7 @@ stretch : NOUN
 stretch : VERB
 stretch : ADJ
 strike : NOUN
-strike : VERB
+strike : VERB[^ptcl]
 string : NOUN
 string : VERB
 string orchestra : NOUN
