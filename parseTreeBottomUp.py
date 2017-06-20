@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBottomUp.py : 01may2017 CPM
+# parseTreeBottomUp.py : 19jun2017 CPM
 # -----------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -29,7 +29,8 @@
 # -----------------------------------------------------------------------------
 
 """
-specialization of parse tree for augmented bottom-up context-free parsing
+subclass of parse tree base for bottom-up context-free parsing
+to be subclassed further
 """
 
 import ellyBits
@@ -58,6 +59,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
 
         gtb    - basic syntax and internal dictionary
         ptb    - syntax type patterns
+
         goal   - goals set at each position
         gbits  - flags for syntax types of goals at each position
         wordno - index of next word in sentence to process
@@ -293,6 +295,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
         if word == None:
             return False
         ws = u''.join(word) if word is list else word
+#       print 'ws=' , ws , 'dctn=' , self.gtb.dctn.keys()
         if ws not in self.gtb.dctn: return False
 #       print 'found' , '[' + ws + ']'
         rules = self.gtb.dctn[ws]     # look up string in internal dictionary
@@ -579,10 +582,10 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
 # unit test
 #
 
-import sys
-import ellyToken
-
 if __name__ == '__main__':
+
+    import sys
+    import ellyToken
 
     class M(object):  # dummy derivability matrix
         """ dummy class for testing

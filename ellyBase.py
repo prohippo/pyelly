@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 31may2017 CPM
+# ellyBase.py : 19jun2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -29,8 +29,8 @@
 # -----------------------------------------------------------------------------
 
 """
-integrating PyElly components into a language processing tool
-to handle a single sentence with no \n chars at one time
+integrating PyElly components into a language processing tool to handle input
+consisting of a single sentence on a single line with no \n chars
 """
 
 import sys
@@ -55,14 +55,14 @@ import symbolTable
 
 import os   # needed to get file modification times
 
-# binary files
+# binary files created, saved, and reloaded
 
 rules      = ellyDefinition.grammar     # for saving grammar rules
 vocabulary = vocabularyTable.vocabulary # for saving compiled vocabulary
 
 _session = '.session.elly.bin'          # for saving session information
 
-# source text file suffixes
+# source text file suffixes for language definition rules
 
 _rules      = [ '.g.elly' , '.m.elly' , '.p.elly' , '.n.elly' , '.h.elly' ,
                 '.stl.elly' , '.ptl.elly' ]
@@ -70,7 +70,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.4.7'                      # current version of PyElly software
+release = 'v1.4.8'                      # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
