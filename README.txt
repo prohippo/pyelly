@@ -447,7 +447,7 @@ Release Notes:
                       allow space wildcard in optional pattern components
                       clean up macro substitution pattern matching
                       update documentation for wildcards
-                      extend MARKING rules
+                      extend MARKING rules and integration test
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure

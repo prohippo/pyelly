@@ -142,6 +142,7 @@ pinyin : NOUN
 policymaker : NOUN
 private sector : NOUN
 programmable : ADJ
+proof to the contrary : NOUN
 public sector: NOUN
 pyroclastic : ADJ
 rebaptizer : NOUN
@@ -1474,7 +1475,7 @@ concurrency : NOUN
 concurrent : ADJ
 concurrently : ADV
 condemn : VERB
-condition : NOUN
+condition : NOUN - +1
 condition : VERB
 condom : NOUN
 conduct : NOUN
@@ -1612,7 +1613,7 @@ courage : NOUN
 course : NOUN
 course : VERB
 course : ADV
-court : NOUN
+court : NOUN - +1
 court : VERB
 courtyard : NOUN
 cousin : NOUN
@@ -2658,7 +2659,7 @@ hardly : ADV
 hardship : NOUN
 hardware : NOUN
 harm : NOUN
-harm : VERB
+harm : VERB - +1
 harry : VERB - -1
 harsh : ADJ
 havana : NOUN
@@ -3022,8 +3023,8 @@ kick : NOUN
 kick : VERB
 kid : NOUN
 kid : VERB
-kill : NOUN
-kill : VERB - +1
+kill : NOUN - -1
+kill : VERB - +2
 killer : NOUN
 kilometer : NOUN
 kilometre : NOUN

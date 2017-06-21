@@ -446,7 +446,7 @@ g:ELEM[^dit]->PEXP[|eg,-com,-stop]
  >>*l
 __
 g:ELEM[^*r]->PUNC[|*l,quo] ELEM
- >>--
+ >>---
 _
   var typg=punc
   (typg)
@@ -3104,4 +3104,12 @@ _
   var typg=adv
   (typg)
   right
+__
+
+d:ONExx <- NUMxx
+_
+  append 1
+__
+g:NUM->NUMxx
+ >>++
 __
