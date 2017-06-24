@@ -448,6 +448,9 @@ Release Notes:
                       clean up macro substitution pattern matching
                       update documentation for wildcards
                       extend MARKING rules and integration test
+ 1.4.9   - 30jun2017  add Greek small letters to PyElly char set
+                      extend MARKING rules
+                      update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
