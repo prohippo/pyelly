@@ -108,10 +108,12 @@ wrote : VERB[^ed,*x]
 # # # # definitions missing from WordNet
 
 airstrike : NOUN
+as compared to : CONJ
 bookended : VERB[^ed] - -1
 box set : NOUN
 cable tv : NOUN
 cable tv channel : NOUN
+chemical symbol : NOUN
 christian doctrine : NOUN
 clean energy : NOUN
 configurable : ADJ
@@ -126,6 +128,7 @@ hashtag : NOUN
 homiletics : NOUN
 hot 100 : NUM
 hydro : NOUN
+in terms of : CONJ
 interferometry : NOUN
 jain : NOUN
 manga : NOUN
@@ -154,6 +157,7 @@ rgb : ADJ
 rpg : NOUN
 selectable : ADJ
 spectator : ADJ - +1
+spectral type : NOUN[:*x]
 spiritual director : NOUN
 storytelling : NOUN
 streetlamp : NOUN
@@ -950,7 +954,7 @@ behavior : NOUN
 behind : NOUN
 behind : ADJ
 behind : ADV[~trlg]
-being : BE[^ing]
+being : BE[^ing] - +1
 being : NOUN - -2
 belarus : NOUN
 belief : NOUN
@@ -2761,6 +2765,7 @@ hug : NOUN
 hug : VERB
 human : NOUN
 human : ADJ - +2
+human being : NOUN
 humanoid : NOUN
 hungary : NOUN
 hurricane : NOUN
@@ -2939,7 +2944,7 @@ iraqi : ADJ
 ireland : NOUN
 irish : NOUN
 irish : ADJ
-iron : NOUN
+iron : NOUN - +2
 iron : VERB
 iron : ADJ
 irreversible : ADJ
@@ -3518,6 +3523,7 @@ mutual : ADJ
 mutually : ADV
 mythology : NOUN
 naked : ADJ
+naked eye : NOUN
 name : NOUN
 name : VERB
 namibian : NOUN
@@ -4885,6 +4891,7 @@ soft : ADV - -1
 software : NOUN
 solar : ADJ
 solar power : NOUN
+solar system : NOUN
 soldier : NOUN
 soldier : VERB
 sole : NOUN
@@ -5841,7 +5848,7 @@ yes : NOUN
 yes : NOUN - -3
 yet : ADV
 yield : NOUN
-yield : VERB
+yield : VERB - +2
 yonder : ADJ - -1
 yonder : ADV
 young : NOUN

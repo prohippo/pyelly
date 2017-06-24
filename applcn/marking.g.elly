@@ -610,7 +610,7 @@ _
 # view 32
 __
 g:NCLU->PEXP[|nom,eg,-com,-stop]
- >>++
+ >>+2
 _
   var typg=nclu
   (typg)
