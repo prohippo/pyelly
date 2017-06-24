@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 03jun2017 CPM
+# ellyChar.py : 24jun2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -65,7 +65,13 @@ Pnc = [ u'“' , u'”' , u'‘' , u'’' , u'–' , u'—' , u'…' , u'™' ] 
 Opn = [ u'“' , u'‘' , u'"' , u"'" , u'[' , u'(' ]
 Cls = [ u'”' , u'’' , u'"' , u"'" , u']' , u')' ]
 
-Lim = u'\u01D5'    # limit of Unicode chars recognized
+Grk = [            # small Greek letters, not treated as alphabetic
+    u'α',u'β',u'γ',u'δ',u'ε',u'ζ',u'η',u'θ',
+    u'ι',u'κ',u'λ',u'μ',u'ν',u'ξ',u'ο',u'π',
+    u'ρ',u'σ',u'τ',u'υ',u'φ',u'χ',u'ψ',u'ω'
+]
+
+Lim = u'\u01D5'    # main limit of Unicode chars recognized
 
 LaS = 0x0100       # start of Latin supplement
 LaT = 0x0120       # end of supplement control chars
@@ -512,7 +518,7 @@ def isText ( x ):
     if x == '' or isPureControl(x):
         return False
     else:
-        return x < Lim or x in Pnc
+        return x < Lim or x in Pnc or x in Grk
 
 control = [
     T,T,T,T,T,T,T,T,T,F,F,T,T,F,T,T,
@@ -635,7 +641,8 @@ if __name__ == "__main__":
     chr3 = u"ŰűŲųŴŵŶŷŸŹźŻżŽžſ"
     chr4 = u"ǀǁǂǃǄǅǆǇǈǉǊǋǌǍǎǏǐǑǒǓǔ"
     chr5 = u"ßÿĸŉŸſ"
-    chrs = chr1 + chr2 + chr3 + chr4 + chr5
+    chr6 = u"αβγδεζ"
+    chrs = chr1 + chr2 + chr3 + chr4 + chr5 + chr6
 
     for cx in list(chrs):
         ko = ord(cx)
