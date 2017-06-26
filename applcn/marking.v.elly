@@ -23,14 +23,16 @@ bit : VERB[^ed,*x]
 born : VERB[^ed] - +2
 building : VERB[^ing,ptcl]
 built : VERB[^ed]
+caught : VERB[^ed] [$trns] 0
 children : NOUN[:plur]
 circulating : VERB[^ing]
-did : VERB[^ed,*x]
-caught : VERB[^ed] [$trns] 0
 determined : VERB[^ed]
+did : VERB[^ed,*x]
 did not : AUXL[^ed]
 discouraged : VERB[^ed]
 djs : NOUN[:plur]
+does : NOUN[:plur] - -1
+does : VERB[^s] - +1
 djs : VERB[^s]
 does not : AUXL[^s]
 elevated : VERB[^ed]
@@ -109,6 +111,7 @@ wrote : VERB[^ed,*x]
 
 airstrike : NOUN
 as compared to : CONJ
+because of : PREP
 bookended : VERB[^ed] - -1
 box set : NOUN
 cable tv : NOUN
@@ -547,6 +550,7 @@ World News Tonight with David Muir : NOUN
 fried liver attack : NOUN
 2 knights defense : NOUN
 "thousands" : NUM
+% : NOUN[:plur]
 
 # # # # WordNet 3.1 entries
 
@@ -1938,7 +1942,7 @@ down : ADV [$trlg] +2
 download : NOUN
 download : VERB
 downward : ADJ
-downward : ADV
+downward : ADV [$trlg] +2
 draft : NOUN
 draft : VERB
 drag : NOUN
@@ -2946,7 +2950,7 @@ irish : NOUN
 irish : ADJ
 iron : NOUN - +2
 iron : VERB
-iron : ADJ
+iron : ADJ - -3
 irreversible : ADJ
 irritate : VERB
 isis : NOUN
@@ -3163,6 +3167,7 @@ light : NOUN
 light : VERB
 light : ADJ
 light : ADV
+light-year : NOUN
 lignite : NOUN
 like : NOUN - -2
 like : VERB
@@ -5180,7 +5185,7 @@ suppose : VERB
 sure : ADJ - +2
 sure : ADV
 surely : ADV
-surface : NOUN
+surface : NOUN - +1
 surface : VERB
 surface : ADJ - -2
 surgeon : NOUN

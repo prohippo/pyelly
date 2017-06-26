@@ -610,19 +610,19 @@ _
 # view 32
 __
 g:NCLU->PEXP[|nom,eg,-com,-stop]
- >>+2
+ >>[&spcs]+2
 _
   var typg=nclu
   (typg)
 __
 g:NCLU[:det]->PEXP[|det,nom,-stop,-ctrl] PUNC[|*r]
- >>+5
+ >>[&spcs]+5
 _
   var typd=n
   (pxnorv)
 __
 g:NCLU->PEXP[|-det,nom,-stop,-ctrl] PUNC[|*r]
- >>+5
+ >>[&spcs]+5
 _
   var typd=n
   (pxnorv)
@@ -764,7 +764,7 @@ _
   append *</nclu>
 __
 
-g:NCLU[:*l,-dat]->NOUN
+g:NCLU[:*l,-dat]->NOUN[:-join]
  >>*l[&nml]
 _
 # trace
@@ -775,7 +775,7 @@ _
 # view 32
   append </nclu>
 __
-g:NCLU[:*r,-dat]->NOUN[:dat] THAT
+g:NCLU[:*l,-dat]->NOUN[:dat] THAT
  >>++
 _
   append <nclu><noun>
@@ -967,6 +967,7 @@ __
 
 g:NCLU[:*r]->ADJ[%-ed,-ing,-cnj] NCLU[:-det,-prep,-num,-qnt]
 #             ?>>?
+       r[&spcs]>>*r[&cmpd]+
  l[$ind]r[&quo]>>*r[&cmpd]----
         r[&quo]>>*r[&cmpd]
    l[$*c]r[&*c]>>*r[&cmpd]+++++
@@ -1183,20 +1184,20 @@ g:NOUN[:*r]->TITL NOUN
 _
   (twob)
 __
-g:NOUN[:hyph]->NOUN[:-hyph] PUNC[|hyph]
+g:NOUN[:join]->NOUN[:-join] PUNC[|hyph]
 __
-g:NOUN[:*r]->NOUN[:hyph] NOUN
+g:NOUN[:*r]->NOUN[:join] NOUN
 # ?>>?
    >>*r++
 __
-g:NOUN[:*r,cnj]->NOUN[:-*l,-hyph,-poss,-plur,-ing] NOUN[:-cnj,ing,-det]
+g:NOUN[:*r,cnj]->NOUN[:-*l,-join,-poss,-plur,-ing] NOUN[:-cnj,ing,-det]
 #       ?>>?
  r[&prop]>>*r-2
  l[&spcs]>>*r-2
 _
   (twob)
 __
-g:NOUN[:*r,cnj]->NOUN[:-*l,-hyph,-poss,-plur,-ing] NOUN[:-cnj,-ing,-det]
+g:NOUN[:*r,cnj]->NOUN[:-*l,-join,-poss,-plur,-ing] NOUN[:-cnj,-ing,-det]
 #                ?>>?
  l[&spcs,*c]r[&*c]>>[&*c]+2
           r[&prop]>>-2
@@ -1208,7 +1209,7 @@ _
   (twob)
 __
 
-g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,plur,-ing] NOUN[:-cnj,-ing,-plur,-det]
+g:NOUN[:*r,cnj]->NOUN[:-join,-poss,plur,-ing] NOUN[:-cnj,-ing,-plur,-det]
 #           ?>>?
      r[&prop]>>*r+2
  l[&*c]r[&*c]>>[&*c]+3
@@ -1217,7 +1218,7 @@ g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,plur,-ing] NOUN[:-cnj,-ing,-plur,-det]
 _
   (twob)
 __
-g:NOUN[:*r,cnj]->NOUN[:-hyph,-poss,plur,-ing] NOUN[:-cnj,-ing,plur,-det]
+g:NOUN[:*r,cnj]->NOUN[:-join,-poss,plur,-ing] NOUN[:-cnj,-ing,plur,-det]
 #             ?>>?	
        r[&prop]>>-2
  l[&-*c]r[&-*c]>>-4
@@ -1439,7 +1440,7 @@ g:VERB->ADJ SUFX[#aTOv]
 _
   (twob)
 __
-g:VERB[^*r]->NOUN[:hyph] VERB
+g:VERB[^*r]->NOUN[:join] VERB
 __
 g:VERB[^beaj]->BE ADJ[%-ed,-ing]
       n>4>>---
@@ -1506,8 +1507,6 @@ g:ADJ->NOUN SUFX[#nTOa]
 _
   (twob)
 __
-g:ADJ[%*r]->NOUN[:hyph] ADJ
-__
 g:ADJ[%*r,more]->ADV ADJ[%er]
  l[$deg]>>+8
 _
@@ -1535,7 +1534,7 @@ _
   left
   set vdat=T
 __
-g:ADJ[%*r]->NOUN[:hyph] ADJ
+g:ADJ[%*r]->NOUN[:join] ADJ
  >>++
 __
 g:ADJ[%ed]->VERB[^ed,-dit,-*x]
@@ -1849,7 +1848,8 @@ g:DEM[@*r]->PREP['-cnj] DEM[@ind]
  >>-
 _
   var typg=prep
-  (lxtd)
+  (typg)
+  right
 __
 p:prep
 _
