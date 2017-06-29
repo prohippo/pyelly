@@ -450,7 +450,7 @@ Release Notes:
                       extend MARKING rules and integration test
  1.4.9   - 24jun2017  add Greek small letters to PyElly char set
                       extend "marking" rules and integration test
-                      update documentation
+                      update and correct documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
