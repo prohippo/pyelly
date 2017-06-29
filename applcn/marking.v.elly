@@ -24,6 +24,7 @@ born : VERB[^ed] - +2
 building : VERB[^ing,ptcl]
 built : VERB[^ed]
 caught : VERB[^ed] [$trns] 0
+century bc : NOUN
 children : NOUN[:plur]
 circulating : VERB[^ing]
 determined : VERB[^ed]
@@ -74,6 +75,7 @@ marking : VERB[^ing]
 means : VERB[^s] - +1
 mice : NOUN[:plur]
 millennia : NOUN[:plur]
+millennium bc : NOUN
 opening : VERB[^ing]
 opposing : VERB[^ing]
 ought : VERB
@@ -109,8 +111,10 @@ wrote : VERB[^ed,*x]
 
 # # # # definitions missing from WordNet
 
+after which : CONJ
 airstrike : NOUN
 as compared to : CONJ
+as far as : CONJ
 because of : PREP
 bookended : VERB[^ed] - -1
 box set : NOUN
@@ -544,6 +548,7 @@ Warner Brothers : NOUN
 Washington Post : NOUN
 West Indies : NOUN[:plur]
 World News Tonight with David Muir : NOUN
+Zimmer : NOUN
 
 # # # # miscellaneous
 
