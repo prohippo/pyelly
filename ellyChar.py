@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 24jun2017 CPM
+# ellyChar.py : 04jul2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -48,6 +48,7 @@ BSL = u'\\'        # Unicode backslash
 SPC = u' '         # Unicode space
 AMP = u'&'         # Unicode ampersand
 NBS = u'\u00A0'    # Unicode no-break space
+THS = u'\u2009'    # Unicode thin space
 TAB = u'\u0009'    # ASCII horizontal tab
 RS  = u'\u001E'    # ASCII record separator with special significance for parsing
 
@@ -57,6 +58,7 @@ LDQm = u'\u201C'   # left  double quote
 RDQm = u'\u201D'   # right double quote
 PRME = u'\u2032'   # prime
 ELLP = u'\u2026'   # horizontal ellipsis
+NDSH = u'\u2013'   # en dash
 
 Apd = [ u'*' , u'+' , u'-' ]                                    # marks appending to token
 
@@ -214,14 +216,14 @@ def isPureCombining ( x ):
 
 def isSpace ( x ):
     """
-    tests whether char is space
+    tests whether char is text space, including _
 
     arguments:
         x - the char
     returns:
-        True if strictest kind of token char, False otherwise
+        True if text space char, False otherwise
     """
-    return x in [ SPC , NBS , USC , TAB ]
+    return x in [ SPC , NBS , USC , THS ]
 
 ## for replacing standard library char typing and case conversion
 
@@ -315,22 +317,10 @@ Space = [
     T,F,F,F,F,F,F,F,F,T,T,T,T,T,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
     T,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
     F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
-    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
-
-    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
-    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
-    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
-    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
-
-    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
-    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
-    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
-    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
-
-    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
-    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
-    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F
+    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F
 ]
+
+LimA = unichr(len(Space))
 
 def isWhiteSpace ( x ):
     """
@@ -341,7 +331,10 @@ def isWhiteSpace ( x ):
     returns:
         True if Unicode space, False otherwise
     """
-    return x != '' and x != None and x < Lim and Space[ord(x)]
+    if x == THS:
+        return True
+    else:
+        return x != '' and x != None and x < LimA and Space[ord(x)]
 
 def isApostrophe ( x ):
     """
@@ -518,7 +511,7 @@ def isText ( x ):
     if x == '' or isPureControl(x):
         return False
     else:
-        return x < Lim or x in Pnc or x in Grk
+        return x < Lim or x in Pnc or x in Grk or x == THS
 
 control = [
     T,T,T,T,T,T,T,T,T,F,F,T,T,F,T,T,
@@ -541,15 +534,16 @@ def isPureControl ( x ):
 
 termina = [ COL , COM ]
 
-def findBreak ( text , offset=0 , nspace=0 ):
+def findExtendedBreak ( text , offset=0 , nspace=0 ):
 
     """
     look for next break in text from given offset
+    possibly skipping over a specified number of spaces
 
     arguments:
         text   - what to scan
         offset - starting offset
-        nspace - how many spaces can be non-breaking
+        nspace - how many spaces can be included in scan
     returns:
         remaining char count in text if no break is found
         otherwise, count of chars to next break if nonzero, but 1 if zero,
@@ -557,13 +551,15 @@ def findBreak ( text , offset=0 , nspace=0 ):
 
     k = offset
     n = len(text)
-#   print 'find break k=' , k , 'n=' ,n
+#   print 'find break k=' , k , 'n=' , n , 'nspace=' , nspace
     while k < n:
         x = text[k]                                # iterate on next chars in input
 #       print 'char=' , x , '@' , k
         if not isPureCombining(x):                 # check if not ordinary token char
 #           print 'special checking needed'
-            if x == '-' or isEmbeddedCombining(x): # check if embeddable punctuation
+            if (x == '-' or
+                x == NDSH or
+                isEmbeddedCombining(x)):           # check if embeddable punctuation
                 if k + 1 < n:
                     c = text[k+1]                  # look at next char in input
 #                   print 'next char=' , c
@@ -580,6 +576,7 @@ def findBreak ( text , offset=0 , nspace=0 ):
 #                           print 'non breaking' , x
                             k += 1                 # if none, continue scan
                             break
+#                   print "done"
                 elif not x in termina:             # the above code must be repeated
 #                   print 'non breaking' , x       # since the elif code is paired
                     k += 1                         # with a different if
@@ -651,6 +648,11 @@ if __name__ == "__main__":
         cy = cx.lower()
         print u'<' + cx + cy + u'> ord=' , '{:3d}'.format(ko) , 'map=' , mp , vo
 
-    print isCJK(u'寶')
-    print isCJK(u'譽')
-    print isCJK(u'禮')
+    print u'寶=CJK' , isCJK(u'寶')
+    print u'譽=CJK' , isCJK(u'譽')
+    print u'禮=CJK' , isCJK(u'禮')
+    print u'…=CJK' , isCJK(u'…')
+    print 'thin space' , isWhiteSpace(THS)
+    print 'thin space' , isSpace(THS)
+    print 'ASCII space' , isWhiteSpace(' ') , ord(' ')
+    print 'ASCII space' , isSpace(' ') , ord(' ')
