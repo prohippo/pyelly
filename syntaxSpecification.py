@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# syntaxSpecification.py : 05apr2017 CPM
+# syntaxSpecification.py : 29jun2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -122,7 +122,10 @@ class SyntaxSpecification(object):
             raise ellyException.FormatFailure
         else:               # decode features
 #           print >> sys.stderr , 'syms=' , syms , 's=' , s
-            if len(s) > 3 and typs in catid and catid[typs] != s[1]:
+            if len(s) < 4:
+                print >> sys.stderr , '** bad syntactic type or missing features= ' , typs+s
+                raise ellyException.FormatFailure
+            if typs in catid and catid[typs] != s[1]:
                 print >> sys.stderr , '** type' , typs.upper() , 'has two feature IDs:' , catid[typs] , s[1]
                 raise ellyException.FormatFailure
             catid[typs] = s[1]
