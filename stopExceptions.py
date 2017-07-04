@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# stopExceptions.py : 03jun2017 CPM
+# stopExceptions.py : 02jul2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -184,8 +184,11 @@ class StopExceptions(object):
 
         if nomatch(txt,pnc,ctx):
             return False
-#       print 'nomatch() False'
+#       print 'nomatch() returned False'
 
+        sep = ctx[0] if len(ctx) > 0 else ''
+        if sep == ellyChar.THS:
+            return True
         nxt = ctx[1] if len(ctx) > 1 else ''
 
 #       print 'lstg=' , self.lstg.keys()
@@ -336,6 +339,7 @@ if __name__ == '__main__':
             print '    ' , unicode(pxc)
 
     SQW = ellyWildcard.wAPO
+    THS = ellyChar.THS
 
     test = [
         list('u.s.s. wasp') ,
@@ -354,7 +358,8 @@ if __name__ == '__main__':
         list('J.S. Dillon') ,
         list('two P.M. ') ,
         list('after six p.m. ') ,
-        list('2:00. ')
+        list('2:00. ') ,
+        list('abc.' + THS + 'def')
     ]
 
     nlu = len(sys.argv) - 2
@@ -377,6 +382,6 @@ if __name__ == '__main__':
                     break         # must not be followed by letter or digit
         else:
             continue
-        res = stpx.match( ts[:ku-1] , ts[ku-1] , ts[ku] )
+        res = stpx.match( ts[:ku-1] , ts[ku-1] , ts[ku:] )
         print '[ ' + ''.join(ts) + ' ] @' , ku-1 ,
         print 'stop EXCEPTION' if res else 'sentence stopped'
