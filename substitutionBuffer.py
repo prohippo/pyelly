@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# substitutionBuffer.py : 30nov2016 CPM
+# substitutionBuffer.py : 03jul2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -30,7 +30,7 @@
 
 """
 text input macro substitution with various wildcards and optional components
-(which may NOT contain wildcards)
+(which may NOT contain wildcards except for _)
 """
 
 import ellyChar
@@ -130,7 +130,8 @@ class SubstitutionBuffer(
 
         done = False
 
-#       print 'macro expansion'
+#       print 'expanding'
+#       print 'text=' , unicode(self)
 
         while True:
 
@@ -145,13 +146,16 @@ class SubstitutionBuffer(
             # try selected macros sequentially on start of input buffer
 
             for r in lr:
+#               print 'rule=' , r
                 if self._match(r):
-#                   print 'macro match'
+#                   print 'macro matched'
                     done = True
                     break
             else:
 #               print 'no macros matched'
                 break
+
+#           print 'expanded=' , unicode(self)
 
         return done
 
@@ -168,8 +172,6 @@ class SubstitutionBuffer(
         returns:
             True if matched and substituted, False otherwise
         """
-
-#       print 'buffer=' , self.buffer
 
         capital = self.isCapital()   # starts with capital?
 
