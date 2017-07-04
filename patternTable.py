@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# patternTable.py : 25nov2016 CPM
+# patternTable.py : 04jul2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -177,6 +177,7 @@ def bound ( segm ):
         char count
     """
 
+#   print 'segm=' , segm
     lm = len(segm)   # limit can be up to total length of text for matching
     ll = 0
     while ll < lm:   # look for first space in text segment
@@ -189,6 +190,7 @@ def bound ( segm ):
         c = segm[ll]
         if c in Trmls or c == '*' or ellyChar.isLetterOrDigit(c): break
         ll -= 1
+#   print 'limit=' , ll + 1
     return ll + 1
 
 class PatternTable(object):
@@ -338,6 +340,8 @@ class PatternTable(object):
 
         if len(self.indx) == 0: return 0  # no matches if FSA is empty
 
+        if len(segm) == 0: return 0       # string is empty
+
         lim = bound(segm)                 # get limit for matching
 
         mtl  = 0        # accumulated match length
@@ -350,6 +354,7 @@ class PatternTable(object):
         ls = self.indx[state]
         ix = 0
         sg = segm[:lim] # text subsegment for matching
+#       print 'initial sg=' , sg
         capd = False if len(sg) == 0 else ellyChar.isUpperCaseLetter(sg[0])
 
         while True:                 # run FSA to find all possible matches
@@ -368,20 +373,22 @@ class PatternTable(object):
                 ix = 0
                 continue
 
+#           print 'substring to match, sg=' , sg , 'nls=' , nls
             m = 0
             while ix < nls:
                 lk = ls[ix]         # get next link at current state
                 ix += 1             # and increment link index
-#               print 'lk= [' , unicode(lk), '] , sg=' , sg
+#               print '@' , state , 'lk= [' , unicode(lk), ']'
                 if lk.patn == u'\x00': # do state change without matching?
                     m = 0           # no match length
                 else:
-#                   print 'match lk=' , unicode(lk) , 'sg=' , sg
                     bds = ellyWildcard.match(lk.patn,sg)
-                    if bds == None: continue
 #                   print 'bds=' , bds
+                    if bds == None: continue
 
                     m = bds[0]      # get match length, ignore wildcard bindings
+
+#                   print 'm=' , m
 
                     if lk.nxts < 0: # final state?
 #                       print 'flags=' , lk.synf , '/' , lk.semf
