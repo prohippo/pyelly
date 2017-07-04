@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 24jun2017 CPM
+# ellyBase.py : 01jul2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -70,7 +70,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.4.9'                      # current version of PyElly software
+release = 'v1.4.10'                     # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -431,6 +431,7 @@ class EllyBase(object):
         if len(s) == 0:                # check for end of input
             return False               # if so, done
 
+#       print 'in =' , unicode(self.sbu)
         if self.trs != None:           # preanalysis of number expressions
             self.trs.rewriteNumber(s)
 
@@ -443,6 +444,7 @@ class EllyBase(object):
         if len(s) == 0: return True    # macros can empty out buffer
 
 #       print unicode(self.sbu)
+
         k = self.sbu.findBreak()       # find extent of first component for lookup
         if k == 0:
             k = 1                      # must have at least one char in token

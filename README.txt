@@ -447,10 +447,18 @@ Release Notes:
                       allow space wildcard in optional pattern components
                       clean up macro substitution pattern matching
                       update documentation for wildcards
-                      extend MARKING rules and integration test
+                      extend "marking" rules and integration test
  1.4.9   - 24jun2017  add Greek small letters to PyElly char set
                       extend "marking" rules and integration test
                       update and correct documentation
+ 1.4.10  -  4jul2017  add Unicode thin spaces to text recognized by PyElly
+                      clean handling of various spaces in ellyChar
+                      fix bug in matching patterns with space wildcards
+                      fix error detection in converting syntactic features
+                      correct and extend stopException unit test
+                      clean up debugging statements in PyElly modules
+                      extend "marking" rules
+                      update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure

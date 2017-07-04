@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 15jun2017 CPM
+# ellyWildcard.py : 04jul2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -499,7 +499,7 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
 
         # calculate maximum chars a wildcard can match
 
-        mx = ellyChar.findBreak(text,offs,nsp) #
+        mx = ellyChar.findExtendedBreak(text,offs,nsp)
 #       print mx,"chars available to scan"
         mx -= k                                # max span reduced by exclusion
         if mx < 0: return -1                   # cannot match if max span < 0
@@ -530,7 +530,9 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
     matched = False  # successful pattern match?
 
     if limt == None: limt = len(text)
+
 #   print 'starting match, limt=',limt,text[offs:limt],":",patn
+#   print 'nsps=' , nsps
 
     mp = 0           # pattern index
     ml = len(patn)   # pattern match limit
@@ -554,14 +556,14 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
 #           print 'against       ' , mc , '(' , ord(mc) , ')'
             if mc != last:
                 if mc != last.lower(): break
-#           print 'matched!'
+#           print 'matched @mp=' , mp
             mp += 1
 
         ## check whether mismatch is due to special pattern char
 
 #       print 'pat @',mp,"<",ml
 #       print "txt @",offs,limt,last
-#       print '@',offs,text
+#       print '@',offs,text[offs:]
 
         if mp >= ml:        # past end of pattern?
             matched = True  # if so, match is made
@@ -646,6 +648,7 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
         elif tc == cSPC: # space wildcard?
 #           print "SPC:","["+last+"]"
             if last != '' and ellyChar.isWhiteSpace(last):
+                nsps -= 1
                 _bind(); _modify(); mbi += 1
                 continue
 #           print 'NO space'
@@ -688,9 +691,9 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
 #               print '@' , offs , text
                 nm = _span(tc,nsps)   # maximum match possible
 
-                if nm == 0:                             # compensate for findBreak peculiarity with
-                    if offs + 1 < limt and mp < ml:     # closing ] or ) to be matched for pattern
-                        if patn[mp] in [ u']' , u')' ]: # in text input
+                if nm == 0:                             # compensate for findExtendedBreak peculiarity
+                    if offs + 1 < limt and mp < ml:     # with closing ] or ) to be matched in pattern
+                        if patn[mp] in [ u']' , u')' ]: # from text input
                             nm += 1
 
 #               print 'spanning=' , nm
@@ -704,6 +707,7 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
 #                   print 'offs=' , offs
                     last = text[offs] if offs < limt else ''
                     continue
+#           print 'fail tc=' , deconvert(tc)
 
         elif tc == '':
             if last == '' or not ellyChar.isPureCombining(last):
@@ -713,7 +717,7 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
         ## match failure: rewind to last match branch
         ##
 
-#       print "fail - unwinding",unj
+#       print "fail - unwinding" , unj
 
         while unj > 0:               # try unwinding, if possible
 #           print "unw:",unj

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBuffer.py : 21may2017 CPM
+# ellyBuffer.py : 02jul2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -38,7 +38,7 @@ import unicodedata
 
 separators = [                 # for breaking tokenization scan
     u'-'  ,
-    u' '  ,
+    u' '  , u'\u2009' ,
     u'\t' , u'\r' , u'\n' ,
     ellyChar.RS ,
     u'('  , u')'  ,
@@ -59,7 +59,7 @@ DSH = u'--'                    # dash
 ELP = u'...'                   # ellipsis
 SPH = u' -'                    # space + hyphen
 APO = ellyChar.APO             # apostrophe literal
-APX = u'\u2019'                # formatted apostrophe
+APX = u'\u2019'                # unicode apostrophe
 
 UELP = u'\u2026'               # unicode ellipsis
 
@@ -297,7 +297,7 @@ class EllyBuffer(object):
         if self.buffer[0] == APO:
             return 1
 
-        k = ellyChar.findBreak(self.buffer)
+        k = ellyChar.findExtendedBreak(self.buffer)
 #       print 'findBreak k=' , k
         if k > 2 and self.buffer[k-1] in [ APO , APX ]:
             k -= 1
