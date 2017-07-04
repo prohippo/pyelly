@@ -356,6 +356,7 @@ here you go : VERB
 his or her : DEM
 in addition to : PREP
 in order to : TO
+in recent years : ADV [$deg,time] +1
 increase or decrease : VERB
 insofar as : CONJ
 it is easy : ELEM - +4 (elma)
@@ -520,6 +521,7 @@ Janis : NOUN
 Japan International Cooperation Agency : NOUN[:*r]
 Jim : NOUN
 Josephine County : NOUN
+Keaton : NOUN
 La Nina : NOUN
 Liaoning : NOUN
 Lin-Manuel Miranda : NOUN
@@ -940,7 +942,7 @@ bay : NOUN
 bay : VERB
 bay : ADJ
 bc :ADV[~date] - -1
-bce : ADV
+bce : ADV[~date]
 beach : NOUN
 beach : VERB
 bean : NOUN

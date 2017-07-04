@@ -38,7 +38,16 @@ is_what -> is cjwhat
 
 approx. -> about
 
-1_is_a_&@~ -> ONExx is a \\4
+1_is_a_&@ -> x1x is a \\4
+
+#
+# WARNING! the rule below has en dashes in its pattern and
+#          substitution, and its space wildcards will replace
+#          matched Unicode thin spaces with regular ASCII spaces
+#
+
+c._#&#_–_c._#&# -> c.\\2–c.\\6
+c._#&# -> c.\\2
 
 # 
 # spelling correction
