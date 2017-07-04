@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBottomUp.py : 19jun2017 CPM
+# parseTreeBottomUp.py : 02jul2017 CPM
 # -----------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -33,6 +33,7 @@ subclass of parse tree base for bottom-up context-free parsing
 to be subclassed further
 """
 
+import sys
 import ellyBits
 import ellyDefinitionReader
 import ellyConfiguration
@@ -584,7 +585,6 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
 
 if __name__ == '__main__':
 
-    import sys
     import ellyToken
 
     class M(object):  # dummy derivability matrix
