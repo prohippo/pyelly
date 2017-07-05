@@ -457,7 +457,7 @@ Release Notes:
                       fix error detection in converting syntactic features
                       correct and extend stopException unit test
                       clean up debugging statements in PyElly modules
-                      extend "marking" rules
+                      extend "marking" rules and integration test
                       update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically

@@ -54,7 +54,9 @@ got up : VERB[^ed,*x]
 had : HAVE[^ed]
 had to : AUXL[^ed]
 has : HAVE
+has had : VERB[^aux,hav]
 has to : AUXL[^s]
+have had : VERB[^aux,hav]
 have to : AUXL
 having : HAVE[^ing]
 heard : SVED - -1
@@ -66,6 +68,7 @@ knew : VERB[^ed]
 known : VERB[^ed,*x]
 led : NOUN - -2
 led : VERB[^ed]
+limited : VERB[^ed] - -1
 lives : NOUN[:plur] - +1  =life -s
 lives : VERB[^s]          =live -s
 made : VERB[^ed]
@@ -234,6 +237,7 @@ research commission : NOUN
 RGB monitor : NOUN
 Ship of Fools : NOUN
 space authority : NOUN
+tirthankara : NOUN
 Union force : NOUN
 upper atmosphere : NOUN
 
@@ -3183,6 +3187,8 @@ likely : ADJ
 likely : ADV - -1
 limit : NOUN
 limit : VERB
+limited : NOUN - -2
+limited : ADJ
 lin : NOUN
 lincoln : NOUN
 line : NOUN
@@ -5093,6 +5099,7 @@ stockpile : VERB
 stone : NOUN
 stone : VERB
 stone : ADJ
+stone age : NOUN
 stool : NOUN
 stool : VERB - -4
 stop : NOUN
@@ -5393,8 +5400,8 @@ ticket : VERB - -2
 tidbit : NOUN
 tie : NOUN
 tie : VERB
-till : NOUN
-till : VERB
+till : NOUN - -1
+till : VERB - -1
 tiller : NOUN
 tiller : VERB - -1
 timbre : NOUN
