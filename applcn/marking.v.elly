@@ -361,6 +361,7 @@ has to do : VERB
 here you go : VERB
 his or her : DEM
 in addition to : PREP
+in any way : ADV
 in order to : TO
 in recent years : ADV [$deg,time] +1
 increase or decrease : VERB
@@ -4952,6 +4953,8 @@ south : NOUN - -2
 south : ADJ
 south : ADV[~dir,trlg]
 south africa : NOUN
+south african : NOUN
+south african : ADJ
 south america : NOUN
 south american : NOUN
 south american : ADJ
@@ -5832,7 +5835,10 @@ wonder : VERB
 wood : NOUN
 woodcreeper : NOUN
 wooden : ADJ
+worcester : NOUN
+worcester sauce : NOUN
 worcestershire : NOUN 
+worcestershire sauce : NOUN
 word : NOUN
 word : VERB - -1
 work : NOUN
