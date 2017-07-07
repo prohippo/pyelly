@@ -971,7 +971,7 @@ g:NCLU[:*r]->ADJ[%-ed,-ing,-cnj] NCLU[:-det,-prep,-num,-qnt]
  l[$ind]r[&quo]>>*r[&cmpd]----
         r[&quo]>>*r[&cmpd]
    l[$*c]r[&*c]>>*r[&cmpd]+++++
-               >>*r[&cmpd]+++
+               >>*r[&cmpd]++++
 _
   var typg=adj
   (lxtd)
@@ -1984,11 +1984,6 @@ __
 g:DET[@*r,dit]->THAT DET
 _
   right
-__
-
-g:QUAN->THERE BE
-_
-  (twob)
 __
 
 #
@@ -3112,6 +3107,10 @@ d:x1x <- NUM
  >>++++
 _
   append 1
+__
+d:x1stx <- NOUN[:det]
+_
+  append the 1st
 __
 
 g:DATxx->DATxx ADV[~date]

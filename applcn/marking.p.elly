@@ -88,3 +88,8 @@
 0 c.&# - 8
 8 $ DATxx -1
 8 –c.&# DATxx -1
+
+# en dashes in patterns below!
+
+0 ##–##   NUM -1
+0 ###–### NUM -1

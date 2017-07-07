@@ -79,6 +79,7 @@ means : VERB[^s] - +1
 mice : NOUN[:plur]
 millennia : NOUN[:plur]
 millennium bc : NOUN
+mixed : VERB[^ed]
 opening : VERB[^ing]
 opposing : VERB[^ing]
 ought : VERB
@@ -256,6 +257,7 @@ caught wind : VERB[^ed]
 computer model : NOUN
 christmas cheer : NOUN
 christmas spectacular : NOUN
+cm long : NOUN
 colored slave : NOUN
 corporate bond market : NOUN
 dance company : NOUN
@@ -462,6 +464,7 @@ lesser-known : ADJ
 long-drawn : ADJ
 long-past  : ADJ
 mid-air : NOUN
+mixed-species : ADJ
 ocean-view home : NOUN
 one-lane : ADJ
 one-of-a-kind : ADJ
@@ -482,6 +485,7 @@ world-renowned : ADJ
 
 ABC News : NOUN
 Agence France-Presse : NOUN
+Alagoas : NOUN
 Andras : NOUN
 Angelina : NOUN
 Angelina Jolie : NOUN
@@ -507,6 +511,7 @@ Fairchild : NOUN
 Farhan Haq : NOUN
 Federal Open Market Committee : NOUN[:*r]
 Ferguson : NOUN
+Furnariidae : NOUN
 Gallagher : NOUN
 Gene Simmons : NOUN
 George Will : NOUN
@@ -562,6 +567,7 @@ fried liver attack : NOUN
 2 knights defense : NOUN
 "thousands" : NUM
 % : NOUN[:plur]
+1st : ADV
 
 # # # # WordNet 3.1 entries
 
@@ -1967,6 +1973,7 @@ dream : VERB
 dress : NOUN
 dress : VERB
 dress : ADJ
+dressing room : NOUN
 drink : NOUN
 drink : VERB
 drive : NOUN
@@ -2136,7 +2143,7 @@ evaluate : VERB
 even : NOUN - -2
 even : VERB
 even : ADJ
-even : ADV[~mod] [$deg] +1
+even : ADV[~mod] [$deg] +2
 event : NOUN
 eventually : ADV
 ever : ADV
@@ -3002,7 +3009,7 @@ job : NOUN
 job : VERB - -2
 john : NOUN
 join : NOUN
-join : VERB
+join : VERB - +2
 joint : NOUN
 joint : VERB - -2
 joint : ADJ - +1
@@ -3043,7 +3050,7 @@ kick : NOUN
 kick : VERB
 kid : NOUN
 kid : VERB
-kill : NOUN - -1
+kill : NOUN - -2
 kill : VERB - +2
 killer : NOUN
 kilometer : NOUN
@@ -3142,8 +3149,8 @@ lee : NOUN
 lee : ADJ
 left : NOUN
 left : VERB[^ed] - +2
-left : ADJ
-left : ADV
+left : ADJ - -1
+left : ADV - -1
 leg : NOUN
 legal : ADJ
 legend : NOUN
@@ -3224,7 +3231,7 @@ logic : NOUN
 london : NOUN
 loner : NOUN
 long : VERB
-long : ADJ
+long : ADJ - +1
 long : ADV
 longer : NOUN - -2
 longer : ADJ
@@ -3452,6 +3459,7 @@ mistrust : NOUN
 mistrust : VERB
 mix : NOUN
 mix : VERB
+mixed : ADJ
 mo : NOUN
 mobile : NOUN
 mobile : ADJ
@@ -3588,7 +3596,7 @@ neighbour : NOUN
 neighbour : VERB
 neighbourhood : NOUN
 nest : NOUN
-nest : VERB
+nest : VERB - -1
 net : NOUN
 net : VERB - -2
 net : ADJ - +2
@@ -3900,7 +3908,7 @@ payment : NOUN
 pc : NOUN
 peace : NOUN
 peaceful : ADJ
-peacekeeping : NOUN
+peacekeeping : NOUN - +2
 peacekeeping : ADJ
 peak : NOUN
 peak : VERB
@@ -4945,6 +4953,8 @@ south : ADJ
 south : ADV[~dir,trlg]
 south africa : NOUN
 south america : NOUN
+south american : NOUN
+south american : ADJ
 south pole : NOUN
 southbound : ADJ
 southeast : NOUN - -2
@@ -4973,6 +4983,7 @@ special forces : NOUN[:plur]
 specialist : NOUN
 specialize : VERB
 species : NOUN
+species : NOUN[:plur]
 specific : ADJ[%to]
 specifically : ADV
 specify : VERB
