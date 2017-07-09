@@ -47,7 +47,11 @@ forgot : VERB[^ed,*x]
 forgotten : VERB[^ed]
 founding :VERB[^ing] - -2
 gave : VERB[^ed,*x]
+get : BE - +1
 get out : VERB
+getting : BE[^ing] - +1
+getting : VERB[^ing] - +2
+getting : NOUN[:ing] - -2
 got : VERB[^ed,chng,*x]
 got out : VERB[^ed]
 got up : VERB[^ed,*x]
@@ -66,6 +70,7 @@ interesting : VERB[^ing]
 internationals : NOUN[:plur]
 knew : VERB[^ed]
 known : VERB[^ed,*x]
+leading : VERB[^ing]
 led : NOUN - -2
 led : VERB[^ed]
 limited : VERB[^ed] - -1
@@ -130,6 +135,7 @@ clean energy : NOUN
 configurable : ADJ
 confraternity : NOUN
 dubstep : NOUN
+early years : NOUN
 engineering council : NOUN
 estimative : ADJ
 fan favorite : NOUN
@@ -139,7 +145,10 @@ hashtag : NOUN
 homiletics : NOUN
 hot 100 : NUM
 hydro : NOUN
-in terms of : CONJ
+in as much as : CONJ
+in case of : PREP
+in terms of : PREP
+in the event of : PREP
 interferometry : NOUN
 jain : NOUN
 manga : NOUN
@@ -160,6 +169,7 @@ proof to the contrary : NOUN
 public sector: NOUN
 pyroclastic : ADJ
 rebaptizer : NOUN
+regardless of : PREP
 relicense : VERB
 remix : NOUN
 remix : VERB
@@ -262,6 +272,7 @@ colored slave : NOUN
 corporate bond market : NOUN
 dance company : NOUN
 dance number : NOUN
+during this time : ADV[~trlg]
 each time : ADV
 electricity generation system : NOUN
 entry point : NOUN
@@ -2004,6 +2015,7 @@ earlier : ADJ [$time] 0
 earlier : ADV[~trlg] [$deg,time] +1
 early : ADJ [$time] 0
 early : ADV[~trlg]
+early days : NOUN[:plur]
 earn : VERB
 earth : NOUN
 earth : VERB
@@ -2548,7 +2560,6 @@ geosynchronous : ADJ
 germany : NOUN
 get : NOUN - -4
 get : VERB[^chng,ptcl]
-get : BE
 giant : NOUN
 giant : ADJ
 gin : NOUN
@@ -2620,7 +2631,7 @@ grey : ADJ
 grid : NOUN
 grim : ADJ
 grime : NOUN
-grime : VERB
+grime : VERB - -2
 grocery : NOUN
 groom : NOUN
 groom : VERB
@@ -3137,6 +3148,8 @@ lay : ADJ - -2
 lead : NOUN
 lead : VERB
 leader : NOUN
+leading : NOUN
+leading : ADJ - +1
 league : NOUN
 league : VERB
 leap : NOUN
@@ -4307,7 +4320,8 @@ radiation : NOUN
 radio : NOUN
 radio : VERB
 radio : ADJ
-radio transmitter : ADJ
+radio station : NOUN
+radio transmitter : NOUN
 radius : NOUN
 raft : NOUN
 raft : VERB
@@ -4816,8 +4830,10 @@ shout : VERB
 show : NOUN
 show : VERB
 showcase : NOUN
-shut : VERB
+shut : VERB[^ptcl] - +1
 shut : ADJ
+shut down : VERB
+shut down : VERB[^ed]
 shutter : NOUN
 shutter : VERB [$trns] 0
 sicken : VERB

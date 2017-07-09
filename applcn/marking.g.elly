@@ -300,9 +300,16 @@ _
   var punc=
   left
 __
-g:ELEM[^*l]->VCLU[^-to,-s,ed]
+g:ELEM[^*l]->VCLU[^-to,-s,ed,-ing]
 #      ?>>?
  p<1 n<3>>[!lv,rv,spcs]
+        >>[!lv,rv]
+_
+  var punc=
+  left
+__
+g:ELEM[^*l]->VCLU[^-to,-s,ed,ing]
+#      ?>>?
         >>[!lv,rv]
 _
   var punc=
@@ -1348,7 +1355,13 @@ _
   var typg=aux
   (lxtd)
 __
-g:VCLU[^*r]->BE VCLU[^ed,-hav]
+g:VCLU[^*r]->BE[^-ing] VCLU[^ed,-hav]
+ >>*r+
+_
+  var typg=aux
+  (lxtd)
+__
+g:VCLU[^*r,ing,-ed]->BE[^ing] VCLU[^ed,-hav]
  >>*r+
 _
   var typg=aux
@@ -2358,6 +2371,9 @@ d:at  <- PTCL
 __
 d:up  <- PTCL
 __
+d:down <- PTCL
+ >>+2
+__
 d:over <- PTCL
 __
 
@@ -3011,10 +3027,14 @@ _
   (cjpr)
 __
 
-g:DATE->DATE DATE[:-cnj]
+g:DATE->DATE DATE[:-cnj,-*l]
 _
   (twob)
 __
+g:DATE->DATE DATE[:*l]
+ >>++++
+__
+
 g:DATE[:cnj]->PUNC[|*l] DATE[:-cnj]
  n>4>>--------
 __

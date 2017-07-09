@@ -85,6 +85,9 @@
 7 0's$ DATE[:poss,val] - +2 -1
 7 #'s$ DATE[:poss] -1
 
+0 /19## DATE[:*l] -1
+0 /20## DATE[:*l] -1
+
 0 c.&# - 8
 8 $ DATxx -1
 8 –c.&# DATxx -1
