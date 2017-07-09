@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 04jul2017 CPM
+# ellyChar.py : 07jul2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -190,7 +190,7 @@ def isCombining ( x ):
     returns:
         True if a most general token char, False otherwise
     """
-    return isLetterOrDigit(x) or x in [ USC , APO , APX , SLA , BSL , NBS ]
+    return isLetterOrDigit(x) or x in [ USC , APO , APX , BSL , NBS ]
 
 def isEmbeddedCombining ( x ):
     """
