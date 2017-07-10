@@ -105,6 +105,8 @@ seen : SVED - -1
 shown : VERB[^ed]
 sitting : VERB[^ing]
 stimulating : VERB[^ing]
+supplying : VERB[^ing] - +2
+supplying : NOUN[:ing] - -1
 swooping : ADJ[%ing] - +1
 swooping : VERB[^ing]
 taken : VERB[^ed]
@@ -124,6 +126,7 @@ after which : CONJ
 airstrike : NOUN
 as compared to : CONJ
 as far as : CONJ
+a third the : NUM
 because of : PREP
 bookended : VERB[^ed] - -1
 box set : NOUN
@@ -141,6 +144,7 @@ estimative : ADJ
 fan favorite : NOUN
 grant aid : NOUN
 grant aid project : NOUN
+half of the : QUAN
 hashtag : NOUN
 homiletics : NOUN
 hot 100 : NUM
@@ -579,6 +583,7 @@ fried liver attack : NOUN
 2 knights defense : NOUN
 "thousands" : NUM
 % : NOUN[:plur]
+% duty cycle : NOUN
 1st : ADV
 
 # # # # WordNet 3.1 entries
@@ -1394,7 +1399,7 @@ clinton : NOUN
 clip : NOUN
 clip : VERB
 clock : NOUN
-clock : VERB
+clock : VERB - -1
 close : NOUN
 close : VERB
 close : ADJ[%to] [$spat] 0
@@ -4851,9 +4856,9 @@ sightseeing : NOUN
 sign : NOUN
 sign : VERB[^ptcl]
 sign : ADJ - -2
-signal : NOUN
+signal : NOUN - +1
 signal : VERB
-signal : ADJ
+signal : ADJ - -1
 signature : NOUN
 significant : ADJ[%to]
 silent : ADJ
@@ -5085,6 +5090,7 @@ stare : NOUN - -2
 stare : VERB - +2
 start : NOUN
 start : VERB[^ptcl] - +2
+startup : NOUN
 startle : NOUN - -2
 startle : VERB
 state : NOUN
