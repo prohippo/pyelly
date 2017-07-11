@@ -1173,8 +1173,9 @@ _
   (twob)
 __
 g:NOUN[:ing]->VERB XING
-# ?>>?
-   >>-
+#       ?>>?
+ l[$trns]>>*l---
+         >>-
 _
   (twob)
 __
@@ -1218,18 +1219,20 @@ __
 
 g:NOUN[:*r,cnj]->NOUN[:-join,-poss,plur,-ing] NOUN[:-cnj,-ing,-plur,-det]
 #           ?>>?
+     r[&cond]>>-6
      r[&prop]>>*r+2
- l[&*c]r[&*c]>>[&*c]+3
-       l[&*c]>>+1
+ l[&*c]r[&*c]>>*r[&*c]+3
+       l[&*c]>>*r+1
              >>-4
 _
   (twob)
 __
 g:NOUN[:*r,cnj]->NOUN[:-join,-poss,plur,-ing] NOUN[:-cnj,-ing,plur,-det]
 #             ?>>?	
+       r[&cond]>>-6
        r[&prop]>>-2
  l[&-*c]r[&-*c]>>-4
-  l[&*c]r[&-*c]>>+1
+  l[&*c]r[&-*c]>>*r+1
                >>-4
 _
   (twob)
@@ -1527,8 +1530,16 @@ _
   (typg)
   right
 __
-g:ADJ[%*r,more]->ADV[~-int] ADJ[%-er]
+g:ADJ[%*r,more]->ADV[~-int] ADJ[%-er,-ed]
  l[$deg]>>[$cmpd]+6
+_
+  var typg=adv
+  (typg)
+  right
+__
+g:ADJ[%*r,more]->ADV[~-int] ADJ[%-er,ed]
+ l[$time]>>-4
+ l[$deg] >>[$cmpd]+6
 _
   var typg=adv
   (typg)
@@ -1552,7 +1563,7 @@ g:ADJ[%*r]->NOUN[:join] ADJ
 __
 g:ADJ[%ed]->VERB[^ed,-dit,-*x]
  l[$noaj]>>-------
-      n<2>>------
+      n<2>>---------
       p<1>>-
          >>[$ind]--
 __
@@ -1877,7 +1888,7 @@ _
   (prep)
 __
 g:DATE[:*r]->PREP['-cnj,-*l] DATE[:-cnj,-poss]
- n<3c<8>>+++
+ n<3c<8>>+++++
        >>++
 _
   (prep)

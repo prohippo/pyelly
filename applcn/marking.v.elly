@@ -42,6 +42,9 @@ feeding : VERB[^ing]
 fighting : VERB[^ing]
 financing : VERB[^ing]
 fishermen : NOUN[:plur]
+focused on : VERB[^ed]
+focuses on : VERB - +2
+focusing on : VERB[^ing]
 forgave : VERB[^ed,*x]
 forgot : VERB[^ed,*x]
 forgotten : VERB[^ed]
@@ -102,6 +105,9 @@ said : VERB[^ed,dit]
 sat down : VERB[^ed,*x]
 seen : VERB[^ed]
 seen : SVED - -1
+serve as : VERB
+served as : VERB[^ed]
+serving as : VERB[^ing]
 shown : VERB[^ed]
 sitting : VERB[^ing]
 stimulating : VERB[^ing]
@@ -165,6 +171,7 @@ on-grid : ADJ
 on-grid power plant : NOUN
 openings : NOUN[:plur]
 our lady : NOUN
+particular focus : NOUN
 pinyin : NOUN
 policymaker : NOUN
 private sector : NOUN
@@ -1022,7 +1029,7 @@ best : ADV
 beta : NOUN
 beta : ADJ
 betray : VERB
-better : NOUN - -1
+better : NOUN - -2
 better : VERB
 better : ADJ[%er,to] [$vls] +1
 better : ADV[~er]
@@ -1147,7 +1154,7 @@ budapest : NOUN
 buddhism : NOUN
 buddhist : NOUN
 buddhist : ADJ
-build : NOUN
+build : NOUN [&cond] -2
 build : VERB[^ptcl]
 building : NOUN
 built : ADJ
@@ -2093,7 +2100,7 @@ emulate : VERB
 emulation : NOUN
 enable : VERB
 enchant : VERB
-encircle : VERB
+encircle : VERB [$trns] 0
 encode : VERB
 encounter : NOUN
 encounter : VERB
@@ -2385,6 +2392,7 @@ fm : NOUN
 focal : ADJ
 focus : NOUN
 focus : VERB
+focus on : VERB
 fog : NOUN
 fog : VERB
 foliage : NOUN
@@ -3737,7 +3745,7 @@ officer : VERB
 official : NOUN
 official : ADJ
 officially : ADV
-often : ADV
+often : ADV [$time] 0
 old : NOUN - -1
 old : ADJ
 olmec : NOUN
@@ -3893,7 +3901,7 @@ partial : ADJ
 participant : NOUN
 participate : VERB
 participatory : ADJ
-particular : NOUN
+particular : NOUN - -4
 particular : ADJ
 particularly : ADV
 partly : ADV
@@ -4524,6 +4532,7 @@ result : VERB
 retail : NOUN
 retail : VERB
 retail : ADV
+retail store : NOUN
 retell : VERB
 rethink : NOUN
 rethink : VERB
@@ -5226,7 +5235,7 @@ superior : ADJ
 supermarket : NOUN
 supplement : NOUN
 supplement : VERB
-supply : NOUN
+supply : NOUN - +1
 supply : VERB
 support : NOUN
 support : VERB
