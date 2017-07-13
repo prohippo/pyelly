@@ -3040,7 +3040,18 @@ __
 
 g:DATE->DATE DATE[:-cnj,-*l]
 _
-  (twob)
+  split
+  right
+  back
+  left
+  peek > lxxx
+  peek rxxx <
+  if ~lxxx=>
+    if ~rxxx=<
+      space
+      end
+    end
+  merge
 __
 g:DATE->DATE DATE[:*l]
  >>++++

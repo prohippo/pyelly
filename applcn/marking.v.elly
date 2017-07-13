@@ -50,11 +50,16 @@ forgot : VERB[^ed,*x]
 forgotten : VERB[^ed]
 founding :VERB[^ing] - -2
 gave : VERB[^ed,*x]
+gave rise to : VERB[^ed]
+give rise to : VERB
+gives rise to : VERB[^s]
+giving rise to : VERB[^ing]
 get : BE - +1
 get out : VERB
 getting : BE[^ing] - +1
 getting : VERB[^ing] - +2
 getting : NOUN[:ing] - -2
+giving rise : VERB[^ing]
 got : VERB[^ed,chng,*x]
 got out : VERB[^ed]
 got up : VERB[^ed,*x]
@@ -80,7 +85,11 @@ limited : VERB[^ed] - -1
 lives : NOUN[:plur] - +1  =life -s
 lives : VERB[^s]          =live -s
 made : VERB[^ed]
+made use of : VERB[^ed]
 made up : VERB[^ed,*x]
+make use of : VERB
+makes use of : VERB[^ed]
+making use of : VERB[^ing]
 marked : VERB[^ed]
 marking : VERB[^ing]
 means : VERB[^s] - +1
@@ -116,8 +125,10 @@ supplying : NOUN[:ing] - -1
 swooping : ADJ[%ing] - +1
 swooping : VERB[^ing]
 taken : VERB[^ed]
+taking place : VERB[^ing]
 terrifying : VERB[^ing]
 thought : VERB[^ed]
+took place : VERB[^ed]
 unified : VERB[^ed]
 went : VERB[^ed,*x]
 will have to : AUXL
@@ -161,6 +172,7 @@ in terms of : PREP
 in the event of : PREP
 interferometry : NOUN
 jain : NOUN
+land survey : NOUN
 manga : NOUN
 mannerist : NOUN
 marchese : NOUN
@@ -171,6 +183,7 @@ on-grid : ADJ
 on-grid power plant : NOUN
 openings : NOUN[:plur]
 our lady : NOUN
+overland mail : NOUN
 particular focus : NOUN
 pinyin : NOUN
 policymaker : NOUN
@@ -194,6 +207,7 @@ spiritual director : NOUN
 storytelling : NOUN
 streetlamp : NOUN
 submillimeter  : ADJ
+supply train : NOUN
 teenybopper : NOUN
 timelord : NOUN
 title track : NOUN
@@ -396,7 +410,9 @@ less than : ADV[~mod] [$deg] 0
 like never before : ADV
 made available : VERB[^ed]
 make available : VERB
+make use of : VERB
 making it easier : VERB[^ing]
+making use of : VERB[^ing]
 more like : PREP
 more than : ADV[~mod] [$deg] 0
 most of : QUAN
@@ -405,6 +421,7 @@ next year : NAVB[:det]
 no one : PRO
 not only : CONJ
 often enough : ADV
+on through : PREP
 one another : PRO - +4
 or more : POSTP[@num]
 other than : CONJ
@@ -423,6 +440,7 @@ some of : QUAN
 some of which : CONJ
 somewhere along : PREP
 sorry about that : ADJ [$cmpd] 0
+southwest to : PREP
 straight after : CONJ
 such a  : QUAN
 such an : QUAN
@@ -562,6 +580,7 @@ Michael Keaton : NOUN
 Mimi Spear : NOUN
 MTV : NOUN
 NBA : NOUN
+Nicholas : NOUN
 Novaes : NOUN
 Obamas : NOUN[:plur] =obama -s
 Reaganite : NOUN
@@ -1370,6 +1389,7 @@ circumstantial : ADJ
 citation : NOUN
 city : NOUN
 civil : ADJ
+civil war : NOUN
 civilization : NOUN
 claim : NOUN
 claim : VERB [$trns] 0
@@ -2432,6 +2452,7 @@ formerly : ADV
 formulate : VERB
 fort : NOUN
 fort : VERB
+fort smith : NOUN
 forward : NOUN
 forward : VERB
 forward : ADJ
@@ -3316,6 +3337,7 @@ major : ADJ
 majority : NOUN
 make : NOUN
 make : VERB [$trns] 0
+make up : VERB
 makeshift : NOUN
 makeshift : ADJ
 makeup : NOUN
@@ -5072,6 +5094,7 @@ square : ADJ
 square : ADV
 squirrel : NOUN
 sri lanka : NOUN
+st. louis : NOUN
 stability : NOUN
 stable : NOUN
 stable : VERB - -1
@@ -5356,6 +5379,7 @@ telecom : NOUN
 telecommunication : NOUN
 telegraph : NOUN
 telegraph : VERB
+telegraph line : NOUN
 telephony : NOUN
 telescope : NOUN
 telescope : VERB - -3
@@ -5643,6 +5667,7 @@ unreadable : ADJ
 unrelated : ADJ
 unreliable : ADJ
 unsettle : VERB
+unsettled : ADJ
 unsuccessful : ADJ
 unwilling : ADJ
 up : VERB - -6
