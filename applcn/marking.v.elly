@@ -137,6 +137,14 @@ withdrew : VERB[^ed]
 written : VERB[^ed]
 wrote : VERB[^ed,*x]
 
+are used  : VERB =are+used
+be used   : VERB[^ed] =be+used
+been used : VERB[^ed] =been+used
+is used   : VERB[^s]  =is+used
+was used  : VERB[^ed,s] =was+used
+were used : VERB[^ed]   =were+used
+uŝed      : VERB[^ed]   =used
+
 # # # # definitions missing from WordNet
 
 after which : CONJ
@@ -464,6 +472,7 @@ up slightly : ADJ
 up slightly : ADV - +1
 up to : ADV[~mod] [$deg] 0
 up to his neck : ADJ
+used to : AUXL
 what is today : ADV
 whenever and wherever : CONJ
 willing to : TO
@@ -704,6 +713,7 @@ african : NOUN
 african : ADJ - +2
 afternoon : NOUN
 afterward : ADV
+afterwards : ADV
 again : ADV
 age : NOUN
 age : VERB
@@ -1794,7 +1804,7 @@ database : NOUN
 date : NOUN
 date : VERB
 david : NOUN
-day : NOUN [&durn] 0
+day : NOUN [&durn,msr] 0
 dazzle : NOUN
 dazzle : VERB
 dazzling : VERB[^ing]
@@ -2820,7 +2830,7 @@ host : NOUN
 host : VERB
 hot : ADJ
 hotel : NOUN
-hour : NOUN
+hour : NOUN [&durn,msr] 0
 hourly : ADJ - +2
 hourly : ADV
 house : NOUN
@@ -3495,7 +3505,7 @@ minister : VERB
 ministry : NOUN
 minor : NOUN
 minor : ADJ
-minute : NOUN [&msr] 0
+minute : NOUN [&durn,msr] 0
 minute : ADJ
 miracle : NOUN
 mislead : VERB
@@ -3537,7 +3547,7 @@ monitor : VERB
 monkey : NOUN
 monkey : VERB
 monstrous : ADJ
-month : NOUN
+month : NOUN [&durn,msr] 0
 moon : NOUN
 moon : VERB
 moore : NOUN
@@ -3768,6 +3778,8 @@ official : NOUN
 official : ADJ
 officially : ADV
 often : ADV [$time] 0
+oil : NOUN - +1
+oil : VERB [$trns] 0
 old : NOUN - -1
 old : ADJ
 olmec : NOUN
@@ -4736,7 +4748,7 @@ seat : NOUN - +1
 seat : VERB
 sec : NOUN
 sec : ADJ
-second : NOUN
+second : NOUN [&durn,msr] 0
 second : VERB
 second : ADJ
 second : ADV
@@ -5403,6 +5415,7 @@ term : VERB
 terminate : VERB
 terminology : NOUN
 terminus : NOUN
+termite : NOUN
 terrify : VERB
 terrifying : ADJ -  +1
 territorial : ADJ

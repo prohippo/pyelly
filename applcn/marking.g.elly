@@ -702,9 +702,8 @@ g:VCLU[^*l]->VERB[^-*r] VCLU[^infn]
  r[$cmpd]>>*r--
          >>*r[$cmpd]++
 _
-  append <vclu><verb>
-  left
-  append </verb>
+  append <vclu>
+  (auxvrb)
   split
   right
   back
@@ -1278,19 +1277,39 @@ _
   right
 __
 
-p:vrbl
+p:auxvrb
 _
-  append <vclu>
-  var typg=verb
-  (typg)
-  append </vclu>
+  split
+  split
+  left
+  back
+  find +
+  var x
+# view 12
+  peek > x
+  if x=+
+    delete 1 >
+    append </aux><verb>
+    end
+  merge
+  back
+# view 12
+  if x=+
+    append <aux>
+  else
+    append <verb>
+    end
+  merge
+  append </verb>
 __
 g:VCLU[^*l]->VERB
 # ?>>?
    >>*l
 _
   var vdat=
-  (vrbl)
+  append <vclu>
+  (auxvrb)
+  append </vclu>
   if vdat=T
     (that)
     end
@@ -1352,13 +1371,13 @@ _
   var typg=aux
   (lxtd)
 __
-g:VCLU[^*r]->BE VCLU[^ing,-hav]
+g:VCLU[^*r]->BE VCLU[^ing,,-aux,-hav]
  >>*r++
 _
   var typg=aux
   (lxtd)
 __
-g:VCLU[^*r]->BE[^-ing] VCLU[^ed,-hav]
+g:VCLU[^*r]->BE[^-ing] VCLU[^ed,-aux,-hav]
  >>*r+
 _
   var typg=aux
@@ -2096,7 +2115,7 @@ __
 d:to   <- TO
 __
 
-d:ago  <- POSTP
+d:ago  <- POSTP[@adv]
 __
 
 d:a   <- DET[@sgl,num]

@@ -41,6 +41,8 @@ approx. -> about
 1_is_a_&@ -> x1x is a \\4
 the_first_of -> x1stx of
 
+which_&@_used -> which \\2 uŝed
+
 #
 # WARNING! the rule below has en dashes in its pattern and
 #          substitution, and its space wildcards will replace
