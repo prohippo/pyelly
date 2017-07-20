@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 04jul2017 CPM
+# ellyWildcard.py : 16jul2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -169,6 +169,7 @@ def convert ( strg ):
     """
 
     if strg == None: return None
+#   print 'strg=' , list(strg)
 
     lng = len(strg)
     nlb = 0                          # check balancing of brackets
@@ -232,6 +233,7 @@ def convert ( strg ):
             nlb -= 1
             t.append(cEOS)           # end   of optional match
         elif x == ellyChar.BSL:      # escape char
+#           print 'escaping'
             if i + 1 == lng:         # nothing to escape?
                 t.append(x)
             elif strg[i+1] == ' ':   # escaped space?
@@ -239,11 +241,12 @@ def convert ( strg ):
                 i += 1
             else:                    # escaped non-space?
                 z = strg[i+1]
-#               print 'escaped=',z
+#               print 'escaped=',z,'@',i
                 if ellyChar.isDigit(z):
                     t.append(x)      # if digit, preserve backslash to indicate substitution
                 else:
                     t.append(z)      # otherwise, keep the next char as lower case
+#                   print 'slash t=',list(t)
                     i += 1
         else:
             t.append(x)
@@ -251,11 +254,11 @@ def convert ( strg ):
 
         if wild and nlb > 0 and x != ellyChar.LBR and x != ellyChar.USC:
 #           print 'at wildcard' , x , 'nlb=' , nlb
-            return None              # no wildcards allowed in optional segments
+            return None              # no wildcards except _ allowed in optional segments
 
         i += 1
 
-#   print "converted=", t
+#   print "converted=", list(t)
 
     return t                         # converted pattern to match against
 
@@ -284,8 +287,9 @@ def deconvert ( patl ):
         xo = ord(x)
         if xo < X:    # check for non-wildcard
             if x in toEscape:
-                s.append('\\')
-            s.append(x)
+                s.append('\\' + x)
+            else:
+                s.append(x)
         else:         # convert wildcard
             s.append(Coding[xo - X - 1])
     return u' '.join(s)
