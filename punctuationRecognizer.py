@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# punctuationRecognizer.py : 21may2017 CPM
+# punctuationRecognizer.py : 18jul2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -79,6 +79,10 @@ defns = [                                      # syntactic significance of punct
     [ u'…' ]         # horizontal ellipsis
 ]
 
+smfs  = {  # special semantic features
+    u')' : '[' + sID + 'spcs]'
+}
+
 def _FS ( symbls , featrs , ftype=False ):
     """
     get ellyBits encoding of syntactic features
@@ -128,13 +132,18 @@ class PunctuationRecognizer(object):
         self.hpnc = { }
         brkg = _FS(syms,'[' + sID + sBRK + ']',True)
         zero = ellyBits.EllyBits()
-        for defn in defns:
+#       print 'smfs=' , smfs
+        for sky in smfs.keys():   # predefine semantic features for punctuation
+#           print 'sky=' , sky , ' : ' , smfs[sky]
+            smfs[sky] = _FS(syms,smfs[sky],True)
+        for defn in defns:        #           syntactic
+            pc = defn[0]
             if len(defn) > 1:
                 sxf = _FS(syms,defn[1])
-                smf = brkg if len(defn) > 2 else zero
-                self.hpnc[defn[0]] = [ sxf  , smf  ]
+                smf = smfs[pc] if pc in smfs else brkg if len(defn) > 2 else zero
+                self.hpnc[pc] = [ sxf  , smf  ]
             else:
-                self.hpnc[defn[0]] = [ zero , zero ]
+                self.hpnc[pc] = [ zero , zero ]
 
     def match ( self , s ):
 
