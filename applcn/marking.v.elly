@@ -97,6 +97,8 @@ mice : NOUN[:plur]
 millennia : NOUN[:plur]
 millennium bc : NOUN
 mixed : VERB[^ed]
+named : VERB[^ed] - +2
+named : ADJ - -4
 opening : VERB[^ing]
 opposing : VERB[^ing]
 ought : VERB
@@ -149,6 +151,7 @@ uŝed      : VERB[^ed]   =used
 
 after which : CONJ
 airstrike : NOUN
+agricultural industry : NOUN
 as compared to : CONJ
 as far as : CONJ
 a third the : NUM
@@ -210,6 +213,7 @@ rgb : ADJ
 rpg : NOUN
 selectable : ADJ
 spectator : ADJ - +1
+special forces : ADJ - -1
 spectral type : NOUN[:*x]
 spiritual director : NOUN
 storytelling : NOUN
@@ -227,7 +231,6 @@ trackwork : NOUN
 uav : NOUN
 underutilization : NOUN
 underutilize : VERB
-usd : NOUN
 
 ah  : MISC[:*x]
 ah yes : MISC[:*x]
@@ -248,6 +251,11 @@ PDF : NOUN
 percent : UNIT - +1
 r&b : NOUN
 rosé : NOUN
+usd : POSTP
+
+1000000000000 : NUM[:*r] - +2 =trillion
+1000000000    : NUM[:*r] - +2 =billion
+1000000       : NUM[:*r] - +2 =million
 
 anything   : NOUN[:qnt]
 everything : NOUN[:qnt]
@@ -383,7 +391,7 @@ cheer on : VERB
 do much more : VERB
 do that : VERB
 due to : PREP
-each : POSTP[@num] - -1
+each : POSTP[@num] [$trlg] -1
 each other : PRO
 even so : CONJ
 even though : CONJ
@@ -431,7 +439,7 @@ not only : CONJ
 often enough : ADV
 on through : PREP
 one another : PRO - +4
-or more : POSTP[@num]
+or more : POSTP[@num] [$trlg] 0
 other than : CONJ
 out of : PREP['div]
 over from : PREP
@@ -573,6 +581,7 @@ Herzegovina : NOUN
 Hillary Clinton : NOUN
 Hunnan New District : NOUN
 Institute for Radio Astronomy Millimetrique : NOUN[:*r]
+Intel : NOUN
 Islamabad Electric Supply Company : NOUN[:*r]
 Islamic State : NOUN
 Jade Helm : NOUN
@@ -947,8 +956,8 @@ avon : NOUN
 awaken : VERB
 award : NOUN
 award : VERB
-away : ADJ - -1
-away : ADV
+away : ADJ - -2
+away : ADV [$trlg] 0
 bachelor : NOUN
 bachelor : VERB
 bachelor of arts : NOUN
@@ -3109,8 +3118,8 @@ kid : VERB
 kill : NOUN - -2
 kill : VERB - +2
 killer : NOUN
-kilometer : NOUN
-kilometre : NOUN
+kilometer : NOUN [&msr] 0
+kilometre : NOUN [&msr] 0
 kind : NOUN
 kind : ADJ
 king : NOUN
@@ -5941,7 +5950,7 @@ wrong : VERB
 wrong : ADJ
 wrong : ADV
 wry : ADJ
-year : NOUN [&msr] 0
+year : NOUN [&durn,msr] 0
 yearn : VERB
 yellow : NOUN
 yellow : VERB

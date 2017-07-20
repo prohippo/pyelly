@@ -622,14 +622,19 @@ _
   var typg=nclu
   (typg)
 __
+#
+# using cmpd to indicate parenthesized NCLU
+#
 g:NCLU[:det]->PEXP[|det,nom,-stop,-ctrl] PUNC[|*r]
- >>[&spcs]+5
+ r[!spcs]>>[&spcs,cmpd]+5
+         >>[&spcs]+5
 _
   var typd=n
   (pxnorv)
 __
 g:NCLU->PEXP[|-det,nom,-stop,-ctrl] PUNC[|*r]
- >>[&spcs]+5
+ r[!spcs]>>[&spcs,cmpd]+5
+         >>[&spcs]+5
 _
   var typd=n
   (pxnorv)
@@ -877,22 +882,136 @@ _
   (pphr)
 __
 
-g:NCLU->DATE[:-cnj,-*r] NCLU[:-det,-num,-qnt,-prep]
+g:NCLU[:*r]->DATE[:-cnj,-*r] NCLU[:-prep,-det,-qnt,-num]
  >>--
 _
   var typg=date
   (lxtd)
 __
-g:NCLU[:*l]->NCLU[:num] POSTP
- >>*l++
-_
-  var typg=postp
-  (rxtd)
+g:DATE[:*l]->DATY
+  c>4>>----------
+     >>+
 __
+
+# # # #
+p:postp
+_
+  append <postp>
+  right
+  append </postp>
+__
+g:NCLU[:*l]->NCLN[:num,val] POSTP[@adv]
+#       ?>>?
+ r{$trlg]>>*l[&adv]++++
+         >>*l[&adv]++
+_
+  append <nclu>
+  split
+  left
+  back
+  if [&durn]
+    append <date>
+    merge
+    right
+    append </date>
+  else
+    merge
+    (postp)
+    end
+  append </nclu>
+__
+g:NCLU[:*l]->NCLN[:num,val] POSTP[@-adv]
+#        ?>>?
+  r[$trlg]>>*l[&adv]++++
+          >>*l[&adv]++
+_
+  append <nclu>
+  left
+  (postp)
+  append </nclu>
+__
+g:NCLU[:*r,num]->NCLN[:-qnt] NCLU[:-prep,-det,-qnt,-num,-ing]
+#        ?>>?
+  r[&cmpd]>>*r----
+          >>*r++
+_
+  split
+  right
+  back
+  shift 6 <
+  left
+  merge
+__
+g:NCLU[:*r]->NCLN
+ >>*l-
+_
+  append <nclu>
+  left
+  append </nclu>
+__
+
+g:NCLN[:num,val]->NUM NOUN[:plur]
+  r[&msr]>>*r++
+         >>-
+_
+  append <num>
+  left
+  append </num><noun>
+  right
+  append </noun>
+__
+g:NCLN[:num,val,qnt]->QUAN[@num,ind] NOUN[:plur]
+  r[&msr]>>*r++
+         >>------
+_
+  append <quan>
+  left
+  append </quan><noun>
+  right
+  append </noun>
+__
+g:NCLN[:*l]->NCLN[:num,val,cnj] NUM[:*r]
+_
+  left
+  delete 6 >
+  var x
+  store x
+  space
+  right
+  insert < x
+__
+g:NCLN[:num,val,cnj]->MONEY
+_
+  append <num>
+  left
+  append </num>
+__
+g:DATE->NOUN[:plur] POSTP[@adv]
+ l[&durn,msr]>>++
+             >>--------
+_
+  (twob)
+__
+g:DATN->NOUN[:-plur] POSTP[@adv]
+ >>--
+_
+  (twob)
+__
+g:DATE->DET[@num,sgl] DATN
+ >>++++
+_
+  (twob)
+__
+d:across <- POSTP[@adv]
+ >>[$trlg]-
+__
+
+# # # #
+
 g:NCLU[:*l]->NCLU ADJ
- n<3l[$*c]r[$*c]>>*l++++
-         r[$prd]>>*l+
-                >>*l------
+ n<3 l[$*c]r[$*c]>>*l++++
+          r[$prd]>>*l+
+                 >>*l------
 _
   var typg=adj
   (rxtd)
@@ -1003,9 +1122,7 @@ _
 __
 g:NCLU[:*r,num]->NUM NCLU[:-det,-prep,-num,-qnt, plur]
 #       ?>>?
- l[&curr]>>++
  l[&prop]>>*r--
- r[&curr]>>*r++++
  r[&cmpd]>>*r[&adv]++++
   r[&msr]>>*r++++
          >>*r++
@@ -1015,9 +1132,7 @@ _
 __
 g:NCLU[:*r,num]->NUM NCLU[:-det,-prep,-num,-qnt,-plur]
 #        ?>>?
-  l[&curr]>>++
  l[&-prop]>>---
-  r[&curr]>>*r++++
   r[&cmpd]>>*r[&adv]++++
           >>*r++
 _
@@ -1709,10 +1824,14 @@ _
   right
 __
 
-g:NUM->MONEY NUM
-# ?>>?
-   >>[&curr]
+g:MONEY->ADV[~mod] MONEY
+  >>[&cmpd]++
+_
+  var typg=adv
+  (typg)
+  right
 __
+
 g:NUM->ADJ[%mod] NUM
  >>+++
 _
@@ -1757,6 +1876,10 @@ g:NUM[:cnj]->NUM[:cnj] NUM[:cnj]
 _
   (twob)
 __
+g:NUM->NUM[:-cnj,-*l,-*r] NUM[:*r]
+_
+  (twob)
+__
 
 g:NUM[:prep]->PREP['prx] NUM[:-prep]
  n<3>>++
@@ -1764,16 +1887,6 @@ _
   var typg=prep
   (typg)
   right
-__
-
-g:NUM->NUM[:-cnj] NUM[:*r]
-# ?>>?
-   >>+
-_
-# trace
-  left
-# view
-  (spellr) # "3 million"
 __
 
 #
@@ -2196,9 +2309,9 @@ d:all  <- QUAN[@ind,cnj,adv]
 __
 d:any  <- QUAN[@ind]
 __
-d:some <- QUAN[@ind]
+d:some <- QUAN[@ind,num]
 __
-d:many <- QUAN[@ind]
+d:many <- QUAN[@ind,num]
  >>[!mltp]
 __
 d:each <- QUAN[@ind,cnj]
@@ -2207,7 +2320,7 @@ d:every<- QUAN
 __
 d:no   <- QUAN
 __
-d:several<-QUAN[@ind]
+d:several<-QUAN[@ind,num]
  >>[!mltp]
 __
 d:both   <- QUAN[@ind,cnj]
@@ -2485,15 +2598,6 @@ __
 d:-y    <- SUFX[#aTOr]
 __
 d:-y    <- SUFX[#nTOa]
-__
-
-d:$ <- MONEY
-__
-d:£ <- MONEY
-__
-d:€ <- MONEY
-__
-d:¥ <- MONEY
 __
 
 # # # # # # # #
@@ -3081,37 +3185,6 @@ g:DATE[:cnj]->PUNC[|*l] DATE[:-cnj]
 __
 g:DATE->DATE[:cnj] PUNC[|*r]
  >>+++
-__
-
-p:spellr
-_
-# trace
-# view 12
-  split
-  right
-  back
-# view 12
-  var dltd=
-  delete 999 <
-  store dltd
-# show dltd
-  if dltd=1000
-    append k
-  elif dltd=1000000
-    append mn
-  elif dltd=1000000000
-    append bn
-  else
-#   trace
-    insert < dltd
-    end
-  merge
-__
-d:1000000 <- NUM[:*r]
- >>+
-__
-d:1000000000 <- NUM[:*r]
- >>+
 __
 
 d:iii <- XID[:val]
