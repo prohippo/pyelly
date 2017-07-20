@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# patternTable.py : 04jul2017 CPM
+# patternTable.py : 19jul2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -79,7 +79,9 @@ class Link(object):
                 print >> sys.stderr , '** link pattern includes space:' , dfls[0]
                 raise ellyException.FormatFailure
             else:
+#               print 'do conversion;
                 self.patn = ellyWildcard.convert(dfls[0]) # encode Elly pattern
+#           print 'patn=' , self.patn
             if dfls[0] != '$':
                 if self.patn == None or ellyWildcard.minMatch(self.patn) == 0:
                     print >> sys.stderr , '** bad link pattern:' , dfls[0]
@@ -382,6 +384,7 @@ class PatternTable(object):
                 if lk.patn == u'\x00': # do state change without matching?
                     m = 0           # no match length
                 else:
+#                   print 'patn=' , lk.patn
                     bds = ellyWildcard.match(lk.patn,sg)
 #                   print 'bds=' , bds
                     if bds == None: continue
