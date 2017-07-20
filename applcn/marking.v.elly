@@ -129,6 +129,8 @@ swooping : VERB[^ing]
 taken : VERB[^ed]
 taking place : VERB[^ing]
 terrifying : VERB[^ing]
+terrorizing : VERB[^ing] - +2
+terrorizing : NOUN - -1
 thought : VERB[^ed]
 took place : VERB[^ed]
 unified : VERB[^ed]
@@ -154,6 +156,7 @@ airstrike : NOUN
 agricultural industry : NOUN
 as compared to : CONJ
 as far as : CONJ
+as result of : CONJ
 a third the : NUM
 because of : PREP
 bookended : VERB[^ed] - -1
@@ -183,6 +186,7 @@ in terms of : PREP
 in the event of : PREP
 interferometry : NOUN
 jain : NOUN
+just for the hell of it : ADV
 land survey : NOUN
 manga : NOUN
 mannerist : NOUN
@@ -319,6 +323,7 @@ electricity generation system : NOUN
 entry point : NOUN
 family show : NOUN
 feed & farm supply store : NOUN
+fist fight : NOUN
 fixed investment : NOUN
 genetically modified : ADJ
 genome editing : NOUN
@@ -332,6 +337,7 @@ livestock waste : NOUN
 media pack : NOUN
 military exercise : NOUN
 muslim tradition : NOUN
+neighborhood bar : NOUN
 open desert : NOUN
 piano four hands : NOUN
 purchasing power : NOUN
@@ -1726,7 +1732,7 @@ credit : NOUN
 credit : VERB
 creek : NOUN
 crew : NOUN
-crew : VERB
+crew : VERB - -2
 crib : NOUN
 crib : VERB
 cricket : NOUN
@@ -2040,7 +2046,7 @@ dressing room : NOUN
 drink : NOUN
 drink : VERB
 drive : NOUN
-drive : VERB[^ptcl]
+drive : VERB[^ptcl] - +1
 drone : NOUN
 drone : VERB
 drop : NOUN
