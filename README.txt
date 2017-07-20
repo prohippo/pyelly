@@ -454,9 +454,11 @@ Release Notes:
  1.4.10  -  4jul2017  add Unicode thin spaces to text recognized by PyElly
                       clean handling of various spaces in ellyChar
                       fix bug in matching patterns with space wildcards
+                      fix ellyWild bug in deconverting pattern string
                       fix error detection in converting syntactic features
                       correct and extend stopException unit test
                       clean up debugging statements in PyElly modules
+                      minor improvements in unit testing
                       extend "marking" rules and integration test
                       update documentation
 
