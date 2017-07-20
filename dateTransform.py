@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# dateTransform.py : 15mar2017 CPM
+# dateTransform.py : 17jul2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -519,7 +519,8 @@ if __name__ == '__main__':
         u'Twelfth of Never' ,
         u'1000 BC' ,
         u'1234 x' ,
-        u'123 x'
+        u'123 x' ,
+        u'2016'
     ]
 
     de = DateTransform()
