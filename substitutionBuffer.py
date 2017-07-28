@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# substitutionBuffer.py : 03jul2017 CPM
+# substitutionBuffer.py : 24jul2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -291,5 +291,8 @@ if __name__ == "__main__":
                 break
             if t == None: break
             print ">>>>" , unicode(t)
+            b = sbuf.buffer
+            if len(b) > 5: b = b[:5]
+            print 'TO' , b
         print "------------"
     sys.stdout.write("\n")
