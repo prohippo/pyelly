@@ -106,12 +106,14 @@ paid : VERB[^ed]
 phenomena : NOUN[:plur]
 points of View : NOUN[:plur]
 potions : NOUN
+pressing : VERB[^ing]
 ran : VERB[^ed]
 regarding : PREP - +1
 regarding : NOUN - -1
 regarding : VERB[^ing]
 related : VERB[^ed]
 rose : VERB[^ed,*x] - +1
+rushing : VERB[^ing] - +1
 said : VERB[^ed,dit]
 sat down : VERB[^ed,*x]
 seen : VERB[^ed]
@@ -119,6 +121,7 @@ seen : SVED - -1
 serve as : VERB
 served as : VERB[^ed]
 serving as : VERB[^ing]
+setting : VERB[^ptcl,ing] - +1
 shown : VERB[^ed]
 sitting : VERB[^ing]
 stimulating : VERB[^ing]
@@ -151,6 +154,8 @@ uŝed      : VERB[^ed]   =used
 
 # # # # definitions missing from WordNet
 
+1st mention : NOUN
+1st mention : VERB
 after which : CONJ
 airstrike : NOUN
 agricultural industry : NOUN
@@ -225,7 +230,9 @@ streetlamp : NOUN
 submillimeter  : ADJ
 supply train : NOUN
 teenybopper : NOUN
-timelord : NOUN
+time lord : NOUN
+time travel : NOUN
+time travel : VERB
 title track : NOUN
 top 40 : NUM
 top 40 hit : NOUN
@@ -235,6 +242,7 @@ trackwork : NOUN
 uav : NOUN
 underutilization : NOUN
 underutilize : VERB
+wine review : NOUN
 
 ah  : MISC[:*x]
 ah yes : MISC[:*x]
@@ -325,6 +333,7 @@ family show : NOUN
 feed & farm supply store : NOUN
 fist fight : NOUN
 fixed investment : NOUN
+freedom ride : NOUN
 genetically modified : ADJ
 genome editing : NOUN
 hi res : ADJ
@@ -391,6 +400,8 @@ best suit : VERB
 better of it : ADV
 but now : CONJ
 but then : CONJ
+by almost half : ADV[~trlg] [$deg,trlg] 0
+by nearly half : ADV[~trlg] [$deg,trlg] 0
 calm and collected : ADJ [$cmpd] 0
 can and will : AUXL
 cheer on : VERB
@@ -399,6 +410,7 @@ do that : VERB
 due to : PREP
 each : POSTP[@num] [$trlg] -1
 each other : PRO
+even before : CONJ
 even so : CONJ
 even though : CONJ
 few hundred : NUM
@@ -550,12 +562,15 @@ world-renowned : ADJ
 ABC News : NOUN
 Agence France-Presse : NOUN
 Alagoas : NOUN
+Alison : NOUN
+Amor Victorious : NOUN
 Andras : NOUN
 Angelina : NOUN
 Angelina Jolie : NOUN
 Apple Watch : NOUN
 AT&T : NOUN
 Becker : NOUN
+Bernice Summerfield : NOUN
 Bitcoin : NOUN
 Black Lives Matter : NOUN[:*r]
 Catalina : NOUN
@@ -566,6 +581,10 @@ Colorado State University : NOUN
 Coolio Earth Partnership : NOUN
 Crafty : NOUN
 Cubbies : NOUN[:plur]
+Dave Stone : NOUN
+Denny : NOUN
+Dillons : NOUN =dillon 's
+Doctor Who : NOUN
 Donald Trump : NOUN
 Dugs : NOUN
 Grants Pass : NOUN
@@ -579,7 +598,7 @@ Furnariidae : NOUN
 Gallagher : NOUN
 Gene Simmons : NOUN
 George Will : NOUN
-Golden State : ADJ
+Golden State Warriors : NOUN
 Gov. Jerry Brown : NOUN
 Harry : NOUN
 HBO : NOUN
@@ -597,8 +616,10 @@ Jim : NOUN
 Josephine County : NOUN
 Keaton : NOUN
 La Nina : NOUN
+Laura : NOUN
 Liaoning : NOUN
 Lin-Manuel Miranda : NOUN
+Love Victorious : NOUN
 McCarthy : NOUN
 Michael Keaton : NOUN
 Mimi Spear : NOUN
@@ -607,10 +628,12 @@ NBA : NOUN
 Nicholas : NOUN
 Novaes : NOUN
 Obamas : NOUN[:plur] =obama -s
+Our Lady of Sorrows : NOUN
 Reaganite : NOUN
 Rockette : NOUN
 Scotts : NOUN
 Scotts Miracle-Gro Company : NOUN
+Ship of Fools : NOUN
 St. Mary : NOUN
 Stephen Curry : NOUN
 The Verge : NOUN [&prop] 0
@@ -625,6 +648,8 @@ Warner Brothers : NOUN
 Washington Post : NOUN
 West Indies : NOUN[:plur]
 World News Tonight with David Muir : NOUN
+Zero Mostel : NOUN
+Zigfeld Follies : NOUN
 Zimmer : NOUN
 
 # # # # miscellaneous
@@ -634,10 +659,12 @@ fried liver attack : NOUN
 "thousands" : NUM
 % : NOUN[:plur]
 % duty cycle : NOUN
-1st : ADV
+1st : NUM [&prop] +2
 
 # # # # WordNet 3.1 entries
 
+1st : NOUN - -4
+1st : ADV
 a bit : ADV [$deg,cmpd] 0
 abbey : NOUN
 ability : NOUN
@@ -970,7 +997,7 @@ bachelor of arts : NOUN
 back : NOUN - -1
 back : VERB
 back : ADJ
-back : ADV [$trlg] +2
+back : ADV [$trlg,spat] +2
 bacteria : NOUN
 bad : ADJ
 bad : ADV
@@ -2525,6 +2552,7 @@ fresh : ADJ
 fresh : ADV
 friday : NAVB
 friend : NOUN
+friendly : ADJ
 friendship : NOUN
 fright : NOUN
 fright : VERB
@@ -2650,6 +2678,7 @@ goal : NOUN
 god : NOUN
 goiter : NOUN
 golden : ADJ
+golden state : NOUN
 good : NOUN
 good : ADJ [$cmpd] 0
 good : ADV - -1
@@ -3104,7 +3133,7 @@ jungle : NOUN
 jurisdiction : NOUN
 just : ADJ
 just : ADV - +1
-just as : ADV [$deg] 0
+just as : ADV[~mod] [$deg] 0
 justice : NOUN
 kansas : NOUN
 kashmir : NOUN
@@ -3328,8 +3357,8 @@ love : VERB
 lovely : ADJ
 low : NOUN - -2
 low : VERB - -1
-low : ADJ - +2
-low : ADV[~trlg] [$prd] 0
+low : ADJ - +3
+low : ADV[~trlg] [$prd,trlg] +1
 lower : NOUN - -2
 lower : VERB
 lower : ADJ
@@ -3598,7 +3627,7 @@ mph : NOUN[:plur]
 mr : NOUN
 much : NOUN - -1
 much : ADJ[%to] [$vls] 0
-much : ADV [$deg] +2
+much : ADV [$deg,cond] +2
 much like : VERB - -1
 much like : PREP
 muhammad : NOUN
@@ -4009,7 +4038,7 @@ pen : VERB
 penetrate : VERB
 pennsylvania : NOUN
 penny : NOUN
-people : NOUN[:plur]
+people : NOUN[:sgl,plur]
 people : VERB - -2
 pep : NOUN
 pepper : NOUN
@@ -4222,6 +4251,8 @@ presley : NOUN
 press : NOUN
 press : VERB
 press conference : NOUN
+pressing : NOUN
+pressing : ADJ - +1
 pressure : NOUN
 pressure : VERB
 prestige : NOUN
@@ -4449,7 +4480,7 @@ rebel : NOUN
 rebel : VERB
 receive : VERB
 recent : ADJ
-recently : ADV[~trlg]
+recently : ADV[~trlg] [$time] 0
 receptor : NOUN
 reclassify : VERB
 recognition : NOUN
@@ -4678,6 +4709,7 @@ rural : ADJ
 rush : NOUN
 rush : VERB
 rush : ADJ
+rushing : NOUN - -2
 russell : NOUN
 russia : NOUN
 russian : NOUN
@@ -4734,6 +4766,7 @@ scholar : NOUN
 school : NOUN
 school : VERB
 science : NOUN
+science fiction : NOUN
 scientist : NOUN
 scope : NOUN
 score : NOUN
@@ -4778,8 +4811,8 @@ section : VERB
 sector : NOUN
 secure : VERB
 secure : ADJ
-see : NOUN - -1
-see : VERB
+see : NOUN - -2
+see : VERB - +1
 seek : NOUN
 seek : VERB
 seeker : NOUN
@@ -4827,12 +4860,11 @@ serve : VERB
 server : NOUN
 service : NOUN
 service : VERB
-set : NOUN
+set : NOUN - -2
 set : VERB[^ptcl]
-set : ADJ - -1
+set : ADJ [$time,spat] -1
 setback : NOUN
 seton : NOUN
-setting : VERB[^ptcl,ing] - +1
 setting : NOUN
 settle : NOUN
 settle : VERB[^ptcl]
@@ -5097,6 +5129,7 @@ splash : NOUN
 splash : VERB
 splinter : NOUN
 splinter : VERB
+splinter group : NOUN
 split : NOUN
 split : VERB
 split : ADJ
@@ -5984,7 +6017,7 @@ zero : NOUN
 zero : VERB
 zero : ADJ
 ziegfeld : NOUN
-ziegfeld follies : NOUN[:plur]
+ziegfeld follies : NOUN[:plur,sgl]
 zimbabwe : NOUN
 zimbabwean : NOUN
 zimbabwean : ADJ - +2

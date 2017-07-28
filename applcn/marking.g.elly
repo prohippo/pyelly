@@ -819,6 +819,11 @@ g:NCLU[:*r,det,num]->DET[@sgl,num] NCLU[:-det,-prep,-plur]
 _
   (sdtnc)
 __
+g:NCLU[:*r,det,num]->DET[@sgl,num] NCLU[:-det,-prep,sgl,plur]
+  >>*r
+_
+  (sdtnc)
+__
 g:NCLU[:*r,det]->DET[@sgl,-num] NCLU[:-det,-prep,-plur]
  l[!spcs]r[&cond]>>*r[&spcs]+
          r[&cond]>>*r+
@@ -1017,8 +1022,10 @@ _
   (rxtd)
 __
 g:XID->NUM[:-*l,-*r]
- n>1>>------
- c>4>>------
+#       ?>>?
+ l[&prop]>>----
+      n>1>>------
+      c>4>>------
 __
 g:NOUN[:*l]->NOUN PRO[=rflx]
  >>++
@@ -1312,39 +1319,49 @@ g:NOUN[:*r]->NOUN[:join] NOUN
 # ?>>?
    >>*r++
 __
-g:NOUN[:*r,cnj]->NOUN[:-*l,-join,-poss,-plur,-ing] NOUN[:-cnj,ing,-det]
+g:NOUN[:*r,cnj]->NOUN[:-*l,-join,-poss,-ing,-plur] NOUN[:-cnj,ing,-det]
 #       ?>>?
  r[&prop]>>*r-2
  l[&spcs]>>*r-2
 _
   (twob)
 __
-g:NOUN[:*r,cnj]->NOUN[:-*l,-join,-poss,-plur,-ing] NOUN[:-cnj,-ing,-det]
+g:NOUN[:*r,cnj]->NOUN[:-*l,-join,-poss,-ing,-plur] NOUN[:-cnj,-ing,-det]
 #                ?>>?
- l[&spcs,*c]r[&*c]>>[&*c]+2
-          r[&prop]>>-2
-          l[&spcs]>>-2
-      l[&*c]r[&*c]>>[&*c]+3
-     l[&-*c]r[&*c]>>+2
-                  >>+1
+ l[&spcs,*c]r[&*c]>>*r+2
+          r[&prop]>>*r-2
+          l[&spcs]>>*r-2
+      l[&*c]r[&*c]>>*r+3
+     l[&-*c]r[&*c]>>*r[&-*c]+2
+                  >>*r+1
 _
   (twob)
 __
-
-g:NOUN[:*r,cnj]->NOUN[:-join,-poss,plur,-ing] NOUN[:-cnj,-ing,-plur,-det]
+g:NOUN[:*r,cnj]->NOUN[:-*l,-join,-poss,-ing, plur, sgl] NOUN[:-cnj,-ing,-det]
+#                ?>>?
+ l[&spcs,*c]r[&*c]>>*r+2
+          r[&prop]>>*r-2
+          l[&spcs]>>*r-2
+      l[&*c]r[&*c]>>*r+3
+     l[&-*c]r[&*c]>>*r[&-*c]+2
+                  >>*r+1
+_
+  (twob)
+__  
+g:NOUN[:*r,cnj,plur]->NOUN[:-*l,-join,-poss,-ing,plur,-sgl] NOUN[:-cnj,-ing,-det,-plur]
 #           ?>>?
      r[&cond]>>-6
      r[&prop]>>*r+2
- l[&*c]r[&*c]>>*r[&*c]+3
+ l[&*c]r[&*c]>>*r+3
        l[&*c]>>*r+1
              >>-4
 _
   (twob)
 __
-g:NOUN[:*r,cnj]->NOUN[:-join,-poss,plur,-ing] NOUN[:-cnj,-ing,plur,-det]
+g:NOUN[:*r,cnj]->NOUN[:-*l,-join,-poss,-ing,plur,-sgl] NOUN[:-cnj,-ing,-det, plur]
 #             ?>>?	
        r[&cond]>>-6
-       r[&prop]>>-2
+       r[&prop]>>*r-2
  l[&-*c]r[&-*c]>>-4
   l[&*c]r[&-*c]>>*r+1
                >>-4
@@ -1372,8 +1389,8 @@ _
 __
 g:NOUN[:*l,-*l]->NOUN[:-*x,-*l,-plur,-ing] XID
  l[&*c]r[!*c]>>+2
+       r[!*c]>>-1
       l[&-*c]>>-3
-      r[!-*c]>>-3
 _
   (twob)
 __
@@ -1450,10 +1467,14 @@ _
   var typg=adv
   (lxtd)
 __
-g:VCLU[^*l]->VCLU ADV[~-mod,-dir]
-  r[$deg]  >>*l
+g:VCLU[^*l]->VCLU ADV[~-mod,-dir,-trlg]
+#         ?>>?
+  r[$cond] >>*l------
+  r[$deg]  >>*l++
   r[$prd]  >>*l++++
   l[$-trns]r[$trlg]>>*l+
+  r[$time] >>*l++
+  r[$spat] >>*l+
   >>----
 _
   var typg=adv
@@ -1461,6 +1482,7 @@ _
 __
 g:VCLU[^*l]->VCLU ADV[~dir,trlg]
   l[$spat]>>++
+  r[$time]>>++
           >>-
 _
   var typg=adv
@@ -1658,6 +1680,7 @@ _
   (twob)
 __
 g:ADJ[%*r,more]->ADV ADJ[%er]
+    n>4 >>-4
  l[$deg]>>+8
 _
   var typg=adv
@@ -1665,6 +1688,7 @@ _
   right
 __
 g:ADJ[%*r,more]->ADV[~-int] ADJ[%-er,-ed]
+    n>4 >>-4
  l[$deg]>>[$cmpd]+6
 _
   var typg=adv
@@ -1672,6 +1696,7 @@ _
   right
 __
 g:ADJ[%*r,more]->ADV[~-int] ADJ[%-er,ed]
+     n>3 >>-4
  l[$time]>>-4
  l[$deg] >>[$cmpd]+6
 _
@@ -1680,7 +1705,8 @@ _
   right
 __
 g:ADJ[%*r,more]->ADV[~int] ADJ[%-er]
- >>+4
+  n>3 >>-4
+      >>+4
 _
   var typg=adv
   (typg)
@@ -1713,6 +1739,7 @@ _
 __
 g:ADJ[%*r]->ADV[~cnj] ADJ
  n<3>>*r[$cnj]++++
+ n>3>>----
 _
   (advb)
 __
@@ -1726,10 +1753,12 @@ g:ADV->VERB SUFX[#vTOr]
 _
   (twob)
 __
-g:ADV->ADV[~-int,-cnj] ADV
+g:ADV[~*r,cnj]->ADV[~-int,-cnj,-cplx] ADV[~-cnj]
  l[$trlg]>>--
+  l[$deg]>>*r++++
+      n>7>>----
       n>5>>--
-         >>+
+         >>*r+
 _
   (twob)
 __
@@ -1754,7 +1783,7 @@ g:ADV->NEGN ADV[~-non]
 _
   (twob)
 __
-g:ADV->CONJ[@prep] DATE[:-cnj]
+g:ADV[~cnj]->CONJ[@prep] DATE[:-cnj]
  >>++++
 _
   append <date><prep>
@@ -1964,7 +1993,13 @@ _
   right
 __
 g:ADJ[%*r]->ADV[~int] ADJ
- >>*r++
+ n>4 >>----
+     >>*r++
+_
+  (advb)
+__
+g:ADJ[%*r]->ADV[~mod] ADJ
+  >>++++
 _
   (advb)
 __
@@ -2245,6 +2280,10 @@ d:that <- DEM[@ind,sgl]
 __
 d:that <- THAT
 __
+d:tht  <- THAT
+_
+  append that
+__
 d:these<- DEM[@ind,plur]
 __
 d:those<- DEM[@ind,plur]
@@ -2341,6 +2380,7 @@ d:there <- ADV
 __
 
 d:i    <- PRO[=nom]
+ >>+
 __
 d:me   <- PRO
 __
@@ -2395,6 +2435,10 @@ __
 d:1 <- PRO[=one]
 _
   append one
+__
+d:1 <- XID[:val]
+# ?>>?
+   >>[&*c]-
 __
 d:1 <- NUM
  >>[&prop]+
@@ -2750,7 +2794,7 @@ __
 g:ADV->GENR PREP['of]
  >>-2
 __
-g:ADV[~cplx]->ADV[~-trlg] NCLU[:prep,-poss]
+g:ADV[~cplx]->ADV[~-trlg,-cplx,-cnj] NCLU[:prep,-poss]
  >>-1
 __
 g:VERB[^*r,hav,ing]->HAVE[^ing] VERB[^ed]
@@ -2829,12 +2873,23 @@ g:ADJX[%cnj]->ADJ CONJ[@cnj,-rel]
 _
   (twob)
 __
-g:ADJ[%*r]->ADJX[%cnj] ADJ[%-ed,-ing,-num]
-# ?>>?
-   >>*l++++
+g:ADJX[%*l]->ADJX[%cnj] CONJ[@cnj,-rel]
+  >>*l+
 _
   (twob)
 __
+g:ADJ[%*r]->ADJX[%cnj] ADJ[%-ed,-ing,-num]
+# ?>>?
+   >>*l++++++
+_
+  (twob)
+__
+g:ADJX[%*r]->ADJX[%cnj] ADJX[%cnj,-*r]
+  >>+++++++++
+_
+  (twob)
+__
+
 g:HYPA->PUNC[|hyph] VERB[^ed]
 __
 g:ADJ->ADV HYPA
@@ -3255,4 +3310,8 @@ _
   append <nclu><date>
   left
   append </date>>/nclu>
+__
+
+g:DATE->ADJ[%-ed,-ing] DATE[:*r]
+  l[$time]>>++++
 __
