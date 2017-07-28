@@ -461,6 +461,10 @@ Release Notes:
                       minor improvements in unit testing
                       extend "marking" rules and integration test
                       update documentation
+ 1.4.11  - 27jul2017  clean up and extend stop exception recognition
+                      improve substitutionBuffer unit test
+                      extend "marking" rules
+                      update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
