@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 07jul2017 CPM
+# ellyChar.py : 28jul2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -467,6 +467,8 @@ def toLowerCaseListASCII ( ls , num=True ):
         c = ls[i]
         if c >= Lim:
             c = '_'
+        elif c == '_':
+            pass
         elif not isLetterOrDigit(c):
             c = '.'
         elif not num and isDigit(c):
