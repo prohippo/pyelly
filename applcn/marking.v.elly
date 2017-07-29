@@ -148,9 +148,12 @@ are used  : VERB =are+used
 be used   : VERB[^ed] =be+used
 been used : VERB[^ed] =been+used
 is used   : VERB[^s]  =is+used
+uŝed      : VERB[^ed]   =used
 was used  : VERB[^ed,s] =was+used
 were used : VERB[^ed]   =were+used
-uŝed      : VERB[^ed]   =used
+
+go_on : VERB =go on
+went_on : VERB[^ed] =went on
 
 # # # # definitions missing from WordNet
 
@@ -3768,7 +3771,7 @@ nothing : NOUN
 nothing : ADV - -4
 notion : NOUN
 nova : NOUN
-novel : NOUN
+novel : NOUN - +1
 novel : ADJ
 november : NOUN
 now : NOUN - -4

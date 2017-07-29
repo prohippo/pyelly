@@ -44,6 +44,9 @@ the_first_of -> x1stx of
 
 which_&@_used -> which \\2 uŝed
 
+go_on_to -> go_on to
+went_on_to -> went_on to
+
 #
 # WARNING! the rule below has en dashes in its pattern and
 #          substitution, and its space wildcards will replace
