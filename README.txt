@@ -465,6 +465,10 @@ Release Notes:
                       improve substitutionBuffer unit test
                       extend "marking" rules
                       update documentation
+ 1.4.11.1- 29jul2017  more rational handling of _ in vocabulary table keys
+                      improve vocabularyTable unit test
+                      extend "marking" rules and integration test
+                      update and clean up documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
