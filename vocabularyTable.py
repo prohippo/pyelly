@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 25jun2017 CPM
+# vocabularyTable.py : 28jul2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -180,7 +180,7 @@ def compile ( name , stb , defn ):
         except OSError:
             print >> sys.stderr , 'no' , filn        # if no such file, warn but proceed
 
-#### SQLite
+#### SQLite DB operations
 ####
         try:
             cdb = dbs.connect(filn)                  # create new database
@@ -379,7 +379,7 @@ def compile ( name , stb , defn ):
                 print >> sys.stderr , ']'
                 continue                            # skip rest of processing this rule
 
-#### SQLite
+#### SQLite DB operation
 ####
             try:
                 sql = "INSERT INTO Vocab VALUES(?,?)"
@@ -392,7 +392,7 @@ def compile ( name , stb , defn ):
 ####
 
 
-#### SQLite
+#### SQLite DB operations
 ####
         if nerr == 0:
             cdb.commit()
@@ -500,7 +500,7 @@ class VocabularyTable(object):
         if not os.path.isfile(database):
             return
 
-#### SQLite
+#### SQLite DB operations
 #
         try:
             self.cdb = dbs.connect(database)
@@ -551,7 +551,7 @@ class VocabularyTable(object):
 
 #           print 'key=' , type(akey) ,akey
 
-#### SQLite
+#### SQLite DB operations
 #
             sql = "SELECT * FROM Vocab WHERE Keyx = ?"
             self.cur.execute(sql,(akey,))
@@ -810,10 +810,15 @@ if __name__ == '__main__':
 
     def check ( vtb , ts , kl=None ):
         """ lookup method for unit testing
+            arguments:
+                vtb  - target vocabulary table
+                ts   - text as list of chars
+                kl   - length of text to use as key
         """
-        if kl == None: kl = len(ts)
+        lts = len(ts)
+        if kl == None or kl > lts: kl = lts
         rs = vtb.lookUp(ts,kl)               # check for possible vocabulary matches
-        print 'in text' , '"' + u''.join(ts) + '"' ,
+        print 'full text=' , '"' + u''.join(ts) + '"' ,
         if len(rs) == 0:                     # any vocabulary entries found?
             print 'FOUND NONE'
         else:
@@ -866,7 +871,7 @@ if __name__ == '__main__':
         print >> sys.stderr , 'exiting'
         sys.exit(1)                        # quit on failure
 
-    uvtb = VocabularyTable(nams,ustem) # load vocabulary table just created
+    uvtb = VocabularyTable(nams,ustem)     # load vocabulary table just created
 
     ucdb = uvtb.cdb                        # get database for table
     if ucdb == None:
@@ -875,7 +880,7 @@ if __name__ == '__main__':
 
     nu = 0
 
-#### SQLite
+#### SQLite DB operations
 #
     try:
         ucur = ucdb.cursor()
@@ -893,11 +898,11 @@ if __name__ == '__main__':
         hk[ur[0]] = 0
     unqk = hk.keys()
     print len(unqk) , 'unique DB keys\n'
-    print 'looking up each DB key as SINGLE-word vocabulary entry'
+    print 'looking up DB keys as SINGLE-word vocabulary entries'
     for ky in unqk:
-        if nu >= limt: break
+        if nu >= limt: break           # stop when too many keys
         nu += 1
-        check(uvtb,list(ky))           # dump all info for each key
+        check(uvtb,list(ky))           # dump all info for key
         print ''
 
     print 'enter SINGLE- and MULTI-word terms to look up in table'
