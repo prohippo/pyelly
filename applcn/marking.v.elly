@@ -39,6 +39,7 @@ does not : AUXL[^s]
 elevated : VERB[^ed]
 exciting : VERB[^ing]
 feeding : VERB[^ing]
+feet : NOUN[:plur] [&msr] 0
 fighting : VERB[^ing]
 financing : VERB[^ing]
 fishermen : NOUN[:plur]
@@ -96,6 +97,8 @@ means : VERB[^s] - +1
 mice : NOUN[:plur]
 millennia : NOUN[:plur]
 millennium bc : NOUN
+mīned : VERB[^ed] =mined
+mining : VERB[^ing] - -1
 mixed : VERB[^ed]
 named : VERB[^ed] - +2
 named : ADJ - -4
@@ -148,7 +151,7 @@ are used  : VERB =are+used
 be used   : VERB[^ed] =be+used
 been used : VERB[^ed] =been+used
 is used   : VERB[^s]  =is+used
-uŝed      : VERB[^ed]   =used
+ūsed      : VERB[^ed]   =used
 was used  : VERB[^ed,s] =was+used
 were used : VERB[^ed]   =were+used
 
@@ -181,6 +184,7 @@ early years : NOUN
 engineering council : NOUN
 estimative : ADJ
 fan favorite : NOUN
+federal republic : NOUN
 grant aid : NOUN
 grant aid project : NOUN
 half of the : QUAN
@@ -224,6 +228,7 @@ retweet : VERB
 rgb : ADJ
 rpg : NOUN
 selectable : ADJ
+socialist federal republic : NOUN
 spectator : ADJ - +1
 special forces : ADJ - -1
 spectral type : NOUN[:*x]
@@ -509,10 +514,14 @@ willing to : TO
 her own : DEM[@ind]
 his own : DEM[@ind]
 its own : DEM[@ind]
+mine : PRO
 my own : DEM[@ind]
 our own : DEM[@ind]
+ours : PRO
 their own : DEM[@ind]
+theirs : PRO
 your own : DEM[@ind]
+yours : PRO
 
 could a  : AUXL
 would a  : AUXL
@@ -530,6 +539,7 @@ asian-american : ADJ
 at-times : ADV
 bill-to : ADJ
 case-sensitive : ADJ
+cave-in : NOUN
 cul-de-sac : NOUN
 cul-de-sac street : NOUN
 eat-in : ADJ
@@ -589,6 +599,7 @@ Denny : NOUN
 Dillons : NOUN =dillon 's
 Doctor Who : NOUN
 Donald Trump : NOUN
+Dobrnja-jug : NOUN
 Dugs : NOUN
 Grants Pass : NOUN
 Eclogues : NOUN
@@ -1170,6 +1181,7 @@ born : ADJ
 borough : NOUN
 bosch : NOUN
 bosnia : NOUN
+bosnia and herzegovina : NOUN
 botswana : NOUN
 boulevard : NOUN
 bound : NOUN
@@ -3546,7 +3558,10 @@ millimeter : NOUN
 mimic : NOUN
 mimic : VERB
 mimic : ADJ
+mine : NOUN
+mine : VERB
 miner : NOUN
+mining : NOUN
 minister : NOUN
 minister : VERB
 ministry : NOUN
@@ -4884,7 +4899,7 @@ sexual : ADJ
 sexually : ADV
 shadow : NOUN
 shadow : VERB
-shaft : NOUN
+shaft : NOUN - +2
 shaft : VERB
 share : NOUN
 share : VERB - +1

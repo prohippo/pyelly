@@ -2027,7 +2027,7 @@ _
   (twob)
 __
 g:ADV[~*r]->NCLU[:-prep,-det,num] ADV[~trlg]
- l[&msr]>>++++
+ l[&msr]>>++
         >>----
 __
 g:ADV[~*r]->NCLU[:-prep,-det,-num,plur] ADV[~trlg]
@@ -2220,6 +2220,9 @@ __
 d:about   <- PREP['prx]
 __
 d:above   <- PREP['prx]
+__
+d:below   <- PREP['prx]
+ >>+++
 __
 d:like    <- PREP['mod]
  >>++
