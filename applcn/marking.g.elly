@@ -230,12 +230,21 @@ g:SEGM->PEXP[|-stop]
  >>-
 __
 
-g:ELEM->ADV[~mod] NCLU
+g:ELEM->ADV[~mod] NCLU[:-dit]
  r[$trlg]>>+
          >>[!rn]+
 _
   var typg=adv
   (typg)
+  right
+__
+g:ELEM->ADV[~mod] NCLU[:dit]
+ r[$trlg]>>+
+         >>[!rn]+
+_
+  var typg=adv
+  (typg)
+  (that)
   right
 __
 g:ELEM->NCLU[:-dit,-dat, prep,-poss]
@@ -261,6 +270,10 @@ g:ELEM->NCLU[:dat]
 _
   left
   (that)
+__
+g:ELEM->NCLU[:-det,-qnt,poss]
+  n>3 >>--------
+      >>--
 __
 g:ELEM->PRO[=nom]
 # ?>>?
@@ -462,7 +475,7 @@ __
 g:ELEM->MISC
  p<1 l[!spcs]>>+3
 _
-  var typg=elem
+  var typg=conj
   (decom)
 __
 g:ELEM->SPCL[|*r]
@@ -1041,6 +1054,15 @@ g:NOUN->NOUN NUM[:cnj]
          >>++
 _
   (twob)
+__
+g:NOUN->CMPN
+_
+  split
+  left
+  back
+  find . <
+  space
+  merge
 __
 g:NCLU[:num]->NUM
  n<2>>----
@@ -1999,7 +2021,8 @@ _
   (advb)
 __
 g:ADJ[%*r]->ADV[~mod] ADJ
-  >>++++
+ n>4 >>----
+     >>++++
 _
   (advb)
 __
@@ -2082,9 +2105,9 @@ __
 g:CONJ->ADV[~mod] CONJ
  >>+
 _
-  append <mod>
+  append <adv>
   left
-  append </mod>
+  append </adv>
   right
 __
 g:CONJ->NEGN CONJ
@@ -2831,6 +2854,7 @@ __
 
 p:decom
 _
+  trace
   split
   left
   back

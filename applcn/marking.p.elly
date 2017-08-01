@@ -104,6 +104,8 @@
 12 mn$ MONEY -1
 12 bn$ MONEY -1
 
+0 St.!&@ CMPN -1
+
 # en dashes in patterns below!
 
  0 ##–##   NUM -1

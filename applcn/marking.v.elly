@@ -27,6 +27,7 @@ caught : VERB[^ed] [$trns] 0
 century bc : NOUN
 children : NOUN[:plur]
 circulating : VERB[^ing]
+coaching : VERB[^ing]
 determined : VERB[^ed]
 did : VERB[^ed,*x]
 did not : AUXL[^ed]
@@ -115,6 +116,7 @@ regarding : PREP - +1
 regarding : NOUN - -1
 regarding : VERB[^ing]
 related : VERB[^ed]
+remaining : VERB[^ing] - -1
 rose : VERB[^ed,*x] - +1
 rushing : VERB[^ing] - +1
 said : VERB[^ed,dit]
@@ -174,6 +176,7 @@ bookended : VERB[^ed] - -1
 box set : NOUN
 cable tv : NOUN
 cable tv channel : NOUN
+canadian/american : ADJ
 chemical symbol : NOUN
 christian doctrine : NOUN
 clean energy : NOUN
@@ -226,6 +229,7 @@ remix : NOUN
 remix : VERB
 retweet : VERB
 rgb : ADJ
+rockin' : ADJ
 rpg : NOUN
 selectable : ADJ
 socialist federal republic : NOUN
@@ -254,6 +258,7 @@ wine review : NOUN
 
 ah  : MISC[:*x]
 ah yes : MISC[:*x]
+e.g. : PEXP[|eg]
 etc : MISC
 née : MISC[:*l]
 no  : MISC[:*x] - -1
@@ -529,6 +534,7 @@ should a : AUXL
 most as many : ADJ
 
 , for example : MISC
+, e.g. : MISC
 , for : PCNJ
 
 # # # # common hyphenations
@@ -553,6 +559,7 @@ lesser-known : ADJ
 long-drawn : ADJ
 long-past  : ADJ
 mid-air : NOUN
+mid-century : ADJ
 mixed-species : ADJ
 ocean-view home : NOUN
 one-lane : ADJ
@@ -648,7 +655,7 @@ Rockette : NOUN
 Scotts : NOUN
 Scotts Miracle-Gro Company : NOUN
 Ship of Fools : NOUN
-St. Mary : NOUN
+St. Mary : NOUN - +2
 Stephen Curry : NOUN
 The Verge : NOUN [&prop] 0
 Twitter : NOUN
@@ -1507,6 +1514,7 @@ co : NOUN
 co-op : NOUN
 coach : NOUN
 coach : VERB [$trns] 0
+coaching : NOUN - +2
 coal : NOUN
 coal : VERB
 coal mine : NOUN
@@ -1818,7 +1826,7 @@ currency : NOUN
 current : NOUN - -2
 current : ADJ
 currently : ADV
-curry : NOUN
+curry : NOUN - +1
 curry : VERB
 curtain : NOUN
 curtain : VERB
@@ -3353,7 +3361,7 @@ long : ADV
 longer : NOUN - -2
 longer : ADJ
 longer : ADV[~trlg] - -1
-look : NOUN
+look : NOUN - -1
 look : VERB[^ptcl] - +1
 loop : NOUN
 loop : VERB
@@ -3852,7 +3860,7 @@ ongoing : ADJ
 onion : NOUN
 online : ADJ
 only : ADJ - -2
-only : ADV
+only : ADV[~mod] [$deg] 0
 ontario : NOUN
 open : NOUN - -8
 open : VERB
@@ -3899,6 +3907,7 @@ original : NOUN
 original : ADJ
 originally : ADV
 originate : VERB
+orleans : NOUN
 ornament : NOUN
 ornament : VERB
 ornamental : NOUN - -1
@@ -4561,6 +4570,7 @@ religious : NOUN
 religious : ADJ
 relocate : VERB
 remain : VERB[^proc]
+remaining : ADJ[%ing]
 remark : NOUN
 remark : VERB
 remember : VERB
@@ -5172,7 +5182,7 @@ square : ADJ
 square : ADV
 squirrel : NOUN
 sri lanka : NOUN
-st. louis : NOUN
+st. louis : NOUN - +2
 stability : NOUN
 stable : NOUN
 stable : VERB - -1
