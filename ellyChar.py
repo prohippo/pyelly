@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 28jul2017 CPM
+# ellyChar.py : 01aug2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -255,7 +255,7 @@ LetterOrDigit = [
     F,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,T,T,T,T,F,F,F,F,F,
 
     F,F,F,F,F,F,F,F,F,F,T,F,T,F,T,F, F,F,F,F,F,F,F,F,F,F,F,F,T,F,T,T,
-    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
+    F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F, F,F,T,T,F,F,F,F,F,T,F,F,F,F,F,F,
     T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,F,T,T,T,T,T,T,T,T,
     T,T,T,T,T,T,T,T,T,T,T,T,T,T,T,T, T,T,T,T,T,T,T,F,T,T,T,T,T,T,T,T,
 
@@ -302,6 +302,12 @@ def isLetter ( x ):
     """
     return x != '' and x < Lim and Letter[ord(x)]
 
+Digits = [
+    u'0' , u'1' , u'2' , u'3' , u'4',
+    u'5' , u'6' , u'7' , u'8' , u'9',
+    u'¹' , u'²' , u'³'
+]
+
 def isDigit ( x ):
     """
     check for ASCII or Latin-1 digit
@@ -311,7 +317,7 @@ def isDigit ( x ):
     returns:
         True if digit, False otherwise
     """
-    return x <= '9' and x >= '0'
+    return x in Digits
 
 Space = [
     T,F,F,F,F,F,F,F,F,T,T,T,T,T,F,F, F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,F,
@@ -362,7 +368,7 @@ Mapping = [
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0,19, 0,15, 0,26, 0,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0,19, 0,15, 0,26,25,
     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
-    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0,29,30, 0, 0, 0, 0, 0,28, 0, 0, 0, 0, 0, 0,
     1, 1, 1, 1, 1, 1, 1, 3, 5, 5, 5, 5, 9, 9, 9, 9,
    20,14,15,15,15,15,15, 0,15,21,21,21,21,25,20,19,
     1, 1, 1, 1, 1, 1, 1, 3, 5, 5, 5, 5, 9, 9, 9, 9,
@@ -405,9 +411,7 @@ def toIndex ( x ):
     returns:
         index value for char
     """
-    if u'0' <= x <= u'9':
-        return ord(x) - ord('0') + DigB
-    elif isLetter(x):
+    if isLetterOrDigit(x):
         return Mapping[ord(x)]
     else:
         return 0
@@ -653,8 +657,11 @@ if __name__ == "__main__":
     print u'寶=CJK' , isCJK(u'寶')
     print u'譽=CJK' , isCJK(u'譽')
     print u'禮=CJK' , isCJK(u'禮')
-    print u'…=CJK' , isCJK(u'…')
+    print u'… =CJK' , isCJK(u'…')
     print 'thin space' , isWhiteSpace(THS)
     print 'thin space' , isSpace(THS)
     print 'ASCII space' , isWhiteSpace(' ') , ord(' ')
     print 'ASCII space' , isSpace(' ') , ord(' ')
+    print u'digit ¹' , isDigit(u'¹') , isLetterOrDigit(u'¹') , toIndex(u'¹') , toChar(toIndex(u'¹'))
+    print u'digit ²' , isDigit(u'²') , isLetterOrDigit(u'²') , toIndex(u'²') , toChar(toIndex(u'²'))
+    print u'digit ³' , isDigit(u'³') , isLetterOrDigit(u'³') , toIndex(u'³') , toChar(toIndex(u'³'))
