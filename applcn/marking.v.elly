@@ -38,6 +38,7 @@ does : VERB[^s] - +1
 djs : VERB[^s]
 does not : AUXL[^s]
 elevated : VERB[^ed]
+evening : VERB[^ing] - -2
 exciting : VERB[^ing]
 feeding : VERB[^ing]
 feet : NOUN[:plur] [&msr] 0
@@ -894,7 +895,7 @@ approach : NOUN
 approach : VERB
 approval : NOUN
 approve : VERB
-approximately : ADV[~prox]
+approximately : ADV[~mod,prox]
 april : NOUN
 arab : NOUN
 arabic : NOUN
@@ -2266,6 +2267,7 @@ even : NOUN - -2
 even : VERB
 even : ADJ
 even : ADV[~mod] [$deg] +2
+evening : NOUN - +1
 event : NOUN
 eventually : ADV
 ever : ADV
@@ -3478,6 +3480,7 @@ matter : NOUN
 matter : VERB - +1
 maxim : NOUN
 maxwell : NOUN
+may : NOUN - -11
 maya : NOUN
 maybe : ADV
 mccarthyism : NOUN
@@ -3541,6 +3544,7 @@ metre : NOUN
 metric : NOUN
 metric : ADJ
 mexico : NOUN
+mi : NOUN [&msr] 0
 michael : NOUN
 microcomputer : NOUN
 microscopic : ADJ
@@ -3628,6 +3632,7 @@ more : ADJ[%to]
 more : ADV[~trlg] [$deg] 0
 more or less : ADV
 morn : NOUN
+morning : NOUN
 moslem : NOUN
 moslem : ADJ
 most : ADJ
@@ -5178,10 +5183,14 @@ spring : NOUN
 spring : VERB
 sprint : NOUN
 sprint : VERB
+sq km : NOUN [&msr] 0
+sq mi : NOUN [&msr] 0
 square : NOUN - +1
 square : VERB
 square : ADJ
 square : ADV
+square kilometre : NOUN [&msr] 0
+square mile : NOUN [&msr] 0
 squirrel : NOUN
 sri lanka : NOUN
 st. louis : NOUN - +2
