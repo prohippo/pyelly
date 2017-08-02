@@ -465,7 +465,8 @@ Release Notes:
                       improve substitutionBuffer unit test
                       extend "marking" rules
                       update documentation
- 1.4.11.1- 29jul2017  more rational handling of _ in vocabulary table keys
+ 1.4.12  - 01aug2017  more rational handling of _ in vocabulary table keys
+                      add handling of superscript 1, 2, 3 as digits
                       improve vocabularyTable unit test
                       extend "marking" rules and integration test
                       update and clean up documentation
