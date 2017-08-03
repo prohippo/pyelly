@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyToken.py : 02mar2016 CPM
+# ellyToken.py : 03aug2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -358,7 +358,7 @@ class EllyToken(object):
             Unicode token string
         """
 
-        return unicodedata.normalize('NFKD',u''.join(self.root))
+        return u''.join(self.root)
 
 if __name__ == "__main__":
 
