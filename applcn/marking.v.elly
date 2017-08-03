@@ -168,6 +168,7 @@ went_on : VERB[^ed] =went on
 after which : CONJ
 airstrike : NOUN
 agricultural industry : NOUN
+alert level : NOUN
 as compared to : CONJ
 as far as : CONJ
 as result of : CONJ
@@ -268,11 +269,13 @@ yes : MISC[:*x]
 at&t : NOUN
 el niño : NOUN
 fourpenny : NOUN
+ft : UNIT
 g.i. : ADJ
 gw : UNIT
 kw : UNIT
 la niña : NOUN
 mw : UNIT
+nmi : UNIT
 PDF : NOUN
 percent : UNIT - +1
 r&b : NOUN
@@ -684,6 +687,7 @@ fried liver attack : NOUN
 % : NOUN[:plur]
 % duty cycle : NOUN
 1st : NUM [&prop] +2
+km² : UNIT
 
 # # # # WordNet 3.1 entries
 
@@ -805,7 +809,7 @@ alarm : NOUN
 alarm : VERB
 alas : ADV
 album : NOUN
-alert : NOUN
+alert : NOUN [&cond] 0
 alert : VERB
 alert : ADJ
 alexander hamilton : NOUN
@@ -3189,7 +3193,7 @@ kingdom : NOUN
 kiss : NOUN
 kiss : VERB
 kitchen : NOUN
-km : NOUN
+km : UNIT
 knight : NOUN
 knight : VERB - -1
 knockout : NOUN
@@ -4818,6 +4822,8 @@ scrutinise : VERB
 scrutinize : VERB
 scrutiny : NOUN
 sea : NOUN
+sea level : NOUN
+sea-level : ADJ
 seafaring : NOUN
 seafaring : VERB
 seaman : NOUN

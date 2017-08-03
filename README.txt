@@ -467,8 +467,10 @@ Release Notes:
                       update documentation
  1.4.12  - 01aug2017  more rational handling of _ in vocabulary table keys
                       add handling of superscript 1, 2, 3 as digits
+                      make tokenization of Unicode consistent with input coding
                       improve vocabularyTable unit test
                       extend "marking" rules and integration test
+                      update all integration tests for tokenization encoding
                       update and clean up documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically

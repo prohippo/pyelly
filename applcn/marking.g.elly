@@ -2032,7 +2032,8 @@ _
   (twob)
 __
 g:ADJ[%num]->NUM UNIT
- >>++
+ n<3 >>++++
+     >>++
 __
 
 g:ADV->ADV[~int] ADV
