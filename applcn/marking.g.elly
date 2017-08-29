@@ -2035,6 +2035,11 @@ g:ADJ[%num]->NUM UNIT
  n<4 >>++++
      >>++
 __
+g:ADJ[%num,*l]->ADJ[%num,-*l] ADV[~trlg]
+  [$deg]>>++
+_
+  (twob)
+__
 
 g:ADV->ADV[~int] ADV
  >>++++
