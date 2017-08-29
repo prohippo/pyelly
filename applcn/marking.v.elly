@@ -118,7 +118,7 @@ regarding : NOUN - -1
 regarding : VERB[^ing]
 related : VERB[^ed]
 remaining : VERB[^ing] - -1
-rose : VERB[^ed,*x] - +1
+rose : VERB[^ed,*x] - +2
 rushing : VERB[^ing] - +1
 said : VERB[^ed,dit]
 sat down : VERB[^ed,*x]
@@ -217,6 +217,7 @@ openings : NOUN[:plur]
 our lady : NOUN
 overland mail : NOUN
 particular focus : NOUN
+percent chance : NUM[:*r]
 pinyin : NOUN
 policymaker : NOUN
 private sector : NOUN
@@ -270,6 +271,7 @@ at&t : NOUN
 el niño : NOUN
 fourpenny : NOUN
 ft : UNIT
+ft. : NOUN
 g.i. : ADJ
 gw : UNIT
 kw : UNIT
@@ -277,7 +279,6 @@ la niña : NOUN
 mw : UNIT
 nmi : UNIT
 PDF : NOUN
-percent : UNIT - +1
 r&b : NOUN
 rosé : NOUN
 usd : POSTP
@@ -410,6 +411,7 @@ as though : CONJ
 as well as : CONJ
 at first : ADV
 at least one : NUM
+at least one : QUAN - +2
 at one point : ADV
 at the same time as : CONJ
 best suit : NOUN
@@ -449,8 +451,12 @@ here you go : VERB
 his or her : DEM
 in addition to : PREP
 in any way : ADV
+in area : ADV[~trlg] [$deg] 0
+in length : ADV[~trlg] [$deg] 0
+in height : ADV[~trlg] [$deg] 0
 in order to : TO
 in recent years : ADV [$deg,time] +1
+in width : ADV[~trlg] [$deg] 0
 increase or decrease : VERB
 insofar as : CONJ
 it is easy : ELEM - +4 (elma)
@@ -2600,7 +2606,6 @@ frustrate : VERB
 frustration : NOUN
 fry : NOUN - -1
 fry : VERB
-ft : NOUN
 fuel : NOUN
 fuel : VERB
 fulfill : VERB
@@ -4081,7 +4086,7 @@ people : VERB - -2
 pep : NOUN
 pepper : NOUN
 perceive : VERB
-percent : NOUN
+percent : NUM[:*r]
 percentage : NOUN
 perceptive : ADJ
 perch : NOUN

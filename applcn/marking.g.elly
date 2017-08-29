@@ -1636,7 +1636,7 @@ _
 __
 g:VERB[^*r]->NOUN[:join] VERB
 __
-g:VERB[^beaj]->BE ADJ[%-ed,-ing]
+g:VERB[^beaj]->BE ADJ[%-ed,-ing,-num]
       n>4>>---
  r[$cmpd]>>++++
          >>+
@@ -2032,7 +2032,7 @@ _
   (twob)
 __
 g:ADJ[%num]->NUM UNIT
- n<3 >>++++
+ n<4 >>++++
      >>++
 __
 
