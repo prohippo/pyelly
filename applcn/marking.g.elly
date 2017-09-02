@@ -2107,6 +2107,12 @@ __
 g:DATE->NUM ADV[~date]
  >>+15
 __
+g:DATE->ADV[~timg] DATE
+ n<3>>++
+    >>-
+_
+  (twob)
+__
 
 g:CONJ->ADV[~mod] CONJ
  >>+
@@ -3347,4 +3353,11 @@ __
 
 g:DATE->ADJ[%-ed,-ing] DATE[:*r]
   l[$time]>>++++
+__
+d:mainly <- AVQN
+__
+d:mostly <- AVQN
+__
+g:QUAN->AVQN
+ >>--
 __

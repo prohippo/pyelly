@@ -80,7 +80,7 @@ inspired : VERB[^ed]
 interesting : VERB[^ing]
 internationals : NOUN[:plur]
 knew : VERB[^ed]
-known : VERB[^ed,*x]
+known : VERB[^ed,*x] - +1
 leading : VERB[^ing]
 led : NOUN - -2
 led : VERB[^ed]
@@ -208,6 +208,7 @@ jain : NOUN
 just for the hell of it : ADV
 land survey : NOUN
 leaps and bounds : NOUN[:plur]
+long term : NOUN
 manga : NOUN
 mannerist : NOUN
 marchese : NOUN
@@ -667,6 +668,7 @@ Nicholas : NOUN
 Novaes : NOUN
 Obamas : NOUN[:plur] =obama -s
 Our Lady of Sorrows : NOUN
+Premier League : NOUN
 Queens Park : NOUN
 Reaganite : NOUN
 Rockette : NOUN
@@ -1899,7 +1901,7 @@ dead : ADJ
 dead : ADV
 deadly : ADJ
 deadly : ADV
-deal : NOUN
+deal : NOUN - +1
 deal : VERB
 dealer : NOUN
 dean : NOUN
@@ -2141,7 +2143,7 @@ eagle : VERB
 earlier : ADJ [$time] 0
 earlier : ADV[~trlg] [$deg,time] +1
 early : ADJ [$time] 0
-early : ADV[~trlg]
+early : ADV[~trlg,timg]
 early days : NOUN[:plur]
 earn : VERB
 earth : NOUN
@@ -3213,7 +3215,7 @@ knockout : ADJ
 know : NOUN - -2
 know : VERB
 knowledge : NOUN
-known : ADJ [$cmpd] +1
+known : ADJ [$cmpd] 0
 krishna : NOUN
 kurd : NOUN
 kurdish : NOUN
