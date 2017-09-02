@@ -110,7 +110,10 @@
 
 0 &@&# NOUN -1
 
+
 # en dashes in patterns below!
 
  0 ##–##   NUM -1
  0 ###–### NUM -1
+ 0 20##–## DATE -1
+ 0 19##–## DATE -1

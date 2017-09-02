@@ -200,12 +200,14 @@ hot 100 : NUM
 hydro : NOUN
 in as much as : CONJ
 in case of : PREP
+in leaps and bounds : ADV
 in terms of : PREP
 in the event of : PREP
 interferometry : NOUN
 jain : NOUN
 just for the hell of it : ADV
 land survey : NOUN
+leaps and bounds : NOUN[:plur]
 manga : NOUN
 mannerist : NOUN
 marchese : NOUN
@@ -218,6 +220,7 @@ openings : NOUN[:plur]
 our lady : NOUN
 overland mail : NOUN
 particular focus : NOUN
+pay tv : NOUN
 percent chance : NUM[:*r]
 pinyin : NOUN
 policymaker : NOUN
@@ -602,6 +605,7 @@ Angelina Jolie : NOUN
 Apple Watch : NOUN
 AT&T : NOUN
 Becker : NOUN
+BeMobile : NOUN
 Bernice Summerfield : NOUN
 Bitcoin : NOUN
 Black Lives Matter : NOUN[:*r]
@@ -663,6 +667,7 @@ Nicholas : NOUN
 Novaes : NOUN
 Obamas : NOUN[:plur] =obama -s
 Our Lady of Sorrows : NOUN
+Queens Park : NOUN
 Reaganite : NOUN
 Rockette : NOUN
 Scotts : NOUN

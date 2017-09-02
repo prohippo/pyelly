@@ -50,6 +50,8 @@ which_&@_used -> which \\2 ūsed
 go_on_to -> go_on to
 went_on_to -> went_on to
 
+Be_Mobile -> BeMobile
+
 #
 # WARNING! the rule below has en dashes in its pattern and
 #          substitution, and its space wildcards will replace
