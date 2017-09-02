@@ -472,6 +472,9 @@ Release Notes:
                       extend "marking" rules and integration test
                       update all integration tests for tokenization encoding
                       update and clean up documentation
+ 1.4.13  - 01sep2017  increase limit on syntactic types to 96
+                      extend "marking" rules
+                      update and clean up documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
