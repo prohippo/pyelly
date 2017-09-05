@@ -104,12 +104,17 @@
 12 mn$ MONEY -1
 12 bn$ MONEY -1
 
-0 St.!&@ CMPN -1
+ 0 St.!&@ CMPN -1
 
-0 !&@-Jima NOUN -1
+ 0 !&@-Jima NOUN -1
 
-0 &@&# NOUN -1
+ 0 &@&# NOUN -1
 
+ 0 mid- - 13
+ 0 late- - 13
+ 0 early- - 13
+13 1##0s DATE[:plur] -1
+13 2##0s DATE[:plur] -1
 
 # en dashes in patterns below!
 

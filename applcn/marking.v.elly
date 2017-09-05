@@ -184,6 +184,7 @@ christian doctrine : NOUN
 clean energy : NOUN
 configurable : ADJ
 confraternity : NOUN
+development team : NOUN
 dubstep : NOUN
 early years : NOUN
 engineering council : NOUN
@@ -225,9 +226,12 @@ pay tv : NOUN
 percent chance : NUM[:*r]
 pinyin : NOUN
 policymaker : NOUN
+presentation system : NOUN
 private sector : NOUN
 programmable : ADJ
 proof to the contrary : NOUN
+properly designed : ADJ
+proportionally spaced : ADJ
 public sector: NOUN
 pyroclastic : ADJ
 rebaptizer : NOUN
@@ -496,7 +500,7 @@ pros and cons : NOUN
 related to : PREP
 right after : CONJ
 round at : PREP
-since then : ADV
+since then : ADV[~cnj]
 so many : QUAN[@ind]
 some of : QUAN
 some of which : CONJ
@@ -636,9 +640,11 @@ Ferguson : NOUN
 Furnariidae : NOUN
 Gallagher : NOUN
 Gene Simmons : NOUN
+General Parametrics : NOUN
 George Will : NOUN
 Golden State Warriors : NOUN
 Gov. Jerry Brown : NOUN
+Grey Advertising : NOUN
 Harry : NOUN
 HBO : NOUN
 Herzegovina : NOUN
@@ -676,8 +682,10 @@ Scotts : NOUN
 Scotts Miracle-Gro Company : NOUN
 Shindake : NOUN
 Ship of Fools : NOUN
+Showcase Presentations : NOUN
 St. Mary : NOUN - +2
 Stephen Curry : NOUN
+Steve Jobs : NOUN
 The Verge : NOUN [&prop] 0
 Twitter : NOUN
 U.N. : NOUN
@@ -689,6 +697,7 @@ Walmart supercenter : NOUN
 Warner Brothers : NOUN
 Washington Post : NOUN
 West Indies : NOUN[:plur]
+Windows 3 : NOUN
 World News Tonight with David Muir : NOUN
 Zero Mostel : NOUN
 Zigfeld Follies : NOUN
@@ -1183,6 +1192,8 @@ blow : VERB
 blue : NOUN
 blue : VERB
 blue : ADJ
+blue chip : NOUN
+blue-chip : ADJ
 blush : NOUN - +1
 blush : VERB
 boar : NOUN
@@ -2759,8 +2770,8 @@ green : VERB
 green : ADJ
 greet : VERB
 grey : NOUN
-grey : VERB
-grey : ADJ
+grey : VERB - -2
+grey : ADJ  - -1
 grid : NOUN
 grim : ADJ
 grime : NOUN
@@ -5165,7 +5176,7 @@ spectral : ADJ
 spectroscopic : ADJ
 speculation : NOUN
 speech : NOUN
-speed : NOUN
+speed : NOUN - +1
 speed : VERB
 spell : NOUN
 spell : VERB

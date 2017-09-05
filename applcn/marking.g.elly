@@ -750,7 +750,7 @@ g:SEGM->PEXP[|-nom,-vrb,-stop] PUNC[|*r]
 _
   (pend)
 __
-g:DET[@*l]->DET DATE
+g:DET[@*l]->DET DATE[:-plur]
  >>[!spcs]+
 _
   append <det>
@@ -1874,6 +1874,10 @@ _
   (typg)
   right
 __
+g:PREP->PREP['on] TO
+_
+  (twob)
+__
 
 g:MONEY->ADV[~mod] MONEY
   >>[&cmpd]++
@@ -2218,7 +2222,7 @@ d:in   <- PREP['in,div]
 __
 d:of   <- PREP['of,div]
 __
-d:on   <- PREP['div]
+d:on   <- PREP['div,on]
 __
 d:by   <- PREP['cls,div]
 __
@@ -2729,7 +2733,12 @@ g:DET[@*l]->DET CLSP
 _
   (clspr)
 __
-g:DET->DET[@the] DATE[:-cnj]
+g:DATE->DET[@the] DATE[:-cnj,plur]
+ >>+
+_
+  (twob)
+__
+g:DET->DET[@the] DATE[:-cnj,-plur]
  >>++++
 _
   left
@@ -3361,3 +3370,8 @@ __
 g:QUAN->AVQN
  >>--
 __
+g:PEXP[|*l]->PUNC[|*l] DATE
+_
+  (pbgn)
+__
+
