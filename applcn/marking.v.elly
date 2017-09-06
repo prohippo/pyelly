@@ -165,6 +165,7 @@ went_on : VERB[^ed] =went on
 
 1st mention : NOUN
 1st mention : VERB
+achingly : ADV
 after which : CONJ
 airstrike : NOUN
 agricultural industry : NOUN
@@ -190,8 +191,10 @@ early years : NOUN
 engineering council : NOUN
 estimative : ADJ
 fan favorite : NOUN
+federal approval : NOUN
 federal republic : NOUN
 ferry service : NOUN
+genetic modification : NOUN
 grant aid : NOUN
 grant aid project : NOUN
 half of the : QUAN
@@ -214,16 +217,23 @@ manga : NOUN
 mannerist : NOUN
 marchese : NOUN
 metallicity : NOUN
+moneychanger : NOUN
 nano : NOUN
+nano robot : NOUN
 national intelligence : NOUN
+nuclear accord : NOUN
 on-grid : ADJ
 on-grid power plant : NOUN
 openings : NOUN[:plur]
 our lady : NOUN
 overland mail : NOUN
 particular focus : NOUN
+patent assist : ADJ
 pay tv : NOUN
+payment method : NOUN
 percent chance : NUM[:*r]
+ping pong : NOUN
+ping pong playing robot : NOUN
 pinyin : NOUN
 policymaker : NOUN
 presentation system : NOUN
@@ -244,6 +254,7 @@ rgb : ADJ
 rockin' : ADJ
 rpg : NOUN
 selectable : ADJ
+semi-autonomous : ADJ
 socialist federal republic : NOUN
 spectator : ADJ - +1
 special forces : ADJ - -1
@@ -253,6 +264,7 @@ storytelling : NOUN
 streetlamp : NOUN
 submillimeter  : ADJ
 supply train : NOUN
+swarm robot : NOUN
 teenybopper : NOUN
 time lord : NOUN
 time travel : NOUN
@@ -267,6 +279,7 @@ uav : NOUN
 underutilization : NOUN
 underutilize : VERB
 wine review : NOUN
+with no regard to : CONJ
 
 ah  : MISC[:*x]
 ah yes : MISC[:*x]
@@ -406,6 +419,7 @@ all evening : ADV
 all of : QUAN
 all that : ALLTHT
 along with : PREP
+and even : CONJ
 and now : CONJ
 and so : CONJ
 and so on : MISC
@@ -600,6 +614,7 @@ world-renowned : ADJ
 # # # # some names to recognize explicitly
 
 ABC News : NOUN
+Advanced Step in Innovative Mobility : NOUN
 Agence France-Presse : NOUN
 Alagoas : NOUN
 Alison : NOUN
@@ -629,6 +644,7 @@ Doctor Who : NOUN
 Donald Trump : NOUN
 Dobrnja-jug : NOUN
 Dugs : NOUN
+General Atomics : NOUN
 Grants Pass : NOUN
 Eclogues : NOUN
 El Nino : NOUN
@@ -831,6 +847,7 @@ air force : NOUN
 airport : NOUN
 alarm : NOUN
 alarm : VERB
+alarm bell : NOUN
 alas : ADV
 album : NOUN
 alert : NOUN [&cond] 0
@@ -1002,6 +1019,7 @@ atmosphere : NOUN
 atmospheric : ADJ
 atom : NOUN
 atomic : ADJ
+atomic weapon : NOUN
 atop : ADV - -1
 attack : NOUN
 attack : VERB
@@ -1893,6 +1911,7 @@ dangerous : ADJ
 daniel : NOUN
 dante : NOUN
 danube : NOUN
+danube river : NOUN
 dark : NOUN
 dark : ADJ
 dart : NOUN
@@ -2176,6 +2195,7 @@ easy : ADV
 eat : VERB
 ecology : NOUN
 economic : ADJ
+economic growth : NOUN
 economics : NOUN[:plur]
 economy : NOUN
 edit : VERB
@@ -2447,6 +2467,7 @@ fifty : NOUN
 fifty : ADJ
 fight : NOUN
 fight : VERB
+fighter : NOUN
 fighting : NOUN - +1
 fighting : ADJ
 figure : NOUN
@@ -2680,6 +2701,7 @@ gene : NOUN
 general : NOUN
 general : VERB
 general : ADJ
+general election : NOUN
 generalize : VERB
 generally : ADJ
 generate : VERB
@@ -2969,6 +2991,7 @@ immediate : ADJ
 immediately : ADV
 immune : NOUN - -2
 immune : ADJ
+immune system : NOUN
 impact : NOUN
 impact : VERB
 impair : VERB
@@ -3954,7 +3977,7 @@ oscillate : VERB
 oscillator : NOUN
 other : ADJ[%mod] [$ind] 0
 ottawa : NOUN
-out : NOUN - -4
+out : NOUN - -5
 out : VERB - -4
 out : ADJ  - -1
 out : ADV [$trlg] 0
@@ -4279,6 +4302,7 @@ prague : NOUN
 praise : NOUN
 praise : VERB
 pray : VERB
+prayer : NOUN
 precaution : NOUN
 precept : NOUN
 precipitation : NOUN
@@ -4334,6 +4358,7 @@ priesthood : NOUN
 primarily : ADV
 primary : NOUN
 primary : ADJ[%*x]
+primary election : NOUN
 prime : NOUN
 prime : VERB
 prime : ADJ
@@ -4473,6 +4498,7 @@ radar : NOUN
 radiate : VERB
 radiate : ADJ - -2
 radiation : NOUN
+radiation therapy : NOUN
 radio : NOUN
 radio : VERB
 radio : ADJ
@@ -4498,7 +4524,7 @@ ram : NOUN
 ram : VERB
 random : ADJ
 range : NOUN
-range : VERB
+range : VERB - +1
 ranger : NOUN
 rank : NOUN
 rank : VERB
@@ -5678,6 +5704,7 @@ travel : VERB
 treasury : NOUN
 treat : NOUN
 treat : VERB
+treatment : NOUN
 tree : NOUN
 tree : VERB - -1
 trend : NOUN
