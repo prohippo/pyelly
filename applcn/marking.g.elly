@@ -381,15 +381,22 @@ _
   append </time></nclu>
 __
 g:ELEM->ADJ[%-num]
+#       ?>>?
   l[$cnj]>>--
  l[$time]>>--------
+      n>2>>--
       p<1>>--------
          >>----
 _
+  var vdat=
   var typg=adj
   (typg)
+  if vdat=T
+    (that)
+    end
 __
 g:ELEM->ADJ[%num]
+# ?>>?
 _
   append <nclu>
   var typg=adj
@@ -397,6 +404,7 @@ _
   append </nclu>
 __
 g:ELEM->ADJ CONJ[@*x]
+# ?>>?
 _
   var typg=adj
   (typg)
@@ -1637,8 +1645,9 @@ __
 g:VERB[^*r]->NOUN[:join] VERB
 __
 g:VERB[^beaj]->BE ADJ[%-ed,-ing,-num]
-      n>4>>---
+      n>4>>--
  r[$cmpd]>>++++
+      n<3>>++
          >>+
 _
   (twob)
@@ -1709,9 +1718,16 @@ _
   (typg)
   right
 __
-g:ADJ[%*r,more]->ADV[~-int] ADJ[%-er,-ed]
+g:ADJ[%*r,more]->ADV[~-int,-timg] ADJ[%-er,-ed]
     n>4 >>-4
  l[$deg]>>[$cmpd]+6
+_
+  var typg=adv
+  (typg)
+  right
+__
+g:ADJ[%*r]->ADV[~-int,timg] ADJ[%-er,-ed]
+  >>+4
 _
   var typg=adv
   (typg)

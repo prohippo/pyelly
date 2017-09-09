@@ -28,6 +28,7 @@ century bc : NOUN
 children : NOUN[:plur]
 circulating : VERB[^ing]
 coaching : VERB[^ing]
+cut short : VERB[^ed]
 determined : VERB[^ed]
 did : VERB[^ed,*x]
 did not : AUXL[^ed]
@@ -42,6 +43,8 @@ evening : VERB[^ing] - -2
 exciting : VERB[^ing]
 feeding : VERB[^ing]
 feet : NOUN[:plur] [&msr] 0
+field-tested : VERB[^ed]
+field-testing : VERB[^ing]
 fighting : VERB[^ing]
 financing : VERB[^ing]
 fishermen : NOUN[:plur]
@@ -232,6 +235,7 @@ patent assist : ADJ
 pay tv : NOUN
 payment method : NOUN
 percent chance : NUM[:*r]
+peer harassment : NOUN
 ping pong : NOUN
 ping pong playing robot : NOUN
 pinyin : NOUN
@@ -317,7 +321,7 @@ others : NOUN
 anti : PREF
 hydro : PREF
 multi : PREF
-over : PREF
+over : PREF - -2
 tele : PREF
 
 # # # # extra vocabulary not yet integrated
@@ -493,6 +497,8 @@ make available : VERB
 make use of : VERB
 making it easier : VERB[^ing]
 making use of : VERB[^ing]
+male and female : NOUN
+male and female : ADJ - +1
 more like : PREP
 more than : ADV[~mod] [$deg] 0
 most of : QUAN
@@ -514,6 +520,7 @@ pros and cons : NOUN
 related to : PREP
 right after : CONJ
 round at : PREP
+sightseeing tour : NOUN
 since then : ADV[~cnj]
 so many : QUAN[@ind]
 some of : QUAN
@@ -521,6 +528,7 @@ some of which : CONJ
 somewhere along : PREP
 sorry about that : ADJ [$cmpd] 0
 southwest to : PREP
+splash screen : NOUN
 straight after : CONJ
 such a  : QUAN
 such an : QUAN
@@ -591,16 +599,16 @@ half-sitting : VERB[^ed]
 lesser-known : ADJ
 long-drawn : ADJ
 long-past  : ADJ
+long-undervalued : ADJ
 mid-air : NOUN
 mid-century : ADJ
 mixed-species : ADJ
 ocean-view home : NOUN
 one-lane : ADJ
 one-of-a-kind : ADJ
+post-September 11th : ADJ
 rear-drive : ADJ
 round-up : NOUN
-sightseeing tour : NOUN
-splash screen : NOUN
 start-up : NOUN
 three-day : ADJ
 tighty-whities : NOUN
@@ -618,6 +626,7 @@ Advanced Step in Innovative Mobility : NOUN
 Agence France-Presse : NOUN
 Alagoas : NOUN
 Alison : NOUN
+American Civil Liberties Union : NOUN
 Amor Victorious : NOUN
 Andras : NOUN
 Angelina : NOUN
@@ -1559,7 +1568,7 @@ close : ADV
 closely : ADV
 clothe : VERB
 club : NOUN
-club : VERB
+club : VERB - -1
 cm : NOUN
 co : NOUN
 co-op : NOUN
@@ -1891,6 +1900,7 @@ customer : NOUN
 cut : NOUN
 cut : VERB
 cut : ADJ
+cut short : VERB
 cutback : NOUN
 cycle : NOUN
 cycle : VERB
@@ -2323,7 +2333,7 @@ eventually : ADV
 ever : ADV
 everywhere : ADV
 evidence : NOUN
-evidence : VERB
+evidence : VERB - -2
 evident : ADJ
 exact : VERB
 exact : ADJ
@@ -2462,6 +2472,8 @@ fiddle : NOUN
 fiddle : VERB
 field : NOUN
 field : VERB
+field-test : NOUN
+field-test : VERB - +1
 fierce : ADJ
 fifty : NOUN
 fifty : ADJ
@@ -3050,7 +3062,7 @@ inhibit : VERB
 initial : NOUN
 initial : VERB
 initial : ADJ
-initially : ADV
+initially : ADV[~timg]
 initiate : NOUN
 initiate : VERB
 initiative : NOUN
@@ -5009,7 +5021,7 @@ shop : NOUN
 shop : VERB
 short : NOUN
 short : VERB
-short : ADJ
+short : ADJ - +2
 short : ADV
 shortly : ADV
 shout : NOUN
@@ -5995,6 +6007,7 @@ well-known : ADJ
 west : NOUN - -2
 west : ADJ
 west : ADV[~dir,trlg]
+west virginia : NOUN
 western : NOUN - -1
 western : ADJ
 wheel : NOUN
