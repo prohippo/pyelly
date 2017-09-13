@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# stopExceptions.py : 22jul2017 CPM
+# stopExceptions.py : 12sep2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -288,7 +288,7 @@ def nomatch ( txt , pnc , ctx ):
     arguments:
         txt   - list of text chars leading up to punctuation char
         pnc   - punctuation char
-        nxt   - single char after punctuation
+        ctx   - context after punctuation
 
     returns:
         True on match, False otherwise
@@ -368,26 +368,28 @@ if __name__ == '__main__':
     THS = ellyChar.THS
 
     test = [
-        list('u.s.s. wasp') ,
-        list('mr. ') ,
-        list('xmr. ') ,
-        list('pp. ') ,
-        list('nn. ') ,
-        list('Ph.D. ') ,
-        list('g.i. ') ,
-        list(' A. ') ,
-        list("-' ") ,
-        list(':-)') ,       # emoticon
-        list('xxxx. Y') ,
-        list(' . ') ,
-        list(' m. morrel' + SQW + 's sal') ,
-        list('J.S. Dillon') ,
-        list('two P.M. ') ,
-        list('after six p.m. ') ,
-        list('2:00. ') ,
-        list('abc.' + THS + 'def') ,
-        list('XXX: 123') ,
-        list('XXX: Boo')
+        list(u'u.s.s. wasp') ,
+        list(u'mr. ') ,
+        list(u'xmr. ') ,
+        list(u'pp. ') ,
+        list(u'nn. ') ,
+        list(u'Ph.D. ') ,
+        list(u'g.i. ') ,
+        list(u' A. ') ,
+        list(u"-' ") ,
+        list(u':-)') ,       # emoticon
+        list(u'xxxx. Y') ,
+        list(u' . ') ,
+        list(u' m. morrel' + SQW + 's sal') ,
+        list(u'J.S. Dillon') ,
+        list(u'two P.M. ') ,
+        list(u'after six p.m. ') ,
+        list(u'2:00. ') ,
+        list(u'abc.' + THS + 'def') ,
+        list(u'XXX: 123') ,
+        list(u'XXX: Boo') ,
+        list(u'S.A.F. \u201cA') ,
+        list(u'2002. \u201cA')
     ]
 
     nlu = len(sys.argv) - 2
