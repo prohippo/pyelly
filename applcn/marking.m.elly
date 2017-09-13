@@ -53,8 +53,8 @@ went_on_to -> went_on to
 Be_Mobile -> BeMobile
 
 #
-# WARNING! the rule below has en dashes in its pattern and
-#          substitution, and its space wildcards will replace
+# WARNING! the three rules below has en dashes in its pattern and
+#          substitution, and their space wildcards will replace
 #          matched Unicode thin spaces with regular ASCII spaces
 #
 
@@ -67,3 +67,4 @@ post–@* -> post-\\1
 # 
 
 vou -> you
+of_(S.A.F.) -> of S.A.F.

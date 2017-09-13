@@ -712,7 +712,7 @@ _
     end
 __
 
-g:VCLU[^*r,infn]->TO VCLU[^-aux,-infn]
+g:VCLU[^*r,infn]->TO VCLU[^-aux,-infn,-ing]
  >>++
 _
   split
@@ -1538,7 +1538,7 @@ _
   var typg=aux
   (lxtd)
 __
-g:VCLU[^*r]->BE VCLU[^ing,,-aux,-hav]
+g:VCLU[^*r,-ing]->BE VCLU[^ing,-aux,-hav]
  >>*r++
 _
   var typg=aux
@@ -2554,6 +2554,8 @@ __
 d:than    <- CONJ
 __
 d:except  <- CONJ
+__
+d:& <- CONJ[@cnj]
 __
 
 d:is   <- BE

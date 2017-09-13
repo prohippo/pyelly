@@ -27,6 +27,7 @@ caught : VERB[^ed] [$trns] 0
 century bc : NOUN
 children : NOUN[:plur]
 circulating : VERB[^ing]
+co-produced : VERB[^ed]
 coaching : VERB[^ing]
 cut short : VERB[^ed]
 determined : VERB[^ed]
@@ -69,6 +70,7 @@ giving rise : VERB[^ing]
 got : VERB[^ed,chng,*x]
 got out : VERB[^ed]
 got up : VERB[^ed,*x]
+growing : VERB[^ing]
 had : HAVE[^ed]
 had to : AUXL[^ed]
 has : HAVE
@@ -173,6 +175,7 @@ after which : CONJ
 airstrike : NOUN
 agricultural industry : NOUN
 alert level : NOUN
+around the world : ADV
 as compared to : CONJ
 as far as : CONJ
 as result of : CONJ
@@ -204,6 +207,7 @@ half of the : QUAN
 hashtag : NOUN
 homiletics : NOUN
 hot 100 : NUM
+hot 100 : NOUN
 hydro : NOUN
 in as much as : CONJ
 in case of : PREP
@@ -220,6 +224,7 @@ manga : NOUN
 mannerist : NOUN
 marchese : NOUN
 metallicity : NOUN
+midtempo : ADJ
 moneychanger : NOUN
 nano : NOUN
 nano robot : NOUN
@@ -587,6 +592,7 @@ at-times : ADV
 bill-to : ADJ
 case-sensitive : ADJ
 cave-in : NOUN
+co-produce : VERB
 cul-de-sac : NOUN
 cul-de-sac street : NOUN
 eat-in : ADJ
@@ -625,6 +631,7 @@ ABC News : NOUN
 Advanced Step in Innovative Mobility : NOUN
 Agence France-Presse : NOUN
 Alagoas : NOUN
+Aldo : NOUN
 Alison : NOUN
 American Civil Liberties Union : NOUN
 Amor Victorious : NOUN
@@ -690,6 +697,7 @@ Laura : NOUN
 Liaoning : NOUN
 Lin-Manuel Miranda : NOUN
 Love Victorious : NOUN
+Marc : NOUN
 McCarthy : NOUN
 Michael Keaton : NOUN
 Mimi Spear : NOUN
@@ -698,17 +706,21 @@ NBA : NOUN
 Nicholas : NOUN
 Novaes : NOUN
 Obamas : NOUN[:plur] =obama -s
+Ogilvy & Mather : NOUN
 Our Lady of Sorrows : NOUN
 Premier League : NOUN
 Queens Park : NOUN
 Reaganite : NOUN
+Ric : NOUN
 Rockette : NOUN
+S.A.F. : NOUN
 Scotts : NOUN
 Scotts Miracle-Gro Company : NOUN
 Shindake : NOUN
 Ship of Fools : NOUN
 Showcase Presentations : NOUN
 St. Mary : NOUN - +2
+Stephan : NOUN
 Stephen Curry : NOUN
 Steve Jobs : NOUN
 The Verge : NOUN [&prop] 0
@@ -719,6 +731,7 @@ USNORTHCOM : NOUN
 Vincent : NOUN
 Walmart : NOUN
 Walmart supercenter : NOUN
+Walter : NOUN
 Warner Brothers : NOUN
 Washington Post : NOUN
 West Indies : NOUN[:plur]
@@ -737,6 +750,8 @@ fried liver attack : NOUN
 % duty cycle : NOUN
 1st : NUM [&prop] +2
 km² : UNIT
+in 6/8 time : ADJ
+into 4/4 time : ADJ
 
 # # # # WordNet 3.1 entries
 
@@ -1362,7 +1377,7 @@ campaign : NOUN - +1
 campaign : VERB
 campus : NOUN
 canada : NOUN
-canadian : NOUN
+canadian : NOUN - -1
 canadian : ADJ - +2
 canberra : NOUN
 cancer : NOUN
@@ -1663,7 +1678,7 @@ completion : NOUN
 complex : NOUN
 complex : ADJ
 compliment : NOUN
-compliment : VERB
+compliment : VERB - +1
 compose : VERB
 comprehensive : ADJ
 computable : ADJ
@@ -2826,6 +2841,8 @@ group : VERB
 grove : NOUN
 grow : VERB[^chng,ptcl]
 grower : NOUN
+growing : NOUN - -1
+growing : ADJ
 growl : NOUN
 growl : VERB
 growth : NOUN
@@ -5069,7 +5086,7 @@ simply : ADV
 simulate : VERB
 sing : VERB
 single : NOUN
-single : VERB
+single : VERB - -1
 single : ADJ
 singly : ADV
 sir : NOUN
