@@ -927,9 +927,9 @@ _
   append </postp>
 __
 g:NCLU[:*l]->NCLN[:num,val] POSTP[@adv]
-#       ?>>?
- r{$trlg]>>*l[&adv]++++
-         >>*l[&adv]++
+#             ?>>?
+  r[$trlg,spat]>>*l[&adv]++++
+               >>*l[&adv]++
 _
   append <nclu>
   split
@@ -1029,7 +1029,7 @@ _
   (twob)
 __
 d:across <- POSTP[@adv]
- >>[$trlg]-
+ >>[$trlg,spat]-
 __
 
 # # # #
@@ -1363,6 +1363,7 @@ g:NOUN[:*r,cnj]->NOUN[:-*l,-join,-poss,-ing,-plur] NOUN[:-cnj,-ing,-det]
           l[&spcs]>>*r-2
       l[&*c]r[&*c]>>*r+3
      l[&-*c]r[&*c]>>*r[&-*c]+2
+            l[&*c]>>*r+2
                   >>*r+1
 _
   (twob)
@@ -1924,6 +1925,7 @@ _
   (twob)
 __
 g:NUM[:*l]->NUM[:-*l,-cnj] POSTP[@num]
+ >>+
 _
   left
   append <adv>
@@ -2056,7 +2058,7 @@ g:ADJ[%num]->NUM UNIT
      >>++
 __
 g:ADJ[%num,*l]->ADJ[%num,-*l] ADV[~trlg]
-  [$deg]>>++
+# r[$deg]>>++
 _
   (twob)
 __

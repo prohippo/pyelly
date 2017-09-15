@@ -229,6 +229,7 @@ moneychanger : NOUN
 nano : NOUN
 nano robot : NOUN
 national intelligence : NOUN
+newspaper best : ADJ
 nuclear accord : NOUN
 on-grid : ADJ
 on-grid power plant : NOUN
@@ -252,6 +253,7 @@ proof to the contrary : NOUN
 properly designed : ADJ
 proportionally spaced : ADJ
 public sector: NOUN
+pv : ADJ
 pyroclastic : ADJ
 rebaptizer : NOUN
 regardless of : PREP
@@ -484,12 +486,14 @@ his or her : DEM
 in addition to : PREP
 in any way : ADV
 in area : ADV[~trlg] [$deg] 0
+in conjunction with : PREP
 in length : ADV[~trlg] [$deg] 0
 in height : ADV[~trlg] [$deg] 0
 in order to : TO
 in recent years : ADV [$deg,time] +1
 in width : ADV[~trlg] [$deg] 0
 increase or decrease : VERB
+innovation fund : NOUN
 insofar as : CONJ
 it is easy : ELEM - +4 (elma)
 just as : CONJ - -1
@@ -684,6 +688,7 @@ Hillary Clinton : NOUN
 Hunnan New District : NOUN
 Institute for Radio Astronomy Millimetrique : NOUN[:*r]
 Intel : NOUN
+Irving : NOUN
 Islamabad Electric Supply Company : NOUN[:*r]
 Islamic State : NOUN
 Jade Helm : NOUN
@@ -795,7 +800,7 @@ achieve : VERB
 acknowledge : VERB[^dit]
 acquire : VERB
 act : NOUN
-act : VERB
+act : VERB - +1
 action : NOUN
 action : VERB - -2
 active : NOUN
@@ -1749,7 +1754,7 @@ contemptuously : ADV
 content : NOUN
 content : VERB - -1
 content : ADJ
-contest : NOUN
+contest : NOUN - +1
 contest : VERB
 contestant : NOUN
 contingent : NOUN
@@ -4578,7 +4583,7 @@ reach : NOUN
 reach : VERB
 read : NOUN - -2
 read : VERB
-ready : NOUN
+ready : NOUN - -2
 ready : VERB
 ready : ADJ
 real : NOUN
@@ -4683,7 +4688,7 @@ repeat : VERB
 replace : VERB
 replacement : NOUN
 report : NOUN
-report : VERB
+report : VERB - +1
 reported : ADJ
 reportedly : ADV
 reporter : NOUN
@@ -5944,7 +5949,7 @@ volcanic : ADJ
 volcano : NOUN
 voltage : NOUN
 volume : NOUN
-volunteer : NOUN
+volunteer : NOUN - +1
 volunteer : VERB
 volunteer : ADJ
 voodoo : NOUN
