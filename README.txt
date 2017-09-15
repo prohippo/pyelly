@@ -475,6 +475,9 @@ Release Notes:
  1.4.13  - 01sep2017  increase limit on syntactic types to 96
                       extend "marking" rules and integration test
                       update and clean up documentation
+ 1.4.14  - 14sep2017  correct bugs in compiling cognitive semantics
+                      extend "marking" rules and integration test
+                      update and clean up documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
