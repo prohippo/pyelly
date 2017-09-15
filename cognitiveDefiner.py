@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveDefiner.py : 03apr2017 CPM
+# cognitiveDefiner.py : 14sep2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -74,14 +74,14 @@ def convertDefinition ( stb , inp , nwy ):
         procedure body as a list of commands and data on success, None otherwise
     """
 
-    id = [None]*3 # for feaature id consistency check
+    ids = [None]*3 # for feature id consistency check
 
-    store = [ ]   # where to put resulting procedure
+    store = [ ]    # where to put resulting procedure
 
-    while True:   # process every clause
+    while True:    # process every clause
 
         s = Status()                                  # initialize for inheritance check
-        s.id = id                                     #
+        s.id = ids                                    #
 
         line = inp.readline()                         # get next input line
         if len(line) == 0: break                      # end of input test
@@ -174,6 +174,9 @@ def _leftside ( stb , txt , sta ):
             txt = txt[nd:]
             pred.append([ op , test ])
             continue
+        if not side in [ 'l' , 'r' ]:
+            _err('invalid side for test=' + side)
+            return None
         k = 0
         if txt[0] == '[':                   # semantic feature check?
             k = txt.find(']')               # if so, look for closing bracket
@@ -223,6 +226,10 @@ def _leftside ( stb , txt , sta ):
 
             op = semanticCommand.Crhtc if side == 'r' else semanticCommand.Clftc
             pred.append([ op , p ])
+
+        else:
+            _err('unknown test in clause=' + side + txt)
+            return None
 
         txt = txt[k+1:].lstrip()            # advance to next predicate
 
