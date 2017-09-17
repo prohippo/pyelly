@@ -192,6 +192,7 @@ clean energy : NOUN
 configurable : ADJ
 confraternity : NOUN
 development team : NOUN
+die roll : NOUN
 dubstep : NOUN
 early years : NOUN
 engineering council : NOUN
@@ -214,6 +215,7 @@ in case of : PREP
 in leaps and bounds : ADV
 in terms of : PREP
 in the event of : PREP
+instead of : PREP
 interferometry : NOUN
 jain : NOUN
 just for the hell of it : ADV
@@ -669,6 +671,7 @@ Grants Pass : NOUN
 Eclogues : NOUN
 El Nino : NOUN
 Enzo : NOUN
+Evans : NOUN
 Fairchild : NOUN
 Farhan Haq : NOUN
 Federal Open Market Committee : NOUN[:*r]
@@ -838,7 +841,7 @@ advancing : ADJ[%ing] - +1
 advantage : NOUN
 advantage : VERB - -1
 adventure : NOUN
-adventure : VERB
+adventure : VERB - -3
 advertise : VERB
 advice : NOUN
 advocate : NOUN
@@ -3947,6 +3950,7 @@ old : NOUN - -1
 old : ADJ
 olmec : NOUN
 once : ADV
+on-line : ADJ
 one : NOUN
 one : ADJ
 ongoing : ADJ
