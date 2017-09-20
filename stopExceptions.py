@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# stopExceptions.py : 12sep2017 CPM
+# stopExceptions.py : 19sep2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -50,11 +50,12 @@ def _rejectWild ( p ):
         p  - list of pattern elements
 
     returns:
-        True if any element can match other than one char, otherwise False
-        (an exception is the final element of a pattern, which can be *)
+        True if each element can match only one char, otherwise False
+        (the last element of a pattern can be * if there are other elements)
     """
 
-    if p != None and len(p) >> 0 and p[-1] == ellyWildcard.cALL: p = p[:-1]
+    if p != None and len(p) > 1 and p[-1] == ellyWildcard.cALL:
+        p = p[:-1]
     for pc in p:
         if ellyWildcard.isNonSimpleMatch(pc): return True
     return False
@@ -66,7 +67,6 @@ class StopExceptions(object):
 
     attributes:
         lstg  - listing of punctuation patterns as Python dictionary keyed on the punctuation
-        maxl  - maximum length of left parts of pattern excluding any final *
     """
 
     class Pattern(object):
@@ -102,7 +102,6 @@ class StopExceptions(object):
         """
 
         self.lstg = { }    # empty at start
-        self.maxl = 0      # maximum is zero to start with
         if defs != None: self.load(defs)
 
     def load ( self , defs ):
@@ -141,7 +140,7 @@ class StopExceptions(object):
             left  = ellyWildcard.convert(ps[0][:-1])
             right = ellyWildcard.convert(ps[1])
 #           print 'idc=' , idc , 'left=' , left , 'right=' , right
-            if left  == None or _rejectWild(left):
+            if left  == None or _rejectWild(left) or len(left) == 0:
                 print >> sys.stderr , 'bad left context in pattern' , '<' + df + '>'
                 nerr += 1
                 continue
@@ -156,11 +155,6 @@ class StopExceptions(object):
             pat = self.Pattern(left,right)
             self.lstg[idc].append(pat)     # save pattern in dictionary
 #           print 'lstg=' , self.lstg.keys()
-
-            ll = len(left)
-            if ll > 0 and left[-1] == ellyWildcard.cALL:
-                ll -= 1
-            if self.maxl < ll : self.maxl = ll
 
         if nerr > 0:
             raise ellyException.TableFailure
@@ -180,9 +174,9 @@ class StopExceptions(object):
             True on match, False otherwise
         """
 
-#       print 'matching for txt=' , txt , 'pnc=' , pnc , 'ctx=' , ctx
+#       print 'matching for txt=' , txt , 'pnc= [' , pnc , ' ] ctx=' , ctx
 
-        if nomatch(txt,pnc,ctx):  # preclude any exception match?
+        if nomatch(txt,pnc,ctx):     # preclude any exception match?
             return False
 #       print 'nomatch() returned False'
 
@@ -192,56 +186,77 @@ class StopExceptions(object):
         nxt = ctx[1] if len(ctx) > 1 else ''
 
 #       print 'lstg=' , self.lstg.keys()
-        if not pnc in self.lstg:  # get stored patterns for punctuation
+        if not pnc in self.lstg:     # get stored patterns for punctuation
             return False
 
         lp = self.lstg[pnc]
 
 #       print len(lp) , 'patterns'
 
-        txs = txt[-self.maxl:] if len(txt) > self.maxl else txt
-
-        lt = len(txs)             # its length
-
-#       print 'txs= ' + unicode(txs) + ' pnc= [' + pnc + '] nxt=[' + nxt + ']'
-
+        ltx = len(txt)               # current length of accumulated text so far
         ntr = 1
-        while ntr <= lt:
-            if not ellyChar.isLetterOrDigit(txs[-ntr]):
+        while ntr <= ltx:
+            if not ellyChar.isLetterOrDigit(txt[-ntr]):
                 break
             ntr += 1
-        txsg = txs[ntr-1-lt:]     # range for wildcard * matching
-        ltx  = len(txsg)
+        nrg = ntr
+        ntr -= 1                     # available trailing chars for  wildcard * match
 
-        for p in lp:              # try matching each listed exception pattern
+        while nrg <= ltx:
+            c = txt[-nrg]
+            if not ellyChar.isLetterOrDigit(c) and not ellyChar.isEmbeddedCombining(c):
+#               print 'break at nrg=' , nrg , txt[-nrg]
+                break
+            nrg += 1
+        nrg -= 1                     # end of range for all pattern matching
+
+#       print 'ntr=' , ntr , 'nrg=' , nrg
+
+        txt = txt[-nrg:]             # reset text to limit for matching
+        ltx = len(txt)               # its new length
+
+#       print 'txt= ' + unicode(txt) + ' pnc= [' + pnc + '] nxt=[' + nxt + ']'
+
+        for p in lp:                 # try matching each listed exception pattern
 
             if p.left != None and len(p.left) > 0:
 
-                lp = p.left
-                star = len(lp) > 0 and lp[-1] == ellyWildcard.cALL
-                n = len(lp)       # assume each pattern element must match one sequence char
-                if star:          # except any final wildcard *
-#                   print '* ends pattern'
-                    if ltx < n - 1:
-                        continue
-                    lp = lp[:-1]
-                    t = txsg
-#                   print '[' + ellyWildcard.deconvert(lp) + ']' , t
+                pat = p.left
+                star = pat[-1] == ellyWildcard.cALL
+                n = len(pat)         # it each pattern element matches one sequence char
+                if star:             # except for a final wildcard *
+#                   print 'pattern ending with *'
+                    n -= 1
+#                   print 'ltx=' , ltx , 'n=' , n
+                    if ltx < n:
+                        continue     # cannot match pattern properly
+                    pat = pat[:-1]
+                    t = txt[:n]
                 else:
-#                   print 'n=' , n , 'p=' , unicode(p)
-                    if n > lt:
-                        continue  # fail immediately because of impossibility of match
-                    t = txs[-n:]
-#               print 'left pat=' , '[' + ellyWildcard.deconvert(lp) + ']'
-#               print 'versus t=' , t
-                if not ellyWildcard.match(lp,t,0):
-#                   print 'no left match'
+                    if ltx < n:
+                        continue     # cannot match pattern properly
+                    t = txt[-n:]
+
+                if not ellyWildcard.match(pat,t,0):
+#                   print 'no possible pattern match'
                     continue
-#               print 'left match=' , t
-                if not star:
-                    if n < lt and ellyChar.isLetterOrDigit(t[0]):
-                        if ellyChar.isLetterOrDigit(txs[-n-1]):
-                            continue  # fail because of no break in text
+
+                k = ltx - n          # extra chars beyond any match
+#               print 'k=' , k , 't=' , t
+#               print 'txt=' , txt
+#               print 'pat=' , '[' + ellyWildcard.deconvert(pat) + ']'
+#               print 'matches' , n , 'chars'
+                if not star and k > 0:
+#                   print 'check text before [' , txt[-n] , ']'
+                    if ellyChar.isLetterOrDigit(txt[-n]):
+                        c = txt[-n-1]
+#                       print 'preceding= [', c , ']'
+                        if ellyChar.isLetterOrDigit(c) or c == '&':
+                            continue # because break in text is required
+
+#           print 'pat=' , ellyWildcard.deconvert(p.left)
+#           print 'n=' , n , 'ltx=' , ltx
+#           print 'txt=' , txt
 
 #           nc = '\\n' if nxt == '\n' else nxt
 #           print 'right pat=' , '[' + ellyWildcard.deconvert(p.right) + ']'
@@ -355,7 +370,7 @@ if __name__ == '__main__':
         sys.exit(1)
 
     np = len(stpx.lstg)
-    print np , 'sets of punctuation pattern(s)'
+    print 'pattern(s) for' , np , 'punctuation mark(s)'
     if np == 0: sys.exit(0)
 
     for px in stpx.lstg:
@@ -382,6 +397,7 @@ if __name__ == '__main__':
         list(u' . ') ,
         list(u' m. morrel' + SQW + 's sal') ,
         list(u'J.S. Dillon') ,
+        list(u'John S. Dillon') ,
         list(u'two P.M. ') ,
         list(u'after six p.m. ') ,
         list(u'2:00. ') ,
