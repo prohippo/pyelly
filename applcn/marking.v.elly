@@ -67,6 +67,7 @@ getting : BE[^ing] - +1
 getting : VERB[^ing] - +2
 getting : NOUN[:ing] - -2
 giving rise : VERB[^ing]
+gone out of business : VERB[^ed]
 got : VERB[^ed,chng,*x]
 got out : VERB[^ed]
 got up : VERB[^ed,*x]
@@ -149,6 +150,7 @@ thought : VERB[^ed]
 took place : VERB[^ed]
 unified : VERB[^ed]
 went : VERB[^ed,*x]
+went out of business : VERB[^ed]
 will have to : AUXL
 will not have to : AUXL
 withdrew : VERB[^ed]
@@ -221,7 +223,9 @@ jain : NOUN
 just for the hell of it : ADV
 land survey : NOUN
 leaps and bounds : NOUN[:plur]
+litx : CONJ =lit.
 long term : NOUN
+magazine weekly : NOUN
 manga : NOUN
 mannerist : NOUN
 marchese : NOUN
