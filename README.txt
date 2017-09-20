@@ -478,6 +478,13 @@ Release Notes:
  1.4.14  - 14sep2017  correct bugs in compiling cognitive semantics
                       extend "marking" rules and integration test
                       update and clean up documentation
+ 1.4.15  - 20sep2017  fix bugs in stop exception recognition
+                      clean up stop exception code, commentary, and debugging
+                      improve stop exception unit testing
+                      fix and clean up default stop exception rules
+                      handle ellipsis in PyElly char input stream
+                      extend MARKING rules
+                      update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
