@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyCharInputStream.py: 25apr2017 CPM
+# ellyCharInputStream.py: 20sep2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -46,6 +46,7 @@ END  = u''        # end of input
 HYPH = u'-'       # hyphen
 DASH = u'\u2013'  # n-dash
 NBSP = u'\u00A0'  # Unicode no-break space
+ELLP = u'\u2026'  # Unicode horizontal ellipsis
 
 PLM = 3           # maximum char count for preview
 NLM = 80          # limit of look-ahead
@@ -139,6 +140,17 @@ class EllyCharInputStream(object):
             if c == HYPH:                # special treatment for isolated hyphens
                 if spc(lc) and spc(self.peek()):
                     c = DASH
+                break
+            elif c == '.':               # check for ellipsis
+                bb = self.buf
+                bl = len(bb)
+#               print 'bl=' , bl , 'bb=' , bb
+                if bl >= 2 and bb[0] == '.' and bb[1] == '.':
+                    self.buf = bb[2:]
+                    c = ELLP
+                elif bl >= 4 and bb[0] == ' ' and bb[1] == '.' and bb[2] == ' ' and bb[3] == '.':
+                    self.buf = bb[4:]
+                    c = ELLP
                 break
             elif not ellyChar.isWhiteSpace(c):
                 if ellyChar.isWhiteSpace(lc):
@@ -432,6 +444,7 @@ if __name__ == '__main__':
         ' - ' ,
         '桂林' ,
         '(1. ) x\n' ,
+        'X . . . Y\n' ,
         'Aaa'
     ]
 
