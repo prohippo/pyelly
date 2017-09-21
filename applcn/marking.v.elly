@@ -118,6 +118,7 @@ phenomena : NOUN[:plur]
 points of View : NOUN[:plur]
 potions : NOUN
 pressing : VERB[^ing]
+progresses : VERB[^s]
 ran : VERB[^ed]
 regarding : PREP - +1
 regarding : NOUN - -1
@@ -283,6 +284,7 @@ submillimeter  : ADJ
 supply train : NOUN
 swarm robot : NOUN
 teenybopper : NOUN
+throughout : PREP
 time lord : NOUN
 time travel : NOUN
 time travel : VERB
@@ -6015,7 +6017,7 @@ wed : NOUN
 wed : VERB
 wed : ADJ
 wedding : NOUN
-weed : NOUN
+weed : NOUN - +1
 weed : VERB
 weedkiller : NOUN
 week : NOUN

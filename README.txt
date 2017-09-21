@@ -483,7 +483,7 @@ Release Notes:
                       improve stop exception unit testing
                       fix and clean up default stop exception rules
                       handle ellipsis in PyElly char input stream
-                      extend MARKING rules
+                      extend MARKING rules and integration test
                       update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
