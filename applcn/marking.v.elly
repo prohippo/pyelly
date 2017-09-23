@@ -594,6 +594,7 @@ most as many : ADJ
 , for example : MISC
 , e.g. : MISC
 , for : PCNJ
+, new york, : PSTP =new york
 
 # # # # common hyphenations
 
@@ -677,6 +678,7 @@ Grants Pass : NOUN
 Eclogues : NOUN
 El Nino : NOUN
 Enzo : NOUN
+Errol : NOUN
 Evans : NOUN
 Fairchild : NOUN
 Farhan Haq : NOUN
@@ -738,6 +740,7 @@ Stephan : NOUN
 Stephen Curry : NOUN
 Steve Jobs : NOUN
 The Verge : NOUN [&prop] 0
+Tinian : NOUN
 Twitter : NOUN
 U.N. : NOUN
 U.S. : NOUN
@@ -757,15 +760,17 @@ Zimmer : NOUN
 
 # # # # miscellaneous
 
-fried liver attack : NOUN
 2 knights defense : NOUN
 "thousands" : NUM
 % : NOUN[:plur]
 % duty cycle : NOUN
 1st : NUM [&prop] +2
-km² : UNIT
+fried liver attack : NOUN
 in 6/8 time : ADJ
 into 4/4 time : ADJ
+km² : UNIT
+
+from september to december : MNRG =9-12
 
 # # # # WordNet 3.1 entries
 
@@ -1420,6 +1425,7 @@ carefully : ADV
 cargo : NOUN
 caribbean : NOUN
 carnegie : NOUN
+caroline islands : NOUN
 carry : VERB
 cartoon : NOUN
 cartoon : VERB
@@ -3298,6 +3304,7 @@ kurd : NOUN
 kurdish : NOUN
 kurdish : ADJ
 kw : NOUN
+kwajalein : NOUN
 la : NOUN
 label : NOUN
 label : VERB
@@ -4076,6 +4083,7 @@ pal : NOUN
 pal : VERB
 palace : NOUN
 palau : NOUN
+palau islands : NOUN
 pale : NOUN
 pale : VERB
 pale : ADJ
@@ -6044,6 +6052,7 @@ western : NOUN - -1
 western : ADJ
 wheel : NOUN
 wheel : VERB
+wheeler : NOUN
 wherever : ADV
 whistle : NOUN
 whistle : VERB

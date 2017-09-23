@@ -2918,6 +2918,14 @@ _
   var typg=conj
   (decom)
 __
+g:ELEM->PSTP
+_
+  linefeed
+  append <punc>,</punc>
+  left
+  append <punc>,</punc>
+  linefeed
+__
 g:ELEM->ALLTHT VCLU
  >>++
 _
@@ -3308,6 +3316,14 @@ g:DATE[:cnj]->PUNC[|*l] DATE[:-cnj]
 __
 g:DATE->DATE[:cnj] PUNC[|*r]
  >>+++
+__
+
+g:DATE->MNRG DATE
+_
+  append <prep>in</prep>
+  left
+  append /
+  right
 __
 
 d:iii <- XID[:val]
