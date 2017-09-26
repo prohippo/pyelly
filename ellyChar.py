@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 01aug2017 CPM
+# ellyChar.py : 23sep2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -52,6 +52,9 @@ THS = u'\u2009'    # Unicode thin space
 TAB = u'\u0009'    # ASCII horizontal tab
 RS  = u'\u001E'    # ASCII record separator with special significance for parsing
 
+SHARP = u'\u266F'  # for musical accidentals
+FLAT  = u'\u266D'
+
 LSQm = u'\u2018'   # left  single quote
 RSQm = u'\u2019'   # right single quote (same as APX)
 LDQm = u'\u201C'   # left  double quote
@@ -72,6 +75,9 @@ Grk = [            # small Greek letters, not treated as alphabetic
     u'ι',u'κ',u'λ',u'μ',u'ν',u'ξ',u'ο',u'π',
     u'ρ',u'σ',u'τ',u'υ',u'φ',u'χ',u'ψ',u'ω'
 ]
+
+Misc = [ THS , SHARP , FLAT ]
+Spm  = [ SHARP , FLAT ]
 
 Lim = u'\u01D5'    # main limit of Unicode chars recognized
 
@@ -507,17 +513,18 @@ def isUpperCaseLetter ( x ):
 
 def isText ( x ):
     """
-    check for ASCII text or Latin-1 or special punctuation
+    check for ASCII, Latin, or Greek char or punctuation or thin space or accidental
 
     arguments:
         x - the char
     returns:
-        True if ASCII or Latin or punctuation , False otherwise
+        True if in PyElly text chars, False otherwise
     """
     if x == '' or isPureControl(x):
         return False
     else:
-        return x < Lim or x in Pnc or x in Grk or x == THS
+#       print 'x=' , x , 'Misc=' , Misc
+        return x < Lim or x in Pnc or x in Grk or x in Misc
 
 control = [
     T,T,T,T,T,T,T,T,T,F,F,T,T,F,T,T,
@@ -587,6 +594,10 @@ def findExtendedBreak ( text , offset=0 , nspace=0 ):
 #                   print 'non breaking' , x       # since the elif code is paired
                     k += 1                         # with a different if
                     break
+            elif x in Spm:
+#               print 'special breaking'
+                k += 1
+                break
             elif k == offset and x in Opn:
 #               print 'look for short bracketed segment'
                 j  = k + 1
@@ -662,6 +673,8 @@ if __name__ == "__main__":
     print 'thin space' , isSpace(THS)
     print 'ASCII space' , isWhiteSpace(' ') , ord(' ')
     print 'ASCII space' , isSpace(' ') , ord(' ')
+    print u'text \u266F' , isText(SHARP)
+    print u'text \u266D' , isText(FLAT)
     print u'digit ¹' , isDigit(u'¹') , isLetterOrDigit(u'¹') , toIndex(u'¹') , toChar(toIndex(u'¹'))
     print u'digit ²' , isDigit(u'²') , isLetterOrDigit(u'²') , toIndex(u'²') , toChar(toIndex(u'²'))
     print u'digit ³' , isDigit(u'³') , isLetterOrDigit(u'³') , toIndex(u'³') , toChar(toIndex(u'³'))
