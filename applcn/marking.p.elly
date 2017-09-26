@@ -116,6 +116,9 @@
 13 1##0s DATE[:plur] -1
 13 2##0s DATE[:plur] -1
 
+0 !+#* CTGN -1
+0 no++&# SERN -1
+
 # en dashes in patterns below!
 
  0 ##–##   NUM -1

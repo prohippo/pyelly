@@ -112,6 +112,8 @@ named : VERB[^ed] - +2
 named : ADJ - -4
 opening : VERB[^ing]
 opposing : VERB[^ing]
+originated : VERB[^ed]
+originated : ADJ - -4
 ought : VERB
 paid : VERB[^ed]
 phenomena : NOUN[:plur]
@@ -765,6 +767,7 @@ Zimmer : NOUN
 % : NOUN[:plur]
 % duty cycle : NOUN
 1st : NUM [&prop] +2
+f♯ : NOUN
 fried liver attack : NOUN
 in 6/8 time : ADJ
 into 4/4 time : ADJ

@@ -1933,7 +1933,7 @@ _
   append </adv>
 __
 g:NUM->NUM[:-cnj] NUM[:cnj,-prep,-*r]
-    >>+++
+    >>++++
 _   
   (twob)   # "3 in 4"
 __
@@ -3278,7 +3278,7 @@ g:ELEM->CONJ[@prep,aftr] NCLU[:-plur,-prep, det,-qnt]
       n>5>>[!rv]------
  r[&evnt]>>[!rv]++
  r[&durn]>>[!rv]++
-         >>[!rv]-
+         >>[!rv]--
 _
   (cjpr)
 __
@@ -3411,3 +3411,47 @@ _
   (pbgn)
 __
 
+g:CTGN[:*r]->PUNC[|*l] CTGN[:-*l,-*r]
+__
+g:CTGN[:*l]->CTGN[:*r] PUNC[|*r]
+__
+g:ELEM->CTGN[:*l]
+_
+  append <nclu><noun>
+  split
+  left
+  back
+  find + <
+  delete 1 >
+  append .
+  space
+  merge
+  append </noun></nclu>
+__
+
+p:desern
+_
+  split
+  right
+  back
+  append <num>
+  find ++ <
+  delete 2 >
+  append .
+  space
+  merge
+  append </num>
+__
+g:NOUN[:*l]->NOUN[:-*l] SERN
+  >>++
+_
+  left
+  (desern)
+__
+g:ELEM->PUNC[|com] SERN
+  >>++++
+_
+  append <punc>,</punc><nclu><noun>
+  (desern)
+  append </noun></nclu>
+__

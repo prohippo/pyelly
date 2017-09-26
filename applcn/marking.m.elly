@@ -37,6 +37,9 @@ go_-s_that -> go -s tht
 
 ##&#_k -> \\1_K
 
+!._#*  -> \\1+\\3
+no._&# -> no++\\2
+
 approx. -> about
 ,_lit.  -> , litx
 
