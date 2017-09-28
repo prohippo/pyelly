@@ -484,6 +484,7 @@ Release Notes:
                       fix and clean up default stop exception rules
                       handle ellipsis in PyElly char input stream
                       add musical ♯ and ♭ to Elly character set
+                      treat ° as embedded combining
                       extend MARKING rules and integration test
                       update documentation
 

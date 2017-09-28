@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 23sep2017 CPM
+# ellyChar.py : 26sep2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -47,6 +47,7 @@ SLA = u'/'         # Unicode slash
 BSL = u'\\'        # Unicode backslash
 SPC = u' '         # Unicode space
 AMP = u'&'         # Unicode ampersand
+DEG = u'\u00B0'    # Unicode degree symbol
 NBS = u'\u00A0'    # Unicode no-break space
 THS = u'\u2009'    # Unicode thin space
 TAB = u'\u0009'    # ASCII horizontal tab
@@ -200,14 +201,14 @@ def isCombining ( x ):
 
 def isEmbeddedCombining ( x ):
     """
-    test whether punctuation char can be embedded in token
+    test whether special char can be embedded in token
 
     arguments:
         x - the char
     returns:
         True if char can be in the middle of a token, False otherwise
     """
-    return x in [ DOT , COM , COL , APO , APX , AST , AMP , SLA ]
+    return x in [ DOT , COM , COL , APO , APX , AST , AMP , SLA , DEG ]
 
 def isPureCombining ( x ):
     """
