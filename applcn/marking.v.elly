@@ -22,7 +22,7 @@ believes : VERB[^s]
 bit : VERB[^ed,*x]
 born : VERB[^ed] - +2
 building : VERB[^ing,ptcl]
-built : VERB[^ed]
+built : VERB[^ed] [$trns,noaj] +3
 caught : VERB[^ed] [$trns] 0
 century bc : NOUN
 children : NOUN[:plur]
@@ -146,6 +146,9 @@ swooping : ADJ[%ing] - +1
 swooping : VERB[^ing]
 taken : VERB[^ed]
 taking place : VERB[^ing]
+telecommunications : NOUN
+telecommunications : NOUN[:plur] - -1
+television broadcasting : NOUN
 terrifying : VERB[^ing]
 terrorizing : VERB[^ing] - +2
 terrorizing : NOUN - -1
@@ -215,6 +218,7 @@ homiletics : NOUN
 hot 100 : NUM
 hot 100 : NOUN
 hydro : NOUN
+hydro : ADJ - +2
 in as much as : CONJ
 in case of : PREP
 in leaps and bounds : ADV
@@ -698,6 +702,8 @@ Harry : NOUN
 HBO : NOUN
 Herzegovina : NOUN
 Hillary Clinton : NOUN
+Hughes : NOUN
+Hughes Global Services : NOUN
 Hunnan New District : NOUN
 Institute for Radio Astronomy Millimetrique : NOUN[:*r]
 Intel : NOUN
@@ -737,6 +743,7 @@ Scotts Miracle-Gro Company : NOUN
 Shindake : NOUN
 Ship of Fools : NOUN
 Showcase Presentations : NOUN
+Space and Upper Atmospheric Research Commission : NOUN
 St. Mary : NOUN - +2
 Stephan : NOUN
 Stephen Curry : NOUN
@@ -774,6 +781,11 @@ into 4/4 time : ADJ
 km² : UNIT
 
 from september to december : MNRG =9-12
+
+# # # # special corrections of badly written text
+
+and communications : NOUN =communications
+
 
 # # # # WordNet 3.1 entries
 
@@ -2236,6 +2248,7 @@ easily : ADV
 east : NOUN - -2
 east : ADJ
 east : ADV[~dir,trlg]
+east africa : NOUN
 easter : NOUN
 eastern : ADJ
 easy : ADJ
@@ -2455,6 +2468,7 @@ fang : NOUN
 far : NOUN
 far : ADJ
 far : ADV
+far east : NOUN
 farm : NOUN
 farm : VERB
 farmer : NOUN
@@ -4813,7 +4827,7 @@ robotics : NOUN
 rock : NOUN
 rock : VERB
 rock band : NOUN
-rocket : NOUN
+rocket : NOUN - +1
 rocket : VERB
 rodent : NOUN
 rogue : NOUN
@@ -5228,7 +5242,7 @@ southwest : ADV[~dir,trlg]
 soviet : NOUN - -1
 soviet : ADJ
 soy : NOUN
-space : NOUN
+space : NOUN - +1
 space : VERB
 spain : NOUN
 spanish : NOUN

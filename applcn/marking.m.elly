@@ -56,6 +56,13 @@ went_on_to -> went_on to
 
 Be_Mobile -> BeMobile
 
+&#°_North -> \\1°N
+&#°_South -> \\1°S
+&#°_West  -> \\1°W
+&#°_East  -> \\1°E
+
+&#°East   -> \\1°E
+
 #
 # WARNING! the three rules below has en dashes in its pattern and
 #          substitution, and their space wildcards will replace

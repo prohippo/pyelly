@@ -403,7 +403,7 @@ _
   (typg)
   append </nclu>
 __
-g:ELEM->ADJ CONJ[@*x]
+g:ELEM->ADJ[%-conj] CONJ[@*x]
 # ?>>?
 _
   var typg=adj
