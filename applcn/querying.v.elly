@@ -34,7 +34,7 @@
 # We = weight
 # Wi = wing
 
-degree : unit =º
+degree : unit =°
 knot   : unit =kt
 foot   : unit =ft
 feet   : unit =ft
