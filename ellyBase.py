@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 19sep2017 CPM
+# ellyBase.py : 04oct2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -70,7 +70,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.4.15'                     # current version of PyElly software
+release = 'v1.4.16'                     # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -372,18 +372,22 @@ class EllyBase(object):
 
         try:
             while True:
-#               print 'current text chars=' , self.sbu.buffer
+#               print 'BASE@0 current text chars=' , self.sbu.buffer
                 if len(self.sbu.buffer) == 0:
                     break               # stop when sentence buffer is empty
                 self.ptr.startUpX()     # for any initial ... grammar rule
+#               print 'BASE@1 =' , self.sbu.buffer
                 if not self._lookUpNext():
 #                   print 'lookup FAIL'
                     return None         # if next token cannot be handled, quit
+#               print 'BASE@2 =' , self.sbu.buffer
                 if len(self.ptr.queue) == 0:
                     break
+#               print 'BASE@3 =' , self.sbu.buffer
                 self.ptr.digest()       # process queue to get all ramifications
                 self.ptr.restartQueue() # for any leading zero production
 #               print len(self.ctx.tokns) , 'tokens after digestion'
+#               print 'BASE@4 =' , self.sbu.buffer
 
             self.ptr.finishUpX()        # for any trailing ... grammar rule
         except ellyException.ParseOverflow:
@@ -435,8 +439,11 @@ class EllyBase(object):
         if self.trs != None:           # preanalysis of number expressions
             self.trs.rewriteNumber(s)
 
+#       print '_lookUp@1 buffer=' , self.sbu.buffer
 #       print 'macro expansion s[0]=' , s[0]
         self.sbu.expand()              # apply macro substitutions
+#       print 'macro expanded  s[0]=' , s[0]
+#       print '_lookUp@2 buffer=' , self.sbu.buffer
 
         s = self.sbu.buffer
 
@@ -445,6 +452,7 @@ class EllyBase(object):
 
 #       print unicode(self.sbu)
 
+#       print '_lookUp@3 buffer=' , self.sbu.buffer
         k = self.sbu.findBreak()       # find extent of first component for lookup
         if k == 0:
             k = 1                      # must have at least one char in token
@@ -456,10 +464,12 @@ class EllyBase(object):
 
 #       print 'len(s)=' , kl , 'k=' , k , 's=', s
 
+#       print '_lookUp@4 buffer=' , self.sbu.buffer
         mr = self._scanText(k)         # text matching in various ways
         mx  = mr[0]                    # overall maximum match length
         chs = mr[1]                    # any vocabulary element matched
         suf = mr[2]                    # any suffix removed in matching
+#       print '_lookUp@5 buffer=' , self.sbu.buffer
         s = self.sbu.buffer
 #       print 'k=' , k
 #       print 'scan result mx=' , mx , 'chs=' , chs , 'suf=' , suf
@@ -479,6 +489,7 @@ class EllyBase(object):
             else:
                 chs = self.sbu.extract(mx)
 #               print 'extracted chs=' , chs
+#           print 'token chs=' , chs
             to = ellyToken.EllyToken(chs)
 #           print 'long token=' , unicode(to)
             self.ctx.tokns.append(to)

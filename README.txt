@@ -485,8 +485,15 @@ Release Notes:
                       handle ellipsis in PyElly char input stream
                       add musical ♯ and ♭ to Elly character set
                       treat ° as embedded combining
-                      extend MARKING rules and integration test
+                      extend "marking" rules and integration test
                       update documentation
+ 1.4.16  - 05oct2017  fix bugs in macro substitution
+                      store macro rules as hashable objects
+                      add angle brackets 〈〉 for PyElly delimiting
+                      generalized handling for all bracketing in term lookup
+                      improve algorithm for range of pattern matching
+                      clean up and extend "marking" rules
+                      update documenetation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
