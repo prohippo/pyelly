@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 16jul2017 CPM
+# ellyWildcard.py : 02oct2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -37,6 +37,8 @@ import ellyBuffer
 
 X  = 0xE000       # start of private codes in Unicode, used for encoded pattern elements
 Xc = unichr(X)    #   (Python 2.* only)
+
+Enc = [ u')' , u']' , ellyChar.RSQm , ellyChar.RDQm ]
 
 def isWild ( c ):
 
@@ -169,7 +171,7 @@ def convert ( strg ):
     """
 
     if strg == None: return None
-#   print 'strg=' , list(strg)
+#   print 'strg=' , strg
 
     lng = len(strg)
     nlb = 0                          # check balancing of brackets
@@ -242,12 +244,9 @@ def convert ( strg ):
             else:                    # escaped non-space?
                 z = strg[i+1]
 #               print 'escaped=',z,'@',i
-                if ellyChar.isDigit(z):
-                    t.append(x)      # if digit, preserve backslash to indicate substitution
-                else:
-                    t.append(z)      # otherwise, keep the next char as lower case
-#                   print 'slash t=',list(t)
-                    i += 1
+                t.append(z)      # otherwise, keep the next char as lower case
+#               print 'slash t=',list(t)
+                i += 1
         else:
             t.append(x)
             wild = False
@@ -493,7 +492,7 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
         returns:
             non-negative count if any match possible, otherwise -1
         """
-#       print "_span: typw=" , ord(typw) , convert(typw)
+#       print "_span: typw=" , '{:04x}'.format(ord(typw)) , convert(typw)
 #       print "_span: txt @",offs,"pat @",mp,"nsp=",nsp
 #       print "text to span:",text[offs:]
 #       print "pat rest=" , patn[mp:]
@@ -531,7 +530,7 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
     ####  main matching loop ####
     #############################
 
-    matched = False  # successful pattern match?
+    matched = False  # successful pattern match yet?
 
     if limt == None: limt = len(text)
 
@@ -575,7 +574,7 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
 
         tc = patn[mp]       # otherwise, get unmatched pattern element
         mp += 1             #
-#       print "tc=",ord(tc),deconvert(tc)
+#       print "tc=",'{:04x}'.format(ord(tc)),deconvert(tc)
 
         if tc == cALL:      # a * wildcard?
 
@@ -697,7 +696,7 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
 
                 if nm == 0:                             # compensate for findExtendedBreak peculiarity
                     if offs + 1 < limt and mp < ml:     # with closing ] or ) to be matched in pattern
-                        if patn[mp] in [ u']' , u')' ]: # from text input
+                        if patn[mp] in Enc:             # from text input
                             nm += 1
 
 #               print 'spanning=' , nm
