@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# macroTable.py : 15jun2017 CPM
+# macroTable.py : 01oct2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -107,7 +107,7 @@ def _checkBindings ( left , right ):
                 break
 
 #       print 'BIND: m=' , m , 'n=' , n
-    return (m <= n) # must be as many wildcard sequences as maximum binding
+    return m <= n   # must be as many wildcard sequences as maximum binding
 
 def _checkExpansion ( left , right ):
 
@@ -116,63 +116,124 @@ def _checkExpansion ( left , right ):
     ignoring pattern wildcards and substitutions dependent on bindings
 
     arguments:
-        left  - pattern
-        right - substitution
+        left  - pattern (converted)
+        right - substitution (chars with escapes)
 
     returns:
-        True if substitution is not longer than original string, False otherwise
+        True if substitution is not longer than original text, False otherwise
     """
 
-#   print 'EXPN: left=' , left , 'right=' , right
-    nh = 0          # hypen count in pattern
-    n = 0           # non-space char count in pattern
-    k = 0
-    l = len(left)
-    while k < l:    # iterate on pattern string
+#   print 'expansion check: left=' , ellyWildcard.deconvert(left) , 'right=' , right
+    inOpt = False
+    nw = 0          # wildcard count in pattern
+    n = 0           # literal char count
+    k = 0           # iteration index
+    lm = len(left)
+    while k < lm:   # iterate on pattern string
         c = left[k]
+#       print k , u'c= {:04x}'.format(ord(c))
         k += 1
-        if c == '-':
-            n += 1
-            nh += 1
-        elif c != ' ' and c != '_':    # look at non-space chars
-            if not ellyWildcard.isWild(c):
-                n += 1
+        if not ellyWildcard.isWild(c):
+            if not inOpt: n += 1
+        elif c == ellyWildcard.cSOS:
+            inOpt = True
+        elif c == ellyWildcard.cEOS:
+            inOpt = False
+        elif c != ellyWildcard.cEND:
+            nw += 1
 
-    mh = 0          # hyphen count in substitution
-    m = 0           # non-space char count in substitution
-    k = 0
-    l = len(right)
-    while k < l:    # iterate on substitution string
+    mw = 0          # wildcard binding count in substitution
+    m = 0           # literal char count
+    k = 0           # iteration index
+    lm = len(right)
+    while k < lm:   # iterate on substitution string
         c = right[k]
         k += 1
-        if c == '-':
-            m += 1
-            mh += 1
-        elif c != ' ' and c != '_':    # look at non-space chars
-            if k == l:
-                m += 1
-            elif c == '\\':            # look for binding with \
-                d = right[k]
-                if '1' > d or d > '9': # if not binding, treat as non-space
-                    m += 1
-                else:
-                    k += 1
+        if c == '\\':                  # look for binding reference
+            if k == lm:
+                m += 1                 # \ at end of substitution counts as a char
             else:
-                m += 1
+                d = right[k]
+                if d >= '1' and d <= '9': # if binding reference, ignore in count
+                    k += 1
+                    mw += 1
+        else:
+            m += 1
 
-#   print 'EXPN: m=' , m , 'n=' , n
+#   print 'expansion check: m=' , m , 'n=' , n , 'nw=' , nw , 'mw=' , mw
 
-    if m <= n: return True
-
-    n -= nh         # another way to avoid warning
-    m -= mh         #
-
-    return (m <= n)
+    return m <= n and mw <= nw
 
 #
 ####
 #
 # main code for macro tables
+
+class Rule(object):
+
+    """
+    hashable rule object for macro table
+
+    attributes:
+        patn  - pattern with possible wildcards
+        nspm  - space count in pattern
+        subs  - substitution for matched text
+    """
+
+    def __init__ ( self , patn , nspm , subs ):
+
+        """
+        initialize rule
+
+        arguments:
+            self  -
+            patn  - PyElly pattern
+            nspm  - space count in pattern
+            subs  - substitution string for matched text
+        """
+
+        self.patn = patn
+        self.nspm = nspm
+        self.subs = subs
+
+    def __str__ ( self ):
+
+        """
+        display rule
+
+        arguments:
+            self  -
+        """
+
+        return str(self.patn) + '(' + str(self.nspm) + ') [ ' + self.subs + ' ]'
+
+    def unpack ( self ):
+
+        """
+        get rule ielements as a list
+
+        arguments:
+            self  -
+
+        returns:
+            list of rule attributes: [ patn , nspm , subs ]
+        """
+
+        return [ self.patn , self.nspm , self.subs ]
+
+def uniqueAdd ( resl , newl ):
+
+    """
+    append unique elements of new list to result list
+    while preserving order
+
+    arguments:
+        resl  - result list of unique elements
+        newl  - list of elements to add
+    """
+
+    for r in newl:
+        if not r in resl: resl.append(r)
 
 class MacroTable(object):
 
@@ -238,26 +299,29 @@ class MacroTable(object):
     def getRules ( self , a ):
 
         """
-        get appropriate macros for text starting with specified first char
+        get appropriate macros for text with specified starting char
 
         arguments:
             self  -
             a     - first letter of current buffer contents (NOT space!)
 
         returns:
-            a list of macro rules to try out
+            a list of unpacked macro rules to try out
         """
 
         if a == '': return [ ]
         if ellyChar.isLetterOrDigit(a):
             k = ellyChar.toIndex(a)
+            ls = self.index[k]
 #           print 'index a=' , a , 'k=' , k
             ws = self.letWx if ellyChar.isLetter(a) else self.digWx
-            ls = self.index[k] + ws + self.anyWx
+            uniqueAdd(ls,ws)
+            uniqueAdd(ls,self.anyWx)
         else:
-            ls = self.index[0] + self.anyWx
+            ls = self.index[0]
+            uniqueAdd(ls,self.anyWx)
 #       print len(ls) , ' rules to check'
-        return ls
+        return [ r.unpack() for r in ls ]
 
     def _store ( self , defs , nowarn ):
 
@@ -298,6 +362,7 @@ class MacroTable(object):
                 self._err('bad wildcards',l)
                 continue
 #           print 'pat=' , ellyWildcard.deconvert(pat) , 'len=' , len(pat)
+#           print list(pat)
             pe = pat[-1]
             if not pe in [ ellyWildcard.cALL , ellyWildcard.cEND , ellyWildcard.cSPC ]:
                 pat += ellyWildcard.cEND      # pattern must end in $ if it does not end in * or _
@@ -305,13 +370,15 @@ class MacroTable(object):
                 self._err('bad bindings in substitution',l)
                 continue
             if not nowarn and not _checkExpansion(pat,tail):
-                self._err('substitution longer than original string',l,0)
+                self._err('substitution may be longer than original string',l,0)
 
 #           print "rule =" , [ left , nspm , tail ]
             if pat == None:
                 self._err('no pattern',l)
                 continue
-            r = [ pat , nspm , tail ]
+
+            r = Rule( pat , nspm , tail )
+
             c = pat[0]                        # first char of pattern
                                               # check type to see how to index rule
 #           print 'c=' , ellyWildcard.deconvert(c) , ', pat=' , ellyWildcard.deconvert(pat)
@@ -411,16 +478,15 @@ def _dmpall ( slot ):
     """
 
     for r in slot:
-        print u' {:16s}'.format(ellyWildcard.deconvert(r[0])) ,
-        print u'    ({:2d} spWC)'.format(r[1]) ,
-        print '->' , list(r[2])
+        print u' {:16s}'.format(ellyWildcard.deconvert(r.patn)) ,
+        print u'    ({:2d} spWC)'.format(r.nspm) ,
+        print '->' , list(r.subs)
 
 #
 # unit test
 #
 
 if __name__ == '__main__':
-
     import substitutionBuffer
     import ellyDefinitionReader
     import ellyConfiguration
