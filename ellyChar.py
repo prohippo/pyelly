@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 26sep2017 CPM
+# ellyChar.py : 05oct2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -47,6 +47,8 @@ SLA = u'/'         # Unicode slash
 BSL = u'\\'        # Unicode backslash
 SPC = u' '         # Unicode space
 AMP = u'&'         # Unicode ampersand
+HYM = u'-'         # Unicode minus, hyphen
+PLS = u'+'         # Unicode plus
 DEG = u'\u00B0'    # Unicode degree symbol
 NBS = u'\u00A0'    # Unicode no-break space
 THS = u'\u2009'    # Unicode thin space
@@ -63,8 +65,12 @@ RDQm = u'\u201D'   # right double quote
 PRME = u'\u2032'   # prime
 ELLP = u'\u2026'   # horizontal ellipsis
 NDSH = u'\u2013'   # en dash
+ABrL = u'\u3008'   # left angle  bracket
+ABrR = u'\u3009'   # right angle bracket
 
-Apd = [ u'*' , u'+' , u'-' ]                                    # marks appending to token
+Exc = [ AMP , HYM ]                                             # extension of span
+
+Apd = [ AST , PLS , HYM ]                                       # marks appending to token
 
 Pnc = [ u'“' , u'”' , u'‘' , u'’' , u'–' , u'—' , u'…' , u'™' ] # special punctuation
 
@@ -77,8 +83,10 @@ Grk = [            # small Greek letters, not treated as alphabetic
     u'ρ',u'σ',u'τ',u'υ',u'φ',u'χ',u'ψ',u'ω'
 ]
 
-Misc = [ THS , SHARP , FLAT ]
+Misc = [ THS , SHARP , FLAT , ABrL , ABrR ]
 Spm  = [ SHARP , FLAT ]
+
+Quo  = [ LSQm , LDQm , RSQm , RDQm , '"' , "'" ]
 
 Lim = u'\u01D5'    # main limit of Unicode chars recognized
 
@@ -434,7 +442,7 @@ def toChar ( k ):
     """
 
     if k > Max + 10 or k <= 0:
-        return '-'
+        return HYM
     elif k > Max:
         return unichr(ord('0') + k - DigB)
     else:
@@ -562,7 +570,7 @@ def findExtendedBreak ( text , offset=0 , nspace=0 ):
         remaining char count in text if no break is found
         otherwise, count of chars to next break if nonzero, but 1 if zero,
     """
-
+    nalnm = False                                  # preceding char not alphanumeric?
     k = offset
     n = len(text)
 #   print 'find break k=' , k , 'n=' , n , 'nspace=' , nspace
@@ -571,16 +579,22 @@ def findExtendedBreak ( text , offset=0 , nspace=0 ):
 #       print 'char=' , x , '@' , k
         if not isPureCombining(x):                 # check if not ordinary token char
 #           print 'special checking needed'
-            if (x == '-' or
+            if (x == HYM  or
                 x == NDSH or
                 isEmbeddedCombining(x)):           # check if embeddable punctuation
+#               print 'nalnm=' , nalnm
+                if nalnm:
+                    break
+                nalnm = True
+#               print 'k=' , k , 'n=' , n
                 if k + 1 < n:
                     c = text[k+1]                  # look at next char in input
 #                   print 'next char=' , c
-                    if isApostrophe(c) or isLetterOrDigit(c) or c == AMP or c == '-':
-                        k += 2
+                    if isApostrophe(c) or isLetterOrDigit(c) or c in Exc:
+                        nalnm = False              # must fib here
+                        k += 1
                         continue
-                    if isSpace(c):                 # if next char is space, is it expected?
+                    elif isSpace(c):               # if next char is space, is it expected?
 #                       print 'is space, nspace=' , nspace
                         if nspace > 0:
                             k += 2                 # allow for space in token
@@ -590,43 +604,54 @@ def findExtendedBreak ( text , offset=0 , nspace=0 ):
 #                           print 'non breaking' , x
                             k += 1                 # if none, continue scan
                             break
+                    if x in Cls: k += 1
 #                   print "done"
                 elif not x in termina:             # the above code must be repeated
 #                   print 'non breaking' , x       # since the elif code is paired
                     k += 1                         # with a different if
                     break
-            elif x in Spm:
+            elif x in Spm:                         # music accidentals
 #               print 'special breaking'
                 k += 1
                 break
+            elif x in Quo:                         # quotation marks
+#               print 'special case of any quotation mark'
+                k += 1
+                nalnm = True
+                continue
             elif k == offset and x in Opn:
 #               print 'look for short bracketed segment'
                 j  = k + 1
                 jl = k + 4
                 if jl > n: jl = n
 #               print 'j=' , j , 'jl=' , jl
-#               print 'input=' , text[k:]
+#               print 'input=' , list(text)
                 while j < jl:
                     if text[j] in Cls: break
                     j += 1
-#               print 'j=' , j , 'jl=' , jl
                 if j < jl:
 #                   print 'segment found'
                     k = j
                 k += 1
+#               print 'done k=' , k
                 break
 
 #           print 'space check, nspace=' , nspace
             if nspace > 0 and isSpace(x):
                 k += 1
                 nspace -= 1
+                nalnm = False
                 continue
             if k == offset:
                 k += 1      # if immediate break, take 1 char anyway
             break
         elif x in Pnc:
-#           print 'punctuation break'
+#           print 'punctuation break, x=' , x
+            if x in [ RSQm , RDQm ]:
+                k += 1
             break
+        else:
+            nalnm = False
         k += 1
 #   print 'break=' , k , 'offset=' , offset
     return k - offset
