@@ -161,6 +161,8 @@ went out of business : VERB[^ed]
 will have to : AUXL
 will not have to : AUXL
 withdrew : VERB[^ed]
+worked : VERB[^ed] - +3
+worked : ADJ[%ed]  - -3
 written : VERB[^ed]
 wrote : VERB[^ed,*x]
 
@@ -3349,6 +3351,7 @@ lady : NOUN
 lagos : NOUN
 land : NOUN
 land : VERB
+land grant : NOUN
 landfall : NOUN
 landholder : NOUN
 landscape : NOUN
