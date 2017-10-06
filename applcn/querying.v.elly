@@ -61,14 +61,14 @@ weapon      : reln =AiCoAr
 engine      : reln =AiEn
 measurement : reln =AiDi
 size   : reln =AiDi
-fly    : verb[|reln] =AiPe
-go     : verb[|reln] =AiPe
-travel : verb[|reln] =AiPe
+fly    : verb[%reln] =AiPe
+go     : verb[%reln] =AiPe
+travel : verb[%reln] =AiPe
 
 big : adj =AiDi ()
 
-soviet   : adj[|null] ()
-russian  : adj[|null] ()
+soviet   : adj[%null] ()
+russian  : adj[%null] ()
 type     : type ()
 system   : type ()
 facility : type ()

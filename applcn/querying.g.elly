@@ -500,7 +500,7 @@ g:verb->verb sufx[%ed]
 _
   LEFT
 __
-g:verb[|ing]->verb sufx[%ing]
+g:verb[%ing]->verb sufx[%ing]
 _
   LEFT
 __
@@ -517,7 +517,7 @@ _
   SET refr=T
   RIGHT
 __
-g:verb->verb[|-fld] to
+g:verb->verb[%-fld] to
 _
   LEFT
 __
@@ -696,29 +696,29 @@ g:aux->aux not
 _
   RIGHT
 __
-g:adj[|fld,val]->valn adj[|fld]
+g:adj[%fld,val]->valn adj[%fld]
 __
-g:adj[|fld]->of np[:*r,fld,-val]
+g:adj[%fld]->of np[:*r,fld,-val]
 __
-g:pred->verb[|-ing]
+g:pred->verb[%-ing]
 __
-g:pred->verb[|-ing] np
+g:pred->verb[%-ing] np
 __
-g:pred[|ing]->verb[|ing] np
+g:pred[|ing]->verb[%ing] np
 __
 g:pred[|*r,ing]->wh[=rel] pred[|-ing]
 __
 g:pred[|*r,ing]->wh[=rel] sv
 __
-g:pred->verb[|-ing] func
+g:pred->verb[%-ing] func
 __
-g:pred[|ing]->verb[|ing] func
+g:pred[|ing]->verb[%ing] func
 __
-g:pred->verb[|-ing] value[:numerical]
+g:pred->verb[%-ing] value[:numerical]
 _
   (numeric)
 __
-g:pred[|ing]->verb[|ing] value[:numerical]
+g:pred[|ing]->verb[%ing] value[:numerical]
 _
   (numeric)
 __
@@ -740,27 +740,27 @@ g:pred[|aux]->be np
 _
   RIGHT
 __
-g:pred->be adj[|aux,fld,val]
+g:pred->be adj[%aux,fld,val]
 _
   LEFT
 __
-g:pred->verb adj[|fld,val]
+g:pred->verb adj[%fld,val]
 __
 g:pred[|aux,ing]->not pred[|-aux,ing]
 __
 g:pred[|aux,-ing]->not pred[|-aux,-ing]
 __
-g:sv->np verb[|reln,-ing]
+g:sv->np verb[%reln,-ing]
 __
-g:np[:*r]->adj[|fld] np[:*r]
+g:np[:*r]->adj[%fld] np[:*r]
 __
-g:np[:*r]->adj[|null] np[:*r]
+g:np[:*r]->adj[%null] np[:*r]
 _
   RIGHT
 __
 g:np->np[:*r] pred[|ing]
 __
-g:ordr->verb[|-do] by
+g:ordr->verb[%-do] by
 _
   LEFT
 __
@@ -772,11 +772,11 @@ _
 __
 g:ordnp->ordnp ordnp
 __
-g:wh[=adj]->how adj[|-fld]
+g:wh[=adj]->how adj[%-fld]
 _
   RIGHT
 __
-g:wh[=adj,fld]->how adj[|fld,-val]
+g:wh[=adj,fld]->how adj[%fld,-val]
 __
 g:wh[=adj]->wh[=adj] np[:*r]
 __
@@ -957,19 +957,19 @@ _
 __
 g:qnp->wh[=sel]
 __
-g:whb->verb[|do,null]
+g:whb->verb[%do,null]
 __
-g:whb->verb[|do,-null]
+g:whb->verb[%do,-null]
 __
 g:ordr->by
 __
 g:pred[|null]->auxnp[:genr,aux]
 __
-g:verb[|*r,fld,reln]->fldv
+g:verb[%*r,fld,reln]->fldv
 _
   (leftdef)
 __
-g:adj[|fld]->flda
+g:adj[%fld]->flda
 _
   (leftdef)
 __
@@ -1047,19 +1047,19 @@ d:bethere<-auxnp[:genr]
 _
   RETURN
 __
-d:group<-verb[|do]
+d:group<-verb[%do]
 _
   RETURN
 __
-d:sort<-verb[|do]
+d:sort<-verb[%do]
 _
   RETURN
 __
-d:tell<-verb[|do,null]
+d:tell<-verb[%do,null]
 _
   RETURN
 __
-d:give<-verb[|do]
+d:give<-verb[%do]
 _
   RETURN
 __
@@ -1131,7 +1131,7 @@ d:belong<-verb
 _
   RETURN
 __
-d:with<-verb[|ing]
+d:with<-verb[%ing]
 _
   RETURN
 __
