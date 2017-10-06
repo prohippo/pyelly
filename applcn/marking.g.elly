@@ -590,7 +590,7 @@ _
 # trace
   (pbgr)
 __
-g:PEXP[|*l]->PUNC[|*l] SEGM
+g:PEXP[|*l]->PUNC[|*l,-eg] SEGM
  >>*l++
 _
   (pbgr)
@@ -1598,7 +1598,13 @@ g:ADJX[%*r,lquo]->punc[|*l,quo] ADJ
  >>--
 __
 g:ADJ[%*l,-lquo]->ADJX[%lquo] PUNC[|*r,quo]
- >>++++
+ >>+8
+__
+g:ADJX[%*r,lquo]->punc[|*l,eg] ADJ
+ >>--
+__
+g:ADJ[%*l,-lquo]->ADJX[%lquo] PUNC[|*r,eg]
+ >>+8
 __
 
 g:VERB->UNKN
@@ -2639,6 +2645,7 @@ __
 d:-'s  <- APOS
 __
 d:-ed  <- XED
+ >>++
 __
 d:-er  <- XER
 __
@@ -2824,6 +2831,9 @@ __
 g:PEXP[|emb,quo]->PUNC[|quo,*l] ADJ[%rquo]
 __
 g:ADJ[%*l,rquo]->ADJ[%-rquo,-*x] PUNC[|quo,-com,*r]
+ l[$*c]>>--
+__
+g:ADJ[%*l,rquo]->ADJ[%-rquo,-*x] PUNC[|eg,-com,*r]
  l[$*c]>>--
 __
 g:SSNT->SEPR SENT
@@ -3388,6 +3398,8 @@ __
 
 g:DATxx->DATxx ADV[~date]
  >>++
+_
+  (twob)
 __
 g:NCLU->DATxx
 _
@@ -3454,4 +3466,15 @@ _
   append <punc>,</punc><nclu><noun>
   (desern)
   append </noun></nclu>
+__
+
+d:〈 <- PUNC[|*l,eg]
+ >>++
+_
+  append ‘
+__
+d:〉 <- PUNC[|*r,eg]
+ >>++
+_
+  append ’
 __

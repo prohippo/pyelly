@@ -27,8 +27,6 @@ let’s   -> let us
 
 &@'d -> \\1 'd
 
-‘&@_&@s’ -> ‘ \\1 \\3s ’
-
 long-&@ed -> long - \\1ed
 much-&@ed -> much - \\1ed
 
@@ -62,6 +60,9 @@ Be_Mobile -> BeMobile
 &#°_East  -> \\1°E
 
 &#°East   -> \\1°E
+
+‘&@s\\’ -> 〈\\1s〉
+‘&@_&@s\\’ -> 〈\\1 \\3s〉
 
 #
 # WARNING! the three rules below has en dashes in its pattern and

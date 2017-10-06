@@ -27,6 +27,7 @@ caught : VERB[^ed] [$trns] 0
 century bc : NOUN
 children : NOUN[:plur]
 circulating : VERB[^ing]
+cleared : VERB[^ing]
 co-produced : VERB[^ed]
 coaching : VERB[^ing]
 cut short : VERB[^ed]
@@ -191,6 +192,7 @@ a third the : NUM
 because of : PREP
 bookended : VERB[^ed] - -1
 box set : NOUN
+bushranger : NOUN
 cable tv : NOUN
 cable tv channel : NOUN
 canadian/american : ADJ
@@ -202,6 +204,7 @@ confraternity : NOUN
 development team : NOUN
 die roll : NOUN
 dubstep : NOUN
+duotone : ADJ
 early years : NOUN
 engineering council : NOUN
 estimative : ADJ
@@ -246,6 +249,8 @@ newspaper best : ADJ
 nuclear accord : NOUN
 on-grid : ADJ
 on-grid power plant : NOUN
+once-in-a-lifetime : ADJ
+one-of-a-kind : ADJ
 openings : NOUN[:plur]
 our lady : NOUN
 overland mail : NOUN
@@ -253,8 +258,9 @@ particular focus : NOUN
 patent assist : ADJ
 pay tv : NOUN
 payment method : NOUN
-percent chance : NUM[:*r]
 peer harassment : NOUN
+percent chance : NUM[:*r]
+perturber : NOUN
 ping pong : NOUN
 ping pong playing robot : NOUN
 pinyin : NOUN
@@ -301,6 +307,7 @@ top forty : NUM
 top forty hit : NUM
 trackwork : NOUN
 uav : NOUN
+understated : VERB[^ed] - -1
 underutilization : NOUN
 underutilize : VERB
 wine review : NOUN
@@ -761,6 +768,7 @@ Walter : NOUN
 Warner Brothers : NOUN
 Washington Post : NOUN
 West Indies : NOUN[:plur]
+Whiteboys : NOUN[:plur]
 Windows 3 : NOUN
 World News Tonight with David Muir : NOUN
 Zero Mostel : NOUN
@@ -1595,6 +1603,7 @@ clear : VERB
 clear : ADJ[%to]
 clear : ADV
 clearance : NOUN
+cleared : ADJ
 clerk : NOUN
 clerk : VERB
 cleveland : NOUN
@@ -5851,6 +5860,7 @@ underground : ADJ
 underlie : VERB
 understand : VERB
 understate : VERB
+understated : ADJ
 undertake : VERB
 undervalue : VERB
 undivided : ADJ
