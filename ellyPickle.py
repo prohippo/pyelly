@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyPickle.py : 29apr2015 CPM
+# ellyPickle.py : 30sep2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2015, Clinton Prentiss Mah
 # All rights reserved.
@@ -29,7 +29,7 @@
 # -----------------------------------------------------------------------------
 
 """
-serialization of Elly objects
+serialization of Elly objects for grammar rule set
 """
 
 import pickle

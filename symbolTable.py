@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# symbolTable.py : 31aug2017 CPM
+# symbolTable.py : 05oct2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -210,7 +210,9 @@ class SymbolTable(object):
                     k -= 5           # else,  adjust for *UNIQUE and extra names *L, *R , *U , *X
                     l -= 1           #        adjust upper limit for *UNIQUE
                 if k == l:           # overflow check
-                    print >> sys.stderr , '** ERROR: too many feature names, nm=' , nm
+                    print >> sys.stderr , '** ERROR: too many feature names, fid=',fid,'nm=',nm
+                    print >> sys.stderr , '**' ,
+                    print >> sys.stderr , h.keys()
                     return None
                 if k < 0:
                     print >> sys.stderr , 'bad index=' , k , 'l=' , l

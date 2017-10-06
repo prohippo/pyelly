@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTree.py : 08apr2017 CPM
+# parseTree.py : 03oct2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -190,6 +190,7 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
 #           print 'goal of' , g.cat
             if phr.krnl.typx == g.cat:
                 r = g.rul
+#               print 'r=' , r.seqn , r.rtfet
                 if ellyBits.check(fbs,r.rtfet):
                     phx = g.lph                             # phrase that generated pertinent goal
                     phn = self.makePhrase(phx.krnl.posn,r)  # new phrase to satisfy goal

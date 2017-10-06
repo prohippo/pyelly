@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBufferEN.py : 25nov2016 CPM
+# ellyBufferEN.py : 04oct2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -92,7 +92,8 @@ class EllyBufferEN(ellyBuffer.EllyBuffer):
             StemmingError
         """
 
-#       print super(EllyBufferEN,self) , 'getNext'
+#       print super(EllyBufferEN,self) , 'EN getNext'
+#       print 'buffer=' , self.buffer
         w = super(EllyBufferEN,self).getNext() # use getNext() without inflectional stemmer
         if w == None: return None
 #       print 'got unstemmed:' , w , 'divided=' , self.divided
@@ -102,6 +103,8 @@ class EllyBufferEN(ellyBuffer.EllyBuffer):
         if not w.isSplit():                    # check for stemming
             self.divide(w)                     # if not, do inflectional stemming
 #       print 'return token=' , w
+#       print 'EN extracted'
+#       print 'buffer=' , self.buffer
         return w
 
     def putSuffixBack ( self , suffix ):
@@ -114,7 +117,7 @@ class EllyBufferEN(ellyBuffer.EllyBuffer):
             suffix - as a string
         """
 
-#       print 'put back' , suffix
+#       print 'EN put back' , suffix
         if self.atToken(): self.prepend(ellyChar.SPC)
         self.prepend(suffix)
 
