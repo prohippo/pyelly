@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBuffer.py : 02jul2017 CPM
+# ellyBuffer.py : 05oct2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -46,7 +46,8 @@ separators = [                 # for breaking tokenization scan
     u'<'  , u'>'  ,
     '"' , u'\u201c' , u'\u2018' , u'\u201b' , u'\u201f' ,
     '`' , u'\u201d' ,             u'\u201a' , u'\u201e' ,
-          u'\u2013' , u'\u2014' , u'\u2026'
+          u'\u2013' , u'\u2014' , u'\u2026' ,
+          u'\u3008' , u'\u3009'
 ]
 
 PLS = u'+'                     # special token chars
@@ -58,10 +59,14 @@ DOT = u'.'
 DSH = u'--'                    # dash
 ELP = u'...'                   # ellipsis
 SPH = u' -'                    # space + hyphen
+DQM = u'"'                     # ASCII double quote
 APO = ellyChar.APO             # apostrophe literal
-APX = u'\u2019'                # unicode apostrophe
+APX = u'\u2019'                # Unicode apostrophe
+RSQ = u'\u2019'                # Unicode right single quote
+RDQ = u'\u201D'                #               double quote
+RAB = u'\u3009'                #               angle bracket
 
-UELP = u'\u2026'               # unicode ellipsis
+UELP = u'\u2026'               # Unicode ellipsis
 
 def normalize ( s ):
 
@@ -203,6 +208,7 @@ class EllyBuffer(object):
             text  - text to prepend, string or list of chars
         """
 
+#       print 'prepend=' , text
         t = text[::-1]              # reverse text
         for c in t:
             self.buffer.insert(0,c) # put in chars at front of buffer
@@ -299,11 +305,12 @@ class EllyBuffer(object):
 
         k = ellyChar.findExtendedBreak(self.buffer)
 #       print 'findBreak k=' , k
-        if k > 2 and self.buffer[k-1] in [ APO , APX ]:
+        if k > 2 and self.buffer[k-1] in [ APO , APX , DQM , RSQ , RDQ , RAB ]:
             k -= 1
         if k > 2 and self.buffer[k-1] in [ APO , APX , COM , DOT ]:
             k -= 1
         self.index = k
+#       print 'adjusted k=' , k
         return k
 
     def match ( self , text ):
@@ -510,6 +517,7 @@ class EllyBuffer(object):
             w     - token to put back
         """
 
+#       print 'put back token=' , w
         wr = w.getRoot()
         if len(wr) == 0:
             return
@@ -521,14 +529,15 @@ class EllyBuffer(object):
         ss = w.getSuffixes()
         if len(ss) > 0:
             self.prepend(u' -' + u' -'.join(ss))
-#       print "putBack 1" , len(self.buffer)
-#       print self.buffer
+#       print "putBack@1" , len(self.buffer)
+#       print 'buffer=' , self.buffer
         self.prepend(wr)
-#       print "putBack 2" , len(self.buffer)
+#       print "putBack@2" , len(self.buffer)
+#       print 'buffer=' , self.buffer
         ps = w.getPrefixes()
         if len(ps) > 0:
             self.prepend(u'+ '.join(ps) + u'+ ')
-#       print "putBack 3" , len(self.buffer)
+#       print "putBack@3" , len(self.buffer)
 
     def getNext ( self ):
 
@@ -578,6 +587,7 @@ class EllyBuffer(object):
 
 #       print '_getRaw() from' , len(self.buffer) , 'chars'
 #       print unicode(self)
+#       print 'before skipping spaces, buffer=' , self.buffer
         self.skipSpaces()
         ln = len(self.buffer)
 #       print "after skip=",ln
@@ -587,26 +597,17 @@ class EllyBuffer(object):
         ## get length of next token and if it has
         ## initial - or +, check for word fragment
 
-        bs = self.buffer[0]
-#       print 'buffer start=' , bs
+#       print 'buffer start=' , self.buffer[0]
 
         k = 0                   # number of chars for next token
 
-        if self.match(MIN):     # check for hyphen
-            if self.match(DSH): # it is a dash when doubled
-                k = 2
-            else:               # otherwise, could be word fragment
-                k = self.findSeparator(1)
+        if self.match(MIN):     # check for hyphen for word fragment
+            k = self.findSeparator(1)
         elif self.match(PLS):   # check for Elly prefix
             k = self.findSeparator(1)
         elif self.match(DOT):   # check for period
-            if self.match(ELP): # it is ellipsis when tripled
-                k = 3
-            else:               # otherwise, single punctuation char
-                k = 1
+            k = 1
         elif self.match(UELP):  # check for Unicode ellipsis
-                k = 1
-        elif bs == APO:
             k = 1
         else:
 #           print 'full token extraction'
@@ -669,6 +670,7 @@ class EllyBuffer(object):
             x = buf[km]
             if ellyChar.isLetterOrDigit(x) or x == MIN or x == PLS or x == UNS:
                 break
+#           print 'trailing x=' , x
             if x == APO or x == APX:
                 if km > 0 and buf[km - 1] == 's':
                     break
@@ -678,7 +680,8 @@ class EllyBuffer(object):
         if km < k:
             to.shortenBy(k - km,both=True)
 
-#       print "EllyBuffer token after =" , unicode(to)
+#       print "EllyBuffer token=" , unicode(to)
+#       print "next in buffer=" , self.buffer
         return to
 
 #
