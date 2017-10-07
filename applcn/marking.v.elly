@@ -111,6 +111,8 @@ mining : VERB[^ing] - -1
 mixed : VERB[^ed]
 named : VERB[^ed] - +2
 named : ADJ - -4
+obtaining : VERB[^ing] - +2
+obtaining : ADJ - -4
 opening : VERB[^ing]
 opposing : VERB[^ing]
 originated : VERB[^ed]
@@ -128,6 +130,7 @@ regarding : NOUN - -1
 regarding : VERB[^ing]
 related : VERB[^ed]
 remaining : VERB[^ing] - -1
+remains : VERB[^s,proc] - +3
 rose : VERB[^ed,*x] - +2
 rushing : VERB[^ing] - +1
 said : VERB[^ed,dit]
@@ -194,6 +197,7 @@ a third the : NUM
 because of : PREP
 bookended : VERB[^ed] - -1
 box set : NOUN
+bullocky : NOUN - +2
 bushranger : NOUN
 cable tv : NOUN
 cable tv channel : NOUN
@@ -217,6 +221,7 @@ ferry service : NOUN
 genetic modification : NOUN
 grant aid : NOUN
 grant aid project : NOUN
+great western : ADJ
 half of the : QUAN
 hashtag : NOUN
 homiletics : NOUN
@@ -230,6 +235,7 @@ in leaps and bounds : ADV
 in terms of : PREP
 in the event of : PREP
 instead of : PREP
+interchange point : NOUN
 interferometry : NOUN
 jain : NOUN
 just for the hell of it : ADV
@@ -585,6 +591,8 @@ up slightly : ADV - +1
 up to : ADV[~mod] [$deg] 0
 up to his neck : ADJ
 used to : AUXL
+very little : NOUN[:*l]
+very little : ADV - -1
 what is today : ADV
 whenever and wherever : CONJ
 willing to : TO
@@ -1318,6 +1326,7 @@ box : VERB
 boy : NOUN
 branch : NOUN
 branch : VERB
+branch line : NOUN
 brass : NOUN
 bratislava : NOUN
 brave : NOUN
@@ -1374,7 +1383,7 @@ bull : NOUN
 bull : VERB
 bulldoze : VERB
 bulldozer : NOUN
-bullocky : ADJ
+bullocky : ADJ - -2
 bunch : NOUN
 bunch : VERB
 buoy : NOUN
@@ -3540,6 +3549,7 @@ mail : NOUN
 mail : VERB
 main : NOUN
 main : ADJ
+main line : NOUN
 mainly : ADV
 mainstream : NOUN
 maintain : VERB
@@ -4594,6 +4604,7 @@ railroad : NOUN
 railroad : VERB
 railroad line : NOUN
 railway : NOUN
+railway station : NOUN
 rain : NOUN
 rain : VERB
 rainbow : NOUN
@@ -4713,6 +4724,7 @@ religious : NOUN
 religious : ADJ
 relocate : VERB
 remain : VERB[^proc]
+remains : NOUN[:plur] - -1
 remaining : ADJ[%ing]
 remark : NOUN
 remark : VERB
@@ -5427,6 +5439,7 @@ strap : VERB
 strategic : ADJ
 strategically : ADV
 strategy : NOUN
+stratford-on-avon : NOUN
 streak : NOUN
 streak : VERB
 stream : NOUN

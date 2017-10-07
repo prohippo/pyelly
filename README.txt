@@ -492,7 +492,7 @@ Release Notes:
                       add angle brackets 〈〉 for PyElly delimiting
                       generalized handling for all bracketing in term lookup
                       improve algorithm for range of pattern matching
-                      clean up and extend "marking" rules
+                      clean up and extend "marking" rules and integration test
                       update documenetation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
@@ -501,7 +501,7 @@ correct operation. Changes only to PyElly sample application definition files,
 unit testing input or key files, and PyElly documentation will be made from time
 to time, but these will leave version numbers the same, if they are the only
 changes. Updates are still frequent; check for the latest files. The dates above
-are for the initial release of a version,
+are for the initial release of a version, not the latest update,
 
 The PyElly website is at
 
