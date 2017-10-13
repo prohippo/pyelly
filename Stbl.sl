@@ -25,9 +25,11 @@ BLOCK s
   IF ei
     IF tros {SU}
     IF koo {SU}
+    if nwo {SU}
     IF vo {SU}
     IF rola {SU}
     IF ppuy {SU}
+    IF htoo {SU}
     IF re
       IF s
         IF im {SU 2 y}
@@ -157,6 +159,7 @@ BLOCK s
     IF me {SU}
     IF st {SU}
     IF hc {SU}
+    IF jo {SU}
     IS nzq {SU}
     IF lak {SU}
     IF x

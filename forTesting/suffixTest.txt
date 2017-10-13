@@ -173,6 +173,7 @@ brightener bright
 brightest bright
 broaden broad
 broadest broad
+brownies brownie
 brutal brute
 brutish brute
 built build
@@ -491,6 +492,7 @@ elves elf
 embezzlement embezzle
 emergent emerge
 emitter emit
+emojis emoji
 employee employ
 employer employ
 enablement enable
@@ -1314,6 +1316,7 @@ slyer sly
 smarter smart
 smelt smelt
 smoothe smooth
+smoothies smoothie
 smoothly smooth
 smote smite
 sobriety sobr
