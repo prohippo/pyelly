@@ -478,6 +478,7 @@ g:ELEM[^*r]->PUNC[|*l,quo] ELEM
 _
   var typg=punc
   (typg)
+  linefeed
   right
 __
 g:ELEM->MISC
