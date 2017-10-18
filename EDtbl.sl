@@ -13,6 +13,8 @@ BLOCK ed
     IF r
       LEN = 4  {FA}
       LEN > 4
+        IF ga {SU -1}
+        if ce {SU -1}
         IS bcg {FA}
         END
       END {SU -1}
