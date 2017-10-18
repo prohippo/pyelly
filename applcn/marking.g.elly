@@ -2375,6 +2375,8 @@ d:them <- DEM[@plur]
 __
 d:such <- DEM[@ind]
 __
+d:whose <- DEM[@ind]
+__
 d:which <- DEM[@ind]
  >>-
 __
@@ -2392,6 +2394,8 @@ __
 d:where<- CONJ[@rel,ind]
 __
 d:while<- CONJ
+__
+d:why  <- CONJ
 __
 d:how  <- CONJ[@ind]
 __
