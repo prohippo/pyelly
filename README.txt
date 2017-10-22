@@ -494,6 +494,8 @@ Release Notes:
                       improve algorithm for range of pattern matching
                       clean up and extend "marking" rules and integration test
                       update documenetation
+ 1.4.16.1  21oct2017  fix various bugs in dateTransform
+                      update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
