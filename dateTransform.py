@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# dateTransform.py : 17jul2017 CPM
+# dateTransform.py : 21oct2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -175,6 +175,7 @@ class DateTransform(simpleTransform.SimpleTransform):
         t = ts
         tl = len(ts)
         k = self._aMonth(t)            # look for month to start date string
+#       print 'month len=' , k
         if k > 0:
             if k == tl: return 0
             if not ellyChar.isWhiteSpace(t[k]): return 0
@@ -182,23 +183,30 @@ class DateTransform(simpleTransform.SimpleTransform):
             if k == tl: return 0
             t = t[k:]
             k = self._aDay(t)          # look for day of month
+#           print 'day len=' , k
             if k == 0:
                 k = self._aYear(t)     # look for year immediately following
                 if k > 0:
                     return tl - len(t) + k
                 else:
                     return 0
-            tl = len(ts)               # _aDay may have rewritten alphabetic day
+#           print 'ts=' , ts
+            tl = len(t)                # _aDay may have rewritten alphabetic day
             t = t[k:]
-            if len(t) == 0: return 0
+            if len(t) == 0:
+#               print 'no year tl=' , tl , 'k=' , k , t
+                return len(ts) - tl + k
             if t[0] == u',': t = t[1:] # look for comma after day
             if len(t) == 0: return tl
             if ellyChar.isWhiteSpace(t[0]): t = t[1:]
             if len(t) == 0: return tl
             k = self._aYear(t)         # look for year
-            return tl - len(t) + k
+#           print 'year len=' , k
+#           print 'len(ts)=' , len(ts) , 'len(t)=' , len(t) , t
+            return len(ts) - len(t) + k
 
         k = self._aDay(t)              # look for day of month to start date string
+#       print 'start day len=' , k
         if k > 0 and k < tl:           # cannot be just bare number by itself
             tl = len(ts)               # _aDay may have rewritten alphabetic day
             t = t[k:]
@@ -290,13 +298,14 @@ class DateTransform(simpleTransform.SimpleTransform):
 
         k = 0              # running match count
         x = ts[0]
+        y = ''
         if not ellyChar.isDigit(x):
             if not self.rewriteNumber(ts):
                 return 0
             else:
                 x = ts[0]
 
-#       print 'ts=' , ts
+#       print 'rewritten ts=' , ts
 
         if len(ts) == 1:
             self._dy[0] = x          # accept at end of input as possible date
@@ -321,9 +330,11 @@ class DateTransform(simpleTransform.SimpleTransform):
             self._dy[0] = y
             k = 2
 
+#       print 'x=' , x , 'y=' , y
         self._dy[1] = x
 
         t = ts[k:]
+#       print 't=' , t
         if len(t) == 0 or not ellyChar.isLetterOrDigit(t[0]):
             return k
 
@@ -331,27 +342,34 @@ class DateTransform(simpleTransform.SimpleTransform):
             return 0
         sx = t[0].lower() + t[1].lower()
 
-#       print 'x=' , x , 'sx=' , sx
+#       print 'y=' , y , 'x=' , x , 'sx=' , sx
 
         if x == '1':
-            if sx != 'st': return 0
+#           print 'end of day=' , y
+            if y == '1':
+                if sx != 'th': return 0
+            elif sx != 'st':   return 0
         elif x == '2':
             if sx != 'nd': return 0
         elif x == '3':
             if sx != 'rd': return 0
         else:
+#           print 'default ordinal indicator'
             if sx != 'th': return 0
 
+#       print 'ord k=' , k
         t = t[2:]
         k += 2
 
-#       print 'k=' , k
+#       print 'k=' , k , 'len=' , len(ts)
 
         if len(ts) == k: # check next char in stream
             return k     # if none, match succeeds
         elif ellyChar.isLetterOrDigit(ts[k]):
+#           print 'ts[k]=' , ts[k] , k
             return 0     # otherwise, match fails if next char is alphanumeric
         else:
+#           print 'return k=' , k
             return k     # otherwise succeed
 
     def _aYear ( self , ts ):
@@ -397,10 +415,13 @@ class DateTransform(simpleTransform.SimpleTransform):
             ns = 1
 
         lss = self.get(t)
-#       print 'lss=' , lss
+#       print 'lss=' , lss , self.string
         if self.string in Ep:
             self._ep = list(self.string)
             k += ns + lss
+#           print 'k=' , k , 'ns=' , ns
+        elif k < 4:
+            return 0
 
 #       print 'k=' , k
         return k if k > 3 else 0
@@ -496,7 +517,11 @@ class DateTransform(simpleTransform.SimpleTransform):
 
 if __name__ == '__main__':
 
+
+    xxxx = [
+    ]
     tdat = [
+        u'September 11th' ,
         u'9/11' ,
         u'4th of July, 1776' ,
         u'September 22, 1963, was' ,
@@ -522,13 +547,14 @@ if __name__ == '__main__':
         u'123 x' ,
         u'2016'
     ]
+    yyyy = [
+    ]
 
     de = DateTransform()
     for xd in tdat:
         tst = list(xd)
         stat = de.rewrite(tst)
         print xd , '-->>' , ''.join(tst) , '=' , stat
-        print ''
 
     print "----------------"
     print ""
