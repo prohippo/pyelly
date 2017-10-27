@@ -98,8 +98,8 @@ lives : VERB[^s]          =live -s
 made : VERB[^ed]
 made use of : VERB[^ed]
 made up : VERB[^ed,*x]
-make use of : VERB
 makes use of : VERB[^ed]
+making it easier : VERB[^ing]
 making use of : VERB[^ing]
 marked : VERB[^ed]
 marking : VERB[^ing]
@@ -190,7 +190,6 @@ agricultural industry : NOUN
 airstrike : NOUN
 alert level : NOUN
 also known as : CONJ
-always : ADV
 arab republic : NOUN
 armored vehicle : NOUN
 around the world : ADV
@@ -291,6 +290,7 @@ litx : CONJ =lit.
 livestock waste : NOUN
 long term : NOUN
 magazine weekly : NOUN
+make use of : VERB
 manga : NOUN
 mannerist : NOUN
 marchese : NOUN
@@ -306,15 +306,10 @@ nano robot : NOUN
 national association : NOUN
 national institute : NOUN
 national intelligence : NOUN
-national socialist : ADJ
 neighborhood bar : NOUN
 newspaper best : ADJ
 now known as : CONJ
 nuclear accord : NOUN
-on-grid : ADJ
-on-grid power plant : NOUN
-once-in-a-lifetime : ADJ
-one-of-a-kind : ADJ
 open desert : NOUN
 openings : NOUN[:plur]
 or else : CONJ
@@ -333,7 +328,6 @@ ping pong playing robot : NOUN
 pinyin : NOUN
 pit bull : NOUN
 policymaker : NOUN
-presentation system : NOUN
 presentation system : NOUN
 private sector : NOUN
 programmable : ADJ
@@ -541,9 +535,6 @@ less than : ADV[~mod] [$deg] 0
 like never before : ADV
 made available : VERB[^ed]
 make available : VERB
-make use of : VERB
-making it easier : VERB[^ing]
-making use of : VERB[^ing]
 male and female : NOUN
 male and female : ADJ - +1
 more like : PREP
@@ -642,8 +633,9 @@ cul-de-sac : NOUN
 cul-de-sac street : NOUN
 eat-in : ADJ
 five-lane : ADJ
+four-lane : ADJ
 four-penny : ADJ
-fourpenny : ADJ
+four-wheel drive : NOUN
 full-throated : ADJ
 fully-equipped : ADJ
 half-full : ADJ
@@ -656,6 +648,9 @@ mid-air : NOUN
 mid-century : ADJ
 mixed-species : ADJ
 ocean-view home : NOUN
+on-grid : ADJ
+on-grid power plant : NOUN
+once-in-a-lifetime : ADJ
 one-lane : ADJ
 one-of-a-kind : ADJ
 post-September 11th : ADJ
@@ -708,7 +703,6 @@ Coolio Earth Partnership : NOUN
 Crafty : NOUN
 Crater Lake : NOUN
 Cubbies : NOUN[:plur]
-Dave Stone : NOUN
 Dave Stone : NOUN
 Denny : NOUN
 Dillons : NOUN =dillon 's
@@ -780,7 +774,6 @@ S.A.F. : NOUN
 Scotts : NOUN
 Scotts Miracle-Gro Company : NOUN
 Shindake : NOUN
-Ship of Fools : NOUN
 Ship of Fools : NOUN
 Showcase Presentations : NOUN
 Space and Upper Atmospheric Research Commission : NOUN
@@ -1940,7 +1933,6 @@ black tea : NOUN
 black tie : NOUN
 black tongue : NOUN
 black woman : NOUN
-blackhead : NOUN
 blackhead : NOUN
 blake : NOUN
 blend : NOUN
@@ -5128,7 +5120,6 @@ escape expert : NOUN
 escape wheel : NOUN
 especial : ADJ
 especially : ADV
-especially : ADV
 essay : NOUN
 essay : VERB
 essence : NOUN
@@ -5626,8 +5617,6 @@ fighting chair : NOUN
 fighting french : NOUN
 figure : NOUN
 figure : VERB
-figure : NOUN
-figure : VERB
 figure out : VERB
 figurehead : NOUN
 file : NOUN
@@ -6040,8 +6029,6 @@ founding : NOUN
 founding father : NOUN
 four : ADJ
 four : NOUN
-four-lane : ADJ
-four-wheel drive : NOUN
 fourpenny : ADJ
 fourpenny nail : NOUN
 fraction : NOUN
@@ -6095,7 +6082,7 @@ freedom : NOUN
 freedom fighter : NOUN
 freedom of speech : NOUN
 freedom party : NOUN
-freedom ride : NOUN
+freedom rider : NOUN
 freeze : NOUN
 freeze : VERB
 freeze down : VERB
@@ -7430,8 +7417,6 @@ hypothetical : NOUN
 hypothetical : ADJ
 ice : NOUN
 ice : VERB
-ice : NOUN
-ice : VERB
 ice age : NOUN
 ice bag : NOUN
 ice cap : NOUN
@@ -7526,7 +7511,7 @@ income tax bracket : NOUN
 income tax return : NOUN
 inconceivable : ADJ
 incorporate : VERB
-incorporate : ADJ
+incorporate : ADJ - -2
 increase : NOUN
 increase : VERB
 indeed : ADV
@@ -16376,7 +16361,6 @@ wrong : ADJ
 wrong : ADV
 wry : ADJ
 wry face : NOUN
-yard : NOUN
 yard : NOUN
 yard bird : NOUN
 yard grass : NOUN
