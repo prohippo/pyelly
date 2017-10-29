@@ -5,6 +5,7 @@ absorbable absorb
 absorbent absorb
 absorbtion absorb
 abundance abund
+accent accent
 accentuate accent
 acceptance accept
 accretive accrete
@@ -622,6 +623,7 @@ frolicked frolic
 frolicking frolic
 frontage front
 frontal front
+frontier frontier
 furry fur
 furtherant further
 furtive furtive
@@ -811,6 +813,7 @@ length long
 leninism lenin
 leninist lenin
 levitation levitate
+liable liable
 libyan libya
 licensee license
 limber limber
@@ -1004,6 +1007,7 @@ peeler peel
 penalty penal
 pendular pendule
 penises penis
+pension pension
 pensive pensive
 performance perform
 periodic period
@@ -1237,6 +1241,7 @@ scarves scarf
 scary scare
 scavenger scavenge
 scenery scene
+scent scent
 schemata scheme
 schemer scheme
 schism schism
@@ -1291,10 +1296,12 @@ showy show
 shrank shrink
 shrunk shrink
 shrunken shrink
+shy shy
 signatory sign
 signature sign
 signee sign
 signer sign
+silly silly
 simpler simple
 simplest simple
 simplify simple

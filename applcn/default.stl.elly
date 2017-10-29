@@ -259,6 +259,7 @@ casion 0 0 .
 catory 1 3 &,
 cavitation 2 6 e.
 cavity 2 3 &.
+ccent 0 0 .
 ccessive 3 3 ed. 2
 ccinate 1 4 &.
 ccretive 1 5 &.
@@ -1474,6 +1475,7 @@ onsulate 2 5 .
 ontage 1 3 .
 ontal 2 3 .
 ontest 0 0 .
+ontier 0 0 .
 oody 2 3 .
 oolant 2 3 .
 oolen 2 3 .
@@ -2399,6 +2401,7 @@ zzy 1 2 .
 |laic 1 3 y.
 |laity 1 3 y.
 |laughter 1 6 .
+|liable 0 0 .
 |liter 0 0 .
 |loss 1 4 e. 1
 |media 1 5 um. 1s
@@ -2419,6 +2422,7 @@ zzy 1 2 .
 |oval 0 0 .
 |panic 0 0 .
 |pastor 0 0 .
+|pension 0 0 .
 |pensive 0 0 .
 |peter 0 0 .
 |prize 0 0 .
@@ -2441,12 +2445,15 @@ zzy 1 2 .
 |rung 1 2 ing. 3n
 |safer 1 5 . 0e
 |sally 0 0 .
+|scent 0 0 .
 |script 0 0 .
 |sedition 0 0 .
 |serer 1 5 . 0e
 |serial 1 5 es.
 |session 0 0 .
 |severance 1 6 .
+|shy 0 0 .
+|silly 0 0 .
 |singer 1 5 .
 |singly 1 6 e.
 |sister 0 0 .
@@ -2464,6 +2471,7 @@ zzy 1 2 .
 |tension 0 0 .
 |thesis 0 0 .
 |topic 0 0 .
+|twist 0 0 .
 |unbless 0 0 .
 |unship 0 0 .
 |usage 1 3 e.
