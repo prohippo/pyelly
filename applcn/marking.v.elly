@@ -874,7 +874,6 @@ abuse : VERB
 academic : NOUN - -2
 academic : ADJ
 academy : NOUN
-academy : NOUN
 academy award : NOUN
 accelerate : VERB
 accent : NOUN - -1
@@ -3578,7 +3577,6 @@ coffee stall : NOUN
 coffee table : NOUN
 coffee tree : NOUN
 cognition : NOUN
-cognition : NOUN
 cognitive : ADJ
 coin : NOUN
 coin : VERB
@@ -4105,11 +4103,7 @@ cooperative : ADJ
 coordinate : NOUN
 coordinate : VERB
 coordinate : ADJ
-coordinate : NOUN
-coordinate : VERB
-coordinate : ADJ
 coordinate system : NOUN
-coordination : NOUN
 coordination : NOUN
 coordination compound : NOUN
 coordinator : NOUN
@@ -4860,7 +4854,6 @@ diabetic : NOUN
 diabetic : ADJ
 diagnose : VERB
 diagnosis : NOUN
-diagnosis : NOUN
 diagnostic : ADJ
 dialog : NOUN
 diamond : NOUN
@@ -5000,7 +4993,6 @@ disk : NOUN
 disk : VERB
 dismiss : VERB
 dismissal : NOUN
-dismissive : ADJ
 dismissive : ADJ
 disorder : NOUN
 disorder : VERB
@@ -5748,9 +5740,6 @@ especially : ADV
 essay : NOUN
 essay : VERB
 essence : NOUN
-essence : NOUN
-essential : NOUN
-essential : ADJ
 essential : NOUN
 essential : ADJ
 essential condition : NOUN
@@ -5792,7 +5781,6 @@ european plan : NOUN
 european recovery program : NOUN
 european russia : NOUN
 evacuate : VERB
-evaluate : VERB
 evaluate : VERB
 evaluation : NOUN
 evaluative : ADJ
@@ -6139,7 +6127,6 @@ fat person : NOUN
 fat tuesday : NOUN
 fatal : ADJ
 fatalism : NOUN
-fatality : NOUN
 fatality : NOUN
 fatality rate : NOUN
 fate : NOUN
@@ -6964,8 +6951,6 @@ full-time : ADV
 fully : ADV
 fun : NOUN
 fun run : NOUN
-function : NOUN
-function : VERB
 function : NOUN
 function : VERB
 function call : NOUN
@@ -8381,7 +8366,6 @@ implement : VERB
 implementation : NOUN
 implicate : VERB
 implication : NOUN
-implication : NOUN
 imply : VERB
 impolite : ADJ
 import : NOUN
@@ -8428,7 +8412,6 @@ incredibility : NOUN
 incredible : ADJ
 indeed : ADV
 independence : NOUN
-independent : ADJ
 independent : NOUN
 independent : ADJ
 independent agency : NOUN
@@ -8596,10 +8579,8 @@ insurgent : ADJ
 insurrection : NOUN
 intact : ADJ
 integer : NOUN
-integer : NOUN
 integral : NOUN
 integral : ADJ
-integrate : VERB
 integrate : VERB
 integration : NOUN
 integrity : NOUN
@@ -8638,7 +8619,6 @@ interest group : NOUN
 interest rate : NOUN
 interesting : ADJ[%ing] - +1
 interfere : VERB
-interference : NOUN
 interference : NOUN
 interferometer : NOUN
 interior : NOUN
@@ -8725,7 +8705,6 @@ inventory control : NOUN
 inventory item : NOUN
 invest : VERB
 investigate : VERB
-investigation : NOUN
 investigation : NOUN
 investigative : ADJ
 investigator : NOUN
@@ -9578,7 +9557,6 @@ literalism : NOUN
 literally : ADV
 literary : ADJ
 literature : NOUN
-literature : NOUN
 little : NOUN
 little : ADJ
 little : ADV
@@ -10130,10 +10108,7 @@ meatball : NOUN
 meatloaf : NOUN
 mecca : NOUN
 mechanic : NOUN
-mechanic : ADJ
-mechanic : NOUN
-mechanic : ADJ
-mechanical : ADJ
+mechanic : ADJ - -1
 mechanical : ADJ
 mechanical advantage : NOUN
 mechanical device : NOUN
@@ -10418,12 +10393,9 @@ miner : NOUN
 mineral : NOUN
 mineral : ADJ
 minimal : ADJ
-minimal : ADJ
 minimal art : NOUN
 minimally : ADV
 minimize : VERB
-minimum : NOUN
-minimum : ADJ
 minimum : NOUN
 minimum : ADJ
 minimum wage : NOUN
@@ -10544,7 +10516,6 @@ monkey bridge : NOUN
 monkey business : NOUN
 monster : NOUN
 monstrosity : NOUN
-monstrous : ADJ
 monstrous : ADJ
 month : NOUN [&durn,msr] 0
 monument : NOUN
@@ -10907,9 +10878,7 @@ neat : ADJ
 neatly : ADV
 neatness : NOUN
 necessarily : ADV
-necessary : NOUN
-necessary : ADJ
-necessary : NOUN
+necessary : NOUN - -2
 necessary : ADJ
 necessity : NOUN
 neck : NOUN
@@ -11432,7 +11401,6 @@ optical instrument : NOUN
 optical phenomenon : NOUN
 optical telescope : NOUN
 optimal : ADJ
-optimal : ADJ
 optimist : NOUN
 optimistic : ADJ
 optimize : VERB
@@ -11740,9 +11708,7 @@ partial derivative : NOUN
 partial differential equation : NOUN
 partial tone : NOUN
 participant : NOUN
-participant : NOUN
 participant role : NOUN
-participate : VERB
 participate : VERB
 participation : NOUN
 participatory : ADJ
@@ -11933,7 +11899,6 @@ percentage point : NOUN
 percentage sign : NOUN
 perception : NOUN
 perceptive : ADJ
-perceptive : ADJ
 perch : NOUN
 perch : VERB
 perfect : NOUN
@@ -12020,7 +11985,6 @@ phenomenon : NOUN
 philip : NOUN
 philosopher : NOUN
 philosophical : ADJ
-philosophy : NOUN
 philosophy : NOUN
 philosophy department : NOUN
 phoebe : NOUN
@@ -12780,7 +12744,6 @@ professional organization : NOUN
 professional person : NOUN
 professional relation : NOUN
 professor : NOUN
-professor : NOUN
 profile : NOUN
 profile : VERB
 profit : NOUN
@@ -12833,8 +12796,6 @@ property settlement : NOUN
 property tax : NOUN
 proportion : NOUN
 proportion : VERB
-proportional : NOUN
-proportional : ADJ
 proportional : NOUN
 proportional : ADJ
 proportional font : NOUN
@@ -13575,7 +13536,6 @@ reset : NOUN
 reset : VERB
 reside : VERB
 residence : NOUN
-residence : NOUN
 residence hall : NOUN
 residence time : NOUN
 resident : NOUN
@@ -14235,7 +14195,6 @@ screw : VERB
 script : NOUN
 script : VERB
 scripture : NOUN
-scripture : NOUN
 scrutinise : VERB
 scrutinize : VERB
 scrutiny : NOUN
@@ -14412,7 +14371,6 @@ semiconductor unit : NOUN
 seminar : NOUN
 seminarian : NOUN
 seminary : NOUN
-seminary : NOUN
 semisweet : ADJ
 senate : NOUN
 senate campaign : NOUN
@@ -14443,9 +14401,7 @@ sense : VERB
 sense experience : NOUN
 sense impression : NOUN
 sense organ : NOUN
-sensitive : NOUN
-sensitive : ADJ
-sensitive : NOUN
+sensitive : NOUN - -2
 sensitive : ADJ
 sensitivity : NOUN
 sensor : NOUN
@@ -14461,9 +14417,6 @@ sentence structure : NOUN
 sentiment : NOUN
 sentimental : ADJ
 separate : NOUN - -1
-separate : VERB
-separate : ADJ
-separate : NOUN
 separate : VERB
 separate : ADJ
 separate off : VERB
@@ -15785,7 +15738,6 @@ stephenson : NOUN
 stereotype : NOUN
 stereotype : VERB
 stereotypical : ADJ
-stereotypical : ADJ
 sterile : ADJ
 sterling : NOUN - +1
 sterling : ADJ - -2
@@ -16704,7 +16656,6 @@ therapeutic : NOUN
 therapeutic : ADJ
 therapist : NOUN
 therapy : NOUN
-therapy : NOUN
 thereby : ADV
 therefore : ADV
 thermal : NOUN
@@ -17085,8 +17036,6 @@ travel time : NOUN
 tray : NOUN
 treasure : NOUN
 treasure : VERB
-treasure : NOUN
-treasure : VERB
 treasury : NOUN
 treasury bill : NOUN
 treasury bond : NOUN
@@ -17295,8 +17244,6 @@ ugly : ADJ
 uk : NOUN
 ultimate : NOUN
 ultimate : ADJ
-ultimate : NOUN
-ultimate : ADJ
 ultimately : ADV
 ultimatum : NOUN
 un : NOUN
@@ -17370,7 +17317,6 @@ unit cell : NOUN
 unit character : NOUN
 unit cost : NOUN
 unit trust : NOUN
-unite : VERB
 unite : VERB
 united kingdom : NOUN
 united nations : NOUN
@@ -17676,9 +17622,6 @@ volume unit : NOUN
 voluntary : NOUN
 voluntary : ADJ
 volunteer : NOUN - +1
-volunteer : VERB
-volunteer : ADJ
-volunteer : NOUN
 volunteer : VERB
 volunteer : ADJ
 volunteer state : NOUN
