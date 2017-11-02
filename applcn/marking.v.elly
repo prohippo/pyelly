@@ -127,6 +127,8 @@ points of View : NOUN[:plur]
 potions : NOUN
 pressing : VERB[^ing]
 progresses : VERB[^s]
+providing : NOUN[:ing] - -2
+providing : VERB[^ing] - +3
 ran : VERB[^ed]
 regarding : PREP - +1
 regarding : NOUN - -1
@@ -3107,7 +3109,7 @@ by-law : NOUN
 by-product : NOUN
 ca : NOUN
 cab : NOUN
-cab : VERB
+cab : VERB - -2
 cab fare : NOUN
 cabbage : NOUN
 cabbage : VERB
@@ -10724,7 +10726,7 @@ latin american : NOUN
 latin cross : NOUN
 latin quarter : NOUN
 latin square : NOUN
-latter : NOUN
+latter : NOUN - +2
 latter : ADJ
 laugh : NOUN
 laugh : VERB
