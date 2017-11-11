@@ -188,33 +188,82 @@ went_on : VERB[^ed] =went on
 
 # # # # definitions missing from WordNet
 
+1 another : PRO =one another
+1 of the : QUAN =one of the
+1st mention : NOUN
+1st mention : VERB
+a few : QUAN[@ind] [!mltp] 0
+a few hundred : NUM
+a few of : QUAN
+a hundred : NUM
+a lot of : QUAN
+a third the : NUM
+a thousand : NUM
+about to : TO
+about whether : CONJ
+according to : PREP
 achingly : ADV
+after all : CONJ[@*l]
 after which : CONJ
 agricultural industry : NOUN
+ahead of : PREP
 airstrike : NOUN
 alert level : NOUN
+all at once : ADV
+all evening : ADV
+all of : QUAN
+all that : ALLTHT
+along with : PREP
 also known as : CONJ
+and even : CONJ
+and now : CONJ
+and so : CONJ
+and so on : MISC
+and then : CONJ
+approximately average : ADJ
 arab republic : NOUN
 armored vehicle : NOUN
 around the world : ADV
+as a means of : CONJ
+as a result : CONJ
+as a result of : PREP
 as compared to : CONJ
 as far as : CONJ
+as if : CONJ
+as of : PREP
 as result of : CONJ
+as though : CONJ
+as well as : CONJ
 asset purchase : NOUN
+at first : ADV
+at least one : NUM
+at least one : QUAN - +2
+at one point : ADV
+at the same time as : CONJ
 bat and ball : ADJ
 because of : PREP
+best suit : NOUN
+best suit : VERB
+better of it : ADV
 bond market : NOUN
 box set : NOUN
 building supply : NOUN
 bullocky : NOUN - +2
 bushranger : NOUN
+but now : CONJ
+but then : CONJ
 buying guide : NOUN
+by almost half : ADV[~trlg] [$deg,trlg] 0
+by nearly half : ADV[~trlg] [$deg,trlg] 0
 cable tv : NOUN
 cable tv channel : NOUN
+calm and collected : ADJ [$cmpd] 0
 calories burned : NOUN
+can and will : AUXL
 canadian/american : ADJ
 cast recording : NOUN
 caught wind : VERB[^ed]
+cheer on : VERB
 chemical symbol : NOUN
 christian doctrine : NOUN
 christmas cheer : NOUN
@@ -232,9 +281,14 @@ dance number : NOUN
 democratic republic : NOUN
 development team : NOUN
 die roll : NOUN
+do much more : VERB
+do that : VERB
 dubstep : NOUN
+due to : PREP
 duotone : ADJ
 during this time : ADV[~trlg]
+each : POSTP[@num] [$trlg] -1
+each other : PRO
 each time : ADV
 early years : NOUN
 economic council : NOUN
@@ -243,6 +297,9 @@ engineering council : NOUN
 english-language : ADJ
 entry point : NOUN
 estimative : ADJ
+even before : CONJ
+even so : CONJ
+even though : CONJ
 family show : NOUN
 fan favorite : NOUN
 federal approval : NOUN
@@ -250,33 +307,63 @@ federal bureau : NOUN
 federal republic : NOUN
 feed & farm supply store : NOUN
 ferry service : NOUN
+few hundred : NUM
 fist fight : NOUN
 fixed investment : NOUN
+for example : PEXP[|eg]
+for now : ADV
 foreign intelligence : NOUN
 fourpenny : NOUN - +1
 freedom ride : NOUN
+from across : PREP
+from beginning to end : ADV
+from beyond : PREP
+from what  : CONJ[@rel]
+from where : CONJ[@rel]
+from which : CONJ[@rel]
+full time : ADV
 genetic modification : NOUN
 genetically modified : ADJ
 genome editing : NOUN
 grant aid : NOUN
 grant aid project : NOUN
 great western : ADJ
+guitar bridge : NOUN
+half inch : NOUN
 half of the : QUAN
+hall of fame : NOUN
+hard boiled : ADJ
+hard rock : NOUN
+has to do : VERB
 hashtag : NOUN
 heavy fighting : NOUN
+here you go : VERB
 hi res : ADJ
+his or her : DEM
 homiletics : NOUN
 hot 100 : NUM
 hot 100 : NOUN
 hurricane activity : NOUN
 hydro : NOUN
 hydro : ADJ - +2
+in addition to : PREP
+in any way : ADV
+in area : ADV[~trlg] [$deg] 0
 in as much as : CONJ
 in case of : PREP
+in conjunction with : PREP
+in height : ADV[~trlg] [$deg] 0
 in leaps and bounds : ADV
+in length : ADV[~trlg] [$deg] 0
+in order to : TO
+in recent years : ADV [$deg,time] +1
 in terms of : PREP
-independent state : NOUN
 in the event of : PREP
+in width : ADV[~trlg] [$deg] 0
+increase or decrease : VERB
+independent state : NOUN
+innovation fund : NOUN
+insofar as : CONJ
 instead of : PREP
 intelligence study : NOUN
 intelligence survey : NOUN
@@ -286,15 +373,25 @@ internet access : NOUN
 islamic army : NOUN
 islamic party : NOUN
 islamic replublic : NOUN
+it is easy : ELEM - +4 (elma)
 jain : NOUN
+just as : CONJ - -1
 just for the hell of it : ADV
 land survey : NOUN
+last year : NAVB[:det]
 leaps and bounds : NOUN[:plur]
+less like : PREP
+less than : ADV[~mod] [$deg] 0
+like never before : ADV
 litx : CONJ =lit.
 livestock waste : NOUN
 long term : NOUN
+made available : VERB[^ed]
 magazine weekly : NOUN
+make available : VERB
 make use of : VERB
+male and female : NOUN
+male and female : ADJ - +1
 manga : NOUN
 mannerist : NOUN
 marchese : NOUN
@@ -303,7 +400,10 @@ metallicity : NOUN
 midtempo : ADJ
 military exercise : NOUN
 moneychanger : NOUN
+more like : PREP
 more practical : ADJ
+more than : ADV[~mod] [$deg] 0
+most of : QUAN
 muslim tradition : NOUN
 nano : NOUN
 nano robot : NOUN
@@ -311,18 +411,31 @@ national association : NOUN
 national institute : NOUN
 national intelligence : NOUN
 neighborhood bar : NOUN
+neighborhood setting : NOUN
 newspaper best : ADJ
+next year : NAVB[:det]
+no one : PRO
+not only : CONJ
 now known as : CONJ
 nuclear accord : NOUN
+often enough : ADV
+on through : PREP
+one another : PRO - +4
 open desert : NOUN
 openings : NOUN[:plur]
 or else : CONJ
+or more : POSTP[@num] [$trlg] 0
+other than : CONJ
 our lady : NOUN
+out of : PREP['div]
+over from : PREP
+over the course of : PREP
 overland mail : NOUN
 particular focus : NOUN
 patent assist : ADJ
 pay tv : NOUN
 payment method : NOUN
+peculiar to : PREP
 peer harassment : NOUN
 percent chance : NUM[:*r]
 perturber : NOUN
@@ -333,11 +446,13 @@ pinyin : NOUN
 pit bull : NOUN
 policymaker : NOUN
 presentation system : NOUN
+prior to : PREP
 private sector : NOUN
 programmable : ADJ
 proof to the contrary : NOUN
 properly designed : ADJ
 proportionally spaced : ADJ
+pros and cons : NOUN
 public sector: NOUN
 purchasing power : NOUN
 pv : ADJ
@@ -345,6 +460,7 @@ pyroclastic : ADJ
 rebaptizer : NOUN
 recording artist : NOUN
 regardless of : PREP
+related to : PREP
 relicense : VERB
 remix : NOUN
 remix : VERB
@@ -355,31 +471,59 @@ results page : NOUN
 retweet : VERB
 rgb : ADJ
 rgb monitor : NOUN
+right after : CONJ
 rocket science : NOUN
 rockin' : ADJ
+round at : PREP
 rpg : NOUN
 sales team : NOUN
 selectable : ADJ
 semi-autonomous : ADJ
 shadow banking : NOUN
+sightseeing tour : NOUN
 signal rocket : NOUN
+since then : ADV[~cnj]
+so many : QUAN[@ind]
 socialist federal republic : NOUN
+some of : QUAN
+some of which : CONJ
+somewhere along : PREP
+sorry about that : ADJ [$cmpd] 0
+southwest to : PREP
 space authority : NOUN
 special forces : ADJ - -1
 spectator : ADJ - +1
 spectral type : NOUN[:*x]
 spiritual director : NOUN
+splash screen : NOUN
 storytelling : NOUN
+straight after : CONJ
 streetlamp : NOUN
 submillimeter  : ADJ
+such a  : QUAN
+such an : QUAN
+such as : PREP
 supply train : NOUN
 swarm robot : NOUN
 teenybopper : NOUN
 telecoms giant : NOUN
 television deal : NOUN
+than ever : CMPC
+than ever before : CMPC
+thanks to : PREP
+that year : NAVB[:det]
+the better of it : ADV
+the default is : VERB
+the entirety : NOUN
+the past year : NAVB[:det]
+this month : NAVB[:det]
+this time : ADV
+this year : NAVB[:det]
 throughout : PREP
 time control : NOUN
 time lord : NOUN
+time of the year : NAVB
+time of year : NAVB
 time travel : NOUN
 time travel : VERB
 title track : NOUN
@@ -388,14 +532,26 @@ top 40 hit : NOUN
 top forty : NUM
 top forty hit : NUM
 trackwork : NOUN
+u.s. charts : NOUN[:plur]
 uav : NOUN
 understated : VERB[^ed] - -1
 underutilization : NOUN
 underutilize : VERB
 union force : NOUN
+unwilling to : TO
+up slightly : ADJ
+up slightly : ADV - +1
+up to : ADV[~mod] [$deg] 0
+up to his neck : ADJ
 upper atmosphere : NOUN
+used to : AUXL
 versus : CONJ
+very little : NOUN[:*l]
+very little : ADV - -1
 water use : NOUN
+what is today : ADV
+whenever and wherever : CONJ
+willing to : TO
 wine review : NOUN
 with no regard to : CONJ
 yuletide spirit : NOUN
@@ -443,165 +599,6 @@ hydro : PREF
 multi : PREF
 over : PREF - -2
 tele : PREF
-
-# # # # extra vocabulary not yet integrated
-
-1st mention : NOUN
-1st mention : VERB
-1 another : PRO =one another
-1 of the : QUAN =one of the
-a few : QUAN[@ind] [!mltp] 0
-a few hundred : NUM
-a few of : QUAN
-a hundred : NUM
-a lot of : QUAN
-a third the : NUM
-a thousand : NUM
-about to : TO
-about whether : CONJ
-according to : PREP
-after all : CONJ[@*l]
-ahead of : PREP
-all at once : ADV
-all evening : ADV
-all of : QUAN
-all that : ALLTHT
-along with : PREP
-and even : CONJ
-and now : CONJ
-and so : CONJ
-and so on : MISC
-and then : CONJ
-approximately average : ADJ
-as a means of : CONJ
-as a result : CONJ
-as a result of : PREP
-as if : CONJ
-as of : PREP
-as though : CONJ
-as well as : CONJ
-at first : ADV
-at least one : NUM
-at least one : QUAN - +2
-at one point : ADV
-at the same time as : CONJ
-best suit : NOUN
-best suit : VERB
-better of it : ADV
-but now : CONJ
-but then : CONJ
-by almost half : ADV[~trlg] [$deg,trlg] 0
-by nearly half : ADV[~trlg] [$deg,trlg] 0
-calm and collected : ADJ [$cmpd] 0
-can and will : AUXL
-cheer on : VERB
-do much more : VERB
-do that : VERB
-due to : PREP
-each : POSTP[@num] [$trlg] -1
-each other : PRO
-even before : CONJ
-even so : CONJ
-even though : CONJ
-few hundred : NUM
-for example : PEXP[|eg]
-for now : ADV
-from across : PREP
-from beginning to end : ADV
-from beyond : PREP
-from what  : CONJ[@rel]
-from where : CONJ[@rel]
-from which : CONJ[@rel]
-full time : ADV
-guitar bridge : NOUN
-half inch : NOUN
-hall of fame : NOUN
-hard boiled : ADJ
-hard rock : NOUN
-has to do : VERB
-here you go : VERB
-his or her : DEM
-in addition to : PREP
-in any way : ADV
-in area : ADV[~trlg] [$deg] 0
-in conjunction with : PREP
-in length : ADV[~trlg] [$deg] 0
-in height : ADV[~trlg] [$deg] 0
-in order to : TO
-in recent years : ADV [$deg,time] +1
-in width : ADV[~trlg] [$deg] 0
-increase or decrease : VERB
-innovation fund : NOUN
-insofar as : CONJ
-it is easy : ELEM - +4 (elma)
-just as : CONJ - -1
-last year : NAVB[:det]
-less like : PREP
-less than : ADV[~mod] [$deg] 0
-like never before : ADV
-made available : VERB[^ed]
-make available : VERB
-male and female : NOUN
-male and female : ADJ - +1
-more like : PREP
-more than : ADV[~mod] [$deg] 0
-most of : QUAN
-neighborhood setting : NOUN
-next year : NAVB[:det]
-no one : PRO
-not only : CONJ
-often enough : ADV
-on through : PREP
-one another : PRO - +4
-or more : POSTP[@num] [$trlg] 0
-other than : CONJ
-out of : PREP['div]
-over from : PREP
-over the course of : PREP
-peculiar to : PREP
-prior to : PREP
-pros and cons : NOUN
-related to : PREP
-right after : CONJ
-round at : PREP
-sightseeing tour : NOUN
-since then : ADV[~cnj]
-so many : QUAN[@ind]
-some of : QUAN
-some of which : CONJ
-somewhere along : PREP
-sorry about that : ADJ [$cmpd] 0
-southwest to : PREP
-splash screen : NOUN
-straight after : CONJ
-such a  : QUAN
-such an : QUAN
-such as : PREP
-than ever : CMPC
-than ever before : CMPC
-thanks to : PREP
-that year : NAVB[:det]
-the better of it : ADV
-the default is : VERB
-the entirety : NOUN
-the past year : NAVB[:det]
-this month : NAVB[:det]
-this time : ADV
-this year : NAVB[:det]
-time of year : NAVB
-time of the year : NAVB
-u.s. charts : NOUN[:plur]
-unwilling to : TO
-up slightly : ADJ
-up slightly : ADV - +1
-up to : ADV[~mod] [$deg] 0
-up to his neck : ADJ
-used to : AUXL
-very little : NOUN[:*l]
-very little : ADV - -1
-what is today : ADV
-whenever and wherever : CONJ
-willing to : TO
 
 her own : DEM[@ind]
 his own : DEM[@ind]
@@ -1297,6 +1294,7 @@ ankle joint : NOUN
 annihilation : NOUN
 anniversary : NOUN
 announce : VERB
+announcement : NOUN
 annual : NOUN
 annual : ADJ
 annual fern : NOUN
