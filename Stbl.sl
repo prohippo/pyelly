@@ -162,6 +162,7 @@ BLOCK s
     IF jo {SU}
     IS nzq {SU}
     IF lak {SU}
+    IF dah {SU}
     IF x
       IF eh {FA}
       IF a
