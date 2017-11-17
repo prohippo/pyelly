@@ -2413,6 +2413,8 @@ d:because  <- CONJ
 __
 d:until    <- CONJ
 __
+d:albeit   <- CONJ
+__
 
 d:whoever  <- CONJ[@rel,ind]
 __
