@@ -176,6 +176,7 @@ went out of business : VERB[^ed]
 will have to : AUXL
 will not have to : AUXL
 withdrew : VERB[^ed]
+won : VERB[^ed] - +2
 wore : VERB[^ed]
 worn : VERB[^ed]
 worked : VERB[^ed] - +3
@@ -1862,6 +1863,7 @@ balloon seat : NOUN
 ballot : NOUN
 ballot : VERB
 ballot box : NOUN
+bamako : NOUN
 ban : NOUN
 ban : VERB
 banana : NOUN
@@ -3071,6 +3073,7 @@ building society : NOUN
 building supply house : NOUN
 building supply store : NOUN
 built : ADJ
+bulawayo : NOUN
 bulb : NOUN
 bulk : NOUN
 bulk : VERB
@@ -3705,6 +3708,7 @@ charity throw : NOUN
 charity toss : NOUN
 charleston : NOUN
 charleston : VERB
+charlotte : NOUN
 charm : NOUN
 charm : VERB
 charm campaign : NOUN
@@ -4191,6 +4195,7 @@ cloud chamber : NOUN
 cloud cover : NOUN
 cloud over : VERB
 cloud up : VERB
+clovis : NOUN
 club : NOUN
 club : VERB - -1
 club car : NOUN
@@ -4243,6 +4248,7 @@ cocaine : NOUN
 code : NOUN
 code : VERB
 code flag : NOUN
+cody : NOUN
 coffee : NOUN
 coffee bar : NOUN
 coffee bean : NOUN
@@ -4625,6 +4631,7 @@ computer technology : NOUN
 computer user : NOUN
 computer virus : NOUN
 comrade : NOUN
+comstock : NOUN
 conceal : VERB
 concede : VERB
 concentrate : NOUN
@@ -4704,7 +4711,7 @@ congressional record : NOUN
 conjunct : ADJ
 conjunction : NOUN
 connect : VERB
-connecticutt : NOUN
+connecticut : NOUN
 connection : NOUN
 conquer : VERB
 conscience : NOUN
@@ -5419,6 +5426,7 @@ date rape : NOUN
 daughter : NOUN
 daughter cell : NOUN
 david : NOUN
+davis : NOUN
 dawn : NOUN
 dawn : VERB
 dawn horse : NOUN
@@ -5590,6 +5598,7 @@ defeat : VERB
 defect : NOUN
 defect : VERB
 defector : NOUN
+defence : NOUN
 defend : VERB[^ptcl]
 defense : NOUN
 defense advanced research projects agency : NOUN
@@ -6172,6 +6181,7 @@ double vision : NOUN
 doubt : NOUN
 doubt : VERB
 dough : NOUN
+douglas : NOUN
 dovetail : NOUN
 dovetail : VERB
 down : NOUN - -2
@@ -8487,6 +8497,7 @@ gear case : NOUN
 gear mechanism : NOUN
 gear up : VERB
 gear wheel : NOUN
+gen : NOUN
 gender : NOUN
 gender agreement : NOUN
 gender identity : NOUN
@@ -8691,6 +8702,7 @@ glow lamp : NOUN
 glow tube : NOUN
 gluten : NOUN
 gluten bread : NOUN
+gmt : NOUN
 gnat : NOUN
 gnaw : VERB
 go : NOUN - -1
@@ -9347,6 +9359,7 @@ harmonic mean : NOUN
 harmonic motion : NOUN
 harmonious : ADJ
 harmony : NOUN
+harris : NOUN
 harrison : NOUN
 harrow : NOUN
 harrow : VERB
@@ -9901,6 +9914,7 @@ hug : NOUN
 hug : VERB
 hug drug : NOUN
 huge : ADJ
+hugo : NOUN
 hullo : NOUN
 human : NOUN
 human : ADJ - +2
@@ -10520,7 +10534,6 @@ iraqi : ADJ
 iraqi intelligence service : NOUN
 iraqi national congress : NOUN
 ire : NOUN
-irk : VERB
 ireland : NOUN
 irish : NOUN
 irish : ADJ
@@ -10533,6 +10546,7 @@ irish pound : NOUN
 irish republic : NOUN
 irish republican army : NOUN
 irish sea : NOUN
+irk : VERB
 iron : NOUN - +2
 iron : VERB
 iron : ADJ - -3
@@ -10681,6 +10695,8 @@ john cage : NOUN
 john doe : NOUN
 john foster dulles : NOUN
 john van vleck : NOUN
+johnson : NOUN
+johnston : NOUN
 join : NOUN
 join : VERB - +2
 join battle : VERB
@@ -11637,6 +11653,7 @@ log line : NOUN
 log off : VERB
 log out : VERB
 log up : VERB
+logan : NOUN
 logic : NOUN
 logic bomb : NOUN
 logic element : NOUN
@@ -12629,6 +12646,7 @@ modify : VERB
 module : NOUN
 mole : NOUN
 molecule : NOUN
+molly : NOUN
 mom : NOUN
 moment : NOUN
 moment magnitude scale : NOUN
@@ -13034,6 +13052,7 @@ natural virtue : NOUN
 nature : NOUN
 nature study : NOUN
 nature worship : NOUN
+nauru : NOUN
 naval : ADJ
 naval academy : NOUN
 naval battle : NOUN
@@ -14179,6 +14198,7 @@ patron saint : NOUN
 patronize : VERB
 pattern : NOUN
 pattern : VERB
+paul : NOUN
 pause : NOUN
 pause : VERB
 pave : NOUN
@@ -14851,6 +14871,7 @@ political system : NOUN
 political theory : NOUN
 political unit : NOUN
 politician : NOUN
+politico : NOUN
 politics : NOUN
 poll : NOUN
 poll : VERB
@@ -16222,6 +16243,7 @@ renowned : ADJ
 rent : NOUN
 rent : VERB
 rent out : VERB
+rep : NOUN
 repair : NOUN
 repair : VERB
 repair shed : NOUN
@@ -16404,6 +16426,7 @@ revolve : VERB
 revolve around : VERB
 reward : NOUN
 reward : VERB
+rex : NOUN
 rhetoric : NOUN
 rhetorical : ADJ
 rhetorical device : NOUN
@@ -16467,6 +16490,7 @@ right triangle : NOUN
 right whale : NOUN
 right wing : NOUN
 righteous : ADJ
+riley : NOUN
 rim : NOUN
 rim : VERB
 ring : NOUN
@@ -16892,6 +16916,7 @@ salt plain : NOUN
 salt pork : NOUN
 salute : NOUN
 salute : VERB
+sam : NOUN
 same : ADJ
 same : NOUN
 sample : NOUN
@@ -17036,6 +17061,7 @@ score out : VERB
 score paper : NOUN
 scotland : NOUN
 scotland yard : NOUN
+scott : NOUN
 scow : NOUN
 scowl : NOUN
 scowl : VERB
@@ -17275,7 +17301,9 @@ semiconductor unit : NOUN
 seminar : NOUN
 seminarian : NOUN
 seminary : NOUN
+seminole : NOUN
 semisweet : ADJ
+sen : NOUN
 senate : NOUN
 senate campaign : NOUN
 senate race : NOUN
@@ -18944,6 +18972,7 @@ sterling : NOUN - +1
 sterling : ADJ - -2
 sterling area : NOUN
 sterling silver : NOUN
+stewart : NOUN
 stick : NOUN
 stick : VERB
 stick around : VERB
@@ -19457,6 +19486,7 @@ suspicion : NOUN
 suspicious : ADJ
 sustain : VERB
 sustenance : NOUN
+sutherland : NOUN
 suv : NOUN
 swallow : NOUN
 swallow : VERB
@@ -19899,6 +19929,8 @@ temple : NOUN
 temple orange : NOUN
 tempt : VERB
 temptation : NOUN
+ten : ADJ
+ten : NOUN
 tenant : NOUN
 tenant : VERB
 tenant farmer : NOUN
@@ -20027,6 +20059,7 @@ therapist : NOUN
 therapy : NOUN
 thereby : ADV
 therefore : ADV
+theresa : NOUN
 thermal : NOUN
 thermal : ADJ
 thermal barrier : NOUN
@@ -21103,6 +21136,7 @@ vessel : NOUN
 veteran : NOUN
 veteran : ADJ
 veteran soldier : NOUN
+vex : VERB
 vice : NOUN
 vice admiral : NOUN
 vice chairman : NOUN
@@ -21883,6 +21917,8 @@ wolf down : VERB
 wolf pack : NOUN
 woman : NOUN
 women : NOUN[:plur]
+won : ADJ
+won : NOUN
 wonder : NOUN
 wonder : VERB
 wonder boy : NOUN
