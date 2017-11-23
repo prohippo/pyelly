@@ -39,15 +39,20 @@ BLOCK ing
     END {DO MORE}
   IF gn
     IF i
-      IS hp {SU 0 e}
+      IF h  {SU 0 e}
       IF rf {SU 0 e}
       IF rc {SU 0 e}
       IF wt {SU 0 e}
+      IF b  {SU 0 e}
       LEN = 7
         IS t {SU 0 e}
-        END
+        END {SU}
+      if p  {SU 0 e}
       END {SU}
-    IF ah {SU 0 e}
+    IF ah
+      LEN = 7 {SU} 
+      END {SU 0 e}
+    IF ar {SU 0 e}
     IF u {SU 0 e}
     END {SU}
   IF kep {FA}

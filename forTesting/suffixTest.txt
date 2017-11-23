@@ -146,6 +146,7 @@ biggest big
 biliary bile
 bilingual bilingua
 bilious bile
+binging binge
 birder bird
 bit bite
 biter bite
@@ -618,6 +619,7 @@ freest free
 freezer freeze
 freshest fresh
 frighten fright
+fringing fringe
 frivolity frivol
 frolicked frolic
 frolicking frolic
@@ -675,6 +677,7 @@ hammer hammer
 hamster hamster
 handler handle
 hanger hang
+hanging hang
 haploidy haploid
 hardest hard
 hardy hard
@@ -704,6 +707,7 @@ hidden hide
 higher high
 highest high
 hindrance hindr
+hinging hinge
 homely home
 honesty honest
 honoree honor
@@ -730,6 +734,7 @@ ignitable ignite
 ignite ignite
 imaginary imagine
 imbibate imbibe
+impinging impinge
 immunity immune
 immunization immune
 incandescent incandesce
@@ -1032,6 +1037,7 @@ phobia phobe
 phobic phobe
 photographer photograph
 physicist physic
+pinging ping
 picnic picnic
 pitiless pity
 pivotal pivot
@@ -1120,6 +1126,7 @@ rambler ramble
 random random
 randomize random
 rang ring
+ranging range
 reactant react
 reactive react
 reality real
@@ -1461,6 +1468,7 @@ tidal tide
 tied tie
 timer time
 timetable timetable
+tinging tinge
 tolerant toler
 tolerate toler
 took take
