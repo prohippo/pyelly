@@ -33,6 +33,7 @@ cleared : VERB[^ing]
 co-produced : VERB[^ed]
 coaching : VERB[^ing]
 criteria : NOUN[:plur]
+current and former : ADJ
 cut short : VERB[^ed]
 determined : VERB[^ed]
 did : VERB[^ed,*x]
@@ -155,6 +156,8 @@ setting : VERB[^ptcl,ing] - +1
 shot : VERB[^ed] - +2
 shown : VERB[^ed]
 sitting : VERB[^ing]
+sold : VERB[^ed]
+spoke : VERB[^ed] - +2
 stimulating : VERB[^ing]
 stood : VERB[^ed]
 supplying : VERB[^ing] - +2
@@ -170,6 +173,7 @@ terrifying : VERB[^ing]
 terrorizing : VERB[^ing] - +2
 terrorizing : NOUN - -1
 thought : VERB[^ed]
+told : VERB[^ed]
 took place : VERB[^ed]
 unified : VERB[^ed]
 went : VERB[^ed,*x]
@@ -182,6 +186,7 @@ wore : VERB[^ed]
 worn : VERB[^ed]
 worked : VERB[^ed] - +3
 worked : ADJ[%ed]  - -3
+working : VERB[^ing] - +2
 written : VERB[^ed]
 wrote : VERB[^ed,*x]
 
@@ -217,6 +222,7 @@ after all : CONJ[@*l]
 after which : CONJ
 agricultural industry : NOUN
 ahead of : PREP
+air force 1 : NOUN
 airstrike : NOUN
 alert level : NOUN
 all at once : ADV
@@ -273,6 +279,7 @@ calm and collected : ADJ [$cmpd] 0
 calories burned : NOUN
 can and will : AUXL
 canadian/american : ADJ
+carefully script : VERB
 cast recording : NOUN
 caught wind : VERB[^ed]
 century bc : NOUN
@@ -297,6 +304,7 @@ demilitarization : NOUN
 democratic republic : NOUN
 development team : NOUN
 die roll : NOUN
+diplomatic tone : NOUN
 do much more : VERB
 do that : VERB
 dubstep : NOUN
@@ -316,6 +324,7 @@ estimative : ADJ
 even before : CONJ
 even so : CONJ
 even though : CONJ
+fake news : NOUN
 family show : NOUN
 fan favorite : NOUN
 federal approval : NOUN
@@ -357,6 +366,7 @@ heavy fighting : NOUN
 here you go : VERB
 hi res : ADJ
 his or her : DEM
+hit job : NOUN
 homiletics : NOUN
 hot 100 : NUM
 hot 100 : NOUN
@@ -449,6 +459,7 @@ out of : PREP['div]
 over from : PREP
 over the course of : PREP
 overland mail : NOUN
+overwhelming consensus : NOUN
 particular focus : NOUN
 patent assist : ADJ
 pay tv : NOUN
@@ -465,6 +476,8 @@ ping pong playing robot : NOUN
 pinyin : NOUN
 pit bull : NOUN
 policymaker : NOUN
+political gathering : NOUN
+political opponent : NOUN
 presentation system : NOUN
 presuppositionalism : NOUN
 prior to : PREP
@@ -498,8 +511,10 @@ rockin' : ADJ
 round at : PREP
 rpg : NOUN
 sales team : NOUN
+saturday morning : NOUN
 selectable : ADJ
 semi-autonomous : ADJ
+senate.candidate : NOUN
 shadow banking : NOUN
 sightseeing tour : NOUN
 signal rocket : NOUN
@@ -537,6 +552,7 @@ the better of it : ADV
 the default is : VERB
 the entirety : NOUN
 the past year : NAVB[:det]
+the sidelines : NOUN
 this month : NAVB[:det]
 this time : ADV
 this year : NAVB[:det]
@@ -554,6 +570,7 @@ top forty : NUM
 top forty hit : NUM
 trackwork : NOUN
 u.s. charts : NOUN[:plur]
+u.s. officials : NOUN[:plur]
 uav : NOUN
 understated : VERB[^ed] - -1
 underutilization : NOUN
@@ -605,6 +622,13 @@ usd : POSTP
 1000000000000 : NUM[:*r] - +2 =trillion
 1000000000    : NUM[:*r] - +2 =billion
 1000000       : NUM[:*r] - +2 =million
+
+billions of : NUM
+millions of : NUM
+thousands of : NUM
+hundreds of : NUM
+
+30s : NOUN
 
 anyone  : NOUN[:qnt]
 anybody : NOUN[:qnt]
@@ -680,6 +704,7 @@ once-in-a-lifetime : ADJ
 one-lane : ADJ
 one-of-a-kind : ADJ
 post-September 11th : ADJ
+question-and-answer : ADJ
 rear-drive : ADJ
 round-up : NOUN
 start-up : NOUN
@@ -712,6 +737,7 @@ Angelina Jolie : NOUN
 Apple II computer : NOUN
 Apple Watch : NOUN
 Arkansas State : NOUN
+Asia Pacific Economic Cooperation : ADJ
 BBC : NOUN
 Battle of Dug Springs : NOUN
 BeMobile : NOUN
@@ -803,11 +829,13 @@ McCarthy : NOUN
 Michael Keaton : NOUN
 Mimi Spear : NOUN
 Missouri State : NOUN
+Mitch McConnell : NOUN
 MSNBC : NOUN
 Mueller : NOUN
 Murphy : NOUN
 NBA : NOUN
 NCIS : NOUN
+New York Times : NOUN
 Nicholas : NOUN
 Novaes : NOUN
 Obamas : NOUN[:plur] =obama -s
@@ -815,6 +843,7 @@ Ogilvy & Mather : NOUN
 Our Lady of Sorrows : NOUN
 Premier League : NOUN
 Queens Park : NOUN
+Roy Moore : NOUN
 Reaganite : NOUN
 Ric : NOUN
 Rockette : NOUN
@@ -837,6 +866,7 @@ U.N. : NOUN
 U.S. : NOUN
 UCLA : NOUN
 USNORTHCOM : NOUN
+Veteran's Day : NOUN
 Vincent : NOUN
 Walmart : NOUN
 Walmart Supercenter : NOUN
@@ -7121,6 +7151,8 @@ evolve : VERB
 ex : NOUN
 ex : ADJ
 ex post facto : ADJ
+ex-husband: NOUN
+ex-wife : NOUN
 exact : VERB
 exact : ADJ
 exactly : ADV[~trlg]
@@ -12675,6 +12707,7 @@ middle term : NOUN
 middle thyroid vein : NOUN
 middle watch : NOUN
 middle west : NOUN
+middle-class : ADJ
 mideast : NOUN
 midnight : NOUN
 midnight sun : NOUN
@@ -19239,6 +19272,7 @@ standard pressure : NOUN
 standard procedure : NOUN
 standard temperature : NOUN
 standard time : NOUN
+standing ovation : NOUN
 standoff : NOUN
 staple : NOUN
 staple : VERB
@@ -21596,6 +21630,7 @@ vessel : NOUN
 veteran : NOUN
 veteran : ADJ
 veteran soldier : NOUN
+veterans day : NOUN
 vex : VERB
 viability : NOUN
 viable : ADJ
@@ -21708,6 +21743,7 @@ vital sign : NOUN
 vitality : NOUN
 vitamin : NOUN
 vitamin pill : NOUN
+vladimir putin : NOUN
 vocal : NOUN - -1
 vocal : ADJ
 vocal band : NOUN
@@ -22471,6 +22507,8 @@ worked up : ADJ
 worker : NOUN
 worker bee : NOUN
 workhorse : NOUN
+working : NOUN - -2
+working : ADJ
 workout : NOUN
 workout suit : NOUN
 workplace : NOUN
