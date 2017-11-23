@@ -495,6 +495,10 @@ Release Notes:
                       clean up and extend "marking" rules and integration test
                       update documenetation
  1.4.16.1  21oct2017  fix various bugs in dateTransform
+                      extend "marking" rules
+                      update documentation
+ 1.4.16.2  23nov2017  fix omissions in inflectional stemming logic
+                      extend "marking" and correct rules
                       update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
