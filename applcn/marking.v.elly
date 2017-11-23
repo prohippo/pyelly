@@ -256,8 +256,11 @@ asset purchase : NOUN
 at first : ADV
 at least one : NUM
 at least one : QUAN - +2
+at odds with : PREP
 at one point : ADV
 at the same time as : CONJ
+at this point : ADV
+at this point in time : ADV
 bat and ball : ADJ
 because of : PREP
 best suit : NOUN
@@ -329,6 +332,7 @@ family show : NOUN
 fan favorite : NOUN
 federal approval : NOUN
 federal bureau : NOUN
+federal charge : NOUN
 federal republic : NOUN
 feed & farm supply store : NOUN
 ferry service : NOUN
@@ -337,6 +341,7 @@ fist fight : NOUN
 fixed investment : NOUN
 for example : PEXP[|eg]
 for now : ADV
+foreign ambassador : NOUN
 foreign intelligence : NOUN
 fourpenny : NOUN - +1
 freedom ride : NOUN
@@ -397,6 +402,8 @@ intelligence study : NOUN
 intelligence survey : NOUN
 interchange point : NOUN
 interferometry : NOUN
+international airport : NOUN
+international treaty : NOUN
 internet access : NOUN
 islamic army : NOUN
 islamic party : NOUN
@@ -423,6 +430,7 @@ male and female : ADJ - +1
 manga : NOUN
 mannerist : NOUN
 marchese : NOUN
+media outlet : NOUN
 media pack : NOUN
 metallicity : NOUN
 midtempo : ADJ
@@ -752,6 +760,8 @@ CNN : NOUN
 Catalina : NOUN
 Celine Dion : NOUN
 Charles : NOUN
+Charlotte-Mecklenburg : ADJ
+Charlotte Douglas : NOUN
 China Central Television : NOUN[:*r]
 China Great Wall Industry Corporation : NOUN[:*r]
 Clever : NOUN - -6
@@ -779,6 +789,7 @@ Evans : NOUN
 Facebook : NOUN
 Fairchild : NOUN
 Farhan Haq : NOUN
+Federal Aviation Administration : NOUN
 Federal Open Market Committee : NOUN[:*r]
 Ferguson : NOUN
 Flannery : NOUN
@@ -827,6 +838,7 @@ Mali : NOUN
 Marc : NOUN
 McCarthy : NOUN
 Michael Keaton : NOUN
+Michel Aoun : NOUN
 Mimi Spear : NOUN
 Missouri State : NOUN
 Mitch McConnell : NOUN
@@ -841,6 +853,7 @@ Novaes : NOUN
 Obamas : NOUN[:plur] =obama -s
 Ogilvy & Mather : NOUN
 Our Lady of Sorrows : NOUN
+Paul George Dandan : NOUN
 Premier League : NOUN
 Queens Park : NOUN
 Roy Moore : NOUN
@@ -850,6 +863,7 @@ Rockette : NOUN
 S.A.F. : NOUN
 Scotts : NOUN
 Scotts Miracle-Gro Company : NOUN
+Shi‘ite : NOUN
 Shindake : NOUN
 Ship of Fools : NOUN
 Showcase Presentations : NOUN
@@ -868,6 +882,7 @@ UCLA : NOUN
 USNORTHCOM : NOUN
 Veteran's Day : NOUN
 Vincent : NOUN
+WCNC-TV : NOUN
 Walmart : NOUN
 Walmart Supercenter : NOUN
 Walter : NOUN
@@ -13634,6 +13649,8 @@ north atlantic : NOUN
 north atlantic council : NOUN
 north atlantic treaty : NOUN
 north atlantic treaty organization : NOUN
+north carolina : NOUN
+north dakota : NOUN
 north channel : NOUN
 north island : NOUN
 north korea : NOUN
@@ -17361,6 +17378,9 @@ sauce : NOUN
 sauce : VERB
 saudi : NOUN
 saudi : ADJ
+saudi arabia  : NOUN
+saudi arabian : NOUN
+saudi-arabian : ADJ
 savage : NOUN
 savage : VERB
 savage : ADJ
@@ -18841,6 +18861,8 @@ south american indian : NOUN
 south atlantic : NOUN
 south australia : NOUN
 south bend : NOUN
+south carolina : NOUN
+south dakota : NOUN
 south china sea : NOUN
 south island : NOUN
 south korea : NOUN
@@ -22019,6 +22041,7 @@ wealthy : ADJ
 wealthy man : NOUN
 wealthy person : NOUN
 weapon : NOUN
+weapon of mass destruction : NOUN
 weapon system : NOUN
 wear : NOUN
 wear : VERB
