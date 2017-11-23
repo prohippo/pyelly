@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# macroTable.py : 01oct2017 CPM
+# macroTable.py : 22nov2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -516,7 +516,7 @@ if __name__ == '__main__':
 
     sb = substitutionBuffer.SubstitutionBuffer(mtb)
     while True:
-        sys.stdout.write('> ')
+        sys.stdout.write('\n> ')
         st = sys.stdin.readline()      # get test input
         if len(st) <= 1: break
         ss = st.decode('utf8').strip() # convert to Unicode
@@ -524,14 +524,14 @@ if __name__ == '__main__':
         print 'TEXT=' , list(ss) , '(' + str(len(ss)) + ')'
         sb.clear()
         sb.append(ss)
-        print ' ' , unicode(sb)
+        print ' '
 
         no = 0
         while True:
-            print '+' , unicode(sb)
+            print '+' , sb.buffer
             to = sb.getNext()
             if to == None: break
             no += 1
-            print ' >>{:2d}'.format(no) , unicode(to)
+            print ' >>{:2d}: '.format(no) , unicode(to)
 
     sys.stdout.write('\n')
