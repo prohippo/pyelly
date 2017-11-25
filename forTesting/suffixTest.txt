@@ -1123,6 +1123,7 @@ radian radian
 radii radius
 raiment raiment
 rambler ramble
+rancorous rancor
 random random
 randomize random
 rang ring
