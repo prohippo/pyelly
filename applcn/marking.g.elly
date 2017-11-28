@@ -247,16 +247,29 @@ _
   (that)
   right
 __
+p:ncth
+_
+  var tht=F
+  left
+  if tht=T
+    linefeed
+    append <>that</>
+    end
+__
 g:ELEM->NCLU[:-dit,-dat, prep,-poss]
 #      ?>>?
  l[&msr]>>[!ln,rn,ppps]
         >>[!rn,ppps]
+_
+  (ncth)
 __
 g:ELEM->NCLU[:-dit,-dat,-prep,-poss]
 #      ?>>?
  l[&1wy]>>[!rn]
  l[&adv]>>[!rn]
         >>[!ln,rn]
+_
+  (ncth)
 __
 g:ELEM->NCLU[:dit]
 # ?>>?
@@ -875,6 +888,22 @@ _
     (dtnc)
     end
 __
+g:NCLU[:det]->NCTH
+_
+  append <nclu><det>
+  split
+  left
+  back
+  find <
+  delete 1 >
+  append </det><noun>
+  find <
+  delete 1 >
+  append </noun></nclu>
+  delete 99 <
+  merge
+  set tht=T
+__
 p:pphr
 _
   var typg=prep
@@ -1043,6 +1072,22 @@ _
   var typg=adj
   (rxtd)
 __
+g:NCLU->DET NAVB
+ >>++
+_
+  append <nclu><det>
+  left
+  append </det><adj>
+  split
+  right
+  back
+  find  <
+  delete 1 >
+  append </adj><noun>
+  merge
+  append </noun></nclu>
+__
+
 g:XID->NUM[:-*l,-*r]
 #       ?>>?
  l[&prop]>>----
@@ -1061,6 +1106,11 @@ g:NOUN->NOUN NUM[:cnj]
  r[&cmpd]>>----
       n>3>>----
          >>++
+_
+  (twob)
+__
+g:NOUN[:qnt]->NOUN[:qnt] ADJ[%-*l,-*r]
+ >>+
 _
   (twob)
 __
@@ -1880,7 +1930,7 @@ g:PREP->ADJ TO
 _
   (twob)
 __
-g:PREP['cnj]->PREP['-cnj] CONJ[@-rel]
+g:PREP['cnj]->PREP['-cnj] CONJ[@-*r,-rel]
  >>+
 _
   left

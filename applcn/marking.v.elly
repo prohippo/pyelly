@@ -180,6 +180,9 @@ thought : VERB[^ed]
 told : VERB[^ed]
 took place : VERB[^ed]
 unified : VERB[^ed]
+walked away : VERB[^ed]
+walking away : VERB[^ing]
+walks away : VERB[^ing]
 went : VERB[^ed,*x]
 went out of business : VERB[^ed]
 will have to : AUXL
@@ -214,6 +217,7 @@ went_on : VERB[^ed] =went on
 a few : QUAN[@ind] [!mltp] 0
 a few hundred : NUM
 a few of : QUAN
+a group of : QUAN
 a hundred : NUM
 a lot of : QUAN
 a third the : NUM
@@ -236,6 +240,7 @@ all of : QUAN
 all that : ALLTHT
 along with : PREP
 also known as : CONJ
+among the first : ADJ
 and even : CONJ
 and now : CONJ
 and so : CONJ
@@ -280,6 +285,7 @@ but now : CONJ
 but then : CONJ
 buying guide : NOUN
 by almost half : ADV[~trlg] [$deg,trlg] 0
+by far-right : PREP
 by nearly half : ADV[~trlg] [$deg,trlg] 0
 cable tv : NOUN
 cable tv channel : NOUN
@@ -294,6 +300,7 @@ century bc : NOUN
 cheer on : VERB
 chemical symbol : NOUN
 christian doctrine : NOUN
+christian values : NOUN[:plur]
 christmas cheer : NOUN
 christmas spectacular : NOUN
 clean energy : NOUN
@@ -323,6 +330,8 @@ during this time : ADV[~trlg]
 each : POSTP[@num] [$trlg] -1
 each other : PRO
 each time : ADV
+earlier in the day : ADV
+earlier in the year : ADV
 early years : NOUN
 economic council : NOUN
 electricity generation system : NOUN
@@ -330,6 +339,7 @@ engineering council : NOUN
 english-language : ADJ
 entry point : NOUN
 estimative : ADJ
+even as : CONJ
 even before : CONJ
 even so : CONJ
 even though : CONJ
@@ -339,6 +349,7 @@ fan favorite : NOUN
 federal approval : NOUN
 federal bureau : NOUN
 federal charge : NOUN
+federal level : NOUN
 federal republic : NOUN
 feed & farm supply store : NOUN
 ferry service : NOUN
@@ -423,6 +434,8 @@ jain : NOUN
 just as : CONJ - -1
 just for the hell of it : ADV
 land survey : NOUN
+last week : NAVB[:det]
+last month : NAVB[:det]
 last year : NAVB[:det]
 leaps and bounds : NOUN[:plur]
 less like : PREP
@@ -467,6 +480,7 @@ no one : PRO
 not only : CONJ
 now known as : CONJ
 nuclear accord : NOUN
+off the map : ADV
 often enough : ADV
 on through : PREP
 one another : PRO - +4
@@ -483,6 +497,7 @@ overland mail : NOUN
 overwhelming consensus : NOUN
 particular focus : NOUN
 patent assist : ADJ
+patriotic event : NOUN
 pay tv : NOUN
 payment method : NOUN
 payout : NOUN
@@ -554,6 +569,7 @@ spectator : ADJ - +1
 spectral type : NOUN[:*x]
 spiritual director : NOUN
 splash screen : NOUN
+state ceremony : NOUN
 storytelling : NOUN
 straight after : CONJ
 streetlamp : NOUN
@@ -574,6 +590,7 @@ the better of it : ADV
 the default is : VERB
 the entirety : NOUN
 the past year : NAVB[:det]
+the possibility that : NCTH
 the sidelines : NOUN
 this month : NAVB[:det]
 this time : ADV
@@ -650,6 +667,7 @@ billions of : NUM
 millions of : NUM
 thousands of : NUM
 hundreds of : NUM
+tens of thousands of : NUM
 
 30s : NOUN
 
@@ -873,8 +891,10 @@ Obama  : NOUN
 Obamas : NOUN[:plur] =obama -s
 Ogilvy & Mather : NOUN
 Our Lady of Sorrows : NOUN
+Paris Climate Accord : NOUN
 Paul George Dandan : NOUN
 Premier League : NOUN
+President Donald Trump : NOUN
 Queens Park : NOUN
 Roy Moore : NOUN
 Reaganite : NOUN
@@ -910,7 +930,9 @@ Walmart Supercenter : NOUN
 Walter : NOUN
 Warner Brothers : NOUN
 Washington Post : NOUN
+We Want God : NOUN
 West Indies : NOUN[:plur]
+White Europe : NOUN
 Whiteboys : NOUN[:plur]
 Windows 3 : NOUN
 World News Tonight with David Muir : NOUN
@@ -7265,6 +7287,7 @@ european law enforcement organisation : NOUN
 european plan : NOUN
 european recovery program : NOUN
 european russia : NOUN
+european union : NOUN
 evacuate : VERB
 evaluate : VERB
 evaluation : NOUN
@@ -9057,8 +9080,10 @@ gleaner : NOUN
 glimpse : NOUN
 glimpse : VERB
 global : ADJ
+global climate : NOUN
 global climate change : NOUN
 global organization : NOUN
+global warming : NOUN
 globe : NOUN
 glory : NOUN
 glory : VERB
@@ -9402,6 +9427,7 @@ green tea : NOUN
 green thumb : NOUN
 greenhouse : NOUN
 greenhouse : ADJ
+greenhouse gas : NOUN
 greet : VERB
 grest bear : NOUN
 grey : NOUN
@@ -22662,6 +22688,7 @@ white sauce : NOUN
 white sea : NOUN
 white sheep : NOUN
 white slave : NOUN
+white supremacist : NOUN
 white tail : NOUN
 white tie : NOUN
 white tie and tails : NOUN
