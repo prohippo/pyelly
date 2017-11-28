@@ -498,7 +498,11 @@ Release Notes:
                       extend "marking" rules
                       update documentation
  1.4.16.2  23nov2017  fix omissions in inflectional stemming logic
-                      extend "marking" and correct rules
+                      extend and correct "marking" rules
+                      update documentation
+ 1.4.17  - 27nov2017  reimplement generative semantics FIND command
+                      improve logic for recompiling PyElly tables
+                      extend "marking" rules
                       update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
