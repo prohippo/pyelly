@@ -13,4 +13,7 @@ peek > x
 append (
 insert < x
 append )
+find <
+delete 1 >
+append __
 merge

@@ -48,6 +48,8 @@ MERGE
 PICK ch (a=AAA#b=BBB#c=CCC#=XXX#)
 FIND love
 FIND joy >
+FIND <
+FIND >
 ALIGN <
 ASSIGN x=y
 UNQUEUE x=y

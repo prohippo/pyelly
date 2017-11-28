@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeDefiner.py : 02jun2017 CPM
+# generativeDefiner.py : 26nov2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -339,10 +339,19 @@ def compileDefinition ( stb , inp ):
                 return _err(l=line)
             ar = rs.split(' ')
             ss = ar.pop(0)
-            while ss[-1] == '\\' and len(ar) > 0:
-                ss = ss[:-1] + ' ' + ar.pop(0)
-            sens = True if len(ar) == 0 else False if ar[0] == '>' else True
-            store.extend([ semanticCommand.Gfnd , ss , sens ])
+            if len(ar) > 1:
+                return _err(l=line)
+            elif len(ar) == 0:
+                if not ss in ['<' , '>']:
+                    df = '<'
+                else:
+                    df = ss
+                    ss = ' '
+            else:
+                df = ar.pop(0)
+                if not df in ['<' , '>']:
+                    return _err(l=line)
+            store.extend([ semanticCommand.Gfnd , ss , df == '<' ])
         elif op == 'align':
             if len(rs) != 1:
                 return _err(l=line)
