@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 23nov2017 CPM
+# ellyBase.py : 27nov2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -70,7 +70,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.4.16.2'                   # current version of PyElly software
+release = 'v1.4.17'                      # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -122,7 +122,7 @@ def _isSaved ( systm , compn , srcs ):
         except OSError:
             continue      # ignore inaccessible files
 #       print f , ' d=' , d , 'date=' , date
-        if d > date:
+        if d >= date:
 #           print 'file' , f , 'changed'
             return False
     return True
@@ -147,7 +147,7 @@ def _notVocabularyToDate ( system ):
     except OSError:
         print >> sys.stderr , 'rule+vocabulary time exception!'
         return True
-    return vt < rt
+    return vt <= rt
 
 #
 # main class for processing single sentences, presented without NL's
