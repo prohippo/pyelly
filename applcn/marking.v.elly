@@ -278,6 +278,7 @@ best suit : VERB
 better of it : ADV
 bond market : NOUN
 box set : NOUN
+brotherly nations : NOUN
 building supply : NOUN
 bullocky : NOUN - +2
 bushranger : NOUN
@@ -332,6 +333,7 @@ each other : PRO
 each time : ADV
 earlier in the day : ADV
 earlier in the year : ADV
+earlier this year : ADV
 early years : NOUN
 economic council : NOUN
 electricity generation system : NOUN
@@ -444,6 +446,8 @@ like never before : ADV
 litx : CONJ =lit.
 livestock waste : NOUN
 long term : NOUN
+lt. : NOUN
+lt. gen. : NOUN
 made available : VERB[^ed]
 magazine weekly : NOUN
 make available : VERB
@@ -472,6 +476,7 @@ nano robot : NOUN
 national association : NOUN
 national institute : NOUN
 national intelligence : NOUN
+national security adviser : NOUN
 neighborhood bar : NOUN
 neighborhood setting : NOUN
 newspaper best : ADJ
@@ -527,6 +532,7 @@ public sector: NOUN
 purchasing power : NOUN
 pv : ADJ
 pyroclastic : ADJ
+quoted from : VERB
 rebaptizer : NOUN
 recording artist : NOUN
 regardless of : PREP
@@ -550,7 +556,7 @@ sales team : NOUN
 saturday morning : NOUN
 selectable : ADJ
 semi-autonomous : ADJ
-senate.candidate : NOUN
+senate candidate : NOUN
 sgt. : NOUN
 shadow banking : NOUN
 sightseeing tour : NOUN
@@ -564,6 +570,7 @@ somewhere along : PREP
 sorry about that : ADJ [$cmpd] 0
 southwest to : PREP
 space authority : NOUN
+special counsel : NOUN
 special forces : ADJ - -1
 spectator : ADJ - +1
 spectral type : NOUN[:*x]
@@ -629,6 +636,7 @@ very little : ADV - -1
 water use : NOUN
 what is today : ADV
 whenever and wherever : CONJ
+white supremacist : ADJ
 willing to : TO
 wine review : NOUN
 with no regard to : CONJ
@@ -773,6 +781,7 @@ Alison : NOUN
 American Billboard Hot 100 : NOUN[:plur]
 American Civil Liberties Union : NOUN
 Amor Victorious : NOUN
+Andrzej : NOUN
 Andras : NOUN
 Angelina : NOUN
 Angelina Jolie : NOUN
@@ -811,8 +820,10 @@ Dillons : NOUN =dillon 's
 Dobrnja-jug : NOUN
 Doctor Who : NOUN
 Dolores : NOUN
+Donald : NOUN
 Donald Trump : NOUN
 DPRK : NOUN
+Duda : NOUN
 Dugs : NOUN
 Ebay : NOUN
 Eclogues : NOUN
@@ -874,6 +885,7 @@ MTV : NOUN
 Mali : NOUN
 Marc : NOUN
 McCarthy : NOUN
+Michael Flynn : NOUN
 Michael Keaton : NOUN
 Michel Aoun : NOUN
 Mimi Spear : NOUN
@@ -895,10 +907,12 @@ Paris Climate Accord : NOUN
 Paul George Dandan : NOUN
 Premier League : NOUN
 President Donald Trump : NOUN
+President Trump : NOUN
 Queens Park : NOUN
 Roy Moore : NOUN
 Reaganite : NOUN
 Ric : NOUN
+Robert Mueller : NOUN
 Rockette : NOUN
 S.A.F. : NOUN
 Scotts : NOUN
@@ -9548,6 +9562,7 @@ guard ship : NOUN
 guerrilla : NOUN
 guess : NOUN
 guess : VERB
+guessing game : NOUN
 guest : NOUN
 guest night : NOUN
 guest worker : NOUN
