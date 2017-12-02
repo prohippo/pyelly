@@ -155,6 +155,7 @@ bivouacked bivouac
 bless bless
 blest bless
 blew blow
+bloodier blood
 blown blow
 bluer blue
 bluest blue
@@ -1511,6 +1512,8 @@ validate valid
 valvular valve
 vaporize vapor
 vaporous vapor
+vehement vehement
+vehemently vehement
 venomous venom
 ventilate vent
 vertebral vertebra
