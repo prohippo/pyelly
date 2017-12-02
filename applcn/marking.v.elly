@@ -17066,9 +17066,8 @@ province : NOUN
 provincial : NOUN
 provincial : ADJ
 provincial capital : NOUN
-provision : VERB
 provision : NOUN
-provision : VERB
+provision : VERB - -2
 provocation : NOUN
 provoke : VERB
 prowess : NOUN
