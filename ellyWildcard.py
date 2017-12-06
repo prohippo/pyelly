@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 02oct2017 CPM
+# ellyWildcard.py : 05nov2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -492,7 +492,7 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
         returns:
             non-negative count if any match possible, otherwise -1
         """
-#       print "_span: typw=" , '{:04x}'.format(ord(typw)) , convert(typw)
+#       print "_span: typw=" , '{:04x}'.format(ord(typw)) , deconvert(typw)
 #       print "_span: txt @",offs,"pat @",mp,"nsp=",nsp
 #       print "text to span:",text[offs:]
 #       print "pat rest=" , patn[mp:]
@@ -555,8 +555,8 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
                 offs += 1
 #           print 'patn=' , patn
             mc = patn[mp]
-#           print 'matching last=' , last, '(' , ord(last) if last != '' else '-', ') at' , offs
-#           print 'against       ' , mc , '(' , ord(mc) , ')'
+#           print 'matching last=' , last, '(' , '{:04x}'.format(ord(last)) if last != '' else '-', ') at' , offs
+#           print 'against       ' , mc  , '(' , '{:04x}'.format(ord(mc)) , ')'
             if mc != last:
                 if mc != last.lower(): break
 #           print 'matched @mp=' , mp
@@ -565,7 +565,7 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
         ## check whether mismatch is due to special pattern char
 
 #       print 'pat @',mp,"<",ml
-#       print "txt @",offs,limt,last
+#       print "txt @",offs,'<',limt,'last=',last
 #       print '@',offs,text[offs:]
 
         if mp >= ml:        # past end of pattern?
@@ -637,13 +637,13 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
                 continue
 
         elif tc == cUPR: # uppercase letter wildcard?
-#           print "UPR:",last,offs
+#           print "UPR:",last,'@',offs
             if last != '' and ellyChar.isUpperCaseLetter(last):
                 _bind(); mbi += 1
                 continue
 
         elif tc == cLWR: # lowercase letter wildcard?
-#           print "LWR:",last,offs
+#           print "LWR:",last,'@',offs
             if last != '' and ellyChar.isLowerCaseLetter(last):
                 _bind(); mbi += 1
                 continue
