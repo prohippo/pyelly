@@ -247,7 +247,7 @@ _
   (that)
   right
 __
-p:ncth
+p:etht
 _
   var tht=F
   left
@@ -261,7 +261,7 @@ g:ELEM->NCLU[:-dit,-dat, prep,-poss]
  l[&msr]>>[!ln,rn,ppps]
         >>[!rn,ppps]
 _
-  (ncth)
+  (etht)
 __
 g:ELEM->NCLU[:-dit,-dat,-prep,-poss]
 #      ?>>?
@@ -269,7 +269,7 @@ g:ELEM->NCLU[:-dit,-dat,-prep,-poss]
  l[&adv]>>[!rn]
         >>[!ln,rn]
 _
-  (ncth)
+  (etht)
 __
 g:ELEM->NCLU[:dit]
 # ?>>?
@@ -332,14 +332,14 @@ g:ELEM[^*l]->VCLU[^-to,-s,ed,-ing]
         >>[!lv,rv]
 _
   var punc=
-  left
+  (etht)
 __
 g:ELEM[^*l]->VCLU[^-to,-s,ed,ing]
 #      ?>>?
         >>[!lv,rv]
 _
   var punc=
-  left
+  (etht)
 __
 g:ELEM[^*l]->VCLU[^-to,s]
  >>[!lv,rv,s]
@@ -750,6 +750,14 @@ _
   delete to >
   merge
 __
+g:VCLU[^*r]->VCTH
+_
+  append <vclu><verb>
+  left
+  delete 5 >
+  append </verb></vclu>
+  set tht=T
+__
 
 g:VCLU->PEXP[|vrb,-ed,-ing,-stop] PUNC[|*r]
 _
@@ -897,11 +905,9 @@ _
   find <
   delete 1 >
   append </det><noun>
-  find <
-  delete 1 >
-  append </noun></nclu>
-  delete 99 <
   merge
+  delete 5 >
+  append </noun></nclu>
   set tht=T
 __
 p:pphr
@@ -1616,6 +1622,14 @@ _
   append </vclu><punc>
   right
   append </punc>
+__
+g:VCLU[^*r]->VCTH
+_
+  append <vclu><verb>
+  left
+  delete 5 >
+  append </verb></vclu>
+  set tht=T
 __
 
 g:PCLS->PREP['cls] PCLS[^ing]
@@ -2723,10 +2737,14 @@ __
 d:-ing <- XING
 __
 d:-n   <- XED
+_
+  append -ed
 __
 d:-s   <- XS
 __
 d:-t   <- XED
+_
+  append -ed
 __
 d:-’s  <- APOS
 __

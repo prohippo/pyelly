@@ -34,6 +34,7 @@ classified : VERB[^ed] - +1
 cleared : VERB[^ing]
 co-produced : VERB[^ed]
 coaching : VERB[^ing]
+continued : VERB[^ed]
 criteria : NOUN[:plur]
 current and former : ADJ
 cut short : VERB[^ed]
@@ -75,6 +76,7 @@ getting : BE[^ing] - +1
 getting : VERB[^ing] - +2
 getting : NOUN[:ing] - -2
 giving rise : VERB[^ing]
+going to end up : VERB[^ing]
 gone out of business : VERB[^ed]
 gonna : AUXL
 got : VERB[^ed,chng,*x]
@@ -96,6 +98,7 @@ infighting : NOUN
 inspired : VERB[^ed]
 interesting : VERB[^ing]
 internationals : NOUN[:plur]
+irked that : VCTH[^ed]
 knew : VERB[^ed]
 known : VERB[^ed,*x] - +1
 leading : VERB[^ing]
@@ -167,6 +170,9 @@ serving as : VERB[^ing]
 setting : VERB[^ptcl,ing] - +1
 shot : VERB[^ed] - +2
 shown : VERB[^ed]
+signed : VERB[^ed]
+signed off : VERB[^ed]
+signing off : VERB[^ing]
 sitting : VERB[^ing]
 sold : VERB[^ed]
 spoke : VERB[^ed] - +2
@@ -392,6 +398,7 @@ from where : CONJ[@rel]
 from which : CONJ[@rel]
 frontline : ADJ
 full time : ADV
+fully eliminate : VERB
 gen. : NOUN
 genetic modification : NOUN
 genetically modified : ADJ
@@ -519,6 +526,7 @@ offline : ADJ
 offseason : ADJ
 often enough : ADV
 on through : PREP
+on whether : CONJ
 one another : PRO - +4
 open desert : NOUN
 openings : NOUN[:plur]
@@ -573,6 +581,7 @@ relicense : VERB
 remix : NOUN
 remix : VERB
 renewable energy : NOUN
+republican leader : NOUN
 research and development : NOUN
 research commission : NOUN
 results page : NOUN
@@ -610,6 +619,7 @@ spectator : ADJ - +1
 spectral type : NOUN[:*x]
 spiritual director : NOUN
 splash screen : NOUN
+state and local : ADJ
 state ceremony : NOUN
 storytelling : NOUN
 straight after : CONJ
@@ -620,6 +630,7 @@ such an : QUAN
 such as : PREP
 supply train : NOUN
 swarm robot : NOUN
+tax reform : NOUN
 teenybopper : NOUN
 telecoms giant : NOUN
 television deal : NOUN
@@ -768,6 +779,7 @@ cave-in : NOUN
 co-produce : VERB
 cul-de-sac : NOUN
 cul-de-sac street : NOUN
+cyber-intrusion : NOUN
 e-mail : NOUN
 eat-in : ADJ
 five-lane : ADJ
@@ -797,6 +809,8 @@ rear-drive : ADJ
 round-up : NOUN
 self-defensive : ADJ
 start-up : NOUN
+tax-writing : ADJ
+tax-writing committee : NOUN
 three-day : ADJ
 tighty-whities : NOUN
 top-rated : ADJ
@@ -921,6 +935,7 @@ Juan : NOUN
 Katie Sierra : NOUN
 Katrina : NOUN
 Keaton : NOUN
+Kevin Brady : NOUN
 Kristen : NOUN
 La David Johnson : NOUN
 La Nina : NOUN
@@ -960,6 +975,7 @@ Ogilvy & Mather : NOUN
 Our Lady of Sorrows : NOUN
 Paris Climate Accord : NOUN
 Paul George Dandan : NOUN
+Pfaffian : ADJ
 Premier League : NOUN
 President Donald Trump : NOUN
 President Trump : NOUN
@@ -5377,6 +5393,7 @@ continual : ADJ
 continually : ADV
 continuation : NOUN
 continue : VERB
+continued : ADJ
 continuous : ADJ
 continuous creation theory : NOUN
 continuous tense : NOUN
@@ -19693,6 +19710,7 @@ sign manual : NOUN
 sign off : VERB
 sign over : VERB
 sign up : VERB
+signed : ADJ
 signal : NOUN - +1
 signal : VERB
 signal : ADJ - -1
@@ -20976,6 +20994,7 @@ stick out : VERB
 stick shift : NOUN
 stick together : VERB
 stick up : VERB
+sticking point : NOUN
 stiff : NOUN
 stiff : ADJ
 stiff : ADV
@@ -21302,7 +21321,7 @@ substance abuse : NOUN
 substantial : ADJ
 substantially : ADV
 substantiate : VERB
-substantive : NOUN
+substantive : NOUN - -2
 substantive : ADJ
 subtle : ADJ
 subtlety : NOUN
@@ -23781,6 +23800,7 @@ way : NOUN
 way : ADV
 way out : NOUN
 way station : NOUN
+ways and means : NOUN
 weak : ADJ
 weak force : NOUN
 weak interaction : NOUN
