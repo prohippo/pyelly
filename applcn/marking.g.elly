@@ -726,7 +726,7 @@ _
     end
 __
 
-g:VCLU[^*r,infn]->TO VCLU[^-aux,-infn,-ing]
+g:VCLU[^*r,infn]->TO VCLU[^-aux,-infn,-s,-ing]
  >>++
 _
   split
@@ -964,7 +964,7 @@ _
 __
 g:NCLU[:*l]->NCLN[:num,val] POSTP[@adv]
 #             ?>>?
-  r[$trlg,spat]>>*l[&adv]++++
+  r[$trlg,spat]>>*l[&adv]++++++
                >>*l[&adv]++
 _
   append <nclu>
@@ -1072,6 +1072,7 @@ __
 
 g:NCLU[:*l]->NCLU ADJ
  n<3 l[$*c]r[$*c]>>*l++++
+     r[$trlg,prd]>>*l++
           r[$prd]>>*l+
                  >>*l------
 _
@@ -2341,6 +2342,7 @@ __
 d:against <- PREP['div]
 __
 d:across  <- PREP
+ >>+
 __
 d:under   <- PREP
  >>+

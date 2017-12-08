@@ -25,6 +25,7 @@ bit : VERB[^ed,*x]
 bookended : VERB[^ed] - -1
 born : VERB[^ed] - +2
 bosniak : ADJ
+broke out : VERB[^ed]
 building : VERB[^ing,ptcl]
 built : VERB[^ed] [$trns,noaj] +3
 caught : VERB[^ed] [$trns] 0
@@ -47,6 +48,7 @@ does : NOUN[:plur] - -1
 does : VERB[^s] - +1
 djs : VERB[^s]
 does not : AUXL[^s]
+educating themselves : VERB[^ing]
 elevated : VERB[^ed]
 evening : VERB[^ing] - -2
 exciting : VERB[^ing]
@@ -83,6 +85,7 @@ got : VERB[^ed,chng,*x]
 got out : VERB[^ed]
 got up : VERB[^ed,*x]
 growing : VERB[^ing]
+grown : VERB[^ed] - +1
 had : HAVE[^ed]
 had to : AUXL[^ed]
 has : HAVE
@@ -93,6 +96,7 @@ have to : AUXL
 having : HAVE[^ing]
 head wound : NOUN
 heard : SVED - -1
+house tax-writing committee : NOUN
 hove : VERB[^ed]
 infighting : NOUN
 inspired : VERB[^ed]
@@ -126,6 +130,7 @@ mīned : VERB[^ed] =mined
 mining : VERB[^ing] - -1
 misspoke : VERB[^ed]
 mixed : VERB[^ed]
+moved into a new phase : VERB[^ed]
 mps : NOUN[:plur]
 multibillion : ADJ
 named : VERB[^ed] - +2
@@ -176,6 +181,7 @@ signing off : VERB[^ing]
 sitting : VERB[^ing]
 sold : VERB[^ed]
 spoke : VERB[^ed] - +2
+steered clear : VERB[^ed]
 stimulating : VERB[^ing]
 stood : VERB[^ed]
 supplying : VERB[^ing] - +2
@@ -231,6 +237,7 @@ went_on : VERB[^ed] =went on
 1st mention : VERB
 2016 election meddling : NOUN
 5 minutes : NOUN
+a day later : ADV
 a few : QUAN[@ind] [!mltp] 0
 a few hundred : NUM
 a few of : QUAN
@@ -270,6 +277,7 @@ arab republic : NOUN
 armored vehicle : NOUN
 around the world : ADV
 as a means of : CONJ
+as part of : CONJ
 as a result : CONJ
 as a result of : PREP
 as compared to : CONJ
@@ -307,6 +315,7 @@ buying guide : NOUN
 by almost half : ADV[~trlg] [$deg,trlg] 0
 by far-right : PREP
 by nearly half : ADV[~trlg] [$deg,trlg] 0
+by now : ADV
 cable tv : NOUN
 cable tv channel : NOUN
 calm and collected : ADJ [$cmpd] 0
@@ -316,6 +325,7 @@ canadian/american : ADJ
 capt. : NOUN
 carefully script : VERB
 cast recording : NOUN
+can be of help : VERB
 caught wind : VERB[^ed]
 century bc : NOUN
 cheer on : VERB
@@ -330,6 +340,7 @@ cmdr. : NOUN
 col. : NOUN
 colored slave : NOUN
 computer model : NOUN
+concrete blueprint : NOUN
 confederate force : NOUN
 configurable : ADJ
 confraternity : NOUN
@@ -344,6 +355,7 @@ development team : NOUN
 die roll : NOUN
 diplomatic script : NOUN
 diplomatic tone : NOUN
+discussion point : NOUN
 do much more : VERB
 do that : VERB
 doorbuster : NOUN
@@ -363,6 +375,7 @@ early years : NOUN
 economic council : NOUN
 economic summit : NOUN
 electricity generation system : NOUN
+end a stalemate : VERB
 engineering council : NOUN
 english-language : ADJ
 entry point : NOUN
@@ -382,17 +395,20 @@ federal republic : NOUN
 feed & farm supply store : NOUN
 ferry service : NOUN
 few hundred : NUM
+final leg : NOUN
 fist fight : NOUN
 fixed investment : NOUN
 for example : PEXP[|eg]
 for now : ADV
 foreign ambassador : NOUN
 foreign intelligence : NOUN
+foreign land : NOUN
 fourpenny : NOUN - +1
 freedom ride : NOUN
 from across : PREP
 from beginning to end : ADV
 from beyond : PREP
+from there : ADV
 from what  : CONJ[@rel]
 from where : CONJ[@rel]
 from which : CONJ[@rel]
@@ -436,6 +452,7 @@ in case of : PREP
 in conjunction with : PREP
 in favor of : PREP
 in height : ADV[~trlg] [$deg] 0
+in hopes of : CONJ
 in leaps and bounds : ADV
 in length : ADV[~trlg] [$deg] 0
 in order to : TO
@@ -462,10 +479,13 @@ islamic party : NOUN
 islamic replublic : NOUN
 islamic state : NOUN
 islamic state group : NOUN
+it is clear : ELEM
 it is easy : ELEM - +4 (elma)
+it is obvious : ELEM
 jain : NOUN
 just as : CONJ - -1
 just for the hell of it : ADV
+land corridor : NOUN
 land survey : NOUN
 last week : NAVB[:det]
 last month : NAVB[:det]
@@ -493,6 +513,7 @@ media outlet : NOUN
 media pack : NOUN
 metallicity : NOUN
 micromanage : VERB
+middle east peacemaking : NOUN
 midtempo : ADJ
 military exercise : NOUN
 moneychanger : NOUN
@@ -502,6 +523,7 @@ more like : PREP
 more practical : ADJ
 more than : ADV[~mod] [$deg] 0
 most of : QUAN
+move into a new phase : VERB
 mr. : NOUN
 mrs. : NOUN
 ms. : NOUN
@@ -522,6 +544,7 @@ not only : CONJ
 now known as : CONJ
 nuclear accord : NOUN
 off the map : ADV
+official version : NOUN
 offline : ADJ
 offseason : ADJ
 often enough : ADV
@@ -537,6 +560,7 @@ our lady : NOUN
 out of : PREP['div]
 over from : PREP
 over the course of : PREP
+over whether : CONJ
 overland mail : NOUN
 overwhelming consensus : NOUN
 parallel investigation : NOUN
@@ -568,6 +592,7 @@ proof to the contrary : NOUN
 properly designed : ADJ
 proportionally spaced : ADJ
 pros and cons : NOUN
+pro-saudi : ADJ
 public sector: NOUN
 purchasing power : NOUN
 pv : ADJ
@@ -576,7 +601,10 @@ quoted from : VERB
 rebaptizer : NOUN
 recording artist : NOUN
 regardless of : PREP
+regional rival : NOUN
+regional security : NOUN
 related to : PREP
+relative newcomer : NOUN
 relicense : VERB
 remix : NOUN
 remix : VERB
@@ -597,11 +625,13 @@ rpg : NOUN
 sales team : NOUN
 saturday and sunday : NAVB
 saturday morning : NAVB
+scratching their heads : ADJ
 selectable : ADJ
 semi-autonomous : ADJ
 senate candidate : NOUN
 sgt. : NOUN
 shadow banking : NOUN
+shipping lane : NOUN
 sightseeing tour : NOUN
 signal rocket : NOUN
 since then : ADV[~cnj]
@@ -609,6 +639,7 @@ so many : QUAN[@ind]
 socialist federal republic : NOUN
 some of : QUAN
 some of which : CONJ
+southeast asian : ADJ
 somewhere along : PREP
 sorry about that : ADJ [$cmpd] 0
 southwest to : PREP
@@ -628,9 +659,13 @@ submillimeter  : ADJ
 such a  : QUAN
 such an : QUAN
 such as : PREP
+sunday night : NOUN
 supply train : NOUN
 swarm robot : NOUN
+talk-show host : NOUN
+tangible step : NOUN
 tax reform : NOUN
+television interview : NOUN
 teenybopper : NOUN
 telecoms giant : NOUN
 television deal : NOUN
@@ -666,10 +701,12 @@ u.s. charts : NOUN[:plur]
 u.s. officials : NOUN[:plur]
 u.s. special forces : NOUN[:plur]
 uav : NOUN
+ultimate deal : NOUN
 understated : VERB[^ed] - -1
 underutilization : NOUN
 underutilize : VERB
 union force : NOUN
+unlikely to be persuaded : ADJ
 unwilling to : TO
 up slightly : ADJ
 up slightly : ADV - +1
@@ -678,17 +715,23 @@ up to his neck : ADJ
 upper atmosphere : NOUN
 used to : AUXL
 versus : CONJ
+very good : ADJ
 very little : NOUN[:*l]
 very little : ADV - -1
+war memorial : NOUN
+war dead : NOUN
 warfighter : NOUN
 water use : NOUN
 what is today : ADV
+what it has learned : NOUN
 whenever and wherever : CONJ
+white house official : NOUN
 white supremacist : ADJ
 willing to : TO
 wine review : NOUN
 with no regard to : CONJ
 won : NOUN - -1
+world’s most : ADV
 yuletide spirit : NOUN
 zone training : NOUN
 
@@ -780,6 +823,8 @@ co-produce : VERB
 cul-de-sac : NOUN
 cul-de-sac street : NOUN
 cyber-intrusion : NOUN
+decades-old : ADJ
+decades-old conflict : NOUN
 e-mail : NOUN
 eat-in : ADJ
 five-lane : ADJ
@@ -790,6 +835,7 @@ full-throated : ADJ
 fully-equipped : ADJ
 half-full : ADJ
 half-sitting : VERB[^ed]
+iranian-backed : ADJ
 lesser-known : ADJ
 long-drawn : ADJ
 long-past  : ADJ
@@ -911,6 +957,7 @@ Grey Advertising : NOUN
 HBO : NOUN
 HHS : NOUN
 HLN : NOUN
+Hariri : NOUN
 Harry : NOUN
 Herzegovina : NOUN
 Hillary Clinton : NOUN
@@ -975,10 +1022,12 @@ Ogilvy & Mather : NOUN
 Our Lady of Sorrows : NOUN
 Paris Climate Accord : NOUN
 Paul George Dandan : NOUN
+Paula Yacoubian : NOUN
 Pfaffian : ADJ
 Premier League : NOUN
 President Donald Trump : NOUN
 President Trump : NOUN
+Queen Elizabeth : NOUN
 Queens Park : NOUN
 Roy Moore : NOUN
 Reaganite : NOUN
@@ -1006,6 +1055,7 @@ The Verge : NOUN [&prop] 0
 Tinian : NOUN
 Tirthankara : NOUN
 Tongo Tongo : NOUN
+Tran Dai Quang : NOUN
 Twitter : NOUN
 U.N. : NOUN
 U.S. : NOUN
@@ -11245,6 +11295,8 @@ imprison : VERB
 improve : VERB
 impulse : NOUN
 impulse explosive : NOUN
+in effect : ADJ [$trlg,prd] 0
+in effect : ADV
 in a way : ADV
 in turn : ADV
 inability : NOUN
@@ -12195,6 +12247,7 @@ laboratory bench : NOUN
 laboratory coat : NOUN
 labour : NOUN
 labour : VERB
+labour party : NOUN
 lacerate : VERB
 lacerate : ADJ - -2
 lack : NOUN
