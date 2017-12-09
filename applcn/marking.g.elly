@@ -2294,6 +2294,11 @@ g:HAVE->HAVE QUAN[@cnj]
 _
   (aux)
 __
+g:AUXL[^*l]->AUXL[^-*l,-*r] PRO
+ >>-
+_
+  (twob)
+__
 
 #
 # special contextual check
@@ -2391,6 +2396,8 @@ __
 d:without <- PREP['neg]
 __
 d:toward  <- PREP
+__
+d:towards <- PREP
 __
 d:unto <- PREP
 __
