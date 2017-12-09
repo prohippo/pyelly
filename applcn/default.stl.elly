@@ -874,7 +874,7 @@ illy 2 3 .
 ilty 1 2 .
 ilure 1 2 .
 ily 2 0 y.
-imactic 2 3 x.
+imactic 2 3 x. 2
 imal 2 2 e.
 imary 2 2 &.
 imatic 2 4 &.
@@ -941,7 +941,7 @@ ippage 2 2 . 1
 ipse 2 2 t.
 ipt 2 1 be.
 ipter 1 3 .
-iption 2 1 be.
+iption 2 1 be. 2
 iptive 2 1 be.
 iral 2 2 us.
 ircadian 2 5 &.
@@ -1041,7 +1041,6 @@ knee 0 0 .
 knew 1 2 ow. 2ed
 koan 0 0 .
 kster 2 1 .
-kwon 0 0 .
 ky 1 1 &.
 laborate 2 5 .
 lactic 1 4 .
@@ -2279,7 +2278,6 @@ wler 1 2 .
 wly 1 1 .
 woke 1 1 ake. 3ed
 wolve 1 3 f.
-won 1 1 in. 2ed
 wonder 1 4 r.
 wooden 1 4 .
 worsen 1 5 .
