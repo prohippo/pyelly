@@ -502,6 +502,8 @@ Release Notes:
                       update documentation
  1.4.17  - 27nov2017  reimplement generative semantics FIND command
                       improve logic for recompiling PyElly tables
+                      fix stemming problems with -n
+                      fix punctuation problems with [ and ]
                       extend "marking" rules
                       update documentation
 
