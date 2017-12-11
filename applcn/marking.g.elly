@@ -2343,6 +2343,7 @@ __
 d:through <- PREP
 __
 d:outside <- PREP
+ >>++++
 __
 d:against <- PREP['div]
 __
@@ -2825,33 +2826,32 @@ _
   delete 1 >
   store rbr
 __
-d:[ <- OPNP
-__
-d:] <- CLSP
-__
-g:NOUN[:*r]->OPNP NOUN
+g:NOUN[:*r]->PUNC[|*l,*x] NOUN
+ >>+
 _
   (opnpl)
 __
-g:NOUN[:*l]->NOUN CLSP
+g:NOUN[:*l]->NOUN PUNC[|*r,*x]
  >>+
 _
   (clspr)
 __
-g:VERB[^*r]->OPNP VERB
+g:VERB[^*r]->PUNC[|*l,*x] VERB
+ >>+
 _
   (opnpl)
 __
-g:VERB[^*l]->VERB CLSP
+g:VERB[^*l]->VERB PUNC[|*r,*x]
  >>+
 _
   (clspr)
 __
-g:DET[@*r]->OPNP DET
+g:DET[@*r]->PUNC[|*l,*x] DET
+ >>+
 _
   (opnpl)
 __
-g:DET[@*l]->DET CLSP
+g:DET[@*l]->DET PUNC[|*r,*x]
  >>+
 _
   (clspr)
@@ -2869,11 +2869,11 @@ _
   right
   append </date>
 __
-g:CONJ[@*r]->OPNP CONJ
+g:CONJ[@*r]->PUNC[|*l,*x] CONJ
 _
   (opnpl)
 __
-g:CONJ[@*l]->CONJ CLSP
+g:CONJ[@*l]->CONJ PUNC[|*r,*x]
  >>+
 _
   (clspr)

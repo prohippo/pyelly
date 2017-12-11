@@ -424,6 +424,7 @@ fully eliminate : VERB
 gen. : NOUN
 genetic modification : NOUN
 genetically modified : ADJ
+genetically modified crop : NOUN
 genome editing : NOUN
 gov. : NOUN
 grant aid : NOUN
@@ -571,6 +572,7 @@ or whether : CONJ
 other than : CONJ
 our lady : NOUN
 out of : PREP['div]
+outside the jurisdiction of : PREP
 over from : PREP
 over the course of : PREP
 over the weekend : ADJ
@@ -646,6 +648,7 @@ scratching their heads : ADJ
 selectable : ADJ
 semi-autonomous : ADJ
 senate candidate : NOUN
+several other : QUAN
 sgt. : NOUN
 shadow banking : NOUN
 sharpen its focus : VERB
@@ -15653,6 +15656,9 @@ output signal : NOUN
 outrage : NOUN
 outrage : VERB
 outreach : NOUN
+outside : NOUN - -1
+outside : ADJ
+outside : ADV
 outspoken : ADJ
 outstanding : ADJ
 oval : NOUN
