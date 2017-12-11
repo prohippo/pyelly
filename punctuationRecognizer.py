@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# punctuationRecognizer.py : 28sep2017 CPM
+# punctuationRecognizer.py : 09dec2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -55,10 +55,10 @@ sBRK     = 'brk'  # reserved for semantic identification of punctuation
 RS = ellyChar.RS  # special control character
 
 defns = [                                      # syntactic significance of punctuation
-    [ u'[' , '[' + pID + '*l,start]' ] ,       # equivalent to D: rules in *.g.elly
-    [ u']' , '[' + pID + '*r]' ] ,             #
-    [ u'(' , '[' + pID + '*l,start]' ] ,       # you may override with punctuation rules
-    [ u')' , '[' + pID + '*r]' ] ,             # but must set higher plausibility for them
+    [ u'[' , '[' + pID + '*l,*x,start]' ] ,    # equivalent to D: rules in *.g.elly
+    [ u']' , '[' + pID + '*r,*x]' ] ,          #
+    [ u'(' , '[' + pID + '*l,start]' ] ,       # you may override any of these with actual
+    [ u')' , '[' + pID + '*r]' ] ,             # D: punctuation rules
     [ u'“' , '[' + pID + '*l,quo,start]' ] ,
     [ u'”' , '[' + pID + '*r,quo]' ] ,
     [ u'"' , '[' + pID + '*l,*r,quo,start]' ] ,
