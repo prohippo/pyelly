@@ -3564,12 +3564,14 @@ _
   append </noun></nclu>
 __
 
+# these two rules are NOT for ( and ) !
+
 d:〈 <- PUNC[|*l,eg]
  >>++
 _
   append ‘
 __
-d:〉 <- PUNC[|*r,eg]
+d: 〉<- PUNC[|*r,eg]
  >>++
 _
   append ’

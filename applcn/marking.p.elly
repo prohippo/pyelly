@@ -125,6 +125,10 @@
 14 R-!&@[.] - 15
 15 ) XID -1
 
+ 0 &# -   16
+16 -  -   17
+17 &@ ADJ -1
+
 # en dashes in patterns below!
 
  0 ##–##   NUM -1

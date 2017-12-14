@@ -41,6 +41,7 @@ continued : VERB[^ed]
 criteria : NOUN[:plur]
 current and former : ADJ
 cut short : VERB[^ed]
+declared : VERB[^ed] - +1
 determined : VERB[^ed]
 did : VERB[^ed,*x]
 did not : AUXL[^ed]
@@ -125,6 +126,7 @@ marked : VERB[^ed]
 marking : VERB[^ing]
 means : VERB[^s] - +1
 mechanics : NOUN[:plur]
+meeting : VERB[^ing]
 mice : NOUN[:plur]
 millennia : NOUN[:plur]
 millennium bc : NOUN
@@ -137,6 +139,7 @@ mps : NOUN[:plur]
 multibillion : ADJ
 named : VERB[^ed] - +2
 named : ADJ - -4
+news release : NOUN
 obtaining : VERB[^ing] - +2
 obtaining : ADJ - -4
 opening : VERB[^ing]
@@ -148,6 +151,7 @@ paid : VERB[^ed]
 peacemaking : NOUN
 phenomena : NOUN[:plur]
 phone interview : NOUN
+pleased : VERB[^ed]
 points of View : NOUN[:plur]
 potions : NOUN
 pressing : VERB[^ing]
@@ -235,11 +239,15 @@ went_on : VERB[^ed] =went on
 
 1 another : PRO =one another
 1 of the : QUAN =one of the
+1 of them : PRO =one of them
+1 of them : QUAN - -2 =one of them
+1-forms : NOUN[:plur] - +2
 1st mention : NOUN
 1st mention : VERB
 2016 election meddling : NOUN
 5 minutes : NOUN
 a day later : ADV
+a far cry from : PREP
 a few : QUAN[@ind] [!mltp] 0
 a few hundred : NUM
 a few of : QUAN
@@ -298,9 +306,12 @@ at least one : NUM
 at least one : QUAN - +2
 at odds with : PREP
 at one point : ADV
+at the request of : PREP
 at the same time as : CONJ
 at this point : ADV
 at this point in time : ADV
+at this time : ADV
+athletic conference : NOUN
 bat and ball : ADJ
 beatle : NOUN
 because of : PREP
@@ -321,6 +332,7 @@ by almost half : ADV[~trlg] [$deg,trlg] 0
 by far-right : PREP
 by nearly half : ADV[~trlg] [$deg,trlg] 0
 by now : ADV
+cabinet meeting : NOUN
 cable tv : NOUN
 cable tv channel : NOUN
 cakeshop : NOUN
@@ -361,6 +373,7 @@ development team : NOUN
 die roll : NOUN
 diplomatic script : NOUN
 diplomatic tone : NOUN
+direct response : NOUN
 discussion point : NOUN
 do much more : VERB
 do that : VERB
@@ -445,6 +458,7 @@ here you go : VERB
 hi res : ADJ
 his or her : DEM
 hit job : NOUN
+home to their families : ADV
 homiletics : NOUN
 hot 100 : NUM
 hot 100 : NOUN
@@ -500,6 +514,7 @@ last week : NAVB[:det]
 last month : NAVB[:det]
 last year : NAVB[:det]
 later this week : NAVB[:det]
+law enforcement personnel : NOUN
 leaps and bounds : NOUN[:plur]
 less like : PREP
 less than : ADV[~mod] [$deg] 0
@@ -527,6 +542,7 @@ middle east peacemaking : NOUN
 midtempo : ADJ
 military exercise : NOUN
 moneychanger : NOUN
+monday night : NAVB[:det]
 monolog : NOUN =monologue
 more familiar : ADJ
 more like : PREP
@@ -539,13 +555,16 @@ mrs. : NOUN
 ms. : NOUN
 multilateralism : NOUN
 multimillion-dollar : ADJ
+multiple, multiple : ADJ
 muslim tradition : NOUN
 nano : NOUN
 nano robot : NOUN
 national association : NOUN
 national institute : NOUN
 national intelligence : NOUN
+national security : NOUN
 national security adviser : NOUN
+national security interest : NOUN
 neighborhood bar : NOUN
 neighborhood setting : NOUN
 newspaper best : ADJ
@@ -554,7 +573,9 @@ no one : PRO
 not only : CONJ
 now known as : CONJ
 nuclear accord : NOUN
+nuclear weapons : NOUN
 off the map : ADV
+official source : NOUN
 official version : NOUN
 offline : ADJ
 offseason : ADJ
@@ -562,7 +583,6 @@ often enough : ADV
 on aspects of : PREP
 on through : PREP
 on whether : CONJ
-one another : PRO - +4
 onramp : NOUN
 open desert : NOUN
 openings : NOUN[:plur]
@@ -572,6 +592,7 @@ or whether : CONJ
 other than : CONJ
 our lady : NOUN
 out of : PREP['div]
+out of step with : PREP
 outside the jurisdiction of : PREP
 over from : PREP
 over the course of : PREP
@@ -599,6 +620,7 @@ pit bull : NOUN
 policymaker : NOUN
 political gathering : NOUN
 political opponent : NOUN
+political world : NOUN
 possible defeat : NOUN
 presentation system : NOUN
 presuppositionalism : NOUN
@@ -641,12 +663,15 @@ rocket science : NOUN
 rockin' : ADJ
 round at : PREP
 rpg : NOUN
+safe location : NOUN
 sales team : NOUN
 saturday and sunday : NAVB
 saturday morning : NAVB
 scratching their heads : ADJ
+season opener : NOUN
 selectable : ADJ
 semi-autonomous : ADJ
+sen. : NOUN
 senate candidate : NOUN
 several other : QUAN
 sgt. : NOUN
@@ -658,6 +683,7 @@ signal rocket : NOUN
 since then : ADV[~cnj]
 so many : QUAN[@ind]
 socialist federal republic : NOUN
+soldier-turned-defector : NOUN
 some of : QUAN
 some of which : CONJ
 southeast asian : ADJ
@@ -714,6 +740,7 @@ time of year : NAVB
 time travel : NOUN
 time travel : VERB
 title track : NOUN
+to the satisfaction of : PREP
 top 40 : NUM
 top 40 hit : NOUN
 top forty : NUM
@@ -738,15 +765,19 @@ up slightly : ADV - +1
 up to : ADV[~mod] [$deg] 0
 up to his neck : ADJ
 upper atmosphere : NOUN
+us-bound : ADJ
 used to : AUXL
 versus : CONJ
+very dangerous : ADJ
 very good : ADJ
 very little : NOUN[:*l]
 very little : ADV - -1
+very pleased : ADJ
 war memorial : NOUN
 war dead : NOUN
 warfighter : NOUN
 water use : NOUN
+what i have stood for : NOUN
 what is today : ADV
 what it has learned : NOUN
 whenever and wherever : CONJ
@@ -756,6 +787,7 @@ willing to : TO
 wine review : NOUN
 with no regard to : CONJ
 won : NOUN - -1
+world-leading : ADJ
 world’s most : ADV
 yuletide spirit : NOUN
 zone training : NOUN
@@ -852,6 +884,8 @@ cul-de-sac street : NOUN
 cyber-intrusion : NOUN
 decades-old : ADJ
 decades-old conflict : NOUN
+decision-making : ADJ
+decision-making process : NOUN
 e-mail : NOUN
 eat-in : ADJ
 five-lane : ADJ
@@ -918,6 +952,7 @@ Arkansas State : NOUN
 Asia Pacific Economic Cooperation : ADJ
 Aung San Suu Kyi : NOUN
 Barack Obama : NOUN
+Bashar al-Assad : NOUN
 Battle of Dug Springs : NOUN
 BBC : NOUN
 BeMobile : NOUN
@@ -941,6 +976,7 @@ Chevrolet : NOUN
 China Central Television : NOUN[:*r]
 China Great Wall Industry Corporation : NOUN[:*r]
 Clever : NOUN - -6
+Cody Riley : NOUN
 Colorado State University : NOUN
 Coolio Earth Partnership : NOUN
 Crafty : NOUN
@@ -1005,6 +1041,7 @@ Irving : NOUN
 Islamabad Electric Supply Company : NOUN[:*r]
 Islamic State : NOUN
 Jade Helm : NOUN
+Jalen Hill : NOUN
 Janis : NOUN
 Japan International Cooperation Agency : NOUN[:*r]
 Jeremy : NOUN
@@ -1019,9 +1056,11 @@ Kevin Brady : NOUN
 Kristen : NOUN
 La David Johnson : NOUN
 La Nina : NOUN
+Larry Scott : NOUN
 Las Vegas : NOUN
 Laura : NOUN
 Lester : NOUN
+LiAngelo Hall : NOUN
 Liaoning : NOUN
 Lilly : NOUN
 Lin-Manuel Miranda : NOUN
@@ -1056,6 +1095,7 @@ Obamacare : NOUN
 Obamas : NOUN[:plur] =obama -s
 Ogilvy & Mather : NOUN
 Our Lady of Sorrows : NOUN
+PAC-12 : NOUN
 Paris Climate Accord : NOUN
 Paul George Dandan : NOUN
 Paula Yacoubian : NOUN
@@ -1065,6 +1105,7 @@ President Donald Trump : NOUN
 President Trump : NOUN
 Queen Elizabeth : NOUN
 Queens Park : NOUN
+Rancho Tehama : NOUN
 Roy Moore : NOUN
 Reaganite : NOUN
 Reuters : NOUN
@@ -1121,6 +1162,7 @@ World News Tonight with David Muir : NOUN
 Worthen : NOUN
 Xinhua : NOUN
 Youtube : NOUN
+ZANU-PF : NOUN
 Zero Mostel : NOUN
 Zigfeld Follies : NOUN
 Zimmer : NOUN
@@ -3432,6 +3474,7 @@ breast feeding : NOUN
 breast implant : NOUN
 breast pocket : NOUN
 breath : NOUN
+breathing machine : NOUN
 breeze : NOUN
 breeze : VERB
 breeze block : NOUN
@@ -5161,6 +5204,7 @@ commercial treaty : NOUN
 commission : NOUN
 commission : VERB
 commission plan : NOUN
+commissioner : NOUN
 commit : VERB
 commit suicide : VERB
 commitment : NOUN
@@ -6347,6 +6391,8 @@ debt limit : NOUN
 debtor : NOUN
 debut : NOUN
 debut : VERB
+deceased : NOUN
+deceased : ADJ
 decade : NOUN
 decal : NOUN
 decease : NOUN
@@ -6370,6 +6416,7 @@ decimal system of classification : NOUN
 decipher : VERB
 decision : NOUN
 decision maker : NOUN
+decision making : NOUN
 decision table : NOUN
 decisive : ADJ
 decisive factor : NOUN
@@ -12941,6 +12988,7 @@ life story : NOUN
 life style : NOUN
 life support : NOUN
 life tenant : NOUN
+life-threatening : ADJ
 lifelike : ADJ
 lifestyle : NOUN
 lifetime : NOUN
@@ -13877,6 +13925,7 @@ meet : NOUN - -1
 meet : VERB
 meet : ADJ - -4
 meet up with : VERB
+meeting : NOUN
 megabyte : NOUN
 melody : NOUN
 melody pipe : NOUN
@@ -16636,6 +16685,7 @@ pleasant : ADJ
 pleasant island : NOUN
 please : VERB
 please : ADV
+pleased : ADJ
 pleasure : NOUN
 pleasure boat : NOUN
 pleasure craft : NOUN
@@ -24034,6 +24084,7 @@ war secretary : NOUN
 war vessel : NOUN
 war widow : NOUN
 war zone : NOUN
+war-torn : ADJ
 ward : NOUN
 ward : VERB
 wardrobe : NOUN
