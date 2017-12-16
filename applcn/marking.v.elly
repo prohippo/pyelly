@@ -30,6 +30,8 @@ broke out : VERB[^ed]
 building : VERB[^ing,ptcl]
 buildings : NOUN[:plur]
 built : VERB[^ed] [$trns,noaj] +3
+carried out : VERB[^ed]
+carrying out : VERB[^ing]
 caught : VERB[^ed] [$trns] 0
 children : NOUN[:plur]
 circulating : VERB[^ing]
@@ -99,6 +101,7 @@ have to : AUXL
 having : HAVE[^ing]
 head wound : NOUN
 heard : SVED - -1
+hearing : VERB[^ing] - +2
 house tax-writing committee : NOUN
 hove : VERB[^ed]
 infighting : NOUN
@@ -121,6 +124,7 @@ made use of : VERB[^ed]
 made up : VERB[^ed,*x]
 makes use of : VERB[^ed]
 making it easier : VERB[^ing]
+making matters worse : VERB[^ing]
 making use of : VERB[^ing]
 marked : VERB[^ed]
 marking : VERB[^ing]
@@ -210,6 +214,7 @@ unified : VERB[^ed]
 walked away : VERB[^ed]
 walking away : VERB[^ing]
 walks away : VERB[^ing]
+was a violation of : VERB[^ed]
 went : VERB[^ed,*x]
 went out of business : VERB[^ed]
 will have to : AUXL
@@ -362,6 +367,7 @@ concrete blueprint : NOUN
 confederate force : NOUN
 configurable : ADJ
 confraternity : NOUN
+congressional lawmakers : NOUN[:plur]
 corporate bond market : NOUN
 cyber : ADJ
 dance company : NOUN
@@ -415,13 +421,16 @@ feed & farm supply store : NOUN
 ferry service : NOUN
 few hundred : NUM
 final leg : NOUN
+first strike : NOUN
 fist fight : NOUN
 fixed investment : NOUN
 for example : PEXP[|eg]
 for now : ADV
 foreign ambassador : NOUN
+foreign force : NOUN
 foreign intelligence : NOUN
 foreign land : NOUN
+foreign ministry : NOUN
 fourpenny : NOUN - +1
 freedom ride : NOUN
 from across : PREP
@@ -499,13 +508,15 @@ internet access : NOUN
 irrespective of whether : CONJ
 islamic army : NOUN
 islamic party : NOUN
-islamic replublic : NOUN
+islamic republic : NOUN
 islamic state : NOUN
 islamic state group : NOUN
+issued a firm warning to : VERB[^ed]
 it is clear : ELEM
 it is easy : ELEM - +4 (elma)
 it is obvious : ELEM
 jain : NOUN
+jihadi : NOUN
 just as : CONJ - -1
 just for the hell of it : ADV
 land corridor : NOUN
@@ -514,6 +525,7 @@ last week : NAVB[:det]
 last month : NAVB[:det]
 last year : NAVB[:det]
 later this week : NAVB[:det]
+launch procedure : NOUN
 law enforcement personnel : NOUN
 leaps and bounds : NOUN[:plur]
 less like : PREP
@@ -540,6 +552,7 @@ metallicity : NOUN
 micromanage : VERB
 middle east peacemaking : NOUN
 midtempo : ADJ
+militant group : NOUN
 military exercise : NOUN
 moneychanger : NOUN
 monday night : NAVB[:det]
@@ -728,6 +741,7 @@ the entirety : NOUN
 the past year : NAVB[:det]
 the possibility that : NCTH
 the sidelines : NOUN
+their presence : NOUN
 this month : NAVB[:det]
 this time : ADV
 this weekend : NAVB[:det]
@@ -10771,6 +10785,8 @@ healthcare facility : NOUN
 hear  : VERB [$trns] 0
 hear out : VERB
 heard : VERB[^ed] [$trns] 0
+hearing : NOUN
+hearing : ADJ - -1
 heart : NOUN
 heart attack : NOUN
 heart block : NOUN
@@ -15715,6 +15731,7 @@ oval : ADJ
 ovation : NOUN
 oven : NOUN
 ovenbird : NOUN
+over : ADV[~mod] [$deg] -6
 over again : ADV
 over here : ADV
 overall : NOUN
@@ -22737,7 +22754,7 @@ timber tree : NOUN
 timber wolf : NOUN
 timbre : NOUN
 time : NOUN
-time : VERB
+time : VERB - -2
 time being : NOUN
 time bill : NOUN
 time bomb : NOUN
@@ -24098,6 +24115,8 @@ warm front : NOUN
 warm up : VERB
 warmonger : NOUN
 warn : VERB
+warning : NOUN - -1
+warning : ADJ
 warrant : NOUN
 warrant : VERB
 warrant officer : NOUN

@@ -774,6 +774,17 @@ _
   var typd=v
   (pxnorv)
 __
+g:VCLU->PREP['of] VCLU[^ing]
+  >>--
+_
+  split
+  right
+  back
+  shift 6 <
+  append <prep>of</prep>
+  merge
+__
+
 g:SEGM->PEXP[|-nom,-vrb,-stop] PUNC[|*r]
 #   ?>>?
   n>3>>--
