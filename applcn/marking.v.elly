@@ -57,6 +57,7 @@ educating themselves : VERB[^ing]
 elevated : VERB[^ed]
 evening : VERB[^ing] - -2
 exciting : VERB[^ing]
+faces a dilemma : VERB
 feeding : VERB[^ing]
 feet : NOUN[:plur] [&msr] 0
 field-tested : VERB[^ed]
@@ -96,6 +97,7 @@ had to : AUXL[^ed]
 has : HAVE
 has had : VERB[^aux,hav]
 has to : AUXL[^s]
+have been taking place : VERB
 have had : VERB[^aux,hav]
 have to : AUXL
 having : HAVE[^ing]
@@ -131,6 +133,7 @@ marking : VERB[^ing]
 means : VERB[^s] - +1
 mechanics : NOUN[:plur]
 meeting : VERB[^ing]
+meetings : NOUN[:plur]
 mice : NOUN[:plur]
 millennia : NOUN[:plur]
 millennium bc : NOUN
@@ -196,6 +199,7 @@ stimulating : VERB[^ing]
 stood : VERB[^ed]
 supplying : VERB[^ing] - +2
 supplying : NOUN[:ing] - -1
+sweeping : VERB[^ing]
 swooping : ADJ[%ing] - +1
 swooping : VERB[^ing]
 taken : VERB[^ed]
@@ -214,6 +218,7 @@ unified : VERB[^ed]
 walked away : VERB[^ed]
 walking away : VERB[^ing]
 walks away : VERB[^ing]
+wanting to see : VERB[^ing]
 was a violation of : VERB[^ed]
 went : VERB[^ed,*x]
 went out of business : VERB[^ed]
@@ -277,11 +282,13 @@ all at once : ADV
 all but certain : ADJ
 all evening : ADV
 all of : QUAN
+all of you : NOUN
 all that : ALLTHT
 along with : PREP
 also known as : CONJ
 american embassy : NOUN
 among the first : ADJ
+amounted to : VERB[^ed]
 and even : CONJ
 and now : CONJ
 and so : CONJ
@@ -317,6 +324,7 @@ at this point : ADV
 at this point in time : ADV
 at this time : ADV
 athletic conference : NOUN
+authorities : NOUN[:plur]
 bat and ball : ADJ
 beatle : NOUN
 because of : PREP
@@ -325,6 +333,7 @@ best suit : VERB
 better of it : ADV
 birther : NOUN
 bond market : NOUN
+both houses of Congress : NOUN[:plur]
 box set : NOUN
 brotherly nations : NOUN
 building supply : NOUN
@@ -338,11 +347,13 @@ by far-right : PREP
 by nearly half : ADV[~trlg] [$deg,trlg] 0
 by now : ADV
 cabinet meeting : NOUN
+cabinet meetings : NOUN[:plur]
 cable tv : NOUN
 cable tv channel : NOUN
 cakeshop : NOUN
 calm and collected : ADJ [$cmpd] 0
 calories burned : NOUN
+campaign stop : NOUN
 can and will : AUXL
 canadian/american : ADJ
 capt. : NOUN
@@ -358,6 +369,7 @@ christian values : NOUN[:plur]
 christmas cheer : NOUN
 christmas spectacular : NOUN
 clean energy : NOUN
+closed-door meeting : NOUN
 cm long : NOUN
 cmdr. : NOUN
 col. : NOUN
@@ -369,6 +381,7 @@ configurable : ADJ
 confraternity : NOUN
 congressional lawmakers : NOUN[:plur]
 corporate bond market : NOUN
+cut ties with : VERB
 cyber : ADJ
 dance company : NOUN
 dance number : NOUN
@@ -409,7 +422,9 @@ even as : CONJ
 even before : CONJ
 even so : CONJ
 even though : CONJ
+existential threat : NOUN
 fake news : NOUN
+familiar with his thinking : ADJ
 family show : NOUN
 fan favorite : NOUN
 federal approval : NOUN
@@ -421,7 +436,6 @@ feed & farm supply store : NOUN
 ferry service : NOUN
 few hundred : NUM
 final leg : NOUN
-first strike : NOUN
 fist fight : NOUN
 fixed investment : NOUN
 for example : PEXP[|eg]
@@ -490,10 +504,13 @@ in protest against : PREP
 in recent years : ADV [$deg,time] +1
 in terms of : PREP
 in the event of : PREP
+in the works : ADJ
 in width : ADV[~trlg] [$deg] 0
 incentivize : VERB
 increase or decrease : VERB
 independent state : NOUN
+informal meeting : NOUN
+informal meetings : NOUN[:plur]
 innocuously : ADV
 innovation fund : NOUN
 insofar as : CONJ
@@ -503,9 +520,12 @@ intelligence survey : NOUN
 interchange point : NOUN
 interferometry : NOUN
 international airport : NOUN
+international community : NOUN
 international treaty : NOUN
 internet access : NOUN
 irrespective of whether : CONJ
+is presenting itself as : VERB
+is sticking by : VERB
 islamic army : NOUN
 islamic party : NOUN
 islamic republic : NOUN
@@ -519,11 +539,13 @@ jain : NOUN
 jihadi : NOUN
 just as : CONJ - -1
 just for the hell of it : ADV
+lackluster record : NOUN
 land corridor : NOUN
 land survey : NOUN
 last week : NAVB[:det]
 last month : NAVB[:det]
 last year : NAVB[:det]
+late tuesday night : NAVB[:det]
 later this week : NAVB[:det]
 launch procedure : NOUN
 law enforcement personnel : NOUN
@@ -545,6 +567,7 @@ male and female : NOUN
 male and female : ADJ - +1
 manga : NOUN
 mannerist : NOUN
+many of whom : PRO
 marchese : NOUN
 media outlet : NOUN
 media pack : NOUN
@@ -575,6 +598,7 @@ nano robot : NOUN
 national association : NOUN
 national institute : NOUN
 national intelligence : NOUN
+national interest : NOUN
 national security : NOUN
 national security adviser : NOUN
 national security interest : NOUN
@@ -583,6 +607,7 @@ neighborhood setting : NOUN
 newspaper best : ADJ
 next year : NAVB[:det]
 no one : PRO
+northern california : NOUN
 not only : CONJ
 now known as : CONJ
 nuclear accord : NOUN
@@ -613,6 +638,7 @@ over the weekend : ADJ
 over whether : CONJ
 overland mail : NOUN
 overwhelming consensus : NOUN
+panel commissioner : NOUN
 parallel investigation : NOUN
 particular focus : NOUN
 patent assist : ADJ
@@ -631,12 +657,14 @@ ping pong playing robot : NOUN
 pinyin : NOUN
 pit bull : NOUN
 policymaker : NOUN
+political capital : NOUN
 political gathering : NOUN
 political opponent : NOUN
 political world : NOUN
 possible defeat : NOUN
 presentation system : NOUN
 presuppositionalism : NOUN
+primary challenge : NOUN
 prior to : PREP
 private sector : NOUN
 programmable : ADJ
@@ -650,10 +678,9 @@ purchasing power : NOUN
 pv : ADJ
 pyroclastic : ADJ
 quoted from : VERB
+rally support for : VERB
 rebaptizer : NOUN
 recording artist : NOUN
-reevaluate : VERB
-reevaluation : NOUN
 regardless of : PREP
 regional rival : NOUN
 regional security : NOUN
@@ -668,6 +695,7 @@ research and development : NOUN
 research commission : NOUN
 results page : NOUN
 retweet : VERB
+revolve around the question of : VERB
 rgb : ADJ
 rgb monitor : NOUN
 right after : CONJ
@@ -682,6 +710,7 @@ saturday and sunday : NAVB
 saturday morning : NAVB
 scratching their heads : ADJ
 season opener : NOUN
+second thoughts : NOUN[:plur]
 selectable : ADJ
 semi-autonomous : ADJ
 sen. : NOUN
@@ -691,6 +720,8 @@ sgt. : NOUN
 shadow banking : NOUN
 sharpen its focus : VERB
 shipping lane : NOUN
+shooting rampage : NOUN
+showed no signs of : VERB
 sightseeing tour : NOUN
 signal rocket : NOUN
 since then : ADV[~cnj]
@@ -702,6 +733,7 @@ some of which : CONJ
 southeast asian : ADJ
 somewhere along : PREP
 sorry about that : ADJ [$cmpd] 0
+southern california : NOUN
 southwest to : PREP
 space authority : NOUN
 special counsel : NOUN
@@ -726,6 +758,8 @@ take-it-or-leave-it : ADJ
 talk-show host : NOUN
 tangible step : NOUN
 tax reform : NOUN
+tax legislation : NOUN
+tax overhaul : NOUN
 television interview : NOUN
 teenybopper : NOUN
 telecoms giant : NOUN
@@ -760,8 +794,10 @@ top 40 hit : NOUN
 top forty : NUM
 top forty hit : NUM
 trackwork : NOUN
+trading partner : NOUN
 u.s. charts : NOUN[:plur]
 u.s. government compound : NOUN
+u.s. official  : NOUN
 u.s. officials : NOUN[:plur]
 u.s. special forces : NOUN[:plur]
 uav : NOUN
@@ -769,11 +805,10 @@ ultimate deal : NOUN
 understated : VERB[^ed] - -1
 underutilization : NOUN
 underutilize : VERB
-undocumented : ADJ
 union force : NOUN
 unlikely to be persuaded : ADJ
-unsigned : ADJ
 unwilling to : TO
+up for reelection : ADJ
 up slightly : ADJ
 up slightly : ADV - +1
 up to : ADV[~mod] [$deg] 0
@@ -885,10 +920,10 @@ most as many : ADJ
 3-point : ADJ
 3-point shot : NOUN
 almost-indisputable : ADJ
+anti-Iran : ADJ
 asian-american : ADJ
 at-times : ADV
 bill-to : ADJ
-cakeshop : NOUN
 case-sensitive : ADJ
 cave-in : NOUN
 co-produce : VERB
@@ -900,6 +935,7 @@ decades-old : ADJ
 decades-old conflict : NOUN
 decision-making : ADJ
 decision-making process : NOUN
+dual-use : ADJ
 e-mail : NOUN
 eat-in : ADJ
 five-lane : ADJ
@@ -910,9 +946,11 @@ full-throated : ADJ
 fully-equipped : ADJ
 half-full : ADJ
 half-sitting : VERB[^ed]
+high-profile : ADJ
 iranian-backed : ADJ
 lesser-known : ADJ
 long-drawn : ADJ
+long-expected : ADJ
 long-past  : ADJ
 long-undervalued : ADJ
 mid-air : NOUN
@@ -924,11 +962,11 @@ on-grid power plant : NOUN
 once-in-a-lifetime : ADJ
 one-lane : ADJ
 one-of-a-kind : ADJ
-onramp : NOUN
 post-September 11th : ADJ
 question-and-answer : ADJ
 rear-drive : ADJ
 round-up : NOUN
+same-sex : ADJ
 self-defensive : ADJ
 start-up : NOUN
 tax-writing : ADJ
@@ -937,6 +975,7 @@ three-day : ADJ
 tighty-whities : NOUN
 top-rated : ADJ
 top-shelf : ADJ
+U.S.-China : ADJ
 U.S.-led : ADJ
 watered-down : ADJ
 wax-work : NOUN
@@ -965,6 +1004,7 @@ Apple Watch : NOUN
 Arkansas State : NOUN
 Asia Pacific Economic Cooperation : ADJ
 Aung San Suu Kyi : NOUN
+Bannon : NOUN
 Barack Obama : NOUN
 Bashar al-Assad : NOUN
 Battle of Dug Springs : NOUN
@@ -1067,9 +1107,11 @@ Katie Sierra : NOUN
 Katrina : NOUN
 Keaton : NOUN
 Kevin Brady : NOUN
+Kim Jong Un : NOUN
 Kristen : NOUN
 La David Johnson : NOUN
 La Nina : NOUN
+Larry Wortzel : NOUN
 Larry Scott : NOUN
 Las Vegas : NOUN
 Laura : NOUN
@@ -1091,6 +1133,7 @@ Michel Aoun : NOUN
 Mimi Spear : NOUN
 Missouri State : NOUN
 Mitch McConnell : NOUN
+Mohammed bin-Salman : NOUN
 MSNBC : NOUN
 MTV : NOUN
 Mueller : NOUN
@@ -1143,6 +1186,7 @@ Space and Upper Atmospheric Research Commission : NOUN
 St. Mary : NOUN - +2
 Stephan : NOUN
 Stephen Curry : NOUN
+Steve Bannon : NOUN
 Steve Jobs : NOUN
 The Verge : NOUN [&prop] 0
 Theresa May : NOUN
@@ -4892,6 +4936,7 @@ close shave : NOUN
 close support : NOUN
 close together : ADJ
 close up : ADV
+closed-door : ADJ
 closely : ADV
 closeness : NOUN
 closest : ADV
@@ -18104,7 +18149,8 @@ reckless : ADJ
 reckon : VERB
 reclassify : VERB
 recluse : NOUN
-recluse : ADJ
+recluse : ADJ - -1
+reclusive : ADJ
 recognition : NOUN
 recognize : VERB
 recollect : VERB
@@ -22008,6 +22054,8 @@ sweep hand : NOUN
 sweep off : VERB
 sweep over : VERB
 sweep up : VERB
+sweeping : NOUN
+sweeping : ADJ[%ing]
 sweet : NOUN
 sweet : ADJ
 sweet : ADV
@@ -24247,7 +24295,7 @@ wax light : NOUN
 wax paper : NOUN
 wax plant : NOUN
 way : NOUN
-way : ADV
+way : ADV - -4
 way out : NOUN
 way station : NOUN
 ways and means : NOUN
@@ -24579,6 +24627,7 @@ wild west show : NOUN
 wildfire : NOUN
 wildlife : NOUN
 wildly : ADV
+willing and able : ADJ
 willingness : NOUN
 wilson : NOUN
 wilt : NOUN

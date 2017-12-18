@@ -774,7 +774,7 @@ _
   var typd=v
   (pxnorv)
 __
-g:VCLU->PREP['of] VCLU[^ing]
+g:VCLU->PRPV VCLU[^ing]
   >>--
 _
   split
@@ -2419,6 +2419,11 @@ d:till <- PREP
 __
 
 d:to   <- TO
+__
+
+d:of   <- PRPV
+__
+d:by   <- PRPV
 __
 
 d:ago  <- POSTP[@adv]
