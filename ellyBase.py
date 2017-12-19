@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 27nov2017 CPM
+# ellyBase.py : 18dec2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -323,7 +323,10 @@ class EllyBase(object):
         if nto != ntn:
             print >> sys.stderr , ''
             print >> sys.stderr , 'WARNING: grammar rules should predefine all syntactic categories'
-            print >> sys.stderr , '         and features referenced in language definition files'
+            print >> sys.stderr , '         referenced in language definition files'
+            for i in range(nto,ntn):
+                print >> sys.stderr , '        ' , stb.ntname[i].upper() , '=' , i
+            print >> sys.stderr , ''
 
         if nfail > 0:
             print >> sys.stderr , 'exiting: table generation FAILures'
