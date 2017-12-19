@@ -348,6 +348,7 @@ croatia croat
 crossbred crossbreed
 crudely crude
 crudity crude
+cruelty cruel
 crusader crusade
 crystalline crystal
 cuable cue
@@ -591,6 +592,7 @@ foci focus
 foggier fog
 foggiest fog
 foggy fog
+foley foley
 follower follow
 footage foot
 forage forage
@@ -765,6 +767,9 @@ integral integr
 integrant integr
 integrate integr
 intensify intense
+intention intend
+intentional intend
+intentionally intend
 intercession intercede
 interference interfere
 international internation
@@ -1129,6 +1134,7 @@ random random
 randomize random
 rang ring
 ranging range
+rapacious rape
 reactant react
 reactive react
 reality real
@@ -1367,6 +1373,7 @@ statement state
 statistic statistic
 statutory statute
 steely steel
+sternest stern
 stimulant stimula
 stimuli stimulus
 stingiest stingy
@@ -1452,6 +1459,8 @@ telemetry telemetr
 telephonic telephone
 telephony telephone
 telesis telesis
+tenacious tenace
+tenacity tenace
 tent tent
 terrorism terror
 terrorist terror
@@ -1517,6 +1526,7 @@ vehement vehement
 vehemently vehement
 venomous venom
 ventilate vent
+veracity ver
 vertebral vertebra
 vestibular vestibule
 vestigial vestige
