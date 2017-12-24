@@ -1600,13 +1600,39 @@ _
   var typg=aux
   (lxtd)
 __
-g:VCLU[^aux,*r]->AUXL[^-*r] VCLU[^-aux]
+g:VCLU[^aux,*r]->AUXL[^-*r,-ptcl] VCLU[^-aux]
  l[$quo] >>*r-4
  r[$cond]>>*r+2
          >>*r+1
 _
   var typg=aux
   (lxtd)
+__
+g:VCLU[^aux,*r]->AUXL[^-*r,ptcl] VCLU[^-aux]
+
+_
+  append <aux>
+  split
+  left
+  back
+  if [$nls]
+    find < <
+  else
+    find   <
+    end
+  delete 1 >
+  append </aux>
+  linefeed
+  if [$nls]
+    append <
+    merge
+  else
+    append <pro>
+    merge
+    append </pro>
+    end
+  linefeed
+  right
 __
 g:VCLU[^*r,-ing]->BE VCLU[^ing,-aux,-hav]
  >>*r++
@@ -2300,15 +2326,24 @@ g:AUXL->AUXL QUAN[@cnj]
 _
   (aux)
 __
+g:AUXL[^*l,ptcl]->AUXL[^-*r,-ptcl] PRO
+ p<3>>++
+    >>-
+_
+  (twob)
+__
+g:AUXL[^*l,ptcl]->AUXL[^-*r,-ptcl] NCLU[:-prep]
+ n<3 r[$-*c]>>-----
+ n<3 p<3    >>[$nls]++++
+            >>[$nls]----
+_
+  (twob)
+__
+
 g:HAVE->HAVE QUAN[@cnj]
  >>++
 _
   (aux)
-__
-g:AUXL[^*l]->AUXL[^-*l,-*r] PRO
- >>-
-_
-  (twob)
 __
 
 #

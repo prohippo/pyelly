@@ -27,6 +27,7 @@ bookended : VERB[^ed] - -1
 born : VERB[^ed] - +2
 bosniak : ADJ
 broke out : VERB[^ed]
+brought to market : VERB[^ed]
 building : VERB[^ing,ptcl]
 buildings : NOUN[:plur]
 built : VERB[^ed] [$trns,noaj] +3
@@ -147,6 +148,7 @@ mps : NOUN[:plur]
 multibillion : ADJ
 named : VERB[^ed] - +2
 named : ADJ - -4
+news anchor : NOUN
 news release : NOUN
 obtaining : VERB[^ing] - +2
 obtaining : ADJ - -4
@@ -200,6 +202,7 @@ stimulating : VERB[^ing]
 stood : VERB[^ed]
 supplying : VERB[^ing] - +2
 supplying : NOUN[:ing] - -1
+supreme leader : NOUN
 sweeping : VERB[^ing]
 swooping : ADJ[%ing] - +1
 swooping : VERB[^ing]
@@ -223,6 +226,7 @@ wanting to see : VERB[^ing]
 was a violation of : VERB[^ed]
 went : VERB[^ed,*x]
 went out of business : VERB[^ed]
+whether or not : CONJ
 will have to : AUXL
 will not have to : AUXL
 withdrew : VERB[^ed]
@@ -296,6 +300,7 @@ and now : CONJ
 and so : CONJ
 and so on : MISC
 and then : CONJ
+anything else : NOUN
 anytime : NOUN
 anytime : ADV
 approximately average : ADJ
@@ -360,6 +365,7 @@ calories burned : NOUN
 campaign stop : NOUN
 can and will : AUXL
 canadian/american : ADJ
+capital spending : NOUN
 capt. : NOUN
 carefully script : VERB
 cast recording : NOUN
@@ -417,6 +423,7 @@ earlier this year : ADV
 early years : NOUN
 economic council : NOUN
 economic summit : NOUN
+electric truck : NOUN
 electricity generation system : NOUN
 end a stalemate : VERB
 engineering council : NOUN
@@ -471,6 +478,7 @@ gov. : NOUN
 grant aid : NOUN
 grant aid project : NOUN
 great western : ADJ
+growth strategy : NOUN
 guitar bridge : NOUN
 half inch : NOUN
 half of the : QUAN
@@ -667,6 +675,7 @@ political gathering : NOUN
 political opponent : NOUN
 political world : NOUN
 possible defeat : NOUN
+power center : NOUN
 presentation system : NOUN
 presuppositionalism : NOUN
 primary challenge : NOUN
@@ -757,6 +766,7 @@ such a  : QUAN
 such an : QUAN
 such as : PREP
 sunday night : NOUN
+supply chain : NOUN
 supply train : NOUN
 swarm robot : NOUN
 take-it-or-leave-it : ADJ
@@ -821,6 +831,7 @@ up to his neck : ADJ
 upper atmosphere : NOUN
 us-bound : ADJ
 used to : AUXL
+uso tour : NOUN
 versus : CONJ
 very dangerous : ADJ
 very good : ADJ
@@ -926,12 +937,16 @@ most as many : ADJ
 
 3-point : ADJ
 3-point shot : NOUN
+90-day : ADJ
+aisle-roaming : ADJ
 almost-indisputable : ADJ
 anti-Iran : ADJ
 asian-american : ADJ
+assembly-line : ADJ
 at-times : ADV
 bill-to : ADJ
 case-sensitive : ADJ
+cash-and-stock : ADJ
 cave-in : NOUN
 co-produce : VERB
 cold war-era : NOUN
@@ -954,6 +969,7 @@ fully-equipped : ADJ
 half-full : ADJ
 half-sitting : VERB[^ed]
 high-profile : ADJ
+in-store : ADJ
 iranian-backed : ADJ
 lesser-known : ADJ
 long-drawn : ADJ
@@ -969,6 +985,7 @@ on-grid power plant : NOUN
 once-in-a-lifetime : ADJ
 one-lane : ADJ
 one-of-a-kind : ADJ
+out-of-stock : ADJ
 post-September 11th : ADJ
 question-and-answer : ADJ
 rear-drive : ADJ
@@ -984,9 +1001,11 @@ top-rated : ADJ
 top-shelf : ADJ
 U.S.-China : ADJ
 U.S.-led : ADJ
+volume-weighted : ADJ
 watered-down : ADJ
 wax-work : NOUN
 world-renowned : ADJ
+would-be : ADJ
 
 # # # # some names to recognize explicitly
 
@@ -1011,6 +1030,7 @@ Apple Watch : NOUN
 Arkansas State : NOUN
 Asia Pacific Economic Cooperation : ADJ
 Aung San Suu Kyi : NOUN
+Ayatollah Ali Khamenei : NOUN
 Bannon : NOUN
 Barack Obama : NOUN
 Bashar al-Assad : NOUN
@@ -1089,6 +1109,7 @@ HHS : NOUN
 HLN : NOUN
 Hariri : NOUN
 Harry : NOUN
+Hassan Rouhani : NOUN
 Herzegovina : NOUN
 Hillary Clinton : NOUN
 Hughes : NOUN
@@ -1137,6 +1158,7 @@ Malibu : NOUN
 Marc : NOUN
 Mark Zuckerberg : NOUN
 McCarthy : NOUN
+Michael Baudendistel : NOUN
 Michael Flynn : NOUN
 Michael Keaton : NOUN
 Michel Aoun : NOUN
@@ -1144,6 +1166,7 @@ Mimi Spear : NOUN
 Missouri State : NOUN
 Mitch McConnell : NOUN
 Mohammed bin-Salman : NOUN
+Mr. President : NOUN
 MSNBC : NOUN
 MTV : NOUN
 Mueller : NOUN
@@ -1174,6 +1197,7 @@ President Trump : NOUN
 Queen Elizabeth : NOUN
 Queens Park : NOUN
 Rancho Tehama : NOUN
+Revolutionary Guards : NOUN[:plur]
 Roy Moore : NOUN
 Reaganite : NOUN
 Reuters : NOUN
@@ -1199,6 +1223,7 @@ Stephan : NOUN
 Stephen Curry : NOUN
 Steve Bannon : NOUN
 Steve Jobs : NOUN
+Talkradio 790 KABC : NOUN
 The Verge : NOUN [&prop] 0
 Theresa May : NOUN
 Tina : NOUN
@@ -1920,6 +1945,7 @@ approximately : ADV[~mod,prox]
 april : NOUN
 april fool : NOUN
 apron : NOUN
+acquirer : NOUN
 ara : NOUN
 arab : NOUN
 arab chief : NOUN
@@ -2265,6 +2291,7 @@ automatic pistol : NOUN
 automatic rifle : NOUN
 automatic weapon : NOUN
 automatically : ADV
+automation : NOUN
 automaton : NOUN
 automobile : NOUN
 automobile : VERB
@@ -4479,7 +4506,7 @@ character set : NOUN
 character witness : NOUN
 characterize : VERB
 charge : NOUN
-charge : VERB
+charge : VERB - +2
 charge account : NOUN
 charge card : NOUN
 charge plate : NOUN
@@ -5240,7 +5267,7 @@ combination : NOUN
 combination lock : NOUN
 combination plane : NOUN
 combination salad : NOUN
-combine : NOUN
+combine : NOUN - -2
 combine : VERB
 combust : VERB
 combustible : NOUN
@@ -12665,7 +12692,7 @@ knockout : NOUN
 knockout : ADJ
 knockout punch : NOUN
 know : NOUN - -2
-know : VERB
+know : VERB - +2
 know apart : VERB
 know nothing : NOUN
 knowledge : NOUN
@@ -17490,6 +17517,7 @@ present perfect : NOUN
 present perfect tense : NOUN
 present tense : NOUN
 presentation : NOUN
+presenter : NOUN
 preserve : NOUN
 preserve : VERB
 preserver : NOUN
