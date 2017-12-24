@@ -1652,7 +1652,6 @@ airport : NOUN
 aisle : NOUN
 al : NOUN
 alabama : NOUN
-alabama : NOUN
 alabama river : NOUN
 alabamian : NOUN
 alarm : NOUN
@@ -2253,7 +2252,6 @@ australian crawl : NOUN
 australian desert : NOUN
 australian dollar : NOUN
 australian state : NOUN
-austria : NOUN
 austria : NOUN
 austrian : NOUN
 austrian : ADJ
@@ -6478,8 +6476,6 @@ dc : NOUN
 de : NOUN
 de facto : ADJ
 de facto : ADV
-de facto : ADJ
-de facto : ADV
 de forest : NOUN
 de jure : ADJ
 de jure : ADV
@@ -8803,11 +8799,8 @@ female person : NOUN
 female sibling : NOUN
 feminine : NOUN
 feminine : ADJ
-feminine : NOUN
-feminine : ADJ
 femininity : NOUN
 feminism : NOUN
-feminist : NOUN
 feminist : NOUN
 feminist : ADJ
 feminist movement : NOUN
@@ -16450,8 +16443,6 @@ peaceful : ADJ
 peacekeeper : NOUN
 peacekeeping : NOUN - +2
 peacekeeping : ADJ
-peacekeeping : NOUN
-peacekeeping : ADJ
 peacekeeping mission : NOUN
 peacekeeping operation : NOUN
 peak : NOUN
@@ -18627,7 +18618,6 @@ relent : VERB
 relentless : ADJ
 relevant : ADJ
 reliability : NOUN
-reliability : NOUN
 reliance : NOUN
 reliant : ADJ
 relief : NOUN
@@ -18660,8 +18650,6 @@ religious text : NOUN
 relinquish : VERB
 relocate : VERB
 reluctance : NOUN
-reluctance : NOUN
-reluctant : ADJ
 reluctant : ADJ
 reluctantly : ADV
 rely : VERB
@@ -22891,7 +22879,6 @@ term paper : NOUN
 terminal : NOUN
 terminal : ADJ
 terminate : VERB
-terminate : VERB
 termination : NOUN
 terminology : NOUN
 terminus : NOUN
@@ -25055,8 +25042,6 @@ wing flat : NOUN
 wing screw : NOUN
 wing tip : NOUN
 winner : NOUN
-winter : NOUN
-winter : VERB
 winter : NOUN
 winter : VERB
 winter mushroom : NOUN
