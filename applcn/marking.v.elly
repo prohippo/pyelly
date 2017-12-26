@@ -12,9 +12,11 @@
 biggest : ADJ
 largest : ADJ
 
+acting : VERB[^ing]
 advanced : VERB[^ed]
 advancing : VERB[^ing]
 angrier : ADJ
+appeared : VERB[^ed]
 ate : VERB[^ed,*x]
 based on : VERB[^ed,*x]
 became : VERB[^ed,chng]
@@ -31,6 +33,7 @@ brought to market : VERB[^ed]
 building : VERB[^ing,ptcl]
 buildings : NOUN[:plur]
 built : VERB[^ed] [$trns,noaj] +3
+came to light : VERB[^ed]
 carried out : VERB[^ed]
 carrying out : VERB[^ing]
 caught : VERB[^ed] [$trns] 0
@@ -59,6 +62,7 @@ elevated : VERB[^ed]
 evening : VERB[^ing] - -2
 exciting : VERB[^ing]
 faces a dilemma : VERB
+fastest : ADJ
 feeding : VERB[^ing]
 feet : NOUN[:plur] [&msr] 0
 field-tested : VERB[^ed]
@@ -113,6 +117,7 @@ inspired : VERB[^ed]
 interesting : VERB[^ing]
 internationals : NOUN[:plur]
 irked that : VCTH[^ed]
+is currently considered : VERB
 knew : VERB[^ed]
 known : VERB[^ed,*x] - +1
 leading : VERB[^ing]
@@ -157,6 +162,7 @@ opposing : VERB[^ing]
 originated : VERB[^ed]
 originated : ADJ - -4
 ought : VERB
+overlooked : VERB[^ed] - -1
 paid : VERB[^ed]
 peacemaking : NOUN
 phenomena : NOUN[:plur]
@@ -185,6 +191,7 @@ said : VERB[^ed,dit]
 sat down : VERB[^ed,*x]
 seen : VERB[^ed]
 seen : SVED - -1
+seized control : VERB
 serve as : VERB
 served as : VERB[^ed]
 serving as : VERB[^ing]
@@ -219,6 +226,7 @@ told : VERB[^ed]
 took place : VERB[^ed]
 tore up : VERB[^ed]
 unified : VERB[^ed]
+values : VERB[^s]
 walked away : VERB[^ed]
 walking away : VERB[^ing]
 walks away : VERB[^ing]
@@ -253,10 +261,10 @@ went_on : VERB[^ed] =went on
 # # # # definitions missing from WordNet
 
 1 another : PRO =one another
+1 last time : ADV
 1 of the : QUAN =one of the
 1 of them : PRO =one of them
 1 of them : QUAN - -2 =one of them
-1-forms : NOUN[:plur] - +2
 1st mention : NOUN
 1st mention : VERB
 2016 election meddling : NOUN
@@ -320,6 +328,7 @@ as result of : CONJ
 as though : CONJ
 as well as : CONJ
 asset purchase : NOUN
+at about : PREP
 at first : ADV
 at least one : NUM
 at least one : QUAN - +2
@@ -340,6 +349,7 @@ best suit : NOUN
 best suit : VERB
 better of it : ADV
 birther : NOUN
+black community : NOUN
 bond market : NOUN
 both houses of Congress : NOUN[:plur]
 box set : NOUN
@@ -448,6 +458,7 @@ feed & farm supply store : NOUN
 ferry service : NOUN
 few hundred : NUM
 final leg : NOUN
+fireable offense : NOUN
 fist fight : NOUN
 fixed investment : NOUN
 for example : PEXP[|eg]
@@ -475,6 +486,7 @@ genetically modified : ADJ
 genetically modified crop : NOUN
 genome editing : NOUN
 gov. : NOUN
+governing coalition : NOUN
 grant aid : NOUN
 grant aid project : NOUN
 great western : ADJ
@@ -517,8 +529,10 @@ in protest against : PREP
 in recent years : ADV [$deg,time] +1
 in terms of : PREP
 in the event of : PREP
+in the wake of : PREP
 in the works : ADJ
 in width : ADV[~trlg] [$deg] 0
+inappropriate relationship : NOUN
 incentivize : VERB
 increase or decrease : VERB
 independent state : NOUN
@@ -550,6 +564,7 @@ it is easy : ELEM - +4 (elma)
 it is obvious : ELEM
 jain : NOUN
 jihadi : NOUN
+judge, jury, and executioner : NOUN
 just as : CONJ - -1
 just for the hell of it : ADV
 lackluster record : NOUN
@@ -595,6 +610,7 @@ monday night : NAVB[:det]
 monolog : NOUN =monologue
 more familiar : ADJ
 more like : PREP
+more often : ADV
 more practical : ADJ
 more than : ADV[~mod] [$deg] 0
 most of : QUAN
@@ -615,6 +631,7 @@ national interest : NOUN
 national security : NOUN
 national security adviser : NOUN
 national security interest : NOUN
+neighborhood : ADJ - -2
 neighborhood bar : NOUN
 neighborhood setting : NOUN
 newspaper best : ADJ
@@ -671,6 +688,7 @@ pinyin : NOUN
 pit bull : NOUN
 policymaker : NOUN
 political capital : NOUN
+political chaos : NOUN
 political gathering : NOUN
 political opponent : NOUN
 political world : NOUN
@@ -694,6 +712,7 @@ pyroclastic : ADJ
 quoted from : VERB
 rally support for : VERB
 rebaptizer : NOUN
+recent trip : NOUN
 recording artist : NOUN
 regardless of : PREP
 regional rival : NOUN
@@ -709,6 +728,7 @@ research and development : NOUN
 research commission : NOUN
 results page : NOUN
 retweet : VERB
+rev. : NOUN
 revolve around the question of : VERB
 rgb : ADJ
 rgb monitor : NOUN
@@ -729,6 +749,7 @@ selectable : ADJ
 semi-autonomous : ADJ
 sen. : NOUN
 senate candidate : NOUN
+servicemember : NOUN
 several other : QUAN
 sgt. : NOUN
 shadow banking : NOUN
@@ -785,6 +806,7 @@ thanks to : PREP
 that year : NAVB[:det]
 thaw with russia : NOUN
 the better of it : ADV
+the coming days : NOUN[:plur]
 the default is : VERB
 the entirety : NOUN
 the past year : NAVB[:det]
@@ -803,6 +825,7 @@ time of year : NAVB
 time travel : NOUN
 time travel : VERB
 title track : NOUN
+to not : TO
 to the satisfaction of : PREP
 top 40 : NUM
 top 40 hit : NOUN
@@ -812,6 +835,7 @@ trackwork : NOUN
 trading partner : NOUN
 u.s. charts : NOUN[:plur]
 u.s. government compound : NOUN
+u.s. market : NOUN
 u.s. official  : NOUN
 u.s. officials : NOUN[:plur]
 u.s. special forces : NOUN[:plur]
@@ -883,6 +907,8 @@ r&b : NOUN
 rosé : NOUN
 usd : POSTP
 
+, period. : PUNC[|stop]
+
 1000000000000 : NUM[:*r] - +2 =trillion
 1000000000    : NUM[:*r] - +2 =billion
 1000000       : NUM[:*r] - +2 =million
@@ -935,6 +961,7 @@ most as many : ADJ
 
 # # # # common hyphenations
 
+1-forms : NOUN[:plur] - +2
 3-point : ADJ
 3-point shot : NOUN
 90-day : ADJ
@@ -960,6 +987,7 @@ decision-making process : NOUN
 dual-use : ADJ
 e-mail : NOUN
 eat-in : ADJ
+faith-based : ADJ
 five-lane : ADJ
 four-lane : ADJ
 four-penny : ADJ
@@ -991,6 +1019,8 @@ question-and-answer : ADJ
 rear-drive : ADJ
 round-up : NOUN
 same-sex : ADJ
+seemingly insurmountable : ADJ
+seize control : VERB
 self-defensive : ADJ
 start-up : NOUN
 tax-writing : ADJ
@@ -1048,6 +1078,7 @@ BREXIT : NOUN
 CBS : NOUN
 CNBC : NOUN
 CNN : NOUN
+CNN Kfile : NOUN
 Catalina : NOUN
 Celine Dion : NOUN
 Charles : NOUN
@@ -1057,6 +1088,7 @@ Chevrolet : NOUN
 China Central Television : NOUN[:*r]
 China Great Wall Industry Corporation : NOUN[:*r]
 Clever : NOUN - -6
+Clinton era : NOUN
 Cody Riley : NOUN
 Colorado State University : NOUN
 Coolio Earth Partnership : NOUN
@@ -1067,6 +1099,7 @@ Dandan : NOUN
 Dave Stone : NOUN
 Denny : NOUN
 Desiree : NOUN
+DHS : NOUN
 Dillons : NOUN =dillon 's
 Dobrnja-jug : NOUN
 Doctor Who : NOUN
@@ -1076,13 +1109,14 @@ Donald Trump : NOUN
 DPRK : NOUN
 Duda : NOUN
 Dugs : NOUN
-EU Withdrawal Bill : NOUN
 Ebay : NOUN
 Eclogues : NOUN
 El Nino : NOUN
 Eli : NOUN
+Elon Musk : NOUN
 Enzo : NOUN
 Errol : NOUN
+EU Withdrawal Bill : NOUN
 Evans : NOUN
 Facebook : NOUN
 Fairchild : NOUN
@@ -1124,6 +1158,7 @@ Islamabad Electric Supply Company : NOUN[:*r]
 Islamic State : NOUN
 Jade Helm : NOUN
 Jalen Hill : NOUN
+Jamie : NOUN
 Janis : NOUN
 Japan International Cooperation Agency : NOUN[:*r]
 Jeremy : NOUN
@@ -1198,6 +1233,7 @@ Queen Elizabeth : NOUN
 Queens Park : NOUN
 Rancho Tehama : NOUN
 Revolutionary Guards : NOUN[:plur]
+Rockwell Automation : NOUN
 Roy Moore : NOUN
 Reaganite : NOUN
 Reuters : NOUN
@@ -1247,11 +1283,13 @@ Walter : NOUN
 Warner Brothers : NOUN
 Washington Post : NOUN
 We Want God : NOUN
+West Chester : NOUN
 West Indies : NOUN[:plur]
 White Europe : NOUN
 Whiteboys : NOUN[:plur]
 Wikileaks : NOUN
 Wikipedia : NOUN
+Wills : NOUN
 Windows 3 : NOUN
 World News Tonight with David Muir : NOUN
 Worthen : NOUN
@@ -1276,6 +1314,7 @@ into 4/4 time : ADJ
 km² : UNIT
 
 from september to december : MNRG =9-12
+to signal that : VERB[^infn]
 
 # # # # special corrections of badly written text
 
@@ -1422,6 +1461,8 @@ act : VERB - +1
 act out : VERB
 act superior : VERB
 act up : VERB
+acting : NOUN
+acting : ADJ
 action : NOUN
 action : VERB - -2
 action mechanism : NOUN
@@ -2150,6 +2191,7 @@ astronomer : NOUN
 astronomy : NOUN
 astute : ADJ
 asylum : NOUN
+at all : ADV
 at last  : ADV
 at least : ADV[~mod,int,sep]
 at most  : ADV[~mod,int,sep]
@@ -5293,6 +5335,7 @@ come out : VERB
 come out of the closet : VERB
 come over : VERB
 come round : VERB
+come to light : VERB
 come together : VERB
 come up : VERB
 come up to : VERB
@@ -6555,7 +6598,7 @@ debt limit : NOUN
 debtor : NOUN
 debut : NOUN
 debut : VERB
-decade : NOUN
+decade : NOUN [&durn,msr] 0
 decal : NOUN
 decease : NOUN
 decease : VERB
@@ -8277,6 +8320,8 @@ excursion : NOUN
 excuse : NOUN
 excuse : VERB
 execute : VERB
+execution : NOUN
+executioner : NOUN
 executive : NOUN
 executive : ADJ
 executive agency : NOUN
@@ -8485,6 +8530,8 @@ face up : VERB
 face value : NOUN
 face-to-face : ADJ
 face-to-face : ADV
+facilitate : VERB
+facilitation : NOUN
 facility : NOUN
 fact : NOUN[:dat]
 fact mood : NOUN
@@ -16044,6 +16091,7 @@ overlap : NOUN
 overlap : VERB
 overlook : NOUN
 overlook : VERB
+overlooked : ADJ
 overly : ADV
 overnight : ADJ
 overnight : ADV
@@ -17224,7 +17272,7 @@ population growth : NOUN
 population profile : NOUN
 population scientist : NOUN
 population shift : NOUN
-populism : VERB
+populism : NOUN
 populist : NOUN
 populist party : NOUN
 populous : ADJ
@@ -19868,6 +19916,7 @@ seek out : VERB
 seek time : NOUN
 seeker : NOUN
 seem : VERB
+seemingly : ADV
 segment : NOUN
 segment : VERB
 segregate : NOUN
@@ -24143,6 +24192,7 @@ value : VERB
 value judgment : NOUN
 value orientation : NOUN
 value statement : NOUN
+values : NOUN
 van : NOUN
 van allen : NOUN
 van de graaff : NOUN
@@ -24945,6 +24995,7 @@ wide : ADJ
 wide : ADV[~trlg]
 wide area network : NOUN
 wide screen : NOUN
+widen : VERB
 widespread : ADJ
 widow : NOUN
 widow : VERB

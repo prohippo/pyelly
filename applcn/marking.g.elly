@@ -1105,6 +1105,13 @@ _
   merge
   append </noun></nclu>
 __
+g:NCLU[:*l]->NCLU[:-*l,num] POSTP[@num]
+  l[&durn,msr]r[$trlg]>>++
+                      >>------
+_
+  var typg=adv
+  (rxtd)
+__
 
 g:XID->NUM[:-*l,-*r]
 #       ?>>?
