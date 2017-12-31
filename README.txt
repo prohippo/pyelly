@@ -506,6 +506,10 @@ Release Notes:
                       fix punctuation problems with [ and ]
                       extend "marking" rules
                       update documentation
+ 1.4.18  - 31ded2017  rename vocabulary table building method to avoid conflict
+                      improve handling of m dash in language definition rules
+                      extend "marking" rules
+                      update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure

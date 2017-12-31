@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 18dec2017 CPM
+# ellyBase.py : 29dec2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -58,7 +58,7 @@ import os   # needed to get file modification times
 # binary files created, saved, and reloaded
 
 rules      = ellyDefinition.grammar     # for saving grammar rules
-vocabulary = vocabularyTable.vocabulary # for saving compiled vocabulary
+vocabulary = vocabularyTable.vocabulary # for saving built vocabulary
 
 _session = '.session.elly.bin'          # for saving session information
 
@@ -70,7 +70,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.4.17'                      # current version of PyElly software
+release = 'v1.4.18'                      # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
