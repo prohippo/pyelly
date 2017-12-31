@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyDefinition.py : 24sep2015 CPM
+# ellyDefinition.py : 29dec2015 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -47,8 +47,8 @@ import ellyConfiguration
 import ellyException
 import ellyPickle
 
-grammar    = '.grammar.elly.bin'        # for saving compiled grammar rules
-vocabulary = '.vocabulary.elly.bin'     #                     vocabulary
+grammar    = '.grammar.elly.bin'        # for saving grammar rules
+vocabulary = '.vocabulary.elly.bin'     #            vocabulary
 
 class EllyDefinition(object):
 
@@ -230,7 +230,7 @@ class Vocabulary(EllyDefinition):
             if create:
                 dT = self.inpT(system,'v')
 #               dT.dump()
-                vocabularyTable.compile(system,syms,dT)
+                vocabularyTable.build(system,syms,dT)
             else:
                 sysf = system + vocabulary
                 print "loading saved vocabulary rules from" , sysf
