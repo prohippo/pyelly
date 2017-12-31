@@ -129,6 +129,14 @@
 16 -  -   17
 17 &@ ADJ -1
 
+ 0 \\[expletive\\] - 18
+18  $ UNKN -1
+18 ’s ADJ  -1
+ 0 \\[not\\] NEGN -1
+ 0 (actual)  ADJ  -1
+
+ 0 \-\- PUNC[|ctrl] -1
+
 # en dashes in patterns below!
 
  0 ##–##   NUM -1

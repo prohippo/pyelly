@@ -2011,6 +2011,18 @@ g:PREP->PREP['on] TO
 _
   (twob)
 __
+g:PRPX->DCNJ PREP['-cnj]
+_
+  (twob)
+__
+g:PRPX['*l]->PRPX['-*l] PUNC[|ctrl]
+_
+  (twob)
+__
+g:PREP->PREP['-cnj] PRPX['*l]
+_
+  (twob)
+__
 
 g:MONEY->ADV[~mod] MONEY
   >>[&cmpd]++
@@ -2201,6 +2213,10 @@ g:ADV[~*r]->NCLU[:-prep,-det,-num,plur] ADV[~trlg]
  l[&msr]>>++++
         >>----
 __
+g:ADV[~*r]->NCLU[:-prep,-det,num] ADVX
+ l[&msr]>>++
+        >>----
+__
 
 g:DEM[@*r]->PREP['-cnj] DEM[@ind]
  >>-
@@ -2323,7 +2339,12 @@ _
   right
   append </quan>
 __
-g:AUXL[^*r]->AUXL AUXL
+g:AUXL[^*r]->AUXL[^-to] AUXL[^-to]
+ >>++
+_
+  (twob)
+__
+g:AUXL[^to]->AUXL[^-to] AUXL[^to]
  >>++
 _
   (twob)
@@ -2390,6 +2411,9 @@ d:from <- PREP['div]
 __
 d:within <- PREP
  >>++
+__
+d:off <- PREP
+ >>-
 __
 d:over <- PREP
 __
@@ -2939,6 +2963,23 @@ __
 g:CNJA->CONJ AUXL
  l[!coord]>>
           >>--
+_
+  (twob)
+__
+g:CNJX->DCNJ CONJ
+_
+  (twob)
+__
+g:CNJX['*l]->CNJX['-*l] PUNC[|ctrl]
+_
+  split
+  (twob)
+  back
+  delete 2 <
+  merge
+  delete 2 >
+__
+g:CONJ->CONJ CNJX['*l]
 _
   (twob)
 __
