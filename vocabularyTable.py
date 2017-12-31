@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 28jul2017 CPM
+# vocabularyTable.py : 29dec2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -48,7 +48,7 @@ import unicodedata
 SSpec = syntaxSpecification.SyntaxSpecification
 FSpec = featureSpecification.FeatureSpecification
 
-vocabulary = '.vocabulary.elly.bin' # compiled vocabulary file suffix
+vocabulary = '.vocabulary.elly.bin' # built vocabulary file suffix
 source     = '.v.elly'              # input vocabulary text file suffix
 
 nerr = 0                            # shared error count among definition methods
@@ -137,7 +137,7 @@ def _terminate ( c ):
 
 _smfchk = [None]*symbolTable.NMAX     # for extra consistency check
 
-def compile ( name , stb , defn ):
+def build ( name , stb , defn ):
 
     """
     static method to create an Elly vocabulary database from text file input
@@ -156,7 +156,7 @@ def compile ( name , stb , defn ):
     cdb = None  # SQLite db connection
     cur = None  # SQLite db cursor
 
-#   print 'compiled stb=' , stb
+#   print 'built stb=' , stb
 
     if stb == None :
         print >> sys.stderr, 'no symbol table'
@@ -220,7 +220,7 @@ def compile ( name , stb , defn ):
                 if len(t) == 0 or len(d) == 0:
                     _err()                                # quit on missing parts
                 c = t[0]
-                if not ellyChar.isLetterOrDigit(c) and not c in [ '.' , '"' , ',' , '%' ]:
+                if not ellyChar.isLetterOrDigit(c) and not c in [ u'.' , u'"' , u',' , u'%' , u'\u2014' ]:
                     _err('bad term')
 
                 n = delimitKey(t)                         # get part of term to index
@@ -866,7 +866,7 @@ if __name__ == '__main__':
         sys.exit(1)
 
     try:
-        compile(nams,ustb,inp)             # create database from vocabulary table
+        build(nams,ustb,inp)             # create database from vocabulary table
     except ellyException.TableFailure:
         print >> sys.stderr , 'exiting'
         sys.exit(1)                        # quit on failure
