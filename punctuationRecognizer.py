@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# punctuationRecognizer.py : 09dec2017 CPM
+# punctuationRecognizer.py : 29dec2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -66,17 +66,17 @@ defns = [                                      # syntactic significance of punct
     [ u'’' , '[' + pID + '*r,quo]' ] ,
     [ u'`' , '[' + pID + '*l,quo,start]' ] ,
     [ u"'" , '[' + pID + '*l,*r,quo,start]' ] ,
-    [ u',' , '[' + pID + 'com]' , True ] ,     # special status for comma only so far
+    [ u',' , '[' + pID + 'com]' , True ]  ,    # special status for comma only so far
     [ u'.' , '[' + pID + 'stop,emb,*x]' ] ,    # these will end sentences, but could be embedded
     [ u'!' , '[' + pID + 'stop,emb]' ] ,
     [ u'?' , '[' + pID + 'stop,emb]' ] ,
     [ u':' , '[' + pID + 'stop,emb]' ] ,
     [ u';' , '[' + pID + 'stop]' ] ,
-    [ u'\u002d' , '[' + pID + 'hyph' + ']' ] , # hyphen or minus
-    [ u'\u2013' ] ,  # en dash
-    [ u'\u2014' ] ,  # em dash
-    [ u'\u2122' ] ,  # TM
-    [ u'…' ]      ,  # horizontal ellipsis
+    [ u'…' ]      ,                            # horizontal ellipsis
+    [ u'\u2122' ] ,                            # TM
+    [ u'\u2013' ] ,                            # en dash
+    [ u'\u2014' , '[' + pID + 'ctrl]'  ] ,     # em dash
+    [ u'\u002d' , '[' + pID + 'hyph]'  ] ,     # hyphen or minus
     [ u'\u3008' , '[' + pID + '*l,eg]' ] ,     # left  angle bracket
     [ u'\u3009' , '[' + pID + '*r,eg]' ]       # right angle bracket
 ]
