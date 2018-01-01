@@ -990,7 +990,7 @@ r&b : NOUN
 rosé : NOUN
 usd : POSTP
 
-, period. : PUNC[|stop]
+, period. : PUNC[|stop,*x]
 on,       : ADVX =on
 on,       : PTCL - -2
 — or      : DCNJ

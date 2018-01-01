@@ -604,7 +604,7 @@ _
 # trace
   (pbgr)
 __
-g:PEXP[|*l]->PUNC[|*l,-eg] SEGM
+g:PEXP[|*l]->PUNC[|*l] SEGM
  >>*l++
 _
   (pbgr)
@@ -1704,16 +1704,10 @@ _
   append </pro>
 __
 
-g:ADJX[%*r,lquo]->punc[|*l,quo] ADJ
+g:ADJX[%*r,lquo]->PUNC[|*l,quo] ADJ
  >>--
 __
 g:ADJ[%*l,-lquo]->ADJX[%lquo] PUNC[|*r,quo]
- >>+8
-__
-g:ADJX[%*r,lquo]->punc[|*l,eg] ADJ
- >>--
-__
-g:ADJ[%*l,-lquo]->ADJX[%lquo] PUNC[|*r,eg]
  >>+8
 __
 
@@ -2015,7 +2009,7 @@ g:PRPX->DCNJ PREP['-cnj]
 _
   (twob)
 __
-g:PRPX['*l]->PRPX['-*l] PUNC[|ctrl]
+g:PRPX['*l]->PRPX['-*l] PUNC[|-*l,-*r,-stop,*x]
 _
   (twob)
 __
@@ -2970,7 +2964,7 @@ g:CNJX->DCNJ CONJ
 _
   (twob)
 __
-g:CNJX['*l]->CNJX['-*l] PUNC[|ctrl]
+g:CNJX['*l]->CNJX['-*l] PUNC[|-*l,-*r,-stop,*x]
 _
   split
   (twob)
@@ -3028,9 +3022,6 @@ __
 g:ADJ[%*l,rquo]->ADJ[%-rquo,-*x] PUNC[|quo,-com,*r]
  l[$*c]>>--
 __
-g:ADJ[%*l,rquo]->ADJ[%-rquo,-*x] PUNC[|eg,-com,*r]
- l[$*c]>>--
-__
 g:SSNT->SEPR SENT
 _
 # trace
@@ -3086,7 +3077,7 @@ __
 d:dr  <- TITL
 __
 
-g:TITL[@dot]->TITL[@-dot] PUNC[|*x]
+g:TITL[@dot]->TITL[@-dot] PUNC[|stop,*x]
  >>++++
 __
 
@@ -3665,12 +3656,12 @@ __
 
 # these two rules are NOT for ( and ) !
 
-d:〈 <- PUNC[|*l,eg]
+d:〈 <- PUNC[|*l,quo]
  >>++
 _
   append ‘
 __
-d: 〉<- PUNC[|*r,eg]
+d: 〉<- PUNC[|*r,quo]
  >>++
 _
   append ’
