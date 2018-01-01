@@ -510,6 +510,9 @@ Release Notes:
                       improve handling of m dash in language definition rules
                       extend "marking" rules
                       update documentation
+ 1.4.18.1  01jan2018  clean up punctuation definitions
+                      clean up "marking" rules
+                      update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
