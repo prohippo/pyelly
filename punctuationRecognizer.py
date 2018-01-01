@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# punctuationRecognizer.py : 29dec2017 CPM
+# punctuationRecognizer.py : 01jan2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -33,10 +33,10 @@
 """
 builtin single-char punctuation recognition for PyElly grammars
 
-provided as a convenience so that these marks do not have to be listed in an
-internal dictionary or an external table for every grammar definition
+provided as a convenience so that these common marks do not have to be listed
+in an internal dictionary or an external table for every grammar definition
 
-multiple-char punctuation MUST be in an internal or external dictionary!
+multiple-char punctuation MUST be defined elsewhere!
 """
 
 import ellyBits
@@ -54,11 +54,15 @@ sBRK     = 'brk'  # reserved for semantic identification of punctuation
 
 RS = ellyChar.RS  # special control character
 
+# the *x feature is used below to distinguish a period, a square bracket, or an m dash;
+# syntax rules should check the other features of a leaf phrase node to determine which
+# sense is meant. Remember that *x CANNOT be inherited!
+
 defns = [                                      # syntactic significance of punctuation
     [ u'[' , '[' + pID + '*l,*x,start]' ] ,    # equivalent to D: rules in *.g.elly
     [ u']' , '[' + pID + '*r,*x]' ] ,          #
-    [ u'(' , '[' + pID + '*l,start]' ] ,       # you may override any of these with actual
-    [ u')' , '[' + pID + '*r]' ] ,             # D: punctuation rules
+    [ u'(' , '[' + pID + '*l,start]' ] ,       # you may override any of these with explicit
+    [ u')' , '[' + pID + '*r]' ] ,             # D: punctuation rules with higher plausibility
     [ u'“' , '[' + pID + '*l,quo,start]' ] ,
     [ u'”' , '[' + pID + '*r,quo]' ] ,
     [ u'"' , '[' + pID + '*l,*r,quo,start]' ] ,
@@ -75,13 +79,11 @@ defns = [                                      # syntactic significance of punct
     [ u'…' ]      ,                            # horizontal ellipsis
     [ u'\u2122' ] ,                            # TM
     [ u'\u2013' ] ,                            # en dash
-    [ u'\u2014' , '[' + pID + 'ctrl]'  ] ,     # em dash
-    [ u'\u002d' , '[' + pID + 'hyph]'  ] ,     # hyphen or minus
-    [ u'\u3008' , '[' + pID + '*l,eg]' ] ,     # left  angle bracket
-    [ u'\u3009' , '[' + pID + '*r,eg]' ]       # right angle bracket
+    [ u'\u2014' , '[' + pID + '*x]'  ]  ,      # em dash
+    [ u'\u002d' , '[' + pID + 'hyph]'  ]       # hyphen or minus
 ]
 
-smfs  = {  # special semantic features
+smfs  = {  # semantic features for particular punctuation
     u')' : '[' + sID + 'spcs]'
 }
 
