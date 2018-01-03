@@ -511,7 +511,7 @@ Release Notes:
                       extend "marking" rules
                       update documentation
  1.4.18.1  01jan2018  clean up punctuation definitions
-                      clean up "marking" rules
+                      clean up and extend "marking" rules
                       update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
