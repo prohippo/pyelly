@@ -135,6 +135,9 @@
  0 \\[not\\] NEGN -1
  0 (actual)  ADJ  -1
 
+ 0 now- -    20
+20 &@   NOUN -1
+
 # en dashes in patterns below!
 
  0 ##–##   NUM -1

@@ -55,6 +55,7 @@ determined : VERB[^ed]
 did : VERB[^ed,*x]
 did not : AUXL[^ed]
 discouraged : VERB[^ed]
+disturbing : VERB[^ing]
 djs : NOUN[:plur]
 does : NOUN[:plur] - -1
 does : VERB[^s] - +1
@@ -200,6 +201,8 @@ related : VERB[^ed]
 remaining : VERB[^ing] - -1
 remains : VERB[^s,proc] - +3
 residents : NOUN[:plur]
+revolved around : VERB[^ed]
+rock-wielding : ADJ
 rolled back : VERB[^ed]
 rose : VERB[^ed,*x] - +2
 rushing : VERB[^ing] - +1
@@ -214,6 +217,7 @@ served as : VERB[^ed]
 serving as : VERB[^ing]
 setting : VERB[^ptcl,ing] - +1
 shot : VERB[^ed] - +2
+shot and killed : VERB[^ed]
 shown : VERB[^ed]
 signed : VERB[^ed]
 signed off : VERB[^ed]
@@ -251,6 +255,7 @@ walked away : VERB[^ed]
 walking away : VERB[^ing]
 walks away : VERB[^ing]
 wanting to see : VERB[^ing]
+warfighting : NOUN
 was a violation of : VERB[^ed]
 went : VERB[^ed,*x]
 went out of business : VERB[^ed]
@@ -353,6 +358,7 @@ as result of : CONJ
 as though : CONJ
 as well as : CONJ
 asset purchase : NOUN
+at a home : ADV
 at a time when : CONJ
 at about : PREP
 at first : ADV
@@ -372,6 +378,7 @@ autoplay : NOUN
 bat and ball : ADJ
 beatle : NOUN
 because of : PREP
+best for them : ADJ
 best suit : NOUN
 best suit : VERB
 better of it : ADV
@@ -527,6 +534,7 @@ genetically modified crop : NOUN
 genome editing : NOUN
 gov. : NOUN
 governing coalition : NOUN
+government figure : NOUN
 grant aid : NOUN
 grant aid project : NOUN
 great western : ADJ
@@ -544,6 +552,7 @@ has to do : VERB
 hashtag : NOUN
 have done so : VERB[^hav,ed]
 heavy fighting : NOUN
+helter skelter : NOUN
 here you go : VERB
 hi res : ADJ
 his or her : DEM
@@ -555,6 +564,7 @@ hot 100 : NOUN
 hurricane activity : NOUN
 hydro : NOUN
 hydro : ADJ - +2
+illegal immigrant : NOUN
 in addition to : PREP
 in anticipation of : PREP
 in any way : ADV
@@ -599,6 +609,7 @@ international airport : NOUN
 international community : NOUN
 international treaty : NOUN
 internet access : NOUN
+internet service provider : NOUN
 into whether : CONJ
 irrespective of whether : CONJ
 is presenting itself as : VERB
@@ -653,9 +664,12 @@ male and female : NOUN
 male and female : ADJ - +1
 male genetalia : NOUN
 manga : NOUN
+manmade : ADJ
 mannerist : NOUN
 many of whom : PRO
 marchese : NOUN
+may have : AUXL
+may have been : AUXL
 media outlet : NOUN
 medical textbook : NOUN
 media pack : NOUN
@@ -716,6 +730,7 @@ often enough : ADV
 on aspects of : PREP
 on hold : ADJ
 on hold : ADV
+on the other end : ADV
 on through : PREP
 on whether : CONJ
 onramp : NOUN
@@ -724,6 +739,7 @@ openings : NOUN[:plur]
 or else : CONJ
 or more : POSTP[@num] [$trlg] 0
 or whether : CONJ
+other reports suggest : ADV
 other than : CONJ
 our lady : NOUN
 out of : PREP['div]
@@ -820,10 +836,13 @@ scratching their heads : ADJ
 season opener : NOUN
 second thoughts : NOUN[:plur]
 selectable : ADJ
+selfie : NOUN
+selfies : NOUN[:plur]
 semi-autonomous : ADJ
 sen. : NOUN
 senate candidate : NOUN
 senior level : NOUN
+service plan : NOUN
 servicemember : NOUN
 several other : QUAN
 sgt. : NOUN
@@ -835,7 +854,9 @@ showed no signs of : VERB
 sightseeing tour : NOUN
 signal rocket : NOUN
 since then : ADV[~cnj]
+small business : NOUN
 so many : QUAN[@ind]
+so that : CONJ
 socialist federal republic : NOUN
 soldier-turned-defector : NOUN
 some of : QUAN
@@ -856,6 +877,7 @@ spiritual director : NOUN
 splash screen : NOUN
 state and local : ADJ
 state ceremony : NOUN
+state police : NOUN
 storytelling : NOUN
 straight after : CONJ
 streetlamp : NOUN
@@ -876,6 +898,7 @@ tangible step : NOUN
 tax reform : NOUN
 tax legislation : NOUN
 tax overhaul : NOUN
+technical information : NOUN
 television interview : NOUN
 teenybopper : NOUN
 telecoms giant : NOUN
@@ -915,6 +938,8 @@ top forty : NUM
 top forty hit : NUM
 trackwork : NOUN
 trading partner : NOUN
+traffic stop : NOUN
+tuesday morning : NAVB
 u.s. charts : NOUN[:plur]
 u.s. government compound : NOUN
 u.s. market : NOUN
@@ -923,6 +948,7 @@ u.s. officials : NOUN[:plur]
 u.s. special forces : NOUN[:plur]
 uav : NOUN
 ultimate deal : NOUN
+under any circumstances : ADV
 understated : VERB[^ed] - -1
 underutilization : NOUN
 underutilize : VERB
@@ -955,6 +981,8 @@ what it has learned : NOUN
 whenever and wherever : CONJ
 white house official : NOUN
 white supremacist : ADJ
+who authorities say : CONJ
+widely known : ADJ
 willing to : TO
 wine review : NOUN
 with no regard to : CONJ
@@ -1146,17 +1174,20 @@ American Civil Liberties Union : NOUN
 Amor Victorious : NOUN
 Andrzej : NOUN
 Andras : NOUN
+Angela Merkel : NOUN
 Angelina : NOUN
 Angelina Jolie : NOUN
 Apple II computer : NOUN
 Apple Watch : NOUN
 Arkansas State : NOUN
 Asia Pacific Economic Cooperation : ADJ
+Associated Press : NOUN
 Aung San Suu Kyi : NOUN
 Ayatollah Ali Khamenei : NOUN
 Bannon : NOUN
 Barack Obama : NOUN
 Bashar al-Assad : NOUN
+Bashar Assad : NOUN
 Battle of Dug Springs : NOUN
 BBC : NOUN
 BeMobile : NOUN
@@ -1168,6 +1199,8 @@ Black Lives Matter : NOUN[:*r]
 Bob Geldof : NOUN
 Breitbart : NOUN
 BREXIT : NOUN
+Brian Shaw : NOUN
+Bundestag : NOUN
 CBS : NOUN
 CNBC : NOUN
 CNN : NOUN
@@ -1184,6 +1217,7 @@ Clever : NOUN - -6
 Clinton era : NOUN
 Cody Riley : NOUN
 Colorado State University : NOUN
+Comey : NOUN
 Coolio Earth Partnership : NOUN
 Crafty : NOUN
 Crater Lake : NOUN
@@ -1195,11 +1229,13 @@ Denny : NOUN
 Desiree : NOUN
 DHS : NOUN
 Dillons : NOUN =dillon 's
+Dina : NOUN
 Dobrnja-jug : NOUN
 Doctor Who : NOUN
 Dolores : NOUN
 Donald : NOUN
 Donald Trump : NOUN
+Doug : NOUN
 DPRK : NOUN
 Duda : NOUN
 Dugs : NOUN
@@ -1208,6 +1244,7 @@ Eclogues : NOUN
 El Nino : NOUN
 Eli : NOUN
 Elon Musk : NOUN
+Emmanuel : NOUN
 Enzo : NOUN
 Errol : NOUN
 EU Withdrawal Bill : NOUN
@@ -1216,10 +1253,12 @@ Facebook : NOUN
 Fairchild : NOUN
 Farhan Haq : NOUN
 FBI : NOUN
+F.C.C. : NOUN
 Federal Aviation Administration : NOUN
 Federal Open Market Committee : NOUN[:*r]
 Ferguson : NOUN
 Flannery : NOUN
+Forbes : NOUN
 Franken : NOUN
 Freedom of the City award : NOUN
 Furnariidae : NOUN
@@ -1262,8 +1301,10 @@ Japan International Cooperation Agency : NOUN[:*r]
 Jared : NOUN
 Jeff Sessions : NOUN
 Jeremy : NOUN
+John Beck : NOUN
 Jim : NOUN
 Jinping : NOUN
+Jones : NOUN
 Josephine County : NOUN
 Juan : NOUN
 Katie Sierra : NOUN
@@ -1272,9 +1313,10 @@ Keaton : NOUN
 Kevin Brady : NOUN
 Kim Jong Un : NOUN
 Kislyak : NOUN
-Kirsten Gillebrand : NOUN
+Kirsten Gillibrand : NOUN
 Kristen : NOUN
 Ku Klux Klan : NOUN
+Kushner : NOUN
 La David Johnson : NOUN
 La Nina : NOUN
 Larry Wortzel : NOUN
@@ -1292,10 +1334,14 @@ Lord Mayor of Dublin : NOUN
 Love Victorious : NOUN
 Mali : NOUN
 Malibu : NOUN
+Manafort : NOUN
 Mar del Plata : NOUN
 Marc : NOUN
 Mark Zuckerberg : NOUN
+Martinez : NOUN
+Mattis : NOUN
 McCarthy : NOUN
+Merkel : NOUN
 Michael Baudendistel : NOUN
 Michael Flynn : NOUN
 Michael Keaton : NOUN
@@ -1315,6 +1361,7 @@ NBC : NOUN
 NCIS : NOUN
 Naval Criminal Investigative Service : NOUN
 Netanyahu : NOUN
+New Kensington : NOUN
 New York Times : NOUN
 NFL : NOUN
 Nicholas : NOUN
@@ -1329,6 +1376,8 @@ PAC-12 : NOUN
 Paris Climate Accord : NOUN
 Paul George Dandan : NOUN
 Paula Yacoubian : NOUN
+PBS : NOUN
+PBS program : NOUN
 Pfaffian : ADJ
 POLITICO : NOUN
 Post-Gazette : NOUN
@@ -1363,6 +1412,7 @@ Shi‘ite : NOUN
 Shindake : NOUN
 Ship of Fools : NOUN
 Showcase Presentations : NOUN
+South Florida : NOUN
 Space and Upper Atmospheric Research Commission : NOUN
 Spokesman-Review : NOUN
 St. Mary : NOUN - +2
@@ -1370,7 +1420,9 @@ Stephan : NOUN
 Stephen Curry : NOUN
 Steve Bannon : NOUN
 Steve Jobs : NOUN
+Sueddeutsche Zeitung : NOUN
 Talkradio 790 KABC : NOUN
+Team Lacoste : NOUN
 The Verge : NOUN [&prop] 0
 Theresa May : NOUN
 Tierra del Fuego : NOUN
@@ -1385,6 +1437,8 @@ U.S. : NOUN
 Uber : NOUN
 UCLA : NOUN
 USNORTHCOM : NOUN
+USO : NOUN
+Van Horn : NOUN
 Veteran's Day : NOUN
 Vincent : NOUN
 Vladimir Putin : NOUN
@@ -1398,6 +1452,7 @@ WCNC-TV : NOUN
 We Want God : NOUN
 West Chester : NOUN
 West Indies : NOUN[:plur]
+Westmoreland County : NOUN
 White Europe : NOUN
 Whiteboys : NOUN[:plur]
 Wikileaks : NOUN
@@ -7325,6 +7380,7 @@ distrust : NOUN
 distrust : VERB
 disturb : VERB
 disturbance : NOUN
+disturbing : ADJ
 ditch : NOUN
 ditch : VERB
 ditch fern : NOUN
@@ -9603,6 +9659,7 @@ foreign office : NOUN
 foreign policy : NOUN
 foreign service : NOUN
 foreign terrorist organization : NOUN
+foreigner : NOUN
 foresee : VERB
 forest : NOUN
 forest : VERB
@@ -11144,9 +11201,12 @@ headache powder : NOUN
 header : NOUN
 headline : NOUN
 headline : VERB
+headliner : NOUN
 headmaster : NOUN
 headquarter : VERB
 headquarters : NOUN
+heads-up : NOUN
+heads-up : ADJ - -1
 headwind : NOUN
 heal : VERB
 health : NOUN
@@ -13709,6 +13769,8 @@ loner : NOUN
 long : VERB
 long : ADJ - +1
 long : ADV
+long ago : ADV
+long-ago : ADJ
 long beach : NOUN
 long bone : NOUN
 long chain : NOUN
@@ -14074,6 +14136,7 @@ manual labor : NOUN
 manufacture : NOUN
 manufacture : VERB
 manuscript : NOUN
+man-made : ADJ
 map : NOUN
 map : VERB
 map collection : NOUN
@@ -14504,6 +14567,8 @@ method : NOUN
 methodical : ADJ
 methodology : NOUN
 meticulous : ADJ
+meticulously : ADV
+meticulousness : NOUN
 metre : NOUN
 metric : NOUN
 metric : ADJ
@@ -20857,6 +20922,7 @@ sky : VERB - -2
 sky glow : NOUN
 sky pilot : NOUN
 sky wave : NOUN
+skywriting : NOUN
 slam : NOUN
 slam : VERB
 slam dance : NOUN

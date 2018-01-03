@@ -539,6 +539,9 @@ _
   right
   append </punc>
 __
+g:PUNC[|*l]->PUNC[|*l,quo] NEGN
+ >>-
+__
 
 p:pbeg
 _
