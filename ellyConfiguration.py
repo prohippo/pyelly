@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyConfiguration.py : 18may2017 CPM
+# ellyConfiguration.py : 05jan2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -55,10 +55,11 @@ import extractionProcedure    # definition of procedures to extract entities
 rewriteNumbers = True         # enable automatic rewriting of number expressions
 
 extractors = [                # what entity extraction procedures to use
-    [ extractionProcedure.date    , 'date' , '-'     ] ,
-    [ extractionProcedure.time    , 'time' , '-' , 1 ] ,
-    [ extractionProcedure.acronym , 'acro' , '-' , 1 ] ,
-    [ extractionProcedure.title   , 'nttl' , '-' , 1 ]
+    [ extractionProcedure.date       , 'date' , '-'     ] ,
+    [ extractionProcedure.time       , 'time' , '-' , 1 ] ,
+    [ extractionProcedure.acronym    , 'acro' , '-' , 1 ] ,
+    [ extractionProcedure.title      , 'nttl' , '-' , 1 ] ,
+    [ extractionProcedure.timePeriod , 'navb[:det]' , '-' , 1 ]
 ]
 
 noteIndentation = True        # for reformatting free text

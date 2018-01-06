@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# extractionProcedure.py : 21may2017 CPM
+# extractionProcedure.py : 05jan2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -138,7 +138,7 @@ Lmax = 8
 def acronym ( buffr ):
 
     """
-    recognize parenthesized introdumction of acronym in text
+    recognize parenthesized introduction of acronym in text
 
     arguments:
         buffr - current contents as list of chars
@@ -219,6 +219,84 @@ def title ( buffr ):
 
     return ib
 
+####
+#### look for time period reference
+
+_modifier = [
+    'early' , 'late'
+]
+
+_day = [
+    'sunday' , 'monday' , 'tuesday' , 'wednesday' , 'thursday' , 'friday' , 'saturday' ,
+    'christmas' , 'easter'
+]
+
+_period = [
+    'morning' , 'noon' , 'afternoon' , 'evening' , 'night'
+]
+
+def _scan ( buffr ):
+    """
+    count chars to first non-alphabetic char
+    arguments:
+        buffr - list of chars
+    returns:
+        number of letters
+    """
+    n = 0
+    ln = len(buffr)
+    while n < ln:
+        if not ellyChar.isLetter(buffr[n]):
+            break
+        n += 1
+    return n
+
+def timePeriod ( buffr ):
+
+    """
+    recognize time period in a day
+
+    arguments:
+        buffr - current contents as list of chars
+
+    returns:
+        char count matched on success, 0 otherwise
+    """
+
+#   print 'buffr=' , buffr
+    ln = len(buffr)
+    if ln == 0 or not ellyChar.isLetter(buffr[0]):
+        return 0
+    k = _scan(buffr)
+#   print '0 k=' , k
+    if k == ln or buffr[k] != ' ':
+        return 0
+    a = u''.join(buffr[:k]).lower()
+#   print 'a=' , a
+    if a in _modifier:
+        n = k + 1
+        buffr = buffr[n:]
+    else:
+        n = 0
+    k = _scan(buffr)
+#   print '1 k=' , k
+    if k < 6:
+        return 0
+    b = u''.join(buffr[:k]).lower()
+    if not b in _day:
+        return 0
+    buffr = buffr[k:]
+    n += k
+    if len(buffr) < 5 or buffr[0] != ' ':
+        return n if n > k else 0
+    m = _scan(buffr[1:])
+#   print '2 m=' , m
+    c = u''.join(buffr[1:m+1]).lower()
+    if c in _period:
+        return n + m + 1
+    else:
+        return n if n > k else 0
+
 #
 # unit test
 #
@@ -238,11 +316,14 @@ if __name__ == '__main__':
         if len(l) == 0 or l[0] == '\n': break
         txt = list(l.strip())
         so.write('\n')
-        n = acronym(txt)
-        so.write(str(n) + ' char(s) matched for acronym')
+        nc = acronym(txt)
+        so.write(str(nc) + ' char(s) matched for acronym')
         so.write('\n')
-        n = title(txt)
-        so.write(str(n) + ' char(s) matched for title')
+        nc = title(txt)
+        so.write(str(nc) + ' char(s) matched for title')
+        so.write('\n')
+        nc = timePeriod(txt)
+        so.write(str(nc) + ' char(s) matched for timePeriod')
         so.write('\n')
 
     so.write('\n')
