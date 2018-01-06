@@ -513,6 +513,9 @@ Release Notes:
  1.4.18.1  01jan2018  clean up punctuation definitions
                       clean up and extend "marking" rules
                       update documentation
+ 1.4.19  - 06jan1018  add time period entity extraction
+                      clean up and extend "marking" rules
+                      update and revise documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
