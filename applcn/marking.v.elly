@@ -27,6 +27,7 @@ believes : VERB[^s]
 bit : VERB[^ed,*x]
 bookended : VERB[^ed] - -1
 born : VERB[^ed] - +2
+bosniak : NOUN
 bosniak : ADJ
 bowing to pressure from : VERB[^ing]
 broke out : VERB[^ed]
@@ -119,6 +120,7 @@ having : HAVE[^ing]
 head wound : NOUN
 heard : SVED - -1
 hearing : VERB[^ing] - +2
+held hostage : VERB[^ed]
 house tax-writing committee : NOUN
 hove : VERB[^ed]
 have nothing to do with : VERB
@@ -171,6 +173,7 @@ news release : NOUN
 obtaining : VERB[^ing] - +2
 obtaining : ADJ - -4
 officials : NOUN[:plur]
+oil minister : NOUN
 opening : VERB[^ing]
 opposing : VERB[^ing]
 originated : VERB[^ed]
@@ -207,6 +210,7 @@ rolled back : VERB[^ed]
 rose : VERB[^ed,*x] - +2
 rushing : VERB[^ing] - +1
 said : VERB[^ed,dit]
+said at the time : VERB[^ed,dit]
 sat : VERB[^ed]
 sat down : VERB[^ed,*x]
 seen : VERB[^ed]
@@ -228,6 +232,7 @@ spoke : VERB[^ed] - +2
 steered clear : VERB[^ed]
 stimulating : VERB[^ing]
 stood : VERB[^ed]
+supplly cut : NOUN
 supplying : VERB[^ing] - +2
 supplying : NOUN[:ing] - -1
 supreme leader : NOUN
@@ -295,6 +300,7 @@ went_on : VERB[^ed] =went on
 1st mention : VERB
 2016 election meddling : NOUN
 5 minutes : NOUN
+a claim : NOUN[:join]
 a day later : ADV
 a far cry from : PREP
 a few : QUAN[@ind] [!mltp] 0
@@ -307,6 +313,7 @@ a third the : NUM
 a thousand : NUM
 about to : TO
 about whether : CONJ
+above water : ADJ
 according to : PREP
 achieve the ultimate deal : VERB
 achingly : ADV
@@ -430,6 +437,7 @@ cm long : NOUN
 cmdr. : NOUN
 col. : NOUN
 colored slave : NOUN
+coming off of : PREP
 computer model : NOUN
 concrete blueprint : NOUN
 confederate force : NOUN
@@ -438,6 +446,7 @@ confraternity : NOUN
 congressional lawmakers : NOUN[:plur]
 consider the fate of : VERB
 corporate bond market : NOUN
+current events : NOUN[:plur]
 cut ties with : VERB
 cyber : ADJ
 dance company : NOUN
@@ -492,6 +501,7 @@ existential threat : NOUN
 express in words : VERB
 fake news : NOUN
 familiar with his thinking : ADJ
+familiar with the matter : ADJ
 family show : NOUN
 fan favorite : NOUN
 federal approval : NOUN
@@ -515,7 +525,6 @@ foreign land : NOUN
 foreign ministry : NOUN
 fourpenny : NOUN - +1
 freedom ride : NOUN
-friday night : NAVB
 from across : PREP
 from beginning to end : ADV
 from beyond : PREP
@@ -636,7 +645,6 @@ land survey : NOUN
 last week : NAVB[:det]
 last month : NAVB[:det]
 last year : NAVB[:det]
-late tuesday night : NAVB[:det]
 later this week : NAVB[:det]
 launch order : NOUN
 launch procedure : NOUN
@@ -682,7 +690,6 @@ midtempo : ADJ
 militant group : NOUN
 military exercise : NOUN
 moneychanger : NOUN
-monday night : NAVB[:det]
 monolog : NOUN =monologue
 mood swing : NOUN
 more familiar : ADJ
@@ -748,6 +755,7 @@ outside the jurisdiction of : PREP
 over from : PREP
 over the course of : PREP
 over the weekend : ADJ
+over there : ADV
 over whether : CONJ
 overland mail : NOUN
 overwhelming consensus : NOUN
@@ -810,6 +818,7 @@ regional security : NOUN
 related to : PREP
 relative newcomer : NOUN
 relicense : VERB
+relist : VERB
 remix : NOUN
 remix : VERB
 renewable energy : NOUN
@@ -831,7 +840,6 @@ rpg : NOUN
 safe location : NOUN
 sales team : NOUN
 saturday and sunday : NAVB
-saturday morning : NAVB
 scratching their heads : ADJ
 season opener : NOUN
 second thoughts : NOUN[:plur]
@@ -885,7 +893,6 @@ submillimeter  : ADJ
 such a  : QUAN
 such an : QUAN
 such as : PREP
-sunday night : NOUN
 supply chain : NOUN
 supply train : NOUN
 swarm robot : NOUN
@@ -908,6 +915,7 @@ than ever before : CMPC
 thanks to : PREP
 that year : NAVB[:det]
 thaw with russia : NOUN
+the above : ADJ
 the better of it : ADV
 the coming days : NOUN[:plur]
 the default is : VERB
@@ -922,7 +930,6 @@ this month : NAVB[:det]
 this time : ADV
 this weekend : NAVB[:det]
 this year : NAVB[:det]
-throughout : PREP
 time control : NOUN
 time lord : NOUN
 time of the year : NAVB
@@ -939,7 +946,6 @@ top forty hit : NUM
 trackwork : NOUN
 trading partner : NOUN
 traffic stop : NOUN
-tuesday morning : NAVB
 u.s. charts : NOUN[:plur]
 u.s. government compound : NOUN
 u.s. market : NOUN
@@ -1126,6 +1132,8 @@ mid-air : NOUN
 mid-century : ADJ
 mixed-species : ADJ
 ocean-view home : NOUN
+op-ed : NOUN - -1
+op-ed : ADJ
 non-stick : ADJ
 on-grid : ADJ
 on-grid power plant : NOUN
@@ -1215,6 +1223,7 @@ China Central Television : NOUN[:*r]
 China Great Wall Industry Corporation : NOUN[:*r]
 Clever : NOUN - -6
 Clinton era : NOUN
+Cobiac : NOUN
 Cody Riley : NOUN
 Colorado State University : NOUN
 Comey : NOUN
@@ -1363,6 +1372,7 @@ Naval Criminal Investigative Service : NOUN
 Netanyahu : NOUN
 New Kensington : NOUN
 New York Times : NOUN
+News-Miner : NOUN
 NFL : NOUN
 Nicholas : NOUN
 Novaes : NOUN
@@ -1517,6 +1527,7 @@ abort : NOUN
 abort : VERB
 abortion : NOUN
 abortion pill : NOUN
+above : ADV
 abraham : NOUN
 abraham lincoln : NOUN
 abroad : ADJ
@@ -2231,6 +2242,7 @@ array : VERB
 arrest : NOUN
 arrest : VERB
 arrest warrant : NOUN
+arrival : NOUN
 arrive : VERB
 arrogant : ADJ
 arrow : NOUN
@@ -3644,6 +3656,7 @@ borrow pit : NOUN
 bosch : NOUN
 bosnia : NOUN
 bosnia and herzegovina : NOUN
+bosnian : NOUN
 boss : NOUN
 boss : VERB
 boss : ADJ
@@ -8748,6 +8761,7 @@ fair sex : NOUN
 fair trade : NOUN
 fair use : NOUN
 fair weather : NOUN
+fairbanks : NOUN
 fairground : NOUN
 fairly : ADV
 fairness : NOUN
@@ -19856,6 +19870,8 @@ school text : NOUN
 school year : NOUN
 schoolteacher : NOUN
 schulz : NOUN
+sceptic : NOUN
+sceptical : ADJ
 science : NOUN
 science fiction : NOUN
 science lab : NOUN
@@ -20868,6 +20884,8 @@ size up : VERB
 skate : NOUN
 skate : VERB
 skater : NOUN
+skeptic : NOUN
+skeptical : ADJ
 ski : NOUN
 ski : VERB
 ski boot : NOUN

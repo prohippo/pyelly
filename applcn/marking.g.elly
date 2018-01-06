@@ -505,6 +505,27 @@ _
   var typg=conj
   (typg)
 __
+p:stpg
+_
+  (typg)
+  append <punc>
+  right
+  append </punc>
+__
+g:ELEM->PREP['-*r] PUNC[|stop]
+ l[&adv]>>--------
+        >>--
+_
+  var typg=prep
+  (stpg)
+__
+
+g:ELEM->CONJ[@ind] PUNC[|stop]
+ >>--
+_
+  var typg=pro
+  (stpg)
+__
 
 g:MISC->MISC[:*x] PUNC[|com]
  >>+++
@@ -2407,7 +2428,7 @@ __
 d:from <- PREP['div]
 __
 d:within <- PREP
- >>++
+ >>[&adv]++
 __
 d:off <- PREP
  >>-
@@ -2415,6 +2436,9 @@ __
 d:over <- PREP
 __
 d:through <- PREP
+__
+d:throughout <- PREP
+ >>[&adv]++
 __
 d:outside <- PREP
  >>++++
@@ -2432,7 +2456,7 @@ __
 d:above   <- PREP['prx]
 __
 d:below   <- PREP['prx]
- >>+++
+ >>[&adv]+++
 __
 d:like    <- PREP['mod]
  >>++
@@ -3649,12 +3673,21 @@ _
   left
   (desern)
 __
+
+g:NOUN[:qnt]->NOUN[:qnt] CONJ[@*r]
+_
+  (twob)
+__
+
 g:ELEM->PUNC[|com] SERN
   >>++++
 _
   append <punc>,</punc><nclu><noun>
   (desern)
   append </noun></nclu>
+__
+
+d:-- <-PUNC[|*x]
 __
 
 # these two rules are NOT for ( and ) !
@@ -3668,9 +3701,4 @@ d: 〉<- PUNC[|*r,quo]
  >>++
 _
   append ’
-__
-
-g:NOUN[:qnt]->NOUN[:qnt] CONJ[@*r]
-_
-  (twob)
 __
