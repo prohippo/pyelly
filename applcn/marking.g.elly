@@ -836,10 +836,17 @@ g:PEXP[|*l]->PEXP[|-stop] PUNC[|emb]
 _
   (pend)
 __
-g:PEXP[|*l,ctrl]->PEXP[|-ctrl,-stop] PUNC[|*l]
+g:PEXP[|*l,ctrl]->PEXP[|-ctrl,-stop] PUNC[|*r,-quo]
  >>++
 _
   (pend)
+__
+g:PEXP[|*l,ctrl]->PEXP[|-ctrl,-stop] PUNC[|*r,quo]
+ >>++
+_
+  append <quote>
+  (pend)
+  append </quote>
 __
 g:VCLU->VCLU PREP
  >>*l-10
@@ -3196,7 +3203,13 @@ g:ADJ->ADV HYPA
     >>++++
 __
 
-g:PUNC[|*l]->PUNC SPCL[|*r,-*x]
+g:PUNC[|*l,-*l]->PUNC[|-*l,-*r] SPCL[|*r,-*x]
+ >>++
+__
+g:PUNC[|*r,quo]->PUNC[|*r,quo] SPCL[|*r,-*x]
+ >>++
+__
+g:PUNC[|*r]->PUNC[|*r,-quo] SPCL[|*r,-*x]
  >>++
 __
 g:NOUN->NOUN SPCL[|*r]
