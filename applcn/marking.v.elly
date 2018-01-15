@@ -17,11 +17,13 @@ advanced : VERB[^ed]
 advancing : VERB[^ing]
 angrier : ADJ
 appeared : VERB[^ed]
+are likely to be : BE
 ate : VERB[^ed,*x]
 based on : VERB[^ed,*x]
 became : VERB[^ed,chng]
 began : VERB[^ed,proc,*x]
 believed to be : VERB[^ed]
+believed to have : AUXL
 believed to have been : AUXL
 believes : VERB[^s]
 bit : VERB[^ed,*x]
@@ -31,6 +33,7 @@ bosniak : NOUN
 bosniak : ADJ
 bowing to pressure from : VERB[^ing]
 broke out : VERB[^ed]
+brought it back : VERB[^ed]
 brought to market : VERB[^ed]
 building : VERB[^ing,ptcl]
 buildings : NOUN[:plur]
@@ -186,6 +189,7 @@ phenomena : NOUN[:plur]
 phone interview : NOUN
 pleased : VERB[^ed]
 points of View : NOUN[:plur]
+posted on Facebook : VERB[^ed]
 potions : NOUN
 pressing : VERB[^ing]
 previously fired : ADJ
@@ -220,6 +224,8 @@ serve as : VERB
 served as : VERB[^ed]
 serving as : VERB[^ing]
 setting : VERB[^ptcl,ing] - +1
+shipping label : NOUN
+shooting : VERB[^ing]
 shot : VERB[^ed] - +2
 shot and killed : VERB[^ed]
 shown : VERB[^ed]
@@ -262,6 +268,7 @@ walks away : VERB[^ing]
 wanting to see : VERB[^ing]
 warfighting : NOUN
 was a violation of : VERB[^ed]
+was known to be : BE[^ed]
 went : VERB[^ed,*x]
 went out of business : VERB[^ed]
 went viral : VERB[^ed]
@@ -309,6 +316,7 @@ a few of : QUAN
 a group of : QUAN
 a hundred : NUM
 a lot of : QUAN
+a number of pieces of : QUAN
 a third the : NUM
 a thousand : NUM
 about to : TO
@@ -344,6 +352,7 @@ and now : CONJ
 and so : CONJ
 and so on : MISC
 and then : CONJ
+anniversary dinner : NOUN
 anything else : NOUN
 anytime : NOUN
 anytime : ADV
@@ -351,6 +360,7 @@ approximately average : ADJ
 arab republic : NOUN
 armored vehicle : NOUN
 around the world : ADV
+army head : NOUN
 army staff sgt. : NOUN
 around noon : ADV
 as a means of : CONJ
@@ -393,7 +403,9 @@ birther : NOUN
 black community : NOUN
 bond market : NOUN
 both houses of Congress : NOUN[:plur]
+bottle cap : NOUN
 box set : NOUN
+breakneck speed : NOUN
 brotherly nations : NOUN
 building supply : NOUN
 bullocky : NOUN - +2
@@ -416,12 +428,13 @@ calm and collected : ADJ [$cmpd] 0
 calories burned : NOUN
 campaign stop : NOUN
 can and will : AUXL
+can be of help : VERB
+can last : VERB
 canadian/american : ADJ
 capital spending : NOUN
 capt. : NOUN
 carefully script : VERB
 cast recording : NOUN
-can be of help : VERB
 caught wind : VERB[^ed]
 century bc : NOUN
 cheer on : VERB
@@ -446,6 +459,7 @@ confraternity : NOUN
 congressional lawmakers : NOUN[:plur]
 consider the fate of : VERB
 corporate bond market : NOUN
+court document : NOUN
 current events : NOUN[:plur]
 cut ties with : VERB
 cyber : ADJ
@@ -477,6 +491,7 @@ each other : PRO
 each time : ADV
 earlier in the day : ADV
 earlier in the year : ADV
+earlier this week : ADV
 earlier this year : ADV
 early years : NOUN
 economic council : NOUN
@@ -561,6 +576,7 @@ has to do : VERB
 hashtag : NOUN
 have done so : VERB[^hav,ed]
 heavy fighting : NOUN
+helpline : NOUN
 helter skelter : NOUN
 here you go : VERB
 hi res : ADJ
@@ -573,6 +589,7 @@ hot 100 : NOUN
 hurricane activity : NOUN
 hydro : NOUN
 hydro : ADJ - +2
+hyperinflation : NOUN
 illegal immigrant : NOUN
 in addition to : PREP
 in anticipation of : PREP
@@ -593,6 +610,7 @@ in response to : PREP
 in terms of : PREP
 in the community : ADV
 in the event of : PREP
+in the mix : ADV
 in the skies : ADJ [$trlg] +1
 in the skies : ADV
 in the wake of : PREP
@@ -629,7 +647,10 @@ islamic republic : NOUN
 islamic state : NOUN
 islamic state group : NOUN
 issued a firm warning to : VERB[^ed]
-it is clear : ELEM
+it behv clear : ELEM - +4 (elma)
+it behv easy : ELEM - +4 (elma)
+it behv obvious : ELEM - +4 (elma)
+it is clear : ELEM - +4 (elma)
 it is easy : ELEM - +4 (elma)
 it is obvious : ELEM
 jain : NOUN
@@ -641,9 +662,10 @@ just for the hell of it : ADV
 keep things quiet : VERB
 lackluster record : NOUN
 land corridor : NOUN
+last known location : NOUN
+last month : NAVB[:det]
 land survey : NOUN
 last week : NAVB[:det]
-last month : NAVB[:det]
 last year : NAVB[:det]
 later this week : NAVB[:det]
 launch order : NOUN
@@ -727,6 +749,7 @@ northern california : NOUN
 not only : CONJ
 now known as : CONJ
 nuclear accord : NOUN
+nuclear and ballistic : ADJ
 nuclear weapons : NOUN
 off the map : ADV
 official source : NOUN
@@ -779,6 +802,7 @@ ping pong playing robot : NOUN
 pinyin : NOUN
 pit bull : NOUN
 police brutality : NOUN
+police corruption : NOUN
 policymaker : NOUN
 political capital : NOUN
 political chaos : NOUN
@@ -793,6 +817,7 @@ presuppositionalism : NOUN
 primary challenge : NOUN
 prior to : PREP
 private sector : NOUN
+private meeting : NOUN
 programmable : ADJ
 proof to the contrary : NOUN
 properly designed : ADJ
@@ -840,6 +865,7 @@ rpg : NOUN
 safe location : NOUN
 sales team : NOUN
 saturday and sunday : NAVB
+school community : NOUN
 scratching their heads : ADJ
 season opener : NOUN
 second thoughts : NOUN[:plur]
@@ -849,6 +875,7 @@ selfies : NOUN[:plur]
 semi-autonomous : ADJ
 sen. : NOUN
 senate candidate : NOUN
+senior general : NOUN
 senior level : NOUN
 service plan : NOUN
 servicemember : NOUN
@@ -886,6 +913,7 @@ splash screen : NOUN
 state and local : ADJ
 state ceremony : NOUN
 state police : NOUN
+state sponsors list : NOUN
 storytelling : NOUN
 straight after : CONJ
 streetlamp : NOUN
@@ -910,9 +938,11 @@ television interview : NOUN
 teenybopper : NOUN
 telecoms giant : NOUN
 television deal : NOUN
+tense moment : NOUN
 than ever : CMPC
 than ever before : CMPC
 thanks to : PREP
+thanksgiving break : NOUN
 that year : NAVB[:det]
 thaw with russia : NOUN
 the above : ADJ
@@ -930,6 +960,7 @@ this month : NAVB[:det]
 this time : ADV
 this weekend : NAVB[:det]
 this year : NAVB[:det]
+time after time : ADV
 time control : NOUN
 time lord : NOUN
 time of the year : NAVB
@@ -939,6 +970,7 @@ time travel : VERB
 title track : NOUN
 to not : TO
 to the satisfaction of : PREP
+to where : CONJ
 top 40 : NUM
 top 40 hit : NOUN
 top forty : NUM
@@ -1147,6 +1179,7 @@ question-and-answer : ADJ
 rear-drive : ADJ
 round-up : NOUN
 same-sex : ADJ
+scale-down : NOUN
 seemingly insurmountable : ADJ
 seize control : VERB
 self-defensive : ADJ
@@ -1188,6 +1221,7 @@ Angelina Jolie : NOUN
 Apple II computer : NOUN
 Apple Watch : NOUN
 Arkansas State : NOUN
+Asad : NOUN
 Asia Pacific Economic Cooperation : ADJ
 Associated Press : NOUN
 Aung San Suu Kyi : NOUN
@@ -1204,18 +1238,23 @@ Berenice Summerfield : NOUN
 Bernice Summerfield : NOUN
 Bitcoin : NOUN
 Black Lives Matter : NOUN[:*r]
+Bloomberg : NOUN
 Bob Geldof : NOUN
 Breitbart : NOUN
 BREXIT : NOUN
 Brian Shaw : NOUN
+Brookings Institution : NOUN
 Bundestag : NOUN
+Buzzfeed : NOUN
 CBS : NOUN
 CNBC : NOUN
 CNN : NOUN
 CNN Kfile : NOUN
 Catalina : NOUN
 Celine Dion : NOUN
+CFPB : NOUN
 Charles : NOUN
+Charlie : NOUN
 Charlotte-Mecklenburg : ADJ
 Charlotte Douglas : NOUN
 Chevrolet : NOUN
@@ -1249,6 +1288,7 @@ DPRK : NOUN
 Duda : NOUN
 Dugs : NOUN
 Ebay : NOUN
+Ebay order : NOUN
 Eclogues : NOUN
 El Nino : NOUN
 Eli : NOUN
@@ -1256,6 +1296,7 @@ Elon Musk : NOUN
 Emmanuel : NOUN
 Enzo : NOUN
 Errol : NOUN
+ESPN : NOUN
 EU Withdrawal Bill : NOUN
 Evans : NOUN
 Facebook : NOUN
@@ -1273,6 +1314,7 @@ Freedom of the City award : NOUN
 Furnariidae : NOUN
 G. E. : NOUN
 Gallagher : NOUN
+Gen. Valery Gerasimov : NOUN
 Gene Simmons : NOUN
 General Atomics : NOUN
 General Parametrics : NOUN
@@ -1293,6 +1335,7 @@ Hillary Clinton : NOUN
 Hughes : NOUN
 Hughes Global Services : NOUN
 Hunnan New District : NOUN
+Hussain : NOUN
 Ines : NOUN
 Instagram : NOUN
 Institute for Radio Astronomy Millimetrique : NOUN[:*r]
@@ -1316,6 +1359,7 @@ Jinping : NOUN
 Jones : NOUN
 Josephine County : NOUN
 Juan : NOUN
+Julia Poff : NOUN
 Katie Sierra : NOUN
 Katrina : NOUN
 Keaton : NOUN
@@ -1348,6 +1392,7 @@ Mar del Plata : NOUN
 Marc : NOUN
 Mark Zuckerberg : NOUN
 Martinez : NOUN
+Mar-a-Lago : NOUN
 Mattis : NOUN
 McCarthy : NOUN
 Merkel : NOUN
@@ -1384,6 +1429,7 @@ Okanogan : NOUN
 Our Lady of Sorrows : NOUN
 PAC-12 : NOUN
 Paris Climate Accord : NOUN
+Pall Mall : NOUN
 Paul George Dandan : NOUN
 Paula Yacoubian : NOUN
 PBS : NOUN
@@ -1422,17 +1468,21 @@ Shi‘ite : NOUN
 Shindake : NOUN
 Ship of Fools : NOUN
 Showcase Presentations : NOUN
+Silent Majority : NOUN
 South Florida : NOUN
 Space and Upper Atmospheric Research Commission : NOUN
 Spokesman-Review : NOUN
+Srebrenica : NOUN
 St. Mary : NOUN - +2
 Stephan : NOUN
 Stephen Curry : NOUN
 Steve Bannon : NOUN
 Steve Jobs : NOUN
 Sueddeutsche Zeitung : NOUN
+Suiter : NOUN
 Talkradio 790 KABC : NOUN
 Team Lacoste : NOUN
+The Northwest Indiana Times : NOUN
 The Verge : NOUN [&prop] 0
 Theresa May : NOUN
 Tierra del Fuego : NOUN
@@ -1447,6 +1497,7 @@ U.S. : NOUN
 Uber : NOUN
 UCLA : NOUN
 USNORTHCOM : NOUN
+US tax code : NOUN
 USO : NOUN
 Van Horn : NOUN
 Veteran's Day : NOUN
@@ -4316,6 +4367,8 @@ campaign : NOUN - +1
 campaign : VERB
 campaign hat : NOUN
 campus : NOUN
+can : NOUN - -6
+can : VERB - -6
 canada : NOUN
 canadian : NOUN - -1
 canadian : ADJ - +2
@@ -9290,7 +9343,7 @@ firm : ADV
 firm omelet : NOUN
 firm up : VERB
 first : NOUN
-first : ADJ
+first : ADJ[%mod,to]
 first : ADV
 first aid : NOUN
 first amendment : NOUN
@@ -9582,6 +9635,7 @@ follow suit : VERB
 follow up : VERB
 follow up on : VERB
 follower : NOUN
+follow-up : NOUN
 folly : NOUN
 foment : VERB
 font : NOUN
@@ -12010,6 +12064,8 @@ inability : NOUN
 inadvertent : ADJ
 inappropriate : ADJ
 inappropriately : ADV
+inaugural : ADJ
+inaugural address : NOUN
 inaugurate : VERB
 inauguration : NOUN
 inauguration day : NOUN
@@ -12434,6 +12490,8 @@ intestine : NOUN
 intimate : NOUN
 intimate : VERB
 intimate : ADJ
+intolerable : ADJ
+intolerably : ADV
 intolerance : NOUN
 intractable : ADJ
 introduce : VERB
@@ -12465,6 +12523,7 @@ invoke : VERB
 involve : VERB [$trns] 0
 involvement : NOUN
 invulnerable : ADJ
+invulnerability : NOUN
 ion : NOUN
 ion beam : NOUN
 ion engine : NOUN
@@ -13416,6 +13475,7 @@ lever scale : NOUN
 leverage : NOUN
 leverage : VERB
 levitate : VERB
+lest : CONJ
 lewd : ADJ
 lewis : NOUN
 lexington : NOUN
@@ -14621,6 +14681,7 @@ microscope slide : NOUN
 microscope stage : NOUN
 microscopic : ADJ
 microscopic field : NOUN
+microscopically : ADV
 mid : ADJ
 middle : NOUN
 middle : VERB
@@ -16903,6 +16964,7 @@ personnel office : NOUN
 perspective : NOUN
 persuade : VERB
 perturb : VERB
+perv : NOUN
 pervade : VERB
 pervasive : ADJ
 peshmerga : NOUN
@@ -16959,6 +17021,7 @@ philosophical system : NOUN
 philosophical theory : NOUN
 philosophy : NOUN
 philosophy department : NOUN
+phish : VERB
 phoebe : NOUN
 phone : NOUN
 phone : VERB
@@ -17373,8 +17436,10 @@ police boat : NOUN
 police captain : NOUN
 police car : NOUN
 police chief : NOUN
+police commissioner : NOUN
 police court : NOUN
 police department : NOUN
+police detective : NOUN
 police dog : NOUN
 police force : NOUN
 police investigation : NOUN
@@ -17891,7 +17956,7 @@ princess : NOUN
 princess royal : NOUN
 princeton : NOUN
 princeton university : NOUN
-principal : NOUN
+principal : NOUN - +1
 principal : ADJ
 principal investigator : NOUN
 principal sum : NOUN
@@ -18276,6 +18341,8 @@ puzzle : VERB
 puzzle out : VERB
 puzzle over : VERB
 pyongyang : NOUN
+pyrotechnic : NOUN
+pyrotechnic : ADJ
 python : NOUN
 quake : NOUN
 quake : VERB
@@ -19181,6 +19248,7 @@ rhetoric : NOUN
 rhetorical : ADJ
 rhetorical device : NOUN
 rhetorical question : NOUN
+rhode island : NOUN
 rhythm : NOUN
 rhythm method : NOUN
 rhythm method of birth control : NOUN
@@ -19202,6 +19270,7 @@ rich : ADJ
 rich man : NOUN
 rich people : NOUN
 rich person : NOUN
+richly : ADV
 rick : NOUN
 rick : VERB
 rico : NOUN
@@ -19696,6 +19765,7 @@ salad : NOUN
 salad bar : NOUN
 salad bowl : NOUN
 salad cream : NOUN
+salad dressing : NOUN
 salad fork : NOUN
 salad green : NOUN
 salad oil : NOUN
@@ -20537,6 +20607,7 @@ shoot : VERB
 shoot down : VERB
 shoot up : VERB
 shooter : NOUN
+shooting : NOUN
 shop : NOUN
 shop : VERB
 shop assistant : NOUN
@@ -22056,7 +22127,7 @@ stifle : VERB
 still : NOUN - -2
 still : VERB - -2
 still : ADJ - -1
-still : ADV - +2
+still : ADV[~*x,timg] - +2
 still hunt : NOUN
 still life : NOUN
 still room : NOUN
@@ -23413,6 +23484,7 @@ timber wolf : NOUN
 timbre : NOUN
 time : NOUN
 time : VERB - -2
+time and time again : ADV
 time being : NOUN
 time bill : NOUN
 time bomb : NOUN
@@ -24148,6 +24220,7 @@ undergrowth : NOUN
 underlie : VERB
 underline : NOUN
 underline : VERB
+underlying : ADJ
 undermine : VERB
 underpin : VERB
 underscore : NOUN

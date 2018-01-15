@@ -12,14 +12,13 @@ won’t -> will not
 &@n’t -> \\1 not
 &@’ve -> \\1 have
 i’m   -> i am
-he’s  -> he is
-it’s  -> it is
+he’s  -> he hvbe
+she’s -> she hvbe
+it’s  -> it behv
 here’s  -> here is
 @here’s -> \\1here is
 that’s  -> that is
 let’s   -> let us
-he's    -> he is
-she's   -> she is
 
 &@’d    -> \\1 'd
 
@@ -68,6 +67,8 @@ Be_Mobile -> BeMobile
 
 ‘&@s\\’ -> 〈\\1s〉
 ‘&@_&@s\\’ -> 〈\\1 \\3s〉
+
+!@@._&#-!@@._&#$ -> \\1.\\2TO\\3.\\4
 
 #
 # WARNING! the three rules below has en dashes in its pattern and

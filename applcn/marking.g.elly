@@ -55,11 +55,17 @@ _
   space
   right
 __
-p:elma  # needed for vocabulary definition
+p:elma  # needed for vocabulary table definition
 _
-  append <adj>
+  split
   obtain
-  append </adj>
+  back
+  delete to
+  delete to
+  append <pro>it</pro><vclu><verb>is
+  space
+  merge
+  append </verb></vclu>
 __
 
 #
@@ -226,7 +232,23 @@ _
   right
   append </conj>
 __
-g:SEGM->PEXP[|-stop]
+g:SEGM->PEXP[|-stop,nom]
+ >>-
+_
+  split
+  left
+  back
+  find </punc> <
+  var x
+  peek x <
+  if x nl
+    shift 2 <
+    end
+  append <nclu>
+  merge
+  append </nclu>
+__
+g:SEGM->PEXP[|-stop,-nom]
  >>-
 __
 
@@ -531,20 +553,23 @@ g:MISC->MISC[:*x] PUNC[|com]
  >>+++
 __
 
-g:PUNC[|*l]->PUNC[|*l,quo] CONJ
- >>[$trlg]
+g:PEXP->PEXP PRO
 _
-  split
+  left
+  append <pro>
+  right
+  append </pro>
+__
+g:PEXP->PUNC[|*l] CONJ
+ >>-
+_
+  var typg=punc
+  (typg)
+  linefeed
   append <conj>
   right
   append </conj>
-  delete >
-  store add
-  back
-  merge
-  left
 __
-
 g:PEXP[|eg,com]->PUNC[|com] PEXP[|eg,-com]
  >>*r++
 _
@@ -587,9 +612,11 @@ _
   split
   right
   back
-# view 36
+  delete 6 <    # drop <nclu>
+  view 20
   merge
-# view 36
+  delete 7 >    # drop </nclu>
+  view 20
 __
 p:pbgr
 _
@@ -609,6 +636,34 @@ g:PEXP[|*l,nom]->PUNC[|*l] NCLU[:-det]
          >>[!ln,rn]+
 _
   (pbgn)
+__
+g:PEXP[|*l]->PEXP[|nom,quo] CJNN[@*x]
+ n>9 >>--------
+     >>++++++
+_
+  var ntg
+  var ptg
+  left
+  delete from </noun>
+  store ntg
+  space
+  right
+  delete from <punc>
+  store ptg
+  insert < ntg
+  insert < ptg
+__
+g:CJNN->CONJ[@cnj] NOUN[:-cnj,-*r]
+  >>--
+_
+  (twob)
+__
+g:CJNN[@*x]->CJNN[@-*x] PUNC[|*r,quo]
+_
+  left
+  append <punc>
+  right
+  append </punc>
 __
 g:PEXP[|*l,vrb]->PUNC[|*l] VCLU[^-ed,-ing]
  >>[!lv,rv]
@@ -638,10 +693,16 @@ _
   (pbgr)
 __
 
-g:PEXP[|*l]->PEXP[|-stop,nom] NCLU
+g:PEXP[|*l]->PEXP[|-stop,nom] NCLU[:-prep]
  >>*l[!-rv,rn]--
 _
   (pxdo)
+  split
+  back
+  delete 7 >
+  find <nclu> >
+  delete 6 <
+  merge
 __
 g:PEXP[|*l]->PEXP[|-stop,vrb] NCLU
  >>*l[!-rv,rn]----
@@ -681,6 +742,7 @@ _
   var typg=nclu
   (typg)
 __
+
 #
 # using cmpd to indicate parenthesized NCLU
 #
@@ -688,15 +750,22 @@ g:NCLU[:det]->PEXP[|det,nom,-stop,-ctrl] PUNC[|*r]
  r[!spcs]>>[&spcs,cmpd]+5
          >>[&spcs]+5
 _
-  var typd=n
-  (pxnorv)
+  (pxnom)
 __
 g:NCLU->PEXP[|-det,nom,-stop,-ctrl] PUNC[|*r]
  r[!spcs]>>[&spcs,cmpd]+5
          >>[&spcs]+5
 _
-  var typd=n
-  (pxnorv)
+  (pxnom)
+__
+p:pxnom
+_
+  append <nclu>
+  left
+  linefeed
+  append <punc>
+  right
+  append </punc></nclu>
 __
 p:pxnorv  # set typd to indicate nclu or vclu
 _
@@ -954,6 +1023,7 @@ _
 __
 p:pphr
 _
+  trace
   var typg=prep
   (lxtd)
 __
@@ -963,7 +1033,6 @@ g:NCLU[:*r,prep]->PREP['-cnj] NCLU[:-prep,-det,num]
  r[&msr]>>*r
         >>*r[&-msr]+
 _
-# trace
   (pphr)
 __
 g:NCLU[:*r,prep]->PREP['-cnj] NCLU[:-prep,det,num]
@@ -983,7 +1052,26 @@ _
 __
 g:NCLU[:*r,prep]->PREP['-cnj,mod] NCLU[:-prep,-num,-det]
 _
+  trace
   (pphr)
+__
+g:NCLU[:prep]->PREP['-cnj] PEXP[|nom,quo,-eg]
+_
+  var typg=prep
+  (pxton)
+__
+g:NCLU[:det]->DET PEXP[|quo,nom,-det]
+_
+  var typg=det
+  (pxton)
+__
+p:pxton
+_
+  append <nclu>
+  (typg)
+  right
+  view 12
+  append </nclu>
 __
 
 g:NCLU[:*r]->DATE[:-cnj,-*r] NCLU[:-prep,-det,-qnt,-num]
@@ -1201,6 +1289,10 @@ _
   append <nclu><dem>
   left
   append </dem></nclu>
+__
+g:NOUN->ADJ[%mod,to] MONEY
+_
+  (twob)
 __
 
 p:dmnc
@@ -1695,7 +1787,9 @@ _
   append <vclu>
   var typg=aux
   (typg)
-  append </vclu><punc>
+  append </vclu>
+  linefeed
+  append <punc>
   right
   append </punc>
 __
@@ -1737,9 +1831,19 @@ __
 
 g:ADJX[%*r,lquo]->PUNC[|*l,quo] ADJ
  >>--
+_
+  append <quote><punc>
+  left
+  append </punc>
+  right
 __
 g:ADJ[%*l,-lquo]->ADJX[%lquo] PUNC[|*r,quo]
  >>+8
+_
+  left
+  append <punc>
+  right
+  append </punc></quote>
 __
 
 g:VERB->UNKN
@@ -2791,6 +2895,24 @@ __
 d:had  <- HAVE
  >>+
 __
+d:behv <- BE
+ >>++
+_
+  append is
+__
+d:behv <- HAVE
+_
+  append has
+__
+d:hvbe <- BE
+_
+  append is
+__
+d:hvbe <- HAVE
+ >>++
+_
+  append has
+__
 d:will <- AUXL
 __
 d:shall<- AUXL
@@ -3316,6 +3438,17 @@ __
 g:PEXP[|*l]->PEXP[|stop] SNGL[|-nom,-vrb]
          >>+4
 __
+g:PEXP[|*l]->PEXP[|quo,nom] NCLU[:prep]
+ >>++
+_
+  left
+  split
+  right
+  back
+  delete 6 <
+  merge
+  delete 7 >
+__
 
 #
 # conjoined correlative expressions
@@ -3611,6 +3744,11 @@ _
   (typg)
   right
 __
+g:BE->BE ADV[~*x,timg]
+ >>++++++
+_
+  (twob)
+__
 
 d:x1x <- NUM
  >>++++
@@ -3714,4 +3852,6 @@ d: 〉<- PUNC[|*r,quo]
  >>++
 _
   append ’
+__
+g:PUNC[|stop,*r]->PUNC[|stop] PUNC[|*r]
 __
