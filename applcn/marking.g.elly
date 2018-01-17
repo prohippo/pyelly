@@ -613,10 +613,10 @@ _
   right
   back
   delete 6 <    # drop <nclu>
-  view 20
+# view 20
   merge
   delete 7 >    # drop </nclu>
-  view 20
+# view 20
 __
 p:pbgr
 _
@@ -683,12 +683,12 @@ _
 # trace
   (pbgr)
 __
-g:PEXP[|*l]->PUNC[|*l] SEGM
+g:PEXP[|*l]->PUNC[|*l,quo] SEGM
  >>*l++
 _
   (pbgr)
 __
-g:PEXP[|*l,det]->PUNC[|*l] DET
+g:PEXP[|*l,det]->PUNC[|*l,-quo] DET
 _
   (pbgr)
 __
@@ -1023,7 +1023,7 @@ _
 __
 p:pphr
 _
-  trace
+# trace
   var typg=prep
   (lxtd)
 __
@@ -1052,7 +1052,7 @@ _
 __
 g:NCLU[:*r,prep]->PREP['-cnj,mod] NCLU[:-prep,-num,-det]
 _
-  trace
+# trace
   (pphr)
 __
 g:NCLU[:prep]->PREP['-cnj] PEXP[|nom,quo,-eg]
@@ -1070,7 +1070,7 @@ _
   append <nclu>
   (typg)
   right
-  view 12
+# view 12
   append </nclu>
 __
 
@@ -3247,7 +3247,7 @@ __
 
 p:decom
 _
-  trace
+# trace
   split
   left
   back
@@ -3784,7 +3784,12 @@ g:QUAN->AVQN
 __
 g:PEXP[|*l]->PUNC[|*l] DATE
 _
-  (pbgn)
+  var typg=punc
+  (typg)
+  linefeed
+  append <nclu><date>
+  right
+  append </date></nclu>
 __
 
 g:CTGN[:*r]->PUNC[|*l] CTGN[:-*l,-*r]
