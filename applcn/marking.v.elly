@@ -51,6 +51,7 @@ coaching : VERB[^ing]
 confirmed : VERB[^ed] - +1
 continued : VERB[^ed]
 criteria : NOUN[:plur]
+cryptic statement : NOUN
 current and former : ADJ
 cut short : VERB[^ed]
 dating back : VERB[^ing]
@@ -106,6 +107,7 @@ going to end up : VERB[^ing]
 gone out of business : VERB[^ed]
 gonna : AUXL
 got : VERB[^ed,chng,*x]
+got home from work : VERB
 got out : VERB[^ed]
 got up : VERB[^ed,*x]
 growing : VERB[^ing]
@@ -139,6 +141,7 @@ known : VERB[^ed,*x] - +1
 leading : VERB[^ing]
 led : NOUN - -2
 led : VERB[^ed]
+led to panic : VERB[^ed]
 lengthier : ADJ
 limited : VERB[^ed] - -1
 linked to : PREP
@@ -216,6 +219,7 @@ rose : VERB[^ed,*x] - +2
 rushing : VERB[^ing] - +1
 said : VERB[^ed,dit]
 said at the time : VERB[^ed,dit]
+said in his address : VERB[^ed,dit]
 sat : VERB[^ed]
 sat down : VERB[^ed,*x]
 seen : VERB[^ed]
@@ -239,9 +243,10 @@ spoke : VERB[^ed] - +2
 steered clear : VERB[^ed]
 stimulating : VERB[^ing]
 stood : VERB[^ed]
-supplly cut : NOUN
+supply cut : NOUN
 supplying : VERB[^ing] - +2
 supplying : NOUN[:ing] - -1
+supports the argument for : VERB
 supreme leader : NOUN
 sweeping : VERB[^ing]
 swooping : ADJ[%ing] - +1
@@ -261,6 +266,7 @@ told : VERB[^ed,dit]
 took place : VERB[^ed]
 tore up : VERB[^ed]
 trying : VERB[^ing] - +1
+turned themselves in : VERB[^ed]
 unified : VERB[^ed]
 values : VERB[^s]
 walked away : VERB[^ed]
@@ -317,6 +323,7 @@ a few of : QUAN
 a group of : QUAN
 a hundred : NUM
 a lot of : QUAN
+a number of : QUAN
 a number of pieces of : QUAN
 a third the : NUM
 a thousand : NUM
@@ -385,10 +392,12 @@ at least one : QUAN - +2
 at odds with : PREP
 at one point : ADV
 at the behest of : PREP
+at the heart of : PREP
 at the request of : PREP
 at the same time as : CONJ
 at this point : ADV
 at this point in time : ADV
+at this stage : ADV
 at this time : ADV
 athletic conference : NOUN
 authorities : NOUN[:plur]
@@ -427,6 +436,7 @@ cable tv channel : NOUN
 cakeshop : NOUN
 calm and collected : ADJ [$cmpd] 0
 calories burned : NOUN
+campaign manager : NOUN
 campaign stop : NOUN
 can and will : AUXL
 can be of help : VERB
@@ -456,22 +466,26 @@ computer model : NOUN
 concrete blueprint : NOUN
 confederate force : NOUN
 configurable : ADJ
+confirm the move : VERB
 confraternity : NOUN
 congressional lawmakers : NOUN[:plur]
 consider the fate of : VERB
 corporate bond market : NOUN
+corrections officer : NOUN
 court document : NOUN
 current events : NOUN[:plur]
 cut ties with : VERB
 cyber : ADJ
 dance company : NOUN
 dance number : NOUN
+data breach : NOUN
 deadliest : ADJ
 deductibility : NOUN
 demilitarization : NOUN
 democratic republic : NOUN
 development team : NOUN
 die roll : NOUN
+digital minister : NOUN
 diplomatic script : NOUN
 diplomatic tone : NOUN
 direct response : NOUN
@@ -479,6 +493,7 @@ discussion point : NOUN
 divorce case : NOUN
 do much more : VERB
 do that : VERB
+domestic politics : NOUN[:plur]
 doorbuster : NOUN
 doorbusting : ADJ
 down the block : ADJ [$trlg] 0
@@ -517,6 +532,7 @@ everyone else : NOUN
 existential threat : NOUN
 express in words : VERB
 factional : ADJ
+factional fighting : NOUN
 fake news : NOUN
 familiar with his thinking : ADJ
 familiar with the matter : ADJ
@@ -561,6 +577,7 @@ genetically modified crop : NOUN
 genome editing : NOUN
 gov. : NOUN
 governing coalition : NOUN
+governing party : NOUN
 government figure : NOUN
 grant aid : NOUN
 grant aid project : NOUN
@@ -620,6 +637,7 @@ in the skies : ADV
 in the wake of : PREP
 in the works : ADJ
 in width : ADV[~trlg] [$deg] 0
+in years past : ADV
 inappropriate behavior : NOUN
 inappropriate relationship : NOUN
 incentivize : VERB
@@ -643,6 +661,7 @@ internet access : NOUN
 internet service provider : NOUN
 into whether : CONJ
 irrespective of whether : CONJ
+is in violation of : VERB
 is presenting itself as : VERB
 is sticking by : VERB
 islamic army : NOUN
@@ -690,6 +709,7 @@ long term : NOUN
 lose contact with : VERB
 lt. : NOUN
 lt. gen. : NOUN
+lure shoppers through their doors : VERB
 made available : VERB[^ed]
 magazine weekly : NOUN
 major legislation : NOUN
@@ -697,7 +717,6 @@ make available : VERB
 make use of : VERB
 male and female : NOUN
 male and female : ADJ - +1
-male genetalia : NOUN
 manga : NOUN
 manmade : ADJ
 mannerist : NOUN
@@ -716,6 +735,7 @@ middle east peacemaking : NOUN
 midtempo : ADJ
 militant group : NOUN
 military exercise : NOUN
+military support : NOUN
 moneychanger : NOUN
 monolog : NOUN =monologue
 mood swing : NOUN
@@ -791,6 +811,7 @@ panel commissioner : NOUN
 palestinian negotiator : NOUN
 parallel investigation : NOUN
 particular focus : NOUN
+partners on the ground : NOUN
 patent assist : ADJ
 patriotic event : NOUN
 pay tv : NOUN
@@ -799,6 +820,7 @@ payout : NOUN
 peculiar to : PREP
 peer harassment : NOUN
 pence : NOUN
+pending adjustment : NOUN
 percent chance : NUM[:*r]
 perturber : NOUN
 piano four hands : NOUN
@@ -862,6 +884,7 @@ revolve around the question of : VERB
 rgb : ADJ
 rgb monitor : NOUN
 right after : CONJ
+right choice : NOUN
 riverfront : ADJ
 rocket science : NOUN
 rockin' : ADJ
@@ -890,6 +913,8 @@ shadow banking : NOUN
 sharpen its focus : VERB
 shipping lane : NOUN
 shooting rampage : NOUN
+shopping district : NOUN
+shopping season : NOUN
 showed no signs of : VERB
 sightseeing tour : NOUN
 signal rocket : NOUN
@@ -900,8 +925,10 @@ so that : CONJ
 socialist federal republic : NOUN
 soldier-turned-defector : NOUN
 some of : QUAN
+some of them : PRO
 some of which : CONJ
 something like this : NOUN
+sought by authorities : ADJ
 southeast asian : ADJ
 somewhere along : PREP
 sorry about that : ADJ [$cmpd] 0
@@ -963,6 +990,7 @@ the united states : NOUN[:plur]
 their presence : NOUN
 this month : NAVB[:det]
 this time : ADV
+this week : ADV
 this weekend : NAVB[:det]
 this year : NAVB[:det]
 time after time : ADV
@@ -1066,6 +1094,7 @@ on,       : ADVX =on
 on,       : PTCL - -2
 — or      : DCNJ
 i mean,   : ADV
+, N.Y.,   : XID
 
 1000000000000 : NUM[:*r] - +2 =trillion
 1000000000    : NUM[:*r] - +2 =billion
@@ -1242,6 +1271,7 @@ Becker : NOUN
 Berenice Summerfield : NOUN
 Bernice Summerfield : NOUN
 Beverly Hills : NOUN
+Bir al-Abed : NOUN
 Bitcoin : NOUN
 Black Lives Matter : NOUN[:*r]
 Bloomberg : NOUN
@@ -1273,6 +1303,7 @@ Cody Riley : NOUN
 Colorado State University : NOUN
 Comey : NOUN
 Coolio Earth Partnership : NOUN
+Corey Lewandowski : NOUN
 Crafty : NOUN
 Crater Lake : NOUN
 Cubbies : NOUN[:plur]
@@ -1437,6 +1468,8 @@ Obamas : NOUN[:plur] =obama -s
 Ogilvy & Mather : NOUN
 Okanogan : NOUN
 Our Lady of Sorrows : NOUN
+Oxford Street : NOUN
+Oxford Street shopping district: NOUN
 PAC-12 : NOUN
 Paris Climate Accord : NOUN
 Pall Mall : NOUN
@@ -1444,11 +1477,13 @@ Paul George Dandan : NOUN
 Paula Yacoubian : NOUN
 PBS : NOUN
 PBS program : NOUN
+Person of the Year : NOUN
 Pfaffian : ADJ
 POLITICO : NOUN
 Post-Gazette : NOUN
 Premier League : NOUN
 President Donald Trump : NOUN
+President Erdogan : NOUN
 President Trump : NOUN
 Prime Minister Benjamin Netanyahu : NOUN
 Queen Elizabeth : NOUN
@@ -1492,16 +1527,21 @@ Sueddeutsche Zeitung : NOUN
 Suiter : NOUN
 Talkradio 790 KABC : NOUN
 Team Lacoste : NOUN
+the Emoluments Clause : NOUN
 The Northwest Indiana Times : NOUN
+the only right choice : NOUN
 The Spokesman-Review : NOUN
 The Verge : NOUN [&prop] 0
 Theresa May : NOUN
 Tierra del Fuego : NOUN
+Time magazine : NOUN
 Tina : NOUN
 Tinian : NOUN
 Tirthankara : NOUN
 Tongo Tongo : NOUN
 Tran Dai Quang : NOUN
+Trump organization : NOUN
+Trump Soho hotel : NOUN
 Twitter : NOUN
 U.N. : NOUN
 U.S. : NOUN
@@ -2499,6 +2539,7 @@ attack aircraft : NOUN
 attack aircraft carrier : NOUN
 attack dog : NOUN
 attack submarine : NOUN
+attacker : NOUN
 attain : VERB
 attainment : NOUN
 attempt : NOUN
@@ -4716,6 +4757,7 @@ central body : NOUN
 central city : NOUN
 central intelligence agency : NOUN
 central intelligence machinery : NOUN
+central london : NOUN
 central nervous system : NOUN
 central office : NOUN
 central park : NOUN
@@ -5346,6 +5388,7 @@ cloud cover : NOUN
 cloud nine : NOUN
 cloud over : VERB
 cloud up : VERB
+cloudy : ADJ
 clovis : NOUN
 clovis culture : NOUN
 club : NOUN
@@ -6396,6 +6439,7 @@ crease : VERB
 create : VERB
 creation : NOUN
 creation science : NOUN
+creative : ADJ
 creator : NOUN
 creature : NOUN
 credibility : NOUN
@@ -7448,6 +7492,7 @@ distance : VERB
 distance vision : NOUN
 distant : ADJ
 distinct : ADJ
+distinction : NOUN
 distinctive : ADJ
 distinctive feature : NOUN
 distinctively : ADV
@@ -8761,7 +8806,7 @@ extraordinary : ADJ
 extreme : NOUN
 extreme : ADJ
 extreme point : NOUN
-extremely : ASV
+extremely : ADV
 exult : VERB
 exultant : ADJ
 eye : NOUN
@@ -11352,6 +11397,7 @@ heart specialist : NOUN
 heart surgeon : NOUN
 heart surgery : NOUN
 heartbreak : NOUN
+heartbroken : ADJ
 heartburn : NOUN
 heartfelt : ADJ
 heat : NOUN
@@ -11405,6 +11451,7 @@ help : NOUN
 help : VERB
 help desk : NOUN
 help out : VERB
+helpful : ADJ
 hemisphere : NOUN
 hemorrhoid : NOUN
 hence : ADV
@@ -13878,6 +13925,7 @@ logical operation : NOUN
 logical proof : NOUN
 logical relation : NOUN
 logical system : NOUN
+logistics : NOUN
 logo : NOUN
 logy : ADJ
 london : NOUN
@@ -16397,6 +16445,7 @@ ovenbird : NOUN
 over : ADV[~mod] [$deg] -6
 over again : ADV
 over here : ADV
+over-the-top : ADJ
 overall : NOUN
 overall : ADJ
 overcome : VERB
@@ -17469,6 +17518,9 @@ poke check : NOUN
 poke fun : VERB
 poke out : VERB
 poland : NOUN
+polar : ADJ
+polarization : NOUN
+polarize : VERB
 pole : NOUN
 pole : VERB
 pole horse : NOUN
@@ -18758,6 +18810,7 @@ reality check : NOUN
 reality principle : NOUN
 really : ADV
 realm : NOUN
+realtor : NOUN
 realty : NOUN
 reap : VERB
 reap hook : NOUN
@@ -23356,6 +23409,7 @@ thai : NOUN
 thai : ADJ
 thailand : NOUN
 thank : VERB
+thankful : ADJ
 thanksgiving : NOUN
 thanksgiving day : NOUN
 thaw : NOUN
@@ -23840,7 +23894,7 @@ trademark : NOUN
 trademark : VERB
 tradition : NOUN
 traditional : ADJ
-tradtionally : ADV
+traditionally : ADV
 trafalgar : NOUN
 traffic : NOUN
 traffic : VERB

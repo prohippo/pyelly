@@ -19,6 +19,7 @@ here’s  -> here is
 @here’s -> \\1here is
 that’s  -> that is
 let’s   -> let us
+who's   -> who is
 
 &@’d    -> \\1 'd
 
