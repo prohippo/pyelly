@@ -1,8 +1,21 @@
-append PPPPPP
 linefeed
+append PP
+linefeed
+append xx
 split
+linefeed
+append yy
+linefeed
+append zz
 back
-append 1234 5678 90
+view 20
+append 1 2 3
+view 20
 align >
-append !!!!!
+append !!
+align <
+view 20
+append ??
+view 20
 merge
+view 40
