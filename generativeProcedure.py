@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeProcedure.py : 02jun2017 CPM
+# generativeProcedure.py : 20jan2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -454,14 +454,14 @@ class GenerativeProcedure(object):
             elif op == semanticCommand.Gfnd:   # find sequence in buffer
                 cntx.findCharsInBuffer(code.next(),code.next())
             elif op == semanticCommand.Galgn:  # align buffer to start of line
-                sens = code.next()
+                sens = code.next()             # direction of alignment
                 cntx.findCharsInBuffer('\n',sens)
                 if sens:
                     if cntx.peekIntoBuffer(False) == '\n':
-                        cntx.moveCharsBufferToBuffer(1)
+                        cntx.moveCharsBufferToBuffer(1)  # move over expected space after \n
                 else:
                     if cntx.peekIntoBuffer(True) == '\n':
-                        cntx.moveCharsBufferToBuffer(2)
+                        cntx.moveCharsBufferToBuffer(2)  # move \n + space to current buffer
             elif op == semanticCommand.Gpick:  # use local variable to select text
                 var = code.next()              #   to insert into buffer
                 s = cntx.getLocalVariable(var)
@@ -474,7 +474,7 @@ class GenerativeProcedure(object):
                     else:
                         continue
                 cntx.insertCharsIntoBuffer(dct[s])
-            elif op == semanticCommand.Gappd:  # append explicit text to buffer
+            elif op == semanticCommand.Gappd:  # append explicit text to current buffer
                 s = code.next()
                 cntx.insertCharsIntoBuffer(s)
             elif op == semanticCommand.Gget:   # assign global value to local variable

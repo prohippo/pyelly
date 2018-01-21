@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# procedureTestFrame.py : 13feb2016 CPM
+# procedureTestFrame.py : 20jan2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -29,7 +29,7 @@
 # -----------------------------------------------------------------------------
 
 """
-dummy phrase with left and right descendants for support of testing
+dummy phrase with left and right descendants for testing PyElly semantics
 """
 
 import ellyBits
@@ -166,13 +166,13 @@ class ProcedureTestFrame(object):
     def showBuffers ( self ):
 
         """
-        show current contents of output buffers in self.context
+        show current contents of all output buffers in self.context
 
         arguments:
             self
         """
 
-        K = 44 # line count limit
+        K = 44 # char count limit for line
         bs = self.context.getBufferContents()
         print ' ' , len(bs) , 'buffer' , '' if len(bs) == 1 else 's'
         for b in bs:
