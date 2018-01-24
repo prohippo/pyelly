@@ -27,6 +27,7 @@ believed to have : AUXL
 believed to have been : AUXL
 believes : VERB[^s]
 bit : VERB[^ed,*x]
+bloodier : ADJ
 bloodiest : ADJ
 bookended : VERB[^ed] - -1
 born : VERB[^ed] - +2
@@ -96,6 +97,7 @@ froze : VERB[^ed]
 gave : VERB[^ed,*x]
 gave rise to : VERB[^ed]
 give rise to : VERB
+given free rein : VERB[^ed]
 gives rise to : VERB[^s]
 giving rise to : VERB[^ing]
 get : BE - +1
@@ -203,6 +205,7 @@ promised : VERB[^ed]
 promised : ADJ
 providing : NOUN[:ing] - -2
 providing : VERB[^ing] - +3
+raised fears of : VERB[^ed]
 ran : VERB[^ed]
 re-emerged : VERB[^ed]
 re-emerging : VERB[^ing]
@@ -223,6 +226,7 @@ said at the time : VERB[^ed,dit]
 said in his address : VERB[^ed,dit]
 sat : VERB[^ed]
 sat down : VERB[^ed,*x]
+security forces : NOUN[:plur]
 seen : VERB[^ed]
 seen : SVED - -1
 seized control : VERB
@@ -244,6 +248,7 @@ spoke : VERB[^ed] - +2
 steered clear : VERB[^ed]
 stimulating : VERB[^ing]
 stood : VERB[^ed]
+striking back at : VERB[^ing]
 supply cut : NOUN
 supplying : VERB[^ing] - +2
 supplying : NOUN[:ing] - -1
@@ -317,6 +322,7 @@ went_on : VERB[^ed] =went on
 5 minutes : NOUN
 a claim : NOUN[:join]
 a day later : ADV
+a dozen : NUM
 a far cry from : PREP
 a few : QUAN[@ind] [!mltp] 0
 a few hundred : NUM
@@ -378,6 +384,7 @@ as a result : CONJ
 as a result of : PREP
 as compared to : CONJ
 as far as : CONJ
+as he saw fit : ADV
 as if : CONJ
 as of : PREP
 as result of : CONJ
@@ -482,6 +489,7 @@ cyber : ADJ
 dance company : NOUN
 dance number : NOUN
 data breach : NOUN
+day in a row : NOUN
 deadliest : ADJ
 deductibility : NOUN
 demilitarization : NOUN
@@ -578,6 +586,7 @@ genetic modification : NOUN
 genetically modified : ADJ
 genetically modified crop : NOUN
 genome editing : NOUN
+golf property : NOUN
 gov. : NOUN
 governing coalition : NOUN
 governing party : NOUN
@@ -672,6 +681,7 @@ islamic party : NOUN
 islamic republic : NOUN
 islamic state : NOUN
 islamic state group : NOUN
+islamist insurgent : NOUN
 issued a firm warning to : VERB[^ed]
 it behv clear : ELEM - +4 (elma)
 it behv easy : ELEM - +4 (elma)
@@ -788,6 +798,7 @@ offline : ADJ
 offseason : ADJ
 often enough : ADV
 on aspects of : PREP
+on high alert : ADJ
 on hold : ADJ
 on hold : ADV
 on the other end : ADV
@@ -805,6 +816,7 @@ our lady : NOUN
 out of : PREP['div]
 out of step with : PREP
 outside the jurisdiction of : PREP
+outdated technology : NOUN
 over from : PREP
 over the course of : PREP
 over the weekend : ADJ
@@ -1076,6 +1088,7 @@ etc : MISC
 hah : MISC
 née : MISC[:*l]
 no  : MISC[:*x] - -1
+o.k. : MISC[:dit] - +2
 yes : MISC[:*x]
 
 at&t : NOUN
@@ -1152,6 +1165,10 @@ most as many : ADJ
 , for : PCNJ
 , new york, : PSTP =new york
 
+new and bloodier : ADJ
+sinai mosque : NOUN
+the country’s struggle : NOUN[:det]
+
 # # # # common hyphenations
 
 1-forms : NOUN[:plur] - +2
@@ -1180,6 +1197,7 @@ decades-old : ADJ
 decades-old conflict : NOUN
 decision-making : ADJ
 decision-making process : NOUN
+do-whatever-you-want : ADJ
 dual-use : ADJ
 e-mail : NOUN
 eat-in : ADJ
@@ -1193,6 +1211,7 @@ fully-equipped : ADJ
 half-full : ADJ
 half-sitting : VERB[^ed]
 high-profile : ADJ
+in-depth : ADJ
 in-store : ADJ
 iranian-backed : ADJ
 lesser-known : ADJ
@@ -1224,6 +1243,7 @@ seemingly insurmountable : ADJ
 seize control : VERB
 self-defensive : ADJ
 start-up : NOUN
+state-run : ADJ
 tax-writing : ADJ
 tax-writing committee : NOUN
 three-day : ADJ
@@ -1553,6 +1573,7 @@ Tinian : NOUN
 Tirthankara : NOUN
 Tongo Tongo : NOUN
 Tran Dai Quang : NOUN
+Trump International : NOUN
 Trump organization : NOUN
 Trump Soho hotel : NOUN
 Twitter : NOUN
@@ -8907,6 +8928,7 @@ factor analyze : VERB
 factor iv : NOUN
 factor out : VERB
 factor xi : NOUN
+factory : NOUN
 factual : ADJ
 faculty : NOUN
 faculty member : NOUN
@@ -12303,6 +12325,8 @@ individual : NOUN
 individual : ADJ
 individual retirement account : NOUN
 indonesia : NOUN
+indonesian : NOUN
+indonesian : ADJ
 indus : NOUN
 indus civilization : NOUN
 indus river : NOUN
@@ -12353,6 +12377,7 @@ inflict : VERB
 influence : NOUN
 influence : VERB
 influent : ADJ
+influential : ADJ
 info : NOUN
 inform : VERB
 informal : ADJ
@@ -21108,6 +21133,7 @@ sitting room : NOUN
 sitting trot : NOUN
 situate : VERB
 situation : NOUN
+sit-in : NOUN
 six : NOUN
 six : ADJ
 six pack : NOUN

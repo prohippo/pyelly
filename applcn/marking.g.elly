@@ -516,10 +516,16 @@ _
   linefeed
   right
 __
-g:ELEM->MISC
+g:ELEM->MISC[:-dit]
  p<1 l[!spcs]>>+3
 _
   var typg=conj
+  (decom)
+__
+g:ELEM->MISC[:dit]
+ p<1 l[!spcs]>>+3
+_
+  var typg=misc
   (decom)
 __
 g:ELEM->SPCL[|*r]
