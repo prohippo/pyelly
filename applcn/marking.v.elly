@@ -17,6 +17,7 @@ advanced : VERB[^ed]
 advancing : VERB[^ing]
 angrier : ADJ
 appeared : VERB[^ed]
+appears to be part of : VERB
 are likely to be : BE
 ate : VERB[^ed,*x]
 based on : VERB[^ed,*x]
@@ -198,6 +199,7 @@ pleased : VERB[^ed]
 points of View : NOUN[:plur]
 posted on Facebook : VERB[^ed]
 potions : NOUN
+pregnant as a teen : ADJ
 pressing : VERB[^ing]
 previously fired : ADJ
 progresses : VERB[^s]
@@ -220,6 +222,7 @@ revolved around : VERB[^ed]
 rock-wielding : ADJ
 rolled back : VERB[^ed]
 rose : VERB[^ed,*x] - +2
+ruled in favor of : VERB[^ed]
 rushing : VERB[^ing] - +1
 said : VERB[^ed,dit]
 said at the time : VERB[^ed,dit]
@@ -329,6 +332,8 @@ a few hundred : NUM
 a few of : QUAN
 a group of : QUAN
 a hundred : NUM
+a little bit : NOUN
+a little bit : ADV
 a lot of : QUAN
 a number of : QUAN
 a number of pieces of : QUAN
@@ -425,6 +430,7 @@ bottle cap : NOUN
 box set : NOUN
 breakneck speed : NOUN
 brotherly nations : NOUN
+budget director : NOUN
 building supply : NOUN
 bullocky : NOUN - +2
 bushranger : NOUN
@@ -463,6 +469,7 @@ christian doctrine : NOUN
 christian values : NOUN[:plur]
 christmas cheer : NOUN
 christmas spectacular : NOUN
+church leader : NOUN
 clean energy : NOUN
 closed-door meeting : NOUN
 cm long : NOUN
@@ -477,6 +484,7 @@ configurable : ADJ
 confirm the move : VERB
 confraternity : NOUN
 congressional lawmakers : NOUN[:plur]
+conservative activist : NOUN
 consider the fate of : VERB
 consigliere : NOUN
 corporate bond market : NOUN
@@ -558,6 +566,7 @@ feed & farm supply store : NOUN
 ferry service : NOUN
 few hundred : NUM
 final leg : NOUN
+financial watchdog agency : NOUN
 fireable offense : NOUN
 fist fight : NOUN
 fixed investment : NOUN
@@ -648,6 +657,7 @@ in the skies : ADJ [$trlg] +1
 in the skies : ADV
 in the wake of : PREP
 in the works : ADJ
+in which : CONJ[@rel]
 in width : ADV[~trlg] [$deg] 0
 in years past : ADV
 inappropriate behavior : NOUN
@@ -693,6 +703,7 @@ jain : NOUN
 jihadi : NOUN
 job well done : NOUN
 judge, jury, and executioner : NOUN
+just a little bit : ADV
 just as : CONJ - -1
 just for the hell of it : ADV
 just this : DEM[@ind,sgl]
@@ -735,6 +746,7 @@ manmade : ADJ
 mannerist : NOUN
 many of whom : PRO
 marchese : NOUN
+mass killing : NOUN
 may have : AUXL
 may have been : AUXL
 media outlet : NOUN
@@ -1037,6 +1049,7 @@ u.s. special forces : NOUN[:plur]
 uav : NOUN
 ultimate deal : NOUN
 under any circumstances : ADV
+undercover sting operation : NOUN
 understated : VERB[^ed] - -1
 underutilization : NOUN
 underutilize : VERB
@@ -1177,6 +1190,7 @@ the country’s struggle : NOUN[:det]
 90-day : ADJ
 aisle-roaming : ADJ
 almost-indisputable : ADJ
+american-born : ADJ
 anti-Iran : ADJ
 anti-LGBT : ADJ
 asian-american : ADJ
@@ -1262,6 +1276,7 @@ wrap-up : NOUN
 # # # # some names to recognize explicitly
 
 A New Day Has Come : NOUN
+Aaron C. Davis : NOUN
 ABC News : NOUN
 AC/DC : NOUN
 AT&T : NOUN
@@ -1415,6 +1430,7 @@ Israeli Prime Minister Benjamin Netanyahu : NOUN
 Jade Helm : NOUN
 Jalen Hill : NOUN
 James Comey : NOUN
+James O'Keefe : NOUN
 Jamie : NOUN
 Janis : NOUN
 Japan International Cooperation Agency : NOUN[:*r]
@@ -1465,6 +1481,7 @@ Martinez : NOUN
 Mar-a-Lago : NOUN
 Mattis : NOUN
 McCarthy : NOUN
+Meghan Markle : NOUN
 Merkel : NOUN
 Michael Baudendistel : NOUN
 Michael Flynn : NOUN
@@ -1516,6 +1533,8 @@ President Donald Trump : NOUN
 President Erdogan : NOUN
 President Trump : NOUN
 Prime Minister Benjamin Netanyahu : NOUN
+Prince Harry : NOUN
+Project Veritas : NOUN
 Queen Elizabeth : NOUN
 Queens Park : NOUN
 Ramos : NOUN
@@ -1579,6 +1598,7 @@ Trump Soho hotel : NOUN
 Twitter : NOUN
 U.N. : NOUN
 U.S. : NOUN
+U.S. District Judge : NOUN
 Uber : NOUN
 UCLA : NOUN
 USNORTHCOM : NOUN
@@ -2362,6 +2382,8 @@ arm exercise : NOUN
 arm guard : NOUN
 arm pad : NOUN
 armenia : NOUN
+armenian : NOUN
+armenian : ADJ
 armor : NOUN
 armor : VERB
 armor plate : NOUN
@@ -18565,7 +18587,7 @@ quell : VERB
 quest : NOUN
 quest : VERB
 question : NOUN
-question : VERB
+question : VERB - +1
 question mark : NOUN
 question master : NOUN
 question sheet : NOUN
@@ -24299,6 +24321,7 @@ turn out : VERB
 turn over : VERB
 turn signal : NOUN
 turn tail : VERB
+turn the tables : VERB
 turn up : VERB
 turn up the heat : VERB
 turn up the pressure : VERB
