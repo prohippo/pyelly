@@ -2705,6 +2705,8 @@ d:whereas  <- CONJ
 __
 d:although <- CONJ
 __
+d:though   <- CONJ
+__
 d:because  <- CONJ
 __
 d:until    <- CONJ
