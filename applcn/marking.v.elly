@@ -17,6 +17,7 @@ advanced : VERB[^ed]
 advancing : VERB[^ing]
 angrier : ADJ
 appeared : VERB[^ed]
+appeared to stem from : VERB[^ed]
 appears to be part of : VERB
 are likely to be : BE
 arrested and charged : VERB[^ed]
@@ -24,6 +25,7 @@ ate : VERB[^ed,*x]
 based on : VERB[^ed,*x]
 became : VERB[^ed,chng]
 began : VERB[^ed,proc,*x]
+being taken to the hospital : VERB[^ing]
 believed to be : VERB[^ed]
 believed to have : AUXL
 believed to have been : AUXL
@@ -72,8 +74,9 @@ does : NOUN[:plur] - -1
 does : VERB[^s] - +1
 done so : VERB[^ed]
 djs : VERB[^s]
-drawn : VERB[^ed]
 does not : AUXL[^s]
+drug trafficking : NOUN
+drawn : VERB[^ed]
 educating themselves : VERB[^ing]
 elevated : VERB[^ed]
 evening : VERB[^ing] - -2
@@ -83,10 +86,12 @@ faces a dilemma : VERB
 fastest : ADJ
 feeding : VERB[^ing]
 feet : NOUN[:plur] [&msr] 0
+felled : VERB[^ed]
 field-tested : VERB[^ed]
 field-testing : VERB[^ing]
 fighting : VERB[^ing]
 financing : VERB[^ing]
+first-degree murder : NOUN
 fishermen : NOUN[:plur]
 focused on : VERB[^ed]
 focuses on : VERB - +2
@@ -110,6 +115,7 @@ getting : BE[^ing] - +1
 getting : VERB[^ing] - +2
 getting : NOUN[:ing] - -2
 giving rise : VERB[^ing]
+goes on recess : VERB
 going to end up : VERB[^ing]
 gone out of business : VERB[^ed]
 gonna : AUXL
@@ -134,6 +140,7 @@ head wound : NOUN
 heard : SVED - -1
 hearing : VERB[^ing] - +2
 held hostage : VERB[^ed]
+held without bond : VERB[^ed]
 house tax-writing committee : NOUN
 hove : VERB[^ed]
 have nothing to do with : VERB
@@ -145,6 +152,7 @@ irked that : VCTH[^ed]
 is currently considered : VERB
 knew : VERB[^ed]
 known : VERB[^ed,*x] - +1
+leadership role : NOUN
 leading : VERB[^ing]
 led : NOUN - -2
 led : VERB[^ed]
@@ -181,6 +189,7 @@ moved into a new phase : VERB[^ed]
 mps : NOUN[:plur]
 multibillion : ADJ
 multinationals : NOUN[:plur]
+murder trial : NOUN
 named : VERB[^ed] - +2
 named : ADJ - -4
 news anchor : NOUN
@@ -191,6 +200,7 @@ officials : NOUN[:plur]
 oil minister : NOUN
 opening : VERB[^ing]
 opposing : VERB[^ing]
+ordered held without bond : VERB[^ed]
 originated : VERB[^ed]
 originated : ADJ - -4
 ought : VERB
@@ -254,6 +264,7 @@ sold : VERB[^ed]
 sparked fears of : VERB[^ed]
 spoke : VERB[^ed] - +2
 steered clear : VERB[^ed]
+stepping down : VERB[^ing]
 stimulating : VERB[^ing]
 stood : VERB[^ed]
 striking back at : VERB[^ing]
@@ -272,6 +283,7 @@ telecommunications : NOUN
 telecommunications : NOUN[:plur] - -1
 television broadcasting : NOUN
 terrifying : VERB[^ing]
+territorial struggle : NOUN
 terrorizing : VERB[^ing] - +2
 terrorizing : NOUN - -1
 thanked : VERB[^ed]
@@ -346,6 +358,7 @@ a lot of : QUAN
 a number of : QUAN
 a number of pieces of : QUAN
 a series of : QUAN
+a string of : QUAN
 a third the : NUM
 a thousand : NUM
 about to : TO
@@ -488,6 +501,7 @@ closed-door meeting : NOUN
 cm long : NOUN
 cmdr. : NOUN
 col. : NOUN
+college graduate : NOUN
 colored slave : NOUN
 coming off of : PREP
 computer model : NOUN
@@ -512,6 +526,8 @@ dance number : NOUN
 data breach : NOUN
 day in a row : NOUN
 deadliest : ADJ
+deadly shooting : NOUN
+deadly shootings : NOUN[:plur]
 deductibility : NOUN
 demilitarization : NOUN
 democratic republic : NOUN
@@ -656,13 +672,16 @@ hydro : NOUN
 hydro : ADJ - +2
 hyperinflation : NOUN
 illegal immigrant : NOUN
+immediate medical help : NOUN
 in addition to : PREP
 in anticipation of : PREP
 in any way : ADV
 in area : ADV[~trlg] [$deg] 0
 in as much as : CONJ
+in business : ADJ
 in case of : PREP
 in conjunction with : PREP
+in connection with : PREP
 in connection to : PREP
 in favor of : PREP
 in height : ADV[~trlg] [$deg] 0
@@ -825,6 +844,7 @@ neighborhood setting : NOUN
 newspaper best : ADJ
 next year : NAVB[:det]
 no one : PRO
+north korean leader : NOUN
 northern california : NOUN
 not only : CONJ
 now known as : CONJ
@@ -1087,6 +1107,7 @@ underutilization : NOUN
 underutilize : VERB
 union force : NOUN
 unlikely to be persuaded : ADJ
+until next year : ADV
 unwilling to : TO
 up for reelection : ADJ
 up slightly : ADJ
@@ -1216,6 +1237,7 @@ most as many : ADJ
 counts of murder : NOUN[:plur]
 disappeared from the fever swamps : VERB[^ed]
 Florida district office : NOUN
+Florida neighborhood : NOUN
 new and bloodier : ADJ
 Scarborough intern Lori Klausutis : NOUN
 sinai mosque : NOUN
@@ -1468,6 +1490,7 @@ Ines : NOUN
 Instagram : NOUN
 Institute for Radio Astronomy Millimetrique : NOUN[:*r]
 Intel : NOUN
+International Criminal Tribunal : NOUN
 Irving : NOUN
 Islamabad Electric Supply Company : NOUN[:*r]
 Islamic State : NOUN
@@ -1481,6 +1504,7 @@ Janis : NOUN
 Japan International Cooperation Agency : NOUN[:*r]
 Jared : NOUN
 Jeff Sessions : NOUN
+Jenny Lumet : NOUN
 Jeremy : NOUN
 John Beck : NOUN
 Jim : NOUN
@@ -1576,6 +1600,7 @@ Pfaffian : ADJ
 Politifact : NOUN
 POLITICO : NOUN
 Post-Gazette : NOUN
+Praljak : NOUN
 Premier League : NOUN
 President Donald Trump : NOUN
 President Erdogan : NOUN
@@ -1598,6 +1623,7 @@ Rockwell Automation : NOUN
 Rohingya : NOUN
 Roy : NOUN
 Roy Moore : NOUN
+Russell Simmons : NOUN
 Russian President : NOUN
 Russian President Vladimir Putin : NOUN
 S.A.F. : NOUN
@@ -1629,6 +1655,8 @@ Suiter : NOUN
 Talkradio 790 KABC : NOUN
 Team Lacoste : NOUN
 the Emoluments Clause : NOUN
+the former Yugoslavia : NOUN
+The Hollywood Reporter : NOUN
 The Northwest Indiana Times : NOUN
 the only right choice : NOUN
 The Spokesman-Review : NOUN
@@ -1642,6 +1670,7 @@ Tinian : NOUN
 Tirthankara : NOUN
 Today Show : NOUN
 Tongo Tongo : NOUN
+Tom Cotton : NOUN
 Tran Dai Quang : NOUN
 Trump International : NOUN
 Trump organization : NOUN
@@ -18063,6 +18092,7 @@ preliminary : ADJ
 preliminary exam : NOUN
 preliminary examination : NOUN
 premeditate : VERB
+premeditated: ADJ
 premier : NOUN
 premier : VERB
 premier : ADJ

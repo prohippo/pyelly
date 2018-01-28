@@ -1630,13 +1630,11 @@ g:NOUN[:*l,-*l]->NOUN[:-*x,-*l,-plur,-ing] XID
 _
   (twob)
 __
-g:ABBR->ABBR ABBR
- >>++
-__
-g:NOUN->ABBR NOUN
+g:NOUN->ABBR
  >>[&*c]
-_
-  (twob)
+__
+g:ABBR->ABBR[:*x] ABBR
+ >>[&*c]++++
 __
 g:PRO[=*r,-one,prep]->PREP['-cnj] PRO[=-nom]
 _
