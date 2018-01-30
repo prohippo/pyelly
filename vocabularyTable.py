@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 29dec2017 CPM
+# vocabularyTable.py : 30jan2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -451,7 +451,7 @@ class Result(object):
             string representation
         """
 
-        return u''.join(self.vem.chs) + u' ' + unicode(self.nspan) + u' [' + ''.join(self.suffx) + u']'
+        return u''.join(self.vem.chs) + u' ' + unicode(self.nspan) + u' <' + ''.join(self.suffx) + u'>'
 
     def __str__ ( self ):
 
@@ -574,7 +574,7 @@ class VocabularyTable(object):
 
         """
         match current text with vocabulary entry, possibly removing final inflection
-        (this method assumes English; override for other languages)
+        (this method assumes English; override it for other languages)
 
         arguments:
             self  -
@@ -691,8 +691,10 @@ class VocabularyTable(object):
         strg = toKey(chrs[:keyl])
 
 #       print 'vocab first word=' , list(strg) , type(strg)
+#       print '0 endg=' , self.endg
 
         vs = self._getDB(strg)        # look up first word in vocabulary table
+#       print '1 endg=' , self.endg
 
         if vs == None or len(vs) == 0:
             return res
@@ -721,6 +723,7 @@ class VocabularyTable(object):
 #           print v.chs , ':' , chrs[:k]
             nm = self.doMatchUp(v.chs,chrs)
             if nm == 0 or nm < rln: continue
+#           print '2 endg=' , self.endg
 
 #           print 'rln=' , rln , 'ln=' , ln
             if rln < nm:              # longer match than before?
@@ -728,11 +731,22 @@ class VocabularyTable(object):
                 res = [ ]             # if so, start new result list for longer matches
                 rln = nm              # set new minimum match length
 
-#           print 'returning' , v.chs , nm , self.endg
+#           print 'returning' , v.chs , nm , '<' + self.endg + '>'
             rs = Result(v,nm,self.endg)   # new result object be returned
+#           print 'rs=' , rs
             res.append(rs)            # add to current result list
 
-        return res                    # return surviving matches
+        rem = [ ]
+#       print 'len(res)=' , len(res) , res
+        if len(res) > 1:              # check for special case where term with and
+            for re in res:            # without inflection is in vocabulary
+#               print 're=' , re
+                if len(re.suffx) == 0:
+                    rem.append(re)
+        if len(rem) > 0:
+            return rem                # if so, keep only full matches
+        else:
+            return res                # return surviving matches
 
     def lookUpSingleWord ( self , word ):
 
@@ -921,3 +935,4 @@ if __name__ == '__main__':
         print ''
 
     sys.stdout.write('\n')
+
