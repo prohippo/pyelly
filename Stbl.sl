@@ -163,6 +163,8 @@ BLOCK s
     IS nzq {SU}
     IF lak {SU}
     IF dah {SU}
+    IF dua {SU}
+    if lea {SU}
     IF x
       IF eh {FA}
       IF a
