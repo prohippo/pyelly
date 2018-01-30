@@ -23,6 +23,7 @@ are likely to be : BE
 arrested and charged : VERB[^ed]
 ate : VERB[^ed,*x]
 based on : VERB[^ed,*x]
+be found alive : VERB[^ed]
 became : VERB[^ed,chng]
 began : VERB[^ed,proc,*x]
 being taken to the hospital : VERB[^ing]
@@ -61,7 +62,9 @@ criteria : NOUN[:plur]
 cryptic statement : NOUN
 current and former : ADJ
 cut short : VERB[^ed]
-dating back : VERB[^ing]
+dates back to : VERB
+dating back to : VERB[^ing]
+debate over the meaning : NOUN
 declared : VERB[^ed] - +1
 determined : VERB[^ed]
 did : VERB[^ed,*x]
@@ -164,10 +167,12 @@ lives : NOUN[:plur] - +1  =life -s
 lives : VERB[^s]          =live -s
 lost contact with : VERB[^ed]
 made : VERB[^ed]
+made clear : Verb[^ed,dit]
 made its way : VERB[^ed]
 made use of : VERB[^ed]
 made up : VERB[^ed,*x]
 makes use of : VERB[^ed]
+making a trip out to : VERB[^ing]
 making it easier : VERB[^ing]
 making matters worse : VERB[^ing]
 making use of : VERB[^ing]
@@ -209,6 +214,7 @@ paid : VERB[^ed]
 peacemaking : NOUN
 phenomena : NOUN[:plur]
 phone interview : NOUN
+pleaded guilty : VERB[^ed]
 pleased : VERB[^ed]
 points of View : NOUN[:plur]
 posted on Facebook : VERB[^ed]
@@ -251,6 +257,7 @@ serve as : VERB
 served as : VERB[^ed]
 serving as : VERB[^ing]
 setting : VERB[^ptcl,ing] - +1
+shifted its focus to : VERB[^ed]
 shipping label : NOUN
 shooting : VERB[^ing]
 shot : VERB[^ed] - +2
@@ -343,6 +350,7 @@ went_on : VERB[^ed] =went on
 2016 election meddling : NOUN
 24/7 : ADJ - +2
 5 minutes : NOUN
+a bit : NOUN[:det] - -2
 a claim : NOUN[:join]
 a day later : ADV
 a dozen : NUM
@@ -469,6 +477,7 @@ byline : NOUN
 cabinet meeting : NOUN
 cabinet meetings : NOUN[:plur]
 cable tv : NOUN
+cabinet session : NOUN
 cable tv channel : NOUN
 cakeshop : NOUN
 calm and collected : ADJ [$cmpd] 0
@@ -491,6 +500,7 @@ century bc : NOUN
 cheer on : VERB
 chemical symbol : NOUN
 child custody hearing : NOUN
+chief cabinet secretary : NOUN
 christian doctrine : NOUN
 christian values : NOUN[:plur]
 christmas cheer : NOUN
@@ -569,6 +579,7 @@ electricity generation system : NOUN
 elephant trophy : NOUN
 emergency talks : NOUN[:plur]
 end a stalemate : VERB
+end efforts : VERB
 engineering council : NOUN
 english-language : ADJ
 entry point : NOUN
@@ -614,6 +625,8 @@ foreign force : NOUN
 foreign intelligence : NOUN
 foreign land : NOUN
 foreign ministry : NOUN
+foreign policy advisor : NOUN
+formal approval : NOUN
 fourpenny : NOUN - +1
 freedom ride : NOUN
 from across : PREP
@@ -628,11 +641,13 @@ full time : ADV
 fully eliminate : VERB
 gay men : NOUN[:plur]
 gen. : NOUN
+gender equality : NOUN
 genetic modification : NOUN
 genetically modified : ADJ
 genetically modified crop : NOUN
 genome editing : NOUN
 give them new life : VERB
+global attention : NOUN
 golf property : NOUN
 gov. : NOUN
 governing coalition : NOUN
@@ -655,6 +670,8 @@ has to do : VERB
 hashtag : NOUN
 hate group : NOUN
 have done so : VERB[^hav,ed]
+head coach : NOUN
+head coaching : NOUN - +2
 heavy fighting : NOUN
 helpline : NOUN
 helter skelter : NOUN
@@ -696,6 +713,7 @@ in terms of : PREP
 in the community : ADV
 in the event of : PREP
 in the mix : ADV
+in the name of : PREP
 in the skies : ADJ [$trlg] +1
 in the skies : ADV
 in the wake of : PREP
@@ -753,6 +771,7 @@ just as : CONJ - -1
 just for the hell of it : ADV
 just this : DEM[@ind,sgl]
 keep things quiet : VERB
+key figure : NOUN
 lackluster record : NOUN
 land corridor : NOUN
 last known location : NOUN
@@ -760,6 +779,7 @@ last month : NAVB[:det]
 land survey : NOUN
 last week : NAVB[:det]
 last year : NAVB[:det]
+late night host : NOUN
 late stone age : NOUN
 later this week : NAVB[:det]
 launch order : NOUN
@@ -787,6 +807,7 @@ make available : VERB
 make use of : VERB
 male and female : NOUN
 male and female : ADJ - +1
+man to man : ADV
 manga : NOUN
 manmade : ADJ
 mannerist : NOUN
@@ -970,11 +991,13 @@ rocket science : NOUN
 rockin' : ADJ
 round at : PREP
 rpg : NOUN
+russian government : NOUN
 safe location : NOUN
 sales team : NOUN
 saturday and sunday : NAVB
 school community : NOUN
 scratching their heads : ADJ
+search-only mission : NOUN
 season opener : NOUN
 second thoughts : NOUN[:plur]
 selectable : ADJ
@@ -1061,14 +1084,17 @@ thaw with russia : NOUN
 the above : ADJ
 the better of it : ADV
 the coming days : NOUN[:plur]
+the culture wars : NOUN[:plur]
 the default is : VERB
 the entirety : NOUN
+the latest twist : NOUN
 the past year : NAVB[:det]
 the possibility that : NCTH
 the sidelines : NOUN
 the starting point : NOUN
 the united states : NOUN[:plur]
 their presence : NOUN
+there is no hope : NOUN
 this month : NAVB[:det]
 this time : ADV
 this week : ADV
@@ -1082,6 +1108,7 @@ time of year : NAVB
 time travel : NOUN
 time travel : VERB
 title track : NOUN
+to before : CONJ
 to not : TO
 to the satisfaction of : PREP
 to where : CONJ
@@ -1234,16 +1261,23 @@ most as many : ADJ
 
 # # # # definitions to deal with specific problem text
 
+another front in the culture wars : NOUN
 counts of murder : NOUN[:plur]
 disappeared from the fever swamps : VERB[^ed]
+effectively acknowledging : VERB[^ing]
+end efforts to rescue : VERB
 Florida district office : NOUN
 Florida neighborhood : NOUN
+making a false statement to the FBI : VERB[^ing]
+missing submarine : NOUN
 new and bloodier : ADJ
+repeatedly used the flag : VERB[^ed]
 Scarborough intern Lori Klausutis : NOUN
 sinai mosque : NOUN
 Tampa police : NOUN
 the country’s struggle : NOUN[:det]
 Trump’s tweet : NOUN
+win leverage : VERB
 
 # # # # common hyphenations
 
@@ -1361,6 +1395,7 @@ Angelina : NOUN
 Angelina Jolie : NOUN
 Apple II computer : NOUN
 Apple Watch : NOUN
+Argentine officials : NOUN[:plur]
 Arkansas State : NOUN
 Asia Pacific Economic Cooperation : ADJ
 Assad : NOUN
@@ -1468,6 +1503,7 @@ Gen. Valery Gerasimov : NOUN
 Gene Simmons : NOUN
 General Atomics : NOUN
 General Parametrics : NOUN
+George Papadopoulos : NOUN
 George Washington University : NOUN
 George Will : NOUN
 Golden State Warriors : NOUN
@@ -1558,6 +1594,7 @@ Michael Baudendistel : NOUN
 Michael Flynn : NOUN
 Michael Keaton : NOUN
 Michel Aoun : NOUN
+Mike Leach : NOUN
 Mimi Spear : NOUN
 Missouri State : NOUN
 Mitch McConnell : NOUN
@@ -1572,6 +1609,7 @@ NBA : NOUN
 NBC : NOUN
 NBC News : NOUN
 NCIS : NOUN
+NFL players' protest : NOUN
 Naval Criminal Investigative Service : NOUN
 Netanyahu : NOUN
 New Kensington : NOUN
@@ -1697,6 +1735,7 @@ Walmart Supercenter : NOUN
 Walter : NOUN
 Warner Brothers : NOUN
 Washington Post : NOUN
+Washington State : NOUN
 WCNC-TV : NOUN
 We Want God : NOUN
 West Chester : NOUN
@@ -1744,7 +1783,7 @@ and communications : NOUN =communications
 1st : ADV
 1st class : NOUN
 1st lieutenant : NOUN
-a bit : ADV [$deg,cmpd] 0
+a bit : ADV [$deg,cmpd] +2
 aaron : NOUN
 abandon : NOUN
 abandon : VERB
@@ -1883,7 +1922,7 @@ act : VERB - +1
 act out : VERB
 act superior : VERB
 act up : VERB
-acting : NOUN
+acting : NOUN - +1
 acting : ADJ
 action : NOUN
 action : VERB - -2
@@ -6647,6 +6686,7 @@ criminal possession : NOUN
 criminal prosecution : NOUN
 criminal record : NOUN
 criminal suit : NOUN
+criminal trial : NOUN
 crisis : NOUN
 crisis intervention : NOUN
 crisp : NOUN
@@ -12522,6 +12562,8 @@ inject : VERB
 injure : VERB
 injury : NOUN
 injustice : NOUN
+ink : NOUN
+ink : VERB
 inland : ADJ
 inland : ADV
 inmate : NOUN
@@ -12793,6 +12835,7 @@ involve : VERB [$trns] 0
 involvement : NOUN
 invulnerability : NOUN
 invulnerable : ADJ
+in-fighting : NOUN
 ion : NOUN
 ion beam : NOUN
 ion engine : NOUN
@@ -13102,6 +13145,7 @@ junior school : NOUN
 junior status : NOUN
 jurisdiction : NOUN
 jurist : NOUN
+juror : NOUN
 jury : NOUN
 jury box : NOUN
 jury duty : NOUN
@@ -14447,6 +14491,7 @@ man friday : NOUN
 man hour : NOUN
 man jack : NOUN
 man-made : ADJ
+man-to-man : ADJ
 manage : VERB
 management : NOUN
 management consultant : NOUN
@@ -15240,6 +15285,8 @@ mogul : NOUN
 mol : NOUN
 mole : NOUN
 molecule : NOUN
+molest : VERB
+molester : NOUN
 molly : NOUN
 mom : NOUN
 moment : NOUN
@@ -17771,6 +17818,7 @@ political system : NOUN
 political theory : NOUN
 political unit : NOUN
 politician : NOUN
+politicize : VERB
 politico : NOUN
 politics : NOUN
 poll : NOUN
@@ -24266,7 +24314,6 @@ trio : NOUN
 trip : NOUN
 trip : VERB
 trip line : NOUN
-trip out : VERB
 trip up : VERB
 trip wire : NOUN
 triple : NOUN
@@ -25340,6 +25387,7 @@ wealthy person : NOUN
 weapon : NOUN
 weapon of mass destruction : NOUN
 weapon system : NOUN
+weaponize : VERB
 wear : NOUN
 wear : VERB
 wear away : VERB

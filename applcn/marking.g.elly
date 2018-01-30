@@ -2463,6 +2463,21 @@ _
   (twob)
 __
 
+g:ELEM->PUNC[|com] OPPS
+ >>--
+_
+  var typg=punc
+  (typg)
+  linefeed
+  append <nclu><noun>
+  right
+  append </noun></nclu>
+__
+g:OPPS->NEGN NOUN
+_
+  (twob)
+__
+
 #
 # compound auxiliaries
 p:aux
