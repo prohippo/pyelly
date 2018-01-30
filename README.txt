@@ -513,8 +513,14 @@ Release Notes:
  1.4.18.1  01jan2018  clean up punctuation definitions
                       clean up and extend "marking" rules
                       update documentation
- 1.4.19  - 06jan1018  add time period entity extraction
+ 1.4.19  - 06jan2018  add time period entity extraction
                       clean up and extend "marking" rules
+                      update and revise documentation
+ 1.4.20  - 30jan2018  provide token list on parse tree overflow
+                      clean up diagnostic output for parsing
+                      fix bug in vocabulary table lookup of inflected entries
+                      extend logic for -S inflections in English
+                      extend "marking" rules
                       update and revise documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
