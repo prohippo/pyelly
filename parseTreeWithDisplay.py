@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeWithDisplay.py : 01dec2016 CPM
+# parseTreeWithDisplay.py : 30jan2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -115,7 +115,6 @@ class ParseTreeWithDisplay(parseTree.ParseTree):
 #       print ' all depth=' , self.dlm + 1
         if self.dlm < 0:
             return
-        tks = self.ctx.tokns       # token list for parse
         out.write('dump all\n\n')
         n = self.phlim - 1         # index of last node created
         while n >= 0:              # process until oldest node at n=0
@@ -186,23 +185,38 @@ class ParseTreeWithDisplay(parseTree.ParseTree):
                 ph = ph.alnk                                 # next phrase in ambiguity list
             out.write('\n')
         if nam == 0: out.write('NONE\n')
-        out.write('\n')
-        out.write(str(len(tks)))
-        out.write(' raw tokens=')
+
+        self.showTokens(out)
+
+        ng = self.glim
+        out.write(str(nph) + ' phrases, ' + str(ng) + ' goals\n\n')
+        out.flush()
+
+    def showTokens ( self , outs ):
+
+        """
+        dump token list for parse tree
+
+        arguments:
+            self  -
+            outs  - output stream
+        """
+
+        tks = self.ctx.tokns       # token list for parse
+
+        outs.write('\n')
+        outs.write(str(len(tks)))
+        outs.write(' raw tokens=')
         for tko in tks:
             if tko == None:
-                out.write(' [[NONE]]')
+                outs.write(' [[NONE]]')
             else:
                 if len(tko.root) < len(tko.orig):
                     tstr = ''.join(tko.root)
                 else:
                     tstr = tko.orig
-                out.write(' [[' + tstr + ']]')          # original tokens for parse tree
-
-        out.write('\n')
-        ng = self.glim
-        out.write(str(nph) + ' phrases, ' + str(ng) + ' goals\n\n')
-        out.flush()
+                outs.write(' [[' + tstr + ']]')          # original tokens for parse tree
+        outs.write('\n')
 
     def dumpTree ( self , ph ):
 

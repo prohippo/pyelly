@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 05jan2018 CPM
+# ellyBase.py : 29jan2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -70,7 +70,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.4.19'                     # current version of PyElly software
+release = 'v1.4.20'                     # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -396,6 +396,7 @@ class EllyBase(object):
             self.ptr.finishUpX()        # for any trailing ... grammar rule
         except ellyException.ParseOverflow:
             print >> sys.stderr , 'parse FAILed! overflow'
+            self.ptr.showTokens(sys.stderr)
             return None
 
         if not self.ptr.evaluate(self.ctx):
@@ -621,6 +622,7 @@ class EllyBase(object):
                 vmln = r0.nspan        # should be same for all matches
                 vchs = r0.vem.chs      #
                 vsfx = r0.suffx        #
+#               print 'nspan=' , vmln , vsfx
 
                 if ( vmln > nspan or
                      vmln == nspan and vsfx == '' ):
