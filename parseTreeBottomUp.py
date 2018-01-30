@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBottomUp.py : 02jul2017 CPM
+# parseTreeBottomUp.py : 29jan2018 CPM
 # -----------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -145,8 +145,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
             self
         """
 
-        q = map(lambda x: str(x.krnl.seqn) , self.queue)
-        print 'queue:' , '<' + ' '.join(q) + '>'
+        print 'queue:' , [ x.krnl.seqn for x in self.queue ]
 
     def restartQueue ( self ):
 
@@ -203,6 +202,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
 
             pho = pho.llnk                 # if no match, go to next group of phrases
 
+#       print 'added' , phr
         phr.llnk = self.newph[po]          # if out of groups, add to linked list at position
         self.newph[po] = phr               #
         self.queue.append(phr)             # enqueue phrase for further processing
