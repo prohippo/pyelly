@@ -15,6 +15,8 @@ largest : ADJ
 acting : VERB[^ing]
 advanced : VERB[^ed]
 advancing : VERB[^ing]
+agreed to cooperate with : VERB[^ed]
+alleged : VERB[^ed] - -1
 angrier : ADJ
 appeared : VERB[^ed]
 appeared to stem from : VERB[^ed]
@@ -108,6 +110,7 @@ forgot : VERB[^ed,*x]
 forgotten : VERB[^ed]
 founding :VERB[^ing] - -2
 freshmen : NOUN
+fronted by : VERB[^ed]
 froze : VERB[^ed]
 gave : VERB[^ed,*x]
 gave rise to : VERB[^ed]
@@ -151,6 +154,7 @@ held without bond : VERB[^ed]
 house tax-writing committee : NOUN
 hove : VERB[^ed]
 have nothing to do with : VERB
+identified as : VERB[^ed]
 infighting : NOUN
 inspired : VERB[^ed]
 interesting : VERB[^ing]
@@ -207,6 +211,7 @@ obtaining : VERB[^ing] - +2
 obtaining : ADJ - -4
 officials : NOUN[:plur]
 oil minister : NOUN
+ongoing investigation : NOUN
 opening : VERB[^ing]
 opposing : VERB[^ing]
 ordered held without bond : VERB[^ed]
@@ -231,8 +236,10 @@ promised : VERB[^ed]
 promised : ADJ
 providing : NOUN[:ing] - -2
 providing : VERB[^ing] - +3
+published by buzzed : VERB[^ed]
 raised fears of : VERB[^ed]
 ran : VERB[^ed]
+ran for office : VERB[^ed]
 re-emerged : VERB[^ed]
 re-emerging : VERB[^ing]
 regarding : PREP - +1
@@ -241,6 +248,7 @@ regarding : VERB[^ing]
 related : VERB[^ed]
 remaining : VERB[^ing] - -1
 remains : VERB[^s,proc] - +3
+repeated : VERB[^ed]
 residents : NOUN[:plur]
 revolved around : VERB[^ed]
 rewritten : VERB[^ed]
@@ -273,6 +281,7 @@ signed off : VERB[^ed]
 signing off : VERB[^ing]
 sitting : VERB[^ing]
 sold : VERB[^ed]
+sold off : VERB[^ed]
 sparked fears of : VERB[^ed]
 spoke : VERB[^ed] - +2
 spoken : VERB[^ed]
@@ -353,6 +362,7 @@ went_on : VERB[^ed] =went on
 1 of them : QUAN - -2 =one of them
 1st mention : NOUN
 1st mention : VERB
+2016 election : NOUN
 2016 election meddling : NOUN
 24/7 : ADJ - +2
 5 minutes : NOUN
@@ -371,6 +381,7 @@ a little bit : ADV
 a lot of : QUAN
 a number of : QUAN
 a number of pieces of : QUAN
+a range of : QUAN
 a series of : QUAN
 a string of : QUAN
 a third the : NUM
@@ -489,6 +500,7 @@ cable tv channel : NOUN
 cakeshop : NOUN
 calm and collected : ADJ [$cmpd] 0
 calories burned : NOUN
+campaign finance director : NOUN
 campaign manager : NOUN
 campaign stop : NOUN
 can and will : AUXL
@@ -664,6 +676,7 @@ grant aid : NOUN
 grant aid project : NOUN
 great western : ADJ
 growth strategy : NOUN
+guilty plea : NOUN
 guitar bridge : NOUN
 half inch : NOUN
 half of the : QUAN
@@ -707,6 +720,7 @@ in case of : PREP
 in conjunction with : PREP
 in connection with : PREP
 in connection to : PREP
+in exchange for : PREP
 in favor of : PREP
 in height : ADV[~trlg] [$deg] 0
 in hopes of : CONJ
@@ -763,6 +777,7 @@ islamic state : NOUN
 islamic state group : NOUN
 islamist insurgent : NOUN
 issued a firm warning to : VERB[^ed]
+it appears to have : AUXL
 it behv clear : ELEM - +4 (elma)
 it behv easy : ELEM - +4 (elma)
 it behv obvious : ELEM - +4 (elma)
@@ -794,6 +809,7 @@ launch procedure : NOUN
 law enforcement personnel : NOUN
 lead surgeon : NOUN
 leaps and bounds : NOUN[:plur]
+legal peril : NOUN
 legislative office : NOUN
 less like : PREP
 less than : ADV[~mod] [$deg] 0
@@ -998,7 +1014,10 @@ rocket science : NOUN
 rockin' : ADJ
 round at : PREP
 rpg : NOUN
+russian ambassador : NOUN
+russian officials : NOUN[:plur]
 russian government : NOUN
+russian meddling : NOUN
 safe location : NOUN
 sales manager : NOUN
 sales team : NOUN
@@ -1019,6 +1038,7 @@ senior level : NOUN
 service plan : NOUN
 servicemember : NOUN
 several other : QUAN
+sexual advance : NOUN
 sgt. : NOUN
 shadow banking : NOUN
 sharpen its focus : VERB
@@ -1093,6 +1113,7 @@ the above : ADJ
 the better of it : ADV
 the coming days : NOUN[:plur]
 the culture wars : NOUN[:plur]
+the day after : PREP
 the default is : VERB
 the entirety : NOUN
 the latest twist : NOUN
@@ -1127,6 +1148,7 @@ top forty hit : NUM
 trackwork : NOUN
 trading partner : NOUN
 traffic stop : NOUN
+trump campaign : NOUN
 u.s. charts : NOUN[:plur]
 u.s. government compound : NOUN
 u.s. market : NOUN
@@ -1321,6 +1343,7 @@ do-whatever-you-want : ADJ
 dual-use : ADJ
 e-mail : NOUN
 eat-in : ADJ
+far-flung : ADJ
 faith-based : ADJ
 five-lane : ADJ
 four-lane : ADJ
@@ -1365,6 +1388,7 @@ seize control : VERB
 self-defensive : ADJ
 start-up : NOUN
 state-run : ADJ
+surface-to-surface : ADJ
 tax-writing : ADJ
 tax-writing committee : NOUN
 three-day : ADJ
@@ -1663,11 +1687,13 @@ Ramos : NOUN
 Rancho Tehama : NOUN
 Revolutionary Guards : NOUN[:plur]
 Reaganite : NOUN
+Reuben Kihuen : NOUN
 Reuters : NOUN
 Rex Tillerson : NOUN
 RNC : NOUN
 Ric : NOUN
 Robert Mueller : NOUN
+Robert S. Mueller III : NOUN
 Rockette : NOUN
 Rockwell Automation : NOUN
 Rohingya : NOUN
@@ -1688,6 +1714,7 @@ Seal Team Six : NOUN
 Seminole Heights : NOUN
 Sergey : NOUN
 Shi‘ite : NOUN
+Sergey Kislyak : NOUN
 Shindake : NOUN
 Ship of Fools : NOUN
 Showcase Presentations : NOUN
@@ -1923,6 +1950,7 @@ acne : NOUN
 acquire : VERB
 acquirer : NOUN
 acquit : VERB
+acquittal : NOUN
 acre : NOUN
 acronym : NOUN
 acrylic : NOUN
@@ -2206,6 +2234,7 @@ alive : ADJ
 all the time : ADV
 allegation : NOUN
 allege : VERB
+alleged : ADJ
 allegedly : ADV
 allen : NOUN
 allen screw : NOUN
@@ -2522,6 +2551,7 @@ armor plate : NOUN
 armour : NOUN - +1
 armour : VERB
 armour plate : NOUN
+arms depot : NOUN
 arms race : NOUN
 army : NOUN
 army ant : NOUN
@@ -5818,6 +5848,7 @@ combustible material : NOUN
 combustion : NOUN
 come : NOUN - -4
 come : VERB[^ptcl]
+come after : VERB
 come alive : VERB
 come along : VERB
 come apart : VERB
@@ -15341,6 +15372,7 @@ money : NOUN
 money belt : NOUN
 money box : NOUN
 money dealer : NOUN
+money laundering : NOUN
 money market : NOUN
 money order : NOUN
 money supply : NOUN
@@ -19433,6 +19465,7 @@ repeal : NOUN
 repeal : VERB
 repeat : NOUN
 repeat : VERB
+repeated : ADJ
 repeatedly : ADV
 repercussion : NOUN
 replace : VERB
@@ -20558,6 +20591,7 @@ secret society : NOUN
 secretary : NOUN
 secretary bird : NOUN
 secretary general : NOUN
+secretive : ADJ
 secretly : ADV
 sect : NOUN
 sectarian : NOUN
@@ -23426,6 +23460,7 @@ tax credit : NOUN
 tax cut : NOUN
 tax deduction : NOUN
 tax form : NOUN
+tax haven : NOUN
 tax hike : NOUN
 tax income : NOUN
 tax law : NOUN
