@@ -3856,6 +3856,12 @@ _
   (twob)
 __
 
+g:NOUN->SERN
+ >>--
+_ 
+  (desern)
+__
+
 g:ELEM->PUNC[|com] SERN
   >>++++
 _

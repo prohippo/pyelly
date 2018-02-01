@@ -19,11 +19,13 @@ agreed to cooperate with : VERB[^ed]
 alleged : VERB[^ed] - -1
 angrier : ADJ
 appeared : VERB[^ed]
+appeared to defend : VERB[^ed]
 appeared to stem from : VERB[^ed]
 appears to be part of : VERB
 are likely to be : BE
 arrested and charged : VERB[^ed]
 ate : VERB[^ed,*x]
+awaits trial : VERB
 based on : VERB[^ed,*x]
 be found alive : VERB[^ed]
 became : VERB[^ed,chng]
@@ -94,6 +96,7 @@ fastest : ADJ
 feeding : VERB[^ing]
 feet : NOUN[:plur] [&msr] 0
 felled : VERB[^ed]
+felt forced to choose : VERB[^ed]
 field-tested : VERB[^ed]
 field-testing : VERB[^ing]
 fighting : VERB[^ing]
@@ -162,6 +165,7 @@ internationals : NOUN[:plur]
 irked that : VCTH[^ed]
 is currently considered : VERB
 knew : VERB[^ed]
+knew nothing at all : VERB
 known : VERB[^ed,*x] - +1
 leadership role : NOUN
 leading : VERB[^ing]
@@ -262,6 +266,7 @@ said at the time : VERB[^ed,dit]
 said in his address : VERB[^ed,dit]
 sat : VERB[^ed]
 sat down : VERB[^ed,*x]
+secretly ghostwriting : VERB[^ing]
 security forces : NOUN[:plur]
 seen : VERB[^ed]
 seen : SVED - -1
@@ -285,6 +290,7 @@ sold off : VERB[^ed]
 sparked fears of : VERB[^ed]
 spoke : VERB[^ed] - +2
 spoken : VERB[^ed]
+sprawling : VERB[^ing]
 steered clear : VERB[^ed]
 stepping down : VERB[^ing]
 stimulating : VERB[^ing]
@@ -315,6 +321,7 @@ took place : VERB[^ed]
 tore up : VERB[^ed]
 tracking : VERB[^ing]
 trying : VERB[^ing] - +1
+trying to make clear that : VERB[^ing]
 turned themselves in : VERB[^ed]
 unified : VERB[^ed]
 unsolved mystery : NOUN
@@ -326,6 +333,7 @@ wanting to see : VERB[^ing]
 warfighting : NOUN
 was a violation of : VERB[^ed]
 was known to be : BE[^ed]
+weddings : NOUN[:plur]
 went : VERB[^ed,*x]
 went out of business : VERB[^ed]
 went viral : VERB[^ed]
@@ -333,6 +341,7 @@ whether or not : CONJ
 will have to : AUXL
 will not have to : AUXL
 withdrew : VERB[^ed]
+withdrew their support : VERB[^ed]
 won : VERB[^ed] - +2
 wore : VERB[^ed]
 worn : VERB[^ed]
@@ -386,6 +395,7 @@ a series of : QUAN
 a string of : QUAN
 a third the : NUM
 a thousand : NUM
+about half its : QUAN
 about to : TO
 about whether : CONJ
 above water : ADJ
@@ -464,6 +474,7 @@ at the top of : PREP
 athletic conference : NOUN
 authorities : NOUN[:plur]
 autoplay : NOUN
+bail deal : NOUN
 bat and ball : ADJ
 beatle : NOUN
 because of : PREP
@@ -572,6 +583,7 @@ divorce bill : NOUN
 divorce case : NOUN
 do much more : VERB
 do that : VERB
+dole : VERB - -2
 domestic politics : NOUN[:plur]
 doorbuster : NOUN
 doorbusting : ADJ
@@ -672,12 +684,14 @@ gov. : NOUN
 governing coalition : NOUN
 governing party : NOUN
 government figure : NOUN
+GPS monitoring : NOUN
 grant aid : NOUN
 grant aid project : NOUN
 great western : ADJ
 growth strategy : NOUN
 guilty plea : NOUN
 guitar bridge : NOUN
+half its : QUAN
 half inch : NOUN
 half of the : QUAN
 hall of fame : NOUN
@@ -700,6 +714,7 @@ hi res : ADJ
 his or her : DEM
 hit job : NOUN
 holster : VERB
+home detention : NOUN
 home to their families : ADV
 homiletics : NOUN
 hot 100 : NUM
@@ -787,6 +802,7 @@ it is obvious : ELEM
 jain : NOUN
 jihadi : NOUN
 job well done : NOUN
+joint bail deal : NOUN
 judge, jury, and executioner : NOUN
 just a little bit : ADV
 just as : CONJ - -1
@@ -794,6 +810,7 @@ just for the hell of it : ADV
 just this : DEM[@ind,sgl]
 keep things quiet : VERB
 key figure : NOUN
+know nothing at all : VERB
 lackluster record : NOUN
 land corridor : NOUN
 last known location : NOUN
@@ -814,8 +831,9 @@ legislative office : NOUN
 less like : PREP
 less than : ADV[~mod] [$deg] 0
 less than a : QUAN =less than 1
-little more than : ADV[~mod] [$deg] 0
+life’s work : NOUN
 like never before : ADV
+little more than : ADV[~mod] [$deg] 0
 litx : CONJ =lit.
 livestock waste : NOUN
 long term : NOUN
@@ -887,6 +905,7 @@ neighborhood bar : NOUN
 neighborhood setting : NOUN
 newspaper best : ADJ
 next year : NAVB[:det]
+no. 2 : NOUN
 no one : PRO
 north korean leader : NOUN
 northern california : NOUN
@@ -914,6 +933,7 @@ open desert : NOUN
 openings : NOUN[:plur]
 or else : CONJ
 or more : POSTP[@num] [$trlg] 0
+or not : CONJ
 or whether : CONJ
 other reports suggest : ADV
 other than : CONJ
@@ -988,6 +1008,7 @@ rebaptizer : NOUN
 recent trip : NOUN
 recent trouble : NOUN
 recording artist : NOUN
+red rock : NOUN
 regardless of : PREP
 regional rival : NOUN
 regional security : NOUN
@@ -1318,6 +1339,7 @@ win leverage : VERB
 aisle-roaming : ADJ
 almost-indisputable : ADJ
 american-born : ADJ
+anti-discrimination law : NOUN
 anti-Iran : ADJ
 anti-LGBT : ADJ
 anti-muslim : ADJ
@@ -1347,6 +1369,8 @@ far-flung : ADJ
 faith-based : ADJ
 five-lane : ADJ
 four-lane : ADJ
+four-page : ADJ
+four-page filing : NOUN[:*r]
 four-penny : ADJ
 four-wheel drive : NOUN
 full-throated : ADJ
@@ -1382,6 +1406,8 @@ question-and-answer : ADJ
 rear-drive : ADJ
 round-up : NOUN
 same-sex : ADJ
+same-sex wedding : NOUN
+same-sex weddings : NOUN[:plur]
 scale-down : NOUN
 seemingly insurmountable : ADJ
 seize control : VERB
@@ -1410,6 +1436,7 @@ A New Day Has Come : NOUN
 Aaron C. Davis : NOUN
 ABC News : NOUN
 AC/DC : NOUN
+Andrew Weissman : NOUN
 AT&T : NOUN
 Advanced Step in Innovative Mobility : NOUN
 Agence France-Presse : NOUN
@@ -1442,6 +1469,7 @@ Bashar Assad : NOUN
 Battle of Dug Springs : NOUN
 BBC : NOUN
 BeMobile : NOUN
+Bears Ears : NOUN
 Becker : NOUN
 Berenice Summerfield : NOUN
 Bernice Summerfield : NOUN
@@ -1472,11 +1500,13 @@ Charlotte Douglas : NOUN
 Chevrolet : NOUN
 China Central Television : NOUN[:*r]
 China Great Wall Industry Corporation : NOUN[:*r]
+Civil Rights Commission : NOUN
 Clever : NOUN - -6
 Clinton era : NOUN
 Cobiac : NOUN
 Cody Riley : NOUN
 Colorado State University : NOUN
+Colorado Civil Rights Commission : NOUN
 Comey : NOUN
 Coolio Earth Partnership : NOUN
 Corey Lewandowski : NOUN
@@ -1543,6 +1573,7 @@ George Will : NOUN
 Georgian : NOUN
 Golden State Warriors : NOUN
 Gov. Jerry Brown : NOUN
+Grand Staircase-Escalante : NOUN
 Grants Pass : NOUN
 Grey Advertising : NOUN
 HBO : NOUN
@@ -1630,6 +1661,7 @@ Michael Flynn : NOUN
 Michael Keaton : NOUN
 Michel Aoun : NOUN
 Mike Leach : NOUN
+Mike Pence : NOUN
 Mimi Spear : NOUN
 Missouri State : NOUN
 Mitch McConnell : NOUN
@@ -1670,6 +1702,7 @@ PBS : NOUN
 PBS program : NOUN
 Person of the Year : NOUN
 Pfaffian : ADJ
+Phillips : NOUN
 Politifact : NOUN
 POLITICO : NOUN
 Post-Gazette : NOUN
@@ -1700,8 +1733,10 @@ Rohingya : NOUN
 Roy : NOUN
 Roy Moore : NOUN
 Russell Simmons : NOUN
+Russian colleague : NOUN
 Russian President : NOUN
 Russian President Vladimir Putin : NOUN
+Russia-friendly : ADJ
 S.A.F. : NOUN
 Scarborough : NOUN
 Saakashvili : NOUN
@@ -1723,6 +1758,7 @@ South Florida : NOUN
 Space and Upper Atmospheric Research Commission : NOUN
 Srebrenica : NOUN
 St. Mary : NOUN - +2
+State Capitol : NOUN
 Stephan : NOUN
 Stephen Curry : NOUN
 Steve Bannon : NOUN
@@ -7434,6 +7470,7 @@ destroyer escort : NOUN
 destruct : VERB
 destruction : NOUN
 destruction fire : NOUN
+destructive : ADJ
 detach : VERB
 detail : NOUN
 detail : VERB
@@ -7608,6 +7645,8 @@ direct tide : NOUN
 direct trust : NOUN
 direction : NOUN
 directly : ADV
+directive : NOUN
+directive : ADJ - -2
 director : NOUN
 dirt : NOUN
 dirt : ADJ
@@ -7854,6 +7893,7 @@ dolly : NOUN
 domain : NOUN
 domain name : NOUN
 dome : NOUN
+domed : ADJ
 domestic : NOUN
 domestic : ADJ
 domestic animal : NOUN
@@ -18558,6 +18598,7 @@ prostitute : VERB
 protagonist : NOUN
 protect : VERB
 protection : NOUN
+protective : ADJ
 protein : NOUN
 protein molecule : NOUN
 protest : NOUN
@@ -22233,6 +22274,8 @@ spout : NOUN
 spout : VERB
 sprawl : NOUN
 sprawl : VERB
+sprawling : NOUN
+sprawling : ADJ
 spray : NOUN
 spray : VERB
 spray gun : NOUN
@@ -25862,6 +25905,7 @@ wing flat : NOUN
 wing screw : NOUN
 wing tip : NOUN
 winner : NOUN
+winnings : NOUN
 winter : NOUN
 winter : VERB
 winter mushroom : NOUN
