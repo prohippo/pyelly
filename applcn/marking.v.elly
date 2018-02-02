@@ -71,6 +71,7 @@ dates back to before : CONJ
 dating back to : VERB[^ing]
 debate over the meaning : NOUN
 declared : VERB[^ed] - +1
+deeply held : ADJ
 determined : VERB[^ed]
 did : VERB[^ed,*x]
 did not : AUXL[^ed]
@@ -317,6 +318,7 @@ terrorizing : NOUN - -1
 thanked : VERB[^ed]
 thought : VERB[^ed]
 told : VERB[^ed,dit]
+told the court : VERB[^ed,dit]
 took place : VERB[^ed]
 tore up : VERB[^ed]
 tracking : VERB[^ing]
@@ -371,6 +373,7 @@ went_on : VERB[^ed] =went on
 1 of them : QUAN - -2 =one of them
 1st mention : NOUN
 1st mention : VERB
+20 to 30 : NUM
 2016 election : NOUN
 2016 election meddling : NOUN
 24/7 : ADJ - +2
@@ -435,21 +438,23 @@ anytime : NOUN
 anytime : ADV
 approximately average : ADJ
 arab republic : NOUN
+arctic sea ice : NOUN
 armored vehicle : NOUN
 army head : NOUN
 army staff sgt. : NOUN
 around noon : ADV
 around the world : ADV
 as a means of : CONJ
-as part of : CONJ
 as a result : CONJ
 as a result of : PREP
 as compared to : CONJ
 as far as : CONJ
 as he saw fit : ADV
 as if : CONJ
+as much as : ADV[~mod,prox]
 as of : PREP
 as of late : ADV
+as part of : CONJ
 as result of : CONJ
 as though : CONJ
 as well as : CONJ
@@ -658,6 +663,7 @@ foreign land : NOUN
 foreign ministry : NOUN
 foreign policy advisor : NOUN
 formal approval : NOUN
+former employee : NOUN
 fourpenny : NOUN - +1
 freedom ride : NOUN
 from across : PREP
@@ -903,6 +909,7 @@ navy submarine : NOUN
 neighborhood : ADJ - -2
 neighborhood bar : NOUN
 neighborhood setting : NOUN
+new research : NOUN
 newspaper best : ADJ
 next year : NAVB[:det]
 no. 2 : NOUN
@@ -1004,6 +1011,7 @@ pv : ADJ
 pyroclastic : ADJ
 quoted from : VERB
 rally support for : VERB
+rapidly melting : ADJ
 rebaptizer : NOUN
 recent trip : NOUN
 recent trouble : NOUN
@@ -1060,6 +1068,7 @@ service plan : NOUN
 servicemember : NOUN
 several other : QUAN
 sexual advance : NOUN
+sexually harass : VERB
 sgt. : NOUN
 shadow banking : NOUN
 sharpen its focus : VERB
@@ -1138,6 +1147,7 @@ the day after : PREP
 the default is : VERB
 the entirety : NOUN
 the latest twist : NOUN
+the near future : NAVB[:det]
 the past year : NAVB[:det]
 the possibility that : NCTH
 the sidelines : NOUN
@@ -1313,6 +1323,7 @@ most as many : ADJ
 # # # # definitions to deal with specific problem text
 
 another front in the culture wars : NOUN
+complex new modeling : NOUN
 counts of murder : NOUN[:plur]
 disappeared from the fever swamps : VERB[^ed]
 effectively acknowledging : VERB[^ing]
@@ -1356,6 +1367,7 @@ co-produce : VERB
 cold war-era : NOUN
 cul-de-sac : NOUN
 cul-de-sac street : NOUN
+custom-made : ADJ
 cyber-intrusion : NOUN
 decades-old : ADJ
 decades-old conflict : NOUN
@@ -1365,8 +1377,9 @@ do-whatever-you-want : ADJ
 dual-use : ADJ
 e-mail : NOUN
 eat-in : ADJ
-far-flung : ADJ
 faith-based : ADJ
+far-flung : ADJ
+fast-moving : ADJ
 five-lane : ADJ
 four-lane : ADJ
 four-page : ADJ
@@ -1406,6 +1419,7 @@ question-and-answer : ADJ
 rear-drive : ADJ
 round-up : NOUN
 same-sex : ADJ
+same-sex couple : NOUN
 same-sex wedding : NOUN
 same-sex weddings : NOUN[:plur]
 scale-down : NOUN
@@ -1426,6 +1440,7 @@ U.S.-led : ADJ
 volume-weighted : ADJ
 watered-down : ADJ
 wax-work : NOUN
+wind-driven : ADJ
 world-renowned : ADJ
 would-be : ADJ
 wrap-up : NOUN
@@ -1597,6 +1612,7 @@ Irving : NOUN
 Islamabad Electric Supply Company : NOUN[:*r]
 Islamic State : NOUN
 Israeli Prime Minister Benjamin Netanyahu : NOUN
+Jack C. Phillips : NOUN
 Jade Helm : NOUN
 Jalen Hill : NOUN
 James Comey : NOUN
@@ -1609,6 +1625,7 @@ Jeff Sessions : NOUN
 Jenny Lumet : NOUN
 Jeremy : NOUN
 John Beck : NOUN
+John Conyers : NOUN
 Jim : NOUN
 Jinping : NOUN
 Jones : NOUN
@@ -1633,6 +1650,7 @@ Larry Wortzel : NOUN
 Larry Scott : NOUN
 Las Vegas : NOUN
 Laura : NOUN
+Lawrence Livermore National Laboratory : NOUN
 Lebron : NOUN
 Lee Cook-jong : NOUN
 Lester : NOUN
@@ -1652,6 +1670,7 @@ Marc : NOUN
 Mark Zuckerberg : NOUN
 Martinez : NOUN
 Mar-a-Lago : NOUN
+Masterpiece Cakeshop : NOUN
 Mattis : NOUN
 McCarthy : NOUN
 Meghan Markle : NOUN
@@ -1742,6 +1761,7 @@ Scarborough : NOUN
 Saakashvili : NOUN
 Saeb Erekat : NOUN
 Sanders : NOUN
+Santa Paula : NOUN
 Schumer : NOUN
 Scotts : NOUN
 Scotts Miracle-Gro Company : NOUN
@@ -1767,6 +1787,7 @@ Sueddeutsche Zeitung : NOUN
 Suiter : NOUN
 Talkradio 790 KABC : NOUN
 Team Lacoste : NOUN
+the city of Ventura : NOUN
 the Emoluments Clause : NOUN
 the former Yugoslavia : NOUN
 The Hollywood Reporter : NOUN
@@ -1775,6 +1796,7 @@ the only right choice : NOUN
 The Spokesman-Review : NOUN
 The Verge : NOUN [&prop] 0
 Theresa May : NOUN
+Thomas Aquinas College : NOUN
 Tierra del Fuego : NOUN
 Tillerson : NOUN
 Time magazine : NOUN
@@ -1799,6 +1821,7 @@ USNORTHCOM : NOUN
 US tax code : NOUN
 USO : NOUN
 Van Horn : NOUN
+Ventura : NOUN
 Veritas : NOUN
 Veteran's Day : NOUN
 Vickers : NOUN
@@ -14339,6 +14362,7 @@ los angeles : NOUN
 lose : VERB
 lose sight of : VERB
 lose track : VERB
+loss : NOUN
 lot : NOUN
 lot : VERB - -2
 lotte : NOUN
@@ -25543,6 +25567,7 @@ weather deck : NOUN
 weather eye : NOUN
 weather forecast : NOUN
 weather map : NOUN
+weather pattern : NOUN
 weather radar : NOUN
 weather satellite : NOUN
 weather sheet : NOUN
