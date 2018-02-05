@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# stopExceptions.py : 19sep2017 CPM
+# stopExceptions.py : 02feb2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -176,9 +176,9 @@ class StopExceptions(object):
 
 #       print 'matching for txt=' , txt , 'pnc= [' , pnc , ' ] ctx=' , ctx
 
-        if nomatch(txt,pnc,ctx):     # preclude any exception match?
-            return False
-#       print 'nomatch() returned False'
+        if matchtoo(txt,pnc,ctx):     # exception by complex match?
+            return True
+#       print 'matchtoo() returned False'
 
         sep = ctx[0] if len(ctx) > 0 else ''
         if sep == ellyChar.THS:
@@ -293,24 +293,22 @@ class StopExceptions(object):
 
 ##
 
-def nomatch ( txt , pnc , ctx ):
+def matchtoo ( txt , pnc , ctx ):
 
     """
-    special case checks - currently only for period in A.M. or P.M.
-
-    for overriding the checking done by the match() member method
+    complex checks - currently only for rightmost period of A.M. or P.M.
 
     arguments:
         txt   - list of text chars leading up to punctuation char
         pnc   - punctuation char
-        ctx   - context after punctuation
+        ctx   - list of chars in context after punctuation
 
     returns:
         True on match, False otherwise
     """
 
     ln = len(txt)
-#   print 'nomatch ln=' , ln , txt
+#   print 'nomatch() ln=' , ln , txt
     nxt = ctx[0] if len(ctx) > 0 else ''
     if pnc != '.' or not ellyChar.isWhiteSpace(nxt) or ln < 5:
         return False
@@ -319,23 +317,29 @@ def nomatch ( txt , pnc , ctx ):
         return False
     ch = txt[-5]
 #   print 'ch=' , ch
-    if ellyChar.isDigit(ch):
-        return True
+    if ellyChar.isDigit(ch):        # only 1 digit will be checked here!
+#       print 'ONE DIGIT'
+        return True                 # erring on the side of not to break sentence
     elif not ellyChar.isLetter(ch):
         return False
+
+#
+#   the following code is needed only when number transforms are turned off
+#
 
     nn = 6
     while nn <= ln and ellyChar.isLetter(txt[-nn]):
         nn += 1
 
 #   print 'nn=' , nn
-    if nn > ln:
-        wd = ''.join(txt[:-4]).lower()
-    elif not txt[-nn] in [ ' ' , '-' ]:
+    if nn < 3 or nn > 6:
         return False
-    else:
-        wd = ''.join(txt[-nn+1:-4]).lower()
+    elif nn > ln:
+        if not txt[-nn] in [ ' ' , '-' ]:
+            return False
+    wd = ''.join(txt[:-nn]).lower()
 
+#   print 'wd=' , wd
     if wd in [ 'one' , 'two' , 'three' , 'four' , 'five' , 'six' , 'seven' ,
                'eight' , 'nine' , 'ten' , 'eleven' , 'twelve' ]:
         if len(ctx) < 2 or ellyChar.isUpperCaseLetter(ctx[1]):
@@ -405,7 +409,8 @@ if __name__ == '__main__':
         list(u'XXX: 123') ,
         list(u'XXX: Boo') ,
         list(u'S.A.F. \u201cA') ,
-        list(u'2002. \u201cA')
+        list(u'2002. \u201cA') ,
+        list(u'2:45 a.m. Friday')
     ]
 
     nlu = len(sys.argv) - 2
