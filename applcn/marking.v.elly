@@ -17,6 +17,7 @@ advanced : VERB[^ed]
 advancing : VERB[^ing]
 agreed to cooperate with : VERB[^ed]
 alleged : VERB[^ed] - -1
+alleged incident : NOUN
 angrier : ADJ
 appeared : VERB[^ed]
 appeared to defend : VERB[^ed]
@@ -26,6 +27,7 @@ are likely to be : BE
 arrested and charged : VERB[^ed]
 ate : VERB[^ed,*x]
 awaits trial : VERB
+banned from competing : VERB[^ed]
 based on : VERB[^ed,*x]
 be found alive : VERB[^ed]
 became : VERB[^ed,chng]
@@ -43,6 +45,7 @@ born : VERB[^ed] - +2
 bosniak : NOUN
 bosniak : ADJ
 bowing to pressure from : VERB[^ing]
+breathing : VERB[^ing]
 broke out : VERB[^ed]
 brought it back : VERB[^ed]
 brought to market : VERB[^ed]
@@ -143,11 +146,14 @@ had : HAVE[^ed]
 had nothing to do with : VERB[^ed]
 had to : AUXL[^ed]
 has : HAVE
+has already : HAVE
 has had : VERB[^aux,hav]
 has nothing to do with : VERB[^s]
+has relations with : VERB
 has to : AUXL[^s]
 have been taking place : VERB
 have had : VERB[^aux,hav]
+have nothing to do with : VERB
 have to : AUXL[^to]
 having : HAVE[^ing]
 head wound : NOUN
@@ -157,7 +163,6 @@ held hostage : VERB[^ed]
 held without bond : VERB[^ed]
 house tax-writing committee : NOUN
 hove : VERB[^ed]
-have nothing to do with : VERB
 identified as : VERB[^ed]
 infighting : NOUN
 inspired : VERB[^ed]
@@ -231,6 +236,7 @@ phone interview : NOUN
 pleaded guilty : VERB[^ed]
 pleased : VERB[^ed]
 points of View : NOUN[:plur]
+popped up : VERB[^ed]
 posted on Facebook : VERB[^ed]
 potions : NOUN
 pregnant as a teen : ADJ
@@ -290,6 +296,7 @@ sold : VERB[^ed]
 sold off : VERB[^ed]
 sparked fears of : VERB[^ed]
 spoke : VERB[^ed] - +2
+spoke on the record : VERB[^ed]
 spoken : VERB[^ed]
 sprawling : VERB[^ing]
 steered clear : VERB[^ed]
@@ -374,6 +381,7 @@ went_on : VERB[^ed] =went on
 1st mention : NOUN
 1st mention : VERB
 20 to 30 : NUM
+2014 games : NOUN[:plur]
 2016 election : NOUN
 2016 election meddling : NOUN
 24/7 : ADJ - +2
@@ -422,6 +430,7 @@ all of : QUAN
 all of you : PRO
 all of you here : PRO
 all that : ALLTHT
+allegedly being : BE[^ing]
 along with : PREP
 also known as : CONJ
 american embassy : NOUN
@@ -542,6 +551,7 @@ christmas cheer : NOUN
 christmas spectacular : NOUN
 church leader : NOUN
 clean energy : NOUN
+close to : PREP
 closed-door meeting : NOUN
 cm long : NOUN
 cmdr. : NOUN
@@ -849,6 +859,7 @@ lt. gen. : NOUN
 lure shoppers through their doors : VERB
 made available : VERB[^ed]
 magazine weekly : NOUN
+major doping scandal : NOUN
 major legislation : NOUN
 make available : VERB
 make use of : VERB
@@ -887,6 +898,7 @@ more often : ADV
 more practical : ADJ
 more sway : NOUN
 more than : ADV[~mod] [$deg] 0
+more than half a : QUAN
 most of : QUAN
 move into a new phase : VERB
 mr. : NOUN
@@ -928,10 +940,12 @@ official version : NOUN
 offline : ADJ
 offseason : ADJ
 often enough : ADV
+old record : NOUN
 on aspects of : PREP
 on high alert : ADJ
 on hold : ADJ
 on hold : ADV
+on how : CONJ
 on the other end : ADV
 on through : PREP
 on whether : CONJ
@@ -1003,6 +1017,7 @@ pros and cons : NOUN
 prove to a judge : VERB
 public health : NOUN
 public health decision : NOUN
+public ministry : NOUN
 public poll : NOUN
 public sector: NOUN
 pump spray : NOUN
@@ -1038,6 +1053,7 @@ rgb : ADJ
 rgb monitor : NOUN
 right after : CONJ
 right choice : NOUN
+right now : ADV
 riverfront : ADJ
 rocket science : NOUN
 rockin' : ADJ
@@ -1083,6 +1099,7 @@ since then : ADV[~cnj]
 small business : NOUN
 so many : QUAN[@ind]
 so that : CONJ
+social security system : NOUN
 socialist federal republic : NOUN
 soldier-turned-defector : NOUN
 some of : QUAN
@@ -1168,6 +1185,7 @@ time of year : NAVB
 time travel : NOUN
 time travel : VERB
 title track : NOUN
+to be able to : TO
 to before : CONJ
 to not : TO
 to the satisfaction of : PREP
@@ -1189,6 +1207,7 @@ u.s. special forces : NOUN[:plur]
 uav : NOUN
 ultimate deal : NOUN
 under any circumstances : ADV
+under the country’s flag : ADV
 undercover sting operation : NOUN
 understated : VERB[^ed] - -1
 underutilization : NOUN
@@ -1208,6 +1227,7 @@ us-bound : ADJ
 used to : AUXL
 uso tour : NOUN
 versus : CONJ
+very close to : PREP
 very dangerous : ADJ
 very good : ADJ
 very little : NOUN[:*l]
@@ -1399,6 +1419,7 @@ long-drawn : ADJ
 long-expected : ADJ
 long-past  : ADJ
 long-undervalued : ADJ
+luke-warm : ADJ
 mid-air : NOUN
 mid-century : ADJ
 mixed-species : ADJ
@@ -1486,6 +1507,7 @@ BBC : NOUN
 BeMobile : NOUN
 Bears Ears : NOUN
 Becker : NOUN
+Bel Air : NOUN
 Berenice Summerfield : NOUN
 Bernice Summerfield : NOUN
 Beverly Hills : NOUN
@@ -1500,6 +1522,7 @@ BREXIT supporter : NOUN
 Brian Shaw : NOUN
 Brookings Institution : NOUN
 Bundestag : NOUN
+Burmese python : NOUN
 Buzzfeed : NOUN
 CBS : NOUN
 CNBC : NOUN
@@ -1586,6 +1609,7 @@ George Papadopoulos : NOUN
 George Washington University : NOUN
 George Will : NOUN
 Georgian : NOUN
+Getty Center arts complex : NOUN
 Golden State Warriors : NOUN
 Gov. Jerry Brown : NOUN
 Grand Staircase-Escalante : NOUN
@@ -1621,6 +1645,7 @@ Jamie : NOUN
 Janis : NOUN
 Japan International Cooperation Agency : NOUN[:*r]
 Jared : NOUN
+Jason Leon : NOUN
 Jeff Sessions : NOUN
 Jenny Lumet : NOUN
 Jeremy : NOUN
@@ -1675,6 +1700,7 @@ Mattis : NOUN
 McCarthy : NOUN
 Meghan Markle : NOUN
 Merkel : NOUN
+Miami-Dade County : NOUN
 Michael Baudendistel : NOUN
 Michael Flynn : NOUN
 Michael Keaton : NOUN
@@ -1757,23 +1783,24 @@ Russian President : NOUN
 Russian President Vladimir Putin : NOUN
 Russia-friendly : ADJ
 S.A.F. : NOUN
-Scarborough : NOUN
 Saakashvili : NOUN
 Saeb Erekat : NOUN
 Sanders : NOUN
 Santa Paula : NOUN
+Scarborough : NOUN
 Schumer : NOUN
 Scotts : NOUN
 Scotts Miracle-Gro Company : NOUN
 Seal Team Six : NOUN
 Seminole Heights : NOUN
 Sergey : NOUN
-Shi‘ite : NOUN
 Sergey Kislyak : NOUN
+Shi‘ite : NOUN
 Shindake : NOUN
 Ship of Fools : NOUN
 Showcase Presentations : NOUN
 Silent Majority : NOUN
+Sochi : NOUN
 South Florida : NOUN
 Space and Upper Atmospheric Research Commission : NOUN
 Srebrenica : NOUN
@@ -1794,6 +1821,7 @@ The Hollywood Reporter : NOUN
 The Northwest Indiana Times : NOUN
 the only right choice : NOUN
 The Spokesman-Review : NOUN
+The Times : NOUN
 The Verge : NOUN [&prop] 0
 Theresa May : NOUN
 Thomas Aquinas College : NOUN
@@ -1834,6 +1862,7 @@ Walter : NOUN
 Warner Brothers : NOUN
 Washington Post : NOUN
 Washington State : NOUN
+Water Management District : NOUN
 WCNC-TV : NOUN
 We Want God : NOUN
 West Chester : NOUN
@@ -1877,6 +1906,7 @@ and communications : NOUN =communications
 
 # # # # WordNet 3.0 entries (subset)
 
+1 of many : QUAN
 1st : NOUN - -4
 1st : ADV
 1st class : NOUN
@@ -4238,6 +4268,8 @@ breast feeding : NOUN
 breast implant : NOUN
 breast pocket : NOUN
 breath : NOUN
+breathing : NOUN
+breathing : ADJ
 breathing machine : NOUN
 breeze : NOUN
 breeze : VERB
@@ -6021,6 +6053,7 @@ common people : NOUN
 common person : NOUN
 common room : NOUN
 common salt : NOUN
+common sense : NOUN
 common stock : NOUN
 common stock equivalent : NOUN
 common time : NOUN
@@ -6253,6 +6286,10 @@ confrontation : NOUN
 confucius : NOUN
 confuse : VERB
 confusion : NOUN
+congest : VERB
+congested : ADJ
+congestion : NOUN
+congestive : ADJ
 conglomerate : NOUN
 conglomerate : VERB
 conglomerate : ADJ
@@ -12088,6 +12125,7 @@ homiletic : ADJ
 homophobia : NOUN
 honduran : NOUN
 honduran : ADJ
+honduras : NOUN
 hone : NOUN
 hone : VERB
 honest : ADJ

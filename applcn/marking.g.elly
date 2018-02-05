@@ -1273,6 +1273,7 @@ _
   space
   merge
 __
+
 g:NCLU[:num]->NUM
  n<2>>----
 _
@@ -2788,7 +2789,7 @@ d:he   <- PRO[=nom]
 __
 d:she  <- PRO[=nom]
 __
-d:it   <- PRO
+d:it   <- PRO[=it]
 __
 d:we   <- PRO[=nom]
 __
@@ -3312,6 +3313,7 @@ _
   append <nclu><quan>all</quan>
   append <dem>that</dem></nclu>
 __
+
 g:ADJX[%cnj]->ADJ PUNC[|com]
  l[$cmpd]>>----
          >>*l
