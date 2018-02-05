@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 30jan2018 CPM
+# vocabularyTable.py : 02feb2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -229,9 +229,11 @@ def build ( name , stb , defn ):
                 wky = toKey(t[:n])                        # key part of term to define
 #               print '  SQLite key=' , wky
 
+#               print 'd=' , d
                 ns = syntaxSpecification.scan(d)          # find extent of syntax info
-#               print 'ns=' , ns
+#               print 'ns=' , ns , '"' + d[ns:] + '"'
                 if ns <= 0: _err('bad syntax specification')
+                if not d[ns:] == '' and d[ns] != ' ': _err('trailing chars in syntax specification')
 #               print 'PoS=' , d[:ns]
 
                 syn = d[:ns]                              # syntax info as string
