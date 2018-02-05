@@ -522,6 +522,10 @@ Release Notes:
                       extend logic for -S inflections in English
                       extend "marking" rules
                       update and revise documentation
+ 1.4.21  - 05feb2018  fix bug and clean up stop exceptions code
+                      add error check to vocabulary table definition loading
+                      extend "marking" rules
+                      update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
