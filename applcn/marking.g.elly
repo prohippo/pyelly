@@ -1273,6 +1273,11 @@ _
   space
   merge
 __
+g:NOUN[:ing]->BE[^ing] VERB[^ed]
+ >>-
+_
+  (twob)
+__
 
 g:NCLU[:num]->NUM
  n<2>>----
