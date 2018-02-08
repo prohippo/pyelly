@@ -1518,7 +1518,7 @@ __
 g:NOUN->UNKN
   l[&*c]>>[&*c]
 __
-g:NOUN[:*r]->NAVB
+g:NOUN[:*r,cnj]->NAVB
  >>-
 __
 g:NOUN->VERB SUFX[#vTOn]
