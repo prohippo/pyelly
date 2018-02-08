@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 02feb2018 CPM
+# vocabularyTable.py : 07feb2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -801,7 +801,9 @@ def icmpr ( vc , tc ):
     """
 
     k = len(vc)
-    if k == 0: return len(tc)
+    n = len(tc)
+    if k > n: return -1
+    if k == 0: return n
 #   print 'vc=' , vc
 #   print 'tc=' , tc[:k]
     for i in range(k):
