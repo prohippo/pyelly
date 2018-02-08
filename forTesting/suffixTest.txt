@@ -692,6 +692,7 @@ hazy haze
 healer heal
 healthier health
 healthiest health
+hearten heart
 heartless heart
 heater heat
 heavier heavy
@@ -798,6 +799,7 @@ journal journal
 judgment judge
 jumper jump
 kenyan kenya
+kindergarten kindergarten
 kindest kind
 kindred kind
 knew know
