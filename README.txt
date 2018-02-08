@@ -526,6 +526,13 @@ Release Notes:
                       add error check to vocabulary table definition loading
                       extend "marking" rules
                       update documentation
+ 1.4.22  - 08feb2018  fix bug in vocabulary table case-independent string comparison
+                      fix bug in macro substitution with leading apostrophe pattern
+                      better warning on macro substitution increasing text length
+                      handle doubled single quotes in ellyCharInput
+                      extend default suffix rules and unit test
+                      extend "marking" rules
+                      update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
