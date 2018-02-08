@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# macroTable.py : 22nov2017 CPM
+# macroTable.py : 07feb2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -127,42 +127,38 @@ def _checkExpansion ( left , right ):
     inOpt = False
     nw = 0          # wildcard count in pattern
     n = 0           # literal char count
-    k = 0           # iteration index
-    lm = len(left)
-    while k < lm:   # iterate on pattern string
-        c = left[k]
-#       print k , u'c= {:04x}'.format(ord(c))
-        k += 1
+    for c in left:  # iterate on pattern string
+#       print u'c= {:04x}'.format(ord(c))
         if not ellyWildcard.isWild(c):
             if not inOpt: n += 1
         elif c == ellyWildcard.cSOS:
             inOpt = True
         elif c == ellyWildcard.cEOS:
             inOpt = False
-        elif c != ellyWildcard.cEND:
+        elif not c in [ ellyWildcard.cEND , ellyWildcard.cALL ]:
             nw += 1
 
+    afterEsc = False
     mw = 0          # wildcard binding count in substitution
     m = 0           # literal char count
-    k = 0           # iteration index
-    lm = len(right)
-    while k < lm:   # iterate on substitution string
-        c = right[k]
-        k += 1
-        if c == '\\':                  # look for binding reference
-            if k == lm:
-                m += 1                 # \ at end of substitution counts as a char
+    for c in right: # iterate on substitution string
+        if afterEsc:
+            if c >= '1' and c <= '9':     # if binding reference, ignore in count
+                mw += 1
             else:
-                d = right[k]
-                if d >= '1' and d <= '9': # if binding reference, ignore in count
-                    k += 1
-                    mw += 1
+                m += 1
+            afterEsc = False
+        elif c == '\\':                   # look for binding reference
+            afterEsc = True
         else:
             m += 1
 
+    if afterEsc:                          # count lone \ at end of substitution
+        m += 1
+
 #   print 'expansion check: m=' , m , 'n=' , n , 'nw=' , nw , 'mw=' , mw
 
-    return m <= n and mw <= nw
+    return mw + m <= nw + n
 
 #
 ####
@@ -246,6 +242,7 @@ class MacroTable(object):
         letWx        -   starting with letter  wildcard
         digWx        -            with digit   wildcard
         anyWx        -            with general wildcard
+        apoWx        -            with apostrophe
 
         _errcount    - running input error count
     """
@@ -265,11 +262,11 @@ class MacroTable(object):
         """
 
         lim = ellyChar.Max + 11      # number of simple alphabetic + 10 digits + 1
-        self.index = [ [ ]
-            for i in range(lim) ]    # slots for patterns starting with letter or digit
-        self.letWx = [ ]             # slot                             letter  wildcard
-        self.digWx = [ ]             #                                  digit   wildcard
-        self.anyWx = [ ]             #                                  general wildcard
+        self.index = [ [ ] for i in range(lim) ] # starting with letter or digit
+        self.letWx = [ ]             #                           letter  wildcard
+        self.digWx = [ ]             #                           digit   wildcard
+        self.anyWx = [ ]             #                           general wildcard
+        self.apoWx = [ ]             #                           apostrophe
 
         self.count = 0               # start with empty table
 
@@ -317,6 +314,8 @@ class MacroTable(object):
             ws = self.letWx if ellyChar.isLetter(a) else self.digWx
             uniqueAdd(ls,ws)
             uniqueAdd(ls,self.anyWx)
+        elif ellyChar.isApostrophe(a):
+            ls = self.apoWx
         else:
             ls = self.index[0]
             uniqueAdd(ls,self.anyWx)
@@ -351,7 +350,7 @@ class MacroTable(object):
                 continue
             if left.find(' ') >= 0:           # pattern side of macro rule
                 ms = 'pattern in macro contains spaces'
-                self._err(s=ms,l=l,d=1)       # cannot contain spaces
+                self._err(s=ms,l=l,d=1)       # cannot contain any space chars
                 continue
 
             lefts = list(left)
@@ -362,7 +361,7 @@ class MacroTable(object):
                 self._err('bad wildcards',l)
                 continue
 #           print 'pat=' , ellyWildcard.deconvert(pat) , 'len=' , len(pat)
-#           print list(pat)
+#           print 'pat=' , list(pat)
             pe = pat[-1]
             if not pe in [ ellyWildcard.cALL , ellyWildcard.cEND , ellyWildcard.cSPC ]:
                 pat += ellyWildcard.cEND      # pattern must end in $ if it does not end in * or _
@@ -422,6 +421,8 @@ class MacroTable(object):
             elif c == ellyWildcard.cSAN:
                 self.digWx.append(r)          # under both digit and
                 self.letWx.append(r)          #   letter wildcards
+            elif c == ellyWildcard.cAPO:      # right single quote or apostrophe
+                self.apoWx.append(r)          #
             elif c == ellyWildcard.cSPC or c == ellyWildcard.cEND:
                 self._err('bad wildcard in context',l)
                 continue                      # wildcards unacceptable here
@@ -445,7 +446,7 @@ class MacroTable(object):
             self
         """
 
-        print 'macro substitutions indexed by first char or wildcard'
+        print 'macro substitutions indexed by first char or wildcard in pattern'
         if len(self.index[0]) > 0:
             print '[.]:'
             _dmpall(self.index[0])
@@ -467,6 +468,9 @@ class MacroTable(object):
         if len(self.anyWx) > 0:
             print '[ANY]:'
             _dmpall(self.anyWx)
+        if len(self.apoWx) > 0:
+            print '[APOSTROPHE]:'
+            _dmpall(self.apoWx)
 
 def _dmpall ( slot ):
 
@@ -491,7 +495,7 @@ if __name__ == '__main__':
     import ellyDefinitionReader
     import ellyConfiguration
 
-    base = ellyConfiguration.baseSource + '/'
+    base = ellyConfiguration.baseSource
     name = sys.argv[1] if len(sys.argv) > 1 else 'test'
     dfns = base + name + '.m.elly'
 
@@ -506,8 +510,8 @@ if __name__ == '__main__':
         mtb = MacroTable(inp)          # create macro table from specified definition file
     except ellyException.TableFailure:
         sys.exit(1)                    # quit on failure
-    print ''
-    print 'mtb=' , mtb , 'with' , mtb.count , 'patterns'
+
+#   print 'mtb=' , mtb , 'with' , mtb.count , 'patterns'
     if mtb.count == 0:                 # check for success
         print >> sys.stderr , 'empty table'
         sys.exit(1)                    # quit on no table

@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 05nov2017 CPM
+# ellyWildcard.py : 06feb2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -80,7 +80,7 @@ cUPR = unichr(X+5 ) # match any uppercase letter
 cLWR = unichr(X+6 ) # match any lowercase letter
 cVWL = unichr(X+7 ) # match any vowel
 cCNS = unichr(X+8 ) # match any consonant
-cALL = unichr(X+9 ) # match any character sequence, including empty
+cALL = unichr(X+9 ) # match any character sequence without spaces, including empty
 cSAN = unichr(X+10) # match any sequence of 1 or more alphanumeric
 cSDG = unichr(X+11) # match any sequence of 1 or more digits
 cSAL = unichr(X+12) # match any sequence of 1 or more letters
