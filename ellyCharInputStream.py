@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyCharInputStream.py: 23sep2017 CPM
+# ellyCharInputStream.py: 06feb2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -47,6 +47,9 @@ HYPH = u'-'       # hyphen
 DASH = u'\u2013'  # n-dash
 NBSP = u'\u00A0'  # Unicode no-break space
 ELLP = u'\u2026'  # Unicode horizontal ellipsis
+
+RSQm = ellyChar.RSQm
+RDQm = ellyChar.RDQm
 
 PLM = 3           # maximum char count for preview
 NLM = 80          # limit of look-ahead
@@ -138,6 +141,8 @@ class EllyCharInputStream(object):
 #           if c == "'":
 #               print 'apostrophe' , self.buf
 
+#           print 'c=' , '<' + c + '>'
+
             if c == HYPH:                # special treatment for isolated hyphens
                 if spc(lc) and spc(self.peek()):
                     c = DASH
@@ -153,6 +158,13 @@ class EllyCharInputStream(object):
                     self.buf = bb[4:]
                     c = ELLP
                 break
+            elif c == RSQm:              # check for single quote
+#               print 'at single quote'
+                nc = self.peek()         # look at next char
+#               print 'next=' , nc
+                if nc == RSQm:           # doubling of single quote?
+                    self.buf.pop(0)      # if so, combine two single quotes
+                    c = RDQm             # into one double quote
             elif not ellyChar.isWhiteSpace(c):
                 if ellyChar.isWhiteSpace(lc):
                     self._cap = ellyChar.isUpperCaseLetter(c)
@@ -448,7 +460,8 @@ if __name__ == '__main__':
         '(1. ) x\n' ,
         'X . . . Y\n' ,
         'Aaa' ,
-        'B♭ maj'
+        'B♭ maj' ,
+        '’’ '
     ]
 
     def hexd ( c ):
