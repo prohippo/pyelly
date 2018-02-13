@@ -533,6 +533,15 @@ Release Notes:
                       extend default suffix rules and unit test
                       extend "marking" rules
                       update documentation
+ 1.4.23  - 13feb2018  fix problems with converting Unicode to ASCII in ellyChar
+                      fix problems with vocabulary table lookup in ellyBase
+                      fix problems with multi-translation in vocabularyElement
+                      fix problems with defining vocabularyTable search keys
+                      improve vocabularyTable commentary
+                      make nameRecognition compatible with new Unicode to ASCII
+                      add dump of SQLite search keys to vocabularyTable
+                      extend "marking" rules
+                      update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
