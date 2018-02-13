@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 06feb2018 CPM
+# ellyBase.py : 11feb2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -70,7 +70,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.4.22'                     # current version of PyElly software
+release = 'v1.4.23'                     # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -596,24 +596,21 @@ class EllyBase(object):
         if  nspan < m:
             nspan = m                  # on longer match, update maximum
 
-        lm = len(sb)                   # scan limit
-#       print 'lm=' , lm
+#       lm = len(sb)                   # scan limit
+#       print 'lm=' , lm , 'm=' , m
         capd = ellyChar.isUpperCaseLetter(sb[0])
 #       print 'next component=' , sb[:k] , ', context=' , sb[k:lm]
 
-        if self.vtb != None:           # look in external dictionary first, if it exists
-            if  k > 1:                 # is first component a single char?
-                ks = k                 # if not, use this for indexing
-            else:
-                ks = 1                 # otherwise, add on any following alphanumeric
-                while ks < lm:         #
-                    if not ellyChar.isLetterOrDigit(sb[ks]):
-                        break
-                    ks += 1
-            ss = u''.join(sb[:ks]).lower()      # where to start for vocabulary indexing
-#           print 'vocabulary lookup=' , ss , sb[:ks]
+        if self.vtb != None:           # look in external dictionary, if it exists
+            ls = list(sb[:k])
+#           print 'ls 0=' , ls
+            ellyChar.toLowerCaseASCII(ls)
+            ss = u''.join(ls)                   # where to start for vocabulary indexing
+#           print 'ls 1=' , ls
             n = vocabularyTable.delimitKey(ss)  # get actual indexing
-#           print 'delimiting n=' , n
+#           print 'delimiting n=' , n , '=' , '<' + ss[:n] + '>'
+#           print vocabularyTable.listDBKeys(self.vtb.cdb)
+
             rl = self.vtb.lookUp(sb,n) # get list of the maximum text matches
 #           print len(rl) , 'matches'
             if len(rl) > 0:            #
