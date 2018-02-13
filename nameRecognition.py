@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# nameRecognition.py : 01jun2017 CPM
+# nameRecognition.py : 10feb2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2015, Clinton Prentiss Mah
 # All rights reserved.
@@ -442,12 +442,13 @@ def infer ( tok ):
     if (nch < 5 or not ellyChar.isUpperCaseLetter(tok[0]) or
         len(ellyConfiguration.digraph) == 0): return False
 
-    ellyChar.toLowerCaseListASCII(tok,False)
+    ellyChar.toLowerCaseASCII(tok,True)
+    toks = ''.join(tok)
 
     miss = 0
     last = ''
     for i in range(1,nch):   # check plausibility of all digraphs
-        digr = ''.join(tok[i-1:i+1])
+        digr = toks[i-1:i+1]
 #       print 'digr=' , digr , 'last=' , last
         if (digr == last or
             not digr in ellyConfiguration.digraph):
