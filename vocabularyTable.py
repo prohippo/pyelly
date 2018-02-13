@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 07feb2018 CPM
+# vocabularyTable.py : 12feb2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -56,20 +56,22 @@ nerr = 0                            # shared error count among definition method
 def delimitKey ( t ):
 
     """
-    get part of term for vocabulary table indexing that
-    ends in alphanumeric or is a single nonalphanumeric
+    get bounds of vocabulary table key for looking up a term
+    starting at the front of a given text string
     with special stripping of 'S at the end
 
     arguments:
         t  - text string to scan
 
     returns:
-        count of chars to put into search key
+        count of chars to take for search key
     """
 
     ln = len(t)                   # number of chars in input text
     if ln == 0: return 0
-    n = t.find(' ')               # find rough range of key for SQLite in text
+    if not ellyChar.isLetterOrDigit(t[0]): return 1
+
+    n = t.find(' ')               # find rough range of SQLite key in text
     if n < 0: n = ln              # if undivided by spaces, take everything
     n -= 1                        # index of last char in range
     while n > 0:                  # scan input text backwards
@@ -94,15 +96,15 @@ def toKey ( s ):
     convert string or list of chars to ASCII key for SQLite
 
     arguments:
-        s   - string of list of Unicode chars
+        s   - string or list of Unicode chars
 
     returns:
         ASCII key
     """
 
-    s = list(s)
-    ellyChar.toLowerCaseListASCII(s)
-    return ''.join(s)
+    sl = list(s)
+    ellyChar.toLowerCaseASCII(sl)
+    return ''.join(sl)
 
 def _err ( s='malformed vocabulary input' ):
 
@@ -220,10 +222,11 @@ def build ( name , stb , defn ):
                 if len(t) == 0 or len(d) == 0:
                     _err()                                # quit on missing parts
                 c = t[0]
-                if not ellyChar.isLetterOrDigit(c) and not c in [ u'.' , u'"' , u',' , u'%' , u'\u2014' ]:
+                if not ellyChar.isLetterOrDigit(c) and not c in [ u'.' , u'-' , u'"' , u',' , u'%' , u'\u2014' ]:
                     _err('bad term')
 
                 n = delimitKey(t)                         # get part of term to index
+#               print 'delimit=' , n
                 if n <= 0:
                     _err()                                # quit on bad term
                 wky = toKey(t[:n])                        # key part of term to define
@@ -340,6 +343,7 @@ def build ( name , stb , defn ):
                 k = 0                               # count spaces removed
                 sd = ''                             # previous char seen
                 for cd in d:                        # scan all chars in translation
+#                   print 'cd=' , cd
                     if cd == ' ':
                         if sd == '=' or sd == ',' or sd == ' ':
                             k += 1
@@ -360,6 +364,7 @@ def build ( name , stb , defn ):
                     sd = cd
                     ld.append(cd)                   # add char to reformatted definition
 
+#               print 'ld=' , ld
                 if k > 0:
                     d = ''.join(ld)                 # definition with spaces removed
 
@@ -542,6 +547,7 @@ class VocabularyTable(object):
             data records if successful, None otherwise
         """
 
+#       print '_getDB()'
         if self.cdb == None: return None
 
         try:
@@ -679,6 +685,8 @@ class VocabularyTable(object):
             list of tuples [  VocabularyElement , Result ], possibly empty
         """
 
+#       print 'lookUp: chrs=' , chrs , 'keyl=' , keyl
+
         res = [ ]                     # result list initially empty
         rln = 0
 
@@ -694,6 +702,8 @@ class VocabularyTable(object):
 
 #       print 'vocab first word=' , list(strg) , type(strg)
 #       print '0 endg=' , self.endg
+
+#       print listDBKeys(self.cdb)
 
         vs = self._getDB(strg)        # look up first word in vocabulary table
 #       print '1 endg=' , self.endg
@@ -811,6 +821,34 @@ def icmpr ( vc , tc ):
         if vc[i].lower() != tc[i].lower(): return k - i
     return 0
 
+def listDBKeys ( dbso ):
+
+    """
+    get all database keys
+
+    arguments:
+        dbso  - SQLite database object
+
+    returns:
+        list of keys
+    """
+
+    print 'listDBkeys():'
+
+#### SQLite DB operations
+#
+    try:
+        ucur = dbso.cursor()
+        ucur.execute("SELECT * FROM Vocab")
+        ursl = ucur.fetchall()
+        print '=' , ursl
+        return [ u[0] for u in ursl ]
+    except dbs.Error:
+        print >> sys.stderr , 'cannot access vocabulary table'
+        sys.exit(1)
+#
+####
+
 #
 # unit test and standalone database building
 #
@@ -836,7 +874,7 @@ if __name__ == '__main__':
         lts = len(ts)
         if kl == None or kl > lts: kl = lts
         rs = vtb.lookUp(ts,kl)               # check for possible vocabulary matches
-        print 'full text=' , '"' + u''.join(ts) + '"' ,
+        print 'full text=' , '<' + u''.join(ts) + '>' ,
         if len(rs) == 0:                     # any vocabulary entries found?
             print 'FOUND NONE'
         else:
@@ -898,25 +936,14 @@ if __name__ == '__main__':
 
     nu = 0
 
-#### SQLite DB operations
-#
-    try:
-        ucur = ucdb.cursor()
-        usql = "SELECT * FROM Vocab"
-        ucur.execute(usql)
-        resl = ucur.fetchall()
-    except dbs.Error , e:
-        print >> sys.stderr , 'cannot access vocabulary table'
-        sys.exit(1)
-#
-####
+    resl = listDBKeys(ucdb)
 
     hk = { }
     for ur in resl:
-        hk[ur[0]] = 0
+        hk[ur] = 0
     unqk = hk.keys()
     print len(unqk) , 'unique DB keys\n'
-    print 'looking up DB keys as SINGLE-word vocabulary entries'
+    print 'checking DB keys as SINGLE-word vocabulary entries'
     for ky in unqk:
         if nu >= limt: break           # stop when too many keys
         nu += 1
