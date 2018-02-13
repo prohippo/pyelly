@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyElement.py : 19jun2015 CPM
+# vocabularyElement.py : 12feb2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -118,8 +118,11 @@ class VocabularyElement(object):
             self.gen = generativeProcedure.GenerativeProcedure(None,inpts)
             self._nt = 0
         else:                  # otherwise, set for selection of translation
+#           print >> stderr , 'multi selection, d=' , d
             cm = 'pick LANG (' # construct instruction to select
             for p in d:
+                if p[-1] == ',':
+                    p = p[:-1]
                 cm += p + '#'  # build selection clauses
             cm += ')'
             gens[0] = cm       # replace action
