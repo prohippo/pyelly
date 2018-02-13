@@ -46,6 +46,7 @@ bosniak : NOUN
 bosniak : ADJ
 bowing to pressure from : VERB[^ing]
 breathing : VERB[^ing]
+bringing threats of : VERB[^ing]
 broke out : VERB[^ed]
 broken out : VERB[^ed]
 brought it back : VERB[^ed]
@@ -192,6 +193,7 @@ lost contact with : VERB[^ed]
 made : VERB[^ed]
 made clear : Verb[^ed,dit]
 made its way : VERB[^ed]
+made public : VERB[^ed]
 made use of : VERB[^ed]
 made up : VERB[^ed,*x]
 makes use of : VERB[^ed]
@@ -508,6 +510,7 @@ best suit : VERB
 better of it : ADV
 birther : NOUN
 black community : NOUN
+blanket of snow : NOUN
 bond market : NOUN
 both houses of Congress : NOUN[:plur]
 bottle cap : NOUN
@@ -535,6 +538,7 @@ cable tv channel : NOUN
 cakeshop : NOUN
 calm and collected : ADJ [$cmpd] 0
 calories burned : NOUN
+campaign chairman : NOUN
 campaign finance director : NOUN
 campaign manager : NOUN
 campaign stop : NOUN
@@ -567,6 +571,7 @@ cm long : NOUN
 cmdr. : NOUN
 coalition talks : NOUN[:plur]
 col. : NOUN
+cold air : NOUN
 college graduate : NOUN
 colored slave : NOUN
 coming off of : PREP
@@ -584,6 +589,7 @@ corporate bond market : NOUN
 corrections officer : NOUN
 counterproliferation : NOUN
 court document : NOUN
+criminal case : NOUN
 current events : NOUN[:plur]
 cut ties with : VERB
 cyber : ADJ
@@ -1218,6 +1224,7 @@ top forty hit : NUM
 trackwork : NOUN
 trading partner : NOUN
 traffic stop : NOUN
+travel conditions : NOUN[:plur]
 trump campaign : NOUN
 u.s. charts : NOUN[:plur]
 u.s. government compound : NOUN
@@ -1271,9 +1278,10 @@ whoa : MISC
 widely known : ADJ
 willing to : TO
 wine review : NOUN
+winter weather advisory : NOUN
 with no regard to : CONJ
+without so much as : CONJ
 won : NOUN - -1
-world-leading : ADJ
 world’s most : ADV
 yuletide spirit : NOUN
 zone training : NOUN
@@ -1311,6 +1319,7 @@ on,       : PTCL - -2
 — or      : DCNJ
 i mean,   : ADV
 , N.Y.,   : XID
+really, really : ADV
 
 1000000000000 : NUM[:*r] - +2 =trillion
 1000000000    : NUM[:*r] - +2 =billion
@@ -1364,6 +1373,7 @@ most as many : ADJ
 
 # # # # definitions to deal with specific problem text
 
+"(C)" for confidential : NOUN
 another front in the culture wars : NOUN
 complex new modeling : NOUN
 counts of murder : NOUN[:plur]
@@ -1372,6 +1382,7 @@ effectively acknowledging : VERB[^ing]
 end efforts to rescue : VERB
 Florida district office : NOUN
 Florida neighborhood : NOUN
+half-apologies : NOUN[:plur]
 making a false statement to the FBI : VERB[^ing]
 missing submarine : NOUN
 new and bloodier : ADJ
@@ -1385,6 +1396,7 @@ win leverage : VERB
 
 # # # # common hyphenations
 
+-a-year : ADV
 1-forms : NOUN[:plur] - +2
 3-point : ADJ
 3-point shot : NOUN
@@ -1430,6 +1442,7 @@ four-penny : ADJ
 four-wheel drive : NOUN
 full-throated : ADJ
 fully-equipped : ADJ
+half-apology : NOUN
 half-full : ADJ
 half-sitting : VERB[^ed]
 high-profile : ADJ
@@ -1458,6 +1471,7 @@ one-of-a-kind : ADJ
 out-of-stock : ADJ
 post-September 11th : ADJ
 pro-saudi : ADJ
+pro-Trump : ADJ
 question-and-answer : ADJ
 rear-drive : ADJ
 round-up : NOUN
@@ -1485,7 +1499,9 @@ U.S.-led : ADJ
 volume-weighted : ADJ
 watered-down : ADJ
 wax-work : NOUN
+weeks-long : ADJ
 wind-driven : ADJ
+world-leading : ADJ
 world-renowned : ADJ
 would-be : ADJ
 wrap-up : NOUN
@@ -1580,6 +1596,7 @@ Cubbies : NOUN[:plur]
 Customs and Border Protection : NOUN
 Dandan : NOUN
 Dave Stone : NOUN
+Democratic National Committee : NOUN
 Denny : NOUN
 Desiree : NOUN
 DHS : NOUN
@@ -1680,6 +1697,7 @@ Jenny Lumet : NOUN
 Jeremy : NOUN
 John Beck : NOUN
 John Conyers : NOUN
+John Podesta : NOUN
 Jim : NOUN
 Jinping : NOUN
 Jones : NOUN
@@ -1737,6 +1755,7 @@ Michel Aoun : NOUN
 Mike Leach : NOUN
 Mike Pence : NOUN
 Mimi Spear : NOUN
+Ministry of Health : NOUN
 Missouri State : NOUN
 Mitch McConnell : NOUN
 Mohammed bin-Salman : NOUN
@@ -1768,6 +1787,7 @@ Our Lady of Sorrows : NOUN
 Oxford Street : NOUN
 Oxford Street shopping district: NOUN
 PAC-12 : NOUN
+Palestinian Authority : NOUN
 Paris Climate Accord : NOUN
 Pall Mall : NOUN
 Paul George Dandan : NOUN
@@ -1834,6 +1854,7 @@ Silent Majority : NOUN
 Sochi : NOUN
 Social Democrat : NOUN
 South Florida : NOUN
+southern Texas : NOUN
 Space and Upper Atmospheric Research Commission : NOUN
 SPD delegate : NOUN
 Srebrenica : NOUN
@@ -1851,6 +1872,7 @@ the city of Ventura : NOUN
 the Emoluments Clause : NOUN
 the former Yugoslavia : NOUN
 The Hollywood Reporter : NOUN
+the Mid-Atlantic : NOUN
 The Northwest Indiana Times : NOUN
 the only right choice : NOUN
 The Spokesman-Review : NOUN
@@ -1877,6 +1899,7 @@ U.S. : NOUN
 U.S. District Judge : NOUN
 Uber : NOUN
 UCLA : NOUN
+US District Court : NOUN
 US interests : NOUN[:plur]
 USNORTHCOM : NOUN
 US tax code : NOUN
@@ -2081,7 +2104,7 @@ acrylic acid : NOUN
 acrylic fiber : NOUN
 acrylic paint : NOUN
 act : NOUN
-act : VERB - +1
+act : VERB[^ptcl] - +2
 act out : VERB
 act superior : VERB
 act up : VERB
@@ -2180,6 +2203,7 @@ advertise : VERB
 advice : NOUN
 advise : VERB
 adviser : NOUN
+advisory : NOUN
 advocacy : NOUN
 advocate : NOUN
 advocate : VERB
@@ -7912,6 +7936,7 @@ district : NOUN
 district : VERB
 district attorney : NOUN
 district line : NOUN
+district of columbia : NOUN
 distrust : NOUN
 distrust : VERB
 disturb : VERB
@@ -16509,6 +16534,7 @@ oddly : ADV
 odds : NOUN
 of course : ADV
 of how : CONJ
+of whom : CONJ[@rel]
 off : VERB - -2
 off : ADJ
 off : ADV[~trlg]
