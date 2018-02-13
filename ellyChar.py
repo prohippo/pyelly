@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 05oct2017 CPM
+# ellyChar.py : 11feb2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -469,32 +469,36 @@ Lower = [
     T,T,F,F,F,F,T,F,F,T,F,F,T,F,T,F,     T,F,T,F,T
 ]
 
-def toLowerCaseListASCII ( ls , num=True ):
+Quoting  = { LSQm : "'" , RSQm : "'" , LDQm : '"' , RDQm : '"' }
+Exponent = { u'¹' : '1' , u'²' : '2' , u'³' : '3' }
+
+def toLowerCaseASCII ( ls , alph=False ):
     """
-    convert a list of chars to lowercase ASCII alphanumeric or alphabetic
-    depending on num argument
+    convert a list of chars to lowercase ASCII with option to
+    keep alphabetic only, depending on argument alph,
+    with placeholder . or _ inserted for nonalphabetic
 
     arguments:
-        ls  - a Unicode list
-        num - True is alphanumeric, otherwise alphabetic only
+        ls   - a Unicode list, both input and output
+        alph - True if alphabetic conversion only
     """
 
-    if len(ls) == 0: return
+    k = 0
+    for c in ls:
+        if c in Quoting:
+            c = Quoting[c]
+        elif c in Exponent:
+            c = Exponent[c]
 
-    ll = len(ls)
-    for i in range(ll):
-        c = ls[i]
-        if c >= Lim:
-            c = '_'
-        elif c == '_':
-            pass
+        if c >= Lim or c == '_':
+            ls[k] = '_'
         elif not isLetterOrDigit(c):
-            c = '.'
-        elif not num and isDigit(c):
-            c = '_'
+            if alph or ord(c) > 127: ls[k] = '.'
+        elif isDigit(c):
+            if alph or ord(c) > 127: ls[k] = '_'
         else:
-            c = Unmapping[Mapping[ord(c)]]
-        ls[i] = c
+            ls[k] = Unmapping[Mapping[ord(c)]]
+        k += 1
 
 def isLowerCaseLetter ( x ):
     """
@@ -689,7 +693,7 @@ if __name__ == "__main__":
         mp = toChar(toIndex(cx))
         vo = 'vowel' if isVowel(cx) else ''
         cy = cx.lower()
-        print u'<' + cx + cy + u'> ord=' , '{:3d}'.format(ko) , 'map=' , mp , vo
+        print u'<' + cx + cy +  u'> ord=' , '{:3d}'.format(ko) , 'map=' , mp , vo
 
     print u'寶=CJK' , isCJK(u'寶')
     print u'譽=CJK' , isCJK(u'譽')
