@@ -140,7 +140,7 @@ Release Notes:
                       fix tokenization with new Unicode punctuation
                       fix macro table for new Unicode punctuation
                       add missing code for FIND in generative semantics
- 1.2.2  -  01may2015  extend "test" amd "marking" integration tests
+ 1.2.2  -  01may2015  extend "test" and "marking" integration tests
                       extend handling of punctuation
                       add phrase limit for avoiding runaway analysis
                       fix bug in warning of unused grammar symbols
@@ -388,7 +388,7 @@ Release Notes:
                       update documentation
  1.4.0   - 20mar2017  enlarge Unicode subset recognized in input text
                       fix bugs and clean up ellyChar, add unit test
-                      add vowels with diacriticals fo pinyin
+                      add vowels with diacriticals for pinyin
                       special handling of CJK in ellyCharInputStream
                       update documentation
  1.4.1   - 26mar2017  improve encapsulation of ellyCharInputStream
@@ -491,7 +491,7 @@ Release Notes:
                       store macro rules as hashable objects
                       add angle brackets 〈〉 for PyElly delimiting
                       generalized handling for all bracketing in term lookup
-                      improve algorithm for range of pattern matching
+                      improve algorithm for setting range of pattern matching
                       clean up and extend "marking" rules and integration test
                       update documenetation
  1.4.16.1  21oct2017  fix various bugs in dateTransform
@@ -542,6 +542,13 @@ Release Notes:
                       add dump of SQLite search keys to vocabularyTable
                       extend "marking" rules
                       update documentation
+ 1.4.24  - 18feb2018  change definitionLine to make it work for VocabularyTable
+                      define Unicode hyphen in PyElly input text
+                      improve macroTable unit test and add commentary
+                      fix "disambig" rules and keys for new VocabularyTable
+                      fix "test" rules
+                      extend "marking" rules
+                      update and expand documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure

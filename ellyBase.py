@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 11feb2018 CPM
+# ellyBase.py : 14feb2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -70,7 +70,7 @@ _vocabulary = [ vocabularyTable.source ]
 
 # version ID
 
-release = 'v1.4.23'                     # current version of PyElly software
+release = 'v1.4.24'                     # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -436,6 +436,7 @@ class EllyBase(object):
 
         self.sbu.skipSpaces()          # skip leading spaces
         s = self.sbu.buffer
+#       print '_lookUpNext s=' ,s
 
         if len(s) == 0:                # check for end of input
             return False               # if so, done
@@ -646,6 +647,8 @@ class EllyBase(object):
 
 #               print 'vocabulary m=' , vmln
 #               print 'queue after table lookup:' , len(self.ptr.queue)
+
+#           print 'sb=' , sb
 
 #       print 'maximum match=' , nspan
 #       print 'input=' , self.sbu.buffer[:nspan]
