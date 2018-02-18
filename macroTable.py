@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# macroTable.py : 07feb2018 CPM
+# macroTable.py : 16feb2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -206,7 +206,7 @@ class Rule(object):
     def unpack ( self ):
 
         """
-        get rule ielements as a list
+        get rule elements as a list
 
         arguments:
             self  -
@@ -306,6 +306,7 @@ class MacroTable(object):
             a list of unpacked macro rules to try out
         """
 
+#       print 'getRules(a=' , a , ')'
         if a == '': return [ ]
         if ellyChar.isLetterOrDigit(a):
             k = ellyChar.toIndex(a)
@@ -517,6 +518,14 @@ if __name__ == '__main__':
         sys.exit(1)                    # quit on no table
     print ''
     mtb.dump()
+
+#######################################################################
+# this code will test macro substitution indirectly through a PyElly  #
+# substitutionBuffer, which supports basic tokenization from a stream #
+# of input text; it does NONE of the tokenization associated with     #
+# recognizing token types by character patterns, entity extraction or #
+# vocabulary table lookup                                             #
+#######################################################################
 
     sb = substitutionBuffer.SubstitutionBuffer(mtb)
     while True:
