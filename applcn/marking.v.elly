@@ -1396,7 +1396,7 @@ win leverage : VERB
 
 # # # # common hyphenations
 
--a-year : ADV
+\\ha-year : ADV
 1-forms : NOUN[:plur] - +2
 3-point : ADJ
 3-point shot : NOUN
