@@ -5,10 +5,10 @@ ph : noun
 pe : noun
 pas : noun
 php : verb[:X]
-assy lang : noun 0 1 a=x b=y c=z
-assy lang : noun - 1 a=x b=y c=z
-assy lang : noun [^abs] 1 a=t b=u c =z
-ax lix : noun 0 1 a=x b=y c=z
+assy lang : noun 0 1 a=x, b=y, c=z
+assy lang : noun - 1 a=x, b=y, c=z
+assy lang : noun [^abs] 1 a=t, b=u, c=z
+ax lix : noun 0 1 a=x, b=y, c=z
 ax lix mx : noun
 ax lix mx ny oy py : noun 0 0 (doit)
 ny : noun 0 0 =xxxx
