@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 06feb2018 CPM
+# ellyWildcard.py : 16feb2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -609,11 +609,12 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
             elif last in ellyBuffer.separators:
                 offs -= 1
                 continue
-            elif last in [ '?' , '!' ]:
+            elif last in [ '?' , '!' , ellyChar.HYPH ]:
                 offs -= 1
                 continue
 
         elif tc == cANY: # alphanumeric wildcard?
+#           print "ANY:",last,offs
             if last != '' and ellyChar.isLetterOrDigit(last):
                 _bind(); mbi += 1
                 continue
