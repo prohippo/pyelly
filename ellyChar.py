@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 11feb2018 CPM
+# ellyChar.py : 16feb2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -65,8 +65,10 @@ RDQm = u'\u201D'   # right double quote
 PRME = u'\u2032'   # prime
 ELLP = u'\u2026'   # horizontal ellipsis
 NDSH = u'\u2013'   # en dash
+MDSH = u'\u2014'   # em dash
 ABrL = u'\u3008'   # left angle  bracket
 ABrR = u'\u3009'   # right angle bracket
+HYPH = u'\u2010'   # Unicode hyphen only
 
 Exc = [ AMP , HYM ]                                             # extension of span
 
@@ -83,7 +85,7 @@ Grk = [            # small Greek letters, not treated as alphabetic
     u'ρ',u'σ',u'τ',u'υ',u'φ',u'χ',u'ψ',u'ω'
 ]
 
-Misc = [ THS , SHARP , FLAT , ABrL , ABrR ]
+Misc = [ THS , SHARP , FLAT , ABrL , ABrR , HYPH ]
 Spm  = [ SHARP , FLAT ]
 
 Quo  = [ LSQm , LDQm , RSQm , RDQm , '"' , "'" ]
@@ -93,9 +95,9 @@ Lim = u'\u01D5'    # main limit of Unicode chars recognized
 LaS = 0x0100       # start of Latin supplement
 LaT = 0x0120       # end of supplement control chars
 
-######## The full alphabet currently defined for PyElly is ASCII plus Latin-1
-######## Supplement and Latin Extended A plus parts of Latin Extended B. These
-######## are in the first four blocks of Unicode as follows:
+######## The alphabet currently defined for PyElly is ASCII plus Latin-1
+######## Supplement and Latin Extended A plus parts of Latin Extended B.
+######## These are in the first four blocks of Unicode as follows:
 
 ##00  . . . . . . . . . . . . . . . .     . . . . . . . . . . . . . . . .
 ##20    ! " # $ % & ' ( ) * + , - . /     0 1 2 3 4 5 6 7 8 9 : ; < = > ?
@@ -115,6 +117,9 @@ LaT = 0x0120       # end of supplement control chars
 ##00  . . . . . . . . . . . . . . . .     . . . . . . . . . . . . . . . .
 ##20  . . . . . . . . . . . . . . . .     . . . . . . . . . . . . . . . .
 ##40  . . . . . . . . . . . . . Ǎ ǎ Ǐ     ǐ Ǒ ǒ Ǔ ǔ
+
+######## The entire PyElly character set also includes Unicode punctuation,
+######## spaces, and other special characters outside this range.
 
 def isStrongConsonant ( x ):
     """
@@ -325,7 +330,7 @@ Digits = [
 
 def isDigit ( x ):
     """
-    check for ASCII or Latin-1 digit
+    check for ASCII or Latin-1 digit or exponent
 
     arguments:
         x - the char
@@ -489,11 +494,14 @@ def toLowerCaseASCII ( ls , alph=False ):
             c = Quoting[c]
         elif c in Exponent:
             c = Exponent[c]
+        elif c == HYPH:
+            c = '-'
 
         if c >= Lim or c == '_':
             ls[k] = '_'
         elif not isLetterOrDigit(c):
             if alph or ord(c) > 127: ls[k] = '.'
+            elif c == '-' : ls[k] = c
         elif isDigit(c):
             if alph or ord(c) > 127: ls[k] = '_'
         else:

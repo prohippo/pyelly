@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 12feb2018 CPM
+# vocabularyTable.py : 16feb2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -38,6 +38,7 @@ import sys
 import symbolTable
 import ellyChar
 import ellyException
+import definitionLine
 import vocabularyElement
 import syntaxSpecification
 import featureSpecification
@@ -52,6 +53,8 @@ vocabulary = '.vocabulary.elly.bin' # built vocabulary file suffix
 source     = '.v.elly'              # input vocabulary text file suffix
 
 nerr = 0                            # shared error count among definition methods
+
+initChr = [ u'.' , u'-' , u'"' , u',' , u'%' , ellyChar.MDSH , ellyChar.HYPH ]
 
 def delimitKey ( t ):
 
@@ -206,6 +209,8 @@ def build ( name , stb , defn ):
                 r = defn.readline()                       # next definition
                 if len(r) == 0: break                     # stop on EOF
 #               print type(r) , r
+                r = definitionLine.normalize(r)           #
+#               print 'to' , r
 
                 k = r.find(':')                           # look for first ':'
                 if k < 0:
@@ -222,7 +227,7 @@ def build ( name , stb , defn ):
                 if len(t) == 0 or len(d) == 0:
                     _err()                                # quit on missing parts
                 c = t[0]
-                if not ellyChar.isLetterOrDigit(c) and not c in [ u'.' , u'-' , u'"' , u',' , u'%' , u'\u2014' ]:
+                if not ellyChar.isLetterOrDigit(c) and not c in initChr:
                     _err('bad term')
 
                 n = delimitKey(t)                         # get part of term to index
@@ -700,7 +705,7 @@ class VocabularyTable(object):
 
         strg = toKey(chrs[:keyl])
 
-#       print 'vocab first word=' , list(strg) , type(strg)
+#       print 'vocab search key=' , list(strg) , type(strg)
 #       print '0 endg=' , self.endg
 
 #       print listDBKeys(self.cdb)
@@ -841,7 +846,7 @@ def listDBKeys ( dbso ):
         ucur = dbso.cursor()
         ucur.execute("SELECT * FROM Vocab")
         ursl = ucur.fetchall()
-        print '=' , ursl
+#       print '=' , ursl
         return [ u[0] for u in ursl ]
     except dbs.Error:
         print >> sys.stderr , 'cannot access vocabulary table'

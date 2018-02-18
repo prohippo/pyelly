@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# definitionLine.py : 26nov2015 CPM
+# definitionLine.py : 16feb2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -44,7 +44,7 @@ SPs = u' \t\n\r\0'
 def normalize ( strg ):
 
     """
-    drop extra spaces in line
+    drop extra spaces in line and convert special chars
 
     arguments:
         strg   - string string
@@ -59,18 +59,21 @@ def normalize ( strg ):
 
     lc = ''
     for c in strg:            # check each input char in succession
+#       print 'c=' , c , "'{:x}".format(ord(c))
         if c == spc:
             if f or s[-1] == spc:
                 continue      # keep only single spaces and only outside of [ ]
         elif c == lbr:
             f = True
-            if s[-1] == spc:
-                s.pop()       # a space preceding a left bracket is dropped
         elif c == rbr:
             f = False
-        elif lc == bs and c == 's':
-            s.pop()           # special check to convert \s in rule definition
-            c = ellyChar.RS
+        elif lc == bs:
+            if c == 's':      # special check to convert \s in rule definition
+                s.pop()
+                c = ellyChar.RS
+            elif c == 'h':    #                          \h in rule definition
+                s.pop()
+                c = ellyChar.HYPH
         lc = c
         s.append(c)
 
