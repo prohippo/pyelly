@@ -73,6 +73,7 @@ current and former : ADJ
 cut short : VERB[^ed]
 dates back to : VERB
 dates back to before : CONJ
+dating back : VERB[^ing]
 dating back to : VERB[^ing]
 debate over the meaning : NOUN
 debated the question : VERB[^ed]
@@ -108,6 +109,7 @@ field-tested : VERB[^ed]
 field-testing : VERB[^ing]
 fighting : VERB[^ing]
 financing : VERB[^ing]
+fired off : VERB[^ed]
 first-degree murder : NOUN
 fishermen : NOUN[:plur]
 flew : VERB[^ed]
@@ -147,6 +149,7 @@ got out : VERB[^ed]
 got up : VERB[^ed,*x]
 growing : VERB[^ing]
 grown : VERB[^ed] - +1
+hacked emails : NOUN[:plur]
 had : HAVE[^ed]
 had nothing to do with : VERB[^ed]
 had to : AUXL[^ed]
@@ -166,6 +169,7 @@ heard : SVED - -1
 hearing : VERB[^ing] - +2
 held hostage : VERB[^ed]
 held without bond : VERB[^ed]
+hoped it will help : VERB[^ed]
 house tax-writing committee : NOUN
 hove : VERB[^ed]
 identified as : VERB[^ed]
@@ -256,11 +260,13 @@ promised : ADJ
 providing : NOUN[:ing] - -2
 providing : VERB[^ing] - +3
 published by buzzed : VERB[^ed]
+publishing : VERB[^ing]
 raised fears of : VERB[^ed]
 ran : VERB[^ed]
 ran for office : VERB[^ed]
 re-emerged : VERB[^ed]
 re-emerging : VERB[^ing]
+received access to : VERB[^ed]
 regarding : PREP - +1
 regarding : NOUN - -1
 regarding : VERB[^ing]
@@ -304,6 +310,8 @@ signing off : VERB[^ing]
 sitting : VERB[^ing]
 sold : VERB[^ed]
 sold off : VERB[^ed]
+sought : VERB[^ed]
+sought input : VERB[^ed]
 sparked fears of : VERB[^ed]
 spoke : VERB[^ed] - +2
 spoke on the record : VERB[^ed]
@@ -354,6 +362,7 @@ warfighting : NOUN
 was a violation of : VERB[^ed]
 was known to be : BE[^ed]
 wealthiest : ADJ
+well before : ADV
 weddings : NOUN[:plur]
 went : VERB[^ed,*x]
 went out of business : VERB[^ed]
@@ -448,6 +457,7 @@ also known as : CONJ
 american embassy : NOUN
 among the first : ADJ
 amounted to : VERB[^ed]
+ancient tomb : NOUN
 and even : CONJ
 and now : CONJ
 and so : CONJ
@@ -500,6 +510,7 @@ at the top of : PREP
 athletic conference : NOUN
 authorities : NOUN[:plur]
 autoplay : NOUN
+avoid errors : VERB
 bail deal : NOUN
 bat and ball : ADJ
 beatle : NOUN
@@ -693,6 +704,7 @@ foreign land : NOUN
 foreign ministry : NOUN
 foreign policy advisor : NOUN
 formal approval : NOUN
+former campaign manager : NOUN
 former employee : NOUN
 fourpenny : NOUN - +1
 freedom ride : NOUN
@@ -704,6 +716,7 @@ from what  : CONJ[@rel]
 from where : CONJ[@rel]
 from which : CONJ[@rel]
 frontline : ADJ
+full control : NOUN
 full time : ADV
 fully eliminate : VERB
 gay men : NOUN[:plur]
@@ -792,6 +805,7 @@ in the skies : ADV
 in the wake of : PREP
 in the workplace : ADJ
 in the works : ADJ
+in violation of : PREP
 in which : CONJ[@rel]
 in width : ADV[~trlg] [$deg] 0
 in years past : ADV
@@ -880,6 +894,7 @@ lt. gen. : NOUN
 lure shoppers through their doors : VERB
 made available : VERB[^ed]
 magazine weekly : NOUN
+mainstream media : NOUN
 major doping scandal : NOUN
 major legislation : NOUN
 make available : VERB
@@ -1104,6 +1119,7 @@ sen. : NOUN
 senate candidate : NOUN
 senior general : NOUN
 senior level : NOUN
+serve as a placeholder : VERB
 service plan : NOUN
 servicemember : NOUN
 several other : QUAN
@@ -1136,6 +1152,7 @@ southeast asian : ADJ
 somewhere along : PREP
 sorry about that : ADJ [$cmpd] 0
 southern california : NOUN
+southern city : NOUN
 southwest to : PREP
 space authority : NOUN
 special counsel : NOUN
@@ -1177,6 +1194,7 @@ teenybopper : NOUN
 telecoms giant : NOUN
 television deal : NOUN
 tense moment : NOUN
+terrorist gang : NOUN
 than ever : CMPC
 than ever before : CMPC
 thanks to : PREP
@@ -1220,7 +1238,8 @@ to where : CONJ
 top 40 : NUM
 top 40 hit : NOUN
 top forty : NUM
-top forty hit : NUM
+top forty hit : NOUN
+tourism sector : NOUN
 trackwork : NOUN
 trading partner : NOUN
 traffic stop : NOUN
@@ -1231,6 +1250,8 @@ u.s. government compound : NOUN
 u.s. market : NOUN
 u.s. official  : NOUN
 u.s. officials : NOUN[:plur]
+u.s. special counsel : NOUN
+u.s. special counsel robert mueller : NOUN
 u.s. special forces : NOUN[:plur]
 uav : NOUN
 ultimate deal : NOUN
@@ -1243,7 +1264,6 @@ underutilization : NOUN
 underutilize : VERB
 union force : NOUN
 unlikely to be persuaded : ADJ
-until next year : ADV
 unwilling to : TO
 up for reelection : ADJ
 up slightly : ADJ
@@ -1268,6 +1288,7 @@ war dead : NOUN
 warfighter : NOUN
 water use : NOUN
 what i have stood for : NOUN
+what he said was a : DET
 what is today : ADV
 what it has learned : NOUN
 whenever and wherever : CONJ
@@ -1374,7 +1395,10 @@ most as many : ADJ
 # # # # definitions to deal with specific problem text
 
 "(C)" for confidential : NOUN
+announced the discovery of : VERB
 another front in the culture wars : NOUN
+armed with fresh ammunition : ADJ
+attacks on twitter : NOUN[:plur]
 complex new modeling : NOUN
 counts of murder : NOUN[:plur]
 disappeared from the fever swamps : VERB[^ed]
@@ -1382,7 +1406,9 @@ effectively acknowledging : VERB[^ing]
 end efforts to rescue : VERB
 Florida district office : NOUN
 Florida neighborhood : NOUN
+foreign minster : NOUN
 half-apologies : NOUN[:plur]
+incorrectly reported : VERB[^ed]
 making a false statement to the FBI : VERB[^ing]
 missing submarine : NOUN
 new and bloodier : ADJ
@@ -1391,12 +1417,13 @@ Scarborough intern Lori Klausutis : NOUN
 sinai mosque : NOUN
 Tampa police : NOUN
 the country’s struggle : NOUN[:det]
+the group Wikileaks : NOUN[:det]
 Trump’s tweet : NOUN
 win leverage : VERB
 
 # # # # common hyphenations
 
-\\ha-year : ADV
+-a-year : ADV[~*r,*x]
 1-forms : NOUN[:plur] - +2
 3-point : ADJ
 3-point shot : NOUN
@@ -1440,8 +1467,10 @@ four-page : ADJ
 four-page filing : NOUN[:*r]
 four-penny : ADJ
 four-wheel drive : NOUN
+freeze-for-freeze : ADJ
 full-throated : ADJ
 fully-equipped : ADJ
+ghost-wrote : VERB[^ed]
 half-apology : NOUN
 half-full : ADJ
 half-sitting : VERB[^ed]
@@ -1449,6 +1478,7 @@ high-profile : ADJ
 in-depth : ADJ
 in-store : ADJ
 iranian-backed : ADJ
+iraqi-syrian : ADJ
 lesser-known : ADJ
 long-drawn : ADJ
 long-expected : ADJ
@@ -1473,6 +1503,7 @@ post-September 11th : ADJ
 pro-saudi : ADJ
 pro-Trump : ADJ
 question-and-answer : ADJ
+re-evaluate : VERB
 rear-drive : ADJ
 round-up : NOUN
 same-sex : ADJ
@@ -1480,6 +1511,7 @@ same-sex couple : NOUN
 same-sex wedding : NOUN
 same-sex weddings : NOUN[:plur]
 scale-down : NOUN
+second-in-command : ADJ
 seemingly insurmountable : ADJ
 seize control : VERB
 self-defensive : ADJ
@@ -1790,6 +1822,7 @@ PAC-12 : NOUN
 Palestinian Authority : NOUN
 Paris Climate Accord : NOUN
 Pall Mall : NOUN
+Paul Manafort : NOUN
 Paul George Dandan : NOUN
 Paula Yacoubian : NOUN
 PBS : NOUN
@@ -10641,6 +10674,7 @@ future tense : NOUN
 gabriel : NOUN
 gag : NOUN
 gag : VERB
+gag order : NOUN
 gain : NOUN
 gain : VERB
 gain ground : VERB
@@ -14407,6 +14441,7 @@ logical operation : NOUN
 logical proof : NOUN
 logical relation : NOUN
 logical system : NOUN
+logistical : ADJ
 logistics : NOUN
 logo : NOUN
 logy : ADJ
@@ -18838,6 +18873,7 @@ publicize : VERB
 publicly : ADV
 publish : VERB
 publisher : NOUN
+publishing : NOUN
 puerto rican : NOUN
 puerto rico : NOUN
 pull : NOUN

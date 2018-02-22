@@ -2170,6 +2170,14 @@ _
   (typg)
   right
 __
+g:MONEY->MONEY ADV[~*r,*x]
+  >>++
+_
+  left
+  append <adv>
+  right
+  append </adv>
+__
 
 g:NUM->ADJ[%mod] NUM
  >>+++
@@ -3893,4 +3901,13 @@ _
   append ’
 __
 g:PUNC[|stop,*r]->PUNC[|stop] PUNC[|*r]
+__
+
+g:NCLU->DET[@sgl,num,-ind] PEXP[|quo]
+_
+  append <nclu>
+  var typg=det
+  (typg)
+  right
+  append </nclu>
 __

@@ -38,6 +38,8 @@
  3 day ADJ -1
  4 -old ADJ -1
 
+ 0 -a-year ADV -1
+
  0 easy-to-&@ ADJ -1
  0 &#- - 5
  5 hp ADJ -1
@@ -99,13 +101,17 @@
  0 £   - 10
  0 ¥   - 10
 10 &#  - 11
-11 $   MONEY -1
-11 mn$ MONEY -1
-11 bn$ MONEY -1
-11 .&# -     12
-12 $   MONEY -1
-12 mn$ MONEY -1
-12 bn$ MONEY -1
+11 .&# - 12
+11 mn  - 90
+11 bn  - 90
+11 $ MONEY -1
+11 - MONEY -2
+12 mn  - 90
+12 bn  - 90
+12 $ MONEY -1
+12 - MONEY -2
+90 $ MONEY -1
+90 - MONEY -2
 
  0 St.!&@ CMPN -1
 
