@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# patternTable.py : 19jul2017 CPM
+# patternTable.py : 19feb2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -98,7 +98,7 @@ class Link(object):
             if sss != '-':                            # allow for no category
                 syx = syntaxSpecification.SyntaxSpecification(syms,sss)
                 if syx != None:
-                    if lastat != '-1':                    # not a stop state for matching
+                    if not lastat in ['-1','-2']:     # not a stop state for matching
                         raise ellyException.FormatFailure # cannot have syntax here
                     self.catg = syx.catg              # syntactic category
                     self.synf = syx.synf.positive     # syntactic features
@@ -121,22 +121,23 @@ class Link(object):
                     raise ellyException.FormatFailure # unrecognizable bias
 
             try:
-                n = int(lastat)                       # next state for link
+                n = int(lastat)                        # next state for link
             except ValueError:
-                raise ellyException.FormatFailure     # unrecognizable number
+                raise ellyException.FormatFailure      # unrecognizable number
 
 #           print 'transition=' , n
 
-            if n < 0:                                 # final transition?
+            if n < 0:                                  # final transition?
                 if self.patn == u'\x00':
-                    raise ellyException.FormatFailure # final state not allowed here
-                pe = self.patn[-1]                    # if so, get last pattern element
-                if ( pe != ellyWildcard.cALL and      # final pattern must end with * or $
+                    raise ellyException.FormatFailure  # final state not allowed here
+                if n == -1:
+                    pe = self.patn[-1]                 # if so, get last pattern element
+                    if ( pe != ellyWildcard.cALL and   # final pattern must end with * or $
                      pe != ellyWildcard.cEND ):
-                    self.patn += ellyWildcard.cEND    # default is $
-                    print >> sys.stderr , '** final $ added to pattern' , list(self.patn)
+                        self.patn += ellyWildcard.cEND # default is $
+                        print >> sys.stderr , '** final $ added to pattern' , list(self.patn)
 
-            self.nxts = n                             # specify next state
+            self.nxts = n                              # specify next state
 
     def __unicode__ ( self ):
 
@@ -162,6 +163,7 @@ class Link(object):
             m = u'' if self.semf == None else self.semf.hexadecimal(False)
             b = str(self.bias)
             n = ' next=' + unicode(self.nxts) if self.nxts >= 0 else ' stop'
+            if self.nxts == -2: n += '+breaking'
             return p + ' ' + ' ' + c + ' ' + x + ' ' + m + ' ' + b + n
 
 Trmls = ellyWildcard.Trmls
@@ -301,6 +303,9 @@ class PatternTable(object):
             if lk.nxts >= 0:                 # -1 is stop, not state
                 if not lk.nxts in lss: lss.append(lk.nxts)
                 if not lk.nxts in ins: ins.append(lk.nxts)
+            elif lk.nxts < -2:
+                self._err('bad final state' , line)
+                continue
 
             self.indx[stn].append(lk)        # add to its slot in FSA state index
 #           print '=' , self.indx[stn]
@@ -394,6 +399,7 @@ class PatternTable(object):
 #                   print 'm=' , m
 
                     if lk.nxts < 0: # final state?
+                        if lk.nxts == -2: m = 0  # last part of match not counted
 #                       print 'flags=' , lk.synf , '/' , lk.semf
                         if tree.addLiteralPhraseWithSemantics(lk.catg,lk.synf,lk.semf,lk.bias,
                                                               cap=capd): # make phrase
