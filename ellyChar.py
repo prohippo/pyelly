@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 16feb2018 CPM
+# ellyChar.py : 19feb2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -70,6 +70,8 @@ ABrL = u'\u3008'   # left angle  bracket
 ABrR = u'\u3009'   # right angle bracket
 HYPH = u'\u2010'   # Unicode hyphen only
 
+EURO = u'\u20AC'
+
 Exc = [ AMP , HYM ]                                             # extension of span
 
 Apd = [ AST , PLS , HYM ]                                       # marks appending to token
@@ -85,7 +87,7 @@ Grk = [            # small Greek letters, not treated as alphabetic
     u'ρ',u'σ',u'τ',u'υ',u'φ',u'χ',u'ψ',u'ω'
 ]
 
-Misc = [ THS , SHARP , FLAT , ABrL , ABrR , HYPH ]
+Misc = [ THS , SHARP , FLAT , ABrL , ABrR , HYPH , EURO ]
 Spm  = [ SHARP , FLAT ]
 
 Quo  = [ LSQm , LDQm , RSQm , RDQm , '"' , "'" ]
