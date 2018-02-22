@@ -549,6 +549,10 @@ Release Notes:
                       fix "test" rules
                       extend "marking" rules
                       update and expand documentation
+ 1.4.25  - 22feb2018  handle Euro symbol in PyElly input
+                      allow for tokens to be split or joined by pattern match
+                      extend and clean up rules for "marking" application
+                      update and expand documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
