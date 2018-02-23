@@ -149,6 +149,7 @@ got out : VERB[^ed]
 got up : VERB[^ed,*x]
 growing : VERB[^ing]
 grown : VERB[^ed] - +1
+gusting : ADJ
 hacked emails : NOUN[:plur]
 had : HAVE[^ed]
 had nothing to do with : VERB[^ed]
@@ -424,6 +425,7 @@ a number of : QUAN
 a number of pieces of : QUAN
 a range of : QUAN
 a series of : QUAN
+a short time : ADV
 a string of : QUAN
 a third the : NUM
 a thousand : NUM
@@ -436,6 +438,7 @@ achieve the ultimate deal : VERB
 achingly : ADV
 adm. : NOUN
 after all : CONJ[@*l]
+after he did, : ADV
 after it emerged that : CONJ
 after which : CONJ
 against his will : ADV
@@ -1195,6 +1198,7 @@ telecoms giant : NOUN
 television deal : NOUN
 tense moment : NOUN
 terrorist gang : NOUN
+texans : NOUN[:plur]
 than ever : CMPC
 than ever before : CMPC
 thanks to : PREP
@@ -1416,6 +1420,7 @@ repeatedly used the flag : VERB[^ed]
 Scarborough intern Lori Klausutis : NOUN
 sinai mosque : NOUN
 Tampa police : NOUN
+Texans : NOUN
 the country’s struggle : NOUN[:det]
 the group Wikileaks : NOUN[:det]
 Trump’s tweet : NOUN
@@ -1475,6 +1480,7 @@ half-apology : NOUN
 half-full : ADJ
 half-sitting : VERB[^ed]
 high-profile : ADJ
+highest-ranking : ADJ
 in-depth : ADJ
 in-store : ADJ
 iranian-backed : ADJ
@@ -1492,6 +1498,7 @@ nail-biter : NOUN
 ocean-view home : NOUN
 op-ed : NOUN - -1
 op-ed : ADJ
+out-of-control : ADJ
 non-stick : ADJ
 on-grid : ADJ
 on-grid power plant : NOUN
@@ -14421,6 +14428,8 @@ lock ring : NOUN
 lock up : VERB
 lockdown : NOUN
 locker : NOUN
+locker room : NOUN
+locker-room : ADJ
 log : NOUN
 log : VERB
 log cabin : NOUN
