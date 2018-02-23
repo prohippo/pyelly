@@ -37,6 +37,7 @@ believed to be : VERB[^ed]
 believed to have : AUXL
 believed to have been : AUXL
 believes : VERB[^s]
+best known : VERB[^ed]
 bit : VERB[^ed,*x]
 bloodier : ADJ
 bloodiest : ADJ
@@ -308,6 +309,7 @@ shown : VERB[^ed]
 signed : VERB[^ed]
 signed off : VERB[^ed]
 signing off : VERB[^ing]
+simplest : ADJ
 sitting : VERB[^ing]
 sold : VERB[^ed]
 sold off : VERB[^ed]
@@ -432,6 +434,7 @@ a thousand : NUM
 about half its : QUAN
 about to : TO
 about whether : CONJ
+above the law : ADJ
 above water : ADJ
 according to : PREP
 achieve the ultimate deal : VERB
@@ -523,6 +526,8 @@ best suit : NOUN
 best suit : VERB
 better of it : ADV
 birther : NOUN
+black boy : NOUN
+black girl : NOUN
 black community : NOUN
 blanket of snow : NOUN
 bond market : NOUN
@@ -546,6 +551,8 @@ by now : ADV
 byline : NOUN
 cabinet meeting : NOUN
 cabinet meetings : NOUN[:plur]
+cable news program : NOUN
+cable news programming : NOUN
 cable tv : NOUN
 cabinet session : NOUN
 cable tv channel : NOUN
@@ -614,6 +621,7 @@ day in a row : NOUN
 deadliest : ADJ
 deadly shooting : NOUN
 deadly shootings : NOUN[:plur]
+decades ago : ADV
 decent people : NOUN[:plur]
 deductibility : NOUN
 demilitarization : NOUN
@@ -688,6 +696,7 @@ federal approval : NOUN
 federal bureau : NOUN
 federal charge : NOUN
 federal level : NOUN
+federal prosecutor : NOUN
 federal republic : NOUN
 feed & farm supply store : NOUN
 ferry service : NOUN
@@ -865,6 +874,7 @@ just this : DEM[@ind,sgl]
 keep things quiet : VERB
 key figure : NOUN
 know nothing at all : VERB
+ku klux klansmen : NOUN[:plur]
 lackluster record : NOUN
 land corridor : NOUN
 last known location : NOUN
@@ -961,10 +971,12 @@ navy submarine : NOUN
 neighborhood : ADJ - -2
 neighborhood bar : NOUN
 neighborhood setting : NOUN
+new generation : NOUN
 new research : NOUN
 newspaper best : ADJ
 next year : NAVB[:det]
 no. 2 : NOUN
+no matter how : CONJ
 no one : PRO
 north korean leader : NOUN
 northern california : NOUN
@@ -1067,6 +1079,7 @@ purchasing power : NOUN
 pv : ADJ
 pyroclastic : ADJ
 quoted from : VERB
+raise the roof beam high : VERB
 rally support for : VERB
 rapidly melting : ADJ
 rebaptizer : NOUN
@@ -1127,6 +1140,7 @@ service plan : NOUN
 servicemember : NOUN
 several other : QUAN
 sexual advance : NOUN
+sexual misconduct : NOUN
 sexually harass : VERB
 sgt. : NOUN
 shadow banking : NOUN
@@ -1143,6 +1157,7 @@ slbm : NOUN
 small business : NOUN
 so many : QUAN[@ind]
 so that : CONJ
+social reform : NOUN
 social security system : NOUN
 socialist federal republic : NOUN
 soldier-turned-defector : NOUN
@@ -1192,6 +1207,8 @@ tax reform : NOUN
 tax legislation : NOUN
 tax overhaul : NOUN
 technical information : NOUN
+teenage boy : NOUN
+teenage girl : NOUN
 television interview : NOUN
 teenybopper : NOUN
 telecoms giant : NOUN
@@ -1221,6 +1238,7 @@ the starting point : NOUN
 the united states : NOUN[:plur]
 their presence : NOUN
 there is no hope : NOUN
+they too : PRO
 this month : NAVB[:det]
 this time : ADV
 this week : ADV
@@ -1260,6 +1278,7 @@ u.s. special forces : NOUN[:plur]
 uav : NOUN
 ultimate deal : NOUN
 ultraconservatism : NOUN
+ultraconservative dogma : NOUN
 under any circumstances : ADV
 under the country’s flag : ADV
 undercover sting operation : NOUN
@@ -1344,6 +1363,7 @@ on,       : PTCL - -2
 — or      : DCNJ
 i mean,   : ADV
 , N.Y.,   : XID
+, maybe,  : ADV
 really, really : ADV
 
 1000000000000 : NUM[:*r] - +2 =trillion
@@ -1479,6 +1499,7 @@ ghost-wrote : VERB[^ed]
 half-apology : NOUN
 half-full : ADJ
 half-sitting : VERB[^ed]
+hard-to-detect : ADJ
 high-profile : ADJ
 highest-ranking : ADJ
 in-depth : ADJ
@@ -1525,6 +1546,8 @@ self-defensive : ADJ
 start-up : NOUN
 state-run : ADJ
 state-run news agency KCNA : NOUN
+submarine-lanched : ADJ
+sun-drenched : ADJ
 surface-to-surface : ADJ
 tax-writing : ADJ
 tax-writing committee : NOUN
@@ -1547,6 +1570,7 @@ wrap-up : NOUN
 
 # # # # some names to recognize explicitly
 
+16th Street Baptist Church : NOUN
 A New Day Has Come : NOUN
 Aaron C. Davis : NOUN
 ABC News : NOUN
@@ -1649,6 +1673,7 @@ Dolores : NOUN
 Donald : NOUN
 Donald Trump : NOUN
 Doug : NOUN
+Doug Jones : NOUN
 DPRK : NOUN
 Duda : NOUN
 Dugs : NOUN
@@ -3623,6 +3648,7 @@ best : ADV
 best evidence rule : NOUN
 best friend : NOUN
 best man : NOUN
+best-known : ADJ
 bestow : VERB
 bet : NOUN
 bet : VERB
