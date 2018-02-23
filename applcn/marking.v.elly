@@ -1063,6 +1063,7 @@ primary challenge : NOUN
 prior to : PREP
 private sector : NOUN
 private meeting : NOUN
+profound grief : NOUN
 programmable : ADJ
 proof to the contrary : NOUN
 properly designed : ADJ
@@ -1202,6 +1203,7 @@ take on it : NOUN
 take-it-or-leave-it : ADJ
 taken steps : VERB[^ed]
 talk-show host : NOUN
+tangible evidence : NOUN
 tangible step : NOUN
 tax reform : NOUN
 tax legislation : NOUN
@@ -1209,13 +1211,15 @@ tax overhaul : NOUN
 technical information : NOUN
 teenage boy : NOUN
 teenage girl : NOUN
-television interview : NOUN
 teenybopper : NOUN
 telecoms giant : NOUN
 television deal : NOUN
+television interview : NOUN
 tense moment : NOUN
+terrible sadness : NOUN
 terrorist gang : NOUN
 texans : NOUN[:plur]
+text message : NOUN
 than ever : CMPC
 than ever before : CMPC
 thanks to : PREP
@@ -1680,6 +1684,7 @@ Dugs : NOUN
 Ebay : NOUN
 Ebay order : NOUN
 Eclogues : NOUN
+Edwin M. Lee : NOUN
 El Nino : NOUN
 Elena Kagan : NOUN
 Eli : NOUN
@@ -1833,6 +1838,7 @@ NBA : NOUN
 NBC : NOUN
 NBC News : NOUN
 NCIS : NOUN
+NFL Network : NOUN
 NFL players' protest : NOUN
 Naval Criminal Investigative Service : NOUN
 Netanyahu : NOUN
@@ -1986,6 +1992,7 @@ Washington State : NOUN
 Water Management District : NOUN
 WCNC-TV : NOUN
 We Want God : NOUN
+Weinberger : NOUN
 West Chester : NOUN
 West Indies : NOUN[:plur]
 Westmoreland County : NOUN
@@ -6654,6 +6661,7 @@ cop : VERB
 cop out : VERB
 cope : NOUN - -2
 cope : VERB - +1
+copy : NOUN
 copy : VERB
 copy editor : NOUN
 copy out : VERB
@@ -16604,6 +16612,7 @@ oddly : ADV
 odds : NOUN
 of course : ADV
 of how : CONJ
+of which : CONJ[@rel]
 of whom : CONJ[@rel]
 off : VERB - -2
 off : ADJ
