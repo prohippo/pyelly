@@ -65,7 +65,24 @@ BLOCK ed
     IF ived {SU}
     END {DO MORE}
   IF fre {SU -1 ed}
-  IF mh {FA}
+  IF m
+    IF h {FA}
+    IF aho {FA}
+    IF m
+      IF aho {FA}
+      end {SU 1}
+    IF e
+      IS e {SU}
+      END {SU -1}
+    IF i
+      IS au {SU}
+      END {SU -1}
+    IS lr {SU}
+    IF a
+       IS eo {SU}
+       END {SU -1}
+    IS u {SU -1}
+    end {SU 1} 
   IF f
     IF f
       IF ioc {SU 1}

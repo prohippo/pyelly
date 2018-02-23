@@ -3,7 +3,7 @@ abolition abolit
 absentee absent
 absorbable absorb
 absorbent absorb
-absorbtion absorb
+absorption absorb
 abundance abund
 accent accent
 accentuate accent
@@ -102,6 +102,7 @@ aspirant aspire
 assailant assail
 assassinate assassin
 assistant assist
+assumed assume
 ate eat
 athlete athlet
 auctioneer auction
@@ -152,6 +153,7 @@ bit bite
 biter bite
 bitten bite
 bivouacked bivouac
+blamed blame
 bless bless
 blest bless
 blew blow
@@ -197,6 +199,7 @@ caddy caddie
 caliber calibr
 calibre calibr
 callous callous
+calmed calm
 calmer calm
 camper camp
 canadian canada
@@ -252,6 +255,7 @@ circadian circade
 circuitry circuit
 citizenry citizen
 civilian civilian
+claimed claim
 clanger clang
 clarion clarion
 classify classify
@@ -587,6 +591,7 @@ flexible flex
 flocculate floccule
 flown fly
 flung fling
+foamed foam
 foamy foam
 foci focus
 foggier fog
@@ -606,6 +611,7 @@ forfeiture forfeit
 forgave forgive
 forgiven forgive
 forgot forget
+formed form
 formulate formula
 forsaken forsake
 fossilize fossil
@@ -921,6 +927,7 @@ ministry ministr
 miser miser
 mitochondrial mitochondria
 mixture mix
+mohamed mohamed
 moisture moist
 monetization money
 mongolian mongolia
@@ -1231,6 +1238,7 @@ roomier room
 roomiest room
 roomy room
 ropy rope
+ruined ruin
 ruler rule
 rung ring
 ruthless ruthless
@@ -1279,6 +1287,7 @@ secretive secret
 secretory secrete
 sedition sedition
 seditious sedition
+seemed seem
 seen see
 seldom seldom
 selves self
@@ -1328,6 +1337,7 @@ sincerity sincere
 siphoner siphon
 sky sky
 slain slay
+slammed slam
 slavic slav
 sleepy sleep
 slew slay
@@ -1457,6 +1467,7 @@ tannest tan
 taught teach
 taxis taxi
 teacher teach
+teamed team
 teenager teenage
 telemetry telemetr
 telephonic telephone
@@ -1468,6 +1479,7 @@ tent tent
 terrorism terror
 terrorist terror
 theatric theatr
+themed theme
 thermal therm
 thieves thief
 thieving thief
@@ -1481,6 +1493,7 @@ tibetan tibet
 tibial tibia
 tidal tide
 tied tie
+timed time
 timer time
 timetable timetable
 tinging tinge
