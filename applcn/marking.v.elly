@@ -31,6 +31,7 @@ banned from competing : VERB[^ed]
 based on : VERB[^ed,*x]
 be found alive : VERB[^ed]
 became : VERB[^ed,chng]
+been charged with : VERB[^ed]
 began : VERB[^ed,proc,*x]
 being taken to the hospital : VERB[^ing]
 believed to be : VERB[^ed]
@@ -180,6 +181,7 @@ inspired : VERB[^ed]
 interesting : VERB[^ing]
 internationals : NOUN[:plur]
 irked that : VCTH[^ed]
+is no longer fit : VERB
 is currently considered : VERB
 it was watching : VERB[^aux,ed,ing]
 knew : VERB[^ed]
@@ -228,6 +230,7 @@ multinationals : NOUN[:plur]
 murder trial : NOUN
 named : VERB[^ed] - +2
 named : ADJ - -4
+nearest : ADJ
 news anchor : NOUN
 news release : NOUN
 noblemen : NOUN[:plur]
@@ -244,6 +247,7 @@ originated : ADJ - -4
 ought : VERB
 overlooked : VERB[^ed] - -1
 paid : VERB[^ed]
+peace deal : NOUN
 peacemaking : NOUN
 phenomena : NOUN[:plur]
 phone interview : NOUN
@@ -278,6 +282,7 @@ remains : VERB[^s,proc] - +3
 repeated : VERB[^ed]
 residents : NOUN[:plur]
 retaken : VERB[^ed]
+returned the conversation back : VERB[^ed]
 revolved around : VERB[^ed]
 rewritten : VERB[^ed]
 rock-wielding : ADJ
@@ -300,14 +305,17 @@ served as : VERB[^ed]
 serving as : VERB[^ing]
 setting : VERB[^ptcl,ing] - +1
 setting up : VERB[^ing]
+she believed was : BE[^ed]
 shifted its focus to : VERB[^ed]
 shipping label : NOUN
 shooting : VERB[^ing]
 shot : VERB[^ed] - +2
 shot and killed : VERB[^ed]
+showboating : NOUN
 shown : VERB[^ed]
 signed : VERB[^ed]
 signed off : VERB[^ed]
+significant policy shift : NOUN
 signing off : VERB[^ing]
 simplest : ADJ
 sitting : VERB[^ing]
@@ -469,6 +477,7 @@ and now : CONJ
 and so : CONJ
 and so on : MISC
 and then : CONJ
+animal cruelty : NOUN
 anniversary dinner : NOUN
 anything else : NOUN
 anytime : NOUN
@@ -629,6 +638,7 @@ democratic republic : NOUN
 development team : NOUN
 die roll : NOUN
 digital minister : NOUN
+diplomatic overture : NOUN
 diplomatic script : NOUN
 diplomatic tone : NOUN
 direct response : NOUN
@@ -810,6 +820,7 @@ in response to : PREP
 in terms of : PREP
 in the community : ADV
 in the event of : PREP
+in the first place : ADV
 in the mix : ADV
 in the name of : PREP
 in the skies : ADJ [$trlg] +1
@@ -920,6 +931,8 @@ manmade : ADJ
 mannerist : NOUN
 many of whom : PRO
 marchese : NOUN
+marine corps : NOUN
+marine corps air station : NOUN
 mass killing : NOUN
 may have : AUXL
 may have been : AUXL
@@ -956,6 +969,7 @@ mrs. : NOUN
 ms. : NOUN
 multilateralism : NOUN
 multimillion-dollar : ADJ
+multiple : QUAN - +2
 multiple, multiple : ADJ
 muslim tradition : NOUN
 nano : NOUN
@@ -1142,6 +1156,7 @@ servicemember : NOUN
 several other : QUAN
 sexual advance : NOUN
 sexual misconduct : NOUN
+sexual misconduct allegation : NOUN
 sexually harass : VERB
 sgt. : NOUN
 shadow banking : NOUN
@@ -1181,6 +1196,7 @@ spectator : ADJ - +1
 spectral type : NOUN[:*x]
 spiritual director : NOUN
 splash screen : NOUN
+sports field : NOUN
 spy plane : NOUN
 state and local : ADJ
 state ceremony : NOUN
@@ -1272,6 +1288,7 @@ traffic stop : NOUN
 travel conditions : NOUN[:plur]
 trump campaign : NOUN
 u.s. charts : NOUN[:plur]
+u.s. forces : NOUN[:plur]
 u.s. government compound : NOUN
 u.s. market : NOUN
 u.s. official  : NOUN
@@ -1310,6 +1327,7 @@ very little : NOUN[:*l]
 very little : ADV - -1
 very pleased : ADJ
 very unfortunate : ADJ
+viral video : NOUN
 war memorial : NOUN
 war dead : NOUN
 warfighter : NOUN
@@ -1328,6 +1346,7 @@ willing to : TO
 wine review : NOUN
 winter weather advisory : NOUN
 with no regard to : CONJ
+within range of : PREP
 without so much as : CONJ
 won : NOUN - -1
 world’s most : ADV
@@ -1433,6 +1452,7 @@ disappeared from the fever swamps : VERB[^ed]
 effectively acknowledging : VERB[^ing]
 end efforts to rescue : VERB
 Florida district office : NOUN
+Florida men : NOUN[:plur]
 Florida neighborhood : NOUN
 foreign minster : NOUN
 half-apologies : NOUN[:plur]
@@ -1440,6 +1460,7 @@ incorrectly reported : VERB[^ed]
 making a false statement to the FBI : VERB[^ing]
 missing submarine : NOUN
 new and bloodier : ADJ
+on what the news agency described as : CONJ
 repeatedly used the flag : VERB[^ed]
 Scarborough intern Lori Klausutis : NOUN
 sinai mosque : NOUN
@@ -1491,6 +1512,7 @@ faith-based : ADJ
 far-flung : ADJ
 fast-moving : ADJ
 five-lane : ADJ
+four-day : ADJ
 four-lane : ADJ
 four-page : ADJ
 four-page filing : NOUN[:*r]
@@ -1505,11 +1527,14 @@ half-full : ADJ
 half-sitting : VERB[^ed]
 hard-to-detect : ADJ
 high-profile : ADJ
+high-speed : ADJ
+high-speed boat : NOUN
 highest-ranking : ADJ
 in-depth : ADJ
 in-store : ADJ
 iranian-backed : ADJ
 iraqi-syrian : ADJ
+israeli-palestinean : ADJ
 lesser-known : ADJ
 long-drawn : ADJ
 long-expected : ADJ
@@ -1531,6 +1556,7 @@ once-in-a-lifetime : ADJ
 one-lane : ADJ
 one-of-a-kind : ADJ
 out-of-stock : ADJ
+outside of : PREP
 post-September 11th : ADJ
 pro-saudi : ADJ
 pro-Trump : ADJ
@@ -1803,6 +1829,7 @@ Lord Mayor : NOUN
 Lord Mayor of Dublin : NOUN
 Lori Klausutis : NOUN
 Love Victorious : NOUN
+Mahmoud Abbas : NOUN
 Mali : NOUN
 Malibu : NOUN
 Manafort : NOUN
@@ -1828,6 +1855,7 @@ Ministry of Health : NOUN
 Missouri State : NOUN
 Mitch McConnell : NOUN
 Mohammed bin-Salman : NOUN
+Moon Jae-in : NOUN
 Mr. President : NOUN
 MSNBC : NOUN
 MTV : NOUN
@@ -12681,6 +12709,8 @@ impulse explosive : NOUN
 in a way : ADV
 in effect : ADJ [$trlg,prd] 0
 in effect : ADV
+in relations with : PREP
+in response to : PREP
 in turn : ADV
 in-fighting : NOUN
 inability : NOUN
@@ -13032,6 +13062,7 @@ intercept : VERB
 interchange : NOUN
 interchange : VERB
 intercontinental : ADJ
+intercontinental ballistic missile : NOUN
 interest : NOUN
 interest : VERB
 interest expense : NOUN
@@ -15848,6 +15879,8 @@ muir : NOUN
 multicultural : ADJ
 multilateral : ADJ
 multinational : ADJ
+multiple : NOUN
+multiple : ADJ
 multiply : VERB
 multiply : ADV
 multitude : NOUN
@@ -25050,6 +25083,7 @@ unite : VERB
 united kingdom : NOUN
 united nations : NOUN
 united states : NOUN
+united states mainland : NOUN
 unity : NOUN
 universal : NOUN
 universal : ADJ

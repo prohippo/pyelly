@@ -2780,8 +2780,6 @@ __
 d:either <- QUAN[@ind,cnj]
  >>[!corrl]
 __
-d:multiple <- QUAN
-__
 d:another <- QUAN[@ind,adv]
 __
 
