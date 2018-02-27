@@ -63,6 +63,7 @@ BLOCK ed
   IF l
     IF si {SU -1 ad}
     IF ived {SU}
+    IF ari {SU}
     END {DO MORE}
   IF fre {SU -1 ed}
   IF m
@@ -82,6 +83,7 @@ BLOCK ed
        IS eo {SU}
        END {SU -1}
     IS u {SU -1}
+    IF osn {SU}
     end {SU 1} 
   IF f
     IF f
