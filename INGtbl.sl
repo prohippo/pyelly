@@ -91,6 +91,7 @@ BLOCK ing
     IF kcud {FA}
     IF sog {FA}
     IF eri {FA}
+    IF ari {SU}
     IF ta {FA}
     IF fl {FA}
     END
