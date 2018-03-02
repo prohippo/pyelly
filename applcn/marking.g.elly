@@ -516,6 +516,14 @@ _
   linefeed
   right
 __
+g:ELEM[^*l]->ELEM PUNC[|-emb,*x]
+_
+  left
+  linefeed
+  append <punc>
+  right
+  append </punc>
+__
 g:ELEM->MISC[:-dit]
  p<1 l[!spcs]>>+3
 _
@@ -553,6 +561,13 @@ g:ELEM->CONJ[@ind] PUNC[|stop]
 _
   var typg=pro
   (stpg)
+__
+g:ELEM->NEGN
+ >>--------
+_
+  append <vclu><negn>
+  left
+  append </negn></vclu>
 __
 
 g:MISC->MISC[:*x] PUNC[|com]
@@ -1569,6 +1584,7 @@ _
 __
 g:NOUN[:*r,cnj]->NOUN[:-*l,-join,-poss,-ing,-plur,-qnt] NOUN[:-cnj,-ing,-det]
 #                ?>>?
+           r[&two]>>*l+2
  l[&spcs,*c]r[&*c]>>*r+2
           r[&prop]>>*r-2
           l[&spcs]>>*r-2
@@ -2854,7 +2870,7 @@ d:1 <- NUM
  >>[&prop]+
 __
 d:2 <- NUM[:cnj]
- >>--
+ >>[&two]--
 _
   append two
 __
@@ -3236,8 +3252,9 @@ g:AUXL->XD
 _
   append 'd
 __
-g:NOUN->CONJ[@qnt] NUM[:cnj]
- >>-
+g:NOUN[:num]->CONJ[@qnt] NUM[:cnj]
+ r[&two]>>[&two]++++
+        >>-
 _
   (twob)
 __

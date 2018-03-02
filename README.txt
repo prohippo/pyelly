@@ -551,6 +551,9 @@ Release Notes:
                       update and expand documentation
  1.4.25  - 22feb2018  handle Euro symbol in PyElly input
                       allow for tokens to be split or joined by pattern match
+                      allow date range with hyphen in entity extraction
+                      improve English inflectional stemming
+                      clean up "test" application integration test key
                       extend and clean up rules for "marking" application
                       update and expand documentation
 

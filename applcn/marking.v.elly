@@ -81,6 +81,7 @@ debate over the meaning : NOUN
 debated the question : VERB[^ed]
 declared : VERB[^ed] - +1
 deeply held : ADJ
+delay a recommendation : VERB
 determined : VERB[^ed]
 did : VERB[^ed,*x]
 did not : AUXL[^ed]
@@ -173,6 +174,7 @@ hearing : VERB[^ing] - +2
 held hostage : VERB[^ed]
 held without bond : VERB[^ed]
 hoped it will help : VERB[^ed]
+holding up the process : VERB[^ing]
 house tax-writing committee : NOUN
 hove : VERB[^ed]
 identified as : VERB[^ed]
@@ -181,6 +183,7 @@ inspired : VERB[^ed]
 interesting : VERB[^ing]
 internationals : NOUN[:plur]
 irked that : VCTH[^ed]
+is a look at : VERB
 is no longer fit : VERB
 is currently considered : VERB
 it was watching : VERB[^aux,ed,ing]
@@ -250,6 +253,7 @@ overlooked : VERB[^ed] - -1
 paid : VERB[^ed]
 peace deal : NOUN
 peacemaking : NOUN
+permanent security clearance : NOUN
 phenomena : NOUN[:plur]
 phone interview : NOUN
 pleaded guilty : VERB[^ed]
@@ -298,6 +302,7 @@ sarcophagi : NOUN[:plur]
 sat : VERB[^ed]
 sat down : VERB[^ed,*x]
 secretly ghostwriting : VERB[^ing]
+security clearance : NOUN
 security forces : NOUN[:plur]
 seen : VERB[^ed]
 seen : SVED - -1
@@ -335,6 +340,7 @@ stepping down : VERB[^ing]
 stimulating : VERB[^ing]
 stood : VERB[^ed]
 striking back at : VERB[^ing]
+substantial issues : NOUN[:plur]
 supply cut : NOUN
 supplying : VERB[^ing] - +2
 supplying : NOUN[:ing] - -1
@@ -358,6 +364,7 @@ thought : VERB[^ed]
 told : VERB[^ed,dit]
 told the court : VERB[^ed,dit]
 took place : VERB[^ed]
+top lieutenant : NOUN
 tore up : VERB[^ed]
 tracking : VERB[^ing]
 trying : VERB[^ing] - +1
@@ -647,6 +654,7 @@ diplomatic overture : NOUN
 diplomatic script : NOUN
 diplomatic tone : NOUN
 direct response : NOUN
+disclose contacts with : VERB
 discussion point : NOUN
 district office : NOUN
 divorce bill : NOUN
@@ -998,6 +1006,7 @@ new research : NOUN
 newspaper best : ADJ
 next year : NAVB[:det]
 no. 2 : NOUN
+no little : ADJ
 no matter how : CONJ
 no one : PRO
 north korean leader : NOUN
@@ -1248,6 +1257,7 @@ than ever : CMPC
 than ever before : CMPC
 thanks to : PREP
 thanksgiving break : NOUN
+that some insist : THAT
 that year : NAVB[:det]
 thaw with russia : NOUN
 the above : ADJ
@@ -1292,6 +1302,7 @@ top forty hit : NOUN
 tourism sector : NOUN
 trackwork : NOUN
 trading partner : NOUN
+traditional clothing : NOUN
 traffic stop : NOUN
 travel conditions : NOUN[:plur]
 trump campaign : NOUN
@@ -1450,12 +1461,14 @@ most as many : ADJ
 # # # # definitions to deal with specific problem text
 
 "(C)" for confidential : NOUN
+8 day visit : NOUN
 announced the discovery of : VERB
 another front in the culture wars : NOUN
 armed with fresh ammunition : ADJ
 attacks on twitter : NOUN[:plur]
 complex new modeling : NOUN
 counts of murder : NOUN[:plur]
+deconfliction : ADJ
 disappeared from the fever swamps : VERB[^ed]
 effectively acknowledging : VERB[^ing]
 end efforts to rescue : VERB
@@ -1520,6 +1533,7 @@ faith-based : ADJ
 far-flung : ADJ
 fast-moving : ADJ
 five-lane : ADJ
+foreign leader : NOUN
 four-day : ADJ
 four-lane : ADJ
 four-page : ADJ
@@ -1540,6 +1554,7 @@ high-speed boat : NOUN
 highest-ranking : ADJ
 in-depth : ADJ
 in-store : ADJ
+initial failure : NOUN
 iranian-backed : ADJ
 iraqi-syrian : ADJ
 israeli-palestinean : ADJ
@@ -1593,6 +1608,7 @@ three-day : ADJ
 tighty-whities : NOUN
 top-rated : ADJ
 top-shelf : ADJ
+tut-tutting : ADJ
 U.S. government source : NOUN
 U.S.-China : ADJ
 U.S.-led : ADJ
@@ -1797,7 +1813,7 @@ James O'Keefe : NOUN
 Jamie : NOUN
 Janis : NOUN
 Japan International Cooperation Agency : NOUN[:*r]
-Jared : NOUN
+Jared Kushner : NOUN
 Jason Leon : NOUN
 Jeff Sessions : NOUN
 Jenny Lumet : NOUN
@@ -8188,6 +8204,7 @@ disappear : VERB
 disappearance : NOUN
 disappoint : VERB
 disappointment : NOUN
+disapproval : NOUN
 disapprove : VERB
 disaster : NOUN
 disaster area : NOUN
@@ -8425,7 +8442,7 @@ dole : NOUN
 dole out : VERB
 doll : NOUN
 doll up : VERB
-dollar : NOUN [&curr] 0
+dollar : NOUN
 dollar bill : NOUN
 dollar diplomacy : NOUN
 dollar mark : NOUN
@@ -13236,6 +13253,7 @@ impulse explosive : NOUN
 in a way : ADV
 in effect : ADJ [$trlg,prd] 0
 in effect : ADV
+in the spirit of : PREP
 in turn : ADV
 in-fighting : NOUN
 inability : NOUN
@@ -17918,7 +17936,7 @@ pair production : NOUN
 pakistan : NOUN
 pakistani : NOUN
 pakistani : ADJ
-pakistani rupee : NOUN [&curr] 0
+pakistani rupee : NOUN
 pal : NOUN
 pal : VERB
 pal up : VERB
@@ -27606,8 +27624,8 @@ yellow woman : NOUN
 yemen : NOUN
 yemeni : NOUN
 yemeni : ADJ
-yen : NOUN [&curr] 0
-yen : NOUN[:plur] [&curr] 0
+yen : NOUN
+yen : NOUN[:plur]
 yen : VERB
 yes : NOUN
 yes : NOUN - -3
