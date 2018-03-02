@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# dateTransform.py : 21oct2017 CPM
+# dateTransform.py : 01mar2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -62,9 +62,9 @@ class DateTransform(simpleTransform.SimpleTransform):
         lgth - length of rewritten date
 
         _mo  - month of year (2 digits)
-        _dy  - day of month  (2 digits)
+        _dy  - day of month  (2 digits plus hyphen and 1 or 2 digits)
         _yr  - year          (4 digits)
-        _ep  - epoch         (2 chars )
+        _ep  - epoch         (2 or 3 chars)
     """
 
     def __init__ ( self ):
@@ -97,7 +97,7 @@ class DateTransform(simpleTransform.SimpleTransform):
         """
 
         self._mo = [ '0' , '0' ]             # set defaults for return
-        self._dy = [ '0' , '0' ]             #
+        self._dy = [ ]                       #
         self._yr = [ '_' , '_' , '_' , '_' ] #
         self._ep = [ ]                       #
 
@@ -116,29 +116,32 @@ class DateTransform(simpleTransform.SimpleTransform):
             ts.pop(0)             #
             m -= 1                #
                                   # insert normalized date instead
-        epo = self._ep            #
-        while len(epo) > 0:       #
-            ts.insert(0,epo[-1])  #
-            epo = epo[:-1]        #
-        ts.insert(0,self._yr[3])  #
+        ep = self._ep             #
+        self.lgth = len(ep)       #
+        while len(ep) > 0:        #
+            ts.insert(0,ep.pop()) # add epoch of date, if specified
+        ts.insert(0,self._yr[3])  # add year of date
         ts.insert(0,self._yr[2])  #
-        ts.insert(0,self._yr[1])  #
-        ts.insert(0,self._yr[0])  #
+        self.lgth += 2            #
+        if self._yr[1] != '_':    #
+            ts.insert(0,self._yr[1])  # add 2 chars if not '_'
+            ts.insert(0,self._yr[0])  #
+            self.lgth += 2            #
 
-        self.lgth = 4 + len(self._ep)
 #       print 'date lgth=' , self.lgth
         if self._mo[0] == '0' and self._mo[1] == '0': return True
 
         ts.insert(0,u'/')         #
-        if self._dy[0] == '0' and self._dy[1] == '0':
-            self.lgth += 3
-        else:
-            ts.insert(0,self._dy[1])  #
-            ts.insert(0,self._dy[0])  #
+        dy = self._dy             #
+        ld = len(dy)              #
+        if ld > 0:                # add day of date
+            while len(dy) > 0:    #
+                ts.insert(0,dy.pop()) #
             ts.insert(0,u'/')         #
-            self.lgth += 6
-        ts.insert(0,self._mo[1])  #
+            self.lgth += 1            # includes prior '/'
+        ts.insert(0,self._mo[1])  # add month of date
         ts.insert(0,self._mo[0])  #
+        self.lgth += ld + 3       # includes another '/'
 
 #       print 'date lgth=' , self.lgth
         return True
@@ -185,6 +188,7 @@ class DateTransform(simpleTransform.SimpleTransform):
             k = self._aDay(t)          # look for day of month
 #           print 'day len=' , k
             if k == 0:
+                self._dy = [ ]
                 k = self._aYear(t)     # look for year immediately following
                 if k > 0:
                     return tl - len(t) + k
@@ -207,7 +211,9 @@ class DateTransform(simpleTransform.SimpleTransform):
 
         k = self._aDay(t)              # look for day of month to start date string
 #       print 'start day len=' , k
-        if k > 0 and k < tl:           # cannot be just bare number by itself
+        if k == 0:
+            self._dy = [ ]
+        elif k > 0 and k < tl:         # cannot be just bare number by itself
             tl = len(ts)               # _aDay may have rewritten alphabetic day
             t = t[k:]
 #           print 'new t=' , t
@@ -307,8 +313,10 @@ class DateTransform(simpleTransform.SimpleTransform):
 
 #       print 'rewritten ts=' , ts
 
-        if len(ts) == 1:
-            self._dy[0] = x          # accept at end of input as possible date
+        ls = len(ts)
+        if ls == 1:
+            if x == '0': return 0    # cannot have 0 as day
+            self._dy.append(x)       # accept at end of input as possible date
             return 1
         elif not ellyChar.isDigit(ts[1]):
             k = 1
@@ -316,25 +324,60 @@ class DateTransform(simpleTransform.SimpleTransform):
             return 0
         else:
             y = x                    # save first digit
-            x = ts[1]                # this known to be second digit
+            x = ts[1]                # this will be second digit
             if y == '3' and x > '1': # reject day > 31
                 return 0
-
-            lr = len(ts) - 2         # how many chars after possible date
-            if lr > 0:
-                z = ts[2]
-                if ellyChar.isDigit(z):
-                    return 0         # reject 3-digit date
-                if z == '.' and lr > 1 and ellyChar.isDigit(ts[3]):
-                    return 0         # reject 2 digits before decimal point
-            self._dy[0] = y
             k = 2
 
-#       print 'x=' , x , 'y=' , y
-        self._dy[1] = x
+        ls -= k
+        if k == 2:
+            self._dy.append(y)
+        self._dy.append(x)
+        if ls == 0:
+            return k
+
+        z = ts[k]
+        if ellyChar.isDigit(z):
+            return 0         # reject 3-digit day
+
+        if z == '.' and ls > 1 and ellyChar.isDigit(ts[k+1]):
+            return 0         # reject digit after decimal point
+
+        if ls >= 2:          # at least 2 chars to check after day number
+            if z == u'-':
+#               print 'hypen ls=' , ls , 'k=' , k
+                if ellyChar.isDigit(ts[k+1]):                     # hyphen, digit match
+#                   print 'digit=' , ts[k+1]
+                    self._dy.append(z)
+                    self._dy.append(ts[k+1])
+                    if ls == 2:                                   # only 2 chars to check?
+                        k += 2                                    # add hyphen, digit to day
+                    elif ls == 3:                                 # only 3 chars to check?
+#                       print 'ts[k]=' , ts[k:]
+                        if not ellyChar.isLetterOrDigit(ts[k+2]): #
+                            k += 2                                # add hyphen, digit to day
+                        elif ellyChar.isDigit(ts[k+2]):           # found second digit to add?
+                            self._dy.append(ts[k+2])              # if so, add to day string
+                            k += 3
+                    elif not ellyChar.isLetterOrDigit(ts[k+2]):   # more than 3 chars to check?
+                        k += 2                                    # if not, we are done
+                    elif ellyChar.isDigit(ts[k+2]):               # check for second digit
+#                       print 'k=' , k
+                        if ls > 3 and ellyChar.isDigit(ts[k+3]):
+                            return 0
+                        if ts[k+1] > '3':                         # check for valid day
+                            return 0
+                        if ts[k+1] == '3' and ts[k+2] > '1':
+                            return 0
+                        self._dy.append(ts[k+2])
+                        k += 3
+                    else:
+                        return 0                                  # no other hyphen allowed in day
+                else:
+                    return 0                                      #
 
         t = ts[k:]
-#       print 't=' , t
+#       print 'k=' , k , 't=' , t
         if len(t) == 0 or not ellyChar.isLetterOrDigit(t[0]):
             return k
 
@@ -542,6 +585,9 @@ if __name__ == '__main__':
         u'May 1941' ,
         u'December 1949' ,
         u'Twelfth of Never' ,
+        u'Feb. 7-8' ,
+        u'May 15-17th' ,
+        u'MAY 15-37th' ,
         u'1000 BC' ,
         u'1234 x' ,
         u'123 x' ,
