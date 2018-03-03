@@ -2664,6 +2664,9 @@ d:via  <- PREP
 __
 d:till <- PREP
 __
+d:near <- PREP
+ >>++
+__
 
 d:to   <- TO
 __

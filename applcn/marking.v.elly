@@ -1489,6 +1489,7 @@ Texans : NOUN
 the country’s struggle : NOUN[:det]
 the group Wikileaks : NOUN[:det]
 Trump’s tweet : NOUN
+U.S. Special Forces base : NOUN
 win leverage : VERB
 
 # # # # common hyphenations
@@ -3490,9 +3491,9 @@ barrister : NOUN
 bartender : NOUN
 bartlett : NOUN
 bartlett pear : NOUN
-base : NOUN
+base : NOUN - +2
 base : VERB
-base : ADJ
+base : ADJ - -2
 base hit : NOUN
 base metal : NOUN
 base pair : NOUN
@@ -16867,7 +16868,7 @@ nazi germany : NOUN
 nazi party : NOUN
 nd : NOUN
 near : VERB
-near : ADJ
+near : ADJ - -2
 near : ADV
 near beer : NOUN
 near east : NOUN
