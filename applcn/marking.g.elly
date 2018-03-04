@@ -1829,7 +1829,7 @@ _
 __
 
 g:PCLS->PREP['cls] PCLS[^ing]
- >>+1
+ >>+3
 _
   var typg=prep
   (typg)
@@ -2224,7 +2224,7 @@ _
   append </adv>
 __
 g:NUM->NUM[:-cnj] NUM[:cnj,-prep,-*r]
-    >>++++
+    >>+++++
 _   
   (twob)   # "3 in 4"
 __
@@ -2235,7 +2235,7 @@ _
 __
 g:NUM[:cnj]->NUM[:cnj] NUM[:cnj]
  n<4>>------
- n<5>>++++++++
+ n<5>>+++++++++
     >>------
 _
   (twob)
@@ -2381,7 +2381,7 @@ g:ADV[~*r]->NCLU[:-prep,-det,num] ADVX
         >>----
 __
 
-g:DEM[@*r]->PREP['-cnj] DEM[@ind]
+g:DEM[@*r]->PREP['-cnj,-mod] DEM[@ind]
  >>-
 _
   var typg=prep
@@ -2665,7 +2665,6 @@ __
 d:till <- PREP
 __
 d:near <- PREP
- >>++
 __
 
 d:to   <- TO

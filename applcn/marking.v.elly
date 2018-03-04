@@ -32,6 +32,7 @@ based on : VERB[^ed,*x]
 be found alive : VERB[^ed]
 became : VERB[^ed,chng]
 been charged with : VERB[^ed]
+been seated at : VERB[^ed]
 began : VERB[^ed,proc,*x]
 being taken to the hospital : VERB[^ing]
 believed to be : VERB[^ed]
@@ -62,13 +63,15 @@ carrying out : VERB[^ing]
 caught : VERB[^ed] [$trns] 0
 children : NOUN[:plur]
 circulating : VERB[^ing]
-classified : VERB[^ed] - +1
+classified : VERB[^ed] - +2
 cleared : VERB[^ing]
 co-produced : VERB[^ed]
 coaching : VERB[^ing]
 confirmed : VERB[^ed] - +1
 continued : VERB[^ed]
 cozying up : VERB[^ing]
+creating : VERB[^ing] - +1
+creating : ADJ[%ing] - -2
 criteria : NOUN[:plur]
 cryptic statement : NOUN
 current and former : ADJ
@@ -83,6 +86,8 @@ declared : VERB[^ed] - +1
 deeply held : ADJ
 delay a recommendation : VERB
 determined : VERB[^ed]
+determining : VERB[^ing] - +1
+determining : ADJ[%ing] - -2
 did : VERB[^ed,*x]
 did not : AUXL[^ed]
 discouraged : VERB[^ed]
@@ -92,6 +97,7 @@ djs : NOUN[:plur]
 djs : VERB[^s]
 does : NOUN[:plur] - -1
 does : VERB[^s] - +1
+doing work : VERB[^ing]
 done : VERB[^ed]
 done so : VERB[^ed]
 does not : AUXL[^s]
@@ -173,10 +179,14 @@ heard : SVED - -1
 hearing : VERB[^ing] - +2
 held hostage : VERB[^ed]
 held without bond : VERB[^ed]
+helped capture : VERB[^ed]
+helping capture : VERB[^ing]
 hoped it will help : VERB[^ed]
 holding up the process : VERB[^ing]
 house tax-writing committee : NOUN
 hove : VERB[^ed]
+i heard : VERB[^ed]
+i heard : ADJ [$trlg,prd] 0
 identified as : VERB[^ed]
 infighting : NOUN
 inspired : VERB[^ed]
@@ -203,6 +213,7 @@ lives : NOUN[:plur] - +1  =life -s
 lives : VERB[^s]          =live -s
 lost contact with : VERB[^ed]
 made : VERB[^ed]
+made available : VERB[^ed]
 made clear : Verb[^ed,dit]
 made its way : VERB[^ed]
 made public : VERB[^ed]
@@ -272,6 +283,8 @@ providing : NOUN[:ing] - -2
 providing : VERB[^ing] - +3
 published by buzzed : VERB[^ed]
 publishing : VERB[^ing]
+purchasing : VERB[^ing] - +1
+purchasing : ADJ[%ing] - -2
 raised fears of : VERB[^ed]
 ran : VERB[^ed]
 ran for office : VERB[^ed]
@@ -607,14 +620,17 @@ church leader : NOUN
 clean energy : NOUN
 close to : PREP
 closed-door meeting : NOUN
+closer tracking : NOUN
 cm long : NOUN
 cmdr. : NOUN
 coalition talks : NOUN[:plur]
+coast guard : NOUN
 col. : NOUN
 cold air : NOUN
 college graduate : NOUN
 colored slave : NOUN
 coming off of : PREP
+communications director : NOUN
 computer model : NOUN
 concrete blueprint : NOUN
 confederate force : NOUN
@@ -802,6 +818,7 @@ holster : VERB
 home detention : NOUN
 home to their families : ADV
 homeport : NOUN
+homeported : ADJ
 homiletics : NOUN
 hot 100 : NUM
 hot 100 : NOUN
@@ -931,8 +948,8 @@ lose contact with : VERB
 lt. : NOUN
 lt. gen. : NOUN
 lure shoppers through their doors : VERB
-made available : VERB[^ed]
 magazine weekly : NOUN
+main lobby : NOUN
 mainstream media : NOUN
 major doping scandal : NOUN
 major legislation : NOUN
@@ -1096,6 +1113,7 @@ private sector : NOUN
 private meeting : NOUN
 profound grief : NOUN
 programmable : ADJ
+prohibited cargo : NOUN
 proof to the contrary : NOUN
 properly designed : ADJ
 proportionally spaced : ADJ
@@ -1293,8 +1311,10 @@ title track : NOUN
 to be able to : TO
 to before : CONJ
 to not : TO
+to or from : PREP
 to the satisfaction of : PREP
 to where : CONJ
+token black : NOUN
 top 40 : NUM
 top 40 hit : NOUN
 top forty : NUM
@@ -1365,6 +1385,7 @@ willing to : TO
 wine review : NOUN
 winter weather advisory : NOUN
 with no regard to : CONJ
+with what : CONJ
 within range of : PREP
 without so much as : CONJ
 won : NOUN - -1
@@ -1462,6 +1483,7 @@ most as many : ADJ
 
 "(C)" for confidential : NOUN
 8 day visit : NOUN
+a — what appears to be a — : DET
 announced the discovery of : VERB
 another front in the culture wars : NOUN
 armed with fresh ammunition : ADJ
@@ -1490,6 +1512,8 @@ the country’s struggle : NOUN[:det]
 the group Wikileaks : NOUN[:det]
 Trump’s tweet : NOUN
 U.S. Special Forces base : NOUN
+weapons component : NOUN
+with what we now know to be : PREP
 win leverage : VERB
 
 # # # # common hyphenations
@@ -1549,6 +1573,7 @@ half-apology : NOUN
 half-full : ADJ
 half-sitting : VERB[^ed]
 hard-to-detect : ADJ
+high-endurance : ADJ
 high-profile : ADJ
 high-speed : ADJ
 high-speed boat : NOUN
@@ -1569,6 +1594,7 @@ mid-air : NOUN
 mid-century : ADJ
 mixed-species : ADJ
 nail-biter : NOUN
+near-psychotic : ADJ
 ocean-view home : NOUN
 op-ed : NOUN - -1
 op-ed : ADJ
@@ -1581,6 +1607,7 @@ one-lane : ADJ
 one-of-a-kind : ADJ
 out-of-stock : ADJ
 outside of : PREP
+point-by-point : ADJ
 post-September 11th : ADJ
 pro-saudi : ADJ
 pro-Trump : ADJ
@@ -1709,6 +1736,7 @@ Cody Riley : NOUN
 Colorado State University : NOUN
 Colorado Civil Rights Commission : NOUN
 Comey : NOUN
+Conservative Political Action Conference : NOUN
 Coolio Earth Partnership : NOUN
 Corey Lewandowski : NOUN
 Crafty : NOUN
@@ -1943,6 +1971,7 @@ Queens Park : NOUN
 Ramos : NOUN
 Rancho Tehama : NOUN
 Republican lawmaker : NOUN
+Republican National Committee : NOUN
 Revolutionary Guards : NOUN[:plur]
 Reaganite : NOUN
 Reuben Kihuen : NOUN
@@ -2407,6 +2436,8 @@ agenda : NOUN
 agenda item : NOUN
 agent : NOUN
 agent orange : NOUN
+ago : ADJ
+ago : ADV - -1
 aggravate : VERB
 aggression : NOUN
 aggressive : ADJ
@@ -3491,9 +3522,9 @@ barrister : NOUN
 bartender : NOUN
 bartlett : NOUN
 bartlett pear : NOUN
-base : NOUN - +2
+base : NOUN
 base : VERB
-base : ADJ - -2
+base : ADJ
 base hit : NOUN
 base metal : NOUN
 base pair : NOUN
@@ -11279,7 +11310,7 @@ garrison : NOUN
 garrison : VERB
 garrison cap : NOUN
 gas : NOUN
-gas : VERB
+gas : VERB - -2
 gas bomb : NOUN
 gas bracket : NOUN
 gas chamber : NOUN
@@ -15271,7 +15302,7 @@ lovely : ADJ
 low : NOUN - -2
 low : VERB - -1
 low : ADJ - +3
-low : ADV[~trlg] [$prd,trlg] +1
+low : ADV[~trlg] [$trlg,prd] +1
 low archipelago : NOUN
 low beam : NOUN
 low blow : NOUN
@@ -16867,9 +16898,9 @@ nazi : ADJ - -1
 nazi germany : NOUN
 nazi party : NOUN
 nd : NOUN
-near : VERB
-near : ADJ - -2
-near : ADV
+near : VERB - -4
+near : ADJ - -6
+near : ADV - -2
 near beer : NOUN
 near east : NOUN
 near miss : NOUN
@@ -20278,6 +20309,7 @@ read : NOUN - -2
 read : VERB
 read method : NOUN
 reader : NOUN
+reading room : NOUN
 ready : NOUN - -2
 ready : VERB
 ready : ADJ
