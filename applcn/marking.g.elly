@@ -2971,13 +2971,13 @@ d:hvbe <- HAVE
 _
   append has
 __
-d:will <- AUXL
+d:will   <- AUXL
 __
-d:shall<- AUXL
+d:shall  <- AUXL
 __
-d:would<- AUXL
+d:would  <- AUXL
 __
-d:should<-AUXL
+d:should <- AUXL
 __
 d:do   <- AUXL[^*l]
 __
@@ -3911,4 +3911,14 @@ _
 __
 g:CONJ->DCNJ
   >>----
+__
+
+g:VCLU->PRO[=nom] AUXL
+  >>------
+_
+  append <vclu>
+  left
+  append <aux>
+  right
+  append </aux></vclu>
 __

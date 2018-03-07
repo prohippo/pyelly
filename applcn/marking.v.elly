@@ -64,6 +64,7 @@ carrying out : VERB[^ing]
 caught : VERB[^ed] [$trns] 0
 children : NOUN[:plur]
 circulating : VERB[^ing]
+civil rights : NOUN
 classified : VERB[^ed] - +2
 cleared : VERB[^ing]
 co-produced : VERB[^ed]
@@ -305,6 +306,7 @@ related : VERB[^ed]
 remaining : VERB[^ing] - -1
 remains : VERB[^s,proc] - +3
 repeated : VERB[^ed]
+rescue efforts : NOUN[:plur]
 residents : NOUN[:plur]
 retaken : VERB[^ed]
 returned the conversation back : VERB[^ed]
@@ -391,6 +393,7 @@ trying : VERB[^ing] - +1
 trying to make clear that : VERB[^ing]
 turned themselves in : VERB[^ed]
 unified : VERB[^ed]
+unaccounted for : ADJ
 unsolved mystery : NOUN
 values : VERB[^s]
 voting overwhelmingly : VERB[^ing]
@@ -493,6 +496,7 @@ all evening : ADV
 all of : QUAN
 all of you : PRO
 all of you here : PRO
+all of whom : CONJ
 all that : ALLTHT
 allegedly being : BE[^ing]
 along with : PREP
@@ -554,6 +558,7 @@ at this stage : ADV
 at this time : ADV
 at the top of : PREP
 athletic conference : NOUN
+authoritarian governance : NOUN
 authorities : NOUN[:plur]
 autoplay : NOUN
 avoid errors : VERB
@@ -574,8 +579,10 @@ black community : NOUN
 blanket of snow : NOUN
 bond market : NOUN
 both houses of Congress : NOUN[:plur]
+both sides : NOUN[:plur]
 bottle cap : NOUN
 box set : NOUN
+break out of : VERB
 breakneck speed : NOUN
 brotherly nations : NOUN
 budget director : NOUN
@@ -651,6 +658,7 @@ congressional lawmakers : NOUN[:plur]
 conservative activist : NOUN
 consider the fate of : VERB
 consigliere : NOUN
+constitutional limit : NOUN
 corporate bond market : NOUN
 corrections officer : NOUN
 counterproliferation : NOUN
@@ -670,6 +678,7 @@ deadly shooting : NOUN
 deadly shootings : NOUN[:plur]
 decades ago : ADV
 decent people : NOUN[:plur]
+decisive tilt : NOUN
 deductibility : NOUN
 demilitarization : NOUN
 democratic republic : NOUN
@@ -726,6 +735,7 @@ even so : CONJ
 even though : CONJ
 everyone else : NOUN
 executive producer : NOUN
+exercise of power : NOUN
 existential threat : NOUN
 exploratory talks : NOUN[:plur]
 express in words : VERB
@@ -741,6 +751,7 @@ fan favorite : NOUN
 far too weak : ADJ
 fatal shooting : NOUN
 fatal shootings : NOUN[:plur]
+federal appeals court : NOUN
 federal approval : NOUN
 federal bureau : NOUN
 federal charge : NOUN
@@ -865,6 +876,7 @@ in the event of : PREP
 in the first place : ADV
 in the mix : ADV
 in the name of : PREP
+in the same place : ADV
 in the skies : ADJ [$trlg] +1
 in the skies : ADV
 in the wake of : PREP
@@ -1006,6 +1018,7 @@ more practical : ADJ
 more sway : NOUN
 more than : ADV[~mod] [$deg] 0
 more than half a : QUAN
+most decisive sign : NOUN
 most of : QUAN
 move into a new phase : VERB
 mr. : NOUN
@@ -1217,6 +1230,7 @@ shopping season : NOUN
 showed no signs of : VERB
 sightseeing tour : NOUN
 signal rocket : NOUN
+significant sign : NOUN
 since then : ADV[~cnj]
 slbm : NOUN
 small business : NOUN
@@ -1251,6 +1265,7 @@ state and local : ADJ
 state ceremony : NOUN
 state police : NOUN
 state sponsors list : NOUN
+step back from : VERB
 storytelling : NOUN
 straight after : CONJ
 streetlamp : NOUN
@@ -1260,6 +1275,7 @@ such an : QUAN
 such as : PREP
 supply chain : NOUN
 supply train : NOUN
+surprise disclosure : NOUN
 surprise launch : NOUN
 suspected criminal wrongdoing : NOUN
 swarm robot : NOUN
@@ -1353,6 +1369,7 @@ uav : NOUN
 ultimate deal : NOUN
 ultraconservatism : NOUN
 ultraconservative dogma : NOUN
+uncompromising stances : NOUN[:plur]
 under any circumstances : ADV
 under the country’s flag : ADV
 undercover sting operation : NOUN
@@ -1521,6 +1538,7 @@ on what the news agency described as : CONJ
 repeatedly used the flag : VERB[^ed]
 Scarborough intern Lori Klausutis : NOUN
 sinai mosque : NOUN
+supt : NOUN
 Tampa police : NOUN
 Texans : NOUN
 the country’s struggle : NOUN[:det]
@@ -1555,6 +1573,7 @@ cash-and-stock : ADJ
 cave-in : NOUN
 church-owned : ADJ
 church-owned properties : NOUN[:plur]
+civil-rights law : NOUN
 co-founder : NOUN
 co-produce : VERB
 cold war-era : NOUN
@@ -1624,6 +1643,7 @@ one-lane : ADJ
 one-of-a-kind : ADJ
 out-of-stock : ADJ
 outside of : PREP
+personal-counseling : NOUN
 point-by-point : ADJ
 post-September 11th : ADJ
 pro-saudi : ADJ
@@ -1641,6 +1661,7 @@ second-in-command : ADJ
 seemingly insurmountable : ADJ
 seize control : VERB
 self-defensive : ADJ
+sexual orientation : NOUN
 start-up : NOUN
 state-run : ADJ
 state-run news agency KCNA : NOUN
@@ -1654,6 +1675,7 @@ tighty-whities : NOUN
 top-rated : ADJ
 top-shelf : ADJ
 trade-in : ADJ
+trauma-specific : ADJ
 tut-tutting : ADJ
 two-term limit : NOUN
 U.S. government source : NOUN
@@ -1787,6 +1809,7 @@ Ebay : NOUN
 Ebay order : NOUN
 Eclogues : NOUN
 Edwin M. Lee : NOUN
+el-Sisi : NOUN
 El Nino : NOUN
 Elena Kagan : NOUN
 Eli : NOUN
@@ -1957,6 +1980,7 @@ Nicholas : NOUN
 Novaes : NOUN
 NPR : NOUN
 Obama  : NOUN
+Obama-Era : NOUN
 Obamacare : NOUN
 Obamas : NOUN[:plur] =obama -s
 Ogilvy & Mather : NOUN
@@ -2073,6 +2097,7 @@ Tongo Tongo : NOUN
 Tom Cotton : NOUN
 Tran Dai Quang : NOUN
 Trudeau : NOUN
+Trump administration : NOUN
 Trump International : NOUN
 Trump organization : NOUN
 Trump Soho hotel : NOUN
@@ -6306,6 +6331,7 @@ collection : NOUN
 collection plate : NOUN
 collective : NOUN
 collective : ADJ
+collective bargaining : NOUN
 collectively : ADV
 college : NOUN
 college boy : NOUN
@@ -17064,6 +17090,7 @@ new world : NOUN
 new year : NOUN
 new year's : NOUN
 new york : NOUN
+new york city : NOUN
 new zealand : NOUN
 new zealand dollar : NOUN
 new zealand islands : NOUN
@@ -19462,6 +19489,7 @@ president tyler : NOUN
 president wilson : NOUN
 presidential : ADJ
 presidential directive : NOUN
+presidential term : NOUN
 presley : NOUN
 press : NOUN
 press : VERB
