@@ -19,6 +19,7 @@ agreed to cooperate with : VERB[^ed]
 alleged : VERB[^ed] - -1
 alleged incident : NOUN
 angrier : ADJ
+announced : VERB[^ed]
 appeared : VERB[^ed]
 appeared to defend : VERB[^ed]
 appeared to stem from : VERB[^ed]
@@ -67,6 +68,8 @@ classified : VERB[^ed] - +2
 cleared : VERB[^ing]
 co-produced : VERB[^ed]
 coaching : VERB[^ing]
+competing : VERB[^ing]
+competing : ADJ[%ing]
 confirmed : VERB[^ed] - +1
 continued : VERB[^ed]
 cozying up : VERB[^ing]
@@ -103,6 +106,7 @@ done so : VERB[^ed]
 does not : AUXL[^s]
 drug trafficking : NOUN
 drawn : VERB[^ed]
+earlier this month : ADV
 educating themselves : VERB[^ing]
 elevated : VERB[^ed]
 evening : VERB[^ing] - -2
@@ -136,6 +140,7 @@ fronted by : VERB[^ed]
 froze : VERB[^ed]
 gave : VERB[^ed,*x]
 gave rise to : VERB[^ed]
+gazed around : VERB[^ed]
 give rise to : VERB
 given free rein : VERB[^ed]
 given the green light : VERB[^ed]
@@ -184,6 +189,7 @@ helping capture : VERB[^ing]
 hoped it will help : VERB[^ed]
 holding up the process : VERB[^ing]
 house tax-writing committee : NOUN
+houses of worship : NOUN[:plur]
 hove : VERB[^ed]
 i heard : VERB[^ed]
 i heard : ADJ [$trlg,prd] 0
@@ -220,6 +226,7 @@ made public : VERB[^ed]
 made use of : VERB[^ed]
 made up : VERB[^ed,*x]
 makes use of : VERB[^ed]
+making : VERB[^ing]
 making a trip out to : VERB[^ing]
 making it easier : VERB[^ing]
 making matters worse : VERB[^ing]
@@ -504,6 +511,7 @@ anniversary dinner : NOUN
 anything else : NOUN
 anytime : NOUN
 anytime : ADV
+apart from : PREP
 approximately average : ADJ
 arab republic : NOUN
 arctic sea ice : NOUN
@@ -526,6 +534,7 @@ as part of : CONJ
 as result of : CONJ
 as though : CONJ
 as well as : CONJ
+aside from : PREP
 asset purchase : NOUN
 at a home : ADV
 at a time when : CONJ
@@ -548,6 +557,7 @@ athletic conference : NOUN
 authorities : NOUN[:plur]
 autoplay : NOUN
 avoid errors : VERB
+back in : PREP
 bail deal : NOUN
 bat and ball : ADJ
 beatle : NOUN
@@ -911,6 +921,7 @@ job well done : NOUN
 joint bail deal : NOUN
 judge, jury, and executioner : NOUN
 just a little bit : ADV
+just above : PREP
 just as : CONJ - -1
 just for the hell of it : ADV
 just this : DEM[@ind,sgl]
@@ -1046,9 +1057,11 @@ on high alert : ADJ
 on hold : ADJ
 on hold : ADV
 on how : CONJ
+on sunday : DATE
 on the other end : ADV
 on through : PREP
 on whether : CONJ
+on which : CONJ
 onramp : NOUN
 open desert : NOUN
 openings : NOUN[:plur]
@@ -1151,6 +1164,7 @@ republican leader : NOUN
 research and development : NOUN
 research commission : NOUN
 results page : NOUN
+return to classes : VERB
 retweet : VERB
 rev. : NOUN
 revolve around the question of : VERB
@@ -1487,6 +1501,7 @@ a — what appears to be a — : DET
 announced the discovery of : VERB
 another front in the culture wars : NOUN
 armed with fresh ammunition : ADJ
+arnona : NOUN
 attacks on twitter : NOUN[:plur]
 complex new modeling : NOUN
 counts of murder : NOUN[:plur]
@@ -1538,6 +1553,8 @@ but instead, : CONJ
 case-sensitive : ADJ
 cash-and-stock : ADJ
 cave-in : NOUN
+church-owned : ADJ
+church-owned properties : NOUN[:plur]
 co-founder : NOUN
 co-produce : VERB
 cold war-era : NOUN
@@ -1636,7 +1653,9 @@ three-day : ADJ
 tighty-whities : NOUN
 top-rated : ADJ
 top-shelf : ADJ
+trade-in : ADJ
 tut-tutting : ADJ
+two-term limit : NOUN
 U.S. government source : NOUN
 U.S.-China : ADJ
 U.S.-led : ADJ
@@ -1847,6 +1866,7 @@ Jason Leon : NOUN
 Jeff Sessions : NOUN
 Jenny Lumet : NOUN
 Jeremy : NOUN
+Jerusalem church leaders : NOUN[:plur]
 John Beck : NOUN
 John Conyers : NOUN
 John Podesta : NOUN
@@ -1892,6 +1912,7 @@ Malibu : NOUN
 Manafort : NOUN
 Mao : NOUN
 Mar del Plata : NOUN
+Marjory Stoneman Douglas High School : NOUN
 Marc : NOUN
 Mark Zuckerberg : NOUN
 Martinez : NOUN
@@ -2028,6 +2049,7 @@ Suiter : NOUN
 Symantec : NOUN
 Talkradio 790 KABC : NOUN
 Team Lacoste : NOUN
+The Church of the Holy Sepulchre : NOUN
 the city of Ventura : NOUN
 the Emoluments Clause : NOUN
 the former Yugoslavia : NOUN
@@ -2096,6 +2118,7 @@ Windows 3 : NOUN
 World News Tonight with David Muir : NOUN
 Worthen : NOUN
 WTAS : NOUN
+Xi Jinping : NOUN
 Xinhua : NOUN
 Youtube : NOUN
 ZANU-PF : NOUN
@@ -2746,6 +2769,7 @@ ankle joint : NOUN
 annihilation : NOUN
 anniversary : NOUN
 announce : VERB
+announced : ADJ - +1
 announcement : NOUN
 annoy : VERB
 annual : NOUN
@@ -4008,7 +4032,7 @@ bitter end : NOUN
 bitter principle : NOUN
 bitterly : ADV
 bizarre : ADJ
-black : NOUN - -1
+black : NOUN
 black : VERB - -4
 black : ADJ  - +2
 black africa : NOUN
@@ -16384,6 +16408,7 @@ molly : NOUN
 mom : NOUN
 moment : NOUN
 moment magnitude scale : NOUN
+momentous : ADJ
 momentum : NOUN
 mommy : NOUN
 monarch : NOUN

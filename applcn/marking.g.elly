@@ -1658,7 +1658,14 @@ __
 g:ABBR->ABBR[:*x] ABBR
  >>[&*c]++++
 __
-g:PRO[=*r,-one,prep]->PREP['-cnj] PRO[=-nom]
+g:PRO[=*r,-one,prep]->PREP['-cnj,-prx] PRO[=-nom]
+_
+  var typg=prep
+  (typg)
+  right
+__
+g:PRO[=*r,-one,prep]->PREP['-cnj,prx] PRO[=-nom,-one]
+ >>++
 _
   var typg=prep
   (typg)
@@ -2909,11 +2916,11 @@ d:when <- CONJ
 __
 d:since<- CONJ[@prep]
 __
-d:before<-CONJ[@prep,aftr]
+d:before <- CONJ[@prep,aftr]
 __
-d:after<- CONJ[@prep,aftr]
+d:after  <- CONJ[@prep,aftr]
 __
-d:as   <- CONJ[@*x]
+d:as      <- CONJ[@*x]
 __
 d:despite <- CONJ
 __
@@ -3265,9 +3272,6 @@ __
 g:ADV->GENR PREP['of]
  >>-2
 __
-g:ADV[~cplx]->ADV[~-trlg,-cplx,-cnj] NCLU[:prep,-poss]
- >>-1
-__
 g:VERB[^*r,hav,ing]->HAVE[^ing] VERB[^ed]
  >>+4
 _
@@ -3287,14 +3291,6 @@ __
 
 g:TITL[@dot]->TITL[@-dot] PUNC[|stop,*x]
  >>++++
-__
-
-g:ADV->ADV PRO[=prep]
-_
-  left
-  append <pro>
-  right
-  append </pro>
 __
 
 p:decom
@@ -3622,21 +3618,6 @@ _
 __
 g:ELEM->ECJS[=*l]
  >>+
-__
-
-g:PPRP->ADV PREP['in]
- l[$trlg]>>++++
-         >>----
-_
-  var typg=adv
-  (typg)
-  right
-__
-g:NCLU[:*r]->PPRP NCLU[:-prep]
- >>+
-_
-  var typg=prep
-  (lxtd)
 __
 
 g:ADV->CONJ[@aftr] QUAN[@ind,adv]
