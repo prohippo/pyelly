@@ -555,6 +555,7 @@ Release Notes:
                       improve English inflectional stemming
                       clean up "test" application integration test key
                       extend and clean up rules for "marking" application
+                      add daily Google News text data for "marking"
                       update and expand documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
