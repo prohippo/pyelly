@@ -73,6 +73,8 @@ competing : VERB[^ing]
 competing : ADJ[%ing]
 confirmed : VERB[^ed] - +1
 continued : VERB[^ed]
+continued fighting : NOUN
+continued fighting : VERB
 cozying up : VERB[^ing]
 creating : VERB[^ing] - +1
 creating : ADJ[%ing] - -2
@@ -159,7 +161,8 @@ going to end up : VERB[^ing]
 gone out of business : VERB[^ed]
 gonna : AUXL
 got : VERB[^ed,chng,*x]
-got home from work : VERB
+got home from work : VERB[^ed]
+got off to a shaky start : VERB[^ed]
 got out : VERB[^ed]
 got up : VERB[^ed,*x]
 growing : VERB[^ing]
@@ -648,6 +651,7 @@ college graduate : NOUN
 colored slave : NOUN
 coming off of : PREP
 communications director : NOUN
+communications suite : NOUN
 computer model : NOUN
 concrete blueprint : NOUN
 confederate force : NOUN
@@ -690,6 +694,8 @@ diplomatic script : NOUN
 diplomatic tone : NOUN
 direct response : NOUN
 disclose contacts with : VERB
+discount fare : NOUN
+discount fare program : NOUN
 discussion point : NOUN
 district office : NOUN
 divorce bill : NOUN
@@ -903,6 +909,7 @@ intelligence study : NOUN
 intelligence survey : NOUN
 interchange point : NOUN
 interferometry : NOUN
+internal and external : ADJ
 international airport : NOUN
 international community : NOUN
 international treaty : NOUN
@@ -1222,12 +1229,13 @@ sexual misconduct allegation : NOUN
 sexually harass : VERB
 sgt. : NOUN
 shadow banking : NOUN
+skaky start : NOUN
 sharpen its focus : VERB
 shipping lane : NOUN
 shooting rampage : NOUN
 shopping district : NOUN
 shopping season : NOUN
-showed no signs of : VERB
+showed no signs of : VERB[^ed]
 sightseeing tour : NOUN
 signal rocket : NOUN
 significant sign : NOUN
@@ -1315,6 +1323,7 @@ the culture wars : NOUN[:plur]
 the day after : PREP
 the default is : VERB
 the entirety : NOUN
+the last month : NAVB[:det]
 the latest twist : NOUN
 the near future : NAVB[:det]
 the past year : NAVB[:det]
@@ -1402,6 +1411,7 @@ war memorial : NOUN
 war dead : NOUN
 warfighter : NOUN
 water use : NOUN
+weeks in : IADV
 what i have stood for : NOUN
 what he said was a : DET
 what is today : ADV
@@ -1428,6 +1438,7 @@ ah  : MISC[:*x]
 ah yes : MISC[:*x]
 e.g. : PEXP[|eg]
 etc : MISC
+god willing : MISC
 hah : MISC
 née : MISC[:*l]
 no  : MISC[:*x] - -1
@@ -1515,6 +1526,7 @@ most as many : ADJ
 "(C)" for confidential : NOUN
 8 day visit : NOUN
 a — what appears to be a — : DET
+continued airstrikes and fighting : NOUN
 announced the discovery of : VERB
 another front in the culture wars : NOUN
 armed with fresh ammunition : ADJ
@@ -1524,6 +1536,7 @@ complex new modeling : NOUN
 counts of murder : NOUN[:plur]
 deconfliction : ADJ
 disappeared from the fever swamps : VERB[^ed]
+rebel-held eastern Ghouta suburb of Damascus : NOUN
 effectively acknowledging : VERB[^ing]
 end efforts to rescue : VERB
 Florida district office : NOUN
@@ -1539,6 +1552,7 @@ repeatedly used the flag : VERB[^ed]
 Scarborough intern Lori Klausutis : NOUN
 sinai mosque : NOUN
 supt : NOUN
+Syrian capital Damascus : NOUN
 Tampa police : NOUN
 Texans : NOUN
 the country’s struggle : NOUN[:det]
@@ -1651,6 +1665,7 @@ pro-Trump : ADJ
 question-and-answer : ADJ
 re-evaluate : VERB
 rear-drive : ADJ
+rebel-held : ADJ
 round-up : NOUN
 same-sex : ADJ
 same-sex couple : NOUN
@@ -1702,6 +1717,7 @@ Andrew Weissman : NOUN
 AT&T : NOUN
 Advanced Step in Innovative Mobility : NOUN
 Agence France-Presse : NOUN
+Air Force 1 : NOUN
 Alagoas : NOUN
 Aldo : NOUN
 Ali : NOUN
@@ -1787,6 +1803,7 @@ Customs and Border Protection : NOUN
 DACA : NOUN
 Dandan : NOUN
 Dave Stone : NOUN
+Delta Air Lines : NOUN
 Democratic National Committee : NOUN
 Denny : NOUN
 Desiree : NOUN
@@ -18420,7 +18437,7 @@ pension plan : NOUN
 pentagon : NOUN
 pentagon gang : NOUN
 people : NOUN[:sgl,plur]
-people : VERB - -2
+people : VERB - -6
 people of color : NOUN
 pep : NOUN
 pep pill : NOUN

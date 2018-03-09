@@ -1230,21 +1230,6 @@ _
   var typg=adj
   (rxtd)
 __
-g:NCLU->DET NAVB
- >>++
-_
-  append <nclu><det>
-  left
-  append </det><adj>
-  split
-  right
-  back
-  find  <
-  delete 1 >
-  append </adj><noun>
-  merge
-  append </noun></nclu>
-__
 g:NCLU[:*l]->NCLU[:-*l,num] POSTP[@num]
   l[&durn,msr]r[$trlg]>>++
                       >>------
@@ -1529,12 +1514,16 @@ _
   (typg)
   append </nclu>
 __
+g:NCLU[:*l,cnj]->NAVB
+ >>-
+_
+  append <nclu><date>
+  left
+  append </date></nclu>
+__
 
 g:NOUN->UNKN
   l[&*c]>>[&*c]
-__
-g:NOUN[:*r,cnj]->NAVB
- >>-
 __
 g:NOUN->VERB SUFX[#vTOn]
 _
@@ -3922,3 +3911,9 @@ _
   right
   append </aux></vclu>
 __
+
+g:ADV->NUM IADV
+_
+  (twob)
+__
+
