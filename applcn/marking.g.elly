@@ -421,7 +421,8 @@ g:ELEM->ADJ[%-num]
  l[$time]>>--------
       n>2>>--
       p<1>>--------
-         >>----
+      n>1>>----
+         >>-----
 _
   var vdat=
   var typg=adj
@@ -570,8 +571,30 @@ _
   append </negn></vclu>
 __
 
-g:MISC->MISC[:*x] PUNC[|com]
+g:MISC->MISC[:*x] PUNC[|com,-quo]
  >>+++
+__
+g:MISC[:*l]->MISC[:*x] PUNC[|com,quo]
+ >>+++
+__
+g:PEXP->PUNC[|*l,quo] MISC[:*l]
+ >>++++
+_
+  append <punc>
+  left
+  append </punc><misc>
+  right
+  split
+  back
+  shift 1 >
+  var x
+  peek > x
+  if x=,
+    shift 1 >
+    end
+  append </misc><punc>
+  merge
+  append </punc>
 __
 
 g:PEXP->PEXP PRO
@@ -2111,8 +2134,8 @@ _
 __
 g:ADJ[%cnj,*r]->CONJ[@cnj] ADJ[%-*x]
  n>3>>*r----
- n>2>>*r--
-    >>*r-
+ n>2>>*r---
+    >>*r--
 _
   (twob)
 __
@@ -3876,6 +3899,7 @@ d:-- <-PUNC[|*x]
 __
 
 # these two rules are NOT for ( and ) !
+# they are not handled by punctuationRecognizer
 
 d:〈 <- PUNC[|*l,quo]
  >>++
@@ -3888,7 +3912,7 @@ _
   append ’
 __
 g:PUNC[|stop,*r]->PUNC[|stop] PUNC[|*r]
-__
+__:
 
 g:NCLU->DET[@sgl,num,-ind] PEXP[|quo]
 _
