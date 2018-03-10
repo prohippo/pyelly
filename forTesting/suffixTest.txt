@@ -219,6 +219,7 @@ carpeter carpet
 carves carve
 cashier cash
 caster caster
+cataclysmic cataclysm
 catastrophe catastroph
 cavalry cavalry
 ceaseless cease
@@ -281,6 +282,7 @@ coloration color
 colourant color
 comatose coma
 combinant combine
+comedic comic
 commander command
 commendatory commend
 commentator comment
@@ -499,6 +501,7 @@ elementary element
 elves elf
 embezzlement embezzle
 emergent emerge
+emiratis emirate
 emitter emit
 emojis emoji
 employee employ

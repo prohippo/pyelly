@@ -164,7 +164,8 @@ BLOCK s
     IF lak {SU}
     IF dah {SU}
     IF dua {SU}
-    if lea {SU}
+    IF lea {SU}
+    IF tar {SU}
     IF x
       IF eh {FA}
       IF a
