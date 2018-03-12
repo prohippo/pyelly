@@ -53,11 +53,13 @@ breathing : VERB[^ing]
 bringing threats of : VERB[^ing]
 broke out : VERB[^ed]
 broken out : VERB[^ed]
+brought : VERB[^ed]
 brought it back : VERB[^ed]
 brought to market : VERB[^ed]
 building : VERB[^ing,ptcl]
 buildings : NOUN[:plur]
 built : VERB[^ed] [$trns,noaj] +3
+came : VERB[^ed,ptcl]
 came to light : VERB[^ed]
 carried out : VERB[^ed]
 carrying out : VERB[^ing]
@@ -75,6 +77,7 @@ confirmed : VERB[^ed] - +1
 continued : VERB[^ed]
 continued fighting : NOUN
 continued fighting : VERB
+cordoned off : VERB[^ed]
 cozying up : VERB[^ing]
 creating : VERB[^ing] - +1
 creating : ADJ[%ing] - -2
@@ -117,6 +120,7 @@ everything that’s ever happened : NOUN
 exciting : VERB[^ing]
 faces a dilemma : VERB
 fastest : ADJ
+fatally shooting : VERB[^ing]
 feeding : VERB[^ing]
 feet : NOUN[:plur] [&msr] 0
 felled : VERB[^ed]
@@ -132,6 +136,7 @@ flew : VERB[^ed]
 focused on : VERB[^ed]
 focuses on : VERB - +2
 focusing on : VERB[^ing]
+followed through on : VERB[^ed]
 for too long : ADV
 forgave : VERB[^ed,*x]
 forgot : VERB[^ed,*x]
@@ -186,6 +191,7 @@ having : HAVE[^ing]
 head wound : NOUN
 heard : SVED - -1
 hearing : VERB[^ing] - +2
+held : VERB[^ed]
 held hostage : VERB[^ed]
 held without bond : VERB[^ed]
 helped capture : VERB[^ed]
@@ -275,12 +281,14 @@ originated : VERB[^ed]
 originated : ADJ - -4
 ought : VERB
 overlooked : VERB[^ed] - -1
+pack up : VERB
 paid : VERB[^ed]
 peace deal : NOUN
 peacemaking : NOUN
 permanent security clearance : NOUN
 phenomena : NOUN[:plur]
 phone interview : NOUN
+placed on lockdown : VERB[^ed]
 played live : VERB[^ed]
 pleaded guilty : VERB[^ed]
 pleased : VERB[^ed]
@@ -375,6 +383,8 @@ supplying : VERB[^ing] - +2
 supplying : NOUN[:ing] - -1
 supports the argument for : VERB
 supreme leader : NOUN
+suspected drug abuse : NOUN
+suspected of : CONJ
 sweeping : VERB[^ing]
 swooping : ADJ[%ing] - +1
 swooping : VERB[^ing]
@@ -400,6 +410,7 @@ trying : VERB[^ing] - +1
 trying to make clear that : VERB[^ing]
 turned himself in : VERB[^ed]
 turned themselves in : VERB[^ed]
+tv programming : NOUN
 unified : VERB[^ed]
 unaccounted for : ADJ
 unsolved mystery : NOUN
@@ -468,6 +479,7 @@ a few hundred : NUM
 a few of : QUAN
 a group of : QUAN
 a hundred : NUM
+a large chunk of : QUAN
 a little bit : NOUN
 a little bit : ADV
 a lot of : QUAN
@@ -522,6 +534,7 @@ and so on : MISC
 and then : CONJ
 animal cruelty : NOUN
 anniversary dinner : NOUN
+annual meeting : NOUN
 anything else : NOUN
 anytime : NOUN
 anytime : ADV
@@ -588,6 +601,7 @@ black boy : NOUN
 black girl : NOUN
 black community : NOUN
 blanket of snow : NOUN
+body of water : NOUN
 bond market : NOUN
 both houses of Congress : NOUN[:plur]
 both sides : NOUN[:plur]
@@ -597,6 +611,7 @@ break out of : VERB
 breakneck speed : NOUN
 brotherly nations : NOUN
 budget director : NOUN
+budget provision : NOUN
 building supply : NOUN
 bullocky : NOUN - +2
 bushranger : NOUN
@@ -623,6 +638,7 @@ campaign chairman : NOUN
 campaign finance director : NOUN
 campaign manager : NOUN
 campaign stop : NOUN
+campus police : NOUN
 can and will : AUXL
 can be of help : VERB
 can last : VERB
@@ -714,6 +730,7 @@ do much more : VERB
 do that : VERB
 dole : VERB - -2
 domestic politics : NOUN[:plur]
+dominant male : NOUN
 doorbuster : NOUN
 doorbusting : ADJ
 down the block : ADJ [$trlg] 0
@@ -731,6 +748,7 @@ earlier in the year : ADV
 earlier this week : ADV
 earlier this year : ADV
 early years : NOUN
+eastern europe : NOUN
 economic council : NOUN
 economic summit : NOUN
 electric grid : NOUN
@@ -757,6 +775,7 @@ exploratory talks : NOUN[:plur]
 express in words : VERB
 extreme far right : NOUN
 extreme far right : ADJ
+facebook page : NOUN
 factional : ADJ
 factional fighting : NOUN
 fake news : NOUN
@@ -806,6 +825,7 @@ from what  : CONJ[@rel]
 from where : CONJ[@rel]
 from which : CONJ[@rel]
 frontline : ADJ
+fuel tax : NOUN
 full control : NOUN
 full time : ADV
 fully eliminate : VERB
@@ -827,6 +847,7 @@ GPS monitoring : NOUN
 grant aid : NOUN
 grant aid project : NOUN
 great western : ADJ
+group travel : NOUN
 growth strategy : NOUN
 guilty plea : NOUN
 guitar bridge : NOUN
@@ -890,6 +911,7 @@ in recent years : ADV [$deg,time] +1
 in relations with : PREP
 in response to : PREP
 in terms of : PREP
+in the coming weeks : ADV
 in the community : ADV
 in the event of : PREP
 in the first place : ADV
@@ -1006,6 +1028,7 @@ male and female : NOUN
 male and female : ADJ - +1
 malware : NOUN
 man to man : ADV
+many of : QUAN
 manga : NOUN
 manmade : ADJ
 mannerist : NOUN
@@ -1069,6 +1092,7 @@ neighborhood : ADJ - -2
 neighborhood bar : NOUN
 neighborhood setting : NOUN
 new generation : NOUN
+new information : NOUN
 new research : NOUN
 newspaper best : ADJ
 next year : NAVB[:det]
@@ -1147,6 +1171,7 @@ ping pong : NOUN
 ping pong playing robot : NOUN
 pinyin : NOUN
 pit bull : NOUN
+plea for help : NOUN
 police brutality : NOUN
 police corruption : NOUN
 policymaker : NOUN
@@ -1310,6 +1335,7 @@ supply chain : NOUN
 supply train : NOUN
 surprise disclosure : NOUN
 surprise launch : NOUN
+surrounding area : NOUN
 suspected criminal wrongdoing : NOUN
 swarm robot : NOUN
 systemic injustice : NOUN
@@ -1346,6 +1372,7 @@ the better of it : ADV
 the coming days : NOUN[:plur]
 the culture wars : NOUN[:plur]
 the day after : PREP
+the day before : PREP
 the default is : VERB
 the entirety : NOUN
 the last month : NAVB[:det]
@@ -1435,6 +1462,7 @@ viral video : NOUN
 war memorial : NOUN
 war dead : NOUN
 warfighter : NOUN
+water body : NOUN
 water use : NOUN
 weeks in : IADV
 weightiest : ADJ
@@ -1552,40 +1580,59 @@ most as many : ADJ
 "(C)" for confidential : NOUN
 8 day visit : NOUN
 a — what appears to be a — : DET
-continued airstrikes and fighting : NOUN
+acting so strangely : VERB[^ing]
+alabama woman : NOUN
 announced the discovery of : VERB
 another front in the culture wars : NOUN
 armed with fresh ammunition : ADJ
 arnona : NOUN
 attacks on twitter : NOUN[:plur]
+body of water called Jamun Bodi : NOUN
+Central Michigan University dormitory : NOUN
+Delta spokesman : NOUN
 complex new modeling : NOUN
+continued airstrikes and fighting : NOUN
 counts of murder : NOUN[:plur]
+davis jr. : NOUN
+davis sr. : NOUN
 deconfliction : ADJ
+defend himself : VERB
 disappeared from the fever swamps : VERB[^ed]
-rebel-held eastern Ghouta suburb of Damascus : NOUN
 effectively acknowledging : VERB[^ing]
 end efforts to rescue : VERB
 Florida district office : NOUN
 Florida men : NOUN[:plur]
 Florida neighborhood : NOUN
+gun group : NOUN
+group travel discount : NOUN
 half-apologies : NOUN[:plur]
 incorrectly reported : VERB[^ed]
+James Eric Davis Jr. : NOUN
+made the ask : VERB[^ed]
 making a false statement to the FBI : VERB[^ing]
 missing submarine : NOUN
 new and bloodier : ADJ
 on what the news agency described as : CONJ
+picked him up : VERB[^ed]
+public plea for help : NOUN
+rebel-held eastern Ghouta suburb of Damascus : NOUN
 repeatedly used the flag : VERB[^ed]
 Scarborough intern Lori Klausutis : NOUN
 sinai mosque : NOUN
 supt : NOUN
 Syrian capital Damascus : NOUN
+talked to his mother : VERB
 Tampa police : NOUN
 Texans : NOUN
 the country’s struggle : NOUN[:det]
 the group Wikileaks : NOUN[:det]
 to flowed : VERB[^infn]
+told reporters : VERB[^ed]
+touched her sexually : VERB[^ed]
+took him to a hospital : VERB[^ed]
 Trump’s tweet : NOUN
 U.S. Special Forces base : NOUN
+university police Chief Bill Yeagley : NOUN
 weapons component : NOUN
 with what we now know to be : PREP
 win leverage : VERB
@@ -1623,6 +1670,7 @@ cringe-worthy : ADJ
 cul-de-sac : NOUN
 cul-de-sac street : NOUN
 custom-made : ADJ
+cut-through : NOUN
 cyber-intrusion : NOUN
 decades-old : ADJ
 decades-old conflict : NOUN
@@ -1647,6 +1695,7 @@ freeze-for-freeze : ADJ
 full-throated : ADJ
 fully-equipped : ADJ
 ghost-wrote : VERB[^ed]
+grievance-filled : ADJ
 half-apology : NOUN
 half-full : ADJ
 half-sitting : VERB[^ed]
@@ -1674,6 +1723,7 @@ mixed-species : ADJ
 nail-biter : NOUN
 near-psychotic : ADJ
 ocean-view home : NOUN
+one-time : ADJ
 op-ed : NOUN - -1
 op-ed : ADJ
 out-of-control : ADJ
@@ -1803,6 +1853,7 @@ Carter : NOUN
 Catalina : NOUN
 CBS : NOUN
 Celine Dion : NOUN
+Central Michigan University : NOUN
 CFPB : NOUN
 Charles : NOUN
 Charlie : NOUN
@@ -1962,6 +2013,7 @@ Ku Klux Klan : NOUN
 Kushner : NOUN
 La David Johnson : NOUN
 La Nina : NOUN
+Lafayette Square : NOUN
 Larry Wortzel : NOUN
 Larry Scott : NOUN
 Las Vegas : NOUN
@@ -2155,6 +2207,7 @@ Twitter : NOUN
 U.N. : NOUN
 U.S. : NOUN
 U.S. District Judge : NOUN
+U.S.S.R. : NOUN
 Uber : NOUN
 UCLA : NOUN
 US District Court : NOUN
@@ -18399,7 +18452,7 @@ pacific ocean : NOUN
 pacific standard time : NOUN
 pacific time : NOUN
 pack : NOUN
-pack : VERB
+pack : VERB[^ptcl]
 pack animal : NOUN
 pack ice : NOUN
 pack rat : NOUN
