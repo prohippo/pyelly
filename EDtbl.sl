@@ -89,6 +89,7 @@ BLOCK ed
     IF f
       IF ioc {SU 1}
       END {SU}
+    IF ei {SU}
     IS aio {DO MORE}
     END {SU -1 ed}
   IF vve {SU 1}
