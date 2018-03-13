@@ -118,6 +118,7 @@ elevated : VERB[^ed]
 evening : VERB[^ing] - -2
 everything that’s ever happened : NOUN
 exciting : VERB[^ing]
+exerting influence : VERB[^ing]
 faces a dilemma : VERB
 fastest : ADJ
 fatally shooting : VERB[^ing]
@@ -649,6 +650,7 @@ carefully script : VERB
 case before the court : NOUN
 cast recording : NOUN
 caught wind : VERB[^ed]
+ceasefire : NOUN
 cell-tower : ADJ
 cell-tower records : NOUN[:plur]
 century bc : NOUN
@@ -1037,6 +1039,7 @@ marchese : NOUN
 marine corps : NOUN
 marine corps air station : NOUN
 mass killing : NOUN
+may be : BE
 may have : AUXL
 may have been : AUXL
 media outlet : NOUN
@@ -1100,6 +1103,7 @@ no. 2 : NOUN
 no little : ADJ
 no matter how : CONJ
 no one : PRO
+nonconsensual : ADJ
 north korean leader : NOUN
 northern california : NOUN
 not only : CONJ
@@ -1128,6 +1132,7 @@ on whether : CONJ
 on which : CONJ
 once in a while : ADV
 onramp : NOUN
+onscreen : ADJ
 open desert : NOUN
 openings : NOUN[:plur]
 or else : CONJ
@@ -1175,6 +1180,7 @@ plea for help : NOUN
 police brutality : NOUN
 police corruption : NOUN
 policymaker : NOUN
+policymaking : NOUN
 political capital : NOUN
 political chaos : NOUN
 political deadlock : NOUN
@@ -1207,6 +1213,7 @@ public ministry : NOUN
 public poll : NOUN
 public sector: NOUN
 pump spray : NOUN
+punchline : NOUN
 purchasing power : NOUN
 pv : ADJ
 pyroclastic : ADJ
@@ -1589,6 +1596,7 @@ arnona : NOUN
 attacks on twitter : NOUN[:plur]
 body of water called Jamun Bodi : NOUN
 Central Michigan University dormitory : NOUN
+comedic : ADJ
 Delta spokesman : NOUN
 complex new modeling : NOUN
 continued airstrikes and fighting : NOUN
@@ -1740,7 +1748,7 @@ point-by-point : ADJ
 post-September 11th : ADJ
 pro-saudi : ADJ
 pro-Trump : ADJ
-question-and-answer : ADJ
+question-and-answer forum : NOUN
 re-evaluate : VERB
 rear-drive : ADJ
 rebel-held : ADJ
@@ -1830,6 +1838,7 @@ Bears Ears : NOUN
 Becker : NOUN
 Bel Air : NOUN
 Berenice Summerfield : NOUN
+Berlusconi : NOUN
 Bernice Summerfield : NOUN
 Beverly Hills : NOUN
 Bir al-Abed : NOUN
@@ -1984,6 +1993,7 @@ James O'Keefe : NOUN
 Jamie : NOUN
 Janis : NOUN
 Japan International Cooperation Agency : NOUN[:*r]
+Jared : NOUN
 Jared Kushner : NOUN
 Jason Leon : NOUN
 Jeff Sessions : NOUN
@@ -2045,6 +2055,7 @@ Masterpiece Cakeshop : NOUN
 Mattis : NOUN
 McCarthy : NOUN
 Meghan Markle : NOUN
+Melania : NOUN
 Merkel : NOUN
 Miami-Dade County : NOUN
 Michael Baudendistel : NOUN
@@ -2157,6 +2168,7 @@ Shindake : NOUN
 Ship of Fools : NOUN
 Showcase Presentations : NOUN
 Silent Majority : NOUN
+SNL : NOUN
 Sochi : NOUN
 Social Democrat : NOUN
 South Florida : NOUN
@@ -2234,6 +2246,7 @@ Water Management District : NOUN
 WCNC-TV : NOUN
 We Want God : NOUN
 Weinberger : NOUN
+Weinstein : NOUN
 West Chester : NOUN
 West Indies : NOUN[:plur]
 Westmoreland County : NOUN
@@ -9559,6 +9572,8 @@ emigrate : VERB
 eminent : ADJ
 eminent domain : NOUN
 emir : NOUN
+emirate : NOUN
+emirati : NOUN
 emission : NOUN
 emission spectrum : NOUN
 emit : VERB
@@ -14307,6 +14322,7 @@ issuance : NOUN
 issue : NOUN
 issue : VERB
 issue forth : VERB
+italia : NOUN
 italian : NOUN
 italian : ADJ - +2
 italian bread : NOUN
@@ -16254,7 +16270,7 @@ maximize : VERB
 maximum : NOUN
 maximum : ADJ
 maxwell : NOUN
-may : NOUN - -11
+may : NOUN[:det,*x] - -2
 may day : NOUN
 may queen : NOUN
 may wine : NOUN
@@ -24780,6 +24796,7 @@ strategic : ADJ
 strategic intelligence : NOUN
 strategic warning : NOUN
 strategically : ADV
+strategist : NOUN
 strategy : NOUN
 stratford-on-avon : NOUN
 straw : NOUN

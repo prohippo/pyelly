@@ -1354,13 +1354,35 @@ g:NCLU[:*r,det,sgl]->DEM[@sgl,-dit] NCLU[:-det,-prep,-plur,-qnt,-dit]
 _
   (dmnc)
 __
-g:NCLU[:*r,det]->DEM[@plur,-dit] NCLU[:-det,-prep,-qnt,plur,-dit]
+g:NCLU[:*r,det]->DEM[@plur,-dit] NCLU[:-det,-prep,plur,-qnt,-dit]
 # ?>>?
   >>*r++++
 _
   (dmnc)
 __
-
+g:NCLU[:*r,det]->DEM[@sgl,*l] NCLU[:det,-prep,-plur,-qnt,*x]
+  n>2 >>----
+      >>++++
+_
+  split
+  right
+  back
+  shift  6 <
+  delete 6 <
+  append <date>
+  left
+  space
+  delete to <
+  var x
+  store x
+  insert x <
+  delete 1 >
+  store x
+  append </date>
+  delete to <
+  insert x <
+  merge
+__
 g:NCLU[:*r]->ADJ[%-ed,-ing,-cnj] NCLU[:-det,-prep,-num,-qnt]
 #             ?>>?
        r[&spcs]>>*r[&cmpd]+
@@ -1777,6 +1799,7 @@ _
 __
 g:VCLU[^aux,*r]->AUXL[^-*r,-ptcl] VCLU[^-aux]
  l[$quo] >>*r-4
+ l[$cond]>>*r+3
  r[$cond]>>*r+2
          >>*r+1
 _
@@ -1784,7 +1807,6 @@ _
   (lxtd)
 __
 g:VCLU[^aux,*r]->AUXL[^-*r,ptcl] VCLU[^-aux]
-
 _
   append <aux>
   split
@@ -2704,7 +2726,7 @@ __
 d:the <- DET[@the]
 __
 
-d:this <- DEM[@ind,sgl]
+d:this <- DEM[@ind,sgl,*l]
 __
 d:that <- DEM[@ind,sgl]
  >>[!spcs]
@@ -2998,6 +3020,7 @@ __
 d:can  <- AUXL
 __
 d:may  <- AUXL
+  >>[$cond]
 __
 d:might<- AUXL
 __
