@@ -123,6 +123,7 @@ faces a dilemma : VERB
 fastest : ADJ
 fatally shooting : VERB[^ing]
 feeding : VERB[^ing]
+feeding off : VERB[^ing]
 feet : NOUN[:plur] [&msr] 0
 felled : VERB[^ed]
 felt forced to choose : VERB[^ed]
@@ -199,6 +200,7 @@ helped capture : VERB[^ed]
 helping capture : VERB[^ing]
 hoped it will help : VERB[^ed]
 holding up the process : VERB[^ing]
+hosted by : VERB[^ed]
 house tax-writing committee : NOUN
 houses of worship : NOUN[:plur]
 hove : VERB[^ed]
@@ -403,6 +405,7 @@ thanked : VERB[^ed]
 thought : VERB[^ed]
 told : VERB[^ed,dit]
 told the court : VERB[^ed,dit]
+took : VERB[^ed,ptcl]
 took place : VERB[^ed]
 top lieutenant : NOUN
 tore up : VERB[^ed]
@@ -506,6 +509,7 @@ after all : CONJ[@*l]
 after he did, : ADV
 after it emerged that : CONJ
 after which : CONJ
+afternoon and evening : NOUN
 against his will : ADV
 agricultural industry : NOUN
 ahead of : PREP
@@ -546,6 +550,7 @@ arctic sea ice : NOUN
 armored vehicle : NOUN
 army head : NOUN
 army staff sgt. : NOUN
+around a long time : ADV
 around noon : ADV
 around the world : ADV
 as a means of : CONJ
@@ -619,6 +624,7 @@ bushranger : NOUN
 but now : CONJ
 but then : CONJ
 butter and oil : NOUN
+buy political influence : VERB
 buying guide : NOUN
 by almost half : ADV[~trlg] [$deg,trlg] 0
 by far-right : PREP
@@ -831,6 +837,7 @@ fuel tax : NOUN
 full control : NOUN
 full time : ADV
 fully eliminate : VERB
+gala dinner : NOUN
 gay men : NOUN[:plur]
 gen. : NOUN
 gender equality : NOUN
@@ -884,6 +891,7 @@ homeported : ADJ
 homiletics : NOUN
 hot 100 : NUM
 hot 100 : NOUN
+house of delegates : NOUN
 house speaker : NOUN
 hurricane activity : NOUN
 hydro : NOUN
@@ -909,6 +917,7 @@ in leaps and bounds : ADV
 in length : ADV[~trlg] [$deg] 0
 in order to : TO
 in protest against : PREP
+in recent weeks : ADV [$deg,time] +1
 in recent years : ADV [$deg,time] +1
 in relations with : PREP
 in response to : PREP
@@ -978,6 +987,7 @@ jain : NOUN
 jet fuel : NOUN
 jihadi : NOUN
 job well done : NOUN
+join forces with : VERB
 joint bail deal : NOUN
 judge, jury, and executioner : NOUN
 just a little bit : ADV
@@ -1031,6 +1041,7 @@ male and female : ADJ - +1
 malware : NOUN
 man to man : ADV
 many of : QUAN
+many of you : PRO
 manga : NOUN
 manmade : ADJ
 mannerist : NOUN
@@ -1120,6 +1131,7 @@ offline : ADJ
 offseason : ADJ
 often enough : ADV
 old record : NOUN
+old tradition : NOUN
 on aspects of : PREP
 on high alert : ADJ
 on hold : ADJ
@@ -1186,6 +1198,7 @@ political chaos : NOUN
 political deadlock : NOUN
 political future : NOUN
 political gathering : NOUN
+political influence : NOUN
 political opponent : NOUN
 political world : NOUN
 pollution cleanup : NOUN
@@ -1195,6 +1208,7 @@ power center : NOUN
 pr announcement : NOUN
 presentation system : NOUN
 presuppositionalism : NOUN
+presidential speech : NOUN
 primary challenge : NOUN
 prior to : PREP
 private sector : NOUN
@@ -1207,6 +1221,7 @@ properly designed : ADJ
 proportionally spaced : ADJ
 pros and cons : NOUN
 prove to a judge : VERB
+proved to be : VERB
 public health : NOUN
 public health decision : NOUN
 public ministry : NOUN
@@ -1222,6 +1237,7 @@ raise the roof beam high : VERB
 rally support for : VERB
 rapidly melting : ADJ
 rebaptizer : NOUN
+recent attempt : NOUN
 recent trip : NOUN
 recent trouble : NOUN
 recording artist : NOUN
@@ -1477,6 +1493,7 @@ what i have stood for : NOUN
 what he said was a : DET
 what is today : ADV
 what it has learned : NOUN
+what was supposed to be : ADV
 whenever and wherever : CONJ
 white house official : NOUN
 white supremacist : ADJ
@@ -1486,6 +1503,7 @@ widely known : ADJ
 willing to : TO
 wine review : NOUN
 winter weather advisory : NOUN
+with knowledge of : PREP
 with no regard to : CONJ
 with what : CONJ
 within range of : PREP
@@ -1752,6 +1770,7 @@ question-and-answer forum : NOUN
 re-evaluate : VERB
 rear-drive : ADJ
 rebel-held : ADJ
+republican-led : ADJ
 round-up : NOUN
 same-sex : ADJ
 same-sex couple : NOUN
@@ -1759,8 +1778,10 @@ same-sex wedding : NOUN
 same-sex weddings : NOUN[:plur]
 scale-down : NOUN
 second-in-command : ADJ
+second-largest : ADJ
 seemingly insurmountable : ADJ
 seize control : VERB
+self-deprecating : ADJ
 self-defensive : ADJ
 sexual orientation : NOUN
 start-up : NOUN
@@ -1772,6 +1793,7 @@ surface-to-surface : ADJ
 tax-cut : ADJ
 tax-writing : ADJ
 tax-writing committee : NOUN
+third-largest : ADJ
 three-day : ADJ
 tighty-whities : NOUN
 top-rated : ADJ
@@ -1872,6 +1894,7 @@ Chevrolet : NOUN
 Chibok Government Secondary School : NOUN
 China Central Television : NOUN[:*r]
 China Great Wall Industry Corporation : NOUN[:*r]
+Christian Democrat : NOUN
 Christopher A. Wray : NOUN
 Civil Rights Commission : NOUN
 Clever : NOUN - -6
@@ -1938,6 +1961,7 @@ F.C.C. : NOUN
 Federal Aviation Administration : NOUN
 Federal Open Market Committee : NOUN[:*r]
 Ferguson : NOUN
+Fla : NOUN
 Flannery : NOUN
 Flynn : NOUN
 Forbes : NOUN
@@ -1961,6 +1985,7 @@ Golden State Warriors : NOUN
 Gov. Jerry Brown : NOUN
 Grand Staircase-Escalante : NOUN
 Grants Pass : NOUN
+Gridiron Club : NOUN
 Grey Advertising : NOUN
 HBO : NOUN
 HHS : NOUN
@@ -2004,6 +2029,7 @@ John Beck : NOUN
 John Conyers : NOUN
 John Podesta : NOUN
 Jim : NOUN
+Jim Justice : NOUN
 Jinping : NOUN
 Jones : NOUN
 Josephine County : NOUN
@@ -2086,6 +2112,7 @@ NFL players' protest : NOUN
 Netanyahu : NOUN
 New Kensington : NOUN
 New York Times : NOUN
+New Yorker : NOUN
 News-Miner : NOUN
 NFL : NOUN
 Nicholas : NOUN
@@ -25888,6 +25915,7 @@ thai : NOUN
 thai : ADJ
 thailand : NOUN
 thank : VERB
+thank you : NOUN
 thankful : ADJ
 thanksgiving : NOUN
 thanksgiving day : NOUN
