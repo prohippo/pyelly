@@ -78,7 +78,7 @@ defns = [                                      # syntactic significance of punct
     [ u';' , '[' + pID + 'stop]' ] ,
     [ u'…' , '[' + pID + 'start]' ]  ,         # horizontal ellipsis
     [ u'\u2122' ] ,                            # TM
-    [ u'\u2013' ] ,                            # en dash
+    [ u'\u2013' , '[' + pID + 'start]' ] ,     # en dash
     [ u'\u2014' , '[' + pID + '*x]'  ]  ,      # em dash
     [ u'\u002d' , '[' + pID + 'hyph]'  ]       # hyphen or minus
 ]
