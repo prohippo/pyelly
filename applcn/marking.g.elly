@@ -570,6 +570,11 @@ _
   left
   append </negn></vclu>
 __
+g:ELEM->LTAG
+_
+  var typg=tag
+  (typg)
+__
 
 g:MISC->MISC[:*x] PUNC[|com,-quo]
  >>+++
@@ -3963,8 +3968,39 @@ g:ADV->NUM IADV
 _
   (twob)
 __
+g:QUAN[@*r]->ADV[~mod] QUAN[@-*r]
+  l[$deg]>>+1
+         >>-6
+_
+  (twob)
+__
 
 g:DET->PRO[=imp] APOS
 _
   (twob)
+__
+
+g:NOUN->NOAJ
+  l[$*c]>>++
+__
+g:ADJ->NOAJ
+  l[$*c]>>-
+__
+
+g:NCLU->QUAN[@*x] NOUN[:ing,-det]
+  >>+++
+_
+  append <nclu>
+  var typg=quan
+  (typg)
+  append <noun>
+  right
+  append </noun></nclu>
+__
+g:NUM[:*r]->QUAN[@*x] NUM[:-*r]
+  >>++
+_
+  append 1 of
+  space
+  right
 __

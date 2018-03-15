@@ -99,6 +99,7 @@ determining : VERB[^ing] - +1
 determining : ADJ[%ing] - -2
 did : VERB[^ed,*x]
 did not : AUXL[^ed]
+directing money : VERB[^ing]
 discouraged : VERB[^ed]
 distinguished-looking : ADJ
 disturbing : VERB[^ing]
@@ -300,6 +301,7 @@ popped up : VERB[^ed]
 posted on Facebook : VERB[^ed]
 potions : NOUN
 pregnant as a teen : ADJ
+pressed witnesses : VERB[^ed]
 pressing : VERB[^ing]
 previously fired : ADJ
 progresses : VERB[^s]
@@ -462,9 +464,10 @@ went_on : VERB[^ed] =went on
 
 1 another : PRO =one another
 1 last time : ADV
-1 of the : QUAN =one of the
+1 of : QUAN[@*x] =one of
 1 of them : PRO =one of them
 1 of them : QUAN - -2 =one of them
+1st half : NOUN
 1st mention : NOUN
 1st mention : VERB
 20 to 30 : NUM
@@ -472,7 +475,9 @@ went_on : VERB[^ed] =went on
 2016 election : NOUN
 2016 election meddling : NOUN
 24/7 : ADJ - +2
+2nd half : NOUN
 5 minutes : NOUN
+a billion : QUAN
 a bit : NOUN[:det] - -2
 a claim : NOUN[:join]
 a day later : ADV
@@ -487,6 +492,7 @@ a large chunk of : QUAN
 a little bit : NOUN
 a little bit : ADV
 a lot of : QUAN
+a million : QUAN
 a number of : QUAN
 a number of pieces of : QUAN
 a range of : QUAN
@@ -600,6 +606,7 @@ best for them : ADJ
 best suit : NOUN
 best suit : VERB
 better of it : ADV
+better than : PREP
 bigger and bigger : ADJ
 binding commitment : NOUN
 birther : NOUN
@@ -862,7 +869,7 @@ guilty plea : NOUN
 guitar bridge : NOUN
 half its : QUAN
 half inch : NOUN
-half of the : QUAN
+half of : QUAN
 hall of fame : NOUN
 hall of fame-inducted : ADJ
 hallway conversation : NOUN
@@ -910,6 +917,8 @@ in conjunction with : PREP
 in connection with : PREP
 in connection to : PREP
 in exchange for : PREP
+in fact : ADV
+in fact, : ADV
 in favor of : PREP
 in height : ADV[~trlg] [$deg] 0
 in hopes of : CONJ
@@ -953,6 +962,7 @@ innovation fund : NOUN
 ins and outs : NOUN[:plur]
 insofar as : CONJ
 instead of : PREP
+insurgent group : NOUN
 intelligence study : NOUN
 intelligence summary : NOUN
 intelligence survey : NOUN
@@ -1202,12 +1212,14 @@ political influence : NOUN
 political opponent : NOUN
 political world : NOUN
 pollution cleanup : NOUN
+possible attempt : NOUN
 possible defeat : NOUN
 possible suspect : NOUN
 power center : NOUN
 pr announcement : NOUN
 presentation system : NOUN
 presuppositionalism : NOUN
+presidential campaign : NOUN
 presidential speech : NOUN
 primary challenge : NOUN
 prior to : PREP
@@ -1280,6 +1292,7 @@ sales manager : NOUN
 sales team : NOUN
 saturday and sunday : NAVB
 school community : NOUN
+scorched earth : ADJ
 scratching their heads : ADJ
 search-only mission : NOUN
 season opener : NOUN
@@ -1398,11 +1411,13 @@ the day after : PREP
 the day before : PREP
 the default is : VERB
 the entirety : NOUN
+the focus : NOUN[:det]
 the last month : NAVB[:det]
 the latest twist : NOUN
 the near future : NAVB[:det]
 the past year : NAVB[:det]
 the possibility that : NCTH
+the several : QUAN[@ind]
 the sidelines : NOUN
 the starting point : NOUN
 the united states : NOUN[:plur]
@@ -1544,6 +1559,7 @@ usd : POSTP
 , period. : PUNC[|stop,*x]
 on,       : ADVX =on
 on,       : PTCL - -2
+— but     : DCNJ
 — or      : DCNJ
 i mean,   : ADV
 , N.Y.,   : XID
@@ -1784,6 +1800,7 @@ seize control : VERB
 self-deprecating : ADJ
 self-defensive : ADJ
 sexual orientation : NOUN
+six-party : ADJ
 start-up : NOUN
 state-run : ADJ
 state-run news agency KCNA : NOUN
@@ -2096,7 +2113,10 @@ Missouri State : NOUN
 Mitch McConnell : NOUN
 Mohammed bin-Salman : NOUN
 Moon Jae-in : NOUN
+Mr. Mueller : NOUN
+Mr. Nader : NOUN
 Mr. President : NOUN
+Mr. Trump : NOUN
 MSNBC : NOUN
 MTV : NOUN
 Mueller : NOUN
@@ -2239,6 +2259,7 @@ Tom Cotton : NOUN
 Tran Dai Quang : NOUN
 Trudeau : NOUN
 Trump administration : NOUN
+Trump era : NOUN
 Trump International : NOUN
 Trump organization : NOUN
 Trump Soho hotel : NOUN
@@ -7534,7 +7555,7 @@ craft : NOUN
 craft : VERB - -1
 craft fair : NOUN
 craft union : NOUN
-crafty : ADJ
+crafty : NOAJ
 crap : NOUN
 crap : VERB
 crap game : NOUN
