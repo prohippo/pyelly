@@ -70,6 +70,7 @@ circulating : VERB[^ing]
 civil rights : NOUN
 classified : VERB[^ed] - +2
 cleared : VERB[^ing]
+closest : ADJ - +1
 co-produced : VERB[^ed]
 coaching : VERB[^ing]
 competing : VERB[^ing]
@@ -100,6 +101,7 @@ determining : VERB[^ing] - +1
 determining : ADJ[%ing] - -2
 did : VERB[^ed,*x]
 did not : AUXL[^ed]
+did something very important : VERB[^ed]
 directing money : VERB[^ing]
 discouraged : VERB[^ed]
 distinguished-looking : ADJ
@@ -151,6 +153,7 @@ freshmen : NOUN
 fronted by : VERB[^ed]
 froze : VERB[^ed]
 gave : VERB[^ed,*x]
+gave his take on : VERB[^ed]
 gave rise to : VERB[^ed]
 gazed around : VERB[^ed]
 give rise to : VERB
@@ -166,6 +169,7 @@ getting : NOUN[:ing] - -2
 given : VERB[^ed]
 giving rise : VERB[^ing]
 goes on recess : VERB
+going for a walk : VERB[^ing]
 going to end up : VERB[^ing]
 gone out of business : VERB[^ed]
 gonna : AUXL
@@ -237,7 +241,8 @@ lives : VERB[^s]          =live -s
 lost contact with : VERB[^ed]
 made : VERB[^ed]
 made available : VERB[^ed]
-made clear : Verb[^ed,dit]
+made clear : VERB[^ed,dit]
+made it clear : VERB[^ed,dit]
 made its way : VERB[^ed]
 made public : VERB[^ed]
 made use of : VERB[^ed]
@@ -255,6 +260,7 @@ mechanics : NOUN[:plur]
 meeting : VERB[^ing]
 meetings : NOUN[:plur]
 mice : NOUN[:plur]
+military threat : NOUN
 millennia : NOUN[:plur]
 millennium bc : NOUN
 mīned : VERB[^ed] =mined
@@ -286,6 +292,7 @@ ordered held without bond : VERB[^ed]
 originated : VERB[^ed]
 originated : ADJ - -4
 ought : VERB
+out of step : ADJ
 overlooked : VERB[^ed] - -1
 pack up : VERB
 paid : VERB[^ed]
@@ -382,6 +389,7 @@ spoke : VERB[^ed] - +2
 spoke on the record : VERB[^ed]
 spoken : VERB[^ed]
 sprawling : VERB[^ing]
+stayed on the line : VERB[^ed]
 steered clear : VERB[^ed]
 stepping down : VERB[^ing]
 stimulating : VERB[^ing]
@@ -454,6 +462,7 @@ worn : VERB[^ed]
 worked : VERB[^ed] - +3
 worked : ADJ[%ed]  - -3
 working : VERB[^ing] - +2
+would have no reason : VERB
 written : VERB[^ed]
 wrote : VERB[^ed,*x]
 
@@ -610,6 +619,7 @@ bail deal : NOUN
 bat and ball : ADJ
 beatle : NOUN
 because of : PREP
+besieged area : NOUN
 best for them : ADJ
 best suit : NOUN
 best suit : VERB
@@ -711,6 +721,7 @@ conservative activist : NOUN
 consider the fate of : VERB
 consigliere : NOUN
 constitutional limit : NOUN
+country music’s hometown : NOUN
 corporate bond market : NOUN
 corrections officer : NOUN
 corruption case : NOUN
@@ -817,6 +828,7 @@ federal appeals court : NOUN
 federal approval : NOUN
 federal bureau : NOUN
 federal charge : NOUN
+federal ethics agency : NOUN
 federal level : NOUN
 federal prosecutor : NOUN
 federal republic : NOUN
@@ -833,6 +845,7 @@ fixed investment : NOUN
 flood stage : NOUN
 for example : PEXP[|eg]
 for now : ADV
+for the first time : ADV
 foreign ambassador : NOUN
 foreign force : NOUN
 foreign intelligence : NOUN
@@ -860,6 +873,7 @@ gala dinner : NOUN
 gay men : NOUN[:plur]
 gen. : NOUN
 gender equality : NOUN
+general electorate : NOUN
 genetic modification : NOUN
 genetically modified : ADJ
 genetically modified crop : NOUN
@@ -1230,6 +1244,7 @@ political future : NOUN
 political gathering : NOUN
 political influence : NOUN
 political opponent : NOUN
+political view : NOUN
 political world : NOUN
 pollution cleanup : NOUN
 possible attempt : NOUN
@@ -1412,6 +1427,7 @@ teenage boy : NOUN
 teenage girl : NOUN
 teenybopper : NOUN
 telecoms giant : NOUN
+telegenic : ADJ
 television deal : NOUN
 television interview : NOUN
 tense moment : NOUN
@@ -1542,6 +1558,7 @@ willing to : TO
 wine review : NOUN
 winter weather advisory : NOUN
 with knowledge of : PREP
+with little experience : ADJ
 with no regard to : CONJ
 with what : CONJ
 within range of : PREP
@@ -1683,7 +1700,9 @@ picked him up : VERB[^ed]
 public plea for help : NOUN
 rebel-held eastern Ghouta suburb of Damascus : NOUN
 repeatedly used the flag : VERB[^ed]
+Robert Forrest : NOUN
 Sandra Himmel : NOUN
+scandalous affair : NOUN
 Scarborough intern Lori Klausutis : NOUN
 sinai mosque : NOUN
 supt : NOUN
@@ -1709,6 +1728,7 @@ win leverage : VERB
 
 -a-year : ADV[~*r,*x]
 1-forms : NOUN[:plur] - +2
+2-year-long : ADJ
 3-point : ADJ
 3-point shot : NOUN
 90-day : ADJ
@@ -1730,6 +1750,7 @@ cash-and-stock : ADJ
 cave-in : NOUN
 church-owned : ADJ
 church-owned properties : NOUN[:plur]
+city funds : NOUN[:plur]
 civil-rights law : NOUN
 co-founder : NOUN
 co-produce : VERB
@@ -1745,6 +1766,7 @@ decades-old conflict : NOUN
 decision-making : ADJ
 decision-making process : NOUN
 do-whatever-you-want : ADJ
+dramatic scene : NOUN
 dual-use : ADJ
 e-mail : NOUN
 eat-in : ADJ
@@ -1774,20 +1796,25 @@ high-profile : ADJ
 high-speed : ADJ
 high-speed boat : NOUN
 highest-ranking : ADJ
+huanitarian mission : NOUN
 in-depth : ADJ
 in-store : ADJ
 initial failure : NOUN
+international aid worker : NOUN
 iranian-backed : ADJ
 iraqi-syrian : ADJ
 israeli-palestinean : ADJ
+late last week : ADV
 left-wing : ADJ
 left-wing politics : NOUN
 lesser-known : ADJ
+likely to be asked about : ADJ
 long-drawn : ADJ
 long-expected : ADJ
 long-past  : ADJ
 long-undervalued : ADJ
 luke-warm : ADJ
+media blitz : NOUN
 mid-air : NOUN
 mid-century : ADJ
 mixed-species : ADJ
@@ -1816,6 +1843,7 @@ re-evaluate : VERB
 rear-drive : ADJ
 rebel-held : ADJ
 republican-led : ADJ
+remote beach : NOUN
 round-up : NOUN
 same-sex : ADJ
 same-sex couple : NOUN
@@ -1824,6 +1852,7 @@ same-sex weddings : NOUN[:plur]
 scale-down : NOUN
 second-in-command : ADJ
 second-largest : ADJ
+security detail : NOUN
 self-deprecating : NOUN
 self-deprecating : ADJ
 self-defensive : ADJ
@@ -1931,6 +1960,7 @@ Carter : NOUN
 Catalina : NOUN
 CBS : NOUN
 Celine Dion : NOUN
+Center for Disease Control and Prevention : NOUN
 Central Michigan University : NOUN
 CFPB : NOUN
 Charles : NOUN
@@ -2135,6 +2165,7 @@ McCarthy : NOUN
 Meghan Markle : NOUN
 Melania : NOUN
 Merkel : NOUN
+Metro Nashville : NOUN
 Miami-Dade County : NOUN
 Michael Baudendistel : NOUN
 Michael Flynn : NOUN
@@ -2148,6 +2179,7 @@ Missouri State : NOUN
 Mitch McConnell : NOUN
 Mohammed bin-Salman : NOUN
 Moon Jae-in : NOUN
+Mr. Kim : NOUN
 Mr. Mueller : NOUN
 Mr. Nader : NOUN
 Mr. President : NOUN
@@ -2331,6 +2363,7 @@ WCNC-TV : NOUN
 We Want God : NOUN
 Weinberger : NOUN
 Weinstein : NOUN
+West Australia : NOUN
 West Chester : NOUN
 West Indies : NOUN[:plur]
 Westmoreland County : NOUN
@@ -9910,6 +9943,7 @@ eternal rest : NOUN
 eternal sleep : NOUN
 eternity : NOUN
 ethic : NOUN
+ethics : NOUN[:plur]
 ethnic : NOUN
 ethnic : ADJ
 ethnic cleansing : NOUN
@@ -15652,6 +15686,7 @@ live steam : NOUN
 live together : VERB
 live up to : VERB
 live wire : NOUN
+lively : ADJ
 liver : NOUN
 liver : ADJ - -1
 liver cancer : NOUN
@@ -23971,6 +24006,7 @@ song : NOUN
 song dynasty : NOUN
 songwriter : NOUN
 soon: ADV
+soon after : ADV
 soonest : ADV
 sophisticate : NOUN
 sophisticate : VERB
@@ -28047,6 +28083,7 @@ white heat : NOUN
 white hope : NOUN
 white horse : NOUN
 white house : NOUN
+white house aide : NOUN
 white knight : NOUN
 white lead : NOUN
 white leather : NOUN
