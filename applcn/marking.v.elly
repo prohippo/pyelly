@@ -18,6 +18,7 @@ advancing : VERB[^ing]
 agreed to cooperate with : VERB[^ed]
 alleged : VERB[^ed] - -1
 alleged incident : NOUN
+allegedly shot : VERB[^ed]
 angrier : ADJ
 announced : VERB[^ed]
 appeared : VERB[^ed]
@@ -274,6 +275,7 @@ news anchor : NOUN
 news release : NOUN
 noblemen : NOUN[:plur]
 obtaining : VERB[^ing] - +2
+not been reimbursed : VERB[^ed]
 obtaining : ADJ - -4
 officials : NOUN[:plur]
 oil minister : NOUN
@@ -289,6 +291,7 @@ pack up : VERB
 paid : VERB[^ed]
 peace deal : NOUN
 peacemaking : NOUN
+people familiar with the matter : NOUN
 permanent security clearance : NOUN
 phenomena : NOUN[:plur]
 phone interview : NOUN
@@ -349,6 +352,7 @@ security forces : NOUN[:plur]
 seen : VERB[^ed]
 seen : SVED - -1
 seized control : VERB
+sent : VERB[^ed]
 serve as : VERB
 served as : VERB[^ed]
 serving as : VERB[^ing]
@@ -360,6 +364,7 @@ shipping label : NOUN
 shooting : VERB[^ing]
 shot : VERB[^ed] - +2
 shot and killed : VERB[^ed]
+should not be surprised : VERB[^ed]
 showboating : NOUN
 shown : VERB[^ed]
 signed : VERB[^ed]
@@ -415,12 +420,14 @@ tracking : VERB[^ing]
 trying : VERB[^ing] - +1
 trying to make clear that : VERB[^ing]
 turned himself in : VERB[^ed]
+turned political : VERB[^ed]
 turned themselves in : VERB[^ed]
 tv programming : NOUN
 unified : VERB[^ed]
 unaccounted for : ADJ
 unsolved mystery : NOUN
 values : VERB[^s]
+verify the authenticity of : VERB
 voting overwhelmingly : VERB[^ing]
 walked away : VERB[^ed]
 walking away : VERB[^ing]
@@ -438,6 +445,7 @@ went viral : VERB[^ed]
 whether or not : CONJ
 will have to : AUXL
 will not have to : AUXL
+will take us : VERB
 withdrew : VERB[^ed]
 withdrew their support : VERB[^ed]
 won : VERB[^ed] - +2
@@ -705,6 +713,7 @@ consigliere : NOUN
 constitutional limit : NOUN
 corporate bond market : NOUN
 corrections officer : NOUN
+corruption case : NOUN
 corruption investigation : NOUN
 counterproliferation : NOUN
 court document : NOUN
@@ -719,6 +728,7 @@ dance number : NOUN
 data breach : NOUN
 day in a row : NOUN
 deadliest : ADJ
+deadly ambush : NOUN
 deadly shooting : NOUN
 deadly shootings : NOUN[:plur]
 decades ago : ADV
@@ -753,6 +763,7 @@ dr. : NOUN
 drumroll : NOUN
 dubstep : NOUN
 due to : PREP
+due to expire : VERB
 duotone : ADJ
 during this time : ADV[~trlg]
 each : POSTP[@num] [$trlg] -1
@@ -819,6 +830,7 @@ financial watchdog agency : NOUN
 fireable offense : NOUN
 fist fight : NOUN
 fixed investment : NOUN
+flood stage : NOUN
 for example : PEXP[|eg]
 for now : ADV
 foreign ambassador : NOUN
@@ -883,6 +895,7 @@ have done so : VERB[^hav,ed]
 head coach : NOUN
 head coaching : NOUN - +2
 heavy fighting : NOUN
+helmet camera : NOUN
 helpline : NOUN
 helter skelter : NOUN
 here you go : VERB
@@ -937,6 +950,7 @@ in the event of : PREP
 in the first place : ADV
 in the mix : ADV
 in the name of : PREP
+in the report : ADV
 in the same place : ADV
 in the skies : ADJ [$trlg] +1
 in the skies : ADV
@@ -985,6 +999,7 @@ islamic republic : NOUN
 islamic state : NOUN
 islamic state group : NOUN
 islamist insurgent : NOUN
+israeli police : NOUN
 issued a firm warning to : VERB[^ed]
 it appears to have : AUXL
 it behv clear : ELEM - +4 (elma)
@@ -1004,6 +1019,7 @@ just a little bit : ADV
 just above : PREP
 just as : CONJ - -1
 just for the hell of it : ADV
+just hours after : PREP
 just this : DEM[@ind,sgl]
 keep things quiet : VERB
 key figure : NOUN
@@ -1011,6 +1027,7 @@ know nothing at all : VERB
 ku klux klansmen : NOUN[:plur]
 lackluster record : NOUN
 land corridor : NOUN
+last fall : NAVB
 last known location : NOUN
 last month : NAVB[:det]
 land survey : NOUN
@@ -1064,6 +1081,7 @@ may be : BE
 may have : AUXL
 may have been : AUXL
 media outlet : NOUN
+media research center : NOUN
 medical textbook : NOUN
 media pack : NOUN
 memo to staff : NOUN
@@ -1147,6 +1165,7 @@ on high alert : ADJ
 on hold : ADJ
 on hold : ADV
 on how : CONJ
+on monday : DATE
 on sunday : DATE
 on the other end : ADV
 on through : PREP
@@ -1199,6 +1218,7 @@ ping pong playing robot : NOUN
 pinyin : NOUN
 pit bull : NOUN
 plea for help : NOUN
+podcast : NOUN - -2
 police brutality : NOUN
 police corruption : NOUN
 policymaker : NOUN
@@ -1229,6 +1249,7 @@ profound grief : NOUN
 programmable : ADJ
 prohibited cargo : NOUN
 proof to the contrary : NOUN
+propaganda video : NOUN
 properly designed : ADJ
 proportionally spaced : ADJ
 pros and cons : NOUN
@@ -1333,6 +1354,7 @@ so many : QUAN[@ind]
 so that : CONJ
 social reform : NOUN
 social security system : NOUN
+social studies : NOUN
 socialist federal republic : NOUN
 soldier-turned-defector : NOUN
 some of : QUAN
@@ -1634,6 +1656,7 @@ Central Michigan University dormitory : NOUN
 comedic : ADJ
 Delta spokesman : NOUN
 complex new modeling : NOUN
+complained to friends : VERB[^ed]
 continued airstrikes and fighting : NOUN
 counts of murder : NOUN[:plur]
 davis jr. : NOUN
@@ -1660,6 +1683,7 @@ picked him up : VERB[^ed]
 public plea for help : NOUN
 rebel-held eastern Ghouta suburb of Damascus : NOUN
 repeatedly used the flag : VERB[^ed]
+Sandra Himmel : NOUN
 Scarborough intern Lori Klausutis : NOUN
 sinai mosque : NOUN
 supt : NOUN
@@ -1675,6 +1699,7 @@ touched her sexually : VERB[^ed]
 took him to a hospital : VERB[^ed]
 Trump’s tweet : NOUN
 U.S. Special Forces base : NOUN
+US soldier : NOUN
 university police Chief Bill Yeagley : NOUN
 weapons component : NOUN
 with what we now know to be : PREP
@@ -1729,6 +1754,7 @@ fast-moving : ADJ
 five-lane : ADJ
 foreign leader : NOUN
 four-day : ADJ
+four-hour : ADJ
 four-lane : ADJ
 four-page : ADJ
 four-page filing : NOUN[:*r]
@@ -1754,6 +1780,8 @@ initial failure : NOUN
 iranian-backed : ADJ
 iraqi-syrian : ADJ
 israeli-palestinean : ADJ
+left-wing : ADJ
+left-wing politics : NOUN
 lesser-known : ADJ
 long-drawn : ADJ
 long-expected : ADJ
@@ -1818,6 +1846,7 @@ top-rated : ADJ
 top-shelf : ADJ
 trade-in : ADJ
 trauma-specific : ADJ
+turn state’s witness : VERB
 tut-tutting : ADJ
 two-term limit : NOUN
 U.S. government source : NOUN
@@ -1930,6 +1959,7 @@ Coolio Earth Partnership : NOUN
 Corey Lewandowski : NOUN
 Crafty : NOUN
 Crater Lake : NOUN
+Crystal River Middle School : NOUN
 Cubbies : NOUN[:plur]
 Customs and Border Protection : NOUN
 DACA : NOUN
@@ -1939,6 +1969,7 @@ Dave Stone : NOUN
 Delta Air Lines : NOUN
 Democratic National Committee : NOUN
 Denny : NOUN
+Department of Homeland Security : NOUN
 Desiree : NOUN
 DHS : NOUN
 Dillons : NOUN =dillon 's
@@ -1983,6 +2014,7 @@ Fla : NOUN
 Flannery : NOUN
 Flynn : NOUN
 Forbes : NOUN
+Fox News : NOUN
 Francis : NOUN
 Franken : NOUN
 Freedom of the City award : NOUN
@@ -2014,6 +2046,7 @@ Hassan Rouhani : NOUN
 Herzegovina : NOUN
 Hillary Clinton : NOUN
 House Judiciary Committee : NOUN
+Huffington Post : NOUN
 Hughes : NOUN
 Hughes Global Services : NOUN
 Hunnan New District : NOUN
@@ -2042,6 +2075,7 @@ Jason Leon : NOUN
 Jeff Sessions : NOUN
 Jenny Lumet : NOUN
 Jeremy : NOUN
+Jersey Shore : NOUN
 Jerusalem church leaders : NOUN[:plur]
 John Beck : NOUN
 John Conyers : NOUN
@@ -2160,6 +2194,7 @@ PBS program : NOUN
 Person of the Year : NOUN
 Pfaffian : ADJ
 Phillips : NOUN
+Pine Barrens : NOUN
 Politifact : NOUN
 POLITICO : NOUN
 Post-Gazette : NOUN
@@ -21353,6 +21388,7 @@ renegotiate : VERB
 renew : VERB
 renewable : ADJ
 renewable resource : NOUN
+renewal : NOUN
 renounce : VERB
 renovate : VERB
 renovation : NOUN
@@ -23935,6 +23971,7 @@ song : NOUN
 song dynasty : NOUN
 songwriter : NOUN
 soon: ADV
+soonest : ADV
 sophisticate : NOUN
 sophisticate : VERB
 sophisticated : ADJ

@@ -4004,3 +4004,19 @@ _
   space
   right
 __
+
+g:NCLU->DEM NAVB
+_
+  append <nclu><dem>
+  left
+  append </dem><date>
+  right
+  append </date><nclu>
+__
+g:DET->DET NAVB
+_
+  left
+  append <date>
+  right
+  append </date>
+__
