@@ -84,6 +84,7 @@ BLOCK ed
        END {SU -1}
     IS u {SU -1}
     IF osn {SU}
+    IF o {SU -1}
     end {SU 1} 
   IF f
     IF f

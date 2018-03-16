@@ -1583,6 +1583,7 @@ weaponry weapon
 weekly week
 weighty weigh
 weirdest weird
+welcomed welcome
 went go
 wettest wet
 whiten white
