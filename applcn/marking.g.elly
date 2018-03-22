@@ -2937,6 +2937,8 @@ __
 d:and/or <- CONJ[@cnj]
  >>[!coord]
 __
+d:/ <- CONJ[@cnj]
+__
 d:but  <- CONJ
 __
 d:nor  <- CONJ[@cnj,qnt]
