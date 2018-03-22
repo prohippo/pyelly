@@ -1,4 +1,4 @@
-	PyElly is a rule-based natural language processing tool that has existed
+PyElly is a rule-based natural language processing tool that has existed
 for over forty years in various incarnations. It is now freely available
 as open source software on the Web to anyone wanting to try it out. It is
 written in version 2.7 of Python and employs SQLite for data management.
@@ -558,6 +558,10 @@ Release Notes:
                       extend and clean up rules for "marking" application
                       add daily Google News text data for "marking" tests
                       update and expand documentation
+ 1.4.26  - 21mar2018  fix problem with vocabulary lookup key ending in S
+                      adjust rules for "indexing" application
+                      extend rules for "marking" application
+                      update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
