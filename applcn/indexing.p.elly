@@ -15,7 +15,10 @@
 3 &#$  STOP -1
 3 $    STOP -1
 
-0 -&@$ STOP -1
+0 -@$ STOP -1
+0 -@@$ STOP -1
+0 -@@@$ STOP -1
+0 -@@@@$ STOP -1
 
 0 &#@$ STOP -1
 0 @&#$ STOP -1
