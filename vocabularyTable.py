@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 16feb2018 CPM
+# vocabularyTable.py : 21mar2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -74,9 +74,15 @@ def delimitKey ( t ):
     if ln == 0: return 0
     if not ellyChar.isLetterOrDigit(t[0]): return 1
 
-    n = t.find(' ')               # find rough range of SQLite key in text
-    if n < 0: n = ln              # if undivided by spaces, take everything
-    n -= 1                        # index of last char in range
+#   print 'delimitKey t=' , t
+
+    k = t.find('-')               # find rough range of SQLite key in text
+    n = t.find(' ')               # delimited by either a hyphen or a space
+    if n < 0: n = ln              # if space, take everything
+    if k > 1 and n > k: n = k     # hyphen delimits if it comes first
+    n -= 1                        # index of last char of candidate key
+#   print 'k=' , k , 'n=' , n
+
     while n > 0:                  # scan input text backwards
         c = t[n]                  # check char for alphanumeric
         if ellyChar.isLetterOrDigit(c):
@@ -91,6 +97,7 @@ def delimitKey ( t ):
             else:
                 break
         n -= 1                    # continue scanning backwards
+#   print 'key=' , t[:n+1]
     return n + 1                  # to get key length ending in alphanumeric
 
 def toKey ( s ):
@@ -107,6 +114,7 @@ def toKey ( s ):
 
     sl = list(s)
     ellyChar.toLowerCaseASCII(sl)
+#   print 'VT key=' , sl
     return ''.join(sl)
 
 def _err ( s='malformed vocabulary input' ):
@@ -838,7 +846,7 @@ def listDBKeys ( dbso ):
         list of keys
     """
 
-    print 'listDBkeys():'
+#   print 'listDBkeys():'
 
 #### SQLite DB operations
 #
@@ -955,7 +963,7 @@ if __name__ == '__main__':
         check(uvtb,list(ky))           # dump all info for key
         print ''
 
-    print 'enter SINGLE- and MULTI-word terms to look up in table'
+    print 'enter SINGLE- and MULTI-word terms to look up in table with NO delimiting'
     while True:                        # now look up terms from standard input
         sys.stdout.write('> ')
         ul = sys.stdin.readline()      # get test example to look up
