@@ -562,6 +562,12 @@ Release Notes:
                       adjust rules for "indexing" application
                       extend rules for "marking" application
                       update documentation
+ 1.4.27  - 25mar2018  fix problems with tokenization with hyphens
+                      add debugging option with no parse tree in ellyBase
+                      clean up interpretiveContext and improve encapsulation
+                      recognize Unicode hyphen as default punctuation
+                      clean up commentary in code modules
+                      update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
