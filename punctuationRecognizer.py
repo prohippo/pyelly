@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# punctuationRecognizer.py : 13mar2018 CPM
+# punctuationRecognizer.py : 22mar2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -62,7 +62,7 @@ defns = [                                      # syntactic significance of punct
     [ u'[' , '[' + pID + '*l,*x,start]' ] ,    # equivalent to D: rules in *.g.elly
     [ u']' , '[' + pID + '*r,*x]' ] ,          #
     [ u'(' , '[' + pID + '*l,start]' ] ,       # you may override any of these with explicit
-    [ u')' , '[' + pID + '*r]' ] ,             # D: punctuation rules with higher plausibility
+    [ u')' , '[' + pID + '*r]' ] ,             # D: punctuation rules of higher plausibility
     [ u'“' , '[' + pID + '*l,quo,start]' ] ,
     [ u'”' , '[' + pID + '*r,quo]' ] ,
     [ u'"' , '[' + pID + '*l,*r,quo,start]' ] ,
@@ -70,7 +70,7 @@ defns = [                                      # syntactic significance of punct
     [ u'’' , '[' + pID + '*r,quo]' ] ,
     [ u'`' , '[' + pID + '*l,quo,start]' ] ,
     [ u"'" , '[' + pID + '*l,*r,quo,start]' ] ,
-    [ u',' , '[' + pID + 'com]' , True ]  ,    # special status for comma only so far
+    [ u',' , '[' + pID + 'com]' , True ]  ,    # special status for comma only, so far
     [ u'.' , '[' + pID + 'stop,emb,*x]' ] ,    # these will end sentences, but could be embedded
     [ u'!' , '[' + pID + 'stop,emb]' ] ,
     [ u'?' , '[' + pID + 'stop,emb]' ] ,
@@ -79,8 +79,9 @@ defns = [                                      # syntactic significance of punct
     [ u'…' , '[' + pID + 'start]' ]  ,         # horizontal ellipsis
     [ u'\u2122' ] ,                            # TM
     [ u'\u2013' , '[' + pID + 'start]' ] ,     # en dash
-    [ u'\u2014' , '[' + pID + '*x]'  ]  ,      # em dash
-    [ u'\u002d' , '[' + pID + 'hyph]'  ]       # hyphen or minus
+    [ u'\u2014' , '[' + pID + '*x]'  ]   ,     # em dash
+    [ u'\u002d' , '[' + pID + 'hyph]'  ] ,     # hyphen or minus
+    [ u'\u2010' , '[' + pID + 'hyph]'  ]       # hyphen only
 ]
 
 smfs  = {  # semantic features for particular punctuation
