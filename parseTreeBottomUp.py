@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBottomUp.py : 29jan2018 CPM
+# parseTreeBottomUp.py : 24mar2018 CPM
 # -----------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -274,7 +274,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
     # make leaf nodes in parse tree #
     #################################
 
-    def createPhrasesFromDictionary ( self , word , split , capzn ):
+    def createPhrasesFromDictionary ( self , word , spl , cap ):
 
         """
         create phrases from word by internal dictionary lookup
@@ -282,8 +282,8 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
         arguments:
             self  -
             word  - input segment string to look up
-            split - was segment already analyzed?
-            capzn - first char was capitalized
+            spl   - was segment already analyzed?
+            cap   - first char was capitalized
 
         returns:
             True if phrases created, False otherwise
@@ -306,7 +306,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
         lw = len(ws)
 #       print len(rules) , 'rule(s)' , 'split=' , split
         for r in rules:               # create new phrase for each rule found
-            if self._addTerminal(r,split,capzn):
+            if self._addTerminal(r,spl,cap):
                 self.lastph.lens = lw
         return True
 

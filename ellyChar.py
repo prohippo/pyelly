@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 19feb2018 CPM
+# ellyChar.py : 22mar2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -31,7 +31,7 @@
 # -----------------------------------------------------------------------------
 
 """
-for handing ASCII plus Latin-1 chars as Unicode
+for defining PyElly subset of Unicode for input text
 """
 
 DOT = u'.'         # Unicode period
