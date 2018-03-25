@@ -5,7 +5,7 @@ g:sent -> tokn
 __
 g:sent -> stop
 _
-  trace
+# trace
   append -
 __
 g:sent -> punc
@@ -20,7 +20,7 @@ _
 __
 g:sent -> sent stop
 _
-  trace
+# trace
   left
   blank
   append -
