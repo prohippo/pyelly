@@ -156,12 +156,12 @@
 
  0 @)$ LTAG -1
 
- 0 &@-friendly ADJ -1
- 0 &@-like ADJ -1
- 0 &@-resistant ADJ -1
- 0 &@-size ADJ -1
- 0 &@-wide ADJ -1
- 0 longer-&@ ADJ -1
+ 0 &@-friendly$ ADJ -1
+ 0 &@-like$ ADJ -1
+ 0 &@-resistant$ ADJ -1
+ 0 &@-size$ ADJ -1
+ 0 &@-wide$ ADJ -1
+ 0 longer-&@$ ADJ -1
 
  0 !&@-&#/* NOUN -1
 
