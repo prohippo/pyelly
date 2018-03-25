@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# interpretiveContext.py : 02jun2017 CPM
+# interpretiveContext.py : 24mar2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -74,6 +74,7 @@ class InterpretiveContext(object):
         self.procs = procs
         self.glbls = glbls
         self.wghtg = conceptualWeighting.ConceptualWeighting(hiery)
+        self.cncp = None
         self.reset()
 
     def reset ( self ):
@@ -91,7 +92,6 @@ class InterpretiveContext(object):
         self.clearBuffers()          # for output buffers
 
         self.tokns = [ ]             # empty out token list for parse
-        self.cncp = None             # no initial contextual concept
 
     def getProcedure ( self , name ):
 
@@ -722,6 +722,20 @@ class InterpretiveContext(object):
         """
 
         return None if n >= len(self.tokns) else self.tokns[n]
+
+    def countTokensInListing ( self ):
+
+        """
+        get length of token listing
+
+        arguments:
+            self  -
+
+        returns:
+            count
+        """
+
+        return len(self.tokns)
 
     def interpretConcept ( self , cn ):
 
