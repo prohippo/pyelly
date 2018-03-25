@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 21mar2018 CPM
+# ellyBase.py : 24mar2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -43,6 +43,7 @@ import ellyChar
 import ellyException
 import substitutionBuffer
 import parseTree
+import parseTreeBottomUp
 import parseTreeWithDisplay
 import interpretiveContext
 import entityExtractor
@@ -68,9 +69,11 @@ _rules      = [ '.g.elly' , '.m.elly' , '.p.elly' , '.n.elly' , '.h.elly' ,
                 '.stl.elly' , '.ptl.elly' ]
 _vocabulary = [ vocabularyTable.source ]
 
+noParseTree = False                     # enable parse tree stub for debugging
+
 # version ID
 
-release = 'v1.4.26'                     # current version of PyElly software
+release = 'v1.4.27'                     # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -148,6 +151,39 @@ def _notVocabularyToDate ( system ):
         print >> sys.stderr , 'rule+vocabulary time exception!'
         return True
     return vt <= rt
+
+########
+# ParseTree stubs for debugging without parse tree building
+#
+
+class NoParseTree(parseTreeBottomUp.ParseTreeBottomUp):
+    def __init__ ( self , stb , gtb , ptb , ctx ):
+        print type(ctx)
+        self.ctx = ctx
+        self.queue = [ None ]
+        super(NoParseTree,self).__init__(stb,gtb,ptb)
+    def startUpX  ( self ):
+        print >> sys.stderr , 'startUpX'
+    def finishUpX ( self ):
+        print >> sys.stderr , 'finishUpX'
+    def digest ( self ): pass
+    def restartQueue ( self ):
+        self.queue = [ None ]
+    def enqueue ( self , ph ):
+        print >> sys.stderr , unicode(ph)
+    def requeue ( self ) : pass
+    def showTokens ( self ): pass
+    def evaluate ( self , ctx ):
+        ln = ctx.countTokensInListing()
+        print >> sys.stderr , ''
+        for i in range(ln):
+            tok = ctx.getNthTokenInListing(i)
+            print >> sys.stderr , i , ':' , tok.getOrig()
+        return True
+    def getLastPlausibility ( self ): return 0
+    def goalCheck ( self , typ , gbs ):
+        print >> sys.stderr , 'goalCheck typ=' , typ
+        return True
 
 #
 # main class for processing single sentences, presented without NL's
@@ -273,7 +309,9 @@ class EllyBase(object):
 
         nto = len(stb.ntname)         # for consistency check
 
-        if ellyConfiguration.treeDisplay:
+        if noParseTree:
+            self.ptr = NoParseTree(stb,d.gtb,d.ptb,self.ctx)
+        elif ellyConfiguration.treeDisplay:
             self.ptr = parseTreeWithDisplay.ParseTreeWithDisplay(stb,d.gtb,d.ptb,self.ctx)
         else:
             self.ptr = parseTree.ParseTree(stb,d.gtb,d.ptb,self.ctx)
@@ -365,9 +403,7 @@ class EllyBase(object):
 
 #       print 'EllyBase.translate()'
         self.ptr.reset()                # empty out any previous parse tree
-        self.ctx.tokns = [ ]            #       and its token list
-        self.ctx.clearBuffers()         # clear output buffer
-        self.ctx.clearLocalStack()      # clear local variables
+        self.ctx.reset()                # empty out any previous context
 
         if len(text) == 0:              # if no text, done
             return ''
@@ -390,7 +426,7 @@ class EllyBase(object):
 #               print 'BASE@3 =' , self.sbu.buffer
                 self.ptr.digest()       # process queue to get all ramifications
                 self.ptr.restartQueue() # for any leading zero production
-#               print len(self.ctx.tokns) , 'tokens after digestion'
+#               print self.ctx.countTokensInListing() , 'tokens after digestion'
 #               print 'BASE@4 =' , self.sbu.buffer
 
             self.ptr.finishUpX()        # for any trailing ... grammar rule
@@ -436,7 +472,7 @@ class EllyBase(object):
 
         self.sbu.skipSpaces()          # skip leading spaces
         s = self.sbu.buffer
-#       print '_lookUpNext s=' ,s
+#       print '_lookUp@0 buffer=' , s
 
         if len(s) == 0:                # check for end of input
             return False               # if so, done
@@ -463,12 +499,12 @@ class EllyBase(object):
         if k == 0:
             k = 1                      # must have at least one char in token
 
-#       print 'break at k=' , k
+        print 'break at k=' , k
         kl = len(s)
         if  k + 1 < kl and s[k] == '+' and s[k+1] == ' ':
             k += 1                     # recognize possible prefix
 
-#       print 'len(s)=' , kl , 'k=' , k , 's=', s
+        print 'len(s)=' , kl , 'k=' , k , 's=', s
 
 #       print '_lookUp@4 buffer=' , self.sbu.buffer
         mr = self._scanText(k)         # text matching in various ways
@@ -477,9 +513,9 @@ class EllyBase(object):
         suf = mr[2]                    # any suffix removed in matching
 #       print '_lookUp@5 buffer=' , self.sbu.buffer
         s = self.sbu.buffer
-#       print 'k=' , k
-#       print 'scan result mx=' , mx , 'chs=' , chs , 'suf=' , suf
-#       print 'len(s)=' , len(s) , 's=' , s
+        print 'k=' , k
+        print 'scan result mx=' , mx , 'chs=' , chs , 'suf=' , suf
+        print 'len(s)=' , len(s) , 's=' , s
 
         if ( k < mx or
              k == mx and suf != '' ):  # next word cannot produce token as long as already seen?
@@ -498,31 +534,31 @@ class EllyBase(object):
 #           print 'token chs=' , chs
             to = ellyToken.EllyToken(chs)
 #           print 'long token=' , unicode(to)
-            self.ctx.tokns.append(to)
+            self.ctx.addTokenToListing(to)
             if suf != '':
                 if not ellyChar.isApostrophe(suf[1]):
                     to.dvdd = True     # must note suffix removal for token!
 #           print 'queue:' , len(self.ptr.queue)
             return True
 
-#       print 'mx=' , mx
+        print 'mx=' , mx
         wsk = self.sbu.buffer[:k]
         cap = ellyChar.isUpperCaseLetter(wsk[0])
-#       print 'wsk=' , wsk
+        print 'wsk=' , wsk
 #       print 'queue before=' , len(self.ptr.queue)
         rws = u''.join(wsk)
         found = self.ptr.createPhrasesFromDictionary(rws.lower(),False,cap)
         if not found:
-#           print 'not found, k=' , k
+            print 'not found, k=' , k
             if k > mx and k > 1 and ellyChar.isEmbeddedCombining(rws[-1]):
                 k -= 1
                 rws = rws[:-1]
                 found = self.ptr.createPhrasesFromDictionary(rws.lower(),False,cap)
-#       print 'found in dictionary=' , found
-        if found or mx > 0:
+        print 'found in dictionary=' , found
+        if found or mx > 0:            # match found in dictionary or by text scan
             if not found:
-                k = mx
-                rws = rws[:k]
+                k = mx                 # if by text scan, must make token longer
+                rws = rws[:k]          # if mx > k
             self.sbu.skip(k)
 #           print 'next=' , self.sbu.buffer[self.sbu.index:]
 #           print 'queue after =' , len(self.ptr.queue)
@@ -537,24 +573,41 @@ class EllyBase(object):
 #               print 'sn=' , sn , rt
                 to.root = rt[:sn]      # root without suffix
                 self.sbu.prepend(suf)  # restore suffix to input for processing
-            self.ctx.tokns.append(to)  # add token to parse tree
+            else:                      # no suffix
+                chx = self.sbu.peek()  # look at next char after match
+                if chx == '-':         # if hyphen, need to separate it
+                    self.sbu.skip()
+                    if ellyChar.isLetter(self.sbu.peek()):
+                        self.sbu.prepend(' ')
+                    self.sbu.prepend('-')
+            self.ctx.addTokenToListing(to)  # add token to listing for sentence
             return True
 
-#       print '[' + rws + ']' , 'still unrecognized'
+        print '[' + rws + ']' , 'still unrecognized'
+
+        chx = rws[0]                   # special hyphen check
+        if chx == '-' and k > 1:
+            print 'look in  internal dictionary'
+            if self.ptr.createPhrasesFromDictionary(chx,False,False):
+                print 'found!'
+                to = ellyToken.EllyToken(chx)  # treat hyphen as token
+                self.ctx.addTokenToListing(to) # add it to token list
+                self.sbu.skip()                # remove from input
+                return True
 
         to = self._extractToken(mx)    # single-word matching with analysis with lookup
 
-#       print 'to=' , unicode(to)
+        print 'to=' , unicode(to)
         if to == None:                 # if no match, we are done and will return
             return False if mx == 0 else True  # still success if _scanText() found something
+        self.ptr.lastph.lens = to.getLength()
 
 #       print 'to=' , unicode(to) , 'len(s)=' , len(s) , s
-#       print 'at', len(self.ctx.tokns) , 'in token list'
-        self.ctx.tokns.append(to)              # add token to parse queue
-
-#       posn = len(self.ctx.tokns) - 1 # show where token is in sentence sequence
-#       print 'posn=' , posn
-#       print 'token=' ,  self.ctx.tokns[posn].root
+#       posn = self.ctx.countTokensInListing()
+#       print 'at', posn , 'in token list'
+        self.ctx.addTokenToListing(to) # add token to listing for sentence
+#       tol = self.ctx.getNthTokenInListing(-1)
+#       print 'last token root=' , tol.root
         return True                    # successful lookup
 
     def _scanText ( self , k ):
@@ -861,7 +914,7 @@ if __name__ == '__main__':
         print >> sys.stderr , 'cannot initialize rules and vocabulary'
         sys.exit(1)
 
-    if dpth >= 0: eb.ptr.setDepth(dpth)  # for parsse trees
+    if dpth >= 0: eb.ptr.setDepth(dpth)  # for parse trees
 
     print ""
     dumpEllyGrammar.dumpCategories(eb.rul.stb)
