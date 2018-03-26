@@ -25,6 +25,7 @@ announced : VERB[^ed]
 appeared : VERB[^ed]
 appeared to defend : VERB[^ed]
 appeared to stem from : VERB[^ed]
+appears to be : BE
 appears to be part of : VERB
 are likely to be : BE
 arrested and charged : VERB[^ed]
@@ -119,6 +120,7 @@ drug trafficking : NOUN
 drawn : VERB[^ed]
 earlier this month : ADV
 educating themselves : VERB[^ing]
+elected official : NOUN
 elevated : VERB[^ed]
 evening : VERB[^ing] - -2
 everything that’s ever happened : NOUN
@@ -146,6 +148,7 @@ focuses on : VERB - +2
 focusing on : VERB[^ing]
 followed through on : VERB[^ed]
 for too long : ADV
+foreign money : NOUN
 forgave : VERB[^ed,*x]
 forgot : VERB[^ed,*x]
 forgotten : VERB[^ed]
@@ -298,6 +301,7 @@ originated : ADJ - -4
 ought : VERB
 out of step : ADJ
 overlooked : VERB[^ed] - -1
+oversaw : VERB[^ed]
 overseen : VERB[^ed]
 pack up : VERB
 paid : VERB[^ed]
@@ -392,6 +396,7 @@ sold off : VERB[^ed]
 sought : VERB[^ed]
 sought input : VERB[^ed]
 sparked fears of : VERB[^ed]
+speaking out against : VERB[^ing]
 spoke : VERB[^ed] - +2
 spoke on the record : VERB[^ed]
 spoken : VERB[^ed]
@@ -421,6 +426,7 @@ telecommunications : NOUN[:plur] - -1
 television broadcasting : NOUN
 terrifying : VERB[^ing]
 territorial struggle : NOUN
+terrorism suspect : NOUN
 terrorizing : VERB[^ing] - +2
 terrorizing : NOUN - -1
 thanked : VERB[^ed]
@@ -430,6 +436,7 @@ thrown into crisis : VERB[^ed]
 told : VERB[^ed,dit]
 told the court : VERB[^ed,dit]
 took : VERB[^ed,ptcl]
+took part in : VERB[^ed]
 took place : VERB[^ed]
 top lieutenant : NOUN
 tore up : VERB[^ed]
@@ -453,6 +460,7 @@ wanting to see : VERB[^ing]
 warfighting : NOUN
 was a violation of : VERB[^ed]
 was culpable for : VERB[^ed]
+was intended to : AUXL[^ed]
 was known to be : BE[^ed]
 wealthiest : ADJ
 well before : ADV
@@ -654,6 +662,7 @@ box set : NOUN
 break out of : VERB
 breakneck speed : NOUN
 brotherly nations : NOUN
+brutal interrogation : NOUN
 budget director : NOUN
 budget provision : NOUN
 building supply : NOUN
@@ -709,6 +718,7 @@ christian values : NOUN[:plur]
 christmas cheer : NOUN
 christmas spectacular : NOUN
 church leader : NOUN
+clandestine officer : NOUN
 clean energy : NOUN
 close to : PREP
 closed-door meeting : NOUN
@@ -1025,6 +1035,7 @@ international community : NOUN
 international treaty : NOUN
 internet access : NOUN
 internet service provider : NOUN
+into the night : ADV
 into whether : CONJ
 irrespective of whether : CONJ
 is in violation of : VERB
@@ -1056,6 +1067,7 @@ judge, jury, and executioner : NOUN
 just a little bit : ADV
 just above : PREP
 just as : CONJ - -1
+just days after : ADV
 just for the hell of it : ADV
 just hours after : PREP
 just this : DEM[@ind,sgl]
@@ -1067,6 +1079,7 @@ ku klux klansmen : NOUN[:plur]
 lackluster record : NOUN
 land corridor : NOUN
 last fall : NAVB
+last june : NAVB
 last known location : NOUN
 last month : NAVB[:det]
 land survey : NOUN
@@ -1184,6 +1197,7 @@ no. 2 : NOUN
 no little : ADJ
 no matter how : CONJ
 no one : PRO
+non-disclosure agreement : NOUN
 nonconsensual : ADJ
 north korean leader : NOUN
 northern california : NOUN
@@ -1283,6 +1297,7 @@ possible attempt : NOUN
 possible defeat : NOUN
 possible suspect : NOUN
 power center : NOUN
+power grab : NOUN
 pr announcement : NOUN
 presentation system : NOUN
 presidential election : NOUN
@@ -1337,6 +1352,7 @@ remote beach : NOUN
 remote town : NOUN
 renewable energy : NOUN
 republican leader : NOUN
+rescue crew : NOUN
 research and development : NOUN
 research commission : NOUN
 results page : NOUN
@@ -1361,6 +1377,7 @@ russian officials : NOUN[:plur]
 russian government : NOUN
 russian meddling : NOUN
 safe location : NOUN
+safe route : NOUN
 sales manager : NOUN
 sales team : NOUN
 saturday and sunday : NAVB
@@ -1370,6 +1387,7 @@ scratching their heads : ADJ
 search-only mission : NOUN
 season opener : NOUN
 second thoughts : NOUN[:plur]
+secret prison : NOUN
 seemingly insurmountable : ADJ
 seize control : VERB
 selectable : ADJ
@@ -1400,6 +1418,7 @@ shopping season : NOUN
 showed no signs of : VERB[^ed]
 sightseeing tour : NOUN
 signal rocket : NOUN
+signature project : ADJ
 significant sign : NOUN
 since then : ADV[~cnj]
 slbm : NOUN
@@ -1537,6 +1556,7 @@ traditional clothing : NOUN
 traffic stop : NOUN
 travel conditions : NOUN[:plur]
 trump campaign : NOUN
+trump presidency : NOUN
 tweetstorm : NOUN
 u.s. charts : NOUN[:plur]
 u.s. forces : NOUN[:plur]
@@ -1553,6 +1573,7 @@ ultraconservatism : NOUN
 ultraconservative dogma : NOUN
 uncompromising stances : NOUN[:plur]
 under any circumstances : ADV
+under construction : ADJ
 under the country’s flag : ADV
 undercover sting operation : NOUN
 understated : VERB[^ed] - -1
@@ -1714,8 +1735,9 @@ another front in the culture wars : NOUN
 armed with fresh ammunition : ADJ
 arnona : NOUN
 attacks on twitter : NOUN[:plur]
-block his power : VERB
+block his power grab : VERB
 body of water called Jamun Bodi : NOUN
+busy roadway : NOUN
 British city : NOUN
 Central Michigan University dormitory : NOUN
 comedic : ADJ
@@ -1884,6 +1906,7 @@ long-past  : ADJ
 long-undervalued : ADJ
 luke-warm : ADJ
 media blitz : NOUN
+miami-dade : ADJ
 mid-air : NOUN
 mid-century : ADJ
 millimeter-wave : ADJ
@@ -1918,6 +1941,7 @@ post-September 11th : ADJ
 pro-saudi : ADJ
 pro-Trump : ADJ
 question-and-answer forum : NOUN
+re-elect : VERB
 re-evaluate : VERB
 rear-drive : ADJ
 rebel-held : ADJ
@@ -2132,6 +2156,7 @@ Federal Open Market Committee : NOUN[:*r]
 Ferguson : NOUN
 Fla : NOUN
 Flannery : NOUN
+Florida International University : NOUN
 Flynn : NOUN
 Forbes : NOUN
 Fox News : NOUN
@@ -2151,6 +2176,7 @@ George Washington University : NOUN
 George Will : NOUN
 Georgian : NOUN
 Getty Center arts complex : NOUN
+Gina Haspel : NOUN
 Golden State Warriors : NOUN
 Gov. Jerry Brown : NOUN
 Grand Staircase-Escalante : NOUN
@@ -14145,6 +14171,8 @@ income statement : NOUN
 income tax : NOUN
 income tax bracket : NOUN
 income tax return : NOUN
+incoming : NOUN - -4
+incoming : ADJ
 incompetence : NOUN
 incompetent : NOUN
 incompetent : ADJ
