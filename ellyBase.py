@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 24mar2018 CPM
+# ellyBase.py : 26mar2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -499,12 +499,12 @@ class EllyBase(object):
         if k == 0:
             k = 1                      # must have at least one char in token
 
-        print 'break at k=' , k
+#       print 'break at k=' , k
         kl = len(s)
         if  k + 1 < kl and s[k] == '+' and s[k+1] == ' ':
             k += 1                     # recognize possible prefix
 
-        print 'len(s)=' , kl , 'k=' , k , 's=', s
+#       print 'len(s)=' , kl , 'k=' , k , 's=', s
 
 #       print '_lookUp@4 buffer=' , self.sbu.buffer
         mr = self._scanText(k)         # text matching in various ways
@@ -513,9 +513,9 @@ class EllyBase(object):
         suf = mr[2]                    # any suffix removed in matching
 #       print '_lookUp@5 buffer=' , self.sbu.buffer
         s = self.sbu.buffer
-        print 'k=' , k
-        print 'scan result mx=' , mx , 'chs=' , chs , 'suf=' , suf
-        print 'len(s)=' , len(s) , 's=' , s
+#       print 'k=' , k
+#       print 'scan result mx=' , mx , 'chs=' , chs , 'suf=' , suf
+#       print 'len(s)=' , len(s) , 's=' , s
 
         if ( k < mx or
              k == mx and suf != '' ):  # next word cannot produce token as long as already seen?
@@ -541,20 +541,20 @@ class EllyBase(object):
 #           print 'queue:' , len(self.ptr.queue)
             return True
 
-        print 'mx=' , mx
+#       print 'mx=' , mx
         wsk = self.sbu.buffer[:k]
         cap = ellyChar.isUpperCaseLetter(wsk[0])
-        print 'wsk=' , wsk
+#       print 'wsk=' , wsk
 #       print 'queue before=' , len(self.ptr.queue)
         rws = u''.join(wsk)
         found = self.ptr.createPhrasesFromDictionary(rws.lower(),False,cap)
         if not found:
-            print 'not found, k=' , k
+#           print 'not found, k=' , k
             if k > mx and k > 1 and ellyChar.isEmbeddedCombining(rws[-1]):
                 k -= 1
                 rws = rws[:-1]
                 found = self.ptr.createPhrasesFromDictionary(rws.lower(),False,cap)
-        print 'found in dictionary=' , found
+#       print 'found in dictionary=' , found
         if found or mx > 0:            # match found in dictionary or by text scan
             if not found:
                 k = mx                 # if by text scan, must make token longer
@@ -583,13 +583,13 @@ class EllyBase(object):
             self.ctx.addTokenToListing(to)  # add token to listing for sentence
             return True
 
-        print '[' + rws + ']' , 'still unrecognized'
+#       print '[' + rws + ']' , 'still unrecognized'
 
         chx = rws[0]                   # special hyphen check
         if chx == '-' and k > 1:
-            print 'look in  internal dictionary'
+#           print 'look in  internal dictionary'
             if self.ptr.createPhrasesFromDictionary(chx,False,False):
-                print 'found!'
+#               print 'found!'
                 to = ellyToken.EllyToken(chx)  # treat hyphen as token
                 self.ctx.addTokenToListing(to) # add it to token list
                 self.sbu.skip()                # remove from input
@@ -597,7 +597,7 @@ class EllyBase(object):
 
         to = self._extractToken(mx)    # single-word matching with analysis with lookup
 
-        print 'to=' , unicode(to)
+#       print 'to=' , unicode(to)
         if to == None:                 # if no match, we are done and will return
             return False if mx == 0 else True  # still success if _scanText() found something
         self.ptr.lastph.lens = to.getLength()
