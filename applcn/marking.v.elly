@@ -257,6 +257,7 @@ made available : VERB[^ed]
 made clear : VERB[^ed,dit]
 made it clear : VERB[^ed,dit]
 made its way : VERB[^ed]
+made no secret of : VERB[^ed]
 made public : VERB[^ed]
 made use of : VERB[^ed]
 made up : VERB[^ed,*x]
@@ -318,6 +319,7 @@ permanent security clearance : NOUN
 phenomena : NOUN[:plur]
 phone interview : NOUN
 placed on lockdown : VERB[^ed]
+plans to attend : VERB
 played live : VERB[^ed]
 pleaded guilty : VERB[^ed]
 pleased : VERB[^ed]
@@ -526,6 +528,7 @@ went_on : VERB[^ed] =went on
 5 minutes : NOUN
 a billion : QUAN
 a bit : NOUN[:det] - -2
+a broader bid : NOUN
 a claim : NOUN[:join]
 a day later : ADV
 a dozen : NUM
@@ -622,6 +625,7 @@ as of late : ADV
 as part of : CONJ
 as result of : CONJ
 as though : CONJ
+as to how : CONJ
 as well as : CONJ
 aside from : PREP
 asset purchase : NOUN
@@ -709,6 +713,7 @@ can and will : AUXL
 can be of help : VERB
 can last : VERB
 canadian/american : ADJ
+capable of : PREP['of]
 capital spending : NOUN
 capt. : NOUN
 carefully script : VERB
@@ -789,8 +794,10 @@ deductibility : NOUN
 delaware company : NOUN
 demilitarization : NOUN
 democratic republic : NOUN
+deputy director general : NOUN
 development team : NOUN
 die roll : NOUN
+digital ethics : NOUN
 digital minister : NOUN
 diplomatic overture : NOUN
 diplomatic script : NOUN
@@ -1012,6 +1019,7 @@ in the coming weeks : ADV
 in the community : ADV
 in the event of : PREP
 in the first place : ADV
+in the last few months : ADV
 in the mix : ADV
 in the name of : PREP
 in the report : ADV
@@ -1022,6 +1030,7 @@ in the wake of : PREP
 in the workplace : ADJ
 in the works : ADJ
 in violation of : PREP
+in what : CONJ
 in which : CONJ[@rel]
 in width : ADV[~trlg] [$deg] 0
 in years past : ADV
@@ -1171,6 +1180,7 @@ military support : NOUN
 mischaracterize : VERB
 mischaracterization : NOUN
 missile firing table : NOUN
+missile program : NOUN
 missile system : NOUN
 missile technology : NOUN
 moneychanger : NOUN
@@ -1186,6 +1196,7 @@ more than half a : QUAN
 most decisive sign : NOUN
 most of : QUAN
 move into a new phase : VERB
+move so fast : VERB
 mr. : NOUN
 mrs. : NOUN
 ms. : NOUN
@@ -1193,6 +1204,7 @@ multilateralism : NOUN
 multimillion-dollar : ADJ
 multiple : QUAN - +2
 multiple, multiple : ADJ
+multiple times : ADV
 muslim tradition : NOUN
 namesake company : NOUN
 nano : NOUN
@@ -1222,6 +1234,7 @@ no one : PRO
 non-disclosure agreement : NOUN
 nonconsensual : ADJ
 north korean leader : NOUN
+north american affairs : NOUN[:plur]
 northern california : NOUN
 not only : CONJ
 not the only : QUAN
@@ -1293,6 +1306,7 @@ peer harassment : NOUN
 pence : NOUN
 pending adjustment : NOUN
 percent chance : NUM[:*r]
+personal profile : NOUN
 perturber : NOUN
 piano four hands : NOUN
 ping pong : NOUN
@@ -1311,6 +1325,7 @@ political deadlock : NOUN
 political future : NOUN
 political gathering : NOUN
 political influence : NOUN
+political intelligence : NOUN
 political opponent : NOUN
 political view : NOUN
 political world : NOUN
@@ -1401,6 +1416,7 @@ russian diplomat : NOUN
 russian officials : NOUN[:plur]
 russian government : NOUN
 russian meddling : NOUN
+russian military : NOUN
 russian spy : NOUN
 safe location : NOUN
 safe route : NOUN
@@ -1415,6 +1431,7 @@ search-only mission : NOUN
 season opener : NOUN
 second thoughts : NOUN[:plur]
 secret prison : NOUN
+security council sanction : NOUN
 seemingly insurmountable : ADJ
 seize control : VERB
 selectable : ADJ
@@ -1452,6 +1469,7 @@ slbm : NOUN
 small business : NOUN
 so many : QUAN[@ind]
 so that : CONJ
+social media : NOUN
 social reform : NOUN
 social security system : NOUN
 social studies : NOUN
@@ -1590,6 +1608,7 @@ tweetstorm : NOUN
 u.s. charts : NOUN[:plur]
 u.s. forces : NOUN[:plur]
 u.s. government compound : NOUN
+u.s. mainland : NOUN
 u.s. market : NOUN
 u.s. official  : NOUN
 u.s. officials : NOUN[:plur]
@@ -1801,6 +1820,7 @@ made the ask : VERB[^ed]
 making a false statement to the FBI : VERB[^ing]
 missing submarine : NOUN
 new and bloodier : ADJ
+nuclear and missile : ADJ
 on what the news agency described as : CONJ
 picked him up : VERB[^ed]
 public plea for help : NOUN
@@ -2184,6 +2204,7 @@ Emmanuel : NOUN
 Enzo : NOUN
 Errol : NOUN
 ESPN : NOUN
+Esterly : NOUN
 EU Withdrawal Bill : NOUN
 F.B.I. official : NOUN
 Evans : NOUN
@@ -2266,6 +2287,7 @@ Jenny Lumet : NOUN
 Jeremy : NOUN
 Jersey Shore : NOUN
 Jerusalem church leaders : NOUN[:plur]
+Jerusalem’s Old City : NOUN
 John Beck : NOUN
 John Conyers : NOUN
 John Podesta : NOUN
@@ -20831,6 +20853,7 @@ program : VERB
 program library : NOUN
 program line : NOUN
 program music : NOUN
+programme : NOUN
 progress : NOUN
 progress : VERB
 progress report : NOUN
@@ -28763,7 +28786,10 @@ wildfire : NOUN
 wildlife : NOUN
 wildly : ADV
 willfully : ADV
+willing : NOUN
+willing : ADJ
 willing and able : ADJ
+willingly : ADV
 willingness : NOUN
 wilson : NOUN
 wilson cloud chamber : NOUN
