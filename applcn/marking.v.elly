@@ -40,6 +40,7 @@ became : VERB[^ed,chng]
 been charged with : VERB[^ed]
 been seated at : VERB[^ed]
 began : VERB[^ed,proc,*x]
+begun : VERB[^ed]
 being taken to the hospital : VERB[^ing]
 believed to be : VERB[^ed]
 believed to have : AUXL
@@ -71,6 +72,7 @@ carried out : VERB[^ed]
 carrying out : VERB[^ing]
 caught : VERB[^ed] [$trns] 0
 children : NOUN[:plur]
+chosen : VERB[^ed] - +2
 circulating : VERB[^ing]
 civil rights : NOUN
 classified : VERB[^ed] - +2
@@ -133,6 +135,7 @@ everything that’s ever happened : NOUN
 exciting : VERB[^ing]
 exerting influence : VERB[^ing]
 faces a dilemma : VERB
+fallen : VERB[^ed]
 fastest : ADJ
 fatally shooting : VERB[^ing]
 feeding : VERB[^ing]
@@ -184,6 +187,7 @@ giving rise : VERB[^ing]
 goes on recess : VERB
 going for a walk : VERB[^ing]
 going to end up : VERB[^ing]
+gone : VERB[^ed]
 gone into effect : VERB[^ed]
 gone out of business : VERB[^ed]
 gonna : AUXL
@@ -372,6 +376,7 @@ retaken : VERB[^ed]
 returned the conversation back : VERB[^ed]
 revolved around : VERB[^ed]
 rewritten : VERB[^ed]
+risen : VERB[^ed]
 rock-wielding : ADJ
 rolled back : VERB[^ed]
 rose : VERB[^ed,*x] - +2
@@ -424,6 +429,7 @@ stayed on the line : VERB[^ed]
 steered clear : VERB[^ed]
 stepping down : VERB[^ing]
 stimulating : VERB[^ing]
+stolen : VERB[^ed]
 stood : VERB[^ed]
 striking back at : VERB[^ing]
 substantial issues : NOUN[:plur]
@@ -437,6 +443,7 @@ suspected of : CONJ
 sweeping : VERB[^ing]
 swooping : ADJ[%ing] - +1
 swooping : VERB[^ing]
+sworn : VERB[^ed]
 taken : VERB[^ed]
 taken a knee : VERB[^ed]
 taking place : VERB[^ing]
@@ -2273,6 +2280,7 @@ Eli : NOUN
 Elon Musk : NOUN
 Emmanuel : NOUN
 Enzo : NOUN
+Erdogan : NOUN
 Errol : NOUN
 ESPN : NOUN
 Esterly : NOUN
@@ -2376,6 +2384,7 @@ Kardashian : NOUN
 Katie Sierra : NOUN
 Katrina : NOUN
 Keaton : NOUN
+Kevin : NOUN
 Kevin Brady : NOUN
 Kim Jong Un : NOUN
 Kislyak : NOUN
@@ -2483,6 +2492,7 @@ Paul George Dandan : NOUN
 Paula Yacoubian : NOUN
 PBS : NOUN
 PBS program : NOUN
+Pelosi : NOUN
 Person of the Year : NOUN
 Pfaffian : ADJ
 Phillips : NOUN
@@ -2824,6 +2834,7 @@ acid rock : NOUN
 acid test : NOUN
 acid value : NOUN
 acknowledge : VERB[^dit]
+acknowledgement : NOUN
 acne : NOUN
 acquaintance : NOUN
 acquire : VERB
@@ -2943,9 +2954,11 @@ adverse : ADJ
 adverse opinion : NOUN
 adverse witness : NOUN
 advertise : VERB
+advertiser : NOUN
 advice : NOUN
 advise : VERB
 adviser : NOUN
+advisor : NOUN
 advisory : NOUN
 advisory board : NOUN
 advisory service : NOUN
@@ -3414,7 +3427,9 @@ appointment : NOUN
 appointment book : NOUN
 appointment calendar : NOUN
 appreciate : VERB
+appreciative : ADJ
 apprehend : VERB
+apprehension : NOUN
 apprentice : NOUN
 apprentice : VERB
 approach : NOUN
@@ -3645,6 +3660,7 @@ assess : VERB
 assessment : NOUN
 asset : NOUN
 assign : VERB
+assignment : NOUN
 assist : NOUN
 assist : VERB
 assistance : NOUN
@@ -5237,6 +5253,7 @@ brave : NOUN
 brave : VERB
 brave : ADJ
 brave out : VERB
+bravely : ADV
 brazil : NOUN
 brazilian : NOUN
 brazilian : ADJ - +2
@@ -6558,6 +6575,7 @@ chorus : NOUN
 chorus : VERB
 chorus girl : NOUN
 chorus line : NOUN
+chosen : NOUN
 christ : NOUN
 christ within : NOUN
 christian : NOUN
@@ -6791,6 +6809,7 @@ clearance sale : NOUN
 cleared : ADJ
 clearly : ADV
 cleric : NOUN
+clerical : ADJ
 clerk : NOUN
 clerk : VERB
 cleveland : NOUN
@@ -7593,6 +7612,7 @@ consulate : NOUN
 consult : VERB
 consultancy : NOUN
 consultant : NOUN
+consultation : NOUN
 consume : VERB
 consumer : NOUN
 consumer credit : NOUN
@@ -7971,6 +7991,7 @@ coverly : ADV
 covert : NOUN
 covert : ADJ
 covert operation : NOUN
+covertly : ADV
 covet : VERB
 cow : NOUN
 cow : VERB
@@ -8007,6 +8028,7 @@ crap : NOUN
 crap : VERB
 crap game : NOUN
 crap shooting : NOUN
+crapper : NOUN
 crash : NOUN
 crash : VERB
 crash barrier : NOUN
@@ -8857,12 +8879,14 @@ destruction : NOUN
 destruction fire : NOUN
 destructive : ADJ
 detach : VERB
+detachment : NOUN
 detail : NOUN
 detail : VERB
 detail file : NOUN
 detain : VERB
 detainee : NOUN
 detect : VERB
+detective : NOUN
 detention : NOUN
 detention camp : NOUN
 detention cell : NOUN
@@ -9922,6 +9946,7 @@ election commission : NOUN
 election day : NOUN
 election district : NOUN
 election fraud : NOUN
+electoral : ADJ
 electorate : NOUN
 electric : ADJ
 electric arc : NOUN
@@ -10436,6 +10461,7 @@ exam paper : NOUN
 examination : NOUN
 examination paper : NOUN
 examine : VERB
+examiner : NOUN
 example : NOUN
 exasperate : VERB
 exasperation : NOUN
@@ -10450,6 +10476,7 @@ exceptional : ADJ
 excess : NOUN
 excess : ADJ
 excessive : ADJ
+excessively : ADV
 exchange : NOUN
 exchange : VERB
 exchange premium : NOUN
@@ -10585,6 +10612,7 @@ export : NOUN
 export : VERB
 export credit : NOUN
 export duty : NOUN
+exporter : NOUN
 expose : NOUN
 expose : VERB
 exposition : NOUN
@@ -10776,6 +10804,7 @@ fall over : VERB
 fall over backwards : VERB
 fall short : VERB
 fall short of : VERB
+fallen : ADJ
 false : ADJ
 false : ADV
 false alarm : NOUN
@@ -12587,6 +12616,7 @@ goatee : NOUN
 gobble : NOUN
 gobble : VERB
 gobble up : VERB
+gobbler : NOUN
 god : NOUN
 god tree : NOUN
 goiter : NOUN
@@ -13436,6 +13466,7 @@ health professional : NOUN
 healthcare : NOUN
 healthcare delivery : NOUN
 healthcare facility : NOUN
+healthy : ADJ
 hear  : VERB [$trns] 0
 hear out : VERB
 heard : VERB[^ed] [$trns] 0
@@ -14338,6 +14369,7 @@ incorrect : ADJ
 incorrectly : ADV
 increase : NOUN
 increase : VERB
+increasingly : ADV
 incredibility : NOUN
 incredible : ADJ
 incredulous : ADJ
@@ -14397,6 +14429,7 @@ indian trail : NOUN
 indiana : NOUN
 indicate : VERB
 indication : NOUN
+indicator : NOUN
 indict : VERB
 indictment : NOUN
 indigenous : ADJ
@@ -14477,7 +14510,9 @@ information theory : NOUN
 information warfare : NOUN
 infrastructure : NOUN
 infringe : VERB
+infringement : NOUN
 ingest : VERB
+inglorious : ADJ
 ingredient : NOUN
 inhabit : VERB
 inherent : ADJ
@@ -14603,6 +14638,7 @@ institution : NOUN
 institutional : ADJ
 institutionalize : VERB
 instruct : VERB
+instruction : NOUN
 instrument : NOUN
 instrument : VERB
 instrument panel : NOUN
@@ -15610,6 +15646,7 @@ law officer : NOUN
 law practice : NOUN
 law school : NOUN
 law student : NOUN
+lawful : ADJ
 lawmaker : NOUN
 lawmaking : NOUN
 lawn : NOUN
@@ -16362,6 +16399,7 @@ lotus tree : NOUN
 loud : ADJ
 loud : ADV
 loud pedal : NOUN
+loudly : ADV
 louis : NOUN
 louis iv : NOUN
 louis sullivan : NOUN
@@ -16712,6 +16750,7 @@ margin call : NOUN
 marginal : ADJ
 marginal cost : NOUN
 marginal utility : NOUN
+marginalize : VERB
 maria : NOUN
 marijuana : NOUN
 marijuana cigarette : NOUN
@@ -18165,9 +18204,9 @@ neutrality : NOUN
 neutralize : VERB
 nevada : NOUN
 never : ADV
-never, ever : ADV
 never again : ADV
 never truly : ADV
+never, ever : ADV
 nevertheless : ADV
 new : ADJ[%to] - +1
 new : ADV - -1
@@ -18283,6 +18322,8 @@ night soil : NOUN
 night terror : NOUN
 night vision : NOUN
 night watch : NOUN
+nightly : ADJ
+nightly : ADV
 nightmare : NOUN
 nihon : NOUN
 nile : NOUN
@@ -20418,6 +20459,7 @@ positive identification : NOUN
 positive pole : NOUN
 positive reinforcer : NOUN
 positive stimulus : NOUN
+positively : ADV
 possess : VERB
 possession : NOUN
 possessor : NOUN
@@ -20671,13 +20713,13 @@ presence chamber : NOUN
 present : ADJ
 present : NOUN
 present : VERB
-present-day : ADJ
 present moment : NOUN
 present perfect : NOUN
 present perfect tense : NOUN
 present progressive : NOUN
 present progressive tense : NOUN
 present tense : NOUN
+present-day : ADJ
 presentation : NOUN
 presenter : NOUN
 preserve : NOUN
@@ -20948,6 +20990,7 @@ progressive tense : NOUN
 prohibit : VERB
 project : NOUN
 project : VERB
+projection : NOUN
 projector : NOUN
 prolific : ADJ
 prominent : ADJ
@@ -21429,6 +21472,7 @@ rage : NOUN
 rage : VERB
 raid : NOUN
 raid : VERB
+raider : NOUN
 rail : NOUN
 rail : VERB
 rail fence : NOUN
@@ -21671,6 +21715,7 @@ reason : VERB
 reason out : VERB
 reasonable : ADJ
 reasonable care : NOUN
+reasonably : ADV
 reassert : VERB
 reassertion : NOUN
 reassign : VERB
@@ -22103,6 +22148,8 @@ resident physician : NOUN
 residential : ADJ
 residential area : NOUN
 residential district : NOUN
+residual : NOUN
+residual : ADJ
 residue : NOUN
 resign : VERB
 resignation : NOUN
@@ -22362,12 +22409,14 @@ rip van winkle : NOUN
 rise : NOUN
 rise : VERB
 rise up : VERB
+risen : ADJ
 riser : NOUN
 riser main : NOUN
 riser pipe : NOUN
 risk : NOUN
 risk : VERB
 risk capital : NOUN
+risky : ADJ
 rite : NOUN
 ritual : NOUN
 ritual : ADJ
@@ -23746,6 +23795,7 @@ shop mechanic : NOUN
 shop talk : NOUN
 shop window : NOUN
 shoplift : VERB
+shopper : NOUN
 shore : NOUN
 shore : VERB
 shore bird : NOUN
@@ -24276,6 +24326,7 @@ slop chest : NOUN
 slop jar : NOUN
 slope : NOUN
 slope : VERB
+sloppy : ADJ
 slot : NOUN
 slot : VERB
 slot machine : NOUN
@@ -25268,6 +25319,7 @@ statute mile : NOUN
 statute title : NOUN
 staunch : VERB
 staunch : ADJ
+staunchly : ADV
 staunchyly : ADV
 stave : NOUN
 stave : VERB
@@ -25750,6 +25802,7 @@ successful : ADJ
 successfully : ADV
 succession : NOUN
 successive : ADJ
+successor : NOUN
 succumb : VERB
 suck : NOUN
 suck : VERB
@@ -26090,6 +26143,7 @@ swoop up : VERB
 sword : NOUN
 sword dance : NOUN
 sword stick : NOUN
+sworn : ADJ
 sydney : NOUN
 sydney harbor bridge : NOUN
 syllable : NOUN
@@ -27184,6 +27238,7 @@ trail : VERB
 trail bike : NOUN
 trail boss : NOUN
 trail head : NOUN
+trailer : NOUN
 train : NOUN
 train : VERB
 train depot : NOUN
@@ -27238,6 +27293,7 @@ transportation company : NOUN
 transportation secretary : NOUN
 transportation security administration : NOUN
 transportation system : NOUN
+transporter : NOUN
 trap : NOUN
 trap : VERB
 trap block : NOUN
@@ -27556,9 +27612,9 @@ two : ADJ
 two dollar bill : NOUN
 two dozen : NUM
 two iron : NOUN
+two year old : NOUN
 two-lane : ADJ
 two-motor : ADJ
-two year old : NOUN
 tycoon : NOUN
 tyler : NOUN
 type : NOUN[:*x]
@@ -27878,6 +27934,7 @@ urban renewal : NOUN
 urban sprawl : NOUN
 urge : NOUN
 urge : VERB
+urgency : NOUN
 urgent : ADJ
 urgently : ADV
 urine : NOUN
@@ -28005,6 +28062,7 @@ vegetable wax : NOUN
 vegetate : VERB
 vegetation : NOUN
 vehement : ADJ
+vehemently : ADV
 vehicle : NOUN
 vehicle traffic : NOUN
 vendor : NOUN
@@ -29207,6 +29265,7 @@ wrong : ADJ
 wrong : ADV
 wrongdoer : NOUN
 wrongdoing : NOUN
+wrongful : ADJ
 wrought : ADJ
 wrought iron : NOUN
 wry : ADJ
