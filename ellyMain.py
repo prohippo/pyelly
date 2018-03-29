@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyMain.py : 01mar2017 CPM
+# ellyMain.py : 28mar2017 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -132,6 +132,7 @@ while True:
     bo = eb.translate(b,plsb)    # translate to output
     if bo == None:
         print >> sys.stderr, 'ERROR: no translation\n\n'
+        eb.ptr.dumpAll()
         continue
     out = u''.join(bo)
 
