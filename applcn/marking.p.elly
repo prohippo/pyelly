@@ -165,6 +165,8 @@
 
  0 !&@-&#/* NOUN -1
 
+ 0 fm&#to&#$ NUM[:cnj] -1
+
 # en dashes in patterns below!
 
  0 ##–##$   NUM -1

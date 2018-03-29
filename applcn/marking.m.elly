@@ -72,6 +72,10 @@ Be_Mobile -> BeMobile
 
 !@@._&#-!@@._&#$ -> \\1.\\2TO\\3.\\4
 
+from_#_to_&# -> fm\\2TO\\5
+from_##_to_&# -> fm\\2TO\\5
+from_###_to_&# -> fm\\2TO\\5
+
 #
 # WARNING! the three rules below has en dashes in its pattern and
 #          substitution, and their space wildcards will replace

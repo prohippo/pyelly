@@ -22,6 +22,7 @@ alleged incident : NOUN
 allegedly shot : VERB[^ed]
 angrier : ADJ
 announced : VERB[^ed]
+apartment buildings : NOUN[:plur]
 appeared : VERB[^ed]
 appeared to defend : VERB[^ed]
 appeared to stem from : VERB[^ed]
@@ -48,6 +49,7 @@ best known : VERB[^ed]
 bit : VERB[^ed,*x]
 bloodier : ADJ
 bloodiest : ADJ
+bombing : VERB[^ing] - -2
 bookended : VERB[^ed] - -1
 born : VERB[^ed] - +2
 bosniak : NOUN
@@ -136,6 +138,7 @@ fatally shooting : VERB[^ing]
 feeding : VERB[^ing]
 feeding off : VERB[^ing]
 feet : NOUN[:plur] [&msr] 0
+fell : VERB[^ed]
 felled : VERB[^ed]
 felt forced to choose : VERB[^ed]
 field-tested : VERB[^ed]
@@ -145,6 +148,7 @@ financing : VERB[^ing]
 fired off : VERB[^ed]
 first-degree murder : NOUN
 fishermen : NOUN[:plur]
+flash flooding : NOUN
 fled : VERB[^ed]
 flew : VERB[^ed]
 flown : VERB[^ed]
@@ -225,7 +229,9 @@ i heard : ADJ [$trlg,prd] 0
 identified as : VERB[^ed]
 ideological divide : NOUN
 ideologically divided : ADJ
+inches : NOUN[:plur]
 infighting : NOUN
+injured : VERB[^ed]
 inspired : VERB[^ed]
 interesting : VERB[^ing]
 internationals : NOUN[:plur]
@@ -236,7 +242,8 @@ is currently considered : VERB
 is on again : VERB
 is on track to : AUXL
 it was watching : VERB[^aux,ed,ing]
-kept :VERB[^ed]
+kept : VERB[^ed]
+killed : VERB[^ed]
 knew : VERB[^ed]
 knew nothing at all : VERB
 knives : NOUN[:plur]
@@ -283,6 +290,7 @@ missing : VERB[^ing]
 misspoke : VERB[^ed]
 mixed : VERB[^ed]
 months in : IADV
+more than doubled : VERB[^ed]
 moved into a new phase : VERB[^ed]
 mps : NOUN[:plur]
 multibillion : ADJ
@@ -294,11 +302,11 @@ nearest : ADJ
 news anchor : NOUN
 news release : NOUN
 noblemen : NOUN[:plur]
-obtaining : VERB[^ing] - +2
 not been reimbursed : VERB[^ed]
-obtaining : ADJ - -4
+obtaining : NOUN - -2
+obtaining : VERB[^ing]
+obtaining : ADJ - -6
 officials : NOUN[:plur]
-oil minister : NOUN
 ongoing investigation : NOUN
 opening : VERB[^ing]
 opposing : VERB[^ing]
@@ -509,7 +517,6 @@ went_on : VERB[^ed] =went on
 
 # # # # definitions missing from WordNet
 
--er than expected : ADV
 1 another : PRO =one another
 1 last time : ADV
 1 of : QUAN[@*x] =one of
@@ -519,13 +526,16 @@ went_on : VERB[^ed] =went on
 1st lady : NOUN
 1st mention : NOUN
 1st mention : VERB
+2 dozen : NUM
 20 to 30 : NUM
 2014 games : NOUN[:plur]
 2016 election : NOUN
 2016 election meddling : NOUN
 24/7 : ADJ - +2
 2nd half : NOUN
+3 dozen : NUM
 5 minutes : NOUN
+GPS monitoring : NOUN
 a billion : QUAN
 a bit : NOUN[:det] - -2
 a broader bid : NOUN
@@ -535,6 +545,7 @@ a dozen : NUM
 a far cry from : PREP
 a few : QUAN[@ind] [!mltp] 0
 a few hundred : NUM
+a few months later : ADV
 a few of : QUAN
 a group of : QUAN
 a hundred : NUM
@@ -576,9 +587,9 @@ all at once : ADV
 all but certain : ADJ
 all evening : ADV
 all of : QUAN
+all of whom : CONJ
 all of you : PRO
 all of you here : PRO
-all of whom : CONJ
 all that : ALLTHT
 allegedly being : BE[^ing]
 along with : PREP
@@ -586,8 +597,8 @@ also known as : CONJ
 american embassy : NOUN
 among the first : ADJ
 amounted to : VERB[^ed]
-ancient tomb : NOUN
 an in : NOUN
+ancient tomb : NOUN
 and even : CONJ
 and now : CONJ
 and so : CONJ
@@ -641,11 +652,11 @@ at the behest of : PREP
 at the heart of : PREP
 at the request of : PREP
 at the same time as : CONJ
+at the top of : PREP
 at this point : ADV
 at this point in time : ADV
 at this stage : ADV
 at this time : ADV
-at the top of : PREP
 athletic conference : NOUN
 authoritarian governance : NOUN
 authorities : NOUN[:plur]
@@ -653,6 +664,7 @@ autoplay : NOUN
 avoid errors : VERB
 back in : PREP
 bail deal : NOUN
+banking dynasty : NOUN
 bat and ball : ADJ
 beatle : NOUN
 because of : PREP
@@ -666,8 +678,8 @@ bigger and bigger : ADJ
 binding commitment : NOUN
 birther : NOUN
 black boy : NOUN
-black girl : NOUN
 black community : NOUN
+black girl : NOUN
 blanket of snow : NOUN
 body of water : NOUN
 bond market : NOUN
@@ -696,10 +708,10 @@ by now : ADV
 byline : NOUN
 cabinet meeting : NOUN
 cabinet meetings : NOUN[:plur]
+cabinet session : NOUN
 cable news program : NOUN
 cable news programming : NOUN
 cable tv : NOUN
-cabinet session : NOUN
 cable tv channel : NOUN
 cakeshop : NOUN
 calm and collected : ADJ [$cmpd] 0
@@ -712,6 +724,7 @@ campus police : NOUN
 can and will : AUXL
 can be of help : VERB
 can last : VERB
+can pay for : VERB
 canadian/american : ADJ
 capable of : PREP['of]
 capital spending : NOUN
@@ -728,8 +741,9 @@ century bc : NOUN
 certainly true : ADJ
 cheer on : VERB
 chemical symbol : NOUN
-child custody hearing : NOUN
 chief cabinet secretary : NOUN
+child custody hearing : NOUN
+chinese observer : NOUN
 christian doctrine : NOUN
 christian values : NOUN[:plur]
 christmas cheer : NOUN
@@ -762,13 +776,15 @@ congressional lawmakers : NOUN[:plur]
 conservative activist : NOUN
 consider the fate of : VERB
 consigliere : NOUN
+conspiracy theory : NOUN
 constitutional limit : NOUN
-country music’s hometown : NOUN
+construction permit : NOUN
 corporate bond market : NOUN
 corrections officer : NOUN
 corruption case : NOUN
 corruption investigation : NOUN
 counterproliferation : NOUN
+country music’s hometown : NOUN
 court document : NOUN
 criminal case : NOUN
 current events : NOUN[:plur]
@@ -778,6 +794,7 @@ cyberattack : NOUN
 cyberbully : NOUN
 cyberbullying : NOUN
 cybersecurity : NOUN
+damaging storm report : NOUN
 dance company : NOUN
 dance number : NOUN
 data analytics : NOUN
@@ -818,7 +835,9 @@ dominant male : NOUN
 doorbuster : NOUN
 doorbusting : ADJ
 down the block : ADJ [$trlg] 0
+dozens of : QUAN
 dr. : NOUN
+draft treaty : NOUN
 drumroll : NOUN
 dubstep : NOUN
 due to : PREP
@@ -862,6 +881,7 @@ express in words : VERB
 extreme far right : NOUN
 extreme far right : ADJ
 facebook page : NOUN
+facebook video : NOUN
 factional : ADJ
 factional fighting : NOUN
 fake news : NOUN
@@ -885,6 +905,7 @@ feed & farm supply store : NOUN
 ferry service : NOUN
 fever swamp : NOUN
 few hundred : NUM
+final agreement : NOUN
 final approval : NOUN
 final leg : NOUN
 financial watchdog agency : NOUN
@@ -940,7 +961,6 @@ gov. : NOUN
 governing coalition : NOUN
 governing party : NOUN
 government figure : NOUN
-GPS monitoring : NOUN
 grant aid : NOUN
 grant aid project : NOUN
 great western : ADJ
@@ -949,14 +969,15 @@ growth strategy : NOUN
 guilty plea : NOUN
 guitar bridge : NOUN
 gun violence : NOUN
-half its : QUAN
 half inch : NOUN
+half its : QUAN
 half of : QUAN
 hall of fame : NOUN
 hall of fame-inducted : ADJ
 hallway conversation : NOUN
 halt plans : VERB
 hard boiled : ADJ
+hard border : NOUN
 hard rock : NOUN
 has to do : VERB
 hashtag : NOUN
@@ -981,6 +1002,7 @@ homeported : ADJ
 homiletics : NOUN
 hot 100 : NUM
 hot 100 : NOUN
+hours after : CONJ
 house of delegates : NOUN
 house speaker : NOUN
 hurricane activity : NOUN
@@ -998,8 +1020,8 @@ in as much as : CONJ
 in business : ADJ
 in case of : PREP
 in conjunction with : PREP
-in connection with : PREP
 in connection to : PREP
+in connection with : PREP
 in exchange for : PREP
 in fact : ADV
 in fact, : ADV
@@ -1020,6 +1042,7 @@ in the community : ADV
 in the event of : PREP
 in the first place : ADV
 in the last few months : ADV
+in the metro area : ADV
 in the mix : ADV
 in the name of : PREP
 in the report : ADV
@@ -1044,6 +1067,7 @@ independent state : NOUN
 industry executive : NOUN
 informal meeting : NOUN
 informal meetings : NOUN[:plur]
+information leading to an arrest : NOUN
 innocuously : ADV
 innovation fund : NOUN
 ins and outs : NOUN[:plur]
@@ -1053,6 +1077,7 @@ insurgent group : NOUN
 intelligence study : NOUN
 intelligence summary : NOUN
 intelligence survey : NOUN
+intensive talks : NOUN[:plur]
 interchange point : NOUN
 interferometry : NOUN
 internal and external : ADJ
@@ -1066,6 +1091,7 @@ into the night : ADV
 into whether : CONJ
 irrespective of whether : CONJ
 is in violation of : VERB
+is now clear that : VERB
 is presenting itself as : VERB
 is sticking by : VERB
 islamic army : NOUN
@@ -1087,6 +1113,7 @@ it is obvious : ELEM
 it up and came : VERB[^ed]
 jain : NOUN
 jet fuel : NOUN
+jewish billionaire : NOUN
 jihadi : NOUN
 job well done : NOUN
 join forces with : VERB
@@ -1106,11 +1133,15 @@ know nothing at all : VERB
 ku klux klansmen : NOUN[:plur]
 lackluster record : NOUN
 land corridor : NOUN
+land survey : NOUN
+large areas of : QUAN
+large storm system : NOUN
 last fall : NAVB
 last june : NAVB
 last known location : NOUN
+last may : NAVB
 last month : NAVB[:det]
-land survey : NOUN
+last night : NAVB
 last week : NAVB[:det]
 last year : NAVB[:det]
 late night host : NOUN
@@ -1122,6 +1153,7 @@ law enforcement personnel : NOUN
 lead surgeon : NOUN
 leaps and bounds : NOUN[:plur]
 legal peril : NOUN
+legal text : NOUN
 legislative office : NOUN
 less like : PREP
 less than : ADV[~mod] [$deg] 0
@@ -1148,14 +1180,13 @@ male and female : NOUN
 male and female : ADJ - +1
 malware : NOUN
 man to man : ADV
-many of : QUAN
-many of them : PRO
-may of us : PRO
-many of you : PRO
 manga : NOUN
 manmade : ADJ
 mannerist : NOUN
+many of : QUAN
+many of them : PRO
 many of whom : PRO
+many of you : PRO
 marchese : NOUN
 marine corps : NOUN
 marine corps air station : NOUN
@@ -1163,10 +1194,11 @@ mass killing : NOUN
 may be : BE
 may have : AUXL
 may have been : AUXL
+may of us : PRO
 media outlet : NOUN
+media pack : NOUN
 media research center : NOUN
 medical textbook : NOUN
-media pack : NOUN
 memo to staff : NOUN
 metallicity : NOUN
 meth lab : NOUN
@@ -1177,8 +1209,8 @@ midtempo : ADJ
 militant group : NOUN
 military exercise : NOUN
 military support : NOUN
-mischaracterize : VERB
 mischaracterization : NOUN
+mischaracterize : VERB
 missile firing table : NOUN
 missile program : NOUN
 missile system : NOUN
@@ -1195,6 +1227,7 @@ more than : ADV[~mod] [$deg] 0
 more than half a : QUAN
 most decisive sign : NOUN
 most of : QUAN
+most of them : PRO
 move into a new phase : VERB
 move so fast : VERB
 mr. : NOUN
@@ -1203,8 +1236,8 @@ ms. : NOUN
 multilateralism : NOUN
 multimillion-dollar : ADJ
 multiple : QUAN - +2
-multiple, multiple : ADJ
 multiple times : ADV
+multiple, multiple : ADJ
 muslim tradition : NOUN
 namesake company : NOUN
 nano : NOUN
@@ -1216,6 +1249,7 @@ national interest : NOUN
 national security : NOUN
 national security adviser : NOUN
 national security interest : NOUN
+natural disaster : NOUN
 navy submarine : NOUN
 neighborhood : ADJ - -2
 neighborhood bar : NOUN
@@ -1226,15 +1260,15 @@ new research : NOUN
 newspaper best : ADJ
 next week : NAVB[:det]
 next year : NAVB[:det]
-no. 1 seed : NOUN
-no. 2 : NOUN
 no little : ADJ
 no matter how : CONJ
 no one : PRO
+no. 1 seed : NOUN
+no. 2 : NOUN
 non-disclosure agreement : NOUN
 nonconsensual : ADJ
-north korean leader : NOUN
 north american affairs : NOUN[:plur]
+north korean leader : NOUN
 northern california : NOUN
 not only : CONJ
 not the only : QUAN
@@ -1249,19 +1283,21 @@ official version : NOUN
 offline : ADJ
 offseason : ADJ
 often enough : ADV
+oil minister : NOUN
 old record : NOUN
 old tradition : NOUN
+on Monday morning : ADV
 on aspects of : PREP
 on high alert : ADJ
 on hold : ADJ
 on hold : ADV
 on how : CONJ
 on monday : DATE
-on wednesday : ADV
 on saturday : DATE
 on sunday : DATE
 on the other end : ADV
 on through : PREP
+on wednesday : ADV
 on whether : CONJ
 on which : CONJ
 once in a while : ADV
@@ -1278,8 +1314,8 @@ other than : CONJ
 our lady : NOUN
 out of : PREP['div]
 out of step with : PREP
-outside the jurisdiction of : PREP
 outdated technology : NOUN
+outside the jurisdiction of : PREP
 over from : PREP
 over the course of : PREP
 over the last year : ADV
@@ -1288,8 +1324,8 @@ over there : ADV
 over whether : CONJ
 overland mail : NOUN
 overwhelming consensus : NOUN
-panel commissioner : NOUN
 palestinian negotiator : NOUN
+panel commissioner : NOUN
 pants on fire : ADJ
 parallel investigation : NOUN
 participating in : PREP
@@ -1338,14 +1374,14 @@ power center : NOUN
 power grab : NOUN
 pr announcement : NOUN
 presentation system : NOUN
-presidential election : NOUN
-presuppositionalism : NOUN
 presidential campaign : NOUN
+presidential election : NOUN
 presidential speech : NOUN
+presuppositionalism : NOUN
 primary challenge : NOUN
 prior to : PREP
-private sector : NOUN
 private meeting : NOUN
+private sector : NOUN
 profound grief : NOUN
 programmable : ADJ
 prohibited cargo : NOUN
@@ -1364,6 +1400,7 @@ public sector: NOUN
 pump spray : NOUN
 punchline : NOUN
 purchasing power : NOUN
+put it through : VERB
 pv : ADJ
 pyroclastic : ADJ
 questionable method : NOUN
@@ -1413,10 +1450,10 @@ round at : PREP
 rpg : NOUN
 russian ambassador : NOUN
 russian diplomat : NOUN
-russian officials : NOUN[:plur]
 russian government : NOUN
 russian meddling : NOUN
 russian military : NOUN
+russian officials : NOUN[:plur]
 russian spy : NOUN
 safe location : NOUN
 safe route : NOUN
@@ -1452,7 +1489,6 @@ sexual orientation : NOUN
 sexually harass : VERB
 sgt. : NOUN
 shadow banking : NOUN
-skaky start : NOUN
 sharpen its focus : VERB
 she claims she : PRO
 shipping lane : NOUN
@@ -1465,6 +1501,7 @@ signal rocket : NOUN
 signature project : ADJ
 significant sign : NOUN
 since then : ADV[~cnj]
+skaky start : NOUN
 slbm : NOUN
 small business : NOUN
 so many : QUAN[@ind]
@@ -1475,14 +1512,15 @@ social security system : NOUN
 social studies : NOUN
 socialist federal republic : NOUN
 soldier-turned-defector : NOUN
+some kind of : ADJ
 some of : QUAN
 some of them : PRO
 some of which : CONJ
 something like this : NOUN
-sought by authorities : ADJ
-southeast asian : ADJ
 somewhere along : PREP
 sorry about that : ADJ [$cmpd] 0
+sought by authorities : ADJ
+southeast asian : ADJ
 southern california : NOUN
 southern city : NOUN
 southwest to : PREP
@@ -1505,6 +1543,7 @@ step foot : VERB
 storytelling : NOUN
 straight after : CONJ
 streetlamp : NOUN
+stress testing : NOUN
 stunning upset : NOUN
 submillimeter  : ADJ
 such a  : QUAN
@@ -1515,6 +1554,7 @@ supply train : NOUN
 surprise disclosure : NOUN
 surprise launch : NOUN
 surrounding area : NOUN
+suspect or suspects : NOUN
 suspected criminal wrongdoing : NOUN
 swarm robot : NOUN
 systemic injustice : NOUN
@@ -1524,9 +1564,10 @@ taken steps : VERB[^ed]
 talk-show host : NOUN
 tangible evidence : NOUN
 tangible step : NOUN
-tax reform : NOUN
 tax legislation : NOUN
 tax overhaul : NOUN
+tax record : NOUN
+tax reform : NOUN
 tech company : NOUN
 technical information : NOUN
 teenage boy : NOUN
@@ -1566,12 +1607,14 @@ the possibility that : NCTH
 the several : QUAN[@ind]
 the sidelines : NOUN
 the starting point : NOUN
+the string of : QUAN
 the truth is, : MISC
 the united states : NOUN[:plur]
 their presence : NOUN
 there is no hope : NOUN
 they too : PRO
 this month : NAVB[:det]
+this morning : NAVB
 this time : ADV
 this week : ADV
 this weekend : NAVB[:det]
@@ -1584,11 +1627,11 @@ time of year : NAVB
 time travel : NOUN
 time travel : VERB
 title track : NOUN
+to Snapchat : ADV
 to be able to : TO
 to before : CONJ
 to not : TO
 to or from : PREP
-to Snapchat : ADV
 to the satisfaction of : PREP
 to where : CONJ
 token black : NOUN
@@ -1604,6 +1647,7 @@ traffic stop : NOUN
 travel conditions : NOUN[:plur]
 trump campaign : NOUN
 trump presidency : NOUN
+turn themselves in : VERB
 tweetstorm : NOUN
 u.s. charts : NOUN[:plur]
 u.s. forces : NOUN[:plur]
@@ -1623,12 +1667,16 @@ uncompromising stances : NOUN[:plur]
 under any circumstances : ADV
 under construction : ADJ
 under the country’s flag : ADV
+under the shadow of : PREP
 undercover sting operation : NOUN
 understated : VERB[^ed] - -1
 underutilization : NOUN
 underutilize : VERB
 union force : NOUN
 unlikely to be persuaded : ADJ
+unpalatable deal : NOUN
+unscheduled sweep : NOUN
+unsettled weather : NOUN
 unwilling to : TO
 up for reelection : ADJ
 up slightly : ADJ
@@ -1649,15 +1697,15 @@ very little : ADV - -1
 very pleased : ADJ
 very unfortunate : ADJ
 viral video : NOUN
-war memorial : NOUN
 war dead : NOUN
+war memorial : NOUN
 warfighter : NOUN
 water body : NOUN
 water use : NOUN
 weeks in : IADV
 weightiest : ADJ
-what i have stood for : NOUN
 what he said was a : DET
+what i have stood for : NOUN
 what is today : ADV
 what it has learned : NOUN
 what was supposed to be : ADV
@@ -1668,7 +1716,9 @@ white supremacist : ADJ
 who authorities say : CONJ
 whoa : MISC
 widely known : ADJ
+wild conspiracy theory : NOUN
 willing to : TO
+win agreement : VERB
 wine review : NOUN
 winter weather advisory : NOUN
 with great sadness and a broken heart : ADV
@@ -1680,6 +1730,7 @@ within range of : PREP
 without so much as : CONJ
 won : NOUN - -1
 world’s most : ADV
+would have no choice but to : AUXL
 yuletide spirit : NOUN
 zone training : NOUN
 
@@ -1777,13 +1828,17 @@ most as many : ADJ
 "(C)" for confidential : NOUN
 8 day visit : NOUN
 a — what appears to be a — : DET
+a little bit of a : QUAN
+has a little bit of a different characteristic : VERB
 acting so strangely : VERB[^ing]
+after BREXIT : ADV
 alabama woman : NOUN
 announced the discovery of : VERB
 another front in the culture wars : NOUN
 armed with fresh ammunition : ADJ
 arnona : NOUN
 attacks on twitter : NOUN[:plur]
+based off : VERB[^ed]
 block his power grab : VERB
 body of water called Jamun Bodi : NOUN
 brand new : ADJ
@@ -1803,9 +1858,12 @@ davis jr. : NOUN
 davis sr. : NOUN
 deconfliction : ADJ
 defend himself : VERB
+different characteristic : NOUN
 disappeared from the fever swamps : VERB[^ed]
 effectively acknowledging : VERB[^ing]
 end efforts to rescue : VERB
+EU benefits : NOUN[:plur]
+failed meteorologist : NOUN
 Florida district office : NOUN
 Florida men : NOUN[:plur]
 Florida neighborhood : NOUN
@@ -1814,6 +1872,7 @@ group travel discount : NOUN
 half-apologies : NOUN[:plur]
 historically GOP district : NOUN
 improperly collected information : NOUN
+in an interview : ADV
 incorrectly reported : VERB[^ed]
 James Eric Davis Jr. : NOUN
 made the ask : VERB[^ed]
@@ -1823,6 +1882,7 @@ new and bloodier : ADJ
 nuclear and missile : ADJ
 on what the news agency described as : CONJ
 picked him up : VERB[^ed]
+potentially unpalatable deal : NOUN
 public plea for help : NOUN
 rebel-held eastern Ghouta suburb of Damascus : NOUN
 Rick saccone : NOUN
@@ -1835,12 +1895,14 @@ supt : NOUN
 Syrian capital Damascus : NOUN
 talked to his mother : VERB
 Tampa police : NOUN
+that killed : THTV
 the country’s struggle : NOUN[:det]
 the group Wikileaks : NOUN[:det]
 to flowed : VERB[^infn]
 told reporters : VERB[^ed]
 touched her sexually : VERB[^ed]
 took him to a hospital : VERB[^ed]
+Trayon White Sr. : NOUN
 Trump’s tweet : NOUN
 U.S. Special Forces base : NOUN
 US soldier : NOUN
@@ -1870,6 +1932,7 @@ anti-discrimination law : NOUN
 anti-Iran : ADJ
 anti-LGBT : ADJ
 anti-muslim : ADJ
+anti-semitic : ADJ
 asian-american : ADJ
 assembly-line : ADJ
 asylum-seeker : NOUN
@@ -1907,6 +1970,7 @@ do-whatever-you-want : ADJ
 dramatic scene : NOUN
 dual-use : ADJ
 e-mail : NOUN
+east-central : ADJ
 eat-in : ADJ
 english-speaking : ADJ
 faith-based : ADJ
@@ -2001,9 +2065,13 @@ pro-Trump : ADJ
 question-and-answer forum : NOUN
 re-elect : VERB
 re-evaluate : VERB
+real-estate venture : ADJ
 rear-drive : ADJ
 rebel-held : ADJ
 record-setting : ADJ
+rent-controlled : ADJ
+rent-regulated : ADJ
+rent-regulated unit : NOUN
 republican-led : ADJ
 remote-control : NOUN
 round-up : NOUN
@@ -2055,6 +2123,7 @@ watered-down : ADJ
 wax-work : NOUN
 weather-eye : NOUN
 weeks-long : ADJ
+widely-read : ADJ
 wind-driven : ADJ
 world-leading : ADJ
 world-renowned : ADJ
@@ -2071,6 +2140,7 @@ ABC News : NOUN
 AC/DC : NOUN
 Andrew Weissman : NOUN
 Adrian : NOUN
+AP : NOUN
 AT&T : NOUN
 Advanced Step in Innovative Mobility : NOUN
 Agence France-Presse : NOUN
@@ -2083,6 +2153,7 @@ American Billboard Hot 100 : NOUN[:plur]
 American Civil Liberties Union : NOUN
 Amor Victorious : NOUN
 Analytica : NOUN
+Andrew McCabe : NOUN
 Andrzej : NOUN
 Andras : NOUN
 Andy Lack : NOUN
@@ -2213,6 +2284,7 @@ Facebook user : NOUN
 Fairchild : NOUN
 Farhan Haq : NOUN
 FBI : NOUN
+FBI Deputy Director : NOUN
 FBI Director : NOUN
 F.C.C. : NOUN
 Federal Aviation Administration : NOUN
@@ -2241,6 +2313,7 @@ George Will : NOUN
 Georgian : NOUN
 Getty Center arts complex : NOUN
 Gina Haspel : NOUN
+Global Times : NOUN
 Golden State Warriors : NOUN
 Gov. Jerry Brown : NOUN
 Grand Staircase-Escalante : NOUN
@@ -2496,14 +2569,17 @@ Team Lacoste : NOUN
 Texans : NOUN
 The Church of the Holy Sepulchre : NOUN
 the city of Ventura : NOUN
+the Dakotas : NOUN[:plur]
 the Emoluments Clause : NOUN
 the former Yugoslavia : NOUN
+the Great Plains : NOUN
 The Hollywood Reporter : NOUN
 the Mid-Atlantic : NOUN
 The Northwest Indiana Times : NOUN
 the only right choice : NOUN
 The Spokesman-Review : NOUN
 The Times : NOUN
+the European Union : NOUN
 The Verge : NOUN [&prop] 0
 Theresa May : NOUN
 Thomas Aquinas College : NOUN
@@ -2550,6 +2626,7 @@ Walmart : NOUN
 Walmart Supercenter : NOUN
 Walter : NOUN
 Warner Brothers : NOUN
+Washington, D.C. : NOUN
 Washington Post : NOUN
 Washington State : NOUN
 Water Management District : NOUN
@@ -3289,7 +3366,7 @@ anxiety reaction : NOUN
 anxious : ADJ
 anymore : ADV
 anyway : ADV
-anywhere : ADV
+anywhere : ADV[~prox]
 apache : NOUN
 apache dance : NOUN
 apache devil dance : NOUN
@@ -3863,6 +3940,7 @@ backpack : NOUN
 backpack : VERB
 backside : NOUN
 backslide : VERB
+backsliding : NOUN
 backstop : NOUN
 backstop : VERB
 backtrack : VERB
@@ -4934,6 +5012,7 @@ bomber aircrew : NOUN
 bomber crew : NOUN
 bomber harris : NOUN
 bomber jacket : NOUN
+bombing : NOUN
 bond : NOUN
 bond : VERB
 bond certificate : NOUN
@@ -6215,6 +6294,7 @@ character assassination : NOUN
 character reference : NOUN
 character set : NOUN
 character witness : NOUN
+characteristic : NOUN
 characterize : VERB
 charge : NOUN
 charge : VERB - +2
@@ -10717,6 +10797,7 @@ false vocal cord : NOUN
 false vocal fold : NOUN
 false witness : NOUN
 falsehood : NOUN
+falsify : VERB
 fame : NOUN
 famed : ADJ
 familiar : NOUN - -1
@@ -20972,6 +21053,7 @@ provisional : ADJ
 provisional : ADV
 provisional irish republican army : NOUN
 provocation : NOUN
+provocative : ADJ
 provoke : VERB
 prowess : NOUN
 proxy : NOUN
@@ -24663,6 +24745,7 @@ southernmost : ADJ
 southwest : NOUN - -2
 southwest : ADJ
 southwest : ADV[~dir,trlg]
+southwestern : ADJ
 sovereign : NOUN
 sovereign : ADJ
 sovereign immunity : NOUN
@@ -26653,6 +26736,7 @@ threat : NOUN
 threaten : VERB
 three : NOUN
 three : ADJ
+three dozen : NUM
 three year old : NOUN
 three-day event : NOUN
 three-lane : ADJ
@@ -27470,7 +27554,7 @@ twit : VERB
 two : NOUN
 two : ADJ
 two dollar bill : NOUN
-two dozen : NOUN
+two dozen : NUM
 two iron : NOUN
 two-lane : ADJ
 two-motor : ADJ

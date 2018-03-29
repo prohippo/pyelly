@@ -278,6 +278,17 @@ _
     append <>that</>
     end
 __
+g:ELEM->THTV
+_
+  (that)
+  append <vclu><verb>
+  split
+  left
+  back
+  delete 5 <
+  merge
+  append </verb></vclu>
+__
 g:ELEM->NCLU[:-dit,-dat, prep,-poss]
 #      ?>>?
  l[&msr]>>[!ln,rn,ppps]
@@ -4023,4 +4034,9 @@ _
   append </date>
 __
 g:APOS->PUNC[|stop,emb,*x] APOS
+__
+g:NUM[:cnj]->ADV[~prox] NUM[:cnj]
+  >>--
+_
+  (twob)
 __
