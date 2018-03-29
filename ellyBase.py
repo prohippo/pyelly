@@ -438,7 +438,7 @@ class EllyBase(object):
             self.ptr.showTokens(sys.stderr)
             return None
 
-#       print 'evaluate' , 
+#       print 'evaluate'
         if not self.ptr.evaluate(self.ctx):
             print >> sys.stderr , 'generative semantic failure'
             return None                 # translation fails
