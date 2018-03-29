@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 26mar2018 CPM
+# ellyBase.py : 28mar2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -425,9 +425,12 @@ class EllyBase(object):
                     break
 #               print 'BASE@3 =' , self.sbu.buffer
                 self.ptr.digest()       # process queue to get all ramifications
+#               print 'digested phrase limit=' , self.ptr.phlim
                 self.ptr.restartQueue() # for any leading zero production
-#               print self.ctx.countTokensInListing() , 'tokens after digestion'
+#               print self.ctx.countTokensInListing() , 'token(s) after digestion'
+#               print 'digested phrases=' ,self.ptr.phlim
 #               print 'BASE@4 =' , self.sbu.buffer
+                self.sbu.skipSpaces()
 
             self.ptr.finishUpX()        # for any trailing ... grammar rule
         except ellyException.ParseOverflow:
@@ -435,9 +438,11 @@ class EllyBase(object):
             self.ptr.showTokens(sys.stderr)
             return None
 
+#       print 'evaluate' , 
         if not self.ptr.evaluate(self.ctx):
+            print >> sys.stderr , 'generative semantic failure'
             return None                 # translation fails
-#       print 'parse succeeds'
+#       print 'parse and evaluation succeeds'
         self.ctx.mergeBuffers()
 #       self.ctx.printStatus()
 
@@ -492,9 +497,6 @@ class EllyBase(object):
 #       print 'expanded len=' , len(s)
         if len(s) == 0: return True    # macros can empty out buffer
 
-#       print unicode(self.sbu)
-
-#       print '_lookUp@3 buffer=' , self.sbu.buffer
         k = self.sbu.findBreak()       # find extent of first component for lookup
         if k == 0:
             k = 1                      # must have at least one char in token
@@ -506,12 +508,12 @@ class EllyBase(object):
 
 #       print 'len(s)=' , kl , 'k=' , k , 's=', s
 
-#       print '_lookUp@4 buffer=' , self.sbu.buffer
+#       print '_lookUp@3 buffer=' , self.sbu.buffer
         mr = self._scanText(k)         # text matching in various ways
         mx  = mr[0]                    # overall maximum match length
         chs = mr[1]                    # any vocabulary element matched
         suf = mr[2]                    # any suffix removed in matching
-#       print '_lookUp@5 buffer=' , self.sbu.buffer
+#       print '_lookUp@4 buffer=' , self.sbu.buffer
         s = self.sbu.buffer
 #       print 'k=' , k
 #       print 'scan result mx=' , mx , 'chs=' , chs , 'suf=' , suf
@@ -538,14 +540,14 @@ class EllyBase(object):
             if suf != '':
                 if not ellyChar.isApostrophe(suf[1]):
                     to.dvdd = True     # must note suffix removal for token!
-#           print 'queue:' , len(self.ptr.queue)
+#           print 'only queue:' , len(self.ptr.queue)
             return True
 
 #       print 'mx=' , mx
+#       print 'plus queue:' , len(self.ptr.queue)
         wsk = self.sbu.buffer[:k]
         cap = ellyChar.isUpperCaseLetter(wsk[0])
 #       print 'wsk=' , wsk
-#       print 'queue before=' , len(self.ptr.queue)
         rws = u''.join(wsk)
         found = self.ptr.createPhrasesFromDictionary(rws.lower(),False,cap)
         if not found:
@@ -580,6 +582,7 @@ class EllyBase(object):
                     if ellyChar.isLetter(self.sbu.peek()):
                         self.sbu.prepend(' ')
                     self.sbu.prepend('-')
+#           print 'add' , unicode(to)
             self.ctx.addTokenToListing(to)  # add token to listing for sentence
             return True
 
@@ -944,10 +947,10 @@ if __name__ == '__main__':
 #       print 'txt=' , txt
         so.write('\n')
         lo = eb.translate(txt,True)
+        eb.ptr.dumpAll()
         if lo == None:
             print >> sys.stderr , '????'
         else:
-            eb.ptr.dumpAll()
             so.write('=[' + u''.join(lo) + ']\n')
 
     so.write('\n')
