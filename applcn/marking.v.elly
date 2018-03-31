@@ -30,8 +30,10 @@ appears to be : BE
 appears to be part of : VERB
 are likely to be : BE
 arrested and charged : VERB[^ed]
+arrested on a warrant : VERB[^ed]
 ate : VERB[^ed,*x]
 awaits trial : VERB
+backed off : VERB[^ed]
 banned from competing : VERB[^ed]
 based on : VERB[^ed,*x]
 be forthcoming about : VERB
@@ -41,6 +43,7 @@ been charged with : VERB[^ed]
 been seated at : VERB[^ed]
 began : VERB[^ed,proc,*x]
 begun : VERB[^ed]
+being looked at : VERB[^ing]
 being taken to the hospital : VERB[^ing]
 believed to be : VERB[^ed]
 believed to have : AUXL
@@ -66,8 +69,10 @@ brought to market : VERB[^ed]
 building : VERB[^ing,ptcl]
 buildings : NOUN[:plur]
 built : VERB[^ed] [$trns,noaj] +3
+called 911 to report : VERB[^ed]
 came : VERB[^ed,ptcl]
 came to light : VERB[^ed]
+cannot happen here : VERB
 carried out : VERB[^ed]
 carrying out : VERB[^ing]
 caught : VERB[^ed] [$trns] 0
@@ -90,6 +95,7 @@ continued fighting : VERB
 cordoned off : VERB[^ed]
 could be excused : VERB[^ed]
 cozying up : VERB[^ing]
+cracking down on : VERB[^ing]
 creating : VERB[^ing] - +1
 creating : ADJ[%ing] - -2
 criteria : NOUN[:plur]
@@ -185,6 +191,7 @@ getting : NOUN[:ing] - -2
 given : VERB[^ed]
 giving rise : VERB[^ing]
 goes on recess : VERB
+goes on the offensive : VERB
 going for a walk : VERB[^ing]
 going to end up : VERB[^ing]
 gone : VERB[^ed]
@@ -212,6 +219,7 @@ has to : AUXL[^s]
 have been taking place : VERB
 have had : VERB[^aux,hav]
 have nothing to do with : VERB
+have probable cause : VERB
 have to : AUXL[^to]
 having : HAVE[^ing]
 head wound : NOUN
@@ -233,12 +241,14 @@ i heard : ADJ [$trlg,prd] 0
 identified as : VERB[^ed]
 ideological divide : NOUN
 ideologically divided : ADJ
+illegally accepted : VERB[^ed]
 inches : NOUN[:plur]
 infighting : NOUN
 injured : VERB[^ed]
 inspired : VERB[^ed]
 interesting : VERB[^ing]
 internationals : NOUN[:plur]
+involved : VERB[^ed]
 irked that : VCTH[^ed]
 is a look at : VERB
 is no longer fit : VERB
@@ -312,6 +322,7 @@ obtaining : VERB[^ing]
 obtaining : ADJ - -6
 officials : NOUN[:plur]
 ongoing investigation : NOUN
+opened fire : VERB[^ed]
 opening : VERB[^ing]
 opposing : VERB[^ing]
 ordered held without bond : VERB[^ed]
@@ -349,12 +360,14 @@ previously fired : ADJ
 progresses : VERB[^s]
 promised : VERB[^ed]
 promised : ADJ
+pronounced dead : VERB[^ed]
 providing : NOUN[:ing] - -2
 providing : VERB[^ing] - +3
 published by buzzed : VERB[^ed]
 publishing : VERB[^ing]
 purchasing : VERB[^ing] - +1
 purchasing : ADJ[%ing] - -2
+put to sleep : VERB[^ed]
 racked up : VERB[^ed]
 raised fears of : VERB[^ed]
 ran : VERB[^ed]
@@ -403,6 +416,8 @@ setting up : VERB[^ing]
 she believed was : BE[^ed]
 shifted its focus to : VERB[^ed]
 shipping label : NOUN
+shook : VERB[^ed]
+shook up : VERB[^ed]
 shooting : VERB[^ing]
 shot : VERB[^ed] - +2
 shot and killed : VERB[^ed]
@@ -417,6 +432,7 @@ simplest : ADJ
 sitting : VERB[^ing]
 sold : VERB[^ed]
 sold off : VERB[^ed]
+sorting : VERB[^ing]
 sought : VERB[^ed]
 sought input : VERB[^ed]
 sparked fears of : VERB[^ed]
@@ -447,6 +463,7 @@ swooping : VERB[^ing]
 sworn : VERB[^ed]
 taken : VERB[^ed]
 taken a knee : VERB[^ed]
+taken into police custody : VERB[^ed]
 taking place : VERB[^ing]
 telecommunications : NOUN
 telecommunications : NOUN[:plur] - -1
@@ -469,6 +486,7 @@ top lieutenant : NOUN
 tore up : VERB[^ed]
 torn : VERB[^ed]
 tracking : VERB[^ing]
+troubled : VERB[^ed] - -2
 trying : VERB[^ing] - +1
 trying to make clear that : VERB[^ing]
 turned himself in : VERB[^ed]
@@ -479,6 +497,7 @@ undergone : VERB[^ed]
 unified : VERB[^ed]
 unaccounted for : ADJ
 unsolved mystery : NOUN
+utilised : VERB[^ed]
 values : VERB[^s]
 verify the authenticity of : VERB
 voting overwhelmingly : VERB[^ing]
@@ -488,6 +507,7 @@ walks away : VERB[^ing]
 wanting to see : VERB[^ing]
 warfighting : NOUN
 was a violation of : VERB[^ed]
+was behind bars : VERB[^ed]
 was culpable for : VERB[^ed]
 was intended to : AUXL[^ed]
 was known to be : BE[^ed]
@@ -582,6 +602,8 @@ according to : PREP
 achieve the ultimate deal : VERB
 achingly : ADV
 adm. : NOUN
+adult film star : NOUN
+adulterous affair : NOUN
 after all : CONJ[@*l]
 after he did, : ADV
 after it emerged that : CONJ
@@ -714,6 +736,7 @@ buying guide : NOUN
 by almost half : ADV[~trlg] [$deg,trlg] 0
 by far-right : PREP
 by nearly half : ADV[~trlg] [$deg,trlg] 0
+by name : ADV
 by now : ADV
 byline : NOUN
 cabinet meeting : NOUN
@@ -773,6 +796,7 @@ cold air : NOUN
 college graduate : NOUN
 colored slave : NOUN
 coming off of : PREP
+commercial terminal : NOUN
 communications director : NOUN
 communications suite : NOUN
 companion piece : NOUN
@@ -783,20 +807,25 @@ configurable : ADJ
 confirm the move : VERB
 confraternity : NOUN
 congressional lawmakers : NOUN[:plur]
+congressional leaders : NOUN[:plur]
 conservative activist : NOUN
 consider the fate of : VERB
 consigliere : NOUN
 conspiracy theory : NOUN
 constitutional limit : NOUN
 construction permit : NOUN
+container transport : NOUN
 corporate bond market : NOUN
 corrections officer : NOUN
 corruption case : NOUN
 corruption investigation : NOUN
 counterproliferation : NOUN
 country music’s hometown : NOUN
+county attorney : NOUN
+county jail : NOUN
 court document : NOUN
 criminal case : NOUN
+critically endangered species : NOUN
 current events : NOUN[:plur]
 cut ties with : VERB
 cyber : ADJ
@@ -812,6 +841,7 @@ data breach : NOUN
 day in a row : NOUN
 deadliest : ADJ
 deadly ambush : NOUN
+deadly explosion : NOUN
 deadly shooting : NOUN
 deadly shootings : NOUN[:plur]
 decades ago : ADV
@@ -865,6 +895,7 @@ early years : NOUN
 eastern europe : NOUN
 economic council : NOUN
 economic summit : NOUN
+election meddling : NOUN
 electric grid : NOUN
 electric truck : NOUN
 electrical grid : NOUN
@@ -1002,8 +1033,10 @@ helter skelter : NOUN
 here you go : VERB
 hi res : ADJ
 highest principles : NOUN[:plur]
+highly likely : ADV
 his or her : DEM
 hit job : NOUN
+hold a suspect in custody : VERB
 holster : VERB
 home detention : NOUN
 home to their families : ADV
@@ -1032,7 +1065,9 @@ in case of : PREP
 in conjunction with : PREP
 in connection to : PREP
 in connection with : PREP
+in critical condition : ADV
 in exchange for : PREP
+in fair condition : ADV
 in fact : ADV
 in fact, : ADV
 in favor of : PREP
@@ -1046,6 +1081,7 @@ in recent weeks : ADV [$deg,time] +1
 in recent years : ADV [$deg,time] +1
 in relations with : PREP
 in response to : PREP
+in serious condition : ADV
 in terms of : PREP
 in the coming weeks : ADV
 in the community : ADV
@@ -1162,8 +1198,11 @@ launch procedure : NOUN
 law enforcement personnel : NOUN
 lead surgeon : NOUN
 leaps and bounds : NOUN[:plur]
+legal challenge : NOUN
 legal peril : NOUN
+legal team : NOUN
 legal text : NOUN
+legal threat : NOUN
 legislative office : NOUN
 less like : PREP
 less than : ADV[~mod] [$deg] 0
@@ -1173,6 +1212,8 @@ like never before : ADV
 little more than : ADV[~mod] [$deg] 0
 litx : CONJ =lit.
 livestock waste : NOUN
+local hospital : NOUN
+local law enforcement : NOUN
 long term : NOUN
 lose contact with : VERB
 lt. : NOUN
@@ -1259,6 +1300,7 @@ national interest : NOUN
 national security : NOUN
 national security adviser : NOUN
 national security interest : NOUN
+natural causes : NOUN[:plur]
 natural disaster : NOUN
 navy submarine : NOUN
 neighborhood : ADJ - -2
@@ -1305,6 +1347,7 @@ on how : CONJ
 on monday : DATE
 on saturday : DATE
 on sunday : DATE
+on the condition of anonymity : ADV
 on the other end : ADV
 on through : PREP
 on wednesday : ADV
@@ -1373,9 +1416,11 @@ political gathering : NOUN
 political influence : NOUN
 political intelligence : NOUN
 political opponent : NOUN
+political scandal : NOUN
 political view : NOUN
 political world : NOUN
 pollution cleanup : NOUN
+poor health : NOUN
 porn star : NOUN
 possible attempt : NOUN
 possible defeat : NOUN
@@ -1391,6 +1436,7 @@ presuppositionalism : NOUN
 primary challenge : NOUN
 prior to : PREP
 private meeting : NOUN
+private party : NOUN
 private sector : NOUN
 profound grief : NOUN
 programmable : ADJ
@@ -1419,6 +1465,7 @@ quoted from : VERB
 raise the roof beam high : VERB
 rally support for : VERB
 rapidly melting : ADJ
+rapidly mounting : ADJ
 rebaptizer : NOUN
 recent attempt : NOUN
 recent trip : NOUN
@@ -1445,9 +1492,11 @@ results page : NOUN
 return to classes : VERB
 retweet : VERB
 rev. : NOUN
+reveal more details : VERB
 revolve around the question of : VERB
 rgb : ADJ
 rgb monitor : NOUN
+right before : CONJ
 right after : CONJ
 right choice : NOUN
 right now : ADV
@@ -1471,6 +1520,7 @@ sales manager : NOUN
 sales team : NOUN
 saturday and sunday : NAVB
 school community : NOUN
+school resource officer : NOUN
 scorched earth : ADJ
 scratching their heads : ADJ
 search tool : NOUN
@@ -1488,6 +1538,7 @@ sen. : NOUN
 senate candidate : NOUN
 senior general : NOUN
 senior level : NOUN
+sensitive conversation : NOUN
 serve as a placeholder : VERB
 service plan : NOUN
 servicemember : NOUN
@@ -1559,6 +1610,7 @@ submillimeter  : ADJ
 such a  : QUAN
 such an : QUAN
 such as : PREP
+sudden heart attack : NOUN
 supply chain : NOUN
 supply train : NOUN
 surprise disclosure : NOUN
@@ -1640,6 +1692,7 @@ title track : NOUN
 to Snapchat : ADV
 to be able to : TO
 to before : CONJ
+to its completion : ADV
 to not : TO
 to or from : PREP
 to the satisfaction of : PREP
@@ -1658,7 +1711,9 @@ travel conditions : NOUN[:plur]
 trump campaign : NOUN
 trump presidency : NOUN
 turn themselves in : VERB
+tv pundit : NOUN
 tweetstorm : NOUN
+u.s. attorney : NOUN
 u.s. charts : NOUN[:plur]
 u.s. forces : NOUN[:plur]
 u.s. government compound : NOUN
@@ -1675,6 +1730,7 @@ ultraconservatism : NOUN
 ultraconservative dogma : NOUN
 uncompromising stances : NOUN[:plur]
 under any circumstances : ADV
+under consideration : ADV
 under construction : ADJ
 under the country’s flag : ADV
 under the shadow of : PREP
@@ -1722,11 +1778,13 @@ what was supposed to be : ADV
 when asked by reporters : ADV
 whenever and wherever : CONJ
 white house official : NOUN
+white rhino : NOUN
 white supremacist : ADJ
 who authorities say : CONJ
 whoa : MISC
 widely known : ADJ
 wild conspiracy theory : NOUN
+will be able to do that : VERB
 willing to : TO
 win agreement : VERB
 wine review : NOUN
@@ -1737,6 +1795,7 @@ with little experience : ADJ
 with no regard to : CONJ
 with what : CONJ
 within range of : PREP
+without interference : ADV
 without so much as : CONJ
 won : NOUN - -1
 world’s most : ADV
@@ -1858,6 +1917,7 @@ Cambridge Analytica : NOUN
 carving-out : VERB[^ing]
 Central Michigan University dormitory : NOUN
 comedic : ADJ
+confrontational move : NOUN
 Conor Lamb : NOUN
 Delta spokesman : NOUN
 complex new modeling : NOUN
@@ -1877,6 +1937,7 @@ failed meteorologist : NOUN
 Florida district office : NOUN
 Florida men : NOUN[:plur]
 Florida neighborhood : NOUN
+former prosecutor : NOUN
 gun group : NOUN
 group travel discount : NOUN
 half-apologies : NOUN[:plur]
@@ -1897,6 +1958,7 @@ public plea for help : NOUN
 rebel-held eastern Ghouta suburb of Damascus : NOUN
 Rick saccone : NOUN
 Robert Forrest : NOUN
+Saint Mary : NOUN
 Sandra Himmel : NOUN
 scandalous affair : NOUN
 Scarborough intern Lori Klausutis : NOUN
@@ -1912,7 +1974,6 @@ to flowed : VERB[^infn]
 told reporters : VERB[^ed]
 touched her sexually : VERB[^ed]
 took him to a hospital : VERB[^ed]
-Trayon White Sr. : NOUN
 Trump’s tweet : NOUN
 U.S. Special Forces base : NOUN
 US soldier : NOUN
@@ -1934,6 +1995,7 @@ win leverage : VERB
 3-point-shooting : ADJ
 3-point shot : NOUN
 90-day : ADJ
+age-related : ADJ
 aisle-roaming : ADJ
 almost-indisputable : ADJ
 american-born : ADJ
@@ -1966,6 +2028,7 @@ code-breaking : ADJ
 cold war-era : NOUN
 consulate-general : NOUN
 cringe-worthy : ADJ
+cross-country : ADJ
 cul-de-sac : NOUN
 cul-de-sac street : NOUN
 custom-made : ADJ
@@ -2036,10 +2099,12 @@ long-expected : ADJ
 long-past  : ADJ
 long-undervalued : ADJ
 luke-warm : ADJ
+M-B-S : NOUN
 media blitz : NOUN
 miami-dade : ADJ
 mid-air : NOUN
 mid-century : ADJ
+military-grade : ADJ
 millimeter-wave : ADJ
 mixed-species : ADJ
 multi-disciplinary : ADJ
@@ -2092,6 +2157,7 @@ same-sex wedding : NOUN
 same-sex weddings : NOUN[:plur]
 scale-down : NOUN
 second-in-command : ADJ
+second-degree manslaughter : NOUN
 second-largest : ADJ
 security detail : NOUN
 self-deprecating : NOUN
@@ -2110,6 +2176,7 @@ surface-to-surface : ADJ
 tax-cut : ADJ
 tax-writing : ADJ
 tax-writing committee : NOUN
+third-degree murder : NOUN
 third-largest : ADJ
 three-day : ADJ
 three-point : ADJ
@@ -2246,6 +2313,7 @@ Coolio Earth Partnership : NOUN
 Corey Lewandowski : NOUN
 Crafty : NOUN
 Crater Lake : NOUN
+Crown Prince Mohammed bin Salman : NOUN
 Crystal River Middle School : NOUN
 Cubbies : NOUN[:plur]
 Customs and Border Protection : NOUN
@@ -2274,6 +2342,7 @@ DPRK : NOUN
 Duda : NOUN
 Dugs : NOUN
 Early Realist : ADJ
+Eastern Pacific Shipping : NOUN
 Ebay : NOUN
 Ebay order : NOUN
 Eclogues : NOUN
@@ -2290,8 +2359,8 @@ Errol : NOUN
 ESPN : NOUN
 Esterly : NOUN
 EU Withdrawal Bill : NOUN
-F.B.I. official : NOUN
 Evans : NOUN
+F.B.I. official : NOUN
 Facebook : NOUN
 Facebook user : NOUN
 Fairchild : NOUN
@@ -2301,8 +2370,10 @@ FBI Deputy Director : NOUN
 FBI Director : NOUN
 F.C.C. : NOUN
 Federal Aviation Administration : NOUN
+Federal Bureau of Alcohol, Tobacco, Firearms and Explosives : NOUN
 Federal Open Market Committee : NOUN[:*r]
 Fedex : NOUN
+Fedex center : NOUN
 Ferguson : NOUN
 Fla : NOUN
 Flannery : NOUN
@@ -2313,6 +2384,7 @@ Fox News : NOUN
 Francis : NOUN
 Franken : NOUN
 Freedom of the City award : NOUN
+French president : NOUN
 Fulmer : NOUN
 Furnariidae : NOUN
 G. E. : NOUN
@@ -2334,6 +2406,7 @@ Grand Staircase-Escalante : NOUN
 Grants Pass : NOUN
 Gridiron Club : NOUN
 Grey Advertising : NOUN
+Hapag-Lloyd company : NOUN
 HBO : NOUN
 HHS : NOUN
 HLN : NOUN
@@ -2459,6 +2532,7 @@ MSNBC : NOUN
 MTV : NOUN
 Mueller : NOUN
 Mugabe : NOUN
+Moammar Gaddafi : NOUN
 Murphy : NOUN
 Naval Criminal Investigative Service : NOUN
 NBA : NOUN
@@ -2467,14 +2541,15 @@ NBC News : NOUN
 NCAA : NOUN
 NCIS : NOUN
 NDA : NOUN
-NFL Network : NOUN
-NFL players' protest : NOUN
+Nicolas Sarkozy : NOUN
 Netanyahu : NOUN
 New Kensington : NOUN
 New York Times : NOUN
 New Yorker : NOUN
 News-Miner : NOUN
 NFL : NOUN
+NFL Network : NOUN
+NFL players' protest : NOUN
 Nicholas : NOUN
 Novaes : NOUN
 NPR : NOUN
@@ -2495,6 +2570,7 @@ Paris Climate Accord : NOUN
 Pall Mall : NOUN
 Paul Manafort : NOUN
 Paul George Dandan : NOUN
+Paul Ryan : NOUN
 Paula Yacoubian : NOUN
 PBS : NOUN
 PBS program : NOUN
@@ -2565,6 +2641,8 @@ Snapchat : NOUN
 SNL : NOUN
 Sochi : NOUN
 Social Democrat : NOUN
+South Asia : NOUN
+South Asia Port Terminal : NOUN
 South Florida : NOUN
 southern Texas : NOUN
 Space and Upper Atmospheric Research Commission : NOUN
@@ -2582,6 +2660,7 @@ Suiter : NOUN
 Symantec : NOUN
 Talkradio 790 KABC : NOUN
 TASS : NOUN
+Tex : NOUN
 Team Lacoste : NOUN
 Texans : NOUN
 The Church of the Holy Sepulchre : NOUN
@@ -2589,9 +2668,12 @@ the city of Ventura : NOUN
 the Dakotas : NOUN[:plur]
 the Emoluments Clause : NOUN
 the former Yugoslavia : NOUN
+the Frontier Post : NOUN
 the Great Plains : NOUN
 The Hollywood Reporter : NOUN
+the late Libyan Leader Moammar Gaddafi : NOUN
 the Mid-Atlantic : NOUN
+the News International : NOUN
 The Northwest Indiana Times : NOUN
 the only right choice : NOUN
 The Spokesman-Review : NOUN
@@ -2610,6 +2692,7 @@ Today Show : NOUN
 Tongo Tongo : NOUN
 Tom Cotton : NOUN
 Tran Dai Quang : NOUN
+Trayon White Sr. : NOUN
 Trudeau : NOUN
 Trump administration : NOUN
 Trump era : NOUN
@@ -5911,6 +5994,7 @@ camp meeting : NOUN
 camp out : VERB
 campaign : NOUN - +1
 campaign : VERB
+campaign finance law : NOUN
 campaign hat : NOUN
 campaigner : NOUN
 campus : NOUN
@@ -6256,6 +6340,7 @@ cell phone : VERB
 cell theory : NOUN
 cell wall : NOUN
 cellphone : NOUN
+cellular : ADJ
 cellulite : NOUN
 cement : NOUN
 cement : VERB
@@ -6554,6 +6639,7 @@ chief executive officer : NOUN
 chief financial officer : NOUN
 chief joseph : NOUN
 chief justice : NOUN
+chief of staff : NOUN
 chief petty officer : NOUN
 chief secretary : NOUN
 chiefly : ADV
@@ -15096,6 +15182,7 @@ involuntary : ADJ
 involuntary muscle : NOUN
 involuntary trust : NOUN
 involve : VERB [$trns] 0
+involved : ADJ
 involvement : NOUN
 invulnerability : NOUN
 invulnerable : ADJ
@@ -15632,6 +15719,7 @@ know : NOUN - -2
 know : VERB - +2
 know apart : VERB
 know nothing : NOUN
+knowingly : ADV
 knowledge : NOUN
 knowledge base : NOUN
 knowledge domain : NOUN
@@ -23283,6 +23371,7 @@ same-sex marriage : NOUN
 sample : NOUN
 sample : VERB
 sample distribution : NOUN
+san antonio : NOUN
 san diego : NOUN
 san francisco : NOUN
 san jose : NOUN
@@ -25071,6 +25160,7 @@ sort : NOUN
 sort : VERB
 sort out : VERB
 sort program : NOUN
+sorting : NOUN
 sos : NOUN
 soul : NOUN
 soul brother : NOUN
@@ -27885,6 +27975,7 @@ trouble : NOUN
 trouble : VERB
 trouble maker : NOUN
 trouble shooter : NOUN
+troubled : ADJ
 troupe : NOUN
 troy : NOUN
 troy ounce : NOUN
@@ -29192,6 +29283,7 @@ western : ADJ
 western australia : NOUN
 western church : NOUN
 western civilization : NOUN
+western country : NOUN
 western culture : NOUN
 western empire : NOUN
 western fence lizard : NOUN
@@ -29672,6 +29764,7 @@ worn spot : NOUN
 worry : NOUN
 worry : VERB
 worse : ADJ
+worsen : VERB
 worship : NOUN
 worship : VERB
 worshiper : NOUN
