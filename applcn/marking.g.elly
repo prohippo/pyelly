@@ -2858,9 +2858,6 @@ __
 d:another <- QUAN[@ind,adv]
 __
 
-d:there <- THERE
- >>+
-__
 d:there <- ADV
 __
 
@@ -4039,4 +4036,17 @@ g:NUM[:cnj]->ADV[~prox] NUM[:cnj]
   >>--
 _
   (twob)
+__
+
+g:ELEM->THAV
+  >>+
+_
+  (that)
+  append <adv>
+  split
+  left
+  back
+  delete 5 <
+  merge
+  append </adv>
 __

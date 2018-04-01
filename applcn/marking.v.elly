@@ -89,6 +89,8 @@ coaching : VERB[^ing]
 competing : VERB[^ing]
 competing : ADJ[%ing]
 confirmed : VERB[^ed] - +1
+connected : VERB[^ed] - -1
+connected to : VERB[^ed]
 continued : VERB[^ed]
 continued fighting : NOUN
 continued fighting : VERB
@@ -125,6 +127,7 @@ djs : NOUN[:plur]
 djs : VERB[^s]
 does : NOUN[:plur] - -1
 does : VERB[^s] - +1
+doing sweeps : VERB[^ing]
 doing work : VERB[^ing]
 done : VERB[^ed]
 done so : VERB[^ed]
@@ -251,6 +254,7 @@ internationals : NOUN[:plur]
 involved : VERB[^ed]
 irked that : VCTH[^ed]
 is a look at : VERB
+is going to be : VERB
 is no longer fit : VERB
 is currently considered : VERB
 is on again : VERB
@@ -313,6 +317,7 @@ murder trial : NOUN
 named : VERB[^ed] - +2
 named : ADJ - -4
 nearest : ADJ
+needed : VERB[^ed]
 news anchor : NOUN
 news release : NOUN
 noblemen : NOUN[:plur]
@@ -367,6 +372,7 @@ published by buzzed : VERB[^ed]
 publishing : VERB[^ing]
 purchasing : VERB[^ing] - +1
 purchasing : ADJ[%ing] - -2
+put it to : VERB[^ed]
 put to sleep : VERB[^ed]
 racked up : VERB[^ed]
 raised fears of : VERB[^ed]
@@ -435,6 +441,7 @@ sold off : VERB[^ed]
 sorting : VERB[^ing]
 sought : VERB[^ed]
 sought input : VERB[^ed]
+spared the worst : VERB[^ed]
 sparked fears of : VERB[^ed]
 speaking out against : VERB[^ing]
 spoke : VERB[^ed] - +2
@@ -454,6 +461,7 @@ supply cut : NOUN
 supplying : VERB[^ing] - +2
 supplying : NOUN[:ing] - -1
 supports the argument for : VERB
+supposed to : AUXL
 supreme leader : NOUN
 suspected drug abuse : NOUN
 suspected of : CONJ
@@ -612,6 +620,7 @@ afternoon and evening : NOUN
 against his will : ADV
 agricultural industry : NOUN
 ahead of : PREP
+akin to how : CONJ
 air force 1 : NOUN
 airstrike : NOUN
 alert level : NOUN
@@ -658,6 +667,7 @@ as a means of : CONJ
 as a result : CONJ
 as a result of : PREP
 as compared to : CONJ
+as could : CONJ
 as far as : CONJ
 as he saw fit : ADV
 as if : CONJ
@@ -817,6 +827,7 @@ construction permit : NOUN
 container transport : NOUN
 corporate bond market : NOUN
 corrections officer : NOUN
+corrupt regime : NOUN
 corruption case : NOUN
 corruption investigation : NOUN
 counterproliferation : NOUN
@@ -844,6 +855,7 @@ deadly ambush : NOUN
 deadly explosion : NOUN
 deadly shooting : NOUN
 deadly shootings : NOUN[:plur]
+debris flow : NOUN
 decades ago : ADV
 decent people : NOUN[:plur]
 decisive tilt : NOUN
@@ -918,6 +930,7 @@ executive producer : NOUN
 exercise of power : NOUN
 existential threat : NOUN
 exploratory talks : NOUN[:plur]
+explosives detection K9 team : NOUN
 express in words : VERB
 extreme far right : NOUN
 extreme far right : ADJ
@@ -939,6 +952,7 @@ federal approval : NOUN
 federal bureau : NOUN
 federal charge : NOUN
 federal ethics agency : NOUN
+federal law enforcement : NOUN
 federal level : NOUN
 federal prosecutor : NOUN
 federal republic : NOUN
@@ -966,6 +980,7 @@ foreign land : NOUN
 foreign ministry : NOUN
 foreign money : NOUN
 foreign policy advisor : NOUN
+foreign secretary : NOUN
 formal approval : NOUN
 former campaign manager : NOUN
 former employee : NOUN
@@ -1024,6 +1039,7 @@ has to do : VERB
 hashtag : NOUN
 hate group : NOUN
 have done so : VERB[^hav,ed]
+have no place : VERB
 head coach : NOUN
 head coaching : NOUN - +2
 heavy fighting : NOUN
@@ -1055,7 +1071,9 @@ hydro : ADJ - +2
 hyperinflation : NOUN
 illegal immigrant : NOUN
 immediate medical help : NOUN
+in a statement : ADV
 in addition to : PREP
+in all caps : ADJ
 in anticipation of : PREP
 in any way : ADV
 in area : ADV[~trlg] [$deg] 0
@@ -1166,6 +1184,8 @@ join forces with : VERB
 joint bail deal : NOUN
 judge, jury, and executioner : NOUN
 just a little bit : ADV
+just about all of : QUAN
+just about all of them : PRO
 just above : PREP
 just as : CONJ - -1
 just days after : ADV
@@ -1222,6 +1242,7 @@ lure shoppers through their doors : VERB
 magazine weekly : NOUN
 main lobby : NOUN
 mainstream media : NOUN
+major city : NOUN
 major doping scandal : NOUN
 major legislation : NOUN
 make available : VERB
@@ -1368,6 +1389,7 @@ our lady : NOUN
 out of : PREP['div]
 out of step with : PREP
 outdated technology : NOUN
+outlet for conservative voices : NOUN
 outside the jurisdiction of : PREP
 over from : PREP
 over the course of : PREP
@@ -1384,6 +1406,7 @@ parallel investigation : NOUN
 participating in : PREP
 particular focus : NOUN
 partners on the ground : NOUN
+party chairmain : NOUN
 pass rusher : NOUN
 patent assist : ADJ
 patriotic event : NOUN
@@ -1442,6 +1465,7 @@ profound grief : NOUN
 programmable : ADJ
 prohibited cargo : NOUN
 proof to the contrary : NOUN
+propaganda machine : NOUN
 propaganda video : NOUN
 properly designed : ADJ
 proportionally spaced : ADJ
@@ -1472,6 +1496,7 @@ recent trip : NOUN
 recent trouble : NOUN
 recording artist : NOUN
 red rock : NOUN
+reelection win : NOUN
 regardless of : PREP
 regional rival : NOUN
 regional security : NOUN
@@ -1485,6 +1510,7 @@ remote beach : NOUN
 remote town : NOUN
 renewable energy : NOUN
 republican leader : NOUN
+republican party chairman : NOUN
 rescue crew : NOUN
 research and development : NOUN
 research commission : NOUN
@@ -1581,6 +1607,7 @@ something like this : NOUN
 somewhere along : PREP
 sorry about that : ADJ [$cmpd] 0
 sought by authorities : ADJ
+south coast : NOUN
 southeast asian : ADJ
 southern california : NOUN
 southern city : NOUN
@@ -1624,6 +1651,7 @@ take on it : NOUN
 take-it-or-leave-it : ADJ
 taken steps : VERB[^ed]
 talk-show host : NOUN
+talking point : NOUN
 tangible evidence : NOUN
 tangible step : NOUN
 tax legislation : NOUN
@@ -1650,6 +1678,7 @@ than ever before : CMPC
 thanks to : PREP
 thanksgiving break : NOUN
 that some insist : THAT
+that there : THAV
 that year : NAVB[:det]
 thaw with russia : NOUN
 the above : ADJ
@@ -1770,6 +1799,7 @@ water body : NOUN
 water use : NOUN
 weeks in : IADV
 weightiest : ADJ
+wet, heavy snow : NOUN
 what he said was a : DET
 what i have stood for : NOUN
 what is today : ADV
@@ -1915,6 +1945,7 @@ British city : NOUN
 busy roadway : NOUN
 Cambridge Analytica : NOUN
 carving-out : VERB[^ing]
+CBS News : NOUN
 Central Michigan University dormitory : NOUN
 comedic : ADJ
 confrontational move : NOUN
@@ -1960,6 +1991,7 @@ Rick saccone : NOUN
 Robert Forrest : NOUN
 Saint Mary : NOUN
 Sandra Himmel : NOUN
+Santa Barbara : NOUN
 scandalous affair : NOUN
 Scarborough intern Lori Klausutis : NOUN
 sinai mosque : NOUN
@@ -1977,6 +2009,7 @@ took him to a hospital : VERB[^ed]
 Trump’s tweet : NOUN
 U.S. Special Forces base : NOUN
 US soldier : NOUN
+unfair and undemocratic : ADJ
 university police Chief Bill Yeagley : NOUN
 walkout of classes : NOUN
 weapons component : NOUN
@@ -2107,6 +2140,7 @@ mid-century : ADJ
 military-grade : ADJ
 millimeter-wave : ADJ
 mixed-species : ADJ
+much-needed : ADJ
 multi-disciplinary : ADJ
 nail-biter : NOUN
 near-psychotic : ADJ
@@ -2269,6 +2303,7 @@ Bloomberg : NOUN
 Bob Geldof : NOUN
 Boeing : NOUN
 Boko haram : NOUN
+Boris Johnson : NOUN
 Breitbart : NOUN
 BREXIT : NOUN
 BREXIT supporter : NOUN
@@ -2427,6 +2462,7 @@ Instagram : NOUN
 Institute for Radio Astronomy Millimetrique : NOUN[:*r]
 Intel : NOUN
 International Criminal Tribunal : NOUN
+Interstate 95 corridor : NOUN
 Irving : NOUN
 Islamabad Electric Supply Company : NOUN[:*r]
 Islamic State : NOUN
@@ -2473,6 +2509,7 @@ Ku Klux Klan : NOUN
 Kushner : NOUN
 La David Johnson : NOUN
 La Nina : NOUN
+Labour MP : NOUN
 Lafayette Square : NOUN
 Larry Wortzel : NOUN
 Larry Scott : NOUN
@@ -2522,6 +2559,7 @@ Ministry of Health : NOUN
 Missouri State : NOUN
 Mitch McConnell : NOUN
 Mohammed bin-Salman : NOUN
+Montecito : NOUN
 Moon Jae-in : NOUN
 Mr. Kim : NOUN
 Mr. Mueller : NOUN
@@ -4695,6 +4733,7 @@ big top : NOUN
 big tree : NOUN
 big wheel : NOUN
 bigot : NOUN
+bigoted : ADJ
 bigotry : NOUN
 bike : NOUN
 bike : VERB
@@ -9351,6 +9390,7 @@ disguise : NOUN
 disguise : VERB
 disgust : NOUN
 disgust : VERB
+disgusting : ADJ
 dish : NOUN
 dish : VERB
 dish aerial : NOUN
@@ -18494,6 +18534,7 @@ neck opening : NOUN
 necropolis : NOUN
 need : NOUN
 need : VERB - +2
+needed : ADJ
 needle : NOUN
 needle : VERB
 needle cast : NOUN
