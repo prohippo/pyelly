@@ -566,6 +566,7 @@ Release Notes:
                       add debugging option with no parse tree in ellyBase
                       clean up interpretiveContext and improve encapsulation
                       recognize Unicode hyphen as default punctuation
+                      reduce amount of dumps on processing error
                       clean up commentary in code modules
                       update documentation
 

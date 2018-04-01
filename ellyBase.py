@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 28mar2018 CPM
+# ellyBase.py : 01apr2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -418,8 +418,9 @@ class EllyBase(object):
                 self.ptr.startUpX()     # for any initial ... grammar rule
 #               print 'BASE@1 =' , self.sbu.buffer
                 if not self._lookUpNext():
-#                   print 'lookup FAIL'
-                    return None         # if next token cannot be handled, quit
+                    print  >> sys.stderr , 'lookup FAILure'
+                    self .ptr.showTokens(sys.stderr)
+                    return None         # if next token caused error, quit
 #               print 'BASE@2 =' , self.sbu.buffer
                 if len(self.ptr.queue) == 0:
                     break
