@@ -196,6 +196,7 @@ giving rise : VERB[^ing]
 goes on recess : VERB
 goes on the offensive : VERB
 going for a walk : VERB[^ing]
+going to be available : VERB[^ing]
 going to end up : VERB[^ing]
 gone : VERB[^ed]
 gone into effect : VERB[^ed]
@@ -344,6 +345,7 @@ peace deal : NOUN
 peacemaking : NOUN
 people familiar with the matter : NOUN
 permanent security clearance : NOUN
+personals : NOUN[:plur]
 phenomena : NOUN[:plur]
 phone interview : NOUN
 placed on lockdown : VERB[^ed]
@@ -558,6 +560,7 @@ went_on : VERB[^ed] =went on
 1 another : PRO =one another
 1 last time : ADV
 1 of : QUAN[@*x] =one of
+1 of the largest : QUAN
 1 of them : PRO =one of them
 1 of them : QUAN - -2 =one of them
 1st half : NOUN
@@ -572,6 +575,7 @@ went_on : VERB[^ed] =went on
 24/7 : ADJ - +2
 2nd half : NOUN
 3 dozen : NUM
+3rd party : NOUN
 5 minutes : NOUN
 GPS monitoring : NOUN
 a billion : QUAN
@@ -631,6 +635,7 @@ all of : QUAN
 all of whom : CONJ
 all of you : PRO
 all of you here : PRO
+all our : QUAN
 all that : ALLTHT
 allegedly being : BE[^ing]
 along with : PREP
@@ -792,6 +797,7 @@ christian values : NOUN[:plur]
 christmas cheer : NOUN
 christmas spectacular : NOUN
 church leader : NOUN
+civil liability : NOUN
 clandestine officer : NOUN
 clean energy : NOUN
 close to : PREP
@@ -836,6 +842,8 @@ county attorney : NOUN
 county jail : NOUN
 court document : NOUN
 criminal case : NOUN
+criminal indictment : NOUN
+criminal liability : NOUN
 critically endangered species : NOUN
 current events : NOUN[:plur]
 cut ties with : VERB
@@ -1025,6 +1033,8 @@ growth strategy : NOUN
 guilty plea : NOUN
 guitar bridge : NOUN
 gun violence : NOUN
+hacker network : NOUN
+hacking campaign : NOUN
 half inch : NOUN
 half its : QUAN
 half of : QUAN
@@ -1262,6 +1272,7 @@ many of you : PRO
 marchese : NOUN
 marine corps : NOUN
 marine corps air station : NOUN
+marketing firm : NOUN
 mass killing : NOUN
 may be : BE
 may have : AUXL
@@ -1329,6 +1340,7 @@ neighborhood bar : NOUN
 neighborhood setting : NOUN
 new generation : NOUN
 new information : NOUN
+new question : NOUN
 new research : NOUN
 newspaper best : ADJ
 next week : NAVB[:det]
@@ -1742,8 +1754,10 @@ trump presidency : NOUN
 turn themselves in : VERB
 tv pundit : NOUN
 tweetstorm : NOUN
+u.s. and foreign : ADJ
 u.s. attorney : NOUN
 u.s. charts : NOUN[:plur]
+u.s. company : NOUN
 u.s. forces : NOUN[:plur]
 u.s. government compound : NOUN
 u.s. mainland : NOUN
@@ -1782,6 +1796,7 @@ upper atmosphere : NOUN
 urban myth : NOUN
 us-bound : ADJ
 used to : AUXL
+user data : NOUN
 uso tour : NOUN
 versus : CONJ
 very close to : PREP
@@ -1945,7 +1960,6 @@ British city : NOUN
 busy roadway : NOUN
 Cambridge Analytica : NOUN
 carving-out : VERB[^ing]
-CBS News : NOUN
 Central Michigan University dormitory : NOUN
 comedic : ADJ
 confrontational move : NOUN
@@ -1980,6 +1994,7 @@ James Eric Davis Jr. : NOUN
 made the ask : VERB[^ed]
 making a false statement to the FBI : VERB[^ing]
 missing submarine : NOUN
+or more accurately, : ADV
 new and bloodier : ADJ
 nuclear and missile : ADJ
 on what the news agency described as : CONJ
@@ -2000,6 +2015,7 @@ Syrian capital Damascus : NOUN
 talked to his mother : VERB
 Tampa police : NOUN
 that killed : THTV
+that worked : THTV
 the country’s struggle : NOUN[:det]
 the group Wikileaks : NOUN[:det]
 to flowed : VERB[^infn]
@@ -2015,6 +2031,33 @@ walkout of classes : NOUN
 weapons component : NOUN
 with what we now know to be : PREP
 win leverage : VERB
+
+# # # # !!!!
+
+hackers-for-hire : NOUN[:plur]
+
+Mabna Institute : NOUN
+
+Iran-based company : NOUN
+
+conducted a coordinated campaign : VERB[^ed]
+cyber intrusions into computer systems : NOUN[:plur]
+
+belonging to : PREP
+U.S. university : NOUN
+foreign country : NOUN
+domestic and foreign : ADJ
+private sector company  : NOUN
+
+the U.S. Department of Labor : NOUN
+the Federal Energy Regulatory Commission : NOUN
+the State of Hawaii : NOUN
+the State of Indiana : NOUN
+the United Nations  : NOUN
+the United Nations Children’s Fund : NOUN
+
+since at least : PREP
+were each : VERB
 
 # # # # common hyphenations
 
@@ -2203,6 +2246,7 @@ six-party : ADJ
 start-up : NOUN
 state-run : ADJ
 state-run news agency KCNA : NOUN
+state-sponsored : ADJ
 sub-sect : NOUN
 submarine-lanched : ADJ
 sun-drenched : ADJ
@@ -2317,6 +2361,7 @@ Cantor : NOUN
 Carter : NOUN
 Catalina : NOUN
 CBS : NOUN
+CBS News : NOUN
 Celine Dion : NOUN
 Center for Disease Control and Prevention : NOUN
 Central Michigan University : NOUN
