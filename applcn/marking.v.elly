@@ -31,6 +31,8 @@ appears to be part of : VERB
 are likely to be : BE
 arrested and charged : VERB[^ed]
 arrested on a warrant : VERB[^ed]
+assigned : VERB[^ed]
+assigned to them : ADJ
 ate : VERB[^ed,*x]
 awaits trial : VERB
 backed off : VERB[^ed]
@@ -484,6 +486,7 @@ terrorism suspect : NOUN
 terrorizing : VERB[^ing] - +2
 terrorizing : NOUN - -1
 thanked : VERB[^ed]
+that can be faced : ADJ
 thought : VERB[^ed]
 thrown : VERB[^ed]
 thrown into crisis : VERB[^ed]
@@ -521,6 +524,7 @@ was behind bars : VERB[^ed]
 was culpable for : VERB[^ed]
 was intended to : AUXL[^ed]
 was known to be : BE[^ed]
+was looking at : VERB[^ing]
 wealthiest : ADJ
 well before : ADV
 weddings : NOUN[:plur]
@@ -676,6 +680,7 @@ as could : CONJ
 as far as : CONJ
 as he saw fit : ADV
 as if : CONJ
+as long as : CONJ
 as many as : QUAN
 as much as : ADV[~mod,prox]
 as of : PREP
@@ -691,6 +696,8 @@ at a home : ADV
 at a time when : CONJ
 at about : PREP
 at first : ADV
+at how : CONJ
+at last : ADV
 at least one : NUM
 at least one : QUAN - +2
 at odds with : PREP
@@ -704,6 +711,7 @@ at this point : ADV
 at this point in time : ADV
 at this stage : ADV
 at this time : ADV
+at whether : CONJ
 athletic conference : NOUN
 authoritarian governance : NOUN
 authorities : NOUN[:plur]
@@ -824,6 +832,7 @@ confirm the move : VERB
 confraternity : NOUN
 congressional lawmakers : NOUN[:plur]
 congressional leaders : NOUN[:plur]
+consecutive month : NOUN [&durn,msr] 0
 conservative activist : NOUN
 consider the fate of : VERB
 consigliere : NOUN
@@ -1161,6 +1170,7 @@ international community : NOUN
 international treaty : NOUN
 internet access : NOUN
 internet service provider : NOUN
+intimate affair : NOUN
 into the night : ADV
 into whether : CONJ
 irrespective of whether : CONJ
@@ -1282,6 +1292,7 @@ media outlet : NOUN
 media pack : NOUN
 media research center : NOUN
 medical textbook : NOUN
+medically stable : ADJ
 memo to staff : NOUN
 metallicity : NOUN
 meth lab : NOUN
@@ -1352,6 +1363,7 @@ no. 1 seed : NOUN
 no. 2 : NOUN
 non-disclosure agreement : NOUN
 nonconsensual : ADJ
+nondisclosure agreement : NOUN
 north american affairs : NOUN[:plur]
 north korean leader : NOUN
 northern california : NOUN
@@ -1415,6 +1427,7 @@ palestinian negotiator : NOUN
 panel commissioner : NOUN
 pants on fire : ADJ
 parallel investigation : NOUN
+participating force : NOUN
 participating in : PREP
 particular focus : NOUN
 partners on the ground : NOUN
@@ -1430,6 +1443,7 @@ peer harassment : NOUN
 pence : NOUN
 pending adjustment : NOUN
 percent chance : NUM[:*r]
+personal data : NOUN
 personal profile : NOUN
 perturber : NOUN
 piano four hands : NOUN
@@ -1496,12 +1510,14 @@ put it through : VERB
 pv : ADJ
 pyroclastic : ADJ
 questionable method : NOUN
+quick look : NOUN
 quite a while ago : ADV
 quoted from : VERB
 raise the roof beam high : VERB
 rally support for : VERB
 rapidly melting : ADJ
 rapidly mounting : ADJ
+reassignment surgery : NOUN
 rebaptizer : NOUN
 recent attempt : NOUN
 recent trip : NOUN
@@ -1579,6 +1595,7 @@ senior level : NOUN
 sensitive conversation : NOUN
 serve as a placeholder : VERB
 service plan : NOUN
+service member : NOUN
 servicemember : NOUN
 several other : QUAN
 sexual advance : NOUN
@@ -1638,6 +1655,7 @@ state and local : ADJ
 state ceremony : NOUN
 state police : NOUN
 state sponsors list : NOUN
+steady drip : NOUN
 step back from : VERB
 step foot : VERB
 storytelling : NOUN
@@ -1694,6 +1712,7 @@ that there : THAV
 that year : NAVB[:det]
 thaw with russia : NOUN
 the above : ADJ
+the armed forces : NOUN[:plur]
 the better of it : ADV
 the coming days : NOUN[:plur]
 the culture wars : NOUN[:plur]
@@ -1702,6 +1721,7 @@ the day before : PREP
 the default is : VERB
 the entirety : NOUN
 the focus : NOUN[:det]
+the general command : NOUN
 the last month : NAVB[:det]
 the latest twist : NOUN
 the near future : NAVB[:det]
@@ -1835,6 +1855,7 @@ win agreement : VERB
 wine review : NOUN
 winter weather advisory : NOUN
 with great sadness and a broken heart : ADV
+with him : ADJ
 with knowledge of : PREP
 with little experience : ADJ
 with no regard to : CONJ
@@ -1990,6 +2011,7 @@ historically GOP district : NOUN
 improperly collected information : NOUN
 in an interview : ADV
 incorrectly reported : VERB[^ed]
+information commissioner : NOUN
 James Eric Davis Jr. : NOUN
 made the ask : VERB[^ed]
 making a false statement to the FBI : VERB[^ing]
@@ -2045,7 +2067,6 @@ cyber intrusions into computer systems : NOUN[:plur]
 
 belonging to : PREP
 U.S. university : NOUN
-foreign country : NOUN
 domestic and foreign : ADJ
 private sector company  : NOUN
 
@@ -2070,6 +2091,7 @@ were each : VERB
 3-point-shooting : NOUN - -2
 3-point-shooting : ADJ
 3-point shot : NOUN
+60 minutes interview : NOUN
 90-day : ADJ
 age-related : ADJ
 aisle-roaming : ADJ
@@ -2147,6 +2169,7 @@ ghost-wrote : VERB[^ed]
 grievance-filled : ADJ
 half-apology : NOUN
 half-full : ADJ
+half-revelation : NOUN
 half-sitting : VERB[^ed]
 hard-to-detect : ADJ
 high-endurance : ADJ
@@ -3704,6 +3727,7 @@ arm bone : NOUN
 arm exercise : NOUN
 arm guard : NOUN
 arm pad : NOUN
+armed forces : NOUN[:plur]
 armenia : NOUN
 armenian : NOUN
 armenian : ADJ
@@ -3857,6 +3881,7 @@ assess : VERB
 assessment : NOUN
 asset : NOUN
 assign : VERB
+assigned : ADJ
 assignment : NOUN
 assist : NOUN
 assist : VERB
@@ -16776,6 +16801,7 @@ loo : NOUN
 look : NOUN - -1
 look : VERB[^ptcl] - +1
 look around : VERB
+look at : VERB
 look away : VERB
 look back : VERB
 look down on : VERB
@@ -20820,6 +20846,7 @@ polity : NOUN
 poll : NOUN
 poll : VERB
 poll tax : NOUN
+polling station : NOUN
 pollute : VERB
 polluter : NOUN
 pollution : NOUN
@@ -21929,8 +21956,6 @@ radiation pattern : NOUN
 radiation pressure : NOUN
 radiation syndrome : NOUN
 radiation therapy : NOUN
-radical : NOUN
-radical : ADJ
 radical : NOUN
 radical : ADJ
 radical cell : NOUN
@@ -28270,6 +28295,7 @@ unanimated : ADJ
 unanimous : ADJ
 unanimously : ADV
 unarmed : ADJ
+unauthorised : ADJ
 unauthorized : ADJ
 unauthorized absence : NOUN
 unaware : ADJ
@@ -28442,7 +28468,6 @@ unknown quantity : NOUN
 unknown region : NOUN
 unknown soldier : NOUN
 unlawful : ADJ
-unlawful : ADJ
 unlawfully : ADV
 unleash : VERB
 unlike : ADJ
@@ -28605,7 +28630,6 @@ utility program : NOUN
 utility revenue bond : NOUN
 utility routine : NOUN
 utilization : NOUN
-utilize : VERB
 utilize : VERB
 utterance : NOUN
 vacancy : NOUN
