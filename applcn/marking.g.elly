@@ -4050,3 +4050,9 @@ _
   merge
   append </adv>
 __
+
+g:QEQ->QUAN PUNC[|quo,*r]
+__
+g:QUAN->PUNC[|quo,*l] QEQ
+__
+

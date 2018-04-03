@@ -91,6 +91,7 @@ coaching : VERB[^ing]
 competing : VERB[^ing]
 competing : ADJ[%ing]
 confirmed : VERB[^ed] - +1
+confirmed to have died : VERB[^ed]
 connected : VERB[^ed] - -1
 connected to : VERB[^ed]
 continued : VERB[^ed]
@@ -275,6 +276,7 @@ led : NOUN - -2
 led : VERB[^ed]
 led to panic : VERB[^ed]
 lengthier : ADJ
+lifted up : VERB[^ed]
 limited : VERB[^ed] - -1
 linked to : PREP
 lives : NOUN[:plur] - +1  =life -s
@@ -392,6 +394,7 @@ related : VERB[^ed]
 remaining : VERB[^ing] - -1
 remains : VERB[^s,proc] - +3
 repeated : VERB[^ed]
+repeatedly touched on : VERB[^ed]
 repeatedly used the flag : VERB[^ed]
 rescue efforts : NOUN[:plur]
 residents : NOUN[:plur]
@@ -488,6 +491,7 @@ terrorizing : NOUN - -1
 thanked : VERB[^ed]
 that can be faced : ADJ
 thought : VERB[^ed]
+threw : VERB[^ed]
 thrown : VERB[^ed]
 thrown into crisis : VERB[^ed]
 told : VERB[^ed,dit]
@@ -496,6 +500,7 @@ took : VERB[^ed,ptcl]
 took part in : VERB[^ed]
 took place : VERB[^ed]
 top lieutenant : NOUN
+tore : VERB[^ed]
 tore up : VERB[^ed]
 torn : VERB[^ed]
 tracking : VERB[^ing]
@@ -586,6 +591,7 @@ a billion : QUAN
 a bit : NOUN[:det] - -2
 a broader bid : NOUN
 a claim : NOUN[:join]
+a day after : CONJ
 a day later : ADV
 a dozen : NUM
 a far cry from : PREP
@@ -594,6 +600,7 @@ a few hundred : NUM
 a few months later : ADV
 a few of : QUAN
 a group of : QUAN
+a group of them : PRO
 a hundred : NUM
 a large chunk of : QUAN
 a little bit : NOUN
@@ -679,6 +686,7 @@ as compared to : CONJ
 as could : CONJ
 as far as : CONJ
 as he saw fit : ADV
+as far afield as : CONJ
 as if : CONJ
 as long as : CONJ
 as many as : QUAN
@@ -861,6 +869,7 @@ cyberattack : NOUN
 cyberbully : NOUN
 cyberbullying : NOUN
 cybersecurity : NOUN
+dam project : NOUN
 damaging storm report : NOUN
 dance company : NOUN
 dance number : NOUN
@@ -885,6 +894,7 @@ development team : NOUN
 die roll : NOUN
 digital ethics : NOUN
 digital minister : NOUN
+digital space : NOUN
 diplomatic overture : NOUN
 diplomatic script : NOUN
 diplomatic tone : NOUN
@@ -1001,9 +1011,11 @@ foreign secretary : NOUN
 formal approval : NOUN
 former campaign manager : NOUN
 former employee : NOUN
+former president : NOUN
 fourpenny : NOUN - +1
 freedom ride : NOUN
 from across : PREP
+from around : PREP
 from beginning to end : ADV
 from beyond : PREP
 from there : ADV
@@ -1015,6 +1027,7 @@ fuel tax : NOUN
 full control : NOUN
 full time : ADV
 fully eliminate : VERB
+future plan : NOUN
 gala dinner : NOUN
 gay men : NOUN[:plur]
 gen. : NOUN
@@ -1109,6 +1122,7 @@ in fact : ADV
 in fact, : ADV
 in favor of : PREP
 in height : ADV[~trlg] [$deg] 0
+in his mold : ADJ
 in hopes of : CONJ
 in leaps and bounds : ADV
 in length : ADV[~trlg] [$deg] 0
@@ -1132,6 +1146,7 @@ in the report : ADV
 in the same place : ADV
 in the skies : ADJ [$trlg] +1
 in the skies : ADV
+in the u.s. and across the world : ADJ
 in the wake of : PREP
 in the workplace : ADJ
 in the works : ADJ
@@ -1322,6 +1337,7 @@ more than half a : QUAN
 most decisive sign : NOUN
 most of : QUAN
 most of them : PRO
+most of whom : PRO
 move into a new phase : VERB
 move so fast : VERB
 mr. : NOUN
@@ -1369,6 +1385,7 @@ north korean leader : NOUN
 northern california : NOUN
 not only : CONJ
 not the only : QUAN
+not just : ADV
 now known as : CONJ
 nuclear accord : NOUN
 nuclear and ballistic : ADJ
@@ -1476,6 +1493,7 @@ possible defeat : NOUN
 possible suspect : NOUN
 power center : NOUN
 power grab : NOUN
+powerful message : NOUN
 pr announcement : NOUN
 presentation system : NOUN
 presidential campaign : NOUN
@@ -1662,6 +1680,7 @@ storytelling : NOUN
 straight after : CONJ
 streetlamp : NOUN
 stress testing : NOUN
+stun grenade : NOUN
 stunning upset : NOUN
 submillimeter  : ADJ
 such a  : QUAN
@@ -1866,6 +1885,7 @@ without so much as : CONJ
 won : NOUN - -1
 world’s most : ADV
 would have no choice but to : AUXL
+young people : NOUN
 yuletide spirit : NOUN
 zone training : NOUN
 
@@ -1916,6 +1936,8 @@ millions of : NUM
 thousands of : NUM
 hundreds of : NUM
 tens of thousands of : NUM
+hundreds of thousands of : NUM
+hundreds of millions of : NUM
 
 30s : NOUN
 
@@ -2020,6 +2042,8 @@ or more accurately, : ADV
 new and bloodier : ADJ
 nuclear and missile : ADJ
 on what the news agency described as : CONJ
+orange snow : NOUN
+personal narrative : NOUN
 picked him up : VERB[^ed]
 potentially unpalatable deal : NOUN
 public plea for help : NOUN
@@ -2037,11 +2061,15 @@ Syrian capital Damascus : NOUN
 talked to his mother : VERB
 Tampa police : NOUN
 that killed : THTV
+that tore   : THTV
 that worked : THTV
 the country’s struggle : NOUN[:det]
 the group Wikileaks : NOUN[:det]
+the u.k.'s national weather service : NOUN
+the upper layers of the atmosphere : NOUN[:plur]
 to flowed : VERB[^infn]
 told reporters : VERB[^ed]
+too easily able to : AUXL
 touched her sexually : VERB[^ed]
 took him to a hospital : VERB[^ed]
 Trump’s tweet : NOUN
@@ -2234,6 +2262,7 @@ personal-counseling : NOUN
 piano-driven : ADJ
 point-by-point : ADJ
 post-mannerist : ADJ
+post-presidency : ADJ
 post-September 11th : ADJ
 pro-saudi : ADJ
 pro-Trump : ADJ
@@ -2301,6 +2330,7 @@ watered-down : ADJ
 wax-work : NOUN
 weather-eye : NOUN
 weeks-long : ADJ
+wide-ranging : ADJ
 widely-read : ADJ
 wind-driven : ADJ
 world-leading : ADJ
@@ -2566,6 +2596,7 @@ Justice Elena Kagan : NOUN
 Kardashian : NOUN
 Katie Sierra : NOUN
 Katrina : NOUN
+Steven Keates : NOUN
 Keaton : NOUN
 Kevin : NOUN
 Kevin Brady : NOUN
@@ -2778,6 +2809,7 @@ the Frontier Post : NOUN
 the Great Plains : NOUN
 The Hollywood Reporter : NOUN
 the late Libyan Leader Moammar Gaddafi : NOUN
+the Met Office : NOUN
 the Mid-Atlantic : NOUN
 the News International : NOUN
 The Northwest Indiana Times : NOUN
@@ -24368,6 +24400,8 @@ shop talk : NOUN
 shop window : NOUN
 shoplift : VERB
 shopper : NOUN
+shopping center : NOUN
+shopping centre : NOUN
 shore : NOUN
 shore : VERB
 shore bird : NOUN
