@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 01apr2018 CPM
+# ellyBase.py : 02apr2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -441,7 +441,6 @@ class EllyBase(object):
 
 #       print 'evaluate'
         if not self.ptr.evaluate(self.ctx):
-            print >> sys.stderr , 'generative semantic failure'
             return None                 # translation fails
 #       print 'parse and evaluation succeeds'
         self.ctx.mergeBuffers()

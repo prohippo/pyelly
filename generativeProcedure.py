@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# generativeProcedure.py : 20jan2018 CPM
+# generativeProcedure.py : 02apr2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -575,7 +575,7 @@ class GenerativeProcedure(object):
                 sys.stderr.flush()
             elif op == semanticCommand.Gproc:  # semantic subprocedure
                 name = code.next()
-#               print >> sys.stderr , 'run procedure (' + name + ')'
+#               print >> sys.stderr , 'run procedure (' + name + ')' , 'in' , phrs
                 if name == '': continue        # null procedure is no operation`
                 proc = cntx.getProcedure(name) # generative semantics object
                 if proc == None:
@@ -584,7 +584,7 @@ class GenerativeProcedure(object):
                 else:
                     status = proc.run(Code(proc.logic),cntx,phrs,name)
             else:
-                print >> sys.stderr , '** unknown generative semantic op=' , op
+                print >> sys.stderr , '** unknown generative semantic op=' , op , 'in' , phrs
                 status = False
 
         cntx.popStack()  # undefine local variables for procedure
