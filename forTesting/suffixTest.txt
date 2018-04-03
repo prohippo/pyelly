@@ -511,6 +511,7 @@ enablement enable
 encapsulate encapsule
 encirclement encircle
 encrustate encrust
+engulfed engulf
 entanglement entangle
 enthusiasm enthuse
 enthusiastic enthuse
