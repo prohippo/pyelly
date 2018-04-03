@@ -210,6 +210,7 @@ got home from work : VERB[^ed]
 got off to a shaky start : VERB[^ed]
 got out : VERB[^ed]
 got up : VERB[^ed,*x]
+gotten : VERB[^ed,*x]
 growing : VERB[^ing]
 grown : VERB[^ed] - +1
 gusting : ADJ
@@ -889,6 +890,7 @@ deductibility : NOUN
 delaware company : NOUN
 demilitarization : NOUN
 democratic republic : NOUN
+denuclearization : NOUN
 deputy director general : NOUN
 development team : NOUN
 die roll : NOUN
@@ -2518,6 +2520,7 @@ Francis : NOUN
 Franken : NOUN
 Freedom of the City award : NOUN
 French president : NOUN
+Ft. Lauderdale : NOUN
 Fulmer : NOUN
 Furnariidae : NOUN
 G. E. : NOUN
@@ -2955,6 +2958,8 @@ abortion pill : NOUN
 above : ADV
 abraham : NOUN
 abraham lincoln : NOUN
+abreast : ADJ
+abreast : ADV
 abroad : ADJ
 abroad : ADV
 abrupt : ADJ
@@ -3153,11 +3158,17 @@ admiral : NOUN
 admiration : NOUN
 admire : VERB
 admirer : NOUN
+admission : NOUN
+admission charge : NOUN
+admission day : NOUN
+admission fee : NOUN
+admission price : NOUN
 admit : VERB
 adolescence : NOUN
 adolescent : NOUN
 adolescent : ADJ
 adopt : VERB
+adoption : NOUN
 adore : VERB
 adorn : VERB
 adult : NOUN
@@ -3219,11 +3230,14 @@ affection : NOUN
 affiliate : NOUN
 affiliate : VERB
 affiliation : NOUN
+affirm : VERB
 affluence : NOUN
 affluent : NOUN
 affluent : ADJ
 afford : VERB
 affordable : ADJ
+affront : NOUN
+affront : VERB
 afghanistan : NOUN
 afield : ADV
 afloat : ADJ
@@ -3371,6 +3385,7 @@ alaska native : NOUN
 alaska peninsula : NOUN
 alaska range : NOUN
 album : NOUN
+alchemy : NOUN
 alcohol : NOUN
 alcohol abuse : NOUN
 alcohol group : NOUN
@@ -3543,6 +3558,8 @@ angle bracket : NOUN
 angle iron : NOUN
 angry : ADJ
 angry walk : NOUN
+anguish : NOUN
+anguish : VERB
 angus : NOUN
 animal : NOUN
 animal : ADJ
@@ -3574,6 +3591,9 @@ aniseed : NOUN
 ankara : NOUN
 ankle : NOUN
 ankle joint : NOUN
+annex : NOUN
+annex : VERB
+annexation : NOUN
 annihilation : NOUN
 anniversary : NOUN
 announce : VERB
@@ -4042,6 +4062,7 @@ audience : NOUN
 august : NOUN
 august : ADJ
 aunt : NOUN
+auschwitz : NOUN
 austin : NOUN
 australia : NOUN
 australian : NOUN
@@ -4204,6 +4225,7 @@ back tooth : NOUN
 back up : VERB
 backdoor : NOUN
 backdrop : NOUN
+backer : NOUN
 background : NOUN
 background : VERB
 background knowledge : NOUN
@@ -4653,6 +4675,8 @@ befit : VERB
 before : ADV[~non,trlg] [$cnj] 0
 before christ : ADV
 before long : ADV
+beforehand : ADJ
+beforehand : ADV
 beg : VERB
 beg off : VERB
 begin : NOUN - -2
@@ -5633,6 +5657,7 @@ bright : ADV
 bright blue : ADJ
 bright side : NOUN
 brilliant : ADJ
+brimstone : NOUN
 bring : VERB
 bring around : VERB
 bring back : VERB
@@ -5674,6 +5699,8 @@ british west africa : NOUN
 british west indies : NOUN
 briton : NOUN
 briton : ADJ
+broach : NOUN
+broach : VERB
 broad : NOUN
 broad : ADJ
 broad arrow : NOUN
@@ -5878,6 +5905,7 @@ burden : NOUN
 burden : VERB
 bureau : NOUN
 bureau de change : NOUN
+bureaucracy : NOUN
 bureaucrat : NOUN
 burgeon : VERB
 burgeon forth : VERB
@@ -6244,6 +6272,7 @@ car part : NOUN
 car pool : NOUN
 car port : NOUN
 car race : NOUN
+car rental : NOUN
 car seat : NOUN
 car tire : NOUN
 car traffic : NOUN
@@ -6251,6 +6280,7 @@ car train : NOUN
 car transporter : NOUN
 car wheel : NOUN
 car window : NOUN
+caracas : NOUN
 caramel : NOUN
 caramel : ADJ
 caramel apple : NOUN
@@ -6279,6 +6309,11 @@ card shark : NOUN
 card sharp : NOUN
 card table : NOUN
 card trick : NOUN
+cardinal : NOUN
+cardinal : ADJ
+cardinal compass point : NOUN
+cardinal number : NOUN
+cardinal virtue : NOUN
 cardiovascular : ADJ
 cardiovascular disease : NOUN
 cardiovascular system : NOUN
@@ -6397,6 +6432,7 @@ cat : VERB - -2
 cat box : NOUN
 cat flea : NOUN
 cat food : NOUN
+cat rig : NOUN
 cat scan : NOUN
 cat scratch disease : NOUN
 cataclysm : NOUN
@@ -6411,6 +6447,8 @@ catalonia : NOUN
 catalyst : NOUN
 catalytic : ADJ
 catastrophe : NOUN
+catastrophe : NOUN
+catastrophic : ADJ
 catastrophic : ADJ
 catastrophic illness : NOUN
 catch : NOUN
@@ -6422,6 +6460,7 @@ catch phrase : NOUN
 catch sight : VERB
 catch up : VERB
 catch up with : VERB
+catechism : NOUN
 categorical : ADJ
 categorically : ADV
 categorize : VERB
@@ -6463,6 +6502,7 @@ caution : VERB
 cave : NOUN
 cave : VERB
 cave man : NOUN
+caveat : NOUN
 cavernous : ADJ
 cease : NOUN - -4
 cease : VERB
@@ -6482,6 +6522,9 @@ cell theory : NOUN
 cell wall : NOUN
 cellphone : NOUN
 cellular : ADJ
+cellular division : NOUN
+cellular phone : NOUN
+cellular telephone : NOUN
 cellulite : NOUN
 cement : NOUN
 cement : VERB
@@ -6503,6 +6546,7 @@ center punch : NOUN
 center punch : VERB
 center spread : NOUN
 center stage : NOUN
+centerfold : NOUN
 centimeter : NOUN
 central : NOUN - -1
 central : ADJ
@@ -6678,6 +6722,7 @@ cheese spread : NOUN
 cheese tray : NOUN
 cheesecake : NOUN
 cheesy : ADJ
+cheetah : NOUN
 chef : NOUN
 chemical : NOUN
 chemical : ADJ
@@ -7047,10 +7092,16 @@ claim : NOUN
 claim : VERB [$trns] 0
 claim agent : NOUN
 claim form : NOUN
+clamor : NOUN
+clamor : VERB
 clan : NOUN
 clan member : NOUN
 clandestine : ADJ
 clandestine operation : NOUN
+clap : NOUN
+clap : VERB
+clap together : VERB
+clap up : VERB
 clarify : VERB
 clash : NOUN
 clash : VERB
@@ -7416,6 +7467,7 @@ columbia university : NOUN
 column : NOUN
 column inch : NOUN
 columnist : NOUN
+coma : NOUN
 comb : NOUN
 comb : VERB
 comb out : VERB
@@ -7735,6 +7787,8 @@ comrade : NOUN
 comstock : NOUN
 conceal : VERB
 concede : VERB
+conceivable : ADJ
+conceivably : ADV
 concentrate : NOUN
 concentrate : VERB
 concentration : NOUN
@@ -7781,6 +7835,7 @@ condolence : NOUN
 condolent : ADJ
 condom : NOUN
 condominium : NOUN
+condone : VERB
 conduct : NOUN
 conduct : VERB
 conduit : NOUN
@@ -8248,6 +8303,7 @@ counterfeit : ADJ
 counterpart : NOUN
 counterterror : ADJ
 counterterrorism : NOUN
+countless : ADJ
 country : NOUN
 country club : NOUN
 country doctor : NOUN
@@ -8386,6 +8442,7 @@ credence : NOUN
 credential : NOUN
 credibility : NOUN
 credible : ADJ
+credibly : ADV
 credit : NOUN
 credit : VERB
 credit account : NOUN
@@ -8431,6 +8488,7 @@ cricket match : NOUN
 crime : NOUN
 crime rate : NOUN
 crime wave : NOUN
+crimea : NOUN
 criminal : NOUN
 criminal : ADJ
 criminal congress : NOUN
@@ -8540,6 +8598,7 @@ crystal : NOUN
 crystal ball : NOUN
 crystal clear : ADJ
 crystal counter : NOUN
+crystal microphone : NOUN
 crystal oscillator : NOUN
 crystal pickup : NOUN
 crystal set : NOUN
@@ -8683,6 +8742,7 @@ daily : ADV
 daily double : NOUN
 daily round : NOUN
 daily variation : NOUN
+dais : NOUN
 dakota : NOUN
 dallas : NOUN
 dalton : NOUN
@@ -9097,6 +9157,8 @@ demon : NOUN
 demonstrate : VERB
 demonstration : NOUN
 demonstrator : NOUN
+demur : NOUN
+demur : VERB
 denial : NOUN
 denmark : NOUN
 denomination : NOUN
@@ -9269,6 +9331,7 @@ dhaka : NOUN
 diabetes : NOUN
 diabetic : NOUN
 diabetic : ADJ
+diabetic coma : NOUN
 diabetic diet : NOUN
 diagnose : VERB
 diagnosis : NOUN
@@ -9400,6 +9463,7 @@ direct loan : NOUN
 direct mail : NOUN
 direct object : NOUN
 direct primary : NOUN
+direct quotation : NOUN
 direct sum : NOUN
 direct support : NOUN
 direct tax : NOUN
@@ -9535,6 +9599,8 @@ disparage : VERB
 disparate : ADJ
 dispassion : NOUN
 dispassionate : ADJ
+dispersal : NOUN
+disperse : VERB
 displace : VERB
 displacement : NOUN
 displacement reaction : NOUN
@@ -9908,6 +9974,7 @@ drill bit : NOUN
 drill hole : NOUN
 drill master : NOUN
 drill press : NOUN
+drill rig : NOUN
 drill rod : NOUN
 drill site : NOUN
 drill steel : NOUN
@@ -10025,6 +10092,7 @@ du jour : ADJ
 dual : ADJ
 dub : NOUN
 dub : VERB
+dubai : NOUN
 dubious : ADJ
 dublin : NOUN
 duck : NOUN
@@ -10232,6 +10300,9 @@ economics profession : NOUN
 economy : NOUN
 economy class : NOUN
 ecosystem : NOUN
+ecuador : NOUN
+ecuadorian : NOUN
+ecuadorian : ADJ
 ed : NOUN
 ed sullivan : NOUN
 edge : NOUN
@@ -10528,6 +10599,8 @@ emulate : VERB
 emulation : NOUN
 enable : VERB
 enact : VERB
+encamp : VERB
+encampment : NOUN
 enchant : VERB
 encircle : VERB [$trns] 0
 enclave : NOUN
@@ -10567,6 +10640,8 @@ enforce : VERB
 enforcement : NOUN
 enforcer : NOUN
 engage : VERB
+engagement : NOUN
+engagement ring : NOUN
 engine : NOUN
 engine block : NOUN
 engine driver : NOUN
@@ -10594,7 +10669,9 @@ english revolution : NOUN
 english system : NOUN
 english teacher : NOUN
 engulf : VERB
+engulf : VERB
 enhance : VERB
+enigma : NOUN
 enjoy : VERB
 enlarge : VERB
 enlist : VERB
@@ -10900,6 +10977,7 @@ exert : VERB
 exhaust : NOUN
 exhaust : VERB
 exhaust fan : NOUN
+exhaust hood : NOUN
 exhaust pipe : NOUN
 exhaust system : NOUN
 exhaustion : NOUN
@@ -11040,6 +11118,7 @@ extra time : NOUN
 extract : NOUN
 extract : VERB
 extraction : NOUN
+extradition : NOUN
 extraordinary : ADJ
 extreme : NOUN
 extreme : ADJ
@@ -11158,6 +11237,8 @@ fairness : NOUN
 fairness commission : NOUN
 faith : NOUN
 faith cure : NOUN
+faithful : NOUN
+faithful : ADJ
 fake : NOUN
 fake : VERB
 fake : ADJ
@@ -11456,6 +11537,8 @@ fence : NOUN
 fence : VERB
 fence line : NOUN
 fence rail : NOUN
+fend : VERB
+fend off : VERB
 fern : NOUN
 fern ally : NOUN
 fern family : NOUN
@@ -12157,6 +12240,8 @@ foreign policy : NOUN
 foreign service : NOUN
 foreign terrorist organization : NOUN
 foreigner : NOUN
+forensic : ADJ
+forensic medicine : NOUN
 foresee : VERB
 forest : NOUN
 forest : VERB
@@ -12286,6 +12371,11 @@ frankly : ADV
 frankness : NOUN
 frantic : ADJ
 frantically : ADV
+fraternal : ADJ
+fraternal twin : NOUN
+fraternity : NOUN
+fraternity house : NOUN
+fraternize : VERB
 fraud : NOUN
 fraudulent : ADJ
 fraudulent scheme : NOUN
@@ -12856,6 +12946,8 @@ german shepherd : NOUN
 german shepherd dog : NOUN
 german silver : NOUN
 germany : NOUN
+gerrymander : NOUN
+gerrymander : VERB
 gesture : NOUN
 gesture : VERB
 get : NOUN - -4
@@ -13177,6 +13269,7 @@ grade school : NOUN
 grade separation : NOUN
 gradual : NOUN
 gradual : ADJ
+gradually : ADV
 graduate : NOUN
 graduate : VERB
 graduate : ADJ
@@ -13530,6 +13623,7 @@ guitar : NOUN
 guitar pick : NOUN
 guitar player : NOUN
 guitarist : NOUN
+gujarat : NOUN
 gulf : NOUN
 gulf coast : NOUN
 gulf stream : NOUN
@@ -13837,6 +13931,9 @@ hazard : NOUN
 hazard : VERB
 hazard insurance : NOUN
 hazardous : ADJ
+haze : NOUN
+haze : VERB
+haze over : VERB
 head : NOUN
 head : VERB [$spat] 0
 head ache : NOUN
@@ -14125,6 +14222,7 @@ highly sensitive : ADJ
 highway : NOUN
 highway code : NOUN
 highway engineer : NOUN
+highway robbery : NOUN
 highway system : NOUN
 hijack : NOUN
 hijack : VERB
@@ -14323,6 +14421,7 @@ hone : NOUN
 hone : VERB
 honest : ADJ
 honest woman : NOUN
+honestly : ADV
 honesty : NOUN
 honey : NOUN
 honey : VERB
@@ -14345,6 +14444,9 @@ honor system : NOUN
 honorary : ADJ
 honorary degree : NOUN
 honorary society : NOUN
+hood : NOUN
+hood : VERB
+hood ornament : NOUN
 hook : NOUN
 hook : VERB
 hook line and sinker : ADV
@@ -14541,6 +14643,11 @@ hunt down : VERB
 hunter : NOUN
 huntsman : NOUN
 huntsville : NOUN
+hurdle : NOUN
+hurdle : VERB
+hurdle race : NOUN
+hurl : NOUN
+hurl : VERB
 hurricane : NOUN
 hurricane deck : NOUN
 hurricane lamp : NOUN
@@ -14609,6 +14716,7 @@ ice wagon : NOUN
 ice water : NOUN
 icon : NOUN
 iconic : ADJ
+iconography : NOUN
 id : NOUN
 id est : ADV
 idea : NOUN
@@ -14773,6 +14881,8 @@ inauguration : NOUN
 inauguration day : NOUN
 inc : NOUN
 incapable : ADJ
+incarcerate : VERB
+incarceration : NOUN
 incendiary : NOUN
 incendiary : ADJ
 incendiary bomb : NOUN
@@ -14795,6 +14905,7 @@ incline : VERB
 incline bench press : NOUN
 include : VERB [$trns] 0
 inclusive : ADJ
+incoherent : ADJ
 income : NOUN
 income bracket : NOUN
 income statement : NOUN
@@ -14931,6 +15042,7 @@ infectious : ADJ
 infectious agent : NOUN
 infectious disease : NOUN
 inferno : NOUN
+infidelity : NOUN
 infiltrate : VERB
 inflame : VERB
 inflammatory : ADJ
@@ -15055,6 +15167,7 @@ inside track : NOUN
 insider : NOUN
 insider information : NOUN
 insight : NOUN
+insinuate : VERB
 insist : VERB
 insistence : NOUN
 insofar : ADV
@@ -15083,6 +15196,9 @@ instant : ADJ
 instant coffee : NOUN
 instantly : ADV
 instead : ADV
+instigate : VERB
+instigation : NOUN
+instigator : NOUN
 instinct : NOUN
 instinct : ADJ
 institute : NOUN
@@ -15160,6 +15276,7 @@ intensive care unit : NOUN
 intent : NOUN
 intent : ADJ
 intention : NOUN
+intentional : ADJ
 intentionally : ADV
 interact : VERB
 interaction : NOUN
@@ -15385,6 +15502,8 @@ ironic : ADJ
 ironically : ADV
 irony : NOUN
 irrespective : ADV
+irresponsibility : NOUN
+irresponsible : ADJ
 irreversible : ADJ
 irreversible process : NOUN
 irritate : VERB
@@ -15627,6 +15746,7 @@ judgment : NOUN
 judgment day : NOUN
 judicial : ADJ
 judicial activism : NOUN
+judicial admission : NOUN
 judicial branch : NOUN
 judicial decision : NOUN
 judicial doctrine : NOUN
@@ -15719,6 +15839,7 @@ keen : VERB
 keen : ADJ
 keep : NOUN - -2
 keep : VERB
+keep abreast : VERB
 keep apart : VERB
 keep away : VERB
 keep back : VERB
@@ -15857,6 +15978,7 @@ knock up : VERB
 knockout : NOUN
 knockout : ADJ
 knockout punch : NOUN
+knoll : NOUN
 know : NOUN - -2
 know : VERB - +2
 know apart : VERB
@@ -16100,6 +16222,8 @@ laundry : NOUN
 laundry basket : NOUN
 laundry cart : NOUN
 laundry truck : NOUN
+laureate : NOUN
+laureate : ADJ
 lav : NOUN
 lava : NOUN
 lavatory : NOUN
@@ -16326,9 +16450,12 @@ lemonade mix : NOUN
 lend : VERB
 length : NOUN
 lengthy : ADJ
+leniency : NOUN
+lenient : ADJ
 lens : NOUN
 lens cap : NOUN
 lens cover : NOUN
+lens hood : NOUN
 lens implant : NOUN
 lens maker : NOUN
 lens system : NOUN
@@ -16572,6 +16699,7 @@ limited liability : NOUN
 limited review : NOUN
 limited war : NOUN
 limitless : ADJ
+limousine : NOUN
 limp : NOUN
 limp : VERB
 limp : ADJ
@@ -16581,6 +16709,7 @@ lincoln memorial : NOUN
 lindbergh : NOUN
 line : NOUN
 line : VERB
+line backer : NOUN
 line block : NOUN
 line coach : NOUN
 line double : NOUN
@@ -17040,6 +17169,8 @@ magical : ADJ
 magical ability : NOUN
 magical power : NOUN
 magical spell : NOUN
+magisterial : ADJ
+magistrate : NOUN
 magistrate : NOUN
 magnate : NOUN
 magnet : NOUN
@@ -17598,6 +17729,7 @@ mennonite church : NOUN
 mental : ADJ
 mental ability : NOUN
 mental age : NOUN
+mental anguish : NOUN
 mental attitude : NOUN
 mental balance : NOUN
 mental block : NOUN
@@ -17731,6 +17863,8 @@ michael jackson : NOUN
 michigan : NOUN
 mick : NOUN
 microcomputer : NOUN
+microphone : NOUN
+microphone boom : NOUN
 microscope : NOUN
 microscope slide : NOUN
 microscope stage : NOUN
@@ -17961,6 +18095,8 @@ mirror : VERB
 mirror image : NOUN
 misappropriate : VERB
 misappropriation : NOUN
+misconceive : VERB
+misconception : NOUN
 misconduct : NOUN
 misconduct : VERB
 misdemeanor : NOUN
@@ -18042,6 +18178,7 @@ modern hebrew : NOUN
 modern jazz : NOUN
 modern man : NOUN
 modern world : NOUN
+modernisation : NOUN
 modernization : NOUN
 modernize : VERB
 modest : ADJ
@@ -18062,6 +18199,8 @@ molest : VERB
 molester : NOUN
 molly : NOUN
 molly miller : NOUN
+molotov : NOUN
+molotov cocktail : NOUN
 mom : NOUN
 moment : NOUN
 moment magnitude scale : NOUN
@@ -18097,6 +18236,9 @@ monstrous : ADJ
 monterey : NOUN
 monterey bay : NOUN
 month : NOUN [&durn,msr] 0
+monthly : NOUN
+monthly : ADJ
+monthly : ADV
 monument : NOUN
 monumental : ADJ
 mood : NOUN
@@ -18471,6 +18613,7 @@ namibian : NOUN
 namibian : ADJ - +2
 nancy : NOUN
 nancy freeman mitford : NOUN
+napa : NOUN
 narrate : VERB
 narrative : NOUN [&stry] 0
 narrative : ADJ - -1
@@ -18858,6 +19001,7 @@ noaa : NOUN
 noah : NOUN
 noah webster : NOUN
 nobel : NOUN
+nobel laureate : NOUN
 nobel prize : NOUN
 noble : NOUN
 noble : ADJ
@@ -18899,6 +19043,7 @@ nonprofit : ADJ
 nonprofit organization : NOUN
 nonsense : NOUN
 nonsense : ADJ
+nonsensical : ADJ
 nonstop : NOUN
 nonstop : ADJ
 nonstop : ADV
@@ -18999,6 +19144,7 @@ note value : NOUN
 notebook : NOUN
 notebook computer : NOUN
 notebook entry : NOUN
+noteworthy : ADJ
 nothing : NOUN
 nothing : ADV - -4
 notice : NOUN
@@ -19118,6 +19264,7 @@ observation tower : NOUN
 observatory : NOUN
 observe : VERB
 observer : NOUN
+obsess : VERB
 obstacle : NOUN
 obstacle race : NOUN
 obstruct : VERB
@@ -19213,6 +19360,7 @@ oil palm : NOUN
 oil pressure : NOUN
 oil production : NOUN
 oil pump : NOUN
+oil rig : NOUN
 oil stain : NOUN
 oil tycoon : NOUN
 oil well : NOUN
@@ -19240,6 +19388,7 @@ old colony : NOUN
 old country : NOUN
 old delhi : NOUN
 old english : NOUN
+old faithful : NOUN
 old french : NOUN
 old glory : NOUN
 old gold : NOUN
@@ -19359,6 +19508,7 @@ openness : NOUN
 opera : NOUN
 opera company : NOUN
 opera hat : NOUN
+opera hood : NOUN
 opera house : NOUN
 opera star : NOUN
 operate : VERB
@@ -19865,6 +20015,11 @@ parasite : NOUN
 parasitic : ADJ
 parasitic plant : NOUN
 parasitic worm : NOUN
+parcel : NOUN
+parcel : VERB
+parcel bomb : NOUN
+parcel out : VERB
+parcel post : NOUN
 parch : VERB
 pardon : NOUN
 pardon : VERB
@@ -20320,6 +20475,7 @@ petty criticism : NOUN
 petty juror : NOUN
 petty jury : NOUN
 petty officer : NOUN
+pew : NOUN
 ph.d. : NOUN
 phallic : ADJ
 phallic phase : NOUN
@@ -20418,6 +20574,7 @@ physical therapy : NOUN
 physical value : NOUN
 physically : ADV
 physician : NOUN
+pi : NOUN
 piano : NOUN
 piano : ADJ - -1
 piano : ADV - -2
@@ -20429,6 +20586,7 @@ piano player : NOUN
 piano stool : NOUN
 piano teacher : NOUN
 piano wire : NOUN
+piazza : NOUN
 pick : NOUN
 pick : VERB
 pick apart : VERB
@@ -20540,6 +20698,8 @@ pink shower : NOUN
 pink slip : NOUN
 pink wine : NOUN
 pint : NOUN
+pinto : NOUN
+pinto bean : NOUN
 pioneer : NOUN
 pioneer : VERB
 pipe : NOUN
@@ -20757,6 +20917,7 @@ podcast : VERB
 podium : NOUN
 poem : NOUN
 poet : NOUN
+poet laureate : NOUN
 poetry : NOUN
 poignant : ADJ
 poignantly : ADJ
@@ -20973,6 +21134,8 @@ portfolio : NOUN
 portion : NOUN
 portion : VERB
 portion out : VERB
+portland : NOUN
+portland cement : NOUN
 portrait : NOUN
 portrait camera : NOUN
 portrait lens : NOUN
@@ -21427,6 +21590,7 @@ private school : NOUN
 private treaty : NOUN
 privately : ADV
 privately held corporation : NOUN
+privatization : NOUN
 privilege : NOUN
 privilege : VERB
 privy : NOUN
@@ -21484,6 +21648,7 @@ production order : NOUN
 prof : NOUN
 profane : VERB
 profane : ADJ
+profanity : NOUN
 profess : VERB
 profession : NOUN
 professional : NOUN
@@ -21556,6 +21721,7 @@ prop : NOUN
 prop : VERB
 prop up : VERB
 propaganda : NOUN
+propagate : VERB
 propel : VERB
 proper : ADJ
 proper fraction : NOUN
@@ -21937,6 +22103,8 @@ quixotic : ADJ
 quiz : NOUN
 quiz : VERB
 quiz program : NOUN
+quotation : NOUN
+quotation mark : NOUN
 quote : NOUN
 quote : VERB
 quotient : NOUN
@@ -21961,6 +22129,8 @@ race murder : NOUN
 race problem : NOUN
 race riot : NOUN
 race runner : NOUN
+racer : NOUN
+raceway : NOUN
 rachel : NOUN
 rachel carson : NOUN
 racial : ADJ
@@ -22096,6 +22266,7 @@ ram down : VERB
 ram home : VERB
 ramble : NOUN
 ramble : VERB
+rambling : ADJ
 rampage : NOUN
 rampage : VERB
 ranch : NOUN
@@ -22117,6 +22288,7 @@ randomly : ADV
 range : NOUN
 range : VERB - +1
 range animal : NOUN
+range hood : NOUN
 range pole : NOUN
 ranger : NOUN
 rank : NOUN
@@ -22150,6 +22322,7 @@ rapid growth : NOUN
 rapid transit : NOUN
 rapidly : ADV
 rapport : NOUN
+rapprochement : NOUN
 rare : ADJ
 rare bird : NOUN
 rare earth : NOUN
@@ -22232,6 +22405,7 @@ ready : VERB
 ready : ADJ
 ready cash : NOUN
 ready money : NOUN
+reaffirm : VERB
 reagan : NOUN
 reagan administration : NOUN
 real : NOUN
@@ -22631,6 +22805,10 @@ renowned : ADJ
 rent : NOUN
 rent : VERB
 rent out : VERB
+rental : NOUN
+rental : ADJ
+rental collection : NOUN
+rental income : NOUN
 reopen : VERB
 rep : NOUN
 repair : NOUN
@@ -22939,6 +23117,10 @@ rifle shot : NOUN
 rift : NOUN
 rift valley : NOUN
 rift valley fever : NOUN
+rig : NOUN
+rig : VERB
+rig out : VERB
+rig up : VERB
 right : NOUN
 right : VERB
 right : ADJ
@@ -23037,6 +23219,9 @@ roar : NOUN
 roar : VERB
 roar off : VERB
 rob : VERB
+robbery : NOUN
+robbery conviction : NOUN
+robbery suspect : NOUN
 robert : NOUN
 robert edwin peary : NOUN
 robert owen : NOUN
@@ -23231,6 +23416,10 @@ roundabout : ADJ
 roundabout way : NOUN
 roundup : NOUN
 rouse : VERB
+rout : NOUN
+rout : VERB
+rout out : VERB
+rout up : VERB
 route : NOUN - +2
 route : VERB
 routine : NOUN
@@ -23351,6 +23540,7 @@ rust : NOUN
 rust : VERB
 rust : ADJ
 rusty : ADJ
+rusty rig : NOUN
 ruth : NOUN
 ruthless : ADJ
 rv : NOUN
@@ -23663,6 +23853,7 @@ school text : NOUN
 school year : NOUN
 schoolgirl : NOUN
 schoolteacher : NOUN
+schubert : NOUN
 schulz : NOUN
 science : NOUN
 science fiction : NOUN
@@ -24078,6 +24269,9 @@ sequence : VERB
 sequential : ADJ
 sequential operation : NOUN
 serb : NOUN
+serengeti : NOUN
+serengeti national park : NOUN
+serengeti plain : NOUN
 serge : NOUN
 sergeant : NOUN
 sergeant first class : NOUN
@@ -24734,6 +24928,7 @@ singular form : NOUN
 sink : NOUN
 sink : VERB
 sinn fein : NOUN
+sinner : NOUN
 siphon : NOUN
 siphon : VERB
 siphon off : VERB
@@ -24948,6 +25143,8 @@ slot : VERB
 slot machine : NOUN
 sloth : NOUN
 sloth bear : NOUN
+slovak : NOUN
+slovak republic : NOUN
 slovakia : NOUN
 slovenia : NOUN
 slovenian : NOUN
@@ -25088,6 +25285,7 @@ sneak out : VERB
 sneak thief : NOUN
 sneak up : VERB
 sneakily : ADV
+snippet : NOUN
 snoop : NOUN
 snoop : VERB
 snore : NOUN
@@ -25261,6 +25459,7 @@ solid food : NOUN
 solid ground : NOUN
 solid solution : NOUN
 solid state : NOUN
+solidarity : NOUN
 solidly : ADV
 solitaire : NOUN
 solo : NOUN
@@ -25306,6 +25505,7 @@ sort : VERB
 sort out : VERB
 sort program : NOUN
 sorting : NOUN
+sorting program : NOUN
 sos : NOUN
 soul : NOUN
 soul brother : NOUN
@@ -25527,6 +25727,7 @@ special verdict : NOUN
 specialist : NOUN
 speciality : NOUN
 specialize : VERB
+specially : ADV
 specialty : NOUN
 specialty store : NOUN
 species : NOUN
@@ -25682,6 +25883,7 @@ spoon : NOUN
 spoon : VERB
 spoon bread : NOUN
 spoon food : NOUN
+sporadic : ADJ
 sport : NOUN
 sport : VERB
 sport car : NOUN
@@ -25778,6 +25980,7 @@ square sail : NOUN
 square shooter : NOUN
 square up : VERB
 square yard : NOUN
+squarely : ADV
 squash : NOUN
 squash : VERB
 squash ball : NOUN
@@ -25800,6 +26003,7 @@ squirt : VERB
 squirt gun : NOUN
 sri lanka : NOUN
 st. louis : NOUN - +2
+st. petersburg : NOUN
 stab : NOUN
 stab : VERB
 stability : NOUN
@@ -25924,6 +26128,8 @@ state senator : NOUN
 state supreme court : NOUN
 state tax lien : NOUN
 state trooper : NOUN
+state-sponsored terrorism : NOUN
+statehouse : NOUN
 statement : NOUN
 statesman : NOUN
 statewide : ADJ
@@ -26948,6 +27154,8 @@ tall tale : NOUN
 tamer : NOUN
 tampa : NOUN
 tampa bay : NOUN
+tamper : NOUN
+tamper : VERB
 tangible : ADJ
 tangible possession : NOUN
 tangle : NOUN
@@ -27384,6 +27592,9 @@ thermal reactor : NOUN
 thermal spring : NOUN
 thermoelectric : ADJ
 thesis : NOUN
+theta : NOUN
+theta rhythm : NOUN
+theta wave : NOUN
 thick : NOUN
 thick : ADJ
 thick : ADV
@@ -27533,6 +27744,7 @@ tight end : NOUN
 tight money : NOUN
 tighten : VERB
 tighten up : VERB
+tightly : ADV
 tile : NOUN
 tile : VERB
 tile cutter : NOUN
@@ -27612,6 +27824,7 @@ tissue : NOUN
 tissue : VERB
 tissue layer : NOUN
 tissue paper : NOUN
+tit for tat : NOUN
 titan : NOUN
 title : NOUN
 title : VERB
@@ -27915,7 +28128,9 @@ trample : VERB
 transact : VERB
 transaction : NOUN
 transaction file : NOUN
+transcribe : VERB
 transcript : NOUN
+transcription : NOUN
 transfer : NOUN
 transfer : VERB
 transfer agent : NOUN
@@ -28514,6 +28729,7 @@ unmercifully : ADV
 unnamed : ADJ
 unnatural : ADJ
 unnerve : VERB
+unoccupied : ADJ
 unorthodox : ADJ
 unpaid : ADJ
 unpaid worker : NOUN
@@ -28532,6 +28748,8 @@ unremitting : ADJ
 unreported : ADJ
 unresponsive : ADJ
 unrest : NOUN
+unsatisfactory : ADJ
+unsatisfying : ADJ
 unscathed : ADJ
 unscheduled : ADJ
 unscramble : VERB
@@ -28602,6 +28820,8 @@ upset : VERB
 upset : ADJ - +1
 upset price : NOUN
 upset stomach : NOUN
+upside : NOUN
+upside down : ADV
 upstair : ADJ
 upstairs : NOUN
 upstairs : ADJ
@@ -28652,6 +28872,7 @@ use immunity : NOUN
 use up : VERB
 useful : ADJ
 usefully : ADV
+useless : ADJ
 user : NOUN
 usual : ADJ
 usually : ADV
@@ -28689,6 +28910,7 @@ vacuum bottle : NOUN
 vacuum chamber : NOUN
 vacuum pump : NOUN
 vacuum tube : NOUN
+vague : ADJ
 vale : NOUN
 valentine : NOUN
 valentine day : NOUN
@@ -28752,6 +28974,8 @@ vehicle traffic : NOUN
 vendor : NOUN
 venerable : ADJ
 venezuela : NOUN
+venezuelan : NOUN
+venezuelan : ADJ
 vent : NOUN
 vent : VERB
 ventilate : VERB
@@ -29369,6 +29593,7 @@ weeklong : ADJ
 weekly : NOUN
 weekly : ADJ
 weekly : ADV
+weeknight : NOUN
 weep : VERB
 weigh : VERB
 weigh anchor : VERB
@@ -29476,6 +29701,8 @@ wheeler peak : NOUN
 whereabouts : NOUN
 wherever : ADV
 whim : NOUN
+whine : NOUN
+whine : VERB
 whip : NOUN
 whip : VERB
 whip hand : NOUN
@@ -29987,6 +30214,8 @@ xenophobic : ADJ
 xi : NOUN
 xi : ADJ
 yahoo : NOUN
+yale : NOUN
+yale university : NOUN
 yank : NOUN
 yank : VERB
 yard : NOUN
