@@ -1575,12 +1575,19 @@ _
   (typg)
   append </nclu>
 __
-g:NCLU[:*l,cnj]->NAVB
+g:NCLU[:*l,cnj]->NAVB[:-*x]
  >>-
 _
   append <nclu><date>
   left
   append </date></nclu>
+__
+g:NCLU[:*l,cnj]->NAVB[:*x]
+ >>-
+_
+  append <nclu><time>
+  left
+  append </time></nclu>
 __
 
 g:NOUN->UNKN

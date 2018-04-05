@@ -21,6 +21,7 @@ alleged : VERB[^ed] - -1
 alleged affair : NOUN
 alleged incident : NOUN
 allegedly shot : VERB[^ed]
+alleging that : VERB[^ing]
 angrier : ADJ
 announced : VERB[^ed]
 apartment buildings : NOUN[:plur]
@@ -304,6 +305,7 @@ making matters worse : VERB[^ing]
 making use of : VERB[^ing]
 marked : VERB[^ed]
 marking : VERB[^ing]
+mean that : VERB
 means : VERB[^s] - +1
 mechanics : NOUN[:plur]
 meeting : VERB[^ing]
@@ -322,10 +324,12 @@ mixed : VERB[^ed]
 months in : IADV
 more than doubled : VERB[^ed]
 moved into a new phase : VERB[^ed]
+moving operations to : VERB[^ing]
 mps : NOUN[:plur]
 multibillion : ADJ
 multinationals : NOUN[:plur]
 murder trial : NOUN
+mushrooming : VERB[^ing]
 named : VERB[^ed] - +2
 named : ADJ - -4
 nearest : ADJ
@@ -631,6 +635,7 @@ about to : TO
 about whether : CONJ
 above the law : ADJ
 above water : ADJ
+access to visitors : NOUN
 according to : PREP
 achieve the ultimate deal : VERB
 achingly : ADV
@@ -708,6 +713,7 @@ as part of : CONJ
 as result of : CONJ
 as though : CONJ
 as to how : CONJ
+as to whether : CONJ
 as well as : CONJ
 aside from : PREP
 asset purchase : NOUN
@@ -827,6 +833,7 @@ christian values : NOUN[:plur]
 christmas cheer : NOUN
 christmas spectacular : NOUN
 church leader : NOUN
+city leader : NOUN
 civil liability : NOUN
 clandestine officer : NOUN
 clean energy : NOUN
@@ -842,9 +849,11 @@ cold air : NOUN
 college graduate : NOUN
 colored slave : NOUN
 coming off of : PREP
+communicate with the outside world : VERB
 commercial terminal : NOUN
 communications director : NOUN
 communications suite : NOUN
+community meeting : NOUN
 companion piece : NOUN
 computer model : NOUN
 concrete blueprint : NOUN
@@ -868,6 +877,7 @@ corrections officer : NOUN
 corrupt regime : NOUN
 corruption case : NOUN
 corruption investigation : NOUN
+council dais : NOUN
 counterproliferation : NOUN
 country music’s hometown : NOUN
 county attorney : NOUN
@@ -877,6 +887,7 @@ criminal case : NOUN
 criminal indictment : NOUN
 criminal liability : NOUN
 critically endangered species : NOUN
+crocs : NOUN[:plur]
 current events : NOUN[:plur]
 cut ties with : VERB
 cyber : ADJ
@@ -996,6 +1007,7 @@ federal bureau : NOUN
 federal charge : NOUN
 federal ethics agency : NOUN
 federal immigration authorities : NOUN[:plur]
+federal judge : NOUN
 federal law enforcement : NOUN
 federal level : NOUN
 federal prosecutor : NOUN
@@ -1019,6 +1031,7 @@ for the first time : ADV
 for too long : ADV
 foreign ambassador : NOUN
 foreign force : NOUN
+foreign government : NOUN
 foreign intelligence : NOUN
 foreign land : NOUN
 foreign ministry : NOUN
@@ -1088,7 +1101,10 @@ has to do : VERB
 hashtag : NOUN
 hate group : NOUN
 have done so : VERB[^hav,ed]
+have legal standing : VERB
 have no place : VERB
+have yet to be verified : VERB
+hazing related : ADJ
 head coach : NOUN
 head coaching : NOUN - +2
 heavy fighting : NOUN
@@ -1104,6 +1120,7 @@ hit job : NOUN
 hold a suspect in custody : VERB
 holster : VERB
 home detention : NOUN
+home state : NOUN
 home to their families : ADV
 homeport : NOUN
 homeported : ADJ
@@ -1113,6 +1130,7 @@ hot 100 : NOUN
 hours after : CONJ
 house of delegates : NOUN
 house speaker : NOUN
+how long : CONJ
 hurricane activity : NOUN
 hush payment : NOUN
 hydro : NOUN
@@ -1167,6 +1185,7 @@ in the u.s. and across the world : ADJ
 in the wake of : PREP
 in the workplace : ADJ
 in the works : ADJ
+in this case : ADV
 in violation of : PREP
 in what : CONJ
 in which : CONJ[@rel]
@@ -1204,6 +1223,7 @@ internet access : NOUN
 internet service provider : NOUN
 intimate affair : NOUN
 into the night : ADV
+into trouble : ADV
 into whether : CONJ
 irrespective of whether : CONJ
 is in violation of : VERB
@@ -1222,6 +1242,7 @@ it appears to have : AUXL
 it behv clear : ELEM - +4 (elma)
 it behv easy : ELEM - +4 (elma)
 it behv obvious : ELEM - +4 (elma)
+it behv unclear : ADV
 it certainly looks like : ADV
 it is clear : ELEM - +4 (elma)
 it is easy : ELEM - +4 (elma)
@@ -1269,8 +1290,11 @@ launch order : NOUN
 launch procedure : NOUN
 law enforcement personnel : NOUN
 lead surgeon : NOUN
+lead up : NOUN - -4
 leaps and bounds : NOUN[:plur]
+leave doubt : VERB
 legal challenge : NOUN
+legal hurdle : NOUN
 legal peril : NOUN
 legal team : NOUN
 legal text : NOUN
@@ -1456,6 +1480,7 @@ out of step with : PREP
 outdated technology : NOUN
 outlet for conservative voices : NOUN
 outside the jurisdiction of : PREP
+outside world : NOUN
 over from : PREP
 over the course of : PREP
 over the last year : ADV
@@ -1468,6 +1493,7 @@ palestinian negotiator : NOUN
 panel commissioner : NOUN
 pants on fire : ADJ
 parallel investigation : NOUN
+parcel of land : NOUN
 participating force : NOUN
 participating in : PREP
 particular focus : NOUN
@@ -1488,6 +1514,7 @@ personal data : NOUN
 personal profile : NOUN
 perturber : NOUN
 piano four hands : NOUN
+piece of land : NOUN
 ping pong : NOUN
 ping pong playing robot : NOUN
 pinyin : NOUN
@@ -1530,6 +1557,7 @@ prior to : PREP
 private meeting : NOUN
 private party : NOUN
 private sector : NOUN
+proceed with : VERB
 profound grief : NOUN
 programmable : ADJ
 prohibited cargo : NOUN
@@ -1537,6 +1565,7 @@ proof to the contrary : NOUN
 propaganda machine : NOUN
 propaganda video : NOUN
 properly designed : ADJ
+property prices : NOUN[:plur]
 proportionally spaced : ADJ
 pros and cons : NOUN
 prove to a judge : VERB
@@ -1568,6 +1597,7 @@ recent trip : NOUN
 recent trouble : NOUN
 recording artist : NOUN
 red rock : NOUN
+reduce costs : VERB
 reelection win : NOUN
 regardless of : PREP
 regional rival : NOUN
@@ -1619,6 +1649,7 @@ sales team : NOUN
 saturday and sunday : NAVB
 school community : NOUN
 school resource officer : NOUN
+scientific paper : NOUN
 scorched earth : ADJ
 scratching their heads : ADJ
 search tool : NOUN
@@ -1769,13 +1800,18 @@ the day after : PREP
 the day before : PREP
 the default is : VERB
 the entirety : NOUN
+the first time : NAVB[:*x]
 the focus : NOUN[:det]
 the general command : NOUN
 the last month : NAVB[:det]
 the latest twist : NOUN
+the most serious charges : NOUN[:plur]
 the near future : NAVB[:det]
+the only other time : NAVB
 the past year : NAVB[:det]
+the police shooting : NOUN
 the possibility that : NCTH
+the same way : ADV
 the several : QUAN[@ind]
 the sidelines : NOUN
 the starting point : NOUN
@@ -1786,7 +1822,7 @@ their presence : NOUN
 there is no hope : NOUN
 they too : PRO
 this month : NAVB[:det]
-this morning : NAVB
+this morning : NAVB[:*x]
 this time : ADV
 this week : ADV
 this weekend : NAVB[:det]
@@ -1877,6 +1913,7 @@ very little : ADV - -1
 very pleased : ADJ
 very unfortunate : ADJ
 viral video : NOUN
+vote for : VERB
 war dead : NOUN
 war memorial : NOUN
 warfighter : NOUN
@@ -1901,6 +1938,7 @@ whoa : MISC
 widely known : ADJ
 wild conspiracy theory : NOUN
 will be able to do that : VERB
+will one day : AUXL
 willing to : TO
 win agreement : VERB
 wine review : NOUN
@@ -1915,6 +1953,7 @@ within range of : PREP
 without interference : ADV
 without so much as : CONJ
 won : NOUN - -1
+work as advertised : VERB
 world’s most : ADV
 would have no choice but to : AUXL
 young people : NOUN
@@ -2090,6 +2129,7 @@ Santa Barbara : NOUN
 scandalous affair : NOUN
 Scarborough intern Lori Klausutis : NOUN
 sinai mosque : NOUN
+small collection of buildings : NOUN
 Stormy Daniels : NOUN
 supt : NOUN
 Syrian capital Damascus : NOUN
@@ -2338,6 +2378,7 @@ semi-autonomous : ADJ
 single-discipline : ADJ
 six-party : ADJ
 start-up : NOUN
+state-of-the-art : ADJ
 state-run : ADJ
 state-run news agency KCNA : NOUN
 state-sponsored : ADJ
@@ -2434,6 +2475,7 @@ Bel Air : NOUN
 Berenice Summerfield : NOUN
 Berlusconi : NOUN
 Bernice Summerfield : NOUN
+Beta Theta Pi fraternity : NOUN
 Beverly Hills : NOUN
 Bir al-Abed : NOUN
 Bitcoin : NOUN
@@ -2575,6 +2617,7 @@ George Washington University : NOUN
 George Will : NOUN
 Georgian : NOUN
 Getty Center arts complex : NOUN
+GIFT City : NOUN
 Gina Haspel : NOUN
 Global Times : NOUN
 Golden State Warriors : NOUN
@@ -2636,6 +2679,7 @@ Jones : NOUN
 Josephine County : NOUN
 Juan : NOUN
 Julia Poff : NOUN
+Julian Assange : NOUN
 Justice Elena Kagan : NOUN
 Kardashian : NOUN
 Katie Sierra : NOUN
@@ -2715,6 +2759,7 @@ Mueller : NOUN
 Mugabe : NOUN
 Moammar Gaddafi : NOUN
 Murphy : NOUN
+Narendra Modi : NOUN
 Naval Criminal Investigative Service : NOUN
 NBA : NOUN
 NBC : NOUN
@@ -2770,6 +2815,7 @@ President Donald Trump : NOUN
 President Erdogan : NOUN
 President Trump : NOUN
 Prime Minister Benjamin Netanyahu : NOUN
+Prime Minister Narendra Modi : NOUN
 Prince Harry : NOUN
 Project Veritas : NOUN
 Pushkin Russian Language Center : NOUN
@@ -2880,6 +2926,7 @@ Trudeau : NOUN
 Trump administration : NOUN
 Trump era : NOUN
 Trump International : NOUN
+Trump International Hotel : NOUN
 Trump organization : NOUN
 Trump Soho hotel : NOUN
 Twitter : NOUN
@@ -19345,6 +19392,7 @@ oddly : ADV
 odds : NOUN
 of course : ADV
 of how : CONJ
+of this kind : ADJ
 of which : CONJ[@rel]
 of whom : CONJ[@rel]
 off : VERB - -2
