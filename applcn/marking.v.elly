@@ -10,11 +10,13 @@
 # # # # inflections needed because of explicit definitions elsewhere
 
 biggest : ADJ
+happiest : ADJ
 largest : ADJ
 
 acting : VERB[^ing]
 advanced : VERB[^ed]
 advancing : VERB[^ing]
+advertising : VERB[^ing] - -2
 agreed to cooperate with : VERB[^ed]
 agreed with : VERB[^ed]
 alleged : VERB[^ed] - -1
@@ -224,6 +226,7 @@ had nothing to do with : VERB[^ed]
 had to : AUXL[^ed]
 has : HAVE
 has already : HAVE
+has gone on the record : VERB[^ed]
 has had : VERB[^aux,hav]
 has nothing to do with : VERB[^s]
 has relations with : VERB
@@ -351,6 +354,7 @@ originated : VERB[^ed]
 originated : ADJ - -4
 ought : VERB
 out of step : ADJ
+overhyped : ADJ
 overlooked : VERB[^ed] - -1
 oversaw : VERB[^ed]
 overseen : VERB[^ed]
@@ -464,11 +468,13 @@ sought input : VERB[^ed]
 spared the worst : VERB[^ed]
 sparked fears of : VERB[^ed]
 speaking out against : VERB[^ing]
+spent : VERB[^ed]
 spoke : VERB[^ed] - +2
 spoke on the record : VERB[^ed]
 spoken : VERB[^ed]
 sprawling : VERB[^ing]
 sprung : VERB[^ed]
+standing in the way : VERB[^ing]
 stayed on the line : VERB[^ed]
 steered clear : VERB[^ed]
 stepping down : VERB[^ing]
@@ -544,6 +550,7 @@ was culpable for : VERB[^ed]
 was intended to : AUXL[^ed]
 was known to be : BE[^ed]
 was looking at : VERB[^ing]
+was not allowed : VERB[^ed]
 wealthiest : ADJ
 well before : ADV
 weddings : NOUN[:plur]
@@ -642,11 +649,13 @@ achingly : ADV
 adm. : NOUN
 adult film star : NOUN
 adulterous affair : NOUN
+advertising boycott : NOUN
 after all : CONJ[@*l]
 after he did, : ADV
 after it emerged that : CONJ
 after which : CONJ
 afternoon and evening : NOUN
+against : ADV 0 -6
 against his will : ADV
 agricultural industry : NOUN
 ahead of : PREP
@@ -656,6 +665,7 @@ airstrike : NOUN
 alert level : NOUN
 all at once : ADV
 all but certain : ADJ
+all day wednesday : NAVB
 all evening : ADV
 all of : QUAN
 all of whom : CONJ
@@ -785,6 +795,7 @@ buy political influence : VERB
 buying guide : NOUN
 by almost half : ADV[~trlg] [$deg,trlg] 0
 by far-right : PREP
+by having : PREP
 by nearly half : ADV[~trlg] [$deg,trlg] 0
 by name : ADV
 by now : ADV
@@ -916,6 +927,7 @@ delaware company : NOUN
 demilitarization : NOUN
 democratic republic : NOUN
 denuclearization : NOUN
+deputy campaign chairman : NOUN
 deputy director general : NOUN
 development team : NOUN
 die roll : NOUN
@@ -1029,6 +1041,7 @@ for more than a decade : ADV
 for now : ADV
 for the first time : ADV
 for too long : ADV
+for why : CONJ
 foreign ambassador : NOUN
 foreign force : NOUN
 foreign government : NOUN
@@ -1136,6 +1149,7 @@ hush payment : NOUN
 hydro : NOUN
 hydro : ADJ - +2
 hyperinflation : NOUN
+I think that : ADV
 illegal immigrant : NOUN
 immediate medical help : NOUN
 in a statement : ADV
@@ -1241,6 +1255,7 @@ issued a firm warning to : VERB[^ed]
 it appears to have : AUXL
 it behv clear : ELEM - +4 (elma)
 it behv easy : ELEM - +4 (elma)
+it behv essential : ELEM - +4 (elma)
 it behv obvious : ELEM - +4 (elma)
 it behv unclear : ADV
 it certainly looks like : ADV
@@ -1248,6 +1263,7 @@ it is clear : ELEM - +4 (elma)
 it is easy : ELEM - +4 (elma)
 it is obvious : ELEM
 it up and came : VERB[^ed]
+it specifically : PRO
 jain : NOUN
 jet fuel : NOUN
 jewish billionaire : NOUN
@@ -1402,6 +1418,7 @@ national interest : NOUN
 national security : NOUN
 national security adviser : NOUN
 national security interest : NOUN
+native soil : NOUN
 natural causes : NOUN[:plur]
 natural disaster : NOUN
 navy submarine : NOUN
@@ -1511,6 +1528,7 @@ pence : NOUN
 pending adjustment : NOUN
 percent chance : NUM[:*r]
 personal data : NOUN
+personal lawyer : NOUN
 personal profile : NOUN
 perturber : NOUN
 piano four hands : NOUN
@@ -1526,9 +1544,11 @@ police brutality : NOUN
 police corruption : NOUN
 policymaker : NOUN
 policymaking : NOUN
+political appointee : NOUN
 political capital : NOUN
 political chaos : NOUN
 political deadlock : NOUN
+political forces : NOUN[:plur]
 political future : NOUN
 political gathering : NOUN
 political influence : NOUN
@@ -1550,7 +1570,9 @@ pr announcement : NOUN
 presentation system : NOUN
 presidential campaign : NOUN
 presidential election : NOUN
+presidential pardon : NOUN
 presidential speech : NOUN
+press secretary : NOUN
 presuppositionalism : NOUN
 primary challenge : NOUN
 prior to : PREP
@@ -1628,6 +1650,7 @@ right before : CONJ
 right after : CONJ
 right choice : NOUN
 right now : ADV
+riot gear : NOUN
 riverfront : ADJ
 rocket science : NOUN
 rockin' : ADJ
@@ -1700,6 +1723,7 @@ skaky start : NOUN
 slbm : NOUN
 small business : NOUN
 so many : QUAN[@ind]
+so still : ADJ
 so that : CONJ
 social media : NOUN
 social reform : NOUN
@@ -1787,8 +1811,12 @@ than ever : CMPC
 than ever before : CMPC
 thanks to : PREP
 thanksgiving break : NOUN
+that he : PRO[=tht]
+that I : PRO[=tht]
+that she : PRO[=tht]
 that some insist : THAT
 that there : THAV
+that we : PRO[=tht]
 that year : NAVB[:det]
 thaw with russia : NOUN
 the above : ADJ
@@ -1803,6 +1831,7 @@ the entirety : NOUN
 the first time : NAVB[:*x]
 the focus : NOUN[:det]
 the general command : NOUN
+the happiest day of my life : NOUN
 the last month : NAVB[:det]
 the latest twist : NOUN
 the most serious charges : NOUN[:plur]
@@ -1855,8 +1884,6 @@ trading partner : NOUN
 traditional clothing : NOUN
 traffic stop : NOUN
 travel conditions : NOUN[:plur]
-trump campaign : NOUN
-trump presidency : NOUN
 turn themselves in : VERB
 tv pundit : NOUN
 tweetstorm : NOUN
@@ -1912,6 +1939,7 @@ very little : NOUN[:*l]
 very little : ADV - -1
 very pleased : ADJ
 very unfortunate : ADJ
+veterans affairs secretary : NOUN
 viral video : NOUN
 vote for : VERB
 war dead : NOUN
@@ -2092,8 +2120,10 @@ disappeared from the fever swamps : VERB[^ed]
 dream president : NOUN
 effectively acknowledging : VERB[^ing]
 end efforts to rescue : VERB
+ethics controversy : NOUN
 EU benefits : NOUN[:plur]
 failed meteorologist : NOUN
+five-and-a-half : NUM
 Florida district office : NOUN
 Florida men : NOUN[:plur]
 Florida neighborhood : NOUN
@@ -2197,6 +2227,7 @@ who hvbe in jail : NOUN =Who's in Jail
 3-point-shooting : NOUN - -2
 3-point-shooting : ADJ
 3-point shot : NOUN
+30-year : ADJ
 60 minutes interview : NOUN
 90-day : ADJ
 adult-film : ADJ
@@ -2324,6 +2355,7 @@ net-metering : NOUN
 non-cardiovascular : ADJ
 north-south : ADJ
 ocean-view home : NOUN
+on-track : ADJ
 one-time : ADJ
 op-ed : NOUN - -1
 op-ed : ADJ
@@ -2477,6 +2509,7 @@ Berlusconi : NOUN
 Bernice Summerfield : NOUN
 Beta Theta Pi fraternity : NOUN
 Beverly Hills : NOUN
+Bill O'Reilly : NOUN
 Bir al-Abed : NOUN
 Bitcoin : NOUN
 Black Lives Matter : NOUN[:*r]
@@ -2546,13 +2579,14 @@ Desiree : NOUN
 DHS : NOUN
 Diaoyutai State Guest House : NOUN
 Dillons : NOUN =dillon 's
-DNC : NOUN
 Dina : NOUN
+DNC : NOUN
 Doan : NOUN
 Dobrnja-jug : NOUN
 Doctor Who : NOUN
 Dolores : NOUN
 Donald : NOUN
+Donald Shulkin : NOUN
 Donald Trump : NOUN
 Doug : NOUN
 Doug Jones : NOUN
@@ -2599,6 +2633,7 @@ Florida International University : NOUN
 Flynn : NOUN
 Forbes : NOUN
 Fox News : NOUN
+Fox News host : NOUN
 Francis : NOUN
 Franken : NOUN
 Freedom of the City award : NOUN
@@ -2684,6 +2719,8 @@ Justice Elena Kagan : NOUN
 Kardashian : NOUN
 Katie Sierra : NOUN
 Katrina : NOUN
+Sarah Huckabee Sanders : NOUN
+Sean Hannity : NOUN
 Steven Keates : NOUN
 Keaton : NOUN
 Kevin : NOUN
@@ -2779,6 +2816,7 @@ NFL players' protest : NOUN
 Nicholas : NOUN
 Novaes : NOUN
 NPR : NOUN
+NPR’s Morning Edition : NOUN
 NSC : NOUN
 Obama  : NOUN
 Obama-Era : NOUN
@@ -2831,6 +2869,7 @@ Reaganite : NOUN
 Reuben Kihuen : NOUN
 Reuters : NOUN
 Rex Tillerson : NOUN
+Richard Gates : NOUN
 RNC : NOUN
 Ric : NOUN
 Rick Kurtzman : NOUN
@@ -2924,11 +2963,15 @@ Tran Dai Quang : NOUN
 Trayon White Sr. : NOUN
 Trudeau : NOUN
 Trump administration : NOUN
+Trump campaign : NOUN
+Trump campaign manager : NOUN
 Trump era : NOUN
 Trump International : NOUN
 Trump International Hotel : NOUN
 Trump organization : NOUN
+trump presidency : NOUN
 Trump Soho hotel : NOUN
+Ty Cobb : NOUN
 Twitter : NOUN
 U.N. : NOUN
 U.S. : NOUN
@@ -2942,6 +2985,7 @@ US interests : NOUN[:plur]
 USNORTHCOM : NOUN
 US tax code : NOUN
 USO : NOUN
+VA : NOUN
 Van Horn : NOUN
 Ventura : NOUN
 Veritas : NOUN
@@ -3287,6 +3331,7 @@ adverse opinion : NOUN
 adverse witness : NOUN
 advertise : VERB
 advertiser : NOUN
+advertising : NOUN
 advice : NOUN
 advise : VERB
 adviser : NOUN
@@ -21681,6 +21726,7 @@ private school : NOUN
 private treaty : NOUN
 privately : ADV
 privately held corporation : NOUN
+privatize : VERB
 privatization : NOUN
 privilege : NOUN
 privilege : VERB
@@ -22772,7 +22818,7 @@ reinstate : VERB
 reinvent : VERB
 reissue : NOUN
 reissue : VERB
-reiterate : VERB
+reiterate : VERB[^dit]
 reject : NOUN
 reject : VERB
 rejection : NOUN

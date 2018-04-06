@@ -328,12 +328,29 @@ _
   var typg=pro
   (typg)
 __
-g:ELEM->PRO[=-nom,-prep]
+g:ELEM->PRO[=-nom,-prep,-tht]
 # ?>>?
    >>*l[!rn,pro,brk]
 _
   var typg=pro
   (typg)
+__
+g:ELEM->PRO[=-nom,-prep,tht]
+# ?>>?
+   >>*l[!rn,pro,brk]
+_
+  linefeed
+  append <>
+  split
+  left
+  back
+  shift  4 <
+  delete 1 <
+  append </>
+  linefeed
+  append <pro>
+  merge
+  append </pro>
 __
 g:ELEM->PRO[=-nom,prep]
 # ?>>?
