@@ -26,6 +26,7 @@ allegedly shot : VERB[^ed]
 alleging that : VERB[^ing]
 angrier : ADJ
 announced : VERB[^ed]
+announced by tweet : VERB[^ed]
 apartment buildings : NOUN[:plur]
 appeared : VERB[^ed]
 appeared to defend : VERB[^ed]
@@ -177,6 +178,7 @@ focused on : VERB[^ed]
 focuses on : VERB - +2
 focusing on : VERB[^ing]
 followed through on : VERB[^ed]
+foreign leader : NOUN
 forgave : VERB[^ed,*x]
 forgot : VERB[^ed,*x]
 forgotten : VERB[^ed]
@@ -259,9 +261,11 @@ ideologically divided : ADJ
 illegally accepted : VERB[^ed]
 inches : NOUN[:plur]
 infighting : NOUN
+initial failure : NOUN
 injured : VERB[^ed]
 inspired : VERB[^ed]
 interesting : VERB[^ing]
+international aid worker : NOUN
 internationals : NOUN[:plur]
 involved : VERB[^ed]
 irked that : VCTH[^ed]
@@ -271,6 +275,8 @@ is no longer fit : VERB
 is currently considered : VERB
 is on again : VERB
 is on track to : AUXL
+isolated : VERB[^ed] - -1
+it does not appear that : ADV
 it was watching : VERB[^aux,ed,ing]
 kept : VERB[^ed]
 killed : VERB[^ed]
@@ -279,6 +285,7 @@ knew nothing at all : VERB
 known to law enforcement : ADJ
 knives : NOUN[:plur]
 known : VERB[^ed,*x] - +1
+late last week : ADV
 leadership role : NOUN
 leading : VERB[^ing]
 led : NOUN - -2
@@ -318,6 +325,7 @@ mice : NOUN[:plur]
 military threat : NOUN
 millennia : NOUN[:plur]
 millennium bc : NOUN
+millions : NOUN[:plur]
 mīned : VERB[^ed] =mined
 minimum age : NOUN
 mining : VERB[^ing] - -1
@@ -354,6 +362,7 @@ originated : VERB[^ed]
 originated : ADJ - -4
 ought : VERB
 out of step : ADJ
+outside of : PREP
 overhyped : ADJ
 overlooked : VERB[^ed] - -1
 oversaw : VERB[^ed]
@@ -433,6 +442,7 @@ sat : VERB[^ed]
 sat down : VERB[^ed,*x]
 secretly ghostwriting : VERB[^ing]
 security clearance : NOUN
+security detail : NOUN
 security forces : NOUN[:plur]
 seen : VERB[^ed]
 seen : SVED - -1
@@ -612,6 +622,7 @@ a billion : QUAN
 a bit : NOUN[:det] - -2
 a broader bid : NOUN
 a claim : NOUN[:join]
+a closed military zone : NOUN[:det]
 a day after : CONJ
 a day later : ADV
 a dozen : NUM
@@ -788,6 +799,7 @@ budget provision : NOUN
 building supply : NOUN
 bullocky : NOUN - +2
 bushranger : NOUN
+but instead, : CONJ
 but now : CONJ
 but then : CONJ
 butter and oil : NOUN
@@ -820,6 +832,7 @@ can be of help : VERB
 can last : VERB
 can pay for : VERB
 canadian/american : ADJ
+canceled check : NOUN
 capable of : PREP['of]
 capital spending : NOUN
 capt. : NOUN
@@ -843,6 +856,7 @@ christian doctrine : NOUN
 christian values : NOUN[:plur]
 christmas cheer : NOUN
 christmas spectacular : NOUN
+chronic challenge : NOUN
 church leader : NOUN
 city leader : NOUN
 civil liability : NOUN
@@ -868,6 +882,7 @@ community meeting : NOUN
 companion piece : NOUN
 computer model : NOUN
 concrete blueprint : NOUN
+condo owner : NOUN
 confederate force : NOUN
 configurable : ADJ
 confirm the move : VERB
@@ -982,6 +997,7 @@ elephant trophy : NOUN
 emergency talks : NOUN[:plur]
 end a stalemate : VERB
 end efforts : VERB
+energy lobbyist : NOUN
 engineering council : NOUN
 english-language : ADJ
 entry point : NOUN
@@ -1165,6 +1181,7 @@ in conjunction with : PREP
 in connection to : PREP
 in connection with : PREP
 in critical condition : ADV
+in elected office : ADJ
 in exchange for : PREP
 in fair condition : ADV
 in fact : ADV
@@ -1250,11 +1267,12 @@ islamic republic : NOUN
 islamic state : NOUN
 islamic state group : NOUN
 islamist insurgent : NOUN
+israeli forces : NOUN[:plur]
 israeli police : NOUN
 issued a firm warning to : VERB[^ed]
 it appears to have : AUXL
 it behv clear : ELEM - +4 (elma)
-it behv easy : ELEM - +4 (elma)
+it behv easy  : ELEM - +4 (elma)
 it behv essential : ELEM - +4 (elma)
 it behv obvious : ELEM - +4 (elma)
 it behv unclear : ADV
@@ -1291,6 +1309,7 @@ land corridor : NOUN
 land survey : NOUN
 large areas of : QUAN
 large storm system : NOUN
+last big : ADJ
 last fall : NAVB
 last june : NAVB
 last known location : NOUN
@@ -1321,8 +1340,10 @@ less than : ADV[~mod] [$deg] 0
 less than a : QUAN =less than 1
 life’s work : NOUN
 like never before : ADV
+likely to be asked about : ADJ
 little more than : ADV[~mod] [$deg] 0
 litx : CONJ =lit.
+live ammunition : NOUN
 livestock waste : NOUN
 local hospital : NOUN
 local law enforcement : NOUN
@@ -1337,6 +1358,7 @@ mainstream media : NOUN
 major city : NOUN
 major doping scandal : NOUN
 major legislation : NOUN
+major victory : NOUN
 make available : VERB
 make the payment to : VERB
 make use of : VERB
@@ -1349,6 +1371,7 @@ manmade : ADJ
 mannerist : NOUN
 many of : QUAN
 many of them : PRO
+many of us : PRO
 many of whom : PRO
 many of you : PRO
 marchese : NOUN
@@ -1359,7 +1382,7 @@ mass killing : NOUN
 may be : BE
 may have : AUXL
 may have been : AUXL
-may of us : PRO
+media blitz : NOUN
 media outlet : NOUN
 media pack : NOUN
 media research center : NOUN
@@ -1430,6 +1453,7 @@ new generation : NOUN
 new information : NOUN
 new question : NOUN
 new research : NOUN
+news outlet : NOUN
 newspaper best : ADJ
 next week : NAVB[:det]
 next year : NAVB[:det]
@@ -1542,12 +1566,14 @@ plea for help : NOUN
 podcast : NOUN - -2
 police brutality : NOUN
 police corruption : NOUN
+policy views : NOUN[:plur]
 policymaker : NOUN
 policymaking : NOUN
 political appointee : NOUN
 political capital : NOUN
 political chaos : NOUN
 political deadlock : NOUN
+political elite : NOUN
 political forces : NOUN[:plur]
 political future : NOUN
 political gathering : NOUN
@@ -1614,6 +1640,7 @@ rapidly melting : ADJ
 rapidly mounting : ADJ
 reassignment surgery : NOUN
 rebaptizer : NOUN
+rebel stronghold : NOUN
 recent attempt : NOUN
 recent trip : NOUN
 recent trouble : NOUN
@@ -1633,6 +1660,8 @@ remix : VERB
 remote beach : NOUN
 remote town : NOUN
 renewable energy : NOUN
+rent payment : NOUN
+rental room : NOUN
 republican leader : NOUN
 republican party chairman : NOUN
 rescue crew : NOUN
@@ -1650,6 +1679,8 @@ right before : CONJ
 right after : CONJ
 right choice : NOUN
 right now : ADV
+riot dispersal : NOUN
+riot dispersal means : NOUN[:plur]
 riot gear : NOUN
 riverfront : ADJ
 rocket science : NOUN
@@ -1752,6 +1783,7 @@ spectator : ADJ - +1
 spectral type : NOUN[:*x]
 spiritual director : NOUN
 splash screen : NOUN
+sporadic dates : NOUN[:plur]
 sports field : NOUN
 spy plane : NOUN
 state and local : ADJ
@@ -1776,6 +1808,7 @@ supply chain : NOUN
 supply train : NOUN
 surprise disclosure : NOUN
 surprise launch : NOUN
+surprising pick : NOUN
 surrounding area : NOUN
 suspect or suspects : NOUN
 suspected criminal wrongdoing : NOUN
@@ -1813,6 +1846,7 @@ thanks to : PREP
 thanksgiving break : NOUN
 that he : PRO[=tht]
 that I : PRO[=tht]
+that it : PRO[=tht]
 that she : PRO[=tht]
 that some insist : THAT
 that there : THAV
@@ -1871,6 +1905,7 @@ to explain why : VERB[^infn]
 to its completion : ADV
 to not : TO
 to or from : PREP
+to review : VERB[^infn]
 to the satisfaction of : PREP
 to where : CONJ
 token black : NOUN
@@ -1931,6 +1966,7 @@ us-bound : ADJ
 used to : AUXL
 user data : NOUN
 uso tour : NOUN
+varying amounts : NOUN[:plur]
 versus : CONJ
 very close to : PREP
 very dangerous : ADJ
@@ -1940,6 +1976,7 @@ very little : ADV - -1
 very pleased : ADJ
 very unfortunate : ADJ
 veterans affairs secretary : NOUN
+veterans group : NOUN
 viral video : NOUN
 vote for : VERB
 war dead : NOUN
@@ -2089,12 +2126,12 @@ has a little bit of a different characteristic : VERB
 acting so strangely : VERB[^ing]
 after BREXIT : ADV
 alabama woman : NOUN
-announced the discovery of : VERB
+announced the discovery of : VERB[^ed,*r]
 another front in the culture wars : NOUN
 armed with fresh ammunition : ADJ
 arnona : NOUN
 attacks on twitter : NOUN[:plur]
-based off : VERB[^ed]
+based off : VERB[^ed,*r]
 block his power grab : VERB
 body of water called Jamun Bodi : NOUN
 brand new : ADJ
@@ -2108,7 +2145,7 @@ confrontational move : NOUN
 Conor Lamb : NOUN
 Delta spokesman : NOUN
 complex new modeling : NOUN
-complained to friends : VERB[^ed]
+complained to friends : VERB[^ed,*r]
 continued airstrikes and fighting : NOUN
 counts of murder : NOUN[:plur]
 davis jr. : NOUN
@@ -2116,13 +2153,14 @@ davis sr. : NOUN
 deconfliction : ADJ
 defend himself : VERB
 different characteristic : NOUN
-disappeared from the fever swamps : VERB[^ed]
+disappeared from the fever swamps : VERB[^ed,*r]
 dream president : NOUN
 effectively acknowledging : VERB[^ing]
 end efforts to rescue : VERB
 ethics controversy : NOUN
 EU benefits : NOUN[:plur]
 failed meteorologist : NOUN
+failed to contain Russia : VERB[^ed,*r]
 five-and-a-half : NUM
 Florida district office : NOUN
 Florida men : NOUN[:plur]
@@ -2134,10 +2172,13 @@ half-apologies : NOUN[:plur]
 historically GOP district : NOUN
 improperly collected information : NOUN
 in an interview : ADV
+in remarks : ADV
 incorrectly reported : VERB[^ed]
 information commissioner : NOUN
+it doesn’t appear that : ADV
 James Eric Davis Jr. : NOUN
 made the ask : VERB[^ed]
+magnitude of this job : NOUN
 making a false statement to the FBI : VERB[^ing]
 messaging app WeChat : NOUN
 missing submarine : NOUN
@@ -2147,36 +2188,35 @@ nuclear and missile : ADJ
 on what the news agency described as : CONJ
 orange snow : NOUN
 personal narrative : NOUN
-picked him up : VERB[^ed]
+picked him up : VERB[^ed,*r]
 potentially unpalatable deal : NOUN
 public plea for help : NOUN
 rebel-held eastern Ghouta suburb of Damascus : NOUN
 Rick saccone : NOUN
 Robert Forrest : NOUN
-Saint Mary : NOUN
 Sandra Himmel : NOUN
-Santa Barbara : NOUN
 scandalous affair : NOUN
 Scarborough intern Lori Klausutis : NOUN
 sinai mosque : NOUN
 small collection of buildings : NOUN
-Stormy Daniels : NOUN
 supt : NOUN
 Syrian capital Damascus : NOUN
-talked to his mother : VERB
+talked to his mother : VERB[^ed,*r]
 Tampa police : NOUN
+that has killed : THTV
 that killed : THTV
 that tore   : THTV
 that worked : THTV
 that would ban : THTV
 the country’s struggle : NOUN[:det]
 the group Wikileaks : NOUN[:det]
+the same amount each month : NOUN
 the u.k.'s national weather service : NOUN
 the upper layers of the atmosphere : NOUN[:plur]
 to flowed : VERB[^infn]
 told reporters : VERB[^ed]
 too easily able to : AUXL
-touched her sexually : VERB[^ed]
+touched her sexually : VERB[^ed,*r]
 took him to a hospital : VERB[^ed]
 Trump’s tweet : NOUN
 U.S. Special Forces base : NOUN
@@ -2196,7 +2236,7 @@ Mabna Institute : NOUN
 
 Iran-based company : NOUN
 
-conducted a coordinated campaign : VERB[^ed]
+conducted a coordinated campaign : VERB[^ed,*r]
 cyber intrusions into computer systems : NOUN[:plur]
 
 belonging to : PREP
@@ -2247,7 +2287,6 @@ asylum-seeker : NOUN
 at-times : ADV
 battery-electric : ADJ
 bill-to : ADJ
-but instead, : CONJ
 camouflaged-clad : ADJ
 case-sensitive : ADJ
 cash-and-stock : ADJ
@@ -2259,6 +2298,7 @@ city funds : NOUN[:plur]
 civil-rights law : NOUN
 closely-watched : ADJ
 co-founder : NOUN
+co-owned : ADJ
 co-produce : VERB
 code-breaking : ADJ
 cold war-era : NOUN
@@ -2291,7 +2331,6 @@ fifteen-year-old : ADJ
 five-lane : ADJ
 fog-horn : NOUN
 foliage-gleaner : NOUN
-foreign leader : NOUN
 four-day : ADJ
 four-hour : ADJ
 four-lane : ADJ
@@ -2317,21 +2356,17 @@ high-profile : ADJ
 high-speed : ADJ
 high-speed boat : NOUN
 highest-ranking : ADJ
-huanitarian mission : NOUN
+humanitarian mission : NOUN
 image-preserver : NOUN
 in-depth : ADJ
 in-store : ADJ
-initial failure : NOUN
-international aid worker : NOUN
 iranian-backed : ADJ
 iraqi-syrian : ADJ
 israeli-palestinean : ADJ
-late last week : ADV
 left-turn : ADJ
 left-wing : ADJ
 left-wing politics : NOUN
 lesser-known : ADJ
-likely to be asked about : ADJ
 long-drawn : ADJ
 long-expected : ADJ
 long-past  : ADJ
@@ -2339,7 +2374,6 @@ long-term : ADJ
 long-undervalued : ADJ
 luke-warm : ADJ
 M-B-S : NOUN
-media blitz : NOUN
 miami-dade : ADJ
 mid-air : NOUN
 mid-century : ADJ
@@ -2367,7 +2401,6 @@ once-in-a-lifetime : ADJ
 one-lane : ADJ
 one-of-a-kind : ADJ
 out-of-stock : ADJ
-outside of : PREP
 pay-per-use : ADJ
 pay-tv : NOUN
 period-themed : ADJ
@@ -2401,7 +2434,6 @@ scale-down : NOUN
 second-in-command : ADJ
 second-degree manslaughter : NOUN
 second-largest : ADJ
-security detail : NOUN
 self-deprecating : NOUN
 self-deprecating : ADJ
 self-defensive : ADJ
@@ -2427,6 +2459,7 @@ three-day : ADJ
 three-point : ADJ
 tighty-whities : NOUN
 time-cycle : NOUN
+tit-for-tat : ADJ
 top-rated : ADJ
 top-shelf : ADJ
 trade-in : ADJ
@@ -2514,6 +2547,7 @@ Bir al-Abed : NOUN
 Bitcoin : NOUN
 Black Lives Matter : NOUN[:*r]
 Bloomberg : NOUN
+Bloomberg News : NOUN
 Bob Geldof : NOUN
 Boeing : NOUN
 Boko haram : NOUN
@@ -2571,6 +2605,7 @@ DACA : NOUN
 Dandan : NOUN
 Dapchi Government Girls Science and Technical College : NOUN
 Dave Stone : NOUN
+David Schulkin : NOUN
 Delta Air Lines : NOUN
 Democratic National Committee : NOUN
 Denny : NOUN
@@ -2683,6 +2718,7 @@ Institute for Radio Astronomy Millimetrique : NOUN[:*r]
 Intel : NOUN
 International Criminal Tribunal : NOUN
 Interstate 95 corridor : NOUN
+Iraq and Afghanistan Veterans of America : NOUN
 Irving : NOUN
 Islamabad Electric Supply Company : NOUN[:*r]
 Islamic State : NOUN
@@ -2719,9 +2755,6 @@ Justice Elena Kagan : NOUN
 Kardashian : NOUN
 Katie Sierra : NOUN
 Katrina : NOUN
-Sarah Huckabee Sanders : NOUN
-Sean Hannity : NOUN
-Steven Keates : NOUN
 Keaton : NOUN
 Kevin : NOUN
 Kevin Brady : NOUN
@@ -2888,13 +2921,19 @@ Russia-friendly : ADJ
 S.A.F. : NOUN
 Saakashvili : NOUN
 Saeb Erekat : NOUN
+Saint Mary : NOUN
 Sanders : NOUN
+Santa Barbara : NOUN
 Santa Paula : NOUN
+Sarah Huckabee Sanders : NOUN
+Sarmat missile system : NOUN
 Scarborough : NOUN
 Schumer : NOUN
+Scott Pruitt : NOUN
 Scotts : NOUN
 Scotts Miracle-Gro Company : NOUN
 Seal Team Six : NOUN
+Sean Hannity : NOUN
 Seminole Heights : NOUN
 Sergei : NOUN
 Sergey : NOUN
@@ -2922,6 +2961,8 @@ Stephan : NOUN
 Stephen Curry : NOUN
 Steve Bannon : NOUN
 Steve Jobs : NOUN
+Steven Keates : NOUN
+Stormy Daniels : NOUN
 Sueddeutsche Zeitung : NOUN
 Suiter : NOUN
 Symantec : NOUN
@@ -15660,6 +15701,7 @@ island : NOUN
 island hop : VERB
 islander : NOUN
 isolate : VERB
+isolated : ADJ
 isolation : NOUN
 isotope : NOUN
 israel : NOUN
@@ -16995,6 +17037,7 @@ lob : NOUN
 lob : VERB
 lobby : NOUN
 lobby : VERB
+lobbyist : NOUN
 lobster : NOUN
 lobster butter : NOUN
 lobster pot : NOUN
@@ -22968,7 +23011,7 @@ replicate : VERB
 reply : NOUN
 reply : VERB
 report : NOUN
-report : VERB - +2
+report : VERB[^dit] - +2
 report card : NOUN
 report out : VERB
 reported : ADJ
@@ -23527,7 +23570,7 @@ rough out : VERB
 rough rider : NOUN
 rough up : VERB
 rough water : NOUN
-roughly : ADV
+roughly : ADV[~mod]
 round : NOUN [&cond] -1
 round : VERB [$cond] -1
 round : ADJ

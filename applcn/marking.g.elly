@@ -630,7 +630,7 @@ _
   append </punc>
 __
 
-g:PEXP->PEXP PRO
+g:PEXP->PEXP PRO[=-tht]
 _
   left
   append <pro>
@@ -2112,7 +2112,7 @@ __
 g:ADJ[%*r]->NOUN[:join] ADJ
  >>++
 __
-g:ADJ[%ed]->VERB[^ed,-dit,-*x]
+g:ADJ[%ed]->VERB[^ed,-dit,-*r,-*x]
  l[$noaj]>>-------
       n<2>>---------
       p<1>>-
