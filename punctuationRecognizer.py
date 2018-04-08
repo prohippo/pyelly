@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# punctuationRecognizer.py : 22mar2018 CPM
+# punctuationRecognizer.py : 07apr2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -183,7 +183,7 @@ if __name__ == '__main__':
 
     import symbolTable
 
-    ups = u'….?!ab,;:+cd()$%&\'\"ef-—“”…hg`i™\x1E〈〉'
+    ups = u'.?!ab,;:+cd()$%&\'\"ef-–—“”…hg`i™\x1E〈〉'
 
     symb = symbolTable.SymbolTable()
     punc = PunctuationRecognizer(symb)
