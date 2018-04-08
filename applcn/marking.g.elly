@@ -321,23 +321,21 @@ g:ELEM->NCLU[:-det,-qnt,poss]
   n>3 >>--------
       >>--
 __
-g:ELEM->PRO[=nom]
+g:ELEM->PRO[=nom,-*l]
 # ?>>?
    >>*l[!ln,rn,pro]
 _
   var typg=pro
   (typg)
 __
-g:ELEM->PRO[=-nom,-prep,-tht]
+g:ELEM->PRO[=-nom,-prep,-*l]
 # ?>>?
    >>*l[!rn,pro,brk]
 _
   var typg=pro
   (typg)
 __
-g:ELEM->PRO[=-nom,-prep,tht]
-# ?>>?
-   >>*l[!rn,pro,brk]
+p:ptht
 _
   linefeed
   append <>
@@ -348,10 +346,32 @@ _
   delete 1 <
   append </>
   linefeed
+__
+g:ELEM->PRO[=-nom,-prep,*l,-*x]
+# ?>>?
+   >>*l[!rn,pro,brk]
+_
+  (ptht)
   append <pro>
   merge
   append </pro>
 __
+g:ELEM->PRO[=-nom,-prep,*l,*x] NCLU[:-prep,-qnt,-det,-num]
+_
+  (ptht)
+  var sv
+  delete 99 <
+  store sv
+  merge
+  split
+  right
+  back
+  shift 12 <
+  insert < sv
+  space
+  merge
+__
+
 g:ELEM->PRO[=-nom,prep]
 # ?>>?
    >>*l[!-ln,rn,pro]
@@ -630,7 +650,7 @@ _
   append </punc>
 __
 
-g:PEXP->PEXP PRO[=-tht]
+g:PEXP->PEXP PRO[=-*l]
 _
   left
   append <pro>
