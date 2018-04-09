@@ -53,7 +53,7 @@ BLOCK ing
       LEN = 7 {SU} 
       END {SU 0 e}
     IF ar {SU 0 e}
-    IF u {SU 0 e}
+    IS eu {SU 0 e}
     END {SU}
   IF kep {FA}
   IF r

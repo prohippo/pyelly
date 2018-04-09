@@ -233,6 +233,7 @@ central centr
 certainty certain
 cervical cervix
 challenger challenge
+challenging challenge
 champion champion
 changer change
 chaotic chao
@@ -1571,6 +1572,8 @@ vocal voce
 volcanoes volcano
 voltage volt
 volunteer volunt
+vomited vomit
+vomiting vomit
 vying vie
 waiver waive
 wannest wan

@@ -75,6 +75,7 @@ BLOCK
         IF opm {SU 0 e}
         END {SU}
       IF mi {SU}
+      IF mo {SU}
       IF ci {SU}
       IF ri {SU}
       IF re {SU}
