@@ -322,6 +322,7 @@ making matters worse : VERB[^ing]
 making use of : VERB[^ing]
 marked : VERB[^ed]
 marking : VERB[^ing]
+may proceed with : VERB
 mean that : VERB
 means : VERB[^s] - +1
 mechanics : NOUN[:plur]
@@ -1252,6 +1253,7 @@ incentivize : VERB
 increase or decrease : VERB
 independence day holiday : NOUN
 independent state : NOUN
+individual states : NOUN[:plur]
 industry executive : NOUN
 informal meeting : NOUN
 informal meetings : NOUN[:plur]
@@ -3038,6 +3040,7 @@ Texans : NOUN
 The Church of the Holy Sepulchre : NOUN
 the city of Ventura : NOUN
 the Dakotas : NOUN[:plur]
+the District of Columbia : NOUN
 the Emoluments Clause : NOUN
 the former Yugoslavia : NOUN
 the Frontier Post : NOUN
