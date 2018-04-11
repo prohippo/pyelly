@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTest.py : 08may2017 CPM
+# parseTest.py : 10apr2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -64,16 +64,18 @@ class Phrase(object):
 class Tree(object):
     """ dummy Elly tree class for testing
     """
-    def __init__ ( self ):
+    def __init__ ( self , syms=None ):
         """ initialization
         """
         print 'tree with stub methods'
         self.queue = [ ]
         self.lastph = None
+        self.symbols = syms if syms != None else symbolTable.SymbolTable()
     def addLiteralPhrase (self,typ,sxs,dvd=False,cap=False):
         """ dummy method
         """
-        print 'add phrase: typ=' , typ , '[' + sxs.hexadecimal() + ']'
+        typn = self.symbols.getSyntaxTypeName(typ)
+        print 'add phrase: typ=' , typ , typn , '[' + sxs.hexadecimal() + ']'
         ph = Phrase()
         ph.krnl.catg = typ
         ph.krnl.synf = sxs
@@ -83,7 +85,8 @@ class Tree(object):
     def addLiteralPhraseWithSemantics (self,typ,sxs,sms,bia,gen=None,dvd=False,cap=False):
         """ dummy method
         """
-        print 'add phrase: typ=' , typ , '[' + sxs.hexadecimal() + ']' , '[' + sms.hexadecimal() + '] =' , bia
+        typn = self.symbols.getSyntaxTypeName(typ)
+        print 'add phrase: typ=' , typ , typn , '[' + sxs.hexadecimal() + ']' , '[' + sms.hexadecimal() + '] =' , bia
         ph = Phrase()
         ph.krnl.catg = typ
         ph.krnl.synf = sxs
@@ -97,7 +100,8 @@ class Tree(object):
         """
         print len(self.queue) , 'queued phrase' +  ('s' if len(self.queue) != 1 else '')
         for ph in self.queue:
-            print ph
+            typn = self.symbols.getSyntaxTypeName(ph.krnl.catg)
+            print typn , ph
 
 class Context(object):
     """ dummy Elly interpretive context for testing
@@ -112,6 +116,8 @@ class Context(object):
         syms.getSyntaxTypeIndexNumber('noun') #
         syms.getSyntaxTypeIndexNumber('verb') #
         syms.getSyntaxTypeIndexNumber('unkn') #
+        syms.getSyntaxTypeIndexNumber('date') #
+        syms.getSyntaxTypeIndexNumber('time') #
         syms.getSyntaxTypeIndexNumber('num')  #
         syms.getSyntaxTypeIndexNumber('ssn')  #
         self.syms  = syms

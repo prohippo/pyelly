@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# patternTable.py : 19feb2018 CPM
+# patternTable.py : 10apr2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -473,8 +473,8 @@ if __name__ == '__main__':
     mode = os.fstat(0).st_mode       # to check for redirection of stdin (=0)
     interact = not ( stat.S_ISFIFO(mode) or stat.S_ISREG(mode) )
 
-    tre = parseTest.Tree()           # dummy parse tree for testing
     ctx = parseTest.Context()        # dummy interpretive context for testing
+    tre = parseTest.Tree(ctx.syms)   # dummy parse tree for testing
     print ''
 
     basn = ellyConfiguration.baseSource + '/'
