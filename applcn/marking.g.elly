@@ -4100,3 +4100,9 @@ __
 g:QUAN->PUNC[|quo,*l] QEQ
 __
 
+g:DATE->ADJ[%*x] DATE
+  c<12 >>++++
+       >>--
+_
+  (twob)
+__

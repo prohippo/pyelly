@@ -14,6 +14,7 @@ happiest : ADJ
 largest : ADJ
 
 acting : VERB[^ing]
+added a new dimension : VERB[^ed]
 advanced : VERB[^ed]
 advancing : VERB[^ing]
 advertising : VERB[^ing] - -2
@@ -91,6 +92,7 @@ chosen : VERB[^ed] - +2
 circulating : VERB[^ing]
 civil rights : NOUN
 classified : VERB[^ed] - +2
+classified memo : NOUN
 cleared : VERB[^ing]
 closest : ADJ - +1
 closing in on : VERB[^ing]
@@ -113,9 +115,11 @@ cracking down on : VERB[^ing]
 creating : VERB[^ing] - +1
 creating : ADJ[%ing] - -2
 criteria : NOUN[:plur]
+critical battle : NOUN
 cryptic statement : NOUN
 current and former : ADJ
 cut short : VERB[^ed]
+cutting off : VERB[^ing]
 dates back to : VERB
 dates back to before : CONJ
 dating back : VERB[^ing]
@@ -146,6 +150,7 @@ done : VERB[^ed]
 done so : VERB[^ed]
 does not : AUXL[^s]
 drags on : VERB[^s]
+drinking water : NOUN
 drug trafficking : NOUN
 drawn : VERB[^ed]
 earlier this month : ADV
@@ -171,6 +176,7 @@ felt forced to choose : VERB[^ed]
 field-tested : VERB[^ed]
 field-testing : VERB[^ing]
 fighting : VERB[^ing]
+financial risk : NOUN
 financing : VERB[^ing]
 fired off : VERB[^ed]
 first-degree murder : NOUN
@@ -204,6 +210,7 @@ gives rise to : VERB[^s]
 giving rise to : VERB[^ing]
 get : BE - +1
 get out : VERB
+gets the point home : VERB[^s]
 getting : BE[^ing] - +1
 getting : VERB[^ing] - +2
 getting : NOUN[:ing] - -2
@@ -327,11 +334,13 @@ marking : VERB[^ing]
 may proceed with : VERB
 mean that : VERB
 means : VERB[^s] - +1
+meant : VERB[^ed]
 mechanics : NOUN[:plur]
 meeting : VERB[^ing]
 meetings : NOUN[:plur]
 messaging app : NOUN
 mice : NOUN[:plur]
+military liaison : NOUN
 military threat : NOUN
 millennia : NOUN[:plur]
 millennium bc : NOUN
@@ -371,6 +380,7 @@ ordered held without bond : VERB[^ed]
 originated : VERB[^ed]
 originated : ADJ - -4
 ought : VERB
+out of every : PREP['of,div]
 out of step : ADJ
 outside of : PREP
 overhyped : ADJ
@@ -416,6 +426,7 @@ purchasing : ADJ[%ing] - -2
 put it to : VERB[^ed]
 put to sleep : VERB[^ed]
 racked up : VERB[^ed]
+raged on : VERB[^ed]
 raised fears of : VERB[^ed]
 ran : VERB[^ed]
 ran for office : VERB[^ed]
@@ -561,6 +572,7 @@ values : VERB[^s]
 verify the authenticity of : VERB
 voting overwhelmingly : VERB[^ing]
 walked away : VERB[^ed]
+walked out : VERB[^ed]
 walking away : VERB[^ing]
 walks away : VERB[^s]
 walks on water : VERB[^s]
@@ -715,6 +727,7 @@ and then : CONJ
 animal cruelty : NOUN
 another group of : QUAN
 anniversary dinner : NOUN
+annual event : NOUN
 annual meeting : NOUN
 anything else : NOUN
 anytime : NOUN
@@ -778,6 +791,7 @@ authoritarian governance : NOUN
 authorities : NOUN[:plur]
 autoplay : NOUN
 avoid errors : VERB
+away from : PREP
 back in : PREP
 background check : NOUN
 bad news : NOUN
@@ -791,6 +805,7 @@ best for them : ADJ
 best suit : NOUN
 best suit : VERB
 better of it : ADV
+better classroom conditions : NOUN
 better than : PREP
 bigger and bigger : ADJ
 binding commitment : NOUN
@@ -916,6 +931,7 @@ constitutional limit : NOUN
 construction permit : NOUN
 container transport : NOUN
 corporate bond market : NOUN
+corporate lending conditionns : NOUN[:plur]
 corrections officer : NOUN
 corrupt regime : NOUN
 corruption case : NOUN
@@ -952,6 +968,8 @@ deadly explosion : NOUN
 deadly shooting : NOUN
 deadly shootings : NOUN[:plur]
 debris flow : NOUN
+debt-fueled expansion : NOUN
+debt level : NOUN
 decades ago : ADV
 decent people : NOUN[:plur]
 decisive tilt : NOUN
@@ -976,6 +994,7 @@ discount fare : NOUN
 discount fare program : NOUN
 discussion point : NOUN
 district office : NOUN
+district official : NOUN
 divorce bill : NOUN
 divorce case : NOUN
 do much more : VERB
@@ -989,6 +1008,7 @@ down the block : ADJ [$trlg] 0
 dozens of : QUAN
 dr. : NOUN
 draft treaty : NOUN
+draw attention to : VERB
 drumroll : NOUN
 dubstep : NOUN
 due to : PREP
@@ -1074,6 +1094,7 @@ for example : PEXP[|eg]
 for more than a decade : ADV
 for now : ADV
 for the first time : ADV
+for third straight day : ADV
 for too long : ADV
 for why : CONJ
 foreign ambassador : NOUN
@@ -1118,6 +1139,7 @@ genome editing : NOUN
 get shot : VERB
 give them new life : VERB
 global attention : NOUN
+global financial crisis : NOUN
 gold and silver : NOUN
 golf property : NOUN
 good news : NOUN
@@ -1164,6 +1186,8 @@ helpline : NOUN
 helter skelter : NOUN
 here you go : VERB
 hi res : ADJ
+higher-quality : ADJ
+higher pay : NOUN
 highest principles : NOUN[:plur]
 highly likely : ADV
 his or her : DEM
@@ -1192,6 +1216,8 @@ I think that : ADV
 illegal alien : NOUN
 illegal immigrant : NOUN
 immediate medical help : NOUN
+immigration crackdown : NOUN
+immigration policy : NOUN
 in a statement : ADV
 in accordance with : PREP
 in addition to : PREP
@@ -1254,6 +1280,7 @@ inappropriate relationship : NOUN
 inappropriate sexual behavior : NOUN
 incentivize : VERB
 increase or decrease : VERB
+increase the salaries of : VERB
 independence day holiday : NOUN
 independent state : NOUN
 individual states : NOUN[:plur]
@@ -1337,6 +1364,7 @@ land corridor : NOUN
 land survey : NOUN
 large areas of : QUAN
 large storm system : NOUN
+largely in their hands : ADJ
 last big : ADJ
 last fall : NAVB
 last june : NAVB
@@ -1481,6 +1509,7 @@ neighborhood : ADJ - -2
 neighborhood bar : NOUN
 neighborhood setting : NOUN
 nerve agent attack : NOUN
+new calls : NOUN[:plur]
 new generation : NOUN
 new information : NOUN
 new question : NOUN
@@ -1509,6 +1538,7 @@ nuclear and ballistic : ADJ
 nuclear technology : NOUN
 nuclear weapons : NOUN
 off the map : ADV
+official confirmation : NOUN
 official source : NOUN
 official version : NOUN
 offline : ADJ
@@ -1541,6 +1571,8 @@ once in a while : ADV
 onramp : NOUN
 onscreen : ADJ
 open desert : NOUN
+open-hearted : ADJ
+opening auction : NOUN
 openings : NOUN[:plur]
 opposition fighters : NOUN[:plur]
 or else : CONJ
@@ -1654,6 +1686,7 @@ proportionally spaced : ADJ
 pros and cons : NOUN
 prove to a judge : VERB
 proved to be : VERB
+public company : NOUN
 public health : NOUN
 public health decision : NOUN
 public information : NOUN
@@ -1684,6 +1717,7 @@ recording artist : NOUN
 red rock : NOUN
 reduce costs : VERB
 reelection win : NOUN
+refugee crisis : NOUN
 regardless of : PREP
 regional rival : NOUN
 regional security : NOUN
@@ -1815,6 +1849,7 @@ southern city : NOUN
 southwest to : PREP
 space authority : NOUN
 special counsel : NOUN
+special counsel probe : NOUN
 special envoy : NOUN
 special forces : ADJ - -1
 spectator : ADJ - +1
@@ -1929,6 +1964,7 @@ the united states : NOUN[:plur]
 their presence : NOUN
 there is no hope : NOUN
 they too : PRO
+this afternoon : NAVB[:*x]
 this month : NAVB[:det]
 this morning : NAVB[:*x]
 this time : ADV
@@ -1977,6 +2013,7 @@ u.s. forces : NOUN[:plur]
 u.s. government compound : NOUN
 u.s. mainland : NOUN
 u.s. market : NOUN
+u.s.-mexico border wall : NOUN
 u.s. official  : NOUN
 u.s. officials : NOUN[:plur]
 u.s. special counsel : NOUN
@@ -2001,6 +2038,7 @@ unlikely to be persuaded : ADJ
 unpalatable deal : NOUN
 unscheduled sweep : NOUN
 unsettled weather : NOUN
+unusually long time : NOUN
 unwilling to : TO
 up for reelection : ADJ
 up slightly : ADJ
@@ -2035,6 +2073,7 @@ water use : NOUN
 weeks in, : IADV
 weightiest : ADJ
 wet, heavy snow : NOUN
+what he called : ADV
 what he said was a : DET
 what i have stood for : NOUN
 what is today : ADV
@@ -2209,6 +2248,7 @@ effectively acknowledging : VERB[^ing]
 eliminating threats :  VERB[^ing]
 end efforts to rescue : VERB
 ethics controversy : NOUN
+er, I mean, : ADV
 EU benefits : NOUN[:plur]
 failed meteorologist : NOUN
 failed to contain Russia : VERB[^ed,*r]
@@ -2249,6 +2289,7 @@ rebel-held eastern Ghouta suburb of Damascus : NOUN
 Rick saccone : NOUN
 Robert Forrest : NOUN
 S&P : NOUN
+Safe Drinking Water Act : NOUN
 Sandra Himmel : NOUN
 scandalous affair : NOUN
 Scarborough intern Lori Klausutis : NOUN
@@ -2274,6 +2315,7 @@ told reporters : VERB[^ed]
 too easily able to : AUXL
 touched her sexually : VERB[^ed,*r]
 took him to a hospital : VERB[^ed]
+Tulsa schools superintendant : NOUN
 Trump’s tweet : NOUN
 U.S. Special Forces base : NOUN
 unfair and undemocratic : ADJ
@@ -2509,6 +2551,8 @@ single-discipline : ADJ
 six-party : ADJ
 start-up : NOUN
 state-of-the-art : ADJ
+state-owned : ADJ
+state-owned enterprise : NOUN
 state-run : ADJ
 state-run news agency KCNA : NOUN
 state-sponsored : ADJ
@@ -2532,6 +2576,7 @@ trade-in : ADJ
 trauma-specific : ADJ
 tug-of-war : ADJ
 tut-tutting : ADJ
+two-and-a-half : NUM
 two-term limit : NOUN
 U.S. government source : NOUN
 U.S.-China : ADJ
@@ -2918,6 +2963,7 @@ NFL : NOUN
 NFL Network : NOUN
 NFL players' protest : NOUN
 Nicholas : NOUN
+North American Trade Agreement : NOUN
 Novaes : NOUN
 NPR : NOUN
 NPR’s Morning Edition : NOUN
@@ -3091,6 +3137,7 @@ Ty Cobb : NOUN
 Twitter : NOUN
 U.N. : NOUN
 U.S. : NOUN
+U.S. Agency for International Development : NOUN
 U.S. District Judge : NOUN
 U.S.S.R. : NOUN
 Uber : NOUN
@@ -12242,7 +12289,7 @@ first vatican council : NOUN
 first water : NOUN
 firsthand : ADJ
 firsthand : ADV
-fiscal : ADJ
+fiscal : ADJ[%*x]
 fiscal policy : NOUN
 fiscal year : NOUN
 fish : NOUN
@@ -18374,6 +18421,7 @@ midway : NOUN
 midway : ADJ
 midway : ADV
 midwest : NOUN
+migrant : NOUN
 migrate : VERB
 migration : NOUN
 migration route : NOUN
@@ -27631,6 +27679,7 @@ sydney harbor bridge : NOUN
 syllable : NOUN
 syllable structure : NOUN
 symbol : NOUN
+symbolic : ADJ
 symbolically : ADV
 symbology : NOUN
 sympathetic : ADJ
