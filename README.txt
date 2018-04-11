@@ -569,6 +569,12 @@ Release Notes:
                       reduce amount of dumps on processing error
                       clean up commentary in code modules
                       update documentation
+                      add Google News data
+ 1.4.28  - 11apr2018  handle special case in stop punctuation in English
+                      improve output of FSA unit testing
+                      extend "marking" rules for new data
+                      update documentation
+                      add Google News data
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
