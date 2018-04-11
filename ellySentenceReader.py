@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellySentenceReader.py : 28may2017 CPM
+# ellySentenceReader.py : 11apr2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -323,7 +323,7 @@ class EllySentenceReader(object):
 
             # check for sentence break on punctuation
 
-#           print '@3  c=' , c
+#           print '@3  c=' , c , inBrkt
 
             if c in QUOs or c in RBs:
 
@@ -343,6 +343,19 @@ class EllySentenceReader(object):
                     if z == END or ellyChar.isWhiteSpace(z) and lc in Stops:
                         if nAN > 1:
                             break
+                elif c in QUOs and lc in Stops:
+                    z = self.inp.read()
+                    if z in RBs:
+                        sent.append(z)
+                        y = self.inp.read()
+                        if y in Stops:
+                            sent.append(y)
+                        elif not ellyChar.isWhiteSpace(y):
+                            self.inp.unread(y)
+                        inBrkt = False
+                        break
+                    self.inp.unread(z)
+#               print 'continue'
                 continue
 
             elif not c in Stops:
