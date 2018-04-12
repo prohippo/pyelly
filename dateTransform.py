@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# dateTransform.py : 01mar2018 CPM
+# dateTransform.py : 12apr2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -178,6 +178,7 @@ class DateTransform(simpleTransform.SimpleTransform):
         t = ts
         tl = len(ts)
         k = self._aMonth(t)            # look for month to start date string
+        comma = False
 #       print 'month len=' , k
         if k > 0:
             if k == tl: return 0
@@ -200,12 +201,17 @@ class DateTransform(simpleTransform.SimpleTransform):
             if len(t) == 0:
 #               print 'no year tl=' , tl , 'k=' , k , t
                 return len(ts) - tl + k
-            if t[0] == u',': t = t[1:] # look for comma after day
+            if t[0] == u',':           # look for comma after day
+                t = t[1:]             # if found, remove and note
+                comma = True
             if len(t) == 0: return tl
             if ellyChar.isWhiteSpace(t[0]): t = t[1:]
             if len(t) == 0: return tl
             k = self._aYear(t)         # look for year
 #           print 'year len=' , k
+            lnt = len(t)
+            if comma and k < lnt and t[k] == ',':
+                k += 1                 # remove comma after year if paired
 #           print 'len(ts)=' , len(ts) , 'len(t)=' , len(t) , t
             return len(ts) - len(t) + k
 
@@ -236,12 +242,14 @@ class DateTransform(simpleTransform.SimpleTransform):
                 t = t[1:]
                 if len(t) == 0: return tl
                 nd += 1
+                comma = True
             if ellyChar.isWhiteSpace(t[0]):
                 t = t[1:]
                 if len(t) == 0: return tl
                 nd += 1
             k = self._aYear(t)         # look for year
             if k > 0:
+                if comma and k < len(t) and t[k] == ',': k += 1
                 return ntl + k + nd    # full date found
             else:
                 return ntl - nd        # only month and day of date found
@@ -577,11 +585,13 @@ if __name__ == '__main__':
         u'4/11/99' ,
         u'15TH of April, 1775' ,
         u'15th of April, 1775' ,
+        u'15th of April, 1775,' ,
         u'fifteenth of April, 1775' ,
         u'april fifteenth, 1775' ,
         u'dec. 25th, 1880' ,
         u'Sep 33, 1955' ,
         u'Sept 3, 1955' ,
+        u'Sept 3, 1955,' ,
         u'May 1941' ,
         u'December 1949' ,
         u'Twelfth of Never' ,
