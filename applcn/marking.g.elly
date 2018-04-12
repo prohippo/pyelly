@@ -4106,3 +4106,24 @@ g:DATE->ADJ[%*x] DATE
 _
   (twob)
 __
+
+p:elth
+_
+  split
+  obtain
+  back
+  delete 4 <
+  append <nclu><det>the</det><noun>
+  merge
+  delete 5 >
+  append </noun></nclu>
+  linefeed
+  append <>that</>
+  linefeed
+__
+
+g:ADV->NAVB CMPC
+ >>-
+_
+  (twob)
+__

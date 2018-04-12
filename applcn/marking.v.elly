@@ -81,6 +81,7 @@ buildings : NOUN[:plur]
 built : VERB[^ed] [$trns,noaj] +3
 buoys the hopes of : VERB[^s]
 called 911 to report : VERB[^ed]
+calling himself : VERB[^ing]
 came : VERB[^ed,ptcl]
 came to light : VERB[^ed]
 cannot happen here : VERB
@@ -225,6 +226,7 @@ gone : VERB[^ed]
 gone into effect : VERB[^ed]
 gone out of business : VERB[^ed]
 gonna : AUXL
+goods : NOUN[:plur]
 got : VERB[^ed,chng,*x]
 got home from work : VERB[^ed]
 got off to a shaky start : VERB[^ed]
@@ -332,6 +334,7 @@ making use of : VERB[^ing]
 marked : VERB[^ed]
 marking : VERB[^ing]
 may proceed with : VERB
+may try to : AUXL
 mean that : VERB
 means : VERB[^s] - +1
 meant : VERB[^ed]
@@ -351,6 +354,7 @@ mining : VERB[^ing] - -1
 missing : VERB[^ing]
 misspoke : VERB[^ed]
 mixed : VERB[^ed]
+mornings : NOUN[:plur]
 months in, : IADV
 more than doubled : VERB[^ed]
 moved into a new phase : VERB[^ed]
@@ -430,6 +434,7 @@ raged on : VERB[^ed]
 raised fears of : VERB[^ed]
 ran : VERB[^ed]
 ran for office : VERB[^ed]
+ranging from : VERB[^ed]
 re-emerged : VERB[^ed]
 re-emerging : VERB[^ing]
 received access to : VERB[^ed]
@@ -480,6 +485,7 @@ shipping label : NOUN
 shook : VERB[^ed]
 shook up : VERB[^ed]
 shooting : VERB[^ing]
+short supply : NOUN
 shot : VERB[^ed] - +2
 shot and killed : VERB[^ed]
 should not be surprised : VERB[^ed]
@@ -499,6 +505,7 @@ sought input : VERB[^ed]
 spared the worst : VERB[^ed]
 sparked fears of : VERB[^ed]
 speaking out against : VERB[^ing]
+spending measure : NOUN
 spent : VERB[^ed]
 spoke : VERB[^ed] - +2
 spoke on the record : VERB[^ed]
@@ -508,6 +515,7 @@ sprung : VERB[^ed]
 standing in the way : VERB[^ing]
 stayed on the line : VERB[^ed]
 steered clear : VERB[^ed]
+stepped up : VERB[^ed]
 stepping down : VERB[^ing]
 stimulating : VERB[^ing]
 stolen : VERB[^ed]
@@ -547,6 +555,7 @@ thrown into crisis : VERB[^ed]
 told : VERB[^ed,dit]
 told the court : VERB[^ed,dit]
 took : VERB[^ed,ptcl]
+took out : VERB[^ed]
 took part in : VERB[^ed]
 took place : VERB[^ed]
 top lieutenant : NOUN
@@ -567,6 +576,7 @@ undergone : VERB[^ed]
 unified : VERB[^ed]
 unaccounted for : ADJ
 unsolved mystery : NOUN
+unveiled plans for : VERB[^ed]
 utilised : VERB[^ed]
 values : VERB[^s]
 verify the authenticity of : VERB
@@ -594,6 +604,7 @@ went out of business : VERB[^ed]
 went viral : VERB[^ed]
 when it comes to : CONJ
 whether or not : CONJ
+will find a way : VERB
 will have to : AUXL
 will not have to : AUXL
 will take us : VERB
@@ -852,6 +863,7 @@ cable news programming : NOUN
 cable tv : NOUN
 cable tv channel : NOUN
 cakeshop : NOUN
+call sign : NOUN
 calm and collected : ADJ [$cmpd] 0
 calories burned : NOUN
 campaign chairman : NOUN
@@ -1157,6 +1169,7 @@ group travel : NOUN
 growth strategy : NOUN
 guilty plea : NOUN
 guitar bridge : NOUN
+gun nut : NOUN
 gun violence : NOUN
 hacker network : NOUN
 hacking campaign : NOUN
@@ -1215,6 +1228,7 @@ hyperinflation : NOUN
 I think that : ADV
 illegal alien : NOUN
 illegal immigrant : NOUN
+illegal immigration : NOUN
 immediate medical help : NOUN
 immigration crackdown : NOUN
 immigration policy : NOUN
@@ -1232,6 +1246,7 @@ in conjunction with : PREP
 in connection to : PREP
 in connection with : PREP
 in critical condition : ADV
+in doing so : ADV
 in elected office : ADJ
 in exchange for : PREP
 in fair condition : ADV
@@ -1251,12 +1266,14 @@ in relations with : PREP
 in response to : PREP
 in serious condition : ADV
 in terms of : PREP
+in the coming months : ADV
 in the coming weeks : ADV
 in the community : ADV
 in the days before : PREP
 in the event of : PREP
 in the first place : ADV
 in the last few months : ADV
+in the last week : ADV
 in the metro area : ADV
 in the mix : ADV
 in the name of : PREP
@@ -1354,6 +1371,7 @@ just days after : ADV
 just for the hell of it : ADV
 just hours after : PREP
 just this : DEM[@ind,sgl]
+just wait : ADV
 keep her quiet : VERB
 keep things quiet : VERB
 key figure : NOUN
@@ -1436,6 +1454,7 @@ marchese : NOUN
 marine corps : NOUN
 marine corps air station : NOUN
 marketing firm : NOUN
+mass exodus : NOUN
 mass killing : NOUN
 may be : BE
 may have : AUXL
@@ -1570,6 +1589,7 @@ on which : CONJ
 once in a while : ADV
 onramp : NOUN
 onscreen : ADJ
+onslaught of criticism : NOUN
 open desert : NOUN
 open-hearted : ADJ
 opening auction : NOUN
@@ -1631,6 +1651,7 @@ pinyin : NOUN
 pit bull : NOUN
 playboy centerfold : NOUN
 plea for help : NOUN
+pockets of : QUAN
 podcast : NOUN - -2
 police brutality : NOUN
 police corruption : NOUN
@@ -1693,6 +1714,7 @@ public information : NOUN
 public ministry : NOUN
 public poll : NOUN
 public sector: NOUN
+pull factor : NOUN
 pump spray : NOUN
 punchline : NOUN
 purchasing power : NOUN
@@ -1837,15 +1859,17 @@ some kind of : ADJ
 some of : QUAN
 some of them : PRO
 some of which : CONJ
+some of whom : PRO
 something like this : NOUN
 somewhere along : PREP
 sorry about that : ADJ [$cmpd] 0
 sought by authorities : ADJ
 south coast : NOUN
-southern parts : NOUN[:plur]
 southeast asian : ADJ
 southern california : NOUN
+southern border : NOUN
 southern city : NOUN
+southern parts : NOUN[:plur]
 southwest to : PREP
 space authority : NOUN
 special counsel : NOUN
@@ -2078,6 +2102,7 @@ what he said was a : DET
 what i have stood for : NOUN
 what is today : ADV
 what it has learned : NOUN
+what they say are : ADJ
 what was supposed to be : ADV
 when asked by reporters : ADV
 whenever and wherever : CONJ
@@ -2097,6 +2122,7 @@ wine review : NOUN
 winter weather advisory : NOUN
 with great sadness and a broken heart : ADV
 with him : ADJ
+with impunity : ADV
 with knowledge of : PREP
 with little experience : ADJ
 with no regard to : CONJ
@@ -2212,6 +2238,7 @@ a little bit of a : QUAN
 has a little bit of a different characteristic : VERB
 acting so strangely : VERB[^ing]
 after BREXIT : ADV
+aggressive immigration powers : NOUN[:plur]
 alabama woman : NOUN
 announced the discovery of : VERB[^ed,*r]
 another front in the culture wars : NOUN
@@ -2221,6 +2248,7 @@ attacks on twitter : NOUN[:plur]
 based off : VERB[^ed,*r]
 block his power grab : VERB
 body of water called Jamun Bodi : NOUN
+border wall funding : NOUN
 brand new : ADJ
 British city : NOUN
 busy roadway : NOUN
@@ -2240,6 +2268,7 @@ davis jr. : NOUN
 davis sr. : NOUN
 deconfliction : ADJ
 defend himself : VERB
+deployed on Twitter : VERB
 different characteristic : NOUN
 disappeared from the fever swamps : VERB[^ed,*r]
 dream president : NOUN
@@ -2250,6 +2279,7 @@ end efforts to rescue : VERB
 ethics controversy : NOUN
 er, I mean, : ADV
 EU benefits : NOUN[:plur]
+euro 6d : ADJ
 failed meteorologist : NOUN
 failed to contain Russia : VERB[^ed,*r]
 five-and-a-half : NUM
@@ -2261,7 +2291,9 @@ gun group : NOUN
 group travel discount : NOUN
 had helped her husband plan : VERB[^ed]
 half-apologies : NOUN[:plur]
+hardline immigration rhetoric : NOUN
 historically GOP district : NOUN
+illegally cross : VERB
 improperly collected information : NOUN
 in an interview : ADV
 in mid-march : ADV
@@ -2295,6 +2327,7 @@ scandalous affair : NOUN
 Scarborough intern Lori Klausutis : NOUN
 sinai mosque : NOUN
 small collection of buildings : NOUN
+some of who : PRO
 supt : NOUN
 Syrian capital Damascus : NOUN
 talked to his mother : VERB[^ed,*r]
@@ -2306,6 +2339,7 @@ that worked : THTV
 that would ban : THTV
 the country’s struggle : NOUN[:det]
 the group Wikileaks : NOUN[:det]
+the perception that : ELEM (elth)
 the same amount each month : NOUN
 the u.k.'s national weather service : NOUN
 the upper layers of the atmosphere : NOUN[:plur]
@@ -2317,6 +2351,7 @@ touched her sexually : VERB[^ed,*r]
 took him to a hospital : VERB[^ed]
 Tulsa schools superintendant : NOUN
 Trump’s tweet : NOUN
+Trump Jr. : NOUN
 U.S. Special Forces base : NOUN
 unfair and undemocratic : ADJ
 university police Chief Bill Yeagley : NOUN
@@ -2388,6 +2423,7 @@ asian-american : ADJ
 assembly-line : ADJ
 asylum-seeker : NOUN
 at-times : ADV
+base-rallying : ADJ
 battery-electric : ADJ
 bill-to : ADJ
 camouflaged-clad : ADJ
@@ -2476,6 +2512,7 @@ lesser-known : ADJ
 long-drawn : ADJ
 long-expected : ADJ
 long-past  : ADJ
+long-promised : ADJ
 long-term : ADJ
 long-undervalued : ADJ
 luke-warm : ADJ
@@ -2531,6 +2568,8 @@ rent-regulated : ADJ
 rent-regulated unit : NOUN
 republican-led : ADJ
 remote-control : NOUN
+right-wing : ADJ
+right-winger : NOUN
 rubber-coated : ADJ
 round-up : NOUN
 Russian-born : NOUN
@@ -2897,8 +2936,10 @@ Lin-Manuel Miranda : NOUN
 Lord Mayor : NOUN
 Lord Mayor of Dublin : NOUN
 Lori Klausutis : NOUN
+Los Angeles Times : NOUN
 Love Victorious : NOUN
 Mahmoud Abbas : NOUN
+Malala Yousufzai : NOUN
 Mali : NOUN
 Malibu : NOUN
 Manafort : NOUN
@@ -2906,8 +2947,8 @@ Mao : NOUN
 Mar del Plata : NOUN
 Marjory Stoneman Douglas High School : NOUN
 Marc : NOUN
-Malala Yousufzai : NOUN
 Mark Zuckerberg : NOUN
+Martin Luther King Jr. : NOUN
 Martinez : NOUN
 Mar-a-Lago : NOUN
 Masterpiece Cakeshop : NOUN
@@ -10899,6 +10940,7 @@ electronic signal : NOUN
 electronic surveillance : NOUN
 electronic text : NOUN
 electronic warfare : NOUN
+electronics : NOUN[:plur]
 elegance : NOUN
 elegant : ADJ
 element : NOUN
@@ -15148,6 +15190,7 @@ hype up : VERB
 hypnosis : NOUN
 hypnotic : NOUN
 hypnotic : ADJ
+hypnotist : NOUN
 hypothesis : NOUN
 hypothetical : NOUN
 hypothetical : ADJ
@@ -29569,6 +29612,7 @@ us government printing office : NOUN
 us house : NOUN
 us house of representatives : NOUN
 us marine corps : NOUN
+us military : NOUN
 us military academy : NOUN
 us naval academy : NOUN
 us navy : NOUN
