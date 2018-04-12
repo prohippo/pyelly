@@ -570,9 +570,11 @@ Release Notes:
                       clean up commentary in code modules
                       update documentation
                       add Google News data
- 1.4.28  - 11apr2018  handle special case in stop punctuation in English
+ 1.4.28  - 11apr2018  handle special case for stop punctuation in English
+                      handle comma after year in dateTransform
                       improve output of FSA unit testing
                       extend "marking" rules for new data
+                      extend "default" stop exception rules for Sr. and Jr.
                       update documentation
                       add Google News data
 
