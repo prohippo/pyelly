@@ -99,6 +99,7 @@ closest : ADJ - +1
 closing in on : VERB[^ing]
 co-produced : VERB[^ed]
 coaching : VERB[^ing]
+coming down : VERB[^ing]
 competing : VERB[^ing]
 competing : ADJ[%ing]
 confirmed : VERB[^ed] - +1
@@ -205,6 +206,7 @@ gave his take on : VERB[^ed]
 gave rise to : VERB[^ed]
 gazed around : VERB[^ed]
 give rise to : VERB
+given rise to : VERB[^ed]
 given free rein : VERB[^ed]
 given the green light : VERB[^ed]
 gives rise to : VERB[^s]
@@ -217,6 +219,7 @@ getting : VERB[^ing] - +2
 getting : NOUN[:ing] - -2
 given : VERB[^ed]
 giving rise : VERB[^ing]
+glowing : VERB[^ing]
 goes on recess : VERB[^s]
 goes on the offensive : VERB[^s]
 going for a walk : VERB[^ing]
@@ -250,7 +253,7 @@ has nothing to do with : VERB[^s]
 has relations with : VERB[^s]
 has to : AUXL[^s]
 have been taking place : VERB
-have had : VERB[^aux,hav]
+have had : VERB[^hav,ed]
 have nothing to do with : VERB
 have probable cause : VERB
 have to : AUXL[^to]
@@ -315,6 +318,11 @@ limited : VERB[^ed] - -1
 linked to : PREP
 lives : NOUN[:plur] - +1  =life -s
 lives : VERB[^s]          =live -s
+looked up : VERB[^ed]
+looking : VERB[^ing]
+looking up : VERB[^ing]
+lost : VERB[^ed]
+lost a shot at : VERB[^ed]
 lost contact with : VERB[^ed]
 made : VERB[^ed]
 made available : VERB[^ed]
@@ -336,6 +344,7 @@ marking : VERB[^ing]
 may proceed with : VERB
 may try to : AUXL
 mean that : VERB
+meaning : VERB[^ing] - +1
 means : VERB[^s] - +1
 meant : VERB[^ed]
 mechanics : NOUN[:plur]
@@ -490,6 +499,7 @@ shot : VERB[^ed] - +2
 shot and killed : VERB[^ed]
 should not be surprised : VERB[^ed]
 showboating : NOUN
+showed no signs of : VERB[^ed]
 shown : VERB[^ed]
 signed : VERB[^ed]
 signed off : VERB[^ed]
@@ -529,6 +539,7 @@ supports the argument for : VERB[^s]
 supposed to : AUXL
 supreme leader : NOUN
 suspected drug abuse : NOUN
+suspected murder : NOUN
 suspected of : CONJ
 sweeping : VERB[^ing]
 swooping : ADJ[%ing] - +1
@@ -538,6 +549,7 @@ taken : VERB[^ed]
 taken a knee : VERB[^ed]
 taken into police custody : VERB[^ed]
 taking place : VERB[^ing]
+talking : VERB[^ing]
 telecommunications : NOUN
 telecommunications : NOUN[:plur] - -1
 television broadcasting : NOUN
@@ -685,7 +697,10 @@ a step forward : NOUN[:det]
 a string of : QUAN
 a third the : NUM
 a thousand : NUM
+about a week : ADV
 about half its : QUAN
+about half an hour after : CONJ
+about how : CONJ
 about to : TO
 about whether : CONJ
 above the law : ADJ
@@ -698,6 +713,7 @@ adm. : NOUN
 adult film star : NOUN
 adulterous affair : NOUN
 advertising boycott : NOUN
+aerial demonstration : NOUN
 after all : CONJ[@*l]
 after he did, : ADV
 after it emerged that : CONJ
@@ -708,7 +724,9 @@ against his will : ADV
 agricultural industry : NOUN
 ahead of : PREP
 akin to how : CONJ
+air ambulance : NOUN
 air force 1 : NOUN
+air force base : NOUN
 airstrike : NOUN
 alert level : NOUN
 all at once : ADV
@@ -744,6 +762,7 @@ anything else : NOUN
 anytime : NOUN
 anytime : ADV
 apart from : PREP
+appeals court : NOUN
 app : NOUN
 approximately average : ADJ
 arab republic : NOUN
@@ -798,8 +817,10 @@ at this stage : ADV
 at this time : ADV
 at whether : CONJ
 athletic conference : NOUN
+atlantic hurricane season : NOUN
 authoritarian governance : NOUN
 authorities : NOUN[:plur]
+autonomous weapon : NOUN
 autoplay : NOUN
 avoid errors : VERB
 away from : PREP
@@ -1102,6 +1123,7 @@ fireable offense : NOUN
 fist fight : NOUN
 fixed investment : NOUN
 flood stage : NOUN
+for about a week : ADV
 for example : PEXP[|eg]
 for more than a decade : ADV
 for now : ADV
@@ -1152,6 +1174,7 @@ get shot : VERB
 give them new life : VERB
 global attention : NOUN
 global financial crisis : NOUN
+glowing recommendation : NOUN
 gold and silver : NOUN
 golf property : NOUN
 good news : NOUN
@@ -1220,7 +1243,10 @@ house of cards : NOUN
 house of delegates : NOUN
 house speaker : NOUN
 how long : CONJ
+human control : NOUN
+human dignity : NOUN
 hurricane activity : NOUN
+hurricane season : NOUN
 hush payment : NOUN
 hydro : NOUN
 hydro : ADJ - +2
@@ -1287,6 +1313,8 @@ in the wake of : PREP
 in the workplace : ADJ
 in the works : ADJ
 in this case : ADV
+in this way : ADV
+Mykonos : NOUN
 in violation of : PREP
 in what : CONJ
 in which : CONJ[@rel]
@@ -1637,6 +1665,7 @@ peculiar to : PREP
 peer harassment : NOUN
 pence : NOUN
 pending adjustment : NOUN
+people on facebook : NOUN[:plur]
 percent chance : NUM[:*r]
 personal data : NOUN
 personal lawyer : NOUN
@@ -1690,6 +1719,7 @@ presidential speech : NOUN
 press secretary : NOUN
 presuppositionalism : NOUN
 primary challenge : NOUN
+primary factor : NOUN
 prior to : PREP
 private meeting : NOUN
 private party : NOUN
@@ -1713,6 +1743,7 @@ public health decision : NOUN
 public information : NOUN
 public ministry : NOUN
 public poll : NOUN
+public profile : NOUN
 public sector: NOUN
 pull factor : NOUN
 pump spray : NOUN
@@ -1725,6 +1756,7 @@ questionable method : NOUN
 quick look : NOUN
 quite a while ago : ADV
 quoted from : VERB
+railway bridge : NOUN
 raise the roof beam high : VERB
 rally support for : VERB
 rapidly melting : ADJ
@@ -1821,7 +1853,7 @@ service plan : NOUN
 service member : NOUN
 servicemember : NOUN
 several other : QUAN
-aex scandal : NOUN
+sex scandal : NOUN
 sexual advance : NOUN
 sexual misconduct : NOUN
 sexual misconduct allegation : NOUN
@@ -1837,7 +1869,7 @@ shooting rampage : NOUN
 shopping district : NOUN
 shopping season : NOUN
 shortly after : CONJ
-showed no signs of : VERB[^ed]
+show season : NOUN
 sightseeing tour : NOUN
 signal rocket : NOUN
 signature project : ADJ
@@ -1872,6 +1904,7 @@ southern city : NOUN
 southern parts : NOUN[:plur]
 southwest to : PREP
 space authority : NOUN
+special clearance : NOUN
 special counsel : NOUN
 special counsel probe : NOUN
 special envoy : NOUN
@@ -1972,6 +2005,7 @@ the general command : NOUN
 the happiest day of my life : NOUN
 the last month : NAVB[:det]
 the latest twist : NOUN
+the legal community : NOUN
 the most serious charges : NOUN[:plur]
 the near future : NAVB[:det]
 the only other time : NAVB
@@ -2013,16 +2047,20 @@ to or from : PREP
 to review : VERB[^infn]
 to the satisfaction of : PREP
 to where : CONJ
+together with : PREP
 token black : NOUN
 top 40 : NUM
 top 40 hit : NOUN
 top forty : NUM
 top forty hit : NOUN
 tourism sector : NOUN
+tourist destination : NOUN
 trackwork : NOUN
 trading partner : NOUN
 traditional clothing : NOUN
 traffic stop : NOUN
+training flight : NOUN
+trauma doctor : NOUN
 travel conditions : NOUN[:plur]
 turn state’s witness : VERB
 turn themselves in : VERB
@@ -2109,6 +2147,7 @@ whenever and wherever : CONJ
 white evangelical : NOUN
 white house official : NOUN
 white rhino : NOUN
+white sand beach : NOUN
 white supremacist : ADJ
 who authorities say : CONJ
 whoa : MISC
@@ -2318,6 +2357,7 @@ picked him up : VERB[^ed,*r]
 potentially unpalatable deal : NOUN
 public plea for help : NOUN
 rebel-held eastern Ghouta suburb of Damascus : NOUN
+research activity : NOUN
 Rick saccone : NOUN
 Robert Forrest : NOUN
 S&P : NOUN
@@ -2572,6 +2612,7 @@ right-wing : ADJ
 right-winger : NOUN
 rubber-coated : ADJ
 round-up : NOUN
+run-through : NOUN
 Russian-born : NOUN
 same-sex : ADJ
 same-sex couple : NOUN
@@ -2606,6 +2647,7 @@ third-degree murder : NOUN
 third-largest : ADJ
 three-day : ADJ
 three-point : ADJ
+tie-breaker : ADJ
 tighty-whities : NOUN
 time-cycle : NOUN
 tit-for-tat : NOUN
@@ -2628,6 +2670,8 @@ watered-down : ADJ
 wax-work : NOUN
 weather-eye : NOUN
 weeks-long : ADJ
+white-sand : ADJ
+white-sand beach : NOUN
 wide-ranging : ADJ
 widely-read : ADJ
 wind-driven : ADJ
@@ -2903,6 +2947,7 @@ Juan : NOUN
 Julia Poff : NOUN
 Julian Assange : NOUN
 Justice Elena Kagan : NOUN
+KAIST : NOUN
 Kardashian : NOUN
 Katie Sierra : NOUN
 Katrina : NOUN
@@ -2937,6 +2982,7 @@ Lord Mayor : NOUN
 Lord Mayor of Dublin : NOUN
 Lori Klausutis : NOUN
 Los Angeles Times : NOUN
+Luiz Inacio Lula da Silva : NOUN
 Love Victorious : NOUN
 Mahmoud Abbas : NOUN
 Malala Yousufzai : NOUN
@@ -2986,6 +3032,7 @@ Mueller : NOUN
 Mugabe : NOUN
 Moammar Gaddafi : NOUN
 Murphy : NOUN
+Mykonos : NOUN
 Narendra Modi : NOUN
 Naval Criminal Investigative Service : NOUN
 NBA : NOUN
@@ -2994,6 +3041,7 @@ NBC News : NOUN
 NCAA : NOUN
 NCIS : NOUN
 NDA : NOUN
+Nevada Test and Training Range : NOUN
 Nicolas Sarkozy : NOUN
 Netanyahu : NOUN
 New Kensington : NOUN
@@ -3033,6 +3081,7 @@ PBS program : NOUN
 Pelosi : NOUN
 Person of the Year : NOUN
 Pfaffian : ADJ
+Philippine President : NOUN
 Phillips : NOUN
 Pine Barrens : NOUN
 Politifact : NOUN
@@ -3069,6 +3118,7 @@ Robert Mueller : NOUN
 Robert S. Mueller III : NOUN
 Rockette : NOUN
 Rockwell Automation : NOUN
+Rodrigo Duterte : NOUN
 Rohingya : NOUN
 Roy : NOUN
 Roy Moore : NOUN
@@ -4334,6 +4384,7 @@ athletic sock : NOUN
 athletic supporter : NOUN
 athletic type : NOUN
 athletic wear : NOUN
+athletics : NOUN[:plur]
 atlanta : NOUN
 atlantic : NOUN
 atlantic : ADJ
@@ -4856,6 +4907,7 @@ basic colour : NOUN
 basic english : NOUN
 basic principle : NOUN
 basically : ADV
+basics : NOUN[:plur]
 basis : NOUN
 basket : NOUN
 basket maker : NOUN
@@ -6500,6 +6552,7 @@ californian : NOUN
 californian : ADJ
 caliphate : NOUN
 caliphate state : NOUN
+calisthenics : NOUN[:plur]
 call : NOUN - -2
 call : VERB
 call attention : VERB
@@ -11268,6 +11321,7 @@ estate tax : NOUN
 esteem : NOUN
 esteem : VERB
 ester : NOUN
+esthetic : NOUN
 estimate : NOUN
 estimate : VERB
 estonia : NOUN
@@ -11365,6 +11419,7 @@ ex : NOUN
 ex : ADJ
 ex post facto : ADJ
 ex-husband: NOUN
+ex-president : NOUN
 ex-wife : NOUN
 exact : VERB
 exact : ADJ
@@ -13562,6 +13617,8 @@ glow : NOUN
 glow : VERB
 glow lamp : NOUN
 glow tube : NOUN
+glowing : NOUN - -1
+glowing : ADJ - +2
 glut : NOUN
 glut : VERB
 gluten : NOUN
@@ -16343,7 +16400,7 @@ jury box : NOUN
 jury duty : NOUN
 jury system : NOUN
 just : ADJ
-just : ADV - +1
+just : ADV[~mod] [$deg] +2
 just as : ADV[~mod] [$deg] 0
 just now : ADV
 just right : ADV
@@ -18135,6 +18192,8 @@ mean time : NOUN
 mean value : NOUN
 meander : NOUN
 meander : VERB
+meaning : NOUN - -2
+meaningful : ADJ
 means : NOUN[:plur] - -2
 means test : NOUN
 meantime : NOUN
@@ -20170,6 +20229,7 @@ optical instrument : NOUN
 optical lens : NOUN
 optical phenomenon : NOUN
 optical telescope : NOUN
+optics : NOUN[:plur]
 optimal : ADJ
 optimism : NOUN
 optimist : NOUN
@@ -21192,6 +21252,7 @@ physical therapy : NOUN
 physical value : NOUN
 physically : ADV
 physician : NOUN
+physics : NOUN
 pi : NOUN
 piano : NOUN
 piano : ADJ - -1
@@ -25024,6 +25085,7 @@ seven iron : NOUN
 sever : VERB
 severe : ADJ
 severely : ADV
+severity : NOUN
 sewage : NOUN
 sewage disposal : NOUN
 sewage disposal plant : NOUN
@@ -28737,6 +28799,7 @@ tour de force : NOUN
 tour de france : NOUN
 tour guide : NOUN
 tourism : NOUN
+tourist : NOUN
 tournament : NOUN
 tout : NOUN
 tout : VERB

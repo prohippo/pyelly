@@ -2845,7 +2845,7 @@ d:while<- CONJ
 __
 d:why  <- CONJ
 __
-d:how  <- CONJ[@ind]
+d:how  <- CONJ[@ind,adv]
 __
 d:whereas  <- CONJ
 __
@@ -4126,4 +4126,24 @@ g:ADV->NAVB CMPC
  >>-
 _
   (twob)
+__
+
+g:NOUN[:qnt]->CONJ[@adv] ADJ[%-*l,-*r]
+ >>-
+_
+  (twob)
+__
+
+g:VCLU[^*r]->ADV[~mod] VCLU[^ing]
+ l[$deg]>>+
+        >>-
+_
+  split
+  right
+  back
+  shift 6 <
+  append <adv>
+  left
+  append </adv>
+  merge
 __
