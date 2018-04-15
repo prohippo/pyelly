@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 21mar2018 CPM
+# vocabularyTable.py : 14apr2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -54,7 +54,7 @@ source     = '.v.elly'              # input vocabulary text file suffix
 
 nerr = 0                            # shared error count among definition methods
 
-initChr = [ u'.' , u'-' , u'"' , u',' , u'%' , ellyChar.MDSH , ellyChar.HYPH ]
+initChr = [ u'.' , u'-' , u'"' , ellyChar.LDQm , u',' , u'%' , ellyChar.MDSH , ellyChar.HYPH ]
 
 def delimitKey ( t ):
 
