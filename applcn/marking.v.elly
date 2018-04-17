@@ -59,6 +59,7 @@ believed to be : VERB[^ed]
 believed to have : AUXL
 believed to have been : AUXL
 believes : VERB[^s]
+besieged enclave : NOUN
 best known : VERB[^ed]
 bit : VERB[^ed,*x]
 bloodier : ADJ
@@ -114,6 +115,7 @@ continued fighting : VERB
 convinced : VERB[^ed] - -1
 cordoned off : VERB[^ed]
 could be excused : VERB[^ed]
+could be heard through the doors : VERB[^ed]
 cozying up : VERB[^ing]
 cracking down on : VERB[^ing]
 creating : VERB[^ing] - +1
@@ -240,12 +242,15 @@ got out : VERB[^ed]
 got up : VERB[^ed,*x]
 gotten : VERB[^ed,*x]
 government charges : NOUN[:plur]
+grandfathered : VERB[^ed]
+grandfathering : VERB[^ing]
 growing : VERB[^ing]
 grown : VERB[^ed] - +1
 gusting : ADJ
 hacked emails : NOUN[:plur]
 had : HAVE[^ed]
 had nothing to do with : VERB[^ed]
+had since : AUXL[^ed]
 had to : AUXL[^ed]
 has : HAVE[^s]
 has already : HAVE[^s]
@@ -462,6 +467,7 @@ remains : VERB[^s,proc] - +3
 repeated : VERB[^ed]
 repeatedly touched on : VERB[^ed]
 repeatedly used the flag : VERB[^ed]
+required in new buildings : ADJ
 rescue efforts : NOUN[:plur]
 residents : NOUN[:plur]
 retaken : VERB[^ed]
@@ -537,6 +543,8 @@ stimulating : VERB[^ing]
 stolen : VERB[^ed]
 stood : VERB[^ed]
 striking back at : VERB[^ing]
+struck : VERB[^ed,ptcl]
+struck down in court : VERB[^ed]
 substantial issues : NOUN[:plur]
 supply cut : NOUN
 supplying : VERB[^ing] - +2
@@ -901,6 +909,7 @@ calories burned : NOUN
 campaign chairman : NOUN
 campaign finance director : NOUN
 campaign manager : NOUN
+campaign pledge : NOUN
 campaign stop : NOUN
 campus police : NOUN
 can and will : AUXL
@@ -924,6 +933,7 @@ center : ADJ
 century bc : NOUN
 certainly true : ADJ
 cheer on : VERB
+chemical attack : NOUN
 chemical symbol : NOUN
 chief cabinet secretary : NOUN
 child custody hearing : NOUN
@@ -969,6 +979,7 @@ congressional leaders : NOUN[:plur]
 consecutive month : NOUN [&durn,msr] 0
 consensual affair : NOUN
 conservative activist : NOUN
+conservative argument : NOUN
 consider the fate of : VERB
 consigliere : NOUN
 conspiracy theory : NOUN
@@ -993,6 +1004,7 @@ criminal indictment : NOUN
 criminal liability : NOUN
 critically endangered species : NOUN
 crocs : NOUN[:plur]
+cross their t’s : VERB
 current events : NOUN[:plur]
 cut ties with : VERB
 cyber : ADJ
@@ -1052,6 +1064,7 @@ domestic politics : NOUN[:plur]
 dominant male : NOUN
 doorbuster : NOUN
 doorbusting : ADJ
+dot their i’s : VERB
 down the block : ADJ [$trlg] 0
 dozens of : QUAN
 dr. : NOUN
@@ -1062,6 +1075,7 @@ dubstep : NOUN
 due to : PREP
 due to expire : VERB
 duotone : ADJ
+during the campaign : ADV[~trlg]
 during this time : ADV[~trlg]
 each : POSTP[@num] [$trlg] -1
 each other : PRO[=imp]
@@ -1090,6 +1104,7 @@ english-language : ADJ
 entry point : NOUN
 environment protection : NOUN
 estimative : ADJ
+ethical question : NOUN
 even as : CONJ
 even before : CONJ
 even so : CONJ
@@ -1176,6 +1191,7 @@ fuel tax : NOUN
 full control : NOUN
 full time : ADV
 fully eliminate : VERB
+fully informed : ADJ
 future plan : NOUN
 gala dinner : NOUN
 gay men : NOUN[:plur]
@@ -1199,6 +1215,7 @@ gov. : NOUN
 governing coalition : NOUN
 governing party : NOUN
 government figure : NOUN
+government rule : NOUN
 grant aid : NOUN
 grant aid project : NOUN
 great western : ADJ
@@ -1245,6 +1262,7 @@ highly likely : ADV
 his or her : DEM
 hit job : NOUN
 hold a suspect in custody : VERB
+hold up in court : VERB
 holster : VERB
 home detention : NOUN
 home state : NOUN
@@ -1274,6 +1292,8 @@ illegal immigration : NOUN
 immediate medical help : NOUN
 immigration crackdown : NOUN
 immigration policy : NOUN
+immigration views : NOUN[:plur]
+important procedure : NOUN
 in a statement : ADV
 in accordance with : PREP
 in addition to : PREP
@@ -1367,6 +1387,7 @@ international community : NOUN
 international treaty : NOUN
 internet access : NOUN
 internet service provider : NOUN
+interview that : NOUN[:*l] (nmth)
 intimate affair : NOUN
 into the night : ADV
 into trouble : ADV
@@ -1447,6 +1468,7 @@ lead up : NOUN - -4
 leaps and bounds : NOUN[:plur]
 leave doubt : VERB
 legal challenge : NOUN
+legal effort : NOUN
 legal hurdle : NOUN
 legal peril : NOUN
 legal team : NOUN
@@ -1486,6 +1508,7 @@ male and female : ADJ - +1
 malware : NOUN
 man to man : ADV
 manga : NOUN
+manhatten skyscraper : NOUN
 manmade : ADJ
 mannerist : NOUN
 many of : QUAN
@@ -1626,6 +1649,7 @@ on saturday afternoon : DATE
 on sunday : DATE
 on sunday night : TIME
 on the condition of anonymity : ADV
+on the day that : THAT
 on the other end : ADV
 on through : PREP
 on wednesday : ADV
@@ -1686,6 +1710,7 @@ peer harassment : NOUN
 pence : NOUN
 pending adjustment : NOUN
 people on facebook : NOUN[:plur]
+pep talk : NOUN
 percent chance : NUM[:*r]
 personal data : NOUN
 personal lawyer : NOUN
@@ -1712,6 +1737,7 @@ political capital : NOUN
 political chaos : NOUN
 political deadlock : NOUN
 political elite : NOUN
+political event : NOUN
 political forces : NOUN[:plur]
 political future : NOUN
 political gathering : NOUN
@@ -1723,6 +1749,7 @@ political view : NOUN
 political world : NOUN
 pollution cleanup : NOUN
 poor health : NOUN
+poorly crafted : ADJ
 porn star : NOUN
 possible attempt : NOUN
 possible defeat : NOUN
@@ -1811,6 +1838,7 @@ republican party chairman : NOUN
 rescue crew : NOUN
 research and development : NOUN
 research commission : NOUN
+residential floor : NOUN
 results page : NOUN
 return to classes : VERB
 retweet : VERB
@@ -1826,6 +1854,7 @@ right now : ADV
 riot dispersal : NOUN
 riot dispersal means : NOUN[:plur]
 riot gear : NOUN
+rise to prominence : NOUN
 riverfront : ADJ
 rocket science : NOUN
 rockin' : ADJ
@@ -1900,6 +1929,7 @@ since then : ADV[~cnj]
 skaky start : NOUN
 slbm : NOUN
 small business : NOUN
+so as to : TO
 so many : QUAN[@ind]
 so still : ADJ
 so that : CONJ
@@ -1933,6 +1963,7 @@ special envoy : NOUN
 special forces : ADJ - -1
 spectator : ADJ - +1
 spectral type : NOUN[:*x]
+spiritual birthplace : NOUN
 spiritual director : NOUN
 splash screen : NOUN
 sporadic dates : NOUN[:plur]
@@ -2031,6 +2062,7 @@ the legal community : NOUN
 the most serious charges : NOUN[:plur]
 the near future : NAVB[:det]
 the only other time : NAVB
+the oval office : NOUN
 the past year : NAVB[:det]
 the police shooting : NOUN
 the possibility that : NCTH
@@ -2087,6 +2119,7 @@ training flight : NOUN
 trauma doctor : NOUN
 travel conditions : NOUN[:plur]
 turn state’s witness : VERB
+turn himself in : VERB
 turn themselves in : VERB
 tv host : NOUN
 tv pundit : NOUN
@@ -2187,6 +2220,7 @@ with great sadness and a broken heart : ADV
 with him : ADJ
 with impunity : ADV
 with knowledge of : PREP
+with knowledge of the incident : ADJ
 with little experience : ADJ
 with no regard to : CONJ
 with what : CONJ
@@ -2316,13 +2350,14 @@ body of water called Jamun Bodi : NOUN
 border wall funding : NOUN
 brand new : ADJ
 British city : NOUN
+built that opened : THTV
 busy roadway : NOUN
 Cambridge Analytica : NOUN
 carving-out : VERB[^ing]
 Central Michigan University dormitory : NOUN
 comedic : ADJ
 confrontational move : NOUN
-Conor Lamb : NOUN
+could heard through the doors : VERB[^ed]
 Delta spokesman : NOUN
 complex new modeling : NOUN
 complained to friends : VERB[^ed,*r]
@@ -2367,7 +2402,7 @@ incorrectly reported : VERB[^ed]
 information commissioner : NOUN
 insurgents groups : NOUN[:plur]
 it doesn’t appear that : ADV
-James Eric Davis Jr. : NOUN
+january interview that : NOUN[:*l] (nmth)
 made the ask : VERB[^ed]
 magnitude of this job : NOUN
 making a false statement to the FBI : VERB[^ing]
@@ -2394,6 +2429,7 @@ scandalous affair : NOUN
 Scarborough intern Lori Klausutis : NOUN
 sinai mosque : NOUN
 small collection of buildings : NOUN
+so loud : ADJ
 some of who : PRO
 supt : NOUN
 Syrian capital Damascus : NOUN
@@ -2778,6 +2814,7 @@ Boeing : NOUN
 Boko haram : NOUN
 Boris Johnson : NOUN
 Breitbart : NOUN
+Bret Baier : NOUN
 BREXIT : NOUN
 BREXIT supporter : NOUN
 Brian Shaw : NOUN
@@ -2817,6 +2854,7 @@ Cody Riley : NOUN
 Colorado State University : NOUN
 Colorado Civil Rights Commission : NOUN
 Comey : NOUN
+Conor Lamb : NOUN
 Conservative Political Action Conference : NOUN
 Coolio Earth Partnership : NOUN
 Corey Lewandowski : NOUN
@@ -2826,11 +2864,12 @@ Crown Prince Mohammed bin Salman : NOUN
 Crystal River Middle School : NOUN
 Cubbies : NOUN[:plur]
 Customs and Border Protection : NOUN
+Da Silva : NOUN
 DACA : NOUN
 Dandan : NOUN
 Dapchi Government Girls Science and Technical College : NOUN
 Dave Stone : NOUN
-David Schulkin : NOUN
+David Shulkin : NOUN
 Delta Air Lines : NOUN
 Democratic National Committee : NOUN
 Denny : NOUN
@@ -2874,6 +2913,7 @@ Esterly : NOUN
 EU Withdrawal Bill : NOUN
 Evans : NOUN
 F.B.I. official : NOUN
+F.C.C. : NOUN
 Facebook : NOUN
 Facebook user : NOUN
 Fairchild : NOUN
@@ -2881,7 +2921,7 @@ Farhan Haq : NOUN
 FBI : NOUN
 FBI Deputy Director : NOUN
 FBI Director : NOUN
-F.C.C. : NOUN
+FDNY commissioner : NOUN
 Federal Aviation Administration : NOUN
 Federal Bureau of Alcohol, Tobacco, Firearms and Explosives : NOUN
 Federal Open Market Committee : NOUN[:*r]
@@ -2894,6 +2934,7 @@ Florida International University : NOUN
 Flynn : NOUN
 Forbes : NOUN
 Fox News : NOUN
+Fox News Channel : NOUN
 Fox News host : NOUN
 Francis : NOUN
 Franken : NOUN
@@ -2954,6 +2995,7 @@ Jack C. Phillips : NOUN
 Jade Helm : NOUN
 Jalen Hill : NOUN
 James Comey : NOUN
+James Eric Davis Jr. : NOUN
 James O'Keefe : NOUN
 Jamie : NOUN
 Janis : NOUN
@@ -3259,6 +3301,7 @@ Trump International Hotel : NOUN
 Trump organization : NOUN
 trump presidency : NOUN
 Trump Soho hotel : NOUN
+Trump Tower : NOUN
 Ty Cobb : NOUN
 Twitter : NOUN
 U.N. : NOUN
@@ -21154,6 +21197,9 @@ personnel department : NOUN
 personnel office : NOUN
 perspective : NOUN
 persuade : VERB
+persuasion : NOUN
+persuasive : ADJ
+persuasively : ADV
 perth : NOUN
 perturb : VERB
 perv : NOUN

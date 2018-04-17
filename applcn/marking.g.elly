@@ -4121,6 +4121,12 @@ _
   append <>that</>
   linefeed
 __
+p:nmth
+_
+  obtain
+  delete 5 >
+  set tht=T
+__
 
 g:ADV->NAVB CMPC
  >>-
