@@ -133,6 +133,7 @@ barrier barrier
 batten batten
 bearish bear
 became become
+beefed beef
 began begin
 begun begin
 believe belief
@@ -331,6 +332,7 @@ converter convert
 convertible convert
 conveyance convey
 conveyor convey
+convulsion convulse
 coolant cool
 cooler cool
 coolest cool
@@ -1213,6 +1215,7 @@ repellent repel
 repentant repent
 reporter report
 republican republic
+repulsive repulse
 rescuer rescue
 resemblance resemble
 residual residue
@@ -1229,6 +1232,7 @@ returnee return
 reveler revel
 reveller revel
 reviled revile
+revulsion revolt
 revved rev
 rewon rewin
 rhythmic rhythm
