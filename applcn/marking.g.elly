@@ -4153,3 +4153,13 @@ _
   append </adv>
   merge
 __
+
+g:ELEM->DEM PEXP
+ l[!spcs]>>-------
+         >>----
+_
+
+  var typg=dem
+  (typg)
+  right
+__
