@@ -46,6 +46,7 @@ backed off : VERB[^ed]
 banned from competing : VERB[^ed]
 bartending : NOUN
 based on : VERB[^ed,*x]
+basic knowledge : NOUN
 be forthcoming about : VERB
 be found alive : VERB[^ed]
 became : VERB[^ed,chng]
@@ -117,6 +118,7 @@ connected to : VERB[^ed]
 continued : VERB[^ed]
 continued fighting : NOUN
 continued fighting : VERB
+contract that : NOUN[:*l] (nmth)
 convinced : VERB[^ed] - -1
 cordoned off : VERB[^ed]
 could be excused : VERB[^ed]
@@ -238,6 +240,7 @@ glowing : VERB[^ing]
 goes on recess : VERB[^s]
 goes on the offensive : VERB[^s]
 going for a walk : VERB[^ing]
+going public : VERB[^ing]
 going to be available : VERB[^ing]
 going to end up : VERB[^ing]
 gone : VERB[^ed]
@@ -254,6 +257,7 @@ gotten : VERB[^ed,*x]
 government charges : NOUN[:plur]
 grandfathered : VERB[^ed]
 grandfathering : VERB[^ing]
+grave toll : NOUN
 growing : VERB[^ing]
 grown : VERB[^ed] - +1
 gusting : ADJ
@@ -297,12 +301,14 @@ ideological divide : NOUN
 ideologically divided : ADJ
 illegally accepted : VERB[^ed]
 inches : NOUN[:plur]
+independent investigator : NOUN
 infighting : NOUN
 initial failure : NOUN
 injured : VERB[^ed]
 inspired : VERB[^ed]
 interesting : VERB[^ing]
 international aid worker : NOUN
+international watchdog agency : NOUN
 internationals : NOUN[:plur]
 involved : VERB[^ed]
 irked that : VCTH[^ed]
@@ -377,6 +383,7 @@ mice : NOUN[:plur]
 military liaison : NOUN
 military threat : NOUN
 millennia : NOUN[:plur]
+millennial : NOUN - -1
 millennium bc : NOUN
 millions : NOUN[:plur]
 mīned : VERB[^ed] =mined
@@ -679,6 +686,7 @@ went_on : VERB[^ed] =went on
 1 another : PRO =one another
 1 last time : ADV
 1 of : QUAN[@*x] =one of
+1 of the most powerful : QUAN
 one of my guys : NOUN[:qnt]
 1 of the largest : QUAN
 1 of them : PRO =one of them
@@ -832,6 +840,7 @@ as to how : CONJ
 as to whether : CONJ
 as well as : CONJ
 aside from : PREP
+assertions that : NOUN[:*l,plur] (nmth)
 asset purchase : NOUN
 at a home : ADV
 at a time when : CONJ
@@ -1322,7 +1331,7 @@ hydro : NOUN
 hydro : ADJ - +2
 hyperinflation : NOUN
 I think that : ADV
-idea that : NOUN (nmth)
+idea that : NOUN[:*l] (nmth)
 if you'd like : ADV
 illegal alien : NOUN
 illegal immigrant : NOUN
@@ -1466,6 +1475,7 @@ job well done : NOUN
 join forces with : VERB
 joint bail deal : NOUN
 judge, jury, and executioner : NOUN
+juicy tale : NOUN
 just a little bit : ADV
 just about all of : QUAN
 just about all of them : PRO
@@ -1495,6 +1505,7 @@ last may : NAVB
 last month : NAVB[:det]
 last night : NAVB
 last week : NAVB[:det]
+last weekend : NOUN
 last year : NAVB[:det]
 late night host : NOUN
 late stone age : NOUN
@@ -1779,6 +1790,7 @@ policymaking : NOUN
 political appointee : NOUN
 political capital : NOUN
 political chaos : NOUN
+political convulsion : NOUN
 political deadlock : NOUN
 political elite : NOUN
 political event : NOUN
@@ -1825,7 +1837,7 @@ propaganda video : NOUN
 properly designed : ADJ
 property prices : NOUN[:plur]
 proportionally spaced : ADJ
-proposal that : NOUN (nmth)
+proposal that : NOUN[:*l] (nmth)
 pros and cons : NOUN
 prove to a judge : VERB
 proved to be : VERB
@@ -2158,6 +2170,7 @@ top adviser : NOUN
 top forty : NUM
 top forty hit : NOUN
 tourism sector : NOUN
+toxic chemical : NOUN
 tourist destination : NOUN
 trackwork : NOUN
 trade dispute : NOUN
@@ -2620,7 +2633,9 @@ e-mail : NOUN
 east-central : ADJ
 eat-in : ADJ
 english-speaking : ADJ
+ex-doorman : NOUN
 ex-intelligence officer : NOUN
+ex-playmate : NOUN
 faith-based : ADJ
 far-flung : ADJ
 fast-food : ADJ
@@ -2962,6 +2977,7 @@ Elena Kagan : NOUN
 Eli : NOUN
 Elon Musk : NOUN
 Emmanuel : NOUN
+Emmanuel Macron : NOUN
 Enzo : NOUN
 Erdogan : NOUN
 Errol : NOUN
@@ -3035,6 +3051,7 @@ Harry : NOUN
 Hassan Rouhani : NOUN
 Herzegovina : NOUN
 Hillary Clinton : NOUN
+Holocaust Remembrance Day : NAVB
 House Judiciary Committee : NOUN
 Huffington Post : NOUN
 Hughes : NOUN
@@ -3318,6 +3335,7 @@ Stormy Daniels : NOUN
 Sueddeutsche Zeitung : NOUN
 Suiter : NOUN
 Symantec : NOUN
+Syrian government : NOUN
 Taliban : NOUN
 Talkradio 790 KABC : NOUN
 TASS : NOUN
@@ -26041,7 +26059,7 @@ sign off : VERB
 sign over : VERB
 sign up : VERB
 signal : NOUN - +1
-signal : VERB
+signal : VERB[^dit]
 signal : ADJ - -1
 signal box : NOUN
 signal caller : NOUN
