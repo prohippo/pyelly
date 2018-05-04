@@ -164,6 +164,7 @@ doing work : VERB[^ing]
 done : VERB[^ed]
 done so : VERB[^ed]
 does not : AUXL[^s]
+dominated headlines : VERB[^ed]
 doubled down on : VERB[^ed]
 drags on : VERB[^s]
 drinking water : NOUN
@@ -326,6 +327,7 @@ it does not appear that : ADV
 it was watching : VERB[^aux,ed,ing]
 kept : VERB[^ed]
 killed : VERB[^ed]
+killing : VERB[^ing]
 knew : VERB[^ed]
 knew early on : VERB[^ed]
 knew nothing at all : VERB
@@ -503,6 +505,7 @@ ruled in favor of : VERB[^ed]
 rushing : VERB[^ing] - +1
 said : VERB[^ed,dit]
 said at the time : VERB[^ed,dit]
+said in a statement : VERB[^ed,dit]
 said in his address : VERB[^ed,dit]
 sarcophagi : NOUN[:plur]
 sat : VERB[^ed]
@@ -581,6 +584,7 @@ sweeping : VERB[^ing]
 swooping : ADJ[%ing] - +1
 swooping : VERB[^ing]
 sworn : VERB[^ed]
+take another look at : VERB
 taken : VERB[^ed]
 taken into custody : VERB[^ed]
 taken a knee : VERB[^ed]
@@ -596,6 +600,7 @@ terrorism suspect : NOUN
 terrorizing : VERB[^ing] - +2
 terrorizing : NOUN - -1
 thanked : VERB[^ed]
+that believe in : THTV
 that can be faced : ADJ
 thought : VERB[^ed]
 threw : VERB[^ed]
@@ -646,6 +651,7 @@ was known to be : BE[^ed,s]
 was looking at : VERB[^ing,s]
 was not allowed : VERB[^ed,s]
 was unable to : AUXL[^s,ed]
+wasted no time : VERB[^ed]
 wealthiest : ADJ
 well before : ADV
 weddings : NOUN[:plur]
@@ -686,6 +692,7 @@ went_on : VERB[^ed] =went on
 1 another : PRO =one another
 1 last time : ADV
 1 of : QUAN[@*x] =one of
+1 of the first : QUAN
 1 of the most powerful : QUAN
 one of my guys : NOUN[:qnt]
 1 of the largest : QUAN
@@ -869,6 +876,7 @@ authorities : NOUN[:plur]
 automotive production : NOUN
 autonomous weapon : NOUN
 autoplay : NOUN
+avoid a repeat of : VERB
 avoid errors : VERB
 away from : PREP
 back in : PREP
@@ -1069,6 +1077,7 @@ decent people : NOUN[:plur]
 decisive tilt : NOUN
 deductibility : NOUN
 delaware company : NOUN
+demand the release of : VERB
 demilitarization : NOUN
 democratic republic : NOUN
 denuclearization : NOUN
@@ -1304,6 +1313,7 @@ higher-quality : ADJ
 higher pay : NOUN
 highest principles : NOUN[:plur]
 highly likely : ADV
+hindu temple : NOUN
 his or her : DEM
 hit job : NOUN
 hold a suspect in custody : VERB
@@ -1420,6 +1430,7 @@ information leading to an arrest : NOUN
 innocuously : ADV
 innovation fund : NOUN
 ins and outs : NOUN[:plur]
+insider account : NOUN
 insofar as : CONJ
 instead of : PREP
 insurgent group : NOUN
@@ -1745,6 +1756,7 @@ over there : ADV
 over whether : CONJ
 overland mail : NOUN
 overwhelming consensus : NOUN
+pacific nation : NOUN
 palestinian negotiator : NOUN
 panel commissioner : NOUN
 pants on fire : ADJ
@@ -1782,6 +1794,7 @@ playboy centerfold : NOUN
 plea for help : NOUN
 pockets of : QUAN
 podcast : NOUN - -2
+pointed attack : NOUN
 police brutality : NOUN
 police corruption : NOUN
 policy views : NOUN[:plur]
@@ -1861,6 +1874,7 @@ questions he was unsure of : NOUN[:plur]
 quick look : NOUN
 quite a while ago : ADV
 quoted from : VERB
+radical hindu group : NOUN
 railway bridge : NOUN
 raise the roof beam high : VERB
 rally support for : VERB
@@ -1921,6 +1935,7 @@ role-playing game : NOUN
 round at : PREP
 rpg : NOUN
 rules of engagement : NOUN
+ruling party: NOUN
 russia probe : NOUN
 russian ambassador : NOUN
 russian diplomat : NOUN
@@ -1932,6 +1947,7 @@ russian officials : NOUN[:plur]
 russian spy : NOUN
 safe location : NOUN
 safe route : NOUN
+salary round : NOUN
 sales manager : NOUN
 sales team : NOUN
 saturday and sunday : NAVB
@@ -2105,6 +2121,7 @@ that year : NAVB[:det]
 thaw with russia : NOUN
 the above : ADJ
 the armed forces : NOUN[:plur]
+the best thing : NOUN
 the better of it : ADV
 the coming days : NOUN[:plur]
 the culture wars : NOUN[:plur]
@@ -2126,6 +2143,7 @@ the oval office : NOUN
 the past year : NAVB[:det]
 the police shooting : NOUN
 the possibility that : NCTH
+the rule of law : NOUN
 the same way : ADV
 the several : QUAN[@ind]
 the sidelines : NOUN
@@ -2167,6 +2185,7 @@ token black : NOUN
 top 40 : NUM
 top 40 hit : NOUN
 top adviser : NOUN
+top aide : NOUN
 top forty : NUM
 top forty hit : NOUN
 tourism sector : NOUN
@@ -2174,6 +2193,7 @@ toxic chemical : NOUN
 tourist destination : NOUN
 trackwork : NOUN
 trade dispute : NOUN
+trade pact : NOUN
 trading partner : NOUN
 traditional clothing : NOUN
 traffic stop : NOUN
@@ -2216,6 +2236,7 @@ understated : VERB[^ed] - -1
 underutilization : NOUN
 underutilize : VERB
 union force : NOUN
+unity deal : NOUN
 unlikely to be persuaded : ADJ
 unpalatable deal : NOUN
 unscheduled sweep : NOUN
@@ -2284,6 +2305,7 @@ with him : ADJ
 with impunity : ADV
 with knowledge of : PREP
 with knowledge of the incident : ADJ
+with links to : PREP
 with little experience : ADJ
 with no regard to : CONJ
 with what : CONJ
@@ -2344,6 +2366,7 @@ really, really : ADV
 billions of : NUM
 millions of : NUM
 thousands of : NUM
+thousands of members of : NUM
 hundreds of : NUM
 tens of thousands of : NUM
 hundreds of thousands of : NUM
@@ -2402,6 +2425,7 @@ acting so strangely : VERB[^ing]
 after BREXIT : ADV
 aggressive immigration powers : NOUN[:plur]
 alabama woman : NOUN
+anger and suspicion : NOUN[:plur]
 announced the discovery of : VERB[^ed,*r]
 another front in the culture wars : NOUN
 armed with fresh ammunition : ADJ
@@ -2418,6 +2442,7 @@ busy roadway : NOUN
 Cambridge Analytica : NOUN
 carving-out : VERB[^ing]
 Central Michigan University dormitory : NOUN
+Chinese cheating : NOUN
 comedic : ADJ
 confrontational move : NOUN
 could heard through the doors : VERB[^ed]
@@ -2483,7 +2508,9 @@ parkland mass shooting : NOUN
 picked him up : VERB[^ed,*r]
 potentially unpalatable deal : NOUN
 public plea for help : NOUN
+push back against : VERB
 rebel-held eastern Ghouta suburb of Damascus : NOUN
+repeated rape : NOUN
 research activity : NOUN
 Rick saccone : NOUN
 Robert Forrest : NOUN
@@ -2506,6 +2533,8 @@ that killed : THTV
 that tore   : THTV
 that worked : THTV
 that would ban : THTV
+thats : THTV =that is
+the best thing the United States can do : NOUN
 the country’s struggle : NOUN[:det]
 the group Wikileaks : NOUN[:det]
 the perception that : ELEM (elth)
@@ -2563,6 +2592,7 @@ who hvbe in jail : NOUN =Who's in Jail
 
 # # # # common hyphenations
 
+, R-Nebraska, : XID
 -a-year : ADV[~*r,*x]
 1-forms : NOUN[:plur] - +2
 16-year-old : NOUN - -2
@@ -2581,6 +2611,7 @@ after-hours trading : NOUN
 age-related : ADJ
 aisle-roaming : ADJ
 almost-indisputable : ADJ
+already-faltering : ADJ
 already-tense : ADJ
 american-born : ADJ
 anti-baptist : ADJ
@@ -2632,6 +2663,7 @@ dual-use : ADJ
 e-mail : NOUN
 east-central : ADJ
 eat-in : ADJ
+economically-stricken : ADJ
 english-speaking : ADJ
 ex-doorman : NOUN
 ex-intelligence officer : NOUN
@@ -2662,6 +2694,7 @@ half-apology : NOUN
 half-full : ADJ
 half-revelation : NOUN
 half-sitting : VERB[^ed]
+hard-edged : ADJ
 hard-to-detect : ADJ
 high-endurance : ADJ
 high-flying : ADJ
@@ -2789,6 +2822,7 @@ tie-breaker : ADJ
 tighty-whities : NOUN
 time-cycle : NOUN
 tit-for-tat : NOUN
+to-do : ADJ
 top-rated : ADJ
 top-shelf : ADJ
 trade-in : ADJ
@@ -3003,6 +3037,7 @@ Federal Open Market Committee : NOUN[:*r]
 Fedex : NOUN
 Fedex center : NOUN
 Ferguson : NOUN
+Fire and Fury : NOUN
 FISA : NOUN
 Fla : NOUN
 Flannery : NOUN
@@ -3166,6 +3201,7 @@ Miami-Dade County : NOUN
 Michael Baudendistel : NOUN
 Michael Flynn : NOUN
 Michael Keaton : NOUN
+Michael Wolff : NOUN
 Michel Aoun : NOUN
 Michelle Beadle : NOUN
 Mike Leach : NOUN
@@ -3304,6 +3340,7 @@ Scotts Miracle-Gro Company : NOUN
 Seal Team Six : NOUN
 Sean Hannity : NOUN
 Seminole Heights : NOUN
+Sen. Ben Sasse : NOUN
 Sergei : NOUN
 Sergey : NOUN
 Sergey Kislyak : NOUN
@@ -3364,6 +3401,7 @@ The Spokesman-Review : NOUN
 The Times : NOUN
 the European Union : NOUN
 The Verge : NOUN [&prop] 0
+the West Wing : NOUN
 Theresa May : NOUN
 Thomas Aquinas College : NOUN
 Tierra del Fuego : NOUN
@@ -16869,6 +16907,8 @@ killer bee : NOUN
 killer cell : NOUN
 killer t cell : NOUN
 killer whale : NOUN
+killing : NOUN
+killing : ADJ - -1
 kilogram : NOUN
 kilogram calorie : NOUN
 kilometer : NOUN [&msr] 0
