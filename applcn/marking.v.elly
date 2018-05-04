@@ -95,15 +95,18 @@ children : NOUN[:plur]
 chosen : VERB[^ed] - +2
 circulating : VERB[^ing]
 civil rights : NOUN
+claiming that : VERB[^ing]
 classified : VERB[^ed] - +2
 classified memo : NOUN
 cleared : VERB[^ing]
 climactic moment : NOUN
+climbed down : VERB[^ed]
 closest : ADJ - +1
 closing in on : VERB[^ing]
 co-produced : VERB[^ed]
 coaching : VERB[^ing]
 coming down : VERB[^ing]
+competing : NOUN[:ing] - -2
 competing : VERB[^ing]
 competing : ADJ[%ing]
 complained that : VERB[^ed]
@@ -175,8 +178,10 @@ everything that’s ever happened : NOUN
 exciting : VERB[^ing]
 exerting influence : VERB[^ing]
 faces a dilemma : VERB[^s]
+failing to identify : VERB[^ing]
 fallen : VERB[^ed]
 fastest : ADJ
+falsely claiming that : VERB[^ing]
 fatally shooting : VERB[^ing]
 feeding : VERB[^ing]
 feeding off : VERB[^ing]
@@ -305,6 +310,8 @@ is a look at : VERB[^s]
 is going to be : VERB[^s]
 is no longer fit : VERB[^s]
 is currently considered : VERB[^s]
+is for : VERB[^s]
+is not for : VERB[^s]
 is nothing but : VERB[^s]
 is on again : VERB[^s]
 is on track to : AUXL[^s]
@@ -335,6 +342,7 @@ lives : VERB[^s]          =live -s
 looked up : VERB[^ed]
 looking : VERB[^ing]
 looking up : VERB[^ing]
+looks like it :  VERB[^s]
 lost : VERB[^ed]
 lost a shot at : VERB[^ed]
 lost contact with : VERB[^ed]
@@ -395,6 +403,7 @@ news anchor : NOUN
 news release : NOUN
 noblemen : NOUN[:plur]
 not been reimbursed : VERB[^ed]
+not in their custody : ADJ
 obtaining : NOUN - -2
 obtaining : VERB[^ing]
 obtaining : ADJ - -6
@@ -629,6 +638,7 @@ was kept in the dark : VERB[^ed]
 was known to be : BE[^ed,s]
 was looking at : VERB[^ing,s]
 was not allowed : VERB[^ed,s]
+was unable to : AUXL[^s,ed]
 wealthiest : ADJ
 well before : ADV
 weddings : NOUN[:plur]
@@ -847,11 +857,13 @@ athletic conference : NOUN
 atlantic hurricane season : NOUN
 authoritarian governance : NOUN
 authorities : NOUN[:plur]
+automotive production : NOUN
 autonomous weapon : NOUN
 autoplay : NOUN
 avoid errors : VERB
 away from : PREP
 back in : PREP
+back into mexico : ADV
 background briefing : NOUN
 background check : NOUN
 bad news : NOUN
@@ -878,11 +890,13 @@ black powder : NOUN
 blanket of snow : NOUN
 body of water : NOUN
 bond market : NOUN
+border patrol agent : NOUN
 both houses of Congress : NOUN[:plur]
 both sides : NOUN[:plur]
 bottle cap : NOUN
 box set : NOUN
 break out of : VERB
+break international law : VERB
 breakneck speed : NOUN
 british soil : NOUN
 broadcast live : VERB
@@ -1033,6 +1047,7 @@ data analytics : NOUN
 data breach : NOUN
 day in a row : NOUN
 deadliest : ADJ
+deadlock in talks : NOUN
 deadly ambush : NOUN
 deadly explosion : NOUN
 deadly shooting : NOUN
@@ -1114,6 +1129,7 @@ end a stalemate : VERB
 end efforts : VERB
 energy lobbyist : NOUN
 engage in a dialogue : VERB
+engine production : NOUN
 engineering council : NOUN
 english-language : ADJ
 entry point : NOUN
@@ -1170,6 +1186,7 @@ fireable offense : NOUN
 fist fight : NOUN
 fixed investment : NOUN
 flood stage : NOUN
+follow up with you after this : VERB
 for about a week : ADV
 for allegedly : PREP['cls]
 for example : PEXP[|eg]
@@ -1305,6 +1322,8 @@ hydro : NOUN
 hydro : ADJ - +2
 hyperinflation : NOUN
 I think that : ADV
+idea that : NOUN (nmth)
+if you'd like : ADV
 illegal alien : NOUN
 illegal immigrant : NOUN
 illegal immigration : NOUN
@@ -1321,6 +1340,7 @@ in all caps : ADJ
 in anticipation of : PREP
 in any way : ADV
 in area : ADV[~trlg] [$deg] 0
+in areas : NCLU[:prep]
 in as much as : CONJ
 in business : ADJ
 in case of : PREP
@@ -1554,6 +1574,7 @@ medical textbook : NOUN
 medically stable : ADJ
 memo to staff : NOUN
 member state : NOUN
+mentally unstable : ADJ
 metallicity : NOUN
 meth lab : NOUN
 methamphetamine lab : NOUN
@@ -1804,6 +1825,7 @@ propaganda video : NOUN
 properly designed : ADJ
 property prices : NOUN[:plur]
 proportionally spaced : ADJ
+proposal that : NOUN (nmth)
 pros and cons : NOUN
 prove to a judge : VERB
 proved to be : VERB
@@ -1823,6 +1845,7 @@ put it through : VERB
 pv : ADJ
 pyroclastic : ADJ
 questionable method : NOUN
+questions he was unsure of : NOUN[:plur]
 quick look : NOUN
 quite a while ago : ADV
 quoted from : VERB
@@ -1886,6 +1909,7 @@ role-playing game : NOUN
 round at : PREP
 rpg : NOUN
 rules of engagement : NOUN
+russia probe : NOUN
 russian ambassador : NOUN
 russian diplomat : NOUN
 russian double agent : NOUN
@@ -2152,6 +2176,7 @@ tweetstorm : NOUN
 u.s. and foreign : ADJ
 u.s. attorney : NOUN
 u.s. charts : NOUN[:plur]
+u.s. border patrol agent : NOUN
 u.s. company : NOUN
 u.s. forces : NOUN[:plur]
 u.s. government compound : NOUN
@@ -2425,6 +2450,7 @@ in mid-march : ADV
 in remarks : ADV
 incorrectly reported : VERB[^ed]
 information commissioner : NOUN
+injured and mentally unstable man : NOUN
 insurgents groups : NOUN[:plur]
 it doesn’t appear that : ADV
 january interview that : NOUN[:*l] (nmth)
@@ -2627,6 +2653,8 @@ high-flying : ADJ
 high-profile : ADJ
 high-speed : ADJ
 high-speed boat : NOUN
+high-wage : ADJ
+high-wage area : NOUN
 highest-ranking : ADJ
 humanitarian mission : NOUN
 image-preserver : NOUN
@@ -3310,6 +3338,7 @@ The Hollywood Reporter : NOUN
 the late Libyan Leader Moammar Gaddafi : NOUN
 the Met Office : NOUN
 the Mid-Atlantic : NOUN
+the NAFT region : NOUN
 the News International : NOUN
 The Northwest Indiana Times : NOUN
 the only right choice : NOUN
@@ -7004,7 +7033,6 @@ cart : NOUN
 cart : VERB
 cart away : VERB
 cart horse : NOUN
-cart off : VERB
 cart track : NOUN
 cartload : NOUN
 cartoon : NOUN
@@ -12935,6 +12963,8 @@ folk writer : NOUN
 follow : VERB
 follow out : VERB
 follow suit : VERB
+follow through : VERB
+follow-through : NOUN
 follow up : VERB
 follow up on : VERB
 follow-up : NOUN
@@ -16063,7 +16093,7 @@ insider : NOUN
 insider information : NOUN
 insight : NOUN
 insinuate : VERB
-insist : VERB
+insist : VERB[^dit]
 insistence : NOUN
 insofar : ADV
 inspect : VERB
