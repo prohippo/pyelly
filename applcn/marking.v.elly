@@ -304,11 +304,13 @@ illegally accepted : VERB[^ed]
 inches : NOUN[:plur]
 independent investigator : NOUN
 infighting : NOUN
+inflicting casualties : VERB[^ed]
 initial failure : NOUN
 injured : VERB[^ed]
 inspired : VERB[^ed]
 interesting : VERB[^ing]
 international aid worker : NOUN
+international border : NOUN
 international watchdog agency : NOUN
 internationals : NOUN[:plur]
 involved : VERB[^ed]
@@ -643,6 +645,7 @@ walks on water : VERB[^s]
 wanting to see : VERB[^ing]
 warfighting : NOUN
 was a violation of : VERB[^ed,s]
+was behind : VERB[^ed,s]
 was behind bars : VERB[^ed,s]
 was culpable for : VERB[^ed,s]
 was intended to : AUXL[^ed,s]
@@ -816,6 +819,7 @@ anytime : ADV
 apart from : PREP
 appeals court : NOUN
 app : NOUN
+app developer : NOUN
 approximately average : ADJ
 arab republic : NOUN
 arbitration filing : NOUN
@@ -907,6 +911,7 @@ black powder : NOUN
 blanket of snow : NOUN
 body of water : NOUN
 bond market : NOUN
+border fence : NOUN
 border patrol agent : NOUN
 both houses of Congress : NOUN[:plur]
 both sides : NOUN[:plur]
@@ -931,6 +936,7 @@ butter and oil : NOUN
 buy political influence : VERB
 buying guide : NOUN
 by almost half : ADV[~trlg] [$deg,trlg] 0
+by and large : ADV
 by far-right : PREP
 by having : PREP
 by nearly half : ADV[~trlg] [$deg,trlg] 0
@@ -978,6 +984,8 @@ cheer on : VERB
 chemical attack : NOUN
 chemical symbol : NOUN
 chief cabinet secretary : NOUN
+chief pentagon spokesman : NOUN
+chief pentagon spokeswoman : NOUN
 child custody hearing : NOUN
 chinese imports : NOUN[:plur]
 chinese observer : NOUN
@@ -1041,6 +1049,7 @@ country music’s hometown : NOUN
 county attorney : NOUN
 county jail : NOUN
 court document : NOUN
+criminal act : NOUN
 criminal case : NOUN
 criminal illegal alien : NOUN
 criminal indictment : NOUN
@@ -1124,6 +1133,7 @@ due to expire : VERB
 duotone : ADJ
 during the campaign : ADV[~trlg]
 during this time : ADV[~trlg]
+e-mail address : NOUN
 each : POSTP[@num] [$trlg] -1
 each other : PRO[=imp]
 each time : ADV
@@ -1245,6 +1255,7 @@ full time : ADV
 fully eliminate : VERB
 fully informed : ADJ
 future plan : NOUN
+gain no benefit : VERB
 gala dinner : NOUN
 gay men : NOUN[:plur]
 gen. : NOUN
@@ -1279,6 +1290,7 @@ guilty plea : NOUN
 guitar bridge : NOUN
 gun nut : NOUN
 gun violence : NOUN
+gunshot wound : NOUN
 hacker network : NOUN
 hacking campaign : NOUN
 half inch : NOUN
@@ -1470,6 +1482,7 @@ it appears to have : AUXL
 it behv clear : ELEM - +4 (elma)
 it behv easy  : ELEM - +4 (elma)
 it behv essential : ELEM - +4 (elma)
+it behv not surprising : ADV
 it behv obvious : ELEM - +4 (elma)
 it behv unclear : ADV
 it certainly looks like : ADV
@@ -1500,6 +1513,7 @@ just wait : ADV
 keep her quiet : VERB
 keep things quiet : VERB
 key figure : NOUN
+key part : NOUN
 know nothing at all : VERB
 ku klux klansmen : NOUN[:plur]
 lackluster record : NOUN
@@ -1582,6 +1596,7 @@ marchese : NOUN
 marine corps : NOUN
 marine corps air station : NOUN
 marketing firm : NOUN
+mass breach : NOUN
 mass exodus : NOUN
 mass killing : NOUN
 mass shooting : NOUN
@@ -1689,9 +1704,11 @@ nuclear and ballistic : ADJ
 nuclear program : NOUN
 nuclear technology : NOUN
 nuclear weapons : NOUN
+obstruct justice : VERB
 off the map : ADV
 official confirmation : NOUN
 official source : NOUN
+official statement : NOUN
 official version : NOUN
 offline : ADJ
 offseason : ADJ
@@ -1780,6 +1797,7 @@ pending adjustment : NOUN
 people on facebook : NOUN[:plur]
 percent chance : NUM[:*r]
 personal data : NOUN
+personal information : NOUN
 personal lawyer : NOUN
 personal profile : NOUN
 perturber : NOUN
@@ -1910,6 +1928,7 @@ republican party chairman : NOUN
 rescue crew : NOUN
 research and development : NOUN
 research commission : NOUN
+research firm : NOUN
 residential floor : NOUN
 results page : NOUN
 return to classes : VERB
@@ -1927,6 +1946,7 @@ riot dispersal : NOUN
 riot dispersal means : NOUN[:plur]
 riot gear : NOUN
 rise to prominence : NOUN
+risk death : VERB
 riverfront : ADJ
 rocket science : NOUN
 rockin' : ADJ
@@ -1990,6 +2010,7 @@ shadow banking : NOUN
 sharpen its focus : VERB
 she claims she : PRO
 sheriff’s department : NOUN
+sheriff's deputy : NOUN
 shipping lane : NOUN
 shooting rampage : NOUN
 shopping district : NOUN
@@ -2143,6 +2164,7 @@ the oval office : NOUN
 the past year : NAVB[:det]
 the police shooting : NOUN
 the possibility that : NCTH
+the question of whether : CONJ
 the rule of law : NOUN
 the same way : ADV
 the several : QUAN[@ind]
@@ -2281,6 +2303,7 @@ what he said was a : DET
 what i have stood for : NOUN
 what is today : ADV
 what it has learned : NOUN
+what looks like an : DET
 what they say are : ADJ
 what was supposed to be : ADV
 when asked by reporters : ADV
@@ -2512,7 +2535,7 @@ push back against : VERB
 rebel-held eastern Ghouta suburb of Damascus : NOUN
 repeated rape : NOUN
 research activity : NOUN
-Rick saccone : NOUN
+Rick Saccone : NOUN
 Robert Forrest : NOUN
 Rosen : NOUN
 S&P : NOUN
@@ -2524,6 +2547,7 @@ sinai mosque : NOUN
 small collection of buildings : NOUN
 so loud : ADJ
 some of who : PRO
+St.Johns County : NOUN
 supt : NOUN
 Syrian capital Damascus : NOUN
 talked to his mother : VERB[^ed,*r]
@@ -2712,6 +2736,7 @@ influence-peddling scandal : ADJ
 iranian-backed : ADJ
 iraqi-syrian : ADJ
 israeli-palestinean : ADJ
+itinerant-by-choice : NOUN
 left-turn : ADJ
 left-wing : ADJ
 left-wing politics : NOUN
@@ -2834,6 +2859,7 @@ two-term limit : NOUN
 U.S. government source : NOUN
 U.S.-China : ADJ
 U.S.-led : ADJ
+up-to-date : ADJ
 user-configurable : ADJ
 vice-president : NOUN
 volume-weighted : ADJ
@@ -2856,6 +2882,7 @@ yet-to-be-released : NOUN
 # # # # some names to recognize explicitly
 
 16th Street Baptist Church : NOUN
+A Higher Loyalty : NOUN
 A New Day Has Come : NOUN
 Aaron C. Davis : NOUN
 ABC News : NOUN
@@ -2972,6 +2999,7 @@ Cubbies : NOUN[:plur]
 Customs and Border Protection : NOUN
 Da Silva : NOUN
 DACA : NOUN
+Dana White : NOUN
 Dandan : NOUN
 Dapchi Government Girls Science and Technical College : NOUN
 Dave Stone : NOUN
@@ -3120,6 +3148,7 @@ Jason Leon : NOUN
 Jeff Sessions : NOUN
 Jenny Lumet : NOUN
 Jeremy : NOUN
+Jeremy Banks : NOUN
 Jersey Shore : NOUN
 Jerusalem church leaders : NOUN[:plur]
 Jerusalem’s Old City : NOUN
