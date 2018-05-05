@@ -88,6 +88,7 @@ appraisal appraise
 approximate approxime
 archer archer
 architecture architect
+ardent ardent
 argentina argentine
 argument argue
 arisen arise
@@ -328,6 +329,7 @@ contractility contract
 contracture contract
 contradictory contradict
 contrition contrite
+convener convene
 converter convert
 convertible convert
 conveyance convey
@@ -995,6 +997,7 @@ olefinic olefin
 operatic opera
 opinion opinion
 opposite oppose
+orator orate
 oratory orate
 organize organize
 orgasmic orgasm
@@ -1343,6 +1346,7 @@ signature sign
 signee sign
 signer sign
 silly silly
+simmering simmer
 simpler simple
 simplest simple
 simplify simple
