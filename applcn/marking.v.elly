@@ -122,6 +122,7 @@ continued fighting : VERB
 contract that : NOUN[:*l] (nmth)
 convinced : VERB[^ed] - -1
 cordoned off : VERB[^ed]
+core constituency : NOUN
 could be excused : VERB[^ed]
 could be heard through the doors : VERB[^ed]
 cozying up : VERB[^ing]
@@ -265,6 +266,7 @@ grown : VERB[^ed] - +1
 gusting : ADJ
 hacked emails : NOUN[:plur]
 had : HAVE[^ed]
+had been too rought on : VERB[^ed]
 had nothing to do with : VERB[^ed]
 had since : AUXL[^ed]
 had to : AUXL[^ed]
@@ -411,6 +413,7 @@ named : VERB[^ed] - +2
 named : ADJ - -4
 nearest : ADJ
 needed : VERB[^ed]
+net gain : NOUN
 news anchor : NOUN
 news release : NOUN
 noblemen : NOUN[:plur]
@@ -456,6 +459,7 @@ points of View : NOUN[:plur]
 popped up : VERB[^ed]
 posted a message : VERB[^ed]
 posted on Facebook : VERB[^ed]
+potential problem : NOUN
 potions : NOUN
 pregnant as a teen : ADJ
 pressed witnesses : VERB[^ed]
@@ -699,7 +703,7 @@ went_on : VERB[^ed] =went on
 1 of : QUAN[@*x] =one of
 1 of the first : QUAN
 1 of the most powerful : QUAN
-one of my guys : NOUN[:qnt]
+1 of my guys : NOUN[:qnt]
 1 of the largest : QUAN
 1 of them : PRO =one of them
 1 of them : QUAN - -2 =one of them
@@ -806,6 +810,7 @@ amounted to : VERB[^ed]
 an in : NOUN
 ancient tomb : NOUN
 and even : CONJ
+and even as : CONJ
 and now : CONJ
 and so : CONJ
 and so on : MISC
@@ -917,6 +922,7 @@ border fence : NOUN
 border patrol agent : NOUN
 both houses of Congress : NOUN[:plur]
 both sides : NOUN[:plur]
+both sides of the divide  : NOUN[:plur]
 bottle cap : NOUN
 box set : NOUN
 break out of : VERB
@@ -971,6 +977,7 @@ canceled check : NOUN
 capable of : PREP['of]
 capital spending : NOUN
 capt. : NOUN
+capture control of : VERB
 carefully script : VERB
 case before the court : NOUN
 cast recording : NOUN
@@ -1543,6 +1550,7 @@ launch procedure : NOUN
 law enforcement personnel : NOUN
 lead surgeon : NOUN
 lead up : NOUN - -4
+leap of faith : NOUN
 leaps and bounds : NOUN[:plur]
 leave doubt : VERB
 legal challenge : NOUN
@@ -1744,6 +1752,7 @@ on when : CONJ
 on whether : CONJ
 on which : CONJ
 once in a while : ADV
+online survey : NOUN
 onramp : NOUN
 onscreen : ADJ
 onslaught of criticism : NOUN
@@ -1914,6 +1923,7 @@ refugee crisis : NOUN
 regardless of : PREP
 regional rival : NOUN
 regional security : NOUN
+registered voter : NOUN
 related to : PREP
 relative newcomer : NOUN
 relicense : VERB
@@ -2070,6 +2080,7 @@ spy plane : NOUN
 state and local : ADJ
 state ceremony : NOUN
 state media : NOUN
+state of war : NOUN
 state police : NOUN
 state sponsors list : NOUN
 steady drip : NOUN
@@ -2077,6 +2088,7 @@ steel pellet : NOUN
 steel pipe : NOUN
 step back from : VERB
 step foot : VERB
+steward of the economy : NOUN
 storytelling : NOUN
 straight after : CONJ
 streetlamp : NOUN
@@ -2088,6 +2100,7 @@ such a  : QUAN
 such an : QUAN
 such as : PREP
 sudden heart attack : NOUN
+suicide car bombing : NOUN
 supply chain : NOUN
 supply train : NOUN
 surprise disclosure : NOUN
@@ -2110,6 +2123,7 @@ tax overhaul : NOUN
 tax record : NOUN
 tax reform : NOUN
 tech company : NOUN
+technical complexities : NOUN[:plur]
 technical information : NOUN
 teenage boy : NOUN
 teenage girl : NOUN
@@ -2237,6 +2251,7 @@ u.s. border patrol agent : NOUN
 u.s. company : NOUN
 u.s. forces : NOUN[:plur]
 u.s. government compound : NOUN
+u.s. house of representatives : NOUN
 u.s. mainland : NOUN
 u.s. market : NOUN
 u.s.-mexico border wall : NOUN
@@ -2446,8 +2461,10 @@ most as many : ADJ
 a — what appears to be a — : DET
 a little bit of a : QUAN
 has a little bit of a different characteristic : VERB
+have come to count on : VERB
 acting so strangely : VERB[^ing]
 after BREXIT : ADV
+ages 18 to 34 : ADJ [$trlg,prd] 0
 aggressive immigration powers : NOUN[:plur]
 alabama woman : NOUN
 anger and suspicion : NOUN[:plur]
@@ -2500,6 +2517,7 @@ Florida district office : NOUN
 Florida men : NOUN[:plur]
 Florida neighborhood : NOUN
 former prosecutor : NOUN
+from the equation : ADV
 gun group : NOUN
 group travel discount : NOUN
 had helped her husband plan : VERB[^ed]
@@ -2512,6 +2530,7 @@ in an interview : ADV
 in mid-march : ADV
 in remarks : ADV
 incorrectly reported : VERB[^ed]
+increasingly say : VERB
 information commissioner : NOUN
 injured and mentally unstable man : NOUN
 insurgents groups : NOUN[:plur]
@@ -2524,6 +2543,7 @@ messaging app WeChat : NOUN
 metals tariff : NOUN
 missing submarine : NOUN
 or more accurately, : ADV
+over the past two years : ADV
 new and bloodier : ADJ
 nuclear and missile : ADJ
 on what the news agency described as : CONJ
@@ -2756,6 +2776,7 @@ mid-air : NOUN
 mid-century : ADJ
 military-grade : ADJ
 millimeter-wave : ADJ
+mind-boggling : ADJ
 mixed-species : ADJ
 much-needed : ADJ
 multi-disciplinary : ADJ
@@ -2763,6 +2784,7 @@ nail-biter : NOUN
 near-psychotic : ADJ
 nerve-agent : ADJ
 net-metering : NOUN
+next-in-line : ADJ
 no-go : ADJ
 no-go zone : NOUN
 non-cardiovascular : ADJ
@@ -3000,6 +3022,7 @@ Crystal River Middle School : NOUN
 Cubbies : NOUN[:plur]
 Customs and Border Protection : NOUN
 Da Silva : NOUN
+Daily Show : NOUN
 DACA : NOUN
 Dana White : NOUN
 Dandan : NOUN
@@ -3161,6 +3184,7 @@ Jim : NOUN
 Jim Justice : NOUN
 Jinping : NOUN
 Jones : NOUN
+Joy Reid : NOUN
 Josephine County : NOUN
 Juan : NOUN
 Julia Poff : NOUN
@@ -3235,6 +3259,7 @@ Michael Keaton : NOUN
 Michael Wolff : NOUN
 Michel Aoun : NOUN
 Michelle Beadle : NOUN
+Michelle Wolf : NOUN
 Mike Leach : NOUN
 Mike Greenberg : NOUN
 Mike Pence : NOUN
@@ -3252,6 +3277,7 @@ Mr. Nader : NOUN
 Mr. President : NOUN
 Mr. Trump : NOUN
 MSNBC : NOUN
+MSNBC host : NOUN
 MTV : NOUN
 Mueller : NOUN
 Mugabe : NOUN
@@ -21795,6 +21821,7 @@ period : NOUN
 period piece : NOUN
 periodical : NOUN
 periodical : ADJ
+periodically : ADV
 peripheral : NOUN
 peripheral : ADJ
 peripheral device : NOUN
