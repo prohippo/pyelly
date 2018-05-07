@@ -658,6 +658,7 @@ was intended to : AUXL[^ed,s]
 was kept in the dark : VERB[^ed]
 was known to be : BE[^ed,s]
 was looking at : VERB[^ing,s]
+was said to be interested : VERB[^ed]
 was not allowed : VERB[^ed,s]
 was unable to : AUXL[^s,ed]
 wasted no time : VERB[^ed]
@@ -832,6 +833,8 @@ arab republic : NOUN
 arbitration filing : NOUN
 arctic sea ice : NOUN
 armored vehicle : NOUN
+arms control : NOUN
+arms control expert : NOUN
 army head : NOUN
 army staff sgt. : NOUN
 around a long time : ADV
@@ -1233,6 +1236,7 @@ for the first time : ADV
 for third straight day : ADV
 for too long : ADV
 for why : CONJ
+for years : ADV
 foreign ambassador : NOUN
 foreign force : NOUN
 foreign government : NOUN
@@ -1330,6 +1334,7 @@ here you go : VERB
 hi res : ADJ
 hid : VERB[^ed]
 hidden : VERB[^ed]
+high school prom : NOUN
 higher-quality : ADJ
 higher pay : NOUN
 highest principles : NOUN[:plur]
@@ -1708,6 +1713,7 @@ northern california : NOUN
 not only : CONJ
 not the only : QUAN
 not just : ADV
+nothing new here : NOUN
 now known as : CONJ
 nuclear accord : NOUN
 nuclear and ballistic : ADJ
@@ -2321,6 +2327,7 @@ what i have stood for : NOUN
 what is today : ADV
 what it has learned : NOUN
 what looks like an : DET
+what she calls a : DET
 what they say are : ADJ
 what was supposed to be : ADV
 when asked by reporters : ADV
@@ -2330,6 +2337,7 @@ white house official : NOUN
 white rhino : NOUN
 white sand beach : NOUN
 white supremacist : ADJ
+with great fanfare : ADV
 who authorities say : CONJ
 whoa : MISC
 widely known : ADJ
@@ -3171,6 +3179,7 @@ Jared : NOUN
 Jared Kushner : NOUN
 Jason Leon : NOUN
 Jeff Sessions : NOUN
+Jeffrey Lewis : NOUN
 Jenny Lumet : NOUN
 Jeremy : NOUN
 Jeremy Banks : NOUN
@@ -3197,6 +3206,7 @@ Katrina : NOUN
 Keaton : NOUN
 Kevin : NOUN
 Kevin Brady : NOUN
+Keziah Daum : NOUN
 Kim Jong Un : NOUN
 Kislyak : NOUN
 Kirsten Gillibrand : NOUN
