@@ -71,29 +71,6 @@ bombing : VERB[^ing] - -2
 bookended : VERB[^ed] - -1
 boosting security : VERB[^ing]
 born : VERB[^ed] - +2
-bosniak : NOUN
-bosniak : ADJ
-bowing to pressure from : VERB[^ing]
-breathing : VERB[^ing]
-bringing threats of : VERB[^ing]
-broke out : VERB[^ed]
-broken out : VERB[^ed]
-brought : VERB[^ed]
-brought it back : VERB[^ed]
-brought to market : VERB[^ed]
-building : VERB[^ing,ptcl]
-buildings : NOUN[:plur]
-built : VERB[^ed] [$trns,noaj] +3
-buoys the hopes of : VERB[^s]
-called 911 to report : VERB[^ed]
-calling himself : VERB[^ing]
-came : VERB[^ed,ptcl]
-came to light : VERB[^ed]
-cannot happen here : VERB
-carried out : VERB[^ed]
-carrying out : VERB[^ing]
-caught : VERB[^ed] [$trns] 0
-children : NOUN[:plur]
 chosen : VERB[^ed] - +2
 circulating : VERB[^ing]
 civil rights : NOUN
@@ -224,6 +201,7 @@ froze : VERB[^ed]
 gave : VERB[^ed,*x]
 gave his take on : VERB[^ed]
 gave rise to : VERB[^ed]
+gave voice to : VERB[^ed]
 gazed around : VERB[^ed]
 give rise to : VERB
 given rise to : VERB[^ed]
@@ -339,8 +317,6 @@ knew nothing at all : VERB
 known to law enforcement : ADJ
 knives : NOUN[:plur]
 known : VERB[^ed,*x] - +1
-late last week : ADV
-leadership role : NOUN
 leading : VERB[^ing]
 led : NOUN - -2
 led : VERB[^ed]
@@ -459,12 +435,14 @@ points of View : NOUN[:plur]
 popped up : VERB[^ed]
 posted a message : VERB[^ed]
 posted on Facebook : VERB[^ed]
+potential claim : NOUN
 potential problem : NOUN
 potions : NOUN
 pregnant as a teen : ADJ
 pressed witnesses : VERB[^ed]
 pressing : VERB[^ing]
 previously fired : ADJ
+productive manner : NOUN
 progresses : VERB[^s]
 promised : VERB[^ed]
 promised : ADJ
@@ -525,6 +503,7 @@ security forces : NOUN[:plur]
 seen : VERB[^ed]
 seen : SVED - -1
 seized control : VERB
+sensitive document : NOUN
 sent : VERB[^ed]
 serve as : VERB
 served as : VERB[^ed]
@@ -749,6 +728,7 @@ a number of pieces of : QUAN
 a range of : QUAN
 a series of : QUAN
 a short time : ADV
+a small group of : QUAN
 a step closer : ADV
 a step forward : NOUN[:det]
 a string of : QUAN
@@ -762,6 +742,7 @@ about to : TO
 about whether : CONJ
 above the law : ADJ
 above water : ADJ
+abrupt pivot : NOUN
 abuse of power : NOUN
 access to visitors : NOUN
 according to : PREP
@@ -920,9 +901,33 @@ black girl : NOUN
 black powder : NOUN
 blanket of snow : NOUN
 body of water : NOUN
+boil over : VERB
 bond market : NOUN
 border fence : NOUN
 border patrol agent : NOUN
+bosniak : NOUN
+bosniak : ADJ
+bowing to pressure from : VERB[^ing]
+breathing : VERB[^ing]
+bringing threats of : VERB[^ing]
+broke out : VERB[^ed]
+broken out : VERB[^ed]
+brought : VERB[^ed]
+brought it back : VERB[^ed]
+brought to market : VERB[^ed]
+building : VERB[^ing,ptcl]
+buildings : NOUN[:plur]
+built : VERB[^ed] [$trns,noaj] +3
+buoys the hopes of : VERB[^s]
+called 911 to report : VERB[^ed]
+calling himself : VERB[^ing]
+came : VERB[^ed,ptcl]
+came to light : VERB[^ed]
+cannot happen here : VERB
+carried out : VERB[^ed]
+carrying out : VERB[^ing]
+caught : VERB[^ed] [$trns] 0
+children : NOUN[:plur]
 both houses of Congress : NOUN[:plur]
 both sides : NOUN[:plur]
 both sides of the divide  : NOUN[:plur]
@@ -1032,6 +1037,7 @@ companion piece : NOUN
 computer model : NOUN
 concrete blueprint : NOUN
 condo owner : NOUN
+conduct oversight : VERB
 confederate force : NOUN
 configurable : ADJ
 confirm the move : VERB
@@ -1379,6 +1385,7 @@ immigration views : NOUN[:plur]
 important procedure : NOUN
 import tariff : NOUN
 in a statement : ADV
+in a tweet : ADV
 in accordance with : PREP
 in addition to : PREP
 in all caps : ADJ
@@ -1521,6 +1528,7 @@ just above : PREP
 just as : CONJ - -1
 just days after : ADV
 just for the hell of it : ADV
+just hours earlier : ADV
 just hours after : CONJ
 just this : DEM[@ind,sgl]
 just wait : ADV
@@ -1540,14 +1548,15 @@ last big : ADJ
 last fall : NAVB
 last june : NAVB
 last known location : NOUN
+late last week : ADV
 last may : NAVB
 last month : NAVB[:det]
 last night : NAVB
+late night host : NOUN
+late stone age : NOUN
 last week : NAVB[:det]
 last weekend : NOUN
 last year : NAVB[:det]
-late night host : NOUN
-late stone age : NOUN
 later this week : NAVB[:det]
 latest blow : NOUN
 launch order : NOUN
@@ -1555,6 +1564,7 @@ launch procedure : NOUN
 law enforcement personnel : NOUN
 lead surgeon : NOUN
 lead up : NOUN - -4
+leadership role : NOUN
 leap of faith : NOUN
 leaps and bounds : NOUN[:plur]
 leave doubt : VERB
@@ -1590,6 +1600,7 @@ mainstream media : NOUN
 major city : NOUN
 major doping scandal : NOUN
 major legislation : NOUN
+major roadway : NOUN
 major victory : NOUN
 make available : VERB
 make the payment to : VERB
@@ -1610,6 +1621,7 @@ many of you : PRO
 marchese : NOUN
 marine corps : NOUN
 marine corps air station : NOUN
+marketing campaign : NOUN
 marketing firm : NOUN
 mass breach : NOUN
 mass exodus : NOUN
@@ -1911,6 +1923,7 @@ quite a while ago : ADV
 quoted from : VERB
 radical hindu group : NOUN
 railway bridge : NOUN
+railway service : NOUN
 raise the roof beam high : VERB
 rally support for : VERB
 rapidly melting : ADJ
@@ -1989,6 +2002,7 @@ salary round : NOUN
 sales manager : NOUN
 sales team : NOUN
 saturday and sunday : NAVB
+say they need : VERB
 school community : NOUN
 school resource officer : NOUN
 scientific paper : NOUN
@@ -2484,6 +2498,7 @@ attacks on twitter : NOUN[:plur]
 based off : VERB[^ed,*r]
 block his power grab : VERB
 body of water called Jamun Bodi : NOUN
+bodycam video : NOUN
 border wall funding : NOUN
 brand new : ADJ
 British city : NOUN
@@ -2492,6 +2507,7 @@ busy roadway : NOUN
 Cambridge Analytica : NOUN
 carving-out : VERB[^ing]
 Central Michigan University dormitory : NOUN
+chief scout executive : NOUN
 Chinese cheating : NOUN
 comedic : ADJ
 confrontational move : NOUN
@@ -2573,6 +2589,7 @@ Safe Drinking Water Act : NOUN
 Sandra Himmel : NOUN
 scandalous affair : NOUN
 Scarborough intern Lori Klausutis : NOUN
+Scout Me in : ADJ
 sinai mosque : NOUN
 small collection of buildings : NOUN
 so loud : ADJ
@@ -3221,6 +3238,7 @@ Lafayette Square : NOUN
 Larry Wortzel : NOUN
 Larry Scott : NOUN
 Las Vegas : NOUN
+Las Vegas police : NOUN
 Laura : NOUN
 Lawrence Livermore National Laboratory : NOUN
 Lebron : NOUN
@@ -3245,6 +3263,7 @@ Malala Yousufzai : NOUN
 Mali : NOUN
 Malibu : NOUN
 Manafort : NOUN
+Mandalay Bay : NOUN
 Mao : NOUN
 Mar del Plata : NOUN
 Marjory Stoneman Douglas High School : NOUN
@@ -3273,6 +3292,7 @@ Michelle Wolf : NOUN
 Mike Leach : NOUN
 Mike Greenberg : NOUN
 Mike Pence : NOUN
+Mike Surbaugh : NOUN
 Mimi Spear : NOUN
 Ministry of Health : NOUN
 Missouri State : NOUN
@@ -3332,8 +3352,9 @@ Oxford Street : NOUN
 Oxford Street shopping district: NOUN
 PAC-12 : NOUN
 Palestinian Authority : NOUN
-Paris Climate Accord : NOUN
 Pall Mall : NOUN
+Paris Climate Accord : NOUN
+Pashinyan :NOUN
 Paul Manafort : NOUN
 Paul George Dandan : NOUN
 Paul Ryan : NOUN
@@ -3432,6 +3453,7 @@ St. Mary : NOUN - +2
 State Capitol : NOUN
 Stephan : NOUN
 Stephen Curry : NOUN
+Stephen Paddock : NOUN
 Steve Bannon : NOUN
 Steve Jobs : NOUN
 Steven Keates : NOUN
@@ -16130,6 +16152,7 @@ incline : VERB
 incline bench press : NOUN
 include : VERB [$trns] 0
 inclusive : ADJ
+inclusiveness : NOUN
 incoherent : ADJ
 income : NOUN
 income bracket : NOUN
@@ -23188,6 +23211,8 @@ production : NOUN
 production cost : NOUN
 production line : NOUN
 production order : NOUN
+productive : ADJ
+productively : ADV
 prof : NOUN
 profane : VERB
 profane : ADJ
