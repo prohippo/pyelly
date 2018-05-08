@@ -130,6 +130,7 @@ did not : AUXL[^ed]
 did not happen : VERB[^ed]
 did something very important : VERB[^ed]
 directing money : VERB[^ing]
+directly contradicts : VERB[^s]
 disappointed : VERB[^ed]
 discouraged : VERB[^ed]
 distinguished-looking : ADJ
@@ -419,6 +420,7 @@ paid : VERB[^ed]
 peace deal : NOUN
 peacemaking : NOUN
 people familiar with the matter : NOUN
+per hour : ADJ [$trlg,prd] 0
 permanent security clearance : NOUN
 personals : NOUN[:plur]
 phenomena : NOUN[:plur]
@@ -568,6 +570,7 @@ suspected drug abuse : NOUN
 suspected murder : NOUN
 suspected of : CONJ
 sweeping : VERB[^ing]
+swept across : VERB[^ed]
 swooping : ADJ[%ing] - +1
 swooping : VERB[^ing]
 sworn : VERB[^ed]
@@ -589,6 +592,7 @@ terrorizing : NOUN - -1
 thanked : VERB[^ed]
 that believe in : THTV
 that can be faced : ADJ
+that comes : THTV
 thought : VERB[^ed]
 threw : VERB[^ed]
 thrown : VERB[^ed]
@@ -664,6 +668,7 @@ working : VERB[^ing] - +2
 would have no reason : VERB
 written : VERB[^ed]
 wrote : VERB[^ed,*x]
+years in prison : NOUN[:plur]
 
 are used  : VERB =are+used
 be used   : VERB[^ed] =be+used
@@ -734,6 +739,7 @@ a step forward : NOUN[:det]
 a string of : QUAN
 a third the : NUM
 a thousand : NUM
+a year in prison : NOUN[:num]
 about a week : ADV
 about half its : QUAN
 about half an hour after : CONJ
@@ -885,6 +891,7 @@ bat and ball : ADJ
 beatle : NOUN
 because of : PREP
 before the ink could dry : ADV
+below the oceans’s surface : ADV
 besieged area : NOUN
 best for them : ADJ
 best suit : NOUN
@@ -924,6 +931,7 @@ calling himself : VERB[^ing]
 came : VERB[^ed,ptcl]
 came to light : VERB[^ed]
 cannot happen here : VERB
+cargo plane : NOUN
 carried out : VERB[^ed]
 carrying out : VERB[^ing]
 caught : VERB[^ed] [$trns] 0
@@ -1096,6 +1104,7 @@ deadly ambush : NOUN
 deadly explosion : NOUN
 deadly shooting : NOUN
 deadly shootings : NOUN[:plur]
+debris field : NOUN
 debris flow : NOUN
 debt-fueled expansion : NOUN
 debt level : NOUN
@@ -1238,6 +1247,7 @@ for allegedly : PREP['cls]
 for example : PEXP[|eg]
 for more than a decade : ADV
 for now : ADV
+for several days : ADV
 for the first time : ADV
 for third straight day : ADV
 for too long : ADV
@@ -1482,6 +1492,7 @@ internet access : NOUN
 internet service provider : NOUN
 interview that : NOUN[:*l] (nmth)
 intimate affair : NOUN
+into darkness : ADV
 into the night : ADV
 into trouble : ADV
 into whether : CONJ
@@ -1537,6 +1548,7 @@ keep things quiet : VERB
 key figure : NOUN
 key part : NOUN
 know nothing at all : VERB
+knowingly false : ADJ
 ku klux klansmen : NOUN[:plur]
 lackluster record : NOUN
 land corridor : NOUN
@@ -1579,7 +1591,9 @@ legislative office : NOUN
 less like : PREP
 less than : ADV[~mod] [$deg] 0
 less than a : QUAN =less than 1
+less than a month ago : ADV
 life’s work : NOUN
+lightning strike : NOUN
 like never before : ADV
 likely to be asked about : ADJ
 little more than : ADV[~mod] [$deg] 0
@@ -1621,6 +1635,7 @@ many of you : PRO
 marchese : NOUN
 marine corps : NOUN
 marine corps air station : NOUN
+maritime historian : NOUN
 marketing campaign : NOUN
 marketing firm : NOUN
 mass breach : NOUN
@@ -1869,6 +1884,7 @@ poorly crafted : ADJ
 porn star : NOUN
 possible attempt : NOUN
 possible defeat : NOUN
+possible identity : NOUN
 possible suspect : NOUN
 power center : NOUN
 power grab : NOUN
@@ -2073,6 +2089,7 @@ some of them : PRO
 some of which : CONJ
 some of whom : PRO
 something like this : NOUN
+something that : NOUN (nmth)
 somewhere along : PREP
 sorry about that : ADJ [$cmpd] 0
 sought by authorities : ADJ
@@ -2082,6 +2099,7 @@ southern california : NOUN
 southern border : NOUN
 southern city : NOUN
 southern parts : NOUN[:plur]
+southern state : NOUN
 southwest to : PREP
 space authority : NOUN
 special clearance : NOUN
@@ -2314,6 +2332,7 @@ used to : AUXL
 user data : NOUN
 uso tour : NOUN
 varying amounts : NOUN[:plur]
+varying degrees of legal trouble : NOUN[:plur]
 versus : CONJ
 very close to : PREP
 very dangerous : ADJ
@@ -2322,6 +2341,7 @@ very little : NOUN[:*l]
 very little : ADV - -1
 very pleased : ADJ
 very unfortunate : ADJ
+very, very serious : ADJ
 veterans affairs secretary : NOUN
 veterans group : NOUN
 violent assault : NOUN
@@ -2479,6 +2499,7 @@ most as many : ADJ
 
 "(C)" for confidential : NOUN
 “Get Up” : NOUN
+156th Airlift Wing : NOUN
 8 day visit : NOUN
 a — what appears to be a — : DET
 a little bit of a : QUAN
@@ -2584,6 +2605,7 @@ research activity : NOUN
 Rick Saccone : NOUN
 Robert Forrest : NOUN
 Rosen : NOUN
+Rudy Giuliani : NOUN
 S&P : NOUN
 Safe Drinking Water Act : NOUN
 Sandra Himmel : NOUN
@@ -2594,6 +2616,7 @@ sinai mosque : NOUN
 small collection of buildings : NOUN
 so loud : ADJ
 some of who : PRO
+square kilometer : NOUN
 St.Johns County : NOUN
 supt : NOUN
 Syrian capital Damascus : NOUN
@@ -2698,7 +2721,9 @@ at-times : ADV
 base-rallying : ADJ
 battery-electric : ADJ
 bill-to : ADJ
-camouflaged-clad : ADJ
+c-130-type : ADJ
+camouflage-clad : ADJ
+campaign-finance violation : NOUN
 case-sensitive : ADJ
 cash-and-stock : ADJ
 cave-in : NOUN
@@ -2744,6 +2769,7 @@ far-flung : ADJ
 fast-food : ADJ
 fast-moving : ADJ
 fifteen-year-old : ADJ
+financial disclosure : NOUN
 five-lane : ADJ
 fog-horn : NOUN
 foliage-gleaner : NOUN
@@ -2954,6 +2980,7 @@ Amor Victorious : NOUN
 Analytica : NOUN
 Andrew McCabe : NOUN
 Andrzej : NOUN
+Andhra Pradesh : NOUN
 Andras : NOUN
 Andy Lack : NOUN
 Angela Merkel : NOUN
@@ -2992,6 +3019,7 @@ Bloomberg : NOUN
 Bloomberg News : NOUN
 Bob Geldof : NOUN
 Boeing : NOUN
+Boeing 777 : NOUN
 Boko haram : NOUN
 Boris Johnson : NOUN
 Breitbart : NOUN
@@ -3335,6 +3363,7 @@ NFL Network : NOUN
 NFL players' protest : NOUN
 Nicholas : NOUN
 North American Trade Agreement : NOUN
+North India : NOUN
 Novaes : NOUN
 NPR : NOUN
 NPR’s Morning Edition : NOUN
@@ -18547,6 +18576,7 @@ mainland china : NOUN
 mainly : ADV
 mainstream : NOUN
 maintain : VERB
+maintenance : NOUN
 major : NOUN
 major : VERB - -1
 major : ADJ

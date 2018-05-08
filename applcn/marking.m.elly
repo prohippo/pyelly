@@ -76,6 +76,9 @@ from_#_to_&# -> fm\\2TO\\5
 from_##_to_&# -> fm\\2TO\\5
 from_###_to_&# -> fm\\2TO\\5
 
+&#,###-square_kilometer -> \\1-km²
+&#,###-square_mile -> \\1-mi²
+
 #
 # WARNING! the three rules below has en dashes in its pattern and
 #          substitution, and their space wildcards will replace
