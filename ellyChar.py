@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 22mar2018 CPM
+# ellyChar.py : 07may2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -300,7 +300,7 @@ def isLetterOrDigit ( x ):
     returns:
         True if letter or digit, False otherwise
     """
-    return x != '' and x < Lim and LetterOrDigit[ord(x)]
+    return LetterOrDigit[ord(x)] if x != '' and x < Lim else x in Digits
 
 def isNotLetterOrDigit ( x ):
     """
