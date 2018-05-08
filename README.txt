@@ -576,8 +576,12 @@ Release Notes:
                       improve output of FSA unit testing
                       extend "marking" rules for new data
                       extend "default" stop exception rules for Sr. and Jr.
+                      extend "default" morphological stemming
                       update documentation
                       add Google News data
+ 1.4.29  - 07may2018  bug in ellyChar in checking for letter or digit
+                      extend "marking" rules for new data
+                      update documentation
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
