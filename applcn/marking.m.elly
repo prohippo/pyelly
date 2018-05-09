@@ -4,6 +4,7 @@
 
 #  ******** warning *********
 #  the ’ below is a wildcard!
+#  (it will also match a ')
 
 &@’ll -> \\1 will
 &@’re -> \\1 are
@@ -32,9 +33,6 @@ who’s   -> who hvbe
 
 ._._. -> …
 ...   -> …
-
-long-&@ed -> long - \\1ed
-much-&@ed -> much - \\1ed
 
 is_what -> is cjwhat
 go_-s_that -> go -s tht
@@ -76,8 +74,8 @@ from_#_to_&# -> fm\\2TO\\5
 from_##_to_&# -> fm\\2TO\\5
 from_###_to_&# -> fm\\2TO\\5
 
-&#,###-square_kilometer -> \\1-km²
-&#,###-square_mile -> \\1-mi²
+&#,###-square_kilometer -> \\1,\\2-km²
+&#,###-square_mile -> \\1,\\2-mi²
 
 #
 # WARNING! the three rules below has en dashes in its pattern and
