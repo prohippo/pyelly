@@ -320,8 +320,8 @@ def numSpaces ( seg , cnv=False ):
         elif c == cSPC:
             nsp += 1
         elif c == '-' and nohyph: # special handling of first hyphen in a
-           nohyph = False         # macro pattern, which in text input will
-           nsp += 2               # be converted to [ ' ' , '-' , ' ' ]
+            nohyph = False        # macro pattern, which in text input will
+            nsp += 2              # be converted to [ ' ' , '-' , ' ' ]
     return nsp
 
 def minMatch ( patn ):
