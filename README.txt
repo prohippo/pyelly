@@ -579,7 +579,8 @@ Release Notes:
                       extend "default" morphological stemming
                       update documentation
                       add Google News data
- 1.4.29  - 07may2018  bug in ellyChar in checking for letter or digit
+ 1.4.29  - 07may2018  fix bug in ellyChar when checking for letter or digit
+                      add logic for special matching of hyphens in ellyWildcard
                       extend "marking" rules for new data
                       update documentation
 
