@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 08may2018 CPM
+# ellyWildcard.py : 09may2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -310,6 +310,7 @@ def numSpaces ( seg , cnv=False ):
     nsp = 0
     if seg == '': return 0
     ls = len(seg)
+    nohyph = cnv                  # cnv is True for macro pattern, False for FSA
     for i in range(ls):
         c = seg[i]
         if ellyChar.isSpace(c):
@@ -318,6 +319,9 @@ def numSpaces ( seg , cnv=False ):
             nsp += 1
         elif c == cSPC:
             nsp += 1
+        elif c == '-' and nohyph: # special handling of first hyphen in a
+           nohyph = False         # macro pattern, which in text input will
+           nsp += 2               # be converted to [ ' ' , '-' , ' ' ]
     return nsp
 
 def minMatch ( patn ):
@@ -365,7 +369,7 @@ def minMatch ( patn ):
     return k
 
 Trmls = [ RDQm , u'"' , RSQm , u"'" , u'.' , u')' , u']' ]  # chars marking extent of pattern match
-Hyphn = ellyChar.HYM                                        # ASCII hyphen or minuw
+Hyphn = ellyChar.HYM                                        # ASCII hyphen or minus
 
 def match ( patn , text , offs=0 , limt=None , nsps=0 ):
 
@@ -567,6 +571,7 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
                             break
                         offs += 2
                     else:
+#                       print 'no hyphen special matching'
                         break
 
 #           print 'matched @mp=' , mp
