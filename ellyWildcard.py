@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 16feb2018 CPM
+# ellyWildcard.py : 08may2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -365,6 +365,7 @@ def minMatch ( patn ):
     return k
 
 Trmls = [ RDQm , u'"' , RSQm , u"'" , u'.' , u')' , u']' ]  # chars marking extent of pattern match
+Hyphn = ellyChar.HYM                                        # ASCII hyphen or minuw
 
 def match ( patn , text , offs=0 , limt=None , nsps=0 ):
 
@@ -558,7 +559,16 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
 #           print 'matching last=' , last, '(' , '{:04x}'.format(ord(last)) if last != '' else '-', ') at' , offs
 #           print 'against       ' , mc  , '(' , '{:04x}'.format(ord(mc)) , ')'
             if mc != last:
-                if mc != last.lower(): break
+                if mc != last.lower():
+                    if mc == Hyphn and last == ' ' and limt - offs > 2:
+#                       print 'hyphen special matching, limt=', limt , 'offs=' , offs
+#                       print 'text[offs:]=' , text[offs:]
+                        if text[offs] != Hyphn or text[offs+1] != ' ':
+                            break
+                        offs += 2
+                    else:
+                        break
+
 #           print 'matched @mp=' , mp
             mp += 1
 
