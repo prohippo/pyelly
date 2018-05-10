@@ -312,6 +312,7 @@ it was watching : VERB[^aux,ed,ing]
 kept : VERB[^ed]
 killed : VERB[^ed]
 killing : VERB[^ing]
+kilometers : NOUN[:plur]
 knew : VERB[^ed]
 knew early on : VERB[^ed]
 knew nothing at all : VERB
@@ -364,6 +365,7 @@ meeting : VERB[^ing]
 meetings : NOUN[:plur]
 messaging app : NOUN
 mice : NOUN[:plur]
+miles : NOUN[:plur]
 military liaison : NOUN
 military threat : NOUN
 millennia : NOUN[:plur]
@@ -739,7 +741,7 @@ a step forward : NOUN[:det]
 a string of : QUAN
 a third the : NUM
 a thousand : NUM
-a year in prison : NOUN[:num]
+a year in prison : NOUN[:det,num]
 about a week : ADV
 about half its : QUAN
 about half an hour after : CONJ
@@ -891,7 +893,7 @@ bat and ball : ADJ
 beatle : NOUN
 because of : PREP
 before the ink could dry : ADV
-below the oceans’s surface : ADV
+below the ocean's surface : ADV
 besieged area : NOUN
 best for them : ADJ
 best suit : NOUN

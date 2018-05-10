@@ -1306,7 +1306,7 @@ _
   var typg=adj
   (rxtd)
 __
-g:NCLU[:*l]->NCLU[:-*l,num] POSTP[@num]
+g:NCLU[:*l]->NCLU[:num] POSTP[@num]
   l[&durn,msr]r[$trlg]>>++
                       >>------
 _

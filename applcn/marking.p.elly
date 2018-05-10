@@ -169,6 +169,9 @@
 
  0 fm&#to&#$ NUM[:cnj] -1
 
+ 0 &#,###-mi² ADJ -1
+ 0 &#,###-km² ADJ -1
+
 # en dashes in patterns below!
 
  0 ##–##$   NUM -1
