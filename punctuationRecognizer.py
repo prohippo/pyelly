@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# punctuationRecognizer.py : 07apr2018 CPM
+# punctuationRecognizer.py : 10may2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -79,7 +79,7 @@ defns = [                                      # syntactic significance of punct
     [ u'…' , '[' + pID + 'start]' ]  ,         # horizontal ellipsis
     [ u'\u2122' ] ,                            # TM
     [ u'\u2013' , '[' + pID + 'start]' ] ,     # en dash
-    [ u'\u2014' , '[' + pID + '*x]'  ]   ,     # em dash
+    [ u'\u2014' , '[' + pID + 'start,*x]' ] ,  # em dash
     [ u'\u002d' , '[' + pID + 'hyph]'  ] ,     # hyphen or minus
     [ u'\u2010' , '[' + pID + 'hyph]'  ]       # hyphen only
 ]
