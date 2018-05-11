@@ -384,6 +384,7 @@ millions : NOUN[:plur]
 mīned : VERB[^ed] =mined
 minimum age : NOUN
 mining : VERB[^ing] - -1
+misleading : VERB[^ing]
 missing : VERB[^ing]
 misspoke : VERB[^ed]
 mixed : VERB[^ed]
@@ -1169,6 +1170,7 @@ do everything in my power : VERB
 do much more : VERB
 do that : VERB
 dole : VERB - -2
+domestic abuse : NOUN
 domestic politics : NOUN[:plur]
 dominant male : NOUN
 donor list : NOUN
@@ -1419,6 +1421,7 @@ I think that : ADV
 idea that : NOUN[:*l] (nmth)
 if you'd like : ADV
 illegal alien : NOUN
+illegal gun possession : NOUN
 illegal immigrant : NOUN
 illegal immigration : NOUN
 imbalanced : ADJ
@@ -1706,6 +1709,7 @@ military front : NOUN
 military might : NOUN
 military support : NOUN
 military supremacy : NOUN
+minimum sentence : NOUN
 minor eye injury : NOUN
 mischaracterization : NOUN
 mischaracterize : VERB
@@ -1974,6 +1978,7 @@ public ministry : NOUN
 public poll : NOUN
 public profile : NOUN
 public sector: NOUN
+public statement : NOUN
 pull factor : NOUN
 pump spray : NOUN
 punchline : NOUN
@@ -2165,6 +2170,7 @@ splash screen : NOUN
 sporadic dates : NOUN[:plur]
 sports field : NOUN
 spy plane : NOUN
+staff secretary : NOUN
 state and local : ADJ
 state ceremony : NOUN
 state media : NOUN
@@ -2246,6 +2252,7 @@ that year : NAVB[:det]
 thaw with russia : NOUN
 the above : ADJ
 the armed forces : NOUN[:plur]
+the authorities : NOUN[:plur,det]
 the best thing : NOUN
 the better of it : ADV
 the coming days : NOUN[:plur]
@@ -2275,12 +2282,13 @@ the rule of law : NOUN
 the same way : ADV
 the several : QUAN[@ind]
 the sidelines : NOUN
+the southern end : NOUN
 the starting point : NOUN
 the string of : QUAN
 the truth is, : MISC
-their presence : NOUN
 the united states : NOUN[:plur]
 the united states attorney : NOUN
+their presence : NOUN
 there is no hope : NOUN
 they too : PRO
 this afternoon : NAVB[:*x]
@@ -2601,6 +2609,7 @@ defend himself : VERB
 deployed on Twitter : VERB
 different characteristic : NOUN
 disappeared from the fever swamps : VERB[^ed,*r]
+displaced and frightened : ADJ
 dream president : NOUN
 eastern Ghouta : NOUN
 effectively acknowledging : VERB[^ing]
@@ -2689,6 +2698,7 @@ the country’s struggle : NOUN[:det]
 the group Wikileaks : NOUN[:det]
 the perception that : ELEM (elth)
 the same amount each month : NOUN
+the state’s largest park : NOUN
 the totality of : QUAN
 the u.k.'s national weather service : NOUN
 the upper layers of the atmosphere : NOUN[:plur]
@@ -2711,6 +2721,7 @@ weapons component : NOUN
 when the attack occurred : ADV
 with what we now know to be : PREP
 win leverage : VERB
+worked to keep : VERB[^ed]
 
 # # # # !!!!
 
@@ -2730,6 +2741,7 @@ private sector company  : NOUN
 
 the U.S. Department of Labor : NOUN
 the Federal Energy Regulatory Commission : NOUN
+the island of Hawaii : NOUN
 the State of Hawaii : NOUN
 the State of Indiana : NOUN
 the United Nations  : NOUN
@@ -3112,6 +3124,7 @@ Charlotte-Mecklenburg : ADJ
 Charlotte Douglas : NOUN
 Chevrolet : NOUN
 Chibok Government Secondary School : NOUN
+Chicago Sun Times : NOUN
 China Central Television : NOUN[:*r]
 China Great Wall Industry Corporation : NOUN[:*r]
 Chinese leadership : NOUN
@@ -3251,6 +3264,7 @@ Greitens : NOUN
 Gridiron Club : NOUN
 Grey Advertising : NOUN
 Guinness : NOUN
+Hanks : NOUN
 Hapag-Lloyd company : NOUN
 HBO : NOUN
 HHS : NOUN
@@ -3496,6 +3510,7 @@ Rick Scott : NOUN
 RNC : NOUN
 Ric : NOUN
 Rick Kurtzman : NOUN
+Rob Porter : NOUN
 Robert Mueller : NOUN
 Robert S. Mueller III : NOUN
 Rockette : NOUN
@@ -16891,6 +16906,7 @@ internationalist : ADJ
 internationally : ADV
 internet : NOUN
 internet site : NOUN
+interplanetary : ADJ
 interpret : VERB
 interpretation : NOUN
 interrogate : VERB
@@ -19791,6 +19807,7 @@ misfortune : NOUN
 misgive : VERB
 mishandle : VERB
 mislead : VERB
+misleading : ADJ
 mismatch : NOUN
 mismatch : VERB
 miso : NOUN
