@@ -13,6 +13,7 @@ biggest : ADJ
 happiest : ADJ
 largest : ADJ
 
+accused many of : VERB[^ed]
 acting : VERB[^ing]
 actors in the policy process : NOUN[:plur]
 added a new dimension : VERB[^ed]
@@ -440,6 +441,7 @@ phenomena : NOUN[:plur]
 phone interview : NOUN
 placed on lockdown : VERB[^ed]
 plans to attend : VERB
+played a decisive role : VERB[^ed]
 played live : VERB[^ed]
 pleaded guilty : VERB[^ed]
 pleased : VERB[^ed]
@@ -481,6 +483,7 @@ ran for office : VERB[^ed]
 ranging from : VERB[^ed]
 re-emerged : VERB[^ed]
 re-emerging : VERB[^ing]
+received instructions : VERB[^ed]
 received access to : VERB[^ed]
 regarding : PREP - +1
 regarding : NOUN - -1
@@ -598,6 +601,7 @@ taken : VERB[^ed]
 taken into custody : VERB[^ed]
 taken a knee : VERB[^ed]
 taken into police custody : VERB[^ed]
+taking advantage of : VERB[^ing]
 taking place : VERB[^ing]
 talking : VERB[^ing]
 telecommunications : NOUN
@@ -612,6 +616,7 @@ thanked : VERB[^ed]
 that believe in : THTV
 that can be faced : ADJ
 that comes : THTV
+that he’s not inclined : THTV
 thought : VERB[^ed]
 threw : VERB[^ed]
 thrown : VERB[^ed]
@@ -637,6 +642,8 @@ turned themselves in : VERB[^ed]
 tv programming : NOUN
 unanimously rejected : VERB[^ed]
 undergone : VERB[^ed]
+underwent : VERB[^ed]
+underwent surgery : VERB[^ed]
 unified : VERB[^ed]
 unaccounted for : ADJ
 unsolved mystery : NOUN
@@ -789,6 +796,7 @@ after which : CONJ
 afternoon and evening : NOUN
 against : ADV 0 -6
 against his will : ADV
+aggressive form : NOUN
 agricultural industry : NOUN
 ahead of : PREP
 akin to how : CONJ
@@ -902,6 +910,7 @@ autoplay : NOUN
 avoid a repeat of : VERB
 avoid errors : VERB
 away from : PREP
+back home : ADV
 back in : PREP
 back into mexico : ADV
 background briefing : NOUN
@@ -921,6 +930,7 @@ best suit : VERB
 better of it : ADV
 better classroom conditions : NOUN
 better than : PREP
+biggest customers : NOUN[:plur]
 bigger and bigger : ADJ
 binding commitment : NOUN
 birther : NOUN
@@ -937,6 +947,7 @@ border patrol agent : NOUN
 bosniak : NOUN
 bosniak : ADJ
 bowing to pressure from : VERB[^ing]
+brain cancer : NOUN
 breathing : VERB[^ing]
 bringing threats of : VERB[^ing]
 broke out : VERB[^ed]
@@ -948,16 +959,6 @@ building : VERB[^ing,ptcl]
 buildings : NOUN[:plur]
 built : VERB[^ed] [$trns,noaj] +3
 buoys the hopes of : VERB[^s]
-called 911 to report : VERB[^ed]
-calling himself : VERB[^ing]
-came : VERB[^ed,ptcl]
-came to light : VERB[^ed]
-cannot happen here : VERB
-cargo plane : NOUN
-carried out : VERB[^ed]
-carrying out : VERB[^ing]
-caught : VERB[^ed] [$trns] 0
-children : NOUN[:plur]
 both houses of Congress : NOUN[:plur]
 both sides : NOUN[:plur]
 both sides of the divide  : NOUN[:plur]
@@ -998,6 +999,10 @@ cable tv : NOUN
 cable tv channel : NOUN
 cakeshop : NOUN
 call sign : NOUN
+called 911 to report : VERB[^ed]
+calling himself : VERB[^ing]
+came : VERB[^ed,ptcl]
+came to light : VERB[^ed]
 calm and collected : ADJ [$cmpd] 0
 calories burned : NOUN
 campaign chairman : NOUN
@@ -1012,13 +1017,19 @@ can last : VERB
 can pay for : VERB
 canadian/american : ADJ
 canceled check : NOUN
+cannot happen here : VERB
 capable of : PREP['of]
 capital spending : NOUN
 capt. : NOUN
 capture control of : VERB
 carefully script : VERB
+cargo plane : NOUN
+carried out : VERB[^ed]
+carrying out : VERB[^ing]
 case before the court : NOUN
 cast recording : NOUN
+catch and release : NOUN
+caught : VERB[^ed] [$trns] 0
 caught wind : VERB[^ed]
 ceasefire : NOUN
 cell-tower : ADJ
@@ -1030,10 +1041,12 @@ certainly true : ADJ
 cheer on : VERB
 chemical attack : NOUN
 chemical symbol : NOUN
+chief anchor : NOUN
 chief cabinet secretary : NOUN
 chief pentagon spokesman : NOUN
 chief pentagon spokeswoman : NOUN
 child custody hearing : NOUN
+children : NOUN[:plur]
 chinese imports : NOUN[:plur]
 chinese observer : NOUN
 christian doctrine : NOUN
@@ -1127,6 +1140,7 @@ day in a row : NOUN
 deadliest : ADJ
 deadlock in talks : NOUN
 deadly ambush : NOUN
+deadly attack : NOUN
 deadly explosion : NOUN
 deadly shooting : NOUN
 deadly shootings : NOUN[:plur]
@@ -1228,12 +1242,14 @@ even though : CONJ
 everyone else : NOUN
 executive producer : NOUN
 exercise of power : NOUN
+exclusive interview : NOUN
 existential threat : NOUN
 exploratory talks : NOUN[:plur]
 explosives detection K9 team : NOUN
 express in words : VERB
 extreme far right : NOUN
 extreme far right : ADJ
+extremely tense situation : NOUN
 eye injury : NOUN
 facebook page : NOUN
 facebook video : NOUN
@@ -1277,7 +1293,9 @@ follow up with you after this : VERB
 for about a week : ADV
 for allegedly : PREP['cls]
 for example : PEXP[|eg]
+for how long : CONJ
 for more than a decade : ADV
+for nearly a year : ADV
 for now : ADV
 for several days : ADV
 for so long : ADV
@@ -1292,6 +1310,7 @@ foreign government : NOUN
 foreign intelligence : NOUN
 foreign land : NOUN
 foreign ministry : NOUN
+foreign ministry spokesman : NOUN
 foreign money : NOUN
 foreign policy advisor : NOUN
 foreign secretary : NOUN
@@ -1352,6 +1371,8 @@ group travel : NOUN
 growth strategy : NOUN
 guilty plea : NOUN
 guitar bridge : NOUN
+gun ban : NOUN
+gun laws : NOUN[:plur]
 gun nut : NOUN
 gun violence : NOUN
 gunshot wound : NOUN
@@ -1426,6 +1447,7 @@ illegal immigrant : NOUN
 illegal immigration : NOUN
 imbalanced : ADJ
 immediate medical help : NOUN
+immigration court : NOUN
 immigration crackdown : NOUN
 immigration policy : NOUN
 immigration views : NOUN[:plur]
@@ -1468,6 +1490,7 @@ in recent weeks : ADV [$deg,time] +1
 in recent years : ADV [$deg,time] +1
 in relations with : PREP
 in response to : PREP
+in return for : PREP
 in serious condition : ADV
 in terms of : PREP
 in the coming months : ADV
@@ -1531,6 +1554,7 @@ international treaty : NOUN
 internet access : NOUN
 internet service provider : NOUN
 interview that : NOUN[:*l] (nmth)
+intestinal infection : NOUN
 intimate affair : NOUN
 into darkness : ADV
 into the night : ADV
@@ -1587,6 +1611,8 @@ keep her quiet : VERB
 keep things quiet : VERB
 key figure : NOUN
 key part : NOUN
+key sanctions : NOUN[:plur]
+knife crime : NOUN
 know nothing at all : VERB
 knowingly false : ADJ
 ku klux klansmen : NOUN[:plur]
@@ -1601,6 +1627,7 @@ last big : ADJ
 last fall : NAVB
 last june : NAVB
 last known location : NOUN
+late last month : ADV
 late last week : ADV
 last may : NAVB
 last month : NAVB[:det]
@@ -1652,6 +1679,7 @@ lt. gen. : NOUN
 lure shoppers through their doors : VERB
 magazine weekly : NOUN
 main lobby : NOUN
+main trading partner : NOUN
 mainstream media : NOUN
 major city : NOUN
 major doping scandal : NOUN
@@ -1680,6 +1708,7 @@ marine corps air station : NOUN
 maritime historian : NOUN
 marketing campaign : NOUN
 marketing firm : NOUN
+mass arrests : NOUN[:plur]
 mass breach : NOUN
 mass exodus : NOUN
 mass killing : NOUN
@@ -1759,6 +1788,7 @@ national interest : NOUN
 national security : NOUN
 national security adviser : NOUN
 national security interest : NOUN
+nationwide rallies : NOUN[:plur]
 native soil : NOUN
 natural causes : NOUN[:plur]
 natural disaster : NOUN
@@ -1798,10 +1828,12 @@ nuclear deal : NOUN
 nuclear program : NOUN
 nuclear technology : NOUN
 nuclear weapons : NOUN
+nuclear weapons program : NOUN
 nude photo : NOUN
 obstruct justice : VERB
 off the map : ADV
 official confirmation : NOUN
+official news agency : NOUN
 official source : NOUN
 official statement : NOUN
 official version : NOUN
@@ -1846,6 +1878,7 @@ open-hearted : ADJ
 opening auction : NOUN
 openings : NOUN[:plur]
 opposition fighters : NOUN[:plur]
+opposition leader : NOUN
 or else : CONJ
 or more : POSTP[@num] [$trlg] 0
 or not : CONJ
@@ -2060,6 +2093,7 @@ rules of engagement : NOUN
 ruling party: NOUN
 russia probe : NOUN
 russian ambassador : NOUN
+russian city : NOUN
 russian diplomat : NOUN
 russian double agent : NOUN
 russian government : NOUN
@@ -2072,6 +2106,7 @@ safe route : NOUN
 salary round : NOUN
 sales manager : NOUN
 sales team : NOUN
+sanctions relief : NOUN
 saturday and sunday : NAVB
 say they need : VERB
 school community : NOUN
@@ -2096,6 +2131,7 @@ senate candidate : NOUN
 senior general : NOUN
 senior level : NOUN
 senior trump administration official : NOUN
+senior u.s. official : NOUN
 sensitive conversation : NOUN
 serve as a placeholder : VERB
 service plan : NOUN
@@ -2241,6 +2277,7 @@ thanksgiving break : NOUN
 that he   : PRO[=*l]
 that I    : PRO[=*l]
 that it   : PRO[=*l]
+that it's not known : THTV
 that mr.  : PRO[=*l,*x]
 that mrs. : PRO[=*l,*x]
 that ms.  : PRO[=*l,*x]
@@ -2261,6 +2298,7 @@ the day after : PREP
 the day before : PREP
 the default is : VERB
 the entirety : NOUN
+the fifth amendment : NOUN
 the first time : NAVB[:*x]
 the focus : NOUN[:det]
 the general command : NOUN
@@ -2324,6 +2362,7 @@ top adviser : NOUN
 top aide : NOUN
 top forty : NUM
 top forty hit : NOUN
+tough policy : NOUN
 tourism sector : NOUN
 toxic chemical : NOUN
 tourist destination : NOUN
@@ -2417,6 +2456,7 @@ water use : NOUN
 weeks in, : IADV
 weightiest : ADJ
 wet, heavy snow : NOUN
+what had been an : DET
 what he called : ADV
 what he said was a : DET
 what i have stood for : NOUN
@@ -2425,6 +2465,7 @@ what it has learned : NOUN
 what looks like an : DET
 what she calls a : DET
 what they say are : ADJ
+what to do : NOUN
 what was supposed to be : ADV
 when asked by reporters : ADV
 whenever and wherever : CONJ
@@ -2638,6 +2679,7 @@ improperly collected information : NOUN
 in an interview : ADV
 in mid-march : ADV
 in remarks : ADV
+in turning around : NOUN[:prep]
 incorrectly reported : VERB[^ed]
 increasingly say : VERB
 information commissioner : NOUN
@@ -3035,6 +3077,7 @@ AC/DC : NOUN
 Adolph Hitler : NOUN
 Andrew Weissman : NOUN
 Adrian : NOUN
+Alexei Navalny : NOUN
 Al-Qaeda : NOUN
 AP : NOUN
 AT&T : NOUN
@@ -3110,6 +3153,7 @@ Buzzfeed : NOUN
 Cambridge Analytica : NOUN
 Cantor : NOUN
 Carter : NOUN
+Carter Evans : NOUN
 Catalina : NOUN
 CBS : NOUN
 CBS News : NOUN
@@ -3238,6 +3282,7 @@ Fox News host : NOUN
 Francis : NOUN
 Franken : NOUN
 Freedom of the City award : NOUN
+French government : NOUN
 French president : NOUN
 Ft. Lauderdale : NOUN
 Fulmer : NOUN
@@ -3249,6 +3294,7 @@ Gene Simmons : NOUN
 General Atomics : NOUN
 General Parametrics : NOUN
 George Papadopoulos : NOUN
+George Stephanopoulos : NOUN
 George Washington University : NOUN
 George Will : NOUN
 Georgian : NOUN
@@ -3266,6 +3312,7 @@ Grey Advertising : NOUN
 Guinness : NOUN
 Hanks : NOUN
 Hapag-Lloyd company : NOUN
+Hawaii County Civil Defense : NOUN
 HBO : NOUN
 HHS : NOUN
 HLN : NOUN
@@ -3557,6 +3604,7 @@ Social Democrat : NOUN
 South Asia : NOUN
 South Asia Port Terminal : NOUN
 South Florida : NOUN
+South Korean President : NOUN
 southern Texas : NOUN
 Space and Upper Atmospheric Research Commission : NOUN
 SpaceX : NOUN
@@ -16385,6 +16433,7 @@ in a way : ADV
 in effect : ADJ [$trlg,prd] 0
 in effect : ADV
 in turn : ADV
+in turning : NOUN[:prep]
 in vitro : ADJ
 in vitro : ADV
 in-fighting : NOUN
@@ -20891,6 +20940,7 @@ northbound : ADJ
 northeast : NOUN - 2
 northeast : ADJ
 northeast : ADV[~dir,trlg]
+northeastern : ADJ
 northern : NOUN - -1
 northern : ADJ
 northern alliance : NOUN
