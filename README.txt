@@ -581,6 +581,7 @@ Release Notes:
                       add Google News data
  1.4.29  - 07may2018  fix bug in ellyChar when checking for letter or digit
                       add logic for special matching of hyphens in ellyWildcard
+                      allow sentences to start with em dash
                       extend "marking" rules for new data
                       update documentation
 
