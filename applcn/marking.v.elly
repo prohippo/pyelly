@@ -107,6 +107,7 @@ cordoned off : VERB[^ed]
 core constituency : NOUN
 could be excused : VERB[^ed]
 could be heard through the doors : VERB[^ed]
+could change hands : VERB[^ed]
 cozying up : VERB[^ing]
 cracking down on : VERB[^ing]
 creating : VERB[^ing] - +1
@@ -203,6 +204,7 @@ forgot : VERB[^ed,*x]
 forgotten : VERB[^ed]
 fought : VERB[^ed]
 founding :VERB[^ing] - -2
+fountaining : NOUN
 freshmen : NOUN
 fronted by : VERB[^ed]
 frontlines : NOUN[:plur]
@@ -456,6 +458,7 @@ potential claim : NOUN
 potential problem : NOUN
 potions : NOUN
 pregnant as a teen : ADJ
+prepping : VERB[^ing]
 pressed witnesses : VERB[^ed]
 pressing : VERB[^ing]
 previously fired : ADJ
@@ -633,6 +636,7 @@ tore up : VERB[^ed]
 torn : VERB[^ed]
 tracking : VERB[^ing]
 troubled : VERB[^ed] - -2
+trumpier : ADJ
 trying : VERB[^ing] - +1
 trying to make clear that : VERB[^ing]
 tuned in : VERB[^ed]
@@ -930,6 +934,7 @@ best suit : VERB
 better of it : ADV
 better classroom conditions : NOUN
 better than : PREP
+better than even chance : NOUN
 biggest customers : NOUN[:plur]
 bigger and bigger : ADJ
 binding commitment : NOUN
@@ -951,6 +956,7 @@ brain cancer : NOUN
 breathing : VERB[^ing]
 bringing threats of : VERB[^ing]
 broke out : VERB[^ed]
+broke through : VERB[^ed]
 broken out : VERB[^ed]
 brought : VERB[^ed]
 brought it back : VERB[^ed]
@@ -1352,6 +1358,7 @@ get shot : VERB
 give them new life : VERB
 global attention : NOUN
 global financial crisis : NOUN
+global shipping company : NOUN
 glowing recommendation : NOUN
 gold and silver : NOUN
 golf property : NOUN
@@ -1890,6 +1897,7 @@ other than : CONJ
 our lady : NOUN
 out of : PREP['div]
 out of step with : PREP
+out of the realm of possibility : ADJ
 outdated technology : NOUN
 outlet for conservative voices : NOUN
 outside the jurisdiction of : PREP
@@ -2049,6 +2057,7 @@ regional security : NOUN
 registered voter : NOUN
 related to : PREP
 relative newcomer : NOUN
+relentless counterattack : NOUN
 relicense : VERB
 relist : VERB
 remix : NOUN
@@ -2091,6 +2100,7 @@ round at : PREP
 rpg : NOUN
 rules of engagement : NOUN
 ruling party: NOUN
+russia investigation : NOUN
 russia probe : NOUN
 russian ambassador : NOUN
 russian city : NOUN
@@ -2426,6 +2436,7 @@ up slightly : ADV - +1
 up to : ADV[~mod] [$deg] 0
 up to his neck : ADJ
 upper atmosphere : NOUN
+upper chamber : NOUN
 urban myth : NOUN
 us-bound : ADJ
 used to : AUXL
@@ -2801,6 +2812,7 @@ who hvbe in jail : NOUN =Who's in Jail
 1-forms : NOUN[:plur] - +2
 16-year-old : NOUN - -2
 16-year-old : ADJ
+2-seat : ADJ
 2-year-long : ADJ
 3-point : ADJ
 3-point-shooting : NOUN - -2
@@ -3009,6 +3021,7 @@ self-deprecating : ADJ
 self-defensive : ADJ
 semi-automatic weapon : NOUN
 semi-autonomous : ADJ
+shanghai-born : ADJ
 single-discipline : ADJ
 six-party : ADJ
 start-up : NOUN
@@ -3237,6 +3250,7 @@ Eclogues : NOUN
 Edwin M. Lee : NOUN
 el-Sisi : NOUN
 El Nino : NOUN
+Elaine Chao : NOUN
 Elena Kagan : NOUN
 Eli : NOUN
 Elon Musk : NOUN
@@ -3691,6 +3705,7 @@ Uber : NOUN
 UCLA : NOUN
 United States Attorney : NOUN
 University of Maryland Baltimore County : NOUN
+Upper Big Branch Mine : NOUN
 US District Court : NOUN
 US interests : NOUN[:plur]
 USNORTHCOM : NOUN
@@ -6606,6 +6621,7 @@ break open : VERB
 break out : VERB
 break seal : NOUN
 break short : VERB
+break through : VERB
 break up : VERB
 break water : VERB
 break wind : VERB
@@ -15532,6 +15548,7 @@ heart surgery : NOUN
 heartache : NOUN
 heartbeat : NOUN
 heartbreak : NOUN
+heartbreaking : ADJ
 heartbroken : ADJ
 heartburn : NOUN
 heartfelt : ADJ

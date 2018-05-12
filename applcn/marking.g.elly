@@ -1291,6 +1291,11 @@ g:DATE->DET[@num,sgl] DATN
 _
   (twob)
 __
+g:DATE->QUAN DATN
+ >>-
+_
+  (twob)
+__
 d:across <- POSTP[@adv]
  >>[$trlg,spat]-
 __
