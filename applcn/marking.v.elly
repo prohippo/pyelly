@@ -109,6 +109,7 @@ could be excused : VERB[^ed]
 could be heard through the doors : VERB[^ed]
 could change hands : VERB[^ed]
 cozying up : VERB[^ing]
+crack down further on : VERB
 cracking down on : VERB[^ing]
 creating : VERB[^ing] - +1
 creating : ADJ[%ing] - -2
@@ -716,6 +717,7 @@ went_on : VERB[^ed] =went on
 
 1 another : PRO =one another
 1 last time : ADV
+1 more time : ADV
 1 of : QUAN[@*x] =one of
 1 of the first : QUAN
 1 of the most powerful : QUAN
@@ -764,6 +766,7 @@ a number of pieces of : QUAN
 a range of : QUAN
 a series of : QUAN
 a short time : ADV
+a short while ago : ADV
 a small group of : QUAN
 a step closer : ADV
 a step forward : NOUN[:det]
@@ -1003,9 +1006,11 @@ cable news program : NOUN
 cable news programming : NOUN
 cable tv : NOUN
 cable tv channel : NOUN
+CAFE standard : NOUN
 cakeshop : NOUN
 call sign : NOUN
 called 911 to report : VERB[^ed]
+called on : VERB[^ed]
 calling himself : VERB[^ing]
 came : VERB[^ed,ptcl]
 came to light : VERB[^ed]
@@ -1109,6 +1114,7 @@ corporate bond market : NOUN
 conveying to law enforcement : VERB[^ing]
 core element : NOUN
 core mission : NOUN
+corporate average fuel economy : ADJ
 corporate lending conditionns : NOUN[:plur]
 corrections officer : NOUN
 corrupt regime : NOUN
@@ -1337,6 +1343,7 @@ from what  : CONJ[@rel]
 from where : CONJ[@rel]
 from which : CONJ[@rel]
 frontline : ADJ
+fuel economy : NOUN
 fuel tax : NOUN
 full control : NOUN
 full time : ADV
@@ -1363,6 +1370,7 @@ glowing recommendation : NOUN
 gold and silver : NOUN
 golf property : NOUN
 good news : NOUN
+good resource : NOUN
 goods and services : NOUN
 gov. : NOUN
 governing coalition : NOUN
@@ -1471,6 +1479,7 @@ in anticipation of : PREP
 in any way : ADV
 in area : ADV[~trlg] [$deg] 0
 in areas : NCLU[:prep]
+in as many months : ADV
 in as much as : CONJ
 in business : ADJ
 in case of : PREP
@@ -1493,6 +1502,7 @@ in leaps and bounds : ADV
 in length : ADV[~trlg] [$deg] 0
 in order to : TO
 in protest against : PREP
+in recent memory : ADV [$deg,time] +1
 in recent weeks : ADV [$deg,time] +1
 in recent years : ADV [$deg,time] +1
 in relations with : PREP
@@ -1668,6 +1678,7 @@ less than : ADV[~mod] [$deg] 0
 less than a : QUAN =less than 1
 less than a month ago : ADV
 life’s work : NOUN
+light vehicle : NOUN
 lightning strike : NOUN
 like never before : ADV
 likely to be asked about : ADJ
@@ -1738,6 +1749,7 @@ methamphetamine lab : NOUN
 micromanage : VERB
 middle east peacemaking : NOUN
 midtempo : ADJ
+mileage rules : NOUN[:plur]
 militant group : NOUN
 military base : NOUN
 military exercise : NOUN
@@ -1765,6 +1777,8 @@ more practical : ADJ
 more sway : NOUN
 more than : ADV[~mod] [$deg] 0
 more than half a : QUAN
+more time : NOUN
+more times : ADV[~trlg]
 more traditional position : NOUN
 morning news show : NOUN
 most decisive sign : NOUN
@@ -1831,6 +1845,7 @@ nothing new here : NOUN
 now known as : CONJ
 nuclear accord : NOUN
 nuclear and ballistic : ADJ
+nuclear capability : NOUN
 nuclear deal : NOUN
 nuclear program : NOUN
 nuclear technology : NOUN
@@ -1937,6 +1952,7 @@ personal data : NOUN
 personal information : NOUN
 personal lawyer : NOUN
 personal profile : NOUN
+petition drive : NOUN
 perturber : NOUN
 piano four hands : NOUN
 piece of land : NOUN
@@ -2024,6 +2040,7 @@ pull factor : NOUN
 pump spray : NOUN
 punchline : NOUN
 purchasing power : NOUN
+put pressure on : VERB
 put it through : VERB
 pv : ADJ
 pyroclastic : ADJ
@@ -2094,8 +2111,7 @@ risk death : VERB
 riverfront : ADJ
 rocket science : NOUN
 rockin' : ADJ
-role-playing : ADJ
-role-playing game : NOUN
+roll back : VERB
 round at : PREP
 rpg : NOUN
 rules of engagement : NOUN
@@ -2334,10 +2350,12 @@ the southern end : NOUN
 the starting point : NOUN
 the string of : QUAN
 the truth is, : MISC
+the u.k. : NOUN
 the united states : NOUN[:plur]
 the united states attorney : NOUN
 their presence : NOUN
 there is no hope : NOUN
+they think will : AUXL
 they too : PRO
 this afternoon : NAVB[:*x]
 this month : NAVB[:det]
@@ -2393,6 +2411,7 @@ tv host : NOUN
 tv pundit : NOUN
 tweetstorm : NOUN
 u.s. and foreign : ADJ
+u.s. allies : NOUN[:plur]
 u.s. attorney : NOUN
 u.s. charts : NOUN[:plur]
 u.s. border patrol agent : NOUN
@@ -2618,6 +2637,7 @@ most as many : ADJ
 8 day visit : NOUN
 a — what appears to be a — : DET
 a little bit of a : QUAN
+as part of that, : ADV
 has a little bit of a different characteristic : VERB
 have come to count on : VERB
 acting so strangely : VERB[^ing]
@@ -2632,6 +2652,8 @@ armed with fresh ammunition : ADJ
 arnona : NOUN
 attacks on twitter : NOUN[:plur]
 based off : VERB[^ed,*r]
+Be Best material : NOUN
+being safe online : NOUN
 block his power grab : VERB
 body of water called Jamun Bodi : NOUN
 bodycam video : NOUN
@@ -2701,6 +2723,7 @@ january interview that : NOUN[:*l] (nmth)
 made the ask : VERB[^ed]
 magnitude of this job : NOUN
 making a false statement to the FBI : VERB[^ing]
+marking him wrong : VERB[^ing]
 messaging app WeChat : NOUN
 metals tariff : NOUN
 missing submarine : NOUN
@@ -2948,6 +2971,7 @@ M-B-S : NOUN
 miami-dade : ADJ
 mid-air : NOUN
 mid-century : ADJ
+mid-term : ADJ
 military-grade : ADJ
 millimeter-wave : ADJ
 mind-boggling : ADJ
@@ -3004,6 +3028,8 @@ republican-led : ADJ
 remote-control : NOUN
 right-wing : ADJ
 right-winger : NOUN
+role-playing : ADJ
+role-playing game : NOUN
 rubber-coated : ADJ
 round-up : NOUN
 run-through : NOUN
@@ -3022,6 +3048,7 @@ self-defensive : ADJ
 semi-automatic weapon : NOUN
 semi-autonomous : ADJ
 shanghai-born : ADJ
+shoe-in : NOUN
 single-discipline : ADJ
 six-party : ADJ
 start-up : NOUN
@@ -3073,6 +3100,8 @@ white-sand beach : NOUN
 wide-ranging : ADJ
 widely-read : ADJ
 wind-driven : ADJ
+word-for-word : ADJ
+word-for-word : ADV
 world-leading : ADJ
 world-renowned : ADJ
 would-be : ADJ
@@ -28466,6 +28495,7 @@ stay put : VERB
 stay together : VERB
 stay up : VERB
 stead : NOUN
+steadily : ADV
 steady : NOUN
 steady : VERB
 steady : ADJ
@@ -32778,7 +32808,7 @@ written text : NOUN
 written word : NOUN
 wrong : NOUN
 wrong : VERB
-wrong : ADJ
+wrong : ADJ - +2
 wrong : ADV
 wrongdoer : NOUN
 wrongdoing : NOUN
