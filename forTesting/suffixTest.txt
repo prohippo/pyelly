@@ -672,6 +672,8 @@ gone go
 gotten get
 governance govern
 governor govern
+gracious grace
+graciously grace
 gradual gradual
 grainy grain
 grasper grasp
@@ -864,6 +866,7 @@ longitudinal longitude
 louder loud
 loudest loud
 lowest low
+loyalist loyal
 lubricant lubric
 lubricate lubric
 lubricative lubric
@@ -1301,6 +1304,7 @@ secession secede
 secretary secretary
 secretive secret
 secretory secrete
+secularism secular
 sedition sedition
 seditious sedition
 seemed seem
