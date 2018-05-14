@@ -4173,7 +4173,7 @@ g:NAVB[:plur]->NAVB XS
 _
   (twob)
 __
-g:NCLUi[:*r]->NUM NAVB[:plur]
+g:NCLU[:*r]->NUM NAVB[:plur]
 _
   (twob)
 __
