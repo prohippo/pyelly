@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# dateTransform.py : 12apr2018 CPM
+# dateTransform.py : 13may2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -541,7 +541,7 @@ class DateTransform(simpleTransform.SimpleTransform):
 
         m = int(dt0)
         if m < 1 or m > 12: return 0  # check validity of month
-        d = int(dt1)
+        if dt1 == '': return 0
         if d < 1 or d > 31: return 0  # check validity of day
         if ns == 2:
             y = dt.pop(0)             # if there is a year, process it also
