@@ -75,6 +75,8 @@ bombing : VERB[^ing] - -2
 bookended : VERB[^ed] - -1
 boosting security : VERB[^ing]
 born : VERB[^ed] - +2
+came : VERB[^ed]
+came under fire : VERB[^ed]
 centered around : VERB[^ed]
 charged with : VERB[^ed]
 chosen : VERB[^ed] - +2
@@ -425,6 +427,7 @@ ordered held without bond : VERB[^ed]
 originated : VERB[^ed]
 originated : ADJ - -4
 ought : VERB
+out of control : ADV
 out of every : PREP['of,div]
 out of step : ADJ
 outside of : PREP
@@ -435,6 +438,7 @@ oversaw : VERB[^ed]
 overseen : VERB[^ed]
 pack up : VERB
 paid : VERB[^ed]
+paying off : VERB[^ing]
 peace deal : NOUN
 peacemaking : NOUN
 people familiar with the matter : NOUN
@@ -645,12 +649,14 @@ torn : VERB[^ed]
 tracking : VERB[^ing]
 troubled : VERB[^ed] - -2
 trumpier : ADJ
+trying : NOUN[:ing]
 trying : VERB[^ing] - +1
 trying to make clear that : VERB[^ing]
 tuned in : VERB[^ed]
 turned himself in : VERB[^ed]
 turned political : VERB[^ed]
 turned themselves in : VERB[^ed]
+turns the lights on : VERB[^s]
 tv programming : NOUN
 unanimously rejected : VERB[^ed]
 undergone : VERB[^ed]
@@ -782,6 +788,7 @@ a step forward : NOUN[:det]
 a string of : QUAN
 a third the : NUM
 a thousand : NUM
+a wave of : QUAN
 a year in prison : NOUN[:det,num]
 about a week : ADV
 about half its : QUAN
@@ -804,6 +811,7 @@ adm. : NOUN
 adult film star : NOUN
 adulterous affair : NOUN
 advertising boycott : NOUN
+advocacy group : NOUN
 aerial demonstration : NOUN
 after all : CONJ[@*l]
 after he did, : ADV
@@ -827,6 +835,7 @@ all but certain : ADJ
 all day wednesday : NAVB
 all evening : ADV
 all of : QUAN
+all of them : NOUN
 all of whom : CONJ
 all of you : PRO
 all of you here : PRO
@@ -1278,6 +1287,7 @@ facebook page : NOUN
 facebook video : NOUN
 factional : ADJ
 factional fighting : NOUN
+failures and deficiencies : NOUN[:plur]
 false information : NOUN
 fake news : NOUN
 familiar with his thinking : ADJ
@@ -1304,6 +1314,7 @@ felony count : NOUN
 ferry service : NOUN
 fever swamp : NOUN
 few hundred : NUM
+fighter jet : NOUN
 final agreement : NOUN
 final approval : NOUN
 final leg : NOUN
@@ -1441,6 +1452,7 @@ highest principles : NOUN[:plur]
 highly likely : ADV
 hindu temple : NOUN
 his or her : DEM
+historic election : NOUN
 hit job : NOUN
 hold a suspect in custody : VERB
 hold up in court : VERB
@@ -1579,6 +1591,7 @@ interferometry : NOUN
 internal and external : ADJ
 internal report : NOUN
 international airport : NOUN
+international attention : NOUN
 international community : NOUN
 international treaty : NOUN
 internet access : NOUN
@@ -1603,7 +1616,10 @@ islamic state : NOUN
 islamic state group : NOUN
 islamist insurgent : NOUN
 israeli forces : NOUN[:plur]
+israeli military : NOUN
 israeli police : NOUN
+israeli position : NOUN
+israeli warplane : NOUN
 issued a firm warning to : VERB[^ed]
 it appears to have : AUXL
 it behv clear : ELEM - +4 (elma)
@@ -1770,6 +1786,7 @@ mileage rules : NOUN[:plur]
 militant group : NOUN
 military base : NOUN
 military exercise : NOUN
+military facility : NOUN
 military front : NOUN
 military might : NOUN
 military support : NOUN
@@ -1921,10 +1938,12 @@ opening auction : NOUN
 openings : NOUN[:plur]
 opposition fighters : NOUN[:plur]
 opposition leader : NOUN
+opposition party : NOUN
 or else : CONJ
 or more : POSTP[@num] [$trlg] 0
 or not : CONJ
 or whether : CONJ
+organizational and institutional : ADJ
 other countries : NOUN[:plur]
 other nations :  NOUN[:plur]
 other reports suggest : ADV
@@ -2011,6 +2030,7 @@ pollution cleanup : NOUN
 poor health : NOUN
 poorly crafted : ADJ
 porn star : NOUN
+pornographic film actress : NOUN
 possible attempt : NOUN
 possible defeat : NOUN
 possible identity : NOUN
@@ -2024,6 +2044,7 @@ presentation system : NOUN
 presidential campaign : NOUN
 presidential election : NOUN
 presidential pardon : NOUN
+presidential race : NOUN
 presidential speech : NOUN
 press secretary : NOUN
 presuppositionalism : NOUN
@@ -2130,6 +2151,7 @@ rise to prominence : NOUN
 risk death : VERB
 riverfront : ADJ
 rocket science : NOUN
+rocket strike : NOUN
 rockin' : ADJ
 roll back : VERB
 round at : PREP
@@ -2244,6 +2266,7 @@ special counsel : NOUN
 special counsel probe : NOUN
 special envoy : NOUN
 special forces : ADJ - -1
+special operations : NOUN[:plur]
 spectator : ADJ - +1
 spectral type : NOUN[:*x]
 spiritual birthplace : NOUN
@@ -2351,6 +2374,7 @@ the focus : NOUN[:det]
 the general command : NOUN
 the happiest day of my life : NOUN
 the last month : NAVB[:det]
+the last year : NAVB[:det]
 the latest twist : NOUN
 the legal community : NOUN
 the minimum age : NOUN[:det]
@@ -2445,9 +2469,11 @@ u.s. market : NOUN
 u.s.-mexico border wall : NOUN
 u.s. official  : NOUN
 u.s. officials : NOUN[:plur]
+u.s. soldier : NOUN
 u.s. special counsel : NOUN
 u.s. special counsel robert mueller : NOUN
 u.s. special forces : NOUN[:plur]
+u.s. special operations mission : NOUN
 uav : NOUN
 ultimate deal : NOUN
 ultraconservatism : NOUN
@@ -2751,6 +2777,7 @@ marking him wrong : VERB[^ing]
 messaging app WeChat : NOUN
 metals tariff : NOUN
 missing submarine : NOUN
+months-long investigation : NOUN
 more expansive background checks : NOUN[:qnt,plur]
 or more accurately, : ADV
 over the past two years : ADV
@@ -2790,6 +2817,7 @@ talked to his mother : VERB[^ed,*r]
 Tampa police : NOUN
 that has killed : THTV
 that killed : THTV
+that spiraled : THTV
 that tore   : THTV
 that worked : THTV
 that would ban : THTV
@@ -2818,6 +2846,7 @@ university police Chief Bill Yeagley : NOUN
 US soldier : NOUN
 walkout of classes : NOUN
 was home sleeping : VERB[^ing]
+was like, : VERB[^ed]
 weapons component : NOUN
 when the attack occurred : ADV
 with what we now know to be : PREP
@@ -2887,6 +2916,7 @@ anti-muslim : ADJ
 anti-semitic : ADJ
 asian-american : ADJ
 assembly-line : ADJ
+assisted-suicide : ADJ
 asylum-seeker : NOUN
 at-times : ADV
 base-rallying : ADJ
@@ -2965,6 +2995,7 @@ half-revelation : NOUN
 half-sitting : VERB[^ed]
 hard-edged : ADJ
 hard-to-detect : ADJ
+head-to-head : ADV
 high-endurance : ADJ
 high-flying : ADJ
 high-profile : ADJ
@@ -2981,6 +3012,7 @@ in-store : ADJ
 in-your-face : ADJ
 influence-peddling scandal : ADJ
 invasion-of-privacy : ADJ
+iran-linked : ADJ
 iranian-backed : ADJ
 iraqi-syrian : ADJ
 israeli-palestinean : ADJ
@@ -3005,6 +3037,7 @@ military-grade : ADJ
 millimeter-wave : ADJ
 mind-boggling : ADJ
 mixed-species : ADJ
+months-long : ADJ
 much-needed : ADJ
 multi-disciplinary : ADJ
 nail-biter : NOUN
@@ -3020,6 +3053,7 @@ north-south : ADJ
 not-guilty : ADJ
 ocean-view home : NOUN
 on-track : ADJ
+once-secure : ADJ
 one-time : ADJ
 op-ed : NOUN - -1
 op-ed : ADJ
@@ -3056,6 +3090,7 @@ rent-regulated : ADJ
 rent-regulated unit : NOUN
 republican-led : ADJ
 remote-control : NOUN
+right-to-die : ADJ
 right-wing : ADJ
 right-winger : NOUN
 rock-wielding : ADJ
@@ -3325,6 +3360,7 @@ ESPN host : NOUN
 Esterly : NOUN
 EU Withdrawal Bill : NOUN
 Evans : NOUN
+Exit International : NOUN
 F.B.I. official : NOUN
 F.C.C. : NOUN
 FAA : NOUN
@@ -3377,6 +3413,7 @@ Getty Center arts complex : NOUN
 GIFT City : NOUN
 Gina Haspel : NOUN
 Global Times : NOUN
+Golan Heights : NOUN[:plur]
 Golden State Warriors : NOUN
 Gov. Jerry Brown : NOUN
 Grand Staircase-Escalante : NOUN
@@ -3481,6 +3518,7 @@ Lewinski : NOUN
 Lexis-Nexis : NOUN
 LGTBQ : ADJ
 LiAngelo Hall : NOUN
+Liestal : NOUN
 Liaoning : NOUN
 Lighthizer : NOUN
 Lilly : NOUN
@@ -3534,6 +3572,7 @@ Model S Sedan : NOUN
 Mohammed bin-Salman : NOUN
 Montecito : NOUN
 Moon Jae-in : NOUN
+Mount Bental : NOUN
 Mr. Kim : NOUN
 Mr. Mueller : NOUN
 Mr. Nader : NOUN
@@ -3701,6 +3740,7 @@ Suiter : NOUN
 Symantec : NOUN
 Syrian government : NOUN
 Syrian state television : NOUN
+Syrian territory : NOUN
 Taliban : NOUN
 Talkradio 790 KABC : NOUN
 TASS : NOUN
@@ -5983,6 +6023,7 @@ biological terrorism : NOUN
 biological time : NOUN
 biological warfare : NOUN
 biological weapon : NOUN
+biologist : NOUN
 biology : NOUN
 biology department : NOUN
 biology lab : NOUN
@@ -21740,6 +21781,7 @@ optimum : ADJ
 option : NOUN
 opulence : NOUN
 opulent : ADJ
+or so : ADV
 oral : NOUN
 oral : ADJ
 oral cancer : NOUN
@@ -31221,7 +31263,7 @@ try : NOUN - -2
 try : VERB
 try out : VERB
 try square : NOUN
-trying : ADJ
+trying : ADJ - -1
 tsar : NOUN
 tsarist : ADJ
 tsunami : NOUN
