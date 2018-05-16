@@ -223,6 +223,7 @@ given rise to : VERB[^ed]
 given free rein : VERB[^ed]
 given the green light : VERB[^ed]
 gives rise to : VERB[^s]
+gives you a sense of : VERB[^s]
 giving rise to : VERB[^ing]
 get : BE - +1
 get out : VERB
@@ -625,6 +626,7 @@ television broadcasting : NOUN
 terrifying : VERB[^ing]
 territorial struggle : NOUN
 terrorism suspect : NOUN
+terrorist organization : NOUN
 terrorizing : VERB[^ing] - +2
 terrorizing : NOUN - -1
 thanked : VERB[^ed]
@@ -1987,6 +1989,7 @@ pence : NOUN
 pending adjustment : NOUN
 people on facebook : NOUN[:plur]
 percent chance : NUM[:*r]
+period of time : NOUN
 personal data : NOUN
 personal information : NOUN
 personal lawyer : NOUN
@@ -2088,6 +2091,7 @@ pyroclastic : ADJ
 questionable method : NOUN
 questions he was unsure of : NOUN[:plur]
 quick look : NOUN
+quite a : DET
 quite a while ago : ADV
 quoted from : VERB
 radical hindu group : NOUN
@@ -2522,6 +2526,7 @@ very, very serious : ADJ
 veterans affairs secretary : NOUN
 veterans charity : NOUN
 veterans group : NOUN
+vice presidential candidate : NOUN
 video footage : NOUN
 violent assault : NOUN
 viral video : NOUN
@@ -2848,6 +2853,7 @@ walkout of classes : NOUN
 was home sleeping : VERB[^ing]
 was like, : VERB[^ed]
 weapons component : NOUN
+what is plausible : NOUN
 when the attack occurred : ADV
 with what we now know to be : PREP
 win leverage : VERB
@@ -2988,6 +2994,7 @@ full-throated : ADJ
 fully-equipped : ADJ
 ghost-wrote : VERB[^ed]
 grievance-filled : ADJ
+gut-punch : NOUN
 half-apology : NOUN
 half-full : ADJ
 half-mile : ADJ
@@ -3049,6 +3056,7 @@ no-go : ADJ
 no-go zone : NOUN
 no-win situation : NOUN
 non-cardiovascular : ADJ
+non-state : ADJ
 north-south : ADJ
 not-guilty : ADJ
 ocean-view home : NOUN
@@ -3105,6 +3113,7 @@ same-sex couple : NOUN
 same-sex wedding : NOUN
 same-sex weddings : NOUN[:plur]
 scale-down : NOUN
+scientist-in-charge : NOUN
 second-in-command : ADJ
 second-degree manslaughter : NOUN
 second-largest : ADJ
@@ -3474,6 +3483,7 @@ Jerusalem church leaders : NOUN[:plur]
 Jerusalem’s Old City : NOUN
 John Beck : NOUN
 John Conyers : NOUN
+John McCain : NOUN
 John Podesta : NOUN
 Jim : NOUN
 Jim Justice : NOUN
@@ -3656,6 +3666,7 @@ Prince Harry : NOUN
 Project Veritas : NOUN
 Pushkin Russian Language Center : NOUN
 Putin : NOUN
+Quds Force : NOUN
 Queen Elizabeth : NOUN
 Queens Park : NOUN
 Ramos : NOUN
@@ -3693,6 +3704,7 @@ Saint Mary : NOUN
 Sanders : NOUN
 Santa Barbara : NOUN
 Santa Paula : NOUN
+Sara Palin : NOUN
 Sarah Huckabee Sanders : NOUN
 Sarmat missile system : NOUN
 Scarborough : NOUN
@@ -3824,6 +3836,7 @@ Veterans of Foreign Wars : NOUN
 Vickers : NOUN
 Vincent : NOUN
 Vladimir Putin : NOUN
+Vons : NOUN
 Wales : NOUN
 Walmart : NOUN
 Walmart Supercenter : NOUN
