@@ -111,6 +111,7 @@ core constituency : NOUN
 could be excused : VERB[^ed]
 could be heard through the doors : VERB[^ed]
 could change hands : VERB[^ed]
+covered : VERB[^ed]
 cozying up : VERB[^ing]
 crack down further on : VERB
 cracking down on : VERB[^ing]
@@ -133,6 +134,7 @@ debated the question : VERB[^ed]
 declared : VERB[^ed] - +1
 deeply held : ADJ
 delay a recommendation : VERB
+destroyed : VERB[^ed]
 determined : VERB[^ed]
 determining : VERB[^ing] - +1
 determining : ADJ[%ing] - -2
@@ -303,6 +305,7 @@ independent investigator : NOUN
 infighting : NOUN
 inflicting casualties : VERB[^ed]
 initial failure : NOUN
+injected uncertainty : VERB[^ed]
 injured : VERB[^ed]
 inspired : VERB[^ed]
 interesting : VERB[^ing]
@@ -473,6 +476,7 @@ productive manner : NOUN
 progresses : VERB[^s]
 promised : VERB[^ed]
 promised : ADJ
+promoting competition : VERB[^ing]
 pronounced dead : VERB[^ed]
 providing : NOUN[:ing] - -2
 providing : VERB[^ing] - +3
@@ -488,6 +492,7 @@ racked up : VERB[^ed]
 raged on : VERB[^ed]
 raised fears of : VERB[^ed]
 raising : VERB[^ing] - -1
+ramping up the pressure : VERB[^ing]
 ran : VERB[^ed]
 ran for office : VERB[^ed]
 rang : VERB[^ed]
@@ -566,6 +571,7 @@ signs that : NOUN[:plur] (nmth)
 simplest : ADJ
 sitting : VERB[^ing]
 slain : VERB[^ed]
+soaring : VERB[^ing] - -2
 sold : VERB[^ed]
 sold off : VERB[^ed]
 sorting : VERB[^ing]
@@ -622,6 +628,7 @@ taking place : VERB[^ing]
 talking : VERB[^ing]
 telecommunications : NOUN
 telecommunications : NOUN[:plur] - -1
+television advertising : NOUN
 television broadcasting : NOUN
 terrifying : VERB[^ing]
 territorial struggle : NOUN
@@ -806,7 +813,7 @@ abuse of power : NOUN
 access to visitors : NOUN
 according to : PREP
 achieve the ultimate deal : VERB
-achingly : ADV
+achingly : ADV [$deg] 0
 across the pacific : ADV
 across the state : ADV
 adm. : NOUN
@@ -869,6 +876,7 @@ anything else : NOUN
 anytime : NOUN
 anytime : ADV
 apart from : PREP
+apartment block : NOUN
 appeals court : NOUN
 app : NOUN
 app developer : NOUN
@@ -898,6 +906,7 @@ as long as : CONJ
 as many as : QUAN
 as much as : ADV[~mod,prox]
 as of : PREP
+as of friday : DATE
 as of late : ADV
 as part of : CONJ
 as result of : CONJ
@@ -928,6 +937,7 @@ at this point in time : ADV
 at this stage : ADV
 at this time : ADV
 at whether : CONJ
+at which : CONJ
 athletic conference : NOUN
 atlantic hurricane season : NOUN
 authoritarian governance : NOUN
@@ -938,6 +948,7 @@ autoplay : NOUN
 avoid a repeat of : VERB
 avoid errors : VERB
 away from : PREP
+back down to earth : ADV[~trlg,*l]
 back home : ADV
 back in : PREP
 back into mexico : ADV
@@ -970,6 +981,7 @@ black powder : NOUN
 blanket of snow : NOUN
 body of water : NOUN
 boil over : VERB
+boiling point : NOUN
 bond market : NOUN
 border fence : NOUN
 border patrol agent : NOUN
@@ -1059,6 +1071,7 @@ carefully script : VERB
 cargo plane : NOUN
 carried out : VERB[^ed]
 carrying out : VERB[^ing]
+cast a vote : VERB
 case before the court : NOUN
 cast recording : NOUN
 catch and release : NOUN
@@ -1088,6 +1101,7 @@ christmas cheer : NOUN
 christmas spectacular : NOUN
 chronic challenge : NOUN
 church leader : NOUN
+cia interrogation : NOUN
 city leader : NOUN
 civil liability : NOUN
 clandestine officer : NOUN
@@ -1111,6 +1125,7 @@ communications director : NOUN
 communications suite : NOUN
 community meeting : NOUN
 companion piece : NOUN
+complaint that : NOUN[:*l] (nmth)
 computer model : NOUN
 computer tampering : NOUN
 concrete blueprint : NOUN
@@ -1168,6 +1183,7 @@ dam project : NOUN
 damaging storm report : NOUN
 dance company : NOUN
 dance number : NOUN
+dangerously close : ADJ
 data analytics : NOUN
 data breach : NOUN
 day in a row : NOUN
@@ -1194,6 +1210,7 @@ denuclearization : NOUN
 deployment of missiles : NOUN
 deputy campaign chairman : NOUN
 deputy director general : NOUN
+designer handbag : NOUN
 development team : NOUN
 die roll : NOUN
 digital ethics : NOUN
@@ -1231,6 +1248,8 @@ dr. : NOUN
 draft treaty : NOUN
 dramatic concessions: NOUN[:plur]
 draw attention to : VERB
+drug prices : NOUN[:plur]
+srugmaker : NOUN
 drumroll : NOUN
 dubstep : NOUN
 due to : PREP
@@ -1325,6 +1344,7 @@ fireable offense : NOUN
 fist fight : NOUN
 fixed investment : NOUN
 flood stage : NOUN
+flows of lava : NOUN[:plur]
 follow up with you after this : VERB
 for about a week : ADV
 for allegedly : PREP['cls]
@@ -1402,6 +1422,7 @@ governing coalition : NOUN
 governing party : NOUN
 government figure : NOUN
 government rule : NOUN
+government vehicle : NOUN
 grant aid : NOUN
 grant aid project : NOUN
 great western : ADJ
@@ -1797,6 +1818,7 @@ minimum sentence : NOUN
 minor eye injury : NOUN
 mischaracterization : NOUN
 mischaracterize : VERB
+missile exchange : NOUN
 missile firing table : NOUN
 missile program : NOUN
 missile system : NOUN
@@ -1813,6 +1835,7 @@ more practical : ADJ
 more sway : NOUN
 more than : ADV[~mod] [$deg] 0
 more than half a : QUAN
+more than a year : NOUN
 more time : NOUN
 more times : ADV[~trlg]
 more traditional position : NOUN
@@ -1921,6 +1944,7 @@ on the campaign trail : ADV
 on the condition of anonymity : ADV
 on the day that : THAT
 on the other end : ADV
+on the same day : ADV
 on through : PREP
 on thursday : ADV
 on tuesday : ADV
@@ -2121,6 +2145,7 @@ related to : PREP
 relative newcomer : NOUN
 relentless counterattack : NOUN
 relicense : VERB
+religious organization : NOUN
 relist : VERB
 remix : NOUN
 remix : VERB
@@ -2129,6 +2154,7 @@ remote town : NOUN
 renewable energy : NOUN
 rent payment : NOUN
 rental room : NOUN
+republican governor : NOUN
 republican leader : NOUN
 republican party chairman : NOUN
 rescue crew : NOUN
@@ -2148,6 +2174,7 @@ right before : CONJ
 right after : CONJ
 right choice : NOUN
 right now : ADV
+rights group : NOUN
 riot dispersal : NOUN
 riot dispersal means : NOUN[:plur]
 riot gear : NOUN
@@ -2178,6 +2205,7 @@ safe route : NOUN
 salary round : NOUN
 sales manager : NOUN
 sales team : NOUN
+same sex couple : NOUN
 sanctions relief : NOUN
 saturday and sunday : NAVB
 say they need : VERB
@@ -2233,6 +2261,7 @@ signal rocket : NOUN
 signature project : ADJ
 significant sign : NOUN
 since then : ADV[~cnj]
+sit in the gallery : VERB
 skaky start : NOUN
 slbm : NOUN
 small business : NOUN
@@ -2313,6 +2342,7 @@ surrounding area : NOUN
 suspect or suspects : NOUN
 suspected case : NOUN
 suspected criminal wrongdoing : NOUN
+suspected terrorist : NOUN
 swarm robot : NOUN
 systemic injustice : NOUN
 take on it : NOUN
@@ -2580,12 +2610,14 @@ with no regard to : CONJ
 with what : CONJ
 with whom : CONJ
 within range of : PREP
+without a permit : ADV
 without interference : ADV
 without so much as : CONJ
 won : NOUN - -1
 work as advertised : VERB
 world’s most : ADV
 would have no choice but to : AUXL
+x1stx of its kind : NOUN =the first of its kind
 young people : NOUN
 yuletide spirit : NOUN
 zone training : NOUN
@@ -3400,6 +3432,7 @@ Fox News : NOUN
 Fox News Channel : NOUN
 Fox News host : NOUN
 Francis : NOUN
+Frank Pentangeli : NOUN
 Franken : NOUN
 Freedom of the City award : NOUN
 French government : NOUN
@@ -3523,6 +3556,7 @@ Laura : NOUN
 Lawrence Livermore National Laboratory : NOUN
 Lebron : NOUN
 Lee Cook-jong : NOUN
+Leilani Estates neighborhood : NOUN
 Lester : NOUN
 Lewinski : NOUN
 Lexis-Nexis : NOUN
@@ -3547,12 +3581,13 @@ Manafort : NOUN
 Mandalay Bay : NOUN
 Mao : NOUN
 Mar del Plata : NOUN
+Mar-a-Lago : NOUN
 Marjory Stoneman Douglas High School : NOUN
 Marc : NOUN
 Mark Zuckerberg : NOUN
 Martin Luther King Jr. : NOUN
 Martinez : NOUN
-Mar-a-Lago : NOUN
+Mary Fallin : NOUN
 Masterpiece Cakeshop : NOUN
 Mattis : NOUN
 McCarthy : NOUN
@@ -3562,6 +3597,7 @@ Meghan Markle : NOUN
 Melania : NOUN
 Merkel : NOUN
 Metro Nashville : NOUN
+Michael Corleone : NOUN
 Miami-Dade County : NOUN
 Michael Baudendistel : NOUN
 Michael Flynn : NOUN
@@ -3596,6 +3632,7 @@ Mugabe : NOUN
 Moammar Gaddafi : NOUN
 Murphy : NOUN
 Mykonos : NOUN
+Najib Razak : NOUN
 Narendra Modi : NOUN
 National Enquirer : NOUN
 Naval Criminal Investigative Service : NOUN
@@ -3769,6 +3806,7 @@ the Emoluments Clause : NOUN
 the European Union : NOUN
 the former Yugoslavia : NOUN
 the Frontier Post : NOUN
+The Godfather Part II : NOUN
 the Great Plains : NOUN
 The Hollywood Reporter : NOUN
 the late Libyan Leader Moammar Gaddafi : NOUN
@@ -9714,6 +9752,7 @@ cover song : NOUN
 cover up : VERB
 cover version : NOUN
 coverage : NOUN
+covered : ADJ
 coverly : ADV
 covert : NOUN
 covert : ADJ
@@ -10690,6 +10729,7 @@ destination : NOUN
 destine : VERB
 destiny : NOUN
 destroy : VERB
+destroyed : ADJ
 destroyer : NOUN
 destroyer escort : NOUN
 destruct : VERB
@@ -21504,6 +21544,7 @@ odyssey : NOUN
 of course : ADV
 of how : CONJ
 of this kind : ADJ
+of them : NUM[:cnj]
 of which : CONJ[@rel]
 of whom : CONJ[@rel]
 off : VERB - -2
@@ -24296,6 +24337,7 @@ pull down : VERB
 pull off : VERB
 pull out : VERB
 pull out all the stops : VERB
+pull out of : VERB
 pull over : VERB
 pull round : VERB
 pull together : VERB
@@ -27957,6 +27999,8 @@ soap powder : NOUN
 soar : NOUN
 soar : VERB
 soar up : VERB
+soaring : NOUN
+soaring : ADJ - +1
 soccer : NOUN
 soccer ball : NOUN
 soccer player : NOUN
@@ -32690,6 +32734,7 @@ whale : VERB
 whale oil : NOUN
 whale shark : NOUN
 whammy : NOUN
+whatever : ADJ
 whatsoever : ADJ
 wheat : NOUN
 wheat beer : NOUN

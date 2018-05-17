@@ -4177,3 +4177,10 @@ g:NCLU[:*r]->NUM NAVB[:plur]
 _
   (twob)
 __
+
+g:PEXP[|*l]->PEXP[|quo,-nom] ADV[~trlg,*l]
+  >>++
+_
+  (twob)
+__
+
