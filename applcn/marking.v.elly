@@ -77,6 +77,10 @@ boosting security : VERB[^ing]
 born : VERB[^ed] - +2
 came : VERB[^ed]
 came under fire : VERB[^ed]
+carried out : VERB[^ed]
+carrying out : VERB[^ing]
+caught : VERB[^ed] [$trns] 0
+caught wind : VERB[^ed]
 centered around : VERB[^ed]
 charged with : VERB[^ed]
 chosen : VERB[^ed] - +2
@@ -105,6 +109,7 @@ continued : VERB[^ed]
 continued fighting : NOUN
 continued fighting : VERB
 contract that : NOUN[:*l] (nmth)
+conveying to law enforcement : VERB[^ing]
 convinced : VERB[^ed] - -1
 cordoned off : VERB[^ed]
 core constituency : NOUN
@@ -200,6 +205,7 @@ flash flooding : NOUN
 fled : VERB[^ed]
 flew : VERB[^ed]
 flown : VERB[^ed]
+flown in : ADJ [$trlg,prd] 0
 focused on : VERB[^ed]
 focuses on : VERB[^s] - +2
 focusing on : VERB[^ing]
@@ -266,6 +272,7 @@ had been too rought on : VERB[^ed]
 had nothing to do with : VERB[^ed]
 had since : AUXL[^ed]
 had to : AUXL[^ed]
+happened like that : VERB[^ed]
 has : HAVE[^s]
 has already : HAVE[^s]
 has gone on the record : VERB[^ed,s]
@@ -301,7 +308,7 @@ ideological divide : NOUN
 ideologically divided : ADJ
 illegally accepted : VERB[^ed]
 inches : NOUN[:plur]
-independent investigator : NOUN
+increasing the emphasis : VERB[^ing]
 infighting : NOUN
 inflicting casualties : VERB[^ed]
 initial failure : NOUN
@@ -386,8 +393,6 @@ meetings : NOUN[:plur]
 messaging app : NOUN
 mice : NOUN[:plur]
 miles : NOUN[:plur]
-military liaison : NOUN
-military threat : NOUN
 millennia : NOUN[:plur]
 millennial : NOUN - -1
 millennium bc : NOUN
@@ -641,6 +646,7 @@ that believe in : THTV
 that can be faced : ADJ
 that comes : THTV
 that he’s not inclined : THTV
+thinking this through : VERB[^ing]
 thought : VERB[^ed]
 threw : VERB[^ed]
 thrown : VERB[^ed]
@@ -691,6 +697,7 @@ was a violation of : VERB[^ed,s]
 was behind : VERB[^ed,s]
 was behind bars : VERB[^ed,s]
 was culpable for : VERB[^ed,s]
+was found dead : VERB[^ed]
 was intended to : AUXL[^ed,s]
 was kept in the dark : VERB[^ed]
 was known to be : BE[^ed,s]
@@ -703,6 +710,7 @@ wealthiest : ADJ
 well before : ADV
 weddings : NOUN[:plur]
 went : VERB[^ed,*x]
+went missing : VERB[^ing]
 went out of business : VERB[^ed]
 went viral : VERB[^ed]
 when it comes to : CONJ
@@ -800,6 +808,7 @@ a thousand : NUM
 a wave of : QUAN
 a year in prison : NOUN[:det,num]
 about a week : ADV
+about a week ago : ADV
 about half its : QUAN
 about half an hour after : CONJ
 about how : CONJ
@@ -854,6 +863,7 @@ allegedly being : BE[^ing]
 along with : PREP
 already on its way : ADV
 also known as : CONJ
+ambitious effort : NOUN
 american consumer : NOUN
 american embassy : NOUN
 amid a growing backlash : ADV
@@ -1069,14 +1079,11 @@ capt. : NOUN
 capture control of : VERB
 carefully script : VERB
 cargo plane : NOUN
-carried out : VERB[^ed]
-carrying out : VERB[^ing]
+carrier battle group : NOUN
 cast a vote : VERB
 case before the court : NOUN
 cast recording : NOUN
 catch and release : NOUN
-caught : VERB[^ed] [$trns] 0
-caught wind : VERB[^ed]
 ceasefire : NOUN
 cell-tower : ADJ
 cell-tower records : NOUN[:plur]
@@ -1120,6 +1127,7 @@ college graduate : NOUN
 colored slave : NOUN
 coming off of : PREP
 communicate with the outside world : VERB
+communications staffer : NOUN
 commercial terminal : NOUN
 communications director : NOUN
 communications suite : NOUN
@@ -1148,7 +1156,7 @@ constitutional limit : NOUN
 construction permit : NOUN
 container transport : NOUN
 corporate bond market : NOUN
-conveying to law enforcement : VERB[^ing]
+constitutional amendment : NOUN
 core element : NOUN
 core mission : NOUN
 corporate average fuel economy : ADJ
@@ -1346,11 +1354,13 @@ fixed investment : NOUN
 flood stage : NOUN
 flows of lava : NOUN[:plur]
 follow up with you after this : VERB
+for a long time : ADV
 for about a week : ADV
 for allegedly : PREP['cls]
 for example : PEXP[|eg]
 for how long : CONJ
 for more than a decade : ADV
+for more than a week : ADV
 for nearly a year : ADV
 for now : ADV
 for several days : ADV
@@ -1428,6 +1438,7 @@ grant aid project : NOUN
 great western : ADJ
 groundbreaking : NOUN - -1
 groundbreaking : ADJ
+ground force : NOUN
 group travel : NOUN
 growth strategy : NOUN
 guilty plea : NOUN
@@ -1473,6 +1484,7 @@ higher-quality : ADJ
 higher pay : NOUN
 highest principles : NOUN[:plur]
 highly likely : ADV
+hiking trail : NOUN
 hindu temple : NOUN
 his or her : DEM
 historic election : NOUN
@@ -1523,6 +1535,7 @@ in a tweet : ADV
 in accordance with : PREP
 in addition to : PREP
 in all caps : ADJ
+in all cases : ADV
 in anticipation of : PREP
 in any way : ADV
 in area : ADV[~trlg] [$deg] 0
@@ -1592,6 +1605,7 @@ incentivize : VERB
 increase or decrease : VERB
 increase the salaries of : VERB
 independence day holiday : NOUN
+independent investigator : NOUN
 independent state : NOUN
 individual states : NOUN[:plur]
 industry executive : NOUN
@@ -1605,6 +1619,7 @@ insider account : NOUN
 insofar as : CONJ
 instead of : PREP
 insurgent group : NOUN
+intelligence official : NOUN
 intelligence study : NOUN
 intelligence summary : NOUN
 intelligence survey : NOUN
@@ -1720,6 +1735,7 @@ leadership role : NOUN
 leap of faith : NOUN
 leaps and bounds : NOUN[:plur]
 leave doubt : VERB
+leave without him : VERB
 legal challenge : NOUN
 legal effort : NOUN
 legal hurdle : NOUN
@@ -1807,19 +1823,24 @@ middle east peacemaking : NOUN
 midtempo : ADJ
 mileage rules : NOUN[:plur]
 militant group : NOUN
+military aircraft : NOUN
+military attaché : NOUN
 military base : NOUN
 military exercise : NOUN
 military facility : NOUN
 military front : NOUN
+military liaison : NOUN
 military might : NOUN
 military support : NOUN
 military supremacy : NOUN
+military threat : NOUN
 minimum sentence : NOUN
 minor eye injury : NOUN
 mischaracterization : NOUN
 mischaracterize : VERB
 missile exchange : NOUN
 missile firing table : NOUN
+missile force : NOUN
 missile program : NOUN
 missile system : NOUN
 missile technology : NOUN
@@ -1976,6 +1997,7 @@ other reports suggest : ADV
 other than : CONJ
 our lady : NOUN
 out of : PREP['div]
+out of bounds : ADJ
 out of step with : PREP
 out of the realm of possibility : ADJ
 outdated technology : NOUN
@@ -2174,6 +2196,7 @@ right before : CONJ
 right after : CONJ
 right choice : NOUN
 right now : ADV
+right to life : NOUN
 rights group : NOUN
 riot dispersal : NOUN
 riot dispersal means : NOUN[:plur]
@@ -2260,6 +2283,7 @@ sightseeing tour : NOUN
 signal rocket : NOUN
 signature project : ADJ
 significant sign : NOUN
+since taking office : ADV
 since then : ADV[~cnj]
 sit in the gallery : VERB
 skaky start : NOUN
@@ -2329,6 +2353,7 @@ stun grenade : NOUN
 stunning upset : NOUN
 submillimeter  : ADJ
 such a  : QUAN
+such a, such a : QUAN
 such an : QUAN
 such as : PREP
 sudden heart attack : NOUN
@@ -2405,6 +2430,7 @@ the entirety : NOUN
 the fifth amendment : NOUN
 the first time : NAVB[:*x]
 the focus : NOUN[:det]
+the following week : ADV
 the general command : NOUN
 the happiest day of my life : NOUN
 the last month : NAVB[:det]
@@ -2479,6 +2505,7 @@ trade pact : NOUN
 trade relationship : NOUN
 trading partner : NOUN
 traditional clothing : NOUN
+traditional focus : NOUN
 traffic stop : NOUN
 training flight : NOUN
 trauma doctor : NOUN
@@ -2534,6 +2561,7 @@ up for reelection : ADJ
 up slightly : ADJ
 up slightly : ADV - +1
 up to : ADV[~mod] [$deg] 0
+up to him : ADV
 up to his neck : ADJ
 upper atmosphere : NOUN
 upper chamber : NOUN
@@ -2731,6 +2759,7 @@ after BREXIT : ADV
 ages 18 to 34 : ADJ [$trlg,prd] 0
 aggressive immigration powers : NOUN[:plur]
 alabama woman : NOUN
+an invasion of the mainland : NOUN
 anger and suspicion : NOUN[:plur]
 announced the discovery of : VERB[^ed,*r]
 another front in the culture wars : NOUN
@@ -3060,6 +3089,7 @@ left-turn : ADJ
 left-wing : ADJ
 left-wing politics : NOUN
 lesser-known : ADJ
+live-fire exercise : NOUN
 long-drawn : ADJ
 long-expected : ADJ
 long-past  : ADJ
@@ -3173,6 +3203,7 @@ surface-to-surface : ADJ
 tax-cut : ADJ
 tax-writing : ADJ
 tax-writing committee : NOUN
+technology-dependent : ADJ
 third-degree murder : NOUN
 third-largest : ADJ
 three-day : ADJ
@@ -3514,16 +3545,17 @@ Jeremy Banks : NOUN
 Jersey Shore : NOUN
 Jerusalem church leaders : NOUN[:plur]
 Jerusalem’s Old City : NOUN
-John Beck : NOUN
-John Conyers : NOUN
-John McCain : NOUN
 John Podesta : NOUN
 Jim : NOUN
 Jim Justice : NOUN
 Jinping : NOUN
+John Beck : NOUN
+John Conyers : NOUN
+John McCain : NOUN
 Jones : NOUN
-Joy Reid : NOUN
+Joseph Emanuel Hall : NOUN
 Josephine County : NOUN
+Joy Reid : NOUN
 Juan : NOUN
 Julia Poff : NOUN
 Julian Assange : NOUN
@@ -3537,6 +3569,7 @@ Keaton : NOUN
 Kevin : NOUN
 Kevin Brady : NOUN
 Keziah Daum : NOUN
+Kilauea volcano : NOUN
 Kim Jong Un : NOUN
 Kislyak : NOUN
 Kirsten Gillibrand : NOUN
@@ -3567,6 +3600,7 @@ Liaoning : NOUN
 Lighthizer : NOUN
 Lilly : NOUN
 Lin-Manuel Miranda : NOUN
+Lindsey Graham : NOUN
 Lord Mayor : NOUN
 Lord Mayor of Dublin : NOUN
 Lori Klausutis : NOUN
@@ -3683,6 +3717,7 @@ Paula Yacoubian : NOUN
 PBS : NOUN
 PBS program : NOUN
 Pelosi : NOUN
+People’s Liberation Army : NOUN
 Person of the Year : NOUN
 Pfaffian : ADJ
 Philippine President : NOUN
@@ -3705,6 +3740,7 @@ Pushkin Russian Language Center : NOUN
 Putin : NOUN
 Quds Force : NOUN
 Queen Elizabeth : NOUN
+Queens : NOUN
 Queens Park : NOUN
 Ramos : NOUN
 Rancho Tehama : NOUN
@@ -3818,6 +3854,7 @@ the News International : NOUN
 The Northwest Indiana Times : NOUN
 the only right choice : NOUN
 The Spokesman-Review : NOUN
+the Taiwan Strait : NOUN
 The Times : NOUN
 the united states-china : ADJ
 The Verge : NOUN [&prop] 0
@@ -3857,8 +3894,10 @@ U.S.S.R. : NOUN
 Uber : NOUN
 UCLA : NOUN
 United States Attorney : NOUN
+United States military aircraft : NOUN
 University of Maryland Baltimore County : NOUN
 Upper Big Branch Mine : NOUN
+Upstate New York : NOUN
 US District Court : NOUN
 US interests : NOUN[:plur]
 USNORTHCOM : NOUN
@@ -33100,6 +33139,7 @@ wood spirit : NOUN
 wood sugar : NOUN
 wood tick : NOUN
 woodcreeper : NOUN
+wooded : ADJ
 wooden : ADJ
 wooden horse : NOUN
 wooden leg : NOUN
