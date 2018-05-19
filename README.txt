@@ -584,6 +584,7 @@ Release Notes:
                       allow sentences to start with em dash
                       improve morphological analysis
                       extend "marking" rules for new data
+                      add new integration test with "marking" rules and news text
                       update documentation
                       add Google News data
 
