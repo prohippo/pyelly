@@ -1670,21 +1670,22 @@ _
 __
 g:NOUN[:join]->NOUN[:-join] PUNC[|hyph]
 __
-g:NOUN[:*r]->NOUN[:join] NOUN
+g:NOUN[:*r]->NOUN[:-det,join] NOUN
 # ?>>?
    >>*r++
 __
-g:NOUN[:*r,cnj]->NOUN[:-*l,-join,-poss,-ing,-plur,-qnt] NOUN[:-cnj,ing,-det]
+g:NOUN[:*r,cnj]->NOUN[:-*l,-join,-poss,-ing,-plur,-det,-qnt] NOUN[:-cnj,ing,-det]
 #       ?>>?
  r[&prop]>>*r-2
  l[&spcs]>>*r-2
 _
   (twob)
 __
-g:NOUN[:*r,cnj]->NOUN[:-*l,-join,-poss,-ing,-plur,-qnt] NOUN[:-cnj,-ing,-det]
+g:NOUN[:*r,cnj]->NOUN[:-*l,-join,-poss,-ing,-plur,-det,-qnt] NOUN[:-cnj,-ing,-det]
 #                ?>>?
            r[&two]>>*l+2
  l[&spcs,*c]r[&*c]>>*r+2
+      r[&prop,nml]>>*r
           r[&prop]>>*r-2
           l[&spcs]>>*r-2
       l[&*c]r[&*c]>>*r+3
@@ -1694,7 +1695,7 @@ g:NOUN[:*r,cnj]->NOUN[:-*l,-join,-poss,-ing,-plur,-qnt] NOUN[:-cnj,-ing,-det]
 _
   (twob)
 __
-g:NOUN[:*r,cnj]->NOUN[:-*l,-join,-poss,-ing, plur, sgl,-qnt] NOUN[:-cnj,-ing,-det]
+g:NOUN[:*r,cnj]->NOUN[:-*l,-join,-poss,-ing, plur, sgl,-det,-qnt] NOUN[:-cnj,-ing,-det]
 #                ?>>?
  l[&spcs,*c]r[&*c]>>*r+2
           r[&prop]>>*r-2
@@ -1705,7 +1706,7 @@ g:NOUN[:*r,cnj]->NOUN[:-*l,-join,-poss,-ing, plur, sgl,-qnt] NOUN[:-cnj,-ing,-de
 _
   (twob)
 __  
-g:NOUN[:*r,cnj,plur]->NOUN[:-*l,-join,-poss,-ing,plur,-sgl,-qnt] NOUN[:-cnj,-ing,-det,-plur]
+g:NOUN[:*r,cnj,plur]->NOUN[:-*l,-join,-poss,-ing,plur,-sgl,-det,-qnt] NOUN[:-cnj,-ing,-det,-plur]
 #           ?>>?
      r[&cond]>>-6
      r[&prop]>>*r+2
@@ -1715,7 +1716,7 @@ g:NOUN[:*r,cnj,plur]->NOUN[:-*l,-join,-poss,-ing,plur,-sgl,-qnt] NOUN[:-cnj,-ing
 _
   (twob)
 __
-g:NOUN[:*r,cnj]->NOUN[:-*l,-join,-poss,-ing,plur,-sgl,-qnt] NOUN[:-cnj,-ing,-det, plur]
+g:NOUN[:*r,cnj]->NOUN[:-*l,-join,-poss,-ing,plur,-sgl,-det,-qnt] NOUN[:-cnj,-ing,-det, plur]
 #             ?>>?	
        r[&cond]>>-6
        r[&prop]>>*r-2
@@ -2814,6 +2815,7 @@ d:his  <- DEM[@ind]
  >>[!spcs]
 __
 d:her  <- DEM
+  >>++
 __
 d:its  <- DEM
 __
@@ -4184,3 +4186,18 @@ _
   (twob)
 __
 
+g:DET[@aftr]->DET DATE
+ >>+
+_
+  (twob)
+__
+g:DET[@aftr]->DET TIME
+ >>+
+_
+  (twob)
+__
+g:DET->DET[@aftr] PUNC[|stop,emb,*x]
+ >>-
+_
+  left
+__

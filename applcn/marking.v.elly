@@ -13,6 +13,7 @@ biggest : ADJ
 happiest : ADJ
 largest : ADJ
 
+accused : VERB[^ed] - +1
 accused many of : VERB[^ed]
 acting : VERB[^ing]
 actors in the policy process : NOUN[:plur]
@@ -339,6 +340,7 @@ it was watching : VERB[^aux,ed,ing]
 kept : VERB[^ed]
 killed : VERB[^ed]
 killing : VERB[^ing]
+killings : NOUN[:plur]
 kilometers : NOUN[:plur]
 knew : VERB[^ed]
 knew early on : VERB[^ed]
@@ -446,6 +448,7 @@ overlooked : VERB[^ed] - -1
 oversaw : VERB[^ed]
 overseen : VERB[^ed]
 pack up : VERB
+packaging : VERB[^ing] - -1
 paid : VERB[^ed]
 paying off : VERB[^ing]
 peace deal : NOUN
@@ -453,6 +456,7 @@ peacemaking : NOUN
 people familiar with the matter : NOUN
 per hour : ADJ [$trlg,prd] 0
 permanent security clearance : NOUN
+personalized : VERB[^ed] - -2
 personals : NOUN[:plur]
 phenomena : NOUN[:plur]
 phone interview : NOUN
@@ -601,6 +605,7 @@ stepping down : VERB[^ing]
 stimulating : VERB[^ing]
 stolen : VERB[^ed]
 stood : VERB[^ed]
+story that : NOUN (nmth)
 strewn : VERB[^ed]
 striking back at : VERB[^ing]
 strongly opposed : VERB[^ed]
@@ -642,6 +647,7 @@ terrorist organization : NOUN
 terrorizing : VERB[^ing] - +2
 terrorizing : NOUN - -1
 thanked : VERB[^ed]
+that are sure to have : THTV
 that believe in : THTV
 that can be faced : ADJ
 that comes : THTV
@@ -773,8 +779,8 @@ went_on : VERB[^ed] =went on
 GPS monitoring : NOUN
 a billion : QUAN
 a bit : NOUN[:det] - -2
-a broader bid : NOUN
-a claim : NOUN[:join]
+a broader bid : NOUN[:det]
+a claim : NOUN[:det]
 a closed military zone : NOUN[:det]
 a day after : CONJ
 a day later : ADV
@@ -894,6 +900,7 @@ approximately average : ADJ
 arab republic : NOUN
 arbitration filing : NOUN
 arctic sea ice : NOUN
+argentine navy : NOUN
 armored vehicle : NOUN
 arms control : NOUN
 arms control expert : NOUN
@@ -1085,8 +1092,7 @@ case before the court : NOUN
 cast recording : NOUN
 catch and release : NOUN
 ceasefire : NOUN
-cell-tower : ADJ
-cell-tower records : NOUN[:plur]
+celebrity excitement : NOUN
 census survey : NOUN
 center : ADJ
 century bc : NOUN
@@ -1171,6 +1177,8 @@ country music’s hometown : NOUN
 county attorney : NOUN
 county jail : NOUN
 court document : NOUN
+court spokesman : NOUN
+court spokeswoman : NOUN
 criminal act : NOUN
 criminal case : NOUN
 criminal illegal alien : NOUN
@@ -1274,6 +1282,7 @@ earlier in the year : ADV
 earlier this week : ADV
 earlier this year : ADV
 early morning tweet : NOUN
+early next week : ADV
 early years : NOUN
 eastern europe : NOUN
 economic council : NOUN
@@ -1591,6 +1600,7 @@ in the u.s. and across the world : ADJ
 in the wake of : PREP
 in the workplace : ADJ
 in the works : ADJ
+in their honor : ADV
 in this case : ADV
 in this way : ADV
 in violation of : PREP
@@ -1846,6 +1856,7 @@ missile system : NOUN
 missile technology : NOUN
 moneychanger : NOUN
 monolog : NOUN =monologue
+months of work : NOUN[:plur]
 mood swing : NOUN
 more expansive : ADJ
 more familiar : ADJ
@@ -1869,10 +1880,10 @@ most of them : PRO
 most of whom : PRO
 move into a new phase : VERB
 move so fast : VERB
-mr.  : NOUN[:det]
-mrs. : NOUN[:det]
-ms.  : NOUN[:det]
-msgr. : NOUN[:det]
+mr.  : NOUN
+mrs. : NOUN
+ms.  : NOUN
+msgr. : NOUN
 multilateralism : NOUN
 multimillion-dollar : ADJ
 multiple : QUAN - +2
@@ -1970,6 +1981,7 @@ on through : PREP
 on thursday : ADV
 on tuesday : ADV
 on wednesday : ADV
+on wednesday evening : ADV
 on wednesday morning : ADV
 on when : CONJ
 on whether : CONJ
@@ -2056,6 +2068,7 @@ podcast : NOUN - -2
 pointed attack : NOUN
 police brutality : NOUN
 police corruption : NOUN
+police corruption case : NOUN
 policy views : NOUN[:plur]
 policymaker : NOUN
 policymaking : NOUN
@@ -2293,6 +2306,7 @@ so as to : TO
 so many : QUAN[@ind]
 so still : ADJ
 so that : CONJ
+so widely known : ADJ
 social media : NOUN
 social reform : NOUN
 social security system : NOUN
@@ -2440,6 +2454,7 @@ the legal community : NOUN
 the minimum age : NOUN[:det]
 the most serious charges : NOUN[:plur]
 the near future : NAVB[:det]
+the next day : NAVB[:det]
 the number of : QUAN
 the only other time : NAVB
 the oval office : NOUN
@@ -2458,6 +2473,7 @@ the truth is, : MISC
 the u.k. : NOUN
 the united states : NOUN[:plur]
 the united states attorney : NOUN
+their cooperation : NOUN
 their presence : NOUN
 there is no hope : NOUN
 they think will : AUXL
@@ -2594,6 +2610,7 @@ war memorial : NOUN
 warfighter : NOUN
 water body : NOUN
 water use : NOUN
+weekend snow : NOUN
 weeks in, : IADV
 weightiest : ADJ
 wet, heavy snow : NOUN
@@ -2845,6 +2862,7 @@ metals tariff : NOUN
 missing submarine : NOUN
 months-long investigation : NOUN
 more expansive background checks : NOUN[:qnt,plur]
+mounting legal peril : NOUN
 or more accurately, : ADV
 over the past two years : ADV
 new and bloodier : ADJ
@@ -2909,6 +2927,7 @@ Trump Jr. : NOUN
 U.S. Special Forces base : NOUN
 unfair and undemocratic : ADJ
 university police Chief Bill Yeagley : NOUN
+us district court for the district of columbia : NOUN
 US soldier : NOUN
 walkout of classes : NOUN
 was home sleeping : VERB[^ing]
@@ -2996,6 +3015,8 @@ case-sensitive : ADJ
 cash-and-stock : ADJ
 cave-in : NOUN
 celebrity-mad : ADJ
+cell-tower : ADJ
+cell-tower records : NOUN[:plur]
 church-owned : ADJ
 church-owned properties : NOUN[:plur]
 city funds : NOUN[:plur]
@@ -3100,6 +3121,7 @@ luke-warm : ADJ
 M-B-S : NOUN
 miami-dade : ADJ
 mid-air : NOUN
+mid-Atlantic : NOUN
 mid-century : ADJ
 mid-term : ADJ
 military-grade : ADJ
@@ -3145,6 +3167,7 @@ point-by-point : ADJ
 post-mannerist : ADJ
 post-presidency : ADJ
 post-September 11th : ADJ
+price-sapping : ADJ
 pro-saudi : ADJ
 pro-Trump : ADJ
 question-and-answer forum : NOUN
@@ -3258,6 +3281,7 @@ AC/DC : NOUN
 Adolph Hitler : NOUN
 Andrew Weissman : NOUN
 Adrian : NOUN
+Alabama senate candidate : NOUN
 Alexei Navalny : NOUN
 Al-Qaeda : NOUN
 AP : NOUN
@@ -3297,6 +3321,7 @@ Bannon : NOUN
 Barack Obama : NOUN
 Bashar al-Assad : NOUN
 Bashar Assad : NOUN
+Baltimore police detective : NOUN
 Battle of Dug Springs : NOUN
 BBC : NOUN
 BeMobile : NOUN
@@ -3539,7 +3564,7 @@ Jared Kushner : NOUN
 Jason Leon : NOUN
 Jeff Sessions : NOUN
 Jeffrey Lewis : NOUN
-Jenny Lumet : NOUN
+Jenny Lumet : NOUN [&prop,nml] 0
 Jeremy : NOUN
 Jeremy Banks : NOUN
 Jersey Shore : NOUN
@@ -3568,6 +3593,7 @@ Katrina : NOUN
 Keaton : NOUN
 Kevin : NOUN
 Kevin Brady : NOUN
+Kevin Davis : NOUN
 Keziah Daum : NOUN
 Kilauea volcano : NOUN
 Kim Jong Un : NOUN
@@ -3707,6 +3733,7 @@ Oxford Street shopping district: NOUN
 PAC-12 : NOUN
 Palestinian Authority : NOUN
 Pall Mall : NOUN
+Pall Mall Red cigarette : NOUN
 Paris Climate Accord : NOUN
 Pashinyan :NOUN
 Patrick Morrisey : NOUN
@@ -3787,6 +3814,7 @@ Scotts : NOUN
 Scotts Miracle-Gro Company : NOUN
 Seal Team Six : NOUN
 Sean Hannity : NOUN
+Sean Suiter : NOUN
 Seminole Heights : NOUN
 Sen. Ben Sasse : NOUN
 Sergei : NOUN
@@ -3858,6 +3886,7 @@ the Taiwan Strait : NOUN
 The Times : NOUN
 the united states-china : ADJ
 The Verge : NOUN [&prop] 0
+the Washington Post : NOUN
 the West Wing : NOUN
 Theresa May : NOUN
 Thomas Aquinas College : NOUN
@@ -4123,6 +4152,7 @@ accurate : ADJ
 accurately : ADV
 accusation : NOUN
 accuse : VERB
+accused : NOUN - -2
 accuser : NOUN
 ache : NOUN
 ache : VERB
@@ -6328,7 +6358,7 @@ blitz : VERB
 bloat : NOUN
 bloat : VERB
 bloc : NOUN
-block : NOUN
+block : NOUN - -2
 block : VERB
 block capital : NOUN
 block grant : NOUN
@@ -10668,7 +10698,7 @@ dent : NOUN
 dent : VERB
 denunciation : NOUN
 denver : NOUN
-deny : VERB
+deny : VERB[^dit]
 depart : VERB
 department : NOUN
 department head : NOUN
@@ -14839,7 +14869,7 @@ global : ADJ
 global climate : NOUN
 global climate change : NOUN
 global organization : NOUN
-global warming : NOUN
+global warming : NOUN[:ing]
 globally : ADV
 globe : NOUN
 glory : NOUN
@@ -16228,7 +16258,7 @@ holy thursday : NOUN
 holy water : NOUN
 holy week : NOUN
 holy year : NOUN
-home : NOUN
+home : NOUN - +1
 home : VERB
 home : ADJ
 home : ADV
@@ -20499,7 +20529,7 @@ most importantly : ADV
 mostly : ADV
 mosul : NOUN
 mother : NOUN
-mother : VERB
+mother : VERB - -2
 mother board : NOUN
 mother cell : NOUN
 mother country : NOUN
@@ -22180,6 +22210,7 @@ package bomb : NOUN
 package holiday : NOUN
 package store : NOUN
 package tour : NOUN
+packaging : NOUN
 pact : NOUN
 pad : NOUN
 pad : VERB
@@ -22663,7 +22694,7 @@ pension plan : NOUN
 pentagon : NOUN
 pentagon gang : NOUN
 pentecost : NOUN
-people : NOUN[:sgl,plur]
+people : NOUN[:sgl,plur] - +1
 people : VERB - -2
 people of color : NOUN
 pep : NOUN
@@ -22795,6 +22826,8 @@ personality assessment : NOUN
 personality disorder : NOUN
 personality inventory : NOUN
 personality test : NOUN
+personalize : NOUN
+personalized : ADJ
 personally : ADV
 personnel : NOUN
 personnel carrier : NOUN
