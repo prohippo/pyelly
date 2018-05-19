@@ -580,6 +580,7 @@ Release Notes:
                       update documentation
                       add Google News data
  1.4.29  - 07may2018  fix bug in ellyChar when checking for letter or digit
+                      fix bug in dateTransform
                       add logic for special matching of hyphens in ellyWildcard
                       allow sentences to start with em dash
                       improve morphological analysis
