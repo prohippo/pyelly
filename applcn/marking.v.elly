@@ -40,6 +40,7 @@ appears to be part of : VERB
 are able to : AUXL
 are doing business : VERB[^ing]
 are likely to be : BE
+are responsible for : VERB
 arrested and charged : VERB[^ed]
 arrested on a warrant : VERB[^ed]
 assigned : VERB[^ed]
@@ -369,6 +370,7 @@ lost contact with : VERB[^ed]
 made : VERB[^ed]
 made available : VERB[^ed]
 made clear : VERB[^ed,dit]
+made headlines : VERB[^ed]
 made it clear : VERB[^ed,dit]
 made its way : VERB[^ed]
 made no secret of : VERB[^ed]
@@ -960,6 +962,7 @@ authorities : NOUN[:plur]
 automotive production : NOUN
 autonomous weapon : NOUN
 autoplay : NOUN
+average rate : NOUN
 avoid a repeat of : VERB
 avoid errors : VERB
 away from : PREP
@@ -1051,6 +1054,7 @@ byline : NOUN
 cabinet meeting : NOUN
 cabinet meetings : NOUN[:plur]
 cabinet session : NOUN
+cable news : NOUN
 cable news program : NOUN
 cable news programming : NOUN
 cable tv : NOUN
@@ -1232,6 +1236,7 @@ digital minister : NOUN
 digital space : NOUN
 diplomatic mechanisms : NOUN[:plur]
 diplomatic overture : NOUN
+diplomatic recognition : NOUN
 diplomatic script : NOUN
 diplomatic tone : NOUN
 direct response : NOUN
@@ -1434,6 +1439,7 @@ Good Friday agreement : NOUN
 good news : NOUN
 good resource : NOUN
 goods and services : NOUN
+gop presidential nominee : NOUN
 gov. : NOUN
 governing coalition : NOUN
 governing party : NOUN
@@ -1942,6 +1948,7 @@ nuclear weapons program : NOUN
 nude photo : NOUN
 obstruct justice : VERB
 off the map : ADV
+offer diplomatic recognition : VERB
 official confirmation : NOUN
 official news agency : NOUN
 official source : NOUN
@@ -1997,6 +2004,7 @@ opposition leader : NOUN
 opposition party : NOUN
 or else : CONJ
 or more : POSTP[@num] [$trlg] 0
+or more than : ADV[~mod] [$deg] 0
 or not : CONJ
 or whether : CONJ
 organizational and institutional : ADJ
@@ -2761,6 +2769,7 @@ most as many : ADJ
 
 # # # # definitions to deal with specific problem text
 
+, there for : CMNJ
 "(C)" for confidential : NOUN
 “Get Up” : NOUN
 156th Airlift Wing : NOUN
@@ -3128,6 +3137,7 @@ millimeter-wave : ADJ
 mind-boggling : ADJ
 mixed-species : ADJ
 months-long : ADJ
+mother-of-two : NOUN
 much-needed : ADJ
 multi-disciplinary : ADJ
 nail-biter : NOUN
@@ -3578,6 +3588,7 @@ Jinping : NOUN
 John Beck : NOUN
 John Conyers : NOUN
 John McCain : NOUN
+John Oliver : NOUN
 Jones : NOUN
 Joseph Emanuel Hall : NOUN
 Josephine County : NOUN
@@ -3612,6 +3623,7 @@ Larry Wortzel : NOUN
 Larry Scott : NOUN
 Las Vegas : NOUN
 Las Vegas police : NOUN
+Last Week Tonight : NOUN
 Laura : NOUN
 Lawrence Livermore National Laboratory : NOUN
 Lebron : NOUN
@@ -3645,6 +3657,7 @@ Mar del Plata : NOUN
 Mar-a-Lago : NOUN
 Marjory Stoneman Douglas High School : NOUN
 Marc : NOUN
+Márcio França : NOUN
 Mark Zuckerberg : NOUN
 Martin Luther King Jr. : NOUN
 Martinez : NOUN
@@ -3661,6 +3674,7 @@ Metro Nashville : NOUN
 Michael Corleone : NOUN
 Miami-Dade County : NOUN
 Michael Baudendistel : NOUN
+Michael Cohen : NOUN
 Michael Flynn : NOUN
 Michael Keaton : NOUN
 Michael Wolff : NOUN
@@ -3675,6 +3689,7 @@ Mimi Spear : NOUN
 Ministry of Health : NOUN
 Missouri State : NOUN
 Mitch McConnell : NOUN
+Mitt Romney : NOUN
 Model S Sedan : NOUN
 Mohammed bin-Salman : NOUN
 Montecito : NOUN
@@ -3761,6 +3776,7 @@ President Bashar Assad : NOUN
 President Donald Trump : NOUN
 President Erdogan : NOUN
 President Trump : NOUN
+President Trump’s daughter Ivanka : NOUN
 Prime Minister Benjamin Netanyahu : NOUN
 Prime Minister Narendra Modi : NOUN
 Prince Harry : NOUN
@@ -3806,6 +3822,7 @@ Saint Mary : NOUN
 Sanders : NOUN
 Santa Barbara : NOUN
 Santa Paula : NOUN
+São Paulo : NOUN
 Sara Palin : NOUN
 Sarah Huckabee Sanders : NOUN
 Sarmat missile system : NOUN
@@ -21845,6 +21862,7 @@ of course : ADV
 of how : CONJ
 of them : NUM[:cnj]
 of this kind : ADJ
+of those : PRO
 of which : CONJ[@rel]
 of whom : CONJ[@rel]
 off : VERB - -2
@@ -31855,6 +31873,7 @@ tweet : NOUN
 tweet : VERB
 tweeter : NOUN
 twice : ADV
+twice the : QUAN
 twin : NOUN
 twin : VERB
 twin : ADJ
@@ -31898,6 +31917,7 @@ u.k. : NOUN
 u.s. : NOUN
 u.s. congress : NOUN
 u.s. constitution : NOUN
+u.s. embassy : NOUN
 u.s. government : NOUN
 u.s. house : NOUN
 u.s. house of representatives : NOUN

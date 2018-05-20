@@ -82,6 +82,10 @@ from_###_to_&# -> fm\\2TO\\5
 
 ,_&#, -> ,\\2,
 
+# for a really badly written Facebook posting
+
+\\[sic\\] ->
+
 #
 # WARNING! the three rules below has en dashes in its pattern and
 #          substitution, and their space wildcards will replace

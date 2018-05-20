@@ -4201,3 +4201,17 @@ g:DET->DET[@aftr] PUNC[|stop,emb,*x]
 _
   left
 __
+
+g:ELEM->CMNJ
+_
+  append <punc>,</punc>
+  split
+  left
+  back
+  delete 2 <
+  linefeed
+  append <conj>
+  merge
+  append </conj>
+  linefeed
+__
