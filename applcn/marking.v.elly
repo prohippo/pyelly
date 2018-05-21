@@ -103,6 +103,7 @@ competing : NOUN[:ing] - -2
 competing : VERB[^ing]
 competing : ADJ[%ing]
 complained that : VERB[^ed]
+conducted a health and safety search : VERB[^ed]
 confirmed : VERB[^ed] - +1
 confirmed to have died : VERB[^ed]
 connected : VERB[^ed] - -1
@@ -360,6 +361,8 @@ limited : VERB[^ed] - -1
 linked to : PREP
 lives : NOUN[:plur] - +1  =life -s
 lives : VERB[^s]          =live -s
+living : VERB[^ing]
+living in squalor and unsafe conditions : VERB[^ing]
 looked up : VERB[^ed]
 looking : VERB[^ing]
 looking up : VERB[^ing]
@@ -508,6 +511,7 @@ ran : VERB[^ed]
 ran for office : VERB[^ed]
 rang : VERB[^ed]
 ranging from : VERB[^ed]
+ranging in age : VERB[^ing]
 re-emerged : VERB[^ed]
 re-emerging : VERB[^ing]
 received instructions : VERB[^ed]
@@ -755,6 +759,7 @@ went_on : VERB[^ed] =went on
 1 another : PRO =one another
 1 last time : ADV
 1 more time : ADV
+1 need only look to : VERB
 1 of : QUAN[@*x] =one of
 1 of the first : QUAN
 1 of the most powerful : QUAN
@@ -762,6 +767,7 @@ went_on : VERB[^ed] =went on
 1 of the largest : QUAN
 1 of them : PRO =one of them
 1 of them : QUAN - -2 =one of them
+1 part of : QUAN
 1st half : NOUN
 1st lady : NOUN
 1st mention : NOUN
@@ -772,6 +778,7 @@ went_on : VERB[^ed] =went on
 2016 election : NOUN
 2016 election meddling : NOUN
 24/7 : ADJ - +2
+2nd amendment : NOUN
 2nd half : NOUN
 3 dozen : NUM
 3rd party : NOUN
@@ -844,6 +851,7 @@ after which : CONJ
 afternoon and evening : NOUN
 against : ADV 0 -6
 against his will : ADV
+age restriction : NOUN
 aggressive form : NOUN
 agricultural industry : NOUN
 ahead of : PREP
@@ -943,9 +951,11 @@ at last : ADV
 at least one : NUM
 at least one : QUAN - +2
 at odds with : PREP
+at once : ADV
 at one point : ADV
 at the behest of : PREP
 at the heart of : PREP
+at the home : ADV
 at the request of : PREP
 at the same time as : CONJ
 at the top of : PREP
@@ -1099,6 +1109,7 @@ census survey : NOUN
 center : ADJ
 century bc : NOUN
 certainly true : ADJ
+charity donor list : NOUN
 cheer on : VERB
 chemical attack : NOUN
 chemical symbol : NOUN
@@ -1117,6 +1128,7 @@ christmas spectacular : NOUN
 chronic challenge : NOUN
 church leader : NOUN
 cia interrogation : NOUN
+circuit attorney : NOUN
 city leader : NOUN
 civil liability : NOUN
 clandestine officer : NOUN
@@ -1202,6 +1214,7 @@ damaging storm report : NOUN
 dance company : NOUN
 dance number : NOUN
 dangerously close : ADJ
+darker time : NOUN
 data analytics : NOUN
 data breach : NOUN
 day in a row : NOUN
@@ -1299,6 +1312,7 @@ elephant trophy : NOUN
 emergency talks : NOUN[:plur]
 end a stalemate : VERB
 end efforts : VERB
+enemies list : NOUN
 energy lobbyist : NOUN
 engage in a dialogue : VERB
 engine production : NOUN
@@ -1351,6 +1365,7 @@ federal level : NOUN
 federal prosecutor : NOUN
 federal republic : NOUN
 feed & farm supply store : NOUN
+felony charge : NOUN
 felony count : NOUN
 ferry service : NOUN
 fever swamp : NOUN
@@ -1458,6 +1473,7 @@ guilty plea : NOUN
 guitar bridge : NOUN
 gun ban : NOUN
 gun laws : NOUN[:plur]
+gun legislation : NOUN
 gun nut : NOUN
 gun violence : NOUN
 gunshot wound : NOUN
@@ -1483,6 +1499,7 @@ have yet to be verified : VERB
 hazing related : ADJ
 head coach : NOUN
 head coaching : NOUN - +2
+health and safety : NOUN
 heavy fighting : NOUN
 helmet camera : NOUN
 helpline : NOUN
@@ -1516,6 +1533,7 @@ hours after : CONJ
 house of cards : NOUN
 house of delegates : NOUN
 house speaker : NOUN
+how far the country has veered : NOUN
 how long : CONJ
 human control : NOUN
 human dignity : NOUN
@@ -1859,7 +1877,9 @@ missile system : NOUN
 missile technology : NOUN
 moneychanger : NOUN
 monolog : NOUN =monologue
+months : NOUN[:plur]
 months of work : NOUN[:plur]
+months old : NOUN[:plur]
 mood swing : NOUN
 more expansive : ADJ
 more familiar : ADJ
@@ -2136,6 +2156,7 @@ pros and cons : NOUN
 prove to a judge : VERB
 proved to be : VERB
 public company : NOUN
+public discourse : NOUN
 public health : NOUN
 public health decision : NOUN
 public information : NOUN
@@ -2293,6 +2314,7 @@ sheriff’s department : NOUN
 sheriff's deputy : NOUN
 shipping lane : NOUN
 shooting rampage : NOUN
+shooting survivor : NOUN
 shopping district : NOUN
 shopping season : NOUN
 shortly after : CONJ
@@ -2576,6 +2598,7 @@ union force : NOUN
 unity deal : NOUN
 unlikely to be persuaded : ADJ
 unpalatable deal : NOUN
+unsafe condition : NOUN
 unscheduled sweep : NOUN
 unsettled weather : NOUN
 unusually long time : NOUN
@@ -2604,6 +2627,7 @@ very little : ADV - -1
 very pleased : ADJ
 very unfortunate : ADJ
 very, very serious : ADJ
+veterans’ charity donor list : NOUN
 veterans affairs secretary : NOUN
 veterans charity : NOUN
 veterans group : NOUN
@@ -2670,6 +2694,7 @@ work as advertised : VERB
 world’s most : ADV
 would have no choice but to : AUXL
 x1stx of its kind : NOUN =the first of its kind
+years old : NOUN[:plur]
 young people : NOUN
 yuletide spirit : NOUN
 zone training : NOUN
@@ -2838,6 +2863,7 @@ failed meteorologist : NOUN
 failed to contain Russia : VERB[^ed,*r]
 five-and-a-half : NUM
 Florida district office : NOUN
+Florida lawmaker : NOUN
 Florida men : NOUN[:plur]
 Florida neighborhood : NOUN
 former prosecutor : NOUN
@@ -2943,6 +2969,7 @@ was like, : VERB[^ed]
 weapons component : NOUN
 what is plausible : NOUN
 when the attack occurred : ADV
+while at the home : ADV
 with what we now know to be : PREP
 win leverage : VERB
 worked to keep : VERB[^ed]
@@ -3004,6 +3031,8 @@ already-tense : ADJ
 american-born : ADJ
 anti-baptist : ADJ
 anti-discrimination law : NOUN
+anti-gun : ADJ
+anti-gun law : NOUN
 anti-Iran : ADJ
 anti-LGBT : ADJ
 anti-muslim : ADJ
@@ -3136,6 +3165,7 @@ military-grade : ADJ
 millimeter-wave : ADJ
 mind-boggling : ADJ
 mixed-species : ADJ
+modern-day :ADJ
 months-long : ADJ
 mother-of-two : NOUN
 much-needed : ADJ
@@ -3230,6 +3260,7 @@ state-owned enterprise : NOUN
 state-run : ADJ
 state-run news agency KCNA : NOUN
 state-sponsored : ADJ
+still-frenzied : ADJ
 sub-sect : NOUN
 submarine-lanched : ADJ
 sun-drenched : ADJ
@@ -3609,6 +3640,7 @@ Kevin Davis : NOUN
 Keziah Daum : NOUN
 Kilauea volcano : NOUN
 Kim Jong Un : NOUN
+Kimberly Gardner : NOUN
 Kislyak : NOUN
 Kirsten Gillibrand : NOUN
 Kristen : NOUN
@@ -19133,6 +19165,8 @@ liver spot : NOUN
 livermore : NOUN
 liverpool : NOUN
 livestock : NOUN
+living : NOUN - -2
+living : ADJ - -1
 living room : NOUN
 lloyd : NOUN
 load : NOUN
