@@ -24,8 +24,6 @@ advertising : VERB[^ing] - -2
 agreed to cooperate with : VERB[^ed]
 agreed with : VERB[^ed]
 alleged : VERB[^ed] - -1
-alleged affair : NOUN
-alleged incident : NOUN
 allegedly shot : VERB[^ed]
 alleging that : VERB[^ing]
 angrier : ADJ
@@ -248,6 +246,7 @@ glowing : VERB[^ing]
 goes on recess : VERB[^s]
 goes on the offensive : VERB[^s]
 going for a walk : VERB[^ing]
+going public : NOUN
 going public : VERB[^ing]
 going to be available : VERB[^ing]
 going to end up : VERB[^ing]
@@ -290,6 +289,7 @@ have nothing to do with : VERB
 have probable cause : VERB
 have to : AUXL[^to]
 having : HAVE[^ing]
+head on : ADV
 head wound : NOUN
 heard : SVED - -1
 hearing : VERB[^ing] - +2
@@ -347,9 +347,10 @@ kilometers : NOUN[:plur]
 knew : VERB[^ed]
 knew early on : VERB[^ed]
 knew nothing at all : VERB
-known to law enforcement : ADJ
 knives : NOUN[:plur]
 known : VERB[^ed,*x] - +1
+known to law enforcement : ADJ
+knows too well : VERB[^s]
 leading : VERB[^ing]
 led : NOUN - -2
 led : VERB[^ed]
@@ -363,6 +364,7 @@ lives : NOUN[:plur] - +1  =life -s
 lives : VERB[^s]          =live -s
 living : VERB[^ing]
 living in squalor and unsafe conditions : VERB[^ing]
+local news : NOUN
 looked up : VERB[^ed]
 looking : VERB[^ing]
 looking up : VERB[^ing]
@@ -398,6 +400,7 @@ mechanics : NOUN[:plur]
 meeting : VERB[^ing]
 meetings : NOUN[:plur]
 messaging app : NOUN
+met : VERB[^ed]
 mice : NOUN[:plur]
 miles : NOUN[:plur]
 millennia : NOUN[:plur]
@@ -860,6 +863,7 @@ air ambulance : NOUN
 air defence : NOUN
 air force 1 : NOUN
 air force base : NOUN
+air quality : NOUN
 airstrike : NOUN
 alert level : NOUN
 all at once : ADV
@@ -873,6 +877,9 @@ all of you : PRO
 all of you here : PRO
 all our : QUAN
 all that : ALLTHT
+alleged affair : NOUN
+alleged incident : NOUN
+alleged victim : NOUN
 allegedly being : BE[^ing]
 along with : PREP
 already on its way : ADV
@@ -1157,6 +1164,7 @@ complaint that : NOUN[:*l] (nmth)
 computer model : NOUN
 computer tampering : NOUN
 concrete blueprint : NOUN
+condition red : ADJ
 condo owner : NOUN
 conduct oversight : VERB
 confederate force : NOUN
@@ -1349,6 +1357,7 @@ familiar with his thinking : ADJ
 familiar with the matter : ADJ
 family show : NOUN
 fan favorite : NOUN
+far reaching : ADJ
 far too weak : ADJ
 fatal shooting : NOUN
 fatal shootings : NOUN[:plur]
@@ -1649,6 +1658,7 @@ ins and outs : NOUN[:plur]
 insider account : NOUN
 insofar as : CONJ
 instead of : PREP
+institutional reform : NOUN
 insurgent group : NOUN
 intelligence official : NOUN
 intelligence study : NOUN
@@ -1842,6 +1852,7 @@ media outlet : NOUN
 media pack : NOUN
 media research center : NOUN
 medical textbook : NOUN
+medical treatment : NOUN
 medically stable : ADJ
 memo to staff : NOUN
 member state : NOUN
@@ -1982,6 +1993,7 @@ oil minister : NOUN
 oil supply : NOUN
 old record : NOUN
 old tradition : NOUN
+olympic gymnastics : NOUN
 on an international scale : ADV
 on aspects of : PREP
 on friday : DATE
@@ -2299,6 +2311,7 @@ serve as a placeholder : VERB
 service plan : NOUN
 service member : NOUN
 servicemember : NOUN
+settle lawsuits : VERB
 several other : QUAN
 sex scandal : NOUN
 sexual advance : NOUN
@@ -2325,6 +2338,7 @@ signature project : ADJ
 significant sign : NOUN
 since taking office : ADV
 since then : ADV[~cnj]
+sincere hope : NOUN
 sit in the gallery : VERB
 skaky start : NOUN
 slbm : NOUN
@@ -2351,6 +2365,7 @@ somewhere along : PREP
 sorry about that : ADJ [$cmpd] 0
 sought by authorities : ADJ
 south coast : NOUN
+southeast area : NOUN
 southeast asian : ADJ
 southern california : NOUN
 southern border : NOUN
@@ -2372,6 +2387,7 @@ spiritual director : NOUN
 splash screen : NOUN
 sporadic dates : NOUN[:plur]
 sports field : NOUN
+sports physician : NOUN
 spy plane : NOUN
 staff secretary : NOUN
 state and local : ADJ
@@ -3124,6 +3140,7 @@ hard-to-detect : ADJ
 head-to-head : ADV
 high-endurance : ADJ
 high-flying : ADJ
+high-powered : ADJ
 high-profile : ADJ
 high-speed : ADJ
 high-speed boat : NOUN
@@ -3571,6 +3588,7 @@ HLN : NOUN
 Hariri : NOUN
 Harry : NOUN
 Hassan Rouhani : NOUN
+Hawaii County Fire Department : NOUN
 Herzegovina : NOUN
 Hillary Clinton : NOUN
 Holocaust Remembrance Day : NAVB
@@ -3615,6 +3633,7 @@ Jerusalem’s Old City : NOUN
 John Podesta : NOUN
 Jim : NOUN
 Jim Justice : NOUN
+Jimmy Morales : NOUN
 Jinping : NOUN
 John Beck : NOUN
 John Conyers : NOUN
@@ -3651,6 +3670,7 @@ La Guardia Airport : NOUN
 La Nina : NOUN
 Labour MP : NOUN
 Lafayette Square : NOUN
+Lanipuna Gardens : NOUN[:plur]
 Larry Wortzel : NOUN
 Larry Scott : NOUN
 Las Vegas : NOUN
@@ -3703,16 +3723,17 @@ Meghan Markle : NOUN
 Melania : NOUN
 Merkel : NOUN
 Metro Nashville : NOUN
-Michael Corleone : NOUN
 Miami-Dade County : NOUN
 Michael Baudendistel : NOUN
 Michael Cohen : NOUN
+Michael Corleone : NOUN
 Michael Flynn : NOUN
 Michael Keaton : NOUN
 Michael Wolff : NOUN
 Michel Aoun : NOUN
 Michelle Beadle : NOUN
 Michelle Wolf : NOUN
+Michigan State : NOUN
 Mike Leach : NOUN
 Mike Greenberg : NOUN
 Mike Pence : NOUN
@@ -15709,6 +15730,8 @@ gym rat : NOUN
 gym shoe : NOUN
 gym suit : NOUN
 gymnasium : NOUN
+gymnastic : ADJ
+gymnastics : NOUN
 ha : NOUN
 habeas corpus : NOUN
 habit : NOUN
@@ -20535,6 +20558,8 @@ misconception : NOUN
 misconduct : NOUN
 misconduct : VERB
 misdemeanor : NOUN
+miser : NOUN
+miserable : ADJ
 misery : NOUN
 misfortune : NOUN
 misgive : VERB
@@ -21897,6 +21922,7 @@ of how : CONJ
 of them : NUM[:cnj]
 of this kind : ADJ
 of those : PRO
+of whether : CONJ
 of which : CONJ[@rel]
 of whom : CONJ[@rel]
 off : VERB - -2
