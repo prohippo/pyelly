@@ -22,6 +22,7 @@ advanced : VERB[^ed]
 advancing : VERB[^ing]
 advertising : VERB[^ing] - -2
 agreed to cooperate with : VERB[^ed]
+agreed to pay : VERB[^ed]
 agreed with : VERB[^ed]
 alleged : VERB[^ed] - -1
 allegedly shot : VERB[^ed]
@@ -75,6 +76,7 @@ bombing : VERB[^ing] - -2
 bookended : VERB[^ed] - -1
 boosting security : VERB[^ing]
 born : VERB[^ed] - +2
+called to say : VERB[^ed]
 came : VERB[^ed]
 came under fire : VERB[^ed]
 carried out : VERB[^ed]
@@ -182,6 +184,7 @@ everything that’s ever happened : NOUN
 exciting : VERB[^ing]
 exerting influence : VERB[^ing]
 faces a dilemma : VERB[^s]
+failed to reflect : VERB[^ed]
 failing to identify : VERB[^ing]
 fallen : VERB[^ed]
 fastest : ADJ
@@ -207,6 +210,7 @@ fled : VERB[^ed]
 flew : VERB[^ed]
 flown : VERB[^ed]
 flown in : ADJ [$trlg,prd] 0
+flung : VERB[^ed]
 focused on : VERB[^ed]
 focuses on : VERB[^s] - +2
 focusing on : VERB[^ing]
@@ -466,6 +470,7 @@ per hour : ADJ [$trlg,prd] 0
 permanent security clearance : NOUN
 personalized : VERB[^ed] - -2
 personals : NOUN[:plur]
+pharma giant : NOUN
 phenomena : NOUN[:plur]
 phone interview : NOUN
 placed on lockdown : VERB[^ed]
@@ -517,6 +522,7 @@ ranging from : VERB[^ed]
 ranging in age : VERB[^ing]
 re-emerged : VERB[^ed]
 re-emerging : VERB[^ing]
+received : VERB[^ed]
 received instructions : VERB[^ed]
 received access to : VERB[^ed]
 redrew : VERB[^ed]
@@ -608,6 +614,7 @@ sprawling : VERB[^ing]
 sprung : VERB[^ed]
 standing in the way : VERB[^ing]
 stayed on the line : VERB[^ed]
+stayed put : VERB[^ed]
 steered clear : VERB[^ed]
 stemming from : VERB[^ing]
 stepped up : VERB[^ed]
@@ -674,6 +681,7 @@ top lieutenant : NOUN
 tore : VERB[^ed]
 tore up : VERB[^ed]
 torn : VERB[^ed]
+tried to call 911 :  VERB[^ed]
 tracking : VERB[^ing]
 troubled : VERB[^ed] - -2
 trumpier : ADJ
@@ -792,6 +800,7 @@ a bit : NOUN[:det] - -2
 a broader bid : NOUN[:det]
 a claim : NOUN[:det]
 a closed military zone : NOUN[:det]
+a collection of : QUAN
 a day after : CONJ
 a day later : ADV
 a distant third : NOUN[:det]
@@ -847,6 +856,7 @@ adulterous affair : NOUN
 advertising boycott : NOUN
 advocacy group : NOUN
 aerial demonstration : NOUN
+aerial photograph : NOUN
 after all : CONJ[@*l]
 after he did, : ADV
 after it emerged that : CONJ
@@ -912,6 +922,8 @@ appeals court : NOUN
 app : NOUN
 app developer : NOUN
 approximately average : ADJ
+aquarium technology : NOUN
+ar-10 rifle : NOUN
 arab republic : NOUN
 arbitration filing : NOUN
 arctic sea ice : NOUN
@@ -983,6 +995,7 @@ average rate : NOUN
 avoid a repeat of : VERB
 avoid errors : VERB
 away from : PREP
+bachelor's degree : NOUN
 back down to earth : ADV[~trlg,*l]
 back home : ADV
 back in : PREP
@@ -1022,6 +1035,7 @@ border fence : NOUN
 border patrol agent : NOUN
 bosniak : NOUN
 bosniak : ADJ
+bound by those rules : ADJ
 bowing to pressure from : VERB[^ing]
 brain cancer : NOUN
 breathing : VERB[^ing]
@@ -1141,6 +1155,7 @@ civil liability : NOUN
 clandestine officer : NOUN
 clean energy : NOUN
 clerical rule: NOUN
+close personal tie : NOUN
 close to : PREP
 closed-door meeting : NOUN
 closer tracking : NOUN
@@ -1189,6 +1204,7 @@ core element : NOUN
 core mission : NOUN
 corporate average fuel economy : ADJ
 corporate lending conditionns : NOUN[:plur]
+correct map : NOUN
 corrections officer : NOUN
 corrupt regime : NOUN
 corruption case : NOUN
@@ -1339,6 +1355,7 @@ executive producer : NOUN
 exercise of power : NOUN
 exclusive interview : NOUN
 existential threat : NOUN
+explicit aim : NOUN
 exploratory talks : NOUN[:plur]
 explosives detection K9 team : NOUN
 express in words : VERB
@@ -1357,6 +1374,7 @@ familiar with his thinking : ADJ
 familiar with the matter : ADJ
 family show : NOUN
 fan favorite : NOUN
+far beyond : ADV
 far reaching : ADJ
 far too weak : ADJ
 fatal shooting : NOUN
@@ -1388,6 +1406,7 @@ fireable offense : NOUN
 fist fight : NOUN
 fixed investment : NOUN
 flood stage : NOUN
+floors below : NOUN[:plur]
 flows of lava : NOUN[:plur]
 follow up with you after this : VERB
 for a long time : ADV
@@ -1432,12 +1451,14 @@ from there : ADV
 from what  : CONJ[@rel]
 from where : CONJ[@rel]
 from which : CONJ[@rel]
+front desk : NOUN
 frontline : ADJ
 fuel economy : NOUN
 fuel tax : NOUN
 full control : NOUN
 full time : ADV
 fully eliminate : VERB
+fully explain : VERB
 fully informed : ADJ
 fundamental revision : NOUN
 future plan : NOUN
@@ -1510,6 +1531,7 @@ head coach : NOUN
 head coaching : NOUN - +2
 health and safety : NOUN
 heavy fighting : NOUN
+heighten pressure : VERB
 helmet camera : NOUN
 helpline : NOUN
 helter skelter : NOUN
@@ -1554,6 +1576,7 @@ hydro : ADJ - +2
 hyperinflation : NOUN
 I think that : ADV
 idea that : NOUN[:*l] (nmth)
+if anything, : CONJ
 if you'd like : ADV
 illegal alien : NOUN
 illegal gun possession : NOUN
@@ -1652,6 +1675,7 @@ industry executive : NOUN
 informal meeting : NOUN
 informal meetings : NOUN[:plur]
 information leading to an arrest : NOUN
+initial mandate : NOUN
 innocuously : ADV
 innovation fund : NOUN
 ins and outs : NOUN[:plur]
@@ -1892,10 +1916,12 @@ months : NOUN[:plur]
 months of work : NOUN[:plur]
 months old : NOUN[:plur]
 mood swing : NOUN
+more efficiently use : VERB
 more expansive : ADJ
 more familiar : ADJ
 more lasting : ADJ
 more like : PREP
+more minutes : NOUN[:plur]
 more often : ADV
 more practical : ADJ
 more sway : NOUN
@@ -2024,6 +2050,7 @@ on whether : CONJ
 on which : CONJ
 once in a while : ADV
 online survey : NOUN
+only relevant attraction : NOUN
 onramp : NOUN
 onscreen : ADJ
 onslaught of criticism : NOUN
@@ -2171,6 +2198,7 @@ public company : NOUN
 public discourse : NOUN
 public health : NOUN
 public health decision : NOUN
+public housing : NOUN
 public information : NOUN
 public ministry : NOUN
 public poll : NOUN
@@ -2199,6 +2227,7 @@ raise the roof beam high : VERB
 rally support for : VERB
 rapidly melting : ADJ
 rapidly mounting : ADJ
+realization that : NOUN (nmth)
 reassignment surgery : NOUN
 rebaptizer : NOUN
 rebel stronghold : NOUN
@@ -2273,6 +2302,7 @@ russian government : NOUN
 russian meddling : NOUN
 russian military : NOUN
 russian officials : NOUN[:plur]
+russian soldier : NOUN
 russian spy : NOUN
 safe location : NOUN
 safe route : NOUN
@@ -2331,6 +2361,7 @@ shooting survivor : NOUN
 shopping district : NOUN
 shopping season : NOUN
 shortly after : CONJ
+shortly afterward : ADV
 show season : NOUN
 sightseeing tour : NOUN
 signal rocket : NOUN
@@ -2483,7 +2514,9 @@ the better of it : ADV
 the coming days : NOUN[:plur]
 the culture wars : NOUN[:plur]
 the day after : PREP
+the day after : CONJ - -2
 the day before : PREP
+the day before : CONJ - -2
 the default is : VERB
 the entirety : NOUN
 the fifth amendment : NOUN
@@ -2690,6 +2723,7 @@ willing to : TO
 win agreement : VERB
 wine review : NOUN
 winter weather advisory : NOUN
+witch hunt : NOUN
 with great fanfare : ADV
 with great sadness and a broken heart : ADV
 with him : ADJ
@@ -3187,10 +3221,12 @@ months-long : ADJ
 mother-of-two : NOUN
 much-needed : ADJ
 multi-disciplinary : ADJ
+mushroom-shaped : ADJ
 nail-biter : NOUN
 near-psychotic : ADJ
 nerve-agent : ADJ
 net-metering : NOUN
+never-before-published : ADJ
 next-in-line : ADJ
 no-go : ADJ
 no-go zone : NOUN
@@ -3238,6 +3274,7 @@ record-setting : ADJ
 rent-controlled : ADJ
 rent-regulated : ADJ
 rent-regulated unit : NOUN
+repeal-and-replace : NOUN
 republican-led : ADJ
 remote-control : NOUN
 right-to-die : ADJ
@@ -3269,6 +3306,7 @@ shoe-in : NOUN
 single-discipline : ADJ
 single-handedly : ADV
 six-party : ADJ
+snow-covered : ADJ
 squeaky-clean : ADJ
 start-up : NOUN
 state-of-the-art : ADJ
@@ -3340,6 +3378,7 @@ AC/DC : NOUN
 Adolph Hitler : NOUN
 Andrew Weissman : NOUN
 Adrian : NOUN
+Affordable Care Act : NOUN
 Alabama senate candidate : NOUN
 Alexei Navalny : NOUN
 Al-Qaeda : NOUN
@@ -3653,6 +3692,7 @@ Kardashian : NOUN
 Katie Sierra : NOUN
 Katrina : NOUN
 Keaton : NOUN
+Kent State University : NOUN
 Kevin : NOUN
 Kevin Brady : NOUN
 Kevin Davis : NOUN
@@ -3849,6 +3889,7 @@ Reaganite : NOUN
 Reuben Kihuen : NOUN
 Reuters : NOUN
 Rex Tillerson : NOUN
+RIA Novosti : NOUN
 Richard Gates : NOUN
 Rick Scott : NOUN
 RNC : NOUN
@@ -10797,6 +10838,7 @@ delay line : NOUN
 delegate : NOUN
 delegate : VERB
 delegation : NOUN
+delegitimatize : VERB
 delete : VERB
 deletion : NOUN
 delhi : NOUN
