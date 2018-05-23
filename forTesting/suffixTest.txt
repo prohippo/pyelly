@@ -1170,7 +1170,9 @@ reaper reap
 rebellion rebel
 rebuttal rebut
 recalcitrant recalcitr
-receiver receive
+receipt recept
+receive recept
+receiver recept
 receptacle recept
 receptor recept
 reciprocable reciproce
