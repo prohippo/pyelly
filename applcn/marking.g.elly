@@ -1441,7 +1441,7 @@ _
   insert x <
   merge
 __
-g:NCLU[:*r]->ADJ[%-ed,-ing,-cnj] NCLU[:-det,-prep,-num,-qnt]
+g:NCLU[:*r]->ADJ[%-ed,-ing,-cnj,-*l] NCLU[:-det,-prep,-num,-qnt]
 #             ?>>?
        r[&spcs]>>*r[&cmpd]+
  l[$ind]r[&quo]>>*r[&cmpd]----
@@ -1678,20 +1678,21 @@ g:NOUN[:*r,cnj]->NOUN[:-*l,-join,-poss,-ing,-plur,-det,-qnt] NOUN[:-cnj,ing,-det
 #       ?>>?
  r[&prop]>>*r-2
  l[&spcs]>>*r-2
+ l[&*c]r[&-*c]>>*r-4
 _
   (twob)
 __
 g:NOUN[:*r,cnj]->NOUN[:-*l,-join,-poss,-ing,-plur,-det,-qnt] NOUN[:-cnj,-ing,-det]
-#                ?>>?
-           r[&two]>>*l+2
- l[&spcs,*c]r[&*c]>>*r+2
-      r[&prop,nml]>>*r
-          r[&prop]>>*r-2
-          l[&spcs]>>*r-2
-      l[&*c]r[&*c]>>*r+3
-     l[&-*c]r[&*c]>>*r[&-*c]+2
-            l[&*c]>>*r+2
-                  >>*r+1
+#                  ?>>?
+             r[&two]>>*l+2
+   l[&spcs,*c]r[&*c]>>*r+2
+ l[&-*c]r[&prop,nml]>>*r+1
+            r[&prop]>>*r-2
+            l[&spcs]>>*r-2
+        l[&*c]r[&*c]>>*r+3
+       l[&-*c]r[&*c]>>*r[&-*c]+2
+              l[&*c]>>*r+2
+                    >>*r+1
 _
   (twob)
 __
@@ -1851,7 +1852,7 @@ _
   var typg=adv
   (rxtd)
 __
-g:VCLU[^*l]->VCLU NAVB
+g:VCLU[^*l]->VCLU[^-*l] NAVB
   >>*l++++
 _
   var typg=adv
@@ -1970,7 +1971,7 @@ _
   append </punc>
   right
 __
-g:ADJ[%*l,-lquo]->ADJX[%lquo] PUNC[|*r,quo]
+g:ADJ[%*l,-lquo,-*l]->ADJX[%lquo] PUNC[|*r,quo]
  >>+8
 _
   left
@@ -2238,7 +2239,7 @@ g:ADJ->ADJ[%-ing] ADJ[%ing]
 _
   (twob)
 __
-g:ADJ[%*l]->ADJ[%*r] ACRO
+g:ADJ[%*l,-*l]->ADJ[%*r] ACRO
  l[$*c]>>+
         >>----------
 _
@@ -2417,12 +2418,12 @@ _
   (twob)
 __
 
-g:ADJ[%*l,er]->ADJ[%-*l,-*r] XER
+g:ADJ[%*l,er,-*l]->ADJ[%-*l,-*r] XER
  >>*l
 _
   (twob)
 __
-g:ADJ[%*l]->ADJ[%-*l,-*r] XEST
+g:ADJ[%*l,-*l]->ADJ[%-*l,-*r] XEST
  >>*l
 _
   (twob)
@@ -3084,6 +3085,7 @@ __
 d:did  <- AUXL[^*l]
 __
 d:can  <- AUXL
+  >>+
 __
 d:may  <- AUXL
   >>[$cond]
@@ -4001,7 +4003,8 @@ _
   append ’
 __
 g:PUNC[|stop,*r]->PUNC[|stop] PUNC[|*r]
-__:
+ >>++
+__
 
 g:NCLU->DET[@sgl,num,-ind] PEXP[|quo]
 _
@@ -4214,4 +4217,17 @@ _
   merge
   append </conj>
   linefeed
+__
+
+g:ELEM->NAVB
+_
+  linefeed
+  var typg=adv
+  (typg)
+  linefeed
+__
+g:VERB->BE NAVB
+  >>+
+_
+  (twob)
 __
