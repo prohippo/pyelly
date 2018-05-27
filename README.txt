@@ -585,9 +585,14 @@ Release Notes:
                       allow sentences to start with em dash
                       improve morphological analysis
                       extend "marking" rules for new data
-                      add new integration test with "marking" rules and news text
+                      add integration test with "marking" rules and news text
                       update documentation
                       add Google News data
+ 1.4.30  - 26may2018  fix bug in ellyWildcard with check for list index overflow
+                      update "indexing" integration test
+                      extend "marking" rules
+                      update documentation
+                      clean up Google News data
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
