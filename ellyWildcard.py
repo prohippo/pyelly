@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 09may2018 CPM
+# ellyWildcard.py : 26may2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -555,6 +555,8 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
             if offs >= limt:
 #               print "offs=",offs,"limt=",limt
                 last = ''
+            elif limt == 0:
+                break
             else:
                 last = text[offs]
                 offs += 1
