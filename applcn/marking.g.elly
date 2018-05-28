@@ -3203,6 +3203,9 @@ __
 d:-y    <- SUFX[#nTOa]
 __
 
+d:'d <- AUXL
+__
+
 # # # # # # # #
 
 p:opnpl
@@ -4230,4 +4233,22 @@ g:VERB->BE NAVB
   >>+
 _
   (twob)
+__
+g:ELEM->TO PEXP[|quo]
+_
+  split
+  right
+  back
+  find /punc <
+  shift 3 <
+  var typ
+  delete 6 <
+  store typ
+  insert < typ
+  if typ=<nclu>
+    append <prep>to</prep>
+  elif typ=<vclu>
+    append to
+    end
+  merge
 __

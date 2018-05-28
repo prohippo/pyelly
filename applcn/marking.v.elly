@@ -76,6 +76,7 @@ bombing : VERB[^ing] - -2
 bookended : VERB[^ed] - -1
 boosting security : VERB[^ing]
 born : VERB[^ed] - +2
+called out :  VERB[^ed]
 called to say : VERB[^ed]
 came : VERB[^ed]
 came under fire : VERB[^ed]
@@ -276,6 +277,7 @@ grandfathering : VERB[^ing]
 grave toll : NOUN
 growing : VERB[^ing]
 grown : VERB[^ed] - +1
+gunned down : VERB[^ed]
 gusting : ADJ
 hacked emails : NOUN[:plur]
 had : HAVE[^ed]
@@ -345,6 +347,7 @@ is not for : VERB[^s]
 is nothing but : VERB[^s]
 is on again : VERB[^s]
 is on track to : AUXL[^s]
+is said to : ADV
 isolated : VERB[^ed] - -1
 it does not appear that : ADV
 it often seems that : ADV
@@ -387,6 +390,7 @@ lying : VERB[^ing] - -2
 made : VERB[^ed]
 made available : VERB[^ed]
 made clear : VERB[^ed,dit]
+made contact with : VERB[^ed]
 made headlines : VERB[^ed]
 made it clear : VERB[^ed,dit]
 made its way : VERB[^ed]
@@ -510,6 +514,7 @@ promised : VERB[^ed]
 promised : ADJ
 promoting competition : VERB[^ing]
 pronounced dead : VERB[^ed]
+provided information : VERB[^ed]
 providing : NOUN[:ing] - -2
 providing : VERB[^ing] - +3
 publicly backed : VERB[^ed]
@@ -532,6 +537,7 @@ ranging from : VERB[^ed]
 ranging in age : VERB[^ing]
 re-emerged : VERB[^ed]
 re-emerging : VERB[^ing]
+reached out : VERB[^ed]
 received : VERB[^ed]
 received instructions : VERB[^ed]
 received access to : VERB[^ed]
@@ -1038,6 +1044,7 @@ besieged area : NOUN
 best for them : ADJ
 best suit : NOUN
 best suit : VERB
+better link : VERB
 better of it : ADV
 better classroom conditions : NOUN
 better than : PREP
@@ -1252,6 +1259,7 @@ criminal liability : NOUN
 critically endangered species : NOUN
 crocs : NOUN[:plur]
 cross their t’s : VERB
+cryptojack : VERB
 current events : NOUN[:plur]
 current leader : NOUN
 cut ties with : VERB
@@ -1289,6 +1297,7 @@ demand the release of : VERB
 demilitarization : NOUN
 democratic republic : NOUN
 denuclearization : NOUN
+denuclearize : VERB
 deployment of missiles : NOUN
 deputy campaign chairman : NOUN
 deputy director general : NOUN
@@ -1379,6 +1388,7 @@ even before : CONJ
 even so : CONJ
 even though : CONJ
 everyone else : NOUN
+exchange student : NOUN
 executive producer : NOUN
 exercise of power : NOUN
 exclusive interview : NOUN
@@ -1470,6 +1480,7 @@ formal approval : NOUN
 former campaign manager : NOUN
 former employee : NOUN
 former president : NOUN
+forstall : VERB =forestall
 fourpenny : NOUN - +1
 freedom ride : NOUN
 from above : PREP
@@ -1601,6 +1612,7 @@ house of delegates : NOUN
 house speaker : NOUN
 household spending : NOUN
 how far the country has veered : NOUN
+how it compares : NOUN
 how long : CONJ
 human control : NOUN
 human dignity : NOUN
@@ -1864,6 +1876,7 @@ litx : CONJ =lit.
 live ammunition : NOUN
 live fire : NOUN
 livestock waste : NOUN
+livestream : VERB
 local hospital : NOUN
 local law enforcement : NOUN
 long gun : NOUN
@@ -1888,6 +1901,7 @@ make the payment to : VERB
 make use of : VERB
 male and female : NOUN
 male and female : ADJ - +1
+malicious code : NOUN
 malware : NOUN
 man to man : ADV
 manga : NOUN
@@ -1992,6 +2006,8 @@ multiple : QUAN - +2
 multiple times : ADV
 multiple, multiple : ADJ
 muslim tradition : NOUN
+mutual friend : NOUN
+mutual understanding : NOUN
 namesake company : NOUN
 nano : NOUN
 nano robot : NOUN
@@ -2002,6 +2018,7 @@ national interest : NOUN
 national security : NOUN
 national security adviser : NOUN
 national security interest : NOUN
+national title : NOUN
 nationwide rallies : NOUN[:plur]
 native soil : NOUN
 natural causes : NOUN[:plur]
@@ -2019,6 +2036,7 @@ new research : NOUN
 new window : NOUN
 news outlet : NOUN
 newspaper best : ADJ
+next month : NAVB[:det]
 next week : NAVB[:det]
 next year : NAVB[:det]
 no little : ADJ
@@ -2093,6 +2111,7 @@ on whether : CONJ
 on which : CONJ
 once in a while : ADV
 online survey : NOUN
+only after : CONJ
 only relevant attraction : NOUN
 onramp : NOUN
 onscreen : ADJ
@@ -2137,6 +2156,8 @@ panel commissioner : NOUN
 pants on fire : ADJ
 parallel investigation : NOUN
 parcel of land : NOUN
+parking lot : NOUN
+part of an effort : NOUN
 participating force : NOUN
 participating in : PREP
 particular focus : NOUN
@@ -2154,6 +2175,7 @@ pence : NOUN
 pending adjustment : NOUN
 people on facebook : NOUN[:plur]
 percent chance : NUM[:*r]
+performing arts center : NOUN
 period of time : NOUN
 personal data : NOUN
 personal information : NOUN
@@ -2199,6 +2221,7 @@ political world : NOUN
 pollution cleanup : NOUN
 poor health : NOUN
 poorly crafted : ADJ
+popular theory : NOUN
 porn star : NOUN
 pornographic film actress : NOUN
 possible attempt : NOUN
@@ -2283,11 +2306,13 @@ recording artist : NOUN
 red rock : NOUN
 reduce costs : VERB
 reelection win : NOUN
+refile : VERB
 refugee crisis : NOUN
 regardless of : PREP
 regional rival : NOUN
 regional security : NOUN
 registered voter : NOUN
+reimagine : VEERB
 related to : PREP
 relative newcomer : NOUN
 relentless counterattack : NOUN
@@ -2308,6 +2333,7 @@ rescue crew : NOUN
 research and development : NOUN
 research commission : NOUN
 research firm : NOUN
+research paper : NOUN
 residential floor : NOUN
 results page : NOUN
 return to classes : VERB
@@ -2389,6 +2415,7 @@ service plan : NOUN
 service member : NOUN
 servicemember : NOUN
 settle lawsuits : VERB
+several of : QUAN
 several other : QUAN
 sex scandal : NOUN
 sexual advance : NOUN
@@ -2504,6 +2531,7 @@ suspect or suspects : NOUN
 suspected case : NOUN
 suspected criminal wrongdoing : NOUN
 suspected terrorist : NOUN
+suss him out : VERB
 swarm robot : NOUN
 systemic injustice : NOUN
 take on it : NOUN
@@ -2690,6 +2718,7 @@ under construction : ADJ
 under the country’s flag : ADV
 under the shadow of : PREP
 undercover sting operation : NOUN
+underenforcement : NOUN
 understated : VERB[^ed] - -1
 underutilization : NOUN
 underutilize : VERB
@@ -2721,6 +2750,7 @@ varying degrees of legal trouble : NOUN[:plur]
 versus : CONJ
 very close to : PREP
 very dangerous : ADJ
+very early on : ADV
 very good : ADJ
 very little : NOUN[:*l]
 very little : ADV - -1
@@ -2752,6 +2782,7 @@ what he called : ADV
 what he said was a : DET
 what i have stood for : NOUN
 what is today : ADV
+what it’s doing : NOUN
 what it has learned : NOUN
 what looks like an : DET
 what she calls a : DET
@@ -2799,6 +2830,8 @@ would have no choice but to : AUXL
 x1stx of its kind : NOUN =the first of its kind
 years old : NOUN[:plur]
 young people : NOUN
+yuck : NOUN
+yuck : MISC
 yuletide spirit : NOUN
 zone training : NOUN
 
@@ -2840,6 +2873,8 @@ i mean,   : ADV
 , N.Y.,   : XID
 , maybe,  : ADV
 really, really : ADV
+
+-.- : SENT
 
 1000000000000 : NUM[:*r] - +2 =trillion
 1000000000    : NUM[:*r] - +2 =billion
@@ -3007,6 +3042,7 @@ months-long investigation : NOUN
 more expansive background checks : NOUN[:qnt,plur]
 more to a judge : NOUN[:prep]
 mounting legal peril : NOUN
+mshelper : NOUN
 offensive coordinator : NOUN
 or more accurately, : ADV
 over the past two years : ADV
@@ -3018,6 +3054,7 @@ personal narrative : NOUN
 parkland mass shooting : NOUN
 picked him up : VERB[^ed,*r]
 potentially unpalatable deal : NOUN
+primetime : ADJ
 public plea for help : NOUN
 push back against : VERB
 rebel-held eastern Ghouta suburb of Damascus : NOUN
@@ -3123,6 +3160,7 @@ who hvbe in jail : NOUN =Who's in Jail
 12-ton : ADJ
 16-year-old : NOUN - -2
 16-year-old : ADJ
+1960s-era : ADJ
 2-seat : ADJ
 2-year-long : ADJ
 3-point : ADJ
@@ -3137,6 +3175,7 @@ after-hours : ADJ
 after-hours trading : NOUN
 age-related : ADJ
 aisle-roaming : ADJ
+all-important : ADJ
 almost-indisputable : ADJ
 already-faltering : ADJ
 already-tense : ADJ
@@ -3155,6 +3194,7 @@ assembly-line : ADJ
 assisted-suicide : ADJ
 asylum-seeker : NOUN
 at-times : ADV
+back-to-back : ADJ
 base-rallying : ADJ
 battery-electric : ADJ
 bill-to : ADJ
@@ -3193,6 +3233,7 @@ decades-old conflict : NOUN
 decision-making : ADJ
 decision-making process : NOUN
 do-whatever-you-want : ADJ
+double-check : VERB
 dramatic scene : NOUN
 dual-use : ADJ
 e-mail : NOUN
@@ -3234,6 +3275,7 @@ half-full : ADJ
 half-mile : ADJ
 half-revelation : NOUN
 half-sitting : VERB[^ed]
+hands-on : ADJ
 hard-edged : ADJ
 hard-to-detect : ADJ
 head-to-head : ADV
@@ -3246,6 +3288,7 @@ high-speed boat : NOUN
 high-wage : ADJ
 high-wage area : NOUN
 highest-ranking : ADJ
+how-to : ADJ
 humanitarian mission : NOUN
 ill-fated : ADJ
 image-preserver : NOUN
@@ -3279,6 +3322,7 @@ miami-dade's : ADJ
 mid-air : NOUN
 mid-Atlantic : NOUN
 mid-century : ADJ
+mid-July : NOUN
 mid-term : ADJ
 military-grade : ADJ
 millimeter-wave : ADJ
@@ -3368,6 +3412,7 @@ second-largest : ADJ
 self-deprecating : NOUN
 self-deprecating : ADJ
 self-defensive : ADJ
+self-proclaimed : ADJ
 semi-automatic weapon : NOUN
 semi-autonomous : ADJ
 shanghai-born : ADJ
@@ -3384,11 +3429,13 @@ state-owned enterprise : NOUN
 state-run : ADJ
 state-run news agency KCNA : NOUN
 state-sponsored : ADJ
+state department-sponsored : ADJ
 still-frenzied : ADJ
 sub-sect : NOUN
 submarine-lanched : ADJ
 sun-drenched : ADJ
 surface-to-surface : ADJ
+talked-about : ADJ
 tax-cut : ADJ
 tax-writing : ADJ
 tax-writing committee : NOUN
@@ -3443,6 +3490,7 @@ A Higher Loyalty : NOUN
 A New Day Has Come : NOUN
 Aaron C. Davis : NOUN
 ABC News : NOUN
+Abu Dhabi : NOUN
 AC/DC : NOUN
 Adolph Hitler : NOUN
 Andrew Weissman : NOUN
@@ -3550,6 +3598,7 @@ Chris Cuomo : NOUN
 Christian Democrat : NOUN
 Christopher A. Wray : NOUN
 Civil Rights Commission : NOUN
+Clayton County Schools : NOUN
 Clever : NOUN - -6
 Clinton era : NOUN
 Craigslist : NOUN
@@ -3565,6 +3614,7 @@ Conor Lamb : NOUN
 Conservative Political Action Conference : NOUN
 Coolio Earth Partnership : NOUN
 Corey Lewandowski : NOUN
+Côte d'Azur : NOUn
 Crafty : NOUN
 Crater Lake : NOUN
 Crown Prince Mohammed bin Salman : NOUN
@@ -3584,6 +3634,7 @@ Delta Air Lines : NOUN
 Democratic National Committee : NOUN
 Denise : NOUN
 Denny : NOUN
+Denny Kannel : NOUN
 Department of Homeland Security : NOUN
 Desiree : NOUN
 DHS : NOUN
@@ -3670,6 +3721,7 @@ Fulmer : NOUN
 Furnariidae : NOUN
 G. E. : NOUN
 Gallagher : NOUN
+Garcia-Navarro : NOUN
 Gen. Valery Gerasimov : NOUN
 Gene Simmons : NOUN
 General Atomics : NOUN
@@ -3686,6 +3738,7 @@ Gina Haspel : NOUN
 Global Times : NOUN
 Golan Heights : NOUN[:plur]
 Golden State Warriors : NOUN
+Google News : NOUN
 Gov. Jerry Brown : NOUN
 Grand Staircase-Escalante : NOUN
 Grants Pass : NOUN
@@ -3774,6 +3827,7 @@ Kevin : NOUN
 Kevin Brady : NOUN
 Kevin Davis : NOUN
 Keziah Daum : NOUN
+Kilauea : NOUN
 Kilauea volcano : NOUN
 Kim Jong Un : NOUN
 Kimberly Gardner : NOUN
@@ -3904,6 +3958,7 @@ NFL : NOUN
 NFL Network : NOUN
 NFL players' protest : NOUN
 Nicholas : NOUN
+Nick Saban : NOUN
 North American Trade Agreement : NOUN
 North India : NOUN
 Novaes : NOUN
@@ -3917,6 +3972,8 @@ Obamas : NOUN[:plur] =obama -s
 Office of the U.S. Trade Representative : NOUN
 Ogilvy & Mather : NOUN
 Okanogan : NOUN
+Oprah : NOUN
+Oprah Winfrey : NOUN
 Orange County Register : NOUN
 Our Lady of Sorrows : NOUN
 Oxford Street : NOUN
@@ -4018,6 +4075,7 @@ Shi‘ite : NOUN
 Shindake : NOUN
 Ship of Fools : NOUN
 Showcase Presentations : NOUN
+Sikander : NOUN
 Silent Majority : NOUN
 Snapchat : NOUN
 SNL : NOUN
@@ -4044,6 +4102,7 @@ Steven Keates : NOUN
 Stormy Daniels : NOUN
 Sueddeutsche Zeitung : NOUN
 Suiter : NOUN
+SyFy : NOUN
 Symantec : NOUN
 Syrian government : NOUN
 Syrian state television : NOUN
@@ -4116,6 +4175,7 @@ U.S. : NOUN
 U.S. Agency for International Development : NOUN
 U.S. District Judge : NOUN
 U.S.S.R. : NOUN
+UAE : NOUN
 Uber : NOUN
 UCLA : NOUN
 United States Attorney : NOUN
@@ -4172,6 +4232,7 @@ WTO : NOUN
 Xavier : NOUN
 Xi Jinping : NOUN
 Xinhua : NOUN
+YES Program : NOUN
 Youtube : NOUN
 ZANU-PF : NOUN
 Zero Mostel : NOUN
@@ -12389,6 +12450,7 @@ ego : NOUN
 ego ideal : NOUN
 ego trip : NOUN
 egregious : ADJ
+egregiously : ADV
 egypt : NOUN
 egyptian : NOUN
 egyptian : ADJ
@@ -12619,6 +12681,7 @@ eminent domain : NOUN
 emir : NOUN
 emirate : NOUN
 emirati : NOUN
+emissary : NOUN
 emission : NOUN
 emission spectrum : NOUN
 emit : VERB
@@ -14464,6 +14527,7 @@ forest god : NOUN
 forest red gum : NOUN
 forestry : NOUN
 forever : ADV
+forestall : VERB
 forge : NOUN
 forge : VERB
 forget : VERB
@@ -17103,6 +17167,7 @@ hussein : NOUN
 hydrate : NOUN
 hydrate : VERB
 hydration : NOUN
+hydrochloric acid : NOUN
 hydrogen : NOUN
 hydrogen atom : NOUN
 hydrogen bomb : NOUN
@@ -20921,6 +20986,8 @@ miso : NOUN
 misread : VERB
 miss : NOUN
 miss : VERB
+miscarriage : NOUN
+miscarry : VERB
 missile : NOUN
 missile defense system : NOUN
 missing : ADJ
@@ -24603,6 +24670,7 @@ prepare : VERB
 preposition : NOUN
 prerequisite : NOUN
 prerequisite : ADJ
+prerogative : NOUN
 preschool : NOUN
 prescribe : VERB
 prescription : NOUN
@@ -30843,6 +30911,7 @@ taint : NOUN
 taint : VERB
 taiwan : NOUN
 taiwan dollar : NOUN
+taj mahal : NOUN
 take : NOUN - -1
 take : VERB[^ptcl] - +2
 take account : VERB
@@ -32001,6 +32070,7 @@ train station : NOUN
 train ticket : NOUN
 trainer : NOUN
 trait : NOUN
+trajectory : NOUN
 trample : NOUN
 trample : VERB
 tranquil : ADJ
@@ -33248,6 +33318,7 @@ volcanic eruption : NOUN
 volcanic glass : NOUN
 volcanic rock : NOUN
 volcano : NOUN
+volcanism : NOUN
 volcanology : NOUN
 volley : NOUN
 volley : VERB
