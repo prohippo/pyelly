@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellySentenceReader.py : 11apr2018 CPM
+# ellySentenceReader.py : 28may2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -462,7 +462,9 @@ class EllySentenceReader(object):
                 if nAN > 1:
                     break
 
-        if len(sent) > 0 or self.last != END:
+        if sent == [ u'\u2026' ]:  # special case of sentence
+            return list("-.-")     # with lone ellipsis
+        elif len(sent) > 0 or self.last != END:
             return sent
         else:
             return None
