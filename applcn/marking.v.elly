@@ -178,6 +178,7 @@ drags on : VERB[^s]
 drinking water : NOUN
 drug trafficking : NOUN
 drawn : VERB[^ed]
+drawn any public conclusion : VERB[^ed]
 earlier this month : ADV
 eaten : VERB[^ed]
 educating themselves : VERB[^ing]
@@ -343,6 +344,7 @@ is going to be : VERB[^s]
 is no longer fit : VERB[^s]
 is currently considered : VERB[^s]
 is for : VERB[^s]
+is not doing enough : VERB[^s]
 is not for : VERB[^s]
 is nothing but : VERB[^s]
 is on again : VERB[^s]
@@ -350,6 +352,7 @@ is on track to : AUXL[^s]
 is said to : ADV
 isolated : VERB[^ed] - -1
 it does not appear that : ADV
+it is not inconceivable : VERB[^s]
 it often seems that : ADV
 it was unclear where : ADV
 it was watching : VERB[^aux,ed,ing]
@@ -445,6 +448,7 @@ named : VERB[^ed] - +2
 named : ADJ - -4
 nearest : ADJ
 needed : VERB[^ed]
+needs to do more : VERB[^s]
 net gain : NOUN
 news anchor : NOUN
 news release : NOUN
@@ -1100,6 +1104,7 @@ budget provision : NOUN
 building supply : NOUN
 bullocky : NOUN - +2
 bushranger : NOUN
+business model : NOUN
 but instead, : CONJ
 but now : CONJ
 but then : CONJ
@@ -1162,6 +1167,7 @@ census survey : NOUN
 center : ADJ
 century bc : NOUN
 certainly true : ADJ
+chalk this up : VERB
 championship game : NOUN
 charity donor list : NOUN
 cheer on : VERB
@@ -1374,6 +1380,7 @@ emergency talks : NOUN[:plur]
 end a stalemate : VERB
 end efforts : VERB
 enemies list : NOUN
+energy commissioner : NOUN
 energy lobbyist : NOUN
 engage in a dialogue : VERB
 engine production : NOUN
@@ -1449,6 +1456,7 @@ flood stage : NOUN
 floors below : NOUN[:plur]
 flows of lava : NOUN[:plur]
 follow up with you after this : VERB
+foothills town : NOUN
 for a long time : ADV
 for about a week : ADV
 for allegedly : PREP['cls]
@@ -1529,6 +1537,7 @@ good resource : NOUN
 goods and services : NOUN
 gop presidential nominee : NOUN
 gov. : NOUN
+governing body : NOUN
 governing coalition : NOUN
 governing party : NOUN
 government figure : NOUN
@@ -1606,6 +1615,7 @@ homeported : ADJ
 homiletics : NOUN
 hot 100 : NUM
 hot 100 : NOUN
+hot lava : NOUN
 hours after : CONJ
 house of cards : NOUN
 house of delegates : NOUN
@@ -1846,6 +1856,7 @@ latest blow : NOUN
 launch order : NOUN
 launch procedure : NOUN
 law enforcement personnel : NOUN
+laze : NOUN - -2
 lead surgeon : NOUN
 lead up : NOUN - -4
 leadership role : NOUN
@@ -1884,6 +1895,7 @@ long term : NOUN
 lose contact with : VERB
 lt. : NOUN
 lt. gen. : NOUN
+lt. gov. : NOUN
 lure shoppers through their doors : VERB
 magazine weekly : NOUN
 main counter : NOUN
@@ -1913,6 +1925,7 @@ many of them : PRO
 many of us : PRO
 many of whom : PRO
 many of you : PRO
+maps product : NOUN
 marchese : NOUN
 marine corps : NOUN
 marine corps air station : NOUN
@@ -1994,6 +2007,7 @@ most notably : ADV
 most of : QUAN
 most of them : PRO
 most of whom : PRO
+mountain bike : VERB - -2
 move into a new phase : VERB
 move so fast : VERB
 mr.  : NOUN
@@ -2050,9 +2064,10 @@ nondisclosure agreement : NOUN
 north american affairs : NOUN[:plur]
 north korean leader : NOUN
 northern california : NOUN
+not just : ADV
 not only : CONJ
 not the only : QUAN
-not just : ADV
+not yet : ADV
 nothing new here : NOUN
 now known as : CONJ
 nuclear accord : NOUN
@@ -2065,6 +2080,15 @@ nuclear weapons : NOUN
 nuclear weapons program : NOUN
 nude photo : NOUN
 obstruct justice : VERB
+ocean water : NOUN
+of how : CONJ
+of that : ADJ [$trlg,prd] 0
+of them : NUM[:cnj]
+of this kind : ADJ
+of those : PRO
+of whether : CONJ
+of which : CONJ[@rel]
+of whom : CONJ[@rel]
 off the map : ADV
 offer diplomatic recognition : VERB
 official confirmation : NOUN
@@ -2078,6 +2102,7 @@ often enough : ADV
 oil exporter : NOUN
 oil minister : NOUN
 oil supply : NOUN
+oil trade : NOUN
 old record : NOUN
 old tradition : NOUN
 olympic gymnastics : NOUN
@@ -2385,6 +2410,7 @@ same sex couple : NOUN
 sanctions relief : NOUN
 saturday and sunday : NAVB
 say they need : VERB
+school building : NOUN
 school community : NOUN
 school resource officer : NOUN
 scientific paper : NOUN
@@ -2450,6 +2476,7 @@ slbm : NOUN
 small business : NOUN
 so as to : TO
 so many : QUAN[@ind]
+so poorly received : ADJ
 so still : ADJ
 so that : CONJ
 so widely known : ADJ
@@ -3213,6 +3240,7 @@ city funds : NOUN[:plur]
 civil-rights law : NOUN
 closely-watched : ADJ
 co-founder : NOUN
+co-host : NOUN
 co-owned : ADJ
 co-produce : VERB
 code-breaking : ADJ
@@ -3313,6 +3341,7 @@ long-drawn : ADJ
 long-expected : ADJ
 long-past  : ADJ
 long-promised : ADJ
+long-running :ADJ
 long-term : ADJ
 long-undervalued : ADJ
 luke-warm : ADJ
@@ -3330,6 +3359,7 @@ mind-boggling : ADJ
 mixed-species : ADJ
 modern-day :ADJ
 months-long : ADJ
+most talked-about : ADJ
 mother-of-two : NOUN
 much-needed : ADJ
 multi-disciplinary : ADJ
@@ -3457,6 +3487,7 @@ trauma-specific : ADJ
 tug-of-war : ADJ
 tut-tutting : ADJ
 two-and-a-half : NUM
+two-hour : ADJ
 two-term limit : NOUN
 U.S. government source : NOUN
 U.S.-China : ADJ
@@ -3464,6 +3495,7 @@ U.S.-led : ADJ
 up-to-date : ADJ
 user-configurable : ADJ
 vice-president : NOUN
+virus-free : ADJ
 volume-weighted : ADJ
 voter-targeting : ADJ
 watered-down : ADJ
@@ -3500,6 +3532,7 @@ Alabama senate candidate : NOUN
 Alexei Navalny : NOUN
 Al-Qaeda : NOUN
 AP : NOUN
+Apple Maps : NOUN
 AT&T : NOUN
 Advanced Step in Innovative Mobility : NOUN
 Agence France-Presse : NOUN
@@ -3624,6 +3657,7 @@ Customs and Border Protection : NOUN
 Da Silva : NOUN
 Daily Show : NOUN
 DACA : NOUN
+Dan Patrick : NOUN
 Dana W. White : NOUN
 Dana White : NOUN
 Dandan : NOUN
@@ -3917,6 +3951,7 @@ Mitch McConnell : NOUN
 Mitt Romney : NOUN
 Model S Sedan : NOUN
 Mohammed bin-Salman : NOUN
+Mohammad Javad Zarif : NOUN
 Montecito : NOUN
 Moon Jae-in : NOUN
 Mount Bental : NOUN
@@ -3930,6 +3965,7 @@ MSNBC host : NOUN
 MTV : NOUN
 Mueller : NOUN
 Mueller's team : NOUN
+Mueller’s team : NOUN
 Mugabe : NOUN
 Moammar Gaddafi : NOUN
 Murphy : NOUN
@@ -4114,29 +4150,29 @@ Terrence : NOUN
 Tex : NOUN
 Team Lacoste : NOUN
 Texans : NOUN
-The Church of the Holy Sepulchre : NOUN
-the city of Ventura : NOUN
-the Dakotas : NOUN[:plur]
-the District of Connecticut : NOUN
-the District of Columbia : NOUN
-the Emoluments Clause : NOUN
-the European Union : NOUN
-the former Yugoslavia : NOUN
-the Frontier Post : NOUN
-The Godfather Part II : NOUN
-the Great Plains : NOUN
-The Hollywood Reporter : NOUN
-the late Libyan Leader Moammar Gaddafi : NOUN
-the Met Office : NOUN
-the Mid-Atlantic : NOUN
-the NAFT region : NOUN
-the NRA : NOUN
-the News International : NOUN
-The Northwest Indiana Times : NOUN
-the only right choice : NOUN
-The Spokesman-Review : NOUN
-the Taiwan Strait : NOUN
-The Times : NOUN
+The Church of the Holy Sepulchre : NOUN[:det]
+the city of Ventura : NOUN[:det]
+the Dakotas : NOUN[:det,plur]
+the District of Connecticut : NOUN[:det]
+the District of Columbia : NOUN[:det]
+the Emoluments Clause : NOUN[:det]
+the European Union : NOUN[:det]
+the former Yugoslavia : NOUN[:det]
+the Frontier Post : NOUN[:det]
+The Godfather Part II : NOUN[:det]
+the Great Plains : NOUN[:det]
+The Hollywood Reporter : NOUN[:det]
+the late Libyan Leader Moammar Gaddafi : NOUN[:det]
+the Met Office : NOUN[:det]
+the Mid-Atlantic : NOUN[:det]
+the NAFT region : NOUN[:det]
+the NRA : NOUN[:det]
+the News International : NOUN[:det]
+The Northwest Indiana Times : NOUN[:det]
+the only right choice : NOUN[:det]
+The Spokesman-Review : NOUN[:det]
+the Taiwan Strait : NOUN[:det]
+The Times : NOUN[:det]
 the united states-china : ADJ
 The Verge : NOUN [&prop] 0
 the Washington Post : NOUN
@@ -4145,6 +4181,7 @@ Theresa May : NOUN
 Thomas Aquinas College : NOUN
 Tierra del Fuego : NOUN
 Tillerson : NOUN
+Tim Cook : NOUN
 Time magazine : NOUN
 Tina : NOUN
 Tinian : NOUN
@@ -9735,6 +9772,8 @@ conical buoy : NOUN
 conical projection : NOUN
 conjunct : ADJ
 conjunction : NOUN
+conjure : VERB
+conjure up : VERB
 conjury : NOUN
 conn : VERB
 connect : VERB
@@ -22347,13 +22386,6 @@ oddly : ADV
 odds : NOUN
 odyssey : NOUN
 of course : ADV
-of how : CONJ
-of them : NUM[:cnj]
-of this kind : ADJ
-of those : PRO
-of whether : CONJ
-of which : CONJ[@rel]
-of whom : CONJ[@rel]
 off : VERB - -2
 off : ADJ
 off : ADV[~trlg]
