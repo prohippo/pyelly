@@ -595,6 +595,7 @@ serve as : VERB
 served as : VERB[^ed]
 serving as : VERB[^ing]
 setting : VERB[^ptcl,ing] - +1
+setting the tone : VERB[^ing]
 setting up : VERB[^ing]
 she believed was : BE[^ed]
 shifted its focus to : VERB[^ed]
@@ -685,6 +686,7 @@ terrifying : VERB[^ing]
 terrorizing : VERB[^ing] - +2
 terrorizing : NOUN - -1
 thanked : VERB[^ed]
+that a : DET (nmth)
 that are sure to have : THTV
 that believe in : THTV
 that can be faced : ADJ
@@ -696,6 +698,7 @@ thought : VERB[^ed]
 threw : VERB[^ed]
 thrown : VERB[^ed]
 thrown into crisis : VERB[^ed]
+thrown into doubt : VERB[^ed]
 told : VERB[^ed,dit]
 told the court : VERB[^ed,dit]
 took : VERB[^ed,ptcl]
@@ -779,6 +782,7 @@ would have no reason : VERB
 would not mind : VERB
 would tell you : VERB[^dit]
 woven : VERB[^ed]
+writing for the majority : ADV
 written : VERB[^ed]
 wrote : VERB[^ed,*x]
 years in prison : NOUN[:plur]
@@ -1036,6 +1040,7 @@ background briefing : NOUN
 background check : NOUN
 bad news : NOUN
 bail deal : NOUN
+band together : VERB
 banking dynasty : NOUN
 bat and ball : ADJ
 beatle : NOUN
@@ -1200,6 +1205,7 @@ closed-door meeting : NOUN
 closer tracking : NOUN
 cm long : NOUN
 cmdr. : NOUN
+coal baron : NOUN
 coalition talks : NOUN[:plur]
 coast guard : NOUN
 col. : NOUN
@@ -1322,6 +1328,7 @@ direct response : NOUN
 disclose contacts with : VERB
 discount fare : NOUN
 discount fare program : NOUN
+discuss parameters : VERB
 discussion point : NOUN
 disruptive action : NOUN
 district court : NOUN
@@ -1412,6 +1419,7 @@ facebook page : NOUN
 facebook video : NOUN
 factional : ADJ
 factional fighting : NOUN
+failed candidate : NOUN
 failures and deficiencies : NOUN[:plur]
 false information : NOUN
 fake news : NOUN
@@ -1635,6 +1643,7 @@ hyperinflation : NOUN
 I think that : ADV
 idea that : NOUN[:*l] (nmth)
 if anything, : CONJ
+if confirmed, : ADV
 if you'd like : ADV
 illegal alien : NOUN
 illegal gun possession : NOUN
@@ -1836,6 +1845,7 @@ land survey : NOUN
 large areas of : QUAN
 large storm system : NOUN
 largely in their hands : ADJ
+largest economies : NOUN[:plur]
 last big : ADJ
 last fall : NAVB
 last june : NAVB
@@ -1855,6 +1865,7 @@ later this week : NAVB[:det]
 latest blow : NOUN
 launch order : NOUN
 launch procedure : NOUN
+lava flow : NOUN
 law enforcement personnel : NOUN
 laze : NOUN - -2
 lead surgeon : NOUN
@@ -1880,6 +1891,7 @@ life’s work : NOUN
 light vehicle : NOUN
 lightning strike : NOUN
 like never before : ADV
+like you’re doing something wrong : ADV
 likely to be asked about : ADJ
 limit supply : NOUN
 little more than : ADV[~mod] [$deg] 0
@@ -1953,6 +1965,7 @@ mentally unstable : ADJ
 metallicity : NOUN
 meth lab : NOUN
 methamphetamine lab : NOUN
+mexican migrant : NOUN
 micromanage : VERB
 middle east peacemaking : NOUN
 midtempo : ADJ
@@ -1970,6 +1983,7 @@ military support : NOUN
 military supremacy : NOUN
 military threat : NOUN
 minimum sentence : NOUN
+minor amounts of : QUAN
 minor eye injury : NOUN
 mischaracterization : NOUN
 mischaracterize : VERB
@@ -2106,6 +2120,7 @@ oil trade : NOUN
 old record : NOUN
 old tradition : NOUN
 olympic gymnastics : NOUN
+on an individual basis :ADV
 on an international scale : ADV
 on aspects of : PREP
 on friday : DATE
@@ -2215,6 +2230,7 @@ ping pong : NOUN
 ping pong playing robot : NOUN
 pinyin : NOUN
 pit bull : NOUN
+planetary system : NOUN
 playboy centerfold : NOUN
 plea for help : NOUN
 pockets of : QUAN
@@ -2337,7 +2353,7 @@ regardless of : PREP
 regional rival : NOUN
 regional security : NOUN
 registered voter : NOUN
-reimagine : VEERB
+reimagine : VERB
 related to : PREP
 relative newcomer : NOUN
 relentless counterattack : NOUN
@@ -2380,6 +2396,7 @@ riot gear : NOUN
 rise to prominence : NOUN
 risk death : VERB
 riverfront : ADJ
+robotic mission : NOUN
 rocket science : NOUN
 rocket strike : NOUN
 rockin' : ADJ
@@ -2429,6 +2446,7 @@ selectable : ADJ
 selfie : NOUN
 selfies : NOUN[:plur]
 sen. : NOUN
+senate bid : NOUN
 senate candidate : NOUN
 senate republican : NOUN
 senior general : NOUN
@@ -2494,6 +2512,7 @@ some of whom : PRO
 something like this : NOUN
 something that : NOUN (nmth)
 somewhere along : PREP
+sore loser : NOUN
 sorry about that : ADJ [$cmpd] 0
 sought by authorities : ADJ
 south coast : NOUN
@@ -2523,6 +2542,7 @@ sports field : NOUN
 sports physician : NOUN
 spy plane : NOUN
 staff secretary : NOUN
+star system : NOUN
 state and local : ADJ
 state ceremony : NOUN
 state media : NOUN
@@ -2698,9 +2718,11 @@ tourism sector : NOUN
 toxic chemical : NOUN
 tourist destination : NOUN
 trackwork : NOUN
+trade agreement : NOUN
 trade dispute : NOUN
 trade pact : NOUN
 trade relationship : NOUN
+trade war : NOUN
 trading partner : NOUN
 traditional clothing : NOUN
 traditional focus : NOUN
@@ -2794,6 +2816,7 @@ violent assault : NOUN
 viral video : NOUN
 volcanic anger : NOUN
 vote for : VERB
+wage and hour violation : NOUN
 war dead : NOUN
 war memorial : NOUN
 warfighter : NOUN
@@ -2848,6 +2871,7 @@ with what : CONJ
 with whom : CONJ
 within range of : PREP
 without a permit : ADV
+without ever : CONJ
 without interference : ADV
 without so much as : CONJ
 won : NOUN - -1
@@ -3019,6 +3043,7 @@ different characteristic : NOUN
 disappeared from the fever swamps : VERB[^ed,*r]
 displaced and frightened : ADJ
 dream president : NOUN
+drop their tariff threats : VERB
 eastern Ghouta : NOUN
 effectively acknowledging : VERB[^ing]
 eliminating threats :  VERB[^ing]
@@ -3108,6 +3133,7 @@ supt : NOUN
 Syrian capital Damascus : NOUN
 talked to his mother : VERB[^ed,*r]
 Tampa police : NOUN
+tariff threat : NOUN
 that has killed : THTV
 that killed : THTV
 that spiraled : THTV
@@ -3254,6 +3280,7 @@ custom-made : ADJ
 cut-through : NOUN
 cyber-attack : NOUN
 cyber-intrusion : NOUN
+daughter-in-law : NOUN
 deadline-missing : ADJ
 debt-financed : ADJ
 decades-old : ADJ
@@ -3274,6 +3301,7 @@ ex-doorman : NOUN
 ex-intelligence officer : NOUN
 ex-playmate : NOUN
 ex-spy : NOUN
+face-saving : ADJ
 faith-based : ADJ
 far-flung : ADJ
 fast-food : ADJ
@@ -3342,10 +3370,13 @@ long-expected : ADJ
 long-past  : ADJ
 long-promised : ADJ
 long-running :ADJ
+long-shot : NOUN
 long-term : ADJ
 long-undervalued : ADJ
+lose-lose : ADJ
 luke-warm : ADJ
 M-B-S : NOUN
+main-party primary : NOUN
 miami-dade : ADJ
 miami-dade's : ADJ
 mid-air : NOUN
@@ -3366,6 +3397,7 @@ multi-disciplinary : ADJ
 mushroom-shaped : ADJ
 nail-biter : NOUN
 near-psychotic : ADJ
+near-term : ADJ
 nerve-agent : ADJ
 net-metering : NOUN
 never-before-published : ADJ
@@ -3472,6 +3504,7 @@ tax-writing committee : NOUN
 technology-dependent : ADJ
 third-degree murder : NOUN
 third-largest : ADJ
+third-party : ADJ
 three-day : ADJ
 three-judge panel : NOUN
 three-point : ADJ
@@ -3525,6 +3558,7 @@ ABC News : NOUN
 Abu Dhabi : NOUN
 AC/DC : NOUN
 Adolph Hitler : NOUN
+Amanda Self : NOUN
 Andrew Weissman : NOUN
 Adrian : NOUN
 Affordable Care Act : NOUN
@@ -3681,6 +3715,7 @@ Doan : NOUN
 Dobrnja-jug : NOUN
 Doctor Who : NOUN
 Dolores : NOUN
+Don Blankenship : NOUN
 Donald : NOUN
 Donald Shulkin : NOUN
 Donald Trump : NOUN
@@ -3725,6 +3760,7 @@ FBI : NOUN
 FBI Deputy Director : NOUN
 FBI Director : NOUN
 FDNY commissioner : NOUN
+Federal Arbitration Act : NOUN
 Federal Aviation Administration : NOUN
 Federal Bureau of Alcohol, Tobacco, Firearms and Explosives : NOUN
 Federal Open Market Committee : NOUN[:*r]
@@ -3783,6 +3819,7 @@ Guinness : NOUN
 Hanks : NOUN
 Hapag-Lloyd company : NOUN
 Hawaii County Civil Defense : NOUN
+Hawaiian Volcano Observatory : NOUN
 Hazeldean Road : NOUN
 HBO : NOUN
 HHS : NOUN
@@ -3904,6 +3941,7 @@ Lori Klausutis : NOUN
 Los Angeles Times : NOUN
 Luiz Inacio Lula da Silva : NOUN
 Love Victorious : NOUN
+MacKenzie State Park : NOUN
 Mahmoud Abbas : NOUN
 Malala Yousufzai : NOUN
 Mali : NOUN
@@ -3975,6 +4013,7 @@ Narendra Modi : NOUN
 Natalia Veselnitskaya : NOUN
 National Doral : NOUN
 National Enquirer : NOUN
+National Labor Relations Act : NOUN
 Naval Criminal Investigative Service : NOUN
 NBA : NOUN
 NBC : NOUN
@@ -3982,6 +4021,7 @@ NBC News : NOUN
 NCAA : NOUN
 NCIS : NOUN
 NDA : NOUN
+Neil Gorsuch : NOUN
 Netflix : NOUN
 Nevada Test and Training Range : NOUN
 Nicolas Sarkozy : NOUN
@@ -3995,7 +4035,7 @@ NFL Network : NOUN
 NFL players' protest : NOUN
 Nicholas : NOUN
 Nick Saban : NOUN
-North American Trade Agreement : NOUN
+North American Free-Trade Agreement : NOUN
 North India : NOUN
 Novaes : NOUN
 NPR : NOUN
@@ -4075,6 +4115,7 @@ Robert S. Mueller III : NOUN
 Rockette : NOUN
 Rockwell Automation : NOUN
 Rodrigo Duterte : NOUN
+Roger Self : NOUN
 Rohingya : NOUN
 Roy : NOUN
 Roy Moore : NOUN
@@ -4135,6 +4176,7 @@ Stephen Paddock : NOUN
 Steve Bannon : NOUN
 Steve Jobs : NOUN
 Steven Keates : NOUN
+Steven Mnuchin : NOUN
 Stormy Daniels : NOUN
 Sueddeutsche Zeitung : NOUN
 Suiter : NOUN
@@ -13106,6 +13148,7 @@ evil spirit : NOUN
 evocation : NOUN
 evocative : ADJ
 evoke : VERB
+evolution : NOUN
 evolve : VERB
 ex : NOUN
 ex : ADJ
@@ -16388,6 +16431,8 @@ hawaii : NOUN
 hawaii island : NOUN
 hawaii standard time : NOUN
 hawaii time : NOUN
+hawaiian : NOUN
+hawaiian : ADJ
 hawk : NOUN
 hawk : VERB
 hawk nose : NOUN
@@ -24022,6 +24067,7 @@ planet : NOUN
 planet gear : NOUN
 planet wheel : NOUN
 planetarium : NOUN
+planetary : ADJ
 planning commission : NOUN
 plant : NOUN
 plant : VERB
