@@ -40,6 +40,7 @@ are able to : AUXL
 are doing business : VERB[^ing]
 are likely to be : BE
 are responsible for : VERB
+are sick enough : VERB
 arrested and charged : VERB[^ed]
 arrested on a warrant : VERB[^ed]
 assigned : VERB[^ed]
@@ -48,9 +49,11 @@ ate : VERB[^ed,*x]
 awaits trial : VERB
 backed off : VERB[^ed]
 banned from competing : VERB[^ed]
+barely started : VERB[^ed]
 bartending : NOUN
 based on : VERB[^ed,*x]
 basic knowledge : NOUN
+be forcibly removed : NOUN
 be forthcoming about : VERB
 be found alive : VERB[^ed]
 became : VERB[^ed,chng]
@@ -80,10 +83,13 @@ called out :  VERB[^ed]
 called to say : VERB[^ed]
 came : VERB[^ed]
 came under fire : VERB[^ed]
+carjacker : NOUN
 carried out : VERB[^ed]
 carrying out : VERB[^ing]
+casino company : NOUN
 caught : VERB[^ed] [$trns] 0
 caught wind : VERB[^ed]
+cease and desist agreement : NOUN
 centered around : VERB[^ed]
 charged with : VERB[^ed]
 chosen : VERB[^ed] - +2
@@ -99,11 +105,13 @@ closest : ADJ - +1
 closing in on : VERB[^ing]
 co-produced : VERB[^ed]
 coaching : VERB[^ing]
+coming days after : CONJ
 coming down : VERB[^ing]
 competing : NOUN[:ing] - -2
 competing : VERB[^ing]
 competing : ADJ[%ing]
 complained that : VERB[^ed]
+conditional amnesty : NOUN
 conducted a health and safety search : VERB[^ed]
 confirmed : VERB[^ed] - +1
 confirmed to have died : VERB[^ed]
@@ -113,6 +121,7 @@ continued : VERB[^ed]
 continued fighting : NOUN
 continued fighting : VERB
 contract that : NOUN[:*l] (nmth)
+controlled ditching : NOUN
 conveying to law enforcement : VERB[^ing]
 convinced : VERB[^ed] - -1
 cordoned off : VERB[^ed]
@@ -185,6 +194,7 @@ educating themselves : VERB[^ing]
 elected official : NOUN
 elevated : VERB[^ed]
 evangelicals : NOUN[:plur]
+even if : CONJ
 evening : VERB[^ing] - -2
 ever heard of : VERB[^ed]
 everything that’s ever happened : NOUN
@@ -207,6 +217,7 @@ felt forced to choose : VERB[^ed]
 field-tested : VERB[^ed]
 field-testing : VERB[^ing]
 fighting : VERB[^ing]
+figure out a way : VERB
 financial risk : NOUN
 financing : VERB[^ing]
 fired off : VERB[^ed]
@@ -230,6 +241,7 @@ fought : VERB[^ed]
 founding :VERB[^ing] - -2
 fountaining : NOUN
 freshmen : NOUN
+frizzed out : VERB[^ed]
 fronted by : VERB[^ed]
 frontlines : NOUN[:plur]
 froze : VERB[^ed]
@@ -905,6 +917,7 @@ agricultural industry : NOUN
 ahead of : PREP
 akin to how : CONJ
 air ambulance : NOUN
+air crash investigator : NOUN
 air defence : NOUN
 air force one : NOUN
 air force base : NOUN
@@ -964,6 +977,7 @@ arab republic : NOUN
 arbitration filing : NOUN
 arctic sea ice : NOUN
 argentine navy : NOUN
+armed group : NOUN
 armored vehicle : NOUN
 arms control : NOUN
 arms control expert : NOUN
@@ -1325,6 +1339,7 @@ diplomatic recognition : NOUN
 diplomatic script : NOUN
 diplomatic tone : NOUN
 direct response : NOUN
+disastrous result : NOUN
 disclose contacts with : VERB
 discount fare : NOUN
 discount fare program : NOUN
@@ -1339,6 +1354,7 @@ divorce case : NOUN
 do everything in my power : VERB
 do much more : VERB
 do that : VERB
+doctored accounting : NOUN
 dole : VERB - -2
 domestic abuse : NOUN
 domestic politics : NOUN[:plur]
@@ -1712,6 +1728,7 @@ in the metro area : ADV
 in the mix : ADV
 in the name of : PREP
 in the name of the islamic state : ADV
+in the public interest : NOUN
 in the report : ADV
 in the same place : ADV
 in the skies : ADJ [$trlg] +1
@@ -1975,6 +1992,7 @@ military aircraft : NOUN
 military attaché : NOUN
 military base : NOUN
 military exercise : NOUN
+military expertise : NOUN
 military facility : NOUN
 military front : NOUN
 military liaison : NOUN
@@ -2305,6 +2323,7 @@ prove to a judge : VERB
 proved to be : VERB
 public company : NOUN
 public discourse : NOUN
+public earnings statement : NOUN
 public health : NOUN
 public health decision : NOUN
 public housing : NOUN
@@ -2367,6 +2386,7 @@ remote town : NOUN
 renewable energy : NOUN
 rent payment : NOUN
 rental room : NOUN
+reporting tactics : NOUN
 republican governor : NOUN
 republican leader : NOUN
 republican party chairman : NOUN
@@ -2433,6 +2453,8 @@ school resource officer : NOUN
 scientific paper : NOUN
 scorched earth : ADJ
 scratching their heads : ADJ
+search area : NOUN
+search director : NOUN
 search tool : NOUN
 search-only mission : NOUN
 season opener : NOUN
@@ -2448,6 +2470,7 @@ selfies : NOUN[:plur]
 sen. : NOUN
 senate bid : NOUN
 senate candidate : NOUN
+senate committee : NOUN
 senate republican : NOUN
 senior general : NOUN
 senior level : NOUN
@@ -2771,6 +2794,7 @@ underenforcement : NOUN
 understated : VERB[^ed] - -1
 underutilization : NOUN
 underutilize : VERB
+unexplored depths : NOUN
 unfair media : NOUN
 union force : NOUN
 unity deal : NOUN
@@ -2856,6 +2880,7 @@ will one day : AUXL
 willing to : TO
 win agreement : VERB
 wine review : NOUN
+wing flap : NOUN
 winter weather advisory : NOUN
 witch hunt : NOUN
 with great fanfare : ADV
@@ -3083,9 +3108,11 @@ injured and mentally unstable man : NOUN
 insurgents groups : NOUN[:plur]
 it doesn’t appear that : ADV
 january interview that : NOUN[:*l] (nmth)
+land and sink : VERB
 made the ask : VERB[^ed]
 magnitude of this job : NOUN
 making a false statement to the FBI : VERB[^ing]
+malaysia airlines flight 370 : NOUN
 marking him wrong : VERB[^ing]
 messaging app WeChat : NOUN
 metals tariff : NOUN
@@ -3122,6 +3149,7 @@ Sandra Himmel : NOUN
 scandalous affair : NOUN
 Scarborough intern Lori Klausutis : NOUN
 Scout Me in : ADJ
+seabed hunt : NOUN
 sinai mosque : NOUN
 small collection of buildings : NOUN
 so loud : ADJ
@@ -3687,6 +3715,7 @@ Crater Lake : NOUN
 Crown Prince Mohammed bin Salman : NOUN
 Crystal River Middle School : NOUN
 Cubbies : NOUN[:plur]
+Curtis Ray Green : NOUN
 Customs and Border Protection : NOUN
 Da Silva : NOUN
 Daily Show : NOUN
@@ -3832,6 +3861,7 @@ Herzegovina : NOUN
 Hillary Clinton : NOUN
 Holocaust Remembrance Day : NAVB
 House Judiciary Committee : NOUN
+Houti rebel : NOUN
 Huffington Post : NOUN
 Hughes : NOUN
 Hughes Global Services : NOUN
@@ -3847,6 +3877,7 @@ Interstate 95 corridor : NOUN
 Iraq and Afghanistan Veterans of America : NOUN
 Irving : NOUN
 Islamabad Electric Supply Company : NOUN[:*r]
+Islamic Revolutionary Guard : NOUN
 Islamic State : NOUN
 Israeli Prime Minister Benjamin Netanyahu : NOUN
 Jack C. Phillips : NOUN
@@ -3914,8 +3945,9 @@ Labour MP : NOUN
 Lafayette Square : NOUN
 Lane Kiffin : NOUN
 Lanipuna Gardens : NOUN[:plur]
-Larry Wortzel : NOUN
 Larry Scott : NOUN
+Larry Vance : NOUN
+Larry Wortzel : NOUN
 Las Vegas : NOUN
 Las Vegas police : NOUN
 Last Week Tonight : NOUN
@@ -3944,6 +3976,7 @@ Love Victorious : NOUN
 MacKenzie State Park : NOUN
 Mahmoud Abbas : NOUN
 Malala Yousufzai : NOUN
+Malaysia Airlines : NOUN
 Mali : NOUN
 Malibu : NOUN
 Manafort : NOUN
@@ -4051,6 +4084,7 @@ Okanogan : NOUN
 Oprah : NOUN
 Oprah Winfrey : NOUN
 Orange County Register : NOUN
+Orangeburg Detention Center : NOUN
 Our Lady of Sorrows : NOUN
 Oxford Street : NOUN
 Oxford Street shopping district: NOUN
@@ -4070,6 +4104,7 @@ PBS program : NOUN
 Pelosi : NOUN
 People’s Liberation Army : NOUN
 Person of the Year : NOUN
+Peter Foley : NOUN
 Pfaffian : ADJ
 Philippine President : NOUN
 Phillips : NOUN
@@ -4143,6 +4178,7 @@ Scotts Miracle-Gro Company : NOUN
 Seal Team Six : NOUN
 Sean Hannity : NOUN
 Sean Suiter : NOUN
+Securities and Exchange Commission : NOUN
 Seminole Heights : NOUN
 Sen. Ben Sasse : NOUN
 Sergei : NOUN
@@ -4215,6 +4251,7 @@ the only right choice : NOUN[:det]
 The Spokesman-Review : NOUN[:det]
 the Taiwan Strait : NOUN[:det]
 The Times : NOUN[:det]
+The Times and Democrat newspaper : NOUN
 the united states-china : ADJ
 The Verge : NOUN [&prop] 0
 the Washington Post : NOUN
@@ -4248,6 +4285,7 @@ trump presidency : NOUN
 Trump Soho hotel : NOUN
 Trump Tower : NOUN
 Ty Cobb : NOUN
+Tyshon Demontrea Johnson : NOUN
 Twitter : NOUN
 U.N. : NOUN
 U.S. : NOUN
@@ -12646,7 +12684,7 @@ electrical shock : NOUN
 electrical skin response : NOUN
 electrical storm : NOUN
 electrical switch : NOUN
-electrical system : ADJ
+electrical system : NOUN
 electrical work : NOUN
 electricity : NOUN
 electron : NOUN
@@ -13298,6 +13336,7 @@ experiment : VERB - -3
 expert : NOUN
 expert : ADJ
 expert witness : NOUN
+expertise : NOUN
 expiration : NOUN
 expire : VERB
 explain : VERB
