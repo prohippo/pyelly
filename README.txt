@@ -590,10 +590,11 @@ Release Notes:
                       add Google News data
  1.4.30  - 26may2018  fix bug in ellyWildcard with check for list index overflow
                       add special check in ellySentenceReader for lone ellipsis
-                      update "indexing" integration test
                       extend and clean up "marking" rules
+                      extend "marking" integration test with news data
+                      update "indexing" integration test
                       update documentation
-                      clean up Google News data
+                      add Google News data and clean up
 
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
