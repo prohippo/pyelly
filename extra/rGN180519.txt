@@ -1,0 +1,77 @@
+
+Prince Harry and Meghan Markle are now officially the Duke and Duchess of Sussex, following a royal wedding watched by millions around the world. About 600 wedding guests were at St. George's Chapel in Windsor Castle, and 200 will stay to join them to party into the night.
+CBS News had extensive live coverage of the royal wedding between Prince Harry and the American actress starting at 4 a.m. ET (9 a.m. GMT) on Saturday, May 19. "CBS This Morning" co-host Gayle King and "Entertainment Tonight" co-host Kevin Frazier anchored the coverage from Windsor Castle, which was televised and streamed live on CBSN, and you can watch the entire broadcast back above.
+In addition to the morning broadcast, CBS News will present a two-hour primetime special called "Royal Romance: The Wedding of Prince Harry and Meghan Markle," which will air Saturday, May 19 at 8 p.m. ET/PT on CBS. The special will recap the events of the day and take viewers into the modern marriage and its impact on the monarchy.
+The couple was set up on a blind date by an unnamed mutual friend in July 2016. "It was through her and then we met once, then twice, back-to-back -- two dates in London last July," Harry said in a BBC interview after their engagement in November 2017. "Then it was I think three, maybe four weeks later that I managed to persuade her to come join me in Botswana and we camped out together under the stars for five days."
+
+A 17-year-old student dressed in a trench coat and armed with a shotgun and pistol opened fire at his high school outside Houston on Friday, killing nine students and a teacher, before surrendering to officers, authorities said.
+Santa Fe High School, southeast of Houston, joined a long list of U.S. campuses where students and faculty have been killed in a spray of gunfire.
+The Texas shooting stoked the nation’s long-running debate over firearms ownership and came about three months after 17 teens and educators were fatally shot in Parkland, Florida.
+Students said the gunman, identified by law enforcement as Dimitrios Pagourtzis, opened fire in an art class shortly before 8 a.m. Students and staff fled and a fire alarm triggered a full evacuation.
+Classmates described Pagourtzis as a quiet loner who played on the football team. On Friday, they said, he wore the trench coat to school in Santa Fe, about 30 miles (50 km) southeast of Houston, on a day when temperatures topped 90 degrees Fahrenheit (32 degrees Celsius).
+Texas Governor Greg Abbott said Pagourtzis obtained firearms from his father, who had likely acquired them legally, and also left behind explosive devices.
+
+An aging airliner crashed Friday shortly after takeoff on a domestic flight in Cuba, officials and Cuban news media reported, leaving more than 100 people dead in an accident that highlighted the precarious state of the country’s commercial aircraft fleet.
+The plane, a Boeing 737-200 leased by state airline Cubana de Aviacion from a small Mexican carrier and operated by a Mexican crew, went down in a field within a couple of miles of Havana’s José Martí International Airport. There were conflicting accounts of the exact number of people on board; Cuban media reported that as many as 105 passengers were listed, plus up to nine foreign crew members.
+The Cuban state-run newspaper Granma did not immediately provide a death toll but said that only three people survived the crash, which occurred at 12:08 Eastern time. It said the three were rushed to a hospital in critical condition.
+Images posted on social media purported to show the crash site minutes after the plane went down, with gray smoke visible in the distance from inside the terminal of Jose Martí International Airport. A schedule showed that the plane was designated as Flight 972, bound for Holguin in the eastern part of Cuba.
+
+Prince Harry and Meghan Markle just became husband and wife. Earlier this morning Kensington Palace announced that their new titles as a married couple would be the Duke and Duchess of Sussex.
+The palace announcement read:
+"The Queen has today been pleased to confer a Dukedom on Prince Henry of Wales. His titles will be Duke of Sussex, Earl of Dumbarton and Baron Kilkeel.
+"Prince Harry thus becomes His Royal Highness The Duke of Sussex, and Ms. Meghan Markle on marriage will become Her Royal Highness The Duchess of Sussex."
+Harry assumed the new title immediately, while Meghan became Duchess as soon as they were married.
+As well as becoming a Duke and Duchess, the Queen has given the couple extra titles to use when they are in Scotland and Northern Ireland.
+They are the Earl and Countess of Dumbarton in Scotland, and Baron and Lady Kilkeel in Northern Ireland.
+
+In mid-July 2016, a retired American professor approached an adviser to Donald Trump’s presidential campaign at a symposium about the White House race held at a British university.
+The professor took the opportunity to strike up a conversation with Carter Page, whom Trump had named a few months earlier as a foreign policy adviser.
+But the professor was more than an academic interested in American politics — he was a longtime U.S. intelligence source. And, at some point in 2016, he began working as a secret informant for the FBI as it investigated Russia’s interference in the campaign, according to people familiar with his activities.
+The role played by the source is now at the center of a battle that has pitted President Trump against his own Justice Department and fueled the president’s attacks on the special counsel’s investigation. In a Thursday tweet, he called the probe “a disgusting, illegal and unwarranted Witch Hunt.”
+In recent days, Trump and his allies have escalated their claims that the FBI source improperly spied on the campaign.
+“Reports are there was indeed at least one FBI representative implanted, for political purposes, into my campaign for president,” he tweeted Friday. “It took place very early on, and long before the phony Russia Hoax became a ‘hot’ Fake News story. If true — all time biggest political scandal!”
+
+Google recently introduced a new Google News app with an entirely updated interface and a range of new features that put it on par with Apple's own News app, including a "For You" recommendation section and "Full Coverage" headlines that present a story from multiple angles. 
+We went hands-on with Google News to check out the new features and to see how it compares to Apple News, the built-in news app that's available on the iPhone and the iPad. 
+The Google News app is a reimagining and revamp to the existing Google Newsstand Play app that was previously available via the iOS App Store. It's been entirely overhauled though, with a simple, clean interface that's fairly similar to the look of Apple News with a dedicated navigation bar at the bottom. 
+Google News does, however, have an additional section for quickly selecting news categories like U.S., World, Business, and Technology. 
+Both apps feature a "For You" section based on personalized recommendations. Apple's draws in information from the categories and news sites you choose to follow, while Google presents a selection of stories that become more tailored over time based on what you choose to read and what you favorite. 
+In each app, you can search for different news sites, blogs, and topics and add them to your coverage lists to impact "For You." Google's For You section highlights a list of five top stories and then provides supplemental stories at the bottom of the list, while Apple organizes For You into top stories, trending stories, top videos, and then recommendations based on channels and topics. 
+
+It’s been a long time since Apple could claim its computers were really virus-free. Even mighty Mac owners have to keep an eye out for the latest vulnerabilities and malware, just like everyone else, and there’s some new malicious Mac software making the rounds that you should know about.
+Spotted by Reddit user BackwardsBinary, “mshelper” is malware that’s designed to hog your Mac’s resources, causing your battery life to plummet (and your laptop to likely get a little warmer and louder). It’s unclear where this malicious code came from or what it’s doing, but one popular theory is that it’s cryptojacking software designed to mine cryptocurrency on your computer without your knowledge. Yuck.
+Cryptojacking can push your processor to overwork itself, potentially causing permanent damage to your computer or mobile device. So, if that’s what we’re dealing with, you’ll want to clean up your Mac as soon as possible. Thankfully, it’s pretty easy to identify and eradicate mshelper.
+The first thing you’ll want to do is confirm whether mshelper is installed on your Mac. To find out, open Activity Monitor and click on the CPU tab. You should see a list of all the apps and software running on your computer. Make sure they’re organized by the amount of resources they’re using (% CPU). If it’s present, mshelper should show up at the top of the list. If it doesn’t show up, you can also reorder the list by name alphabetically to double-check that it’s really not there.
+
+In a race for the most talked-about offseason storyline in college football, it appears the Alabama quarterback saga has picked up some steam.
+Earlier this week, it was reported that Tua Tagovailoa called his dad at some point as a freshman asking if his offer to USC was still on the table.
+"I wanted to leave," Tagovailoa said.
+Tua Tagovailoa thought about transferring more than once at Alabama.
+Former Alabama quarterback and AL.com contributor John Parker Wilson joined "The Roundtable" on WJOX 94.5FM on Friday to give Tide fans some perspective. 
+"Look, we can't be too upset at quarterbacks when they transfer because we just had a quarterback in Jacob Coker who transferred from Florida State and ended up winning a national championship," Wilson said. "So, as an Alabama fan, we've got to be open to it."
+Earlier this week, the UCF self-proclaimed national title story had fuel added to its fire when SiriusXM analyst Danny Kannel called out Alabama Nick Saban for comments about the Knights and their claim.
+Now, the spotlight is back on the Alabama quarterback battle.
+"I think this is just the state of the game, right? It is what it is," Wilson said. "Definitely things have changed. If guys are going to pick up and leave, it's their prerogative. ...
+
+The unnamed FBI informant who President Trump and his Republican allies have suggested was part of an effort to “frame” him during his campaign made contact with several of his aides only after they’d already had suspicious Russia-related contacts, The New York Times reports, citing sources familiar with the matter. The informant’s identity has been at the center of an escalating battle between the FBI and Justice Department, on the one hand, and Trump’s Republican allies, on the other, who claim the informant was wrongfully implanted in Trump’s campaign. The informant is said to have reached out to Trump campaign adviser George Papadopoulos only after the FBI received information he’d spoken of Moscow having “thousands of emails” that would compromise Hillary Clinton. Identified only as an American academic who teaches in Britain and has provided information to U.S. intelligence agencies in the past, the informant reportedly commissioned Papadopoulos to write a research paper and tried to suss him out on any Trump-Russia links during a meeting in London. He also reportedly made contact with former national security adviser Michael Flynn and former Trump aide Carter Page, who told the Times their interactions were benign.
+
+An exchange student from Pakistan, an art teacher, and three students attending her class were among the 10 people savagely gunned down in Friday’s mass shooting at a Santa Fe High School in Texas.
+Sabika Sheikh — who was scheduled to head home to Pakistan next month — was in a State Department-sponsored program to better link the US to the Muslim world, the Pakistani Embassy said on Friday night.
+The manager of the Kennedy-Lugar Youth Exchange & Study (YES) Abroad, which hosted Sheikh, was “devastated” by the girl’s death.
+“It is with great sadness in my heart that I need to inform you that one of our YES students, Sabika Sheikh of Pakistan, was killed today in the school shooting in Santa Fe, Texas,” the program manager, Megan Lysaght, wrote.
+“Please know that the YES program is devastated by this loss and we will remember Sabika and her families (sic) in our thoughts and prayers.”
+The YES program works through the State Department to “promote mutual understanding between the people of the United States and people of countries with significant Muslim populations.”
+
+A doctor who slipped an abortion pill into his pregnant girlfriend's tea was sentenced to 20 years in prison Friday, however, he will serve only three years.
+Brooke Fiske was dating Sikander Imran when the Arlington, Virginia, doctor slipped a drug into her tea he knew could cause her to have a miscarriage, according to Washington, D.C. ABC affiliate WJLA.
+Fiske was 17 weeks pregnant when she went to visit Imran to discuss raising the child, according to WROC. That's when he slipped a pill into her tea, which caused her to go into premature labor hours later. She was rushed to the hospital, but the infant did not survive.
+Doctor fined $30,000 for illegally prescribing Prince medication week before death
+Imran was arrested in May 2017 and pleaded guilty in March to fetal homicide, court records show.
+Despite Fiske's loss, she argued against a stiff penalty for Imran. The doctor, who lost his license following his arrest, faced a minimum of five years and maximum of 40 years in prison for felony, according to Virginia state law.
+
+At least one person was killed and another injured Friday night in a shooting that followed a graduation ceremony in Jonesboro, Ga., authorities told Fox News.
+The shots were fired after an argument broke out in a parking lot near the Clayton County Schools Performing Arts Center, the Clayton County Police Department said. The lot provided overflow parking for those attending a commencement for graduates of the Perry Learning Center, an alternative high school that prepares students for careers.
+“Everyone was stumbling over each other," Latrallo Presley, a family member attending the graduation, told FOX5 Atlanta. “It was caps and gowns everywhere. People just running.”
+Although held on the campus of Mount Zion High School, the event was not for Mount Zion students, authorities said.
+Police said during a news conference that the injured had been transported to a hospital.
+The number of suspects could not be confirmed, but anyone who could have been involved was being sought, police said. Three cars were towed away from the scene as part of the investigation, but officers said they could not release additional information. 
