@@ -386,7 +386,7 @@ g:ELEM[^*l]->VCLU[^-to,-s,-ed,ing]
           >>[!lv,rv]
 _
   var punc=
-  left
+  (etht)
 __
 g:ELEM[^*l]->VCLU[^-to,-s,-ed,-ing]
 #       ?>>?
@@ -394,7 +394,7 @@ g:ELEM[^*l]->VCLU[^-to,-s,-ed,-ing]
          >>[!lv,rv]
 _
   var punc=
-  left
+  (etht)
 __
 g:ELEM[^*l]->VCLU[^-to,-s,ed,-ing]
 #      ?>>?
@@ -4251,4 +4251,18 @@ _
     append to
     end
   merge
+__
+
+p:vbth
+_
+  obtain
+  delete 5 >
+  set tht=T
+__
+
+g:DATE->ADJ[%-*l,-*r,-ed,-ing] DATE
+ l[$time]>>++
+         >>----
+_
+  (twob)
 __
