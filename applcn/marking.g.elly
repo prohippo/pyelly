@@ -272,10 +272,15 @@ __
 p:etht
 _
   var tht=F
+  split
   left
+  back
+  if tht=TB
+    (that)
+    end
+  merge
   if tht=T
-    linefeed
-    append <>that</>
+    (that)
     end
 __
 g:ELEM->THTV
@@ -4265,4 +4270,14 @@ g:DATE->ADJ[%-*l,-*r,-ed,-ing] DATE
          >>----
 _
   (twob)
+__
+
+p:thta
+_
+  split
+  obtain
+  back
+  delete 5 <
+  merge
+  set tht=TB
 __
