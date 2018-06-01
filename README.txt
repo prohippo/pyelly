@@ -590,6 +590,7 @@ Release Notes:
                       add Google News data
  1.4.30  - 26may2018  fix bug in ellyWildcard with check for list index overflow
                       add special check in ellySentenceReader for lone ellipsis
+                      fix problems with inflectional and morphological stemming
                       extend and clean up "marking" rules
                       extend "marking" integration test with news data
                       update "indexing" integration test
