@@ -134,6 +134,7 @@ barrier barrier
 batten batten
 bearish bear
 became become
+bedeviling bedevil
 beefed beef
 began begin
 begun begin
@@ -375,6 +376,7 @@ customary custom
 cyclic cycle
 cylindric cylindr
 cystic cyst
+czarist czar
 dangerous danger
 darkest dark
 darkly dark
@@ -1395,6 +1397,7 @@ sown sow
 spectra spectrum
 spiral spiral
 spiraled spiral
+splendorous splendor
 spoilage spoil
 spoiler spoil
 spoilt spoil
@@ -1427,6 +1430,8 @@ stricken strike
 stricter strict
 stringier string
 strode stride
+stroller stroll
+strolling stroll
 stronger strong
 strongly strong
 struck strike

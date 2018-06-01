@@ -72,6 +72,8 @@ BLOCK ing
     LEN = 6 {FA}
     END {DO MORE}
   IF j {FA}
+  IF sd {SU}
+  IF vve {SU 1}
   IF l
     IF eg
       IF du {SU}
@@ -94,7 +96,6 @@ BLOCK ing
     IF ari {SU}
     IF ta {FA}
     IF fl {FA}
+    if ived {SU}
     END
-  IF sd {SU}
-  IF vve {SU 1}
 DEFAULT {DO MORE}
