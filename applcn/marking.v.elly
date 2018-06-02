@@ -254,6 +254,7 @@ getting : BE[^ing] - +1
 getting : VERB[^ing] - +2
 getting : NOUN[:ing] - -2
 given : VERB[^ed]
+gives ambiguous signals : VERB[^s]
 giving rise : VERB[^ing]
 glowing : VERB[^ing]
 goes on recess : VERB[^s]
@@ -390,6 +391,7 @@ made contact with : VERB[^ed]
 made headlines : VERB[^ed]
 made it clear : VERB[^ed,dit]
 made its way : VERB[^ed]
+made me realize that : VERB[^ed]
 made no secret of : VERB[^ed]
 made public : VERB[^ed]
 made use of : VERB[^ed]
@@ -523,6 +525,7 @@ related : VERB[^ed]
 released from jail : VERB[^ed]
 remaining : VERB[^ing] - -1
 remains : VERB[^s,proc] - +3
+remains inactive : VERB[^s]
 repaid : VERB[^ed]
 repeated : VERB[^ed]
 repeatedly touched on : VERB[^ed]
@@ -550,6 +553,7 @@ sang : VERB[^ed]
 sarcophagi : NOUN[:plur]
 sat : VERB[^ed]
 sat down : VERB[^ed,*x]
+scrolling through : VERB[^ing]
 secretly ghostwriting : VERB[^ing]
 seemed to : AUXL
 seen : VERB[^ed]
@@ -716,6 +720,7 @@ went missing : VERB[^ing]
 went out of business : VERB[^ed]
 went viral : VERB[^ed]
 when it comes to : CONJ
+will therefore : AUXL
 withdrew : VERB[^ed]
 withdrew their support : VERB[^ed]
 won : VERB[^ed] - +2
@@ -871,6 +876,8 @@ all of whom : CONJ
 all of you : PRO
 all of you here : PRO
 all our : QUAN
+all over the world : ADJ [$trlg] +1
+all over the world : ADV - -2
 all that : ALLTHT
 alleged affair : NOUN
 alleged incident : NOUN
@@ -879,6 +886,7 @@ allegedly being : BE[^ing]
 along with : PREP
 already on its way : ADV
 also known as : CONJ
+ambiguous signal : NOUN
 ambitious effort : NOUN
 american consumer : NOUN
 american embassy : NOUN
@@ -932,6 +940,7 @@ as could : CONJ
 as far afield as : CONJ
 as far as : CONJ
 as he saw fit : ADV
+as i did : ADV
 as if : CONJ
 as long as : CONJ
 as many as : QUAN
@@ -1224,6 +1233,7 @@ corrections officer : NOUN
 corrupt regime : NOUN
 corruption case : NOUN
 corruption investigation : NOUN
+cost spike : NOUN
 council dais : NOUN
 counterproliferation : NOUN
 country music’s hometown : NOUN
@@ -1250,6 +1260,7 @@ curate : VERB
 current and former : ADJ
 current events : NOUN[:plur]
 current leader : NOUN
+customs union : NOUN
 cut ties with : VERB
 cyber : ADJ
 cyberattack : NOUN
@@ -1378,6 +1389,7 @@ enemies list : NOUN
 energy commissioner : NOUN
 energy lobbyist : NOUN
 engage in a dialogue : VERB
+engage in sexual activity : VERB
 engine production : NOUN
 engineering council : NOUN
 entirely consistent : ADJ
@@ -1499,6 +1511,7 @@ fourpenny : NOUN - +1
 freedom ride : NOUN
 from above : PREP
 from across : PREP
+from all over the world : ADJ [$trlg] 0
 from around : PREP
 from beginning to end : ADV
 from beyond : PREP
@@ -1586,6 +1599,7 @@ hate group : NOUN
 have done so : VERB[^hav,ed]
 have legal standing : VERB
 have no place : VERB
+have to act on : VERB
 have yet to be verified : VERB
 hazing related : ADJ
 he or she : PRO
@@ -1618,6 +1632,7 @@ his royal highness : DEM[@ind]
 historic election : NOUN
 hit job : NOUN
 hold a suspect in custody : VERB
+hold accountable : VERB
 hold up in court : VERB
 holster : VERB
 home detention : NOUN
@@ -1792,6 +1807,8 @@ into trouble : ADV
 into whether : CONJ
 ipad : NOUN
 iphone : NOUN
+irish citizen : NOUN
+irish people : NOUN
 irrespective of whether : CONJ
 is in violation of : VERB
 is now clear that : VERB
@@ -1848,6 +1865,7 @@ keep things quiet : VERB
 key figure : NOUN
 key part : NOUN
 key sanctions : NOUN[:plur]
+kitchen table : NOUN
 knife crime : NOUN
 know nothing at all : VERB
 knowingly false : ADJ
@@ -1888,6 +1906,7 @@ lead up : NOUN - -4
 leadership role : NOUN
 leap of faith : NOUN
 leaps and bounds : NOUN[:plur]
+learn more about : VERB
 leave doubt : VERB
 leave without him : VERB
 legal challenge : NOUN
@@ -1939,6 +1958,7 @@ major victory : NOUN
 make available : VERB
 make the payment to : VERB
 make use of : VERB
+make their voices heard : VERB
 making it very likely that : VERB[^ing] (VBTH)
 male and female : NOUN
 male and female : ADJ - +1
@@ -2061,6 +2081,7 @@ multiple times : ADV
 multiple, multiple : ADJ
 murder trial : NOUN
 muslim tradition : NOUN
+mutter under their breath : VERB
 mutual friend : NOUN
 mutual understanding : NOUN
 namesake company : NOUN
@@ -2125,6 +2146,7 @@ nuclear technology : NOUN
 nuclear weapons : NOUN
 nuclear weapons program : NOUN
 nude photo : NOUN
+obstacles to trade : NOUN[:plur]
 obstruct justice : VERB
 ocean water : NOUN
 of how : CONJ
@@ -2390,6 +2412,7 @@ rally support for : VERB
 rapidly melting : ADJ
 rapidly mounting : ADJ
 realization that : NOUN (nmth)
+realize that : VERB
 reassignment surgery : NOUN
 rebaptizer : NOUN
 rebel stronghold : NOUN
@@ -2397,10 +2420,12 @@ recent attempt : NOUN
 recent trip : NOUN
 recent trouble : NOUN
 recording artist : NOUN
+red and blue america : NOUN
 red rock : NOUN
 redraw : VERB
 reduce costs : VERB
 reelection win : NOUN
+referendum vote : NOUN
 refile : VERB
 refugee crisis : NOUN
 regardless of : PREP
@@ -3185,6 +3210,7 @@ in remarks : ADV
 in turning around : NOUN[:prep]
 incorrectly reported : VERB[^ed]
 increasingly say : VERB
+incredibly heartening : ADJ
 information commissioner : NOUN
 injured and mentally unstable man : NOUN
 insurgents groups : NOUN[:plur]
@@ -3216,6 +3242,7 @@ orange snow : NOUN
 personal narrative : NOUN
 parkland mass shooting : NOUN
 picked him up : VERB[^ed,*r]
+plane selfie : NOUN
 potentially unpalatable deal : NOUN
 primetime : ADJ
 public plea for help : NOUN
@@ -3976,6 +4003,7 @@ Instagram : NOUN
 Institute for Radio Astronomy Millimetrique : NOUN[:*r]
 Intel : NOUN
 International Criminal Tribunal : NOUN
+International Monetary Fund : NOUN
 Interstate 95 corridor : NOUN
 Iraq and Afghanistan Veterans of America : NOUN
 Irving : NOUN
@@ -4266,6 +4294,7 @@ Russell Simmons : NOUN
 Russian colleague : NOUN
 Russian President : NOUN
 Russian President Vladimir Putin : NOUN
+Russian State Television : NOUN
 Russia-friendly : ADJ
 S.A.F. : NOUN
 Saakashvili : NOUN
@@ -4294,6 +4323,7 @@ Sergey : NOUN
 Sergey Kislyak : NOUN
 Shi‘ite : NOUN
 Shindake : NOUN
+Shinzo Abe : NOUN
 Ship of Fools : NOUN
 Showcase Presentations : NOUN
 Sikander : NOUN
@@ -5087,7 +5117,7 @@ almost : ADV[~mod,prox,int]
 alone : ADJ
 alone : ADV
 along : ADV - -1
-alongside : ADV
+alongside : ADV - -2
 alphabet : NOUN
 alphabet soup : NOUN
 alphabetically : ADV
@@ -16792,6 +16822,7 @@ heartbreaking : ADJ
 heartbroken : ADJ
 heartburn : NOUN
 hearten : VERB
+heartening : ADJ
 heartfelt : ADJ
 heartland : NOUN
 heat : NOUN
@@ -21488,6 +21519,7 @@ monarch : NOUN
 monarch butterfly : NOUN
 monarchy : NOUN
 monday : NAVB
+monetary : ADJ
 monetize : VERB
 money : NOUN
 money belt : NOUN
@@ -21561,6 +21593,7 @@ morally : ADV
 more : NOUN - -3
 more : ADJ[%to]
 more : ADV[~trlg] [$deg] 0
+more and more : ADV
 more often than not : ADV
 more or less : ADV
 moreover : ADV
