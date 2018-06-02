@@ -561,6 +561,7 @@ serving as : VERB[^ing]
 setting : VERB[^ptcl,ing] - +1
 setting off : VERB[^ing]
 setting the tone : VERB[^ing]
+sexually assaulted : VERB[^ed]
 setting up : VERB[^ing]
 she believed was : BE[^ed]
 shifted its focus to : VERB[^ed]
@@ -995,9 +996,9 @@ bat and ball : ADJ
 beatle : NOUN
 because of : PREP
 before dawn : ADV
+before midnight : ADV
 before noon : ADV
 before sunset : ADV
-before midnight : ADV
 before the ink could dry : ADV
 before which : CONJ
 belief that : NOUN (nmth)
@@ -1013,6 +1014,7 @@ better than : PREP
 better than even chance : NOUN
 bigger and bigger : ADJ
 biggest customers : NOUN[:plur]
+bill signing ceremony : NOUN
 binding commitment : NOUN
 bipartisan gang of 8 : NOUN
 birther : NOUN
@@ -1022,6 +1024,7 @@ black girl : NOUN
 black powder : NOUN
 blanket of snow : NOUN
 bloody mess : NOUN
+body cam video : NOUN
 body of water : NOUN
 boil over : VERB
 boiling point : NOUN
@@ -1156,6 +1159,7 @@ circuit attorney : NOUN
 city leader : NOUN
 civil defense agency : NOUN
 civil liability : NOUN
+civil rights violation : NOUN
 clandestine officer : NOUN
 clean energy : NOUN
 clerical rule: NOUN
@@ -1206,9 +1210,9 @@ conspiracy theory : NOUN
 constitutional amendment : NOUN
 constitutional crisis : NOUN
 constitutional limit : NOUN
-contract that : NOUN[:*l] (nmth)
 construction permit : NOUN
 container transport : NOUN
+contract that : NOUN[:*l] (nmth)
 core constituency : NOUN
 core element : NOUN
 core mission : NOUN
@@ -1285,10 +1289,12 @@ demilitarization : NOUN
 democratic republic : NOUN
 denuclearization : NOUN
 denuclearize : VERB
+department of public safety : NOUN
 deployment of missiles : NOUN
 deputy campaign chairman : NOUN
 deputy director general : NOUN
 designer handbag : NOUN
+developing country : NOUN
 development team : NOUN
 die roll : NOUN
 digital ethics : NOUN
@@ -1298,6 +1304,7 @@ diplomatic mechanisms : NOUN[:plur]
 diplomatic overture : NOUN
 diplomatic recognition : NOUN
 diplomatic script : NOUN
+diplomatic tie : NOUN
 diplomatic tone : NOUN
 direct response : NOUN
 disastrous result : NOUN
@@ -1355,6 +1362,7 @@ early next week : ADV
 early years : NOUN
 earthquake prediction : NOUN
 eastern europe : NOUN
+eastern ukraine : NOUN
 economic council : NOUN
 economic summit : NOUN
 election meddling : NOUN
@@ -1475,9 +1483,9 @@ foreign force : NOUN
 foreign government : NOUN
 foreign intelligence : NOUN
 foreign land : NOUN
+foreign leader : NOUN
 foreign ministry : NOUN
 foreign ministry spokesman : NOUN
-foreign leader : NOUN
 foreign money : NOUN
 foreign policy advisor : NOUN
 foreign secretary : NOUN
@@ -1525,6 +1533,7 @@ give them new life : VERB
 global attention : NOUN
 global financial crisis : NOUN
 global shipping company : NOUN
+global stage : NOUN
 glowing recommendation : NOUN
 go into much more detail : VERB
 gold and silver : NOUN
@@ -1748,6 +1757,7 @@ initial mandate : NOUN
 innocuously : ADV
 innovation fund : NOUN
 ins and outs : NOUN[:plur]
+inside and outside of : PREP
 insider account : NOUN
 insofar as : CONJ
 instead of : PREP
@@ -1996,10 +2006,12 @@ military supremacy : NOUN
 military threat : NOUN
 minimum age : NOUN
 minimum sentence : NOUN
+ministry of finance : NOUN
 minor amounts of : QUAN
 minor eye injury : NOUN
 mischaracterization : NOUN
 mischaracterize : VERB
+missile convoy : NOUN
 missile exchange : NOUN
 missile firing table : NOUN
 missile force : NOUN
@@ -2126,7 +2138,9 @@ of which : CONJ[@rel]
 of whom : CONJ[@rel]
 off the map : ADV
 offer diplomatic recognition : VERB
+official central news agency : NOUN
 official confirmation : NOUN
+official figures : NOUN[:plur]
 official news agency : NOUN
 official source : NOUN
 official statement : NOUN
@@ -2503,6 +2517,7 @@ senate committee : NOUN
 senate republican : NOUN
 senior general : NOUN
 senior level : NOUN
+senior ranks : NOUN[:plur]
 senior trump administration official : NOUN
 senior u.s. official : NOUN
 sensitive conversation : NOUN
@@ -2580,6 +2595,8 @@ southern city : NOUN
 southern parts : NOUN[:plur]
 southern state : NOUN
 southwest to : PREP
+sovereign nation : NOUN
+sovereign wealth fund : NOUN
 space authority : NOUN
 special clearance : NOUN
 special counsel : NOUN
@@ -2601,6 +2618,7 @@ staff secretary : NOUN
 star system : NOUN
 state and local : ADJ
 state ceremony : NOUN
+state fund : NOUN
 state media : NOUN
 state of war : NOUN
 state police : NOUN
@@ -2638,6 +2656,7 @@ suspect or suspects : NOUN
 suspected case : NOUN
 suspected criminal wrongdoing : NOUN
 suspected terrorist : NOUN
+suspicious contact : NOUN
 suss him out : VERB
 swarm robot : NOUN
 systemic injustice : NOUN
@@ -2671,6 +2690,7 @@ terror organization : NOUN
 terrorism suspect : NOUN
 terrorist gang : NOUN
 texans : NOUN[:plur]
+texas state trooper : NOUN
 text message : NOUN
 than ever : CMPC
 than ever before : CMPC
@@ -2682,9 +2702,9 @@ that believe in : THTV
 that can be faced : ADJ
 that comes : THTV
 that continued : THTV
-that i    : PRO[=*l]
 that he   : PRO[=*l]
 that he’s not inclined : THTV
+that i    : PRO[=*l]
 that it   : PRO[=*l]
 that it's not known : THTV
 that mr.  : PRO[=*l,*x]
@@ -2710,6 +2730,7 @@ the day after : CONJ - -2
 the day before : PREP
 the day before : CONJ - -2
 the default is : VERB
+the early stages : NOUN[:plur]
 the entirety : NOUN
 the fifth amendment : NOUN
 the first time : NAVB[:*x]
@@ -2803,6 +2824,7 @@ transracial : ADJ
 trauma doctor : NOUN
 travel conditions : NOUN[:plur]
 trove of information : NOUN
+trump campaign adviser : NOUN
 turn himself in : VERB
 turn state’s witness : VERB
 turn themselves in : VERB
@@ -2848,6 +2870,7 @@ underutilize : VERB
 unexplored depths : NOUN
 unfair media : NOUN
 union force : NOUN
+united states military : NOUN
 unity deal : NOUN
 unlikely to be persuaded : ADJ
 unpalatable deal : NOUN
@@ -3187,6 +3210,7 @@ or more accurately, : ADV
 over the past two years : ADV
 new and bloodier : ADJ
 nuclear and missile : ADJ
+on the global stage : ADV
 on what the news agency described as : CONJ
 orange snow : NOUN
 personal narrative : NOUN
@@ -3377,6 +3401,7 @@ decades-old : ADJ
 decades-old conflict : NOUN
 decision-making : ADJ
 decision-making process : NOUN
+dixon-cole : NOUN
 do-whatever-you-want : ADJ
 double-check : VERB
 dramatic scene : NOUN
@@ -3500,6 +3525,7 @@ no-go : ADJ
 no-go zone : NOUN
 no-win situation : NOUN
 non-cardiovascular : ADJ
+non-senior : ADJ
 non-state : ADJ
 north-south : ADJ
 not-guilty : ADJ
@@ -3569,6 +3595,7 @@ self-deprecating : NOUN
 self-deprecating : ADJ
 self-defensive : ADJ
 self-proclaimed : ADJ
+self-ruled : ADJ
 semi-automatic weapon : NOUN
 semi-autonomous : ADJ
 seventh-grader : NOUN
@@ -3645,7 +3672,9 @@ yet-to-be-released : NOUN
 
 # # # # some names to recognize explicitly
 
+1MDB : NOUN
 16th Street Baptist Church : NOUN
+1Malaysia Development Berhad : NOUN
 A Higher Loyalty : NOUN
 A New Day Has Come : NOUN
 Aaron C. Davis : NOUN
@@ -3775,6 +3804,7 @@ Colorado Civil Rights Commission : NOUN
 Comey : NOUN
 Conor Lamb : NOUN
 Conservative Political Action Conference : NOUN
+Convertible Cumulative Preference : NOUN
 Coolio Earth Partnership : NOUN
 Corey Lewandowski : NOUN
 Côte d'Azur : NOUn
@@ -3824,6 +3854,7 @@ DPRK : NOUN
 Dr. Harold Bornstein : NOUN
 Duda : NOUN
 Dugs : NOUN
+Dutch city of Utrecht : NOUN
 Early Realist : ADJ
 Eastern Pacific Shipping : NOUN
 Ebay : NOUN
@@ -4115,6 +4146,7 @@ Mugabe : NOUN
 Moammar Gaddafi : NOUN
 Murphy : NOUN
 Mykonos : NOUN
+Nasional Berhad : NOUN
 Najib Razak : NOUN
 Narendra Modi : NOUN
 Natalia Veselnitskaya : NOUN
@@ -23735,6 +23767,7 @@ pay claim : NOUN
 pay cut : NOUN
 pay dirt : NOUN
 pay envelope : NOUN
+pay for : VERB
 pay heed : VERB
 pay off : VERB
 pay out : VERB
@@ -26354,6 +26387,7 @@ redact : NOUN
 redact : VERB
 redden : VERB
 redeem : VERB
+redeemable : ADJ
 redevelop : VERB
 redirect : VERB
 redirect examination : NOUN
@@ -31373,6 +31407,8 @@ taint : NOUN
 taint : VERB
 taiwan : NOUN
 taiwan dollar : NOUN
+taiwanese : NOUN
+taiwanese : ADJ
 taj mahal : NOUN
 take : NOUN - -1
 take : VERB[^ptcl] - +2

@@ -4281,3 +4281,12 @@ _
   merge
   set tht=TB
 __
+
+g:ELEM->CMPC
+  >>----
+_
+  linefeed
+  append <adv>
+  right
+  append </adv>
+__
