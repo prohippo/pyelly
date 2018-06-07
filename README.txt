@@ -596,7 +596,12 @@ Release Notes:
                       update "indexing" integration test
                       update documentation
                       add Google News data and clean up
-
+ 1.4.31  - 06jun2018  fix major bug in ellyWildcard matching algorithm
+                      extend and clean up "marking" rules
+                      extend "marking" integration test with news data
+                      update documentation
+                      add Google News data and clean up
+                      
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
 correct operation. Changes only to PyElly sample application definition files,
