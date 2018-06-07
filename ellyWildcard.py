@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 26may2018 CPM
+# ellyWildcard.py : 04jun2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -469,11 +469,12 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
         """
         mbd[mbi].append(None)
 
-    def _mark ( kind , nsp=0 ):
+    def _mark ( kind , nsp ):
         """
         set up for backing up pattern match
         arguments:
             kind  - 0=optional 1=* wildcard
+            nsp   - number of spaces in pattern still unmatched
         returns:
             unwinding frame
         """
@@ -550,7 +551,7 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
 
         ## literally match as many next chars as possible
 
-#       print 'loop mp=' , mp , 'ml=' , ml
+#       print '---- loop mp=' , mp , 'ml=' , ml
         while mp < ml:
             if offs >= limt:
 #               print "offs=",offs,"limt=",limt
@@ -602,13 +603,13 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
 
             ## save info for restart of matching on subsequent failure
 
-            bf = _bind(nm); mbi += 1  # get new binding record
-            bf[0] = offs              # bind from current offset
-            offs += nm                # move offset past end of span
-            bf[1] = offs              # bind to   new     offset
-#           print "offs=",offs
-            uf = _mark(1); unj += 1   # get new unwinding record
-            uf.count = nm             # can back up this many times on mismatch
+            bf = _bind(nm); mbi += 1     # get new binding record
+            bf[0] = offs                 # bind from current offset
+            offs += nm                   # move offset past end of span
+            bf[1] = offs                 # bind to   new     offset
+#           print "offs=",offs,'nm=',nm
+            uf = _mark(1,nsps); unj += 1 # get new unwinding record
+            uf.count = nm                # can back up this many times on mismatch
             continue
 
         elif tc == cEND: # end specification
@@ -683,34 +684,34 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
         elif tc == cSOS:
 #           print "SOS"
 #           print last,'@',offs
-            mf = _bind(0); mbi += 1   # dummy record to block
-            mf[0] = -1                #   later binding consolidation
+            mf = _bind(0); mbi += 1      # dummy record to block
+            mf[0] = -1                   #   later binding consolidation
             if last != '':
-                offs -= 1             # try for rematch
-            m = mp                    # find corresponding EOS
-            while m < ml:             #
+                offs -= 1                # try for rematch
+            m = mp                       # find corresponding EOS
+            while m < ml:                #
                 if patn[m] == cEOS: break
                 m += 1
-            else:                     # no EOS?
-                m -= 1                # if so, pretend there is one anyway
-            uf = _mark(0); unj += 1   # for unwinding on any later match failure
-            uf.pats = m + 1           # i.e. one char past next EOS
-            uf.txts = offs            # start of text before optional match
+            else:                        # no EOS?
+                m -= 1                   # if so, pretend there is one anyway
+            uf = _mark(0,nsps); unj += 1 # for unwinding on any later match failure
+            uf.pats = m + 1              # i.e. one char past next EOS
+            uf.txts = offs               # start of text before optional match
             continue
 
         elif tc == cEOS:
 #           print "EOS"
             if last != '':
-                offs -= 1             # back up for rematch
+                offs -= 1                # back up for rematch
             continue
 
         elif tc == cSAN or tc == cSDG or tc == cSAL:
 #           print 'spanning wildcard, offs=' , offs , 'last=(' + last + ')'
-            if last != '':            # still more to match?
+            if last != '':               # still more to match?
                 offs -= 1
 #               print 'nsps=' , nsps
 #               print '@' , offs , text
-                nm = _span(tc,nsps)   # maximum match possible
+                nm = _span(tc,nsps)      # maximum match possible
 
                 if nm == 0:                             # compensate for findExtendedBreak peculiarity
                     if offs + 1 < limt and mp < ml:     # with closing ] or ) to be matched in pattern
@@ -723,7 +724,7 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
                     bf[0] = offs      # bind from current offset
                     offs += nm        # move offset past end of span
                     bf[1] = offs      # bind to   new     offset
-                    uf = _mark(1); unj += 1
+                    uf = _mark(1,nsps); unj += 1
                     uf.count = nm - 1 # at least one char must be matched
 #                   print 'offs=' , offs
                     last = text[offs] if offs < limt else ''
@@ -834,6 +835,7 @@ if __name__ == "__main__":
     if nspx > 0 and not spcg:
         print >> sys.stderr , "** space in pattern without second command line argument"
         sys.exit(1)
+    print 'nspx=' , nspx
 
     print "pat=" , rawp , "converted to" , list(patx)
 
