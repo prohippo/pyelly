@@ -2233,7 +2233,7 @@ g:ADJ[%cnj,*r]->CONJ[@cnj] ADJ[%-*x]
 _
   (twob)
 __
-g:ADJ[%*r,-cnj]->ADJ[%-*x] ADJ[%cnj]
+g:ADJ[%*r,-cnj]->ADJ[%-*r,-*x] ADJ[%cnj]
  >>*r++++
 _
   (twob)
@@ -2837,7 +2837,7 @@ __
 d:whose <- DEM[@ind]
 __
 d:which <- DEM[@ind]
- >>-
+ >>--
 __
 d:what  <- DEM[@ind]
 __
@@ -2888,7 +2888,6 @@ d:else     <- CONJ[@*r]
 __
 
 d:all  <- QUAN[@ind,cnj,adv]
- >>[!mltp]
 __
 d:any  <- QUAN[@ind]
 __
@@ -3754,7 +3753,9 @@ _
 __
 
 g:ADJ[%*r]->QUAN[@cnj,ind,adv] ADJ
- >>+
+ n>4>>------
+ n>2>>--
+    >>+
 _
   (advb)
 __
@@ -4290,3 +4291,21 @@ _
   right
   append </adv>
 __
+
+g:ADJX[%*r]->PUNC[|*l,-quo] ADJ
+ >>++
+_
+  append <punc>
+  left
+  append </punc>
+  right
+__
+g:ADJ[%*l,pexp,-*l]->ADJX[%-lquo] PUNC[|*r,-quo]
+ >>+8
+_
+  left
+  append <punc>
+  right
+  append </punc>
+__
+
