@@ -96,6 +96,7 @@ came : VERB[^ed]
 came under fire : VERB[^ed]
 carried out : VERB[^ed]
 carrying out : VERB[^ing]
+carted away : VERB[^ed]
 caught : VERB[^ed] [$trns] 0
 caught wind : VERB[^ed]
 centered around : VERB[^ed]
@@ -351,6 +352,7 @@ is on again : VERB[^s]
 is on track to : AUXL[^s]
 is said to : ADV
 isolated : VERB[^ed] - -1
+issued a directive : VERB[^ed]
 it does not appear that : ADV
 it is not inconceivable : VERB[^s]
 it often seems that : ADV
@@ -373,6 +375,7 @@ led : NOUN - -2
 led : VERB[^ed]
 led to panic : VERB[^ed]
 lengthier : ADJ
+lies on : VERB[^s]
 lifted up : VERB[^ed]
 limited : VERB[^ed] - -1
 linked to : PREP
@@ -395,6 +398,7 @@ made contact with : VERB[^ed]
 made headlines : VERB[^ed]
 made it clear : VERB[^ed,dit]
 made its way : VERB[^ed]
+making landfall : VERB[^ing]
 made me realize that : VERB[^ed]
 made no secret of : VERB[^ed]
 made public : VERB[^ed]
@@ -522,6 +526,7 @@ received : VERB[^ed]
 received instructions : VERB[^ed]
 received access to : VERB[^ed]
 redrew : VERB[^ed]
+refusing to back  : VERB[^ing]
 regarding : PREP - +1
 regarding : NOUN - -1
 regarding : VERB[^ing]
@@ -673,6 +678,7 @@ took place : VERB[^ed]
 tore : VERB[^ed]
 tore up : VERB[^ed]
 torn : VERB[^ed]
+torn apart : VERB[^ed]
 touched upon : VERB[^ed]
 tried to call 911 :  VERB[^ed]
 tracking : VERB[^ing]
@@ -829,6 +835,7 @@ a third the : NUM
 a thousand : NUM
 a wave of : QUAN
 a year in prison : NOUN[:det,num]
+abortion rules : NOUN[:plur]
 about a week : ADV
 about a week ago : ADV
 about half an hour after : CONJ
@@ -880,6 +887,7 @@ all day wednesday : NAVB
 all evening : ADV
 all in there : ADV
 all of : QUAN
+all of it : NOUN
 all of them : NOUN
 all of whom : CONJ
 all of you : PRO
@@ -1035,6 +1043,7 @@ biggest customers : NOUN[:plur]
 bill signing ceremony : NOUN
 binding commitment : NOUN
 bipartisan gang of 8 : NOUN
+bipartisan law : NOUN
 birther : NOUN
 black boy : NOUN
 black community : NOUN
@@ -1066,6 +1075,7 @@ breakneck speed : NOUN
 breathing : VERB[^ing]
 bringing back into practice : VERB[^ing]
 bringing threats of : VERB[^ing]
+british prime minister : NOUN
 british soil : NOUN
 broadcast live : VERB
 broke out : VERB[^ed]
@@ -1162,6 +1172,7 @@ chief cabinet secretary : NOUN
 chief pentagon spokesman : NOUN
 chief pentagon spokeswoman : NOUN
 child custody hearing : NOUN
+child trafficking : NOUN
 children : NOUN[:plur]
 chinese imports : NOUN[:plur]
 chinese military : NOUN
@@ -1198,6 +1209,7 @@ college graduate : NOUN
 colored slave : NOUN
 coming off of : PREP
 commercial terminal : NOUN
+common theme : NOUN
 communicate with the outside world : VERB
 communication line : NOUN
 communications director : NOUN
@@ -1268,6 +1280,7 @@ cross their t’s : VERB
 cryptic statement : NOUN
 cryptocurrency : NOUN
 cryptojack : VERB
+culture wars clash : NOUN
 curate : VERB
 current and former : ADJ
 current events : NOUN[:plur]
@@ -1387,6 +1400,7 @@ early next week : ADV
 early years : NOUN
 earthquake prediction : NOUN
 eastern europe : NOUN
+eastern gulf coast : NOUN
 eastern ukraine : NOUN
 economic council : NOUN
 economic summit : NOUN
@@ -1409,6 +1423,7 @@ engineering council : NOUN
 entirely consistent : ADJ
 entry point : NOUN
 environment protection : NOUN
+equal rights : NOUN[:plur]
 estimative : ADJ
 ethical question : NOUN
 even as : CONJ
@@ -1433,6 +1448,7 @@ extremely tense situation : NOUN
 eye injury : NOUN
 facebook page : NOUN
 facebook video : NOUN
+faces a showdown : VERB[^s]
 factional : ADJ
 factional fighting : NOUN
 failed candidate : NOUN
@@ -1446,6 +1462,7 @@ family member : NOUN
 family show : NOUN
 fan favorite : NOUN
 far beyond : ADV
+far higher : ADJ
 far reaching : ADJ
 far too weak : ADJ
 fatal shooting : NOUN
@@ -1575,6 +1592,7 @@ gov. : NOUN
 governing body : NOUN
 governing coalition : NOUN
 governing party : NOUN
+government bond issuance : NOUN
 government figure : NOUN
 government rule : NOUN
 government vehicle : NOUN
@@ -1641,6 +1659,7 @@ higher pay : NOUN
 higher-quality : ADJ
 highest principles : NOUN[:plur]
 highly likely : ADV
+highly restrictive : ADJ
 hiking trail : NOUN
 hindu temple : NOUN
 his highness : DEM[@ind]
@@ -2021,6 +2040,7 @@ medical treatment : NOUN
 medically stable : ADJ
 member state : NOUN
 memo to staff : NOUN
+memorial day weekend : NOUN
 mentally unstable : ADJ
 metallicity : NOUN
 meth lab : NOUN
@@ -2105,6 +2125,7 @@ muslim tradition : NOUN
 mutter under their breath : VERB
 mutual friend : NOUN
 mutual understanding : NOUN
+named storm : NOUN
 namesake company : NOUN
 nano : NOUN
 nano robot : NOUN
@@ -2276,7 +2297,6 @@ overland mail : NOUN
 overwhelming consensus : NOUN
 pacific nation : NOUN
 palestinian negotiator : NOUN
-aath of change : NOUN
 panel commissioner : NOUN
 pants on fire : ADJ
 parallel investigation : NOUN
@@ -2466,6 +2486,7 @@ related to : PREP
 relative newcomer : NOUN
 relentless counterattack : NOUN
 relicense : VERB
+religious liberty : NOUN
 religious organization : NOUN
 relist : VERB
 remain open : VERB
@@ -2481,13 +2502,16 @@ reporting tactics : NOUN
 republican governor : NOUN
 republican leader : NOUN
 republican party chairman : NOUN
+republican president : NOUN
 rescue crew : NOUN
 research and development : NOUN
 research commission : NOUN
 research firm : NOUN
 research paper : NOUN
 residential floor : NOUN
+residential neighborhood : NOUN
 results page : NOUN
+respective jurisdictions : NOUN[:plur]
 return to classes : VERB
 retweet : VERB
 rev. : NOUN
@@ -2513,6 +2537,7 @@ rocket strike : NOUN
 rockin' : ADJ
 role she played : NOUN
 roll back : VERB
+rough surf : NOUN
 round at : PREP
 rpg : NOUN
 rules of engagement : NOUN
@@ -2685,6 +2710,7 @@ step back from : VERB
 step foot : VERB
 steward of the economy : NOUN
 stop playing : VErB
+store owner : NOUN
 story that : NOUN (nmth)
 storytelling : NOUN
 straight after : CONJ
@@ -2695,6 +2721,7 @@ stun grenade : NOUN
 stunning upset : NOUN
 submillimeter  : ADJ
 substantial issues : NOUN[:plur]
+subtropical storm : NOUN
 such a  : QUAN
 such a, such a : QUAN
 such an : QUAN
@@ -2775,6 +2802,7 @@ that there : THAV
 that we   : PRO[=*l]
 that year : NAVB[:det]
 thaw with russia : NOUN
+the State of Qatar : NOUN
 the above : ADJ
 the armed forces : NOUN[:plur]
 the authorities : NOUN[:plur,det]
@@ -2814,6 +2842,7 @@ the police shooting : NOUN
 the possibility that : NCTH
 the question of whether : CONJ
 the rule of law : NOUN
+the run up : NOUN[:det]
 the same way : ADV
 the several : QUAN[@ind]
 the sidelines : NOUN
@@ -2866,11 +2895,11 @@ top aide : NOUN
 top forty : NUM
 top forty hit : NOUN
 top lieutenant : NOUN
+top sustained winds : NOUN
 tough policy : NOUN
 tourism sector : NOUN
 tourist destination : NOUN
 toxic chemical : NOUN
-toxic gas : NOUN
 trackwork : NOUN
 trade agreement : NOUN
 trade dispute : NOUN
@@ -2882,10 +2911,13 @@ trading partner : NOUN
 traditional clothing : NOUN
 traditional focus : NOUN
 traffic stop : NOUN
+trafficking of goods : NOUN
 training flight : NOUN
 transracial : ADJ
 trauma doctor : NOUN
 travel conditions : NOUN[:plur]
+tropical storm : NOUN
+tropical storm warning : NOUN
 trove of information : NOUN
 trump campaign adviser : NOUN
 turn himself in : VERB
@@ -3007,6 +3039,7 @@ what's going on : NOUN
 when asked by reporters : ADV
 whenever and wherever : CONJ
 whether or not : CONJ
+which in turn : CONJ
 which it said : CONJ
 white evangelical : NOUN
 white house official : NOUN
@@ -3462,6 +3495,7 @@ custom-made : ADJ
 cut-through : NOUN
 cyber-attack : NOUN
 cyber-intrusion : NOUN
+d-calif. : NOUN
 daughter-in-law : NOUN
 deadline-missing : ADJ
 debt-financed : ADJ
@@ -3547,6 +3581,7 @@ iraqi-syrian : ADJ
 israeli-palestinean : ADJ
 itinerant-by-choice : NOUN
 kremlin-connected : ADJ
+lava-filled : ADJ
 left-turn : ADJ
 left-wing : ADJ
 left-wing politics : NOUN
@@ -3574,6 +3609,7 @@ mid-term : ADJ
 military-grade : ADJ
 millimeter-wave : ADJ
 mind-boggling : ADJ
+mississippi-alabama border : NOUN
 mixed-species : ADJ
 modern-day :ADJ
 months-long : ADJ
@@ -3597,6 +3633,8 @@ non-cardiovascular : ADJ
 non-member : NOUN
 non-senior : ADJ
 non-state : ADJ
+north-northeast : ADJ
+north-northeast : ADV - +2
 north-south : ADJ
 not-guilty : ADJ
 ocean-view home : NOUN
@@ -3742,6 +3780,7 @@ world-renowned : ADJ
 would-be : ADJ
 wrap-up : NOUN
 yet-to-be-released : NOUN
+zero-tolerance : ADJ
 
 # # # # some names to recognize explicitly
 
@@ -3827,6 +3866,7 @@ Boeing : NOUN
 Boeing 777 : NOUN
 Boise State University : NOUN
 Boko haram : NOUN
+Bonita Beach : NOUN
 Boris Johnson : NOUN
 Breitbart : NOUN
 Bret Baier : NOUN
@@ -4235,6 +4275,7 @@ Narendra Modi : NOUN
 Natalia Veselnitskaya : NOUN
 National Doral : NOUN
 National Enquirer : NOUN
+National Hurricane Center : NOUN
 National Labor Relations Act : NOUN
 Naval Criminal Investigative Service : NOUN
 NBA : NOUN
@@ -4382,6 +4423,7 @@ Sean Suiter : NOUN
 Securities and Exchange Commission : NOUN
 Seminole Heights : NOUN
 Sen. Ben Sasse : NOUN
+Sen. Dianne Feinstein : NOUN
 Sergei : NOUN
 Sergey : NOUN
 Sergey Kislyak : NOUN
@@ -4430,7 +4472,8 @@ Terrence : NOUN
 Tex : NOUN
 Team Lacoste : NOUN
 Texans : NOUN
-The Church of the Holy Sepulchre : NOUN[:det]
+the Church of the Holy Sepulchre : NOUN[:det]
+the Big Island : NOUN
 the city of Ventura : NOUN[:det]
 the Dakotas : NOUN[:det,plur]
 the District of Connecticut : NOUN[:det]
@@ -4446,12 +4489,12 @@ the late Libyan Leader Moammar Gaddafi : NOUN[:det]
 the Met Office : NOUN[:det]
 the Mid-Atlantic : NOUN[:det]
 the NAFT region : NOUN[:det]
-the NRA : NOUN[:det]
 the News International : NOUN[:det]
 The Northwest Indiana Times : NOUN[:det]
-the only right choice : NOUN[:det]
+the NRA : NOUN[:det]
 the Rim of the Pacific exercise : NOUN
 The Spokesman-Review : NOUN[:det]
+the State of Qatar : NOUN
 the Taiwan Strait : NOUN[:det]
 The Times : NOUN[:det]
 The Times and Democrat newspaper : NOUN
@@ -16015,7 +16058,6 @@ government bond : NOUN
 government building : NOUN
 government department : NOUN
 government income : NOUN
-government issue : NOUN
 government man : NOUN
 government minister : NOUN
 government note : NOUN
@@ -29851,6 +29893,7 @@ southeast : NOUN - -2
 southeast : ADJ
 southeast : ADV[~dir,trlg]
 southeast asia : NOUN
+southeastern : ADJ
 southern : ADJ
 southern arrow wood : NOUN
 southern baptist : NOUN
