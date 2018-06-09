@@ -83,6 +83,7 @@ besieged enclave : NOUN
 best known : VERB[^ed]
 bit : VERB[^ed,*x]
 blindfolded : VERB[^ed] - -1
+blocked the formation : VERB[^ed]
 bloodier : ADJ
 bloodiest : ADJ
 blown : VERB[^ed]
@@ -220,6 +221,7 @@ fighting : VERB[^ing]
 financing : VERB[^ing]
 fired off : VERB[^ed]
 fishermen : NOUN[:plur]
+floating down : VERB[^ing]
 fled : VERB[^ed]
 flew : VERB[^ed]
 flown : VERB[^ed]
@@ -310,6 +312,7 @@ have nothing to do with : VERB
 have probable cause : VERB
 have to : AUXL[^to]
 having : HAVE[^ing]
+having a permanent presence : VERB[^ing]
 heard : SVED - -1
 hearing : VERB[^ing] - +2
 held : VERB[^ed]
@@ -466,11 +469,12 @@ overhyped : ADJ
 overlooked : VERB[^ed] - -1
 oversaw : VERB[^ed]
 overseen : VERB[^ed]
-pack up : VERB
 packaging : VERB[^ing] - -1
 paid : VERB[^ed]
 paying off : VERB[^ing]
 peacemaking : NOUN
+permanent presence : NOUN
+permanently stationed : VERB[^ed]
 personalized : VERB[^ed] - -2
 personals : NOUN[:plur]
 phenomena : NOUN[:plur]
@@ -568,6 +572,7 @@ secretly ghostwriting : VERB[^ing]
 seemed to : AUXL
 seen : VERB[^ed]
 seen : SVED - -1
+seen as hostile : ADJ [$trlg,prd] 0
 seized control : VERB
 sent : VERB[^ed]
 served as : VERB[^ed]
@@ -733,6 +738,7 @@ went : VERB[^ed,*x]
 went missing : VERB[^ing]
 went out of business : VERB[^ed]
 went viral : VERB[^ed]
+were heartbroken to see : VERB[^ed]
 when it comes to : CONJ
 will therefore : AUXL
 withdrew : VERB[^ed]
@@ -907,6 +913,7 @@ ambiguous signal : NOUN
 ambitious effort : NOUN
 american consumer : NOUN
 american embassy : NOUN
+american troops : NOUN[:plur]
 amid a growing backlash : ADV
 among the first : ADJ
 amounted to : VERB[^ed]
@@ -923,6 +930,7 @@ anniversary dinner : NOUN
 annual event : NOUN
 annual meeting : NOUN
 another group of : QUAN
+antiestablishment : ADJ
 anything else : NOUN
 anytime : NOUN
 anytime : ADV
@@ -1083,6 +1091,7 @@ broke through : VERB[^ed]
 broken out : VERB[^ed]
 brotherly nations : NOUN
 brought : VERB[^ed]
+brought down : VERB[^ed]
 brought it back : VERB[^ed]
 brought to market : VERB[^ed]
 brutal interrogation : NOUN
@@ -1319,11 +1328,13 @@ decades ago : ADV
 decent people : NOUN[:plur]
 decisive tilt : NOUN
 deductibility : NOUN
+defense minister : NOUN
 delaware company : NOUN
 delay a recommendation : VERB
 delegitimize : VERB
 demand the release of : VERB
 demilitarization : NOUN
+democratic nominee : NOUN
 democratic republic : NOUN
 denuclearization : NOUN
 denuclearize : VERB
@@ -1482,6 +1493,7 @@ federal level : NOUN
 federal prosecutor : NOUN
 federal republic : NOUN
 feed & farm supply store : NOUN
+fellow millennials : NOUN[:plur]
 felony charge : NOUN
 felony count : NOUN
 ferry service : NOUN
@@ -1600,6 +1612,7 @@ gps monitoring : NOUN
 grant aid : NOUN
 grant aid project : NOUN
 grave toll : NOUN
+great importance : NOUN
 great western : ADJ
 ground force : NOUN
 groundbreaking : NOUN - -1
@@ -1645,6 +1658,8 @@ health and safety : NOUN
 health care reform : NOUN
 heavy fighting : NOUN
 heighten pressure : VERB
+held : VERB[^ed]
+held talks : VERB[^ed]
 helmet camera : NOUN
 helpline : NOUN
 helter skelter : NOUN
@@ -1682,8 +1697,10 @@ hot 100 : NUM
 hot 100 : NOUN
 hot lava : NOUN
 hours after : CONJ
+house candidate : NOUN
 house of cards : NOUN
 house of delegates : NOUN
+house seat : NOUN
 house speaker : NOUN
 house tax-writing committee : NOUN
 household spending : NOUN
@@ -1708,6 +1725,7 @@ illegal gun possession : NOUN
 illegal immigrant : NOUN
 illegal immigration : NOUN
 imbalanced : ADJ
+immediate action : NOUN
 immediate medical help : NOUN
 immigration court : NOUN
 immigration crackdown : NOUN
@@ -1976,6 +1994,7 @@ livestream : VERB
 local hospital : NOUN
 local law enforcement : NOUN
 local news : NOUN
+local official : NOUN
 long gun : NOUN
 long term : NOUN
 lose contact with : VERB
@@ -2050,6 +2069,7 @@ mexican migrant : NOUN
 micromanage : VERB
 middle east peacemaking : NOUN
 midtempo : ADJ
+midterm election : NOUN
 mileage rules : NOUN[:plur]
 militant group : NOUN
 military aircraft : NOUN
@@ -2153,6 +2173,7 @@ new information : NOUN
 new question : NOUN
 new research : NOUN
 new window : NOUN
+newly minted : ADJ
 news anchor : NOUN
 news outlet : NOUN
 news release : NOUN
@@ -2160,6 +2181,7 @@ newspaper best : ADJ
 next month : NAVB[:det]
 next week : NAVB[:det]
 next year : NAVB[:det]
+nfl linebacker: NOUN
 no little : ADJ
 no matter how : CONJ
 no one : PRO
@@ -2296,6 +2318,7 @@ overall aim : NOUN
 overland mail : NOUN
 overwhelming consensus : NOUN
 pacific nation : NOUN
+pack up : VERB
 palestinian negotiator : NOUN
 panel commissioner : NOUN
 pants on fire : ADJ
@@ -2362,9 +2385,11 @@ political appointee : NOUN
 political capital : NOUN
 political chaos : NOUN
 political convulsion : NOUN
+political crisis : NOUN
 political deadlock : NOUN
 political elite : NOUN
 political event : NOUN
+political force : NOUN
 political forces : NOUN[:plur]
 political future : NOUN
 political gathering : NOUN
@@ -2510,8 +2535,9 @@ research firm : NOUN
 research paper : NOUN
 residential floor : NOUN
 residential neighborhood : NOUN
-results page : NOUN
 respective jurisdictions : NOUN[:plur]
+result of our efforts : NOUN[:plur]
+results page : NOUN
 return to classes : VERB
 retweet : VERB
 rev. : NOUN
@@ -2552,6 +2578,7 @@ russian government : NOUN
 russian government information : NOUN
 russian meddling : NOUN
 russian military : NOUN
+russian military unit : NOUN
 russian officials : NOUN[:plur]
 russian oligarch : NOUN
 russian soldier : NOUN
@@ -2648,6 +2675,7 @@ so many : QUAN[@ind]
 so poorly received : ADJ
 so still : ADJ
 so that : CONJ
+so severely damaged : ADJ [$trlg,prd] 0
 so widely known : ADJ
 social media : NOUN
 social reform : NOUN
@@ -2744,6 +2772,7 @@ suspicious contact : NOUN
 suss him out : VERB
 swarm robot : NOUN
 systemic injustice : NOUN
+take a look at : VERB
 take on it : NOUN
 take-it-or-leave-it : ADJ
 taken steps : VERB[^ed]
@@ -2838,6 +2867,7 @@ the number of : QUAN
 the only other time : NAVB
 the oval office : NOUN
 the past year : NAVB[:det]
+the pentagon : NOUN[:det]
 the police shooting : NOUN
 the possibility that : NCTH
 the question of whether : CONJ
@@ -2947,6 +2977,7 @@ u.s. special counsel : NOUN
 u.s. special counsel robert mueller : NOUN
 u.s. special forces : NOUN[:plur]
 u.s. special operations mission : NOUN
+u.s. troops : NOUN
 u.s.-mexico border wall : NOUN
 uav : NOUN
 ultimate deal : NOUN
@@ -2984,6 +3015,7 @@ up to his neck : ADJ
 upper atmosphere : NOUN
 upper chamber : NOUN
 urban myth : NOUN
+us warships : NOUN[:plur]
 us-bound : ADJ
 used to : AUXL
 user data : NOUN
@@ -3219,6 +3251,7 @@ Be Best material : NOUN
 being safe online : NOUN
 block his power grab : VERB
 bloody fighting : NOUN
+blocked the formation of a government : VERB[^ed]
 body of water called Jamun Bodi : NOUN
 bodycam video : NOUN
 border wall funding : NOUN
@@ -3246,6 +3279,7 @@ defend himself : VERB
 defensive coordinator : NOUN
 Delta spokesman : NOUN
 deployed on Twitter : VERB
+devastating flood : NOUN
 different characteristic : NOUN
 disappeared from the fever swamps : VERB[^ed,*r]
 displaced and frightened : ADJ
@@ -3259,6 +3293,7 @@ ethics controversy : NOUN
 er, I mean, : ADV
 EU benefits : NOUN[:plur]
 euro 6d : ADJ
+euroskeptic : ADJ
 failed meteorologist : NOUN
 failed to contain Russia : VERB[^ed,*r]
 five-and-a-half : NUM
@@ -3297,8 +3332,10 @@ less euphemistic word : NOUN
 made the ask : VERB[^ed]
 magnitude of this job : NOUN
 making a false statement to the FBI : VERB[^ing]
+malaysia airlines Flight 17 : NOUN
 malaysia airlines flight 370 : NOUN
 marking him wrong : VERB[^ing]
+maryland local officials : NOUN[:plur]
 messaging app WeChat : NOUN
 metals tariff : NOUN
 missing submarine : NOUN
@@ -3310,6 +3347,7 @@ mshelper : NOUN
 offensive coordinator : NOUN
 or more accurately, : ADV
 over the past two years : ADV
+of … : PREP
 new and bloodier : ADJ
 nuclear and missile : ADJ
 on the global stage : ADV
@@ -3319,6 +3357,7 @@ personal narrative : NOUN
 parkland mass shooting : NOUN
 picked him up : VERB[^ed,*r]
 plane selfie : NOUN
+political crisis that : NOUN (nmth)
 potentially unpalatable deal : NOUN
 primetime : ADJ
 public plea for help : NOUN
@@ -3352,6 +3391,7 @@ that trump tower meeting : NOUN[:det]
 that worked : THTV
 that would ban : THTV
 thats : THTV =that is
+the 5 star movement : NOUN
 the best thing the United States can do : NOUN
 the country’s struggle : NOUN[:det]
 the group Wikileaks : NOUN[:det]
@@ -3509,6 +3549,7 @@ double-check : VERB
 dramatic scene : NOUN
 dual-use : ADJ
 e-mail : NOUN
+dutch-led : ADJ
 east-central : ADJ
 eat-in : ADJ
 economically-stricken : ADJ
@@ -3644,6 +3685,7 @@ once-secure : ADJ
 one-time : ADJ
 op-ed : NOUN - -1
 op-ed : ADJ
+open-ended : ADJ
 open-hearted : ADJ
 out-of-control : ADJ
 non-stick : ADJ
@@ -3812,6 +3854,7 @@ Air Force 1 : NOUN
 Alagoas : NOUN
 Aldo : NOUN
 Ali : NOUN
+Allred : NOUN
 Alison : NOUN
 American aircraft : NOUN
 American Billboard Hot 100 : NOUN[:plur]
@@ -3927,6 +3970,7 @@ Convertible Cumulative Preference : NOUN
 Coolio Earth Partnership : NOUN
 Corey Lewandowski : NOUN
 Côte d'Azur : NOUn
+Cottarelli : NOUN
 Crafty : NOUN
 Crater Lake : NOUN
 Crown Prince Mohammed bin Salman : NOUN
@@ -3986,6 +4030,7 @@ Elaine Chao : NOUN
 Elena Kagan : NOUN
 Eli : NOUN
 Elise : NOUN
+Ellicott City : NOUN
 Elon Musk : NOUN
 Emmanuel : NOUN
 Emmanuel Macron : NOUN
@@ -4214,6 +4259,7 @@ Mar-a-Lago : NOUN
 Marjory Stoneman Douglas High School : NOUN
 Marc : NOUN
 Márcio França : NOUN
+Mariusz Blaszczak : NOUN
 Mark Zuckerberg : NOUN
 Martin Luther King Jr. : NOUN
 Martinez : NOUN
@@ -4450,6 +4496,7 @@ Srebrenica : NOUN
 St. Mary : NOUN - +2
 St. Petersburg : NOUN
 State Capitol : NOUN
+State Radio 1 : NOUN
 Stephan : NOUN
 Stephen Curry : NOUN
 Stephen Paddock : NOUN
@@ -25323,6 +25370,8 @@ pretty : ADV [$deg] +1
 pretty much : ADV[~mod,prox] [$deg] 0
 pretty up : VERB
 prevail : VERB
+preventative : NOUN - -2
+preventative : ADJ
 prevent : VERB
 prevention : NOUN
 preventive : NOUN
