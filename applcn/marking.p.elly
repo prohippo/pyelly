@@ -176,6 +176,8 @@
  0 ,##, ADJ [$prd] -1
  0 ,1##, ADJ [$prd] -1
 
+ 0 the&#block$ NOUN -1
+
 # en dashes in patterns below!
 
  0 ##–##$   NUM -1

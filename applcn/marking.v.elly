@@ -185,6 +185,8 @@ dominated headlines : VERB[^ed]
 doubled down on : VERB[^ed]
 drags on : VERB[^s]
 drinking water : NOUN
+drove : VERB[^ed]
+drove by : VERB[^ed]
 drug trafficking : NOUN
 drawn : VERB[^ed]
 drawn any public conclusion : VERB[^ed]
@@ -662,6 +664,7 @@ taking aim at : VERB[^ing]
 taking place : VERB[^ing]
 taliban fighter : NOUN
 talking : VERB[^ing]
+talking to someone : VERB[^ing]
 telecommunications : NOUN
 telecommunications : NOUN[:plur] - -1
 television advertising : NOUN
@@ -2236,6 +2239,7 @@ offseason : ADJ
 often enough : ADV
 oil exporter : NOUN
 oil minister : NOUN
+oil sands : NOUN[:plur]
 oil supply : NOUN
 oil trade : NOUN
 old record : NOUN
@@ -2401,6 +2405,7 @@ political world : NOUN
 pollution cleanup : NOUN
 poor health : NOUN
 poorly crafted : ADJ
+popular support : NOUN
 popular theory : NOUN
 popular vote : NOUN
 porn star : NOUN
@@ -2687,6 +2692,7 @@ some of : QUAN
 some of them : PRO
 some of which : CONJ
 some of whom : PRO
+someone inside : PRO
 something like this : NOUN
 something that : NOUN (nmth)
 somewhere along : PREP
@@ -3574,6 +3580,7 @@ economically-stricken : ADJ
 end-of-the-year : ADJ
 english-language : ADJ
 english-speaking : ADJ
+euro-skeptic : ADJ
 ex-doorman : NOUN
 ex-intelligence officer : NOUN
 ex-playmate : NOUN
@@ -3980,6 +3987,7 @@ Burmese python : NOUN
 BusinessWeek : NOUN
 Buzzfeed : NOUN
 Cambridge Analytica : NOUN
+Canadian Rockies : NOUN[:plur]
 Cantor : NOUN
 Carter : NOUN
 Carter Evans : NOUN
@@ -4245,6 +4253,7 @@ Juan : NOUN
 Julia Poff : NOUN
 Julian Assange : NOUN
 Justice Elena Kagan : NOUN
+Justin Trudeau : NOUN
 Justin Vaughn : NOUN
 KAIST : NOUN
 Kardashian : NOUN
@@ -4260,6 +4269,7 @@ Kilauea : NOUN
 Kilauea volcano : NOUN
 Kim Jong Un : NOUN
 Kimberly Gardner : NOUN
+Kinder Morgan : NOUN
 Kislyak : NOUN
 Kirsten Gillibrand : NOUN
 Kristen : NOUN
@@ -4443,6 +4453,7 @@ Phillips : NOUN
 Pine Barrens : NOUN
 POLITICO : NOUN
 Politifact : NOUN
+Pontiac Grand Prix : NOUN
 Post-Gazette : NOUN
 POTUS : NOUN
 Praljak : NOUN
@@ -4542,6 +4553,7 @@ Sochi : NOUN
 Social Democrat : NOUN
 South Asia : NOUN
 South Asia Port Terminal : NOUN
+South Eberhard Avenue : NOUN
 South Florida : NOUN
 South Korean President : NOUN
 southern Texas : NOUN
@@ -4619,6 +4631,7 @@ Today Show : NOUN
 Tongo Tongo : NOUN
 Tom Cotton : NOUN
 Tran Dai Quang : NOUN
+Trans Mountain Pipeline : NOUN
 Trayon White Sr. : NOUN
 Trudeau : NOUN
 Trump administration : NOUN
@@ -12718,7 +12731,7 @@ drop press : NOUN
 drop shot : NOUN
 drop zone : NOUN
 drought : NOUN
-drove : NOUN
+drove : NOUN - -2
 drown : VERB
 drown out : VERB
 drowsy : ADJ
@@ -25101,6 +25114,7 @@ polythene : NOUN
 pond : NOUN
 ponderous : ADJ
 pong : NOUN
+pontiac : NOUN
 pontiff : NOUN
 pontifical : NOUN
 pontifical : ADJ
@@ -25656,6 +25670,7 @@ principal investigator : NOUN
 principal sum : NOUN
 principally : ADV
 principle : NOUN
+principled : ADJ
 print : NOUN
 print : VERB
 print media : NOUN
