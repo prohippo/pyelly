@@ -210,6 +210,7 @@ faces a dilemma : VERB[^s]
 failed to reflect : VERB[^ed]
 failing to identify : VERB[^ing]
 fallen : VERB[^ed]
+fallen by : VERB[^ed]
 fastest : ADJ
 falsely claiming that : VERB[^ing]
 fatally shooting : VERB[^ing]
@@ -363,6 +364,7 @@ is on again : VERB[^s]
 is on track to : AUXL[^s]
 is said to : ADV
 isolated : VERB[^ed] - -1
+issued a firm warning to : VERB[^ed]
 issued a directive : VERB[^ed]
 it does not appear that : ADV
 it is not inconceivable : VERB[^s]
@@ -454,6 +456,7 @@ moving operations to : VERB[^ing]
 mps : NOUN[:plur]
 multinationals : NOUN[:plur]
 mushrooming : VERB[^ing]
+mustered enough support : VERB[^ed]
 named : VERB[^ed] - +2
 named : ADJ - -4
 needed : VERB[^ed]
@@ -1278,6 +1281,7 @@ correct map : NOUN
 corrections officer : NOUN
 corrupt regime : NOUN
 corruption case : NOUN
+corruption scandal : NOUN
 corruption investigation : NOUN
 cost spike : NOUN
 council dais : NOUN
@@ -1488,6 +1492,7 @@ family show : NOUN
 fan favorite : NOUN
 far beyond : ADV
 far higher : ADJ
+far more damaging : ADJ
 far reaching : ADJ
 far too weak : ADJ
 fatal shooting : NOUN
@@ -1563,6 +1568,7 @@ foreign trade : NOUN
 formal approval : NOUN
 former campaign manager : NOUN
 former employee : NOUN
+former obama adviser : NOUN
 former president : NOUN
 forstall : VERB =forestall
 fourpenny : NOUN - +1
@@ -1698,6 +1704,7 @@ his or her : DEM
 his royal highness : DEM[@ind]
 historic election : NOUN
 hit job : NOUN
+hit reboot : NOUN
 hold a suspect in custody : VERB
 hold accountable : VERB
 hold up in court : VERB
@@ -1891,12 +1898,14 @@ islamic republic : NOUN
 islamic state : NOUN
 islamic state group : NOUN
 islamist insurgent : NOUN
+islamist organization : NOUN
 israeli forces : NOUN[:plur]
 israeli military : NOUN
 israeli police : NOUN
 israeli position : NOUN
 israeli warplane : NOUN
-issued a firm warning to : VERB[^ed]
+issues : NOUN[:plur] - +1
+issues : VERB[^s]
 it appears to have : AUXL
 it behv clear : ELEM - +4 (elma)
 it behv easy  : ELEM - +4 (elma)
@@ -1969,6 +1978,7 @@ later this week : NAVB[:det]
 latest blow : NOUN
 latest charge : NOUN
 latest milestone : NOUN
+latest tweet : NOUN
 launch order : NOUN
 launch procedure : NOUN
 lava flow : NOUN
@@ -2054,6 +2064,7 @@ marchese : NOUN
 marine corps : NOUN
 marine corps air station : NOUN
 maritime historian : NOUN
+market turmoil : NOUN
 marketing campaign : NOUN
 marketing firm : NOUN
 mass arrests : NOUN[:plur]
@@ -2277,6 +2288,7 @@ on saturday : DATE
 on saturday afternoon : DATE
 on sunday : DATE
 on sunday night : TIME
+on the brink of collapse : ADV
 on the campaign trail : ADV
 on the condition of anonymity : ADV
 on the day that : THAT
@@ -2508,6 +2520,7 @@ rally support for : VERB
 rapidly melting : ADJ
 rapidly mounting : ADJ
 razor thin : ADJ
+reactivation : NOUN
 real challenge : NOUN
 realization that : NOUN (nmth)
 realize that : VERB
@@ -2515,6 +2528,7 @@ reassignment surgery : NOUN
 rebaptizer : NOUN
 rebel stronghold : NOUN
 recent attempt : NOUN
+recent market turmoil : NOUN
 recent trip : NOUN
 recent trouble : NOUN
 recording artist : NOUN
@@ -2564,7 +2578,7 @@ respective jurisdictions : NOUN[:plur]
 result of our efforts : NOUN[:plur]
 results page : NOUN
 return to classes : VERB
-retweet : VERB
+retweet : VERB[^dit]
 rev. : NOUN
 reveal more details : VERB
 revolve around the question of : VERB
@@ -2907,6 +2921,7 @@ the past year : NAVB[:det]
 the pentagon : NOUN[:det]
 the police shooting : NOUN
 the possibility that : NCTH
+the president : NOUN
 the question of whether : CONJ
 the rule of law : NOUN
 the run up : NOUN[:det]
@@ -4365,6 +4380,7 @@ Mar-a-Lago : NOUN
 Marjory Stoneman Douglas High School : NOUN
 Marc : NOUN
 Márcio França : NOUN
+Mariano Rajoy : NOUN
 Mariusz Blaszczak : NOUN
 Mark Zuckerberg : NOUN
 Martin Luther King Jr. : NOUN
@@ -4411,6 +4427,7 @@ Mr. Mueller : NOUN
 Mr. Nader : NOUN
 Mr. President : NOUN
 Mr. Trump : NOUN
+MSCI Europe : NOUN
 MSNBC : NOUN
 MSNBC host : NOUN
 MTV : NOUN
@@ -4420,6 +4437,7 @@ Mueller’s team : NOUN
 Mugabe : NOUN
 Moammar Gaddafi : NOUN
 Murphy : NOUN
+Muslim Brotherhood : NOUN
 Mykonos : NOUN
 Nasional Berhad : NOUN
 Najib Razak : NOUN
@@ -4492,6 +4510,7 @@ Pfaffian : ADJ
 Philippine President : NOUN
 Phillips : NOUN
 Pine Barrens : NOUN
+Planet of the Apes : NOUN
 POLITICO : NOUN
 Politifact : NOUN
 Pontiac Grand Prix : NOUN
@@ -4555,6 +4574,7 @@ Russian State Television : NOUN
 Russia-friendly : ADJ
 S.A.F. : NOUN
 S&P : NOUN
+S&P 500 : NOUN
 Saakashvili : NOUN
 Saeb Erekat : NOUN
 Safe Drinking Water Act : NOUN
@@ -26638,6 +26658,7 @@ reaction engine : NOUN
 reaction formation : NOUN
 reaction propulsion : NOUN
 reaction time : NOUN
+reactivate : VERB
 reactive : ADJ
 reactive depression : NOUN
 reactor : NOUN
@@ -33499,7 +33520,7 @@ tv station : NOUN
 tweak : NOUN
 tweak : VERB
 tweet : NOUN
-tweet : VERB
+tweet : VERB[^dit]
 tweeter : NOUN
 twice : ADV
 twice the : QUAN
