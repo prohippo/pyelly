@@ -130,6 +130,7 @@ continued fighting : NOUN
 continued fighting : VERB
 controlled ditching : NOUN
 conveying to law enforcement : VERB[^ing]
+convicted him of : VERB[^ed]
 convinced : VERB[^ed] - -1
 cordoned off : VERB[^ed]
 could be excused : VERB[^ed]
@@ -176,6 +177,7 @@ djs : VERB[^s]
 does : NOUN[:plur] - -1
 does : VERB[^s] - +1
 does : AUXL[^s]
+doing more : VERB[^ing]
 doing sweeps : VERB[^ing]
 doing work : VERB[^ing]
 done : VERB[^ed]
@@ -191,6 +193,7 @@ drug trafficking : NOUN
 drawn : VERB[^ed]
 drawn any public conclusion : VERB[^ed]
 earlier this month : ADV
+easily distinguished : VERB[^ed]
 eaten : VERB[^ed]
 edited for clarity and brevity : VERB[^ed]
 educating themselves : VERB[^ing]
@@ -237,6 +240,8 @@ forgave : VERB[^ed,*x]
 forgot : VERB[^ed,*x]
 forgotten : VERB[^ed]
 fought : VERB[^ed]
+found : VERB[^ed,dit] 
+founded : VERB[^ed]
 founding :VERB[^ing] - -2
 fountaining : NOUN
 freshmen : NOUN
@@ -606,6 +611,7 @@ signing off : VERB[^ing]
 signs that : NOUN[:plur] (nmth)
 sitting : VERB[^ing]
 slain : VERB[^ed]
+slowing down : VERB[^ing]
 soaring : VERB[^ing] - -2
 sold : VERB[^ed]
 sold off : VERB[^ed]
@@ -729,6 +735,7 @@ was a violation of : VERB[^ed,s]
 was behind : VERB[^ed,s]
 was behind bars : VERB[^ed,s]
 was culpable for : VERB[^ed,s]
+was due to : AUXL[^ed] - -1
 was found dead : VERB[^ed]
 was intended to : AUXL[^ed,s]
 was kept in the dark : VERB[^ed]
@@ -838,6 +845,7 @@ a range of : QUAN
 a series of : QUAN
 a short time : ADV
 a short while ago : ADV
+a slate of : QUAN
 a small group of : QUAN
 a step closer : ADV
 a step forward : NOUN[:det]
@@ -865,6 +873,7 @@ achieve the ultimate deal : VERB
 achingly : ADV [$deg] 0
 across the pacific : ADV
 across the state : ADV
+active shooter : NOUN
 adm. : NOUN
 adult film star : NOUN
 adulterous affair : NOUN
@@ -1521,6 +1530,7 @@ flood stage : NOUN
 floors below : NOUN[:plur]
 flows of lava : NOUN[:plur]
 follow up with you after this : VERB
+food and drug administration : NOUN
 foothills town : NOUN
 for a long time : ADV
 for about a week : ADV
@@ -1591,6 +1601,7 @@ genetically modified : ADJ
 genetically modified crop : NOUN
 genome editing : NOUN
 get shot : VERB
+get to the bottom of : VERB
 give them new life : VERB
 global attention : NOUN
 global financial crisis : NOUN
@@ -1661,6 +1672,8 @@ head on : ADV
 head wound : NOUN
 health and safety : NOUN
 health care reform : NOUN
+health policy : NOUN
+health priority : NOUN
 heavy fighting : NOUN
 heighten pressure : VERB
 helmet camera : NOUN
@@ -1740,6 +1753,7 @@ imposing : NOUN[:ing]
 imposing : VERB[^ing] - -1
 in a statement : ADV
 in a tweet : ADV
+in absentia : ADV
 in accordance with : PREP
 in addition to : PREP
 in all caps : ADJ
@@ -1927,6 +1941,7 @@ key sanctions : NOUN[:plur]
 knife crime : NOUN
 know nothing at all : VERB
 knowingly false : ADJ
+kremlin critic : NOUN
 ku klux klansmen : NOUN[:plur]
 lackluster record : NOUN
 land and sea : NOUN
@@ -2062,6 +2077,8 @@ medically stable : ADJ
 member state : NOUN
 memo to staff : NOUN
 memorial day weekend : NOUN
+mental health adjudication : NOUN
+mentally unfit : NOUN
 mentally unstable : ADJ
 metallicity : NOUN
 meth lab : NOUN
@@ -2305,6 +2322,7 @@ out of control : ADV
 out of every : PREP['of,div]
 out of step : ADJ
 out of step with : PREP
+out of the hands of : PREP
 out of the realm of possibility : ADJ
 outdated technology : NOUN
 outlet for conservative voices : NOUN
@@ -2381,6 +2399,7 @@ police brutality : NOUN
 police corruption : NOUN
 police corruption case : NOUN
 police director : NOUN
+policy and legislative changes : NOUN[:plur]
 policy views : NOUN[:plur]
 policymaker : NOUN
 policymaking : NOUN
@@ -2479,6 +2498,7 @@ quick look : NOUN
 quite a : DET
 quite a while ago : ADV
 quoted from : VERB
+racist remark : NOUN
 radical hindu group : NOUN
 railway bridge : NOUN
 railway service : NOUN
@@ -2526,6 +2546,7 @@ remote town : NOUN
 renewable energy : NOUN
 rent payment : NOUN
 rental room : NOUN
+repeal and replace : VERB
 repeat offender : NOUN
 reporting tactics : NOUN
 republican governor : NOUN
@@ -2554,6 +2575,7 @@ right before : CONJ
 right choice : NOUN
 right now : ADV
 right to life : NOUN
+right to try : NOUN
 rights group : NOUN
 riot dispersal : NOUN
 riot dispersal means : NOUN[:plur]
@@ -2572,14 +2594,17 @@ round at : PREP
 rpg : NOUN
 rules of engagement : NOUN
 ruling party: NOUN
+run out any leads : VERB
 russia investigation : NOUN
 russia probe : NOUN
 russian ambassador : NOUN
 russian city : NOUN
+russian court : NOUN
 russian diplomat : NOUN
 russian double agent : NOUN
 russian government : NOUN
 russian government information : NOUN
+russian interference : NOUN
 russian meddling : NOUN
 russian military : NOUN
 russian military unit : NOUN
@@ -2587,8 +2612,10 @@ russian officials : NOUN[:plur]
 russian oligarch : NOUN
 russian soldier : NOUN
 russian spy : NOUN
+russian warrant : NOUN
 safe location : NOUN
 safe route : NOUN
+safer place : NOUN
 salary round : NOUN
 sales manager : NOUN
 sales team : NOUN
@@ -2598,6 +2625,7 @@ saturday and sunday : NAVB
 say they need : VERB
 school building : NOUN
 school community : NOUN
+school hardening : NOUN
 school resource officer : NOUN
 scientific paper : NOUN
 scorched earth : ADJ
@@ -2626,6 +2654,7 @@ senate bid : NOUN
 senate candidate : NOUN
 senate committee : NOUN
 senate republican : NOUN
+senior advisor : NOUN
 senior general : NOUN
 senior level : NOUN
 senior ranks : NOUN[:plur]
@@ -2677,9 +2706,9 @@ small business : NOUN
 so as to : TO
 so many : QUAN[@ind]
 so poorly received : ADJ
+so severely damaged : ADJ [$trlg,prd] 0
 so still : ADJ
 so that : CONJ
-so severely damaged : ADJ [$trlg,prd] 0
 so widely known : ADJ
 social media : NOUN
 social reform : NOUN
@@ -2732,7 +2761,9 @@ star system : NOUN
 state and local : ADJ
 state ceremony : NOUN
 state fund : NOUN
+state law : NOUN
 state media : NOUN
+state of the union address : NOUN
 state of war : NOUN
 state police : NOUN
 state sponsors list : NOUN
@@ -2802,6 +2833,7 @@ television interview : NOUN
 temporary residency : NOUN
 temporary restraining order : NOUN
 tense moment : NOUN
+terminally ill patient : NOUN
 terrible sadness : NOUN
 territorial struggle : NOUN
 terror organization : NOUN
@@ -2829,6 +2861,7 @@ that mr.  : PRO[=*l,*x]
 that mrs. : PRO[=*l,*x]
 that ms.  : PRO[=*l,*x]
 that night : ADV
+that range from : THTV
 that really know : THTV
 that she  : PRO[=*l]
 that some insist : THAT
@@ -2928,6 +2961,7 @@ top adviser : NOUN
 top aide : NOUN
 top forty : NUM
 top forty hit : NOUN
+top intelligence official : NOUN
 top lieutenant : NOUN
 top sustained winds : NOUN
 tough policy : NOUN
@@ -3261,6 +3295,7 @@ body of water called Jamun Bodi : NOUN
 bodycam video : NOUN
 border wall funding : NOUN
 brand new : ADJ
+briefing on capitol hill : NOUN
 British city : NOUN
 built that opened : THTV
 busy roadway : NOUN
@@ -3309,8 +3344,8 @@ Florida neighborhood : NOUN
 former fbi director : NOUN
 former prosecutor : NOUN
 from the equation : ADV
-gun group : NOUN
 group travel discount : NOUN
+gun group : NOUN
 had helped her husband plan : VERB[^ed]
 half-apologies : NOUN[:plur]
 hardline immigration rhetoric : NOUN
@@ -3358,6 +3393,7 @@ nuclear and missile : ADJ
 on the global stage : ADV
 on what the news agency described as : CONJ
 orange snow : NOUN
+people who shouldn't have them : NOUN
 personal narrative : NOUN
 parkland mass shooting : NOUN
 picked him up : VERB[^ed,*r]
@@ -3396,7 +3432,7 @@ that trump tower meeting : NOUN[:det]
 that worked : THTV
 that would ban : THTV
 thats : THTV =that is
-the 5 star movement : NOUN
+the five star movement : NOUN
 the best thing the United States can do : NOUN
 the country’s struggle : NOUN[:det]
 the group Wikileaks : NOUN[:det]
@@ -3431,6 +3467,7 @@ while at the home : ADV
 with what we now know to be : PREP
 win leverage : VERB
 worked to keep : VERB[^ed]
+would ok : VERB
 
 # # # # !!!!
 
@@ -3652,6 +3689,7 @@ in-your-face : ADJ
 influence-peddling scandal : ADJ
 invasion-of-privacy : ADJ
 iran-backed : ADJ
+iran-backed force : NOUN
 iran-israel : ADJ
 iran-linked : ADJ
 iranian-backed : ADJ
@@ -3713,6 +3751,7 @@ nail-biter : NOUN
 near-mythic : ADJ
 near-psychotic : ADJ
 near-term : ADJ
+neo-anarchist : ADJ
 neo-monarchist : NOUN
 nerve-agent : ADJ
 net-metering : NOUN
@@ -3941,6 +3980,7 @@ Asia Pacific Economic Cooperation : ADJ
 Assad : NOUN
 Associated Press : NOUN
 Aung San Suu Kyi : NOUN
+Avigdor Lieberman : NOUN
 Ayatollah Ali Khamenei : NOUN
 Bannon : NOUN
 Barack Obama : NOUN
@@ -4169,6 +4209,7 @@ Global Times : NOUN
 Golan Heights : NOUN[:plur]
 Golden State Warriors : NOUN
 Google News : NOUN
+Gov. Greg Abbott : NOUN
 Gov. Jerry Brown : NOUN
 Grand Staircase-Escalante : NOUN
 Grants Pass : NOUN
@@ -4500,6 +4541,7 @@ Rockwell Automation : NOUN
 Rodrigo Duterte : NOUN
 Roger Self : NOUN
 Rohingya : NOUN
+Rosanne Barr : NOUN
 Rosen : NOUN
 Route 91 Harvest : NOUN
 Roy : NOUN
@@ -4654,6 +4696,7 @@ U.N. : NOUN
 U.S. : NOUN
 U.S. Agency for International Development : NOUN
 U.S. District Judge : NOUN
+U.S. Geological Survey : NOUN
 U.S.S.R. : NOUN
 UAE : NOUN
 Uber : NOUN
@@ -4669,6 +4712,7 @@ USNORTHCOM : NOUN
 US tax code : NOUN
 USO : NOUN
 VA : NOUN
+Valerie Jarrett : NOUN
 Van Horn : NOUN
 Ventura : NOUN
 Veritas : NOUN
