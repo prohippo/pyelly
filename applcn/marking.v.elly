@@ -158,7 +158,7 @@ degrees celsius : NOUN[:plur]
 degrees fahrenheit : NOUN[:plur]
 destabilizing markets : VERB[^ing]
 destroyed : VERB[^ed]
-determined : VERB[^ed]
+determined : VERB[^ed,dit]
 determining : VERB[^ing] - +1
 determining : ADJ[%ing] - -2
 did : VERB[^ed,*x]
@@ -313,6 +313,7 @@ has nothing to do with : VERB[^s]
 has relations with : VERB[^s]
 has since reined in : VERB[^s]
 has to : AUXL[^s]
+hastened to add : VERB[^ed]
 hauled away : VERB[^ed]
 have been taking place : VERB
 have had : VERB[^hav,ed]
@@ -1032,6 +1033,7 @@ autoplay : NOUN
 average rate : NOUN
 avoid a repeat of : VERB
 avoid errors : VERB
+awarded in damages : ADJ
 away from : PREP
 bachelor's degree : NOUN
 back down to earth : ADV[~trlg,*l]
@@ -1108,6 +1110,7 @@ broke through : VERB[^ed]
 broken out : VERB[^ed]
 brotherly nations : NOUN
 brought : VERB[^ed]
+brought about the downfall of : VERB[^ed]
 brought down : VERB[^ed]
 brought it back : VERB[^ed]
 brought to market : VERB[^ed]
@@ -1156,6 +1159,7 @@ came : VERB[^ed,ptcl]
 came to light : VERB[^ed]
 campaign chairman : NOUN
 campaign finance director : NOUN
+campaign fund : NOUN
 campaign manager : NOUN
 campaign pledge : NOUN
 campaign stop : NOUN
@@ -1281,8 +1285,8 @@ correct map : NOUN
 corrections officer : NOUN
 corrupt regime : NOUN
 corruption case : NOUN
-corruption scandal : NOUN
 corruption investigation : NOUN
+corruption scandal : NOUN
 cost spike : NOUN
 council dais : NOUN
 counterproliferation : NOUN
@@ -1431,6 +1435,7 @@ earthquake prediction : NOUN
 eastern europe : NOUN
 eastern gulf coast : NOUN
 eastern ukraine : NOUN
+economic and social: ADJ
 economic council : NOUN
 economic summit : NOUN
 election meddling : NOUN
@@ -1460,6 +1465,7 @@ even before : CONJ
 even if : CONJ
 even so : CONJ
 even though : CONJ
+every move : NOUN
 everyone else : NOUN
 exchange student : NOUN
 exclusive interview : NOUN
@@ -1507,6 +1513,7 @@ federal employee : NOUN
 federal ethics agency : NOUN
 federal immigration authorities : NOUN[:plur]
 federal judge : NOUN
+federal jury : NOUN
 federal law enforcement : NOUN
 federal level : NOUN
 federal prosecutor : NOUN
@@ -1888,6 +1895,7 @@ iphone : NOUN
 irish citizen : NOUN
 irish people : NOUN
 irrespective of whether : CONJ
+irrevocable nature : NOUN
 is in violation of : VERB
 is now clear that : VERB
 is presenting itself as : VERB
@@ -1976,6 +1984,7 @@ late night host : NOUN
 late stone age : NOUN
 later this week : NAVB[:det]
 latest blow : NOUN
+latest change : NOUN
 latest charge : NOUN
 latest milestone : NOUN
 latest tweet : NOUN
@@ -1993,6 +2002,7 @@ leaps and bounds : NOUN[:plur]
 learn more about : VERB
 leave doubt : VERB
 leave without him : VERB
+legal backing : NOUN
 legal challenge : NOUN
 legal effort : NOUN
 legal hurdle : NOUN
@@ -2179,6 +2189,7 @@ named storm : NOUN
 namesake company : NOUN
 nano : NOUN
 nano robot : NOUN
+national assembly : NOUN
 national association : NOUN
 national institute : NOUN
 national intelligence : NOUN
@@ -2217,6 +2228,7 @@ no matter how : CONJ
 no one : PRO
 no. 1 seed : NOUN
 no. 2 : NOUN
+noise complaint : NOUN
 non-disclosure agreement : NOUN
 nonconsensual : ADJ
 nondisclosure agreement : NOUN
@@ -2650,6 +2662,7 @@ search tool : NOUN
 search-only mission : NOUN
 season opener : NOUN
 second thoughts : NOUN[:plur]
+secret campaign fund : NOUN
 secret prison : NOUN
 security checkpoint : NOUN
 security clearance : NOUN
@@ -2696,6 +2709,7 @@ sharpen its focus : VERB
 she claims she : PRO
 sheriff's deputy : NOUN
 sheriff’s department : NOUN
+sheriff’s deputy : NOUN
 shipping lane : NOUN
 shooting rampage : NOUN
 shooting survivor : NOUN
@@ -2806,6 +2820,7 @@ such an : QUAN
 such as : PREP
 sudden heart attack : NOUN
 suicide car bombing : NOUN
+summit crater : NOUN
 supply chain : NOUN
 supply cut : NOUN
 supply train : NOUN
@@ -2860,7 +2875,6 @@ than ever : CMPC
 than ever before : CMPC
 thanks to : PREP
 thanksgiving break : NOUN
-that a : DET (thta)
 that are sure to have : THTV
 that believe in : THTV
 that can be faced : ADJ
@@ -3096,6 +3110,7 @@ violent assault : NOUN
 viral video : NOUN
 volcanic anger : NOUN
 vote for : VERB
+vulcanologist : NOUN
 wage and hour violation : NOUN
 war dead : NOUN
 war memorial : NOUN
@@ -3120,6 +3135,7 @@ what she calls a : DET
 what they say are : ADJ
 what to do : NOUN
 what was supposed to be : ADV
+what will follow : NOUN
 what's going on : NOUN
 when asked by reporters : ADV
 whenever and wherever : CONJ
@@ -3317,6 +3333,7 @@ busy roadway : NOUN
 campaign for governor : NOUN
 carving-out : VERB[^ing]
 Central Michigan University dormitory : NOUN
+centred on : VERB[^ed]
 chief scout executive : NOUN
 Chinese cheating : NOUN
 comedic : ADJ
@@ -3366,6 +3383,7 @@ half-apologies : NOUN[:plur]
 hardline immigration rhetoric : NOUN
 has a little bit of a different characteristic : VERB
 have come to count on : VERB
+his predecessor : NOUN
 historically GOP district : NOUN
 illegally cross : VERB
 improperly collected information : NOUN
@@ -3398,12 +3416,15 @@ months-long investigation : NOUN
 more expansive background checks : NOUN[:qnt,plur]
 more to a judge : NOUN[:prep]
 mounting legal peril : NOUN
+mr rajoy : NOUN
+mr sánchez : NOUN
 mshelper : NOUN
 offensive coordinator : NOUN
 or more accurately, : ADV
 over the past two years : ADV
 of … : PREP
 new and bloodier : ADJ
+no confidence motion in parliament : NOUN
 nuclear and missile : ADJ
 on the global stage : ADV
 on what the news agency described as : CONJ
@@ -3745,6 +3766,7 @@ miami-dade's : ADJ
 mid-air : NOUN
 mid-atlantic : NOUN
 mid-century : ADJ
+mid-may : NOUN
 mid-july : NOUN
 mid-term : ADJ
 military-grade : ADJ
@@ -4504,6 +4526,8 @@ PBS : NOUN
 PBS program : NOUN
 Pelosi : NOUN
 People’s Liberation Army : NOUN
+People's Party : NOUN
+People's Party (PP) : NOUN
 Person of the Year : NOUN
 Peter Foley : NOUN
 Pfaffian : ADJ
@@ -11950,7 +11974,7 @@ deter : VERB
 deteriorate : VERB
 deterioration : NOUN
 determination : NOUN
-determine : VERB
+determine : VERB[^dit]
 determined : ADJ
 determining factor : NOUN
 deterrence : NOUN
@@ -17068,6 +17092,7 @@ hash mark : NOUN
 hash out : VERB
 hash over : VERB
 haste : NOUN
+hasten : VERB
 hastily : ADV
 hasty : ADJ
 hasty defence : NOUN
@@ -24399,6 +24424,7 @@ peril : VERB
 perimeter : NOUN
 period : NOUN
 period piece : NOUN
+periodic : ADJ
 periodical : NOUN
 periodical : ADJ
 periodically : ADV
