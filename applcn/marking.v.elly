@@ -1168,6 +1168,7 @@ came to light : VERB[^ed]
 campaign chairman : NOUN
 campaign finance director : NOUN
 campaign fund : NOUN
+campaign funding : NOUN
 campaign manager : NOUN
 campaign pledge : NOUN
 campaign stop : NOUN
@@ -1375,6 +1376,7 @@ deployment of missiles : NOUN
 deputy campaign chairman : NOUN
 deputy director general : NOUN
 designer handbag : NOUN
+despite the fact that : CONJ
 developing country : NOUN
 development team : NOUN
 die roll : NOUN
@@ -1812,6 +1814,7 @@ in how : CONJ
 in leaps and bounds : ADV
 in length : ADV[~trlg] [$deg] 0
 in order to : TO
+in order to get attention : ADV
 in protest against : PREP
 in recent memory : ADV [$deg,time] +1
 in recent weeks : ADV [$deg,time] +1
@@ -2528,6 +2531,7 @@ public poll : NOUN
 public profile : NOUN
 public sector: NOUN
 public statement : NOUN
+publically argue : VERB
 pull factor : NOUN
 pump spray : NOUN
 punchline : NOUN
@@ -3391,6 +3395,7 @@ euro 6d : ADJ
 euroskeptic : ADJ
 failed meteorologist : NOUN
 failed to contain Russia : VERB[^ed,*r]
+fbi conspiracy : NOUN
 five-and-a-half : NUM
 Florida district office : NOUN
 Florida lawmaker : NOUN
@@ -3729,6 +3734,7 @@ high-flying : ADJ
 high-powered : ADJ
 high-profie : ADJ
 high-profile : ADJ
+high-ranking : ADJ
 high-speed : ADJ
 high-speed boat : NOUN
 high-stakes : ADJ
@@ -3747,6 +3753,7 @@ in-house : ADJ
 in-store : ADJ
 in-your-face : ADJ
 influence-peddling scandal : ADJ
+inter-korean : ADJ
 invasion-of-privacy : ADJ
 iran-backed : ADJ
 iran-backed force : NOUN
@@ -3765,7 +3772,7 @@ left-turn : ADJ
 left-wing : ADJ
 left-wing politics : NOUN
 lesser-known : ADJ
-librrarian-leaning : ADJ
+libertarian-leaning : ADJ
 live-fire exercise : NOUN
 london-based : ADJ
 long-awaited : ADJ
@@ -4520,6 +4527,7 @@ NFL players' protest : NOUN
 Nicholas : NOUN
 Nick Saban : NOUN
 North American Free-Trade Agreement : NOUN
+North and South Korea : NOUN
 North India : NOUN
 Novaes : NOUN
 NPR : NOUN
@@ -4558,6 +4566,7 @@ People's Party : NOUN
 People's Party (PP) : NOUN
 Person of the Year : NOUN
 Peter Foley : NOUN
+Peters : NOUN
 Pfaffian : ADJ
 Philippine President : NOUN
 Phillips : NOUN
