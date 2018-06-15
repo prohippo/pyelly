@@ -156,6 +156,7 @@ declared : VERB[^ed] - +1
 deeply held : ADJ
 degrees celsius : NOUN[:plur]
 degrees fahrenheit : NOUN[:plur]
+delivered to : VERB[^ed]
 destabilizing markets : VERB[^ing]
 destroyed : VERB[^ed]
 determined : VERB[^ed,dit]
@@ -539,6 +540,7 @@ ranging in age : VERB[^ing]
 re-emerged : VERB[^ed]
 re-emerging : VERB[^ing]
 reached out : VERB[^ed]
+received a call about : VERB[^ed]
 received : VERB[^ed]
 received instructions : VERB[^ed]
 received access to : VERB[^ed]
@@ -633,6 +635,7 @@ spoken : VERB[^ed]
 sprawling : VERB[^ing]
 sprung : VERB[^ed]
 standing in the way : VERB[^ing]
+standing up for : VERB[^ing]
 stayed on the line : VERB[^ed]
 stayed put : VERB[^ed]
 steered clear : VERB[^ed]
@@ -771,6 +774,7 @@ would tell you : VERB[^dit]
 woven : VERB[^ed]
 writing for the majority : ADV
 written : VERB[^ed]
+written by : PREP
 wrote : VERB[^ed,*x]
 years in prison : NOUN[:plur]
 
@@ -1030,6 +1034,7 @@ authorities : NOUN[:plur]
 automotive production : NOUN
 autonomous weapon : NOUN
 autoplay : NOUN
+auxiliary bishop : NOUN
 average rate : NOUN
 avoid a repeat of : VERB
 avoid errors : VERB
@@ -1054,6 +1059,7 @@ before noon : ADV
 before sunset : ADV
 before the ink could dry : ADV
 before which : CONJ
+before, during, or after : CONJ
 belief that : NOUN (nmth)
 below the ocean's surface : ADV
 besieged area : NOUN
@@ -1065,6 +1071,7 @@ better link : VERB
 better of it : ADV
 better than : PREP
 better than even chance : NOUN
+bid for office : NOUN
 bigger and bigger : ADJ
 biggest customers : NOUN[:plur]
 bill signing ceremony : NOUN
@@ -1124,6 +1131,7 @@ built : VERB[^ed] [$trns,noaj] +3
 bullocky : NOUN - +2
 buoys the hopes of : VERB[^s]
 bushranger : NOUN
+business complex : NOUN
 business model : NOUN
 but instead, : CONJ
 but now : CONJ
@@ -1270,6 +1278,7 @@ consider the fate of : VERB
 consigliere : NOUN
 conspiracy theory : NOUN
 constitutional amendment : NOUN
+constitutional authority : NOUN
 constitutional crisis : NOUN
 constitutional limit : NOUN
 construction permit : NOUN
@@ -1350,6 +1359,7 @@ decades ago : ADV
 decent people : NOUN[:plur]
 decisive tilt : NOUN
 deductibility : NOUN
+defence minister : NOUN
 defense minister : NOUN
 delaware company : NOUN
 delay a recommendation : VERB
@@ -1392,6 +1402,7 @@ district official : NOUN
 divorce bill : NOUN
 divorce case : NOUN
 do everything in my power : VERB
+do his best to : VERB
 do much more : VERB
 do that : VERB
 doctored accounting : NOUN
@@ -1503,6 +1514,7 @@ far reaching : ADJ
 far too weak : ADJ
 fatal shooting : NOUN
 fatal shootings : NOUN[:plur]
+fatally shot : ADJ
 favorable treatment : NOUN
 fbi informant : NOUN
 federal appeals court : NOUN
@@ -1618,6 +1630,7 @@ get to the bottom of : VERB
 give them new life : VERB
 global attention : NOUN
 global financial crisis : NOUN
+global order : NOUN
 global shipping company : NOUN
 global stage : NOUN
 glowing recommendation : NOUN
@@ -1739,6 +1752,7 @@ how it compares : NOUN
 how long : CONJ
 human control : NOUN
 human dignity : NOUN
+human rights lawyer : NOUN
 hurricane activity : NOUN
 hurricane season : NOUN
 hush payment : NOUN
@@ -1996,6 +2010,7 @@ law enforcement personnel : NOUN
 laze : NOUN - -2
 lead surgeon : NOUN
 lead up : NOUN - -4
+leaders summit : NOUN
 leadership role : NOUN
 leap of faith : NOUN
 leaps and bounds : NOUN[:plur]
@@ -2032,6 +2047,7 @@ local hospital : NOUN
 local law enforcement : NOUN
 local news : NOUN
 local official : NOUN
+local priest : NOUN
 long gun : NOUN
 long term : NOUN
 lose contact with : VERB
@@ -2223,6 +2239,7 @@ next month : NAVB[:det]
 next week : NAVB[:det]
 next year : NAVB[:det]
 nfl linebacker: NOUN
+no doubt that : ADV
 no little : ADJ
 no matter how : CONJ
 no one : PRO
@@ -2261,6 +2278,7 @@ of the moment : ADJ
 of them : NUM[:cnj]
 of this kind : ADJ
 of those : PRO
+of where : CONJ
 of whether : CONJ
 of which : CONJ[@rel]
 of whom : CONJ[@rel]
@@ -2324,6 +2342,7 @@ onscreen : ADJ
 onslaught of criticism : NOUN
 open border : NOUN
 open desert : NOUN
+open or close : VERB
 opening auction : NOUN
 openings : NOUN[:plur]
 opposition fighters : NOUN[:plur]
@@ -2470,6 +2489,7 @@ presentation system : NOUN
 presidential campaign : NOUN
 presidential election : NOUN
 presidential pardon : NOUN
+presidential power : NOUN
 presidential race : NOUN
 presidential speech : NOUN
 press secretary : NOUN
@@ -2882,6 +2902,7 @@ that comes : THTV
 that continued : THTV
 that he   : PRO[=*l]
 that he’s not inclined : THTV
+that houses : THTV
 that i    : PRO[=*l]
 that it   : PRO[=*l]
 that it's not known : THTV
@@ -3063,6 +3084,7 @@ underutilization : NOUN
 underutilize : VERB
 unexplored depths : NOUN
 unfair media : NOUN
+unilateral action : NOUN
 union force : NOUN
 united states military : NOUN
 unity deal : NOUN
@@ -3071,6 +3093,7 @@ unpalatable deal : NOUN
 unsafe condition : NOUN
 unscheduled sweep : NOUN
 unsettled weather : NOUN
+unusually frank : ADJ
 unusually long time : NOUN
 unwilling to : TO
 up for reelection : ADJ
@@ -3424,6 +3447,7 @@ or more accurately, : ADV
 over the past two years : ADV
 of … : PREP
 new and bloodier : ADJ
+new york time’s : NOUN
 no confidence motion in parliament : NOUN
 nuclear and missile : ADJ
 on the global stage : ADV
@@ -4019,6 +4043,7 @@ Associated Press : NOUN
 Aung San Suu Kyi : NOUN
 Avigdor Lieberman : NOUN
 Ayatollah Ali Khamenei : NOUN
+Báez : NOUN
 Bannon : NOUN
 Barack Obama : NOUN
 Bashar al-Assad : NOUN
@@ -4164,6 +4189,7 @@ Ebay : NOUN
 Ebay order : NOUN
 Eclogues : NOUN
 Edwin M. Lee : NOUN
+Edwing Roman : NOUN
 el-Sisi : NOUN
 El Nino : NOUN
 Elaine Chao : NOUN
@@ -4389,6 +4415,7 @@ Los Angeles Times : NOUN
 Luiz Inacio Lula da Silva : NOUN
 Love Victorious : NOUN
 MacKenzie State Park : NOUN
+Mahathir Mohamad : NOUN
 Mahmoud Abbas : NOUN
 Malala Yousufzai : NOUN
 Malaysia Airlines : NOUN
@@ -4480,6 +4507,7 @@ NDA : NOUN
 Neil Gorsuch : NOUN
 Netflix : NOUN
 Nevada Test and Training Range : NOUN
+Ng Eng Hen : NOUN
 Nicolas Sarkozy : NOUN
 Netanyahu : NOUN
 New Kensington : NOUN
@@ -4633,6 +4661,7 @@ Ship of Fools : NOUN
 Showcase Presentations : NOUN
 Sikander : NOUN
 Silent Majority : NOUN
+Silvio José Báez : NOUN
 Snapchat : NOUN
 SNL : NOUN
 Sochi : NOUN
@@ -18378,6 +18407,7 @@ indonesia : NOUN
 indonesian : NOUN
 indonesian : ADJ
 indoor : ADJ
+indoors : ADV
 indus : NOUN
 indus civilization : NOUN
 indus river : NOUN
@@ -19312,7 +19342,7 @@ keen : NOUN
 keen : VERB
 keen : ADJ
 keep : NOUN - -2
-keep : VERB
+keep : VERB - +1
 keep abreast : VERB
 keep apart : VERB
 keep away : VERB
@@ -30912,6 +30942,7 @@ statute book : NOUN
 statute law : NOUN
 statute mile : NOUN
 statute title : NOUN
+statutory : ADJ
 staunch : VERB
 staunch : ADJ
 staunchly : ADV
@@ -33592,6 +33623,7 @@ typhoon : NOUN
 typical : ADJ
 typically : ADV
 typify : VERB
+tyrannical : ADJ
 tyrant : NOUN
 u : NOUN
 u : ADJ
