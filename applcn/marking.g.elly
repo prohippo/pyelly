@@ -1641,6 +1641,7 @@ g:NOUN->UNKN
   l[&*c]>>[&*c]
 __
 g:NOUN->VERB SUFX[#vTOn]
+  n>2 >>----
 _
   (twob)
 __
@@ -2424,7 +2425,8 @@ _
 __
 
 g:ADJ[%*l,er,-*l]->ADJ[%-*l,-*r] XER
- >>*l
+ n>2 >>----
+     >>*l
 _
   (twob)
 __
@@ -4307,4 +4309,19 @@ _
   append <punc>
   right
   append </punc>
+__
+
+g:ELEM->PREP VCLU[^-*r,ing]
+  >>[!rv]++
+_
+  append <nclu>
+  var typg=prep
+  (typg)
+  split
+  right
+  back
+  delete 6 <
+  merge
+  delete 7 >
+  append </nclu>
 __

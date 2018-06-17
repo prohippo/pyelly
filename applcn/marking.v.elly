@@ -65,6 +65,7 @@ basic knowledge : NOUN
 be forcibly removed : NOUN
 be forthcoming about : VERB
 be found alive : VERB[^ed]
+beating up : VERB[^ing]
 became : VERB[^ed,chng]
 beefing up : VERB[^ing]
 been charged with : VERB[^ed]
@@ -139,7 +140,6 @@ could change hands : VERB[^ed]
 covered : VERB[^ed]
 cozying up : VERB[^ing]
 cracking down on : VERB[^ing]
-crafting a statement : NOUN[:ing]
 crafting a statement : VERB[^ing]
 creating : VERB[^ing] - +1
 creating : ADJ[%ing] - -2
@@ -1053,6 +1053,7 @@ banking dynasty : NOUN
 bat and ball : ADJ
 beatle : NOUN
 because of : PREP
+because of that, : CONJ
 before dawn : ADV
 before midnight : ADV
 before noon : ADV
@@ -2371,6 +2372,7 @@ out of step with : PREP
 out of the hands of : PREP
 out of the realm of possibility : ADJ
 outdated technology : NOUN
+outer atmosphere : NOUN
 outlet for conservative voices : NOUN
 outside of : PREP
 outside the jurisdiction of : PREP
@@ -2909,6 +2911,7 @@ that he’s not inclined : THTV
 that houses : THTV
 that i    : PRO[=*l]
 that it   : PRO[=*l]
+that miscast : THTV
 that it's not known : THTV
 that mr.  : PRO[=*l,*x]
 that mrs. : PRO[=*l,*x]
@@ -2938,6 +2941,7 @@ the default is : VERB
 the early stages : NOUN[:plur]
 the entirety : NOUN
 the fifth amendment : NOUN
+the firings : NOUN[:plur]
 the first in the world : NOUN
 the first time : NAVB[:*x]
 the focus : NOUN[:det]
@@ -2996,6 +3000,8 @@ time of the year : NAVB
 time of year : NAVB
 time travel : NOUN
 time travel : VERB
+times : VERB[^s] - -2
+times : NOUN[:plur] [&msr] 0
 title track : NOUN
 to be able to : TO
 to before : CONJ
@@ -3458,6 +3464,7 @@ nuclear and missile : ADJ
 on the global stage : ADV
 on what the news agency described as : CONJ
 orange snow : NOUN
+pavonis : NOUN
 people who shouldn't have them : NOUN
 personal narrative : NOUN
 parkland mass shooting : NOUN
@@ -3472,6 +3479,7 @@ rebel-held eastern Ghouta suburb of Damascus : NOUN
 repeated rape : NOUN
 research activity : NOUN
 risk wrecking : VERB
+role in crafting a statement : NOUN
 scandalous affair : NOUN
 Scarborough intern Lori Klausutis : NOUN
 Scout Me in : ADJ
@@ -3724,6 +3732,7 @@ half-full : ADJ
 half-mile : ADJ
 half-revelation : NOUN
 half-sitting : VERB[^ed]
+half-sitting on : VERB[^ed]
 hand-delivered : VERB[^ed]
 hands-on : ADJ
 hard-edged : ADJ
@@ -4389,6 +4398,7 @@ Kushner : NOUN
 La David Johnson : NOUN
 La Guardia Airport : NOUN
 La Nina : NOUN
+LA Times : NOUN
 Labour MP : NOUN
 Lafayette Square : NOUN
 Lane Kiffin : NOUN
@@ -19771,7 +19781,7 @@ laugh loudly : VERB
 laugh off : VERB
 laugh track : NOUN
 laughingstock : NOUN
-launch : NOUN
+launch : NOUN - -2
 launch : VERB
 launch area : NOUN
 launch pad : NOUN
@@ -34878,7 +34888,7 @@ wee : NOUN
 wee : VERB
 wee : ADJ
 wee small voice : NOUN
-weed : NOUN - +1
+weed : NOUN - +2
 weed : VERB
 weed killer : NOUN
 weed out : VERB
