@@ -2815,21 +2815,21 @@ d:these<- DEM[@ind,plur]
 __
 d:those<- DEM[@ind,plur]
 __
-d:my   <- DEM
+d:my   <- DEM[@the]
 __
-d:your <- DEM
+d:your <- DEM[@the]
 __
-d:his  <- DEM[@ind]
+d:his  <- DEM[@ind,the]
  >>[!spcs]
 __
-d:her  <- DEM
+d:her  <- DEM[@the]
   >>++
 __
-d:its  <- DEM
+d:its  <- DEM[@the]
 __
-d:our  <- DEM
+d:our  <- DEM[@the]
 __
-d:their<- DEM
+d:their<- DEM[@the]
 __
 d:them <- DEM[@plur]
  >>--
@@ -4302,7 +4302,7 @@ _
   append </punc>
   right
 __
-g:ADJ[%*l,pexp,-*l]->ADJX[%-lquo] PUNC[|*r,-quo]
+g:ADJ[%*l,-*l]->ADJX[%-lquo] PUNC[|*r,-quo]
  >>+8
 _
   left
@@ -4324,4 +4324,25 @@ _
   merge
   delete 7 >
   append </nclu>
+__
+
+g:NCLU->DET NAVB
+  >>--
+_
+  append <nclu><det>
+  left
+  append </det><noun>
+  right
+  append </noun></nclu>
+__
+
+g:NOUN->DET[@the] ADJ[%est]
+  >>--
+_
+  (twob)
+__
+g:NOUN->DEM[@the] ADJ[%est]
+  >>--
+_
+  (twob)
 __
