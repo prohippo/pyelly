@@ -74,6 +74,7 @@ been known to : AUXL
 been seated at : VERB[^ed]
 began : VERB[^ed,proc,*x]
 begun : VERB[^ed]
+being lifted : VERB[^ing]
 being looked at : VERB[^ing]
 being on at : VERB[^ing]
 being taken to the hospital : VERB[^ing]
@@ -179,12 +180,13 @@ djs : VERB[^s]
 does : NOUN[:plur] - -1
 does : VERB[^s] - +1
 does : AUXL[^s]
+does not : AUXL[^s]
 doing more : VERB[^ing]
 doing sweeps : VERB[^ing]
 doing work : VERB[^ing]
 done : VERB[^ed]
 done so : VERB[^ed]
-does not : AUXL[^s]
+done volunteer work : VERB[^ed]
 dominated headlines : VERB[^ed]
 doubled down on : VERB[^ed]
 drags on : VERB[^s]
@@ -238,6 +240,7 @@ flung : VERB[^ed]
 focused on : VERB[^ed]
 focuses on : VERB[^s] - +2
 focusing on : VERB[^ing]
+followed that up : VERB[^ed]
 followed through on : VERB[^ed]
 forgave : VERB[^ed,*x]
 forgot : VERB[^ed,*x]
@@ -287,6 +290,7 @@ gone out of business : VERB[^ed]
 gonna : AUXL
 goods : NOUN[:plur]
 got : VERB[^ed,chng,*x]
+got an invitation : VERB[^ed]
 got home from work : VERB[^ed]
 got off to a shaky start : VERB[^ed]
 got out : VERB[^ed]
@@ -344,6 +348,7 @@ identified as : VERB[^ed]
 ideological divide : NOUN
 ideologically divided : ADJ
 illegally accepted : VERB[^ed]
+improperly inserted : VERB[^ed]
 inches : NOUN[:plur]
 increasing the emphasis : VERB[^ing]
 indicated it wanted to pursue : VERB[^ed]
@@ -471,6 +476,7 @@ needs to do more : VERB[^s]
 noblemen : NOUN[:plur]
 not been reimbursed : VERB[^ed]
 not in their custody : ADJ
+not yet fully healed : VERB[^ed]
 obtaining : NOUN - -2
 obtaining : VERB[^ing]
 obtaining : ADJ - -6
@@ -527,6 +533,7 @@ providing : VERB[^ing] - +3
 publicly backed : VERB[^ed]
 published by buzzed : VERB[^ed]
 publishing : VERB[^ing]
+purchasing : NOUN - -1
 purchasing : VERB[^ing] - +1
 purchasing : ADJ[%ing] - -2
 put into effect : VERB[^ed]
@@ -595,6 +602,7 @@ seemed to : AUXL
 seen : VERB[^ed]
 seen : SVED - -1
 seen as hostile : ADJ [$trlg,prd] 0
+seen no evidence to support : VERB[^ed]
 seized control : VERB
 sent : VERB[^ed]
 served as : VERB[^ed]
@@ -694,6 +702,7 @@ terrifying : VERB[^ing]
 terrorizing : VERB[^ing] - +2
 terrorizing : NOUN - -1
 thanked : VERB[^ed]
+that could bring : THTV
 that was enacted : THTV
 thinking this through : VERB[^ing]
 thought : VERB[^ed]
@@ -823,6 +832,7 @@ went_on : VERB[^ed] =went on
 2 dozen : NUM
 20 to 30 : NUM
 2014 games : NOUN[:plur]
+2016 campaign : NOUN
 2016 election : NOUN
 2016 election meddling : NOUN
 24/7 : ADJ - +2
@@ -840,6 +850,7 @@ a claim : NOUN[:det]
 a claim that : NOUN[:det] (nmth)
 a closed military zone : NOUN[:det]
 a collection of : QUAN
+a couple different : QUAN
 a day after : CONJ
 a day later : ADV
 a distant third : NOUN[:det]
@@ -872,6 +883,7 @@ a string of : QUAN
 a third the : NUM
 a thousand : NUM
 a wave of : QUAN
+a week after : CONJ[@prep,aftr]
 a year in prison : NOUN[:det,num]
 abortion rules : NOUN[:plur]
 about a week : ADV
@@ -886,6 +898,7 @@ about why : CONJ
 above the law : ADJ
 above water : ADJ
 abrupt pivot : NOUN
+absent from the public eye : ADJ
 absolute right : NOUN
 abuse of power : NOUN
 access to visitors : NOUN
@@ -984,6 +997,7 @@ arbitration filing : NOUN
 arctic sea ice : NOUN
 argentine navy : NOUN
 armed group : NOUN
+armored personnel carrier : NOUN
 armored vehicle : NOUN
 arms control : NOUN
 arms control expert : NOUN
@@ -1064,6 +1078,8 @@ background check : NOUN
 bad news : NOUN
 bail deal : NOUN
 banking dynasty : NOUN
+barely edge : VERB
+barrage of tweets : NOUN
 bat and ball : ADJ
 beatle : NOUN
 because of : PREP
@@ -1183,6 +1199,7 @@ calories burned : NOUN
 came : VERB[^ed,ptcl]
 came to light : VERB[^ed]
 campaign chairman : NOUN
+campaign donation : NOUN
 campaign finance director : NOUN
 campaign fund : NOUN
 campaign funding : NOUN
@@ -1198,6 +1215,7 @@ canadian/american : ADJ
 canceled check : NOUN
 cannot happen here : VERB
 capable of : PREP['of]
+capital city : NOUN
 capital spending : NOUN
 capt. : NOUN
 capture control of : VERB
@@ -1253,6 +1271,7 @@ climactic moment : NOUN
 close cooperation : NOUN
 close personal tie : NOUN
 close to : PREP
+closed-door briefing : NOUN
 closed-door meeting : NOUN
 closer tracking : NOUN
 cm long : NOUN
@@ -1445,6 +1464,7 @@ draft treaty : NOUN
 dramatic concessions: NOUN[:plur]
 dramatic scene : NOUN
 draw attention to : VERB
+driving ban : NOUN
 drug prices : NOUN[:plur]
 drugmaker : NOUN
 drumroll : NOUN
@@ -1652,6 +1672,7 @@ genetic modification : NOUN
 genetically modified : ADJ
 genetically modified crop : NOUN
 genome editing : NOUN
+get into trouble : VERB
 get shot : VERB
 get to the bottom of : VERB
 give them new life : VERB
@@ -1756,6 +1777,7 @@ hit reboot : NOUN
 hold a suspect in custody : VERB
 hold accountable : VERB
 hold up in court : VERB
+hollywood producer : NOUN
 holster : VERB
 home detention : NOUN
 home state : NOUN
@@ -1771,12 +1793,14 @@ hot lava : NOUN
 hotly contested : NOUN
 hours after : CONJ
 house candidate : NOUN
+house district : NOUN
 house of cards : NOUN
 house of delegates : NOUN
 house seat : NOUN
 house speaker : NOUN
 house tax-writing committee : NOUN
 household spending : NOUN
+how best : CONJ
 how far the country has veered : NOUN
 how it compares : NOUN
 how long : CONJ
@@ -1816,6 +1840,7 @@ in accordance with : PREP
 in addition to : PREP
 in all caps : ADJ
 in all cases : ADV
+in an effort to : TO
 in anticipation of : PREP
 in any way : ADV
 in area : ADV[~trlg] [$deg] 0
@@ -1843,8 +1868,10 @@ in leaps and bounds : ADV
 in length : ADV[~trlg] [$deg] 0
 in order to : TO
 in order to get attention : ADV
+in practice : ADV
 in protest against : PREP
 in recent memory : ADV [$deg,time] +1
+in recent months : ADV [$deg,time] +1
 in recent weeks : ADV [$deg,time] +1
 in recent years : ADV [$deg,time] +1
 in relations with : PREP
@@ -1899,6 +1926,7 @@ industry executive : NOUN
 informal meeting : NOUN
 informal meetings : NOUN[:plur]
 information leading to an arrest : NOUN
+information ministry : NOUN
 initial failure : NOUN
 initial mandate : NOUN
 innocuously : ADV
@@ -1939,6 +1967,7 @@ into trouble : ADV
 into whether : CONJ
 ipad : NOUN
 iphone : NOUN
+iranian oil : NOUN
 irish citizen : NOUN
 irish people : NOUN
 irrespective of whether : CONJ
@@ -2208,6 +2237,7 @@ more often : ADV
 more practical : ADJ
 more sway : NOUN
 more than : ADV[~mod] [$deg] 0
+more than a : QUAN
 more than a year : NOUN
 more than half a : QUAN
 more time : NOUN
@@ -2251,6 +2281,7 @@ national security : NOUN
 national security adviser : NOUN
 national security interest : NOUN
 national title : NOUN
+nationwide driving ban : NOUN
 nationwide rallies : NOUN[:plur]
 native soil : NOUN
 natural causes : NOUN[:plur]
@@ -2375,6 +2406,7 @@ on which : CONJ
 once in a while : ADV
 online survey : NOUN
 only after : CONJ
+only because : CONJ
 only relevant attraction : NOUN
 onramp : NOUN
 onscreen : ADJ
@@ -2410,6 +2442,7 @@ out of the realm of possibility : ADJ
 outdated technology : NOUN
 outer atmosphere : NOUN
 outlet for conservative voices : NOUN
+outside help : NOUN
 outside of : PREP
 outside the jurisdiction of : PREP
 outside world : NOUN
@@ -2489,6 +2522,7 @@ policy and legislative changes : NOUN[:plur]
 policy views : NOUN[:plur]
 policymaker : NOUN
 policymaking : NOUN
+political action group : NOUN
 political appointee : NOUN
 political capital : NOUN
 political chaos : NOUN
@@ -2639,6 +2673,7 @@ rental room : NOUN
 repeal and replace : VERB
 repeat offender : NOUN
 reporting tactics : NOUN
+republican challenger : NOUN
 republican governor : NOUN
 republican leader : NOUN
 republican party chairman : NOUN
@@ -2752,6 +2787,7 @@ senior level : NOUN
 senior ranks : NOUN[:plur]
 senior trump administration official : NOUN
 senior u.s. official : NOUN
+senior writer : NOUN
 sensitive conversation : NOUN
 sensitive document : NOUN
 serve as : VERB
@@ -2763,6 +2799,7 @@ settle lawsuits : VERB
 several of : QUAN
 several other : QUAN
 sex scandal : NOUN
+sex-crimes detective : NOUN
 sexual advance : NOUN
 sexual misconduct : NOUN
 sexual misconduct allegation : NOUN
@@ -2941,6 +2978,7 @@ than ever before : CMPC
 thanks to : PREP
 thanksgiving break : NOUN
 that are sure to have : THTV
+that began : THTV
 that believe in : THTV
 that can be faced : ADJ
 that comes : THTV
@@ -2966,13 +3004,16 @@ that there : THAV
 that we   : PRO[=*l]
 that year : NAVB[:det]
 thaw with russia : NOUN
+the IS : NOUN
 the above : ADJ
+the american soul : NOUN
 the armed forces : NOUN[:plur]
 the authorities : NOUN[:plur,det]
 the back of the property : NOUN
 the best thing : NOUN
 the better of it : ADV
 the coming days : NOUN[:plur]
+the courtroom : NOUN
 the culture wars : NOUN[:plur]
 the day after : PREP
 the day after : CONJ - -2
@@ -2990,10 +3031,12 @@ the following week : ADV
 the general command : NOUN
 the governor : NOUN[:det]
 the happiest day of my life : NOUN
+the headlines : NOUN[:plur]
 the last month : NAVB[:det]
 the last year : NAVB[:det]
 the latest twist : NOUN
 the legal community : NOUN
+the lucky few : NOUN
 the minimum age : NOUN[:det]
 the most serious charges : NOUN[:plur]
 the near future : NAVB[:det]
@@ -3026,6 +3069,7 @@ their presence : NOUN
 there is a reason why : CONJ
 there is no hope : NOUN
 these and other : DEM
+these years later : ADV
 they think will : AUXL
 they too : PRO
 this afternoon : NAVB[:det,*x]
@@ -3223,6 +3267,7 @@ whenever and wherever : CONJ
 whether or not : CONJ
 which in turn : CONJ
 which it said : CONJ
+while under the influence of drugs : ADV
 white evangelical : NOUN
 white house official : NOUN
 white rhino : NOUN
@@ -3463,6 +3508,7 @@ from on : PREP
 from the equation : ADV
 group travel discount : NOUN
 gun group : NOUN
+had a candidate reach : VERB[^ed]
 had helped her husband plan : VERB[^ed]
 half-apologies : NOUN[:plur]
 hardline immigration rhetoric : NOUN
@@ -3517,6 +3563,7 @@ on what the news agency described as : CONJ
 orange snow : NOUN
 pavonis : NOUN
 people who shouldn't have them : NOUN
+permitted 180 days : NOUN[:plur]
 personal narrative : NOUN
 parkland mass shooting : NOUN
 picked him up : VERB[^ed,*r]
@@ -3538,6 +3585,7 @@ seabed hunt : NOUN
 sinai mosque : NOUN
 small collection of buildings : NOUN
 so loud : ADJ
+solider : NOUN =soldier
 some of who : PRO
 south-west of : PREP
 square kilometer : NOUN
@@ -4201,6 +4249,7 @@ Blankenship : NOUN
 Bloomberg : NOUN
 Bloomberg News : NOUN
 Bob Geldof : NOUN
+Bob Kennedy : NOUN
 Boeing : NOUN
 Boeing 777 : NOUN
 Boise State University : NOUN
@@ -4331,6 +4380,7 @@ Eli : NOUN
 Elise : NOUN
 Ellicott City : NOUN
 Elon Musk : NOUN
+Emily’s List : NOUN
 Emmanuel : NOUN
 Emmanuel Macron : NOUN
 Enzo : NOUN
@@ -4418,6 +4468,7 @@ Hanks : NOUN
 Hapag-Lloyd company : NOUN
 Hariri : NOUN
 Harry : NOUN
+Harvey Weinstein : NOUN
 Hassan Rouhani : NOUN
 Hawaii County Civil Defense : NOUN
 Hawaii County Fire Department : NOUN
@@ -4460,6 +4511,7 @@ James Eric Davis Jr. : NOUN
 James Clapper : NOUN
 James O'Keefe : NOUN
 Jamie : NOUN
+Jamil Smith : NOUN
 Janis : NOUN
 Japan International Cooperation Agency : NOUN[:*r]
 Jared : NOUN
@@ -4486,6 +4538,7 @@ Jonathan Oddi : NOUN
 Jones : NOUN
 Joseph Emanuel Hall : NOUN
 Josephine County : NOUN
+Josh Harder : NOUN
 Joy Reid : NOUN
 Juan : NOUN
 Julia Poff : NOUN
@@ -4569,6 +4622,7 @@ Mariano Rajoy : NOUN
 Mariusz Blaszczak : NOUN
 Marjory Stoneman Douglas High School : NOUN
 Mark Zuckerberg : NOUN
+Martin Luther King : NOUN
 Martin Luther King Jr. : NOUN
 Martinez : NOUN
 Mary Fallin : NOUN
@@ -4746,6 +4800,7 @@ Ric : NOUN
 Rick Kurtzman : NOUN
 Rob Porter : NOUN
 Robert Forrest : NOUN
+Robert Kennedy : NOUN
 Robert Mueller : NOUN
 Robert S. Mueller III : NOUN
 Rockette : NOUN
@@ -4753,6 +4808,7 @@ Rockwell Automation : NOUN
 Rodrigo Duterte : NOUN
 Roger Self : NOUN
 Rohingya : NOUN
+Rolling Stone : NOUN
 Rosanne Barr : NOUN
 Rosen : NOUN
 Route 91 Harvest : NOUN
@@ -4778,6 +4834,7 @@ Santa Barbara : NOUN
 Santa Paula : NOUN
 São Paulo : NOUN
 Sara Palin : NOUN
+Saras : NOUN
 Sarah Huckabee Sanders : NOUN
 Sarmat missile system : NOUN
 Scarborough : NOUN
@@ -4938,6 +4995,7 @@ Veterans of Foreign Wars : NOUN
 Vickers : NOUN
 Viktor Vekselberg : NOUN
 Vincent : NOUN
+Virginia National Guard : NOUN
 Vladimir Putin : NOUN
 Vons : NOUN
 Wales : NOUN
