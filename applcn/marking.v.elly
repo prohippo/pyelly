@@ -759,6 +759,7 @@ warned that : VERB[^ed]
 was a violation of : VERB[^ed,s]
 was behind : VERB[^ed,s]
 was behind bars : VERB[^ed,s]
+was confirmed to be suffering : VERB[^ed]
 was culpable for : VERB[^ed,s]
 was due to : AUXL[^ed] - -1
 was found dead : VERB[^ed]
@@ -773,6 +774,7 @@ wasted no time : VERB[^ed]
 weddings : NOUN[:plur]
 went : VERB[^ed,*x]
 went missing : VERB[^ing]
+went on, : VERB[^ed]
 went out of business : VERB[^ed]
 went viral : VERB[^ed]
 were heartbroken to see : VERB[^ed]
@@ -832,7 +834,6 @@ went_on : VERB[^ed] =went on
 2 dozen : NUM
 20 to 30 : NUM
 2014 games : NOUN[:plur]
-2016 campaign : NOUN
 2016 election : NOUN
 2016 election meddling : NOUN
 24/7 : ADJ - +2
@@ -841,6 +842,7 @@ went_on : VERB[^ed] =went on
 2nd known : ADJ
 3 dozen : NUM
 3rd party : NOUN
+3rd world war : NOUN
 5 minutes : NOUN
 I think that : ADV
 a billion : QUAN
@@ -850,7 +852,6 @@ a claim : NOUN[:det]
 a claim that : NOUN[:det] (nmth)
 a closed military zone : NOUN[:det]
 a collection of : QUAN
-a couple different : QUAN
 a day after : CONJ
 a day later : ADV
 a distant third : NOUN[:det]
@@ -1179,6 +1180,7 @@ by having : PREP
 by name : ADV
 by nearly half : ADV[~trlg] [$deg,trlg] 0
 by now : ADV
+by the end of that day : ADV
 byline : NOUN
 cabinet meeting : NOUN
 cabinet meetings : NOUN[:plur]
@@ -1215,7 +1217,6 @@ canadian/american : ADJ
 canceled check : NOUN
 cannot happen here : VERB
 capable of : PREP['of]
-capital city : NOUN
 capital spending : NOUN
 capt. : NOUN
 capture control of : VERB
@@ -1271,7 +1272,6 @@ climactic moment : NOUN
 close cooperation : NOUN
 close personal tie : NOUN
 close to : PREP
-closed-door briefing : NOUN
 closed-door meeting : NOUN
 closer tracking : NOUN
 cm long : NOUN
@@ -1314,6 +1314,7 @@ conservative activist : NOUN
 conservative argument : NOUN
 consider the fate of : VERB
 consigliere : NOUN
+consistent with : PREP
 conspiracy theory : NOUN
 constitutional amendment : NOUN
 constitutional authority : NOUN
@@ -1341,6 +1342,7 @@ country music festival : NOUN
 country music’s hometown : NOUN
 county attorney : NOUN
 county jail : NOUN
+couple different : QUAN
 court document : NOUN
 court spokesman : NOUN
 court spokeswoman : NOUN
@@ -1534,6 +1536,7 @@ explosives detection K9 team : NOUN
 express in words : VERB
 extreme far right : NOUN
 extreme far right : ADJ
+extreme step : NOUN
 extremely tense situation : NOUN
 eye injury : NOUN
 facebook page : NOUN
@@ -1761,6 +1764,7 @@ hid : VERB[^ed]
 hidden : VERB[^ed]
 hide and seek : NOUN
 high school prom : NOUN
+high stakes : NOUN[:plur]
 higher pay : NOUN
 higher-quality : ADJ
 highest principles : NOUN[:plur]
@@ -1864,6 +1868,7 @@ in height : ADV[~trlg] [$deg] 0
 in his mold : ADJ
 in hopes of : CONJ
 in how : CONJ
+in late may : ADV
 in leaps and bounds : ADV
 in length : ADV[~trlg] [$deg] 0
 in order to : TO
@@ -1950,6 +1955,7 @@ internal and external : ADJ
 internal report : NOUN
 international aid worker : NOUN
 international airport : NOUN
+international arena : NOUN
 international attention : NOUN
 international border : NOUN
 international community : NOUN
@@ -2098,6 +2104,7 @@ life’s work : NOUN
 light vehicle : NOUN
 lightning strike : NOUN
 like never before : ADV
+like to tell : VERB
 like you’re doing something wrong : ADV
 likely to be asked about : ADJ
 limit supply : NOUN
@@ -2218,7 +2225,9 @@ missile force : NOUN
 missile program : NOUN
 missile system : NOUN
 missile technology : NOUN
+modern civilization : NOUN
 molten lava : NOUN
+molten rock : NOUN
 moneychanger : NOUN
 monolog : NOUN =monologue
 months : NOUN[:plur]
@@ -2237,9 +2246,9 @@ more often : ADV
 more practical : ADJ
 more sway : NOUN
 more than : ADV[~mod] [$deg] 0
-more than a : QUAN
 more than a year : NOUN
 more than half a : QUAN
+more than half of the : QUAN
 more time : NOUN
 more times : ADV[~trlg]
 more traditional position : NOUN
@@ -2268,6 +2277,7 @@ muslim tradition : NOUN
 mutter under their breath : VERB
 mutual friend : NOUN
 mutual understanding : NOUN
+mysterious illness : NOUN
 named storm : NOUN
 namesake company : NOUN
 nano : NOUN
@@ -2629,6 +2639,7 @@ raise the roof beam high : VERB
 rally support for : VERB
 rapidly melting : ADJ
 rapidly mounting : ADJ
+rattlesnake venom : NOUN
 razor thin : ADJ
 reactivation : NOUN
 real challenge : NOUN
@@ -2834,6 +2845,7 @@ skaky start : NOUN
 slbm : NOUN
 small business : NOUN
 so as to : TO
+so grateful : ADJ
 so many : QUAN[@ind]
 so poorly received : ADJ
 so severely damaged : ADJ [$trlg,prd] 0
@@ -2990,6 +3002,7 @@ that houses : THTV
 that i    : PRO[=*l]
 that it   : PRO[=*l]
 that it's not known : THTV
+that led : THTV
 that meant that : CONJ
 that miscast : THTV
 that mr.  : PRO[=*l,*x]
@@ -3003,6 +3016,7 @@ that some insist : THAT
 that there : THAV
 that we   : PRO[=*l]
 that year : NAVB[:det]
+that you :  PRO[=*l]
 thaw with russia : NOUN
 the IS : NOUN
 the above : ADJ
@@ -3021,6 +3035,7 @@ the day before : PREP
 the day before : CONJ - -2
 the default is : VERB
 the early stages : NOUN[:plur]
+the end of civilization : NOUN
 the entirety : NOUN
 the fifth amendment : NOUN
 the firings : NOUN[:plur]
@@ -3151,6 +3166,7 @@ u.s. border patrol agent : NOUN
 u.s. charts : NOUN[:plur]
 u.s. company : NOUN
 u.s. diplomat : NOUN
+u.s. embassy staff : NOUN
 u.s. envoy : NOUN
 u.s. firm : NOUN
 u.s. forces : NOUN[:plur]
@@ -3204,6 +3220,7 @@ up to him : ADV
 up to his neck : ADJ
 upper atmosphere : NOUN
 upper chamber : NOUN
+upwards of : ADV[~mod] [$deg] 0
 urban myth : NOUN
 us warships : NOUN[:plur]
 us-bound : ADJ
@@ -3630,6 +3647,7 @@ unfair and undemocratic : ADJ
 university police Chief Bill Yeagley : NOUN
 us district court for the district of columbia : NOUN
 US soldier : NOUN
+volcanologist : NOUN =vulcanolgist
 walkout of classes : NOUN
 was home sleeping : VERB[^ing]
 was like, : VERB[^ed]
@@ -4180,10 +4198,11 @@ Adolph Hitler : NOUN
 Adrian : NOUN
 Advanced Step in Innovative Mobility : NOUN
 Affordable Care Act : NOUN
+al-Qaeda : NOUN
+al-Mahra province :NOUN
 Alabama senate candidate : NOUN
 Alexei Navalny : NOUN
-Al-Qaeda : NOUN
-al-Mahra province :NOUN
+Alice Johnson : NOUN
 Amanda Self : NOUN
 Andrew Intrater : NOUN
 Andrew Weissman : NOUN
@@ -4291,6 +4310,7 @@ Chibok Government Secondary School : NOUN
 Chicago Sun Times : NOUN
 China Central Television : NOUN[:*r]
 China Great Wall Industry Corporation : NOUN[:*r]
+Chinese city of Guangzhou : NOUN
 Chinese leadership : NOUN
 Chinese President : NOUN
 Chris Cuomo : NOUN
@@ -4455,6 +4475,7 @@ Gina Haspel : NOUN
 Global Times : NOUN
 Golan Heights : NOUN[:plur]
 Golden State Warriors : NOUN
+Good Morning America : NOUN
 Google News : NOUN
 Gov. Greg Abbott : NOUN
 Gov. Jerry Brown : NOUN
@@ -4522,6 +4543,7 @@ Jeffrey Lewis : NOUN
 Jenny Lumet : NOUN [&prop,nml] 0
 Jeremy : NOUN
 Jeremy Banks : NOUN
+Jeremy Sutcliffe : NOUN
 Jersey Shore : NOUN
 Jerusalem church leaders : NOUN[:plur]
 Jerusalem’s Old City : NOUN
@@ -4547,6 +4569,7 @@ Justice Elena Kagan : NOUN
 Justin Trudeau : NOUN
 Justin Vaughn : NOUN
 KAIST : NOUN
+Kapoho Beach Lots : NOUN[:plur]
 Kardashian : NOUN
 Katie Sierra : NOUN
 Katrina : NOUN
@@ -4983,6 +5006,7 @@ USNORTHCOM : NOUN
 US tax code : NOUN
 USO : NOUN
 VA : NOUN
+Vacationland : NOUN
 Valerie Jarrett : NOUN
 Volcan de Fuego : NOUN
 Van Horn : NOUN
@@ -34454,6 +34478,7 @@ upstate : ADV
 uptick : NOUN
 upward : ADJ
 upward : ADV
+upwards : ADV
 urban : ADJ
 urban area : NOUN
 urban center : NOUN
