@@ -395,7 +395,6 @@ knows too well : VERB[^s]
 leading : VERB[^ing]
 led : NOUN - -2
 led : VERB[^ed]
-led to panic : VERB[^ed]
 left : VERB[^ed] - -1
 left open : VERB[^ed]
 lengthier : ADJ
@@ -432,6 +431,7 @@ makes use of : VERB[^s]
 making : VERB[^ing]
 making a trip out to : VERB[^ing]
 making it easier : VERB[^ing]
+making it up as he goes : VERB[^ing]
 making matters worse : VERB[^ing]
 making use of : VERB[^ing]
 marked : VERB[^ed]
@@ -701,6 +701,7 @@ television broadcasting : NOUN
 terrifying : VERB[^ing]
 terrorizing : VERB[^ing] - +2
 terrorizing : NOUN - -1
+tested positive for : VERB[^ed]
 thanked : VERB[^ed]
 that could bring : THTV
 that was enacted : THTV
@@ -834,6 +835,7 @@ went_on : VERB[^ed] =went on
 2 dozen : NUM
 20 to 30 : NUM
 2014 games : NOUN[:plur]
+2016 campaign : NOUN
 2016 election : NOUN
 2016 election meddling : NOUN
 24/7 : ADJ - +2
@@ -852,6 +854,7 @@ a claim : NOUN[:det]
 a claim that : NOUN[:det] (nmth)
 a closed military zone : NOUN[:det]
 a collection of : QUAN
+a couple different : QUAN
 a day after : CONJ
 a day later : ADV
 a distant third : NOUN[:det]
@@ -919,6 +922,7 @@ aerial photograph : NOUN
 after all : CONJ[@*l]
 after he did, : ADV
 after it emerged that : CONJ
+after sunset : ADV
 after which : CONJ
 afternoon and evening : NOUN
 against : ADV 0 -6
@@ -1181,6 +1185,7 @@ by name : ADV
 by nearly half : ADV[~trlg] [$deg,trlg] 0
 by now : ADV
 by the end of that day : ADV
+by the time : CONJ
 byline : NOUN
 cabinet meeting : NOUN
 cabinet meetings : NOUN[:plur]
@@ -1213,6 +1218,7 @@ can and will : AUXL
 can be of help : VERB
 can last : VERB
 can pay for : VERB
+canadian prime minister : NOUN
 canadian/american : ADJ
 canceled check : NOUN
 cannot happen here : VERB
@@ -1266,14 +1272,17 @@ civil defense agency : NOUN
 civil liability : NOUN
 civil rights violation : NOUN
 clandestine officer : NOUN
+classified information : NOUN
 clean energy : NOUN
 clerical rule: NOUN
 climactic moment : NOUN
 close cooperation : NOUN
 close personal tie : NOUN
 close to : PREP
+closed-door briefing : NOUN
 closed-door meeting : NOUN
 closer tracking : NOUN
+closing news conference : NOUN
 cm long : NOUN
 cmdr. : NOUN
 coal baron : NOUN
@@ -1342,7 +1351,6 @@ country music festival : NOUN
 country music’s hometown : NOUN
 county attorney : NOUN
 county jail : NOUN
-couple different : QUAN
 court document : NOUN
 court spokesman : NOUN
 court spokeswoman : NOUN
@@ -1432,6 +1440,7 @@ diplomatic script : NOUN
 diplomatic tie : NOUN
 diplomatic tone : NOUN
 direct response : NOUN
+director of security : NOUN
 disastrous result : NOUN
 disclose contacts with : VERB
 discount fare : NOUN
@@ -1608,6 +1617,7 @@ for a long time : ADV
 for about a week : ADV
 for allegedly : PREP['cls]
 for example : PEXP[|eg]
+for his actions : ADV
 for how long : CONJ
 for more than a decade : ADV
 for more than a week : ADV
@@ -1810,6 +1820,7 @@ how it compares : NOUN
 how long : CONJ
 human control : NOUN
 human dignity : NOUN
+human rights group : NOUN
 human rights lawyer : NOUN
 hurricane activity : NOUN
 hurricane season : NOUN
@@ -2043,6 +2054,7 @@ knowingly false : ADJ
 kremlin critic : NOUN
 ku klux klansmen : NOUN[:plur]
 lackluster record : NOUN
+laden with criticism : NOUN
 land and sea : NOUN
 land corridor : NOUN
 land survey : NOUN
@@ -2246,6 +2258,7 @@ more often : ADV
 more practical : ADJ
 more sway : NOUN
 more than : ADV[~mod] [$deg] 0
+more than a : QUAN
 more than a year : NOUN
 more than half a : QUAN
 more than half of the : QUAN
@@ -2616,6 +2629,7 @@ public profile : NOUN
 public sector: NOUN
 public statement : NOUN
 publically argue : VERB
+publicly available : ADJ
 pull factor : NOUN
 pump spray : NOUN
 punchline : NOUN
@@ -2637,6 +2651,7 @@ railway service : NOUN
 raise funds : VERB
 raise the roof beam high : VERB
 rally support for : VERB
+ramadan fast : NOUN
 rapidly melting : ADJ
 rapidly mounting : ADJ
 rattlesnake venom : NOUN
@@ -3172,6 +3187,7 @@ u.s. firm : NOUN
 u.s. forces : NOUN[:plur]
 u.s. government compound : NOUN
 u.s. government source : NOUN
+u.s. leader : NOUN
 u.s. mainland : NOUN
 u.s. market : NOUN
 u.s. official  : NOUN
@@ -3616,6 +3632,7 @@ Tampa police : NOUN
 tariff threat : NOUN
 that has killed : THTV
 that killed : THTV
+that led to panic : THTV
 that spiraled : THTV
 that tore   : THTV
 that trump tower meeting : NOUN[:det]
@@ -4194,6 +4211,7 @@ Aaron C. Davis : NOUN
 ABC News : NOUN
 Abu Dhabi : NOUN
 AC/DC : NOUN
+Adam Gruler : NOUN
 Adolph Hitler : NOUN
 Adrian : NOUN
 Advanced Step in Innovative Mobility : NOUN
@@ -4484,6 +4502,7 @@ Grants Pass : NOUN
 Greitens : NOUN
 Gridiron Club : NOUN
 Grey Advertising : NOUN
+Gruler : NOUN
 Guinness : NOUN
 Hanks : NOUN
 Hapag-Lloyd company : NOUN
@@ -4657,8 +4676,10 @@ Mega Millions drawing : NOUN
 Meghan Markle : NOUN
 Melania : NOUN
 Merkel : NOUN
+Messi : NOUN
 Metro Nashville : NOUN
 Miami-Dade County : NOUN
+Michael Avenatti : NOUN
 Michael Baudendistel : NOUN
 Michael Cohen : NOUN
 Michael Corleone : NOUN
@@ -4796,6 +4817,7 @@ Prime Minister Benjamin Netanyahu : NOUN
 Prime Minister Narendra Modi : NOUN
 Prince Harry : NOUN
 Project Veritas : NOUN
+Pulse Valor Award : NOUN
 Pushkin Russian Language Center : NOUN
 Putin : NOUN
 Qian : NOUN
@@ -4902,6 +4924,7 @@ St. Petersburg : NOUN
 State Capitol : NOUN
 State Radio 1 : NOUN
 Stephan : NOUN
+Stephanie Clifford : NOUN
 Stephen Curry : NOUN
 Stephen Paddock : NOUN
 Steve Bannon : NOUN
@@ -4919,6 +4942,7 @@ Syrian territory : NOUN
 Taliban : NOUN
 Talkradio 790 KABC : NOUN
 TASS : NOUN
+Teddy Kollek Stadium : NOUN
 Terrence : NOUN
 Tex : NOUN
 Team Lacoste : NOUN
@@ -5007,6 +5031,7 @@ US tax code : NOUN
 USO : NOUN
 VA : NOUN
 Vacationland : NOUN
+Val Demings : NOUN
 Valerie Jarrett : NOUN
 Volcan de Fuego : NOUN
 Van Horn : NOUN
@@ -5039,6 +5064,7 @@ Weinstein : NOUN
 West Australia : NOUN
 West Chester : NOUN
 West Indies : NOUN[:plur]
+West Jerusalem : NOUN
 West Virginia Attorney General : NOUN
 Westmoreland County : NOUN
 White Europe : NOUN
@@ -23415,6 +23441,7 @@ northwest : ADJ
 northwest : ADV[~dir,trlg]
 northwest passage : NOUN
 northwest wind : NOUN
+northwestern : ADJ
 norway : NOUN
 norwegian : NOUN
 norwegian : ADJ

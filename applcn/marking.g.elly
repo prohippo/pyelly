@@ -4346,3 +4346,8 @@ g:NOUN->DEM[@the] ADJ[%est]
 _
   (twob)
 __
+
+g:PROX[=*l]->PRO PUNC[|*r]
+__
+g:PRO[=*r]->PUNC[|*l] PROX
+__
