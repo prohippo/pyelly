@@ -667,6 +667,7 @@ strongly opposed : VERB[^ed]
 struck : VERB[^ed,ptcl]
 struck down in court : VERB[^ed]
 sung : VERB[^ed]
+sunk : VERB[^ed]
 supplying : VERB[^ing] - +2
 supplying : NOUN[:ing] - -1
 supports the argument for : VERB[^s]
@@ -725,6 +726,7 @@ touched upon : VERB[^ed]
 tried to call 911 :  VERB[^ed]
 tracking : VERB[^ing]
 troubled : VERB[^ed] - -2
+trumpian : ADJ
 trumpier : ADJ
 trying : NOUN[:ing]
 trying : VERB[^ing] - +1
@@ -4431,6 +4433,7 @@ EU official : NOUN
 EU Withdrawal Bill : NOUN
 Evans : NOUN
 Exit International : NOUN
+F.B.I. : NOUN
 F.B.I. official : NOUN
 F.C.C. : NOUN
 FAA : NOUN
@@ -4515,6 +4518,7 @@ Hawaii County Fire Department : NOUN
 Hawaiian Volcano Observatory : NOUN
 Hazeldean Road : NOUN
 HBO : NOUN
+Heller : NOUN
 Herzegovina : NOUN
 HHS : NOUN
 Higgins : NOUN
@@ -4544,6 +4548,7 @@ Islamic Revolutionary Guard : NOUN
 Islamic State : NOUN
 Israeli Prime Minister Benjamin Netanyahu : NOUN
 Jack C. Phillips : NOUN
+Jacky : NOUN
 Jade Helm : NOUN
 Jalen Hill : NOUN
 James Comey : NOUN
@@ -4671,6 +4676,7 @@ Mary Fallin : NOUN
 Masterpiece Cakeshop : NOUN
 Mattis : NOUN
 McCarthy : NOUN
+McClatchy : NOUN
 Mega Millions : NOUN
 Mega Millions drawing : NOUN
 Meghan Markle : NOUN
@@ -4696,6 +4702,7 @@ Mike Pence : NOUN
 Mike Pompeo : NOUN
 Mike Surbaugh : NOUN
 Mimi Spear : NOUN
+Minea : NOUN
 Ministry of Health : NOUN
 Missouri State : NOUN
 Mitch McConnell : NOUN
@@ -4826,6 +4833,7 @@ Quds Force : NOUN
 Queen Elizabeth : NOUN
 Queens : NOUN
 Queens Park : NOUN
+Quinipiac : NOUN
 Rageh Bakrit : NOUN
 Ramos : NOUN
 Rancho Tehama : NOUN
@@ -4882,6 +4890,7 @@ Sara Palin : NOUN
 Saras : NOUN
 Sarah Huckabee Sanders : NOUN
 Sarmat missile system : NOUN
+Scalise : NOUN
 Scarborough : NOUN
 Schumer : NOUN
 Scott Pruitt : NOUN
@@ -5035,6 +5044,7 @@ Val Demings : NOUN
 Valerie Jarrett : NOUN
 Volcan de Fuego : NOUN
 Van Horn : NOUN
+Vassily : NOUN
 Ventura : NOUN
 Veritas : NOUN
 Verizon : NOUN
