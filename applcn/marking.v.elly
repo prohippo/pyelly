@@ -71,6 +71,7 @@ became : VERB[^ed,chng]
 beefing up : VERB[^ing]
 been charged with : VERB[^ed]
 been known to : AUXL
+been responsible for : VERB[^ed]
 been seated at : VERB[^ed]
 began : VERB[^ed,proc,*x]
 begun : VERB[^ed]
@@ -108,6 +109,7 @@ charged with : VERB[^ed]
 chosen : VERB[^ed] - +2
 circulating : VERB[^ing]
 civil rights : NOUN
+civilian deaths : NOUN[:plur]
 claiming that : VERB[^ing]
 classified : VERB[^ed] - +2
 classified memo : NOUN
@@ -255,6 +257,7 @@ frizzed out : VERB[^ed]
 fronted by : VERB[^ed]
 frontlines : NOUN[:plur]
 froze : VERB[^ed]
+gathering : VERB[^ing]
 gave : VERB[^ed,*x]
 gave his take on : VERB[^ed]
 gave rise to : VERB[^ed]
@@ -944,6 +947,7 @@ akin to how : CONJ
 alert level : NOUN
 all at once : ADV
 all but certain : ADJ
+all day : ADV
 all day wednesday : NAVB
 all evening : ADV
 all in there : ADV
@@ -992,6 +996,7 @@ anytime : NOUN
 anytime : ADV
 apart from : PREP
 apartment block : NOUN
+apocalyptic threat : NOUN
 app : NOUN
 app developer : NOUN
 appeals court : NOUN
@@ -1280,6 +1285,7 @@ clerical rule: NOUN
 climactic moment : NOUN
 close cooperation : NOUN
 close personal tie : NOUN
+close tie : NOUN
 close to : PREP
 closed-door briefing : NOUN
 closed-door meeting : NOUN
@@ -1379,6 +1385,7 @@ current events : NOUN[:plur]
 current leader : NOUN
 customs deal : NOUN
 customs union : NOUN
+cut off : VERB - +2
 cut ties with : VERB
 cyber : ADJ
 cyberattack : NOUN
@@ -1545,6 +1552,7 @@ exploratory talks : NOUN[:plur]
 explosive activity : NOUN
 explosives detection K9 team : NOUN
 express in words : VERB
+extraordinary nature : NOUN
 extreme far right : NOUN
 extreme far right : ADJ
 extreme step : NOUN
@@ -1553,6 +1561,7 @@ eye injury : NOUN
 facebook page : NOUN
 facebook video : NOUN
 faces a showdown : VERB[^s]
+fact to face : ADV
 factional : ADJ
 factional fighting : NOUN
 failed candidate : NOUN
@@ -1687,12 +1696,14 @@ genetic modification : NOUN
 genetically modified : ADJ
 genetically modified crop : NOUN
 genome editing : NOUN
+german chancellor : NOUN
 get into trouble : VERB
 get shot : VERB
 get to the bottom of : VERB
 give them new life : VERB
 global attention : NOUN
 global financial crisis : NOUN
+global leadership vacuum : NOUN
 global order : NOUN
 global shipping company : NOUN
 global stage : NOUN
@@ -1824,6 +1835,7 @@ human control : NOUN
 human dignity : NOUN
 human rights group : NOUN
 human rights lawyer : NOUN
+humanitarian crisis : NOUN
 hurricane activity : NOUN
 hurricane season : NOUN
 hush payment : NOUN
@@ -1939,6 +1951,7 @@ increase the salaries of : VERB
 independence day holiday : NOUN
 independent investigator : NOUN
 independent state : NOUN
+indiscriminate attack : NOUN
 individual states : NOUN[:plur]
 industry executive : NOUN
 informal meeting : NOUN
@@ -1953,6 +1966,7 @@ ins and outs : NOUN[:plur]
 inside and outside of : PREP
 insider account : NOUN
 insofar as : CONJ
+instagram account : NOUN
 instead of : PREP
 institutional reform : NOUN
 insurgent group : NOUN
@@ -1971,7 +1985,9 @@ international airport : NOUN
 international arena : NOUN
 international attention : NOUN
 international border : NOUN
+international classic : NOUN
 international community : NOUN
+international diplomat : NOUN
 international treaty : NOUN
 international watchdog agency : NOUN
 internet access : NOUN
@@ -1993,6 +2009,7 @@ irrespective of whether : CONJ
 irrevocable nature : NOUN
 is in violation of : VERB
 is now clear that : VERB
+is poised to : AUXL
 is presenting itself as : VERB
 is sticking by : VERB
 islamic army : NOUN
@@ -2095,6 +2112,7 @@ lead surgeon : NOUN
 lead up : NOUN - -4
 leaders summit : NOUN
 leadership role : NOUN
+leadership vacuum : NOUN
 leap of faith : NOUN
 leaps and bounds : NOUN[:plur]
 learn more about : VERB
@@ -2197,6 +2215,7 @@ medical textbook : NOUN
 medical treatment : NOUN
 medically stable : ADJ
 member state : NOUN
+members of congress : NOUN[:plur]
 memo to staff : NOUN
 memorial day weekend : NOUN
 mental health adjudication : NOUN
@@ -2268,6 +2287,7 @@ more time : NOUN
 more times : ADV[~trlg]
 more traditional position : NOUN
 morning news show : NOUN
+most awkward moment : NOUN
 most decisive sign : NOUN
 most likely : ADV
 most notably : ADV
@@ -2367,6 +2387,7 @@ obstacles to trade : NOUN[:plur]
 obstruct justice : VERB
 ocean water : NOUN
 of how : CONJ
+of its kind : ADJ
 of that : ADJ [$trlg,prd] 0
 of the moment : ADJ
 of them : NUM[:cnj]
@@ -3053,6 +3074,7 @@ the day before : CONJ - -2
 the default is : VERB
 the early stages : NOUN[:plur]
 the end of civilization : NOUN
+the end of this week : NOUN
 the entirety : NOUN
 the fifth amendment : NOUN
 the firings : NOUN[:plur]
@@ -3094,6 +3116,9 @@ the string of : QUAN
 the three of them : NOUN
 the truth is, : MISC
 the u.k. : NOUN
+the u.s. : NOUN
+the u.s.-led : ADJ
+the u.s. charts : NOUN[:plur]
 the united states : NOUN[:plur]
 the united states attorney : NOUN
 their cooperation : NOUN
@@ -3266,6 +3291,7 @@ vice presidential candidate : NOUN
 video footage : NOUN
 violent assault : NOUN
 viral video : NOUN
+visually compelling : ADJ
 volcanic anger : NOUN
 volcano eruption: NOUN
 vote for : VERB
@@ -3280,7 +3306,7 @@ water use : NOUN
 weather forecasting : NOUN
 weekend snow : NOUN
 weekly news review : NOUN
-weeks in, : IADV
+weeks in, : ADV
 weightiest : ADJ
 wet, heavy snow : NOUN
 what had been an : DET
@@ -3292,6 +3318,7 @@ what it has learned : NOUN
 what it’s doing : NOUN
 what looks like an : DET
 what she calls a : DET
+what the united nations says is : ADJ
 what they say are : ADJ
 what to do : NOUN
 what was supposed to be : ADV
@@ -3342,6 +3369,7 @@ without interference : ADV
 without so much as : CONJ
 won : NOUN - -1
 work as advertised : VERB
+working-level talks : NOUN
 world’s most : ADV
 would have no choice but to : AUXL
 x1stx of its kind : NOUN =the first of its kind
@@ -3611,6 +3639,7 @@ push back against : VERB
 rebel-held eastern Ghouta suburb of Damascus : NOUN
 repeated rape : NOUN
 research activity : NOUN
+rhetoric that : NOUN (nmth)
 risk wrecking : VERB
 role in crafting a statement : NOUN
 scandalous affair : NOUN
@@ -3729,6 +3758,7 @@ who hvbe in jail : NOUN =Who's in Jail
 32nd-floor suite : NOUN
 60 minutes interview : NOUN
 90-day : ADJ
+above-ground : ADJ
 above-normal : ADJ
 adult-film : ADJ
 after-hours : ADJ
@@ -3736,6 +3766,7 @@ after-hours trading : NOUN
 against-the-rules : ADJ
 age-related : ADJ
 aisle-roaming : ADJ
+al-fitr : NOUN
 all-important : ADJ
 all-too-expected : ADJ
 almost-indisputable : ADJ
@@ -3746,6 +3777,7 @@ anti-army : ADJ
 anti-baptist : ADJ
 anti-discrimination law : NOUN
 anti-euro : ADJ
+anti-gay : ADJ
 anti-gun : ADJ
 anti-gun law : NOUN
 anti-iran : ADJ
@@ -3755,6 +3787,7 @@ anti-pakistan : ADJ
 anti-semitic : ADJ
 anti-state  : ADJ
 anti-trump : ADJ
+anti-u.s. : ADJ
 artificial-turf : ADJ
 asian-american : ADJ
 assembly-line : ADJ
@@ -3765,18 +3798,24 @@ at-times : ADV
 australian-led : ADJ
 award-winning : ADJ
 back-to-back : ADJ
+bad-faith : ADJ
 barrels-per-day : NOUN[:plur]
 base-rallying : ADJ
 battery-electric : ADJ
+battle-tested : ADJ
 below-average : ADJ
 best-selling : ADJ
 bill-to : ADJ
+brexit-backing : ADJ
 brussels-briendly : ADJ
 burger-loving : ADJ
 c-130-type : ADJ
+cabinet-level : ADJ
+cal-3 : NOUN
 call-in : ADJ
 camouflage-clad : ADJ
 campaign-finance violation : NOUN
+card-carrying : ADJ
 case-sensitive : ADJ
 cash-and-stock : ADJ
 cave-in : NOUN
@@ -3829,7 +3868,9 @@ dixon-cole : NOUN
 do-whatever-you-want : ADJ
 double-blind : ADJ
 double-check : VERB
+double-crossing : ADJ
 drive-by : ADJ
+drop-off : NOUN
 drunken-driving : NOUN
 dual-use : ADJ
 dutch-led : ADJ
@@ -3837,15 +3878,18 @@ e-mail : NOUN
 east-central : ADJ
 eat-in : ADJ
 economically-stricken : ADJ
+eid al-fitr : NOUN
 end-of-the-year : ADJ
 english-language : ADJ
 english-speaking : ADJ
 euro-skeptic : ADJ
+ex-FBI : ADJ
 ex-doorman : NOUN
 ex-envoy : NOUN
 ex-girlfriend : NOUN
 ex-husband : NOUN
 ex-intelligence officer : NOUN
+ex-movie mogul : NOUN
 ex-playmate : NOUN
 ex-senate : ADJ
 ex-spy : NOUN
@@ -3857,6 +3901,7 @@ fast-food : ADJ
 fast-moving : ADJ
 fifteen-year-old : ADJ
 first-degree murder : NOUN
+first-year : ADJ
 five-lane : ADJ
 five-star : ADJ
 five-year : ADJ
@@ -3871,7 +3916,9 @@ four-lane : ADJ
 four-page : ADJ
 four-page filing : NOUN[:*r]
 four-penny : ADJ
+four-plex : NOUN
 four-wheel drive : NOUN
+franco-german : ADJ
 freeze-for-freeze : ADJ
 fuel-delivering : ADJ
 full-blown :  ADJ
@@ -3881,6 +3928,8 @@ full-throated : ADJ
 fully-equipped : ADJ
 get-to-know-you : ADJ
 ghost-wrote : VERB[^ed]
+god-consciousness : NOUN
+good-humored : ADJ
 gop-controlled : ADJ
 gray-market : ADJ
 great-grandchildren : NOUN
@@ -3901,7 +3950,9 @@ hard-edged : ADJ
 hard-to-detect : ADJ
 head-to-head : ADV
 high-endurance : ADJ
+high-five : NOUN
 high-flying : ADJ
+high-level : ADJ
 high-powered : ADJ
 high-profie : ADJ
 high-profile : ADJ
@@ -3913,6 +3964,7 @@ high-tech :  ADJ
 high-wage : ADJ
 high-wage area : NOUN
 highest-ranking : ADJ
+hostage-taker : NOUN
 houston-based : NOUN
 how-to : ADJ
 humanitarian mission : NOUN
@@ -3938,6 +3990,7 @@ israeli-palestinean : ADJ
 itinerant-by-choice : NOUN
 kim jong-un : NOUN
 king-size : ADJ
+korean-language : ADJ
 kremlin-connected : ADJ
 kuwait-drafted : ADJ
 lava-filled : ADJ
@@ -3963,12 +4016,15 @@ long-undervalued : ADJ
 long-winded : ADJ
 lose-lose : ADJ
 lousiana-based : ADJ
+low-key : ADJ
 luke-warm : ADJ
 m-b-s : NOUN
 magnolia-hung : ADJ
 main-party primary : NOUN
 major-general : NOUN
 marriage-and-divorce : ADJ
+match-fixer : NOUN
+meet-and-greet : ADJ
 miami-dade : ADJ
 miami-dade's : ADJ
 mid-air : NOUN
@@ -3985,12 +4041,14 @@ mis-impression : NOUN
 mississippi-alabama border : NOUN
 mixed-species : ADJ
 modern-day :ADJ
+month-long : ADJ
 month-old : ADJ
 months-long : ADJ
 most talked-about : ADJ
 mother-of-two : NOUN
 ms-13 : NOUN
 much-anticipated : ADJ
+much-hyped : ADJ
 much-needed : ADJ
 multi-disciplinary : ADJ
 mushroom-shaped : ADJ
@@ -4003,12 +4061,16 @@ neo-monarchist : NOUN
 nerve-agent : ADJ
 net-metering : NOUN
 never-before-published : ADJ
+new york-based : ADJ
+newly-minted : ADJ
 next-in-line : ADJ
 no-confidence : ADJ
+no-deal : ADJ
 no-go : ADJ
 no-go zone : NOUN
 no-win situation : NOUN
 non-cardiovascular : ADJ
+non-denial : NOUN
 non-member : NOUN
 non-senior : ADJ
 non-state : ADJ
@@ -4028,8 +4090,10 @@ once-in-a-lifetime : ADJ
 once-powerful : ADJ
 once-secure : ADJ
 one-lane : ADJ
+one-man : ADJ
 one-of-a-kind : ADJ
 one-on-one : ADJ
+one-term : ADJ
 one-time : ADJ
 op-ed : ADJ
 op-ed : NOUN - -1
@@ -4037,6 +4101,7 @@ open-ended : ADJ
 open-hearted : ADJ
 out-of-control : ADJ
 out-of-stock : ADJ
+partially-derailed : ADJ
 pay-per-use : ADJ
 pay-tv : NOUN
 period-themed : ADJ
@@ -4048,17 +4113,23 @@ point-scoring. : ADJ
 post-mannerist : ADJ
 post-presidency : ADJ
 post-september 11th : ADJ
+post-summit : ADJ
 pre-emptively : ADV
 price-sapping : ADJ
 primary-vote winner : NOUN
+pro-brexit : ADJ
+pro-eu : ADJ
+pro-european : ADJ
 pro-goveernment : ADJ
 pro-saudi : ADJ
 pro-trump : ADJ
 question-and-answer forum : NOUN
+quick-thinking : ADJ
 raw-material costs : NOUN[:plur]
 re-elect : VERB
 re-elected : VERB[^ed]
 re-evaluate : VERB
+re-opening : NOUN
 real-estate investor : ADJ
 real-estate venture : ADJ
 reality-tv : ADJ
@@ -4093,12 +4164,16 @@ same-sex weddings : NOUN[:plur]
 san diego-based : ADJ
 scale-down : NOUN
 scientist-in-charge : NOUN
+second-degree : ADJ
 second-degree manslaughter : NOUN
 second-in-command : ADJ
 second-largest : ADJ
+secretary-general : NOUN
+self-dealing : ADJ
 self-defensive : ADJ
 self-deprecating : ADJ
 self-deprecating : NOUN
+self-governing : ADJ
 self-inflicted : ADJ
 self-proclaimed : ADJ
 self-ruled : ADJ
@@ -4115,10 +4190,13 @@ single-handedly : ADV
 sino-u.s. : ADJ
 six-in-10 : NUM
 six-party : ADJ
+six-piece : ADJ
 small-business : NOUN
 snow-capped : ADJ
 snow-covered : ADJ
+split-screen : ADJ
 squeaky-clean : ADJ
+stand-off : NOUN
 start-up : NOUN
 state department-sponsored : ADJ
 state-of-the-art : ADJ
@@ -4152,8 +4230,10 @@ time-cycle : NOUN
 tit-for-tat : NOUN
 to-do : ADJ
 top-rated : ADJ
+top-secret : ADJ
 top-shelf : ADJ
 top-two : ADJ
+toss-up : NOUN
 tr-beta : NOUN
 trade-in : ADJ
 trauma-specific : ADJ
@@ -4164,16 +4244,21 @@ tut-tutting : ADJ
 two-and-a-half : NUM
 two-day : ADJ
 two-hour : ADJ
+two-part : ADJ
 two-term limit : NOUN
 two-to-one : NUM
 two-way : ADJ
 u.s.-china : ADJ
 u.s.-led : ADJ
+under-the-table : ADJ
 up-to-date : ADJ
+us-mexico : ADJ
 us-picked : ADJ
 user-configurable : ADJ
+value-add : NOUN
 values-laden : ADJ
 vice-president : NOUN
+virginia-based : ADJ
 virus-free : ADJ
 volume-weighted : ADJ
 vote-getter : NOUN
@@ -4195,13 +4280,13 @@ wind-driven : ADJ
 wooden-headedness : NOUN
 word-for-word : ADJ
 word-for-word : ADV
+working-level : ADJ
 world-leading : ADJ
 world-renowned : ADJ
 would-be : ADJ
 wrap-up : NOUN
 yet-to-be-released : NOUN
 zero-tolerance : ADJ
-
 # # # # some names to recognize explicitly
 
 1MDB : NOUN
@@ -4704,6 +4789,7 @@ Mike Surbaugh : NOUN
 Mimi Spear : NOUN
 Minea : NOUN
 Ministry of Health : NOUN
+Minneapolis Star-Tribune : NOUN
 Missouri State : NOUN
 Mitch McConnell : NOUN
 Mitt Romney : NOUN
@@ -4930,6 +5016,7 @@ SPD delegate : NOUN
 Srebrenica : NOUN
 St. Mary : NOUN - +2
 St. Petersburg : NOUN
+Star-Tribune : NOUN
 State Capitol : NOUN
 State Radio 1 : NOUN
 Stephan : NOUN
@@ -5081,6 +5168,7 @@ White Europe : NOUN
 Whiteboys : NOUN[:plur]
 Wikileaks : NOUN
 Wikipedia : NOUN
+Wilkes-Barre : NOUN
 Wills : NOUN
 Willy : NOUN
 Wilmer : NOUN
@@ -16388,6 +16476,7 @@ gateway drug : NOUN
 gather : NOUN
 gather : VERB
 gather up : VERB
+gathering : NOUN
 gauge : NOUN
 gauge : VERB
 gay : NOUN
@@ -34681,6 +34770,7 @@ unit investment trust : NOUN
 unit matrix : NOUN
 unit trust : NOUN
 unite : VERB
+united arab emirates : NOUN
 united kingdom : NOUN
 united nations : NOUN
 united states : NOUN[:plur]
