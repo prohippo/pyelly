@@ -120,6 +120,7 @@ co-produced : VERB[^ed]
 coaching : VERB[^ing]
 coming days after : CONJ
 coming down : VERB[^ing]
+committed suicide : VERB[^ed]
 competing : NOUN[:ing] - -2
 competing : VERB[^ing]
 competing : ADJ[%ing]
@@ -170,6 +171,7 @@ did : VERB[^ed,*x]
 did not : AUXL[^ed]
 did not happen : VERB[^ed]
 did something very important : VERB[^ed]
+died by suicide : VERB[^ed]
 directing money : VERB[^ing]
 directly contradicts : VERB[^s]
 disappointed : VERB[^ed]
@@ -561,6 +563,7 @@ received a call about : VERB[^ed]
 received : VERB[^ed]
 received instructions : VERB[^ed]
 received access to : VERB[^ed]
+readon : VERB =read on
 redrew : VERB[^ed]
 refusing to back  : VERB[^ing]
 regarding : PREP - +1
@@ -753,6 +756,7 @@ utilised : VERB[^ed]
 values : VERB[^s]
 voting overwhelmingly : VERB[^ing]
 walked away : VERB[^ed]
+walked back : VERB[^ed]
 walked out : VERB[^ed]
 walking away : VERB[^ing]
 walks away : VERB[^s]
@@ -866,6 +870,7 @@ a distant third : NOUN[:det]
 a dozen : NUM
 a far cry from : PREP
 a few : QUAN[@ind] [!mltp] 0
+a few minutes : NOUN[:plur]
 a few hundred : NUM
 a few months later : ADV
 a few of : QUAN
@@ -876,6 +881,7 @@ a hundred : NUM
 a large chunk of : QUAN
 a little bit : NOUN
 a little bit : ADV
+a look : NOUN[:det]
 a lot of : QUAN
 a million : QUAN
 a number of : QUAN
@@ -1417,6 +1423,7 @@ debt-fueled expansion : NOUN
 decades ago : ADV
 decent people : NOUN[:plur]
 decisive tilt : NOUN
+deeply love : VERB
 deductibility : NOUN
 defence minister : NOUN
 defense minister : NOUN
@@ -1723,6 +1730,7 @@ governing party : NOUN
 government bond issuance : NOUN
 government figure : NOUN
 government rule : NOUN
+government source : NOUN
 government vehicle : NOUN
 governor’s race : NOUN
 gps monitoring : NOUN
@@ -2034,6 +2042,7 @@ it behv not surprising : ADV
 it behv obvious : ELEM - +4 (elma)
 it behv unclear : ADV
 it certainly looks like : ADV
+it incomprehensible that : ADJ
 it is clear : ELEM - +4 (elma)
 it is easy : ELEM - +4 (elma)
 it is obvious : ELEM
@@ -2575,6 +2584,7 @@ political chaos : NOUN
 political convulsion : NOUN
 political crisis : NOUN
 political deadlock : NOUN
+political editor : NOUN
 political elite : NOUN
 political event : NOUN
 political force : NOUN
@@ -2926,6 +2936,7 @@ special counsel probe : NOUN
 special envoy : NOUN
 special forces : ADJ - -1
 special operations : NOUN[:plur]
+special place in hell : NOUN
 specifics : NOUN
 spectator : ADJ - +1
 spectral type : NOUN[:*x]
@@ -2937,6 +2948,7 @@ sports field : NOUN
 sports physician : NOUN
 spy plane : NOUN
 staff secretary : NOUN
+stand firmly against : VERB
 star system : NOUN
 state and local : ADJ
 state ceremony : NOUN
@@ -3174,6 +3186,7 @@ tourism sector : NOUN
 tourist destination : NOUN
 toxic chemical : NOUN
 trackwork : NOUN
+trade adviser : NOUN
 trade agreement : NOUN
 trade dispute : NOUN
 trade pact : NOUN
@@ -4713,6 +4726,7 @@ Las Vegas : NOUN
 Las Vegas police : NOUN
 Last Week Tonight : NOUN
 Laura : NOUN
+Laura Kuenssberg : NOUN
 Lawrence Livermore National Laboratory : NOUN
 Lebron : NOUN
 Lee Cook-jong : NOUN
@@ -4888,6 +4902,7 @@ People's Party : NOUN
 People's Party (PP) : NOUN
 Person of the Year : NOUN
 Peter Foley : NOUN
+Peter Navarro : NOUN
 Peters : NOUN
 Pfaffian : ADJ
 Philippine President : NOUN
@@ -5074,6 +5089,7 @@ the united states-china : ADJ
 The Verge : NOUN [&prop] 0
 the Washington Post : NOUN
 the West Wing : NOUN
+the WHO : NOUN
 Theresa May : NOUN
 Thomas Aquinas College : NOUN
 Tierra del Fuego : NOUN
@@ -5115,6 +5131,7 @@ U.S.S.R. : NOUN
 UAE : NOUN
 Uber : NOUN
 UCLA : NOUN
+United States Air Force : NOUN
 United States Attorney : NOUN
 United States military aircraft : NOUN
 University of Maryland Baltimore County : NOUN

@@ -4155,7 +4155,7 @@ _
   (twob)
 __
 
-g:NOUN[:qnt]->CONJ[@adv] ADJ[%-*l,-*r]
+g:NOUN[:qnt]->CONJ[@-ind,adv] ADJ[%-*l,-*r]
  >>-
 _
   (twob)
@@ -4350,4 +4350,10 @@ __
 g:PROX[=*l]->PRO PUNC[|*r]
 __
 g:PRO[=*r]->PUNC[|*l] PROX
+__
+
+g:ADJ[%*r]->CONJ[@ind,adv] ADJ[%-*l]
+  n>3>>------
+_
+  (twob)
 __
