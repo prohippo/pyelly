@@ -4357,3 +4357,9 @@ g:ADJ[%*r]->CONJ[@ind,adv] ADJ[%-*l]
 _
   (twob)
 __
+
+d:-'s <- BE
+  >>------
+_
+  append is
+__
