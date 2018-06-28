@@ -26,7 +26,7 @@ BLOCK ed
   IS u {SU -1}
   IF gni
     LEN = 6
-      IS rwk {SU}
+      IS drwk {SU}
       END
     END {SU -1}
   IF h
