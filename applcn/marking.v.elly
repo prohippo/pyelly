@@ -52,6 +52,7 @@ are doing business : VERB[^ing]
 are likely to be : BE
 are responsible for : VERB
 are sick enough : VERB
+are taking part : VERB[^ing]
 arrested and charged : VERB[^ed]
 arrested on a warrant : VERB[^ed]
 assigned : VERB[^ed]
@@ -175,6 +176,7 @@ did not : AUXL[^ed]
 did not happen : VERB[^ed]
 did something very important : VERB[^ed]
 died by suicide : VERB[^ed]
+dinged : VERB[^ed]
 directing money : VERB[^ing]
 directly contradicts : VERB[^s]
 disappointed : VERB[^ed]
@@ -192,18 +194,18 @@ doing a back flip : VERB[^ing]
 doing more : VERB[^ing]
 doing sweeps : VERB[^ing]
 doing work : VERB[^ing]
+dominated headlines : VERB[^ed]
 done : VERB[^ed]
 done so : VERB[^ed]
 done volunteer work : VERB[^ed]
-dominated headlines : VERB[^ed]
 doubled down on : VERB[^ed]
 drags on : VERB[^s]
+drawn : VERB[^ed]
+drawn any public conclusion : VERB[^ed]
 drinking water : NOUN
 drove : VERB[^ed]
 drove by : VERB[^ed]
 drug trafficking : NOUN
-drawn : VERB[^ed]
-drawn any public conclusion : VERB[^ed]
 earlier this month : ADV
 easily distinguished : VERB[^ed]
 eaten : VERB[^ed]
@@ -223,8 +225,8 @@ failed to reflect : VERB[^ed]
 failing to identify : VERB[^ing]
 fallen : VERB[^ed]
 fallen by : VERB[^ed]
-fastest : ADJ
 falsely claiming that : VERB[^ing]
+fastest : ADJ
 fatally shooting : VERB[^ing]
 feeding : VERB[^ing]
 feeding off : VERB[^ing]
@@ -239,9 +241,9 @@ fighting : VERB[^ing]
 financing : VERB[^ing]
 fired off : VERB[^ed]
 fishermen : NOUN[:plur]
-floating down : VERB[^ing]
 fled : VERB[^ed]
 flew : VERB[^ed]
+floating down : VERB[^ing]
 flown : VERB[^ed]
 flown in : ADJ [$trlg,prd] 0
 flung : VERB[^ed]
@@ -255,6 +257,7 @@ forgot : VERB[^ed,*x]
 forgotten : VERB[^ed]
 fought : VERB[^ed]
 found : VERB[^ed,dit] 
+found no indication : VERB[^ed,dit]
 founded : VERB[^ed]
 founding :VERB[^ing] - -2
 fountaining : NOUN
@@ -269,22 +272,22 @@ gave his take on : VERB[^ed]
 gave rise to : VERB[^ed]
 gave voice to : VERB[^ed]
 gazed around : VERB[^ed]
-give rise to : VERB
-given rise to : VERB[^ed]
-given free rein : VERB[^ed]
-given the green light : VERB[^ed]
-gives rise to : VERB[^s]
-gives you a sense of : VERB[^s]
-giving rise to : VERB[^ing]
 get : BE - +1
 get out : VERB
 gets the point home : VERB[^s]
 getting : BE[^ing] - +1
 getting : VERB[^ing] - +2
 getting : NOUN[:ing] - -2
+give rise to : VERB
 given : VERB[^ed]
+given free rein : VERB[^ed]
+given rise to : VERB[^ed]
+given the green light : VERB[^ed]
 gives ambiguous signals : VERB[^s]
+gives rise to : VERB[^s]
+gives you a sense of : VERB[^s]
 giving rise : VERB[^ing]
+giving rise to : VERB[^ing]
 glowing : VERB[^ing]
 goes on recess : VERB[^s]
 goes on the offensive : VERB[^s]
@@ -345,9 +348,9 @@ held talks : VERB[^ed]
 held without bond : VERB[^ed]
 helped capture : VERB[^ed]
 helping capture : VERB[^ing]
-hoped it will help : VERB[^ed]
 holding up the process : VERB[^ing]
 hooked right : VERB[^ed]
+hoped it will help : VERB[^ed]
 hosted by : VERB[^ed]
 houses of worship : NOUN[:plur]
 hove : VERB[^ed]
@@ -372,10 +375,10 @@ invited him on the show : VERB[^ed]
 involved : VERB[^ed]
 irked that : VCTH[^ed]
 is a look at : VERB[^s]
-is going to be : VERB[^s]
-is no longer fit : VERB[^s]
 is currently considered : VERB[^s]
 is for : VERB[^s]
+is going to be : VERB[^s]
+is no longer fit : VERB[^s]
 is not doing enough : VERB[^s]
 is not for : VERB[^s]
 is nothing but : VERB[^s]
@@ -383,8 +386,8 @@ is on again : VERB[^s]
 is on track to : AUXL[^s]
 is said to : ADV
 isolated : VERB[^ed] - -1
-issued a firm warning to : VERB[^ed]
 issued a directive : VERB[^ed]
+issued a firm warning to : VERB[^ed]
 it does not appear that : ADV
 it is not inconceivable : VERB[^s]
 it often seems that : ADV
@@ -403,6 +406,7 @@ known : VERB[^ed,*x] - +1
 known to law enforcement : ADJ
 knows too well : VERB[^s]
 leading : VERB[^ing]
+leaking to the media : VERB[^ing]
 led : NOUN - -2
 led : VERB[^ed]
 left : VERB[^ed] - -1
@@ -431,18 +435,18 @@ made contact with : VERB[^ed]
 made headlines : VERB[^ed]
 made it clear : VERB[^ed,dit]
 made its way : VERB[^ed]
-making an arrest : VERB[^ing]
-making landfall : VERB[^ing]
 made me realize that : VERB[^ed]
 made no secret of : VERB[^ed]
 made public : VERB[^ed]
-made use of : VERB[^ed]
 made up : VERB[^ed,*x]
+made use of : VERB[^ed]
 makes use of : VERB[^s]
 making : VERB[^ing]
 making a trip out to : VERB[^ing]
+making an arrest : VERB[^ing]
 making it easier : VERB[^ing]
 making it up as he goes : VERB[^ing]
+making landfall : VERB[^ing]
 making matters worse : VERB[^ing]
 making use of : VERB[^ing]
 marked : VERB[^ed]
@@ -465,22 +469,22 @@ millennia : NOUN[:plur]
 millennial : NOUN - -1
 millennium bc : NOUN
 millions : NOUN[:plur]
-mīned : VERB[^ed] =mined
 mining : VERB[^ing] - -1
 misleading : VERB[^ing]
 misled : VERB[^ed]
 missing : VERB[^ing]
 misspoke : VERB[^ed]
 mixed : VERB[^ed]
-mornings : NOUN[:plur]
 months in, : IADV
 more than doubled : VERB[^ed]
+mornings : NOUN[:plur]
 moved into a new phase : VERB[^ed]
 moving operations to : VERB[^ing]
 mps : NOUN[:plur]
 multinationals : NOUN[:plur]
 mushrooming : VERB[^ing]
 mustered enough support : VERB[^ed]
+mīned : VERB[^ed] =mined
 named : VERB[^ed] - +2
 named : ADJ - -4
 needed : VERB[^ed]
@@ -567,11 +571,11 @@ ranging in age : VERB[^ing]
 re-emerged : VERB[^ed]
 re-emerging : VERB[^ing]
 reached out : VERB[^ed]
-received a call about : VERB[^ed]
-received : VERB[^ed]
-received instructions : VERB[^ed]
-received access to : VERB[^ed]
 readon : VERB =read on
+received : VERB[^ed]
+received a call about : VERB[^ed]
+received access to : VERB[^ed]
+received instructions : VERB[^ed]
 redrew : VERB[^ed]
 refusing to back  : VERB[^ing]
 regarding : PREP - +1
@@ -625,8 +629,8 @@ setting : VERB[^ptcl,ing] - +1
 setting off : VERB[^ing]
 setting out on : VERB[^ing]
 setting the tone : VERB[^ing]
-sexually assaulted : VERB[^ed]
 setting up : VERB[^ing]
+sexually assaulted : VERB[^ed]
 shaking hands : VERB[^ing]
 she believed was : BE[^ed]
 shifted its focus to : VERB[^ed]
@@ -646,6 +650,7 @@ signed into law : VERB[^ed]
 signed off : VERB[^ed]
 signing off : VERB[^ing]
 signs that : NOUN[:plur] (nmth)
+singled out : VERB[^ed]
 sitting : VERB[^ing]
 slain : VERB[^ed]
 slowing down : VERB[^ing]
@@ -680,6 +685,7 @@ strewn : VERB[^ed]
 striking back at : VERB[^ing]
 strongly opposed : VERB[^ed]
 struck : VERB[^ed,ptcl]
+struck down : VERB[^ed]
 struck down in court : VERB[^ed]
 sung : VERB[^ed]
 sunk : VERB[^ed]
@@ -702,8 +708,8 @@ taken : VERB[^ed]
 taken a knee : VERB[^ed]
 taken into custody : VERB[^ed]
 taken into police custody : VERB[^ed]
-takes on extra significance : VERB[^s]
 taken out : VERB[^ed]
+takes on extra significance : VERB[^s]
 taking advantage of : VERB[^ing]
 taking aim at : VERB[^ing]
 taking place : VERB[^ing]
@@ -739,8 +745,8 @@ tore up : VERB[^ed]
 torn : VERB[^ed]
 torn apart : VERB[^ed]
 touched upon : VERB[^ed]
-tried to call 911 :  VERB[^ed]
 tracking : VERB[^ing]
+tried to call 911 :  VERB[^ed]
 troubled : VERB[^ed] - -2
 trumpian : ADJ
 trumpier : ADJ
@@ -751,15 +757,16 @@ tuned in : VERB[^ed]
 turned himself in : VERB[^ed]
 turned political : VERB[^ed]
 turned themselves in : VERB[^ed]
+turned u0 : VERB[^ed]
 turns the lights on : VERB[^s]
+unaccounted for : ADJ
 unanimously rejected : VERB[^ed]
 undergone : VERB[^ed]
+undertaken : VERB[^ed]
+undertook : VERB[^ed]
 underwent : VERB[^ed]
 underwent surgery : VERB[^ed]
-undertook : VERB[^ed]
-undertaken : VERB[^ed]
 unified : VERB[^ed]
-unaccounted for : ADJ
 unsolved mystery : NOUN
 unveiled plans for : VERB[^ed]
 utilised : VERB[^ed]
@@ -787,8 +794,8 @@ was intended to : AUXL[^ed,s]
 was kept in the dark : VERB[^ed]
 was known to be : BE[^ed,s]
 was looking at : VERB[^ing,s]
-was said to be interested : VERB[^ed]
 was not allowed : VERB[^ed,s]
+was said to be interested : VERB[^ed]
 was unable to : AUXL[^s,ed]
 wasted no time : VERB[^ed]
 weddings : NOUN[:plur]
@@ -804,10 +811,10 @@ withdrew : VERB[^ed]
 withdrew their support : VERB[^ed]
 won : VERB[^ed] - +2
 wore : VERB[^ed]
-worn : VERB[^ed]
 worked : VERB[^ed] - +3
 worked : ADJ[%ed]  - -3
 working : VERB[^ing] - +2
+worn : VERB[^ed]
 would have no reason : VERB
 would not mind : VERB
 would tell you : VERB[^dit]
@@ -1637,6 +1644,7 @@ figure out a way : VERB
 final agreement : NOUN
 final approval : NOUN
 final leg : NOUN
+final stage : NOUN
 financial disclosure : NOUN
 financial risk : NOUN
 financial watchdog agency : NOUN
@@ -1864,6 +1872,7 @@ how best : CONJ
 how far the country has veered : NOUN
 how it compares : NOUN
 how long : CONJ
+huge sway : NOUN[:det]
 human control : NOUN
 human dignity : NOUN
 human rights group : NOUN
@@ -3648,6 +3657,7 @@ improperly collected information : NOUN
 in an interview : ADV
 in mid-march : ADV
 in remarks : ADV
+in this piece that follows : ADV
 in turning around : NOUN[:prep]
 incorrectly reported : VERB[^ed]
 increasingly say : VERB
@@ -4217,6 +4227,7 @@ role-playing game : NOUN
 round-the-clock : ADJ
 round-up : NOUN
 rubber-coated : ADJ
+run-in : NOUN
 run-through : NOUN
 russia-1 : NOUN
 russia-hosted : ADJ
@@ -4524,6 +4535,7 @@ Dana White : NOUN
 Dandan : NOUN
 Dapchi Government Girls Science and Technical College : NOUN
 Dave Stone : NOUN
+David Cay Johnson : NOUN
 David Shulkin : NOUN
 Delta Air Lines : NOUN
 Democratic National Committee : NOUN
@@ -4543,6 +4555,7 @@ Doan : NOUN
 Dobrnja-jug : NOUN
 Doctor Who : NOUN
 Dolores : NOUN
+Dominic Grieve : NOUN
 Don Blankenship : NOUN
 Donald : NOUN
 Donald Shulkin : NOUN
@@ -4557,6 +4570,7 @@ Duda : NOUN
 Dugs : NOUN
 Dutch city of Utrecht : NOUN
 Early Realist : ADJ
+East Sunset Road : NOUN
 Eastern Pacific Shipping : NOUN
 Ebay : NOUN
 Ebay order : NOUN
@@ -4652,10 +4666,12 @@ Google News : NOUN
 Gov. Greg Abbott : NOUN
 Gov. Jerry Brown : NOUN
 Grand Staircase-Escalante : NOUN
+Green Valley Parkway : NOUN
 Grants Pass : NOUN
 Greitens : NOUN
-Gridiron Club : NOUN
+Grenfell Tower : NOUN
 Grey Advertising : NOUN
+Gridiron Club : NOUN
 Gruler : NOUN
 Guinness : NOUN
 Hanks : NOUN
@@ -4799,6 +4815,7 @@ Lindsey Graham : NOUN
 Lionel Messi : NOUN
 Lord Mayor : NOUN
 Lord Mayor of Dublin : NOUN
+Loretta Lynch : NOUN
 Lori Klausutis : NOUN
 Los Angeles Times : NOUN
 Luiz Inacio Lula da Silva : NOUN
@@ -5067,6 +5084,7 @@ Shindake : NOUN
 Shinzo Abe : NOUN
 Ship of Fools : NOUN
 Showcase Presentations : NOUN
+Sief Allah H. : NOUN
 Sikander : NOUN
 Silent Majority : NOUN
 Silvio José Báez : NOUN
@@ -5141,6 +5159,7 @@ the Taiwan Strait : NOUN[:det]
 The Times : NOUN[:det]
 The Times and Democrat newspaper : NOUN
 The Times-Picayune : NOUN
+the U.S. Supreme Court : NOUN
 the united states-china : ADJ
 The Verge : NOUN [&prop] 0
 the Washington Post : NOUN
@@ -5223,6 +5242,7 @@ Wales : NOUN
 Walmart : NOUN
 Walmart Supercenter : NOUN
 Walter : NOUN
+War Weapons Control Act : NOUN
 Warner : NOUN
 Warner Brothers : NOUN
 Washington, D.C. : NOUN
@@ -10650,6 +10670,7 @@ communication system : NOUN
 communication theory : NOUN
 communication trench : NOUN
 communications satellite : NOUN
+communications strategy : NOUN
 communist : ADJ
 communist china : NOUN
 communist economy : NOUN
@@ -12697,6 +12718,8 @@ din land : NOUN
 dine : VERB
 dine out : VERB
 diner : NOUN
+ding : NOUN
+ding : VERB
 dinge : NOUN
 dinge : VERB
 dining room : NOUN
@@ -13983,6 +14006,7 @@ elude : VERB
 elvis : NOUN
 email : NOUN
 email : VERB
+email server : NOUN
 emancipate : VERB
 emancipation : NOUN
 embankment : NOUN
@@ -14276,6 +14300,7 @@ erroneous : ADJ
 erroneous belief : NOUN
 error : NOUN
 error correction code : NOUN
+error of jedgment : NOUN
 erstwhile : ADJ
 erstwhile : ADV
 erupt : VERB
@@ -15016,6 +15041,7 @@ favourite : ADJ
 faze : VERB
 fbi : NOUN
 fbi agent : NOUN
+fbi official : NOUN
 fdic : NOUN
 fe : NOUN
 fealty : NOUN
@@ -16178,6 +16204,7 @@ frequently : ADV [$deg] 0
 fresh : ADJ
 fresh : ADV
 fresh breeze : NOUN
+fresh evident : NOUN
 fresh fish : NOUN
 fresh food : NOUN
 fresh start : NOUN
@@ -17300,6 +17327,7 @@ gridiron : NOUN
 gridlock : NOUN
 grief : NOUN
 grievance : NOUN
+grieve : VERB
 grievous : ADJ
 grievous bodily harm : NOUN
 grim : ADJ
@@ -18552,6 +18580,8 @@ house fly : NOUN
 house guest : NOUN
 house husband : NOUN
 house mouse : NOUN
+house of commons : NOUN
+house of lords : NOUN
 house organ : NOUN
 house paint : NOUN
 house party : NOUN
@@ -18916,9 +18946,12 @@ impulse : NOUN
 impulse explosive : NOUN
 impunity : NOUN
 imu : NOUN
+in a reckless manner : ADV
 in a way : ADV
 in effect : ADJ [$trlg,prd] 0
 in effect : ADV
+in honour of : PREP
+in the area of : PREP
 in turn : ADV
 in turning : NOUN[:prep]
 in vitro : ADJ
@@ -19349,6 +19382,7 @@ instrumental music : NOUN
 instrumental role : NOUN
 instrumentalist : NOUN
 insubordinate : ADJ
+insubordination : NOUN
 insult : NOUN
 insult : VERB
 insurance : NOUN
@@ -23261,6 +23295,7 @@ narrow : NOUN
 narrow : VERB
 narrow : ADJ
 narrow boat : NOUN
+narrow decision : NOUN
 narrow down : VERB
 narrow escape : NOUN
 narrow gauge : NOUN
@@ -25297,6 +25332,7 @@ permanent press : NOUN
 permanent tooth : NOUN
 permanent wave : NOUN
 permanently : ADV
+permissible : ADJ
 permission : NOUN
 permissive : ADJ
 permissive waste : NOUN
@@ -26031,6 +26067,7 @@ politic : ADJ
 political : ADJ
 political action committee : NOUN
 political arena : NOUN
+political bias : NOUN
 political boss : NOUN
 political campaign : NOUN
 political contribution : NOUN
@@ -26070,6 +26107,7 @@ poll : VERB
 poll parrot : NOUN
 poll taker : NOUN
 poll tax : NOUN
+polling place : NOUN
 polling station : NOUN
 pollute : VERB
 polluter : NOUN
@@ -27672,6 +27710,7 @@ reassure : VERB
 rebecca : NOUN
 rebel : NOUN
 rebel : VERB
+rebel leader : NOUN
 rebellion : NOUN
 rebellious : ADJ
 rebirth : NOUN
@@ -27984,6 +28023,7 @@ relief map : NOUN
 religion : NOUN
 religious : NOUN
 religious : ADJ
+religious authorities : NOUN[:plur]
 religious belief : NOUN
 religious ceremony : NOUN
 religious cult : NOUN
@@ -30005,6 +30045,7 @@ shark repellent : NOUN
 sharp : NOUN - -1
 sharp : ADJ
 sharp : ADV
+sharp criticism : NOUN
 sharp tongue : NOUN
 sharpen : VERB
 sharply : ADV
@@ -30399,6 +30440,7 @@ silent partner : NOUN
 silent person : NOUN
 silent picture : NOUN
 silent treatment : NOUN
+silent walk : NOUN
 silently : ADV
 silicon : NOUN
 silicon bronze : NOUN
@@ -33488,6 +33530,7 @@ thankful : ADJ
 thankfully : ADV
 thanksgiving : NOUN
 thanksgiving day : NOUN
+that bars : THTV
 thatch : NOUN
 thatch : VERB
 thatch palm : NOUN
@@ -34918,6 +34961,7 @@ unravel : VERB
 unread : ADJ
 unreadable : ADJ
 unreason : NOUN
+unreasonable : ADJ
 unrelated : ADJ
 unrelenting : ADJ
 unreliable : ADJ
@@ -35506,6 +35550,7 @@ vote : NOUN
 vote : VERB
 vote counter : NOUN
 vote down : VERB
+vote on : VERB
 vote out : VERB
 voter : NOUN
 voter turnout : NOUN
@@ -36576,6 +36621,7 @@ written material : NOUN
 written matter : NOUN
 written record : NOUN
 written report : NOUN
+written statement : NOUN
 written symbol : NOUN
 written text : NOUN
 written word : NOUN
