@@ -83,9 +83,9 @@ from_###_to_&# -> fm\\2TO\\5
 
 the_&#00_block -> the\\200block
 
-in_####_that -> in \\2 tht
 that_a   -> tht a
 that_the -> tht the
+in_####_that -> in \\2 tht
 &@ed_!&@day_that -> \\1ed \\3day tht
 
 business_dealing -> business dealng

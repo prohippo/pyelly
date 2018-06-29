@@ -109,6 +109,7 @@ caught : VERB[^ed] [$trns] 0
 caught wind : VERB[^ed]
 centered around : VERB[^ed]
 charged with : VERB[^ed]
+charging toward : VERB[^ing]
 chosen : VERB[^ed] - +2
 circulating : VERB[^ing]
 civil rights : NOUN
@@ -324,6 +325,7 @@ had to : AUXL[^ed]
 happened like that : VERB[^ed]
 has : HAVE[^s]
 has already : HAVE[^s]
+has been in years : VERB[^s]
 has gone on the record : VERB[^ed,s]
 has had : VERB[^aux,hav,s]
 has long been : VERB[^s]
@@ -394,6 +396,7 @@ it often seems that : ADV
 it was unclear where : ADV
 it was watching : VERB[^aux,ed,ing]
 kept : VERB[^ed]
+kept repeating the lie : VERB[^ing]
 killed : VERB[^ed]
 killing : VERB[^ing]
 killings : NOUN[:plur]
@@ -512,6 +515,7 @@ oversaw : VERB[^ed]
 overseen : VERB[^ed]
 packaging : VERB[^ing] - -1
 paid : VERB[^ed]
+paid extra : VERB[^ed]
 paying off : VERB[^ing]
 peacemaking : NOUN
 permanent presence : NOUN
@@ -571,6 +575,7 @@ ranging in age : VERB[^ing]
 re-emerged : VERB[^ed]
 re-emerging : VERB[^ing]
 reached out : VERB[^ed]
+recused from handling the case : VERB[^ed]
 readon : VERB =read on
 received : VERB[^ed]
 received a call about : VERB[^ed]
@@ -591,6 +596,7 @@ repeated : VERB[^ed]
 repeatedly touched on : VERB[^ed]
 repeatedly used the flag : VERB[^ed]
 reported : VERB[^ed] - +1
+reported in march : VERB[^ed]
 required in new buildings : ADJ
 rescue efforts : NOUN[:plur]
 residents : NOUN[:plur]
@@ -616,6 +622,7 @@ sat : VERB[^ed]
 sat down : VERB[^ed,*x]
 scrolling through : VERB[^ing]
 secretly ghostwriting : VERB[^ing]
+seeking asylum : VERB[^ing]
 seemed to : AUXL
 seen : VERB[^ed]
 seen : SVED - -1
@@ -649,7 +656,7 @@ signed : VERB[^ed]
 signed into law : VERB[^ed]
 signed off : VERB[^ed]
 signing off : VERB[^ing]
-signs that : NOUN[:plur] (nmth)
+signs that : NOUN[:plur] (xtht)
 singled out : VERB[^ed]
 sitting : VERB[^ing]
 slain : VERB[^ed]
@@ -665,6 +672,7 @@ sparked fears of : VERB[^ed]
 speaking out against : VERB[^ing]
 spending measure : NOUN
 spent : VERB[^ed]
+splitting up : VERB[^ing]
 spoke : VERB[^ed] - +2
 spoke on the record : VERB[^ed]
 spoken : VERB[^ed]
@@ -722,10 +730,13 @@ television advertising : NOUN
 television broadcasting : NOUN
 terrifying : VERB[^ing]
 terrorizing : VERB[^ing] - +2
-terrorizing : NOUN - -1
+terrorizing : NOUN
 tested positive for : VERB[^ed]
 thanked : VERB[^ed]
 that could bring : THTV
+that is brought to us : THTV
+that put : THTV
+that sent : THTV
 that was enacted : THTV
 thinking this through : VERB[^ing]
 thought : VERB[^ed]
@@ -746,6 +757,7 @@ torn : VERB[^ed]
 torn apart : VERB[^ed]
 touched upon : VERB[^ed]
 tracking : VERB[^ing]
+tried to : AUXL[^ed]
 tried to call 911 :  VERB[^ed]
 troubled : VERB[^ed] - -2
 trumpian : ADJ
@@ -772,6 +784,7 @@ unveiled plans for : VERB[^ed]
 utilised : VERB[^ed]
 values : VERB[^s]
 voting overwhelmingly : VERB[^ing]
+waited around afterward : VERB[^ed]
 walked away : VERB[^ed]
 walked back : VERB[^ed]
 walked out : VERB[^ed]
@@ -790,6 +803,7 @@ was confirmed to be suffering : VERB[^ed]
 was culpable for : VERB[^ed,s]
 was due to : AUXL[^ed] - -1
 was found dead : VERB[^ed]
+was hoping to : AUXL[^ed]
 was intended to : AUXL[^ed,s]
 was kept in the dark : VERB[^ed]
 was known to be : BE[^ed,s]
@@ -852,12 +866,13 @@ went_on : VERB[^ed] =went on
 1 part of : QUAN
 1st base line : NOUN
 1st half : NOUN
+1st iteration : NOUN
 1st lady : NOUN
 1st mention : NOUN
 1st mention : VERB
 1st one : NOUN
-1st responder : NOUN
 1st reports : NOUN[:plur]
+1st responder : NOUN
 1st run : NOUN
 2 dozen : NUM
 20 to 30 : NUM
@@ -878,7 +893,7 @@ a billion : QUAN
 a bit : NOUN[:det] - -2
 a broader bid : NOUN[:det]
 a claim : NOUN[:det]
-a claim that : NOUN[:det] (nmth)
+a claim that : NOUN[:det] (xtht)
 a closed military zone : NOUN[:det]
 a collection of : QUAN
 a couple different : QUAN
@@ -944,6 +959,7 @@ across the state : ADV
 active shooter : NOUN
 additional charges : NOUN[:plur]
 adm. : NOUN
+administration policcy : NOUN
 adult film star : NOUN
 adulterous affair : NOUN
 advertising boycott : NOUN
@@ -1068,7 +1084,7 @@ as to how : CONJ
 as to whether : CONJ
 as well as : CONJ
 aside from : PREP
-assertions that : NOUN[:*l,plur] (nmth)
+assertions that : NOUN[:*l,plur] (xtht)
 asset purchase : NOUN
 at a home : ADV
 at a time when : CONJ
@@ -1131,7 +1147,7 @@ before sunset : ADV
 before the ink could dry : ADV
 before which : CONJ
 before, during, or after : CONJ
-belief that : NOUN (nmth)
+belief that : NOUN (xtht)
 below the ocean's surface : ADV
 besieged area : NOUN
 best for them : ADJ
@@ -1269,6 +1285,7 @@ cargo plane : NOUN
 carjacker : NOUN
 carrier battle group : NOUN
 case before the court : NOUN
+cash refund : NOUN
 casino company : NOUN
 cast a vote : VERB
 cast recording : NOUN
@@ -1282,6 +1299,7 @@ century bc : NOUN
 certainly true : ADJ
 chalk this up : VERB
 championship game : NOUN
+change at any time : VERB
 charity donor list : NOUN
 cheer on : VERB
 chemical attack : NOUN
@@ -1342,7 +1360,7 @@ communications staffer : NOUN
 communications suite : NOUN
 community meeting : NOUN
 companion piece : NOUN
-complaint that : NOUN[:*l] (nmth)
+complaint that : NOUN[:*l] (xtht)
 computer model : NOUN
 computer tampering : NOUN
 concrete blueprint : NOUN
@@ -1371,7 +1389,7 @@ constitutional crisis : NOUN
 constitutional limit : NOUN
 construction permit : NOUN
 container transport : NOUN
-contract that : NOUN[:*l] (nmth)
+contract that : NOUN[:*l] (xtht)
 controversial issue : NOUN
 core constituency : NOUN
 core element : NOUN
@@ -1447,6 +1465,7 @@ debris field : NOUN
 debris flow : NOUN
 debt level : NOUN
 debt-fueled expansion : NOUN
+decade and a half : NOUN
 decades ago : ADV
 decent people : NOUN[:plur]
 decisive tilt : NOUN
@@ -1606,6 +1625,7 @@ false information : NOUN
 false or misleading : ADJ
 familiar with his thinking : ADJ
 familiar with the matter : ADJ
+families seeking asylum : NOUN
 family member : NOUN
 family show : NOUN
 fan favorite : NOUN
@@ -1812,6 +1832,7 @@ head coach : NOUN
 head coaching : NOUN - +2
 head on : ADV
 head wound : NOUN
+heady days : NOUN[:plur]
 health and safety : NOUN
 health care reform : NOUN
 health policy : NOUN
@@ -1878,13 +1899,14 @@ human dignity : NOUN
 human rights group : NOUN
 human rights lawyer : NOUN
 humanitarian crisis : NOUN
+hunch that : NOUN (xtht)
 hurricane activity : NOUN
 hurricane season : NOUN
 hush payment : NOUN
 hydro : NOUN
 hydro : ADJ - +2
 hyperinflation : NOUN
-idea that : NOUN[:*l] (nmth)
+idea that : NOUN[:*l] (xtht)
 if anything, : CONJ
 if confirmed, : ADV
 if you'd like : ADV
@@ -1904,6 +1926,7 @@ import tariff : NOUN
 important procedure : NOUN
 imposing : NOUN[:ing]
 imposing : VERB[^ing] - -1
+impress upon : VERB
 in a statement : ADV
 in a tweet : ADV
 in a while : ADV
@@ -1936,6 +1959,7 @@ in height : ADV[~trlg] [$deg] 0
 in his mold : ADJ
 in hopes of : CONJ
 in how : CONJ
+in just over a week : ADV
 in late may : ADV
 in leaps and bounds : ADV
 in length : ADV[~trlg] [$deg] 0
@@ -2036,7 +2060,7 @@ international watchdog agency : NOUN
 internet access : NOUN
 internet service provider : NOUN
 interrogation program : NOUN
-interview that : NOUN[:*l] (nmth)
+interview that : NOUN[:*l] (xtht)
 intestinal infection : NOUN
 intimate affair : NOUN
 into darkness : ADV
@@ -2220,7 +2244,7 @@ make available : VERB
 make the payment to : VERB
 make their voices heard : VERB
 make use of : VERB
-making it very likely that : VERB[^ing] (VBTH)
+making it very likely that : VERB[^ing] (xtht)
 male and female : NOUN
 male and female : ADJ - +1
 malicious code : NOUN
@@ -2277,6 +2301,7 @@ micromanage : VERB
 middle east peacemaking : NOUN
 midtempo : ADJ
 midterm election : NOUN
+migrant parent : NOUN
 mileage rules : NOUN[:plur]
 militant group : NOUN
 military aircraft : NOUN
@@ -2688,7 +2713,7 @@ propaganda video : NOUN
 properly designed : ADJ
 property prices : NOUN[:plur]
 proportionally spaced : ADJ
-proposal that : NOUN[:*l] (nmth)
+proposal that : NOUN[:*l] (xtht)
 pros and cons : NOUN
 prove to a judge : VERB
 proved to be : VERB
@@ -2735,7 +2760,7 @@ rattlesnake venom : NOUN
 razor thin : ADJ
 reactivation : NOUN
 real challenge : NOUN
-realization that : NOUN (nmth)
+realization that : NOUN (xtht)
 realize that : VERB
 reassignment surgery : NOUN
 rebaptizer : NOUN
@@ -2892,6 +2917,8 @@ senior ranks : NOUN[:plur]
 senior trump administration official : NOUN
 senior u.s. official : NOUN
 senior writer : NOUN
+sense of optimism : NOUN
+sense of unity : NOUN
 sensitive conversation : NOUN
 sensitive document : NOUN
 series of photos : NOUN
@@ -2960,7 +2987,7 @@ some of which : CONJ
 some of whom : PRO
 someone inside : PRO
 something like this : NOUN
-something that : NOUN (nmth)
+something that : NOUN (xtht)
 somewhere along : PREP
 sore loser : NOUN
 sorry about that : ADJ [$cmpd] 0
@@ -3015,14 +3042,16 @@ steel pipe : NOUN
 step back from : VERB
 step foot : VERB
 steward of the economy : NOUN
+stewardship of the economy : NOUN
 still technically : ADV
 stop playing : VErB
 store owner : NOUN
-story that : NOUN (nmth)
+story that : NOUN (xtht)
 storytelling : NOUN
 straight after : CONJ
 streetlamp : NOUN
 stress testing : NOUN
+strip club : NOUN
 strong wind : NOUN
 stun grenade : NOUN
 stunning upset : NOUN
@@ -3090,6 +3119,7 @@ than ever : CMPC
 than ever before : CMPC
 thanks to : PREP
 thanksgiving break : NOUN
+that a : DET (thtx) 
 that are sure to have : THTV
 that began : THTV
 that believe in : THTV
@@ -3114,6 +3144,7 @@ that range from : THTV
 that really know : THTV
 that she  : PRO[=*l]
 that some insist : THAT
+that the : DET (thtx)
 that there : THAV
 that we   : PRO[=*l]
 that year : NAVB[:det]
@@ -3254,11 +3285,14 @@ trafficking of goods : NOUN
 training flight : NOUN
 transracial : ADJ
 trauma doctor : NOUN
+travel ban : NOUN
 travel conditions : NOUN[:plur]
 tropical storm : NOUN
 tropical storm warning : NOUN
 trove of information : NOUN
 trump campaign adviser : NOUN
+turkish currency : NOUN
+turkish politics : NOUN
 turn himself in : VERB
 turn state’s witness : VERB
 turn themselves in : VERB
@@ -3572,7 +3606,7 @@ an invasion of the mainland : NOUN
 anger and suspicion : NOUN[:plur]
 announced the discovery of : VERB[^ed,*r]
 another front in the culture wars : NOUN
-areas that : NOUN[:plur] (nmth)
+areas that : NOUN[:plur] (xtht)
 armed with fresh ammunition : ADJ
 arnona : NOUN
 attacks on twitter : NOUN[:plur]
@@ -3594,11 +3628,12 @@ campaign for governor : NOUN
 carving-out : VERB[^ing]
 Central Michigan University dormitory : NOUN
 centred on : VERB[^ed]
+change at anytime : VERB
 chief scout executive : NOUN
 Chinese cheating : NOUN
 comedic : ADJ
 confrontational move : NOUN
-could heard through the doors : VERB[^ed]
+could be heard through the doors : VERB[^ed]
 complex new modeling : NOUN
 complained to friends : VERB[^ed,*r]
 continued airstrikes and fighting : NOUN
@@ -3650,6 +3685,8 @@ half-apologies : NOUN[:plur]
 hardline immigration rhetoric : NOUN
 has a little bit of a different characteristic : VERB
 have come to count on : VERB
+her family’s claims : NOUN[:plur]
+her husband’s secrets : NOUN[:plur]
 his predecessor : NOUN
 historically GOP district : NOUN
 illegally cross : VERB
@@ -3666,12 +3703,13 @@ information commissioner : NOUN
 injured and mentally unstable man : NOUN
 insurgents groups : NOUN[:plur]
 it doesn’t appear that : ADV
-january interview that : NOUN[:*l] (nmth)
+january interview that : NOUN[:*l] (xtht)
 land and sink : VERB
 latest milestone on a path of change : NOUN
 less euphemistic word : NOUN
 made the ask : VERB[^ed]
 magnitude of this job : NOUN
+make cakes : VERB
 making a false statement to the FBI : VERB[^ing]
 malaysia airlines Flight 17 : NOUN
 malaysia airlines flight 370 : NOUN
@@ -3693,6 +3731,7 @@ over the past two years : ADV
 of … : PREP
 new and bloodier : ADJ
 new york time’s : NOUN
+newly established practice : NOUN
 no confidence motion in parliament : NOUN
 nuclear and missile : ADJ
 on the global stage : ADV
@@ -3705,7 +3744,7 @@ personal narrative : NOUN
 parkland mass shooting : NOUN
 picked him up : VERB[^ed,*r]
 plane selfie : NOUN
-political crisis that : NOUN (nmth)
+political crisis that : NOUN (xtht)
 potentially unpalatable deal : NOUN
 primetime : ADJ
 public plea for help : NOUN
@@ -3713,7 +3752,7 @@ push back against : VERB
 rebel-held eastern Ghouta suburb of Damascus : NOUN
 repeated rape : NOUN
 research activity : NOUN
-rhetoric that : NOUN (nmth)
+rhetoric that : NOUN (xtht)
 risk wrecking : VERB
 role in crafting a statement : NOUN
 scandalous affair : NOUN
@@ -3726,6 +3765,7 @@ so loud : ADJ
 solider : NOUN =soldier
 some of who : PRO
 south-west of : PREP
+splitting up families : NOUN
 square kilometer : NOUN
 St.Johns County : NOUN
 Sung : NOUN - -1
@@ -3736,6 +3776,7 @@ talked to his mother : VERB[^ed,*r]
 Tampa police : NOUN
 tariff threat : NOUN
 that has killed : THTV
+that is reminiscent of : THTV
 that killed : THTV
 that led to panic : THTV
 that spiraled : THTV
@@ -3762,6 +3803,7 @@ too easily able to : AUXL
 touched her sexually : VERB[^ed,*r]
 took him to a hospital : VERB[^ed]
 Tulsa schools superintendant : NOUN
+Trump’s immigration views : NOUN[:plur]
 Trump’s tweet : NOUN
 Trump Jr. : NOUN
 U.S. Special Forces base : NOUN
@@ -3955,6 +3997,7 @@ economically-stricken : ADJ
 eid al-fitr : NOUN
 end-of-the-year : ADJ
 english-language : ADJ
+english-language editorial : NOUN
 english-speaking : ADJ
 euro-skeptic : ADJ
 ever-growing : ADJ
@@ -4294,6 +4337,7 @@ tax-writing : ADJ
 tax-writing committee : NOUN
 technology-dependent : ADJ
 tehran-backed : ADJ
+then-Russian ambassador : NOUN
 third-degree murder : NOUN
 third-largest : ADJ
 third-party : ADJ
@@ -4329,6 +4373,7 @@ u.s.-led : ADJ
 under-the-table : ADJ
 up-to-date : ADJ
 us-mexico : ADJ
+us-mexico border : NOUN
 us-picked : ADJ
 user-configurable : ADJ
 value-add : NOUN
@@ -4533,6 +4578,7 @@ Dan Patrick : NOUN
 Dana W. White : NOUN
 Dana White : NOUN
 Dandan : NOUN
+Daniels : NOUN
 Dapchi Government Girls Science and Technical College : NOUN
 Dave Stone : NOUN
 David Cay Johnson : NOUN
@@ -5070,6 +5116,7 @@ Scott Pruitt : NOUN
 Scotts : NOUN
 Scotts Miracle-Gro Company : NOUN
 Seal Team Six : NOUN
+Sean Buck : NOUN
 Sean Hannity : NOUN
 Sean Suiter : NOUN
 Securities and Exchange Commission : NOUN
@@ -5185,6 +5232,7 @@ Trayon White Sr. : NOUN
 Trudeau : NOUN
 Trump administration : NOUN
 Trump administration official : NOUN
+Trump administration policy : NOUN
 Trump campaign : NOUN
 Trump campaign manager : NOUN
 Trump era : NOUN
@@ -5196,6 +5244,7 @@ Trump organization : NOUN
 trump presidency : NOUN
 Trump Soho hotel : NOUN
 Trump Tower : NOUN
+Trump’s travel ban : NOUN
 Ty Cobb : NOUN
 Tyshon Demontrea Johnson : NOUN
 Twitter : NOUN
@@ -34278,6 +34327,7 @@ travel agent : NOUN
 travel allowance : NOUN
 travel along : VERB
 travel bargain : NOUN
+splitting up : VERB[^ing]
 travel expense : NOUN
 travel iron : NOUN
 travel kit : NOUN
