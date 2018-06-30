@@ -1391,6 +1391,7 @@ construction permit : NOUN
 container transport : NOUN
 contract that : NOUN[:*l] (xtht)
 controversial issue : NOUN
+convention center : NOUN
 core constituency : NOUN
 core element : NOUN
 core mission : NOUN
@@ -1481,6 +1482,7 @@ demilitarization : NOUN
 democratic nominee : NOUN
 democratic party ideas : NOUN[:plur]
 democratic republic : NOUN
+denominational meeting : NOUN
 denuclearization : NOUN
 denuclearize : VERB
 department of public safety : NOUN
@@ -1598,6 +1600,7 @@ every move : NOUN
 everyone else : NOUN
 exchange student : NOUN
 exclusive interview : NOUN
+executive committee : NOUN
 executive producer : NOUN
 exercise of power : NOUN
 existential threat : NOUN
@@ -3475,6 +3478,7 @@ work as advertised : VERB
 workers' party : NOUN
 working-level talks : NOUN
 world’s most : ADV
+world’s worst : ADJ
 would have no choice but to : AUXL
 x1stx of its kind : NOUN =the first of its kind
 years ago : NOUN[:plur]
@@ -4810,6 +4814,7 @@ Kapoho Beach Lots : NOUN[:plur]
 Kardashian : NOUN
 Katie Sierra : NOUN
 Katrina : NOUN
+Kay Bailey Hutchinson : NOUN
 Keaton : NOUN
 Kent State University : NOUN
 Kevin : NOUN
@@ -5207,6 +5212,7 @@ The Times : NOUN[:det]
 The Times and Democrat newspaper : NOUN
 The Times-Picayune : NOUN
 the U.S. Supreme Court : NOUN
+the United Arab Emirates : NOUN
 the united states-china : ADJ
 The Verge : NOUN [&prop] 0
 the Washington Post : NOUN
