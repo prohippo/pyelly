@@ -68,7 +68,7 @@ BLOCK s
       IF inep {SU 1}
       IF u
         IF c
-          IS or {SU 1}
+          IS oru {SU 1}
           END {SU}
         IF r
           IS io {SU 1}
@@ -103,6 +103,7 @@ BLOCK s
         IF on {SU 1 is}
         IF an {SU 1 is}
         END
+      IF ilop {SU 1}
       END {SU}
     IF h
       IS t {SU}
