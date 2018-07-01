@@ -13,6 +13,7 @@ biggest : ADJ[%est]
 calmest : ADJ[%est]
 clearest : ADJ[%est]
 closest : ADJ[%est] - +1
+fastest : ADJ[%est]
 happiest : ADJ[%est]
 healthiest : ADJ[%est]
 highest : ADJ[%est]
@@ -226,7 +227,7 @@ failing to identify : VERB[^ing]
 fallen : VERB[^ed]
 fallen by : VERB[^ed]
 falsely claiming that : VERB[^ing]
-fastest : ADJ
+fasting : VERB[^ing]
 fatally shooting : VERB[^ing]
 feeding : VERB[^ing]
 feeding off : VERB[^ing]
@@ -1196,6 +1197,7 @@ breaking it apart : VERB[^ing]
 breaking news : NOUN
 breakneck speed : NOUN
 breathing : VERB[^ing]
+bringing : VERB[^ing] - +1
 bringing back into practice : VERB[^ing]
 bringing threats of : VERB[^ing]
 british prime minister : NOUN
@@ -1334,6 +1336,8 @@ climactic moment : NOUN
 close cooperation : NOUN
 close personal tie : NOUN
 close tie : NOUN
+close to : PREP - +2
+close to : ADV[~mod,prox,int,cnj]
 close to : PREP
 closed-door briefing : NOUN
 closed-door meeting : NOUN
@@ -1838,6 +1842,7 @@ health and safety : NOUN
 health care reform : NOUN
 health policy : NOUN
 health priority : NOUN
+heat index : NOUN
 heavy fighting : NOUN
 heighten pressure : VERB
 helmet camera : NOUN
@@ -1951,6 +1956,7 @@ in connection with : PREP
 in critical condition : ADV
 in doing so : ADV
 in elected office : ADJ
+in excess of : ADV
 in exchange for : PREP
 in fact : ADV
 in fact, : ADV
@@ -2180,6 +2186,7 @@ lava flow : NOUN
 lava flowing : NOUN
 law enforcement personnel : NOUN
 laze : NOUN - -2
+lead negotiator : NOUN
 lead surgeon : NOUN
 lead up : NOUN - -4
 leaders summit : NOUN
@@ -2343,6 +2350,7 @@ months : NOUN[:plur]
 months of work : NOUN[:plur]
 months old : NOUN[:plur]
 mood swing : NOUN
+moral bankruptcy : NOUN
 more clinical : ADJ
 more developed countries : NOUN[:plur]
 more efficiently use : VERB
@@ -2540,6 +2548,7 @@ open desert : NOUN
 open or close : VERB
 opening auction : NOUN
 openings : NOUN[:plur]
+opinion piece : NOUN
 opiod : NOUN
 opposition fighters : NOUN[:plur]
 opposition leader : NOUN
@@ -2696,6 +2705,7 @@ presidential race : NOUN
 presidential speech : NOUN
 press secretary : NOUN
 presuppositionalism : NOUN
+pretrial release : NOUN
 previously known : ADJ
 primary challenge : NOUN
 primary factor : NOUN
@@ -3302,6 +3312,7 @@ tv programming : NOUN
 tv pundit : NOUN
 tweetstorm : NOUN
 twice the : QUAN
+u.s. administration : NOUN
 u.s. allies : NOUN[:plur]
 u.s. and foreign : ADJ
 u.s. attorney : NOUN
@@ -3471,6 +3482,7 @@ without a permit : ADV
 without ever : CONJ
 without interference : ADV
 without so much as : CONJ
+witnesses in the case : NOUN[:plur]
 won : NOUN - -1
 work as advertised : VERB
 workers' party : NOUN
@@ -4489,6 +4501,7 @@ Alabama senate candidate : NOUN
 Alexei Navalny : NOUN
 Alice Johnson : NOUN
 Amanda Self : NOUN
+Amy Berman Jackson : NOUN
 Andrew Intrater : NOUN
 Andrew Weissman : NOUN
 Anthony Bourdain : NOUN
@@ -4818,6 +4831,7 @@ Irving : NOUN
 Islamabad Electric Supply Company : NOUN[:*r]
 Islamic Revolutionary Guard : NOUN
 Islamic State : NOUN
+Israeli daily Haaretz : NOUN
 Israeli Prime Minister Benjamin Netanyahu : NOUN
 Jack C. Phillips : NOUN
 Jacky : NOUN
@@ -8602,6 +8616,7 @@ bring outside : VERB
 bring round : VERB
 bring together : VERB
 bring up : VERB
+bringing : NOUN
 brink : NOUN
 brio : NOUN
 bristol : NOUN
@@ -15177,6 +15192,7 @@ fast reactor : NOUN
 fast time scale : NOUN
 fast track : NOUN
 fastest : ADV
+fasting : NOUN
 fat : NOUN
 fat : VERB
 fat : ADJ

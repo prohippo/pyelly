@@ -1630,7 +1630,7 @@ _
   append </nclu>
 __
 g:NCLU[:*l,cnj]->NAVB[:-*x]
- >>-
+ >>--
 _
   append <nclu><date>
   left
