@@ -741,6 +741,7 @@ that could bring : THTV
 that is brought to us : THTV
 that put : THTV
 that sent : THTV
+that threaten : THTV
 that was enacted : THTV
 thinking this through : VERB[^ing]
 thought : VERB[^ed]
@@ -1402,6 +1403,7 @@ container transport : NOUN
 contract that : NOUN[:*l] (xtht)
 controversial issue : NOUN
 convention center : NOUN
+cooling water : NOUN
 core constituency : NOUN
 core element : NOUN
 core mission : NOUN
@@ -1434,6 +1436,7 @@ criminal liability : NOUN
 criminal wrongdoing : NOUN
 criteria : NOUN[:plur]
 critical battle : NOUN
+critical technology : NOUN
 critically endangered species : NOUN
 crocs : NOUN[:plur]
 cross their t’s : VERB
@@ -1445,6 +1448,7 @@ curate : VERB
 current and former : ADJ
 current events : NOUN[:plur]
 current leader : NOUN
+current version : NOUN
 customs deal : NOUN
 customs union : NOUN
 cut off : VERB - +2
@@ -1581,6 +1585,7 @@ eastern gulf coast : NOUN
 eastern ukraine : NOUN
 economic and social: ADJ
 economic council : NOUN
+economic prosperity : NOUN
 economic summit : NOUN
 election meddling : NOUN
 electric grid : NOUN
@@ -1707,6 +1712,7 @@ for more than a decade : ADV
 for more than a week : ADV
 for nearly a year : ADV
 for now : ADV
+for over : PREP
 for several days : ADV
 for so long : ADV
 for the first time : ADV
@@ -2720,6 +2726,7 @@ power grab : NOUN
 powerful laser : NOUN
 powerful message : NOUN
 pr announcement : NOUN
+predatory investment practice : NOUN
 pregnant as a teen : ADJ
 presentation system : NOUN
 presidential campaign : NOUN
@@ -2785,6 +2792,7 @@ quoted from : VERB
 racist remark : NOUN
 radical hindu group : NOUN
 radical plan : NOUN
+radiochemical laboratory : ADJ
 railway bridge : NOUN
 railway service : NOUN
 raise funds : VERB
@@ -2946,6 +2954,7 @@ sen. : NOUN
 senate bid : NOUN
 senate candidate : NOUN
 senate committee : NOUN
+senate minority leader : NOUN
 senate republican : NOUN
 senior advisor : NOUN
 senior general : NOUN
@@ -3130,6 +3139,7 @@ tax legislation : NOUN
 tax overhaul : NOUN
 tax record : NOUN
 tax reform : NOUN
+team of advisers : NOUN
 tech company : NOUN
 technical complexities : NOUN[:plur]
 technical information : NOUN
@@ -3414,6 +3424,7 @@ uso tour : NOUN
 vaguely worded document : NOUN
 varying amounts : NOUN[:plur]
 varying degrees of legal trouble : NOUN[:plur]
+verbal zinger : NOUN
 verify the authenticity of : VERB
 versus : CONJ
 very close to : PREP
@@ -3447,6 +3458,7 @@ water body : NOUN
 water service : NOUN
 water use : NOUN
 weather forecasting : NOUN
+wee hours crowd : NOUN
 weekend snow : NOUN
 weekly news review : NOUN
 weeks in, : ADV
@@ -4187,6 +4199,7 @@ kremlin-connected : ADJ
 kuwait-drafted : ADJ
 large-scale : ADJ
 last-mile-delivery : NOUN
+late-night : NOUN
 late-night : ADJ
 lava-filled : ADJ
 left-turn : ADJ
@@ -4782,6 +4795,7 @@ Florida International University : NOUN
 Flynn : NOUN
 FOA : NOUN
 Forbes : NOUN
+Fort Bend County Sheriff : NOUN
 Fox News : NOUN
 Fox News Channel : NOUN
 Fox News host : NOUN
@@ -11086,7 +11100,7 @@ concession : NOUN
 conciliation : NOUN
 conciliatory : ADJ
 conclave : NOUN
-conclude : VERB
+conclude : VERB[^dit]
 conclusion : NOUN
 concoct : VERB
 concord : NOUN
