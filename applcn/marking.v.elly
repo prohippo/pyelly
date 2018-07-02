@@ -107,6 +107,7 @@ carried out : VERB[^ed]
 carrying out : VERB[^ing]
 carted away : VERB[^ed]
 caught : VERB[^ed] [$trns] 0
+caught a big break : VERB[^ed]
 caught wind : VERB[^ed]
 centered around : VERB[^ed]
 charged with : VERB[^ed]
@@ -432,6 +433,7 @@ lost : VERB[^ed]
 lost a shot at : VERB[^ed]
 lost contact with : VERB[^ed]
 lying : VERB[^ing] - -2
+lying on the ground : VERB[^ing]
 made : VERB[^ed]
 made available : VERB[^ed]
 made clear : VERB[^ed,dit]
@@ -652,6 +654,7 @@ should not be surprised : VERB[^ed]
 should not take it for granted that : VCTH
 showboating : NOUN
 showed no signs of : VERB[^ed]
+showed up : VERB[^ed]
 shown : VERB[^ed]
 signed : VERB[^ed]
 signed into law : VERB[^ed]
@@ -955,6 +958,7 @@ accidentally fire : VERB
 according to : PREP
 achieve the ultimate deal : VERB
 achingly : ADV [$deg] 0
+across the country : ADV
 across the pacific : ADV
 across the state : ADV
 active shooter : NOUN
@@ -1372,6 +1376,7 @@ concrete blueprint : NOUN
 condition red : ADJ
 condo owner : NOUN
 conduct oversight : VERB
+conduct unbecoming of an officer : NOUN
 confederate force : NOUN
 configurable : ADJ
 confirm the move : VERB
@@ -1463,6 +1468,7 @@ deadliest : ADJ
 deadlock in talks : NOUN
 deadly ambush : NOUN
 deadly attack : NOUN
+deadly clash : NOUN
 deadly explosion : NOUN
 deadly shooting : NOUN
 deadly shootings : NOUN[:plur]
@@ -2132,6 +2138,7 @@ joint bail deal : NOUN
 joint military exercise : NOUN
 judge, jury, and executioner : NOUN
 judical overshight : NOUN
+judiciary blow : NOUN
 juicy tale : NOUN
 just a little bit : ADV
 just about all of : QUAN
@@ -2143,6 +2150,7 @@ just for the hell of it : ADV
 just hours after : CONJ
 just hours earlier : ADV
 just months ago : ADV
+just the beginning : NOUN
 just this : DEM[@ind,sgl]
 just under : PREP['prx]
 just wait : ADV
@@ -2451,6 +2459,7 @@ next year : NAVB[:det]
 nfl linebacker: NOUN
 no doubt that : ADV
 no little : ADJ
+no longer part of : QUAN
 no matter how : CONJ
 no one : PRO
 no. 1 seed : NOUN
@@ -2614,6 +2623,7 @@ part of an effort : NOUN
 participating force : NOUN
 participating in : PREP
 particular focus : NOUN
+partisan gerrymandering : NOUN
 partners on the ground : NOUN
 party chairmain : NOUN
 pass rusher : NOUN
@@ -3057,6 +3067,7 @@ state and local : ADJ
 state ceremony : NOUN
 state fund : NOUN
 state law : NOUN
+state legislative : ADJ
 state media : NOUN
 state of the union address : NOUN
 state of war : NOUN
@@ -3225,6 +3236,7 @@ the police shooting : NOUN
 the possibility that : NCTH
 the president : NOUN
 the question of whether : CONJ
+the receiving end : NOUN
 the rule of law : NOUN
 the run up : NOUN[:det]
 the same way : ADV
@@ -3344,6 +3356,7 @@ u.s. government source : NOUN
 u.s. leader : NOUN
 u.s. mainland : NOUN
 u.s. market : NOUN
+u.s. military : NOUN
 u.s. official  : NOUN
 u.s. officials : NOUN[:plur]
 u.s. secretary of state : NOUN
@@ -3437,6 +3450,7 @@ weather forecasting : NOUN
 weekend snow : NOUN
 weekly news review : NOUN
 weeks in, : ADV
+weigh in on : VERB
 weightiest : ADJ
 wet, heavy snow : NOUN
 what had been an : DET
@@ -4158,6 +4172,7 @@ iranian-backed : ADJ
 iranian-made : ADJ
 iraqi-syrian : ADJ
 israel-gaza : ADJ
+israel-gaza border : NOUN
 israel-palestinian : ADJ
 israeli-occupied : ADJ
 israeli-palestinean : ADJ
@@ -4500,9 +4515,10 @@ zero-tolerance : ADJ
 
 # # # # some names to recognize explicitly
 
-1MDB : NOUN
+10th Mountain Division : NOUN
 16th Street Baptist Church : NOUN
 1Malaysia Development Berhad : NOUN
+1MDB : NOUN
 A Higher Loyalty : NOUN
 A New Day Has Come : NOUN
 Aaron C. Davis : NOUN
@@ -4777,6 +4793,7 @@ Freedom of the City award : NOUN
 French government : NOUN
 French minister : NOUN
 French president : NOUN
+Ft. Drum : NOUN
 Ft. Lauderdale : NOUN
 Fulmer : NOUN
 Furnariidae : NOUN
@@ -4961,6 +4978,7 @@ Lord Mayor : NOUN
 Lord Mayor of Dublin : NOUN
 Loretta Lynch : NOUN
 Lori Klausutis : NOUN
+Los Angeles County Sheriff : NOUN
 Los Angeles Times : NOUN
 Luiz Inacio Lula da Silva : NOUN
 Love Victorious : NOUN
@@ -20547,6 +20565,7 @@ knock against : VERB
 knock back : VERB
 knock cold : VERB
 knock down : VERB
+knock-down : ADJ
 knock off : VERB
 knock out : VERB
 knock over : VERB
