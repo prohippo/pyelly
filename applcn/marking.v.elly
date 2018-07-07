@@ -196,7 +196,9 @@ does : VERB[^s] - +1
 does : AUXL[^s]
 does not : AUXL[^s]
 doing a back flip : VERB[^ing]
+doing business with : VERB[^ing]
 doing more : VERB[^ing]
+doing so : VERB[^ing]
 doing sweeps : VERB[^ing]
 doing work : VERB[^ing]
 dominated headlines : VERB[^ed]
@@ -654,6 +656,7 @@ shooting : VERB[^ing]
 shootings : NOUN[:plur]
 shot : VERB[^ed] - +2
 shot and killed : VERB[^ed]
+shot his way : VERB[^ed]
 should not be surprised : VERB[^ed]
 should not take it for granted that : VCTH
 showboating : NOUN
@@ -1030,6 +1033,7 @@ alleged victim : NOUN
 allegedly being : BE[^ing]
 almost immediate : NOUN
 along with : PREP
+already flammable situation : NOUN
 already on its way : ADV
 also known as : CONJ
 amazing deal : NOUN
@@ -1110,6 +1114,7 @@ aside from : PREP
 assertions that : NOUN[:*l,plur] (xtht)
 asset purchase : NOUN
 at a home : ADV
+at a time : CONJ
 at a time when : CONJ
 at about : PREP
 at first : ADV
@@ -1121,6 +1126,7 @@ at odds with : PREP
 at once : ADV
 at one point : ADV
 at the behest of : PREP
+at the doorstep of europe : ADV
 at the heart of : PREP
 at the home : ADV
 at the request of : PREP
@@ -1249,6 +1255,7 @@ bullocky : NOUN - +2
 buoys the hopes of : VERB[^s]
 bushranger : NOUN
 business complex : NOUN
+business history : NOUN
 business model : NOUN
 but also : CONJ
 but instead, : CONJ
@@ -1389,8 +1396,8 @@ communications staffer : NOUN
 communications suite : NOUN
 community meeting : NOUN
 companion piece : NOUN
-complaint that : NOUN[:*l] (xtht)
 competing station : NOUN
+complaint that : NOUN[:*l] (xtht)
 computer model : NOUN
 computer tampering : NOUN
 concrete blueprint : NOUN
@@ -1613,6 +1620,7 @@ electric truck : NOUN
 electrical grid : NOUN
 electricity generation system : NOUN
 elephant trophy : NOUN
+emergencies chief : NOUN
 emergency talks : NOUN[:plur]
 end a stalemate : VERB
 end efforts : VERB
@@ -1629,6 +1637,8 @@ environment protection : NOUN
 equal rights : NOUN[:plur]
 estimative : ADJ
 ethical question : NOUN
+eu summit : NOUN
+european states : NOUN[:plur]
 even as : CONJ
 even before : CONJ
 even if : CONJ
@@ -1683,6 +1693,7 @@ fatal shootings : NOUN[:plur]
 fatally shot : ADJ
 favorable treatment : NOUN
 fbi informant : NOUN
+fear that : NOUN (xtht)
 federal appeals court : NOUN
 federal approval : NOUN
 federal bureau : NOUN
@@ -1810,6 +1821,7 @@ give them new life : VERB
 global attention : NOUN
 global financial crisis : NOUN
 global leadership vacuum : NOUN
+global market : NOUN
 global network : NOUN
 global order : NOUN
 global shipping company : NOUN
@@ -1840,6 +1852,7 @@ grant aid : NOUN
 grant aid project : NOUN
 grave toll : NOUN
 great importance : NOUN
+great recession : NOUN
 great western : ADJ
 ground force : NOUN
 groundbreaking : NOUN - -1
@@ -1952,6 +1965,7 @@ human control : NOUN
 human dignity : NOUN
 human rights group : NOUN
 human rights lawyer : NOUN
+humanitarian agency : NOUN
 humanitarian crisis : NOUN
 hunch that : NOUN (xtht)
 hurricane activity : NOUN
@@ -1974,6 +1988,7 @@ immediate action : NOUN
 immediate medical help : NOUN
 immigration court : NOUN
 immigration crackdown : NOUN
+immigration issues : NOUN
 immigration policy : NOUN
 immigration views : NOUN[:plur]
 import tariff : NOUN
@@ -2420,6 +2435,7 @@ more like : PREP
 more minutes : NOUN[:plur]
 more often : ADV
 more practical : ADJ
+more responsible than anyone else : ADJ[%cnj]
 more sway : NOUN
 more than : ADV[~mod] [$deg] 0
 more than a : QUAN
@@ -2823,6 +2839,7 @@ pyrotechnic powder : NOUN
 questionable method : NOUN
 questions he was unsure of : NOUN[:plur]
 quick look : NOUN
+quiet campaign : NOUN
 quite a : DET
 quite a while ago : ADV
 quoted from : VERB
@@ -2847,6 +2864,7 @@ realize that : VERB
 reassignment surgery : NOUN
 rebaptizer : NOUN
 rebel stronghold : NOUN
+recent article : NOUN
 recent attempt : NOUN
 recent market turmoil : NOUN
 recent trip : NOUN
@@ -2954,6 +2972,7 @@ safe location : NOUN
 safe route : NOUN
 safer place : NOUN
 salary round : NOUN
+sales assistant : NOUN
 sales manager : NOUN
 sales team : NOUN
 same sex couple : NOUN
@@ -2997,6 +3016,7 @@ senior advisor : NOUN
 senior general : NOUN
 senior level : NOUN
 senior ranks : NOUN[:plur]
+senior role : NOUN
 senior trump administration official : NOUN
 senior u.s. official : NOUN
 senior writer : NOUN
@@ -3153,6 +3173,7 @@ supply cut : NOUN
 supply train : NOUN
 supreme court decision : NOUN
 supreme court justice : NOUN
+supreme count opening : NOUN
 supreme leader : NOUN
 surprise disclosure : NOUN
 surprise launch : NOUN
@@ -3249,6 +3270,7 @@ the better of it : ADV
 the coming days : NOUN[:plur]
 the courtroom : NOUN
 the culture wars : NOUN[:plur]
+the darkest days : NOUN[:det,plur]
 the day after : PREP
 the day after : CONJ - -2
 the day before : PREP
@@ -3280,6 +3302,7 @@ the next day : NAVB[:det]
 the north korean people : NOUN
 the number of : QUAN
 the only other time : NAVB
+the only thing : NOUN[:det]
 the oval office : NOUN
 the past year : NAVB[:det]
 the pentagon : NOUN[:det]
@@ -3460,11 +3483,14 @@ upper atmosphere : NOUN
 upper chamber : NOUN
 upwards of : ADV[~mod] [$deg] 0
 urban myth : NOUN
+us business : NOUN
+us tariff : NOUN
 us warships : NOUN[:plur]
 us-bound : ADJ
 used to : AUXL
 user data : NOUN
 uso tour : NOUN
+vaguely worded : ADJ
 vaguely worded document : NOUN
 varying amounts : NOUN[:plur]
 varying degrees of legal trouble : NOUN[:plur]
@@ -3484,13 +3510,14 @@ veterans affairs secretary : NOUN
 veterans charity : NOUN
 veterans group : NOUN
 veterans’ charity donor list : NOUN
+veto any deals : VERB
 vice presidential candidate : NOUN
 video footage : NOUN
 violent assault : NOUN
 viral video : NOUN
 virginia senate : NOUN
-visual magnitude : NOUN
 visible presence : NOUN
+visual magnitude : NOUN
 visually compelling : ADJ
 volcanic anger : NOUN
 volcano eruption: NOUN
@@ -3724,6 +3751,7 @@ being safe online : NOUN
 block his power grab : VERB
 bloody fighting : NOUN
 blocked the formation of a government : VERB[^ed]
+boat sinking : NOUN
 body of water called Jamun Bodi : NOUN
 bodycam video : NOUN
 border wall funding : NOUN
@@ -3749,6 +3777,7 @@ countered by : VERB[^ed]
 counts of murder : NOUN[:plur]
 davis jr. : NOUN
 davis sr. : NOUN
+deal on migration : NOUN
 deconfliction : ADJ
 defend himself : VERB
 defensive coordinator : NOUN
@@ -3913,6 +3942,7 @@ too easily able to : AUXL
 touched her sexually : VERB[^ed,*r]
 took him to a hospital : VERB[^ed]
 Tulsa schools superintendant : NOUN
+Trump family : NOUN
 Trump’s immigration views : NOUN[:plur]
 Trump’s tweet : NOUN
 Trump Jr. : NOUN
@@ -4694,6 +4724,7 @@ Aung San Suu Kyi : NOUN
 Avigdor Lieberman : NOUN
 Ayatollah Ali Khamenei : NOUN
 Báez : NOUN
+Baltimore Sun : NOUN
 Bannon : NOUN
 Barack Obama : NOUN
 Bashar al-Assad : NOUN
@@ -4743,6 +4774,7 @@ Buzzfeed : NOUN
 Cambridge Analytica : NOUN
 Canadian Rockies : NOUN[:plur]
 Cantor : NOUN
+Capital Gazette : NOUN
 Carter : NOUN
 Carter Evans : NOUN
 Catalina : NOUN
@@ -4818,6 +4850,7 @@ Denver nightclub : NOUN
 Department of Health and Human Services : NOUN
 Department of Homeland Security : NOUN
 Desiree : NOUN
+Deutsche Bank : NOUN
 DHS : NOUN
 Diaoyutai State Guest House : NOUN
 Dillons : NOUN =dillon 's
@@ -4923,6 +4956,7 @@ Garcia-Navarro : NOUN
 Gen. Valery Gerasimov : NOUN
 Gene Simmons : NOUN
 General Atomics : NOUN
+General Motors : NOUN
 General Parametrics : NOUN
 George Papadopoulos : NOUN
 George Stephanopoulos : NOUN
@@ -4934,6 +4968,7 @@ Getty Center arts complex : NOUN
 Ghani : NOUN
 GIFT City : NOUN
 Gina Haspel : NOUN
+Giuseppe Conte : NOUN
 Global Times : NOUN
 Golan Heights : NOUN[:plur]
 Golden State Warriors : NOUN
@@ -5036,11 +5071,13 @@ Juan : NOUN
 Julia Poff : NOUN
 Julian Assange : NOUN
 Justice Elena Kagan : NOUN
+Justin Kennedy : NOUN
 Justin Trudeau : NOUN
 Justin Vaughn : NOUN
 KAIST : NOUN
 Kapoho Beach Lots : NOUN[:plur]
 Kardashian : NOUN
+Karline Kleijer : NOUN
 Katie Sierra : NOUN
 Katrina : NOUN
 Kay Bailey Hutchinson : NOUN
