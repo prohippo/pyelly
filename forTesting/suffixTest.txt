@@ -225,6 +225,7 @@ cashier cash
 caster caster
 cataclysmic cataclysm
 catastrophe catastroph
+cavalier cavalier
 cavalry cavalry
 ceaseless cease
 celebrant celebr
