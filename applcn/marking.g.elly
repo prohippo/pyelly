@@ -306,7 +306,26 @@ g:ELEM->NCLU[:-dit,-dat, prep,-poss]
  l[&msr]>>[!ln,rn,ppps]
         >>[!rn,ppps]
 _
+  var adjf=F
+  split
   (etht)
+  back
+  if adjf=F
+    merge
+  else
+    var svs
+    var svt
+    delete 12 <
+    store svs
+    append <adj>
+    delete to <
+    store svt
+    insert < svt
+    append /adj>
+    insert < svs
+    append of<
+    merge
+    end
 __
 g:ELEM->NCLU[:-dit,-dat,-prep,-poss]
 #      ?>>?
@@ -533,21 +552,19 @@ g:ELEM[^dit]->PEXP[|quo,-nom,-vrb,-stop] PUNC[|*r,quo]
  n<4>>----
     >>--
 _
-  append <quote>
   left
   linefeed
   append <punc>
   right
-  append </punc></quote>
+  append </punc>
 __
 g:ELEM->PREP['of] PEXP
  >>--
 _
-  append <quote><prep>
+  append prep>
   left
   append <prep>
   right
-  append </quote>
 __
 g:ELEM->PEXP[|stop] PUNC[|*r,quo]
  >>[!ln]++
@@ -610,7 +627,7 @@ _
   append </punc>
 __
 g:ELEM->PREP['-*r] PUNC[|stop]
- l[&adv]>>--------
+ l[&adv]>>----------
         >>--
 _
   var typg=prep
@@ -1019,13 +1036,6 @@ g:PEXP[|*l,ctrl]->PEXP[|-ctrl,-stop] PUNC[|*r,-quo]
 _
   (pend)
 __
-g:PEXP[|*l,ctrl]->PEXP[|-ctrl,-stop] PUNC[|*r,quo]
- >>++
-_
-  append <quote>
-  (pend)
-  append </quote>
-__
 g:VCLU->VCLU PREP
  >>*l-10
 _
@@ -1345,8 +1355,8 @@ _
   right
   append </pro>
 __
-g:NOUN->NOUN NUM[:cnj]
- r[&cmpd]>>----
+g:NOUN[:*l]->NOUN NUM[:cnj,-*x]
+ r[&cmpd]>>------
       n>3>>----
          >>++
 _
@@ -1825,25 +1835,32 @@ _
 __
 
 g:VCLU[^*r]->ADV[~-cplx] VCLU[^-ed,-ing]
- l[$deg]>>*r------
+  l[$deg]>>*r------
+ l[$trlg]>>---
+ l[$cond,-cmpd]>>+
 _
   var typg=adv
   (lxtd)
 __
 g:VCLU[^*r]->ADV[~-cplx] VCLU[^ing]
- l[$cnj]>>*r------
- l[$deg]>>*r------
+  l[$cnj]>>*r------
+  l[$deg]>>*r------
+ l[$trlg]>>---
+ l[$cond,-cmpd]>>+
 _
   var typg=adv
   (lxtd)
 __
 g:VCLU[^*r]->ADV[~-cplx] VCLU[^ed]
  l[$deg,cmpd]>>*r+
+     l[$trlg]>>---
+ l[$cond,-cmpd]>>+
 _
 # view
   var typg=adv
   (lxtd)
 __
+
 g:VCLU[^*l]->VCLU ADV[~-mod,-dir,-trlg]
 #         ?>>?
   r[$cond] >>*l------
@@ -1979,18 +1996,27 @@ __
 g:ADJX[%*r,lquo]->PUNC[|*l,quo] ADJ
  >>--
 _
-  append <quote><punc>
+  append <punc>
   left
   append </punc>
   right
 __
-g:ADJ[%*l,-lquo,-*l]->ADJX[%lquo] PUNC[|*r,quo]
- >>+8
+p:quop
 _
   left
   append <punc>
   right
-  append </punc></quote>
+  append </punc>
+__
+g:ADJ[%*l,-lquo,-*l]->ADJX[%lquo] PUNC[|*r,quo,-com]
+ >>+8
+_
+  (quop)
+__
+g:ADJ[%*l,-lquo,-*l,cnj]->ADJX[%lquo] PUNC[|*r,quo,com]
+ >>+8
+_
+  (quop)
 __
 
 g:VERB->UNKN
@@ -2785,6 +2811,7 @@ __
 d:via  <- PREP
 __
 d:till <- PREP
+ >>+
 __
 d:near <- PREP
 __
@@ -3539,7 +3566,7 @@ g:ADJ->NOUN HYPA
 __
 
 #
-# special rules for quoted chants
+# special rules for chants
 #
 
 p:lone
@@ -3792,26 +3819,25 @@ _
   merge
 __
 g:ELEM->CONJ[@prep,aftr] NCLU[:-plur,-prep,-det,-qnt,-ing]
-      n>4>>[!rv]------
- r[&evnt]>>[!rv]++
-         >>[!rv]-
+      n>4>>[!rn]------
+ r[&evnt]>>[!rn]++
+         >>[!rn]----
 _
   (cjpr)
 __
 g:ELEM->CONJ[@prep,aftr] NCLU[:-plur,-prep, det,-qnt]
-      n>5>>[!rv]------
- r[&evnt]>>[!rv]++
- r[&durn]>>[!rv]++
-         >>[!rv]--
+      n>5>>[!rn]------
+ r[&evnt]>>[!rn]++
+ r[&durn]>>[!rn]++
+         >>[!rn]----
 _
   (cjpr)
 __
 g:ELEM->CONJ[@prep,aftr] NCLU[: plur,-prep, det,-qnt]
-      n>3>>[!rv]------
- r[&evnt]>>[!rv]++
- r[&durn]>>[!rv]++
-      n<3>>[!rv]
-         >>[!rv]----
+      n>3>>[!rn]------
+ r[&evnt]>>[!rn]++
+ r[&durn]>>[!rn]++
+         >>[!rn]----
 _
   (cjpr)
 __
@@ -4312,11 +4338,21 @@ _
 __
 
 g:ELEM->PREP VCLU[^-*r,ing]
-  >>[!rv]++
+  >>[!rv]++++
 _
-  append <nclu>
-  var typg=prep
-  (typg)
+  var adjf=F
+  split
+  left
+  back
+  if adjf=T
+    append <adj>
+    merge
+    append </adj><nclu><prep>of</prep>
+  else
+    append <nclu><prep>
+    merge
+    append </prep>
+    end
   split
   right
   back
@@ -4324,6 +4360,14 @@ _
   merge
   delete 7 >
   append </nclu>
+__
+p:adjp
+_
+  obtain
+  if adjf=F
+    delete 3 >
+    set adjf=T
+    end
 __
 
 g:NCLU->DET NAVB

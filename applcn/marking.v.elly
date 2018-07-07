@@ -99,11 +99,14 @@ booked into jail : VERB[^ed]
 bookended : VERB[^ed] - -1
 boosting security : VERB[^ing]
 born : VERB[^ed] - +2
+called : VERB[^ed] =call -ed
+called : ADJ - -2 =call -ed
 called out :  VERB[^ed]
 called to say : VERB[^ed]
 came : VERB[^ed]
 came under fire : VERB[^ed]
 carried out : VERB[^ed]
+carries on : VERB[^s]
 carrying out : VERB[^ing]
 carted away : VERB[^ed]
 caught : VERB[^ed] [$trns] 0
@@ -129,7 +132,7 @@ coming down : VERB[^ing]
 committed suicide : VERB[^ed]
 competing : NOUN[:ing] - -2
 competing : VERB[^ing]
-competing : ADJ[%ing]
+competing : ADJ[%ing] - +1
 complained that : VERB[^ed]
 conditional amnesty : NOUN
 conducted a health and safety search : VERB[^ed]
@@ -516,7 +519,7 @@ overhyped : ADJ
 overlooked : VERB[^ed] - -1
 oversaw : VERB[^ed]
 overseen : VERB[^ed]
-packaging : VERB[^ing] - -1
+packaging : VERB[^ing] - -3
 paid : VERB[^ed]
 paid extra : VERB[^ed]
 paying off : VERB[^ing]
@@ -648,6 +651,7 @@ shipping label : NOUN
 shook : VERB[^ed]
 shook up : VERB[^ed]
 shooting : VERB[^ing]
+shootings : NOUN[:plur]
 shot : VERB[^ed] - +2
 shot and killed : VERB[^ed]
 should not be surprised : VERB[^ed]
@@ -665,6 +669,7 @@ singled out : VERB[^ed]
 sitting : VERB[^ing]
 slain : VERB[^ed]
 slowing down : VERB[^ing]
+smiling : VERB[^ing] - -1
 soaring : VERB[^ing] - -2
 sold : VERB[^ed]
 sold off : VERB[^ed]
@@ -694,6 +699,7 @@ stimulating : VERB[^ing]
 stolen : VERB[^ed]
 stood : VERB[^ed]
 strewn : VERB[^ed]
+striking a deal on : VERB[^ing]
 striking back at : VERB[^ing]
 strongly opposed : VERB[^ed]
 struck : VERB[^ed,ptcl]
@@ -732,6 +738,7 @@ telecommunications : NOUN
 telecommunications : NOUN[:plur] - -1
 television advertising : NOUN
 television broadcasting : NOUN
+terrified : VERB[^ed] - +3
 terrifying : VERB[^ing]
 terrorizing : VERB[^ing] - +2
 terrorizing : NOUN
@@ -753,6 +760,7 @@ told : VERB[^ed,dit]
 told the court : VERB[^ed,dit]
 took : VERB[^ed,ptcl]
 took him seriously : VERB[^ed]
+took office : VERB[^ed]
 took out : VERB[^ed]
 took part in : VERB[^ed]
 took place : VERB[^ed]
@@ -828,6 +836,8 @@ when it comes to : CONJ
 will therefore : AUXL
 withdrew : VERB[^ed]
 withdrew their support : VERB[^ed]
+witnesses : NOUN[:plur] - +2
+witnesses : VERB[^s] - -1
 won : VERB[^ed] - +2
 wore : VERB[^ed]
 worked : VERB[^ed] - +3
@@ -870,6 +880,7 @@ went_on : VERB[^ed] =went on
 1 of them : QUAN - -2 =one of them
 1 part of : QUAN
 1st base line : NOUN
+1st edition : NOUN
 1st half : NOUN
 1st iteration : NOUN
 1st lady : NOUN
@@ -879,18 +890,22 @@ went_on : VERB[^ed] =went on
 1st reports : NOUN[:plur]
 1st responder : NOUN
 1st run : NOUN
+1st shift : NOUN
 2 dozen : NUM
 20 to 30 : NUM
 2014 games : NOUN[:plur]
 2016 campaign : NOUN
 2016 election : NOUN
 2016 election meddling : NOUN
+2016 presidential campaign : NOUN
 24/7 : ADJ - +2
 2nd amendment : NOUN
 2nd half : NOUN
 2nd known : ADJ
+2nd shift : NOUN
 3 dozen : NUM
 3rd party : NOUN
+3rd shift : NOUN
 3rd world war : NOUN
 5 minutes : NOUN
 I think that : ADV
@@ -934,7 +949,7 @@ a step closer : ADV
 a step forward : NOUN[:det]
 a string of : QUAN
 a third the : NUM
-a thousand : NUM
+a thousand : NUM[:cnj,*x]
 a wave of : QUAN
 a week after : CONJ[@prep,aftr]
 a year in prison : NOUN[:det,num]
@@ -1013,6 +1028,7 @@ alleged affair : NOUN
 alleged incident : NOUN
 alleged victim : NOUN
 allegedly being : BE[^ing]
+almost immediate : NOUN
 along with : PREP
 already on its way : ADV
 also known as : CONJ
@@ -1125,10 +1141,12 @@ automotive production : NOUN
 autonomous weapon : NOUN
 autoplay : NOUN
 auxiliary bishop : NOUN
+average age : NOUN
 average rate : NOUN
 avoid a repeat of : VERB
 avoid errors : VERB
 awarded in damages : ADJ
+away day : NOUN
 away from : PREP
 bachelor's degree : NOUN
 back down to earth : ADV[~trlg,*l]
@@ -1186,6 +1204,7 @@ body of water : NOUN
 boil over : VERB
 boiling point : NOUN
 bond market : NOUN
+border bill : NOUN
 border fence : NOUN
 border patrol agent : NOUN
 bosniak : NOUN
@@ -1283,7 +1302,7 @@ canadian prime minister : NOUN
 canadian/american : ADJ
 canceled check : NOUN
 cannot happen here : VERB
-capable of : PREP['of]
+capable of : PREP['of] (adjp)
 capital spending : NOUN
 capt. : NOUN
 capture control of : VERB
@@ -1371,6 +1390,7 @@ communications suite : NOUN
 community meeting : NOUN
 companion piece : NOUN
 complaint that : NOUN[:*l] (xtht)
+competing station : NOUN
 computer model : NOUN
 computer tampering : NOUN
 concrete blueprint : NOUN
@@ -1616,6 +1636,7 @@ even so : CONJ
 even though : CONJ
 every move : NOUN
 everyone else : NOUN
+except for : CONJ
 exchange student : NOUN
 exclusive interview : NOUN
 executive committee : NOUN
@@ -1641,6 +1662,8 @@ factional : ADJ
 factional fighting : NOUN
 failed candidate : NOUN
 failures and deficiencies : NOUN[:plur]
+fair share : NOUN
+fair share fee : NOUN
 fake news : NOUN
 false information : NOUN
 false or misleading : ADJ
@@ -1686,6 +1709,7 @@ final agreement : NOUN
 final approval : NOUN
 final leg : NOUN
 financial disclosure : NOUN
+financial hit : NOUN
 financial risk : NOUN
 financial watchdog agency : NOUN
 find it easier : VERB
@@ -1758,6 +1782,7 @@ frontline : ADJ
 fuel economy : NOUN
 fuel tax : NOUN
 full control : NOUN
+full of : PREP['of] (adjp)
 full time : ADV
 fully eliminate : VERB
 fully explain : VERB
@@ -1785,6 +1810,7 @@ give them new life : VERB
 global attention : NOUN
 global financial crisis : NOUN
 global leadership vacuum : NOUN
+global network : NOUN
 global order : NOUN
 global shipping company : NOUN
 global stage : NOUN
@@ -1796,6 +1822,7 @@ good friday agreement : NOUN
 good news : NOUN
 good resource : NOUN
 goods and services : NOUN
+gop leader : NOUN
 gop nominee : NOUN
 gop presidential nominee : NOUN
 gov. : NOUN
@@ -1838,6 +1865,7 @@ hall of fame : NOUN
 hall of fame-inducted : ADJ
 hallway conversation : NOUN
 halt plans : VERB
+hanging over : PREP
 hard boiled : ADJ
 hard border : NOUN
 hard rock : NOUN
@@ -1865,6 +1893,7 @@ heat index : NOUN
 heavy fighting : NOUN
 heighten pressure : VERB
 helmet camera : NOUN
+help defeat : VERB
 helpline : NOUN
 helter skelter : NOUN
 her royal highness : DEM[@ind]
@@ -2252,6 +2281,7 @@ livestock waste : NOUN
 livestream : VERB
 local hospital : NOUN
 local law enforcement : NOUN
+local man : NOUN
 local news : NOUN
 local official : NOUN
 local priest : NOUN
@@ -2321,6 +2351,9 @@ medical indication : NOUN
 medical textbook : NOUN
 medical treatment : NOUN
 medically stable : ADJ
+medieval india : NOUN
+member 1 : NOUN
+member 2 : NOUN
 member state : NOUN
 members of congress : NOUN[:plur]
 memo to staff : NOUN
@@ -2503,7 +2536,7 @@ of how : CONJ
 of its kind : ADJ
 of that : ADJ [$trlg,prd] 0
 of the moment : ADJ
-of them : NUM[:cnj]
+of them : NUM[:cnj,*x]
 of this kind : ADJ
 of those : PRO
 of where : CONJ
@@ -2616,6 +2649,7 @@ over there : ADV
 over whether : CONJ
 overall aim : NOUN
 overland mail : NOUN
+overseas tour : NOUN
 overwhelming consensus : NOUN
 pacific nation : NOUN
 pack up : VERB
@@ -2687,6 +2721,7 @@ policymaker : NOUN
 policymaking : NOUN
 political action group : NOUN
 political appointee : NOUN
+political campaigning : NOUN
 political capital : NOUN
 political chaos : NOUN
 political convulsion : NOUN
@@ -2764,6 +2799,7 @@ proved to be : VERB
 public company : NOUN
 public discourse : NOUN
 public earnings statement : NOUN
+public employee union : NOUN
 public health : NOUN
 public health decision : NOUN
 public housing : NOUN
@@ -2783,6 +2819,7 @@ put it through : VERB
 put pressure on : VERB
 pv : ADJ
 pyroclastic : ADJ
+pyrotechnic powder : NOUN
 questionable method : NOUN
 questions he was unsure of : NOUN[:plur]
 quick look : NOUN
@@ -3114,16 +3151,20 @@ summit crater : NOUN
 supply chain : NOUN
 supply cut : NOUN
 supply train : NOUN
+supreme court decision : NOUN
+supreme court justice : NOUN
 supreme leader : NOUN
 surprise disclosure : NOUN
 surprise launch : NOUN
 surprising pick : NOUN
 surrounding area : NOUN
+surveillance video : NOUN
 suspect or suspects : NOUN
 suspected case : NOUN
 suspected criminal wrongdoing : NOUN
 suspected terrorist : NOUN
 suspicious contact : NOUN
+suspicious powder : NOUN
 suss him out : VERB
 swarm robot : NOUN
 systemic injustice : NOUN
@@ -3282,6 +3323,7 @@ this weekend : NAVB[:det]
 this year : NAVB[:det]
 threat level : NOUN
 thyroid hormone receptor : NOUN
+tilt the election : VERB
 time after time : ADV
 time control : NOUN
 time lord : NOUN
@@ -3301,6 +3343,7 @@ to or from : PREP
 to review : VERB[^infn]
 to snapchat : ADV
 to the satisfaction of : PREP
+to the tune of : PREP
 to where : CONJ
 together with : PREP
 token black : NOUN
@@ -3363,6 +3406,7 @@ u.s. firm : NOUN
 u.s. forces : NOUN[:plur]
 u.s. government compound : NOUN
 u.s. government source : NOUN
+u.s. intelligence community : NOUN
 u.s. leader : NOUN
 u.s. mainland : NOUN
 u.s. market : NOUN
@@ -3445,6 +3489,8 @@ video footage : NOUN
 violent assault : NOUN
 viral video : NOUN
 virginia senate : NOUN
+visual magnitude : NOUN
+visible presence : NOUN
 visually compelling : ADJ
 volcanic anger : NOUN
 volcano eruption: NOUN
@@ -3646,7 +3692,11 @@ dealng : VERB[^ing] =dealing
 "(C)" for confidential : NOUN
 “Get Up” : NOUN
 156th Airlift Wing : NOUN
+2 years later : ADV
+3 hours before : ADV
+3 hours before : PREP
 8 day visit : NOUN
+8 days later : ADV
 8 U.S.C. § 1325(a) : NOUN
 a — what appears to be a — : DET
 a little bit of a : QUAN
@@ -3807,6 +3857,7 @@ political crisis that : NOUN (xtht)
 potentially unpalatable deal : NOUN
 primetime : ADJ
 public plea for help : NOUN
+pula : NOUN
 push back against : VERB
 rebel-held eastern Ghouta suburb of Damascus : NOUN
 repeated rape : NOUN
@@ -3876,7 +3927,7 @@ was home sleeping : VERB[^ing]
 was like, : VERB[^ed]
 weapons component : NOUN
 what is plausible : NOUN
-when the attack occurred : ADV
+when the attack occurred : ADV [$cond,cmpd] 0
 while at the home : ADV
 with what we now know to be : PREP
 win leverage : VERB
@@ -3886,6 +3937,8 @@ would ok : VERB
 # # # # !!!!
 
 hackers-for-hire : NOUN[:plur]
+
+eWell-Being Awards : NOUN[:plur]
 
 Mabna Institute : NOUN
 
@@ -3959,6 +4012,7 @@ anti-gay : ADJ
 anti-gun : ADJ
 anti-gun law : NOUN
 anti-iran : ADJ
+anti-labor : ADJ
 anti-lgbt : ADJ
 anti-muslim : ADJ
 anti-pakistan : ADJ
@@ -4054,6 +4108,7 @@ do-whatever-you-want : ADJ
 double-blind : ADJ
 double-check : VERB
 double-crossing : ADJ
+drawn-out : ADJ
 drive-by : ADJ
 drop-off : NOUN
 drunken-driving : NOUN
@@ -4126,6 +4181,7 @@ gop-controlled : ADJ
 gop-drawn : ADJ
 government-controlled : ADJ
 government-issued : ADJ
+granddaughter-in-law : NOUN
 gray-market : ADJ
 great-grandchildren : NOUN
 great-grandmother : NOUN
@@ -4507,6 +4563,7 @@ wee-hours : NOUN[:plur]
 weeks-long : ADJ
 well-being : NOUN
 well-documented : ADJ
+well-funded : ADJ
 well-organized : ADJ
 well-wisher : NOUN
 white-sand : ADJ
@@ -4553,6 +4610,7 @@ Amy Berman Jackson : NOUN
 Andrew Intrater : NOUN
 Andrew Weissman : NOUN
 Anthony Bourdain : NOUN
+Anthony Kennedy : NOUN
 AP : NOUN
 Apple Maps : NOUN
 AT&T : NOUN
@@ -5101,6 +5159,7 @@ Ng Eng Hen : NOUN
 Nicolas Sarkozy : NOUN
 Netanyahu : NOUN
 New Kensington : NOUN
+New York Daily News : NOUN
 New York Times : NOUN
 New Yorker : NOUN
 News-Miner : NOUN
@@ -5344,6 +5403,7 @@ the United Arab Emirates : NOUN
 the united states-china : ADJ
 The Verge : NOUN [&prop] 0
 the Washington Post : NOUN
+the West Indies : NOUN
 the West Wing : NOUN
 the WHO : NOUN
 Theresa May : NOUN
@@ -5474,7 +5534,7 @@ Zuckerberg : NOUN
 "thousands" : NUM
 % : NOUN[:plur]
 % duty cycle : NOUN
-1st : NUM [&prop] +2
+1st : NUM [&prop,cmpd] +2
 f♯ : NOUN
 fried liver attack : NOUN
 in 6/8 time : ADJ
@@ -5496,7 +5556,7 @@ samsing : NOUN =samsung
 1 of many : QUAN
 1 step closer : NOUN
 1st : NOUN - -6
-1st : ADV
+1st : ADV - +2
 1st class : NOUN
 1st lieutenant : NOUN
 a bit : ADV [$deg,cmpd] +2
@@ -5716,7 +5776,7 @@ actress : NOUN
 actual : ADJ
 actual possession : NOUN
 actual sin : NOUN
-actually : ADV
+actually : ADV [$cond] 0
 acute : NOUN
 acute : ADJ
 acute accent : NOUN
@@ -7625,7 +7685,7 @@ belly out : VERB
 belong : VERB
 beloved : NOUN
 beloved : ADJ
-below : ADV[~trlg]
+below : ADV[~trlg] - -1
 belt : NOUN
 belt : VERB
 belt along : VERB
@@ -14416,7 +14476,7 @@ engine failure : NOUN
 engine room : NOUN
 engineer : NOUN
 engineer : VERB - -1
-engineering : NOUN
+engineering : NOUN - +2
 engineering : VERB[^ing] - -2
 engineering school : NOUN
 engineering science : NOUN
@@ -14476,7 +14536,7 @@ enthusiast : NOUN
 enthusiastic : ADJ
 entice : VERB
 enticing : ADJ
-entire : NOUN
+entire : NOUN - -4
 entire : ADJ
 entire leaf : NOUN
 entirely : ADV
@@ -16592,9 +16652,9 @@ fuel pod : NOUN
 fuel system : NOUN
 fulfil : VERB
 fulfill : VERB
-full : NOUN
+full : NOUN - -4
 full : VERB - -2
-full : ADJ
+full : ADJ [$trlg,prd] 0
 full : ADV
 full admiral : NOUN
 full blood : NOUN
@@ -17706,7 +17766,8 @@ grow over : VERB
 grow up : VERB
 grower : NOUN
 growing : NOUN - -1
-growing : ADJ
+growing : ADJ - +1
+growing competition : NOUN
 growing season : NOUN
 growl : NOUN
 growl : VERB
@@ -18348,9 +18409,9 @@ herbert : NOUN
 herbicide : NOUN
 herd : NOUN
 herd : VERB
-here : NOUN - -1
+here : NOUN - -3
 here : ADJ
-here : ADV
+here : ADV [$trlg] +1
 heresy : NOUN
 heritage : NOUN
 herman : NOUN
@@ -20842,6 +20903,7 @@ laugh line : NOUN
 laugh loudly : VERB
 laugh off : VERB
 laugh track : NOUN
+laughing : ADJ
 laughingstock : NOUN
 launch : NOUN - -2
 launch : VERB
@@ -20911,7 +20973,7 @@ le : NOUN
 leach : NOUN
 leach : VERB
 lead : NOUN
-lead : VERB
+lead : VERB - +1
 lead acetate : NOUN
 lead bank : NOUN
 lead glass : NOUN
@@ -21579,6 +21641,7 @@ local option : NOUN
 local oscillator : NOUN
 local post office : NOUN
 local road : NOUN
+local service : NOUN
 local street : NOUN
 local time : NOUN
 locality : NOUN
@@ -23031,7 +23094,7 @@ mistakenly : ADV
 mistreat : VERB
 mistreatment : NOUN
 mistrust : NOUN
-mistrust : VERB
+mistrust : VERB - +2
 misunderstand : VERB
 misuse : NOUN
 misuse : VERB
@@ -24310,6 +24373,7 @@ number one : NOUN =number 1
 number one wood : NOUN
 number representation system : NOUN
 number system : NOUN
+number two : NOUN =number 2
 numeral : NOUN
 numeral : ADJ
 numerical : ADJ
@@ -28777,7 +28841,7 @@ revenue bond : NOUN
 revenue stamp : NOUN
 revenue tariff : NOUN
 revere : NOUN
-revere : VERB
+revere : VERB - +2
 reversal : NOUN
 reverse : NOUN
 reverse : VERB
@@ -29686,7 +29750,7 @@ sawm : NOUN
 sawyer : NOUN
 saxon : NOUN
 saxon : ADJ
-say : NOUN - -4
+say : NOUN[:*l] - -4
 say : VERB[^dit] - +1
 say farewell : VERB
 scale : NOUN
@@ -31292,6 +31356,8 @@ smell out : VERB
 smell up : VERB
 smile : NOUN - +2
 smile : VERB
+smiling : NOUN
+smiling : ADJ
 smiley : NOUN
 smith : NOUN
 smog : NOUN
@@ -33162,7 +33228,7 @@ surge : NOUN
 surge : VERB
 surgeon : NOUN
 surgeon general : NOUN
-surgery : NOUN
+surgery : NOUN [&evnt] 0
 surmise : NOUN
 surmise : VERB
 surname : NOUN
@@ -33907,6 +33973,7 @@ terrestrial planet : NOUN
 terrestrial time : NOUN
 terrible : ADJ
 terrific : ADJ
+terrified : ADJ[%ed]
 terrify : VERB
 terrifying : ADJ -  +1
 territorial : ADJ
@@ -34425,7 +34492,7 @@ tooth doctor : NOUN
 tooth powder : NOUN
 tooth root : NOUN
 tooth shell : NOUN
-top : NOUN
+top : NOUN  - +1
 top : VERB
 top : ADJ
 top banana : NOUN
