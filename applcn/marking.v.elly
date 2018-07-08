@@ -168,6 +168,7 @@ dealing : VERB[^ing]
 debated the question : VERB[^ed]
 declared : VERB[^ed] - +1
 deeply held : ADJ
+defaming him : VERB[^ing]
 degrees celsius : NOUN[:plur]
 degrees fahrenheit : NOUN[:plur]
 delivered to : VERB[^ed]
@@ -812,6 +813,7 @@ wanting to see : VERB[^ing]
 warfighting : NOUN
 warned of : VERB[^ed]
 warned that : VERB[^ed]
+warnings : NOUN[:plur]
 was a violation of : VERB[^ed,s]
 was behind : VERB[^ed,s]
 was behind bars : VERB[^ed,s]
@@ -980,6 +982,7 @@ achingly : ADV [$deg] 0
 across the country : ADV
 across the pacific : ADV
 across the state : ADV
+across the us : ADV
 active shooter : NOUN
 additional charges : NOUN[:plur]
 adm. : NOUN
@@ -1427,6 +1430,7 @@ constitutional crisis : NOUN
 constitutional limit : NOUN
 construction permit : NOUN
 container transport : NOUN
+continue to work : VERB
 contract that : NOUN[:*l] (xtht)
 controversial issue : NOUN
 convention center : NOUN
@@ -1782,6 +1786,7 @@ from around : PREP
 from beginning to end : ADV
 from beyond : PREP
 from now on, : ADV
+from their homes : ADV
 from there : ADV
 from under : PREP
 from what  : CONJ[@rel]
@@ -1926,6 +1931,7 @@ hiking trail : NOUN
 hindu temple : NOUN
 his highness : DEM[@ind]
 his or her : DEM
+his pleading guilty : NOUN
 his royal highness : DEM[@ind]
 historic election : NOUN
 hit job : NOUN
@@ -2061,6 +2067,7 @@ in the name of : PREP
 in the name of the islamic state : ADV
 in the public interest : NOUN
 in the report : ADV
+in the right direction : ADV
 in the same place : ADV
 in the skies : ADJ [$trlg] +1
 in the skies : ADV
@@ -2386,6 +2393,7 @@ middle east peacemaking : NOUN
 midtempo : ADJ
 midterm election : NOUN
 migrant parent : NOUN
+migrant policy : NOUN
 mileage rules : NOUN[:plur]
 militant group : NOUN
 military aircraft : NOUN
@@ -2486,6 +2494,7 @@ national security adviser : NOUN
 national security interest : NOUN
 national title : NOUN
 nationwide driving ban : NOUN
+nationwide protest : NOUN
 nationwide rallies : NOUN[:plur]
 native soil : NOUN
 natural causes : NOUN[:plur]
@@ -2614,6 +2623,7 @@ on when : CONJ
 on whether : CONJ
 on which : CONJ
 once in a while : ADV
+ongoing contest : NOUN
 online survey : NOUN
 only after : CONJ
 only because : CONJ
@@ -2658,6 +2668,7 @@ outside of : PREP
 outside the jurisdiction of : PREP
 outside world : NOUN
 over from : PREP
+over social media : ADV
 over the course of : PREP
 over the last year : ADV
 over the weekend : ADJ
@@ -2697,6 +2708,7 @@ pending adjustment : NOUN
 pension buyout : NOUN
 people familiar with the matter : NOUN
 people on facebook : NOUN[:plur]
+pepper social media : VERB
 per hour : ADJ [$trlg,prd] 0
 percent chance : NUM[:*r]
 performing arts center : NOUN
@@ -2946,6 +2958,7 @@ role she played : NOUN
 roll back : VERB
 rough surf : NOUN
 round at : PREP
+rounds of voting : NOUN[:plur]
 rpg : NOUN
 rules of engagement : NOUN
 ruling party: NOUN
@@ -3104,6 +3117,7 @@ southern city : NOUN
 southern parts : NOUN[:plur]
 southern state : NOUN
 southwest to : PREP
+southwestern syria : NOUN
 sovereign nation : NOUN
 sovereign wealth fund : NOUN
 space authority : NOUN
@@ -3171,9 +3185,10 @@ summit crater : NOUN
 supply chain : NOUN
 supply cut : NOUN
 supply train : NOUN
+supreme count opening : NOUN
 supreme court decision : NOUN
 supreme court justice : NOUN
-supreme count opening : NOUN
+supreme court nominee : NOUN
 supreme leader : NOUN
 surprise disclosure : NOUN
 surprise launch : NOUN
@@ -3819,6 +3834,7 @@ gun group : NOUN
 had a candidate reach : VERB[^ed]
 had helped her husband plan : VERB[^ed]
 half-apologies : NOUN[:plur]
+harassing a woman : NOUN
 hardline immigration rhetoric : NOUN
 has a little bit of a different characteristic : VERB
 have come to count on : VERB
@@ -4731,6 +4747,7 @@ Bashar al-Assad : NOUN
 Bashar Assad : NOUN
 Baltimore police detective : NOUN
 Battle of Dug Springs : NOUN
+Bavarian legislator : NOUN
 BBC : NOUN
 BeMobile : NOUN
 Bears Ears : NOUN
@@ -4799,6 +4816,7 @@ Chinese leadership : NOUN
 Chinese President : NOUN
 Chris Cuomo : NOUN
 Christian Democrat : NOUN
+Christian Democratic Party : NOUN
 Christopher A. Wray : NOUN
 Civil Rights Commission : NOUN
 Clayton County Schools : NOUN
@@ -4824,6 +4842,7 @@ Côte d'Azur : NOUn
 Cottarelli : NOUN
 Crafty : NOUN
 Crater Lake : NOUN
+Cristina : NOUN
 Crown Prince Mohammed bin Salman : NOUN
 Crystal River Middle School : NOUN
 Cubbies : NOUN[:plur]
@@ -4911,6 +4930,7 @@ FAA : NOUN
 Facebook : NOUN
 Facebook user : NOUN
 Fairchild : NOUN
+Families Belong Together : NOUN
 Farhan Haq : NOUN
 FBI : NOUN
 FBI Deputy Director : NOUN
@@ -4987,6 +5007,7 @@ Gridiron Club : NOUN
 Gruler : NOUN
 Guinness : NOUN
 Hanks : NOUN
+Hans : NOUN
 Hapag-Lloyd company : NOUN
 Hariri : NOUN
 Harry : NOUN
@@ -5019,6 +5040,7 @@ Instagram : NOUN
 Institute for Radio Astronomy Millimetrique : NOUN[:*r]
 Intel : NOUN
 International Criminal Tribunal : NOUN
+International Organization of Migration : NOUN
 Interstate 95 corridor : NOUN
 Iraq and Afghanistan Veterans of America : NOUN
 Irving : NOUN
@@ -5082,6 +5104,7 @@ Katie Sierra : NOUN
 Katrina : NOUN
 Kay Bailey Hutchinson : NOUN
 Keaton : NOUN
+Ken Isaacs : NOUN
 Kent State University : NOUN
 Kevin : NOUN
 Kevin Brady : NOUN
@@ -5353,6 +5376,7 @@ Robert S. Mueller III : NOUN
 Rockette : NOUN
 Rockwell Automation : NOUN
 Rodrigo Duterte : NOUN
+Roe v. Wade : NOUN
 Roger Self : NOUN
 Roger Stone : NOUN
 Rohingya : NOUN
@@ -5536,9 +5560,11 @@ U.S.S.R. : NOUN
 UAE : NOUN
 Uber : NOUN
 UCLA : NOUN
+United States-backed : ADJ
 United States Air Force : NOUN
 United States Attorney : NOUN
 United States military aircraft : NOUN
+United We Dream : NOUN
 University of Maryland Baltimore County : NOUN
 Upper Big Branch Mine : NOUN
 Upstate New York : NOUN
