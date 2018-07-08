@@ -937,6 +937,7 @@ a group of them : PRO
 a handful of : QUAN
 a hundred : NUM
 a large chunk of : QUAN
+a leg up : NOUN[:det]
 a little bit : NOUN
 a little bit : ADV
 a look : NOUN[:det]
@@ -1089,6 +1090,7 @@ army head : NOUN
 army staff sgt. : NOUN
 around a long time : ADV
 around noon : ADV
+around the country : ADV
 around the world : ADV
 artificial island : NOUN
 as a means of : CONJ
@@ -1134,6 +1136,7 @@ at the heart of : PREP
 at the home : ADV
 at the request of : PREP
 at the same time as : CONJ
+at the time : ADV
 at the top of : PREP
 at this point : ADV
 at this point in time : ADV
@@ -1214,6 +1217,7 @@ boil over : VERB
 boiling point : NOUN
 bond market : NOUN
 border bill : NOUN
+border city : NOUN
 border fence : NOUN
 border patrol agent : NOUN
 bosniak : NOUN
@@ -1401,6 +1405,7 @@ community meeting : NOUN
 companion piece : NOUN
 competing station : NOUN
 complaint that : NOUN[:*l] (xtht)
+compromise bill : NOUN
 computer model : NOUN
 computer tampering : NOUN
 concrete blueprint : NOUN
@@ -1587,6 +1592,7 @@ draft treaty : NOUN
 dramatic concessions: NOUN[:plur]
 dramatic scene : NOUN
 draw attention to : VERB
+draw support : VERB
 driving ban : NOUN
 drug prices : NOUN[:plur]
 drug test : NOUN
@@ -1808,6 +1814,7 @@ future plan : NOUN
 gain no benefit : VERB
 gala dinner : NOUN
 gated community : NOUN
+gather votes : VERB
 gay marriage : NOUN
 gay men : NOUN[:plur]
 gay rights : NOUN[:plur]
@@ -1958,6 +1965,7 @@ house candidate : NOUN
 house district : NOUN
 house of cards : NOUN
 house of delegates : NOUN
+house republicans : NOUN[:plur]
 house seat : NOUN
 house speaker : NOUN
 house tax-writing committee : NOUN
@@ -1997,6 +2005,7 @@ immigration crackdown : NOUN
 immigration issues : NOUN
 immigration policy : NOUN
 immigration views : NOUN[:plur]
+import restriction : NOUN
 import tariff : NOUN
 important procedure : NOUN
 imposing : NOUN[:ing]
@@ -2039,6 +2048,7 @@ in just over a week : ADV
 in late may : ADV
 in leaps and bounds : ADV
 in length : ADV[~trlg] [$deg] 0
+in many different ways : ADV
 in order to : TO
 in order to get attention : ADV
 in practice : ADV
@@ -2122,6 +2132,7 @@ intelligence survey : NOUN
 intensive talks : NOUN[:plur]
 interchange point : NOUN
 interferometry : NOUN
+interior town : NOUN
 internal and external : ADJ
 internal report : NOUN
 international aid worker : NOUN
@@ -2500,6 +2511,7 @@ native soil : NOUN
 natural causes : NOUN[:plur]
 natural disaster : NOUN
 navy submarine : NOUN
+nearly a century : NOUN
 neighborhood : ADJ - -2
 neighborhood bar : NOUN
 neighborhood setting : NOUN
@@ -2757,6 +2769,7 @@ political crisis : NOUN
 political deadlock : NOUN
 political editor : NOUN
 political elite : NOUN
+political epicenter : NOUN
 political establishment : NOUN
 political event : NOUN
 political force : NOUN
@@ -3075,6 +3088,7 @@ signal rocket : NOUN
 signature project : ADJ
 significant policy shift : NOUN
 significant sign : NOUN
+similar scenes : NOUN[:plur]
 since taking office : ADV
 since then : ADV[~cnj]
 sincere hope : NOUN
@@ -3144,6 +3158,7 @@ stand firmly against : VERB
 star system : NOUN
 start of a new relationship : NOUN
 state and local : ADJ
+state capital : NOUN
 state ceremony : NOUN
 state fund : NOUN
 state law : NOUN
@@ -3173,6 +3188,7 @@ strong wind : NOUN
 stun grenade : NOUN
 stunning upset : NOUN
 submillimeter  : ADJ
+subsequent ruling : NOUN
 substantial issues : NOUN[:plur]
 subtropical storm : NOUN
 such a  : QUAN
@@ -4904,6 +4920,7 @@ Edwin M. Lee : NOUN
 Edwing Roman : NOUN
 el-Sisi : NOUN
 El Nino : NOUN
+El Paso : NOUN
 Elaine Chao : NOUN
 Elena Kagan : NOUN
 Eli : NOUN
@@ -5189,6 +5206,7 @@ Matt Allingham : NOUN
 Mattis : NOUN
 McCarthy : NOUN
 McClatchy : NOUN
+Meet the Press : NOUN
 Mega Millions : NOUN
 Mega Millions drawing : NOUN
 Meghan Markle : NOUN
@@ -5353,6 +5371,7 @@ Quinipiac : NOUN
 Rageh Bakrit : NOUN
 Ramos : NOUN
 Rancho Tehama : NOUN
+Redding : NOUN
 Republican lawmaker : NOUN
 Republican National Committee : NOUN
 Revolutionary Guards : NOUN[:plur]
@@ -5399,6 +5418,7 @@ S&P 500 : NOUN
 Saakashvili : NOUN
 Saeb Erekat : NOUN
 Safe Drinking Water Act : NOUN
+Salt Lake City : NOUN
 Sandra Himmel : NOUN
 Saint Mary : NOUN
 Sanders : NOUN
