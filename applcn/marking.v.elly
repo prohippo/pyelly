@@ -1479,7 +1479,7 @@ critical technology : NOUN
 critically endangered species : NOUN
 crocs : NOUN[:plur]
 cross their t’s : VERB
-cryptic statement : NOUN
+cryptic message : NOUN
 cryptocurrency : NOUN
 cryptojack : VERB
 crytic message : NOUN
@@ -3679,6 +3679,8 @@ normally, yes : MISC[:*x]
 no  : MISC[:*x] - -1
 o.k. : MISC[:dit] - +2
 yes : MISC[:*x]
+q: : MISC
+a: : MISC
 
 at&t : NOUN
 bête noir : NOUN
@@ -3909,6 +3911,7 @@ maryland local officials : NOUN[:plur]
 messaging app WeChat : NOUN
 metals tariff : NOUN
 missing submarine : NOUN
+monday’s broadcast : NOUN
 months-long investigation : NOUN
 more expansive background checks : NOUN[:qnt,plur]
 more to a judge : NOUN[:prep]
