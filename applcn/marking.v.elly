@@ -31,6 +31,7 @@ added a new dimension : VERB[^ed]
 advanced : VERB[^ed]
 advancing : VERB[^ing]
 advertising : VERB[^ing] - -2
+aged : VERB[^ed] - -1
 agreed to cooperate with : VERB[^ed]
 agreed to pay : VERB[^ed]
 agreed with : VERB[^ed]
@@ -228,6 +229,7 @@ ever heard of : VERB[^ed]
 everything that’s ever happened : NOUN
 exciting : VERB[^ing]
 exerting influence : VERB[^ing]
+expressed interest : VERB[^ed]
 faces a dilemma : VERB[^s]
 failed to reflect : VERB[^ed]
 failing to identify : VERB[^ing]
@@ -248,6 +250,7 @@ field-testing : VERB[^ing]
 fighting : VERB[^ing]
 financing : VERB[^ing]
 fired off : VERB[^ed]
+first told : VERB[^ed]
 fishermen : NOUN[:plur]
 fled : VERB[^ed]
 flew : VERB[^ed]
@@ -838,6 +841,7 @@ went missing : VERB[^ing]
 went on, : VERB[^ed]
 went out of business : VERB[^ed]
 went viral : VERB[^ed]
+were given a choice : VERB[^ed]
 were heartbroken to see : VERB[^ed]
 when it comes to : CONJ
 will therefore : AUXL
@@ -1120,6 +1124,7 @@ as well as : CONJ
 aside from : PREP
 assertions that : NOUN[:*l,plur] (xtht)
 asset purchase : NOUN
+asylum request : NOUN
 at a home : ADV
 at a time : CONJ
 at a time when : CONJ
@@ -1334,6 +1339,7 @@ casino company : NOUN
 cast a vote : VERB
 cast recording : NOUN
 catch and release : NOUN
+cave complex : NOUN
 cease and desist agreement : NOUN
 ceasefire : NOUN
 celebrity excitement : NOUN
@@ -1439,6 +1445,7 @@ constitutional limit : NOUN
 construction permit : NOUN
 container transport : NOUN
 continue to work : VERB
+continued rumbling : NOUN
 contract that : NOUN[:*l] (xtht)
 controversial issue : NOUN
 convention center : NOUN
@@ -1480,6 +1487,7 @@ critically endangered species : NOUN
 crocs : NOUN[:plur]
 cross their t’s : VERB
 cryptic message : NOUN
+cryptic statement : NOUN
 cryptocurrency : NOUN
 cryptojack : VERB
 crytic message : NOUN
@@ -1686,6 +1694,7 @@ faces a showdown : VERB[^s]
 fact to face : ADV
 factional : ADJ
 factional fighting : NOUN
+factually inaccurate : ADJ
 failed candidate : NOUN
 failures and deficiencies : NOUN[:plur]
 fair share : NOUN
@@ -1877,6 +1886,7 @@ groundbreaking : NOUN - -1
 groundbreaking : ADJ
 group travel : NOUN
 growing discontent : NOUN
+growing irritation : NOUN
 growth strategy : NOUN
 guilty plea : NOUN
 guitar bridge : NOUN
@@ -1924,6 +1934,7 @@ health priority : NOUN
 heat illness : NOUN
 heat index : NOUN
 heavy fighting : NOUN
+heavy rain : NOUN
 heighten pressure : VERB
 helmet camera : NOUN
 help defeat : VERB
@@ -2003,8 +2014,10 @@ if confirmed, : ADV
 if you'd like : ADV
 iikoko iponge : NOUN
 illegal alien : NOUN
+illegal entry : NOUN
 illegal gun possession : NOUN
 illegal immigrant : NOUN
+illegal immigrant parent : NOUN
 illegal immigration : NOUN
 imbalanced : ADJ
 immediate action : NOUN
@@ -2562,6 +2575,7 @@ nonessential staff : NOUN
 north american affairs : NOUN[:plur]
 north korean leader : NOUN
 northern california : NOUN
+northern thailand : NOUN
 not just : ADV
 not only : ADV - -1
 not only : CONJ
@@ -2641,6 +2655,7 @@ on through : PREP
 on thursday : ADV
 on top of : PREP
 on tuesday : ADV
+on tuesday afternoon : ADV
 on twitter : ADV
 on wednesday : ADV
 on wednesday evening : ADV
@@ -3203,6 +3218,7 @@ streetlamp : NOUN
 stress testing : NOUN
 strip club : NOUN
 strong wind : NOUN
+stuck : VERB[^ed] - +1
 stun grenade : NOUN
 stunning upset : NOUN
 submillimeter  : ADJ
@@ -3311,6 +3327,7 @@ that you :  PRO[=*l]
 thaw with russia : NOUN
 the IS : NOUN
 the above : ADJ
+the aged : NOUN
 the american soul : NOUN
 the armed forces : NOUN[:plur]
 the authorities : NOUN[:plur,det]
@@ -3594,6 +3611,7 @@ what he called : ADV
 what he said was a : DET
 what i have stood for : NOUN
 what is today : ADV
+what it called a : DET
 what it has learned : NOUN
 what it’s doing : NOUN
 what looks like an : DET
@@ -3613,6 +3631,7 @@ which it said : CONJ
 while under the influence of drugs : ADV
 white evangelical : NOUN
 white house official : NOUN
+white house staff : NOUN
 white rhino : NOUN
 white sand beach : NOUN
 white supremacist : ADJ
@@ -3642,6 +3661,7 @@ with knowledge of the incident : ADJ
 with links to : PREP
 with little experience : ADJ
 with no regard to : CONJ
+with or without : PREP
 with what : CONJ
 with whom : CONJ
 within range of : PREP
@@ -4231,7 +4251,6 @@ ex-FBI : ADJ
 ex-doorman : NOUN
 ex-envoy : NOUN
 ex-girlfriend : NOUN
-ex-husband : NOUN
 ex-intelligence officer : NOUN
 ex-movie mogul : NOUN
 ex-playmate : NOUN
@@ -4849,6 +4868,7 @@ Charlie : NOUN
 Charlotte-Mecklenburg : ADJ
 Charlotte Douglas : NOUN
 Chevrolet : NOUN
+Chiang Rai province : NOUN
 Chibok Government Secondary School : NOUN
 Chicago Cubs : NOUN
 Chicago Sun Times : NOUN
@@ -4903,6 +4923,7 @@ Dapchi Government Girls Science and Technical College : NOUN
 Dave Stone : NOUN
 David Cay Johnson : NOUN
 David Shulkin : NOUN
+Defence Research Facility : NOUN
 Delta Air Lines : NOUN
 Democratic National Committee : NOUN
 Denise : NOUN
@@ -4961,6 +4982,7 @@ Enrique Peña Nieto : NOUN
 Enzo : NOUN
 Erdogan : NOUN
 Errol : NOUN
+EPA chief : NOUN
 ESPN : NOUN
 ESPN host : NOUN
 Esterly : NOUN
@@ -5306,6 +5328,7 @@ NBA : NOUN
 NBC : NOUN
 NBC News : NOUN
 NBC News MACH : NOUN
+NBC reporter : NOUN
 NCAA : NOUN
 NCIS : NOUN
 NDA : NOUN
@@ -5378,6 +5401,7 @@ Planet of the Apes : NOUN
 POLITICO : NOUN
 Politifact : NOUN
 Pontiac Grand Prix : NOUN
+Porton Down : NOUN
 Post-Gazette : NOUN
 POTUS : NOUN
 Praljak : NOUN
@@ -5533,6 +5557,7 @@ Terrence : NOUN
 Tex : NOUN
 Team Lacoste : NOUN
 Texans : NOUN
+Tham Luang : NOUN
 the Church of the Holy Sepulchre : NOUN[:det]
 the Big Island : NOUN
 the city of Ventura : NOUN[:det]
@@ -6136,6 +6161,7 @@ age bracket : NOUN
 age class : NOUN
 age group : NOUN
 age limit : NOUN
+aged : ADJ
 agency : NOUN
 agency security : NOUN
 agenda : NOUN
@@ -33236,6 +33262,7 @@ structure : NOUN
 structure : VERB
 struggle : NOUN
 struggle : VERB
+stuck : ADJ
 student : NOUN
 student center : NOUN
 student lamp : NOUN
@@ -35673,6 +35700,7 @@ understand : VERB
 understate : VERB
 understated : ADJ
 understatement : NOUN
+understood : ADJ
 undertake : VERB
 undervalue : VERB
 underwater : ADJ
