@@ -1,14 +1,14 @@
 # readable text compression
 # texting.v.elly
 
-anyone : PRO 0 0 =any
-someone: PRO 0 0 =som
-see    : VERB 0 0 =c
+anyone  : PRO 0 0 =any
+someone : PRO 0 0 =som
+see     : VERB 0 0 =c
 
-sunday   : NOUN 0 0 =sun
-monday   : NOUN 0 0 =mon
-tuesday  : NOUN 0 0 =tue
-wednesday: NOUN 0 0 =wed
+sunday    : NOUN 0 0 =sun
+monday    : NOUN 0 0 =mon
+tuesday   : NOUN 0 0 =tue
+wednesday : NOUN 0 0 =wed
 thursday : NOUN 0 0 =thu
 friday   : NOUN 0 0 =fri
 saturday : NOUN 0 0 =sat
@@ -25,16 +25,16 @@ bad  : ADJ 0 0 =bd
 big  : ADJ 0 0 =bg
 little : ADJ 0 0 =lil
 large : ADJ 0 0 =lg
-extra large: ADJ 0 0 =xlg
+extra large : ADJ 0 0 =xlg
 more  : ADV 0 0 =mo
 less  : ADV 0 0 =lss
 
 straightforward : ADJ 0 0 =simpl
-please : VERB 0 0 =pls
-pleased: VERB[!IN] 0 0 =plsd
+please  : VERB 0 0 =pls
+pleased : VERB[!IN] 0 0 =plsd
 thanks : NOUN 0 0 =thx
 thank you : VERB 0 0 =thx
-backward: ADV  0 0 =bkw
+backward : ADV  0 0 =bkw
 forward : ADV  0 0 =fwd
 example : NOUN 0 0 =ex
 level   : NOUN 0 0 =lvl
@@ -55,7 +55,7 @@ respective : NULL
 certain    : NULL
 a group of : NULL
 groups of  : NULL
-a number of: NULL
+a number of : NULL
 in fact    : NULL
 of course  : NULL
 indeed : NULL
@@ -72,14 +72,14 @@ each and every : NULL 0 0 =ea
 each and all : NULL 0 0 =ea
 character : NOUN 0 0 =chr
 
-up in  :  PREP 0 0 =in
-down in:  PREP 0 0 =in
-down by:  PREP 0 0 =by
-over toward:  PREP 0 0 =to
+up in   : PREP 0 0 =in
+down in : PREP 0 0 =in
+down by : PREP 0 0 =by
+over toward :  PREP 0 0 =to
 
-together with:  PREP 0 0 =+
-necessary for:  PREP 0 0 =fr
-instead of: NEGN  0 0 =no
+together with :  PREP 0 0 =+
+necessary for :  PREP 0 0 =fr
+instead of : NEGN  0 0 =no
 have -ed to : AUX 0 0 =must
 have -s  to : AUX 0 0 =must
 have to   : AUX 0 0 =must
@@ -102,7 +102,7 @@ company : NOUN 0 0 =co
 association  : NOUN 0 0 =assn
 incorporated : NOUN 0 0 =inc
 government   : NOUN 0 0 =govt
-secretary: NOUN 0 0 =secy
+secretary : NOUN 0 0 =secy
 general  : NOUN 0 0 =gen
 junior : NOUN 0 0 =jr
 senior : NOUN 0 0 =sr
@@ -171,13 +171,13 @@ united nations : NOUN 0 0 =UN
 dollar  : NOUN 0 0 =$
 cent  : NOUN 0 0 =c
 
-register: NOUN 0 0 =reg
-representative:  NOUN 0 0 =rep
-series:  NOUN 0 0 =ser
-street:  NOUN 0 0 =st
-substitution:  NOUN 0 0 =sub
-temporary:  ADJ  0 0 =temp
-variable:  ADJ 0 0 =var
+register : NOUN 0 0 =reg
+representative :  NOUN 0 0 =rep
+series :  NOUN 0 0 =ser
+street :  NOUN 0 0 =st
+substitution :  NOUN 0 0 =sub
+temporary :  ADJ  0 0 =temp
+variable :  ADJ 0 0 =var
 
 if any : EXPR 0 0 =ifny
 as well as  : ADV 0 0 =&
@@ -189,39 +189,39 @@ accordingly  : ADV 0 0 =so
 as a result  : EXPR 0 0 =so
 in terms of  : EXPR 0 0 =by
 according to : EXPR 0 0 =by
-in addition: NULL
-in addition to: NULL
+in addition : NULL
+in addition to : NULL
 for example : CONJ 0 0 =EG
 and/or  : CONJ 0 0 =or
 with respect to  : EXPR 0 0 =RE
-what is more: NULL
+what is more : NULL
 the case  : EXPR 0 0 =so
 made sure  : VERB 0 0 =see
 make sure  : VERB 0 0 =see
 knowledge  : EXPR 0 0 =knw
 considered to be  : VERB 0 0 =seen
 regarding  : EXPR 0 0 =RE
-interest in  : VERB 0 0 =want
-interested in  :VERB 0 0 =want
+interest in.  : VERB 0 0 =want
+interested in : VERB 0 0 =want
 known as  : EXPR 0 0 ==
 plus  : CONJ 0 0 =+
 in accordance with  : PREP 0 0 =by
-readily: NULL
+readily : NULL
 easily : NULL
 simply : NULL
 merely : NULL
 really : NULL
 truly  : NULL
 fully  : NULL
-largely: NULL
+largely : NULL
 mainly : NULL
-definitely: NULL
-obviously: NULL
-clearly:  NULL
+definitely : NULL
+obviously : NULL
+clearly :  NULL
 
 continue  :  VERB[!IN] 0 0 =cntnu
 continued :  VERB[!IN] 0 0 =cont'd
-continuing:  VERB[!IN] 0 0 =cont'g
+continuing :  VERB[!IN] 0 0 =cont'g
 subsequent : ADJ 0 0 =subsq
 found :  VERB 0 0 =fnd
 find  :  VERB 0 0 =fnd
@@ -233,21 +233,21 @@ voice    : NOUN 0 0 =vce
 knots    : NOUN 0 0 =kt
 
 who :  UNIT[:WH] 0 0 =wh
-what:  UNIT[:WH] 0 0 =wh
-when:  UNIT[:WH]
-where: UNIT[:WH]
-which: UNIT[:WH] 0 0 =wh
-why:   UNIT[:WH]
+what :  UNIT[:WH] 0 0 =wh
+when :  UNIT[:WH]
+where : UNIT[:WH]
+which : UNIT[:WH] 0 0 =wh
+why :   UNIT[:WH]
 
-stated:    VERB[!IN] 0 0 =sd
-reported:  VERB[!IN] 0 0 =sd
-announced: VERB[!IN] 0 0 =sd
+stated :    VERB[!IN] 0 0 =sd
+reported :  VERB[!IN] 0 0 =sd
+announced : VERB[!IN] 0 0 =sd
 
-buy:    VERB
-bought: VERB 0 0 =buy
-sell:   VERB 0 0 =sll
-sold:   VERB 0 0 =sll
+buy :    VERB
+bought : VERB 0 0 =buy
+sell :   VERB 0 0 =sll
+sold :   VERB 0 0 =sll
 
-reorganize: VERB 0 0 =reorg
-reorganization: NOUN 0 0 =reorg
-organization: NOUN 0 0 =org
+reorganize : VERB 0 0 =reorg
+reorganization : NOUN 0 0 =reorg
+organization : NOUN 0 0 =org

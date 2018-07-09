@@ -34,30 +34,30 @@
 car : noun tra=^輛汽車, =^辆汽车
 bus : noun tra=^輛公共汽車, =^辆公共汽车
 airplane : noun tra=^架飛機, =^架飞机
-boat: noun tra=^條小船, =^条小船
-ball: noun tra=^個球, =^个球
-book: noun tra=^本書, =^本书
-bowl: noun tra=^個碗, =^个碗
-snake: noun [^animate] 0 tra=^條蛇, =^条蛇
-rope: noun tra=^條繩索, =^条绳索
-belt: noun tra=^條傳送帶, =^条传送带
-newspaper: noun tra=^張報紙, =^张报纸
-magazine: noun tra=^本雜誌, =^本杂志
-cow: noun [^animate] 0 tra=^頭母牛, =^头母牛
-pig: noun [^animate] 0 tra=^頭豬, =^头猪
-little pig: noun [^animate] 0 tra=^隻小猪仔, =^只小猪仔
-horse: noun [^animate] 0 tra=^匹馬, =^匹马
-chicken: noun [^animate] 0 tra=^隻雞, =^只雄
-duck: noun [^animate] 0 tra=^隻鴨, =^只鸭
-house: noun tra=^座房子, =^座房子
-building: noun tra=^座大廈, =^座大厦
-rose: noun =^朵玫瑰
-chrysanthemum: noun =^朵菊花
-computer: noun tra=^臺計算機, =^台计算机
-peach: noun tra=^個桃子, =^个桃子
-banana: noun tra=^個香蕉, =^个香蕉
-company: noun =^家公司
-ticket: noun tra=^張票, =^张票
+boat : noun tra=^條小船, =^条小船
+ball : noun tra=^個球, =^个球
+book : noun tra=^本書, =^本书
+bowl : noun tra=^個碗, =^个碗
+snake : noun [^animate] 0 tra=^條蛇, =^条蛇
+rope : noun tra=^條繩索, =^条绳索
+belt : noun tra=^條傳送帶, =^条传送带
+newspaper : noun tra=^張報紙, =^张报纸
+magazine : noun tra=^本雜誌, =^本杂志
+cow : noun [^animate] 0 tra=^頭母牛, =^头母牛
+pig : noun [^animate] 0 tra=^頭豬, =^头猪
+little pig : noun [^animate] 0 tra=^隻小猪仔, =^只小猪仔
+horse : noun [^animate] 0 tra=^匹馬, =^匹马
+chicken : noun [^animate] 0 tra=^隻雞, =^只雄
+duck : noun [^animate] 0 tra=^隻鴨, =^只鸭
+house : noun tra=^座房子, =^座房子
+building : noun tra=^座大廈, =^座大厦
+rose : noun =^朵玫瑰
+chrysanthemum : noun =^朵菊花
+computer : noun tra=^臺計算機, =^台计算机
+peach : noun tra=^個桃子, =^个桃子
+banana : noun tra=^個香蕉, =^个香蕉
+company : noun =^家公司
+ticket : noun tra=^張票, =^张票
 stone : noun tra=^塊石頭, =^块石头
 brick : noun [^material] 0 tra=^塊磚, =^块砖
 stick : noun [^material] 0 tra=^條堅持, =^条坚持
@@ -90,37 +90,37 @@ dog : noun [^animate] 0 tra=^隻狗, =^只狗
 cat : noun [^animate] 0 tra=^隻猫, =^只猫
 bird : noun [^animate] 0 tra=^隻鳥, =^只鸟
 dream : noun tra=^個夢想, =^个梦想
-fear: noun =恐惧
-hope: noun =希望
-person: noun [^animate] 0 tra=^個人, =^个人
+fear : noun =恐惧
+hope : noun =希望
+person : noun [^animate] 0 tra=^個人, =^个人
 
-red:    noun =紅色
-blue:   noun =藍色
-green:  noun =綠色
-yellow: noun =黃色
-orange: noun =座色
-purple: noun =紫色
-brown:  noun =棕色
-black:  noun =黑色
-white:  noun =白色
-gray:   noun =色灰
+red :    noun =紅色
+blue :   noun =藍色
+green :  noun =綠色
+yellow : noun =黃色
+orange : noun =座色
+purple : noun =紫色
+brown :  noun =棕色
+black :  noun =黑色
+white :  noun =白色
+gray :   noun =色灰
 
-big:    adj =大
-small:  adj =小
-little: adj =小
+big :    adj =大
+small :  adj =小
+little : adj =小
 
 buy :  verb tra=買, =买
-sell:  verb tra=賣, =卖
-come:  verb tra=來, =来
+sell :  verb tra=賣, =卖
+come :  verb tra=來, =来
 go  :  verb =去
 understand : verb =明白
 eat :  verb =吃
-build: verb =蓋
-have:  verbo - -1 =有
-run:  verb =跑歩
-walk: verb =走路
+build : verb =蓋
+have :  verbo - -1 =有
+run :  verb =跑歩
+walk : verb =走路
 
-want: mode =想要
-need: mode =需要
-have: mode - -1 =必須
-should: mode tra=應該, =应该
+want : mode =想要
+need : mode =需要
+have : mode - -1 =必須
+should : mode tra=應該, =应该
