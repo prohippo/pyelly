@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyElement.py : 12feb2018 CPM
+# vocabularyElement.py : 08jul2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -76,14 +76,15 @@ class VocabularyElement(object):
             FormatFailure on error
         """
 
+        self._ln = 0
         rec = dta[1]                     # data record found for search key
 #       print >> sys.stderr , 'voc rec=' , rec
-        r = rec.split(':')               # split off term in data record
-        if len(r) <= 1: return           # the ':' is mandatory
-        d = r[1].strip().split(' ')      # definition is right of ':'
+        r = rec.split('=:')              # split off term in data record
+        if len(r) <= 1: return           # the '=:' is mandatory
+        d = r[1].strip().split(' ')      # definition is right of '=:'
 #       print >> sys.stderr , 'VEntry: define as' , d
         if len(d) <  4: return           # it should have at least 4 parts
-        ur = r[0].strip()                # term left of ':'
+        ur = r[0].strip()                # term left of '=:'
         self.chs = list(ur)              # save it
         self.cat = int(d.pop(0))         # syntactic category
 #       print >> sys.stderr , '    full term=' , u''.join(self.chs)

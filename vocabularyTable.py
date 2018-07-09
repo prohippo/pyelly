@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 14apr2018 CPM
+# vocabularyTable.py : 08jul2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -220,14 +220,14 @@ def build ( name , stb , defn ):
                 r = definitionLine.normalize(r)           #
 #               print 'to' , r
 
-                k = r.find(':')                           # look for first ':'
+                k = r.find(' : ')                           # look for first ' : '
                 if k < 0:
                     tsave = r
                     dsave = None
                     _err()                                # report error and quit entry
 
                 t = r[:k].strip()                         # term to go into dictionary
-                d = r[k+1:].strip()                       # its definition
+                d = r[k+2:].strip()                       # its definition
                 tsave = t                                 # save for any error reporting
                 dsave = d                                 #
 
@@ -383,7 +383,7 @@ def build ( name , stb , defn ):
 
 #               print '3:d=[' + d + ']'
 
-                vrc = [ t , ':' , cat , syf , smf ,
+                vrc = [ t , '=:' , cat , syf , smf ,
                         pb , cn ]                   # start data record
                 vss = u' '.join(vrc)                # convert to string
                 vss += u' ' + d                     # fill out record with rest of input
