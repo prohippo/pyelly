@@ -267,7 +267,7 @@ fought : VERB[^ed]
 found : VERB[^ed,dit] 
 found no indication : VERB[^ed,dit]
 founded : VERB[^ed]
-founding :VERB[^ing] - -2
+founding : VERB[^ing] - -2
 fountaining : NOUN
 freshmen : NOUN
 frizzed out : VERB[^ed]
@@ -509,6 +509,7 @@ not yet fully healed : VERB[^ed]
 obtaining : NOUN - -2
 obtaining : VERB[^ing]
 obtaining : ADJ - -6
+offered kind words : VERB[^ed]
 officials : NOUN[:plur]
 ongoing investigation : NOUN
 opened fire : VERB[^ed]
@@ -737,6 +738,7 @@ taking aim at : VERB[^ing]
 taking place : VERB[^ing]
 taliban fighter : NOUN
 talking : VERB[^ing]
+talking to myself : VERB[^ing]
 talking to someone : VERB[^ing]
 telecommunications : NOUN
 telecommunications : NOUN[:plur] - -1
@@ -1198,6 +1200,7 @@ better than even chance : NOUN
 bid for office : NOUN
 bigger and bigger : ADJ
 biggest customers : NOUN[:plur]
+biggest mountain to climb : NOUN
 bill signing ceremony : NOUN
 binding commitment : NOUN
 bipartisan gang of 8 : NOUN
@@ -1371,7 +1374,7 @@ civil rights violation : NOUN
 clandestine officer : NOUN
 classified information : NOUN
 clean energy : NOUN
-clerical rule: NOUN
+clerical rule : NOUN
 climactic moment : NOUN
 close cooperation : NOUN
 close personal tie : NOUN
@@ -1479,6 +1482,7 @@ cross their t’s : VERB
 cryptic statement : NOUN
 cryptocurrency : NOUN
 cryptojack : VERB
+crytic message : NOUN
 culture wars clash : NOUN
 curate : VERB
 current and former : ADJ
@@ -1541,6 +1545,7 @@ department of public safety : NOUN
 deployment of missiles : NOUN
 deputy campaign chairman : NOUN
 deputy director general : NOUN
+derisive remark : NOUN
 designer handbag : NOUN
 despite the fact that : CONJ
 detention center : NOUN
@@ -1589,7 +1594,7 @@ down the block : ADJ [$trlg] 0
 dozens of : QUAN
 dr. : NOUN
 draft treaty : NOUN
-dramatic concessions: NOUN[:plur]
+dramatic concessions : NOUN[:plur]
 dramatic scene : NOUN
 draw attention to : VERB
 draw support : VERB
@@ -1617,10 +1622,11 @@ early morning tweet : NOUN
 early next week : ADV
 early years : NOUN
 earthquake prediction : NOUN
+eastern conference : NOUN
 eastern europe : NOUN
 eastern gulf coast : NOUN
 eastern ukraine : NOUN
-economic and social: ADJ
+economic and social : ADJ
 economic council : NOUN
 economic prosperity : NOUN
 economic summit : NOUN
@@ -1870,6 +1876,7 @@ ground force : NOUN
 groundbreaking : NOUN - -1
 groundbreaking : ADJ
 group travel : NOUN
+growing discontent : NOUN
 growth strategy : NOUN
 guilty plea : NOUN
 guitar bridge : NOUN
@@ -1914,6 +1921,7 @@ health and safety : NOUN
 health care reform : NOUN
 health policy : NOUN
 health priority : NOUN
+heat illness : NOUN
 heat index : NOUN
 heavy fighting : NOUN
 heighten pressure : VERB
@@ -1958,6 +1966,7 @@ hoody : NOUN
 hostility to religion : NOUN
 hot 100 : NUM
 hot 100 : NOUN
+hot and humid weather : NOUN
 hot lava : NOUN
 hotly contested : NOUN
 hours after : CONJ
@@ -2004,6 +2013,7 @@ immigration court : NOUN
 immigration crackdown : NOUN
 immigration issues : NOUN
 immigration policy : NOUN
+immigration protesters : NOUN[:plur]
 immigration views : NOUN[:plur]
 import restriction : NOUN
 import tariff : NOUN
@@ -2224,6 +2234,7 @@ just under : PREP['prx]
 just wait : ADV
 keep her quiet : VERB
 keep things quiet : VERB
+key defender : NOUN
 key figure : NOUN
 key part : NOUN
 key sanctions : NOUN[:plur]
@@ -2237,6 +2248,7 @@ lackluster record : NOUN
 laden with criticism : NOUN
 laid : VERB[^ed]
 laid bare : VERB[^ed]
+laker : NOUN
 lakeside house : NOUN
 land and sea : NOUN
 land corridor : NOUN
@@ -2298,6 +2310,7 @@ less like : PREP
 less than : ADV[~mod] [$deg] 0
 less than a : QUAN =less than 1
 less than a month ago : ADV
+liberal values : NOUN[:plur]
 life’s work : NOUN
 light vehicle : NOUN
 lightning strike : NOUN
@@ -2399,6 +2412,7 @@ meth lab : NOUN
 methamphetamine lab : NOUN
 methane gas : NOUN
 mexican migrant : NOUN
+mexican president : NOUN
 micromanage : VERB
 middle east peacemaking : NOUN
 midtempo : ADJ
@@ -2532,7 +2546,7 @@ newspaper best : ADJ
 next month : NAVB[:det]
 next week : NAVB[:det]
 next year : NAVB[:det]
-nfl linebacker: NOUN
+nfl linebacker : NOUN
 no doubt that : ADV
 no little : ADJ
 no longer part of : QUAN
@@ -2602,7 +2616,7 @@ old record : NOUN
 old tradition : NOUN
 olitical analyst : NOUN
 olympic gymnastics : NOUN
-on an individual basis :ADV
+on an individual basis : ADV
 on an international scale : ADV
 on aspects of : PREP
 on friday : DATE
@@ -2681,6 +2695,7 @@ outside the jurisdiction of : PREP
 outside world : NOUN
 over from : PREP
 over social media : ADV
+over the country : ADV
 over the course of : PREP
 over the last year : ADV
 over the weekend : ADJ
@@ -2848,7 +2863,7 @@ public information : NOUN
 public ministry : NOUN
 public poll : NOUN
 public profile : NOUN
-public sector: NOUN
+public sector : NOUN
 public statement : NOUN
 publically argue : VERB
 publicly available : ADJ
@@ -2878,6 +2893,7 @@ raise funds : VERB
 raise the roof beam high : VERB
 rally support for : VERB
 ramadan fast : NOUN
+rampant crime : NOUN
 rapidly melting : ADJ
 rapidly mounting : ADJ
 rattlesnake venom : NOUN
@@ -2894,6 +2910,7 @@ recent attempt : NOUN
 recent market turmoil : NOUN
 recent trip : NOUN
 recent trouble : NOUN
+reckless endangerment : NOUN
 recording artist : NOUN
 red and blue america : NOUN
 red rock : NOUN
@@ -2938,6 +2955,7 @@ research firm : NOUN
 research paper : NOUN
 residential floor : NOUN
 residential neighborhood : NOUN
+resounding victory : NOUN
 respective jurisdictions : NOUN[:plur]
 result of our efforts : NOUN[:plur]
 results page : NOUN
@@ -2974,7 +2992,7 @@ round at : PREP
 rounds of voting : NOUN[:plur]
 rpg : NOUN
 rules of engagement : NOUN
-ruling party: NOUN
+ruling party : NOUN
 run out any leads : VERB
 russia investigation : NOUN
 russia probe : NOUN
@@ -3246,6 +3264,7 @@ television interview : NOUN
 temporary residency : NOUN
 temporary restraining order : NOUN
 tense moment : NOUN
+tense relationship : NOUN
 terminally ill patient : NOUN
 terrible sadness : NOUN
 territorial struggle : NOUN
@@ -3551,7 +3570,7 @@ visible presence : NOUN
 visual magnitude : NOUN
 visually compelling : ADJ
 volcanic anger : NOUN
-volcano eruption: NOUN
+volcano eruption : NOUN
 vote for : VERB
 vulcanologist : NOUN
 wage and hour violation : NOUN
@@ -3568,6 +3587,7 @@ weekly news review : NOUN
 weeks in, : ADV
 weigh in on : VERB
 weightiest : ADJ
+western conference : NOUN
 wet, heavy snow : NOUN
 what had been an : DET
 what he called : ADV
@@ -3607,6 +3627,7 @@ will not have to : AUXL
 will one day : AUXL
 will take us : VERB
 willing to : TO
+win a title : VERB
 win agreement : VERB
 wine review : NOUN
 wing flap : NOUN
@@ -4358,7 +4379,7 @@ long-expected : ADJ
 long-past  : ADJ
 long-promised : ADJ
 long-range : ADJ
-long-running :ADJ
+long-running : ADJ
 long-shot : NOUN
 long-term : ADJ
 long-undervalued : ADJ
@@ -4394,7 +4415,7 @@ mis-declaration : NOUN
 mis-impression : NOUN
 mississippi-alabama border : NOUN
 mixed-species : ADJ
-modern-day :ADJ
+modern-day : ADJ
 month-long : ADJ
 month-old : ADJ
 months-long : ADJ
@@ -4588,6 +4609,7 @@ squeaky-clean : ADJ
 stand-off : NOUN
 start-up : NOUN
 state department-sponsored : ADJ
+state-by-state : ADJ
 state-by-state : ADV
 state-of-the-art : ADJ
 state-owned : ADJ
@@ -4710,12 +4732,13 @@ Adrian : NOUN
 Advanced Step in Innovative Mobility : NOUN
 Affordable Care Act : NOUN
 al-Qaeda : NOUN
-al-Mahra province :NOUN
+al-Mahra province : NOUN
 Alabama senate candidate : NOUN
 Alexei Navalny : NOUN
 Alice Johnson : NOUN
 Amanda Self : NOUN
 Amy Berman Jackson : NOUN
+Andres Manuel López Obrador : NOUN
 Andrew Intrater : NOUN
 Andrew Weissman : NOUN
 Anthony Bourdain : NOUN
@@ -4824,6 +4847,7 @@ Charlotte-Mecklenburg : ADJ
 Charlotte Douglas : NOUN
 Chevrolet : NOUN
 Chibok Government Secondary School : NOUN
+Chicago Cubs : NOUN
 Chicago Sun Times : NOUN
 China Central Television : NOUN[:*r]
 China Great Wall Industry Corporation : NOUN[:*r]
@@ -4930,6 +4954,7 @@ Elon Musk : NOUN
 Emily’s List : NOUN
 Emmanuel : NOUN
 Emmanuel Macron : NOUN
+Enrique Peña Nieto : NOUN
 Enzo : NOUN
 Erdogan : NOUN
 Errol : NOUN
@@ -5092,6 +5117,7 @@ Jersey Shore : NOUN
 Jerusalem church leaders : NOUN[:plur]
 Jerusalem’s Old City : NOUN
 John Podesta : NOUN
+Jose Antonio Meade : NOUN
 Jim : NOUN
 Jim Justice : NOUN
 Jimmy Morales : NOUN
@@ -5156,6 +5182,7 @@ Laura : NOUN
 Laura Kuenssberg : NOUN
 Lawrence Livermore National Laboratory : NOUN
 Lebron : NOUN
+Lebron James : NOUN
 Lee Cook-jong : NOUN
 Leilani Estates neighborhood : NOUN
 Lester : NOUN
@@ -5175,6 +5202,7 @@ Lord Mayor of Dublin : NOUN
 Loretta Lynch : NOUN
 Lori Klausutis : NOUN
 Los Angeles County Sheriff : NOUN
+Los Angeles Lakers : NOUN[:plur]
 Los Angeles Times : NOUN
 Luiz Inacio Lula da Silva : NOUN
 Love Victorious : NOUN
@@ -5235,6 +5263,7 @@ Mimi Spear : NOUN
 Minea : NOUN
 Ministry of Health : NOUN
 Minneapolis Star-Tribune : NOUN
+Minnesota Twins : NOUN
 Missouri State : NOUN
 Mitch McConnell : NOUN
 Mitt Romney : NOUN
@@ -5285,6 +5314,7 @@ Nicolas Sarkozy : NOUN
 Netanyahu : NOUN
 New Kensington : NOUN
 New York Daily News : NOUN
+New York Health Commissioner : NOUN
 New York Times : NOUN
 New Yorker : NOUN
 News-Miner : NOUN
@@ -5315,13 +5345,13 @@ Orange County Register : NOUN
 Orangeburg Detention Center : NOUN
 Our Lady of Sorrows : NOUN
 Oxford Street : NOUN
-Oxford Street shopping district: NOUN
+Oxford Street shopping district : NOUN
 PAC-12 : NOUN
 Palestinian Authority : NOUN
 Pall Mall : NOUN
 Pall Mall Red cigarette : NOUN
 Paris Climate Accord : NOUN
-Pashinyan :NOUN
+Pashinyan : NOUN
 Patrick Morrisey : NOUN
 Paul Manafort : NOUN
 Paul George Dandan : NOUN
@@ -5354,6 +5384,7 @@ President Donald Trump : NOUN
 President Erdogan : NOUN
 President Trump : NOUN
 President Trump’s daughter Ivanka : NOUN
+PRI Party : NOUN
 Prime Minister Benjamin Netanyahu : NOUN
 Prime Minister Narendra Modi : NOUN
 Prince Harry : NOUN
@@ -5603,7 +5634,7 @@ Vassily : NOUN
 Ventura : NOUN
 Veritas : NOUN
 Verizon : NOUN
-Vesti Nedely :NOUN
+Vesti Nedely : NOUN
 Veteran's Day : NOUN
 Veterans of Foreign Wars : NOUN
 Vickers : NOUN
@@ -7650,7 +7681,7 @@ bayonet : VERB
 bb : NOUN
 bb gun : NOUN
 bb shot : NOUN
-bc :ADV[~date] - -1
+bc : ADV[~date] - -1
 bce : ADV[~date]
 beach : NOUN
 beach : VERB
@@ -12261,6 +12292,7 @@ cry : VERB
 cry out : VERB
 cry out for : VERB
 crypt : NOUN
+cryptic : ADJ
 cryptology : NOUN
 crystal : NOUN
 crystal ball : NOUN
@@ -13578,8 +13610,8 @@ dmz : NOUN
 dna : NOUN
 dna chip : NOUN
 dna fingerprint : NOUN
-do: NOUN - -2
-do: VERB
+do : NOUN - -2
+do : VERB
 dobson : NOUN
 doc : NOUN
 dock : NOUN
@@ -14977,7 +15009,7 @@ evolve : VERB
 ex : NOUN
 ex : ADJ
 ex post facto : ADJ
-ex-husband: NOUN
+ex-husband : NOUN
 ex-president : NOUN
 ex-wife : NOUN
 exacerbate : VERB
@@ -15516,7 +15548,7 @@ fashion plate : NOUN
 fast : NOUN
 fast : VERB
 fast : ADJ
-fast :ADV
+fast : ADV
 fast asleep : ADJ
 fast break : NOUN
 fast buck : NOUN
@@ -22725,7 +22757,7 @@ means test : NOUN
 meantime : NOUN
 meantime : ADV
 meanwhile : NOUN - -4
-meanwhile :ADV
+meanwhile : ADV
 measure : NOUN
 measure : VERB
 measure out : VERB
@@ -24444,7 +24476,7 @@ nominative : NOUN
 nominative : ADJ
 nominative case : NOUN
 nominee : NOUN
-non :ADV
+non : ADV
 none : NOUN
 none : ADJ
 none : ADV
@@ -27219,7 +27251,7 @@ premature labor : NOUN
 premature labour : NOUN
 prematurely : ADV
 premeditate : VERB
-premeditated: ADJ
+premeditated : ADJ
 premier : NOUN
 premier : VERB
 premier : ADJ
@@ -30484,7 +30516,7 @@ selectman : NOUN
 self : NOUN
 self : ADJ
 self-defense : NOUN
-self-imposed :ADJ
+self-imposed : ADJ
 selfish : ADJ
 selfish person : NOUN
 sell : NOUN
@@ -31974,7 +32006,7 @@ sometime : ADV
 sometimes : ADV
 somewhat : ADV
 somewhere : NOUN
-somewhere :ADV
+somewhere : ADV
 son : NOUN
 son-in-law : NOUN
 sonar : NOUN
@@ -31986,7 +32018,7 @@ sonic barrier : NOUN
 sonic boom : NOUN
 sonic delay line : NOUN
 sonic depth finder : NOUN
-soon: ADV
+soon : ADV
 soon after : ADV
 soonest : ADV
 soothe : VERB
@@ -34396,7 +34428,7 @@ theme : NOUN
 theme : VERB - -2
 theme park : NOUN
 theme song : NOUN
-then: ADV
+then : ADV
 then : NOUN - -9
 then : ADJ  - -9
 then again : ADV
@@ -34479,7 +34511,7 @@ third world : NOUN
 thirst : NOUN
 thirst : VERB
 thirsty : ADJ
-thither :ADV
+thither : ADV
 thomas : NOUN
 thomas hardy : NOUN
 thomas jefferson : NOUN
@@ -34716,7 +34748,7 @@ tobacco pipe : NOUN
 tobacco shop : NOUN
 tobacco user : NOUN
 today : NAVB
-today :ADV
+today : ADV
 todd : NOUN
 toddle : VERB
 toddler : NOUN
@@ -37211,7 +37243,7 @@ wire gauge : NOUN
 wire glass : NOUN
 wire matrix printer : NOUN
 wire service : NOUN
-wireless: ADJ
+wireless : ADJ
 wireless : NOUN
 wireless local area network : NOUN
 wireless telegraph : NOUN
