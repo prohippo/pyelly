@@ -4407,3 +4407,13 @@ d:-'s <- BE
 _
   append is
 __
+
+g:NCLU[:qnt]->QUAN DATE
+_
+  append <nclu><quan>
+  left
+  append </quan><date>
+  right
+  delete 3 >
+  append </date>
+__

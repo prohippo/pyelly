@@ -104,6 +104,7 @@ called : VERB[^ed] =call -ed
 called : ADJ - -2 =call -ed
 called out :  VERB[^ed]
 called to say : VERB[^ed]
+calling for the abolition of : VERB[^ing]
 came : VERB[^ed]
 came under fire : VERB[^ed]
 carried out : VERB[^ed]
@@ -342,6 +343,7 @@ has long been : VERB[^s]
 has nothing to do with : VERB[^s]
 has relations with : VERB[^s]
 has since reined in : VERB[^s]
+has the authority to : AUXL
 has to : AUXL[^s]
 hastened to add : VERB[^ed]
 hauled away : VERB[^ed]
@@ -396,6 +398,7 @@ is not doing enough : VERB[^s]
 is not for : VERB[^s]
 is nothing but : VERB[^s]
 is on again : VERB[^s]
+is on their side : VERB[^s]
 is on track to : AUXL[^s]
 is said to : ADV
 isolated : VERB[^ed] - -1
@@ -434,6 +437,7 @@ lives : NOUN[:plur] - +1  =life -s
 lives : VERB[^s]          =live -s
 living : VERB[^ing]
 living in squalor and unsafe conditions : VERB[^ing]
+long seen as : VERB[^ed]
 looked up : VERB[^ed]
 looking : VERB[^ing]
 looking up : VERB[^ing]
@@ -489,6 +493,7 @@ misleading : VERB[^ing]
 misled : VERB[^ed]
 missing : VERB[^ing]
 misspoke : VERB[^ed]
+misused funds : VERB[^ed]
 mixed : VERB[^ed]
 months in, : IADV
 more than doubled : VERB[^ed]
@@ -556,6 +561,7 @@ prepping : VERB[^ing]
 pressed witnesses : VERB[^ed]
 pressing : VERB[^ing]
 previously fired : ADJ
+profiting from his presidency : VERB[^ing]
 progresses : VERB[^s]
 promised : VERB[^ed]
 promised : ADJ
@@ -805,6 +811,7 @@ unsolved mystery : NOUN
 unveiled plans for : VERB[^ed]
 utilised : VERB[^ed]
 values : VERB[^s]
+vlogger : NOUN
 voting overwhelmingly : VERB[^ing]
 waited around afterward : VERB[^ed]
 walked away : VERB[^ed]
@@ -903,6 +910,7 @@ went_on : VERB[^ed] =went on
 1st run : NOUN
 1st shift : NOUN
 2 dozen : NUM
+2 separate : NUM
 20 to 30 : NUM
 2014 games : NOUN[:plur]
 2016 campaign : NOUN
@@ -918,6 +926,7 @@ went_on : VERB[^ed] =went on
 3rd party : NOUN
 3rd shift : NOUN
 3rd world war : NOUN
+4th of july : NAVB
 5 minutes : NOUN
 I think that : ADV
 a billion : QUAN
@@ -990,6 +999,7 @@ across the country : ADV
 across the pacific : ADV
 across the state : ADV
 across the us : ADV
+act of definance : NOUN
 active shooter : NOUN
 additional charges : NOUN[:plur]
 adm. : NOUN
@@ -1052,6 +1062,7 @@ ambitious effort : NOUN
 american consumer : NOUN
 american embassy : NOUN
 american troops : NOUN[:plur]
+american west : NOUN
 amid a growing backlash : ADV
 among the first : ADJ
 amounted to : VERB[^ed]
@@ -1188,6 +1199,7 @@ before dawn : ADV
 before midnight : ADV
 before noon : ADV
 before sunset : ADV
+before taking office : ADV
 before the ink could dry : ADV
 before which : CONJ
 before, during, or after : CONJ
@@ -1340,6 +1352,7 @@ cast a vote : VERB
 cast recording : NOUN
 catch and release : NOUN
 cave complex : NOUN
+cave network : NOUN
 cease and desist agreement : NOUN
 ceasefire : NOUN
 celebrity excitement : NOUN
@@ -1350,6 +1363,7 @@ certainly true : ADJ
 chalk this up : VERB
 championship game : NOUN
 change at any time : VERB
+charitable foundation : NOUN
 charity donor list : NOUN
 cheer on : VERB
 chemical attack : NOUN
@@ -1401,6 +1415,7 @@ coast guard : NOUN
 col. : NOUN
 cold air : NOUN
 college graduate : NOUN
+colorado mountains : NOUN[:plur]
 colored slave : NOUN
 coming off of : PREP
 commercial terminal : NOUN
@@ -1425,6 +1440,7 @@ conduct unbecoming of an officer : NOUN
 confederate force : NOUN
 configurable : ADJ
 confirm the move : VERB
+confirmation hearing : NOUN
 confraternity : NOUN
 congenital impatience : NOUN
 congressional lawmakers : NOUN[:plur]
@@ -1450,6 +1466,7 @@ contract that : NOUN[:*l] (xtht)
 controversial issue : NOUN
 convention center : NOUN
 cooling water : NOUN
+copyrighted work : NOUN
 core constituency : NOUN
 core element : NOUN
 core mission : NOUN
@@ -1469,6 +1486,7 @@ country music festival : NOUN
 country music’s hometown : NOUN
 county attorney : NOUN
 county jail : NOUN
+court case : NOUN
 court document : NOUN
 court spokesman : NOUN
 court spokeswoman : NOUN
@@ -1553,6 +1571,7 @@ department of public safety : NOUN
 deployment of missiles : NOUN
 deputy campaign chairman : NOUN
 deputy director general : NOUN
+deputy justice minister : NOUN
 derisive remark : NOUN
 designer handbag : NOUN
 despite the fact that : CONJ
@@ -1584,6 +1603,7 @@ district office : NOUN
 district official : NOUN
 divorce bill : NOUN
 divorce case : NOUN
+divorce request : NOUN
 do everything in my power : VERB
 do his best to : VERB
 do much more : VERB
@@ -1663,6 +1683,7 @@ estimative : ADJ
 ethical question : NOUN
 eu summit : NOUN
 european states : NOUN[:plur]
+evacuation order : NOUN
 even as : CONJ
 even before : CONJ
 even if : CONJ
@@ -1965,6 +1986,7 @@ hit reboot : NOUN
 hold a suspect in custody : VERB
 hold accountable : VERB
 hold up in court : VERB
+holiday plans : NOUN
 hollywood producer : NOUN
 holster : VERB
 home detention : NOUN
@@ -1994,6 +2016,7 @@ how best : CONJ
 how far the country has veered : NOUN
 how it compares : NOUN
 how long : CONJ
+huge increase : NOUN
 huge sway : NOUN[:det]
 human control : NOUN
 human dignity : NOUN
@@ -2022,6 +2045,7 @@ illegal immigration : NOUN
 imbalanced : ADJ
 immediate action : NOUN
 immediate medical help : NOUN
+immigrant family separation : NOUN
 immigration court : NOUN
 immigration crackdown : NOUN
 immigration issues : NOUN
@@ -2169,6 +2193,7 @@ international diplomat : NOUN
 international treaty : NOUN
 international watchdog agency : NOUN
 internet access : NOUN
+internet mogul : NOUN
 internet service provider : NOUN
 interrogation program : NOUN
 interview that : NOUN[:*l] (xtht)
@@ -2314,9 +2339,13 @@ legal challenge : NOUN
 legal effort : NOUN
 legal hurdle : NOUN
 legal peril : NOUN
+legal predicament : NOUN
+legal pressure : NOUN
+legal question : NOUN
 legal team : NOUN
 legal text : NOUN
 legal threat : NOUN
+legally authorized : ADJ
 legislative agenda : NOUN
 legislative office : NOUN
 less like : PREP
@@ -2487,6 +2516,7 @@ more than : ADV[~mod] [$deg] 0
 more than a : QUAN
 more than a year : NOUN
 more than half a : QUAN
+more than half a dozen : QUAN
 more than half of the : QUAN
 more time : NOUN
 more times : ADV[~trlg]
@@ -2638,6 +2668,7 @@ on high alert : ADJ[%*l]
 on hold : ADJ
 on hold : ADV
 on how : CONJ
+on many fronts : ADV
 on monday : DATE
 on monday evening : TIME
 on monday morning : ADV
@@ -2665,6 +2696,7 @@ on whether : CONJ
 on which : CONJ
 once in a while : ADV
 ongoing contest : NOUN
+online piracy : NOUN
 online survey : NOUN
 only after : CONJ
 only because : CONJ
@@ -3095,6 +3127,7 @@ several other : QUAN
 sex scandal : NOUN
 sex-crimes detective : NOUN
 sexual advance : NOUN
+sexual behavior : NOUN
 sexual misconduct : NOUN
 sexual misconduct allegation : NOUN
 sexual orientation : NOUN
@@ -3119,6 +3152,7 @@ show season : NOUN
 sightseeing tour : NOUN
 signal rocket : NOUN
 signature project : ADJ
+significant court cases : NOUN[:plur]
 significant policy shift : NOUN
 significant sign : NOUN
 similar scenes : NOUN[:plur]
@@ -3229,6 +3263,7 @@ such a  : QUAN
 such a, such a : QUAN
 such an : QUAN
 such as : PREP
+such as whether : CONJ
 sudden heart attack : NOUN
 suicide car bombing : NOUN
 summit crater : NOUN
@@ -3253,6 +3288,7 @@ suspicious contact : NOUN
 suspicious powder : NOUN
 suss him out : VERB
 swarm robot : NOUN
+swing vote : NOUN
 systemic injustice : NOUN
 take a look at : VERB
 take on it : NOUN
@@ -3386,6 +3422,7 @@ the sidelines : NOUN
 the southern end : NOUN
 the stands : NOUN[:plur]
 the starting point : NOUN
+the statue of liberty : NOUN
 the string of : QUAN
 the three of them : NOUN
 the time of the incident : NOUN
@@ -3472,6 +3509,7 @@ tropical storm : NOUN
 tropical storm warning : NOUN
 trove of information : NOUN
 trump campaign adviser : NOUN
+trump inauguration : NOUN
 turkish currency : NOUN
 turkish politics : NOUN
 turn himself in : VERB
@@ -3530,6 +3568,7 @@ unexplored depths : NOUN
 unfair media : NOUN
 unilateral action : NOUN
 union force : NOUN
+united states department of justice : NOUN
 united states military : NOUN
 unity deal : NOUN
 unlikely to be persuaded : ADJ
@@ -3537,6 +3576,7 @@ unpalatable deal : NOUN
 unsafe condition : NOUN
 unscheduled sweep : NOUN
 unsettled weather : NOUN
+unusual access : NOUN
 unusually frank : ADJ
 unusually long time : NOUN
 unwilling to : TO
@@ -3561,6 +3601,7 @@ vaguely worded : ADJ
 vaguely worded document : NOUN
 varying amounts : NOUN[:plur]
 varying degrees of legal trouble : NOUN[:plur]
+vast majority : NOUN
 verbal zinger : NOUN
 verify the authenticity of : VERB
 versus : CONJ
@@ -3597,6 +3638,7 @@ warfighter : NOUN
 water body : NOUN
 water service : NOUN
 water use : NOUN
+wealthy russian : NOUN
 weather forecasting : NOUN
 wee hours crowd : NOUN
 weekend snow : NOUN
@@ -5525,6 +5567,7 @@ Diaoyutai State Guest House : NOUN
 Dillons : NOUN =dillon 's
 Dina : NOUN
 District of Connecticut : NOUN
+Dmitry : NOUN
 DNC : NOUN
 Doan : NOUN
 Dobrnja-jug : NOUN
@@ -5580,6 +5623,7 @@ F.B.I. : NOUN
 F.B.I. official : NOUN
 F.C.C. : NOUN
 FAA : NOUN
+Fabian : NOUN
 Facebook : NOUN
 Facebook user : NOUN
 Fairchild : NOUN
@@ -5687,6 +5731,7 @@ Hughes : NOUN
 Hughes Global Services : NOUN
 Hunnan New District : NOUN
 Hussain : NOUN
+Hussein Jassem : NOUN
 ICAN : NOUN
 Ines : NOUN
 Instagram : NOUN
@@ -5737,6 +5782,7 @@ John Beck : NOUN
 John Conyers : NOUN
 John McCain : NOUN
 John Oliver : NOUN
+John Santucci : NOUN
 Jonathan Oddi : NOUN
 Jones : NOUN
 Joseph Emanuel Hall : NOUN
@@ -5781,6 +5827,7 @@ La Nina : NOUN
 LA Times : NOUN
 Labour MP : NOUN
 Lafayette Square : NOUN
+Lafontant : NOUN
 Lane Kiffin : NOUN
 Lanipuna Gardens : NOUN[:plur]
 Larry Scott : NOUN
@@ -5842,6 +5889,7 @@ Martinez : NOUN
 Mary Fallin : NOUN
 Masterpiece Cakeshop : NOUN
 Matt Allingham : NOUN
+Matthew Mosk : NOUN
 Mattis : NOUN
 McCarthy : NOUN
 McClatchy : NOUN
@@ -6056,6 +6104,7 @@ Russian President : NOUN
 Russian President Vladimir Putin : NOUN
 Russian State Television : NOUN
 Russia-friendly : ADJ
+Ryker : NOUN
 S.A.F. : NOUN
 S&P : NOUN
 S&P 500 : NOUN
@@ -6221,6 +6270,7 @@ U.S. : NOUN
 U.S. Agency for International Development : NOUN
 U.S. District Judge : NOUN
 U.S. Geological Survey : NOUN
+U.S. Immigration and Customs Enforcement : NOUN
 U.S.S.R. : NOUN
 UAE : NOUN
 Uber : NOUN
