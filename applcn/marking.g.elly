@@ -1842,7 +1842,7 @@ _
   var typg=adv
   (lxtd)
 __
-g:VCLU[^*r]->ADV[~-cplx] VCLU[^ing]
+g:VCLU[^*r,-*r]->ADV[~-cplx] VCLU[^ing]
   l[$cnj]>>*r------
   l[$deg]>>*r------
  l[$trlg]>>---

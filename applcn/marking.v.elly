@@ -106,6 +106,7 @@ called out :  VERB[^ed]
 called to say : VERB[^ed]
 calling for the abolition of : VERB[^ing]
 came : VERB[^ed]
+came to fruition : VERB[^ed]
 came under fire : VERB[^ed]
 carried out : VERB[^ed]
 carries on : VERB[^s]
@@ -330,9 +331,11 @@ gusting : ADJ
 hacked emails : NOUN[:plur]
 had : HAVE[^ed]
 had been too rought on : VERB[^ed]
+had grown to be : VERB[^ed]
 had nothing to do with : VERB[^ed]
 had since : AUXL[^ed]
 had to : AUXL[^ed]
+handling : VERB[^ing]
 happened like that : VERB[^ed]
 has : HAVE[^s]
 has already : HAVE[^s]
@@ -405,6 +408,7 @@ isolated : VERB[^ed] - -1
 issued a directive : VERB[^ed]
 issued a firm warning to : VERB[^ed]
 it does not appear that : ADV
+it is not clear whether : ADV
 it is not inconceivable : VERB[^s]
 it often seems that : ADV
 it was unclear where : ADV
@@ -429,6 +433,7 @@ led : VERB[^ed]
 left : VERB[^ed] - -1
 left open : VERB[^ed]
 lengthier : ADJ
+lent its name : VERB[^ed]
 lies on : VERB[^s]
 lifted up : VERB[^ed]
 limited : VERB[^ed] - -1
@@ -510,6 +515,7 @@ named : ADJ - -4
 needed : VERB[^ed]
 needs no further explanation : VERB[^s]
 needs to do more : VERB[^s]
+neither confirmed nor denied : VERB[^ed]
 noblemen : NOUN[:plur]
 not been reimbursed : VERB[^ed]
 not in their custody : ADJ
@@ -579,6 +585,7 @@ purchasing : ADJ[%ing] - -2
 put into effect : VERB[^ed]
 put it to : VERB[^ed]
 put to sleep : VERB[^ed]
+quickly retaliated : VERB[^ed]
 racked up : VERB[^ed]
 radicalization : NOUN
 raged on : VERB[^ed]
@@ -594,6 +601,7 @@ ranging in age : VERB[^ing]
 re-emerged : VERB[^ed]
 re-emerging : VERB[^ing]
 reached out : VERB[^ed]
+recording : VERB[^ing] - -1
 recused from handling the case : VERB[^ed]
 readon : VERB =read on
 received : VERB[^ed]
@@ -649,6 +657,7 @@ seen as hostile : ADJ [$trlg,prd] 0
 seen no evidence to support : VERB[^ed]
 seized control : VERB
 sent : VERB[^ed]
+sentenced to death : VERB[^ed]
 served as : VERB[^ed]
 serving as : VERB[^ing]
 setting : VERB[^ptcl,ing] - +1
@@ -812,6 +821,7 @@ unveiled plans for : VERB[^ed]
 utilised : VERB[^ed]
 values : VERB[^s]
 vlogger : NOUN
+voting : VERB[^ing]
 voting overwhelmingly : VERB[^ing]
 waited around afterward : VERB[^ed]
 walked away : VERB[^ed]
@@ -1019,8 +1029,10 @@ afternoon and evening : NOUN
 against : ADV 0 -6
 against his will : ADV
 age restriction : NOUN
+agency official : NOUN
 aggressive form : NOUN
 agricultural industry : NOUN
+agricultural product : NOUN
 ahead of : PREP
 air ambulance : NOUN
 air crash investigator : NOUN
@@ -1375,6 +1387,7 @@ chief pentagon spokeswoman : NOUN
 child custody hearing : NOUN
 child trafficking : NOUN
 children : NOUN[:plur]
+chinese goods : NOUN[:plur]
 chinese imports : NOUN[:plur]
 chinese military : NOUN
 chinese observer : NOUN
@@ -1429,6 +1442,7 @@ community meeting : NOUN
 companion piece : NOUN
 competing station : NOUN
 complaint that : NOUN[:*l] (xtht)
+complex plot : NOUN
 compromise bill : NOUN
 computer model : NOUN
 computer tampering : NOUN
@@ -1440,7 +1454,6 @@ conduct unbecoming of an officer : NOUN
 confederate force : NOUN
 configurable : ADJ
 confirm the move : VERB
-confirmation hearing : NOUN
 confraternity : NOUN
 congenital impatience : NOUN
 congressional lawmakers : NOUN[:plur]
@@ -1636,6 +1649,7 @@ due to : PREP
 due to expire : VERB
 duotone : ADJ
 during the campaign : ADV[~trlg]
+during the height of tensions : ADV
 during this time : ADV[~trlg]
 e-mail address : NOUN
 each : POSTP[@num] [$trlg] -1
@@ -1657,6 +1671,7 @@ eastern ukraine : NOUN
 economic and social : ADJ
 economic council : NOUN
 economic prosperity : NOUN
+economic relationship : NOUN
 economic summit : NOUN
 election meddling : NOUN
 electric grid : NOUN
@@ -1679,6 +1694,7 @@ entirely consistent : ADJ
 entry point : NOUN
 environment protection : NOUN
 equal rights : NOUN[:plur]
+equivalent tariff : NOUN
 estimative : ADJ
 ethical question : NOUN
 eu summit : NOUN
@@ -1757,6 +1773,7 @@ feed & farm supply store : NOUN
 fellow millennials : NOUN[:plur]
 felony charge : NOUN
 felony count : NOUN
+female reporter : NOUN
 ferry service : NOUN
 fever swamp : NOUN
 few hundred : NUM
@@ -1814,6 +1831,7 @@ foreign policy advisor : NOUN
 foreign secretary : NOUN
 foreign trade : NOUN
 formal approval : NOUN
+formaldehype vapor : NOUN
 former campaign manager : NOUN
 former employee : NOUN
 former obama adviser : NOUN
@@ -2058,6 +2076,7 @@ important procedure : NOUN
 imposing : NOUN[:ing]
 imposing : VERB[^ing] - -1
 impress upon : VERB
+in a sense : ADV
 in a statement : ADV
 in a tweet : ADV
 in a while : ADV
@@ -2098,6 +2117,7 @@ in length : ADV[~trlg] [$deg] 0
 in many different ways : ADV
 in order to : TO
 in order to get attention : ADV
+in part for : PREP
 in practice : ADV
 in protest against : PREP
 in recent memory : ADV [$deg,time] +1
@@ -2112,6 +2132,7 @@ in terms of : PREP
 in the coming months : ADV
 in the coming weeks : ADV
 in the community : ADV
+in the course of daily life : ADV
 in the days before : PREP
 in the event : CONJ
 in the event of : PREP
@@ -2371,6 +2392,7 @@ local hospital : NOUN
 local law enforcement : NOUN
 local man : NOUN
 local news : NOUN
+local newspaper : NOUN
 local official : NOUN
 local priest : NOUN
 long gun : NOUN
@@ -2430,6 +2452,7 @@ may be : BE
 may have : AUXL
 may have been : AUXL
 media blitz : NOUN
+media organization : NOUN
 media outlet : NOUN
 media pack : NOUN
 media research center : NOUN
@@ -2826,6 +2849,7 @@ political appointee : NOUN
 political campaigning : NOUN
 political capital : NOUN
 political chaos : NOUN
+political commentator : NOUN
 political convulsion : NOUN
 political crisis : NOUN
 political deadlock : NOUN
@@ -2920,6 +2944,7 @@ punchline : NOUN
 purchasing power : NOUN
 put it through : VERB
 put pressure on : VERB
+put them at risk : VERB
 pv : ADJ
 pyroclastic : ADJ
 pyrotechnic powder : NOUN
@@ -2989,6 +3014,7 @@ rent payment : NOUN
 rental room : NOUN
 repeal and replace : VERB
 repeat offender : NOUN
+report that : NOUN (xtht)
 reporting tactics : NOUN
 republican challenger : NOUN
 republican governor : NOUN
@@ -3029,6 +3055,7 @@ riverfront : ADJ
 road trip : NOUN
 robotic mission : NOUN
 rock solid plan : NOUN
+rocket man : NOUN
 rocket science : NOUN
 rocket strike : NOUN
 rockin' : ADJ
@@ -3444,8 +3471,8 @@ they too : PRO
 this afternoon : NAVB[:det,*x]
 this month : NAVB[:det]
 this morning : NAVB[:*x]
-this time : ADV
-this week : ADV
+this time : NAVB[:det]
+this week : NAVB[:det]
 this weekend : NAVB[:det]
 this year : NAVB[:det]
 threat level : NOUN
@@ -3508,6 +3535,7 @@ travel conditions : NOUN[:plur]
 tropical storm : NOUN
 tropical storm warning : NOUN
 trove of information : NOUN
+trump's nickname : NOUN
 trump campaign adviser : NOUN
 trump inauguration : NOUN
 turkish currency : NOUN
@@ -3520,6 +3548,7 @@ tv programming : NOUN
 tv pundit : NOUN
 tweetstorm : NOUN
 twice the : QUAN
+twitter #metoo hashtag : NOUN
 u.s. administration : NOUN
 u.s. allies : NOUN[:plur]
 u.s. and foreign : ADJ
@@ -3532,6 +3561,7 @@ u.s. embassy staff : NOUN
 u.s. envoy : NOUN
 u.s. firm : NOUN
 u.s. forces : NOUN[:plur]
+u.s. goods : NOUN[:plur]
 u.s. government compound : NOUN
 u.s. government source : NOUN
 u.s. intelligence community : NOUN
@@ -3566,6 +3596,7 @@ underutilization : NOUN
 underutilize : VERB
 unexplored depths : NOUN
 unfair media : NOUN
+unidentified source : NOUN
 unilateral action : NOUN
 union force : NOUN
 united states department of justice : NOUN
@@ -3576,6 +3607,7 @@ unpalatable deal : NOUN
 unsafe condition : NOUN
 unscheduled sweep : NOUN
 unsettled weather : NOUN
+unsigned editorial : NOUN
 unusual access : NOUN
 unusually frank : ADJ
 unusually long time : NOUN
@@ -3627,6 +3659,7 @@ virginia senate : NOUN
 visible presence : NOUN
 visual magnitude : NOUN
 visually compelling : ADJ
+visually impaired : ADJ
 volcanic anger : NOUN
 volcano eruption : NOUN
 vote for : VERB
@@ -3635,6 +3668,7 @@ wage and hour violation : NOUN
 war dead : NOUN
 war memorial : NOUN
 warfighter : NOUN
+warns that : VERB[^s] (xtht)
 water body : NOUN
 water service : NOUN
 water use : NOUN
@@ -3842,6 +3876,7 @@ dealng : VERB[^ing] =dealing
 8 days later : ADV
 8 U.S.C. § 1325(a) : NOUN
 a — what appears to be a — : DET
+a current and a former : ADJ
 a little bit of a : QUAN
 aboard air force one : ADV
 alcohol and drug tests : NOUN[:plur]
@@ -3957,11 +3992,13 @@ incredibly heartening : ADJ
 information commissioner : NOUN
 injured and mentally unstable man : NOUN
 insurgents groups : NOUN[:plur]
+intended to present : VERB[^ed]
 it doesn’t appear that : ADV
 january interview that : NOUN[:*l] (xtht)
 land and sink : VERB
 latest milestone on a path of change : NOUN
 less euphemistic word : NOUN
+little rocket man : NOUN
 made the ask : VERB[^ed]
 magnitude of this job : NOUN
 make cakes : VERB
@@ -4548,9 +4585,9 @@ half-crushed : ADJ
 half-dozen : ADJ
 half-empty : ADJ
 half-full : ADJ
-half-inch : NON
+half-inch : NOUN
 half-mast : ADJ
-half-mile : NON
+half-mile : NOuN
 half-revelation : NOUN
 half-sitting : VERB[^ed]
 half-sitting on : VERB[^ed]
@@ -4747,7 +4784,7 @@ mid-air : NOUN
 mid-atlantic : NOUN
 mid-century : ADJ
 mid-july : NOUN
-mid-june : ADJ
+mid-june : NOUN
 mid-may : NOUN
 mid-term : ADJ
 mid-term : NOUN
@@ -5425,6 +5462,7 @@ Arkansas State : NOUN
 Asia Pacific Economic Cooperation : ADJ
 Assad : NOUN
 Associated Press : NOUN
+Aum Shinrikyo : NOUN
 Aung San Suu Kyi : NOUN
 Avigdor Lieberman : NOUN
 Ayatollah Ali Khamenei : NOUN
@@ -5505,6 +5543,7 @@ China Great Wall Industry Corporation : NOUN[:*r]
 Chinese city of Guangzhou : NOUN
 Chinese leadership : NOUN
 Chinese President : NOUN
+Chosun Ilbo newspaper : NOUN
 Chris Cuomo : NOUN
 Christian Democrat : NOUN
 Christian Democratic Party : NOUN
@@ -5812,6 +5851,7 @@ Kevin Davis : NOUN
 Keziah Daum : NOUN
 Kilauea : NOUN
 Kilauea volcano : NOUN
+Kim : NOUN
 Kim Jong Un : NOUN
 Kim Yong Chol : NOUN
 Kimberly Gardner : NOUN
@@ -6196,6 +6236,7 @@ Tham Luang : NOUN
 the Church of the Holy Sepulchre : NOUN[:det]
 the Big Island : NOUN
 the city of Ventura : NOUN[:det]
+the Creston Valley Advance : NOUN[:det]
 the Dakotas : NOUN[:det,plur]
 the District of Connecticut : NOUN[:det]
 the District of Columbia : NOUN[:det]
@@ -6285,9 +6326,10 @@ Upper Big Branch Mine : NOUN
 Upstate New York : NOUN
 US District Court : NOUN
 US interests : NOUN[:plur]
-USNORTHCOM : NOUN
 US tax code : NOUN
+USPS : NOUN
 USO : NOUN
+USNORTHCOM : NOUN
 VA : NOUN
 Vacationland : NOUN
 Val Demings : NOUN
@@ -6315,6 +6357,7 @@ Walter : NOUN
 War Weapons Control Act : NOUN
 Warner : NOUN
 Warner Brothers : NOUN
+Warren Kinsella : NOUN
 Washington, D.C. : NOUN
 Washington Post : NOUN
 Washington State : NOUN
@@ -19043,6 +19086,7 @@ handful : NOUN
 handgun : NOUN
 handle : NOUN
 handle : VERB
+handling : NOUN[:ing]
 handshake : NOUN
 handsome : ADJ
 handspring : NOUN
@@ -29396,6 +29440,7 @@ record hop : NOUN
 record jacket : NOUN
 record player : NOUN
 record sleeve : NOUN
+recording : NOUN
 recount : NOUN
 recount : VERB
 recourse : NOUN
@@ -37341,6 +37386,7 @@ vote on : VERB
 vote out : VERB
 voter : NOUN
 voter turnout : NOUN
+voting : NOUN - +1
 vow : NOUN
 vow : VERB
 vowel : NOUN
