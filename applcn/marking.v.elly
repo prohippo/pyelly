@@ -417,6 +417,7 @@ it is not inconceivable : VERB[^s]
 it often seems that : ADV
 it was unclear where : ADV
 it was watching : VERB[^aux,ed,ing]
+keeping : VERB[^ing] - +2
 kept : VERB[^ed]
 kept repeating the lie : VERB[^ing]
 killed : VERB[^ed]
@@ -588,6 +589,7 @@ publishing : VERB[^ing]
 purchasing : NOUN - -1
 purchasing : VERB[^ing] - +1
 purchasing : ADJ[%ing] - -2
+pushing : VERB[^ing] - +2
 put into effect : VERB[^ed]
 put it to : VERB[^ed]
 put to sleep : VERB[^ed]
@@ -621,6 +623,7 @@ regarding : NOUN - -1
 regarding : VERB[^ing]
 related : VERB[^ed]
 released from jail : VERB[^ed]
+relieved : VERB[^ed]
 remaining : VERB[^ing] - -1
 remains : VERB[^s,proc] - +3
 remains inactive : VERB[^s]
@@ -856,6 +859,7 @@ was kept in the dark : VERB[^ed]
 was known to be : BE[^ed,s]
 was looking at : VERB[^ing,s]
 was not allowed : VERB[^ed,s]
+was referring to : VERB[^ed]
 was said to be interested : VERB[^ed]
 was unable to : AUXL[^s,ed]
 wasted no time : VERB[^ed]
@@ -1007,6 +1011,7 @@ abrupt pivot : NOUN
 absent from the public eye : ADJ
 absolute right : NOUN
 abuse of power : NOUN
+aca requirement : NOUN
 access to visitors : NOUN
 accidentally fire : VERB
 according to : PREP
@@ -1020,6 +1025,7 @@ act of definance : NOUN
 active shooter : NOUN
 additional charges : NOUN[:plur]
 adm. : NOUN
+administration official : NOUN
 administration policcy : NOUN
 adult film star : NOUN
 adulterous affair : NOUN
@@ -1119,6 +1125,7 @@ arab republic : NOUN
 arbitration filing : NOUN
 arctic sea ice : NOUN
 are favorable for : VERB
+are on, : VERB
 argentine navy : NOUN
 armed group : NOUN
 armored personnel carrier : NOUN
@@ -1176,6 +1183,7 @@ at the doorstep of europe : ADV
 at the heart of : PREP
 at the home : ADV
 at the request of : PREP
+at the same time : ADV
 at the same time as : CONJ
 at the time : ADV
 at the top of : PREP
@@ -1581,6 +1589,7 @@ decisive tilt : NOUN
 deductibility : NOUN
 deep division : NOUN
 deeply love : VERB
+deeply regrettable : ADJ
 defence minister : NOUN
 defense minister : NOUN
 delaware company : NOUN
@@ -1604,6 +1613,7 @@ designer handbag : NOUN
 despite the fact that : CONJ
 detention center : NOUN
 developing country : NOUN
+development aid : NOUN
 development team : NOUN
 die roll : NOUN
 digital ethics : NOUN
@@ -1988,6 +1998,8 @@ health and safety : NOUN
 health care reform : NOUN
 health policy : NOUN
 health priority : NOUN
+health-care law : NOUN
+healthy and sick : ADJ
 heat illness : NOUN
 heat index : NOUN
 heavy fighting : NOUN
@@ -2501,6 +2513,7 @@ methane gas : NOUN
 mexican migrant : NOUN
 mexican president : NOUN
 micromanage : VERB
+middle east peace plan : NOUN
 middle east peacemaking : NOUN
 midtempo : ADJ
 midterm election : NOUN
@@ -2614,6 +2627,7 @@ natural causes : NOUN[:plur]
 natural disaster : NOUN
 navy submarine : NOUN
 nearly a century : NOUN
+negotiating table : NOUN
 neighborhood : ADJ - -2
 neighborhood bar : NOUN
 neighborhood setting : NOUN
@@ -2740,6 +2754,7 @@ on when : CONJ
 on whether : CONJ
 on which : CONJ
 once in a while : ADV
+one thing that everyone can agree on : NOUN
 ongoing contest : NOUN
 online piracy : NOUN
 online survey : NOUN
@@ -2799,6 +2814,7 @@ overseas tour : NOUN
 overwhelming consensus : NOUN
 pacific nation : NOUN
 pack up : VERB
+palestinian leader : NOUN
 palestinian negotiator : NOUN
 panel commissioner : NOUN
 pants on fire : ADJ
@@ -2820,6 +2836,7 @@ pay tv : NOUN
 payment method : NOUN
 payout : NOUN
 peace deal : NOUN
+peace plan : NOUN
 peculiar to : PREP
 peer harassment : NOUN
 pence : NOUN
@@ -2887,6 +2904,7 @@ political gathering : NOUN
 political influence : NOUN
 political intelligence : NOUN
 political opponent : NOUN
+political pressure : NOUN
 political scandal : NOUN
 political view : NOUN
 political world : NOUN
@@ -3073,6 +3091,7 @@ riot dispersal : NOUN
 riot dispersal means : NOUN[:plur]
 riot gear : NOUN
 rise to prominence : NOUN
+risk adjustment : NOUN
 risk death : VERB
 riverfront : ADJ
 road trip : NOUN
@@ -3309,6 +3328,7 @@ stun grenade : NOUN
 stunning upset : NOUN
 submillimeter  : ADJ
 subsequent ruling : NOUN
+substantial care : NOUN
 substantial issues : NOUN[:plur]
 subtropical storm : NOUN
 such a  : QUAN
@@ -3383,6 +3403,7 @@ than ever before : CMPC
 thanks to : PREP
 thanksgiving break : NOUN
 that a : DET (thtx) 
+that accused : THTV
 that are sure to have : THTV
 that began : THTV
 that believe in : THTV
@@ -3563,6 +3584,7 @@ travel conditions : NOUN[:plur]
 tribute video : NOUN
 tropical storm : NOUN
 tropical storm warning : NOUN
+trouble spot : NOUN
 trove of information : NOUN
 trump campaign adviser : NOUN
 trump inauguration : NOUN
@@ -3653,6 +3675,7 @@ upper chamber : NOUN
 upwards of : ADV[~mod] [$deg] 0
 urban myth : NOUN
 us business : NOUN
+us immigration debate : NOUN
 us tariff : NOUN
 us warships : NOUN[:plur]
 us-bound : ADJ
@@ -3964,6 +3987,7 @@ deconfliction : ADJ
 defend himself : VERB
 defensive coordinator : NOUN
 Delta spokesman : NOUN
+demand for denuclearization : NOUN
 deployed on Twitter : VERB
 devastating flood : NOUN
 different characteristic : NOUN
@@ -4048,6 +4072,7 @@ more to a judge : NOUN[:prep]
 mounting legal peril : NOUN
 mr rajoy : NOUN
 mr sánchez : NOUN
+mr. pompeo : NOUN
 mshelper : NOUN
 offensive coordinator : NOUN
 or more accurately, : ADV
@@ -4074,6 +4099,7 @@ primetime : ADJ
 public plea for help : NOUN
 pula : NOUN
 push back against : VERB
+rampant uncontrollable : ADJ
 rebel-held eastern Ghouta suburb of Damascus : NOUN
 repeated rape : NOUN
 research activity : NOUN
@@ -21629,6 +21655,7 @@ keep quiet : VERB
 keep step : VERB
 keep track : VERB
 keep up : VERB
+keeping : NOUN[:ing]
 keg : NOUN
 kelly : NOUN
 kelvin : NOUN
@@ -28856,6 +28883,7 @@ push down : VERB
 push forward : VERB
 push out : VERB
 push up : VERB
+pushing : NOUN[:ing]
 pushkin : NOUN
 pussy : NOUN
 pussy : ADJ
@@ -29717,6 +29745,8 @@ reliance : NOUN
 reliant : ADJ
 relief : NOUN
 relief map : NOUN
+relieve : VERB
+relieved : ADJ
 religion : NOUN
 religious : NOUN
 religious : ADJ
@@ -36600,6 +36630,7 @@ unconscious mind : NOUN
 unconscious process : NOUN
 unconstitutional : ADJ
 unconstitutionally : ADV
+uncontrollable : ADJ
 uncooperative : ADJ
 uncover : VERB
 undeclared : ADJ
