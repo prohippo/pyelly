@@ -14,6 +14,7 @@ calmest : ADJ[%est]
 clearest : ADJ[%est]
 closest : ADJ[%est] - +1
 fastest : ADJ[%est]
+fullest : ADJ[%est]
 happiest : ADJ[%est]
 healthiest : ADJ[%est]
 highest : ADJ[%est]
@@ -180,6 +181,7 @@ destroyed : VERB[^ed]
 determined : VERB[^ed,dit]
 determining : VERB[^ing] - +1
 determining : ADJ[%ing] - -2
+developed with the input : VERB[^ed]
 did : VERB[^ed,*x]
 did not : AUXL[^ed]
 did not happen : VERB[^ed]
@@ -401,6 +403,8 @@ is not doing enough : VERB[^s]
 is not for : VERB[^s]
 is nothing but : VERB[^s]
 is on again : VERB[^s]
+is on pace : VERB[^s]
+is stepping down : VERB[^s]
 is on their side : VERB[^s]
 is on track to : AUXL[^s]
 is said to : ADV
@@ -423,6 +427,7 @@ knew : VERB[^ed]
 knew early on : VERB[^ed]
 knew nothing at all : VERB
 knives : NOUN[:plur]
+knocking on doors : VERB[^ing]
 known : VERB[^ed,*x] - +1
 known to law enforcement : ADJ
 knows too well : VERB[^s]
@@ -438,6 +443,7 @@ lies on : VERB[^s]
 lifted up : VERB[^ed]
 limited : VERB[^ed] - -1
 linked to : PREP
+lived every single day to its fullest : VERB[^ed]
 lives : NOUN[:plur] - +1  =life -s
 lives : VERB[^s]          =live -s
 living : VERB[^ing]
@@ -794,6 +800,7 @@ torn : VERB[^ed]
 torn apart : VERB[^ed]
 touched upon : VERB[^ed]
 tracking : VERB[^ing]
+tried and convicted : VERB[^ed]
 tried to : AUXL[^ed]
 tried to call 911 :  VERB[^ed]
 troubled : VERB[^ed] - -2
@@ -1076,6 +1083,7 @@ american embassy : NOUN
 american troops : NOUN[:plur]
 american west : NOUN
 amid a growing backlash : ADV
+amnesty legislation : NOUN
 among the first : ADJ
 amounted to : VERB[^ed]
 an in : NOUN
@@ -1093,6 +1101,7 @@ annual event : NOUN
 annual meeting : NOUN
 another group of : QUAN
 antiestablishment : ADJ
+any other : QUAN
 anything else : NOUN
 anytime : NOUN
 anytime : ADV
@@ -1109,6 +1118,7 @@ ar-10 rifle : NOUN
 arab republic : NOUN
 arbitration filing : NOUN
 arctic sea ice : NOUN
+are favorable for : VERB
 argentine navy : NOUN
 armed group : NOUN
 armored personnel carrier : NOUN
@@ -1140,6 +1150,7 @@ as of friday : DATE
 as of late : ADV
 as part of : CONJ
 as result of : CONJ
+as such, : ADV
 as though : CONJ
 as to how : CONJ
 as to whether : CONJ
@@ -1399,6 +1410,7 @@ chronic challenge : NOUN
 church leader : NOUN
 cia interrogation : NOUN
 circuit attorney : NOUN
+citizens forum : NOUN
 city funds : NOUN[:plur]
 city leader : NOUN
 civil defense agency : NOUN
@@ -1472,6 +1484,7 @@ constitutional authority : NOUN
 constitutional crisis : NOUN
 constitutional limit : NOUN
 construction permit : NOUN
+constructive measures : NOUN[:plur]
 container transport : NOUN
 continue to work : VERB
 continued rumbling : NOUN
@@ -1505,6 +1518,7 @@ court spokesman : NOUN
 court spokeswoman : NOUN
 crack down further on : VERB
 crater : VERB - -2
+crime victim : NOUN
 criminal act : NOUN
 criminal case : NOUN
 criminal illegal alien : NOUN
@@ -1639,6 +1653,7 @@ dramatic concessions : NOUN[:plur]
 dramatic scene : NOUN
 draw attention to : VERB
 draw support : VERB
+drier air : NOUN
 driving ban : NOUN
 drug prices : NOUN[:plur]
 drug test : NOUN
@@ -1725,6 +1740,7 @@ extreme far right : ADJ
 extreme step : NOUN
 extremely tense situation : NOUN
 eye injury : NOUN
+eyewitness testimony : NOUN
 facebook page : NOUN
 facebook video : NOUN
 faces a showdown : VERB[^s]
@@ -1779,6 +1795,7 @@ fever swamp : NOUN
 few hundred : NUM
 fighter jet : NOUN
 figure out a way : VERB
+file court papers : VERB
 final agreement : NOUN
 final approval : NOUN
 final leg : NOUN
@@ -1868,6 +1885,7 @@ future plan : NOUN
 gain no benefit : VERB
 gala dinner : NOUN
 gated community : NOUN
+gather input : VERB
 gather votes : VERB
 gay marriage : NOUN
 gay men : NOUN[:plur]
@@ -1976,6 +1994,7 @@ heavy fighting : NOUN
 heavy rain : NOUN
 heighten pressure : VERB
 helmet camera : NOUN
+help build trust : VERB
 help defeat : VERB
 helpline : NOUN
 helter skelter : NOUN
@@ -2038,6 +2057,7 @@ huge increase : NOUN
 huge sway : NOUN[:det]
 human control : NOUN
 human dignity : NOUN
+human rights adviser : NOUN
 human rights group : NOUN
 human rights lawyer : NOUN
 humanitarian agency : NOUN
@@ -2197,6 +2217,7 @@ intelligence source : NOUN
 intelligence study : NOUN
 intelligence summary : NOUN
 intelligence survey : NOUN
+intensity forecast : NOUN
 intensive talks : NOUN[:plur]
 interchange point : NOUN
 interferometry : NOUN
@@ -2399,6 +2420,7 @@ long gun : NOUN
 long term : NOUN
 longtime condifant : NOUN
 lose contact with : VERB
+low wind shear : NOUN
 lt. : NOUN
 lt. gen. : NOUN
 lt. gov. : NOUN
@@ -2982,6 +3004,7 @@ recent attempt : NOUN
 recent market turmoil : NOUN
 recent trip : NOUN
 recent trouble : NOUN
+reciprocal measures : NOUN[:plur]
 reckless endangerment : NOUN
 recording artist : NOUN
 red and blue america : NOUN
@@ -3112,6 +3135,7 @@ season opener : NOUN
 second thoughts : NOUN[:plur]
 secret campaign fund : NOUN
 secret prison : NOUN
+security adviser : NOUN
 security checkpoint : NOUN
 security clearance : NOUN
 security council sanction : NOUN
@@ -3128,6 +3152,7 @@ sen. : NOUN
 senate bid : NOUN
 senate candidate : NOUN
 senate committee : NOUN
+senate confirmation : NOUN
 senate minority leader : NOUN
 senate republican : NOUN
 senior advisor : NOUN
@@ -3369,6 +3394,7 @@ that he   : PRO[=*l]
 that he’s not inclined : THTV
 that houses : THTV
 that i    : PRO[=*l]
+that included : THTV
 that it   : PRO[=*l]
 that it's not known : THTV
 that led : THTV
@@ -3433,7 +3459,9 @@ the north korean people : NOUN
 the number of : QUAN
 the only other time : NAVB
 the only thing : NOUN[:det]
+the opposite effect : NOUN
 the oval office : NOUN
+the past two : NUM
 the past year : NAVB[:det]
 the pentagon : NOUN[:det]
 the police shooting : NOUN
@@ -3532,12 +3560,13 @@ transracial : ADJ
 trauma doctor : NOUN
 travel ban : NOUN
 travel conditions : NOUN[:plur]
+tribute video : NOUN
 tropical storm : NOUN
 tropical storm warning : NOUN
 trove of information : NOUN
-trump's nickname : NOUN
 trump campaign adviser : NOUN
 trump inauguration : NOUN
+trump's nickname : NOUN
 turkish currency : NOUN
 turkish politics : NOUN
 turn himself in : VERB
@@ -3572,6 +3601,7 @@ u.s. military : NOUN
 u.s. official  : NOUN
 u.s. officials : NOUN[:plur]
 u.s. secretary of state : NOUN
+u.s. side : NOUN
 u.s. soldier : NOUN
 u.s. special counsel : NOUN
 u.s. special counsel robert mueller : NOUN
@@ -3668,6 +3698,7 @@ wage and hour violation : NOUN
 war dead : NOUN
 war memorial : NOUN
 warfighter : NOUN
+warm water : NOUN
 warns that : VERB[^s] (xtht)
 water body : NOUN
 water service : NOUN
@@ -5426,6 +5457,7 @@ Alice Johnson : NOUN
 Amanda Self : NOUN
 Amy Berman Jackson : NOUN
 Andres Manuel López Obrador : NOUN
+Andres Manuel Lopez Obrador : NOUN
 Andrew Intrater : NOUN
 Andrew Weissman : NOUN
 Anthony Bourdain : NOUN
@@ -5564,6 +5596,7 @@ Columbus Nova : NOUN
 Comey : NOUN
 Conor Lamb : NOUN
 Conservative Political Action Conference : NOUN
+Consumer Financial Protection Bureau : NOUN
 Convertible Cumulative Preference : NOUN
 Coolio Earth Partnership : NOUN
 Corey Lewandowski : NOUN
@@ -5895,6 +5928,7 @@ Lilly : NOUN
 Lin-Manuel Miranda : NOUN
 Lindsey Graham : NOUN
 Lionel Messi : NOUN
+Lopez Obrader : NOUN
 Lord Mayor : NOUN
 Lord Mayor of Dublin : NOUN
 Loretta Lynch : NOUN
@@ -12326,6 +12360,7 @@ construction : NOUN
 construction industry : NOUN
 construction paper : NOUN
 construction worker : NOUN
+constructive : ADJ
 consul : NOUN
 consulate : NOUN
 consult : VERB
