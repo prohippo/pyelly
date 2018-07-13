@@ -571,18 +571,6 @@ g:ELEM->PEXP[|stop] PUNC[|*r,quo]
 _
   (pend)
 __
-g:ELEM->PREP['-neg] PCLS[^ing]
- >>+
-_
-  var typg=prep
-  (lxtd)
-__
-g:ELEM->PREP['neg] PCLS[^ing]
- >>+++
-_
-  var typg=prep
-  (lxtd)
-__
 g:ELEM[^dit]->PEXP[|eg,-com,-stop]
  >>*l
 __
@@ -1964,33 +1952,6 @@ _
   delete 5 >
   append </verb></vclu>
   set tht=T
-__
-
-g:PCLS->PREP['cls] PCLS[^ing]
- >>+3
-_
-  var typg=prep
-  (typg)
-  right
-__
-g:PCLS[^*l]->VERB[^ing] NCLU
- l[$trns]>>+2
-_
-  append <vclu><verb>
-  left
-  append </verb></vclu>
-  linefeed
-  right
-__
-g:PCLS[^*l]->VERB[^ing] PRO
-_
-  append <vclu><verb>
-  left
-  append </verb></vclu>
-  linefeed
-  append <pro>
-  right
-  append </pro>
 __
 
 g:ADJX[%*r,lquo]->PUNC[|*l,quo] ADJ
