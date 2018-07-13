@@ -803,6 +803,8 @@ torn : VERB[^ed]
 torn apart : VERB[^ed]
 touched upon : VERB[^ed]
 tracking : VERB[^ing]
+trading : VERB[^ing]
+trading : ADJ[%ing]
 tried and convicted : VERB[^ed]
 tried to : AUXL[^ed]
 tried to call 911 :  VERB[^ed]
@@ -1022,6 +1024,7 @@ across the pacific : ADV
 across the state : ADV
 across the us : ADV
 act of definance : NOUN
+acting gov. : NOUN
 active shooter : NOUN
 additional charges : NOUN[:plur]
 adm. : NOUN
@@ -1092,6 +1095,7 @@ amid a growing backlash : ADV
 amnesty legislation : NOUN
 among the first : ADJ
 amounted to : VERB[^ed]
+an alleged beating : NOUN
 an in : NOUN
 ancient tomb : NOUN
 and even : CONJ
@@ -1218,6 +1222,7 @@ back into mexico : ADV
 background briefing : NOUN
 background check : NOUN
 bad news : NOUN
+badly exposed : ADJ
 bail deal : NOUN
 banking dynasty : NOUN
 barely edge : VERB
@@ -1403,6 +1408,7 @@ chief anchor : NOUN
 chief cabinet secretary : NOUN
 chief pentagon spokesman : NOUN
 chief pentagon spokeswoman : NOUN
+chief strategist : NOUN
 child custody hearing : NOUN
 child trafficking : NOUN
 children : NOUN[:plur]
@@ -1426,6 +1432,7 @@ civil liability : NOUN
 civil rights violation : NOUN
 clandestine officer : NOUN
 classified information : NOUN
+clean break : NOUN
 clean energy : NOUN
 clerical rule : NOUN
 climactic moment : NOUN
@@ -1493,6 +1500,7 @@ constitutional crisis : NOUN
 constitutional limit : NOUN
 construction permit : NOUN
 constructive measures : NOUN[:plur]
+contact information : NOUN
 container transport : NOUN
 continue to work : VERB
 continued rumbling : NOUN
@@ -1597,6 +1605,7 @@ delay a recommendation : VERB
 delegitimize : VERB
 demand the release of : VERB
 demilitarization : NOUN
+democracy icon : NOUN
 democratic nominee : NOUN
 democratic party ideas : NOUN[:plur]
 democratic republic : NOUN
@@ -1751,6 +1760,7 @@ extreme step : NOUN
 extremely tense situation : NOUN
 eye injury : NOUN
 eyewitness testimony : NOUN
+face trial : VERB
 facebook page : NOUN
 facebook video : NOUN
 faces a showdown : VERB[^s]
@@ -1838,7 +1848,8 @@ for more than a week : ADV
 for nearly a year : ADV
 for now : ADV
 for over : PREP
-for several days : ADV
+for several days : ADV[~cplx]
+for several hours : ADV[~cplx]
 for so long : ADV
 for the first time : ADV
 for third straight day : ADV
@@ -1865,6 +1876,7 @@ former obama adviser : NOUN
 former president : NOUN
 forstall : VERB =forestall
 fourpenny : NOUN - +1
+free speech : NOUN
 freedom ride : NOUN
 from above : PREP
 from across : PREP
@@ -2152,6 +2164,7 @@ in order to get attention : ADV
 in part for : PREP
 in practice : ADV
 in protest against : PREP
+in recent days : ADV
 in recent memory : ADV [$deg,time] +1
 in recent months : ADV [$deg,time] +1
 in recent weeks : ADV [$deg,time] +1
@@ -2308,6 +2321,7 @@ joint bail deal : NOUN
 joint military exercise : NOUN
 judge, jury, and executioner : NOUN
 judical overshight : NOUN
+judge’s decision : NOUN
 judiciary blow : NOUN
 juicy tale : NOUN
 just a little bit : ADV
@@ -2415,6 +2429,7 @@ like to tell : VERB
 like you’re doing something wrong : ADV
 likely to be asked about : ADJ
 limit supply : NOUN
+lingering hope : NOUN
 little more than : ADV[~mod] [$deg] 0
 litx : CONJ =lit.
 live ammunition : NOUN
@@ -2519,6 +2534,7 @@ midtempo : ADJ
 midterm election : NOUN
 migrant parent : NOUN
 migrant policy : NOUN
+mild weather : NOUN
 mileage rules : NOUN[:plur]
 militant group : NOUN
 military aircraft : NOUN
@@ -2703,6 +2719,7 @@ official central news agency : NOUN
 official confirmation : NOUN
 official figures : NOUN[:plur]
 official news agency : NOUN
+official secrets act : NOUN
 official source : NOUN
 official statement : NOUN
 official twitter account : NOUN
@@ -2880,6 +2897,7 @@ police corruption : NOUN
 police corruption case : NOUN
 police director : NOUN
 policy and legislative changes : NOUN[:plur]
+policy shift : NOUN
 policy views : NOUN[:plur]
 policymaker : NOUN
 policymaking : NOUN
@@ -2939,6 +2957,7 @@ presidential race : NOUN
 presidential speech : NOUN
 press secretary : NOUN
 presuppositionalism : NOUN
+pretrial phase : NOUN
 pretrial release : NOUN
 previously known : ADJ
 primary challenge : NOUN
@@ -3195,6 +3214,7 @@ servicemember : NOUN
 settle lawsuits : VERB
 several of : QUAN
 several other : QUAN
+several others : NOUN[:plur]
 sex scandal : NOUN
 sex-crimes detective : NOUN
 sexual advance : NOUN
@@ -3305,6 +3325,7 @@ state media : NOUN
 state of the union address : NOUN
 state of war : NOUN
 state police : NOUN
+state secret : NOUN
 state sponsors list : NOUN
 steady drip : NOUN
 steel pellet : NOUN
@@ -3572,6 +3593,7 @@ trade relationship : NOUN
 trade ties : NOUN[:plur]
 trade war : NOUN
 trading partner : NOUN
+trading policy : NOUN
 traditional clothing : NOUN
 traditional focus : NOUN
 traffic stop : NOUN
@@ -3635,6 +3657,7 @@ uav : NOUN
 ultimate deal : NOUN
 ultraconservatism : NOUN
 ultraconservative dogma : NOUN
+unable to unite : ADJ
 uncompromising stances : NOUN[:plur]
 under any circumstances : ADV
 under consideration : ADV
@@ -3646,6 +3669,7 @@ underenforcement : NOUN
 understated : VERB[^ed] - -1
 underutilization : NOUN
 underutilize : VERB
+underwater evacuation : NOUN
 unexplored depths : NOUN
 unfair media : NOUN
 unidentified source : NOUN
@@ -3799,6 +3823,7 @@ without a permit : ADV
 without ever : CONJ
 without interference : ADV
 without so much as : CONJ
+without having to go on trial : ADV
 witnesses in the case : NOUN[:plur]
 won : NOUN - -1
 work as advertised : VERB
@@ -4004,7 +4029,8 @@ ethics controversy : NOUN
 er, I mean, : ADV
 EU benefits : NOUN[:plur]
 euro 6d : ADJ
-euroskeptic : ADJ
+eurosceptic : ADJ
+eurosceptics : NOUN[:plur]
 failed to contain russia : VERB[^ed,*r]
 failed meteorologist : NOUN
 far greater chance : NOUN
@@ -5592,6 +5618,7 @@ Charlie : NOUN
 Charlotte-Mecklenburg : ADJ
 Charlotte Douglas : NOUN
 Chevrolet : NOUN
+Chiang Rai : NOUN
 Chiang Rai province : NOUN
 Chibok Government Secondary School : NOUN
 Chicago Cubs : NOUN
@@ -6049,6 +6076,7 @@ Moammar Gaddafi : NOUN
 Murphy : NOUN
 Muslim Brotherhood : NOUN
 Mykonos : NOUN
+Philippe Reines : NOUN
 Nasional Berhad : NOUN
 Najib Razak : NOUN
 Narendra Modi : NOUN
@@ -6166,6 +6194,7 @@ Rancho Tehama : NOUN
 Redding : NOUN
 Republican lawmaker : NOUN
 Republican National Committee : NOUN
+Reuters reporter : NOUN
 Revolutionary Guards : NOUN[:plur]
 Reaganite : NOUN
 Reuben Kihuen : NOUN
@@ -6315,6 +6344,7 @@ the News International : NOUN[:det]
 The Northwest Indiana Times : NOUN[:det]
 the NRA : NOUN[:det]
 the Rim of the Pacific exercise : NOUN
+the Sacramento Bee : NOUN
 The Spokesman-Review : NOUN[:det]
 the State of Qatar : NOUN
 the Taiwan Strait : NOUN[:det]
@@ -36015,6 +36045,7 @@ trade wind : NOUN
 trademark : NOUN
 trademark : VERB
 trader : NOUN
+trading : NOUN
 tradition : NOUN
 traditional : ADJ
 traditional knowledge : NOUN
