@@ -7,7 +7,7 @@ PyElly is intended mainly for educational use, in that it allows a student
 to engage natural language at a fine level of detail and learn the issues
 involved in processing text data. It can be of interest to others, though,
 because of its extensive support for handling the messy aspects of
-language not central to most text data problems or their solutions.
+language not central to most text data problems or to their solutions.
 
 The basic paradigm of PyElly is to rewrite natural language input into
 some other text output, which might be SQL, XML, or some other form. This
@@ -26,12 +26,12 @@ now be downloaded from GitHub at https://github.com/prohippo/pyelly.git .
 Further development and refinement is ongoing.
 
 To learn how to use PyElly, see the PyEllyManual.pdf file in the same
-directory as this README.txt file. The manual has over a hundred fory pages
+directory as this README.txt file. The manual has over a hundred sixty pages
 of information, including an overview of basic linguistics. Documentation
 of individual Python source files can be generated as needed with the
-Python pydoc utility from PyElly source files..
+Python pydoc utility from PyElly source files.
 
-At present, PyElly consists of 64 Python modules comprising about ten
+At present, PyElly consists of 64 Python modules comprising a bit over ten
 thousand lines of source code. There are also various definition files
 to support basic various language processing capabilities. The PyElly
 download includes rules for some example applications, including
@@ -493,7 +493,7 @@ Release Notes:
                       generalized handling for all bracketing in term lookup
                       improve algorithm for setting range of pattern matching
                       clean up and extend "marking" rules and integration test
-                      update documenetation
+                      update documentation
  1.4.16.1  21oct2017  fix various bugs in dateTransform
                       extend "marking" rules
                       update documentation
@@ -603,7 +603,8 @@ Release Notes:
                       update documentation
                       add Google News data and clean up
  1.4.32  - 08jul2018  fix delimiter bug in vocabularyTable and vocabularyElement
-                      extend "marking" rules
+                      extend and clean up "marking" rules
+                      clean up "marking" integration test with news data
                       update documentation
                       
 New versions will reflect non-cosmetic changes in PyElly code. This typically
