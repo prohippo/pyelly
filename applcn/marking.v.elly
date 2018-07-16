@@ -617,6 +617,7 @@ received a call about : VERB[^ed]
 received access to : VERB[^ed]
 received instructions : VERB[^ed]
 redrew : VERB[^ed]
+referring for criminal prosecution : VERB[^ing]
 refusing to back  : VERB[^ing]
 regarding : PREP - +1
 regarding : NOUN - -1
@@ -1037,6 +1038,7 @@ advertising boycott : NOUN
 advocacy group : NOUN
 aerial demonstration : NOUN
 aerial photograph : NOUN
+afghan people : NOUN
 after all : CONJ[@*l]
 after he did, : ADV
 after it emerged that : CONJ
@@ -1076,6 +1078,7 @@ all our : QUAN
 all over the world : ADJ [$trlg] +1
 all over the world : ADV - -2
 all that : ALLTHT
+all tired : ADJ
 alleged affair : NOUN
 alleged incident : NOUN
 alleged victim : NOUN
@@ -1257,6 +1260,7 @@ biggest customers : NOUN[:plur]
 biggest mountain to climb : NOUN
 bill signing ceremony : NOUN
 binding commitment : NOUN
+bipartisan criticism : NOUN
 bipartisan gang of 8 : NOUN
 bipartisan law : NOUN
 birther : NOUN
@@ -1540,7 +1544,9 @@ criminal act : NOUN
 criminal case : NOUN
 criminal illegal alien : NOUN
 criminal indictment : NOUN
+criminal investigation : NOUN
 criminal liability : NOUN
+criminal prosecution : NOUN
 criminal wrongdoing : NOUN
 criteria : NOUN[:plur]
 critical battle : NOUN
@@ -2192,6 +2198,7 @@ in the public interest : NOUN
 in the report : ADV
 in the right direction : ADV
 in the same place : ADV
+in the same way : ADV
 in the skies : ADJ [$trlg] +1
 in the skies : ADV
 in the u.s. and across the world : ADJ
@@ -3090,6 +3097,7 @@ residential floor : NOUN
 residential neighborhood : NOUN
 resounding victory : NOUN
 respective jurisdictions : NOUN[:plur]
+restore lifelines : VERB
 result of our efforts : NOUN[:plur]
 results page : NOUN
 return to classes : VERB
@@ -3110,6 +3118,7 @@ riot dispersal : NOUN
 riot dispersal means : NOUN[:plur]
 riot gear : NOUN
 rise to prominence : NOUN
+rising temperature : NOUN
 risk adjustment : NOUN
 risk death : VERB
 riverfront : ADJ
@@ -4194,6 +4203,7 @@ walkout of classes : NOUN
 was home sleeping : VERB[^ing]
 was like, : VERB[^ed]
 weapons component : NOUN
+what are taking place here : NOUN
 what is plausible : NOUN
 when the attack occurred : ADV [$cond,cmpd] 0
 while at the home : ADV
@@ -6362,6 +6372,7 @@ Syrian state television : NOUN
 Syrian territory : NOUN
 Taliban : NOUN
 Talkradio 790 KABC : NOUN
+Taro Aso : NOUN
 TASS : NOUN
 Teddy Kollek Stadium : NOUN
 Terrence : NOUN
@@ -13815,6 +13826,7 @@ defensive measure : NOUN
 defensive structure : NOUN
 defer : VERB
 deference : NOUN
+deferral : NOUN
 defiance : NOUN
 defiant : ADJ
 defiantly : ADV
