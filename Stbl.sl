@@ -158,6 +158,7 @@ BLOCK s
   IF i
     IF nn {FA}
     IF me {SU}
+    IF man {SU}
     IF st {SU}
     IF hc {SU}
     IF jo {SU}
