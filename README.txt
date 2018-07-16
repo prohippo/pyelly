@@ -603,6 +603,7 @@ Release Notes:
                       update documentation
                       add Google News data and clean up
  1.4.32  - 08jul2018  fix delimiter bug in vocabularyTable and vocabularyElement
+                      improve inflectional stemming
                       extend and clean up "marking" rules
                       clean up "marking" integration test with news data
                       update documentation
