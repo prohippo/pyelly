@@ -56,8 +56,10 @@ are considered standard : VERB[^ed]
 are doing business : VERB[^ing]
 are likely to be : BE
 are responsible for : VERB
+are running for reelection : VERB[^ing]
 are sick enough : VERB
 are taking part : VERB[^ing]
+are telling family members : VERB[^ing]
 arranged for : VERB[^ed]
 arrested and charged : VERB[^ed]
 arrested on a warrant : VERB[^ed]
@@ -175,6 +177,7 @@ dating back : VERB[^ing]
 dating back to : VERB[^ing]
 dealing : VERB[^ing]
 debated the question : VERB[^ed]
+declarations of success : NOUN[:plur]
 declared : VERB[^ed] - +1
 deeply held : ADJ
 defaming him : VERB[^ing]
@@ -287,6 +290,7 @@ frizzed out : VERB[^ed]
 fronted by : VERB[^ed]
 frontlines : NOUN[:plur]
 froze : VERB[^ed]
+gaslighting : VERB[^ing]
 gathering : VERB[^ing]
 gave : VERB[^ed,*x]
 gave his take on : VERB[^ed]
@@ -349,6 +353,7 @@ happened like that : VERB[^ed]
 has : HAVE[^s]
 has already : HAVE[^s]
 has been in years : VERB[^s]
+has come under scrutiny : VERB[^ed,s]
 has gone on the record : VERB[^ed,s]
 has had : VERB[^aux,hav,s]
 has long been : VERB[^s]
@@ -578,6 +583,7 @@ points of View : NOUN[:plur]
 popped up : VERB[^ed]
 posted a message : VERB[^ed]
 posted on Facebook : VERB[^ed]
+posted online : VERB[^ed]
 potions : NOUN
 prepping : VERB[^ing]
 pressed witnesses : VERB[^ed]
@@ -607,6 +613,7 @@ racked up : VERB[^ed]
 radicalization : NOUN
 raged on : VERB[^ed]
 raised fears of : VERB[^ed]
+raised questions : VERB[^ed]
 raising : VERB[^ing] - -1
 raising similar issues : VERB[^ing]
 ramping up the pressure : VERB[^ing]
@@ -942,6 +949,7 @@ went_on : VERB[^ed] =went on
 1st mention : NOUN
 1st mention : VERB
 1st one : NOUN
+1st published : VERB[^ed]
 1st reports : NOUN[:plur]
 1st responder : NOUN
 1st run : NOUN
@@ -1250,6 +1258,7 @@ barely edge : VERB
 bargaining style : NOUN
 barrage of tweets : NOUN
 bat and ball : ADJ
+bear no relationship to reality : VERB
 beatle : NOUN
 because of : PREP
 because of that, : CONJ
@@ -1292,6 +1301,8 @@ blockbuster contest : NOUN
 blood alcohol : NOUN
 bloody mess : NOUN
 body cam video : NOUN
+body camera : NOUN
+body camera video : NOUN
 body of water : NOUN
 boil over : VERB
 boiling point : NOUN
@@ -1334,6 +1345,7 @@ brought it back : VERB[^ed]
 brought to market : VERB[^ed]
 brutal interrogation : NOUN
 budget director : NOUN
+budget fight : NOUN
 budget provision : NOUN
 building : VERB[^ing,ptcl]
 building supply : NOUN
@@ -1495,12 +1507,14 @@ communications suite : NOUN
 community meeting : NOUN
 companion piece : NOUN
 competing station : NOUN
+competitive race : NOUN
 complaint that : NOUN[:*l] (xtht)
 complex plot : NOUN
 compromise bill : NOUN
 computer model : NOUN
 computer tampering : NOUN
 concrete blueprint : NOUN
+concrete plan : NOUN
 condition red : ADJ
 condo owner : NOUN
 conduct oversight : VERB
@@ -1640,6 +1654,7 @@ democracy icon : NOUN
 democratic nominee : NOUN
 democratic party ideas : NOUN[:plur]
 democratic republic : NOUN
+democratic senator : NOUN
 denominational meeting : NOUN
 denuclearization : NOUN
 denuclearize : VERB
@@ -1822,6 +1837,7 @@ far higher : ADJ
 far more damaging : ADJ
 far reaching : ADJ
 far too weak : ADJ
+fast-moving water : NOUN
 fatal shooting : NOUN
 fatal shootings : NOUN[:plur]
 fatally shot : ADJ
@@ -1852,6 +1868,7 @@ few hundred : NUM
 fighter jet : NOUN
 figure out a way : VERB
 file court papers : VERB
+filled up with oil : ADJ
 final agreement : NOUN
 final approval : NOUN
 final leg : NOUN
@@ -1883,6 +1900,7 @@ for more than a decade : ADV
 for more than a week : ADV
 for nearly a year : ADV
 for now : ADV
+for one hour : ADV
 for over : PREP
 for several days : ADV[~cplx]
 for several hours : ADV[~cplx]
@@ -1904,6 +1922,7 @@ foreign money : NOUN
 foreign policy advisor : NOUN
 foreign secretary : NOUN
 foreign trade : NOUN
+forest preserve district : NOUN
 formal approval : NOUN
 formaldehype vapor : NOUN
 former campaign manager : NOUN
@@ -1981,6 +2000,7 @@ goods and services : NOUN
 gop leader : NOUN
 gop nominee : NOUN
 gop presidential nominee : NOUN
+gop primary : NOUN
 gov. : NOUN
 governing body : NOUN
 governing coalition : NOUN
@@ -2347,6 +2367,7 @@ it behv essential : ELEM - +4 (elma)
 it behv not surprising : ADV
 it behv obvious : ELEM - +4 (elma)
 it behv unclear : ADV
+it behv very clear : ADV
 it certainly looks like : ADV
 it incomprehensible that : ADJ
 it is clear : ELEM - +4 (elma)
@@ -2359,6 +2380,7 @@ jain : NOUN
 jet fuel : NOUN
 jewish billionaire : NOUN
 jihadi : NOUN
+job approval rating : NOUN
 job well done : NOUN
 join forces with : VERB
 joint bail deal : NOUN
@@ -2388,6 +2410,7 @@ key defender : NOUN
 key figure : NOUN
 key part : NOUN
 key sanctions : NOUN[:plur]
+key senate race : NOUN
 knife crime : NOUN
 know nothing at all : VERB
 knowingly false : ADJ
@@ -2488,6 +2511,7 @@ local news : NOUN
 local newspaper : NOUN
 local official : NOUN
 local priest : NOUN
+locations and numbers : NOUN
 long gun : NOUN
 long term : NOUN
 longtime condifant : NOUN
@@ -2497,6 +2521,7 @@ lt. : NOUN
 lt. gen. : NOUN
 lt. gov. : NOUN
 lure shoppers through their doors : VERB
+made in china : ADJ
 magazine weekly : NOUN
 main counter : NOUN
 main defendant : NOUN
@@ -2597,6 +2622,7 @@ military might : NOUN
 military support : NOUN
 military supremacy : NOUN
 military threat : NOUN
+minimal if any : ADJ
 minimum age : NOUN
 minimum sentence : NOUN
 ministry of finance : NOUN
@@ -2659,6 +2685,7 @@ mr.  : NOUN
 mrs. : NOUN
 ms.  : NOUN
 msgr. : NOUN
+much of : QUAN
 multibillion : ADJ
 multilateralism : NOUN
 multiple : QUAN - +2
@@ -2682,6 +2709,7 @@ national interest : NOUN
 national security : NOUN
 national security adviser : NOUN
 national security interest : NOUN
+national story : NOUN
 national title : NOUN
 nationwide driving ban : NOUN
 nationwide protest : NOUN
@@ -2730,6 +2758,8 @@ nondisclosure agreement : NOUN
 nonessential staff : NOUN
 north american affairs : NOUN[:plur]
 north korean leader : NOUN
+north korean sanctions : NOUN[:plur]
+north korean tanker : NOUN
 northern california : NOUN
 northern thailand : NOUN
 not just : ADV
@@ -2953,6 +2983,7 @@ police brutality : NOUN
 police corruption : NOUN
 police corruption case : NOUN
 police director : NOUN
+police force : NOUN
 policy and legislative changes : NOUN[:plur]
 policy shift : NOUN
 policy views : NOUN[:plur]
@@ -3126,6 +3157,7 @@ remix : NOUN
 remix : VERB
 remote beach : NOUN
 remote town : NOUN
+renew its investigation : VERB
 renewable energy : NOUN
 rent payment : NOUN
 rental room : NOUN
@@ -3133,6 +3165,8 @@ repeal and replace : VERB
 repeat offender : NOUN
 report that : NOUN (xtht)
 reporting tactics : NOUN
+republican attorney general : NOUN
+republican candidate : NOUN
 republican challenger : NOUN
 republican governor : NOUN
 republican leader : NOUN
@@ -3277,6 +3311,7 @@ service plan : NOUN
 servicemember : NOUN
 settle lawsuits : VERB
 several of : QUAN
+several of them : PRO
 several other : QUAN
 several others : NOUN[:plur]
 sex scandal : NOUN
@@ -3317,6 +3352,7 @@ sincere hope : NOUN
 sit in the gallery : VERB
 skaky start : NOUN
 slbm : NOUN
+slow down : VERB
 small business : NOUN
 so as to : TO
 so grateful : ADJ
@@ -3326,11 +3362,13 @@ so severely damaged : ADJ [$trlg,prd] 0
 so still : ADJ
 so that : CONJ
 so widely known : ADJ
+soccer team : NOUN
 social media : NOUN
 social reform : NOUN
 social security system : NOUN
 social studies : NOUN
 socialist federal republic : NOUN
+soda pop tax : NOUN
 soldier-turned-defector : NOUN
 some kind of : ADJ
 some of : QUAN
@@ -3457,6 +3495,7 @@ tangible evidence : NOUN
 tangible step : NOUN
 tax legislation : NOUN
 tax overhaul : NOUN
+tax payer costs : NOUN
 tax record : NOUN
 tax reform : NOUN
 team of advisers : NOUN
@@ -3545,6 +3584,7 @@ the entirety : NOUN
 the fact that : CONJ
 the fifth amendment : NOUN
 the firings : NOUN[:plur]
+the first five : QUAN
 the first in the world : NOUN
 the first time : NAVB[:*x]
 the focus : NOUN[:det]
@@ -3604,6 +3644,7 @@ these years later : ADV
 they think will : AUXL
 they too : PRO
 this afternoon : NAVB[:det,*x]
+this fall : ADV
 this month : NAVB[:det]
 this morning : NAVB[:*x]
 this time : NAVB[:det]
@@ -4152,6 +4193,7 @@ information commissioner : NOUN
 injured and mentally unstable man : NOUN
 insurgents groups : NOUN[:plur]
 intended to present : VERB[^ed]
+intervened to preventing : VERB[^ed] =intervened to prevent
 it doesn’t appear that : ADV
 january interview that : NOUN[:*l] (xtht)
 land and sink : VERB
@@ -4303,6 +4345,7 @@ domestic and foreign : ADJ
 private sector company  : NOUN
 
 the U.S. Department of Labor : NOUN
+the U.S. government : NOUN
 the Federal Energy Regulatory Commission : NOUN
 the island of Hawaii : NOUN
 the State of Hawaii : NOUN
@@ -5861,6 +5904,8 @@ Elon Musk : NOUN
 Emily’s List : NOUN
 Emmanuel : NOUN
 Emmanuel Macron : NOUN
+Emmett Till : NOUN
+Emmett Till case : NOUN
 Enrique Peña Nieto : NOUN
 Enzo : NOUN
 Erdogan : NOUN
@@ -6081,6 +6126,7 @@ Kushner : NOUN
 La David Johnson : NOUN
 La Guardia Airport : NOUN
 La Nina : NOUN
+La Paz County : NOUN
 LA Times : NOUN
 Labour MP : NOUN
 Lafayette Square : NOUN
@@ -6171,6 +6217,7 @@ Michel Aoun : NOUN
 Michelle Beadle : NOUN
 Michelle Wolf : NOUN
 Michigan State : NOUN
+Middlebury Institute of International Studies : NOUN
 Mike Leach : NOUN
 Mike Greenberg : NOUN
 Mike Pence : NOUN
@@ -6533,6 +6580,7 @@ Ty Cobb : NOUN
 Tyshon Demontrea Johnson : NOUN
 Twitter : NOUN
 U.N. : NOUN
+U.N. committee : NOUN
 U.S. : NOUN
 U.S. Agency for International Development : NOUN
 U.S. District Judge : NOUN
