@@ -1459,10 +1459,6 @@ _
   var typg=date
   (lxtd)
 __
-g:DATE[:*l]->DATY
-  c>4>>----------
-     >>+
-__
 
 # # # #
 p:postp
@@ -2222,8 +2218,116 @@ d:across <- POSTP[@adv]
  >>[$trlg,spat]-
 __
 
-# # # #
+p:prep
+_
+  append <prep>
+  left
+  append </prep>
+  right
+__
+g:DATE->PREP NAVB
+ >>++
+_
+  (prep)
+__
+g:DATE[:*r]->PREP['-cnj,-*l] DATE[:-cnj,-poss]
+ n<3c<8>>+++++
+       >>++
+_
+  (prep)
+__
+g:DATE[:*r]->PREP['-cnj,*l] DATE[:-cnj,-poss]
+ >>++
+_
+  (twob)
+__
 
+g:DATE->NUM ADV[~date]
+ >>+15
+__
+g:DATE->ADV[~timg] DATE
+ n<3>>++
+    >>-
+_
+  (twob)
+__
+
+g:DATE->DET[@the] DATE[:-cnj,plur]
+ >>+
+_
+  (twob)
+__
+
+g:DATE->DATE DATE[:-cnj,-*l]
+_
+  split
+  right
+  back
+  left
+  peek > lxxx
+  peek rxxx <
+  if ~lxxx=>
+    if ~rxxx=<
+      space
+      end
+    end
+  merge
+__
+g:DATE->DATE DATE[:*l]
+ >>++++
+__
+
+g:DATE[:cnj]->PUNC[|*l] DATE[:-cnj]
+ n>4>>--------
+__
+g:DATE->DATE[:cnj] PUNC[|*r]
+ >>+++
+__
+
+g:DATE->MNRG DATE
+_
+  append <prep>in</prep>
+  left
+  append /
+  right
+__
+
+g:DATxx->DATxx ADV[~date]
+ >>++
+_
+  (twob)
+__
+
+g:DATE->ADJ[%-ed,-ing] DATE[:*r]
+  l[$time]>>++++
+__
+
+g:DATE->ADJ[%*x] DATE
+  c<12 >>++++
+       >>--
+_
+  (twob)
+__
+
+g:DATE->ADJ[%-*l,-*r,-ed,-ing] DATE
+ l[$time]>>++
+         >>----
+_
+  (twob)
+__
+
+g:DATY->CONJ[@cnj] DATE
+  >>*r+
+_
+  (twob)
+__
+g:DATE[:*r]->DATE DATY
+  >>*r++++
+_
+  (twob)
+__
+
+# - - - -
 
 g:XID->NUM[:-*l,-*r]
 #       ?>>?
@@ -2588,7 +2692,7 @@ g:ADJ->NOUN SUFX[#nTOa]
 _
   (twob)
 __
-g:ADJ[%*r,more]->ADV ADJ[%er]
+g:ADJ[%*r,more]->ADV[~-cplx] ADJ[%er]
     n>4 >>-4
  l[$deg]>>+8
 _
@@ -2596,7 +2700,7 @@ _
   (typg)
   right
 __
-g:ADJ[%*r,more]->ADV[~-int,-timg] ADJ[%-er,-ed]
+g:ADJ[%*r,more]->ADV[~-int,-timg,-cplx] ADJ[%-er,-ed]
     n>4 >>-4
  l[$deg]>>[$cmpd]+6
 _
@@ -2604,14 +2708,14 @@ _
   (typg)
   right
 __
-g:ADJ[%*r]->ADV[~-int,timg] ADJ[%-er,-ed]
+g:ADJ[%*r]->ADV[~-int,timg,-cplx] ADJ[%-er,-ed]
   >>+4
 _
   var typg=adv
   (typg)
   right
 __
-g:ADJ[%*r,more]->ADV[~-int] ADJ[%-er,ed]
+g:ADJ[%*r,more]->ADV[~-int,-cplx] ADJ[%-er,ed]
      n>3 >>-4
  l[$time]>>-4
  l[$deg] >>[$cmpd]+6
@@ -2620,7 +2724,7 @@ _
   (typg)
   right
 __
-g:ADJ[%*r,more]->ADV[~int] ADJ[%-er]
+g:ADJ[%*r,more]->ADV[~int,-cplx] ADJ[%-er]
   n>3 >>-4
       >>+4
 _
@@ -2653,7 +2757,7 @@ g:ADJ->VERB SUFX[#vTOa]
 _
   (twob)
 __
-g:ADJ[%*r]->ADV[~cnj] ADJ
+g:ADJ[%*r]->ADV[~cnj,-cplx] ADJ
  n<3>>*r[$cnj]++++
  n>3>>----
 _
@@ -2801,6 +2905,8 @@ _
   append </adv>
 __
 
+# - - - -
+
 g:NUM->ADJ[%mod] NUM
  >>+++
 _
@@ -2857,6 +2963,31 @@ _
   var typg=prep
   (typg)
   right
+__
+
+g:NUM[:*r]->QUAN[@*x] NUM[:-*r]
+  >>++
+_
+  append 1 of
+  space
+  right
+__
+
+g:NUM[:cnj]->ADV[~prox] NUM[:cnj]
+  >>--
+_
+  (twob)
+__
+
+g:NUMX->CONJ[@cnj] NUM
+ >>*r
+_
+  (twob)
+__
+g:NUM[:*r]->NUM NUMX
+  >>*r++++
+_
+  (twob)
 __
 
 #
@@ -2934,13 +3065,13 @@ _
   append </adv>
   right
 __
-g:ADJ[%*r]->ADV[~int] ADJ
+g:ADJ[%*r]->ADV[~int,-cplx] ADJ
  n>4 >>----
      >>*r++
 _
   (advb)
 __
-g:ADJ[%*r]->ADV[~mod] ADJ
+g:ADJ[%*r]->ADV[~mod,-cplx] ADJ
  n>4 >>----
      >>++++
 _
@@ -2995,29 +3126,6 @@ _
   (typg)
   right
 __
-p:prep
-_
-  append <prep>
-  left
-  append </prep>
-  right
-__
-g:DATE->PREP NAVB
- >>++
-_
-  (prep)
-__
-g:DATE[:*r]->PREP['-cnj,-*l] DATE[:-cnj,-poss]
- n<3c<8>>+++++
-       >>++
-_
-  (prep)
-__
-g:DATE[:*r]->PREP['-cnj,*l] DATE[:-cnj,-poss]
- >>++
-_
-  (twob)
-__
 g:TIME[:*r]->PREP['-cnj,-*l] TIME
  >>++
 _
@@ -3025,15 +3133,6 @@ _
 __
 g:TIME[:*r]->PREP['-cnj,*l] TIME
  >>++
-_
-  (twob)
-__
-g:DATE->NUM ADV[~date]
- >>+15
-__
-g:DATE->ADV[~timg] DATE
- n<3>>++
-    >>-
 _
   (twob)
 __
@@ -3737,11 +3836,6 @@ g:DET[@*l]->DET PUNC[|*r,*x]
 _
   (clspr)
 __
-g:DATE->DET[@the] DATE[:-cnj,plur]
- >>+
-_
-  (twob)
-__
 g:DET->DET[@the] DATE[:-cnj,-plur]
  >>++++
 _
@@ -4069,39 +4163,6 @@ _
   append </noun>
 __
 
-g:DATE->DATE DATE[:-cnj,-*l]
-_
-  split
-  right
-  back
-  left
-  peek > lxxx
-  peek rxxx <
-  if ~lxxx=>
-    if ~rxxx=<
-      space
-      end
-    end
-  merge
-__
-g:DATE->DATE DATE[:*l]
- >>++++
-__
-
-g:DATE[:cnj]->PUNC[|*l] DATE[:-cnj]
- n>4>>--------
-__
-g:DATE->DATE[:cnj] PUNC[|*r]
- >>+++
-__
-
-g:DATE->MNRG DATE
-_
-  append <prep>in</prep>
-  left
-  append /
-  right
-__
 
 d:iii <- XID[:val]
 __
@@ -4157,15 +4218,6 @@ _
   append the 1st
 __
 
-g:DATxx->DATxx ADV[~date]
- >>++
-_
-  (twob)
-__
-
-g:DATE->ADJ[%-ed,-ing] DATE[:*r]
-  l[$time]>>++++
-__
 d:mainly <- AVQN
 __
 d:mostly <- AVQN
@@ -4252,14 +4304,6 @@ g:ADJ->NOAJ
   l[$*c]>>-
 __
 
-g:NUM[:*r]->QUAN[@*x] NUM[:-*r]
-  >>++
-_
-  append 1 of
-  space
-  right
-__
-
 g:DET->DET NAVB
 _
   left
@@ -4269,23 +4313,12 @@ _
 __
 g:APOS->PUNC[|stop,emb,*x] APOS
 __
-g:NUM[:cnj]->ADV[~prox] NUM[:cnj]
-  >>--
-_
-  (twob)
-__
 
 g:QEQ->QUAN PUNC[|quo,*r]
 __
 g:QUAN->PUNC[|quo,*l] QEQ
 __
 
-g:DATE->ADJ[%*x] DATE
-  c<12 >>++++
-       >>--
-_
-  (twob)
-__
 
 p:elth
 _
@@ -4341,12 +4374,6 @@ _
   (twob)
 __
 
-g:DATE->ADJ[%-*l,-*r,-ed,-ing] DATE
- l[$time]>>++
-         >>----
-_
-  (twob)
-__
 
 p:thtx
 _

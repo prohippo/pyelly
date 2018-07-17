@@ -56,6 +56,7 @@ are likely to be : BE
 are responsible for : VERB
 are sick enough : VERB
 are taking part : VERB[^ing]
+arranged for : VERB[^ed]
 arrested and charged : VERB[^ed]
 arrested on a warrant : VERB[^ed]
 assigned : VERB[^ed]
@@ -107,6 +108,7 @@ called out :  VERB[^ed]
 called to say : VERB[^ed]
 calling for the abolition of : VERB[^ing]
 came : VERB[^ed]
+came in protest of : VERB[^ed]
 came to fruition : VERB[^ed]
 came under fire : VERB[^ed]
 carried out : VERB[^ed]
@@ -225,6 +227,7 @@ edited for clarity and brevity : VERB[^ed]
 educating themselves : VERB[^ing]
 elected official : NOUN
 elevated : VERB[^ed]
+equipped with : VERB[^ed]
 evangelicals : NOUN[:plur]
 evening : VERB[^ing] - -2
 ever elected : VERB[^ed]
@@ -337,6 +340,7 @@ had nothing to do with : VERB[^ed]
 had since : AUXL[^ed]
 had to : AUXL[^ed]
 handling : VERB[^ing]
+hanging out : VERB[^ing]
 happened like that : VERB[^ed]
 has : HAVE[^s]
 has already : HAVE[^s]
@@ -472,6 +476,7 @@ made up : VERB[^ed,*x]
 made use of : VERB[^ed]
 makes use of : VERB[^s]
 making : VERB[^ing]
+making a mistake : VERB[^ing]
 making a trip out to : VERB[^ing]
 making an arrest : VERB[^ing]
 making it easier : VERB[^ing]
@@ -497,7 +502,7 @@ mice : NOUN[:plur]
 miles : NOUN[:plur]
 millennia : NOUN[:plur]
 millennial : NOUN - -1
-millennium bc : NOUN
+millennium bc : NOUN [&msr] 0
 millions : NOUN[:plur]
 mining : VERB[^ing] - -1
 misleading : VERB[^ing]
@@ -768,6 +773,7 @@ taliban fighter : NOUN
 talking : VERB[^ing]
 talking to myself : VERB[^ing]
 talking to someone : VERB[^ing]
+taught to swim : VERB[^ed]
 telecommunications : NOUN
 telecommunications : NOUN[:plur] - -1
 television advertising : NOUN
@@ -947,6 +953,7 @@ went_on : VERB[^ed] =went on
 2nd half : NOUN
 2nd known : ADJ
 2nd shift : NOUN
+2½ : NUM
 3 dozen : NUM
 3rd party : NOUN
 3rd shift : NOUN
@@ -1039,7 +1046,7 @@ advocacy group : NOUN
 aerial demonstration : NOUN
 aerial photograph : NOUN
 afghan people : NOUN
-after all : CONJ[@*l]
+after all, : ADV[~cplx]
 after he did, : ADV
 after it emerged that : CONJ
 after sunset : ADV
@@ -1230,6 +1237,7 @@ badly exposed : ADJ
 bail deal : NOUN
 banking dynasty : NOUN
 barely edge : VERB
+bargaining style : NOUN
 barrage of tweets : NOUN
 bat and ball : ADJ
 beatle : NOUN
@@ -1291,6 +1299,7 @@ bound by those rules : ADJ
 bowing to pressure from : VERB[^ing]
 box set : NOUN
 brain cancer : NOUN
+brash young personality : NOUN
 break international law : VERB
 break out of : VERB
 breaking it apart : VERB[^ing]
@@ -1393,6 +1402,7 @@ cast a vote : VERB
 cast recording : NOUN
 catch and release : NOUN
 cave complex : NOUN
+cave diver : NOUN
 cave network : NOUN
 cease and desist agreement : NOUN
 ceasefire : NOUN
@@ -1486,6 +1496,7 @@ conduct unbecoming of an officer : NOUN
 confederate force : NOUN
 configurable : ADJ
 confirm the move : VERB
+conflicting reports : NOUN[:plur]
 confraternity : NOUN
 congenital impatience : NOUN
 congressional lawmakers : NOUN[:plur]
@@ -1579,6 +1590,7 @@ damaging storm report : NOUN
 dance company : NOUN
 dance number : NOUN
 dangerously close : ADJ
+daring operation : NOUN
 darker time : NOUN
 data analytics : NOUN
 data breach : NOUN
@@ -1635,6 +1647,7 @@ die roll : NOUN
 digital ethics : NOUN
 digital minister : NOUN
 digital space : NOUN
+diplomatic maneuver : NOUN
 diplomatic mechanisms : NOUN[:plur]
 diplomatic overture : NOUN
 diplomatic recognition : NOUN
@@ -1654,12 +1667,14 @@ disruptive action : NOUN
 district court : NOUN
 district office : NOUN
 district official : NOUN
+diving gear : NOUN
 divorce bill : NOUN
 divorce case : NOUN
 divorce request : NOUN
 do everything in my power : VERB
 do his best to : VERB
 do much more : VERB
+do not : AUXL
 do that : VERB
 doctored accounting : NOUN
 dole : VERB - -2
@@ -1898,6 +1913,7 @@ from under : PREP
 from what  : CONJ[@rel]
 from where : CONJ[@rel]
 from which : CONJ[@rel]
+from whom : CONJ[@rel]
 front desk : NOUN
 front page : NOUN
 frontline : ADJ
@@ -1927,6 +1943,7 @@ genetically modified : ADJ
 genetically modified crop : NOUN
 genome editing : NOUN
 german chancellor : NOUN
+german court : NOUN
 get into trouble : VERB
 get shot : VERB
 get to the bottom of : VERB
@@ -2113,6 +2130,7 @@ illegal immigration : NOUN
 imbalanced : ADJ
 immediate action : NOUN
 immediate medical help : NOUN
+immigrant children : NOUN
 immigrant family separation : NOUN
 immigration court : NOUN
 immigration crackdown : NOUN
@@ -2180,6 +2198,7 @@ in response to : PREP
 in return for : PREP
 in serious condition : ADV
 in terms of : PREP
+in the book : ADV
 in the coming months : ADV
 in the coming weeks : ADV
 in the community : ADV
@@ -2188,6 +2207,7 @@ in the days before : PREP
 in the event : CONJ
 in the event of : PREP
 in the first place : ADV
+in the hours after : CONJ
 in the last few months : ADV
 in the last week : ADV
 in the metro area : ADV
@@ -2209,6 +2229,7 @@ in their honor : ADV
 in there : ADV
 in this case : ADV
 in this way : ADV
+in various ways : ADV
 in violation of : PREP
 in what : CONJ
 in which : CONJ[@rel]
@@ -2242,6 +2263,7 @@ insider account : NOUN
 insofar as : CONJ
 instagram account : NOUN
 instead of : PREP
+institutional racism : NOUN
 institutional reform : NOUN
 insurgent group : NOUN
 intelligence official : NOUN
@@ -2327,8 +2349,8 @@ join forces with : VERB
 joint bail deal : NOUN
 joint military exercise : NOUN
 judge, jury, and executioner : NOUN
-judical overshight : NOUN
 judge’s decision : NOUN
+judicial oversight : NOUN
 judiciary blow : NOUN
 juicy tale : NOUN
 just a little bit : ADV
@@ -2461,6 +2483,7 @@ lt. gov. : NOUN
 lure shoppers through their doors : VERB
 magazine weekly : NOUN
 main counter : NOUN
+main defendant : NOUN
 main focus : NOUN
 main lobby : NOUN
 main trading partner : NOUN
@@ -2571,6 +2594,7 @@ missile force : NOUN
 missile program : NOUN
 missile system : NOUN
 missile technology : NOUN
+moderate approach : NOUN
 modern civilization : NOUN
 molten lava : NOUN
 molten rock : NOUN
@@ -2646,8 +2670,10 @@ nationwide driving ban : NOUN
 nationwide protest : NOUN
 nationwide rallies : NOUN[:plur]
 native soil : NOUN
+nato leaders : NOUN[:plur]
 natural causes : NOUN[:plur]
 natural disaster : NOUN
+natural gas pipeline : NOUN
 navy submarine : NOUN
 nearly a century : NOUN
 negotiating table : NOUN
@@ -2709,6 +2735,7 @@ oasis of opportunity : NOUN
 obstacles to trade : NOUN[:plur]
 obstruct justice : VERB
 ocean water : NOUN
+of between : PREP
 of how : CONJ
 of its kind : ADJ
 of that : ADJ [$trlg,prd] 0
@@ -2829,6 +2856,7 @@ over social media : ADV
 over the country : ADV
 over the course of : PREP
 over the last year : ADV
+over the next week : ADV
 over the weekend : ADJ
 over there : ADV
 over whether : CONJ
@@ -2882,6 +2910,7 @@ perturber : NOUN
 petition drive : NOUN
 pharma giant : NOUN
 phone interview : NOUN
+photo shoot : NOUN
 photoshop : NOUN
 physical symptoms : NOUN[:plur]
 piano four hands : NOUN
@@ -3095,6 +3124,8 @@ research firm : NOUN
 research paper : NOUN
 residential floor : NOUN
 residential neighborhood : NOUN
+resignation letter : NOUN
+resignation photo : NOUN
 resounding victory : NOUN
 respective jurisdictions : NOUN[:plur]
 restore lifelines : VERB
@@ -3183,6 +3214,7 @@ second thoughts : NOUN[:plur]
 secret campaign fund : NOUN
 secret prison : NOUN
 security adviser : NOUN
+security agency : NOUN
 security checkpoint : NOUN
 security clearance : NOUN
 security council sanction : NOUN
@@ -3487,6 +3519,7 @@ the early stages : NOUN[:plur]
 the end of civilization : NOUN
 the end of this week : NOUN
 the entirety : NOUN
+the fact that : CONJ
 the fifth amendment : NOUN
 the firings : NOUN[:plur]
 the first in the world : NOUN
@@ -3578,6 +3611,7 @@ to snapchat : ADV
 to the satisfaction of : PREP
 to the tune of : PREP
 to where : CONJ
+to which : CONJ[@rel]
 together with : PREP
 token black : NOUN
 top 40 : NUM
@@ -3620,6 +3654,7 @@ trove of information : NOUN
 trump campaign adviser : NOUN
 trump inauguration : NOUN
 trump's nickname : NOUN
+tunnel system : NOUN
 turkish currency : NOUN
 turkish politics : NOUN
 turn himself in : VERB
@@ -3751,6 +3786,7 @@ volcano eruption : NOUN
 vote for : VERB
 vulcanologist : NOUN
 wage and hour violation : NOUN
+walk out : NOUN - -3
 war dead : NOUN
 war memorial : NOUN
 warfighter : NOUN
@@ -3767,6 +3803,7 @@ weekly news review : NOUN
 weeks in, : ADV
 weigh in on : VERB
 weightiest : ADJ
+welcome breakfast : NOUN
 western conference : NOUN
 wet, heavy snow : NOUN
 what had been an : DET
@@ -3830,9 +3867,9 @@ with whom : CONJ
 within range of : PREP
 without a permit : ADV
 without ever : CONJ
+without having to go on trial : ADV
 without interference : ADV
 without so much as : CONJ
-without having to go on trial : ADV
 witnesses in the case : NOUN[:plur]
 won : NOUN - -1
 work as advertised : VERB
@@ -4365,6 +4402,7 @@ below-average : ADJ
 best-selling : ADJ
 big-box : ADJ
 big-government : ADJ
+big-shot : NOUN
 big-shot : ADJ
 bill-to : ADJ
 billion-dollar : ADJ
@@ -6380,6 +6418,7 @@ Tex : NOUN
 Team Lacoste : NOUN
 Texans : NOUN
 Tham Luang : NOUN
+The Art of the Deal : NOUN
 the Church of the Holy Sepulchre : NOUN[:det]
 the Big Island : NOUN
 the city of Ventura : NOUN[:det]
