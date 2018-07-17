@@ -15,6 +15,7 @@ clearest : ADJ[%est]
 closest : ADJ[%est] - +1
 fastest : ADJ[%est]
 fullest : ADJ[%est]
+greatest : ADJ[%est]
 happiest : ADJ[%est]
 healthiest : ADJ[%est]
 highest : ADJ[%est]
@@ -51,6 +52,7 @@ appears to be : BE
 appears to be part of : VERB
 are able to : AUXL
 are being talked of as : VERB[^ing]
+are considered standard : VERB[^ed]
 are doing business : VERB[^ing]
 are likely to be : BE
 are responsible for : VERB
@@ -126,6 +128,7 @@ circulating : VERB[^ing]
 civil rights : NOUN
 civilian deaths : NOUN[:plur]
 claiming that : VERB[^ing]
+claiming victory : VERB[^ing]
 classified : VERB[^ed] - +2
 classified memo : NOUN
 cleared : VERB[^ing]
@@ -202,6 +205,7 @@ does : NOUN[:plur] - -1
 does : VERB[^s] - +1
 does : AUXL[^s]
 does not : AUXL[^s]
+does not deliver : VERB[^s]
 doing a back flip : VERB[^ing]
 doing business with : VERB[^ing]
 doing more : VERB[^ing]
@@ -614,6 +618,7 @@ ranging in age : VERB[^ing]
 re-emerged : VERB[^ed]
 re-emerging : VERB[^ing]
 reached out : VERB[^ed]
+received word : VERB[^ed]
 recording : VERB[^ing] - -1
 recused from handling the case : VERB[^ed]
 readon : VERB =read on
@@ -756,6 +761,7 @@ suspected murder : NOUN
 suspected of : CONJ
 sweeping : VERB[^ing]
 swept across : VERB[^ed]
+switching positions : VERB[^ing]
 swooping : ADJ[%ing] - +1
 swooping : VERB[^ing]
 sworn : VERB[^ed]
@@ -1016,6 +1022,7 @@ about to : TO
 about when : CONJ
 about whether : CONJ
 about why : CONJ
+above estimates : ADV
 above the law : ADJ
 above water : ADJ
 abrupt pivot : NOUN
@@ -1029,6 +1036,7 @@ according to : PREP
 achieve the ultimate deal : VERB
 achingly : ADV [$deg] 0
 across the country : ADV
+across the nation : ADV
 across the pacific : ADV
 across the state : ADV
 across the us : ADV
@@ -1036,11 +1044,13 @@ act of definance : NOUN
 acting gov. : NOUN
 active shooter : NOUN
 additional charges : NOUN[:plur]
+adjusted second quarterly profit : NOUN
 adm. : NOUN
 administration official : NOUN
 administration policcy : NOUN
 adult film star : NOUN
 adulterous affair : NOUN
+advance signal : NOUN
 advertising boycott : NOUN
 advocacy group : NOUN
 aerial demonstration : NOUN
@@ -1251,6 +1261,7 @@ before taking office : ADV
 before the ink could dry : ADV
 before which : CONJ
 before, during, or after : CONJ
+behind bars : ADV
 belief that : NOUN (xtht)
 below the ocean's surface : ADV
 besieged area : NOUN
@@ -1449,6 +1460,7 @@ clandestine officer : NOUN
 classified information : NOUN
 clean break : NOUN
 clean energy : NOUN
+clean split : NOUN
 clerical rule : NOUN
 climactic moment : NOUN
 close cooperation : NOUN
@@ -1736,6 +1748,7 @@ electrical grid : NOUN
 electricity generation system : NOUN
 elephant trophy : NOUN
 emergencies chief : NOUN
+emergency session : NOUN
 emergency talks : NOUN[:plur]
 end a stalemate : VERB
 end efforts : VERB
@@ -1755,6 +1768,7 @@ estimative : ADJ
 ethical question : NOUN
 eu summit : NOUN
 european states : NOUN[:plur]
+euroskeptic : NOUN
 evacuation order : NOUN
 even as : CONJ
 even before : CONJ
@@ -2166,6 +2180,7 @@ in conjunction with : PREP
 in connection to : PREP
 in connection with : PREP
 in critical condition : ADV
+in detail : ADV
 in doing so : ADV
 in elected office : ADJ
 in excess of : ADV
@@ -2465,6 +2480,7 @@ live ammunition : NOUN
 live fire : NOUN
 livestock waste : NOUN
 livestream : VERB
+living conditions : NOUN[:plur]
 local hospital : NOUN
 local law enforcement : NOUN
 local man : NOUN
@@ -2496,6 +2512,7 @@ major victory : NOUN
 majoritarianism : NOUN
 majoritarianist : NOUN
 make available : VERB
+make the case : VERB[^dit]
 make the payment to : VERB
 make their voices heard : VERB
 make use of : VERB
@@ -2671,6 +2688,7 @@ nationwide protest : NOUN
 nationwide rallies : NOUN[:plur]
 native soil : NOUN
 nato leaders : NOUN[:plur]
+nato summit : NOUN
 natural causes : NOUN[:plur]
 natural disaster : NOUN
 natural gas pipeline : NOUN
@@ -2752,6 +2770,7 @@ offer diplomatic recognition : VERB
 official central news agency : NOUN
 official confirmation : NOUN
 official figures : NOUN[:plur]
+official home : NOUN
 official news agency : NOUN
 official secrets act : NOUN
 official source : NOUN
@@ -2826,6 +2845,7 @@ opposition fighters : NOUN[:plur]
 opposition leader : NOUN
 opposition party : NOUN
 or else : CONJ
+or even : CONJ
 or more : POSTP[@num] [$trlg] 0
 or more than : ADV[~mod] [$deg] 0
 or not : CONJ
@@ -2898,6 +2918,7 @@ people familiar with the matter : NOUN
 people on facebook : NOUN[:plur]
 pepper social media : VERB
 per hour : ADJ [$trlg,prd] 0
+per share : ADV
 percent chance : NUM[:*r]
 performing arts center : NOUN
 period of time : NOUN
@@ -3169,6 +3190,7 @@ rpg : NOUN
 rules of engagement : NOUN
 ruling party : NOUN
 run out any leads : VERB
+rural facility : NOUN
 russia investigation : NOUN
 russia probe : NOUN
 russian ambassador : NOUN
@@ -3217,6 +3239,7 @@ security adviser : NOUN
 security agency : NOUN
 security checkpoint : NOUN
 security clearance : NOUN
+security concerns : NOUN[:plur]
 security council sanction : NOUN
 security detail : NOUN
 security fence : NOUN
@@ -3708,22 +3731,26 @@ under consideration : ADV
 under construction : ADJ
 under the country’s flag : ADV
 under the shadow of : PREP
+under which : CONJ
 undercover sting operation : NOUN
 underenforcement : NOUN
 understated : VERB[^ed] - -1
 underutilization : NOUN
 underutilize : VERB
 underwater evacuation : NOUN
+undiplomatic advance signals : NOUN[:plur]
 unexplored depths : NOUN
 unfair media : NOUN
 unidentified source : NOUN
 unilateral action : NOUN
 union force : NOUN
+unique privileges : NOUN[:plur]
 united states department of justice : NOUN
 united states military : NOUN
 unity deal : NOUN
 unlikely to be persuaded : ADJ
 unpalatable deal : NOUN
+unprecedented meeting : NOUN
 unsafe condition : NOUN
 unscheduled sweep : NOUN
 unsettled weather : NOUN
@@ -3775,6 +3802,7 @@ veto any deals : VERB
 vice presidential candidate : NOUN
 video footage : NOUN
 violent assault : NOUN
+vip section : NOUN
 viral video : NOUN
 virginia senate : NOUN
 visible presence : NOUN
@@ -3812,6 +3840,7 @@ what he said was a : DET
 what i have stood for : NOUN
 what is today : ADV
 what it called a : DET
+what it calls the : DET
 what it has learned : NOUN
 what it’s doing : NOUN
 what looks like an : DET
@@ -3861,6 +3890,7 @@ with knowledge of the incident : ADJ
 with links to : PREP
 with little experience : ADJ
 with no regard to : CONJ
+with or even before : CONJ
 with or without : PREP
 with what : CONJ
 with whom : CONJ
@@ -4043,6 +4073,7 @@ centred on : VERB[^ed]
 change at anytime : VERB
 chief scout executive : NOUN
 Chinese cheating : NOUN
+Columbus Ohio : NOUN
 comedic : ADJ
 confrontational move : NOUN
 could be heard through the doors : VERB[^ed]
@@ -4092,6 +4123,7 @@ former prosecutor : NOUN
 from on : PREP
 from the equation : ADV
 great new plan : NOUN
+greatest allies : NOUN[:plur]
 group travel discount : NOUN
 gun group : NOUN
 had a candidate reach : VERB[^ed]
@@ -4182,6 +4214,7 @@ scandalous affair : NOUN
 Scarborough intern Lori Klausutis : NOUN
 Scout Me in : ADJ
 seabed hunt : NOUN
+sent some undiplomatic advance signals : VERB[^ed]
 sinai mosque : NOUN
 small collection of buildings : NOUN
 so loud : ADJ
@@ -4199,6 +4232,7 @@ talked to his mother : VERB[^ed,*r]
 Tampa police : NOUN
 tariff threat : NOUN
 that has killed : THTV
+that have threatened : THTV
 that is reminiscent of : THTV
 that killed : THTV
 that led to panic : THTV
@@ -4246,6 +4280,7 @@ when the attack occurred : ADV [$cond,cmpd] 0
 while at the home : ADV
 with what we now know to be : PREP
 win leverage : VERB
+withdrawal from the European Union : NOUN
 worked to keep : VERB[^ed]
 would ok : VERB
 
@@ -5590,6 +5625,7 @@ Abu Dhabi : NOUN
 AC/DC : NOUN
 Adam Gruler : NOUN
 Adolph Hitler : NOUN
+Adun Sam-On : NOUN
 Adrian : NOUN
 Advanced Step in Innovative Mobility : NOUN
 Affordable Care Act : NOUN
@@ -5682,6 +5718,7 @@ Bret Baier : NOUN
 BREXIT : NOUN
 BREXIT deal : NOUN
 BREXIT negotiator : NOUN
+BREXIT plan : NOUN
 BREXIT supporter : NOUN
 Brian Shaw : NOUN
 British government : NOUN
@@ -6038,6 +6075,7 @@ Kinder Morgan : NOUN
 Kislyak : NOUN
 Kirsten Gillibrand : NOUN
 Kristen : NOUN
+Kru Nice : NOUN
 Ku Klux Klan : NOUN
 Kushner : NOUN
 La David Johnson : NOUN
@@ -6438,6 +6476,7 @@ the Met Office : NOUN[:det]
 the Mid-Atlantic : NOUN[:det]
 the NAFT region : NOUN[:det]
 the News International : NOUN[:det]
+the Northern Neck Regional Jail : NOUN
 The Northwest Indiana Times : NOUN[:det]
 the NRA : NOUN[:det]
 the Rim of the Pacific exercise : NOUN
