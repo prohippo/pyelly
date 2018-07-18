@@ -121,6 +121,7 @@ carrying out : VERB[^ing]
 carted away : VERB[^ed]
 caught : VERB[^ed] [$trns] 0
 caught a big break : VERB[^ed]
+caught speeding : VERB[^ed]
 caught wind : VERB[^ed]
 centered around : VERB[^ed]
 charged with : VERB[^ed]
@@ -661,6 +662,7 @@ rewritten : VERB[^ed]
 risen : VERB[^ed]
 rolled back : VERB[^ed]
 rose : VERB[^ed,*x] - +2
+rounds of golf : NOUN[:plur]
 ruled in favor of : VERB[^ed]
 rung : VERB[^ed]
 rushed in : VERB[^ed]
@@ -962,6 +964,7 @@ went_on : VERB[^ed] =went on
 2016 election : NOUN
 2016 election meddling : NOUN
 2016 presidential campaign : NOUN
+2016 u.s. presidential election : NOUN
 24/7 : ADJ - +2
 2nd amendment : NOUN
 2nd half : NOUN
@@ -1304,6 +1307,7 @@ body cam video : NOUN
 body camera : NOUN
 body camera video : NOUN
 body of water : NOUN
+bodycam footage : NOUN
 boil over : VERB
 boiling point : NOUN
 bond market : NOUN
@@ -1491,6 +1495,7 @@ cmdr. : NOUN
 coal baron : NOUN
 coalition talks : NOUN[:plur]
 coast guard : NOUN
+coin-toss app : NOUN
 col. : NOUN
 cold air : NOUN
 college graduate : NOUN
@@ -1583,7 +1588,6 @@ criminal illegal alien : NOUN
 criminal indictment : NOUN
 criminal investigation : NOUN
 criminal liability : NOUN
-criminal prosecution : NOUN
 criminal wrongdoing : NOUN
 criteria : NOUN[:plur]
 critical battle : NOUN
@@ -1651,6 +1655,7 @@ delegitimize : VERB
 demand the release of : VERB
 demilitarization : NOUN
 democracy icon : NOUN
+democratic congressional campaign committee : NOUN
 democratic nominee : NOUN
 democratic party ideas : NOUN[:plur]
 democratic republic : NOUN
@@ -1660,6 +1665,7 @@ denuclearization : NOUN
 denuclearize : VERB
 department of public safety : NOUN
 deployment of missiles : NOUN
+deputy attorney general : NOUN
 deputy campaign chairman : NOUN
 deputy director general : NOUN
 deputy justice minister : NOUN
@@ -1719,6 +1725,7 @@ dr. : NOUN
 draft treaty : NOUN
 dramatic concessions : NOUN[:plur]
 dramatic scene : NOUN
+dramatic spectacle : NOUN
 draw attention to : VERB
 draw support : VERB
 drier air : NOUN
@@ -1981,6 +1988,7 @@ get into trouble : VERB
 get shot : VERB
 get to the bottom of : VERB
 give them new life : VERB
+glad-handing : ADJ
 global attention : NOUN
 global financial crisis : NOUN
 global leadership vacuum : NOUN
@@ -2079,6 +2087,7 @@ helmet camera : NOUN
 help build trust : VERB
 help defeat : VERB
 helpline : NOUN
+helsinki summit : NOUN
 helter skelter : NOUN
 her royal highness : DEM[@ind]
 here you go : VERB
@@ -2107,6 +2116,7 @@ hold up in court : VERB
 holiday plans : NOUN
 hollywood producer : NOUN
 holster : VERB
+holy crap : MISC
 home detention : NOUN
 home state : NOUN
 home to their families : ADV
@@ -2387,7 +2397,6 @@ joint bail deal : NOUN
 joint military exercise : NOUN
 judge, jury, and executioner : NOUN
 judge’s decision : NOUN
-judicial oversight : NOUN
 judiciary blow : NOUN
 juicy tale : NOUN
 just a little bit : ADV
@@ -2566,6 +2575,7 @@ marketing campaign : NOUN
 marketing firm : NOUN
 mass arrests : NOUN[:plur]
 mass breach : NOUN
+mass demonstration : NOUN
 mass exodus : NOUN
 mass killing : NOUN
 mass shooting : NOUN
@@ -2856,6 +2866,7 @@ on which : CONJ
 once in a while : ADV
 one thing that everyone can agree on : NOUN
 ongoing contest : NOUN
+online persona : NOUN
 online piracy : NOUN
 online survey : NOUN
 only after : CONJ
@@ -2894,6 +2905,7 @@ out of step : ADJ
 out of step with : PREP
 out of the hands of : PREP
 out of the realm of possibility : ADJ
+out of the spotlight : ADV
 outdated technology : NOUN
 outer atmosphere : NOUN
 outlet for conservative voices : NOUN
@@ -2983,7 +2995,6 @@ police brutality : NOUN
 police corruption : NOUN
 police corruption case : NOUN
 police director : NOUN
-police force : NOUN
 policy and legislative changes : NOUN[:plur]
 policy shift : NOUN
 policy views : NOUN[:plur]
@@ -3106,6 +3117,7 @@ racist remark : NOUN
 radical hindu group : NOUN
 radical plan : NOUN
 radiochemical laboratory : ADJ
+raft of indictments : NOUN[:*r]
 railway bridge : NOUN
 railway service : NOUN
 raise funds : VERB
@@ -3234,9 +3246,11 @@ russian diplomat : NOUN
 russian double agent : NOUN
 russian government : NOUN
 russian government information : NOUN
+russian intelligence officer : NOUN
 russian interference : NOUN
 russian meddling : NOUN
 russian military : NOUN
+russian military officer : NOUN
 russian military unit : NOUN
 russian officials : NOUN[:plur]
 russian oligarch : NOUN
@@ -3352,7 +3366,6 @@ sincere hope : NOUN
 sit in the gallery : VERB
 skaky start : NOUN
 slbm : NOUN
-slow down : VERB
 small business : NOUN
 so as to : TO
 so grateful : ADJ
@@ -3918,6 +3931,7 @@ will take us : VERB
 willing to : TO
 win a title : VERB
 win agreement : VERB
+windsor castle : NOUN
 wine review : NOUN
 wing flap : NOUN
 winter weather advisory : NOUN
@@ -3946,6 +3960,7 @@ won : NOUN - -1
 work as advertised : VERB
 workers' party : NOUN
 working-level talks : NOUN
+world stage : NOUN
 world’s most : ADV
 world’s worst : ADJ
 would have no choice but to : AUXL
@@ -4116,11 +4131,12 @@ chief scout executive : NOUN
 Chinese cheating : NOUN
 Columbus Ohio : NOUN
 comedic : ADJ
-confrontational move : NOUN
-could be heard through the doors : VERB[^ed]
-complex new modeling : NOUN
 complained to friends : VERB[^ed,*r]
+complex new modeling : NOUN
+conspiring to hack : VERB[^ing]
+confrontational move : NOUN
 continued airstrikes and fighting : NOUN
+could be heard through the doors : VERB[^ed]
 countered by : VERB[^ed]
 counts of murder : NOUN[:plur]
 davis jr. : NOUN
@@ -4184,6 +4200,7 @@ improperly collected information : NOUN
 in an interview : ADV
 in mid-march : ADV
 in remarks : ADV
+in the wake : PREP =in the wake of
 in this piece that follows : ADV
 in turning around : NOUN[:prep]
 incorrectly reported : VERB[^ed]
@@ -4810,7 +4827,6 @@ half-crushed : ADJ
 half-dozen : ADJ
 half-empty : ADJ
 half-full : ADJ
-half-hour : NOUN
 half-inch : NOUN
 half-mast : ADJ
 half-mile : NOuN
@@ -5668,6 +5684,7 @@ Abu Dhabi : NOUN
 AC/DC : NOUN
 Adam Gruler : NOUN
 Adolph Hitler : NOUN
+Adul Sam-On : NOUN
 Adun Sam-On : NOUN
 Adrian : NOUN
 Advanced Step in Innovative Mobility : NOUN
@@ -5786,6 +5803,7 @@ Center for Idaho History and Politics : NOUN
 Central Michigan University : NOUN
 CFPB : NOUN
 Charles : NOUN
+Charles E. Schumer : NOUN
 Charlie : NOUN
 Charlotte-Mecklenburg : ADJ
 Charlotte Douglas : NOUN
@@ -5826,6 +5844,7 @@ Convertible Cumulative Preference : NOUN
 Coolio Earth Partnership : NOUN
 Corey Lewandowski : NOUN
 Corpus Christi : NOUN
+Courtney Brown : NOUN
 Côte d'Azur : NOUn
 Cottarelli : NOUN
 Crafty : NOUN
@@ -5848,6 +5867,7 @@ Dapchi Government Girls Science and Technical College : NOUN
 Dave Stone : NOUN
 David Cay Johnson : NOUN
 David Shulkin : NOUN
+Debbie Wasserman Schultz : NOUN
 Defence Research Facility : NOUN
 Delta Air Lines : NOUN
 Democratic National Committee : NOUN
@@ -6002,6 +6022,7 @@ Greta Van Susteren : NOUN
 Grey Advertising : NOUN
 Gridiron Club : NOUN
 Gruler : NOUN
+Guccifer 2.0 : NOUN
 Guinness : NOUN
 Hanks : NOUN
 Hans : NOUN
@@ -6266,6 +6287,7 @@ National Labor Relations Act : NOUN
 Naval Criminal Investigative Service : NOUN
 NBA : NOUN
 NBC : NOUN
+NBC affiliate : NOUN
 NBC News : NOUN
 NBC News MACH : NOUN
 NBC reporter : NOUN
@@ -6365,6 +6387,7 @@ Qian : NOUN
 Qualcomm : NOUN
 Quds Force : NOUN
 Queen Elizabeth : NOUN
+Queen Elizabeth II : NOUN
 Queens : NOUN
 Queens Park : NOUN
 Quinipiac : NOUN
@@ -6392,9 +6415,11 @@ Rob Porter : NOUN
 Robert Forrest : NOUN
 Robert Kennedy : NOUN
 Robert Mueller : NOUN
+Robert Muller : NOUN =Robert Mueller
 Robert S. Mueller III : NOUN
 Rockette : NOUN
 Rockwell Automation : NOUN
+Rod Rosenstein : NOUN
 Rodrigo Duterte : NOUN
 Roe v. Wade : NOUN
 Roger Self : NOUN
@@ -6428,6 +6453,7 @@ Santa Barbara : NOUN
 Santa Paula : NOUN
 São Paulo : NOUN
 Sara Palin : NOUN
+Sarah Webb : NOUN
 Saras : NOUN
 Sarah Huckabee Sanders : NOUN
 Sarmat missile system : NOUN
@@ -6575,6 +6601,7 @@ Trump organization : NOUN
 trump presidency : NOUN
 Trump Soho hotel : NOUN
 Trump Tower : NOUN
+Trump Turnberry : NOUN
 Trump’s travel ban : NOUN
 Ty Cobb : NOUN
 Tyshon Demontrea Johnson : NOUN
@@ -14449,6 +14476,7 @@ disastrously : ADV [$prd] 0
 disavow : VERB
 disbar : VERB
 disbelief : NOUN
+disseminate : VERB
 disc : NOUN
 disc brake : NOUN
 disc drive : NOUN
