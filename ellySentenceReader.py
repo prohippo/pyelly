@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellySentenceReader.py : 28may2018 CPM
+# ellySentenceReader.py : 17jul2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -344,6 +344,7 @@ class EllySentenceReader(object):
                         if nAN > 1:
                             break
                 elif c in QUOs and lc in Stops:
+#                   print 'stop+quote'
                     z = self.inp.read()
                     if z in RBs:
                         sent.append(z)
@@ -352,6 +353,11 @@ class EllySentenceReader(object):
                             sent.append(y)
                         elif not ellyChar.isWhiteSpace(y):
                             self.inp.unread(y)
+                        inBrkt = False
+                        break
+                    elif z in QUOs:
+#                       print 'stop+quote+quote'
+                        sent.append(z)
                         inBrkt = False
                         break
                     self.inp.unread(z)
