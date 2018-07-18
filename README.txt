@@ -603,10 +603,13 @@ Release Notes:
                       update documentation
                       add Google News data and clean up
  1.4.32  - 08jul2018  fix delimiter bug in vocabularyTable and vocabularyElement
+                      fix bug not recognizing .'" as a stop for sentence
+                      handle soft hyphens properly in ellyCharInputStream
                       improve inflectional stemming
                       extend and clean up "marking" rules
                       clean up "marking" integration test with news data
                       update documentation
+                      add Google News data and clean up
                       
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
