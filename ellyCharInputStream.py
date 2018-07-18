@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyCharInputStream.py: 06feb2018 CPM
+# ellyCharInputStream.py: 17jul2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -44,6 +44,7 @@ CR = u'\r'        # carriage return
 UN = ellyChar.Lim # undefined Elly char
 END  = u''        # end of input
 HYPH = u'-'       # hyphen
+SHYP = u'\u00AD'  # soft hyphen
 DASH = u'\u2013'  # n-dash
 NBSP = u'\u00A0'  # Unicode no-break space
 ELLP = u'\u2026'  # Unicode horizontal ellipsis
@@ -125,6 +126,12 @@ class EllyCharInputStream(object):
 #           print 'buf=' , self.buf
 
             c = self.buf.pop(0)          # next raw char in buffer
+
+            if c == SHYP:                # ignore soft hyphen
+                if len(self.buf) > 0:
+                    if self.buf[0] == SP:
+                        c = self.buf.pop(0)
+                continue
 
             if not ellyChar.isText(c):   # unrecognizable Elly char?
 #               print 'c=' , '{0:04x}'.format(ord(c))
@@ -458,6 +465,9 @@ if __name__ == '__main__':
         ' - ' ,
         '桂林' ,
         '(1. ) x\n' ,
+        'run' ,
+        ''.join([chr(0xc2) , chr(0xad)]) ,
+        '\nning\n' ,
         'X . . . Y\n' ,
         'Aaa' ,
         'B♭ maj' ,
