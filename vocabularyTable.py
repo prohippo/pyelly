@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 08jul2018 CPM
+# vocabularyTable.py : 28jul2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -39,6 +39,7 @@ import symbolTable
 import ellyChar
 import ellyException
 import definitionLine
+import deinflectedMatching
 import vocabularyElement
 import syntaxSpecification
 import featureSpecification
@@ -54,7 +55,7 @@ source     = '.v.elly'              # input vocabulary text file suffix
 
 nerr = 0                            # shared error count among definition methods
 
-initChr = [ u'.' , u'-' , u'"' , ellyChar.LDQm , u',' , u'%' , ellyChar.MDSH , ellyChar.HYPH ]
+initChr = [ u'.' , u'-' , u'"' , u"'" , ellyChar.LDQm , u',' , u'%' , ellyChar.MDSH , ellyChar.HYPH ]
 
 def delimitKey ( t ):
 
@@ -133,20 +134,6 @@ def _err ( s='malformed vocabulary input' ):
     nerr += 1
     print >> sys.stderr , '** vocabulary error:' , s
     raise ellyException.FormatFailure('in vocabulary entry')
-
-def _terminate ( c ):
-
-    """
-    check char for termination of match
-
-    arguments:
-        c  - char to check
-
-    returns:
-        True if termination, False otherwise
-    """
-
-    return not ellyChar.isLetterOrDigit(c)
 
 _smfchk = [None]*symbolTable.NMAX     # for extra consistency check
 
@@ -487,7 +474,7 @@ class Result(object):
 
         return unicodedata.normalize('NFKD',unicode(self)).encode('ascii','ignore')
 
-class VocabularyTable(object):
+class VocabularyTable(deinflectedMatching.DeinflectedMatching):
 
     """
     interface to external data base
@@ -495,14 +482,13 @@ class VocabularyTable(object):
     attributes:
         cdb    - SQLite db connection
         cur    - SQLite db cursor
-        stm    - stemmer
 
         string - (inherited from SimpleTransform)
 
         endg   - any ending removed for match
     """
 
-    def __init__ ( self , name , stem=None ):
+    def __init__ ( self , name ):
 
         """
         initialization
@@ -510,13 +496,12 @@ class VocabularyTable(object):
         arguments:
             self  -
             name  - system name
-            stem  - stemmer for matching
         """
 
+        super(VocabularyTable,self).__init__()
         database = name + vocabulary
         self.cdb = None
         self.cur = None
-        self.stm = None
         if not os.path.isfile(database):
             return
 
@@ -525,8 +510,6 @@ class VocabularyTable(object):
         try:
             self.cdb = dbs.connect(database)
             self.cur = self.cdb.cursor()
-            self.stm = stem
-#           print 'stemmer=' , self.stm
         except dbs.Error , e:
             print >> sys.stderr , 'FATAL' , e
             sys.exit(1)
@@ -566,8 +549,6 @@ class VocabularyTable(object):
         try:
 
             rs = [ ]                      # for results
-
-#           print '_ stm=' , self.stm
             akey = key.lower()            # convert to ASCII lower case for lookup
 
 #           print 'key=' , type(akey) ,akey
@@ -590,99 +571,6 @@ class VocabularyTable(object):
         except StandardError , e:
             print >> sys.stderr , 'general error:' , e
             return None
-
-    def doMatchUp ( self , vcs , txs ):
-
-        """
-        match current text with vocabulary entry, possibly removing final inflection
-        (this method assumes English; override it for other languages)
-
-        arguments:
-            self  -
-            vcs   - vocabulary entry chars
-            txs   - text chars to be matched
-
-        returns:
-            count of txs chars matched, 0 on mismatch
-        """
-
-#       print 'match up vcs=' , vcs
-        self.endg = ''                       # default inflection
-        lvc = len(vcs)
-        ltx = len(txs)
-        if ltx < lvc: return 0
-
-        nr = icmpr(vcs,txs)                  # do match on lists of chars
-#       print 'nr=' , nr , 'nt='
-#       print 'txs=' , txs , 'ltx=' , ltx
-
-        if nr == 0:                          # vocabulary entry fully matched?
-            if ltx == lvc:
-                return ltx                   # if no more text, done
-            dnc = ltx - lvc                  # otherwise, check text past match
-#           print 'dnc=' , dnc
-
-            if ellyChar.isApostrophe(txs[lvc]):             # apostrophe check
-                if dnc > 1 and txs[lvc+1] in [ 's' , 'S' ]: # 'S found?
-                    if dnc == 2 or _terminate(txs[lvc+2]):
-                        self.endg = '-\'s'                  #
-                        return lvc + 2                      # if so, remove ending
-                    return 0
-                if txs[lvc-1] in [ 's' , 'S' ]:             # S' found?
-                    if dnc == 1 or _terminate(txs[lvc+1]):
-                        self.endg = '-\'s'                  # put in implied S!
-                        return lvc + 1                      # if so, remove ending
-                    return 0
-                return lvc                                  # break at
-            if _terminate(txs[lvc]):
-                return lvc                                  # successful match
-
-#       alphanumeric follows match either full or partial
-#       try inflectional stemming to align a match here
-
-        if self.stm == None:
-            return 0                     # if no stemmer, no match possible
-
-        k = lvc - nr + 1                 # get extent of text to match against
-        while k < ltx:
-            if _terminate(txs[k]):
-                break                    # find current end of text to match
-            k += 1
-        n = k - 1
-        while n > 0:
-            if _terminate(txs[n]):
-                n += 1
-                break                    # find start of stemming
-            n -= 1
-
-#       print 'k=' , k , 'n=' , n , 'nr=' , nr
-
-        if k - n < nr:                   # check if stemming could help match
-            return 0
-
-        tc = txs[k-1]                    # last char at end of text to match
-#       print 'tc=' , tc
-        if tc != 's' and tc != 'd' and tc != 'g':
-            return 0                     # only -S, -ED, and -ING checked
-
-        tw = ''.join(txs[n:k])           # segment of text for stemming
-        sw = self.stm.simplify(tw)       # inflectional stemming
-#       print 'sw=' , sw , 'tw=' , tw
-        if len(sw) + n != lvc:           # stemmed result should now align
-            return 0                     #   with vocabulary entry
-
-#       print 'nr=' , nr
-        ns = 0 if nr == 0 else icmpr(vcs[-nr:],sw[-nr:]) # continue from previous match
-#       print 'ns=' , ns
-        if ns == 0:                      # mismatch gone?
-            self.endg = ( '-s'   if tc == 's' else
-                          '-ed'  if tc == 'd' else
-                          '-ing' )       # indicate ending removed
-#           print 'txs=' , txs
-#           print 'ltx=' , ltx , 'endg=' , self.endg
-            return k                     # successful match
-
-        return 0                         # no match by default
 
     def lookUp ( self , chrs , keyl ):
 
@@ -762,7 +650,7 @@ class VocabularyTable(object):
             res.append(rs)            # add to current result list
 
         rem = [ ]
-#       print 'len(res)=' , len(res) , res
+#       print 'len(res)=' , len(res)
         if len(res) > 1:              # check for special case where term with and
             for re in res:            # without inflection is in vocabulary
 #               print 're=' , re
@@ -869,8 +757,6 @@ def listDBKeys ( dbso ):
 if __name__ == '__main__':
 
     import ellyDefinitionReader
-    import ellyConfiguration
-    import inflectionStemmerEN
 
     from ellyPickle import load
     from ellyBase   import rules
@@ -903,15 +789,6 @@ if __name__ == '__main__':
                 print ''
             print '--'
 
-    try:
-        if ellyConfiguration.language == 'EN':
-            ustem = inflectionStemmerEN.InflectionStemmerEN()
-        else:
-            ustem = None
-    except ellyException.TableFailure:
-        print >> sys.stderr , 'inflectional stemming failure'
-        sys.exit(1)
-
     nams = sys.argv[1] if len(sys.argv) > 1 else 'test'
     dfns = nams + source
     limt = sys.argv[2] if len(sys.argv) > 2 else 24
@@ -938,11 +815,11 @@ if __name__ == '__main__':
         build(nams,ustb,inp)             # create database from vocabulary table
     except ellyException.TableFailure:
         print >> sys.stderr , 'exiting'
-        sys.exit(1)                        # quit on failure
+        sys.exit(1)                      # quit on failure
 
-    uvtb = VocabularyTable(nams,ustem)     # load vocabulary table just created
+    uvtb = VocabularyTable(nams)         # load vocabulary table just created
 
-    ucdb = uvtb.cdb                        # get database for table
+    ucdb = uvtb.cdb                      # get database for table
     if ucdb == None:
         print >> sys.stderr , 'no vocabulary table found'
         sys.exit(1)
