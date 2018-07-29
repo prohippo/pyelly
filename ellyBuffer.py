@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBuffer.py : 05oct2017 CPM
+# ellyBuffer.py : 28jul2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -259,7 +259,7 @@ class EllyBuffer(object):
     def findSeparator ( self , skip=0 ):
 
         """
-        scan for one of a list of chars in buffer
+        scan for one of a list of separator chars in buffer
 
         arguments:
             self  -
@@ -601,10 +601,14 @@ class EllyBuffer(object):
 
         k = 0                   # number of chars for next token
 
-        if self.match(MIN):     # check for hyphen for word fragment
+        cz = ' ' if ln == 0 else self.buffer[0]
+        if cz in [ MIN , PLS ]:
             k = self.findSeparator(1)
-        elif self.match(PLS):   # check for Elly prefix
-            k = self.findSeparator(1)
+        elif cz == APO:
+            if ln > 2 and self.buffer[1].lower() == 's' and self.buffer[2] in separators:
+                k = 2
+            else:
+                k = 1
         elif self.match(DOT):   # check for period
             k = 1
         elif self.match(UELP):  # check for Unicode ellipsis
