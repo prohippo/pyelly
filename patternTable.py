@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# patternTable.py : 10apr2018 CPM
+# patternTable.py : 28jul2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -400,16 +400,14 @@ class PatternTable(object):
 
                     if lk.nxts < 0: # final state?
                         if lk.nxts == -2: m = 0  # last part of match not counted
+#                       print 'state=' , state , unicode(lk)
 #                       print 'flags=' , lk.synf , '/' , lk.semf
                         if tree.addLiteralPhraseWithSemantics(lk.catg,lk.synf,lk.semf,lk.bias,
                                                               cap=capd): # make phrase
                             mtls = mtl + m
+#                           print 'success!' , 'mtls=' , mtls
                             tree.lastph.lens = mtls                      # save its length
 #                           print 'match state=' , state , 'length=' , mtls
-#                       else:
-#                           print 'lastph=' , tree.lastph
-#                           print 'seg=' , sg
-#                           print 'cat=' , lk.catg, 'synf=' , lk.synf
 
 #               print 'ix=' , ix , 'nls=' , nls
                 if ix < nls:        # any links not yet checked?
