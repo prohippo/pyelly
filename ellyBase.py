@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 08jul2018 CPM
+# ellyBase.py : 28jul2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -73,7 +73,7 @@ noParseTree = False                     # enable parse tree stub for debugging
 
 # version ID
 
-release = 'v1.4.32'                     # current version of PyElly software
+release = 'v1.5'                        # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -336,7 +336,7 @@ class EllyBase(object):
 #       print '3 redefine=' , redefine
         if redefine: print 'recompiling vocabulary rules'
         try:
-            voc = ellyDefinition.Vocabulary(system,redefine,stb,inflx)
+            voc = ellyDefinition.Vocabulary(system,redefine,stb)
         except ellyException.TableFailure:
             voc = None
             nfail += 1
@@ -418,7 +418,7 @@ class EllyBase(object):
                 self.ptr.startUpX()     # for any initial ... grammar rule
 #               print 'BASE@1 =' , self.sbu.buffer
                 if not self._lookUpNext():
-                    print  >> sys.stderr , 'lookup FAILure'
+                    print >> sys.stderr , 'lookup FAILure'
                     self .ptr.showTokens(sys.stderr)
                     return None         # if next token caused error, quit
 #               print 'BASE@2 =' , self.sbu.buffer

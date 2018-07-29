@@ -610,6 +610,13 @@ Release Notes:
                       clean up "marking" integration test with news data
                       update documentation
                       add Google News data and clean up
+ 1.5     - 30jul2018  increase maximum number of syntactic categories to 112
+                      implement light inflectional stemming in deinflectedMatching
+                      reorganize vocabularyTable with light inflectional stemming
+                      expand PyElly language rules with new compoundTable module
+                      revise integration tests
+                      clean up documentation and diagnostic code
+                      update documentation
                       
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
