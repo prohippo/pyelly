@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# inflectionStemmerEN.py : 07jan2016 CPM
+# inflectionStemmerEN.py : 26jul2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2012, Clinton Prentiss Mah
 # All rights reserved.
@@ -188,6 +188,9 @@ class InflectionStemmerEN(ellyStemmer.EllyStemmer):
         exceptions:
             StemmingError
         """
+
+        if token.orig[0] == '-':
+            return False
 
 #       print 'sLog'
         sts = self.applyLogic(self.sLog,token)         # first try to remove -S
