@@ -4445,4 +4445,11 @@ d:-'s <- BE
 _
   append is
 __
-
+d:'s <- APOS
+_
+  append -'s
+__
+d:ſ  <- APOS
+_
+  append -'s
+__
