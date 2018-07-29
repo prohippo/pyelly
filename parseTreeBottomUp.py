@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBottomUp.py : 24mar2018 CPM
+# parseTreeBottomUp.py : 28jul2018 CPM
 # -----------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -172,9 +172,10 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
             phr   - phrase to insert
         """
 
-#       print 'enqueue:' , phr , len(self.newph) , 'token positions'
+#       print 'enqueue:' , phr , len(self.newph) , 'token position(s)'
 #       self._showQ()
         po = phr.krnl.posn
+#       print '*LEAF' if phr.krnl.lftd == None and phr.krnl.rhtd == None else '*nonLEAF'
         pho = self.newph[po]
 #       print 'po=' , po , 'pho=' , pho
         while pho != None:
@@ -381,7 +382,11 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
 #       print 'unknown phrase'
         r = self._makeLiteralRule(self.gtb.UNKN,ZEROfs)
         r.seqn = -1    # no permanent sequence number
-        return self._addTerminal(r,tokn.isSplit(),tokn.isCapitalized())
+        if not self._addTerminal(r,tokn.isSplit(),tokn.isCapitalized()):
+            return False
+        else:
+            self.lastph.lens = tokn.getLength()
+            return True
 
     ##################################
     # dummy methods to be overridden #
@@ -517,7 +522,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
         arguments:
             self  -
             r     -  basic rule
-            dvdd  -  whether segment has been analyzed
+            dvdd  -  whether segment has been analyzed and divided
             capn  -  capitalization flag
             bias  -  predefined bias
             smfs  -  predefined semantic features
@@ -570,7 +575,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
             cogs  - cognitive
 
         returns:
-            rule for unknown term
+            rule for term not in explicit vocabulary
         """
 
 #       print 'makeLiteralRule typ=' , typ , 'gens=' , gens
