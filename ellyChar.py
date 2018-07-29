@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 07may2018 CPM
+# ellyChar.py : 27jul2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -577,7 +577,7 @@ def findExtendedBreak ( text , offset=0 , nspace=0 ):
     possibly skipping over a specified number of spaces
 
     arguments:
-        text   - what to scan
+        text   - what to scan in text stream
         offset - starting offset
         nspace - how many spaces can be included in scan
     returns:
