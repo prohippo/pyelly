@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyDefinition.py : 29dec2015 CPM
+# ellyDefinition.py : 23jul2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -39,6 +39,7 @@ import nameTable
 import macroTable
 import grammarTable
 import patternTable
+import compoundTable
 import vocabularyTable
 import morphologyAnalyzer
 import conceptualHierarchy
@@ -111,6 +112,7 @@ class Grammar(EllyDefinition):
         gtb   - grammar rules
         ptb   - pattern for syntactic types
         ntb   - personal names
+        ctb   - compound names
         hry   - conceptual hierarchy
         man   - morphology analyzer
         rls   - saved PyElly software ID
@@ -167,6 +169,11 @@ class Grammar(EllyDefinition):
             except ellyException.TableFailure:
                 el.append('name')
 
+            try:
+                self.ctb = compoundTable.CompoundTable(self.stb,self.inpT(system,'t'))
+            except ellyException.TableFailure:
+                el.append('compound')
+
             sa = self.inpT(system,'stl')
             pa = self.inpT(system,'ptl')
             try:
@@ -207,7 +214,7 @@ class Vocabulary(EllyDefinition):
         vtb    - vocabulary table maintained externally
     """
 
-    def __init__ ( self , system , create=False , syms=None , stem=None ):
+    def __init__ ( self , system , create=False , syms=None ):
 
         """
         load vocabulary definitions from text file
@@ -217,7 +224,6 @@ class Vocabulary(EllyDefinition):
             system  - which PyElly application
             create  - whether to create new binary
             syms    - Elly symbols defined for vocabulary
-            stem    - what stemming to use on vocabulary words
 
         exceptions:
             TableFailure on error
@@ -235,7 +241,7 @@ class Vocabulary(EllyDefinition):
                 sysf = system + vocabulary
                 print "loading saved vocabulary rules from" , sysf
 
-            self.vtb = vocabularyTable.VocabularyTable(system,stem)
+            self.vtb = vocabularyTable.VocabularyTable(system)
         except ellyException.TableFailure:
             print >> sys.stderr , 'rule FAILures on vocabulary'
             raise ellyException.TableFailure
@@ -265,6 +271,7 @@ if __name__ == '__main__':
     print grm.gtb
     print grm.ptb
     print grm.ntb
+    print grm.ctb
     print grm.hry
     print grm.man
     for e in grm.errors:
