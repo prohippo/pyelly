@@ -199,6 +199,10 @@ __
 # possessives
 #
 
+d:'s  <- apos
+_
+  append -'s
+__
 d:-'s <- apos
 __
 g:poss->nclu apos

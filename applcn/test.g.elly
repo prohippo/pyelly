@@ -35,6 +35,12 @@ _
 __
 g:sbj  -> np
 __
+g:sbj  -> poss np
+_
+  left
+  append +
+  right
+__
 g:np[:*r,det]  -> det np[:-det]
 _
   trace
@@ -201,6 +207,8 @@ __
 d:-ing <- sufx[^ing]
  >>+
 __
+d:'s <- apos
+__
 d:and <- conj
 __
 d:but <- conj
@@ -210,6 +218,12 @@ d:wha <- noun[:wh]
 __
 d:whu <- noun
  >>[$u]
+__
+g:poss->noun apos
+_
+  left
+  append -
+  right
 __
 g:sent->conj np[:-wh]
 _
