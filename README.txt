@@ -617,6 +617,10 @@ Release Notes:
                       revise integration tests
                       clean up documentation and diagnostic code
                       update documentation
+ 1.5.1   - 03aug2018  replace compoundTable stub with functioning code
+                      fix minor bug in cognitiveDefiner
+                      extend TEST rules
+                      update documentation
                       
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
