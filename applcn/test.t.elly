@@ -1,0 +1,5 @@
+# z.t.elly
+# templates for multiword compounds
+%x := sch,col,inst,acad
+%n at %c : NOUN
+%x of %c : NOUN
