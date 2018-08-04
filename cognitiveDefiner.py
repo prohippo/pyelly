@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# cognitiveDefiner.py : 14sep2017 CPM
+# cognitiveDefiner.py : 02aug2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -187,7 +187,7 @@ def _leftside ( stb , txt , sta ):
 #           print "side:" , side , "test:" , p
 
             try:
-                f = featureSpecification.FeatureSpecification(stb,p,'semantic')
+                f = featureSpecification.FeatureSpecification(stb,p,semantic=True)
             except ellyException.FormatFailure:
                 return _err('bad semantic features to check')
 
