@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 03Aug2018 CPM
+# ellyBase.py : 05Aug2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -65,7 +65,7 @@ _session = '.session.elly.bin'          # for saving session information
 
 # source text file suffixes for language definition rules
 
-_rules      = [ '.g.elly' , '.m.elly' , '.p.elly' , '.n.elly' , '.h.elly' ,
+_rules      = [ '.g.elly' , '.m.elly' , '.p.elly' , '.t.elly' , '.n.elly' , '.h.elly' ,
                 '.stl.elly' , '.ptl.elly' ]
 _vocabulary = [ vocabularyTable.source ]
 
@@ -617,8 +617,8 @@ class EllyBase(object):
 
         """
         try to match in buffer regardless of word boundaries
-        using Elly vocabulary and pattern tables and also
-        running Elly entity extractors
+        using Elly vocabulary, pattern, amd template tables an
+        also running Elly entity extractors
 
         arguments:
             self  -
@@ -645,6 +645,11 @@ class EllyBase(object):
 
         m = d.ptb.match(sb,tr)         # try token by pattern match next
 #       print 'pattern m=' , m
+        if  nspan < m:
+            nspan = m                  # on longer match, update maximum
+
+        m = d.ctb.match(sb,tr)         # try multi-word template  match next
+#       print 'template m=' , m
         if  nspan < m:
             nspan = m                  # on longer match, update maximum
 

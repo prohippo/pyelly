@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyDefinition.py : 23jul2018 CPM
+# ellyDefinition.py : 05aug2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -112,13 +112,13 @@ class Grammar(EllyDefinition):
         gtb   - grammar rules
         ptb   - pattern for syntactic types
         ntb   - personal names
-        ctb   - compound names
+        ctb   - compound entities by template
         hry   - conceptual hierarchy
         man   - morphology analyzer
         rls   - saved PyElly software ID
     """
 
-    def __init__ ( self , system , create , rid ):
+    def __init__ ( self , system , create , rid=None ):
 
         """
         load all definitions from binary or text files
@@ -201,6 +201,7 @@ class Grammar(EllyDefinition):
             self.mtb = gram.mtb  #
             self.gtb = gram.gtb  #
             self.ptb = gram.ptb  #
+            self.ctb = gram.ctb  #
             self.ntb = gram.ntb  #
             self.hry = gram.hry  #
             self.man = gram.man  #
@@ -259,7 +260,7 @@ if __name__ == '__main__':
     print 'PyElly' , idn , ', system=' , nam , 'renew=' , rnw
     print "------------ grammar"
     try:
-        grm = Grammar(nam,rnw,idn)
+        grm = Grammar(nam,rnw)
     except ellyException.TableFailure:
         print >> sys.stderr , 'grammar rules failed to load'
         if rnw: print >> sys.stderr , '  after recompilation'
