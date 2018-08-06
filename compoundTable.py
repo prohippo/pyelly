@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# compoundTable.py : 03aug2018 CPM
+# compoundTable.py : 05aug2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2018, Clinton Prentiss Mah
 # All rights reserved.
@@ -47,19 +47,22 @@ nCat = Catg + 'n' # numeric substring
 cCat = Catg + 'c' # capitalized alphabetic substring
 uCat = Catg + 'u' # uncapitalized
 bCat = Catg + 'b' # irregular form of TO BE
-pCat = Catg + 'p' # particle or preposition
+pCat = Catg + 'p' # common particle or preposition
 
 Tdel = [ '.' , ' ' , '-' ] # delimiters for template elements
 
 #
 # predefined classes of template elements
-# (these are specific to English!)
+# (these are English only!)
 #
 
 preClass = {
     bCat : ['is','am','are','was','were','be','being','been'] ,
     pCat : ['in','of','on','for']
 }
+
+#
+########
 
 def numrc ( s ):
     """
@@ -111,7 +114,7 @@ def bound ( segm ):
         c = segm[ll]
         if c in [ ellyChar.ELLP , ellyChar.NDSH , ellyChar.MDSH ]:
             break
-        if c == ',' and ll < lm - 1:
+        if c == ',' and ll < lm - 1 and segm[ll+1] == ' ':
             break
         ll += 1
 #   print 'll=' , ll , ', lm=' , lm
@@ -141,10 +144,14 @@ def divide ( segm , offs ):
     lm = len(segm)
     ll = offs
     while ll < lm:
-        if segm[ll] in [ ' ' , '-' ]:
+        if segm[ll] in [ ' ' , '-' , '.']:
             break
         ll += 1
     return ll - offs
+
+#
+############ class definitions
+#
 
 class Template(object) :
 
@@ -390,9 +397,9 @@ class CompoundTable(deinflectedMatching.DeinflectedMatching):
         if cod in self.cfns:
             f = self.cfns[cod]
             if f != None:
-                return f(chs)
+                return f(chs)  # saved functions will scan char list
 
-        chx = u''.join(chs)
+        chx = u''.join(chs)    # need string for lookup with "in"
 
         if cod in preClass:
             return chx in preClass[cod]
@@ -426,6 +433,8 @@ class CompoundTable(deinflectedMatching.DeinflectedMatching):
 
 #       print 'tx=' , tx
 
+#       self.dump()
+
         dv = [ ]
         it = 0
         while it < lim:
@@ -439,7 +448,7 @@ class CompoundTable(deinflectedMatching.DeinflectedMatching):
         nr = 0
         res = [ ]                               # listing of matches
                                                 # with longest match length at start
-
+#       print len(self.tmpl) , 'templates'
         for t in self.tmpl:
             tl = t.listing                      # next template to apply
 #           print 'tl=' ,  tl
@@ -456,6 +465,8 @@ class CompoundTable(deinflectedMatching.DeinflectedMatching):
                 if elm[0] == Catg:              # category element?
 #                   print 'elm=' , elm , dvt[0]
                     if elm[1] == 'c' and dvt[0]:
+                        break
+                    if elm[1] == 'u' and not dvt[0]:
                         break
 #                   print 'Catg check=' , elm[1]
                     if not self.fun(elm,dvt[1]):
@@ -479,6 +490,7 @@ class CompoundTable(deinflectedMatching.DeinflectedMatching):
                 res.append(t)                   # save new match
 #           print 'end template match'
 
+#       print 'nr=' , nr
         if nr == 0:
             return 0
         else:
