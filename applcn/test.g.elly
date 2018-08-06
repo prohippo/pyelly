@@ -241,3 +241,9 @@ _
     append NO
     end
 __
+g:sent->mwe punc[|stop]
+_
+  left
+  append +
+  right
+__
