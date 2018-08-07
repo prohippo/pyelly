@@ -620,8 +620,9 @@ Release Notes:
  1.5.1   - 03aug2018  replace compoundTable stub with functioning code
                       integrate template marching in PyElly processing
                       fix minor bug in cognitiveDefiner
-                      extend TEST appplication rules
-                      extent TEST integration testing for templates
+                      extend "test" appplication rules
+                      extent "test" integration testing for templates
+                      clean up "marking" rules
                       update documentation
                       
 New versions will reflect non-cosmetic changes in PyElly code. This typically
