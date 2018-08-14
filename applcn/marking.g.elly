@@ -55,7 +55,19 @@ _
   space
   right
 __
-p:elma  # needed for vocabulary table definition
+
+#
+# subprocedures needed only in vocabulary table definitions
+p:adjp
+_
+  obtain
+  if adjf=F
+    delete 3 >
+    set adjf=T
+    end
+__
+
+p:elma
 _
   split
   obtain
@@ -66,6 +78,36 @@ _
   space
   merge
   append </verb></vclu>
+__
+p:elth
+_
+  split
+  obtain
+  back
+  delete 4 <
+  append <nclu><det>the</det><noun>
+  merge
+  delete 5 >
+  append </noun></nclu>
+  linefeed
+  append <>that</>
+  linefeed
+__
+
+p:thtx
+_
+  split
+  obtain
+  back
+  delete 5 <
+  merge
+  set tht=TB
+__
+p:xtht
+_ 
+  obtain 
+  delete 5 >
+  set tht=T
 __
 
 #
@@ -4319,22 +4361,6 @@ __
 g:QUAN->PUNC[|quo,*l] QEQ
 __
 
-
-p:elth
-_
-  split
-  obtain
-  back
-  delete 4 <
-  append <nclu><det>the</det><noun>
-  merge
-  delete 5 >
-  append </noun></nclu>
-  linefeed
-  append <>that</>
-  linefeed
-__
-
 g:ADV->NAVB CMPC
  >>-
 _
@@ -4374,23 +4400,6 @@ _
   (twob)
 __
 
-
-p:thtx
-_
-  split
-  obtain
-  back
-  delete 5 <
-  merge
-  set tht=TB
-__
-p:xtht
-_
-  obtain
-  delete 5 >
-  set tht=T
-__
-
 g:ADJX[%*r]->PUNC[|*l,-quo] ADJ
  >>++
 _
@@ -4407,16 +4416,6 @@ _
   right
   append </punc>
 __
-
-p:adjp
-_
-  obtain
-  if adjf=F
-    delete 3 >
-    set adjf=T
-    end
-__
-
 
 g:NOUN->DET[@the] ADJ[%est]
   >>--
