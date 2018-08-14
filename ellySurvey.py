@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellySurvey.py : 26oct2016 CPM
+# ellySurvey.py : 14aug2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2015, Clinton Prentiss Mah
 # All rights reserved.
@@ -186,7 +186,7 @@ class EllySurvey(object):
         stb = d.stb if d != None else symbolTable.SymbolTable()
 
         try:
-            voc = ellyDefinition.Vocabulary(system,True,stb,inflx)
+            voc = ellyDefinition.Vocabulary(system,True,stb)
         except ellyException.TableFailure:
             nfail += 1
 

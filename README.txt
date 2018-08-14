@@ -619,6 +619,7 @@ Release Notes:
                       update documentation
  1.5.1   - 03aug2018  replace compoundTable stub with functioning code
                       integrate template marching in PyElly processing
+                      fix bug in ellySurvey because of new vocabularyTable
                       fix minor bug in cognitiveDefiner
                       extend "test" appplication rules
                       extent "test" integration testing for templates
