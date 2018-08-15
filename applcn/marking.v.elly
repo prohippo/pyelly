@@ -845,6 +845,7 @@ turned u0 : VERB[^ed]
 turns the lights on : VERB[^s]
 unaccounted for : ADJ
 unanimously rejected : VERB[^ed]
+underemployed : ADJ
 undergone : VERB[^ed]
 undertaken : VERB[^ed]
 undertook : VERB[^ed]
@@ -1291,6 +1292,7 @@ biggest customers : NOUN[:plur]
 biggest mountain to climb : NOUN
 bill signing ceremony : NOUN
 binding commitment : NOUN
+bio : NOUN
 bipartisan criticism : NOUN
 bipartisan gang of 8 : NOUN
 bipartisan law : NOUN
@@ -3789,6 +3791,7 @@ under the country’s flag : ADV
 under the shadow of : PREP
 under which : CONJ
 undercover sting operation : NOUN
+underemployment : NOUN
 underenforcement : NOUN
 understated : VERB[^ed] - -1
 underutilization : NOUN
@@ -3865,6 +3868,7 @@ visible presence : NOUN
 visual magnitude : NOUN
 visually compelling : ADJ
 visually impaired : ADJ
+vol : NOUN
 volcanic anger : NOUN
 volcano eruption : NOUN
 vote for : VERB
@@ -4692,6 +4696,7 @@ fine-tuned : ADJ
 first-degree : ADJ
 first-degree murder : NOUN
 first-ever : ADJ
+first-magnitude : ADJ
 first-order : ADJ
 first-quarter : ADJ
 first-term : ADJ
@@ -4723,6 +4728,7 @@ four-plex : NOUN
 four-star : ADJ
 four-year : ADJ
 fourth-down : ADJ
+fourth-magnitude : ADJ
 franco-german : ADJ
 frank-walter : ADJ
 free-fall : ADJ
@@ -5243,6 +5249,7 @@ second-degree : ADJ
 second-degree manslaughter : NOUN
 second-in-command : ADJ
 second-largest : ADJ
+second-magnitude : ADJ
 secretary-general : NOUN
 seine-et-marne : NOUN
 self-administration : NOUN
@@ -5368,6 +5375,7 @@ third-degree : ADJ
 third-degree murder : NOUN
 third-floor : ADJ
 third-largest : ADJ
+third-magnitude : ADJ
 third-party : ADJ
 third-place : ADJ
 third-row : ADJ
@@ -5560,6 +5568,7 @@ Arkansas State : NOUN
 Asia Pacific Economic Cooperation : ADJ
 Assad : NOUN
 Associated Press : NOUN
+Atacama : NOUN
 Aum Shinrikyo : NOUN
 Aung San Suu Kyi : NOUN
 Avigdor Lieberman : NOUN
@@ -5620,6 +5629,7 @@ Cantor : NOUN
 Capital Gazette : NOUN
 Carter : NOUN
 Carter Evans : NOUN
+Casey : NOUN
 Catalina : NOUN
 CBS : NOUN
 CBS News : NOUN
@@ -5659,6 +5669,7 @@ CNN : NOUN
 CNN Kfile : NOUN
 Cobiac : NOUN
 Cody Riley : NOUN
+Cohen : NOUN
 Colorado State University : NOUN
 Colorado Civil Rights Commission : NOUN
 Columbus Nova : NOUN
@@ -5690,6 +5701,7 @@ Dana White : NOUN
 Dandan : NOUN
 Daniels : NOUN
 Dapchi Government Girls Science and Technical College : NOUN
+Dave : NOUN
 Dave Stone : NOUN
 David Cay Johnson : NOUN
 David Shulkin : NOUN
@@ -5771,6 +5783,7 @@ FAA : NOUN
 Fabian : NOUN
 Facebook : NOUN
 Facebook user : NOUN
+FactBook : NOUN
 Fairchild : NOUN
 Families Belong Together : NOUN
 Farhan Haq : NOUN
@@ -5788,6 +5801,7 @@ Ferguson : NOUN
 FIFA : NOUN
 Fire and Fury : NOUN
 FISA : NOUN
+FiveThirtyEight : NOUN
 Fla : NOUN
 Flannery : NOUN
 Florida Governor : NOUN
@@ -5870,6 +5884,7 @@ Hillary Clinton : NOUN
 HLN : NOUN
 Holocaust Remembrance Day : NAVB
 Holy Cross : NOUN
+Honda : NOUN
 House Intelligence Committee : NOUN
 House Judiciary Committee : NOUN
 Houti rebel : NOUN
@@ -5879,6 +5894,7 @@ Hughes Global Services : NOUN
 Hunnan New District : NOUN
 Hussain : NOUN
 Hussein Jassem : NOUN
+IBM : NOUN
 ICAN : NOUN
 Ines : NOUN
 Instagram : NOUN
@@ -5923,6 +5939,7 @@ John Podesta : NOUN
 Jose Antonio Meade : NOUN
 Jim : NOUN
 Jim Justice : NOUN
+Jima : NOUN
 Jimmy Morales : NOUN
 Jinping : NOUN
 John Beck : NOUN
@@ -6137,6 +6154,7 @@ NFL Network : NOUN
 NFL players' protest : NOUN
 Nicholas : NOUN
 Nick Saban : NOUN
+Nokia : NOUN
 North American Free-Trade Agreement : NOUN
 North and South Korea : NOUN
 North India : NOUN
@@ -6145,6 +6163,7 @@ Novichok : NOUN
 NPR : NOUN
 NPR’s Morning Edition : NOUN
 NSC : NOUN
+NYM : NOUN
 NYPD : NOUN
 Obama  : NOUN
 Obama-Era : NOUN
@@ -6172,6 +6191,7 @@ Paul Manafort : NOUN
 Paul George Dandan : NOUN
 Paul Ryan : NOUN
 Paula Yacoubian : NOUN
+Pavo : NOUN
 PBS : NOUN
 PBS program : NOUN
 Pelosi : NOUN
@@ -6194,6 +6214,7 @@ Pontiac Grand Prix : NOUN
 Porton Down : NOUN
 Post-Gazette : NOUN
 POTUS : NOUN
+PowerPoint : NOUN
 Praljak : NOUN
 Premier League : NOUN
 President Bashar Assad : NOUN
@@ -6322,9 +6343,11 @@ southern Texas : NOUN
 Space and Upper Atmospheric Research Commission : NOUN
 SpaceX : NOUN
 SPD delegate : NOUN
+Springfield : NOUN
 Srebrenica : NOUN
 St. Mary : NOUN - +2
 St. Petersburg : NOUN
+Stanley : NOUN
 Star-Tribune : NOUN
 State Capitol : NOUN
 State Radio 1 : NOUN
@@ -6408,6 +6431,7 @@ Tirthankara : NOUN
 Today Show : NOUN
 Tongo Tongo : NOUN
 Tom Cotton : NOUN
+Tomsk : NOUN
 Toyota : NOUN
 Tran Dai Quang : NOUN
 Trans Mountain Pipeline : NOUN
@@ -6457,6 +6481,7 @@ US tax code : NOUN
 USPS : NOUN
 USO : NOUN
 USNORTHCOM : NOUN
+USS : NOUN
 VA : NOUN
 Vacationland : NOUN
 Val Demings : NOUN
@@ -24040,6 +24065,7 @@ medal winner : NOUN
 meddle : VERB
 medellin : NOUN
 medellin cartel : NOUN
+medford : NOUN
 media : NOUN
 media consultant : NOUN
 media guru : NOUN
