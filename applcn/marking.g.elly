@@ -3538,6 +3538,10 @@ __
 
 d:there <- ADV
 __
+d:thr   <- ADV
+_
+  append there
+__
 
 d:i    <- PRO[=nom]
  >>+

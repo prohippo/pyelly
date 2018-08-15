@@ -857,6 +857,7 @@ underwent surgery : VERB[^ed]
 unified : VERB[^ed]
 unsolved mystery : NOUN
 unveiled plans for : VERB[^ed]
+upheld : VERB[^ed]
 utilised : VERB[^ed]
 values : VERB[^s]
 vlogger : NOUN
@@ -1016,6 +1017,7 @@ a number of pieces of : QUAN
 a range of : QUAN
 a series of : QUAN
 a short time : ADV
+a short time ago : ADV
 a short while ago : ADV
 a slate of : QUAN
 a small group of : QUAN
@@ -2055,6 +2057,7 @@ half a million : NOUN
 half inch : NOUN
 half its : QUAN
 half of : QUAN
+half of them : NOUN
 hall of fame : NOUN
 hall of fame-inducted : ADJ
 hallway conversation : NOUN
@@ -2156,6 +2159,7 @@ huge increase : NOUN
 huge sway : NOUN[:det]
 human control : NOUN
 human dignity : NOUN
+human remains : NOUN[:plur]
 human rights adviser : NOUN
 human rights group : NOUN
 human rights lawyer : NOUN
@@ -2639,6 +2643,8 @@ military expertise : NOUN
 military facility : NOUN
 military front : NOUN
 military intelligence chief : NOUN
+military investigation : NOUN
+military investigation team : NOUN
 military liaison : NOUN
 military might : NOUN
 military support : NOUN
@@ -2821,6 +2827,7 @@ off the map : ADV
 offer diplomatic recognition : VERB
 official central news agency : NOUN
 official confirmation : NOUN
+official estimates : NOUN
 official figures : NOUN[:plur]
 official home : NOUN
 official news agency : NOUN
@@ -4947,6 +4954,7 @@ long-undervalued : ADJ
 lose-lose : ADJ
 lousiana-based : ADJ
 low-income : ADJ
+lower- and middle-income : ADJ
 lower-central : ADJ
 luke-warm : ADJ
 lump-sum : ADJ
@@ -6223,6 +6231,7 @@ Pfaffian : ADJ
 Philippine President : NOUN
 Phillips : NOUN
 Pine Barrens : NOUN
+Pistorius : NOUN
 Planet of the Apes : NOUN
 POLITICO : NOUN
 Politifact : NOUN
@@ -6369,6 +6378,7 @@ Stanley : NOUN
 Star-Tribune : NOUN
 State Capitol : NOUN
 State Radio 1 : NOUN
+Steenkamp : NOUN
 Stephan : NOUN
 Stephanie Clifford : NOUN
 Stephen Colbert : NOUN
@@ -6423,6 +6433,7 @@ the Rim of the Pacific exercise : NOUN
 the Sacramento Bee : NOUN
 The Spokesman-Review : NOUN[:det]
 the State of Qatar : NOUN
+the Supreme Court : NOUN
 the Taiwan Strait : NOUN[:det]
 The Times : NOUN[:det]
 The Times and Democrat newspaper : NOUN
@@ -6493,6 +6504,7 @@ United We Dream : NOUN
 University of Maryland Baltimore County : NOUN
 Upper Big Branch Mine : NOUN
 Upstate New York : NOUN
+US Africa Command : NOUN
 US District Court : NOUN
 US interests : NOUN[:plur]
 US tax code : NOUN
@@ -6548,6 +6560,7 @@ Whiteboys : NOUN[:plur]
 Wikileaks : NOUN
 Wikipedia : NOUN
 Wilkes-Barre : NOUN
+Willie Seriti : NOUN
 Wills : NOUN
 Willy : NOUN
 Wilmer : NOUN
