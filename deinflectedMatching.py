@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# deinflectedMatching.py : 28jul2018 CPM
+# deinflectedMatching.py : 15aug2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2018, Clinton Prentiss Mah
 # All rights reserved.
@@ -143,8 +143,10 @@ class DeinflectedMatching(object):
         if len(mr) == 0 and ssp == ssl:
             finAPO(ss,ssp-1)
             return 0
+        if ssp < 2 or ss[ssp-2] == ' ':
+            return -1
         ts = ss[ssp:]        # where to look for inflection
-        mc = ss[ssp-1] if ssp > 0 else ' ' # last char matched
+        mc = ss[ssp-1]       # last char matched
         lm = len(mr)
 #       print ts , 'mc=' , mc , 'mr=' , mr
         if not ellyChar.isLetter(mc):
