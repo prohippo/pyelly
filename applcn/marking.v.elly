@@ -262,6 +262,7 @@ felt forced to choose : VERB[^ed]
 field-tested : VERB[^ed]
 field-testing : VERB[^ing]
 fighting : VERB[^ing]
+filed against : VERB[^ed]
 financing : VERB[^ing]
 fired off : VERB[^ed]
 first told : VERB[^ed]
@@ -292,6 +293,7 @@ fronted by : VERB[^ed]
 frontlines : NOUN[:plur]
 froze : VERB[^ed]
 gaslighting : VERB[^ing]
+gathered enough evidence : VERB[^ed]
 gathering : VERB[^ing]
 gave : VERB[^ed,*x]
 gave his take on : VERB[^ed]
@@ -428,6 +430,7 @@ it does not appear that : ADV
 it is not clear whether : ADV
 it is not inconceivable : VERB[^s]
 it often seems that : ADV
+it should be pointed out that : ADV
 it was unclear where : ADV
 it was watching : VERB[^aux,ed,ing]
 keeping : VERB[^ing] - +2
@@ -1762,6 +1765,7 @@ eastern gulf coast : NOUN
 eastern ukraine : NOUN
 economic and social : ADJ
 economic council : NOUN
+economic leverage : NOUN
 economic prosperity : NOUN
 economic relationship : NOUN
 economic summit : NOUN
@@ -1801,6 +1805,7 @@ even so : CONJ
 even though : CONJ
 every move : NOUN
 everyone else : NOUN
+evidence of wrongdoing : NOUN
 except for : CONJ
 exchange student : NOUN
 exclusive interview : NOUN
@@ -2088,6 +2093,7 @@ heighten pressure : VERB
 helmet camera : NOUN
 help build trust : VERB
 help defeat : VERB
+help restrain : VERB
 helpline : NOUN
 helsinki summit : NOUN
 helter skelter : NOUN
@@ -2295,6 +2301,7 @@ independent investigator : NOUN
 independent state : NOUN
 indiscriminate attack : NOUN
 individual states : NOUN[:plur]
+industrial country : NOUN
 industry executive : NOUN
 informal meeting : NOUN
 informal meetings : NOUN[:plur]
@@ -2313,6 +2320,7 @@ instead of : PREP
 institutional racism : NOUN
 institutional reform : NOUN
 insurgent group : NOUN
+intelligence officer : NOUN
 intelligence official : NOUN
 intelligence source : NOUN
 intelligence study : NOUN
@@ -2366,6 +2374,7 @@ islamic state : NOUN
 islamic state group : NOUN
 islamist insurgent : NOUN
 islamist organization : NOUN
+island state : NOUN
 israeli forces : NOUN[:plur]
 israeli military : NOUN
 israeli police : NOUN
@@ -3114,6 +3123,7 @@ questions he was unsure of : NOUN[:plur]
 quick look : NOUN
 quiet campaign : NOUN
 quite a : DET
+quite as : ADV
 quite a while ago : ADV
 quoted from : VERB
 racist remark : NOUN
@@ -3179,6 +3189,7 @@ rental room : NOUN
 repeal and replace : VERB
 repeat offender : NOUN
 report that : NOUN (xtht)
+reports that : VERB[^s] (xtht)
 reporting tactics : NOUN
 republican attorney general : NOUN
 republican candidate : NOUN
@@ -3680,6 +3691,7 @@ time travel : NOUN
 time travel : VERB
 times : VERB[^s] - -2
 times : NOUN[:plur] [&msr] 0
+tiptoeing around : VERB[^ing]
 title track : NOUN
 to be able to : TO
 to before : CONJ
@@ -3704,6 +3716,7 @@ top forty hit : NOUN
 top intelligence official : NOUN
 top lieutenant : NOUN
 top sustained winds : NOUN
+topic of discussion : NOUN
 tough policy : NOUN
 tourism sector : NOUN
 tourist destination : NOUN
@@ -3723,6 +3736,7 @@ traditional focus : NOUN
 traffic stop : NOUN
 trafficking of goods : NOUN
 training flight : NOUN
+transitional government : NOUN
 transracial : ADJ
 trauma doctor : NOUN
 travel ban : NOUN
@@ -3896,6 +3910,7 @@ western conference : NOUN
 wet, heavy snow : NOUN
 what had been an : DET
 what he called : ADV
+what he called a : DET
 what he said was a : DET
 what i have stood for : NOUN
 what is today : ADV
@@ -3905,6 +3920,7 @@ what it has learned : NOUN
 what it’s doing : NOUN
 what looks like an : DET
 what she calls a : DET
+what some experts say : NOUN
 what the united nations says is : ADJ
 what they say are : ADJ
 what to do : NOUN
@@ -3928,6 +3944,7 @@ who authorities say : CONJ
 whoa : MISC
 widely known : ADJ
 wild conspiracy theory : NOUN
+will also : AUXL
 will be able to do that : VERB
 will find a way : VERB
 will have to : AUXL
@@ -6334,6 +6351,7 @@ Snapchat : NOUN
 SNL : NOUN
 Sochi : NOUN
 Social Democrat : NOUN
+Song Tao : NOUN
 South Asia : NOUN
 South Asia Port Terminal : NOUN
 South Eberhard Avenue : NOUN
@@ -25106,6 +25124,7 @@ muncie : NOUN
 munich : NOUN
 munich beer : NOUN
 municipal : ADJ
+municipal airport : NOUN
 municipal bond : NOUN
 municipal center : NOUN
 municipal government : NOUN
@@ -36713,7 +36732,7 @@ transit line : NOUN
 transit zone : NOUN
 transition : NOUN
 transition : VERB
-transitional : ADV
+transitional : ADJ
 transitory : ADJ
 translate : VERB
 translation : NOUN

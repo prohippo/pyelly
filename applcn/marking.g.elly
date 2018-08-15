@@ -514,7 +514,7 @@ g:ELEM[^*l]->VCLU[^-to,s]
  >>[!lv,rv,s]
 _
   var punc=
-  left
+  (etht)
 __
 g:ELEM->VCLU[^to] NCLU
  >>[!lv,rn]+
