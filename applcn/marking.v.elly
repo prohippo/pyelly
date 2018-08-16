@@ -620,6 +620,7 @@ raged on : VERB[^ed]
 raised fears of : VERB[^ed]
 raised questions : VERB[^ed]
 raising : VERB[^ing] - -1
+raising panic : VERB[^ing]
 raising similar issues : VERB[^ing]
 ramping up the pressure : VERB[^ing]
 ran : VERB[^ed]
@@ -660,6 +661,7 @@ required in new buildings : ADJ
 rescue efforts : NOUN[:plur]
 residents : NOUN[:plur]
 retaken : VERB[^ed]
+retreated from his position : VERB[^ed]
 returned the conversation back : VERB[^ed]
 revolved around : VERB[^ed]
 rewritten : VERB[^ed]
@@ -828,6 +830,7 @@ tore : VERB[^ed]
 tore up : VERB[^ed]
 torn : VERB[^ed]
 torn apart : VERB[^ed]
+tossed an olive branch : VERB[^ed]
 touched upon : VERB[^ed]
 tracking : VERB[^ing]
 trading : VERB[^ing]
@@ -1029,6 +1032,7 @@ a step forward : NOUN[:det]
 a string of : QUAN
 a third the : NUM
 a thousand : NUM[:cnj,*x]
+a vote : NOUN[:det]
 a wave of : QUAN
 a week after : CONJ[@prep,aftr]
 a year in prison : NOUN[:det,num]
@@ -1277,6 +1281,7 @@ bear no relationship to reality : VERB
 beatle : NOUN
 because of : PREP
 because of that, : CONJ
+become public : VERB
 before dawn : ADV
 before midnight : ADV
 before noon : ADV
@@ -1476,7 +1481,9 @@ christian values : NOUN[:plur]
 christmas cheer : NOUN
 christmas spectacular : NOUN
 chronic challenge : NOUN
+church land : NOUN
 church leader : NOUN
+church member : NOUN
 cia interrogation : NOUN
 circuit attorney : NOUN
 citizens forum : NOUN
@@ -1828,6 +1835,7 @@ exploratory talks : NOUN[:plur]
 explosive activity : NOUN
 explosives detection K9 team : NOUN
 express in words : VERB
+extent of the losses : NOUN
 extraordinary nature : NOUN
 extreme far right : NOUN
 extreme far right : ADJ
@@ -1907,6 +1915,7 @@ fitness instructor : NOUN
 fixed investment : NOUN
 flash flooding : NOUN
 flatly contradict : VERB
+flee their homes : VERB
 flood stage : NOUN
 floors below : NOUN[:plur]
 flows of lava : NOUN[:plur]
@@ -1914,6 +1923,8 @@ follow up with you after this : VERB
 food and drug administration : NOUN
 foothills town : NOUN
 for a long time : ADV
+for a second day : ADV
+for a third day : ADV
 for a while : ADV
 for about a week : ADV
 for allegedly : PREP
@@ -1983,6 +1994,7 @@ fully eliminate : VERB
 fully explain : VERB
 fully informed : ADJ
 fundamental revision : NOUN
+further damage : NOUN
 future plan : NOUN
 gain no benefit : VERB
 gala dinner : NOUN
@@ -2039,6 +2051,7 @@ governor’s race : NOUN
 gps monitoring : NOUN
 grant aid : NOUN
 grant aid project : NOUN
+grave concern : NOUN
 grave toll : NOUN
 great importance : NOUN
 great recession : NOUN
@@ -2262,6 +2275,7 @@ in relations with : PREP
 in response to : PREP
 in return for : PREP
 in serious condition : ADV
+in spite of : PREP
 in terms of : PREP
 in the book : ADV
 in the coming months : ADV
@@ -2532,6 +2546,7 @@ likely to be asked about : ADJ
 limit supply : NOUN
 lingering hope : NOUN
 little more than : ADV[~mod] [$deg] 0
+little they could do : NOUN
 litx : CONJ =lit.
 live ammunition : NOUN
 live fire : NOUN
@@ -2667,6 +2682,8 @@ minor amounts of : QUAN
 minor eye injury : NOUN
 mischaracterization : NOUN
 mischaracterize : VERB
+misgiving : NOUN
+misgivings : NOUN[:plur]
 missile convoy : NOUN
 missile exchange : NOUN
 missile firing table : NOUN
@@ -2858,6 +2875,7 @@ oil trade : NOUN
 old record : NOUN
 old tradition : NOUN
 olitical analyst : NOUN
+olive branch : NOUN
 olympic gymnastics : NOUN
 on an individual basis : ADV
 on an international scale : ADV
@@ -3122,6 +3140,7 @@ public information : NOUN
 public ministry : NOUN
 public poll : NOUN
 public profile : NOUN
+public protest : NOUN
 public sector : NOUN
 public statement : NOUN
 publically argue : VERB
@@ -3370,6 +3389,7 @@ sexual orientation : NOUN
 sexually harass : VERB
 sgt. : NOUN
 shadow banking : NOUN
+shaky alliance : NOUN
 sharpen its focus : VERB
 sharper edge : NOUN
 she claims she : PRO
@@ -3450,6 +3470,7 @@ special place in hell : NOUN
 specifics : NOUN
 spectator : ADJ - +1
 spectral type : NOUN[:*x]
+speech that : NOUN (xtht)
 spiritual birthplace : NOUN
 spiritual director : NOUN
 splash screen : NOUN
@@ -3772,6 +3793,7 @@ turkish currency : NOUN
 turkish politics : NOUN
 turn himself in : VERB
 turn state’s witness : VERB
+turn the page : VERB
 turn themselves in : VERB
 tv host : NOUN
 tv programming : NOUN
@@ -3799,6 +3821,7 @@ u.s. leader : NOUN
 u.s. mainland : NOUN
 u.s. market : NOUN
 u.s. military : NOUN
+u.s. navy destroyer : NOUN
 u.s. official  : NOUN
 u.s. officials : NOUN[:plur]
 u.s. secretary of state : NOUN
@@ -3829,6 +3852,7 @@ understated : VERB[^ed] - -1
 underutilization : NOUN
 underutilize : VERB
 underwater evacuation : NOUN
+underwater image : NOUN
 undiplomatic advance signals : NOUN[:plur]
 unexplored depths : NOUN
 unfair media : NOUN
@@ -3904,6 +3928,8 @@ vol : NOUN
 volcanic anger : NOUN
 volcano eruption : NOUN
 vote for : VERB
+vote on the deal : NOUN - -1
+vote on the deal : VERB
 vulcanologist : NOUN
 wage and hour violation : NOUN
 walk out : NOUN - -3
@@ -3926,6 +3952,7 @@ weightiest : ADJ
 welcome breakfast : NOUN
 western conference : NOUN
 wet, heavy snow : NOUN
+what god is able to do : NOUN
 what had been an : DET
 what he called : ADV
 what he called a : DET
@@ -4288,6 +4315,7 @@ new york time’s : NOUN
 newly established practice : NOUN
 no confidence motion in parliament : NOUN
 nuclear and missile : ADJ
+nuclear and missiles : ADJ
 on the global stage : ADV
 on what the news agency described as : CONJ
 orange snow : NOUN
@@ -5515,6 +5543,7 @@ widely-read : ADJ
 wilkes-barre : NOUN
 wind-down : NOUN
 wind-driven : ADJ
+wind-whipped : ADJ
 wood-paneled : ADJ
 wooden-headedness : NOUN
 word-for-word : ADJ
@@ -5694,6 +5723,8 @@ Chinese President : NOUN
 Chosun Ilbo newspaper : NOUN
 Chris Cuomo : NOUN
 Christian Democrat : NOUN
+Christian Democratic Union : NOUN
+Christian Social Union : NOUN
 Christian Democratic Party : NOUN
 Christopher A. Wray : NOUN
 Civil Rights Commission : NOUN
@@ -5925,7 +5956,7 @@ Holy Cross : NOUN
 Honda : NOUN
 House Intelligence Committee : NOUN
 House Judiciary Committee : NOUN
-Houti rebel : NOUN
+Houthi rebel : NOUN
 Huffington Post : NOUN
 Hughes : NOUN
 Hughes Global Services : NOUN
@@ -5940,6 +5971,7 @@ Institute for Radio Astronomy Millimetrique : NOUN[:*r]
 Intel : NOUN
 International Criminal Tribunal : NOUN
 International Organization of Migration : NOUN
+Interstate 405 : NOUN
 Interstate 95 corridor : NOUN
 Iraq and Afghanistan Veterans of America : NOUN
 Irving : NOUN
