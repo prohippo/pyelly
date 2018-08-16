@@ -398,6 +398,7 @@ illegally accepted : VERB[^ed]
 improperly inserted : VERB[^ed]
 inches : NOUN[:plur]
 increasing the emphasis : VERB[^ing]
+indicated : VERB[^ed,dit]
 indicated it wanted to pursue : VERB[^ed]
 infighting : NOUN
 inflicting casualties : VERB[^ed]
@@ -914,6 +915,7 @@ worked : ADJ[%ed]  - -3
 working : VERB[^ing] - +2
 worn : VERB[^ed]
 would have no reason : VERB
+would like to thank : VERB
 would not mind : VERB
 would tell you : VERB[^dit]
 woven : VERB[^ed]
@@ -986,6 +988,7 @@ I think that : ADV
 a billion : QUAN
 a bit : NOUN[:det] - -2
 a broader bid : NOUN[:det]
+a busy time : NOUN
 a claim : NOUN[:det]
 a claim that : NOUN[:det] (xtht)
 a closed military zone : NOUN[:det]
@@ -1058,13 +1061,15 @@ across the pacific : ADV
 across the state : ADV
 across the us : ADV
 act of definance : NOUN
+acting deputy director : NOUN
 acting gov. : NOUN
 active shooter : NOUN
 additional charges : NOUN[:plur]
+additional role : NOUN
 adjusted second quarterly profit : NOUN
 adm. : NOUN
 administration official : NOUN
-administration policcy : NOUN
+administration policy : NOUN
 adult film star : NOUN
 adulterous affair : NOUN
 advance signal : NOUN
@@ -1207,6 +1212,7 @@ as well as : CONJ
 aside from : PREP
 assertions that : NOUN[:*l,plur] (xtht)
 asset purchase : NOUN
+associate director : NOUN
 asylum request : NOUN
 at a home : ADV
 at a time : CONJ
@@ -1558,6 +1564,7 @@ contact information : NOUN
 container transport : NOUN
 continue to work : VERB
 continued rumbling : NOUN
+continued service : NOUN
 contract that : NOUN[:*l] (xtht)
 controversial issue : NOUN
 convention center : NOUN
@@ -1685,6 +1692,7 @@ development aid : NOUN
 development team : NOUN
 die roll : NOUN
 digital ethics : NOUN
+digital information : NOUN
 digital minister : NOUN
 digital space : NOUN
 diplomatic maneuver : NOUN
@@ -2276,6 +2284,7 @@ in the report : ADV
 in the right direction : ADV
 in the same place : ADV
 in the same way : ADV
+in the sense that : ADV
 in the skies : ADJ [$trlg] +1
 in the skies : ADV
 in the u.s. and across the world : ADJ
@@ -2713,6 +2722,8 @@ mr.  : NOUN
 mrs. : NOUN
 ms.  : NOUN
 msgr. : NOUN
+much admired : VERB[^ed]
+much admired : ADJ
 much of : QUAN
 multibillion : ADJ
 multilateralism : NOUN
@@ -3929,6 +3940,7 @@ what looks like an : DET
 what she calls a : DET
 what some experts say : NOUN
 what the united nations says is : ADJ
+what they did : NOUN
 what they say are : ADJ
 what to do : NOUN
 what vaguely resembled a : ADJ
@@ -5789,6 +5801,7 @@ Emmanuel : NOUN
 Emmanuel Macron : NOUN
 Emmett Till : NOUN
 Emmett Till case : NOUN
+Emperor Akihito : NOUN
 Enrique Peña Nieto : NOUN
 Enzo : NOUN
 Erdogan : NOUN
@@ -6410,6 +6423,7 @@ The Art of the Deal : NOUN
 the Church of the Holy Sepulchre : NOUN[:det]
 the Big Island : NOUN
 the city of Ventura : NOUN[:det]
+the Chrysanthemum Throne : NOUN
 the Creston Valley Advance : NOUN[:det]
 the Dakotas : NOUN[:det,plur]
 the District of Connecticut : NOUN[:det]
