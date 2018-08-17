@@ -30,6 +30,7 @@ accused many of : VERB[^ed]
 acting : VERB[^ing]
 actors in the policy process : NOUN[:plur]
 added a new dimension : VERB[^ed]
+added jobs : VERB[^ed]
 advanced : VERB[^ed]
 advancing : VERB[^ing]
 advertising : VERB[^ing] - -2
@@ -108,6 +109,7 @@ boosting security : VERB[^ing]
 born : VERB[^ed] - +2
 called : VERB[^ed] =call -ed
 called : ADJ - -2 =call -ed
+calling on : VERB[^ing]
 called out :  VERB[^ed]
 called to say : VERB[^ed]
 calling for the abolition of : VERB[^ing]
@@ -449,6 +451,7 @@ knocking on doors : VERB[^ing]
 known : VERB[^ed,*x] - +1
 known to law enforcement : ADJ
 knows too well : VERB[^s]
+later revised : VERB[^ed]
 leading : VERB[^ing]
 leaking to the media : VERB[^ing]
 led : NOUN - -2
@@ -718,6 +721,7 @@ showboating : NOUN
 showed no signs of : VERB[^ed]
 showed up : VERB[^ed]
 shown : VERB[^ed]
+shown on video : VERB[^ed]
 signed : VERB[^ed]
 signed into law : VERB[^ed]
 signed off : VERB[^ed]
@@ -835,6 +839,7 @@ touched upon : VERB[^ed]
 tracking : VERB[^ing]
 trading : VERB[^ing]
 trading : ADJ[%ing]
+traveling there : VERB[^ing]
 tried and convicted : VERB[^ed]
 tried to : AUXL[^ed]
 tried to call 911 :  VERB[^ed]
@@ -1089,6 +1094,7 @@ after sunset : ADV
 after which : CONJ
 afternoon and evening : NOUN
 against : ADV 0 -6
+against him : ADV
 against his will : ADV
 age restriction : NOUN
 agency official : NOUN
@@ -1377,6 +1383,7 @@ bullocky : NOUN - +2
 buoys the hopes of : VERB[^s]
 bushranger : NOUN
 business complex : NOUN
+business exchange : NOUN
 business history : NOUN
 business model : NOUN
 but also : CONJ
@@ -2172,6 +2179,7 @@ house seat : NOUN
 house speaker : NOUN
 house tax-writing committee : NOUN
 household spending : NOUN
+housing bubble : NOUN
 how best : CONJ
 how far the country has veered : NOUN
 how it compares : NOUN
@@ -2716,9 +2724,10 @@ more responsible than anyone else : ADJ[%cnj]
 more sway : NOUN
 more than : ADV[~mod] [$deg] 0
 more than a : QUAN
+more than a dozen : NUM
 more than a year : NOUN
 more than half a : QUAN
-more than half a dozen : QUAN
+more than half a dozen : NUM
 more than half of the : QUAN
 more time : NOUN
 more times : ADV[~trlg]
@@ -2732,6 +2741,7 @@ most notably : ADV
 most of : QUAN
 most of them : PRO
 most of whom : PRO
+most unlikely : ADJ
 mountain bike : VERB - -2
 move into a new phase : VERB
 move so fast : VERB
@@ -2990,6 +3000,7 @@ particular focus : NOUN
 partisan gerrymandering : NOUN
 partners on the ground : NOUN
 party chairmain : NOUN
+passport holder : NOUN
 pass rusher : NOUN
 patent assist : ADJ
 path of change : NOUN
@@ -3066,6 +3077,7 @@ political force : NOUN
 political forces : NOUN[:plur]
 political future : NOUN
 political gathering : NOUN
+political implication : NOUN
 political influence : NOUN
 political intelligence : NOUN
 political opponent : NOUN
@@ -3354,6 +3366,7 @@ senate bid : NOUN
 senate candidate : NOUN
 senate committee : NOUN
 senate confirmation : NOUN
+senate election : NOUN
 senate minority leader : NOUN
 senate republican : NOUN
 senior advisor : NOUN
@@ -3419,6 +3432,7 @@ sit in the gallery : VERB
 skaky start : NOUN
 slbm : NOUN
 small business : NOUN
+small gain : NOUN
 so as to : TO
 so grateful : ADJ
 so many : QUAN[@ind]
@@ -3831,6 +3845,7 @@ u.s. special counsel : NOUN
 u.s. special counsel robert mueller : NOUN
 u.s. special forces : NOUN[:plur]
 u.s. special operations mission : NOUN
+u.s. student : NOUN
 u.s. troops : NOUN
 u.s.-mexico border wall : NOUN
 uav : NOUN
@@ -3897,6 +3912,7 @@ vaguely worded document : NOUN
 varying amounts : NOUN[:plur]
 varying degrees of legal trouble : NOUN[:plur]
 vast majority : NOUN
+vehement objection : NOUN
 verbal zinger : NOUN
 verify the authenticity of : VERB
 versus : CONJ
@@ -4269,6 +4285,7 @@ improperly collected information : NOUN
 in an interview : ADV
 in mid-march : ADV
 in remarks : ADV
+in september : ADV
 in the wake : PREP =in the wake of
 in this piece that follows : ADV
 in turning around : NOUN[:prep]
@@ -4511,6 +4528,7 @@ anti-jewish : ADJ
 anti-labor : ADJ
 anti-lgbt : ADJ
 anti-missile : ADJ
+anti-missile system : NOUN
 anti-money-laundering : ADJ
 anti-muslim : ADJ
 anti-pakistan : ADJ
@@ -6199,6 +6217,7 @@ National Hurricane Center : NOUN
 National Labor Relations Act : NOUN
 Naval Criminal Investigative Service : NOUN
 NBA : NOUN
+NBA star : NOUN
 NBC : NOUN
 NBC affiliate : NOUN
 NBC News : NOUN
@@ -6228,6 +6247,7 @@ Nokia : NOUN
 North American Free-Trade Agreement : NOUN
 North and South Korea : NOUN
 North India : NOUN
+North Korean soldier : NOUN
 Novaes : NOUN
 Novichok : NOUN
 NPR : NOUN
@@ -6247,6 +6267,7 @@ Oprah : NOUN
 Oprah Winfrey : NOUN
 Orange County Register : NOUN
 Orangeburg Detention Center : NOUN
+Otto Warmbier : NOUN
 Our Lady of Sorrows : NOUN
 Oxford Street : NOUN
 Oxford Street shopping district : NOUN
@@ -6349,6 +6370,7 @@ Rosen : NOUN
 Route 91 Harvest : NOUN
 Roy : NOUN
 Roy Moore : NOUN
+Roy S. Moore : NOUN
 Rudy Giuliani : NOUN
 Russell Simmons : NOUN
 Russian colleague : NOUN
@@ -6446,6 +6468,7 @@ Talkradio 790 KABC : NOUN
 Taro Aso : NOUN
 TASS : NOUN
 Teddy Kollek Stadium : NOUN
+Terminal High Altitude Area Defence : NOUN
 Terrence : NOUN
 Tex : NOUN
 Team Lacoste : NOUN
@@ -6458,6 +6481,7 @@ the city of Ventura : NOUN[:det]
 the Chrysanthemum Throne : NOUN
 the Creston Valley Advance : NOUN[:det]
 the Dakotas : NOUN[:det,plur]
+the Demilitarized Zone : NOUN[:det]
 the District of Connecticut : NOUN[:det]
 the District of Columbia : NOUN[:det]
 the Emoluments Clause : NOUN[:det]
@@ -21653,6 +21677,7 @@ isle : NOUN
 isle royal national park : NOUN
 isolate : VERB
 isolated : ADJ
+isolated country : NOUN
 isolation : NOUN
 isotope : NOUN
 israel : NOUN
