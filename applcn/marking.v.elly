@@ -2308,6 +2308,7 @@ in the metro area : ADV
 in the mix : ADV
 in the name of : PREP
 in the name of the islamic state : ADV
+in the news : ADV
 in the public interest : NOUN
 in the report : ADV
 in the right direction : ADV
@@ -3427,6 +3428,7 @@ shopping season : NOUN
 short supply : NOUN
 shortly after : CONJ
 shortly afterward : ADV
+shortly before : CONJ
 show season : NOUN
 sightseeing tour : NOUN
 signal rocket : NOUN
@@ -3539,6 +3541,7 @@ strong wind : NOUN
 stuck : VERB[^ed] - +1
 stun grenade : NOUN
 stunning upset : NOUN
+subject to greater oversight : ADJ
 submillimeter  : ADJ
 subsequent ruling : NOUN
 substantial care : NOUN
@@ -3736,6 +3739,7 @@ these years later : ADV
 they think will : AUXL
 they too : PRO
 this afternoon : NAVB[:det,*x]
+this afternoon and evening : NAVB[:det,*x]
 this fall : ADV
 this month : NAVB[:det]
 this morning : NAVB[:*x]
@@ -4174,6 +4178,7 @@ dealng : VERB[^ing] =dealing
 # # # # definitions to deal with specific problem text
 
 , there for : CMNJ
+'sweeps' : NOUN[:plur]
 "(C)" for confidential : NOUN
 “Get Up” : NOUN
 156th Airlift Wing : NOUN
@@ -5293,6 +5298,7 @@ rees-mogg : NOUN
 remote-control : NOUN
 renewable-fuel : ADJ
 rent-controlled : ADJ
+rent-controlled apartment : NOUN
 rent-regulated : ADJ
 rent-regulated unit : NOUN
 repeal-and-replace : NOUN
@@ -5757,6 +5763,7 @@ Christian Democratic Union : NOUN
 Christian Social Union : NOUN
 Christian Democratic Party : NOUN
 Christopher A. Wray : NOUN
+Civil Aviation Authority : NOUN
 Civil Rights Commission : NOUN
 Clayton County Schools : NOUN
 Clever : NOUN - -6
@@ -6311,6 +6318,7 @@ Philippine President : NOUN
 Phillips : NOUN
 Pine Barrens : NOUN
 Pistorius : NOUN
+Piper-23 Apache : NOUN
 Planet of the Apes : NOUN
 POLITICO : NOUN
 Politifact : NOUN
@@ -25773,7 +25781,6 @@ news report : NOUN
 news show : NOUN
 news story : NOUN
 newspaper : NOUN
-newspaper ad : NOUN
 newspaper advertisement : NOUN
 newspaper article : NOUN
 newspaper column : NOUN
