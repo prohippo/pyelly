@@ -128,6 +128,7 @@ caught wind : VERB[^ed]
 centered around : VERB[^ed]
 charged with : VERB[^ed]
 charging toward : VERB[^ing]
+chose : VERB[^ed]
 chosen : VERB[^ed] - +2
 circulating : VERB[^ing]
 civil rights : NOUN
@@ -245,6 +246,7 @@ ever heard of : VERB[^ed]
 everything that’s ever happened : NOUN
 exciting : VERB[^ing]
 exerting influence : VERB[^ing]
+existing : VERB[^ing]
 expressed interest : VERB[^ed]
 faces a dilemma : VERB[^s]
 failed to reflect : VERB[^ed]
@@ -391,7 +393,7 @@ hoped it will help : VERB[^ed]
 hosted by : VERB[^ed]
 houses of worship : NOUN[:plur]
 hove : VERB[^ed]
-i heard : VERB[^ed]
+i heard : VERB[^ed] [$noaj] 0
 i heard : ADJ [$trlg,prd] 0
 identified as : VERB[^ed]
 ideological divide : NOUN
@@ -522,6 +524,7 @@ millennial : NOUN - -1
 millennium bc : NOUN [&msr] 0
 millions : NOUN[:plur]
 mining : VERB[^ing] - -1
+minutes ago : NOUN[:plur]
 misleading : VERB[^ing]
 misled : VERB[^ed]
 missing : VERB[^ing]
@@ -703,6 +706,7 @@ setting off : VERB[^ing]
 setting out on : VERB[^ing]
 setting the tone : VERB[^ing]
 setting up : VERB[^ing]
+severed ties with : VERB[^ed]
 sexually assaulted : VERB[^ed]
 shaking hands : VERB[^ing]
 she believed was : BE[^ed]
@@ -992,6 +996,7 @@ went_on : VERB[^ed] =went on
 3rd world war : NOUN
 4th of july : NAVB
 5 minutes : NOUN
+5 minutes ago : ADV
 I think that : ADV
 a billion : QUAN
 a bit : NOUN[:det] - -2
@@ -1196,6 +1201,7 @@ around noon : ADV
 around the country : ADV
 around the world : ADV
 artificial island : NOUN
+artillery shelling : NOUN
 as a means of : CONJ
 as a result : CONJ
 as a result of : PREP
@@ -1231,6 +1237,7 @@ at about : PREP
 at first : ADV
 at how : CONJ
 at last : ADV
+at least a year : ADV
 at least one : NUM
 at least one : QUAN - +2
 at odds with : PREP
@@ -2741,6 +2748,7 @@ most notably : ADV
 most of : QUAN
 most of them : PRO
 most of whom : PRO
+most populous : ADJ
 most unlikely : ADJ
 mountain bike : VERB - -2
 move into a new phase : VERB
@@ -2826,6 +2834,7 @@ north american affairs : NOUN[:plur]
 north korean leader : NOUN
 north korean sanctions : NOUN[:plur]
 north korean tanker : NOUN
+northeastern nigeria : NOUN
 northern california : NOUN
 northern thailand : NOUN
 not just : ADV
@@ -2940,6 +2949,7 @@ opening auction : NOUN
 openings : NOUN[:plur]
 opinion piece : NOUN
 opiod : NOUN
+opposition activist : NOUN
 opposition fighters : NOUN[:plur]
 opposition leader : NOUN
 opposition party : NOUN
@@ -3227,6 +3237,7 @@ religious liberty : NOUN
 religious organization : NOUN
 relist : VERB
 remain open : VERB
+remain unaccounted for : VERB
 remix : NOUN
 remix : VERB
 remote beach : NOUN
@@ -3746,6 +3757,7 @@ times : VERB[^s] - -2
 times : NOUN[:plur] [&msr] 0
 tiptoeing around : VERB[^ing]
 title track : NOUN
+to a level that : PPTH
 to be able to : TO
 to before : CONJ
 to explain why : VERB[^infn]
@@ -6154,6 +6166,7 @@ Mega Millions : NOUN
 Mega Millions drawing : NOUN
 Meghan Markle : NOUN
 Melania : NOUN
+Melania Trump : NOUN
 Merkel : NOUN
 Messi : NOUN
 Metro Nashville : NOUN
@@ -11015,6 +11028,7 @@ centerpiece : NOUN
 centimeter : NOUN
 central : NOUN - -1
 central : ADJ
+central achievement : NOUN
 central africa : NOUN
 central african republic : NOUN
 central america : NOUN
@@ -16297,6 +16311,7 @@ existential : ADJ
 existential operator : NOUN
 existential philosopher : NOUN
 existential philosophy : NOUN
+existing : ADJ
 exit : NOUN
 exit : VERB
 exit poll : NOUN

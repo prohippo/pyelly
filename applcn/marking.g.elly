@@ -1272,6 +1272,20 @@ _
   var typg=nclu
   (typg)
 __
+g:NCLU->PPTH
+_
+  split
+  left
+  back
+  append <nclu><prep>
+  find <
+  delete 1 >
+  append </prep><noun>
+  merge
+  delete 5 >
+  append </noun></nclu>
+  set tht=T
+__
 
 # - - - -
 
@@ -2101,6 +2115,11 @@ g:VCLU[^hav,*r]->HAVE VCLU[^-hav]
 _
   var typg=aux
   (lxtd)
+__
+g:VCLU->PRO AUXL[^-*r]
+ >>----
+_
+  (twob)
 __
 g:VCLU[^aux,*r]->AUXL[^-*r,-ptcl] VCLU[^-aux]
  l[$quo] >>*r-4
@@ -3232,6 +3251,11 @@ _
 __
 g:AUXL[^hav]->HAVE[^-neg] TO
  >>++++
+_
+  (twob)
+__
+g:AUXL[^*l]->AUXL ADV[~-*l,-*r]
+ >>+
 _
   (twob)
 __
