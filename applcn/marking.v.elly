@@ -418,6 +418,7 @@ is a look at : VERB[^s]
 is currently considered : VERB[^s]
 is for : VERB[^s]
 is going to be : VERB[^s]
+is invalid : VERB[^s]
 is no longer fit : VERB[^s]
 is not doing enough : VERB[^s]
 is not for : VERB[^s]
@@ -1834,6 +1835,7 @@ even before : CONJ
 even if : CONJ
 even so : CONJ
 even though : CONJ
+ever since : CONJ
 every move : NOUN
 everyone else : NOUN
 evidence of wrongdoing : NOUN
@@ -3250,6 +3252,7 @@ repeal and replace : VERB
 repeat offender : NOUN
 report that : NOUN (xtht)
 reports that : VERB[^s] (xtht)
+reports that : NOUN[:plur,cnj] (xtht)
 reporting tactics : NOUN
 republican attorney general : NOUN
 republican candidate : NOUN
@@ -3656,6 +3659,7 @@ that you :  PRO[=*l]
 thaw with russia : NOUN
 the IS : NOUN
 the above : ADJ
+the administration : NOUN[:det]
 the aged : NOUN
 the american soul : NOUN
 the armed forces : NOUN[:plur]
@@ -4183,6 +4187,7 @@ dealng : VERB[^ing] =dealing
 “Get Up” : NOUN
 156th Airlift Wing : NOUN
 2 years later : ADV
+2006 and 2007 : DATE
 3 hours before : ADV
 3 hours before : PREP
 8 day visit : NOUN
@@ -4885,7 +4890,7 @@ half-inch : NOUN
 half-mast : ADJ
 half-mile : NOuN
 half-revelation : NOUN
-half-revelations : ADJ
+half-revelations : NOUN
 half-sitting : VERB[^ed]
 half-sitting on : VERB[^ed]
 hand-delivered : VERB[^ed]
@@ -5612,6 +5617,7 @@ zero-tolerance : ADJ
 16th Street Baptist Church : NOUN
 1Malaysia Development Berhad : NOUN
 1MDB : NOUN
+60 Minutes interview : NOUN
 A Higher Loyalty : NOUN
 A New Day Has Come : NOUN
 Aaron C. Davis : NOUN
@@ -37160,6 +37166,7 @@ tuna oil : NOUN
 tuna salad : NOUN
 tune : NOUN
 tune : VERB
+tune in : VERB
 tune up : VERB
 tunisia : NOUN
 tunisian : NOUN
