@@ -343,6 +343,7 @@ gotten : VERB[^ed,*x]
 government charges : NOUN[:plur]
 grandfathered : VERB[^ed]
 grandfathering : VERB[^ing]
+grandfathering provision : NOUN
 growing : VERB[^ing]
 grown : VERB[^ed] - +1
 gunned down : VERB[^ed]
@@ -765,6 +766,7 @@ stepping down : VERB[^ing]
 stimulating : VERB[^ing]
 stolen : VERB[^ed]
 stood : VERB[^ed]
+stranded at the airport : VERB[^ed]
 strewn : VERB[^ed]
 striking a deal on : VERB[^ing]
 striking back at : VERB[^ing]
@@ -1847,6 +1849,7 @@ executive committee : NOUN
 executive producer : NOUN
 exercise of power : NOUN
 existential threat : NOUN
+existing building : NOUN
 explicit aim : NOUN
 exploratory talks : NOUN[:plur]
 explosive activity : NOUN
@@ -1907,6 +1910,7 @@ federal level : NOUN
 federal prosecutor : NOUN
 federal republic : NOUN
 feed & farm supply store : NOUN
+feel safer : VERB
 fellow millennials : NOUN[:plur]
 felony charge : NOUN
 felony count : NOUN
@@ -2849,6 +2853,7 @@ not yet : ADV
 noted expert : NOUN
 nothing new here : NOUN
 now known as : CONJ
+nowhere to go : NOUN
 nuclear accord : NOUN
 nuclear and ballistic : ADJ
 nuclear capability : NOUN
