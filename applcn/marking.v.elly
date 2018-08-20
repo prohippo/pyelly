@@ -282,6 +282,7 @@ focuses on : VERB[^s] - +2
 focusing on : VERB[^ing]
 followed that up : VERB[^ed]
 followed through on : VERB[^ed]
+following : VERB[^ing]
 forgave : VERB[^ed,*x]
 forgot : VERB[^ed,*x]
 forgotten : VERB[^ed]
@@ -1022,6 +1023,7 @@ a few hundred : NUM
 a few minutes : NOUN[:plur]
 a few months later : ADV
 a few of : QUAN
+a following : NOUN[:det]
 a group of : QUAN
 a group of them : PRO
 a handful of : QUAN
@@ -1257,6 +1259,7 @@ at the same time : ADV
 at the same time as : CONJ
 at the time : ADV
 at the top of : PREP
+at the white house : NOUN
 at this point : ADV
 at this point in time : ADV
 at this stage : ADV
@@ -1521,6 +1524,7 @@ clean split : NOUN
 clerical rule : NOUN
 climactic moment : NOUN
 close cooperation : NOUN
+close coordination : NOUN
 close personal tie : NOUN
 close tie : NOUN
 close to : PREP - +2
@@ -2151,6 +2155,7 @@ hi res : ADJ
 hid : VERB[^ed]
 hidden : VERB[^ed]
 hide and seek : NOUN
+high plains : NOUN
 high school prom : NOUN
 high stakes : NOUN[:plur]
 higher pay : NOUN
@@ -3065,6 +3070,7 @@ ping pong playing robot : NOUN
 pinyin : NOUN
 pit bull : NOUN
 planetary system : NOUN
+plan to meet : VERB
 planning meeting : NOUN
 playboy centerfold : NOUN
 plea for help : NOUN
@@ -3760,6 +3766,7 @@ this afternoon and evening : NAVB[:det,*x]
 this fall : ADV
 this month : NAVB[:det]
 this morning : NAVB[:*x]
+this past week : NAVB[:*x]
 this time : NAVB[:det]
 this week : NAVB[:det]
 this weekend : NAVB[:det]
@@ -4399,6 +4406,7 @@ Scarborough intern Lori Klausutis : NOUN
 Scout Me in : ADJ
 seabed hunt : NOUN
 sent some undiplomatic advance signals : VERB[^ed]
+signaling that : VERB[^ing] (xtht)
 sinai mosque : NOUN
 small collection of buildings : NOUN
 so loud : ADJ
@@ -5003,6 +5011,7 @@ korea-u.s : ADJ
 korean-grown : ADJ
 korean-language : ADJ
 kremlin-connected : ADJ
+kremlin term : NOUN
 kry-nyak : NOUN
 kurdish-held : ADJ
 kuwait-drafted : ADJ
@@ -5472,6 +5481,7 @@ sun-splashed : ADJ
 super-charged : ADJ
 surface-to-surface : ADJ
 swearing-in : NOUN
+swearing-in ceremony : NOUN
 syrian-american : NOUN
 talk-show : ADJ
 talked-about : ADJ
@@ -17643,6 +17653,7 @@ follow up on : VERB
 follow-through : NOUN
 follow-up : NOUN
 follower : NOUN
+following : ADJ - -5
 folly : NOUN
 foment : VERB
 fond : ADJ
