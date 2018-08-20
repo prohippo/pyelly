@@ -655,6 +655,7 @@ regarding : NOUN - -1
 regarding : VERB[^ing]
 related : VERB[^ed]
 released from jail : VERB[^ed]
+relied on : VERB[^ed]
 relieved : VERB[^ed]
 remaining : VERB[^ing] - -1
 remains : VERB[^s,proc] - +3
@@ -822,6 +823,7 @@ that put : THTV
 that sent : THTV
 that threaten : THTV
 that was enacted : THTV
+that was lost : THTV
 thinking this through : VERB[^ing]
 thirstier : ADJ
 thought : VERB[^ed]
@@ -1413,6 +1415,7 @@ by nearly half : ADV[~trlg] [$deg,trlg] 0
 by now : ADV
 by the end of that day : ADV
 by the time : CONJ
+by the times : ADV
 byline : NOUN
 cabinet meeting : NOUN
 cabinet meetings : NOUN[:plur]
@@ -2332,6 +2335,7 @@ in their honor : ADV
 in there : ADV
 in this case : ADV
 in this way : ADV
+in total : ADV
 in various ways : ADV
 in violation of : PREP
 in what : CONJ
@@ -3157,6 +3161,7 @@ property prices : NOUN[:plur]
 proportionally spaced : ADJ
 proposal that : NOUN[:*l] (xtht)
 pros and cons : NOUN
+prosecution witness : NOUN
 prove to a judge : VERB
 proved to be : VERB
 public company : NOUN
@@ -3638,6 +3643,7 @@ that can be faced : ADJ
 that comes : THTV
 that continued : THTV
 that do : THTV
+that does : THTV
 that he   : PRO[=*l]
 that he’s not inclined : THTV
 that houses : THTV
@@ -3740,6 +3746,7 @@ the u.s. charts : NOUN[:plur]
 the u.s.-led : ADJ
 the united states : NOUN[:plur]
 the united states attorney : NOUN
+the u.s. house of representatives : NOUN[:det]
 their cooperation : NOUN
 their presence : NOUN
 there is a reason why : CONJ
@@ -4341,6 +4348,7 @@ marking him wrong : VERB[^ing]
 maryland local officials : NOUN[:plur]
 messaging app WeChat : NOUN
 metals tariff : NOUN
+miso soup : NOUN
 missing submarine : NOUN
 monday’s broadcast : NOUN
 months-long investigation : NOUN
@@ -4364,6 +4372,7 @@ nuclear and missiles : ADJ
 on the global stage : ADV
 on what the news agency described as : CONJ
 orange snow : NOUN
+original scope : NOUN
 pavonis : NOUN
 people who shouldn't have them : NOUN
 permitted 180 days : NOUN[:plur]
@@ -4380,6 +4389,7 @@ push back against : VERB
 rampant uncontrollable : ADJ
 rebel-held eastern Ghouta suburb of Damascus : NOUN
 repeated rape : NOUN
+republicans on capitol hill : NOUN[:plur]
 research activity : NOUN
 rhetoric that : NOUN (xtht)
 risk wrecking : VERB
@@ -4426,6 +4436,7 @@ the state’s largest park : NOUN
 the totality of : QUAN
 the u.k.'s national weather service : NOUN
 the upper layers of the atmosphere : NOUN[:plur]
+three-year search : NOUN
 to correctly : TO
 to flowed : VERB[^infn]
 told reporters : VERB[^ed]
@@ -4626,7 +4637,7 @@ canadian-based : ADJ
 candy-making : ADJ
 cap-haitien : NOUN
 car-rental : ADJ
-carbo-load : ADJ
+carbo-load : VERB
 card-carrying : ADJ
 career-ending : ADJ
 carrot-and-stick : ADJ
@@ -5494,6 +5505,7 @@ third-row : ADJ
 third-time : ADJ
 three-day : ADJ
 three-decade : ADJ
+three-decades-old : ADJ
 three-judge panel : NOUN
 three-point : ADJ
 three-quarters : ADJ
@@ -6588,6 +6600,7 @@ Trump’s travel ban : NOUN
 Ty Cobb : NOUN
 Tyshon Demontrea Johnson : NOUN
 Twitter : NOUN
+Y Ye Lwin : NOUN
 U.N. : NOUN
 U.N. committee : NOUN
 U.S. : NOUN
@@ -30392,6 +30405,7 @@ reluctance : NOUN
 reluctant : ADJ
 reluctantly : ADV
 rely : VERB
+rely on : VERB
 remain : VERB[^proc]
 remain down : VERB
 remain firm : VERB
@@ -32572,7 +32586,7 @@ shipbuilding industry : NOUN
 shipmate : NOUN
 shipment : NOUN
 shipper : NOUN
-shipwreck : NOUN
+shipwreck : NOUN - +2
 shipwreck : VERB
 shipwreck survivor : NOUN
 shipyard : NOUN
