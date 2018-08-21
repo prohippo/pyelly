@@ -188,6 +188,7 @@ defaming him : VERB[^ing]
 degrees celsius : NOUN[:plur]
 degrees fahrenheit : NOUN[:plur]
 delivered to : VERB[^ed]
+designed : VERB[^ed]
 destabilizing markets : VERB[^ing]
 destroyed : VERB[^ed]
 determined : VERB[^ed,dit]
@@ -1328,9 +1329,11 @@ better of it : ADV
 better than : PREP
 better than even chance : NOUN
 bid for office : NOUN
+big cat : NOUN
 bigger and bigger : ADJ
 biggest customers : NOUN[:plur]
 biggest mountain to climb : NOUN
+biker : NOUN
 bill signing ceremony : NOUN
 binding commitment : NOUN
 bio : NOUN
@@ -2584,6 +2587,7 @@ like to tell : VERB
 like you’re doing something wrong : ADV
 likely to be asked about : ADJ
 limited supply : NOUN
+line of defense : NOUN
 lingering hope : NOUN
 little more than : ADV[~mod] [$deg] 0
 little they could do : NOUN
@@ -2819,6 +2823,7 @@ nato summit : NOUN
 natural causes : NOUN[:plur]
 natural disaster : NOUN
 natural gas pipeline : NOUN
+naval destroyer : NOUN
 navy submarine : NOUN
 nearly a century : NOUN
 negotiating table : NOUN
@@ -3028,6 +3033,7 @@ pants on fire : ADJ
 parallel investigation : NOUN
 parcel of land : NOUN
 parking lot : NOUN
+part of a : det
 part of an effort : NOUN
 participating force : NOUN
 participating in : PREP
@@ -3380,6 +3386,7 @@ scorched earth : ADJ
 scratching their heads : ADJ
 search area : NOUN
 search director : NOUN
+search term : NOUN
 search tool : NOUN
 search-only mission : NOUN
 season opener : NOUN
@@ -3839,6 +3846,7 @@ trading partner : NOUN
 trading policy : NOUN
 traditional clothing : NOUN
 traditional focus : NOUN
+traffic information : NOUN
 traffic stop : NOUN
 trafficking of goods : NOUN
 training flight : NOUN
@@ -5144,6 +5152,7 @@ muslim-majority : ADJ
 must-pass : ADJ
 nail-biter : NOUN
 name-checking : ADJ
+navigation routing : NOUN
 nbc-affiliate : NOUN
 near-daily : ADJ
 near-mythic : ADJ
@@ -14251,6 +14260,7 @@ design criteria : NOUN
 designate : VERB
 designate : ADJ
 designation : NOUN
+designed : ADJ
 designer : NOUN
 designer drug : NOUN
 desire : NOUN
@@ -20754,6 +20764,7 @@ identical twin : NOUN
 identification : NOUN
 identification number : NOUN
 identification particle : NOUN
+identifier : NOUN
 identify : VERB
 identity : NOUN
 identity card : NOUN
@@ -23496,6 +23507,7 @@ lotus position : NOUN
 lotus tree : NOUN
 loud : ADJ
 loud : ADV
+loud noise : NOUN
 loud pedal : NOUN
 loudly : ADV
 louis : NOUN
