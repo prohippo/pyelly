@@ -311,6 +311,7 @@ gets the point home : VERB[^s]
 getting : BE[^ing] - +1
 getting : VERB[^ing] - +2
 getting : NOUN[:ing] - -2
+getting out of : VERB[^ing]
 give rise to : VERB
 given : VERB[^ed]
 given free rein : VERB[^ed]
@@ -401,6 +402,7 @@ identified as : VERB[^ed]
 ideological divide : NOUN
 ideologically divided : ADJ
 illegally accepted : VERB[^ed]
+imprisoned : VERB[^ed]
 improperly inserted : VERB[^ed]
 inches : NOUN[:plur]
 increasing the emphasis : VERB[^ing]
@@ -501,6 +503,7 @@ making : VERB[^ing]
 making a mistake : VERB[^ing]
 making a trip out to : VERB[^ing]
 making an arrest : VERB[^ing]
+making an emotional plea : VERB[^ing]
 making it easier : VERB[^ing]
 making it up as he goes : VERB[^ing]
 making landfall : VERB[^ing]
@@ -921,6 +924,7 @@ went viral : VERB[^ed]
 were given a choice : VERB[^ed]
 were heartbroken to see : VERB[^ed]
 when it comes to : CONJ
+widely seen : VERB[^ed]
 will therefore : AUXL
 withdrew : VERB[^ed]
 withdrew their support : VERB[^ed]
@@ -1419,6 +1423,7 @@ by now : ADV
 by the end of that day : ADV
 by the time : CONJ
 by the times : ADV
+by this fall : ADV
 byline : NOUN
 cabinet meeting : NOUN
 cabinet meetings : NOUN[:plur]
@@ -1517,6 +1522,7 @@ civil defense agency : NOUN
 civil liability : NOUN
 civil rights violation : NOUN
 clandestine officer : NOUN
+clandestinely shot video : NOUN
 classified information : NOUN
 clean break : NOUN
 clean energy : NOUN
@@ -1820,10 +1826,12 @@ elephant trophy : NOUN
 emergencies chief : NOUN
 emergency session : NOUN
 emergency talks : NOUN[:plur]
+emotional plea : NOUN
 end a stalemate : VERB
 end efforts : VERB
 enemies list : NOUN
 energy commissioner : NOUN
+energy giant : NOUN
 energy lobbyist : NOUN
 engage in a dialogue : VERB
 engage in sexual activity : VERB
@@ -2575,7 +2583,7 @@ like never before : ADV
 like to tell : VERB
 like you’re doing something wrong : ADV
 likely to be asked about : ADJ
-limit supply : NOUN
+limited supply : NOUN
 lingering hope : NOUN
 little more than : ADV[~mod] [$deg] 0
 little they could do : NOUN
@@ -3172,6 +3180,7 @@ prove to a judge : VERB
 proved to be : VERB
 public company : NOUN
 public discourse : NOUN
+public disgust : NOUN
 public earnings statement : NOUN
 public employee union : NOUN
 public health : NOUN
@@ -3463,6 +3472,7 @@ sincere hope : NOUN
 sit in the gallery : VERB
 skaky start : NOUN
 slbm : NOUN
+small building : NOUN
 small business : NOUN
 small gain : NOUN
 so as to : TO
@@ -3752,6 +3762,7 @@ the u.s. charts : NOUN[:plur]
 the u.s.-led : ADJ
 the united states : NOUN[:plur]
 the united states attorney : NOUN
+the u.s. embassy : NOUN
 the u.s. house of representatives : NOUN[:det]
 their cooperation : NOUN
 their presence : NOUN
@@ -3791,8 +3802,10 @@ to before : CONJ
 to explain why : VERB[^infn]
 to its completion : ADV
 to not : TO
+to offer : VERB[^infn]
 to or from : PREP
 to review : VERB[^infn]
+to shift : VERB[^infn]
 to snapchat : ADV
 to the satisfaction of : PREP
 to the tune of : PREP
@@ -3909,6 +3922,7 @@ underutilize : VERB
 underwater evacuation : NOUN
 underwater image : NOUN
 undiplomatic advance signals : NOUN[:plur]
+unexpected defeat : NOUN
 unexplored depths : NOUN
 unfair media : NOUN
 unidentified source : NOUN
@@ -4076,6 +4090,7 @@ with what : CONJ
 with whom : CONJ
 within range of : PREP
 without a permit : ADV
+without a trial : ADV
 without ever : CONJ
 without having to go on trial : ADV
 without interference : ADV
@@ -4225,6 +4240,7 @@ ages 18 to 34 : ADJ [$trlg,prd] 0
 aggressive immigration powers : NOUN[:plur]
 alabama woman : NOUN
 ambi-tripping : NOUN
+americans’ help : NOUN
 an invasion of the mainland : NOUN
 anger and suspicion : NOUN[:plur]
 announced the discovery of : VERB[^ed,*r]
@@ -4370,6 +4386,7 @@ offensive coordinator : NOUN
 or more accurately, : ADV
 over the past two years : ADV
 of … : PREP
+Nasional : ADJ
 new and bloodier : ADJ
 new york time’s : NOUN
 newly established practice : NOUN
@@ -5413,7 +5430,7 @@ ship-to-ship : ADJ
 shiraz-based : ADJ
 shoe-in : NOUN
 short-form : NOUN
-short-nottage : ADJ
+short-nottage : NOUN
 since-deleted : ADJ
 single-discipline : ADJ
 single-year : ADJ
@@ -20903,6 +20920,7 @@ impress : VERB
 impression : NOUN
 impressive : ADJ
 imprison : VERB
+imprisoned : ADJ
 imprisonment : NOUN
 improbable : ADJ
 improbably : ADV
