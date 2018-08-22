@@ -1816,6 +1816,7 @@ eastern gulf coast : NOUN
 eastern ukraine : NOUN
 economic and social : ADJ
 economic council : NOUN
+economic forum : NOUN
 economic leverage : NOUN
 economic prosperity : NOUN
 economic relationship : NOUN
@@ -3033,7 +3034,7 @@ pants on fire : ADJ
 parallel investigation : NOUN
 parcel of land : NOUN
 parking lot : NOUN
-part of a : det
+part of a : DET
 part of an effort : NOUN
 participating force : NOUN
 participating in : PREP
@@ -3220,6 +3221,7 @@ quite as : ADV
 quite a while ago : ADV
 quoted from : VERB
 racist remark : NOUN
+racist tweet : NOUN
 radical hindu group : NOUN
 radical plan : NOUN
 radiochemical laboratory : ADJ
@@ -3752,6 +3754,7 @@ the question of whether : CONJ
 the receiving end : NOUN
 the rule of law : NOUN
 the run up : NOUN[:det]
+the same change : NOUN
 the same way : ADV
 the several : QUAN[@ind]
 the sidelines : NOUN
@@ -3771,6 +3774,7 @@ the united states : NOUN[:plur]
 the united states attorney : NOUN
 the u.s. embassy : NOUN
 the u.s. house of representatives : NOUN[:det]
+the vote : NOUN[:det]
 their cooperation : NOUN
 their presence : NOUN
 there is a reason why : CONJ
@@ -3806,6 +3810,7 @@ title track : NOUN
 to a level that : PPTH
 to be able to : TO
 to before : CONJ
+to cancel : VERB[^infn]
 to explain why : VERB[^infn]
 to its completion : ADV
 to not : TO
@@ -4520,6 +4525,7 @@ domestic and foreign : ADJ
 private sector company  : NOUN
 
 the U.S. Department of Labor : NOUN
+the U.S. Geological Survey : NOUN
 the U.S. government : NOUN
 the Federal Energy Regulatory Commission : NOUN
 the island of Hawaii : NOUN
@@ -6067,6 +6073,7 @@ Instagram : NOUN
 Institute for Radio Astronomy Millimetrique : NOUN[:*r]
 Intel : NOUN
 International Criminal Tribunal : NOUN
+International Monetary Fund : NOUN
 International Organization of Migration : NOUN
 Interstate 405 : NOUN
 Interstate 95 corridor : NOUN
@@ -6090,6 +6097,7 @@ Jamie : NOUN
 Jamil Smith : NOUN
 Janis : NOUN
 Japan International Cooperation Agency : NOUN[:*r]
+Japanese Prime Minister : NOUN
 Jared : NOUN
 Jared Kushner : NOUN
 Jason Leon : NOUN
@@ -6446,7 +6454,7 @@ Roger Self : NOUN
 Roger Stone : NOUN
 Rohingya : NOUN
 Rolling Stone : NOUN
-Rosanne Barr : NOUN
+Roseanne Barr : NOUN
 Rosen : NOUN
 Route 91 Harvest : NOUN
 Roy : NOUN
@@ -26856,7 +26864,7 @@ over again : ADV
 over here : ADV
 over-the-top : ADJ
 overall : NOUN
-overall : ADJ
+overall : ADJ [$trlg,prd] 2
 overcome : VERB
 overcook : VERB
 overcrowd : VERB
