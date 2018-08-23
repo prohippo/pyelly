@@ -1286,6 +1286,17 @@ _
   append </noun></nclu>
   set tht=T
 __
+g:NCLU->NCLU[:poss] ADJ[%est]
+_
+  split
+  back
+  left
+  shift 7 >
+  append <adj>
+  right
+  append </adj>
+  merge
+__
 
 # - - - -
 

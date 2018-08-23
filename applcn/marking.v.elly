@@ -21,6 +21,7 @@ healthiest : ADJ[%est]
 highest : ADJ[%est]
 largest : ADJ[%est]
 lengthiest : ADJ[%est]
+longest : ADJ[%est]
 nearest : ADJ[%est]
 simplest : ADJ[%est]
 wealthiest : ADJ[%est]
@@ -239,6 +240,7 @@ edited for clarity and brevity : VERB[^ed]
 educating themselves : VERB[^ing]
 elected official : NOUN
 elevated : VERB[^ed]
+enmeshed in : VERB[^ed]
 equipped with : VERB[^ed]
 evangelicals : NOUN[:plur]
 evening : VERB[^ing] - -2
@@ -1037,6 +1039,8 @@ a large chunk of : QUAN
 a leg up : NOUN[:det]
 a little bit : NOUN
 a little bit : ADV
+a little less : ADJ
+a little less : ADV
 a look : NOUN[:det]
 a lot of : QUAN
 a million : QUAN
@@ -1145,6 +1149,7 @@ all over the world : ADJ [$trlg] +1
 all over the world : ADV - -2
 all that : ALLTHT
 all tired : ADJ
+allegations that : NOUN[:plur,cnj] (xtht)
 alleged affair : NOUN
 alleged incident : NOUN
 alleged victim : NOUN
@@ -1481,6 +1486,7 @@ catch and release : NOUN
 cave complex : NOUN
 cave diver : NOUN
 cave network : NOUN
+cave system : NOUN
 cease and desist agreement : NOUN
 ceasefire : NOUN
 celebrity excitement : NOUN
@@ -1524,6 +1530,8 @@ city leader : NOUN
 civil defense agency : NOUN
 civil liability : NOUN
 civil rights violation : NOUN
+claims that : NOUN[:plur,cnj] (xtht)
+claims that : VERB[^s] (xtht)
 clandestine officer : NOUN
 clandestinely shot video : NOUN
 classified information : NOUN
@@ -1776,6 +1784,7 @@ doorbusting : ADJ
 dot their i’s : VERB
 down on : ADV
 down the block : ADJ [$trlg] 0
+downside to that : NOUN
 dozens of : QUAN
 dr. : NOUN
 draft treaty : NOUN
@@ -2179,6 +2188,7 @@ hindu temple : NOUN
 his highness : DEM[@ind]
 his or her : DEM
 his pleading guilty : NOUN
+his presidency : NOUN
 his royal highness : DEM[@ind]
 historic election : NOUN
 hit job : NOUN
@@ -4227,6 +4237,8 @@ most as many : ADJ
 
 dealng : VERB[^ing] =dealing
 
+thursdayſ : ADJ =thursday -'s
+
 # # # # definitions to deal with specific problem text
 
 , there for : CMNJ
@@ -5791,6 +5803,7 @@ Bundestag : NOUN
 Burmese python : NOUN
 BusinessWeek : NOUN
 Buzzfeed : NOUN
+California Department of Forestry and Fire Protection : NOUN
 Cambridge Analytica : NOUN
 Canadian Rockies : NOUN[:plur]
 Cantor : NOUN
