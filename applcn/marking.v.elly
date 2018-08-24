@@ -1041,6 +1041,7 @@ a little bit : NOUN
 a little bit : ADV
 a little less : ADJ
 a little less : ADV
+a little less than : QUAN
 a look : NOUN[:det]
 a lot of : QUAN
 a million : QUAN
@@ -1083,6 +1084,7 @@ aca requirement : NOUN
 access to visitors : NOUN
 accidentally fire : VERB
 according to : PREP
+according to  plan : ADV
 achieve the ultimate deal : VERB
 achingly : ADV [$deg] 0
 across the country : ADV
@@ -6614,6 +6616,7 @@ the U.S. Supreme Court : NOUN
 the United Arab Emirates : NOUN
 the united states-china : ADJ
 The Verge : NOUN [&prop] 0
+the Voting Rights Act : NOUN
 the Washington Post : NOUN
 the West Indies : NOUN
 the West Wing : NOUN
