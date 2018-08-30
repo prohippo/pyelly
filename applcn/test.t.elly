@@ -1,13 +1,15 @@
 # test.t.elly
 # templates for multiword compounds
-%x := sch,col,nst,acd
-%x of %c : mwe
+
+%i := sch,col,nst,acd
+%i of %c : mwe
 
 %b %c : mwe
 %b %c %n : mwe
 %b %c %n %p : mwe
 %b %c %n %p %u : mwe
 %b %c %n %p %u %a : mwe
+
 %a := jx,kx,lx,mx
 %á := jy,ky,ly
 %a %b : mwe
@@ -16,3 +18,7 @@
 %a %p : mwe
 %á %u : mwe
 %á %á : mwe
+
+oo %*ly : mwe
+oo %*cz : mwe
+the %i  : mwe
