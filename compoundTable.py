@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# compoundTable.py : 05aug2018 CPM
+# compoundTable.py : 28aug2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2018, Clinton Prentiss Mah
 # All rights reserved.
@@ -30,7 +30,7 @@
 
 """
 for defining templates to identify multi-word expressions in English like
-names of organizations and inflected idioms
+names of organizations, inflected idioms, and chemical nomenclature
 """
 
 import sys
@@ -46,10 +46,23 @@ Catg = u'%'       # marker for template word class
 nCat = Catg + 'n' # numeric substring
 cCat = Catg + 'c' # capitalized alphabetic substring
 uCat = Catg + 'u' # uncapitalized
+xCat = Catg + 'x' # uncapitalized with exceptions
+zCat = Catg + '*' # uncapitalized with suffix
 bCat = Catg + 'b' # irregular form of TO BE
 pCat = Catg + 'p' # common particle or preposition
 
 Tdel = [ '.' , ' ' , '-' ] # delimiters for template elements
+
+Stop = [                   # exception words
+    'a' , 'about' , 'above' , 'after' , 'all' , 'also' , 'among' , 'an' , 'any' , 'as' ,
+    'at' , 'be' , 'below' , 'both' , 'but' , 'by' , 'down' , 'each' , 'else' , 'even' ,
+    'ever' , 'every' , 'few' , 'from' , 'he' , 'her' , 'here' , 'him' , 'his' , 'i' ,
+    'into' , 'is' , 'it' , 'its' , 'many' , 'me' , 'more' , 'most' , 'much' , 'my' ,
+    'never' , 'no' , 'none' , 'nor' , 'not' , 'of' , 'off' , 'on' , 'only' , 'other' ,
+    'our' , 'out' , 'over' , 'own' , 'she' , 'since' , 'so' , 'some' , 'such' , 'than' ,
+    'that' , 'the' , 'their' , 'them' , 'then' , 'there' , 'these' , 'they' , 'this' , 'those' ,
+    'to' , 'too' , 'until' , 'up' , 'upon' , 'us' , 'we' , 'with' , 'you' , 'your'
+]
 
 #
 # predefined classes of template elements
@@ -93,6 +106,33 @@ def alphc ( s ):
 #       print 'c=' , c , type(c) , len(c)
         if not ellyChar.isLetter(c): return False
     return True
+
+def alphcuns ( s ):
+    """
+    check that all chars are letters and do not form a Stop
+    arguments:
+        s   - list of chars
+    returns:
+        True if string is all alphabetic and unstopped, False otherwise
+    """
+#   print 's=' , s
+    return True if alphc(s) and not u''.join(s) in Stop else False
+
+def alphcsuf ( s , x ):
+    """
+    check that all chars are letters and and end with specified suffix
+    arguments:
+        s   - list of chars
+        x   - suffix as char list
+    returns:
+        True if string is all alphabetic and unstopped, False otherwise
+    """
+
+    lx = len(x)
+    if lx > len(s) - 2 or not alphc(s):
+        return False
+    else:
+        return True if s[-lx:] == x else False
 
 def bound ( segm ):
 
@@ -202,8 +242,10 @@ class Template(object) :
             if x[0] == '%':
                 if lx > 1 and ellyChar.isLetter(x[1]):
                     if lx > 2:
-                        self._err('bad class ID',defr)
-                        return
+                        if x[1] != '*':
+                            self._err('bad class ID',defr)
+                            return
+                    x = x.lower()
             le.append(x)
         if self._errcount > 0: return
         self.listing = le
@@ -299,6 +341,8 @@ class CompoundTable(deinflectedMatching.DeinflectedMatching):
         self.cfns[nCat] = numrc
         self.cfns[cCat] = alphc
         self.cfns[uCat] = alphc
+        self.cfns[xCat] = alphcuns
+        self.cfns[zCat] = alphcsuf
 
         self._errcount = 0
 
@@ -370,7 +414,8 @@ class CompoundTable(deinflectedMatching.DeinflectedMatching):
         missg = [ ]                           # to collect missing definitions
         for cx in clss:                       # check user-defined categories
             if not cx in self.cfns:
-                missg.append(cx)              # note if unsupported by class list
+                if cx[1] != '*':
+                    missg.append(cx)          # note if unsupported by class list
         lm = len(missg)
         if lm > 0:                            # this is a FATAL error
             print >> sys.stderr , lm , 'undefined template categories=' , missg
@@ -396,8 +441,16 @@ class CompoundTable(deinflectedMatching.DeinflectedMatching):
 #       print 'cod=' , cod , 'chs=' , chs
         if cod in self.cfns:
             f = self.cfns[cod]
+#           print 'f=' , f
             if f != None:
                 return f(chs)  # saved functions will scan char list
+        if len(cod) > 2:
+            cd = cod[:2]
+            if not cd in self.cfns:
+                return False
+            else:
+                f = self.cfns[cd]
+                return f(chs,list(cod[2:]))
 
         chx = u''.join(chs)    # need string for lookup with "in"
 
@@ -462,6 +515,8 @@ class CompoundTable(deinflectedMatching.DeinflectedMatching):
                 dvt = dv[i]                     # align template with input
                 elm = tl[i]
 #               print 'dvt=' , dvt , 'elm=' , elm
+                lt = len(dvt[1])
+#               print 'lt=' , lt
                 if elm[0] == Catg:              # category element?
 #                   print 'elm=' , elm , dvt[0]
                     if elm[1] == 'c' and dvt[0]:
@@ -472,14 +527,16 @@ class CompoundTable(deinflectedMatching.DeinflectedMatching):
                     if not self.fun(elm,dvt[1]):
                         break
 #                   print 'success'
-                elif len(dvt) < len(elm):       # enough text to match?
-                    continue
+                elif lt < len(elm):             # enough text to match?
+                    break
                 else:
-                    n =self.doMatchUp(elm,dvt[1])
-#                   print 'match n=' , n
+                    n = self.doMatchUp(elm,dvt[1])
+#                   print 'literal match n=' , n
                     if n == 0:
                         break
-                m += len(dvt[1])                # accumulate total match length
+#               print 'm=' , m , 'lt=' , lt
+                m += lt                         # accumulate total match length
+#               print 'new m=' , m
             else:
 #               print 'whole template matched'
                 if m < nr:                      # new matches must be as long as old ones
