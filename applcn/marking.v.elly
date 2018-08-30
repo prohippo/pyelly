@@ -2049,6 +2049,7 @@ further damage : NOUN
 future plan : NOUN
 gain no benefit : VERB
 gala dinner : NOUN
+gas project : NOUN
 gated community : NOUN
 gather input : VERB
 gather votes : VERB
@@ -37180,7 +37181,7 @@ true statement : NOUN
 true up : VERB
 truism : NOUN
 truly : ADV
-trump : NOUN
+trump : NOUN - +1
 trump : VERB
 trump card : NOUN
 trump out : VERB
