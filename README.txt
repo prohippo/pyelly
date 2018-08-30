@@ -622,8 +622,12 @@ Release Notes:
                       fix bug in ellySurvey because of new vocabularyTable
                       fix minor bug in cognitiveDefiner
                       extend "test" appplication rules
-                      extent "test" integration testing for templates
+                      extend "test" integration testing for templates
                       clean up "marking" rules
+                      update documentation
+ 1.5.2   - 30aug2018  expand template elements that can be matched
+                      expand "test" integration testing to include templates
+                      extend "marking" integration testing with more sentences
                       update documentation
                       
 New versions will reflect non-cosmetic changes in PyElly code. This typically
