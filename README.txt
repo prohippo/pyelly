@@ -629,6 +629,8 @@ Release Notes:
                       expand "test" integration testing to include templates
                       extend "marking" integration testing with more sentences
                       update documentation
+ 1.5.3   - 24sep2018  make template matching more consistent for punctuation
+                      update documentation
                       
 New versions will reflect non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
