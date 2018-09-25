@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# deinflectedMatching.py : 15aug2018 CPM
+# deinflectedMatching.py : 24sep2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2018, Clinton Prentiss Mah
 # All rights reserved.
@@ -31,7 +31,7 @@
 # -----------------------------------------------------------------------------
 
 """
-for matching English inflectional endings -S, -ED, and -ING in only
+for matching irrespective of English inflectional endings -S, -ED, and -ING in
 a few general cases as part of an input stream match
 """
 
@@ -126,7 +126,7 @@ class DeinflectedMatching(object):
 
         """
         handle matching of certain forms of English inflectional endings
-        (override for this method for other languages)
+        (override this method for other languages)
 
         arguments:
             self -

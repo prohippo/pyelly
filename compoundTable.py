@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# compoundTable.py : 28aug2018 CPM
+# compoundTable.py : 24sep2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2018, Clinton Prentiss Mah
 # All rights reserved.
@@ -167,6 +167,8 @@ def bound ( segm ):
 #   print 'limit=' , ll + 1
     return ll + 1
 
+Inter = [ ' ' , '-' , '.' , '_' ]
+
 def divide ( segm , offs ):
 
     """
@@ -184,7 +186,7 @@ def divide ( segm , offs ):
     lm = len(segm)
     ll = offs
     while ll < lm:
-        if segm[ll] in [ ' ' , '-' , '.']:
+        if segm[ll] in Inter:
             break
         ll += 1
     return ll - offs
@@ -493,7 +495,10 @@ class CompoundTable(deinflectedMatching.DeinflectedMatching):
         while it < lim:
             lt = divide(tx,it)                  # predivide input for matching
             dv.append([ not txs[it].isupper() , tx[it:it+lt] ])
-            it += lt + 1
+            it += lt
+            if it < lim and tx[it] in [ '-' , '.' ]:
+                dv.append( [ True , tx[it] ] )  # hyphen and period must be matched
+            it += 1
         nd = len(dv)
 
 #       print 'dv=' , dv
