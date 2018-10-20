@@ -6,7 +6,7 @@
  1 &#[bn]$ NUM -1
 
  0 \0   - 2
- 0 \#   - 2     # must excape or else starts a same line comment!
+ 0 \#   - 2     # must escape or else starts a same line comment!
  0 \##  - 2
  0 \### - 2
  2 0th$ NUM [&prop] +1 -1
