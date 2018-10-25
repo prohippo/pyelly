@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTest.py : 10apr2018 CPM
+# parseTest.py : 20oct2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -86,7 +86,7 @@ class Tree(object):
         """ dummy method
         """
         typn = self.symbols.getSyntaxTypeName(typ)
-        print 'add phrase: typ=' , typ , typn , '[' + sxs.hexadecimal() + ']' , '[' + sms.hexadecimal() + '] =' , bia
+        print 'add phrase: cat=' , typ , typn , '[' + sxs.hexadecimal() + ']' , '[' + sms.hexadecimal() + '] =' , bia
         ph = Phrase()
         ph.krnl.catg = typ
         ph.krnl.synf = sxs
@@ -101,7 +101,7 @@ class Tree(object):
         print len(self.queue) , 'queued phrase' +  ('s' if len(self.queue) != 1 else '')
         for ph in self.queue:
             typn = self.symbols.getSyntaxTypeName(ph.krnl.catg)
-            print typn , ph
+            print typn , ph , 'len=' , ph.lens
 
 class Context(object):
     """ dummy Elly interpretive context for testing
