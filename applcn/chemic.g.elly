@@ -1,0 +1,78 @@
+# parsing of chemical names in text
+# chemical.g.elly
+
+#
+# basic parsing
+
+p:twob
+_
+  left
+  space
+  right
+__
+
+g:SENT->SS
+__
+g:SS->SS PUNC
+__
+g:SS->UNKN
+__
+g:SS->SS UNKN
+_
+  (twob)
+__
+g:SS->CHEM
+_
+  append 〖
+  left
+  append 〗
+__
+g:SS->SS CHEM
+_
+  left
+  space
+  append 〖
+  right
+  append 〗
+__
+
+#
+# for compound names
+
+p:catn
+_
+  left
+  split
+  right
+  back
+  delete 1 <
+  merge
+__
+g:CHEM->CHEM CMPN
+  >>+
+_
+  (catn)
+__
+g:CHEM->ROOT CMPN
+  >>+
+_
+  (catn)
+__
+g:CHEM->CHEM CHEM
+  >>+
+_
+  (twob)
+__
+g:CHEM->STRUC CHEM
+  >>+
+__
+
+g:CHEM->CHEM PUNC[|hyoh]
+__
+
+#
+# for structural description
+
+g:STRUC->LOCN PUNC[|hyph]
+  >>++
+__

@@ -1,0 +1,13 @@
+# parsing of chemical names in text
+# chemic.p.elly
+
+#
+# locants
+
+0 &# - 1
+1 , - 2
+1 ′ - 1
+1 $ LOCN -1
+2 &# - 1
+
+0 -&@ CMPN -1

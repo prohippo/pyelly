@@ -1,0 +1,30 @@
+# parsing of chemical names in text
+# chemic.v.elly
+
+mono  : CHEM
+bi    : CHEM
+di    : CHEM
+tri   : CHEM
+tetr  : CHEM
+tetra : CHEM
+pent  : CHEM =penta
+penta : CHEM
+hex   : CHEM =hexa
+hexa  : CHEM
+hept  : CHEM =hepta
+hepta : CHEM
+
+propa : ROOT
+
+acetate  : CHEM
+acetic   : CHEM
+acid     : CHEM
+benzene  : CHEM
+chloride : CHEM
+ethyl    : CHEM
+methyl   : CHEM
+oxide    : CHEM
+sulfate  : CHEM
+yl       : CHEM
+
+benzoic acid : CHEM
