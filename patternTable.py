@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# patternTable.py : 28jul2018 CPM
+# patternTable.py : 23oct2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -29,7 +29,8 @@
 # -----------------------------------------------------------------------------
 
 """
-finite-state automaton (FSA) for inferring the syntactic type of single tokens
+finite-state automaton (FSA) for inferring the syntactic type of simplei or x
+hyphenated tokens
 """
 
 import sys
@@ -154,10 +155,7 @@ class Link(object):
         if self.patn == None:
             return u'None'
         else:
-            if self.patn == u'\x00':
-                p = '\\0              '
-            else:
-                p = u'{0:<24}'.format(ellyWildcard.deconvert(self.patn))
+            p = u'{0:<24}'.format(ellyWildcard.deconvert(self.patn))
             c = unicode(self.catg)
             x = u'' if self.synf == None else self.synf.hexadecimal(False)
             m = u'' if self.semf == None else self.semf.hexadecimal(False)
@@ -165,6 +163,24 @@ class Link(object):
             n = ' next=' + unicode(self.nxts) if self.nxts >= 0 else ' stop'
             if self.nxts == -2: n += '+breaking'
             return p + ' ' + ' ' + c + ' ' + x + ' ' + m + ' ' + b + n
+
+    def shortcode ( self ):
+
+        """
+        short description of FSA link
+
+        arguments:
+            self
+
+        returns:
+            state and link pattern as a string
+        """
+
+        return str(self.nxts) + ': ' + ellyWildcard.deconvert(self.patn)
+
+#
+#### main code section
+#
 
 Trmls = ellyWildcard.Trmls
 
@@ -332,7 +348,7 @@ class PatternTable(object):
     def match ( self , segm , tree ):
 
         """
-        compare text segment against FSA patterns
+        compare text segment against all FSA patterns from state 0
 
         arguments:
             self  -
@@ -349,19 +365,20 @@ class PatternTable(object):
 
         if len(segm) == 0: return 0       # string is empty
 
-        lim = bound(segm)                 # get limit for matching
+        lim = bound(segm)                 # get text limit for matching
 
         mtl  = 0        # accumulated match length
         mtls = 0        # saved final match length
 
         state = 0       # set to mandatory initial state for FSA
 
-        stk = [ ]       # for tracking multiple possible matches
+        stk = [ ]       # for tracking possible multiple matches
 
-        ls = self.indx[state]
-        ix = 0
+        ls = self.indx[state]       # for state 0!
+        ix = 0                      # index into current possible transitions
         sg = segm[:lim] # text subsegment for matching
 #       print 'initial sg=' , sg
+#       print len(ls) , 'transitions from state 0'
         capd = False if len(sg) == 0 else ellyChar.isUpperCaseLetter(sg[0])
 
         while True:                 # run FSA to find all possible matches
@@ -373,11 +390,13 @@ class PatternTable(object):
             if ix == nls:           # if none, then must back up
                 if len(stk) == 0: break
                 r = stk.pop()       # restore match status
+#               print 'pop r= [' , r[0] , r[1][0].shortcode() , ']'
                 state = r[0]        # FSA state
                 ls  = r[1]          # remaining links to check
                 sg  = r[2]          # input string
                 mtl = r[3]          # total match length
                 ix = 0
+#               print 'pop sg=' , sg
                 continue
 
 #           print 'substring to match, sg=' , sg , 'nls=' , nls
@@ -387,7 +406,7 @@ class PatternTable(object):
                 ix += 1             # and increment link index
 #               print '@' , state , 'lk= [' , unicode(lk), ']'
                 if lk.patn == u'\x00': # do state change without matching?
-                    m = 0           # no match length
+                    m = 0              # no match length
                 else:
 #                   print 'patn=' , lk.patn
                     bds = ellyWildcard.match(lk.patn,sg)
@@ -404,7 +423,8 @@ class PatternTable(object):
 #                       print 'flags=' , lk.synf , '/' , lk.semf
                         if tree.addLiteralPhraseWithSemantics(lk.catg,lk.synf,lk.semf,lk.bias,
                                                               cap=capd): # make phrase
-                            mtls = mtl + m
+                            ml = mtl + m
+                            if mtls < ml: mtls = ml
 #                           print 'success!' , 'mtls=' , mtls
                             tree.lastph.lens = mtls                      # save its length
 #                           print 'match state=' , state , 'length=' , mtls
@@ -412,7 +432,8 @@ class PatternTable(object):
 #               print 'ix=' , ix , 'nls=' , nls
                 if ix < nls:        # any links not yet checked?
                     r = [ state , ls[ix:] , sg , mtl ]
-#                   print 'r=' , r
+#                   print 'saved r= ' , state ,
+#                   print [ x.shortcode() for x in ls[ix:] ]
                     stk.append(r)   # if not, save info for later continuation
 
                 mtl += m            # update match length
@@ -432,6 +453,7 @@ class PatternTable(object):
 #           print 'state=' , state
 #           print 'len(ls)=' , len(ls)
 
+#       print 'mtls=' , mtls
         return mtls
 
     def dump ( self ):
@@ -508,7 +530,6 @@ if __name__ == '__main__':
         if len(t) == 0: break
         print 'text=' , '[' , t , ']'
         nma = patn.match(list(t),tre)
-        print '    from <'+ t + '>' , nma , 'chars matched' , '| leaving <' + t[nma:] + '>'
 
     if interact: sys.stdout.write('\n')
 
