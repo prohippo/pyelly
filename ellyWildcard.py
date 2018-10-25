@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 04jun2018 CPM
+# ellyWildcard.py : 22oct2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -279,8 +279,10 @@ def deconvert ( patl ):
         Unicode string representation
     """
 
-    if patl == None:
+    if patl == None or patl == '':
         return u''
+    if patl[0] == u'x00':
+        return '\\0'
     s = [ ]           # for output
     for x in patl:
         xo = ord(x)
@@ -380,7 +382,7 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
         patn  - pattern to matched
         text  - what to match against
         offs  - start text offset for matching
-        limt  - limit of matching
+        limt  - limit for any matching
         nsps  - number of spaces to match in pattern
 
     returns:
@@ -616,7 +618,10 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
 #           print "END $:",last
             if last == '':
                 continue
-            elif last in [ '.' , ',' , '-' ]:
+            elif last == '-':
+                offs -= 1
+                continue
+            elif last in [ '.' , ',' ]:
                 if offs == limt:
                     offs -= 1
                     continue
