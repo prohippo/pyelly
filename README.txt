@@ -31,10 +31,11 @@ of information, including an overview of basic linguistics. Documentation
 of individual Python source files can be generated as needed with the
 Python pydoc utility from PyElly source files.
 
-At present, PyElly consists of 64 Python modules comprising a bit over ten
+At present, PyElly consists of 66 Python modules comprising almost eleven
 thousand lines of source code. There are also various definition files
 to support basic various language processing capabilities. The PyElly
-download includes rules for some example applications, including
+download includes rules for some example applications illustraing the most
+basic kinds of computational linguistics; these include
 
 * indexing - remove stopwords and get stems for content words from raw
              text input.
@@ -47,6 +48,7 @@ download includes rules for some example applications, including
 * marking  - rewrite English text from the Web with shallow XML markup
 * name     - extract mostly English personal names from text
 * disambig - disambiguation of phrases with WordNet concept information.
+* chemic   - recognition of chemical names in text
 
 These illustrate what you can do with PyElly and also serve as a basis for
 comprehensive integration testing. Other applications will be added to the
@@ -631,8 +633,15 @@ Release Notes:
                       update documentation
  1.5.3   - 24sep2018  make template matching more consistent for punctuation
                       update documentation
+ 1.5.4   - 25oct2018  fix bug in matching of $ wildcard
+                      fix bug in patternTable with maximum match length
+                      clean up patternTable code, add debugging statements
+                      add "chemic" application for chemical names
+                      add chemic in integration testing
+                      clean up "marking" pattern rules and integration test
+                      update documentation
                       
-New versions will reflect non-cosmetic changes in PyElly code. This typically
+New versions will be for non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
 correct operation. Changes only to PyElly sample application definition files,
 unit testing input or key files, and PyElly documentation will be made from time
