@@ -834,6 +834,7 @@ that was lost : THTV
 thinking this through : VERB[^ing]
 thirstier : ADJ
 thought : VERB[^ed]
+three-point-shooting : NOUN
 threw : VERB[^ed]
 thrown : VERB[^ed]
 thrown into crisis : VERB[^ed]
@@ -31220,7 +31221,7 @@ rope up : VERB
 rope yard : NOUN
 rosa : NOUN
 rosary : NOUN
-rose : NOUN
+rose : NOUN - -1
 rose : ADJ
 rose bay : NOUN
 rose bed : NOUN

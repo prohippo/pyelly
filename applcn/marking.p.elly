@@ -9,24 +9,25 @@
  0 \#   - 2     # must escape or else starts a same line comment!
  0 \##  - 2
  0 \### - 2
- 2 0th$ NUM [&prop] +1 -1
- 2 1st$ NUM [&prop] +1 -1
- 2 2nd$ NUM [&prop] +1 -1
- 2 3rd$ NUM [&prop] +1 -1
- 2 4th$ NUM [&prop] +1 -1
- 2 5th$ NUM [&prop] +1 -1
- 2 6th$ NUM [&prop] +1 -1
- 2 7th$ NUM [&prop] +1 -1
- 2 8th$ NUM [&prop] +1 -1
- 2 9th$ NUM [&prop] +1 -1
+ 2 0th$ - 19
+ 2 1st$ - 19
+ 2 2nd$ - 19
+ 2 3rd$ - 19
+ 2 4th$ - 19
+ 2 5th$ - 19
+ 2 6th$ - 19
+ 2 7th$ - 19
+ 2 8th$ - 19
+ 2 9th$ - 19
 
- 0 11th$ NUM -1
- 0 12th$ NUM -1
- 0 13th$ NUM -1
+ 0 11th$ - 19
+ 0 12th$ - 19
+ 0 13th$ - 19
 
- 0 &#m NUM -1
+ 0 &#m$ NUM -1
 
  0 &#- - 3
+ 0 &#- - 16
  0 one- - 3
  0 two- - 3
  0 three- - 3
@@ -139,18 +140,16 @@
  0 D-!.!.$ NOUN -1
  0 R-!.!.$ NOUN -1
 
- 0 &# -   16
-16 -  -   17
-17 &@$ ADJ -1
+16 &@$ ADJ -1
 
- 0 \\[expletive\\] - 18
-18  $  UNKN -1
-18 ’s$ ADJ  -1
+ 0 \\[expletive\\] - 17
+17  $  UNKN -1
+17 ’s$ ADJ  -1
  0 \\[not\\]$ NEGN -1
  0 (actual)$  ADJ  -1
 
- 0 now- -    19
-19 &@$   NOUN -1
+ 0 now- -    18
+18 &@$   NOUN -1
 
  0 al-!&@$ NOUN -1
 
@@ -167,14 +166,19 @@
 
  0 fm&#to&#$ NUM[:cnj] -1
 
- 0 &#,###-mi² ADJ -1
- 0 &#,###-km² ADJ -1
+ 0 &#,###-mi²$ ADJ -1
+ 0 &#,###-km²$ ADJ -1
 
- 0 ,#, ADJ [$prd] -1
- 0 ,##, ADJ [$prd] -1
- 0 ,1##, ADJ [$prd] -1
+ 0 ,#,$ ADJ [$prd] -1
+ 0 ,##,$ ADJ [$prd] -1
+ 0 ,1##,$ ADJ [$prd] -1
 
  0 the&#block$ NOUN -1
+
+19 -century$ ADJ -1
+19 $ NUM [&prop] +1 -1
+
+ 0 I-&# NOUN -1
 
 # en dashes in patterns below!
 
