@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTreeBottomUp.py : 28jul2018 CPM
+# parseTreeBottomUp.py : 23oct2018 CPM
 # -----------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -246,6 +246,7 @@ class ParseTreeBottomUp(parseTreeBase.ParseTreeBase):
         mx = 0
         for ph in self.queue:
             if mx < ph.lens: mx = ph.lens
+#       print 'mx=' , mx
         n = 0
         q = [ ]
         for ph in self.queue:
