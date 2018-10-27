@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 23oct2018 CPM
+# ellyBase.py : 26oct2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -603,7 +603,8 @@ class EllyBase(object):
 #       print 'to=' , unicode(to)
         if to == None:                 # if no match, we are done and will return
             return False if mx == 0 else True  # still success if _scanText() found something
-        self.ptr.lastph.lens = to.getLength()
+        if self.ptr.lastph != None:
+            self.ptr.lastph.lens = to.getLength()
 
 #       print 'to=' , unicode(to) , 'len(s)=' , len(s) , s
 #       posn = self.ctx.countTokensInListing()
