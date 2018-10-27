@@ -1,1 +1,5 @@
 Is 1,2-propadiene available?
+xyz bis(2-chloroethyl) disulfide !
+xyz chloromethyl-silane !
+xyz (chloromethyl)-silane !
+xyz 3-(chlorobenzoyl)-benzoic acid !

@@ -14,7 +14,8 @@ hexa  : CHEM
 hept  : CHEM =hepta
 hepta : CHEM
 
-propa : ROOT
+chloro : ROOT
+propa  : ROOT
 
 acetate  : CHEM
 acetic   : CHEM
@@ -24,7 +25,12 @@ chloride : CHEM
 ethyl    : CHEM
 methyl   : CHEM
 oxide    : CHEM
+silane   : CHEM
 sulfate  : CHEM
+sulfide  : CHEM
 yl       : CHEM
 
 benzoic acid : CHEM
+
+bis : REPB
+

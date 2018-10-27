@@ -12,6 +12,9 @@ _
 __
 
 g:SENT->SS
+_
+  linefeed
+  left
 __
 g:SS->SS PUNC
 __
@@ -30,14 +33,27 @@ __
 g:SS->SS CHEM
 _
   left
-  space
-  append 〖
-  right
+  var ch
+  extract > ch
+  if ~ch=〗 
+    insert < ch
+    space
+    append 〖
+    right
+  else
+    split
+    right
+    back
+    delete 1 <
+    space
+    merge
+    end
   append 〗
 __
 
 #
-# for compound names
+# for names with multiple components that
+# can be split up for separate recognition
 
 p:catn
 _
@@ -58,20 +74,32 @@ g:CHEM->ROOT CMPN
 _
   (catn)
 __
-g:CHEM->CHEM CHEM
-  >>+
-_
-  (twob)
-__
 g:CHEM->STRUC CHEM
   >>+
 __
 
-g:CHEM->CHEM PUNC[|hyoh]
+g:CHEM->CHEM PUNC[|hyph]
+__
+
+g:CHMB->PUNC[|*l] CHEM
+__
+g:CHEM->CHMB PUNC[|*r]
+  >>+++
+__
+
+g:PUNC[|*l]->REPB PUNC[|*l]
+  >>++
+__
+
+g:CHMH->CHEM PUNC[|hyph]
+  >>++
+__
+g:CHEM->CHMH CHEM
+  >>++
 __
 
 #
-# for structural description
+# for locant structural description
 
 g:STRUC->LOCN PUNC[|hyph]
   >>++
