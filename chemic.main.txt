@@ -3,3 +3,7 @@ xyz bis(2-chloroethyl) disulfide !
 xyz chloromethyl-silane !
 xyz (chloromethyl)-silane !
 xyz 3-(chlorobenzoyl)-benzoic acid !
+uu (3-chlorobenzoyl)-benzoic acid !
+uu 3-(3-chlorobenzoyl)-benzoic acid !
+uu 1,4:5,6-dimethanonaphthalene !
+uu N-2-naphthalenyl-acetamide !

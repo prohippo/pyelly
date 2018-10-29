@@ -13,8 +13,8 @@ __
 
 g:SENT->SS
 _
-  linefeed
   left
+  linefeed
 __
 g:SS->SS PUNC
 __
@@ -41,12 +41,8 @@ _
     append 〖
     right
   else
-    split
-    right
-    back
-    delete 1 <
     space
-    merge
+    right
     end
   append 〗
 __
@@ -78,6 +74,14 @@ g:CHEM->STRUC CHEM
   >>+
 __
 
+g:ROOT->REPN ROOT
+__
+
+g:CHEM->REPN CMPN
+_
+  (catn)
+__
+
 g:CHEM->CHEM PUNC[|hyph]
 __
 
@@ -103,4 +107,11 @@ __
 
 g:STRUC->LOCN PUNC[|hyph]
   >>++
+__
+
+g:STRUC->ATOM ATID
+  >>+
+__
+
+g:ATID->ATID PUNC[|hyph]
 __

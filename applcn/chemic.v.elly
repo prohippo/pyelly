@@ -1,21 +1,24 @@
 # parsing of chemical names in text
 # chemic.v.elly
 
-mono  : CHEM
-bi    : CHEM
-di    : CHEM
-tri   : CHEM
-tetr  : CHEM
-tetra : CHEM
-pent  : CHEM =penta
-penta : CHEM
-hex   : CHEM =hexa
-hexa  : CHEM
-hept  : CHEM =hepta
-hepta : CHEM
+mono  : REPN
+bi    : REPN
+di    : REPN
+tri   : REPN
+tetr  : REPN
+tetra : REPN
+pent  : REPN
+penta : REPN
+hex   : REPN
+hexa  : REPN
+hept  : REPN
+hepta : REPN
 
-chloro : ROOT
-propa  : ROOT
+acet    : ROOT
+chloro  : ROOT
+dimethano : ROOT
+methano : ROOT
+propa   : ROOT
 
 acetate  : CHEM
 acetic   : CHEM
@@ -23,7 +26,10 @@ acid     : CHEM
 benzene  : CHEM
 chloride : CHEM
 ethyl    : CHEM
+heptane  : CHEM
+idene    : CHEM
 methyl   : CHEM
+naphthalenyl : CHEM
 oxide    : CHEM
 silane   : CHEM
 sulfate  : CHEM
@@ -31,6 +37,7 @@ sulfide  : CHEM
 yl       : CHEM
 
 benzoic acid : CHEM
+naphthalene  : CHEM
 
 bis : REPB
 
