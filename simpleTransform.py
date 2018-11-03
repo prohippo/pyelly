@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# simpleTransform.py : 15mar2016 CPM
+# simpleTransform.py : 31oct2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -329,12 +329,16 @@ class SimpleTransform(object):
 
 #       print 'ts=' , ts[:lA] , ts[lA:]
 
-        while lA > 0:                   # remove matching substring
+        la = lA
+        while la > 0:                   # remove matching substring
             ts.pop(0)
-            lA -= 1
+            la -= 1
+#       print 'vA=' , vA , 'dA=' , dA
 
-        if vA == 0:                     # no number found to rewrite?
+        if lA == 0:                     # no number found to rewrite?
             s = salt
+        elif vA == 0:
+            s = '0'
         elif dA > 0:                    # a simple fraction found?
             s = str(vA) + '/' + str(dA) + xA + sA
         else:                           # numerical value as string + any ordinal indicator
@@ -352,6 +356,7 @@ class SimpleTransform(object):
 if __name__ == '__main__':
 
     tdat = [    # test cases
+        u'00' ,
         u'12 thousand' ,
         u'12345' ,
         u'12,345' ,
