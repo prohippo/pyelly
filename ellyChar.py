@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 27jul2018 CPM
+# ellyChar.py : 01nov2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -72,11 +72,12 @@ HYPH = u'\u2010'   # Unicode hyphen only
 
 EURO = u'\u20AC'
 
-Exc = [ AMP , HYM ]                                             # extension of span
+Exc = [ AMP , HYM ]                        # extension of span for token
 
-Apd = [ AST , PLS , HYM ]                                       # marks appending to token
+Apd = [ AST , PLS , HYM ]                  # marks appending to token
 
-Pnc = [ u'“' , u'”' , u'‘' , u'’' , u'–' , u'—' , u'…' , u'™' ] # special punctuation
+Pnc = [ u'“' , u'”' , u'‘' , u'’' , u'–' , # special punctuation
+        u'—' , u'…' , u'™' , u'′' ]
 
 Opn = [ u'“' , u'‘' , u'"' , u"'" , u'[' , u'(' ]
 Cls = [ u'”' , u'’' , u'"' , u"'" , u']' , u')' ]
@@ -715,6 +716,7 @@ if __name__ == "__main__":
     print 'ASCII space' , isSpace(' ') , ord(' ')
     print u'text \u266F' , isText(SHARP)
     print u'text \u266D' , isText(FLAT)
+    print u'text \u2032' , isText(PRME)
     print u'digit ¹' , isDigit(u'¹') , isLetterOrDigit(u'¹') , toIndex(u'¹') , toChar(toIndex(u'¹'))
     print u'digit ²' , isDigit(u'²') , isLetterOrDigit(u'²') , toIndex(u'²') , toChar(toIndex(u'²'))
     print u'digit ³' , isDigit(u'³') , isLetterOrDigit(u'³') , toIndex(u'³') , toChar(toIndex(u'³'))
