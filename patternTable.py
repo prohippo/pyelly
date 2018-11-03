@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# patternTable.py : 23oct2018 CPM
+# patternTable.py : 02nov2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -134,7 +134,7 @@ class Link(object):
                 if n == -1:
                     pe = self.patn[-1]                 # if so, get last pattern element
                     if ( pe != ellyWildcard.cALL and   # final pattern must end with * or $
-                     pe != ellyWildcard.cEND ):
+                         pe != ellyWildcard.cEND ):
                         self.patn += ellyWildcard.cEND # default is $
                         print >> sys.stderr , '** final $ added to pattern' , list(self.patn)
 
@@ -206,9 +206,9 @@ def bound ( segm ):
 #   print 'll=' , ll , ', lm=' , lm
     ll -= 1
     while ll > 0:    # exclude trailing non-alphanumeric from matching
-                     # except for '.' and '*' and bracketing
+                     # except for '.', Unicode prime, or  '*' and bracketing
         c = segm[ll]
-        if c in Trmls or c == '*' or ellyChar.isLetterOrDigit(c): break
+        if c in Trmls or c in [ u'*' , u'\x2032' ] or ellyChar.isLetterOrDigit(c): break
         ll -= 1
 #   print 'limit=' , ll + 1
     return ll + 1
@@ -384,7 +384,7 @@ class PatternTable(object):
         while True:                 # run FSA to find all possible matches
 #           print 'state=' , state
 #           print 'count=' , mtl , 'matched so far'
-#           print 'links=' , len(ls)
+#           print 'links=' , len(ls) , 'ix=' , ix
             nls = len(ls)           # how many links from current state
 
             if ix == nls:           # if none, then must back up
@@ -404,30 +404,37 @@ class PatternTable(object):
             while ix < nls:
                 lk = ls[ix]         # get next link at current state
                 ix += 1             # and increment link index
-#               print '@' , state , 'lk= [' , unicode(lk), ']'
-                if lk.patn == u'\x00': # do state change without matching?
-                    m = 0              # no match length
-                else:
-#                   print 'patn=' , lk.patn
+#               print '@' , state , 'lk= [' , unicode(lk), ']' , 'ix=' , ix
+#               print 'patn=' , lk.patn
+#               print 'cEND=' , ellyWildcard.cEND
+                po = lk.patn[0]
+                if po == u'\x00':   # do state change without matching?
+                    m = 0           # no match length
+                elif po != ellyWildcard.cEND:
                     bds = ellyWildcard.match(lk.patn,sg)
 #                   print 'bds=' , bds
                     if bds == None: continue
-
                     m = bds[0]      # get match length, ignore wildcard bindings
+                elif len(sg) > 0 and ellyChar.isLetterOrDigit(sg[0]):
+#                   print 'unmatched solitary $'
+                    continue
+                else:
+#                   print 'matched solitary $'
+                    m = 0
 
-#                   print 'm=' , m
+#               print 'm=' , m
 
-                    if lk.nxts < 0: # final state?
-                        if lk.nxts == -2: m = 0  # last part of match not counted
-#                       print 'state=' , state , unicode(lk)
-#                       print 'flags=' , lk.synf , '/' , lk.semf
-                        if tree.addLiteralPhraseWithSemantics(lk.catg,lk.synf,lk.semf,lk.bias,
-                                                              cap=capd): # make phrase
-                            ml = mtl + m
-                            if mtls < ml: mtls = ml
-#                           print 'success!' , 'mtls=' , mtls
-                            tree.lastph.lens = mtls                      # save its length
-#                           print 'match state=' , state , 'length=' , mtls
+                if lk.nxts < 0: # final state?
+                    if lk.nxts == -2: m = 0  # last part of match not counted
+#                   print 'state=' , state , unicode(lk)
+#                   print 'flags=' , lk.synf , '/' , lk.semf
+                    if tree.addLiteralPhraseWithSemantics(
+                        lk.catg,lk.synf,lk.semf,lk.bias,cap=capd): # make phrase
+                        ml = mtl + m
+                        if mtls < ml: mtls = ml
+#                       print 'success!' , 'mtls=' , mtls
+                        tree.lastph.lens = mtls                    # save its length
+#                       print 'match state=' , state , 'length=' , mtls
 
 #               print 'ix=' , ix , 'nls=' , nls
                 if ix < nls:        # any links not yet checked?
@@ -526,7 +533,7 @@ if __name__ == '__main__':
     while True: # try FSA with test examples
 
         if interact: sys.stdout.write('> ')
-        t = sys.stdin.readline().strip()
+        t = sys.stdin.readline().decode('utf8').strip()
         if len(t) == 0: break
         print 'text=' , '[' , t , ']'
         nma = patn.match(list(t),tre)
