@@ -640,6 +640,16 @@ Release Notes:
                       add chemic in integration testing
                       clean up "marking" pattern rules and integration test
                       update documentation
+ 1.5.5   - 03nov2018  eliminate duplicate output from ellyBase
+                      add data check to ellySurvey for robustness
+                      clean up diagnostic output from parseTest
+                      add debugging code to parseTree, clean up commentary
+                      accept Unicode input in patternTable unit test
+                      fix bug in patternTable handling solitary $ as pattern
+                      fix bug in handling 00 in simpleTransform
+                      fix bug leaving Unicode prime (u2032) undefined as text
+                      extend "chemic" rules and integration test
+                      update documentation
                       
 New versions will be for non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure

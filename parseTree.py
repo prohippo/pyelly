@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTree.py : 27jul2018 CPM
+# parseTree.py : 31oct2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -127,6 +127,7 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
         """
 
         while True:
+#           print len(self.queue) , 'queued'
             ph = self.dequeue()     # get next phrase from queue
             if ph == None: break    # until empty
 #           print 'digest' , ph , 'rule=' , ph.krnl.rule.seqn , 'wordno=' , self.wordno
@@ -143,7 +144,7 @@ class ParseTree(parseTreeBottomUp.ParseTreeBottomUp):
         """
         ramify for given phrase by
          (1) creating new phrases from goals set previously
-         (2)                      for 1-branch rules
+         (2)                       for 1-branch rules
          (3) and setting new goals for 2-branch rules
 
         arguments:
