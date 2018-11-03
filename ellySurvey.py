@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellySurvey.py : 14aug2018 CPM
+# ellySurvey.py : 31oct2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2015, Clinton Prentiss Mah
 # All rights reserved.
@@ -222,6 +222,7 @@ class EllySurvey(object):
 
         if len(text) == 0:              # if no text, done
             return
+#       print 'text=' , text
         self.sbu.refill(text)           # put text to translate into input buffer
 
 #       print self.sbu
@@ -434,9 +435,12 @@ class EllySurvey(object):
         d = self.rul                        # grammar rule definitions
 
         buff = self.sbu                     # input source
+#       print 'buff=' , buff
 
         try:
             w = buff.getNext()              # extract next token
+#           print 'survey:' , w
+            if w == None: return
             ws = u''.join(w.root)
         except ellyException.StemmingError as e:
             print >> sys.stderr , 'FATAL error' , e
