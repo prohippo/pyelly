@@ -102,6 +102,17 @@ g:CHEM->CHMH CHEM
   >>++
 __
 
+g:RNGL->RING PUNC[|*l]
+__
+g:RNGP->RNGL LOCN
+__
+g:RNGX->RNGP PUNC[|*r]
+__
+g:RNGX->RNGX RNGX
+__
+g:CHEM->RNGX CHEM
+__
+
 #
 # for locant structural description
 

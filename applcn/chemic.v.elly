@@ -41,3 +41,7 @@ naphthalene  : CHEM
 
 bis : REPB
 
+benzo     : RING
+bicyclo   : RING
+cyclo     : RING
+dicyclobuta : RING
