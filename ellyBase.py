@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 26oct2018 CPM
+# ellyBase.py : 01nov2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -73,7 +73,7 @@ noParseTree = False                     # enable parse tree stub for debugging
 
 # version ID
 
-release = 'v1.5.4'                      # current version of PyElly software
+release = 'v1.5.5'                      # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -953,10 +953,10 @@ if __name__ == '__main__':
 #       print 'txt=' , txt
         so.write('\n')
         lo = eb.translate(txt,True)
-        eb.ptr.dumpAll()
         if lo == None:
             print >> sys.stderr , '????'
         else:
+            eb.ptr.dumpAll()
             so.write('=[' + u''.join(lo) + ']\n')
 
     so.write('\n')
