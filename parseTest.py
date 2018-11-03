@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# parseTest.py : 20oct2018 CPM
+# parseTest.py : 01nov2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -74,7 +74,7 @@ class Tree(object):
     def addLiteralPhrase (self,typ,sxs,dvd=False,cap=False):
         """ dummy method
         """
-        typn = self.symbols.getSyntaxTypeName(typ)
+        typn = self.symbols.getSyntaxTypeName(typ).upper()
         print 'add phrase: typ=' , typ , typn , '[' + sxs.hexadecimal() + ']'
         ph = Phrase()
         ph.krnl.catg = typ
@@ -85,7 +85,7 @@ class Tree(object):
     def addLiteralPhraseWithSemantics (self,typ,sxs,sms,bia,gen=None,dvd=False,cap=False):
         """ dummy method
         """
-        typn = self.symbols.getSyntaxTypeName(typ)
+        typn = self.symbols.getSyntaxTypeName(typ).upper()
         print 'add phrase: cat=' , typ , typn , '[' + sxs.hexadecimal() + ']' , '[' + sms.hexadecimal() + '] =' , bia
         ph = Phrase()
         ph.krnl.catg = typ
@@ -100,8 +100,8 @@ class Tree(object):
         """
         print len(self.queue) , 'queued phrase' +  ('s' if len(self.queue) != 1 else '')
         for ph in self.queue:
-            typn = self.symbols.getSyntaxTypeName(ph.krnl.catg)
-            print typn , ph , 'len=' , ph.lens
+            typn = self.symbols.getSyntaxTypeName(ph.krnl.catg).upper()
+            print typn , ph
 
 class Context(object):
     """ dummy Elly interpretive context for testing
