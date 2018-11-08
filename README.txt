@@ -164,7 +164,7 @@ Release Notes:
                       fix bug in inheriting syntactic features with *L, *R
                       change directions of FIND command to be more consistent
                       update "test" and "bad" grammars for PyElly changes
-                      raise exception for  phrase overflows
+                      raise exception for phrase overflows
  1.2.6  -  01jun2015  clean up "marking" application rules
                       extend "marking" integration test
                       clean up logic for loading grammar and vocabulary
@@ -296,7 +296,7 @@ Release Notes:
  1.3.13  - 04jul2016  better handling of hyphens
                       improve parse tree full dump
                       clean up documentation
- 1.3.14  - 14jul2016  add method to turn off single feature bit
+ 1.3.14  - 14jul2016  add method to turn off individual feature bit
                       clean up handling of *L and *R syntactic features
                       fix capitalization bug in vocabulary lookup
                       recompile vocabulary only when needed
@@ -524,14 +524,14 @@ Release Notes:
                       extend logic for -S inflections in English
                       extend "marking" rules
                       update and revise documentation
- 1.4.21  - 05feb2018  fix bug and clean up stop exceptions code
+ 1.4.21  - 05feb2018  fix bug and clean up stop exception code
                       add error check to vocabulary table definition loading
                       extend "marking" rules
                       update documentation
  1.4.22  - 08feb2018  fix bug in vocabulary table case-independent string comparison
                       fix bug in macro substitution with leading apostrophe pattern
                       better warning on macro substitution increasing text length
-                      handle doubled single quotes in ellyCharInput
+                      handle doubled single quotes in ellyCharInputStream
                       extend default suffix rules and unit test
                       extend "marking" rules
                       update documentation
@@ -620,7 +620,7 @@ Release Notes:
                       clean up documentation and diagnostic code
                       update documentation
  1.5.1   - 03aug2018  replace compoundTable stub with functioning code
-                      integrate template marching in PyElly processing
+                      integrate template matching in PyElly processing
                       fix bug in ellySurvey because of new vocabularyTable
                       fix minor bug in cognitiveDefiner
                       extend "test" appplication rules
@@ -637,7 +637,7 @@ Release Notes:
                       fix bug in patternTable with maximum match length
                       clean up patternTable code, add debugging statements
                       add "chemic" application for chemical names
-                      add chemic in integration testing
+                      add "chemic" to integration testing
                       clean up "marking" pattern rules and integration test
                       update documentation
  1.5.5   - 03nov2018  eliminate duplicate output from ellyBase
@@ -649,6 +649,14 @@ Release Notes:
                       fix bug in handling 00 in simpleTransform
                       fix bug leaving Unicode prime (u2032) undefined as text
                       extend "chemic" rules and integration test
+                      update documentation
+ 1.5.6   - 08nov2018  allow for limited recursive prefix extractions
+                      ellyBase reorganized to handle prefix tokens
+                      ellyChar must let + be at end of token 
+                      clean up ellyWildcard debugging and commentary
+                      treeLogic needs to allow for + at start of token
+                      extend "chemic" rules and integration test
+                      update "marking" integration test
                       update documentation
                       
 New versions will be for non-cosmetic changes in PyElly code. This typically
