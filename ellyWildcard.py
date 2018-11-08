@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 22oct2018 CPM
+# ellyWildcard.py : 06nov2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -515,7 +515,7 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
         mx -= k                                # max span reduced by exclusion
         if mx < 0: return -1                   # cannot match if max span < 0
 
-        tfn = Matching[typw]                   # char type matching a wildcard
+        tfn = Matching[typw]                   # matchup function for wildcard type
 
 #       print "text at",offs,"maximum wildcard match=",mx
 
@@ -576,7 +576,7 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
                             break
                         offs += 2
                     else:
-#                       print 'no hyphen special matching'
+#                       print 'no special matching of hyphen'
                         break
 
 #           print 'matched @mp=' , mp
@@ -718,6 +718,7 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
 #               print '@' , offs , text
                 nm = _span(tc,nsps)      # maximum match possible
 
+#               print 'spanning=' , nm
                 if nm == 0:                             # compensate for findExtendedBreak peculiarity
                     if offs + 1 < limt and mp < ml:     # with closing ] or ) to be matched in pattern
                         if patn[mp] in Enc:             # from text input
@@ -854,6 +855,7 @@ if __name__ == "__main__":
             line = sys.stdin.readline()
         except KeyboardInterrupt:
             break
+        print ""
 
         txt = list(unicode(line.rstrip(),'utf-8'))
         if len(txt) == 0: break

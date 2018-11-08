@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# treeLogic.py : 05jun2015 CPM
+# treeLogic.py : 04nov2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -29,7 +29,7 @@
 # -----------------------------------------------------------------------------
 
 """
-basic finite automata for morphological analysis
+basic decision tree logic for morphological analysis
 """
 
 import sys
@@ -246,7 +246,7 @@ class Action(object):
 #           print 'prerest token=' , token.root
             try:
                 sta = tree.infl.applyRest(token)
-                return ( sta != 0 )
+                return sta != 0
             except ellyException.StemmingError as e:
                 print >> sys.stderr , '** WARNING:' , e
                 return False
@@ -275,6 +275,7 @@ class Action(object):
 #       print 'lst=' , lst , 'n=' , n , 'r=' , r
 
         pfx = u''.join(lst[:n]) + u'+'
+        if pfx[0] == '+': pfx = pfx[1:]
 #       print 'pfx=' , pfx
         token.addPrefix(pfx)
 
@@ -510,9 +511,10 @@ class TreeLogic(object):
             c = aff[0]                    # get first char to compare with
             aff = aff[1:]
 
-            if not ellyChar.isLetter(c):  # affix starts with letter?
+            if (not ellyChar.isLetter(c) and
+                    c != '+'):            # affix must start with letter or '+'
                 nerr += 1
-                print >> sys.stderr , "** affix error: must start with letter"
+                print >> sys.stderr , "** affix error: must start with letter or '+'"
                 print >> sys.stderr , "*  at: [" , line , "]"
                 continue                  # ignore line
 
@@ -613,7 +615,8 @@ if __name__ == '__main__':
         'wx 1 1 k,'     ,
         '|wxe 0 0 .'    ,
         'def 2 0 . 1x'  ,
-        'ef 1 0 ,'
+        'ef 1 0 ,'      ,
+        '+ab 1 0 ,'
     ]
 
     class TL(TreeLogic):        # have to override dummy methods

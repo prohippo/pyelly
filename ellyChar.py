@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 01nov2018 CPM
+# ellyChar.py : 04nov2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -72,7 +72,9 @@ HYPH = u'\u2010'   # Unicode hyphen only
 
 EURO = u'\u20AC'
 
-Exc = [ AMP , HYM ]                        # extension of span for token
+Exc = [ AMP , HYM , PLS , PRME ]           # extension of span for token
+
+Spc = [ HYM , NDSH , PLS ]                 # special joining
 
 Apd = [ AST , PLS , HYM ]                  # marks appending to token
 
@@ -594,8 +596,7 @@ def findExtendedBreak ( text , offset=0 , nspace=0 ):
 #       print 'char=' , x , '@' , k
         if not isPureCombining(x):                 # check if not ordinary token char
 #           print 'special checking needed'
-            if (x == HYM  or
-                x == NDSH or
+            if (x in Spc or
                 isEmbeddedCombining(x)):           # check if embeddable punctuation
 #               print 'nalnm=' , nalnm
                 if nalnm:
@@ -608,6 +609,7 @@ def findExtendedBreak ( text , offset=0 , nspace=0 ):
                     if isApostrophe(c) or isLetterOrDigit(c) or c in Exc:
                         nalnm = False              # must fib here
                         k += 1
+#                       print 'k=' , k
                         continue
                     elif isSpace(c):               # if next char is space, is it expected?
 #                       print 'is space, nspace=' , nspace

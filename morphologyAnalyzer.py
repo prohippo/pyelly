@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# morphologyAnalyzer.py : 30mar2017 CPM
+# morphologyAnalyzer.py : 06nov2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -91,7 +91,7 @@ class MorphologyAnalyzer(object):
             return False
         rs = token.root[0]
         re = token.root[-1]
-        if rs == '+' or rs == '-' or re == '+':
+        if rs == '-' or re == '+':
             return False
 #       print 'analysis:' , token
         suc = False

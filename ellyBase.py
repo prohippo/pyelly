@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 01nov2018 CPM
+# ellyBase.py : 07nov2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -73,7 +73,7 @@ noParseTree = False                     # enable parse tree stub for debugging
 
 # version ID
 
-release = 'v1.5.5'                      # current version of PyElly software
+release = 'v1.5.6'                      # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -153,12 +153,13 @@ def _notVocabularyToDate ( system ):
     return vt <= rt
 
 ########
-# ParseTree stubs for debugging without parse tree building
+# ParseTree stubs for debugging without real parse tree
 #
 
 class NoParseTree(parseTreeBottomUp.ParseTreeBottomUp):
+    """ dummy parse tree for debugging """
     def __init__ ( self , stb , gtb , ptb , ctx ):
-        print type(ctx)
+#       print type(ctx)
         self.ctx = ctx
         self.queue = [ None ]
         super(NoParseTree,self).__init__(stb,gtb,ptb)
@@ -199,7 +200,6 @@ class EllyBase(object):
         sbu  - input buffer with macro substitutions
         vtb  - vocabulary table
         rul  - grammar definitions
-        pat  - pattern definitions
         ses  - session definitions
         ctx  - interpretive context
         iex  - entity extractor
@@ -598,9 +598,9 @@ class EllyBase(object):
                 self.sbu.skip()                # remove from input
                 return True
 
-        to = self._extractToken(mx)    # single-word matching with analysis with lookup
+        to = self._extractToken(mx)    # single-word matching with analysis and lookup
 
-#       print 'to=' , unicode(to)
+#       print 'extracted to=' , unicode(to)
         if to == None:                 # if no match, we are done and will return
             return False if mx == 0 else True  # still success if _scanText() found something
         if self.ptr.lastph != None:
@@ -811,7 +811,9 @@ class EllyBase(object):
         if mnl > 0:
             return None                     # defer to previous lookup
 
-#       print 'logic: ' , d.man.pref , d.man.suff
+#       print 'affix logic:'
+#       print d.man.pref
+#       print d.man.suff
         dvdd = False
         if d.man.analyze(w):                # any analysis possible?
             root = u''.join(w.root)         # if so, get parts of analysis
@@ -826,7 +828,22 @@ class EllyBase(object):
                 buff.prepend(' ')
             w = buff.getNext()              # get token again with stemming and macros
 
+#           print 'analyzed w=' , w
+
             ws = u''.join(w.root)
+
+            if ws[-1] == '+':
+#               print 'len(queue)=' , len(tree.queue)
+                m = d.ptb.match(w.root,tree)
+#               print 'root=' , w.root
+#               print 'match=' , m
+#               print 'len(queue)=' , len(tree.queue)
+#               print 'char span=' , tree.lastph.lens
+                if m > 0:
+                    tree.lastph.bias = 2
+                    found = True
+
+#           print 'after found=' , found
             if len(ws) < mnl: return None   # external lookup?
             if self._simpleTableLookUp(ws,tree,False,wcapzn):  # external lookup
                 found = True
@@ -841,6 +858,12 @@ class EllyBase(object):
             return w
 
 #       print 'still unrecognized token w=' , unicode(w)
+
+        if ws[0] == '+' and ws[-1] != '+':
+#           print 'root=' , ws
+            if self._simpleTableLookUp(ws[1:],tree) > 0:
+                return w
+
         if self.pnc.match(w.root):          # check if next token is punctuation
 #           print 'catg=' , self.pnc.catg , self.pnc.synf.hexadecimal()
             if tree.addLiteralPhrase(self.pnc.catg,self.pnc.synf):
