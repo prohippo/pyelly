@@ -1,5 +1,5 @@
 # parsing of chemical names in text
-# chemical.g.elly
+# chemic.g.elly
 
 #
 # basic parsing
@@ -111,6 +111,33 @@ __
 g:RNGX->RNGX RNGX
 __
 g:CHEM->RNGX CHEM
+__
+
+g:LOCN->LOCN QUAL
+__
+
+p:prej
+_
+  left
+  delete 1 >
+  split
+  right
+  back
+  var ch=
+  extract ch <
+  if ~ch=+
+    insert < ch
+    end
+  merge
+__
+
+g:CHEM->PRFX CHEM
+_
+  (prej)
+__
+g:CHEM->PRFX UNKN
+_
+  (prej)
 __
 
 #

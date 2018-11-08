@@ -1,0 +1,6 @@
+# parsing of chemical names in text
+# chemic.ptl.elly
+
+thio 1 0 .
++per  1 0 .
++oxy  1 0 .

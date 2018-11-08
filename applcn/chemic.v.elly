@@ -18,13 +18,16 @@ acet    : ROOT
 chloro  : ROOT
 dimethano : ROOT
 methano : ROOT
+naphthalen : ROOT
 propa   : ROOT
 
 acetate  : CHEM
 acetic   : CHEM
 acid     : CHEM
 benzene  : CHEM
+butane   : CHEM
 chloride : CHEM
+diphosphoric : CHEM
 ethyl    : CHEM
 heptane  : CHEM
 idene    : CHEM
