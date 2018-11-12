@@ -13,3 +13,9 @@ uu 4-(2-naphthalenyl)-benzoic acid !
 zzz butane(dithioic) acid !
 zzz 1(2H)-naphthalenone !
 zzz thioperoxydiphosphoric acid !
+zzz [1,2′-binaphthalene]-2-carboxylic acid !
+zzz [1,1′-biphenyl]-4-yl !
+zzz 4a,9a-[2]butenoanthracene !
+zzz 4H-[1,3]oxathiolo[5,4-g]benzo-xazole !
+zzz 2,2′-oxybis[acetic acid] !
+zzz 4,4′-methylenebis[2-chlorobenzoic acid] !
