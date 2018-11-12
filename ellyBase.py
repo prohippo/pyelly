@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 07nov2018 CPM
+# ellyBase.py : 11nov2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -73,7 +73,7 @@ noParseTree = False                     # enable parse tree stub for debugging
 
 # version ID
 
-release = 'v1.5.6'                      # current version of PyElly software
+release = 'v1.5.7'                      # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -859,10 +859,19 @@ class EllyBase(object):
 
 #       print 'still unrecognized token w=' , unicode(w)
 
-        if ws[0] == '+' and ws[-1] != '+':
-#           print 'root=' , ws
-            if self._simpleTableLookUp(ws[1:],tree) > 0:
-                return w
+        lws = len(ws)
+        if lws > 1:                         # special handling of + or -
+            if ws[0] == '+' and ws[-1] != '+':
+#               print 'root=' , ws          # marks root with prefixes removed
+                if self._simpleTableLookUp(ws[1:],tree) > 0:
+                    return w
+            if ws[0] == '-':
+                w.shortenBy(lws-1)          # -X not recognized as suffix
+#               print 'w=' , w              # try processing - separately
+                cn = buff.peek()
+                if ellyChar.isLetterOrDigit(cn):
+                    buff.prepend(' ')
+                buff.prepend(ws[1:])        # put back X for further analysis
 
         if self.pnc.match(w.root):          # check if next token is punctuation
 #           print 'catg=' , self.pnc.catg , self.pnc.synf.hexadecimal()
@@ -872,11 +881,10 @@ class EllyBase(object):
 #               print 'semf=' , self.pnc.semf
 #               print 'lastph=' , tree.lastph
 #           print 'punc w=' , unicode(w)
-            return w
-
-#       print 'must create UNKN leaf node'
-        tree.createUnknownPhrase(w)     # unknown type as last resort
-        tree.lastph.lens = len(ws)
+        else:
+#           print 'must create UNKN leaf node'
+            tree.createUnknownPhrase(w)     # unknown type as last resort
+            tree.lastph.lens = len(ws)
 
         return w
 
