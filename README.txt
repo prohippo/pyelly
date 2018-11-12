@@ -658,6 +658,11 @@ Release Notes:
                       extend "chemic" rules and integration test
                       update "marking" integration test
                       update documentation
+ 1.5.7   - 12nov2018  fix bug in simpleTransform in reading commas in numbers
+                      fix bug in patternTable handling $ wildcard
+                      rework ellyBase handling of + and - at front of tokens
+                      extend "chemic" rules and integration test
+                      update documentation
                       
 New versions will be for non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
