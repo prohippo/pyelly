@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# patternTable.py : 05nov2018 CPM
+# patternTable.py : 11nov2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -80,7 +80,7 @@ class Link(object):
                 print >> sys.stderr , '** link pattern includes space:' , dfls[0]
                 raise ellyException.FormatFailure
             else:
-#               print 'do conversion;
+#               print 'do conversion'
                 self.patn = ellyWildcard.convert(dfls[0]) # encode Elly pattern
 #           print 'patn=' , self.patn
             if dfls[0] != '$':
@@ -407,7 +407,6 @@ class PatternTable(object):
                 ix += 1             # and increment link index
 #               print '@' , state , 'lk= [' , unicode(lk), ']' , 'ix=' , ix
 #               print 'patn=' , lk.patn
-#               print 'cEND=' , ellyWildcard.cEND
                 po = lk.patn[0]
                 if po == u'\x00':   # do state change without matching?
                     m = 0           # no match length
@@ -416,7 +415,8 @@ class PatternTable(object):
 #                   print 'bds=' , bds
                     if bds == None: continue
                     m = bds[0]      # get match length, ignore wildcard bindings
-                elif len(sg) > 0 and ellyChar.isLetterOrDigit(sg[0]):
+                elif (len(sg) > 0 and
+                        (ellyChar.isLetterOrDigit(sg[0]) or sg[0] == ellyChar.PRME)):
 #                   print 'unmatched solitary $'
                     continue
                 else:
@@ -430,7 +430,7 @@ class PatternTable(object):
 #                   print 'state=' , state , unicode(lk)
 #                   print 'flags=' , lk.synf , '/' , lk.semf
                     if tree.addLiteralPhraseWithSemantics(
-                        lk.catg,lk.synf,lk.semf,lk.bias,cap=capd): # make phrase
+                            lk.catg,lk.synf,lk.semf,lk.bias,cap=capd): # make phrase
                         ml = mtl + m
                         if mtls < ml: mtls = ml
 #                       print 'success!' , 'mtls=' , mtls
