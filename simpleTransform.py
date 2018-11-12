@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# simpleTransform.py : 31oct2018 CPM
+# simpleTransform.py : 11nov2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -131,9 +131,11 @@ class SimpleTransform(object):
             c = ts[i]                     # get next char
             if c == COMMA:                # special treatment of COMMA
 #               print 'comma'
-                if ( not ellyChar.isDigit(lc) or
-                     i + 1 == lm or
-                     not ellyChar.isDigit(ts[i + 1])
+                if (not ellyChar.isDigit(lc) or
+                       i + 3 >= lm or
+                       not ellyChar.isDigit(ts[i + 1]) or
+                       not ellyChar.isDigit(ts[i + 2]) or
+                       not ellyChar.isDigit(ts[i + 3])
                    ):
                     break
             else:
