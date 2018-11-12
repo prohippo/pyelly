@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# morphologyAnalyzer.py : 06nov2018 CPM
+# morphologyAnalyzer.py : 09nov2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -97,10 +97,13 @@ class MorphologyAnalyzer(object):
         suc = False
         if self.suff != None:
             if self.suff.match(token):
+#               print 'stemmed token=' , unicode(token)
                 suc = True
+#       print 'suf suc=' , suc
         if self.pref != None:
             if self.pref.match(token):
                 suc = True
+#       print 'pref suc=' , suc
         return suc
 
 #
