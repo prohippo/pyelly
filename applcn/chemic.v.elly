@@ -18,14 +18,19 @@ acet    : ROOT
 chloro  : ROOT
 dimethano : ROOT
 methano : ROOT
-naphthalen : ROOT
+naphthalen  : ROOT
+naphthalene : ROOT
 propa   : ROOT
+thiolo  : ROOT
 
 acetate  : CHEM
 acetic   : CHEM
-acid     : CHEM
+acid     : CHEM[:type]
+anthracene : CHEM
 benzene  : CHEM
+biphenyl : CHEM
 butane   : CHEM
+carboxylic : CHEM
 chloride : CHEM
 diphosphoric : CHEM
 ethyl    : CHEM
@@ -37,12 +42,15 @@ oxide    : CHEM
 silane   : CHEM
 sulfate  : CHEM
 sulfide  : CHEM
+xazole   : CHEM
 yl       : CHEM
 
 benzoic acid : CHEM
 naphthalene  : CHEM
 
 bis : REPB
+methylenebis : REPB
+oxybis : REPB
 
 benzo     : RING
 bicyclo   : RING

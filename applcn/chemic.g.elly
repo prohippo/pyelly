@@ -41,10 +41,20 @@ _
     append 〖
     right
   else
-    space
+    split
     right
+    back
+    if ~ch=]
+      peek ch <
+      if ~ch=[
+        space
+        end
+      end
+    merge
     end
   append 〗
+__
+g:SS->CHMB
 __
 
 #
@@ -82,12 +92,17 @@ _
   (catn)
 __
 
+g:RPBR->REPN PUNC[|*l]
+__
+g:RPCH->RPBR CHEM
+__
+g:CHEM->RPCH PUNC[|*r]
+__
+
 g:CHEM->CHEM PUNC[|hyph]
 __
 
 g:CHMB->PUNC[|*l] CHEM
-__
-g:CHEM->CHMB PUNC[|*r]
   >>+++
 __
 
@@ -101,7 +116,11 @@ __
 g:CHEM->CHMH CHEM
   >>++
 __
-
+g:CHEM->CHEM[:-type] CHEM[:type]
+  >>++++
+_
+  (twob)
+__
 g:RNGL->RING PUNC[|*l]
 __
 g:RNGP->RNGL LOCN
@@ -111,6 +130,9 @@ __
 g:RNGX->RNGX RNGX
 __
 g:CHEM->RNGX CHEM
+__
+
+g:RNGX->RING PUNC[|hyph]
 __
 
 g:LOCN->LOCN QUAL
@@ -139,9 +161,21 @@ g:CHEM->PRFX UNKN
 _
   (prej)
 __
+g:CHEM->PRFX ROOT
+_
+  (prej)
+__
 
+g:CHEM[:brkt]->CHMB PUNC[|*r]
+ >>+
+__
+ 
 #
 # for locant structural description
+
+g:STRUC->CHEM[:brkt] PUNC[|hyph]
+  >>+
+__
 
 g:STRUC->LOCN PUNC[|hyph]
   >>++
@@ -149,6 +183,14 @@ __
 
 g:STRUC->ATOM ATID
   >>+
+__
+
+g:STRUC->STRC PUNC[|*r]
+__
+g:STRUC->ATOM PUNC[|hyph]
+  >>--
+__
+g:STRC->PUNC[|*l] LOCN
 __
 
 g:ATID->ATID PUNC[|hyph]
