@@ -1,5 +1,5 @@
 Is 1,2-propadiene available?
-xyz bis(2-chloroethyl) disulfide !
+xyz bis(2-chloroethyl)disulfide !
 xyz chloromethyl-silane !
 xyz (chloromethyl)-silane !
 xyz 3-(chlorobenzoyl)-benzoic acid !
@@ -19,3 +19,27 @@ zzz 4a,9a-[2]butenoanthracene !
 zzz 4H-[1,3]oxathiolo[5,4-g]benzo-xazole !
 zzz 2,2′-oxybis[acetic acid] !
 zzz 4,4′-methylenebis[2-chlorobenzoic acid] !
+aaabbb S-[(dodecylthio)methyl] ester ?
+aaabbb bis[(2,4-dinitrophenyl)hydrazone] ?
+aaabbb bis(methylene) ?
+aaabbb bis(2-aminoethyl) ?
+aaabbb [1,2-ethanediylbis(oxymethylene)] ?
+aaabbb bis(O-methyloxime) ?
+aaabbb bis(cyclohexaneacetate) ?
+aaabbb tris(dihydrogen phosphate) ?
+aaabbb bis(aziridinyl) ?
+aaabbb bis(2,1-diazenediyl) ?
+aaabbb bis([1,1′-biphenyl]-4-yl) ?
+aaabbb bis(bicyclo[2.2.1]hept-2-yl) ?
+them tris(decyl) .
+them tetrakis(1-aziridinyl) .
+them bis(benz[a]anthracen-1-yl) .
+then benzo[1,2-c:3,4-c′]bis[1,2,5] oxadiazole .
+them biscyclopenta[5,6]pyrido[4,3-b:3′,4′-c]pyridine .
+them 2,2′-silylenebis-benzoic acid .
+them P,P′-1,4-phenylenebis-phosphonic acid .
+them oxime 2-propanone .
+them monomethyl ester carbonic acid .
+them 2-acetate 1,2-naphthalenediol .
+them ethyl dimethyl ester phosphoric acid .
+them 2-(dimethylamino)-4-(dimethylsulfonio)-5-hydroxy-1,2,3-oxadiazolium .
