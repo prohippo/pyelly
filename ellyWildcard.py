@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 06nov2018 CPM
+# ellyWildcard.py : 14nov2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -247,7 +247,9 @@ def convert ( strg ):
                 t.append(z)      # otherwise, keep the next char as lower case
 #               print 'slash t=',list(t)
                 i += 1
+#           print 'escaped t=' , t
         else:
+#           print 'appending x=' , x
             t.append(x)
             wild = False
 
@@ -864,7 +866,7 @@ if __name__ == "__main__":
 
         if b != None:
             n = b.pop(0)
-            print n , "chars matched with" , len(b) , "wildcard bindings"
+            print n , "chars matched with" , len(b) , "wildcard binding(s)"
             for j in range(len(b)):
                 r = b[j]
                 print '\\\\' + str(j + 1) , '=' , r , txt[r[0]:r[1]]
