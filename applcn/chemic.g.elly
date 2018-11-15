@@ -10,6 +10,14 @@ _
   space
   right
 __
+p:twobc
+_
+  left
+  if [$spcg]
+    space
+    end
+  right
+__
 
 g:SENT->SS
 _
@@ -71,7 +79,7 @@ _
   merge
 __
 g:CHEM->CHEM CMPN
-  >>+
+  >>*l+
 _
   (catn)
 __
@@ -83,11 +91,15 @@ __
 g:CHEM->STRUC CHEM
   >>+
 __
+g:CHEM->STRUC CHMB
+  >>-
+__
 
 g:ROOT->REPN ROOT
 __
 
 g:CHEM->REPN CMPN
+  >>[$spcg]
 _
   (catn)
 __
@@ -99,6 +111,9 @@ __
 g:CHEM->RPCH PUNC[|*r]
 __
 
+g:PRPS->ATMP PUNC[|hyph]
+__
+
 g:CHEM->CHEM PUNC[|hyph]
 __
 
@@ -107,6 +122,11 @@ g:CHMB->PUNC[|*l] CHEM
 __
 
 g:PUNC[|*l]->REPB PUNC[|*l]
+  >>[$spcg]++
+__
+g:PRPS->REPB PUNC[|hyph]
+__
+g:CHEM->PRPS CHEM
   >>++
 __
 
@@ -116,11 +136,30 @@ __
 g:CHEM->CHMH CHEM
   >>++
 __
-g:CHEM->CHEM[:-type] CHEM[:type]
+g:CHEM->CHEM[:-type,-brkt] CHEM[:type]
   >>++++
 _
   (twob)
 __
+g:CHEM->CHEM[:brkt] CHEM[:-type]
+  r[$spcg]>>*r++
+          >>++
+_
+  (twobc)
+__
+g:CHEM->CHEM[:brkt] CHEM[:type]
+  >>++
+_
+  (twob)
+__
+g:CHEM->CHEM[:brkt] CHEM[:-type]
+  >>++
+__
+g:CHMB->CHMB CHEM
+_
+  (twob)
+__
+
 g:RNGL->RING PUNC[|*l]
 __
 g:RNGP->RNGL LOCN
@@ -166,7 +205,10 @@ _
   (prej)
 __
 
-g:CHEM[:brkt]->CHMB PUNC[|*r]
+g:CHEM[:brkt]->CHMB PUNC[|*r,*x]
+ >>[$spcg]+
+__
+g:CHEM[:brkt]->CHMB PUNC[|*r,-*x]
  >>+
 __
  
@@ -174,7 +216,10 @@ __
 # for locant structural description
 
 g:STRUC->CHEM[:brkt] PUNC[|hyph]
-  >>+
+  r[$spcg]>>[$spcg]+
+          >>+
+_
+  (twobc)
 __
 
 g:STRUC->LOCN PUNC[|hyph]
@@ -194,4 +239,13 @@ g:STRC->PUNC[|*l] LOCN
 __
 
 g:ATID->ATID PUNC[|hyph]
+__
+
+#
+# linkage?
+g:LINK->LNKS PUNC[|*r,*x]
+__
+g:RNGL->RING LINK
+__
+g:CHEM->RNGL CHEM
 __

@@ -4,6 +4,7 @@
 mono  : REPN
 bi    : REPN
 di    : REPN
+dodecyl : REPN
 tri   : REPN
 tetr  : REPN
 tetra : REPN
@@ -15,44 +16,75 @@ hept  : REPN
 hepta : REPN
 
 acet    : ROOT
+amino   : ROOT
 chloro  : ROOT
 dimethano : ROOT
+hydraz  : ROOT
 methano : ROOT
 naphthalen  : ROOT
 naphthalene : ROOT
 propa   : ROOT
+propan  : ROOT
 thiolo  : ROOT
 
 acetate  : CHEM
 acetic   : CHEM
 acid     : CHEM[:type]
 anthracene : CHEM
+aziridinyl : CHEM
 benzene  : CHEM
 biphenyl : CHEM
 butane   : CHEM
+carbonic : CHEM
 carboxylic : CHEM
 chloride : CHEM
+decyl    : CHEM
+diazenediyl  : CHEM
+diazolium    : CHEM
+dihydrogen   : CHEM
 diphosphoric : CHEM
+ester    : CHEM[:type]
+ethane   : CHEM
 ethyl    : CHEM
+hept-2-yl : CHEM
 heptane  : CHEM
+hexane   : CHEM
+hydroxy  : CHEM
 idene    : CHEM
 methyl   : CHEM
+methylene : CHEM
+naphthalene  : CHEM
 naphthalenyl : CHEM
 oxide    : CHEM
+oxime    : CHEM
+phenyl   : CHEM
+phosphate  : CHEM
+phosphonic : CHEM
+phosphoric : CHEM
+pyridine : CHEM
+pyrido   : CHEM
 silane   : CHEM
 sulfate  : CHEM
 sulfide  : CHEM
+thio     : CHEM
 xazole   : CHEM
 yl       : CHEM
 
 benzoic acid : CHEM
 naphthalene  : CHEM
 
-bis : REPB
-methylenebis : REPB
-oxybis : REPB
+bis           : REPB [$spcg] 0
+ethanediylbis : REPB [$spcg] 0
+methylenebis  : REPB [$spcg] 0
+oxybis        : REPB [$spcg] 0
+phenylenebis  : REPB [$spcg] 0
+silylenebis   : REPB [$spcg] 0
+tetrakis      : REPB [$spcg] 0
+tris          : REPB [$spcg] 0
 
+benz      : RING
 benzo     : RING
 bicyclo   : RING
+biscyclopenta : RING
 cyclo     : RING
 dicyclobuta : RING
