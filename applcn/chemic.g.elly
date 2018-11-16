@@ -64,6 +64,8 @@ _
 __
 g:SS->CHMB
 __
+g:SS->SS HCHM
+__
 
 #
 # for names with multiple components that
@@ -95,7 +97,13 @@ g:CHEM->STRUC CHMB
   >>-
 __
 
+g:REPN->REPN PUNC[|hyph]
+  >>--
+__
 g:ROOT->REPN ROOT
+__
+
+g:HCHM[:hyph]->PUNC[|hyph] CHEM
 __
 
 g:CHEM->REPN CMPN

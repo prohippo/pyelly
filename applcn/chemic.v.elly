@@ -23,18 +23,21 @@ hydraz  : ROOT
 methano : ROOT
 naphthalen  : ROOT
 naphthalene : ROOT
+oxo     : ROOT
 propa   : ROOT
 propan  : ROOT
 thiolo  : ROOT
 
 acetate  : CHEM
 acetic   : CHEM
+acetyl   : CHEM
 acid     : CHEM[:type]
 anthracene : CHEM
 aziridinyl : CHEM
 benzene  : CHEM
 biphenyl : CHEM
 butane   : CHEM
+butanal  : CHEM
 carbonic : CHEM
 carboxylic : CHEM
 chloride : CHEM
