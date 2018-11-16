@@ -1,22 +1,23 @@
 # parsing of chemical names in text
 # chemic.stl.elly
 
-acetate  1 0 0
-acetic   1 0 0
-amide    1 0 0
-benzoic  1 0 0
-benzoyl  1 0 0
-chloride 1 0 0
-diene    1 0 0
-diol     1 0 0
-ethyl    1 0 0
-indene   1 0 0
-methyl   1 0 0
-one      1 0 0
-oxide    1 0 0
-oxime    1 0 0
-sulfate  1 0 0
-sulfide  1 0 0
-thioic   1 0 0
+acetate  1 0 .
+acetic   1 0 .
+amide    1 0 .
+benzoic  1 0 .
+benzoyl  1 0 .
+chloride 1 0 .
+diene    1 0 .
+diol     1 0 .
+ethyl    1 0 .
+hydraz   1 0 .
+indene   1 0 .
+methyl   1 0 .
+one      1 0 ,
+oxide    1 0 .
+oxime    1 0 .
+sulfate  1 0 .
+sulfide  1 0 .
+thioic   1 0 .
 
-naphthalene 1 0 0
+naphthalene 1 0 .
