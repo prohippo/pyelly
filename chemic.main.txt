@@ -43,3 +43,8 @@ them monomethyl ester carbonic acid .
 them 2-acetate 1,2-naphthalenediol .
 them ethyl dimethyl ester phosphoric acid .
 them 2-(dimethylamino)-4-(dimethylsulfonio)-5-hydroxy-1,2,3-oxadiazolium .
+but 4-oxime 2,5-cyclohexadiene-1,4-dione 1-(phenylhydrazone) :
+but ethyl dihydrogen phosphate :
+but 4-(1-oxopropoxy)-methyl ester benzoic acid :
+but 3-hydrazono-butanal :
+but 4-[2-(acetyloxy)-2-oxoethyl]-1,7-dimethyl ester heptanedioic acid :
