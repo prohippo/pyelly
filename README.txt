@@ -663,7 +663,14 @@ Release Notes:
                       rework ellyBase handling of + and - at front of tokens
                       extend "chemic" rules and integration test
                       update documentation
-                      
+ 1.5.8   - 20nov2018  include more format checking in treeLogic
+                      make error reporting in morphologyAnalyzer more consistent
+                      upgrade vocabularyTable for single Greek letter definition
+                      fix bug in ellyBuffer extracting ',' as a token
+                      extend "chemic", "bad" rules
+                      extend "chemic" integration testing
+                      update documentation
+
 New versions will be for non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
 correct operation. Changes only to PyElly sample application definition files,
