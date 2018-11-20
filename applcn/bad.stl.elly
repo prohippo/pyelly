@@ -1,0 +1,5 @@
+# malformed grammar to test PyElly error reporting
+# bad.s.elly
+
+amine 1 0 0
++abc  1 0 0
