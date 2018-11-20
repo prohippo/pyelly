@@ -100,6 +100,8 @@ __
 g:REPN->REPN PUNC[|hyph]
   >>--
 __
+g:REPN[:splt]->REPN[:full] PUNC[|hyph]
+__
 g:ROOT->REPN ROOT
 __
 
@@ -122,6 +124,20 @@ __
 g:PRPS->ATMP PUNC[|hyph]
 __
 
+g:ATMH->PUNC[|hyph] ATMP
+ >>--
+__
+g:CHEM->ROOT ATMH
+__
+g:HROO->PUNC[|hyph] ROOT
+__
+g:HRTH->HROO PUNC[|hyph]
+__
+g:LOCX->LOCN HRTH
+__
+g:LOCN->LOCX LOCN
+__
+
 g:CHEM->CHEM PUNC[|hyph]
 __
 
@@ -129,10 +145,20 @@ g:CHMB->PUNC[|*l] CHEM
   >>+++
 __
 
+g:CHEM->REPN[:splt] CHEM
+ >>+
+__
+
 g:PUNC[|*l]->REPB PUNC[|*l]
   >>[$spcg]++
 __
 g:PRPS->REPB PUNC[|hyph]
+__
+g:CFGB->PUNC[|com] CNFG
+__
+g:CFGR-> CFGB PUNC[|com]
+__
+g:PRPS->ATMP CFGR
 __
 g:CHEM->PRPS CHEM
   >>++

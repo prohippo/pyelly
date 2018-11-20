@@ -1,29 +1,34 @@
 # parsing of chemical names in text
 # chemic.v.elly
 
-mono  : REPN
-bi    : REPN
-di    : REPN
+mono  : REPN[:full]
+bi    : REPN[:full]
+di    : REPN[:full]
 dodecyl : REPN
-tri   : REPN
+tri   : REPN[:full]
 tetr  : REPN
-tetra : REPN
+tetra : REPN[:full]
 pent  : REPN
-penta : REPN
+penta : REPN[:full]
 hex   : REPN
-hexa  : REPN
+hexa  : REPN[:full]
 hept  : REPN
-hepta : REPN
+hepta : REPN[:full]
 
 acet    : ROOT
 amino   : ROOT
 chloro  : ROOT
+dichloro : ROOT
 dimethano : ROOT
+ethan   : ROOT
 hydraz  : ROOT
+methan  : ROOT
 methano : ROOT
 naphthalen  : ROOT
 naphthalene : ROOT
 oxo     : ROOT
+phosph  : ROOT
+phosphon : ROOT
 propa   : ROOT
 propan  : ROOT
 thiolo  : ROOT
@@ -49,11 +54,13 @@ diphosphoric : CHEM
 ester    : CHEM[:type]
 ethane   : CHEM
 ethyl    : CHEM
+fluoro   : CHEM
 hept-2-yl : CHEM
 heptane  : CHEM
 hexane   : CHEM
 hydroxy  : CHEM
 idene    : CHEM
+imino    : CHEM
 methyl   : CHEM
 methylene : CHEM
 naphthalene  : CHEM
@@ -64,12 +71,15 @@ phenyl   : CHEM
 phosphate  : CHEM
 phosphonic : CHEM
 phosphoric : CHEM
+propyl     : CHEM
 pyridine : CHEM
 pyrido   : CHEM
 silane   : CHEM
 sulfate  : CHEM
+sulfonyl : CHEM
 sulfide  : CHEM
 thio     : CHEM
+trimethyl : CHEM
 xazole   : CHEM
 yl       : CHEM
 
@@ -91,3 +101,8 @@ bicyclo   : RING
 biscyclopenta : RING
 cyclo     : RING
 dicyclobuta : RING
+
+α : CNFG
+β : CNFG
+γ : CNFG
+δ : CNFG

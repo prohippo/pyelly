@@ -4,6 +4,8 @@
 acetate  1 0 .
 acetic   1 0 .
 amide    1 0 .
+amine    1 0 .
+aminium  1 0 .
 benzoic  1 0 .
 benzoyl  1 0 .
 chloride 1 0 .
@@ -12,6 +14,7 @@ dioic    1 0 .
 diol     1 0 .
 ethyl    1 0 .
 hydraz   1 0 .
+imidic   1 0 .
 indene   1 0 .
 methyl   1 0 .
 one      1 0 ,
