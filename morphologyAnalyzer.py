@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# morphologyAnalyzer.py : 09nov2018 CPM
+# morphologyAnalyzer.py : 19nov2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -36,6 +36,7 @@ import suffixTreeLogic
 import prefixTreeLogic
 import ellyConfiguration
 import ellyException
+import sys
 
 class MorphologyAnalyzer(object):
 
@@ -65,10 +66,14 @@ class MorphologyAnalyzer(object):
         self.suff = None
         if not ellyConfiguration.morphologicalStemming:
             return
-        if sufdfn != None:
-            self.suff = suffixTreeLogic.SuffixTreeLogic(sufdfn)
-        if predfn != None:
-            self.pref = prefixTreeLogic.PrefixTreeLogic(predfn)
+        try:
+            if sufdfn != None:
+                self.suff = suffixTreeLogic.SuffixTreeLogic(sufdfn)
+            if predfn != None:
+                self.pref = prefixTreeLogic.PrefixTreeLogic(predfn)
+        except ellyException.TableFailure:
+            print >> sys.stderr , 'morphology tree generation FAILed'
+            raise ellyException.TableFailure
 
     def analyze ( self , token ):
 
@@ -112,7 +117,6 @@ class MorphologyAnalyzer(object):
 
 if __name__ == '__main__':
 
-    import sys
     import ellyToken
     import ellyDefinitionReader
     import inflectionStemmerEN
