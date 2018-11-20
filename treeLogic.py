@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# treeLogic.py : 04nov2018 CPM
+# treeLogic.py : 17nov2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -551,6 +551,10 @@ class TreeLogic(object):
             if mode == u'?':
                 node.condn = 1
                 resto = [ Fail ]          # will generate fatal error
+            elif ellyChar.isDigit(mode):
+                nerr += 1
+                print >> sys.stderr , "* bad action mode=" , mode
+                continue
             else:
                 if mode == ',':           # allow recursion?
                     recur = True          # if so, change default
