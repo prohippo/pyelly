@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 28jul2018 CPM
+# vocabularyTable.py : 19nov2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -55,7 +55,14 @@ source     = '.v.elly'              # input vocabulary text file suffix
 
 nerr = 0                            # shared error count among definition methods
 
-initChr = [ u'.' , u'-' , u'"' , u"'" , ellyChar.LDQm , u',' , u'%' , ellyChar.MDSH , ellyChar.HYPH ]
+initChr = [
+    u'.' , u'-' , u'"' , u"'" , ellyChar.LDQm , u',' , u'%' , ellyChar.MDSH , ellyChar.HYPH ,
+    u'\u03B1' , u'\u03B2' , u'\u03B3' , u'\u03B4' , u'\u03B5' ,
+    u'\u03B6' , u'\u03B7' , u'\u03B8' , u'\u03B9' , u'\u03BA' ,
+    u'\u03BB' , u'\u03BC' , u'\u03BD' , u'\u03BE' , u'\u03BF' ,
+    u'\u03C0' , u'\u03C1' , u'\u03C3' , u'\u03C4' , u'\u03C5' ,
+    u'\u03C6' , u'\u03C7' , u'\u03C8' , u'\u03C9'
+]
 
 def delimitKey ( t ):
 
@@ -101,6 +108,14 @@ def delimitKey ( t ):
 #   print 'key=' , t[:n+1]
     return n + 1                  # to get key length ending in alphanumeric
 
+GrkL = {
+    u'\u03B1' : 'a' , u'\u03B2' : 'b' , u'\u03B3' : 'g' , u'\u03B4' : 'd' , u'\u03B5' : 'e' ,
+    u'\u03B6' : 'z' , u'\u03B7' : 'e' , u'\u03B8' : 't' , u'\u03B9' : 'i' , u'\u03BA' : 'k' ,
+    u'\u03BB' : 'l' , u'\u03BC' : 'm' , u'\u03BD' : 'n' , u'\u03BE' : 'x' , u'\u03BF' : 'p' ,
+    u'\u03C0' : 'p' , u'\u03C1' : 'r' , u'\u03C3' : 's' , u'\u03C4' : 't' , u'\u03C5' : 'u' ,
+    u'\u03C6' : 'f' , u'\u03C7' : 'x' , u'\u03C8' : 'p' , u'\u03C9' : 'o'
+}
+
 def toKey ( s ):
 
     """
@@ -110,9 +125,11 @@ def toKey ( s ):
         s   - string or list of Unicode chars
 
     returns:
-        ASCII key
+        ASCII key as string
     """
 
+    if len(s) == 1 and s[0] in GrkL:
+        return GrkL[s[0]]
     sl = list(s)
     ellyChar.toLowerCaseASCII(sl)
 #   print 'VT key=' , sl
@@ -851,7 +868,7 @@ if __name__ == '__main__':
         if kn == 0:                    # if none, cannot look up
             print 'index NOT FOUND:' , ssx
             continue
-        print 'DB key=' , tsx[:kn]
+        print 'raw key=' , tsx[:kn]
         check(uvtb,tsx,kn)
         print ''
 
