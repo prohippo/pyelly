@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBuffer.py : 28jul2018 CPM
+# ellyBuffer.py : 18nov2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -609,9 +609,7 @@ class EllyBuffer(object):
                 k = 2
             else:
                 k = 1
-        elif self.match(DOT):   # check for period
-            k = 1
-        elif self.match(UELP):  # check for Unicode ellipsis
+        elif cz in [ COM , DOT , UELP ]:  # these can be tokens by themselves
             k = 1
         else:
 #           print 'full token extraction'
