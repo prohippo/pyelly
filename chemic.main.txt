@@ -48,3 +48,10 @@ but ethyl dihydrogen phosphate :
 but 4-(1-oxopropoxy)-methyl ester benzoic acid :
 but 3-hydrazono-butanal :
 but 4-[2-(acetyloxy)-2-oxoethyl]-1,7-dimethyl ester heptanedioic acid :
+but N,N,N-trimethyl-2-(phosphonooxy)-ethanaminium :
+but 4-fluoro-2-(hydroxyimino)propyl ester benzoic acid :
+but 4-[(acetyloxy)-sulfonyl]-methyl ester benzoic acid :
+but N,N′,N′′,P-tetramethyl-phosphonimidic diamide :
+but N,α,4-tri-methyl-benzenemethanamine :
+but 4-chloro-N-methyl-1,3-benzenediamine :
+but 2′,2′′-dichloro-1,1′:4′,1′′-terphenyl :
