@@ -6,6 +6,8 @@ acetic   1 0 .
 amide    1 0 .
 amine    1 0 .
 aminium  1 0 .
+azene    1 0 .
+azine    1 9 .
 benzoic  1 0 .
 benzoyl  1 0 .
 chloride 1 0 .
@@ -17,6 +19,7 @@ hydraz   1 0 .
 imidic   1 0 .
 indene   1 0 .
 methyl   1 0 .
+nitrile  1 0 .
 one      1 0 ,
 ono      1 0 ,
 oxide    1 0 .

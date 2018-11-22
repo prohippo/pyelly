@@ -17,6 +17,9 @@ hepta : REPN[:full]
 
 acet    : ROOT
 amino   : ROOT
+buta    : ROOT
+buten   : ROOT
+carbo   : ROOT
 chloro  : ROOT
 dichloro : ROOT
 dimethano : ROOT
@@ -41,6 +44,7 @@ anthracene : CHEM
 aziridinyl : CHEM
 benzene  : CHEM
 biphenyl : CHEM
+bipyrazine : CHEM
 butane   : CHEM
 butanal  : CHEM
 carbonic : CHEM
@@ -53,11 +57,13 @@ dihydrogen   : CHEM
 diphosphoric : CHEM
 ester    : CHEM[:type]
 ethane   : CHEM
+ethene   : CHEM
 ethyl    : CHEM
 fluoro   : CHEM
 hept-2-yl : CHEM
 heptane  : CHEM
 hexane   : CHEM
+hexene   : CHEM
 hydroxy  : CHEM
 idene    : CHEM
 imino    : CHEM
@@ -72,6 +78,7 @@ phosphate  : CHEM
 phosphonic : CHEM
 phosphoric : CHEM
 propyl     : CHEM
+pyrazine : CHEM
 pyridine : CHEM
 pyrido   : CHEM
 silane   : CHEM
@@ -80,8 +87,10 @@ sulfonyl : CHEM
 sulfide  : CHEM
 thio     : CHEM
 trimethyl : CHEM
+trione    : CHEM
 xazole   : CHEM
 yl       : CHEM
+yne      : CHEM
 
 benzoic acid : CHEM
 naphthalene  : CHEM

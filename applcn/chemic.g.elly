@@ -137,6 +137,8 @@ g:LOCX->LOCN HRTH
 __
 g:LOCN->LOCX LOCN
 __
+g:LOCN->LOCN SLCN
+__
 
 g:CHEM->CHEM PUNC[|hyph]
 __
