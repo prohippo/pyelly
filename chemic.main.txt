@@ -55,3 +55,14 @@ but N,N′,N′′,P-tetramethyl-phosphonimidic diamide :
 but N,α,4-tri-methyl-benzenemethanamine :
 but 4-chloro-N-methyl-1,3-benzenediamine :
 but 2′,2′′-dichloro-1,1′:4′,1′′-terphenyl :
+hxh 1-triazene up!
+hxh 1,2-propadiene up!
+hxh 1-buten-3-yne up!
+hxh ethene up!
+hxh cyclohexene up!
+hxh 1,3-cyclopentadiene up!
+hxh 1,1′-biphenyl up!
+hxh 2,2′-bipyrazine up!
+hxh bi-2-cyclohexen-1-yl up!
+hxh 1,3-butadiene-1,1,2,3,4,4-hexacarbonitrile up!
+hxh 1,3,5-triazine-2,4,6(1H,3H,5H)-trione up!
