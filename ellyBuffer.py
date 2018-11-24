@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBuffer.py : 18nov2018 CPM
+# ellyBuffer.py : 22nov2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -586,7 +586,6 @@ class EllyBuffer(object):
         """
 
 #       print '_getRaw() from' , len(self.buffer) , 'chars'
-#       print unicode(self)
 #       print 'before skipping spaces, buffer=' , self.buffer
         self.skipSpaces()
         ln = len(self.buffer)
