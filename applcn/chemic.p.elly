@@ -45,9 +45,14 @@
 0 \\[@$ LNKS -1
 
 0 &@adiene$ CHEM - -2 -1
+0 &@adiyne  CHEM - -2 -1
 0 &@azine$  CHEM - -2 -1
+0 &@pyn     CHEM - -2 -1
+# &@azen    CHEM - -2 -1
 
 0 ( - 6
 6 #! - 7
 7 ) SLCN -1
 7 , - 6
+
+0 #one CHMO -1

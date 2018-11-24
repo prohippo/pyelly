@@ -96,6 +96,16 @@ __
 g:CHEM->STRUC CHMB
   >>-
 __
+g:CHEM->CHMH CHMO
+_
+  left
+  split
+  right
+  back
+  shift 1 <
+  append -
+  merge
+__
 
 g:REPN->REPN PUNC[|hyph]
   >>--

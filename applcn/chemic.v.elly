@@ -34,6 +34,7 @@ phosph  : ROOT
 phosphon : ROOT
 propa   : ROOT
 propan  : ROOT
+propen  : ROOT
 thiolo  : ROOT
 
 acetate  : CHEM
@@ -47,14 +48,17 @@ biphenyl : CHEM
 bipyrazine : CHEM
 butane   : CHEM
 butanal  : CHEM
+buten    : CHEM
 carbonic : CHEM
 carboxylic : CHEM
 chloride : CHEM
 decyl    : CHEM
+diazene : CHEM
 diazenediyl  : CHEM
 diazolium    : CHEM
 dihydrogen   : CHEM
 diphosphoric : CHEM
+diyl         : CHEM
 ester    : CHEM[:type]
 ethane   : CHEM
 ethene   : CHEM
@@ -86,10 +90,12 @@ sulfate  : CHEM
 sulfonyl : CHEM
 sulfide  : CHEM
 thio     : CHEM
+triazene : CHEM
 trimethyl : CHEM
 trione    : CHEM
 xazole   : CHEM
 yl       : CHEM
+ylidene  : CHEM
 yne      : CHEM
 
 benzoic acid : CHEM

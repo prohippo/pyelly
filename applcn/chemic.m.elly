@@ -1,4 +1,5 @@
 # parsing of chemical names in text
 # chemic.m.elly
 
-
+-#_-_one ->-\\1one
+-_#-one ->-\\2one
