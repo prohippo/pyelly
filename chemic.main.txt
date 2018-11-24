@@ -66,3 +66,16 @@ hxh 2,2′-bipyrazine up!
 hxh bi-2-cyclohexen-1-yl up!
 hxh 1,3-butadiene-1,1,2,3,4,4-hexacarbonitrile up!
 hxh 1,3,5-triazine-2,4,6(1H,3H,5H)-trione up!
+wxh 2-pyrazinecarboxylic acid out!
+wxh 1,2-diazenedicarboxylic acid out!
+wxh 4,7,10,13-tetraoxapentadecanoic acid out!
+wxh 2-cyclopropen-1-one out!
+wxh 2-buten-1-yl out!
+wxh 2-propyn-1-ylidene out!
+wxh 2-triazen-1-yl out!
+wxh 2,4-cyclopentadien-1-ylidene out!
+wxh 1-triazene-1,3-diyl out!
+wxh 1,3-butadiyne-1,4-diyl out!
+wxh 1,2-ethanediyl out!
+wxh 1,2-ethenediylidene out!
+wxh 1,2-cyclopropanediyl out!
