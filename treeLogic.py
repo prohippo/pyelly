@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# treeLogic.py : 17nov2018 CPM
+# treeLogic.py : 27nov2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -369,21 +369,24 @@ class TreeLogic(object):
 
         while rec:      # continue comparisons recursively while flag is True
 
+#           print 'token root=' , token.root
             if len(token.root) < 3: break               # stop if token root is too short
+
+            dlt = 0 if ellyChar.isLetter(token.root[0]) else -2
 
             seq = self.sequence(token.root) + [ Bound ] # token sequence plus sentinel
 
 #           print type(self).__name__ ,'seq=' , seq
 
-            chs = seq[0]    # first char in sequence to match
+            chs = seq[0]         # first char in sequence to match
             if not chs in self.indx:
                 return suc
 
             nod = self.indx[chs] # starting node in tree
 #           print 'start nod.id=' , nod.id , '/' , (Node.Ni - 1)
-            lvl = 0         # level in tree
-            mst = [ ]       # match stack
-            lmt = len(seq)  # sequence length = maximum possible match
+            lvl = 0              # level in tree
+            mst = [ ]            # match stack
+            lmt = len(seq) + dlt # sequence length = maximum possible match
 #           print 'lmt=' , lmt , 'seq=' , seq
 
             while True:
