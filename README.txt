@@ -670,6 +670,10 @@ Release Notes:
                       extend "chemic", "bad" rules
                       extend "chemic" integration testing
                       update documentation
+ 1.5.8.1 - 29nov2018  fix problem with suffix removal after prefix removal
+                      extend "chemic" rules
+                      extend "chemic integration testing
+                      update documentation
 
 New versions will be for non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
