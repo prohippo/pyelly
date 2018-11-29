@@ -79,3 +79,13 @@ wxh 1,3-butadiyne-1,4-diyl out!
 wxh 1,2-ethanediyl out!
 wxh 1,2-ethenediylidene out!
 wxh 1,2-cyclopropanediyl out!
+how 2-cyclopenten-1-yl did?
+how cyclotrisiloxan-2-ylidene did?
+how 1,4-dioxan-2-yl did?
+how 2-pyrazinyl did?
+how 2-oxiranyl did?
+how 2,3-dichloro-2,3-oxiranediol  did?
+how 3-chloro-2-oxirenol did?
+how 1-chloro-2,3-butanedione did?
+how N-methyl-urea did?
+how 2,3,5,6-tetramethyl-1,4-dioxin did?
