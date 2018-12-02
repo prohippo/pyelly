@@ -14,6 +14,7 @@ hex   : REPN
 hexa  : REPN[:full]
 hept  : REPN
 hepta : REPN[:full]
+octa  : REPN[:full]
 
 acet    : ROOT
 amino   : ROOT
@@ -70,6 +71,7 @@ hept-2-yl : CHEM
 heptane  : CHEM
 hexane   : CHEM
 hexene   : CHEM
+hydrazine : CHEM
 hydroxy  : CHEM
 idene    : CHEM
 imino    : CHEM
@@ -83,6 +85,7 @@ oxirane  : CHEM
 oxirenol : CHEM
 oxiranyl : CHEM
 phenyl   : CHEM
+phenylene : CHEM
 phosphate  : CHEM
 phosphonic : CHEM
 phosphoric : CHEM

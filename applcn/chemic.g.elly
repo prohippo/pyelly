@@ -257,6 +257,14 @@ __
 g:CHEM[:brkt]->CHMB PUNC[|*r,-*x]
  >>+
 __
+
+g:CHMB->PUNC[|*l] CHEM
+__
+g:CHEM[:brkt]->CHMB PUNC[|*r]
+__
+g:REPB->CHEM[:brkt] REPB
+  >>++
+__
  
 #
 # for locant structural description

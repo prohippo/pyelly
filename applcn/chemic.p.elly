@@ -20,7 +20,6 @@
 2 &# - 1
 3 ′  - 3
 3 &# - 1
-3 - LOCN -1
 3 $  - 1
 
 0 ! - 4
@@ -45,10 +44,11 @@
 0 \\[@$ LNKS -1
 
 0 &@adiene$ CHEM - -2 -1
-0 &@adiyne  CHEM - -2 -1
+0 &@adiyne$ CHEM - -2 -1
+# &@azen$   CHEM - -2 -1
 0 &@azine$  CHEM - -2 -1
-0 &@pyn     CHEM - -2 -1
-# &@azen    CHEM - -2 -1
+0 &@hydro   CHEM - -2 -1
+0 &@pyn$    CHEM - -2 -1
 
 0 ( - 6
 6 #! - 7
