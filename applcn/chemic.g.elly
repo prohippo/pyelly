@@ -91,12 +91,12 @@ _
   (catn)
 __
 g:CHEM->STRUC CHEM
-  >>+
+  >>++
 __
 g:CHEM->STRUC CHMB
   >>-
 __
-g:CHEM->CHMH CHMO
+g:CHEM->CHMP CHMO
 _
   left
   split
@@ -143,9 +143,12 @@ g:HROO->PUNC[|hyph] ROOT
 __
 g:HRTH->HROO PUNC[|hyph]
 __
-g:LOCX->LOCN HRTH
+g:LOCN[:rdcl]->LOCN HROO
+  >>--
 __
-g:LOCN->LOCX LOCN
+g:STRUC->LOCN[:rdcl] STRUC
+__
+g:LOCX->LOCN HRTH
 __
 g:LOCN->LOCN SLCN
 __
@@ -176,10 +179,13 @@ g:CHEM->PRPS CHEM
   >>++
 __
 
-g:CHMH->CHEM PUNC[|hyph]
+g:CHMP->CHEM PUNC[|com]
   >>++
 __
-g:CHEM->CHMH CHEM
+g:CHMP->CHEM PUNC[|hyph]
+  >>++
+__
+g:CHEM->CHMP CHEM
   >>++
 __
 g:CHEM->CHEM[:-type,-brkt] CHEM[:type]

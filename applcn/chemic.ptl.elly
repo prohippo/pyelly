@@ -1,12 +1,13 @@
 # parsing of chemical names in text
 # chemic.ptl.elly
 
-benzene 1 0 .
+benzene 2 0 .
 buteno 1 0 .
 dimethyl 1 0 .
 dinitro  1 0 .
 cyclo 1 0 .
 dodecyl 1 0 .
+furan 1 0 .
 hexa  1 0 .
 hydroxy 1 0 .
 oxa   1 0 .

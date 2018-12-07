@@ -36,6 +36,7 @@ phosphon : ROOT
 propa   : ROOT
 propan  : ROOT
 propen  : ROOT
+silan   : ROOT
 thiolo  : ROOT
 
 acetate  : CHEM
@@ -50,6 +51,7 @@ bipyrazine : CHEM
 butane   : CHEM
 butanal  : CHEM
 buten    : CHEM
+carbamic : CHEM
 carbonic : CHEM
 carboxylic : CHEM
 chloride : CHEM
@@ -58,6 +60,7 @@ diazene : CHEM
 diazenediyl  : CHEM
 diazolium    : CHEM
 dihydrogen   : CHEM
+dimethanol   : CHEM
 dioxan       : CHEM
 dioxin       : CHEM
 diphosphoric : CHEM
@@ -75,6 +78,7 @@ hydrazine : CHEM
 hydroxy  : CHEM
 idene    : CHEM
 imino    : CHEM
+methane  : CHEM
 methyl   : CHEM
 methylene : CHEM
 naphthalene  : CHEM
@@ -96,6 +100,7 @@ pyridine : CHEM
 pyrido   : CHEM
 silane   : CHEM
 sulfate  : CHEM
+silanol  : CHEM
 sulfonyl : CHEM
 sulfide  : CHEM
 thio     : CHEM
@@ -131,3 +136,6 @@ dicyclobuta : RING
 β : CNFG
 γ : CNFG
 δ : CNFG
+
+α² : LOCN
+α³ : LOCN
