@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# patternTable.py : 11nov2018 CPM
+# patternTable.py : 06dec2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -208,7 +208,8 @@ def bound ( segm ):
     while ll > 0:    # exclude trailing non-alphanumeric from matching
                      # except for '.', Unicode prime, or  '*' and bracketing
         c = segm[ll]
-        if (c in Trmls or c in [ u'*' , u'\x2032' , u'+' ]
+#       print 'bound c=' , c , '{:x}'.format(ord(c))
+        if (c in Trmls or c in [ u'*' , u'\u2032' , u'+' ]
             or ellyChar.isLetterOrDigit(c)): break
         ll -= 1
 #   print 'limit=' , ll + 1
@@ -420,7 +421,7 @@ class PatternTable(object):
 #                   print 'unmatched solitary $'
                     continue
                 else:
-#                   print 'matched solitary $'
+#                   print 'matched solitary $, state=' , state
                     m = 0
 
 #               print 'm=' , m
