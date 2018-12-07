@@ -94,3 +94,9 @@ how 1,1′-(1,4-phenylene)bis[1-phenyl]-methanone did?
 how 1,1′-oxybis-benzene did?
 how 1,1′-oxybis[4-fluoro]-benzene did?
 how 2,2′-(1,2-hydrazinediyl)bis-acetic acid did?
+how N,N′-silylenebis-carbamic acid is.
+how 1,1′-thiobis-methane is.
+how 1,1′-methylenebis-silanol is.
+how 1,1′-methylenebis-silanamine is.
+how 2-chloro-1,1′-(1,2-ethanediyl) ester acetic acid is.
+how 3-methyl-1,2-benzenedicarboxylic acid, 1-methyl ester is.
