@@ -79,6 +79,7 @@ hydroxy  : CHEM
 idene    : CHEM
 imino    : CHEM
 methane  : CHEM
+methanol : CHEM
 methyl   : CHEM
 methylene : CHEM
 naphthalene  : CHEM
