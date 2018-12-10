@@ -678,6 +678,10 @@ Release Notes:
                       extend "chemic" rules
                       extend "chemic integration testing
                       update documentation
+ 1.5.8.3 - 10dec2018  handle Greek letters properly in ellyBuffer
+                      extend "chemic" rules
+                      extend "chemic integration testing
+                      update documentation
 
 New versions will be for non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
