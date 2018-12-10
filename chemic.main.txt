@@ -100,3 +100,5 @@ how 1,1′-methylenebis-silanol is.
 how 1,1′-methylenebis-silanamine is.
 how 2-chloro-1,1′-(1,2-ethanediyl) ester acetic acid is.
 how 3-methyl-1,2-benzenedicarboxylic acid, 1-methyl ester is.
+how α³-chloro-2,3-furandimethanol,α²-acetate is.
+how P,P′-dimethyl ester diphosphoric acid is.
