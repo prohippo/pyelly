@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBuffer.py : 22nov2018 CPM
+# ellyBuffer.py : 09dec2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -278,9 +278,17 @@ class EllyBuffer(object):
 
 #       print 'skip=' , skip, 'n=' , n
         for k in range(skip,n):
-            if self.buffer[k] in separators:  # is buffer char a separator?
+            ck = self.buffer[k]
+            if ck in separators:              # is buffer char a separator?
                 self.index = k                # if so, note buffer position
                 return k
+            if ck == ellyChar.COM:
+#               print 'comma k=' , k
+                if k + 1 < n:
+                    ck1 = self.buffer[k+1]
+                    if not ellyChar.isLetterOrDigit(ck1):
+                        if ck1 in ellyChar.Grk:
+                            return k
 
         return -1                             # fail
 
@@ -613,7 +621,7 @@ class EllyBuffer(object):
         else:
 #           print 'full token extraction'
             k = self.findSeparator()
-#           print 'k=' , k
+#           print 'k=' , k , 'ln=' , ln
             if k < 0:           # break multi-char token at next separator
                 k = ln          # if no separator, go up to end of buffer
             elif k == 0:
@@ -624,6 +632,7 @@ class EllyBuffer(object):
                     if x != MIN and x != COM:
                         break       # no further check if separator not hyphen or comma
                     if k + 1 >= ln or not ellyChar.isDigit(self.buffer[k+1]):
+#                       print 'x=' , x , 'buf=' , self.buffer[k:]
                         break       # accept hyphen or comma if NOT followed by digit
                     else:           # otherwise, look for another separator
                         k = self.findSeparator(k+2)
