@@ -25,6 +25,7 @@ chloro  : ROOT
 dichloro : ROOT
 dimethano : ROOT
 ethan   : ROOT
+furan    : ROOT
 hydraz  : ROOT
 methan  : ROOT
 methano : ROOT
@@ -60,13 +61,13 @@ diazene : CHEM
 diazenediyl  : CHEM
 diazolium    : CHEM
 dihydrogen   : CHEM
-dimethanol   : CHEM
 dioxan       : CHEM
 dioxin       : CHEM
 diphosphoric : CHEM
 diyl         : CHEM
 ester    : CHEM[:type]
 ethane   : CHEM
+ethanol  : CHEM
 ethene   : CHEM
 ethyl    : CHEM
 fluoro   : CHEM
@@ -74,6 +75,7 @@ hept-2-yl : CHEM
 heptane  : CHEM
 hexane   : CHEM
 hexene   : CHEM
+hydrazide : CHEM
 hydrazine : CHEM
 hydroxy  : CHEM
 idene    : CHEM

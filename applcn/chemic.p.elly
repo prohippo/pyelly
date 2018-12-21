@@ -2,6 +2,10 @@
 # chemic.p.elly
 
 #
+# suffixes
+0 -&@$ CMPN -1
+
+#
 # locants
 
 0 &# - 1
@@ -26,8 +30,6 @@
 4 $  ATMP -1
 4 , - 5
 5 ! - 4
-
-0 -&@ CMPN -1
 
 0 !$  ATOM -1
 0 #!$ ATOM -1
