@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyToken.py : 03aug2017 CPM
+# ellyToken.py : 21dec2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -75,9 +75,9 @@ class EllyToken(object):
             Unicode string representation
         """
 
-        p =  '[' + u' '.join(self.pres) + ']+' if len(self.pres) > 0 else ''
-        s = '-[' + u' '.join(self.sufs) + ']'  if len(self.sufs) > 0 else ''
-        c = 'CAP' if self.capn else '-'
+        p =   '[' + u' '.join(self.pres) + ']+' if len(self.pres) > 0 else ''
+        s = ' -[' + u' '.join(self.sufs) + ']'  if len(self.sufs) > 0 else ''
+        c = 'CAP' if self.capn else ''
         return u'EllyToken: ' + p + str(self.root) + s + u' (orig= "' + self.orig + u'") ' + c
 
     def __str__ ( self ):
@@ -374,21 +374,21 @@ if __name__ == "__main__":
         print type(ux)
 
     t = EllyToken(ux)
+    print 'initial definition'
+    print 'token=' , t
 
     t.addSuffix(u'xxx')
     t.addSuffix(u'yy')
     t.addSuffix(u'z')
 
-    print 'initial definition'
-    print t
     print 'capn=' , t.capn
-    print "suffixes=" , map(lambda x: '-'+x , t.getSuffixes())
+    print "suffixes=" , [ '-' + sx for sx in t.getSuffixes() ]
     print 'dvdd=' , t.dvdd
     print ''
 
     t.shortenBy(1,both=True)
 
-    print 'shorten by 1'
+    print 'shorten token and root by 1'
     print t
     print ''
 
