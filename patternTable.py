@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# patternTable.py : 06dec2018 CPM
+# patternTable.py : 20dec2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -412,6 +412,7 @@ class PatternTable(object):
                 if po == u'\x00':   # do state change without matching?
                     m = 0           # no match length
                 elif po != ellyWildcard.cEND:
+#                   print 'po=' , po
                     bds = ellyWildcard.match(lk.patn,sg)
 #                   print 'bds=' , bds
                     if bds == None: continue

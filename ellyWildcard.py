@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyWildcard.py : 14nov2018 CPM
+# ellyWildcard.py : 20dec2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -373,6 +373,7 @@ def minMatch ( patn ):
     return k
 
 Trmls = [ RDQm , u'"' , RSQm , u"'" , u'.' , u')' , u']' ]  # chars marking extent of pattern match
+Grk   = ellyChar.Grk
 Hyphn = ellyChar.HYM                                        # ASCII hyphen or minus
 
 def match ( patn , text , offs=0 , limt=None , nsps=0 ):
@@ -628,7 +629,7 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
                     offs -= 1
                     continue
                 txc = text[offs]
-                if ellyChar.isWhiteSpace(txc) or txc in Trmls:
+                if ellyChar.isWhiteSpace(txc) or txc in Trmls or txc in Grk:
                     offs -= 1
                     continue
             elif last in ellyBuffer.separators:
