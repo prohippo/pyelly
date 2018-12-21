@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 09dec2018 CPM
+# ellyBase.py : 20dec2018 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -73,7 +73,7 @@ noParseTree = False                     # enable parse tree stub for debugging
 
 # version ID
 
-release = 'v1.5.8.3'                    # current version of PyElly software
+release = 'v1.5.8.4'                    # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -602,6 +602,7 @@ class EllyBase(object):
 
 #       print 'extracted to=' , unicode(to)
         if to == None:                 # if no match, we are done and will return
+#           print 'mx=' , mx
             return False if mx == 0 else True  # still success if _scanText() found something
         if self.ptr.lastph != None:
             self.ptr.lastph.lens = to.getLength()
