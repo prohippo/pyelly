@@ -494,6 +494,7 @@ easy ease
 eaten eat
 echoed echo
 echoes echo
+echolocation echolocate
 ecuadorean ecuador
 edition edit
 egotist ego
@@ -602,6 +603,7 @@ fledgling fledgling
 flew fly
 flexible flex
 flocculate floccule
+flotation float
 flown fly
 flung fling
 foamed foam
