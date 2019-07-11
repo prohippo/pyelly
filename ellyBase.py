@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 20dec2018 CPM
+# ellyBase.py : 10jul2019 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -73,7 +73,7 @@ noParseTree = False                     # enable parse tree stub for debugging
 
 # version ID
 
-release = 'v1.5.8.4'                    # current version of PyElly software
+release = 'v1.5.8.5'                    # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
