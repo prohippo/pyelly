@@ -435,6 +435,7 @@ dignity dign
 dimension dimension
 dimer dimer
 dinghy dinghy
+dinghies dinghy
 dingier dingy
 dingiest dingy
 dingy dingy

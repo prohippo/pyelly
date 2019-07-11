@@ -24,9 +24,12 @@
 #        ',' means to apply suffix removal logic recursively on result after action
 #        '.' means no recursion
 #
-# adjust specifies any transformation of a matched ending to get a proper suffix
+# adjust  is any addition to the front of a matched ending to get a proper suffix
 #
 #      this applies after dropping kept chars from a matched ending; it is optional.
+#
+# for example, the rule  "afest 2 3 . 0e" applied to the word "safest" will result
+# in the root SAFE and the suffix -EST.
 #
 able 1 0 &,
 abour 1 3 r.
