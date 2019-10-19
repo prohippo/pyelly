@@ -1,0 +1,57 @@
+# zhong.g.elly
+#
+
+g:SENT->SS
+_
+  linefeed
+  left
+__
+g:SS[|stop,*l]->SS[|-stop] PUNC[|stop,-emb]
+__
+g:SS[|*l]->SS[|-stop] UNIT
+_
+  left
+  append [[
+  right
+  append ]]
+__
+g:SS[|*l]->SS[|-stop] NUM
+_
+  left
+  append [
+  right
+  append ]
+__
+g:UNIT->VERB
+__
+g:UNIT->NOUN
+__
+g:UNIT->ADJ
+__
+g:SS[|*l]->SS[|-stop] PUNC[|com]
+__
+g:SS[|*l]->SS[|-stop] UNKN
+_
+  left
+  append (
+  right
+  append )
+__
+g:SS->UNKN
+_
+  append (
+  left
+  append )
+__
+g:SS->UNIT
+_
+  append [[
+  left
+  append ]]
+__
+g:SS->NUM
+_
+  append [
+  left
+  append ]
+__
