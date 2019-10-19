@@ -20,21 +20,21 @@ and extended entity extraction, ambiguity handling, sentence recognition,
 support for large external dictionaries, and a general procedural
 framework for translating text from UTF-8 to UTF-8.
 
-The latest version has been completely rewritten in mostly object-oriented
+The latest versions have been completely rewritten in mostly object-oriented
 Python 2.7. It completed multiple stages of beta testing in 2014 and may
 now be downloaded from GitHub at https://github.com/prohippo/pyelly.git .
 Further development and refinement is ongoing.
 
 To learn how to use PyElly, see the PyEllyManual.pdf file in the same
-directory as this README.txt file. The manual has over a hundred sixty pages
+directory as this README.txt file. The manual has about 170 pages
 of information, including an overview of basic linguistics. Documentation
 of individual Python source files can be generated as needed with the
 Python pydoc utility from PyElly source files.
 
-At present, PyElly consists of 66 Python modules comprising almost eleven
+At present, PyElly consists of 67 Python modules comprising almost eleven
 thousand lines of source code. There are also various definition files
-to support basic various language processing capabilities. The PyElly
-download includes rules for some example applications illustraing the most
+to implement basic various language processing capabilities. The PyElly
+download includes rules for example applications illustrating the most
 basic kinds of computational linguistics; these include
 
 * indexing - remove stopwords and get stems for content words from raw
@@ -50,10 +50,10 @@ basic kinds of computational linguistics; these include
 * disambig - disambiguation of phrases with WordNet concept information.
 * chemic   - recognition of chemical names in text
 
-These illustrate what you can do with PyElly and also serve as a basis for
-comprehensive integration testing. Other applications will be added to the
-PyElly package on GitHub in the future. You may use any of them as models for
-building your own PyElly applications.
+These illustrate the many different things you can do with PyElly and also
+serve as a basis for comprehensive integration testing. Other applications
+will be added to the PyElly package on GitHub in the future. You may use
+any of them as models for building your own PyElly applications.
 
 PyElly is free software released under a BSD open-source license for
 educational and other uses. Be advised that the current software and
@@ -310,7 +310,7 @@ Release Notes:
                       fix bug in disambiguation with type 0 rules
                       extend "test" integration testing for new patterns
                       extend "marking" application rules
-                      clean up "doctor rules"
+                      clean up "doctor" rules
                       clean up and extend documentation
  1.3.16  - 21aug2016  add another recognizer for space chars
                       fix bug in pattern matching with spaces
@@ -623,7 +623,7 @@ Release Notes:
                       integrate template matching in PyElly processing
                       fix bug in ellySurvey because of new vocabularyTable
                       fix minor bug in cognitiveDefiner
-                      extend "test" appplication rules
+                      extend "test" application rules
                       extend "test" integration testing for templates
                       clean up "marking" rules
                       update documentation
@@ -672,29 +672,32 @@ Release Notes:
                       update documentation
  1.5.8.1 - 29nov2018  fix problem with suffix removal after prefix removal
                       extend "chemic" rules
-                      extend "chemic integration testing
+                      extend "chemic" integration testing
                       update documentation
  1.5.8.2 - 07dec2018  fix patternTable bug in handling Unicode prime char
                       extend "chemic" rules
-                      extend "chemic integration testing
+                      extend "chemic" integration testing
                       update documentation
  1.5.8.3 - 10dec2018  handle Greek letters properly in ellyBuffer
                       extend "chemic" rules
-                      extend "chemic integration testing
+                      extend "chemic" integration testing
                       update documentation
  1.5.8.4 - 21dec2018  handle Greek letters properly in patternTable
                       handle Greek letters properly in ellyWildcard matching
                       clarify ellyToken print representation, clean up code
                       extend "chemic" rules
-                      extend "chemic integration testing
+                      extend "chemic" integration testing
                       update documentation
  1.5.8.5 - 10jul2019  extend default suffix rules
+                      update documentation
+ 1.6     - 19oct2019  add support for Chinese Unicode input
+                      fix problem with language initialization in ellyBase
                       update documentation
                       
 
 New versions will be for non-cosmetic changes in PyElly code. This typically
 will often require regenerating any previously saved *.elly.bin files to ensure
-correct operation. Changes only to PyElly sample application definition files,
+correct operation. Changes only to PyElly example application definition files,
 unit testing input or key files, and PyElly documentation will be made from time
 to time, but these will leave version numbers the same, if they are the only
 changes. Updates are still frequent; check for the latest files. The dates above

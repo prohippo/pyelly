@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 10jul2019 CPM
+# ellyBase.py : 17oct2019 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -34,9 +34,16 @@ consisting of a single sentence on a single line with no \n chars
 """
 
 import sys
-import ellySession
 import ellyConfiguration
+
+if __name__ == '__main__':
+    arg = sys.argv[1:]
+    if len(arg) > 0 and arg[0].lower() == '-zh':
+        ellyConfiguration.language = arg.pop(0)[1:].upper()
+
+
 import ellyDefinition
+import ellySession
 import ellyPickle
 import ellyToken
 import ellyChar
@@ -73,7 +80,7 @@ noParseTree = False                     # enable parse tree stub for debugging
 
 # version ID
 
-release = 'v1.5.8.5'                    # current version of PyElly software
+release = 'v1.6'                        # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
@@ -267,6 +274,7 @@ class EllyBase(object):
 
 #       print '0:' , len(d.stb.ntname) , 'syntactic categories'
 
+#       print 'base language=' , ellyConfiguration.language
         mtb = d.mtb if d != None else None
         self.sbu = substitutionBuffer.SubstitutionBuffer(mtb)
 
@@ -409,6 +417,7 @@ class EllyBase(object):
             return ''
 #       print 'list' , list(text)
         self.sbu.refill(text)           # put text to translate into input buffer
+#       print 'refilled=' , self.sbu
 
         try:
             while True:
@@ -939,15 +948,22 @@ if __name__ == '__main__':
 
 #   print 'stdin=' , si.encoding , 'stdout=' , so.encoding
 
+#
+#   command line arguments were partly processed at the beginning of this file!
+#   (necessary to instantiate SubstitutionBuffer properly for Chinese characters)
+#
+
     try:
-        syst = sys.argv[1] if len(sys.argv) > 1 else 'test'  # which rule definitions to run
-        dpth = int(sys.argv[2]) if len(sys.argv) > 2 else -1 # depth of parse tree reporting
+        syst = arg[0] if len(arg) > 0 else 'test'   # which rule definitions to run
+        dpth = int(arg[1]) if len(arg) > 1 else -1  # depth of parse tree reporting
     except ValueError , e:
         print >> sys.stderr , e
         sys.exit(1)
 
-    print 'release=' , 'PyElly' , release
-    print 'system =' , syst
+    print 'release  =' , 'PyElly' , release
+    print 'system   =' , syst
+
+    print 'language =  ' , ellyConfiguration.language
     try:
         eb = EllyBase(syst)
 #       print 'eb=' , eb
@@ -978,11 +994,13 @@ if __name__ == '__main__':
 
         so.write('> ')
         line = si.readline()
+#       print 'input line=' , line
         l = line.decode('utf8')
+#       print 'decoded   =' , l
         if len(l) == 0 or l[0] == '\n': break
 #       print 'input:' , type(line) , '->' , type(l) , l
         txt = list(l.strip())
-#       print 'txt=' , txt
+        print 'txt=' , txt
         so.write('\n')
         lo = eb.translate(txt,True)
         if lo == None:

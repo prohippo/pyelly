@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyMain.py : 01nov2018 CPM
+# ellyMain.py : 15oct2019 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -49,8 +49,13 @@ plsb  = False     # show plausibility scoring in output
 
 a = sys.argv[1:]  # drop invocation name of module in argument list
 
+#
+# interpret command line flags
+#
+
 while len(a) > 0 and a[0][0] == '-': # check for commandline flag
     flg = a.pop(0)
+#   print 'flg=' , flg
     if   flg == '-b':                # batch processing?
         interact = False
     elif flg == '-d':                # limit parse tree display depth?
@@ -63,6 +68,9 @@ while len(a) > 0 and a[0][0] == '-': # check for commandline flag
         plsb = True
     elif flg == '-noLang':           # turn off default language analysis?
         ellyConfiguration.language = ''
+    elif len(flg) == 8 and flg[:6] == '-lang=':
+        ellyConfiguration.language = flg[6:].upper()
+#       print 'language=' , ellyConfiguration.language
 
 import stopExceptions
 import ellySentenceReader
@@ -76,7 +84,7 @@ restore = a[1] if len(a) > 1 else None
 
 if interact:
     print "PyElly" , ellyBase.release + "," , "Natural Language Filtering"
-    print "Copyright 2014-2018 under BSD open-source license by C.P. Mah"
+    print "Copyright 2014-2019 under BSD open-source license by C.P. Mah"
     print "All rights reserved"
     print ""
 
@@ -126,6 +134,7 @@ while True:
     b = rdr.getNext()            # get next sentence
     if b == None: break          # EOF check
     if len(b) == 0: continue     # ignore empty lines
+#   print 'main b=' , b
 
     if interact:
         print 'translating' , b
