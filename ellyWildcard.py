@@ -638,6 +638,9 @@ def match ( patn , text , offs=0 , limt=None , nsps=0 ):
             elif last in [ '?' , '!' , ellyChar.HYPH ]:
                 offs -= 1
                 continue
+            elif not ellyChar.isText(last):
+                offs -= 1
+                continue
 
         elif tc == cANY: # alphanumeric wildcard?
 #           print "ANY:",last,offs

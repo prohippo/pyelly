@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# punctuationRecognizer.py : 10may2018 CPM
+# punctuationRecognizer.py : 11oct2019 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -71,17 +71,22 @@ defns = [                                      # syntactic significance of punct
     [ u'`' , '[' + pID + '*l,quo,start]' ] ,
     [ u"'" , '[' + pID + '*l,*r,quo,start]' ] ,
     [ u',' , '[' + pID + 'com]' , True ]  ,    # special status for comma only, so far
-    [ u'.' , '[' + pID + 'stop,emb,*x]' ] ,    # these will end sentences, but could be embedded
+    [ u'.' , '[' + pID + 'stop,emb,*x]' ] ,    # these will end sentences, but can be embedded
     [ u'!' , '[' + pID + 'stop,emb]' ] ,
     [ u'?' , '[' + pID + 'stop,emb]' ] ,
     [ u':' , '[' + pID + 'stop,emb]' ] ,
     [ u';' , '[' + pID + 'stop]' ] ,
     [ u'…' , '[' + pID + 'start]' ]  ,         # horizontal ellipsis
-    [ u'\u2122' ] ,                            # TM
-    [ u'\u2013' , '[' + pID + 'start]' ] ,     # en dash
-    [ u'\u2014' , '[' + pID + 'start,*x]' ] ,  # em dash
-    [ u'\u002d' , '[' + pID + 'hyph]'  ] ,     # hyphen or minus
-    [ u'\u2010' , '[' + pID + 'hyph]'  ]       # hyphen only
+
+    [ u'\u3008' , '[' + pID + '*l,quo,start]' ] , # Chinese quotation left
+    [ u'\u3009' , '[' + pID + '*r,quo]' ] ,       #                   right
+    [ u'\u2122' ] ,                               # TM
+    [ u'\u2013' , '[' + pID + 'start]' ] ,        # en dash
+    [ u'\u2014' , '[' + pID + 'start,*x]' ] ,     # em dash
+    [ u'\u002d' , '[' + pID + 'hyph]'  ] ,        # hyphen or minus
+    [ u'\u2010' , '[' + pID + 'hyph]'  ] ,        # hyphen only
+    [ u'\uff0c' , '[' + pID + 'com]' , True ] ,   # Chinese comma
+    [ u'\u3002' , '[' + pID + 'stop,*x]' ]        # Chinese period
 ]
 
 smfs  = {  # semantic features for particular punctuation
@@ -183,12 +188,13 @@ if __name__ == '__main__':
 
     import symbolTable
 
-    ups = u'.?!ab,;:+cd()$%&\'\"ef-–—“”…hg`i™\x1E〈〉'
+    ups = list(u'.?!ab,;:+cd()$%&\'\"ef-–—“”…hg`i™〈〉')
 
+    print 'testing' , ups , len(ups)
     symb = symbolTable.SymbolTable()
     punc = PunctuationRecognizer(symb)
 
-    ft = symb.sxindx[pID]
+    ft = symb.sxindx[pID]    # show synractic feature names for PUNC[| ]
     del ft['*left']
     del ft['*right']
     print 'punc [| ]:' , ft

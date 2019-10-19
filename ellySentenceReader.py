@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellySentenceReader.py : 17jul2018 CPM
+# ellySentenceReader.py : 16oct2019 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -55,6 +55,7 @@ DQuo = '"'
 RBs   = [ u')' , u']' , u'}' ]               # right bracketing
 
 Stops = [ u'.' , u'!' , u'?' , u':' , u';' ] # should end sentence
+Hards = [ u'\u3002' ]                        # will always end sentence
 
 QUOs = [ unichr(34) , unichr(39) , # ASCII double and single quote
          RDQm ,                    # right Unicode double quote
@@ -69,7 +70,7 @@ class EllySentenceReader(object):
     to divide input text into separate sentences for processing
 
     attributes:
-        inp  - saved text stream source
+        inp  - saved text char input stream
         stpx - stop exception matcher
         drop - flag for removing stop punctuation exceptions
         last - last char encountered in buffering input lines
@@ -280,6 +281,11 @@ class EllySentenceReader(object):
                 sent.pop()                      # remove from sentence chars
                 break
 
+            # certain Unicode punctuation will always break
+
+            if c in Hards:
+                break
+
             # char was not alphanumeric or space
             # look for stop punctuation exception
 
@@ -482,11 +488,16 @@ class EllySentenceReader(object):
 if __name__ == '__main__':
 
     import sys
+
+    arg = sys.argv[1:]
+    if len(arg) > 0 and arg[0].lower() == '-zh':
+        ellyConfiguration.language = arg.pop(0)[1:].upper()
+
     import ellyDefinitionReader
     import stopExceptions
 
     base = ellyConfiguration.baseSource
-    dfs = base + (sys.argv[2] if len(sys.argv) > 2 else 'default') + '.sx.elly'
+    dfs = base + (arg[1] if len(arg) > 1 else 'default') + '.sx.elly'
     print 'reading exceptions from:' , dfs
     inp = ellyDefinitionReader.EllyDefinitionReader(dfs)
     if inp.error != None:
@@ -496,7 +507,7 @@ if __name__ == '__main__':
 
     stpxs = stopExceptions.StopExceptions(inp)
 
-    tst = sys.argv[1] if len(sys.argv) > 1 else 'sentenceTestData.txt'
+    tst = arg[0] if len(arg) > 0 else 'sentenceTestData.txt'
     ins = open(tst,'r')
     rdr = EllySentenceReader(ins,stpxs)
 

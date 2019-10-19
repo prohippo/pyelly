@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 04nov2018 CPM
+# ellyChar.py : 16oct2019 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -708,9 +708,9 @@ if __name__ == "__main__":
         cy = cx.lower()
         print u'<' + cx + cy +  u'> ord=' , '{:3d}'.format(ko) , 'map=' , mp , vo
 
-    print u'寶=CJK' , isCJK(u'寶')
-    print u'譽=CJK' , isCJK(u'譽')
-    print u'禮=CJK' , isCJK(u'禮')
+    print u'寶=CJK' , isCJK(u'寶') , isText(u'寶')
+    print u'譽=CJK' , isCJK(u'譽') , isText(u'譽')
+    print u'禮=CJK' , isCJK(u'禮') , isText(u'禮')
     print u'… =CJK' , isCJK(u'…')
     print 'thin space' , isWhiteSpace(THS)
     print 'thin space' , isSpace(THS)

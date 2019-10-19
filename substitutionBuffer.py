@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# substitutionBuffer.py : 08may2018 CPM
+# substitutionBuffer.py 17oct2019 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -37,13 +37,17 @@ import ellyChar
 import ellyWildcard
 import ellyBuffer
 import ellyBufferEN
+import ellyBufferZH
 import ellyConfiguration
 import macroTable
 
-class SubstitutionBuffer(
+BufferType = (
     ellyBufferEN.EllyBufferEN if ellyConfiguration.language == 'EN' else
+    ellyBufferZH.EllyBufferZH if ellyConfiguration.language == 'ZH' else
     ellyBuffer.EllyBuffer
-):
+)
+
+class SubstitutionBuffer(BufferType):
 
     """
     input buffer with macro substitutions automatically applied

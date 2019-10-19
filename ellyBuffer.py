@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBuffer.py : 09dec2018 CPM
+# ellyBuffer.py : 15oct2019 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -68,37 +68,6 @@ RAB = u'\u3009'                #               angle bracket
 
 UELP = u'\u2026'               # Unicode ellipsis
 
-def normalize ( s ):
-
-    """
-    convert all unrecognizable input chars to _ and any
-    consecutive white spaces to a single space
-
-    arguments:
-        s   - Unicode string or char list to operate on
-    returns:
-        normalized sequence
-    """
-
-    spaced = False
-    n = len(s)
-    ns = [ ]
-    for i in range(n):
-        x = s[i]
-        if ellyChar.isLetter(x):
-            spaced = False
-        elif ellyChar.isWhiteSpace(x):
-            if spaced: continue
-            x = ' '
-            spaced = True
-        elif not ellyChar.isText(x):
-            x = '_'
-            spaced = False
-        else:
-            spaced = False
-        ns.append(x)
-    return ns
-
 class EllyBuffer(object):
 
     """
@@ -157,6 +126,39 @@ class EllyBuffer(object):
         """
 
         return unicodedata.normalize('NFKD',unicode(self)).encode('ascii','ignore')
+
+    def normalize ( self , s ):
+
+        """
+        convert all unrecognizable input chars to _ and any
+        consecutive white spaces to a single space
+
+        arguments:
+            self -
+            s    - Unicode string or char list to operate on
+        returns:
+            normalized sequence
+        """
+
+#       print '__ normalize'
+        spaced = False
+        n = len(s)
+        ns = [ ]
+        for i in range(n):
+            x = s[i]
+            if ellyChar.isLetter(x):
+                spaced = False
+            elif ellyChar.isWhiteSpace(x):
+                if spaced: continue
+                x = ' '
+                spaced = True
+            elif not ellyChar.isText(x):
+                x = '_'
+                spaced = False
+            else:
+                spaced = False
+            ns.append(x)
+        return ns
 
     def clear ( self ):
 
@@ -500,6 +502,7 @@ class EllyBuffer(object):
             s     - list or string of chars to fill with
         """
 
+#       print 'refill' , s
         self.clear()
         self.fill(s)
 
@@ -513,7 +516,7 @@ class EllyBuffer(object):
             s     - list or string of chars to fill with
         """
 
-        self.append(normalize(s))
+        self.append(self.normalize(s))
 
     def putBack ( self , w ):
 

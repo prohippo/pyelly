@@ -1,7 +1,7 @@
 #!/usr/local/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# vocabularyTable.py : 19nov2018 CPM
+# vocabularyTable.py : 13oct2019 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -38,6 +38,7 @@ import sys
 import symbolTable
 import ellyChar
 import ellyException
+import ellyConfiguration
 import definitionLine
 import deinflectedMatching
 import vocabularyElement
@@ -97,7 +98,7 @@ def delimitKey ( t ):
 #           print 'n=' , n , 'c=' , c
             if n > 1:             # check for 'S as special case!
                 if ( c in [ 's' , 'S' ] and
-                     ellyChar.isApostrophe(t[n-1]) ):
+                    ellyChar.isApostrophe(t[n-1]) ):
 #                   print 'drop \'S from SQLite key'
                     n -= 1
                 else:
@@ -134,6 +135,19 @@ def toKey ( s ):
     ellyChar.toLowerCaseASCII(sl)
 #   print 'VT key=' , sl
     return ''.join(sl)
+
+def toKeyZH ( x ):
+    """
+    convert single Chinese char to ASCII key for SQLite
+
+    arguments:
+        x   - Chinese Unicode char
+
+    returns:
+        ASCII key as string
+    """
+
+    return str(ord(x)%100000)  # string representation of code point
 
 def _err ( s='malformed vocabulary input' ):
 
@@ -238,15 +252,19 @@ def build ( name , stb , defn ):
 #               print ' tm=' , '<' + t + '>' , 'df=' , '<' + d + '>'
                 if len(t) == 0 or len(d) == 0:
                     _err()                                # quit on missing parts
-                c = t[0]
-                if not ellyChar.isLetterOrDigit(c) and not c in initChr:
-                    _err('bad term')
+                if ellyConfiguration.language == 'ZH':    # special key for Chinese
+                    wky = toKeyZH(t[0])
+                else:
+                    c = t[0]
+                    if not ellyChar.isLetterOrDigit(c) and not c in initChr:
+                        _err('bad term')
 
-                n = delimitKey(t)                         # get part of term to index
-#               print 'delimit=' , n
-                if n <= 0:
-                    _err()                                # quit on bad term
-                wky = toKey(t[:n])                        # key part of term to define
+                    n = delimitKey(t)                     # get part of term to index
+#                   print 'delimit=' , n
+                    if n <= 0:
+                        _err()                            # quit on bad term
+                    wky = toKey(t[:n])                    # key part of term to define
+
 #               print '  SQLite key=' , wky
 
 #               print 'd=' , d
@@ -616,7 +634,10 @@ class VocabularyTable(deinflectedMatching.DeinflectedMatching):
         if keyl < 1:
             return res                # still empty list
 
-        strg = toKey(chrs[:keyl])
+        if ellyConfiguration.language == 'ZH':
+            strg = toKeyZH(chrs[0])
+        else:
+            strg = toKey(chrs[:keyl])
 
 #       print 'vocab search key=' , list(strg) , type(strg)
 #       print '0 endg=' , self.endg
@@ -773,6 +794,10 @@ def listDBKeys ( dbso ):
 
 if __name__ == '__main__':
 
+    arg = sys.argv[1:]
+    if len(arg) > 0 and arg[0].lower() == '-zh':
+        ellyConfiguration.language = arg.pop(0)[1:].upper()
+
     import ellyDefinitionReader
 
     from ellyPickle import load
@@ -790,7 +815,7 @@ if __name__ == '__main__':
         lts = len(ts)
         if kl == None or kl > lts: kl = lts
         rs = vtb.lookUp(ts,kl)               # check for possible vocabulary matches
-        print 'full text=' , '<' + u''.join(ts) + '>' ,
+#       print 'full text=' , '<' + u''.join(ts) + '>' ,
         if len(rs) == 0:                     # any vocabulary entries found?
             print 'FOUND NONE'
         else:
@@ -806,7 +831,7 @@ if __name__ == '__main__':
                 print ''
             print '--'
 
-    nams = sys.argv[1] if len(sys.argv) > 1 else 'test'
+    nams = arg[0] if len(arg) > 0 else 'test'
     dfns = nams + source
     limt = sys.argv[2] if len(sys.argv) > 2 else 24
 
@@ -854,6 +879,9 @@ if __name__ == '__main__':
     for ky in unqk:
         if nu >= limt: break           # stop when too many keys
         nu += 1
+        if ellyConfiguration.language == 'ZH':
+            ky = unichr(int(ky))
+            print 'ky=' , ky
         check(uvtb,list(ky))           # dump all info for key
         print ''
 
@@ -863,13 +891,16 @@ if __name__ == '__main__':
         ul = sys.stdin.readline()      # get test example to look up
         if len(ul) <= 1: break
         ssx = ul.strip().decode('utf8')
-        tsx = list(ssx)                # get list of chars
-        kn = delimitKey(ssx)           # get part of term for indexing
-        if kn == 0:                    # if none, cannot look up
-            print 'index NOT FOUND:' , ssx
-            continue
-        print 'raw key=' , tsx[:kn]
-        check(uvtb,tsx,kn)
+        tsx = list(ssx)                # get list of Unicode chars
+        if ellyConfiguration.language == 'ZH':
+            check(uvtb,tsx,1)          # key is always first char
+        else:
+            kn = delimitKey(ssx)       # get part of term for indexing
+            if kn == 0:                # if none, cannot look up
+                print 'index delimiting FAILED:' , ssx
+                continue
+            print 'raw key=' , tsx[:kn]
+            check(uvtb,tsx,kn)
         print ''
 
     sys.stdout.write('\n')
