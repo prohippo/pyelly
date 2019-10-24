@@ -1,10 +1,10 @@
 PyElly is a rule-based natural language processing tool that has existed
-for over forty years in various incarnations. It is now freely available
-as open source software on the Web to anyone wanting to try it out. It is
-written in version 2.7 of Python and employs SQLite for data management.
+for over forty years in various incarnations. It is now free for download
+from the Web as open source software. It is written entirely in
+version 2.7 of Python and employs SQLite for data management.
 
-PyElly is intended mainly for educational use, in that it allows a student
-to engage natural language at a fine level of detail and learn the issues
+PyElly is intended mainly for educational use. It allows a student to
+engage natural language at a fine level of detail and to learn the issues
 involved in processing text data. It can be of interest to others, though,
 because of its extensive support for handling the messy aspects of
 language not central to most text data problems or to their solutions.
@@ -14,28 +14,27 @@ some other text output, which might be SQL, XML, or some other form. This
 falls short of full understanding, but can be quite helpful as a general
 kind of preprocessing for data mining or for more precise indexing.
 
-PyElly builds in flexible tokenization, syntax-driven parsing, English
+PyElly tools include flexible tokenization, syntax-driven parsing, English
 inflectional and morphological stemming, macro substitutions, basic
 and extended entity extraction, ambiguity handling, sentence recognition,
 support for large external dictionaries, and a general procedural
 framework for translating text from UTF-8 to UTF-8.
-
-The latest versions have been completely rewritten in mostly object-oriented
-Python 2.7. It completed multiple stages of beta testing in 2014 and may
-now be downloaded from GitHub at https://github.com/prohippo/pyelly.git .
-Further development and refinement is ongoing.
+0
+The latest versions have been completely rewritten in object-oriented
+Python. It completed  beta testing in 2014 and can be found on
+GitHub at https://gith$ub.com/prohippo/pyelly.git . Development and
+refinement of PyElly software is ongoing.
 
 To learn how to use PyElly, see the PyEllyManual.pdf file in the same
 directory as this README.txt file. The manual has about 170 pages
 of information, including an overview of basic linguistics. Documentation
-of individual Python source files can be generated as needed with the
-Python pydoc utility from PyElly source files.
+of individual Python source files can be generated as needed by running
+the Python pydoc utility on the source files.
 
-At present, PyElly consists of 67 Python modules comprising almost eleven
-thousand lines of source code. There are also various definition files
-to implement basic various language processing capabilities. The PyElly
-download includes rules for example applications illustrating the most
-basic kinds of computational linguistics; these include
+At present, PyElly consists of 67 Python modules comprising about eleven
+thousand lines of source code. The PyElly package also includes various
+language definition files with rules implementing a broad range of
+nontrivial example applications; these include
 
 * indexing - remove stopwords and get stems for content words from raw
              text input.
@@ -50,15 +49,14 @@ basic kinds of computational linguistics; these include
 * disambig - disambiguation of phrases with WordNet concept information.
 * chemic   - recognition of chemical names in text
 
-These illustrate the many different things you can do with PyElly and also
-serve as a basis for comprehensive integration testing. Other applications
-will be added to the PyElly package on GitHub in the future. You may use
-any of them as models for building your own PyElly applications.
+These show just a few of the many things PyElly can do for you. They also
+serve as a basis for comprehensive software integration testing. You may
+use any of them as models for building your own PyElly applications.
 
 PyElly is free software released under a BSD open-source license for
 educational and other uses. Be advised that the current software and
-documentation is still evolving, although releases after v1.1 should be
-more stable than preceding beta releases.
+documentation is still evolving, although releases after v1.2 should be
+more stable than preceding releases.
 
 Release Notes:
 
@@ -504,7 +502,7 @@ Release Notes:
                       update documentation
  1.4.17  - 27nov2017  reimplement generative semantics FIND command
                       improve logic for recompiling PyElly tables
-                      fix stemming problems with -n
+                      fix stemming problems with -n ending
                       fix punctuation problems with [ and ]
                       extend "marking" rules
                       update documentation
@@ -695,14 +693,14 @@ Release Notes:
                       update documentation
                       
 
-New versions will be for non-cosmetic changes in PyElly code. This typically
-will often require regenerating any previously saved *.elly.bin files to ensure
+New versions will be assigned for non-cosmetic changes in PyElly code. This will
+often require regenerating any previously saved *.elly.bin files to ensure
 correct operation. Changes only to PyElly example application definition files,
 unit testing input or key files, and PyElly documentation will be made from time
-to time, but these will leave version numbers the same, if they are the only
-changes. Updates are still frequent; check for the latest files. The dates above
-are for the initial release of a version, not the latest update,
+to time, but these will leave version numbers the same, if they are no other
+changes. Check Github for the latest files. The dates above are for the initial
+release of a version, not the most recent update,
 
-The PyElly website is at
+A website with information about PyElly is at
 
     https://sites.google.com/site/pyellynaturallanguage/
