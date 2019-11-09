@@ -157,7 +157,7 @@ class EllyDefinitionReader(object):
         if isinstance(source,list):
 
             for l in source:
-                if isinstance(l,unicode):
+                if not isinstance(l,unicode):
                     l = unicode(l)
                 self.save(l)  # fill buffer from list
 

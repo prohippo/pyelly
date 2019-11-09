@@ -690,6 +690,7 @@ Release Notes:
                       update documentation
  1.6     - 19oct2019  add support for Chinese Unicode input
                       fix problem with language initialization in ellyBase
+                      fix problem in ellyDefinitionReader unit test
                       update documentation
                       
 
