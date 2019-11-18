@@ -692,7 +692,9 @@ Release Notes:
                       fix problem with language initialization in ellyBase
                       fix problem in ellyDefinitionReader unit test
                       update documentation
-                      
+ 1.6.1   - 17nov2019  fix bug in recognizing Unicode contrel chars in input
+                      clean up and correct ellyChar commentary
+                      update documentation
 
 New versions will be assigned for non-cosmetic changes in PyElly code. This will
 often require regenerating any previously saved *.elly.bin files to ensure

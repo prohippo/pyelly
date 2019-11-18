@@ -80,7 +80,7 @@ noParseTree = False                     # enable parse tree stub for debugging
 
 # version ID
 
-release = 'v1.6'                        # current version of PyElly software
+release = 'v1.6.1'                      # current version of PyElly software
 
 def _timeModified ( basn , filn ):
 
