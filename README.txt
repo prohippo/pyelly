@@ -692,7 +692,7 @@ Release Notes:
                       fix problem with language initialization in ellyBase
                       fix problem in ellyDefinitionReader unit test
                       update documentation
- 1.6.1   - 17nov2019  fix bug in recognizing Unicode contrel chars in input
+ 1.6.1   - 17nov2019  fix bug in recognizing Unicode control chars in input
                       clean up and correct ellyChar commentary
                       update documentation
 
