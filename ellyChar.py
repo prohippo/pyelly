@@ -3,7 +3,7 @@
 #
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyChar.py : 16oct2019 CPM
+# ellyChar.py : 17nov2019 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -97,31 +97,31 @@ Quo  = [ LSQm , LDQm , RSQm , RDQm , '"' , "'" ]
 
 Lim = u'\u01D5'    # main limit of Unicode chars recognized
 
-LaS = 0x0100       # start of Latin supplement
-LaT = 0x0120       # end of supplement control chars
+LaS = 0x0080       # start of Latin supplement
+LaT = 0x00A0       # end of supplement control chars
 
 ######## The alphabet currently defined for PyElly is ASCII plus Latin-1
 ######## Supplement and Latin Extended A plus parts of Latin Extended B.
-######## These are in the first four blocks of Unicode as follows:
+######## These are in the first four blocks of Unicode chars as follows:
 
-##00  . . . . . . . . . . . . . . . .     . . . . . . . . . . . . . . . .
-##20    ! " # $ % & ' ( ) * + , - . /     0 1 2 3 4 5 6 7 8 9 : ; < = > ?
-##40  @ A B C D E F G H I J K L M N O     P Q R S T U V W X Y Z [ \ ] ^ _
-##60  ` a b c d e f g h i j k l m n o     p q r s t u v w x y z { | } ~
+# 0000  . . . . . . . . . . . . . . . .     . . . . . . . . . . . . . . . .
+# 0020    ! " # $ % & ' ( ) * + , - . /     0 1 2 3 4 5 6 7 8 9 : ; < = > ?
+# 0040  @ A B C D E F G H I J K L M N O     P Q R S T U V W X Y Z [ \ ] ^ _
+# 0060  ` a b c d e f g h i j k l m n o     p q r s t u v w x y z { | } ~
 
-##00  . . . . . . . . . . . . . . . .     . . . . . . . . . . . . . . . .
-##20    ¡ ¢ £ ¤ ¥ ¦ § ¨ © ª « ¬   ® ¯     ° ± ² ³ ´ µ ¶ · ¸ ¹ º » ¼ ½ ¾ ¿
-##40  À Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï     Ð Ñ Ò Ó Ô Õ Ö × Ø Ù Ú Û Ü Ý Þ ß
-##60  à á â ã ä å æ ç è é ê ë ì í î ï     ð ñ ò ó ô õ ö ÷ ø ù ú û ü ý þ ÿ
+# 0080  . . . . . . . . . . . . . . . .     . . . . . . . . . . . . . . . .
+# 00A0    ¡ ¢ £ ¤ ¥ ¦ § ¨ © ª « ¬   ® ¯     ° ± ² ³ ´ µ ¶ · ¸ ¹ º » ¼ ½ ¾ ¿
+# 00C0  À Á Â Ã Ä Å Æ Ç È É Ê Ë Ì Í Î Ï     Ð Ñ Ò Ó Ô Õ Ö × Ø Ù Ú Û Ü Ý Þ ß
+# 00E0  à á â ã ä å æ ç è é ê ë ì í î ï     ð ñ ò ó ô õ ö ÷ ø ù ú û ü ý þ ÿ
 
-##00  Ā ā Ă ă Ą ą Ć ć Ĉ ĉ Ċ ċ Č č Ď ď     Đ đ Ē ē Ĕ ĕ Ė ė Ę ę Ě ě Ĝ ĝ Ğ ğ
-##20  Ġ ġ Ģ ģ Ĥ ĥ Ħ ħ Ĩ ĩ Ī ī Ĭ ĭ Į į     İ ı Ĳ ĳ Ĵ ĵ Ķ ķ ĸ Ĺ ĺ Ļ ļ Ľ ľ Ŀ
-##40  ŀ Ł ł Ń ń Ņ ņ Ň ň ŉ Ŋ ŋ Ō ō Ŏ ŏ     Ő ő Œ œ Ŕ ŕ Ŗ ŗ Ř ř Ś ś Ŝ ŝ Ş ş
-##60  Š š Ţ ţ Ť ť Ŧ ŧ Ũ ũ Ū ū Ŭ ŭ Ů ů     Ű ű Ų ų Ŵ ŵ Ŷ ŷ Ÿ Ź ź Ż ż Ž ž ſ
+# 0100  Ā ā Ă ă Ą ą Ć ć Ĉ ĉ Ċ ċ Č č Ď ď     Đ đ Ē ē Ĕ ĕ Ė ė Ę ę Ě ě Ĝ ĝ Ğ ğ
+# 0120  Ġ ġ Ģ ģ Ĥ ĥ Ħ ħ Ĩ ĩ Ī ī Ĭ ĭ Į į     İ ı Ĳ ĳ Ĵ ĵ Ķ ķ ĸ Ĺ ĺ Ļ ļ Ľ ľ Ŀ
+# 0140  ŀ Ł ł Ń ń Ņ ņ Ň ň ŉ Ŋ ŋ Ō ō Ŏ ŏ     Ő ő Œ œ Ŕ ŕ Ŗ ŗ Ř ř Ś ś Ŝ ŝ Ş ş
+# 0160  Š š Ţ ţ Ť ť Ŧ ŧ Ũ ũ Ū ū Ŭ ŭ Ů ů     Ű ű Ų ų Ŵ ŵ Ŷ ŷ Ÿ Ź ź Ż ż Ž ž ſ
 
-##00  . . . . . . . . . . . . . . . .     . . . . . . . . . . . . . . . .
-##20  . . . . . . . . . . . . . . . .     . . . . . . . . . . . . . . . .
-##40  . . . . . . . . . . . . . Ǎ ǎ Ǐ     ǐ Ǒ ǒ Ǔ ǔ
+# 0180  . . . . . . . . . . . . . . . .     . . . . . . . . . . . . . . . .
+# 01A0  . . . . . . . . . . . . . . . .     . . . . . . . . . . . . . . . .
+# 01C0  . . . . . . . . . . . . . Ǎ ǎ Ǐ     ǐ Ǒ ǒ Ǔ ǔ
 
 ######## The entire PyElly character set also includes Unicode punctuation,
 ######## spaces, and other special characters outside this range.
