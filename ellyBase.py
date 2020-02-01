@@ -1,7 +1,7 @@
 #!/usr/bin/python
 # PyElly - scripting tool for analyzing natural language
 #
-# ellyBase.py : 17oct2019 CPM
+# ellyBase.py : 01feb2020 CPM
 # ------------------------------------------------------------------------------
 # Copyright (c) 2013, Clinton Prentiss Mah
 # All rights reserved.
@@ -491,7 +491,7 @@ class EllyBase(object):
         if len(s) == 0:                # check for end of input
             return False               # if so, done
 
-#       print 'in =' , unicode(self.sbu)
+#       print 'in=' , unicode(self.sbu)
         if self.trs != None:           # preanalysis of number expressions
             self.trs.rewriteNumber(s)
 
@@ -544,7 +544,7 @@ class EllyBase(object):
 #               print 'extracted chs=' , chs
 #           print 'token chs=' , chs
             to = ellyToken.EllyToken(chs)
-#           print 'long token=' , unicode(to)
+#           print 'token=' , unicode(to)
             self.ctx.addTokenToListing(to)
             if suf != '':
                 if not ellyChar.isApostrophe(suf[1]):
@@ -616,7 +616,7 @@ class EllyBase(object):
         if self.ptr.lastph != None:
             self.ptr.lastph.lens = to.getLength()
 
-#       print 'to=' , unicode(to) , 'len(s)=' , len(s) , s
+#       print 'next to=' , unicode(to) , 'len(s)=' , len(s) , s
 #       posn = self.ctx.countTokensInListing()
 #       print 'at', posn , 'in token list'
         self.ctx.addTokenToListing(to) # add token to listing for sentence
@@ -669,23 +669,26 @@ class EllyBase(object):
         if  nspan < m:
             nspan = m                  # on longer match, update maximum
 
-#       lm = len(sb)                   # scan limit
+#       print 'nspan=' , nspan , sb[:nspan]
+
+        lm = len(sb)                   # scan limit
 #       print 'lm=' , lm , 'm=' , m
         capd = ellyChar.isUpperCaseLetter(sb[0])
 #       print 'next component=' , sb[:k] , ', context=' , sb[k:lm]
 
         if self.vtb != None:           # look in external dictionary, if it exists
             ls = list(sb[:k])
-#           print 'ls 0=' , ls
+#           print 'vtb ls 0=' , ls
             ellyChar.toLowerCaseASCII(ls)
             ss = u''.join(ls)                   # where to start for vocabulary indexing
-#           print 'ls 1=' , ls
+#           print 'vtb ls 1=' , ls
             n = vocabularyTable.delimitKey(ss)  # get actual indexing
-#           print 'delimiting n=' , n , '=' , '<' + ss[:n] + '>'
+#           print 'delimiting n=' , n , ':' , '<' + ss[:n] + '>'
 #           print vocabularyTable.listDBKeys(self.vtb.cdb)
 
             rl = self.vtb.lookUp(sb,n) # get list of the maximum text matches
-#           print len(rl) , 'matches'
+#           print 'external matches' , len(rl)
+#           print 'input text=' , sb
             if len(rl) > 0:            #
                 r0 = rl[0]             # look at first record
 #               print 'r0=' , r0
@@ -715,15 +718,16 @@ class EllyBase(object):
 #                           print 'vocab phr=' , tr.lastph , 'len=' , tr.lastph.lens
                             if suffx != '':
                                 if ellyChar.isApostrophe(suffx[1]):
+                                    suffx[1] = "'"
                                     tr.lastph.krnl.usen = 0
 
 #               print 'vocabulary m=' , vmln
 #               print 'queue after table lookup:' , len(self.ptr.queue)
 
-#           print 'sb=' , sb
+#           print 'vtb sb=' , sb
 
 #       print 'maximum match=' , nspan
-#       print 'input=' , self.sbu.buffer[:nspan]
+#       print 'next input=' , self.sbu.buffer[:nspan]
 
         if nspan > 0:                  # any matches at all?
             tr.requeue()               # if so, keep only longest of them
@@ -863,7 +867,7 @@ class EllyBase(object):
                     found = True
 
         if found:                           # if any success, we are done
-#           print 'token recognized'
+#           print 'token recognized=' , w
             w.dvdd = dvdd
             return w
 
